@@ -12,40 +12,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
+import { pages } from "@/app/constents/constents";
 
 const settings = ["Login", "Sign up"];
-const pages = [
-  {
-    menu: "Home",
-    auth: true,
-    path: "/home",
-  },
-  {
-    menu: "Properties",
-    auth: true,
-    path: "/properties",
-  },
-  {
-    menu: "Project",
-    auth: true,
-    path: "/project",
-  },
-  {
-    menu: "Blogs",
-    auth: true,
-    path: "/blogs",
-  },
-  {
-    menu: "jagah360",
-    auth: true,
-    path: "/jagah360",
-  },
-  {
-    menu: "Sell & rent for me",
-    auth: true,
-    path: "/Sell-&-rent-for-me",
-  },
-];
 
 export default function MainHeader() {
   const [anchorElNav, setAnchorElNav] = useState(null);
