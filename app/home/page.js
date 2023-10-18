@@ -1,12 +1,11 @@
-import { Typography } from "@mui/material";
+
 import React from "react";
 
-const Home = () => {
+export default page = () => {
   return (
-    <div>
-      <Typography sx={{ my: 5 }}>Home</Typography>
-    </div>
+    <>
+     <h1>About Page</h1>
+    </>
   );
 };
 
-export default Home;

@@ -25,3 +25,24 @@
     )
     rgb(var(--background-start-rgb));
 } */
+.container-full-width {
+  width: 100%;
+}
+
+.container-width {
+  width: 100%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.right-section {
+  width: 15%;
+}
+
+.main-section {
+  width: 70%;
+}
+
+.left-section {
+  width: 15%;
+}
