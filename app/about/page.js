@@ -1,12 +1,13 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const About = () => {
+const Dashboard = () => {
   return (
-    <>
-      <h1>About Page</h1>
-    </>
+    <div className="min-h-screen bg-red-500">
+      <div className="left-section w-15 text-white p-4"><h1>Padded Section</h1></div>
+    </div>
+
   );
 };
 
-export default About;
+export default Dashboard;
