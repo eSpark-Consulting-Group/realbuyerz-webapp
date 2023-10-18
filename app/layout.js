@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+<<<<<<< Updated upstream
       <body className="font-inter">
         {/* show main header when url is not dashboard */}
         {!isDashboard && (<MainHeader />)}
@@ -20,6 +21,12 @@ export default function RootLayout({ children }) {
         {isDashboard && (<DashboardHeader />)}
         <div className="container-full-width">{children}</div>
         <Footer />  
+=======
+      <body className={inter.className}>
+        <MainHeader />
+        {children}
+        {/* <Footer /> */}
+>>>>>>> Stashed changes
       </body>
     </html>
   );

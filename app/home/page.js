@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 import React from "react";
 
@@ -9,3 +10,17 @@ export default page = () => {
   );
 };
 
+=======
+import HeroSection from "@/src/components/hero_section/HeroSection";
+import React from "react";
+
+const page = () => {
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
+};
+
+export default page;
+>>>>>>> Stashed changes
