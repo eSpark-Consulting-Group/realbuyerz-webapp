@@ -18,11 +18,7 @@ export default function RootLayout({ children }) {
         {!isDashboard && (<MainHeader />)}
         {/* show dashboard header when url is dashboard */}
         {isDashboard && (<DashboardHeader />)}
-        
-        {/* show full width container when url is dashboard or homepage */}
-        {isDashboard && isHomepage && (<div className="container-full-width">{children}</div>)}
-        {/* show width container when url is not dashboard or homepage */}
-        {!isDashboard && !isHomepage  && ( <div className="container-width">{children}</div> )}
+        <div className="container-full-width">{children}</div>
         <Footer />  
       </body>
     </html>
