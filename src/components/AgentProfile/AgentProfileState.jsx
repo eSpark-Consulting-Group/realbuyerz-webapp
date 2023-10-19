@@ -109,7 +109,7 @@ const AgentProfileState = () => {
             <Grid container spacing={2}>
               {["1", "2", "3"].map((number) => (
                 <Grid item xs={4} key={number}>
-                  <Paper
+                  <Box
                     sx={{
                       width: "100%",
                       height: 80,
@@ -120,6 +120,7 @@ const AgentProfileState = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      boxShadow: 1
                     }}
                   >
                     <Box>
@@ -137,7 +138,7 @@ const AgentProfileState = () => {
                         {items[`PropertieName${number}`]}
                       </Typography>
                     </Box>
-                  </Paper>
+                  </Box>
                 </Grid>
               ))}
             </Grid>
