@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <div class="super_container">
-            <MainHeader />
+            {/* <MainHeader /> */}
             <div class="content">{children}</div>
             <Footer />
           </div>
