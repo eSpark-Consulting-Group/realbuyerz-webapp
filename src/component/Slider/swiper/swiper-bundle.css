@@ -1,0 +1,13 @@
+.swiperButtonPrev {
+    /* Styles for the previous button (left arrow) */
+    color: white;
+    /* background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%; */
+}
+
+.swiper-button-next {
+    /* Styles for the next button (right arrow) */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}

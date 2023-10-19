@@ -1,38 +1,134 @@
 "use client"
 import React from "react";
-import Styles from "./profile.module.css";
+// import Styles from "./profile.module.css";
 import {
     Typography,
     Button,
     Avatar,
     Box
-} from '@material-ui/core';
+} from "@mui/material";
+import Image from "next/image";
 import { agentProfile } from "./constaints";
-const ProfileAgent = ({ price, agentName, avatarSrc, description }) => {
+const ProfileAgent = () => {
     const handleClick = () => {
         console.log("hello")
     }
     return (
-        <Box className={Styles.container}>
-            <Typography className={Styles.price}>PKR {agentProfile.price}</Typography>
-            <Typography className={Styles.contact}>Reach out to us:</Typography>
-            <Box className={Styles.buttonContainer}>
-                <Box className={Styles.buttonBackground} />
-                <Button className={Styles.button}>Message</Button>
-            </Box>
-            <Box className={Styles.secondcontainer}>
-                <Typography className={Styles.agentName}>{agentProfile.name}</Typography>
+        <Box
+            sx={{
+                width: 400,
+                height: 470,
+                background: 'white',
+                borderRadius: 8,
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'left',
+                padding: 3,
+                gap: 2,
+            }}
+        >
+            <Typography
+                sx={{
+                    fontSize: 27,
+                    fontWeight: 'bold',
+                    fontFamily: 'Inter',
+                    color: 'zinc',
 
-                <Box className={Styles.avatarContainer}>
-                    <Box className={Styles.avatarBackground}>
-                        <Avatar src="assets/images/avatar.svg" className={Styles.avatarImage}{...agentProfile.avartar} />
-                    </Box>
+                }}
+            >PKR {agentProfile.price}</Typography>
+            <Typography
+                sx={{
+                    fontSize: 16,
+                    fontFamily: 'Inter',
+                    color: 'zinc',
+                }}
+            >Reach out to us:</Typography>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: "center",
+
+                    width: '100%',
+                    height: 'autos',
+                    background: '#FB631C',
+                    borderRadius: 2,
+                }}
+            >
+                <Button
+                    sx={{
+                        background: 'transparent',
+                        fontSize: 25,
+                        fontWeight: 'medium',
+                        fontFamily: 'Inter',
+                        textTransform: "capitalize",
+                        color: 'white',
+                        gap: 1,
+                    }}
+                >
+                    <Image src="assets/images/msgicon.svg" width={24} height={24} />
+                    Message</Button>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: 350,
+                    height: 195,
+                    background: 'white',
+                    borderRadius: 2,
+                    border: '1px solid #e0e0e0',
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        p: 2,
+                    }}
+                >
+                    <Avatar src={agentProfile.avartar} sx={{ width: 100, height: 100 }} />
+                    <Typography
+                        sx={{
+                            ml: 2,
+                            fontSize: 25,
+                            fontWeight: 'bold',
+                            fontFamily: 'Inter',
+                            color: '#333',
+                        }}
+                    >
+                        {agentProfile.name}
+                    </Typography>
                 </Box>
-                <Box className={Styles.buttonContainers}>
-                    <Button onClick={handleClick} className={Styles.buttonLabel}>View Agent Profile</Button>
+                <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        sx={{
+                            width: "100%",
+                            fontSize: 20,
+                            background: '#F5F6FB',
+                            fontWeight: '500px',
+                            fontFamily: 'Inter',
+                            color: '#515151',
+                            textTransform: "capitalize"
+                        }}
+                        onClick={handleClick}
+                    >
+                        View Agent Profile
+                    </Button>
                 </Box>
             </Box>
-            <Typography className={Styles.description}>{agentProfile.description}</Typography>
+            <Typography sx={{
+                width: 350,
+                fontFamily: 'Inter',
+                color: "zinc",
+                fontSize: 16,
+                textAlign: 'start'
+            }}
+
+            >{agentProfile.description}</Typography>
         </Box>
     );
 };

@@ -9,3 +9,5 @@ export const PropertyDetails =
     parking: "02"
 }
 
+
+
