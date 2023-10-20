@@ -1,26 +1,12 @@
-<<<<<<< Updated upstream
-
-import React from "react";
-
-export default page = () => {
-  return (
-    <>
-     <h1>About Page</h1>
-    </>
-  );
-};
-
-=======
-import HeroSection from "@/src/components/hero_section/HeroSection";
 import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <HeroSection />
+    <div className="min-h-screen bg-red-500">
+      <div className="w-15 text-white p-4">
+        <h1>Padded Section</h1>
+      </div>
     </div>
   );
 };
-
 export default page;
->>>>>>> Stashed changes

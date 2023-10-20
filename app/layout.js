@@ -1,32 +1,16 @@
-'use client'
-import { usePathname } from "next/navigation";
-import DashboardHeader from "@/src/components/layouts/DashboardHeader";
 import "./globals.css";
 import Footer from "@/src/components/layouts/Footer";
 import MainHeader from "@/src/components/layouts/MainHeader";
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  console.log(pathname);
-  const isHomepage = navigation.pathname === "/";
-  const isDashboard = navigation.pathnam ==="/dashboard";
-
   return (
     <html lang="en">
-<<<<<<< Updated upstream
       <body className="font-inter">
-        {/* show main header when url is not dashboard */}
-        {!isDashboard && (<MainHeader />)}
-        {/* show dashboard header when url is dashboard */}
-        {isDashboard && (<DashboardHeader />)}
-        <div className="container-full-width">{children}</div>
-        <Footer />  
-=======
-      <body className={inter.className}>
-        <MainHeader />
-        {children}
-        {/* <Footer /> */}
->>>>>>> Stashed changes
+        <div class="super_container">
+          <MainHeader />
+          <div class="content">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
