@@ -39,7 +39,7 @@ export default function MainHeader() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "white" }}>
+    <AppBar sx={{ backgroundColor: "white" }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: "white", p: 1 }}>
         <Toolbar disableGutters>
           <Box

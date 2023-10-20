@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-const HeroSection = () => {
+const HeroSection = (data) => {
   return (
     <>
       <div
