@@ -63,17 +63,38 @@ const PropertyListingCard = ({ data }) => {
                             pr: "76px", pl: "20px",
                         }}
                     >
-                        <Box sx={{ display: "flex", gap: "5px" }}>
-                            <Typography variant="secondary">PKR</Typography>
-                            <Typography variant="h3">{property.price}</Typography>
+                        <Box sx={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <Typography
+                                // variant="secondary"
+                                sx={{ fontSize: "20px", fontWeight: "500" }}
+                            >PKR</Typography>
+                            <Typography
+                                // variant="h3"
+                                sx={{ fontSize: "25px", fontWeight: "600" }}
+                            >{property.price}</Typography>
                         </Box>
-                        <Typography variant="secondary">{property.location}</Typography>
-                        <Typography variant="secondary">{property.area}sqft</Typography>
-                        <Typography variant="h3">{property.direction}</Typography>
-                        <Typography variant="secondary">{property.description}</Typography>
+                        <Typography
+                            // variant="secondary"
+                            sx={{ fontSize: "16px", fontWeight: "400", pt: "30px" }}
+                        >{property.location}</Typography>
+                        <Typography
+                            // variant="secondary"
+                            sx={{ fontSize: "16px", fontWeight: "600", pt: "15px" }}
+                        >{property.area}sqft</Typography>
+                        <Typography
+                            // variant="h3" 
+                            sx={{ fontSize: "18px", fontWeight: "600", pt: "15px" }}
+                        >{property.direction}</Typography>
+                        <Typography
+                            // variant="secondary"
+                            sx={{ fontSize: "16px", fontWeight: "400", }}
+                        >{property.description}</Typography>
 
                         <div className="posted-1-day-ago">
-                            <Typography variant="body2">
+                            <Typography
+                                // variant="body2"
+                                sx={{ fontSize: "16px", fontWeight: "400", pt: "15px" }}
+                            >
                                 Posted {property.postedDate}
                             </Typography>
                         </div>

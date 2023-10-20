@@ -7,7 +7,10 @@ const theme = createTheme({
             main: '#fb631c',
         },
         secondary: {
-            main: '#EDF7FF',
+            main: '#66666',
+        },
+        icon: {
+            main: '#bfbfbf',
         },
         background: {
             default: '#ffffff',
