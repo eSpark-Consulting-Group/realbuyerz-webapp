@@ -7,10 +7,7 @@ const theme = createTheme({
             main: '#fb631c',
         },
         secondary: {
-            main: '#66666',
-        },
-        icon: {
-            main: '#bfbfbf',
+            main: '#EDF7FF',
         },
         background: {
             default: '#ffffff',
@@ -25,40 +22,48 @@ const theme = createTheme({
     typography: {
         fontFamily: 'Inter, sans-serif',
         h1: {
-            fontSize: '40rem',
+            fontSize: '40px',
             fontWeight: 700,
         },
         h2: {
-            fontSize: '30',
+            fontSize: '36px',
             fontWeight: 600,
         },
         h3: {
-            fontSize: '25',
+            fontSize: '30px',
             fontWeight: 600,
         },
         h4: {
-            fontSize: '20',
+            fontSize: '24px',
             fontWeight: 700,
         },
         h5: {
-            fontSize: '18',
+            fontSize: '20px',
             fontWeight: 600,
         },
         h6: {
-            fontSize: '14',
+            fontSize: '16px',
             fontWeight: 700,
         },
         body1: {
-            fontSize: '1rem',
+            fontSize: '14px',
         },
         button: {
             textTransform: 'capitalize',
+        },
+        link: {
+            textDecoration: 'none',
+            color: '#fb631c',
+            '&:hover': {
+                color: '#EDF7FF',
+            },
         },
     },
     spacing: 8,
     shape: {
         borderRadius: 5,
-    }, components: {
+    },
+    components: {
         MuiButton: {
             variants: [
                 {
@@ -68,10 +73,51 @@ const theme = createTheme({
                         backgroundColor: '#fb631c !important',
                         borderRadius: '5px',
                         color: '#fff',
-                        position: 'relative'
+                        position: 'relative',
+                        '&:hover': {
+                            backgroundColor: '#EDF7FF',
+                            color: '#fb631c',
+                        },
+                    },
+                },
+                {
+                    props: { variant: 'outlined' },
+                    style: {
+                        textTransform: 'capitalize',
+                        borderColor: '#fb631c',
+                        color: '#fb631c',
+                        '&:hover': {
+                            backgroundColor: '#fb631c',
+                            color: '#fff',
+                        },
                     },
                 },
             ],
+        },
+        MuiLink: {
+            defaultProps: {
+                variant: 'link',
+            },
+        },
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    color: '#fb631c',
+                    '&:hover': {
+                        backgroundColor: '#EDF7FF',
+                        color: '#fb631c',
+                    },
+                },
+            },
+        },
+    },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
         },
     },
 });
