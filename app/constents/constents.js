@@ -30,3 +30,14 @@ export const pages = [
     path: "/Sell-&-rent-for-me",
   },
 ];
+
+export const hero_Section_Content = {
+  heading:
+    "Live buying, selling or rent vetted properties at the most trusted online real estate portal",
+  logo: "/images/hero_section/logo.png",
+};
+export const hero_Section_Images = [
+  { image: "/images/hero_section/img1.png" },
+  { image: "/images/hero_section/img2.png" },
+  { image: "/images/hero_section/img3.png" },
+];

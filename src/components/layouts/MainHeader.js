@@ -13,6 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
 import { pages } from "@/app/constents/constents";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Button } from "@mui/material";
 
 const settings = ["Login", "Sign up"];
 
@@ -39,7 +41,7 @@ export default function MainHeader() {
   };
 
   return (
-    <AppBar sx={{ backgroundColor: "white" }}>
+    <AppBar sx={{ position: "sticky", backgroundColor: "white" }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: "white", p: 1 }}>
         <Toolbar disableGutters>
           <Box
@@ -93,20 +95,23 @@ export default function MainHeader() {
               }}
             >
               {pages?.map((page, i) => (
-                <Link
+                <Typography
                   key={i}
                   href={page?.path}
-                  // sx={{
-                  //   color: "#000",
-                  //   fontFamily: "Roboto",
-                  //   fontSize: "15px",
-                  //   fontStyle: "normal",
-                  //   fontWeight: 500,
-                  //   lineHeight: "normal",
-                  // }}
+                  variant="a"
+                  component={"a"}
+                  // color={"primary"}
+                  sx={{
+                    color: "#000",
+                    fontFamily: "Roboto",
+                    fontSize: "15px",
+                    fontStyle: "normal",
+                    fontWeight: 600,
+                    lineHeight: "normal",
+                  }}
                 >
                   {page?.menu}
-                </Link>
+                </Typography>
               ))}
             </Box>
             <Menu
@@ -146,15 +151,9 @@ export default function MainHeader() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{
-                  p: 0,
-                  color: "#FF631C",
-                }}
-              >
-                <PersonIcon sx={{ fontSize: 40 }} />
-              </IconButton>
+              <Button variant="primary" onClick={handleOpenUserMenu}>
+                <Typography sx={{ color: "#fff" }}>Sign in</Typography>
+              </Button>
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}

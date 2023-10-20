@@ -1,80 +1,148 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import { hero_Section_Content } from "@/app/constents/constents";
+import { hero_Section_Images } from "@/app/constents/constents";
+import HeroSlider from "../sliders/HeroSlider";
+import { Button } from "@mui/material";
 
-const HeroSection = (data) => {
+const HeroSection = () => {
+  const { heading, logo } = hero_Section_Content;
+
   return (
     <>
-      <div
-        className="relative bg-cover bg-center h-96"
-        style={{
-          backgroundImage: `url(/images/hero_section/img_1.png)`,
-          height: "678px",
-          width: "1920px",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="absolute inset-0 flex items-center text-center justify-center ">
-          <div className="text-center w-full text-white">
-            <img
-              src="/images/hero_section/logo.png"
-              alt="Logo"
-              className="ml-5 inline-flex item-center w-100"
-            />
-            <div classNameName="mx-auto">
-              <h1 className="text-9xl font-extrabold leading-tight mb-4">
-                Live buying, selling or rent vetted properties at the most
-                trusted online real estate portal
-              </h1>
-              <p className="text-lg mb-8">
-                A brief description of your hero section goes here.
-              </p>
-              <div className="space-x-4">
-                <a
-                  href="#"
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full transition duration-300"
-                >
-                  Button 1
-                </a>
-                <a
-                  href="#"
-                  className="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded-full transition duration-300"
-                >
-                  Button 2
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* <Box
+      <Box
         sx={{
-          width: "1920px",
-          height: "678px",
-          backgroundImage: `url(/images/hero_section/img_1.png)`,
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          textAlign: "center",
+          alignItems: "center",
+          height: {
+            xs: "230px",
+            sm: "350px",
+            md: "500px",
+            lg: "600px",
+            xl: "678px",
+          },
         }}
       >
         <Box
           sx={{
-            color: "#FF631C",
+            position: "absolute",
+            zIndex: 2,
+            width: {
+              xs: "100px",
+              sm: "150px",
+              md: "200px",
+              lg: "239px",
+              xl: "239px",
+            },
+            height: {
+              xs: "100px",
+              sm: "150px",
+              md: "200px",
+              lg: "239px",
+              xl: "239px",
+            },
+            top: { xs: 80, sm: 110, md: 150, lg: 190, xl: 200 },
+          }}
+          src={logo}
+          component={"img"}
+        ></Box>
+
+        <Typography
+          sx={{
+            zIndex: 2,
+            position: "absolute",
+            width: {
+              xs: "320px",
+              sm: "440px",
+              md: "610px",
+              lg: "900px",
+              xl: "900px",
+            },
+            top: { xs: 170, sm: 250, md: 340, lg: 420, xl: 430 },
+            fontSize: {
+              xs: "15px",
+              sm: "20px",
+              md: "28px",
+              lg: "30px",
+              xl: "36px",
+            },
+            "-webkit-text-stroke-width": "1px",
+            "-webkit-text-stroke-color": "white",
+            fontWeight: { xs: 900 },
+          }}
+          variant="h2"
+          component={"h2"}
+          color={"primary"}
+          data-aos="fade-right"
+        >
+          {heading}
+        </Typography>
+        <Box
+          sx={{
+            width: {
+              xs: "40px",
+              sm: "60px",
+              md: "auto",
+              lg: "auto",
+              xl: "auto",
+            },
+            zIndex: 2,
+            justifyContent: "space-around",
+            display: "flex",
+            position: "absolute",
+            gap: 2,
+            top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
         >
-          <Typography
-            component={"h1"}
-            variant={"h1"}
+          <Button
             sx={{
-              color: "#FB631C",
+              width: {
+                xs: "40px",
+                sm: "60px",
+                md: "120px",
+                lg: "120px",
+                xl: "120px",
+              },
               fontFamily: "Inter",
-              fontsStyle: "normal",
-              fontWeight: 700,
+              fontStyle: "normal",
+              fontWeight: 600,
               lineHeight: "normal",
-              fontSize: "40px",
+              height: { xs: "auto", sm: "auto", lg: "40px", xl: "40px" },
+              textAlign: "start",
             }}
+            variant="primary"
           >
-            Live buying, selling or rent vetted properties at the most trusted
-            online real estate portal
-          </Typography>
+            <Typography sx={{ color: "#fff" }}> Buyer</Typography>
+          </Button>
+          <Button
+            sx={{
+              width: {
+                xs: "120px",
+                sm: "120px",
+                md: "120px",
+                lg: "120px",
+                xl: "120px",
+              },
+              fontFamily: "Inter",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "normal",
+              height: { xs: "auto", sm: "auto", lg: "40px", xl: "40px" },
+            }}
+            variant="primary"
+          >
+            <Typography sx={{ color: "#fff" }}>Seller</Typography>
+          </Button>
         </Box>
-      </Box> */}
+        <HeroSlider
+          effect={"fade"}
+          pagination={true}
+          delay={1500}
+          data={hero_Section_Images}
+        />
+      </Box>
     </>
   );
 };
