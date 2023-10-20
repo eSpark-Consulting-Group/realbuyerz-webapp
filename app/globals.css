@@ -46,3 +46,24 @@
 .left-section {
   width: 15%;
 }
+
+.slick-next {
+  /* background: red !important; */
+  background-color: transparent !important;
+}
+.slick-prev {
+  /* background: red !important; */
+  background-color: transparent !important;
+}
+.slick-prev {
+  /* background: red !important; */
+  color: #FB631C !important;
+}
+.slick-prev:before,
+    .slick-next:before {
+        color: #FB631C !important;
+    }
+.slick-prev:after,
+    .slick-next:after {
+        color: #FB631C !important;
+    }
