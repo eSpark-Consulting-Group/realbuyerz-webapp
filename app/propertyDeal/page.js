@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 const PropertyDeal = () => {
     return (
         <>
-            <Box sx={{
+            {/* <Box sx={{
                 paddingTop: "20px",
             }}>
                 <Box
@@ -33,6 +33,41 @@ const PropertyDeal = () => {
                 >
                     <PropertyLocation />
                     <PropertyDescription />
+                </Box>
+            </Box> */}
+             <Box sx={{
+                paddingTop: "20px",
+                display:"flex",
+                flexDirection:{xs:"column", md:"row"},
+                justifyContent:"center",
+                gap:"30px"
+            }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection:"column",
+                        gap: "50px",
+                        background:"green",
+                        width:{xs:"100%",md:"none"}
+                    }}
+                >
+
+                    {/* <Sliders /> */}
+                    {/* <PropertyLocation /> */}
+                    <PropertyDescription />
+                   
+                </Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        // flexDirection: "column",
+                        justifyContent: "center",
+                        // alignItems: "center",
+                        // paddingRight: "400px"
+                    }}
+                >
+                    {/* <ProfileAgent /> */}
                 </Box>
             </Box>
 

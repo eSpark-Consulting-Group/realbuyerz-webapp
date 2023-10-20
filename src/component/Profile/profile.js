@@ -17,7 +17,7 @@ const ProfileAgent = () => {
         <Box
             sx={{
                 width: 400,
-                height: 470,
+                height: 500,
                 background: 'white',
                 borderRadius: 8,
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
@@ -27,6 +27,7 @@ const ProfileAgent = () => {
                 alignItems: 'left',
                 padding: 3,
                 gap: 2,
+                marginTop:"20px"
             }}
         >
             <Typography
@@ -57,13 +58,13 @@ const ProfileAgent = () => {
                     borderRadius: 2,
                 }}
             >
-                <Button
+                <Button variant="primary"
                     sx={{
-                        background: 'transparent',
+                        // background: 'transparent',
                         fontSize: 25,
-                        fontWeight: 'medium',
-                        fontFamily: 'Inter',
-                        textTransform: "capitalize",
+                        // fontWeight: 'medium',
+                        // fontFamily: 'Inter',
+                        // textTransform: "capitalize",
                         color: 'white',
                         gap: 1,
                     }}
@@ -108,7 +109,7 @@ const ProfileAgent = () => {
                         sx={{
                             width: "100%",
                             fontSize: 20,
-                            background: '#F5F6FB',
+                            background: 'purple',
                             fontWeight: '500px',
                             fontFamily: 'Inter',
                             color: '#515151',
