@@ -7,35 +7,29 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { Box } from "@mui/material";
+import { Box,Grid } from "@mui/material";
 import Image from "next/image";
 export default function Sliders() {
     return (
-        <><Box sx={{
+        <>
+        <Grid container spacing={2}>
+  <Grid item xs={12} md={11}>
+    <Swiper navigation={true} modules={[Navigation]} style={{ width: "100%", height: "100%", borderRadius: "15px" }}>
+      {agentProfileDescription.map((item, index) => (
+        <SwiperSlide key={index}>
+          <Image
+            src={item.images}
+            alt={`Slide ${index + 1}`}
+            width={850}
+            height={500}
+            style={{ objectFit: "cover" }}
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </Grid>
 
-        }}>
-            <Swiper navigation={true} modules={[Navigation]}
-                style={{
-                    width: "700px",
-                    height: "100%",
-                    backgroundColor: "blue",
-                    float: "left",
-                    borderRadius: "15px",
-
-                }} >
-                {agentProfileDescription.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <Image src={item.images} alt={`Slide ${index + 1}`}
-                            width={850}
-                            height={500}
-                            style={{
-                                objectFit: "cover"
-                            }} />
-
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </Box>
+</Grid>
         </>
     );
 }

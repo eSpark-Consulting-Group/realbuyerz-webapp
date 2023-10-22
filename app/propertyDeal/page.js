@@ -3,75 +3,22 @@ import Sliders from "@/src/component/Slider/slider";
 import ProfileAgent from "@/src/component/Profile/profile";
 import PropertyLocation from "@/src/component/PropertyDetails/propertyDetails";
 import PropertyDescription from "@/src/component/PropertyDescription/propertyDescription";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 const PropertyDeal = () => {
     return (
-        <>
-            {/* <Box sx={{
-                paddingTop: "20px",
-            }}>
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "50px"
-                    }}
-                >
-
-                    <Sliders />
-                    <ProfileAgent />
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        background: "white",
-                        paddingRight: "400px"
-                    }}
-                >
-                    <PropertyLocation />
-                    <PropertyDescription />
-                </Box>
-            </Box> */}
-             <Box sx={{
-                paddingTop: "20px",
-                display:"flex",
-                flexDirection:{xs:"column", md:"row"},
-                justifyContent:"center",
-                gap:"30px"
-            }}>
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection:"column",
-                        gap: "50px",
-                        background:"green",
-                        width:{xs:"100%",md:"none"}
-                    }}
-                >
-
-                    {/* <Sliders /> */}
-                    {/* <PropertyLocation /> */}
-                    <PropertyDescription />
-                   
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        // flexDirection: "column",
-                        justifyContent: "center",
-                        // alignItems: "center",
-                        // paddingRight: "400px"
-                    }}
-                >
-                    {/* <ProfileAgent /> */}
-                </Box>
-            </Box>
-
+        <>          
+  <Grid container sx={{ paddingTop: "20px",display:"flex",justifyContent:"center"  }}>
+  <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "50px" }}>
+    <Sliders />
+    <PropertyLocation />
+    <PropertyDescription />
+  </Grid>
+  <Grid item xs={12} md={4} sx={{ background: "white" }}>
+    <ProfileAgent />
+  </Grid>
+</Grid>
         </>
     )
 }
 export default PropertyDeal;
+
