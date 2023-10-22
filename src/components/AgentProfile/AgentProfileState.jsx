@@ -20,27 +20,12 @@ const AgentProfileState = ({
   return (
     <Box
       sx={{
-        width: "440px",
-        height: "325px",
-        marginBottom: 10,
+        width: "40%",
       }}
     >
       <Box sx={{ pt: 8 }}>
         <AgentTitle title={"Properties By Arman Khan"} />
-        {/* <PropertyHeader
-          saleTitle={saleTitle}
-          rentTitle={rentTitle}
-          view={view}
-        />
-        <PropertyCardBody 
-        PropertieName1={PropertieName1}
-        PropertieName2={PropertieName2}
-        PropertieName3={PropertieName3}
-        PropertyNumber1={PropertyNumber1}
-        PropertyNumber2={PropertyNumber2}
-        PropertyNumber3={PropertyNumber3}
-        // items={items}
-         /> */}
+        
         {Properties.map((items, index) => (
           <Box key={index} sx={{ pt: 2 }}>
             <PropertyHeader title={items.title} view={items.view} />

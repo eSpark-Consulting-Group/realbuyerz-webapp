@@ -8,24 +8,25 @@ import {
 const PropertyCardBody = ({
     items
 }) => {
-    console.log(items, )
   return (
-    <Grid container spacing={2} pb={4}>
+    <Grid container spacing={1}
+     pb={4}
+     >
       {["1", "2", "3"].map((number) => (
-        <Grid item xs={4} key={number}>
+        <Grid item xs={12} sm={6} md={4} lg={4} key={number}>
           <Box
             sx={{
               width: "100%",
               height: 80,
               maxWidth: "sm",
-              border: 0.5,
               borderColor: "#777777",
               borderRadius: "5px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: 1,
-              
+              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+              borderColor: '#E5E7EB', 
+              borderWidth: 1, 
             }}
           >
             <Box>
@@ -39,7 +40,7 @@ const PropertyCardBody = ({
               >
                 {items[`PropertyNumber${number}`]}
               </Typography>
-              <Typography sx={{ fontSize: "xs", color: "#777777" }}>
+              <Typography sx={{ fontSize: "xs", color: "#777777" , fontWeight : "light"}}>
                 {items[`PropertieName${number}`]}
               </Typography>
             </Box>

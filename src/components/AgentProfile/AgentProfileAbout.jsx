@@ -7,7 +7,7 @@ const AgentAbout = ({ about }) => {
   return (
     <Box
       sx={{
-        marginTop: "110px",
+        marginTop: "40px",
       }}
     >
       <AgentTitle title={"About Arman Khan"} />

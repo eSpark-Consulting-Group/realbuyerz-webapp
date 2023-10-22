@@ -28,14 +28,14 @@ const AgentProfile = () => {
           </>
           );
         })}
-        <AgentProfileState />
+        <AgentProfileState /> 
         <AgentAbout about={info} />
         <Typography
           variant="h4"
           align="center"
           color="textPrimary" // Change to the appropriate text color
           className="font-semibold font-['Inter']"
-          marginBottom="30px"
+          marginBottom="50px"
         >
           Recent Properties By Arman Khan
         </Typography>

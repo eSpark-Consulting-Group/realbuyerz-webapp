@@ -7,8 +7,9 @@ import RecipeReviewCard from "./CardSlider";
 import { Box } from "@mui/system";
 export default function SimpleSlider() {
   var settings = {
-    dots: true,
+    dots: false,
     infinite: false,
+    adaptiveHeight: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -18,8 +19,9 @@ export default function SimpleSlider() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
+          slidesToScroll: 1,
+          infinite: false,
+        adaptiveHeight: true,
           dots: true,
         },
       },
@@ -27,7 +29,7 @@ export default function SimpleSlider() {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },

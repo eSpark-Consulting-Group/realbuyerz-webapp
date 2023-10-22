@@ -41,7 +41,7 @@ export default function RecipeReviewCard() {
 
   return (
     <>
-      <Card sx={{ maxWidth: 365 }}>
+      <Card>
         <CardMedia
           component="img"
           height="194"
@@ -56,7 +56,7 @@ export default function RecipeReviewCard() {
             >
               <Grid item xs={12}>
                 <Typography
-                  variant="h6"
+                  variant="body1"
                   sx={{
                     color: "#FB631C",
                     fontWeight: "600",
@@ -66,63 +66,15 @@ export default function RecipeReviewCard() {
                   Index Industrial Park
                 </Typography>
               </Grid>
-              <Grid item xs={4}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#909394",
-                    fontWeight: "600",
-                    fontFamily: "Inter",
-                  }}
-                >
-                  Starting from:
-                </Typography>
-              </Grid>
-              <Grid item
-              xs={5}>
-                
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#FB631C",
-                    fontWeight: "600",
-                    fontFamily: "Inter",
-                    marginLeft: 1
-                  }}
-                >
-                  PKR 3.0 Crore
-                </Typography>
-              </Grid>
-              {/* <Grid
-              item
-              sx={{
-                width: "7px",
-                height: "16.23px",
-                left: "113px",
-                top: "59px",
-                position: "absolute",
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "orange",
-                  fontWeight: "500",
-                  fontFamily: "Inter",
-                }}
-              >
-                PKR
-              </Typography>
-            </Grid> */}
-              <Grid item>
+              <Grid item xs={12}>
                 <Grid container justifyContent="flex-start" alignItems="center">
                   <Grid item>
                     <Typography
                       variant="body2"
                       sx={{
                         color: "#909394",
-                        fontSize: "14px",
-                        fontWeight: "300",
+                        fontSize: "15px",
+                        fontWeight: 100,
                         fontFamily: "Inter",
                       }}
                     >
@@ -147,6 +99,70 @@ export default function RecipeReviewCard() {
                   </Grid>
                 </Grid>
               </Grid>
+              <Grid item xs={12}>
+                <Box  sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#909394",
+                    fontWeight: "600",
+                    fontFamily: "Inter",
+                    fontSize: "14px",
+                  }}
+                >
+                  Starting from:
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#FB631C",
+                    fontWeight: "100",
+                    fontFamily: "Inter",
+                    marginLeft: 1,
+                    fontSize: "14px",
+                  }}
+                >
+                  PKR 3.0 Crore
+                </Typography>
+                </Box>
+                
+              </Grid>
+              {/* <Grid item xs={4}
+                  >
+                
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#FB631C",
+                    fontWeight: "600",
+                    fontFamily: "Inter",
+                    marginLeft: 1
+                  }}
+                >
+                  PKR 3.0 Crore
+                </Typography>
+              </Grid> */}
+              {/* <Grid
+              item
+              sx={{
+                width: "7px",
+                height: "16.23px",
+                left: "113px",
+                top: "59px",
+                position: "absolute",
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "orange",
+                  fontWeight: "500",
+                  fontFamily: "Inter",
+                }}
+              >
+                PKR
+              </Typography>
+            </Grid> */}
               <Grid item>
                 <Grid container justifyContent="space-between">
                   <Grid item />
@@ -157,7 +173,9 @@ export default function RecipeReviewCard() {
           </Box>
           <Grid
             container
-            rowSpacing={1}
+            rowSpacing={2}
+            columnSpacing={4}
+
             // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             sx={{
              marginTop: 0
