@@ -10,9 +10,9 @@ export default function RootLayout({ children }) {
       <body className="font-inter">
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div class="super_container">
+          <div className="super_container">
             <MainHeader />
-            <div class="content">{children}</div>
+            <div className="content">{children}</div>
             <Footer />
           </div>
         </ThemeProvider>

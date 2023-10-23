@@ -2,7 +2,7 @@ export const pages = [
   {
     menu: "Home",
     auth: true,
-    path: "/home",
+    path: "/",
   },
   {
     menu: "Properties",

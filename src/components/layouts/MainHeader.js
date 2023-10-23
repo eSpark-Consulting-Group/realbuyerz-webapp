@@ -151,7 +151,20 @@ export default function MainHeader() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <Button variant="primary" onClick={handleOpenUserMenu}>
+              <Button
+                variant="primary"
+                sx={{
+                  width: "120px",
+                  height: "40px",
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                    lg: "block",
+                    xl: "block",
+                  },
+                }}
+                onClick={handleOpenUserMenu}
+              >
                 <Typography sx={{ color: "#fff" }}>Sign in</Typography>
               </Button>
             </Tooltip>

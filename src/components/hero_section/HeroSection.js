@@ -48,7 +48,6 @@ const HeroSection = () => {
           src={logo}
           component={"img"}
         ></Box>
-
         <Typography
           sx={{
             zIndex: 2,
