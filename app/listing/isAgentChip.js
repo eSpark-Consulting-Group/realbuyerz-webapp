@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import ClearIcon from '@mui/icons-material/Clear';
-import { Link, Typography } from '@mui/material';
+import { Button, Link, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { properties } from './constant';
 
@@ -51,9 +51,9 @@ function Chips({ data }) {
                     />
                 );
             })}
-            <Link href="#" sx={{ color: "#126FAA", fontWeight: "500" }} onClick={handleClearAllChips}>
-                <Typography>Clear</Typography>
-            </Link>
+            <Button href="#" sx={{ color: "#126FAA", fontWeight: "500" }} onClick={handleClearAllChips}>
+                <Typography >Clear</Typography>
+            </Button>
         </Box>
     );
 }
