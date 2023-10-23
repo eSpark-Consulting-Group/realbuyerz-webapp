@@ -14,14 +14,12 @@ const AgentAbout = ({ about }) => {
       {about.map((items) => {
         return (
           <Typography
+          variant="body1"
             sx={{
               width: "100%",
               paddingBottom: "10px",
               paddingTop: "12px",
               color: "zinc.800",
-              fontSize: "16px",
-              fontFamily: "Inter",
-              fontWeight: "normal",
               lineHeight: "25px",
             }}
           >

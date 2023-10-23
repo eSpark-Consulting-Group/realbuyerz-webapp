@@ -5,10 +5,11 @@ const AgentTitle = ({ title }) => {
     <Typography
       variant="h4"
       sx={{
-        color: "text.primary",
-        fontWeight: "bold",
+        color: "primary",
+        fontWeight: 600,
         fontSize: "25px",
-        fontFamily: "Inter",
+        fontStyle: "normal"
+
       }}
     >
       {title}

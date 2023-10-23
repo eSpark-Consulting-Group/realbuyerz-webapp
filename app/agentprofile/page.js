@@ -2,11 +2,10 @@
 import AgentAbout from "@/src/components/AgentProfile/AgentProfileAbout";
 import AgentProfileState from "@/src/components/AgentProfile/AgentProfileState";
 import AgentProfiles from "@/src/components/AgentProfile/AgentProfiles";
-import MyCarousel from "@/src/components/AgentProfile/mySlide";
-
-import { Typography } from "@mui/material";
+import AgentSlider from "@/src/components/AgentProfile/SlickSlider";
 import React from "react";
-import { agentProfileDetails, info } from "../constents/AgentProfileConstant";
+import { RecentPropertie, SliderCardData, agentProfileDetails, info } from "../constents/AgentProfileConstant";
+import RecentPropertyTitle from "@/src/components/AgentProfile/RecentPropertyTitle";
 
 const AgentProfile = () => {
   return (
@@ -30,16 +29,8 @@ const AgentProfile = () => {
         })}
         <AgentProfileState /> 
         <AgentAbout about={info} />
-        <Typography
-          variant="h4"
-          align="center"
-          color="textPrimary" // Change to the appropriate text color
-          className="font-semibold font-['Inter']"
-          marginBottom="50px"
-        >
-          Recent Properties By Arman Khan
-        </Typography>
-         <MyCarousel />
+        <RecentPropertyTitle data={RecentPropertie} />
+        <AgentSlider data={SliderCardData}/>
       </div>
     </>
   );

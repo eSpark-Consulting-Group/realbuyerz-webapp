@@ -8,43 +8,64 @@ import {
   SvgIcon,
   Container,
 } from "@mui/material";
-import { width } from "@mui/system";
 
-const AgentProfiles = ({ title, location, NoOfRent, NoOfSales , buttonTitle , salesIcon , rentIcon, locationIcon }) => {
+const AgentProfiles = ({
+  title,
+  location,
+  NoOfRent,
+  NoOfSales,
+  buttonTitle,
+  salesIcon,
+  rentIcon,
+  locationIcon,
+}) => {
   return (
     <Box
       sx={{
-        height: "auto",
         width: "100%",
+        position: "relative",
         background:
-          "linear-gradient(180deg, rgba(75, 183, 255, 0.16) 0%, rgba(75, 183, 255, 0.04) 54.17%)",
-        borderRadius: "100px 0 0 100px",
+        "linear-gradient(180deg, rgba(75, 183, 255, 0.16) 0%, rgba(75, 183, 255, 0.04) 54.17%)",
       }}
     >
-      <Box item sx={{ display: "flex", width: "auto", height: "auto" }}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          width: "185px",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          borderRadius: "0 110px 110px 0"
+        }}
+      ></Box>
+
+      <Box
+        item
+        sx={{
+          display: "flex",
+          position: "relative", 
+        }}
+      >
         <Grid
           sx={{
-            width: 290,
-            height: "auto",
-            borderRadius: "47%",
-            backgroundColor: "white",
+            width: "180px",
+            height: "160px",
+            margin: "auto",
+            display: 'flex',
+            alignItem: "center",
+            justifyContent: "center"
           }}
-         >
-          <Box
-            sx={{
-              width: 200,
-              height: "auto",
-              padding: 0,
-              borderRadius: "40%",
-              backgroundColor: "white",
-            }}
-          >
-            <img
+        >
+          <img
               src="/images/Ellipse.png"
               alt="Profile"
-              style={{ width: "100%", height: "100%" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                zIndex: 1, 
+              }}
             />
-          </Box>
         </Grid>
         <Grid
           sx={{
@@ -60,13 +81,12 @@ const AgentProfiles = ({ title, location, NoOfRent, NoOfSales , buttonTitle , sa
               width: "100%",
             }}
           >
-            <Grid item sx={{ display: "flex", width: "auto" }}>
+            <Grid item xs={4} sx={{ display: "flex", width: "auto" }}>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: "20px",
-                  width: "auto",
+                  marginLeft: "50px",
                 }}
               >
                 <Typography
@@ -82,10 +102,14 @@ const AgentProfiles = ({ title, location, NoOfRent, NoOfSales , buttonTitle , sa
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ color: "#777777", fontWeight: "medium", marginTop: 1 }}
+                  sx={{
+                    color: "#777777",
+                    fontWeight: "medium",
+                    marginTop: 1,
+                  }}
                 >
-                 {locationIcon}
-                 {location}
+                  {locationIcon}
+                  {location}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -110,7 +134,10 @@ const AgentProfiles = ({ title, location, NoOfRent, NoOfSales , buttonTitle , sa
             </Grid>
             <Grid
               item
-              xs={2}
+              xs={12}
+              sm={12}
+              md={4}
+              lg={4}
               sx={{
                 display: "flex",
                 alignItems: "flex-end",
@@ -128,7 +155,8 @@ const AgentProfiles = ({ title, location, NoOfRent, NoOfSales , buttonTitle , sa
               >
                 <Typography
                   variant="body2"
-                  sx={{ color: "text.primary", fontWeight: "bold" }}
+                  sx={{ fontWeight: "bold" ,
+                  color: "#126FAA"}}
                 >
                   {buttonTitle}
                 </Typography>

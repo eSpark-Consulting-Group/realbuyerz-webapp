@@ -1,38 +1,13 @@
 "use client";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import { Box, Grid, SvgIcon } from "@mui/material";
 
-// interface ExpandMoreProps extends IconButtonProps {
-//   expand: boolean;
-// }
-
-// const ExpandMore = styled((props: ExpandMoreProps) => {
-//   const { expand, ...other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-//   marginLeft: 'auto',
-//   transition: theme.transitions.create('transform', {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
-
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({data}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -41,19 +16,19 @@ export default function RecipeReviewCard() {
 
   return (
     <>
-      <Card>
+    {data.map((item)=>{
+      return (
+      <Card sx={{ maxWidth: 315 }}>
         <CardMedia
           component="img"
           height="194"
           image="./images/agent-profile-icons/Rectangle.png"
           alt="Paella dish"
         />
-          
+
         <CardContent>
           <Box>
-            <Grid container
-             rowSpacing={1}
-            >
+            <Grid container rowSpacing={1}>
               <Grid item xs={12}>
                 <Typography
                   variant="body1"
@@ -61,9 +36,11 @@ export default function RecipeReviewCard() {
                     color: "#FB631C",
                     fontWeight: "600",
                     fontFamily: "Inter",
+                    fontSize: "18px",
+                    fontStyle: "normal",
                   }}
                 >
-                  Index Industrial Park
+                  {item.title}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -73,9 +50,10 @@ export default function RecipeReviewCard() {
                       variant="body2"
                       sx={{
                         color: "#909394",
-                        fontSize: "15px",
-                        fontWeight: 100,
+                        fontWeight: "300",
                         fontFamily: "Inter",
+                        fontSize: "15px",
+                        fontStyle: "normal",
                       }}
                     >
                       <SvgIcon
@@ -99,70 +77,34 @@ export default function RecipeReviewCard() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <Box  sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#909394",
-                    fontWeight: "600",
-                    fontFamily: "Inter",
-                    fontSize: "14px",
-                  }}
-                >
-                  Starting from:
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#FB631C",
-                    fontWeight: "100",
-                    fontFamily: "Inter",
-                    marginLeft: 1,
-                    fontSize: "14px",
-                  }}
-                >
-                  PKR 3.0 Crore
-                </Typography>
-                </Box>
-                
-              </Grid>
-              {/* <Grid item xs={4}
+              <Grid item xs={12} boder>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#909394",
+                      fontWeight: "600",
+                      fontFamily: "Inter",
+                      fontSize: "16px",
+                      fontStyle: "normal",
+                    }}
                   >
-                
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#FB631C",
-                    fontWeight: "600",
-                    fontFamily: "Inter",
-                    marginLeft: 1
-                  }}
-                >
-                  PKR 3.0 Crore
-                </Typography>
-              </Grid> */}
-              {/* <Grid
-              item
-              sx={{
-                width: "7px",
-                height: "16.23px",
-                left: "113px",
-                top: "59px",
-                position: "absolute",
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "orange",
-                  fontWeight: "500",
-                  fontFamily: "Inter",
-                }}
-              >
-                PKR
-              </Typography>
-            </Grid> */}
+                    Starting from:
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#FB631C",
+                      fontWeight: "500",
+                      fontFamily: "Inter",
+                      marginLeft: 1,
+                      fontSize: "14px",
+                    }}
+                  >
+                    PKR 3.0 Crore
+                  </Typography>
+                </Box>
+              </Grid>
               <Grid item>
                 <Grid container justifyContent="space-between">
                   <Grid item />
@@ -174,11 +116,8 @@ export default function RecipeReviewCard() {
           <Grid
             container
             rowSpacing={2}
-            columnSpacing={4}
-
-            // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             sx={{
-             marginTop: 0
+              marginTop: 0,
             }}
           >
             <Grid item xs={4}>
@@ -224,22 +163,26 @@ export default function RecipeReviewCard() {
               fontSize: "14px",
               fontWeight: "300",
               fontFamily: "Inter",
-              padding: 1.8
+              padding: 1.8,
             }}
           >
-          <Typography
-            variant="body2"
-            align="center"
-            fontSize="0.875rem"
-            fontWeight="500"
-            fontFamily="Inter"
-            color="#000000"
-          >
-            See Details
-          </Typography>
-            </Grid>
+            <Typography
+              variant="body1"
+              align="center"
+              fontSize="0.875rem"
+              fontWeight="500"
+              fontFamily="Inter"
+              fontStyle="normal"
+              color="#000000"
+            >
+              See Details
+            </Typography>
+          </Grid>
         </Grid>
       </Card>
+      )
+
+    })}
     </>
   );
 }

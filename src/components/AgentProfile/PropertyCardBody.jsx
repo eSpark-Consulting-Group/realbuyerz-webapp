@@ -13,7 +13,7 @@ const PropertyCardBody = ({
      pb={4}
      >
       {["1", "2", "3"].map((number) => (
-        <Grid item xs={12} sm={6} md={4} lg={4} key={number}>
+        <Grid item xs={12} sm={12} md={6} lg={4} key={number}>
           <Box
             sx={{
               width: "100%",
