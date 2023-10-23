@@ -2,27 +2,17 @@
 import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import ClearIcon from '@mui/icons-material/Clear';
-import { Icon, Link, Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { chipData } from './constant';
+import { properties } from './constant';
 
-function DeletableSquareChip({ label }) {
-    const [isDeleted, setIsDeleted] = useState(false);
-
-    const handleDelete = () => {
-        setIsDeleted(true);
-    };
-
-    if (isDeleted) {
-        return null;
-    }
-
+function DeletableSquareChip({ label, onDelete }) {
     return (
         <Chip
             label={label}
             variant="outlined"
             color="primary"
-            onDelete={handleDelete}
+            onDelete={onDelete}
             deleteIcon={<ClearIcon color="icon" />}
             sx={{
                 fontSize: '18px',
@@ -36,18 +26,36 @@ function DeletableSquareChip({ label }) {
     );
 }
 
-function Chips() {
+function Chips({ data }) {
+    const [selectedChips, setSelectedChips] = useState([]);
+
+    const handleDeleteChip = (chipToDelete) => () => {
+        setSelectedChips((chips) => chips.filter((chip) => chip !== chipToDelete));
+    };
+
+    const handleClearAllChips = () => {
+        setSelectedChips([]);
+    };
+
+    const uniqueAgentPropertyTypes = [...new Set(data.map(property => `${property.agentName}-${property.propertytype}`))];
+
     return (
         <Box sx={{ display: "flex", }}>
-            {chipData.map((label, index) => (
-                <DeletableSquareChip key={index} label={label} />
-            ))}
-            <Link href="#" sx={{ color: "#126FAA", fontWeight: "500" }}>
-                <Typography >Clear</Typography>
+            {uniqueAgentPropertyTypes.map((label, index) => {
+                const [agentName, propertyType] = label.split('-');
+                return (
+                    <DeletableSquareChip
+                        key={index}
+                        label={`${agentName}'s ${propertyType}`}
+                        onDelete={handleDeleteChip(label)}
+                    />
+                );
+            })}
+            <Link href="#" sx={{ color: "#126FAA", fontWeight: "500" }} onClick={handleClearAllChips}>
+                <Typography>Clear</Typography>
             </Link>
         </Box>
     );
 }
-
 
 export default Chips;

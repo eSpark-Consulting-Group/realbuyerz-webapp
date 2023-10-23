@@ -1,5 +1,6 @@
-import React from "react";
-import { Box, Typography, Grid, Button } from "@mui/material";
+"use client";
+import React, { useState } from "react";
+import { Box, Typography, Grid, Button, Pagination } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,13 +18,31 @@ const styles = {
         width: "100%",
         height: "100%",
         objectFit: "cover",
+        "@media (min-width: 600px)": {
+            width: 360,
+            height: 360,
+        },
     },
 };
 
-const PropertyListingCard = ({ data }) => {
+function PropertyListingCard({ data, propertyType }) {
+
+    const itemsPerPage = 10;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(
+        indexOfFirstItem,
+        indexOfLastItem
+    );
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
     return (
         <>
-            {data.map((property, index) => (
+            {currentItems.map((property, index) => (
                 <Grid
                     key={index}
                     container
@@ -35,17 +54,26 @@ const PropertyListingCard = ({ data }) => {
                         borderRadius: "5px",
                         border: "1px #E4E4E4 solid",
                         background: "#F5F6FB",
+                        "@media (max-width: 768px)": {
+                            flexDirection: "column",
+                        },
                     }}
                 >
-                    <Grid item xs={4}>
-                        <Box sx={{
-                            m: "20px 20px 20px 20px", borderRadius: "5px ", height: '85%', width: '90%', position: 'relative'
-                        }}>
-                            {" "}
+                    <Grid item xs={12} md={4}>
+                        <Box
+                            sx={{
+                                m: "20px 20px 20px 20px",
+                                borderRadius: "5px ",
+                                height: "85%",
+                                width: "90%",
+                                position: "relative",
+                            }}
+                        >
                             <Image
                                 src={property.imageUrl}
                                 layout="fill"
-                                objectFit='cover'
+                                objectFit="cover"
+                                style={styles.image}
                                 sx={{
                                     borderRadius: "5px ",
                                 }}
@@ -54,41 +82,55 @@ const PropertyListingCard = ({ data }) => {
                     </Grid>
                     <Grid
                         item
-                        xs={8}
+                        xs={12}
+                        md={8}
                         style={styles.section}
                         sx={{
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
-                            pr: "76px", pl: "20px",
+                            pr: "76px",
+                            pl: "20px",
                         }}
                     >
                         <Box sx={{ display: "flex", gap: "5px", alignItems: "center" }}>
                             <Typography
                                 // variant="secondary"
                                 sx={{ fontSize: "20px", fontWeight: "500" }}
-                            >PKR</Typography>
+                            >
+                                PKR
+                            </Typography>
                             <Typography
                                 // variant="h3"
                                 sx={{ fontSize: "25px", fontWeight: "600" }}
-                            >{property.price}</Typography>
+                            >
+                                {property.price}
+                            </Typography>
                         </Box>
                         <Typography
                             // variant="secondary"
                             sx={{ fontSize: "16px", fontWeight: "400", pt: "30px" }}
-                        >{property.location}</Typography>
+                        >
+                            {property.location}
+                        </Typography>
                         <Typography
                             // variant="secondary"
                             sx={{ fontSize: "16px", fontWeight: "600", pt: "15px" }}
-                        >{property.area}sqft</Typography>
+                        >
+                            {property.area} sqft
+                        </Typography>
                         <Typography
-                            // variant="h3" 
+                            // variant="h3"
                             sx={{ fontSize: "18px", fontWeight: "600", pt: "15px" }}
-                        >{property.direction}</Typography>
+                        >
+                            {property.direction}
+                        </Typography>
                         <Typography
                             // variant="secondary"
-                            sx={{ fontSize: "16px", fontWeight: "400", }}
-                        >{property.description}</Typography>
+                            sx={{ fontSize: "16px", fontWeight: "400" }}
+                        >
+                            {property.description}
+                        </Typography>
 
                         <div className="posted-1-day-ago">
                             <Typography
@@ -106,14 +148,14 @@ const PropertyListingCard = ({ data }) => {
                             sx={{ display: "flex" }}
                         >
                             <Box className="view-more">
-                                <Link href={property.viewMoreLink}>
+                                <Link href={`/property/${property.id}`}>
                                     <Button variant="primary">
                                         <Typography variant="secondary">View More</Typography>
                                     </Button>
                                 </Link>
                             </Box>
                             <Box className="agent-profile">
-                                <Link href={property.agentProfileLink}>
+                                <Link href={`/property/${property.agentName}`}>
                                     <Button variant="primary">
                                         <Typography variant="secondary">Agent Profile</Typography>
                                     </Button>
@@ -123,8 +165,23 @@ const PropertyListingCard = ({ data }) => {
                     </Grid>
                 </Grid>
             ))}
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+                <Pagination
+                    count={Math.ceil(data.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    variant="outlined"
+                    shape="rounded"
+                    siblingCount={1}
+                    boundaryCount={1}
+                    // showFirstButton
+                    // showLastButton
+                    color="primary"
+                />
+
+            </Box>
         </>
     );
-};
+}
 
 export default PropertyListingCard;
