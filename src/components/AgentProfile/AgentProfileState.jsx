@@ -4,7 +4,6 @@ import PropertyHeader from "./PropertyCardHeader";
 import PropertyCardBody from "./PropertyCardBody";
 import { Properties } from "@/app/constents/AgentProfileConstant";
 import AgentTitle from "./AgentTitle";
-import theme from './../../../app/theme';
 
 
 const AgentProfileState = () => {

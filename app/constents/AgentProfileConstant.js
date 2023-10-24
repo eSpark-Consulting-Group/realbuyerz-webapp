@@ -1,6 +1,4 @@
 import { SvgIcon } from "@mui/material";
-import { Slider } from 'react-slick';
-import sliderImage1 from '../../public/images/agent-profile-icons/Rectangle16974.png';
 
 export const Properties = [
   {

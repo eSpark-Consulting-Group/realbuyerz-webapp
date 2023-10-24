@@ -4,22 +4,15 @@ import {
   Grid,
   Typography,
   Paper,
-  Button,
-  SvgIcon,
-  Container,
 } from "@mui/material";
 
 const AgentProfiles = ({
-  title,
-  location,
-  NoOfRent,
-  NoOfSales,
-  buttonTitle,
-  salesIcon,
-  rentIcon,
-  locationIcon,
+  data
 }) => {
   return (
+  <>
+  {data.map((item)=>{
+    return (
     <Box
       sx={{
         width: "100%",
@@ -98,7 +91,7 @@ const AgentProfiles = ({
                     mt: 2,
                   }}
                 >
-                  {title}
+                  {item.title}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -108,8 +101,8 @@ const AgentProfiles = ({
                     marginTop: 1,
                   }}
                 >
-                  {locationIcon}
-                  {location}
+                  {item.locationIcon}
+                  {item.location}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -120,15 +113,15 @@ const AgentProfiles = ({
                     marginBottom: 0,
                   }}
                 >
-                  {salesIcon}
-                  {NoOfSales}
+                  {item.salesIcon}
+                  {item.numberOfSale}
                 </Typography>
                 <Typography
                   variant="body1"
                   sx={{ color: "#777777", fontWeight: "medium", mt: 1 }}
                 >
-                  {rentIcon}
-                  {NoOfRent}
+                  {item.rentIcon}
+                  {item.numberOfRent}
                 </Typography>
               </Box>
             </Grid>
@@ -158,7 +151,7 @@ const AgentProfiles = ({
                   sx={{ fontWeight: "bold" ,
                   color: "#126FAA"}}
                 >
-                  {buttonTitle}
+                  {item.buttonTitle}
                 </Typography>
               </Paper>
             </Grid>
@@ -166,6 +159,11 @@ const AgentProfiles = ({
         </Grid>
       </Box>
     </Box>
+
+    )
+
+  })}
+  </>
   );
 };
 

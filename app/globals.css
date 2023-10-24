@@ -51,30 +51,6 @@
 
 
 
-  /* .slick-next {
-    background: red !important;
-    background-color: transparent !important;
-  }
-  .slick-prev {
-    background: red !important;
-    background-color: transparent !important;
-  } */
-.slick-prev {
-  /* background: red !important;  */
-  border: #FB631C !important;
-  width: "300px" !important;
-
-}
-.slick-prev:before,
-    .slick-next:before {
-        color: #FB631C !important;
-        width: "300px" !important;
-    }
-.slick-prev:after,
-    .slick-next:after {
-        color: #FB631C !important;
-    }
-
 
     .slick-prev:before {
       content: url('../public/images/agent-profile-icons//Left.svg') !important; 
@@ -89,10 +65,6 @@
 .slick-slide {
   padding: 0 10px;
 }
-/* .slick-prev {
-  margin-right: 100px !important;
-  padding-right: 100px !important;
-} */
 .slick-list {
   margin-left: 45px !important;
 }
@@ -130,5 +102,10 @@
 @media (max-width: 400px) {
   .slick-list {
     margin-left: 20px !important;
+  }
+}
+@media (max-width: 350px) {
+  .slick-list {
+    margin-left: 19px !important;
   }
 }
