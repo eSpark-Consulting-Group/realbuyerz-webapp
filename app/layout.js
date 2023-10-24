@@ -6,6 +6,7 @@ import theme from "./theme";
 import "./globals.css";
 import Footer from "@/src/components/layouts/Footer";
 import MainHeader from "@/src/components/layouts/MainHeader";
+import { Box, Container } from "@mui/system";
 
 export default function RootLayout({ children }) {
   return (
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
           <CssBaseline />
           <div class="super_container">
             <MainHeader />
-            <div class="content">{children}</div>
+            <Box class="content">{children}</Box>
             <Footer />
           </div>
         </ThemeProvider>

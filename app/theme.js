@@ -110,6 +110,14 @@ const theme = createTheme({
                 },
             },
         },
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    maxWidth: '1920px',
+                    margin: '0 auto',
+                },
+            },
+        },
     },
     breakpoints: {
         values: {

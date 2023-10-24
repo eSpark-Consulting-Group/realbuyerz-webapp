@@ -1,13 +1,14 @@
-'use client'
-import { Box } from "@mui/system";
-import React from "react";
-import { tabData } from './constant'
-import PropertyTabs from "./PropertyTabs"
+'use client';
+import { Box } from '@mui/system';
+import React from 'react';
+import { tabData } from './constant';
+import PropertyTabs from './PropertyTabs';
+import CustomHead from '@/src/components/layouts/customHead';
+import Head from 'next/head';
 
 const Listing = () => {
-    const isAgent = "true"
     return (
-        <Box className="min-h-screen" sx={{ px: "15%", py: "80px" }}>
+        <Box className='min-h-screen' sx={{ py: '80px' }}>
             <PropertyTabs data={tabData} />
         </Box>
     );
