@@ -76,3 +76,57 @@ root {
 .left-section {
   width: 15%;
 }
+.slick-prev:before {
+  content: url('../public/images/agent-profile-icons//Left.svg') !important;
+}
+.slick-next:before {
+  content: url('../public/images/agent-profile-icons//Right.svg') !important;
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+.slick-list {
+  margin-left: 45px !important;
+}
+
+@media (max-width: 1860px) {
+  .slick-list {
+    margin-left: 24px !important;
+  }
+}
+@media (max-width: 1400px) {
+  .slick-list {
+    margin-left: 20px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .slick-list {
+    margin-left: 25px !important;
+  }
+}
+@media (max-width: 600px) {
+  .slick-list {
+    margin-left: 45px !important;
+  }
+}
+@media (max-width: 550px) {
+  .slick-list {
+    margin-left: 35px !important;
+  }
+}
+@media (max-width: 500px) {
+  .slick-list {
+    margin-left: 21px !important;
+  }
+}
+@media (max-width: 400px) {
+  .slick-list {
+    margin-left: 20px !important;
+  }
+}
+@media (max-width: 350px) {
+  .slick-list {
+    margin-left: 19px !important;
+  }
+}
