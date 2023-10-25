@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from "@mui/material";
-const Area = ({ area }) => {
 
+const Area = ({ area }) => {
     return (
         <div>
             <Typography sx={{ fontSize: "18px", fontWeight: 600, fontFamily: "Inter" }}>Area</Typography>
