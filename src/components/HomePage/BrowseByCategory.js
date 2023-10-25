@@ -45,9 +45,9 @@ function BrowseByCategory({ data }) {
         }
       />
       <Box sx={{ padding: '20px' }}>
-        <Slider {...sliderSettings}>
+        <Box sx={{ display: 'flex' }} >
           {data?.map((category) => (
-            <Box key={category?.id} sx={{ padding: '25px' }}>
+            <Box key={category?.id} sx={{ padding: '20px', mx: '15px', border: '2px solid #fb631c' }}>
               <a href='#'><Box
                 sx={{
                   background: '#fff',
@@ -63,7 +63,7 @@ function BrowseByCategory({ data }) {
               </Box></a>
             </Box>
           ))}
-        </Slider>
+        </Box>
       </Box>
     </Container>
   );

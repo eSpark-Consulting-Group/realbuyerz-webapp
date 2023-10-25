@@ -298,3 +298,39 @@ export const popularLocationsData = [
         ],
     },
 ];
+
+export const featuredProperties = [
+    {
+        id: 1,
+        propertyName: 'Apartment',
+        location: 'Hub River Road',
+        price: 'PKR 3.0 Crore',
+        bgImage: './images/features/feature1.png',
+        images: ['/image/svg1', '/image/svg2', '/image/svg3'],
+    },
+    {
+        id: 2,
+        propertyName: 'House',
+        location: 'Example Location',
+        price: 'PKR 2.5 Crore',
+        bgImage: './images/features/feature2.png',
+        images: ['/image/svg4', '/image/svg5', '/image/svg6'],
+    },
+    {
+        id: 1,
+        propertyName: 'Apartment',
+        location: 'Hub River Road',
+        price: 'PKR 3.0 Crore',
+        bgImage: './images/features/feature3.png',
+        images: ['/image/svg1', '/image/svg2', '/image/svg3'],
+    },
+    {
+        id: 2,
+        propertyName: 'House',
+        location: 'Example Location',
+        price: 'PKR 2.5 Crore',
+        bgImage: './images/features/feature4.png',
+        images: ['/image/svg4', '/image/svg5', '/image/svg6'],
+    },
+    // Add more data objects as needed
+];

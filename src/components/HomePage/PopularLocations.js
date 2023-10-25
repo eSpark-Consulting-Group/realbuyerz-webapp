@@ -6,6 +6,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import Heading from './Heading';
 import { Link } from 'react-router-dom';
+import Image from 'next/image';
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 
 function PopularLocations({ data }) {
   const [filteredData, setFilteredData] = React.useState(data.filter(item => item.type === 'sale'));
@@ -85,6 +93,11 @@ function PopularLocations({ data }) {
           ))}
         </Grid>
       </Box >
+      <Box sx={{ pb: '26px', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+        <a href='#' onClick={scrollToTop}>
+          <Image src='/images/bgs/GototheTop.svg' width={80} height={80} />
+        </a>
+      </Box>
     </Container >
   );
 }

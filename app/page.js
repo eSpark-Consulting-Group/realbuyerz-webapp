@@ -4,7 +4,12 @@ import FeaturedProperties from '@/src/components/HomePage/FeaturedProperties';
 import HeroSection from '@/src/components/HomePage/HeroSection';
 import NewlyListedProperties from '@/src/components/HomePage/NewlyListedProperties';
 import OurHomePartners from '@/src/components/HomePage/OurHomePartners';
-import { categories, partners, popularLocationsData } from './constents/HomeConstants';
+import {
+  categories,
+  featuredProperties,
+  partners,
+  popularLocationsData,
+} from './constents/HomeConstants';
 import PopularLocations from '@/src/components/HomePage/PopularLocations';
 import CreateAccount from '@/src/components/HomePage/CreateAccount';
 
@@ -13,7 +18,7 @@ export default function Home() {
     <div className='min-h-screen '>
       <HeroSection />
       <BrowseByCategory data={categories} />
-      <FeaturedProperties />
+      <FeaturedProperties data={featuredProperties} />
       <CreateAccount />
       <OurHomePartners data={partners} />
       <NewlyListedProperties />
