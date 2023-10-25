@@ -1,17 +1,21 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import SidePage from "@/src/component/LoginSidePage/sidepage";
-import Login from "@/src/component/Login/login";
+import LoginBox from "@/src/component/Login/loginbox";
+
 const Signin = () => {
     return (
-        <Grid container sx={{ background: "green", paddingTop: "30px", display: "flex", justifyContent: "center" }}>
-            <Grid item xs={12} md={6} sx={{}}>
-                <SidePage />
+        <Grid container sx={{ paddingBottom: "90px", paddingTop: "90px" }}>
+            <Grid item xs={12} md={1}  ></Grid>
+            <Grid item xs={12} md={10} sx={{ background: "white", display: "flex", justifyContent: "center", flexDirection: { xs: "column", md: "row" }, padding: "10px", }} >
+                <Grid item xs={12} md={6} sx={{}}>
+                    <SidePage />
+                </Grid>
+                <Grid item xs={12} md={6} sx={{}}>
+                    <LoginBox />
+                </Grid>
             </Grid>
-            <Grid item xs={12} md={6} sx={{}}>
-                <Login />
-            </Grid>
-
+            <Grid item xs={12} md={1} ></Grid>
         </Grid>
     )
 }

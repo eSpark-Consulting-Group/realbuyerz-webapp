@@ -1,35 +1,42 @@
 'use client';
 import React from "react";
-import { FormControl, Grid, Typography, Box, TextField, FormControlLabel, Checkbox, Button, InputLabel, Select, MenuItem } from "@mui/material";
+import { Typography, Box, TextField, Button, InputLabel, Select, MenuItem } from "@mui/material";
 import Image from "next/image";
-const Signup = () => {
+import { useRouter } from 'next/navigation'
+
+const SignupCard = () => {
+    const [applicant, setApplicant] = React.useState('');
+
+    const handleChange = (event) => {
+        setApplicant(event.target.value);
+    };
+    const router = useRouter()
     return (
         <>
             <Box sx={{
-                width: "400px",
-                height: "650px",
-                padding: 10,
-                paddingTop: "40px",
-                // paddingTop: "70px",
+                width: { xs: "250px", md: "400px" },
+                height: { xs: "650px", md: "600px" },
+                padding: 8,
+                paddingTop: "20px",
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
                 borderRadius: 2,
                 background: 'white',
-                marginTop: "23px",
-                position: "absolute",
-                left: "1100px",
+                marginTop: "20px",
+                position: { xs: "none", md: "absolute" },
+                right: { xs: "0", md: "320px" },
+                // left: { xs: "0", md: "1100px" },
                 zIndex: 2,
-
-                // marginRight: "50px"
 
             }}>
                 <Box sx={{
-                    width: "320px",
-                    background: "pink",
-                    padding: "10px",
-                    gap: "10px"
+                    display: "flex",
+                    flexDirection: "column",
+                    width: { xs: "180px", md: "320px" },
+                    height: "auto",
+                    gap: { xs: "5px", md: "4px" }
 
                 }}>
                     <Typography sx={{
@@ -46,64 +53,66 @@ const Signup = () => {
                     }} >It’s Quick & Easy</Typography>
                     <form>
                         <Box sx={{
-                            marginBottom: 2,
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "7px"
                         }}>
+                            <Box sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                gap: "4px"
+
+                            }}>
+                                <TextField label="First Name" variant="outlined" fullWidth />
+                                <TextField label="Last Name" variant="outlined" fullWidth />
+                            </Box>
                             <TextField label="Email Address" variant="outlined" fullWidth />
-                        </Box>
-                        <Box sx={{
-                            // width: '100%',
-                            marginBottom: 2,
-                        }}>
                             <TextField label="Contact Number" variant="outlined" type="number" fullWidth />
-                        </Box>
-                        <Select
-                            sx={{ marginBottom: 2 }}
-                            // value={contactNumber}
-                            // onChange={handleChange}
-                            placeholder="Applicant"
-                            label="Applicant"
-                            fullWidth
-                            inputProps={{
-                                id: "contact-number",
-                            }}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value="option1">Option 1</MenuItem>
-                            <MenuItem value="option2">Option 2</MenuItem>
-                            <MenuItem value="option3">Option 3</MenuItem>
-                        </Select>
-                        <Box sx={{
-                            marginBottom: 2,
-                        }}>
+                            {/* <InputLabel id="demo-simple-select-autowidth-label">Applicant</InputLabel> */}
+
+                            <Select
+                                placeholder="Applicant"
+                                // labelId="demo-simple-select-autowidth-label"
+                                // id="demo-simple-select-autowidth"
+                                value={applicant}
+                                onChange={handleChange}
+                                label="Applicant"
+                                fullWidth
+
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="option1">Option 1</MenuItem>
+                                <MenuItem value="option2">Option 2</MenuItem>
+                                <MenuItem value="option3">Option 3</MenuItem>
+                            </Select>
                             <TextField label="Password" variant="outlined" type="password" fullWidth />
-                        </Box>
-                        <Box sx={{
-                            marginBottom: 2,
-                        }}>
                             <TextField label="Confirm Password" variant="outlined" type="confirm password" fullWidth />
                         </Box>
                     </form>
 
-
-                    <Button sx={{
-                        background: '#FB631C',
-                        width: "100px",
-                        borderRadius: "5px",
-                        color: 'white',
-                        '&:hover': {
-                            background: '#FF631C',
-                        },
-                    }}>Sign up</Button>
-
+                    <Box sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                    }}>
+                        <Button style={{
+                            background: '#FB631C',
+                            width: "100px",
+                            borderRadius: "5px",
+                            color: 'white',
+                            '&:hover': {
+                                background: '#FF631C',
+                            },
+                        }}>Sign up</Button>
+                    </Box>
                     <Box sx={{
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center"
                     }}>
                         <hr style={{
-                            width: "120px",
+                            width: "125px",
                             border: "1px #A5A5A5 solid"
                         }}
                         ></hr>
@@ -112,7 +121,7 @@ const Signup = () => {
                         }}> Or</Typography>
 
                         <hr style={{
-                            width: "120px",
+                            width: "125px",
                             border: "1px #A5A5A5 solid"
                         }}
                         ></hr>
@@ -124,9 +133,9 @@ const Signup = () => {
                             justifyContent: "center",
                             alignItems: "center",
                             boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.25)",
-                            width: "250px",
+                            width: { xs: "190px", md: "250px" },
                             padding: "10px",
-                            fontSize: "14px",
+                            fontSize: { xs: "10px", md: "14px" },
                             fontWeight: 500,
                             gap: "10px",
                             color: "#909394",
@@ -145,7 +154,7 @@ const Signup = () => {
                         fontSize: "16px",
                         fontFamily: "Inter",
                         fontweight: 400,
-                        gap: "5px"
+                        // gap: "5px"
 
                     }}>
                         <Typography sx={{
@@ -154,11 +163,14 @@ const Signup = () => {
                         }}>Already have an account?<span style={{
                             color: "#FB631C",
                             fontweight: 400
-                        }}>Sign in</span></Typography>
+                        }}
+                            onClick={() => router.push('/signin')}
+
+                        >Sign in </span></Typography>
                     </Box>
                 </Box>
             </Box>
         </>
     )
 }
-export default Signup;
+export default SignupCard;

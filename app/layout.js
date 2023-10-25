@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
           <div class="super_container">
             <MainHeader />
             <div class="content">{children}</div>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </ThemeProvider>
       </body>
