@@ -2,15 +2,17 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import Heading from './Heading';
+import AgentPropertiesSlider from '../AgentProfile/AgentPropertiesSlider';
+import { SliderCardData } from '@/app/constents/AgentProfileConstant';
 
 function NewlyListedProperties() {
 
   return (
-    <Box sx={{ pt: '90px', textAlign: 'center', backgroundImage: `url("/images/bgs/featured-properties-background.png")` }}>
+    <Box sx={{ pt: '90px', textAlign: 'center', backgroundImage: `url('/images/bgs/featured-properties-background.png')` }}>
 
-      <Heading heading={"Browse By Category"} paragraph={"To browse & buy in your areas of interest. Look of properties by category"} />
-      <Box sx={{ padding: '20px' }}>
-
+      <Heading heading={'Newly Listed  Properties'} paragraph={'Find your dream property from our latest properties '} />
+      <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>
+        <AgentPropertiesSlider data={SliderCardData} />
       </Box>
     </Box>
   );

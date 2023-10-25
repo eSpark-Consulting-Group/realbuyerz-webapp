@@ -71,7 +71,14 @@ const theme = createTheme({
       variants: [
         {
           props: { variant: "primary" },
-          style: {
+          style: (props) => ({
+            width: {
+              xs: '40px',
+              sm: '60px',
+              md: '120px',
+              lg: '120px',
+              xl: '120px',
+            }[props.theme.breakpoints.width],
             textTransform: "capitalize",
             backgroundColor: "#fb631c !important",
             borderRadius: "5px",
@@ -81,11 +88,18 @@ const theme = createTheme({
               backgroundColor: "#EDF7FF",
               color: "#fb631c",
             },
-          },
+          }),
         },
         {
           props: { variant: "outlined" },
-          style: {
+          style: (props) => ({
+            width: {
+              xs: '40px',
+              sm: '60px',
+              md: '120px',
+              lg: '120px',
+              xl: '120px',
+            }[props.theme.breakpoints.width],
             textTransform: "capitalize",
             borderColor: "#fb631c",
             color: "#fb631c",
@@ -93,7 +107,7 @@ const theme = createTheme({
               backgroundColor: "#fb631c",
               color: "#fff",
             },
-          },
+          }),
         },
       ],
     },

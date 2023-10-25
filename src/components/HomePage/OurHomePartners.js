@@ -1,49 +1,22 @@
-'use client';
-import React from 'react';
+'use client'; import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Box, Container, Typography } from '@mui/material';
 import Heading from './Heading';
+import { Link } from 'react-router-dom';
+import Image from 'next/image';
 
-const partners = [
-  {
-    id: 1,
-    image: '/images/partners/partners1.svg',
-    name: 'partners 1',
-  },
-  {
-    id: 2,
-    image: '/images/partners/partners2.svg',
-    name: 'partners 2',
-  },
-  {
-    id: 3,
-    image: '/images/partners/partners3.svg',
-    name: 'partners 3',
-  },
-  {
-    id: 4,
-    image: '/images/partners/partners4.svg',
-    name: 'partners 4',
-  },
-  {
-    id: 5,
-    image: '/images/partners/partners5.svg',
-    name: 'partners 5',
-  },
-  {
-    id: 6,
-    image: '/images/partners/partners6.svg',
-    name: 'partners 6',
-  },
-];
-function OurHomePartners() {
+function OurHomePartners({ data }) {
   const sliderSettings = {
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 6,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000, // 3 seconds per slide
+    arrows: false, // Hide arrows
     responsive: [
       {
         breakpoint: 1200,
@@ -65,36 +38,38 @@ function OurHomePartners() {
       },
     ],
   };
+
   return (
-    <Box
-      sx={{
-        pt: '90px',
-        textAlign: 'center',
-        backgroundImage: `url("/images/bgs/featured-properties-background.png")`,
-      }}>
+    <Container sx={{ pt: '90px', textAlign: 'center' }}>
       <Heading heading={'Our Home Partners'} />
-      <Box sx={{ padding: '20px' }}>
+      <Box sx={{ padding: '20px', background: '#f5f6fb' }}> {/* Add gray background */}
         <Slider {...sliderSettings}>
-          <Box sx={{ padding: '25px' }}>
-            {partners.map((partners) => (
-              <Box key={partners.id}
+          {data.map((partner) => (
+            <Box key={partner?.id} sx={{ padding: '10px' }}>
+              <Box
                 sx={{
                   background: '#fff',
                   textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                }}>
-                <img src={partners.image} alt={partners.name} />
-                <Typography variant='body1' sx={{ py: '8px' }}>
-                  {partners.name}
-                </Typography>
+                }}
+              >
+                <a href='#'>
+                  <Image
+                    src={partner?.image}
+                    alt={partner?.name}
+                    title={partner?.name}
+                    width={400}
+                    height={100}
+                  />
+                </a>
               </Box>
-            ))}{' '}
-          </Box>
+            </Box>
+          ))}
         </Slider>
       </Box>
-    </Box>
+    </Container>
   );
 }
 

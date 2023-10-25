@@ -6,50 +6,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Box, Container, Typography } from '@mui/material';
 import Heading from './Heading';
 
-const categories = [
-  {
-    id: 1,
-    image: '/images/categories/category1.svg',
-    name: 'Category 1',
-  },
-  {
-    id: 2,
-    image: '/images/categories/category2.svg',
-    name: 'Category 2',
-  },
-  {
-    id: 3,
-    image: '/images/categories/category3.svg',
-    name: 'Category 3',
-  },
-  {
-    id: 4,
-    image: '/images/categories/category4.svg',
-    name: 'Category 4',
-  },
-  {
-    id: 5,
-    image: '/images/categories/category5.svg',
-    name: 'Category 5',
-  },
-  {
-    id: 6,
-    image: '/images/categories/category6.svg',
-    name: 'Category 6',
-  },
-  {
-    id: 7,
-    image: '/images/categories/category7.svg',
-    name: 'Category 7',
-  },
-  {
-    id: 8,
-    image: '/images/categories/category8.svg',
-    name: 'Category 8',
-  },
-];
 
-function BrowseByCategory() {
+
+function BrowseByCategory({ data }) {
   const sliderSettings = {
     infinite: true,
     speed: 500,
@@ -87,9 +46,9 @@ function BrowseByCategory() {
       />
       <Box sx={{ padding: '20px' }}>
         <Slider {...sliderSettings}>
-          {categories.map((category) => (
-            <Box key={category.id} sx={{ padding: '25px' }}>
-              <Box
+          {data?.map((category) => (
+            <Box key={category?.id} sx={{ padding: '25px' }}>
+              <a href='#'><Box
                 sx={{
                   background: '#fff',
                   textAlign: 'center',
@@ -97,11 +56,11 @@ function BrowseByCategory() {
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}>
-                <img src={category.image} alt={category.name} />
+                <img src={category?.image} alt={category?.name} />
                 <Typography variant='body1' sx={{ py: '8px' }}>
-                  {category.name}
+                  {category?.name}
                 </Typography>
-              </Box>
+              </Box></a>
             </Box>
           ))}
         </Slider>

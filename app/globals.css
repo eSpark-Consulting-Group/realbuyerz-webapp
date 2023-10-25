@@ -27,6 +27,28 @@ root {
 
 /* hero slider */
 
+.container-full-width {
+  width: 100%;
+}
+
+.container-width {
+  width: 100%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.right-section {
+  width: 15%;
+}
+
+.main-section {
+  width: 70%;
+}
+
+.left-section {
+  width: 15%;
+}
+
 .hero_slider {
   width: 100%;
   height: 100%;
@@ -55,27 +77,6 @@ root {
   height: 15px;
 }
 
-.container-full-width {
-  width: 100%;
-}
-
-.container-width {
-  width: 100%;
-  padding-right: 5%;
-  padding-left: 5%;
-}
-
-.right-section {
-  width: 15%;
-}
-
-.main-section {
-  width: 70%;
-}
-
-.left-section {
-  width: 15%;
-}
 .slick-prev:before {
   content: url('../public/images/agent-profile-icons//Left.svg') !important;
 }
