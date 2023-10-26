@@ -12,6 +12,7 @@ import {
 } from './constents/HomeConstants';
 import PopularLocations from '@/src/components/HomePage/PopularLocations';
 import CreateAccount from '@/src/components/HomePage/CreateAccount';
+import { SliderCardData } from './constents/AgentProfileConstant';
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
       <FeaturedProperties data={featuredProperties} />
       <CreateAccount />
       <OurHomePartners data={partners} />
-      <NewlyListedProperties />
+      <NewlyListedProperties data={SliderCardData} />
       <PopularLocations data={popularLocationsData} />
     </div>
   );

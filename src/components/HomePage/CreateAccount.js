@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
@@ -23,14 +23,28 @@ function Typewriter({ text }) {
         return () => clearInterval(interval);
     }, [currentIndex, text]);
 
-    return <Typography variant='h1' sx={{ color: '#fff', mb: '30px', fontWeight: '600', fontSize: '40px' }}>{displayedText}|</Typography>;
+    return (
+        <Typography
+            variant='h1'
+            sx={{ color: '#fff', mb: '30px', fontWeight: '600', fontSize: '40px' }}>
+            {displayedText}|
+        </Typography>
+    );
 }
 
 function CreateAccount() {
     return (
-        <Box sx={{ pt: '90px', pb: '100px', textAlign: 'center', backgroundImage: `url('/images/bgs/CreateAccount.png')` }}>
-            <Typewriter text="Live Properties Buying & Selling" />
-
+        <Box
+            sx={{
+                pt: '90px',
+                pb: '100px',
+                textAlign: 'center',
+                backgroundImage: `url('/images/bgs/CreateAccount.png')`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+            }}>
+            <Typewriter text='Live Properties Buying & Selling' />
             <Button
                 sx={{
                     mx: '15px',
@@ -40,8 +54,7 @@ function CreateAccount() {
                     color: '#fff',
                 }}
                 variant='primary'
-                onClick={() => handleFilter('sale')}
-            >
+                onClick={() => handleFilter('sale')}>
                 <Typography sx={{ color: '#fff' }}>Create Account</Typography>
             </Button>
         </Box>

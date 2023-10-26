@@ -1,4 +1,5 @@
-'use client'; import React from 'react';
+'use client';
+import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -42,7 +43,7 @@ function OurHomePartners({ data }) {
   return (
     <Container sx={{ pt: '90px', textAlign: 'center' }}>
       <Heading heading={'Our Home Partners'} />
-      <Box sx={{ padding: '20px', background: '#f5f6fb' }}> {/* Add gray background */}
+      <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
           {data.map((partner) => (
             <Box key={partner?.id} sx={{ padding: '10px' }}>
@@ -53,8 +54,7 @@ function OurHomePartners({ data }) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                }}
-              >
+                }}>
                 <a href='#'>
                   <Image
                     src={partner?.image}
