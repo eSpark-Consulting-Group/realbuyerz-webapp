@@ -30,6 +30,12 @@ root {
 .container-full-width {
   width: 100%;
 }
+.full-container-width {
+  max-width: 1920px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
 .container-width {
   width: 100%;

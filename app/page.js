@@ -13,6 +13,8 @@ import {
 import PopularLocations from '@/src/components/HomePage/PopularLocations';
 import CreateAccount from '@/src/components/HomePage/CreateAccount';
 import { SliderCardData } from './constents/AgentProfileConstant';
+import FooterCta from '@/src/components/footerCta';
+import { footerCtaData } from './constents/constents';
 
 export default function Home() {
   return (
@@ -24,6 +26,7 @@ export default function Home() {
       <OurHomePartners data={partners} />
       <NewlyListedProperties data={SliderCardData} />
       <PopularLocations data={popularLocationsData} />
+      <FooterCta data={footerCtaData} />
     </div>
   );
 }

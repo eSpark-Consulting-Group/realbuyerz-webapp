@@ -1,8 +1,13 @@
+'use client'
+import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./theme";
 import "./globals.css";
 import Footer from "@/src/components/layouts/Footer";
 import MainHeader from "@/src/components/layouts/MainHeader";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import theme from "./theme";
+import { Box, Container } from "@mui/system";
+import { footerData } from "./constents/constents";
 
 export default function RootLayout({ children }) {
   return (
@@ -10,13 +15,13 @@ export default function RootLayout({ children }) {
       <body className="font-inter">
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div className="super_container">
+          <Box class="super_container">
             <MainHeader />
-            <div className="content">{children}</div>
-            <Footer />
-          </div>
+            <Box class="content">{children}</Box>
+            <Footer data={footerData} />
+          </Box>
         </ThemeProvider>
-      </body>
-    </html>
+      </body >
+    </html >
   );
 }

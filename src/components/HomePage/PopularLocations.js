@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import Heading from './Heading';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function scrollToTop() {
   window.scrollTo({
@@ -87,6 +88,7 @@ function PopularLocations({ data }) {
               <Grid item xs={4} key={index}>
                 <Box
                   sx={{
+                    backgroundColor: '#fff',
                     borderRadius: '5px',
                     border: '1px solid #cbcbcb',
                     mx: '15px',
@@ -104,15 +106,20 @@ function PopularLocations({ data }) {
                   </Box>
                   <Box
                     sx={{
-                      pt: '8px',
+                      pt: '10px',
                       pb: '16px',
                       px: '50px',
                       textAlign: 'left',
+                      fontWeight: '500',
+                      fontSize: '14px',
                     }}>
-                    {/* Map over the locations and add line breaks */}
                     {item?.locations.map((location) => (
                       <>
-                        <a href='#'>{location}</a>
+                        <Link href='#'>
+                          <Typography variant='body1' sx={{}}>
+                            {location}
+                          </Typography>
+                        </Link>
                         <br />
                       </>
                     ))}
