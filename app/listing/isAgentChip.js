@@ -4,7 +4,6 @@ import Chip from '@mui/material/Chip';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Button, Link, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { properties } from './constant';
 
 function DeletableSquareChip({ label, onDelete }) {
     return (

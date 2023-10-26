@@ -5,10 +5,10 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
-import Chips from "./isAgentChip"; // Assuming this component is imported correctly
-import { properties, tabsTitle } from "./constant"; // Import your properties data file
+import Chips from "./isAgentChip";
 import PropertyListingCard from "./PropertyListingCard";
 import Link from "next/link";
+import { properties } from "../constents/PropertiesConstant";
 
 function CustomTabPanel({ value, index, propertyType }) {
     const filteredProperties =

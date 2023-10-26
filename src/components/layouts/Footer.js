@@ -39,8 +39,8 @@ const styles = {
 };
 const Footer = ({ data }) => {
   return (
-    <Box sx={styles.container}>
-      <Grid container justifyContent='center'>
+    <Box sx={styles.container} >
+      <Grid container justifyContent='center' sx={{ py: '50px' }}>
         <Grid item xs={5}>
           <Box sx={{ pr: '20%' }}>
             <Image
