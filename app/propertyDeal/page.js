@@ -1,10 +1,12 @@
 import React from "react";
+import { Grid } from "@mui/material";
+
 import Sliders from "@/src/component/Slider/slider";
 import ProfileAgent from "@/src/component/Profile/profile";
 import PropertyLocation from "@/src/component/PropertyDetails/propertyDetails";
 import PropertyDescription from "@/src/component/PropertyDescription/propertyDescription";
-import { Box, Grid } from "@mui/material";
-const PropertyDeal = () => {
+
+const propertyDeal = () => {
   return (
     <>
       <Grid container sx={{ paddingTop: "20px", display: "flex", justifyContent: "center" }}>
@@ -20,5 +22,5 @@ const PropertyDeal = () => {
     </>
   )
 }
-export default PropertyDeal;
+export default propertyDeal;
 

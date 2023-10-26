@@ -8,17 +8,16 @@ import {
   TableRow,
   TableCell,
   Typography,
-  Grid,
   Paper,
   TableContainer, useMediaQuery
 } from "@mui/material";
+
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
-import { PropertyDetails } from './constaint';
+import { propertyData } from '../propertyconstants';
+
 const useStyles = makeStyles({
   root: {
-    // "&.MuiTableHead - root": {
-
     color: "white",
     background: 'black',
     borderRadius: 30,
@@ -26,20 +25,10 @@ const useStyles = makeStyles({
     marginBottom: "10px",
     padding: '0 30px',
 
-  },
-  class: "MuiTableHead-root makeStyles-root-1 css-15wwp11-MuiTableHead-root"
-
+  }
 });
 const PropertyLocation = () => {
-  const tableData = [
-    { label: "Type" },
-    { label: "Location" },
-    { label: "Price" },
-    { label: "Purpose" },
-    { label: "Bedroom" },
-    { label: "Bath" },
-    { label: "Parking" },
-  ];
+
   const classes = useStyles();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -80,7 +69,7 @@ const PropertyLocation = () => {
 
                 }}
               >
-                {tableData.map((item, index) => (
+                {propertyData.tableData.map((item, index) => (
                   <TableCell key={index} sx={{ borderCollapse: "collapse", color: "white" }}>
                     {item.label}
                   </TableCell>
@@ -90,9 +79,9 @@ const PropertyLocation = () => {
 
             <TableBody >
               <TableRow >
-                {tableData.map((item, index) => (
+                {Object.keys(propertyData.PropertyDetails).map((key, index) => (
                   <TableCell key={index} sx={{ background: "#F8F8F8", border: "1px solid #B8B8B8", marginBottom: "20px" }}>
-                    {PropertyDetails[item.label.toLowerCase()]}
+                    {propertyData.PropertyDetails[key]}
                   </TableCell>
                 ))}
               </TableRow>
