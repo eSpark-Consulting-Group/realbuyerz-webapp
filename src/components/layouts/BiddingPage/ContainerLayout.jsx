@@ -3,12 +3,14 @@ import { Grid } from "@mui/material";
 import React from "react";
 import BiddingDetails from "./BiddingDetails";
 import RightSidebar from "./RightSidebar";
+import LeftSideBar from "./LeftSideBar/LeftSideBar";
 
 const ContainerLayout = () => {
   return (
     <Grid container spacing={2} >
-      <Grid item xs={2}  sx={{ backgroundColor: 'yellow'}}>
-        {/* Content for the first Grid item */}
+      <Grid item xs={2} >
+        {/* <LeftSideBar /> */}
+        <LeftSideBar />
       </Grid>
       <Grid item lg={8}  md={12}  sm={12} xs={12}>
             <BiddingDetails />
