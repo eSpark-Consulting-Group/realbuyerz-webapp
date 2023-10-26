@@ -41,7 +41,7 @@ function OurHomePartners({ data }) {
   };
 
   return (
-    <Container sx={{ pt: '90px', textAlign: 'center' }}>
+    <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
       <Heading heading={'Our Home Partners'} />
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>

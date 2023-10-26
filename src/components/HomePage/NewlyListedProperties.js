@@ -6,7 +6,7 @@ import AgentPropertiesSlider from '../AgentProfile/AgentPropertiesSlider';
 
 function NewlyListedProperties({ data }) {
   return (
-    <><Container>
+    <><Box>
       <Box
         sx={{
           pt: '90px',
@@ -24,7 +24,7 @@ function NewlyListedProperties({ data }) {
           <AgentPropertiesSlider data={data} />
         </Box>
       </Box>
-    </Container></>
+    </Box></>
   );
 }
 
