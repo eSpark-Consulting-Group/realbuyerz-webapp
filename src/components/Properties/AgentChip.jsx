@@ -25,7 +25,7 @@ function DeletableSquareChip({ label, onDelete }) {
   );
 }
 
-function AgentChip({ data }) {
+function Chips({ data }) {
   const [selectedChips, setSelectedChips] = useState([]);
 
   const handleDeleteChip = (chipToDelete) => () => {
@@ -64,4 +64,4 @@ function AgentChip({ data }) {
   );
 }
 
-export default AgentChip;
+export default Chips;
