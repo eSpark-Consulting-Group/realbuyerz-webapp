@@ -20,7 +20,7 @@ function FeaturedProperties({ data }) {
         paragraph={'Find your dream projects from our latest projects'}
       />
       <Box
-        className="full-container-width"
+        className="full-container-width mx-auto"
       >
         <Grid container sx={{ display: 'flex', pt: '69px', pb: '48px' }}>
           {data?.map((item, index) => (
