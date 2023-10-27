@@ -1,14 +1,17 @@
 'use client';
 import React from 'react';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Box, Grid, SvgIcon } from '@mui/material';
 import Typography from '@mui/material/Typography';
-export default function AgentPropertiesSlider({ data }) {
+
+function AgentPropertiesSlider({ data }) {
   var settings = {
     dots: false,
     infinite: false,
@@ -119,7 +122,7 @@ export default function AgentPropertiesSlider({ data }) {
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item xs={12} boder>
+                    <Grid item xs={12}>
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography
                           variant='body1'
@@ -192,7 +195,7 @@ export default function AgentPropertiesSlider({ data }) {
                   </Grid>
                 </Grid>
               </CardContent>
-              <Grid container border>
+              <Grid container>
                 <Grid
                   item
                   bgcolor='#FAFAFA'
@@ -223,3 +226,5 @@ export default function AgentPropertiesSlider({ data }) {
     </>
   );
 }
+
+export default AgentPropertiesSlider;

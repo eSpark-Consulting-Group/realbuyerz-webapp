@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneIcon from '@mui/icons-material/Phone';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const styles = {
   container: {
@@ -40,11 +41,13 @@ const styles = {
 };
 const Footer = ({ data }) => {
   return (
-    <Box sx={styles.container}>
+    <Box sx={styles?.container}>
       <Grid container justifyContent='center' sx={{ py: '50px' }}>
         <Grid item xs={5}>
           <Box sx={{ pr: '20%' }}>
-            <Link href='/'><Image src={data.logo} alt='Logo' width={155} height={37} /></Link>
+            <Link href='/'>
+              <Image src={data?.logo} alt='Logo' width={155} height={37} />
+            </Link>
             <Typography
               variant='body1'
               sx={{
@@ -53,28 +56,31 @@ const Footer = ({ data }) => {
                 fontSize: '16',
                 fontWeight: '400',
               }}>
-              {data.introText.paragraph1}
+              {data?.introText?.paragraph1}
             </Typography>
             <Typography
               variant='body2'
               sx={{ pb: '20px', fontSize: '16', fontWeight: '400' }}>
-              {data.introText.paragraph2}
+              {data?.introText?.paragraph2}
             </Typography>
             <Box sx={{ display: 'flex' }}>
               <LocationOnIcon style={styles.icon} sx={{ color: '#fb631c' }} />
               <Typography
                 variant='body1'
                 sx={{ pb: '20px', fontSize: '16', fontWeight: '400' }}>
-                {data.address.line1}
+                {data?.address?.line1}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex' }}>
               <PhoneIcon style={styles.icon} sx={{ color: '#fb631c' }} />
-              <Link href={`tel:${data.phone}`} > <Typography
-                variant='body1'
-                sx={{ fontSize: '16', fontWeight: '400' }}>
-                {data.phone}
-              </Typography></Link>
+              <Link href={`tel:${data?.phone}`}>
+                {' '}
+                <Typography
+                  variant='body1'
+                  sx={{ fontSize: '16', fontWeight: '400' }}>
+                  {data?.phone}
+                </Typography>
+              </Link>
             </Box>
           </Box>
         </Grid>
@@ -84,10 +90,10 @@ const Footer = ({ data }) => {
             <Typography variant='h6' color={'primary'} sx={{ pb: '20px' }}>
               Useful Links
             </Typography>
-            {data.usefulLinks.map((link, index) => (
-              <Link href={link.link}>
+            {data?.usefulLinks?.map((link, index) => (
+              <Link href={link?.link}>
                 <Typography key={index} variant='body1' sx={{ pb: '15px' }}>
-                  {link.title}
+                  {link?.title}
                 </Typography>
               </Link>
             ))}
@@ -101,17 +107,17 @@ const Footer = ({ data }) => {
                   Download Our App
                 </Typography>
                 <Typography variant='body1' sx={styles.text}>
-                  {data.appDownload.description}
+                  {data?.appDownload?.description}
                 </Typography>
               </Box>
               <Box container spacing={2} sx={{ pb: '10px' }}>
-                {data.appDownload.options.map((option, index) => (
+                {data?.appDownload?.options?.map((option, index) => (
                   <Grid key={index} item xs={6}>
                     <Box sx={{ py: '10px' }}>
-                      <Link href={option.link}>
+                      <Link href={option?.link}>
                         <Image
-                          src={option.logo}
-                          alt={option.title}
+                          src={option?.logo}
+                          alt={option?.title}
                           width={150}
                           height={40}
                           style={styles.icon}
@@ -122,12 +128,12 @@ const Footer = ({ data }) => {
                 ))}
               </Box>
               <Box sx={{ display: 'flex', gap: '8px', px: '5px' }}>
-                {data.socialMediaIcons.map((socialIcon, index) => (
-                  <Link href={socialIcon.link}>
+                {data?.socialMediaIcons?.map((socialIcon, index) => (
+                  <Link href={socialIcon?.link}>
                     <img
                       key={index}
-                      src={socialIcon.logo}
-                      alt={socialIcon.title}
+                      src={socialIcon?.logo}
+                      alt={socialIcon?.title}
                     />
                   </Link>
                 ))}
@@ -136,7 +142,7 @@ const Footer = ({ data }) => {
           </Box>
         </Grid>
       </Grid>
-    </Box >
+    </Box>
   );
 };
 

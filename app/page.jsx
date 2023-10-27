@@ -4,29 +4,32 @@ import FeaturedProperties from '@/src/components/HomePage/FeaturedProperties';
 import HeroSection from '@/src/components/HomePage/HeroSection';
 import NewlyListedProperties from '@/src/components/HomePage/NewlyListedProperties';
 import OurHomePartners from '@/src/components/HomePage/OurHomePartners';
-import {
-  categories,
-  featuredProperties,
-  partners,
-  popularLocationsData,
-} from './constants/HomeConstants';
+import FooterCta from '@/src/components/footerCta';
 import PopularLocations from '@/src/components/HomePage/PopularLocations';
 import CreateAccount from '@/src/components/HomePage/CreateAccount';
-import { SliderCardData } from './constants/AgentProfileConstant';
-import FooterCta from '@/src/components/footerCta';
-import { footerCtaData } from './constants/Constants';
 
-export default function Home() {
+import {
+  CATEGORIES,
+  FEATURED_PROPERTIES,
+  PARTNERS,
+  POPULAR_LOCATIONS_DATA,
+} from './constants/HomeConstants';
+import { SLIDER_CARD_DATA } from './constants/AgentProfileConstant';
+import { FOOTER_CTA_DATA } from './constants/Constants';
+
+function Home() {
   return (
-    <div className='min-h-screen '>
+    <div className='min-h-screen'>
       <HeroSection />
-      <BrowseByCategory data={categories} />
-      <FeaturedProperties data={featuredProperties} />
+      <BrowseByCategory data={CATEGORIES} />
+      <FeaturedProperties data={FEATURED_PROPERTIES} />
       <CreateAccount />
-      <OurHomePartners data={partners} />
-      <NewlyListedProperties data={SliderCardData} />
-      <PopularLocations data={popularLocationsData} />
-      <FooterCta data={footerCtaData} />
+      <OurHomePartners data={PARTNERS} />
+      <NewlyListedProperties data={SLIDER_CARD_DATA} />
+      <PopularLocations data={POPULAR_LOCATIONS_DATA} />
+      <FooterCta data={FOOTER_CTA_DATA} />
     </div>
   );
 }
+
+export default Home;

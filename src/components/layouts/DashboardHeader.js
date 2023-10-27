@@ -1,8 +1,11 @@
-"use client";
+'use client';
 
-export default function DashboardHeader() {
-
+function DashboardHeader() {
   return (
-   <><h1>Headder</h1></>
+    <>
+      <h1>Headder</h1>
+    </>
   );
 }
+
+export default DashboardHeader

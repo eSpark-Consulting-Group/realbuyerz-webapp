@@ -1,7 +1,9 @@
 'use client';
 import React from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
+
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 import Heading from './Heading';
 
 function FeaturedProperties({ data }) {
@@ -19,9 +21,7 @@ function FeaturedProperties({ data }) {
         heading={'Featured Properties'}
         paragraph={'Find your dream projects from our latest projects'}
       />
-      <Box
-        className="full-container-width mx-auto"
-      >
+      <Box className='full-container-width mx-auto'>
         <Grid container sx={{ display: 'flex', pt: '69px', pb: '48px' }}>
           {data?.map((item, index) => (
             <Grid
@@ -174,7 +174,11 @@ function FeaturedProperties({ data }) {
                           justifyContent: 'center',
                           alignItems: 'center',
                         }}>
-                        <img key={index} src={amenity} alt={`Amenity ${index}`} />
+                        <img
+                          key={index}
+                          src={amenity}
+                          alt={`Amenity ${index}`}
+                        />
                       </Grid>
                     ))}
                   </Grid>
@@ -182,7 +186,8 @@ function FeaturedProperties({ data }) {
               </Box>
             </Grid>
           ))}
-        </Grid></Box>
+        </Grid>
+      </Box>
     </Box>
   );
 }

@@ -1,26 +1,29 @@
-"use client";
-import AgentAbout from "@/src/components/AgentProfile/AgentProfileAbout";
-import AgentProfileState from "@/src/components/AgentProfile/AgentProfileState";
-import AgentProfiles from "@/src/components/AgentProfile/AgentProfiles";
-import AgentPropertiesSlider from "@/src/components/AgentProfile/AgentPropertiesSlider";
-import React from "react";
+'use client';
+import React from 'react';
+import { Box } from '@mui/system';
+
+import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
+import AgentProfileState from '@/src/components/AgentProfile/AgentProfileState';
+import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
+import AgentPropertiesSlider from '@/src/components/AgentProfile/AgentPropertiesSlider';
+import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
+
 import {
-  RecentPropertie,
-  SliderCardData,
-  agentProfileDetails,
-  info,
-} from "../constants/AgentProfileConstant";
-import RecentPropertyTitle from "@/src/components/AgentProfile/RecentPropertyTitle";
-import { Box } from "@mui/system";
+  RECENT_PROPERTIES,
+  SLIDER_CARD_DATA,
+  AGENT_PROFILE_DETAILS,
+  INFO,
+  PROPERTIES,
+} from '../constants/AgentProfileConstant';
 
 const AgentProfile = () => {
   return (
-    <Box className="w-[70vw] mx-auto mt-4">
-      <AgentProfiles data={agentProfileDetails} />
-      <AgentProfileState />
-      <AgentAbout about={info} />
-      <RecentPropertyTitle data={RecentPropertie} />
-      <AgentPropertiesSlider data={SliderCardData} />
+    <Box className='w-[70vw] mx-auto mt-4'>
+      <AgentProfiles data={AGENT_PROFILE_DETAILS} />
+      <AgentProfileState data={PROPERTIES} />
+      <AgentAbout data={INFO} />
+      <RecentPropertyTitle data={RECENT_PROPERTIES} />
+      <AgentPropertiesSlider data={SLIDER_CARD_DATA} />
     </Box>
   );
 };

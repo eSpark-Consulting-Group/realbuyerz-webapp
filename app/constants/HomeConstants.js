@@ -1,4 +1,4 @@
-export const categories = [
+export const CATEGORIES = [
     {
         id: 1,
         image: '/images/categories/category1.svg',
@@ -41,7 +41,7 @@ export const categories = [
     },
 ];
 
-export const partners = [
+export const PARTNERS = [
     {
         id: 1,
         image: '/images/partners/partner1.svg',
@@ -104,7 +104,7 @@ export const partners = [
     },
 ];
 
-export const popularLocationsData = [
+export const POPULAR_LOCATIONS_DATA = [
     {
         title: 'Houses',
         type: 'sale',
@@ -299,7 +299,7 @@ export const popularLocationsData = [
     },
 ];
 
-export const featuredProperties = [
+export const FEATURED_PROPERTIES = [
     {
         location: 'Islamabad',
         propertyName: 'Index Industrial Park',

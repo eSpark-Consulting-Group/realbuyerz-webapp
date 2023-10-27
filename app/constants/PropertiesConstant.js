@@ -1,4 +1,4 @@
-export const properties = [
+export const PROPERTIES_LISTING = [
   {
     id: '1',
     title: 'House #1',
@@ -43,7 +43,8 @@ export const properties = [
     postedDate: 'Posted 1 day ago',
     agentProfileLink: '#',
     propertytype: 'Commercial',
-  }, {
+  },
+  {
     id: '1',
     title: 'House #1',
     agentName: 'Arman khan',
@@ -87,7 +88,8 @@ export const properties = [
     postedDate: 'Posted 1 day ago',
     agentProfileLink: '#',
     propertytype: 'Commercial',
-  }, {
+  },
+  {
     id: '1',
     title: 'House #1',
     agentName: 'Arman khan',
@@ -131,7 +133,8 @@ export const properties = [
     postedDate: 'Posted 1 day ago',
     agentProfileLink: '#',
     propertytype: 'Commercial',
-  }, {
+  },
+  {
     id: '1',
     title: 'House #1',
     agentName: 'Arman khan',
@@ -175,7 +178,8 @@ export const properties = [
     postedDate: 'Posted 1 day ago',
     agentProfileLink: '#',
     propertytype: 'Commercial',
-  }, {
+  },
+  {
     id: '1',
     title: 'House #1',
     agentName: 'Arman khan',
@@ -219,4 +223,5 @@ export const properties = [
     postedDate: 'Posted 1 day ago',
     agentProfileLink: '#',
     propertytype: 'Commercial',
-  },];
+  },
+];

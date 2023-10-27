@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import ClearIcon from '@mui/icons-material/Clear';
-import { Button, Link, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 function DeletableSquareChip({ label, onDelete }) {

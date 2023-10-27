@@ -1,12 +1,13 @@
 'use client';
 import React from 'react';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Box, Container, Typography } from '@mui/material';
+
 import Heading from './Heading';
-import { Link } from 'react-router-dom';
 import Image from 'next/image';
+import { Box, Container, Typography } from '@mui/material';
 
 function OurHomePartners({ data }) {
   const sliderSettings = {

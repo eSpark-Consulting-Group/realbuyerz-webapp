@@ -1,4 +1,4 @@
-export const pages = [
+export const PAGES = [
   {
     menu: 'Home',
     auth: true,
@@ -27,22 +27,23 @@ export const pages = [
   {
     menu: 'Sell & rent for me',
     auth: true,
-    path: '/Sell-&-rent-for-me',
+    path: '/sell-rent-for-me',
   },
 ];
 
-export const hero_Section_Content = {
+export const HERO_SECTION_CONTENT = {
   heading:
     'Live buying, selling or rent vetted properties at the most trusted online real estate portal',
   logo: '/images/hero_section/logo.png',
 };
-export const hero_Section_Images = [
+
+export const HERO_SECTION_IMAGES = [
   { image: '/images/hero_section/img1.png' },
   { image: '/images/hero_section/img2.png' },
   { image: '/images/hero_section/img3.png' },
 ];
 
-export const footerCtaData = {
+export const FOOTER_CTA_DATA = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', // Description text
   features: [
@@ -60,8 +61,16 @@ export const footerCtaData = {
     },
   ],
   appIcons: [
-    { icon: '/images/social-icons/AppStoreDark.svg', alt: 'App Store Dark', link: "#" },
-    { icon: '/images/social-icons/GooglePlayDark.svg', alt: 'Visa Card', link: "#" },
+    {
+      icon: '/images/social-icons/AppStoreDark.svg',
+      alt: 'App Store Dark',
+      link: '#',
+    },
+    {
+      icon: '/images/social-icons/GooglePlayDark.svg',
+      alt: 'Visa Card',
+      link: '#',
+    },
   ],
   appImage: '/images/footer-cta/RealBuyerz-Mobile-App.png',
   paymentMethodsDescription: 'Safe & secure Payment method',
@@ -75,7 +84,7 @@ export const footerCtaData = {
   ],
 };
 
-export const footerData = {
+export const FOOTER_DATA = {
   logo: '/images/RealBuyers-Logo.svg',
   introText: {
     paragraph1:
@@ -100,13 +109,25 @@ export const footerData = {
     { logo: '/images/social-icons/facebook.svg', title: 'facebook', link: '#' },
     { logo: '/images/social-icons/twitter.svg', title: 'twitter', link: '#' },
     { logo: '/images/social-icons/linkedin.svg', title: 'linkedin', link: '#' },
-    { logo: '/images/social-icons/instagram.svg', title: 'instagram', link: '#' },
+    {
+      logo: '/images/social-icons/instagram.svg',
+      title: 'instagram',
+      link: '#',
+    },
   ],
   appDownload: {
     description: 'Where convenience is at your fingertip.',
     options: [
-      { logo: '/images/social-icons/GooglePlay.svg', title: 'Google Play', link: '#' },
-      { logo: '/images/social-icons/AppStore.svg', title: 'App Store', link: '#', }
-    ]
+      {
+        logo: '/images/social-icons/GooglePlay.svg',
+        title: 'Google Play',
+        link: '#',
+      },
+      {
+        logo: '/images/social-icons/AppStore.svg',
+        title: 'App Store',
+        link: '#',
+      },
+    ],
   },
 };

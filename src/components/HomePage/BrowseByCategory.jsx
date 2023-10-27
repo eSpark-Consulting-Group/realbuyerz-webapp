@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
+
 import Heading from './Heading';
 
 function BrowseByCategory({ data }) {
@@ -15,7 +16,7 @@ function BrowseByCategory({ data }) {
         <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
           {data?.map((category) => (
             <Grid
-              itme
+              item
               key={category?.id}
               sx={{
                 p: '20px',

@@ -1,11 +1,13 @@
 'use client';
 import React from 'react';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+
 import Heading from './Heading';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 
 function scrollToTop() {
   window.scrollTo({

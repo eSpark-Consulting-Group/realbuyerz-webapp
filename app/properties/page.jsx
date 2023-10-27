@@ -1,6 +1,7 @@
 'use client';
-import { Box } from '@mui/system';
 import React from 'react';
+import { Box } from '@mui/system';
+
 import PropertyTabs from '../../src/components/Properties/PropertyTabs';
 
 const Listing = () => {

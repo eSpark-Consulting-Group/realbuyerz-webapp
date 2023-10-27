@@ -1,5 +1,6 @@
 'use client';
-import * as React from 'react';
+import React from 'react';
+
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -7,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import { Box, Grid, SvgIcon } from '@mui/material';
 
-export default function PropertiesSlider({ data }) {
+function PropertiesSlider({ data }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -77,7 +78,7 @@ export default function PropertiesSlider({ data }) {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} boder>
+                  <Grid item xs={12}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Typography
                         variant='body1'
@@ -150,7 +151,7 @@ export default function PropertiesSlider({ data }) {
                 </Grid>
               </Grid>
             </CardContent>
-            <Grid container border>
+            <Grid container>
               <Grid
                 item
                 bgcolor='#FAFAFA'
@@ -180,3 +181,5 @@ export default function PropertiesSlider({ data }) {
     </>
   );
 }
+
+export default PropertiesSlider;

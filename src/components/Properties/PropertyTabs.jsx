@@ -1,22 +1,26 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
+import Link from 'next/link';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
+
+import { PROPERTIES_LISTING } from '@/app/constants/PropertiesConstant';
+
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
-import Link from 'next/link';
-import { properties } from '../../../app/constants/PropertiesConstant';
 
 function CustomTabPanel({ value, index, propertyType }) {
   const filteredProperties =
     value === 0 // If "All" tab is selected
-      ? properties
-      : properties.filter((property) => property.propertytype === propertyType);
+      ? PROPERTIES_LISTING
+      : PROPERTIES_LISTING?.filter(
+          (property) => property.propertytype === propertyType
+        );
 
-  const propertyTitle = filteredProperties.map((property) => ({
+  const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
     title: property.title,
   }));
@@ -35,7 +39,7 @@ function CustomTabPanel({ value, index, propertyType }) {
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
-            {propertyTitle.map(({ id, title }, index) => (
+            {propertyTitle?.map(({ id, title }, index) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight='300' fontSize='16px' textAlign='center'>
                   <Link href={`/property/${id}`}>{title}</Link>
@@ -56,7 +60,7 @@ function a11yProps(index) {
   };
 }
 
-export default function PropertyTabs({ data }) {
+function PropertyTabs({ data }) {
   const [value, setValue] = useState(0);
   const [propertyType, setPropertyType] = useState(''); // Add this line to store the selected property type
 
@@ -65,11 +69,11 @@ export default function PropertyTabs({ data }) {
   }, []);
 
   const propertyTypes = [
-    ...new Set(properties.map((property) => property.propertytype)),
+    ...new Set(data?.map((property) => property.propertytype)),
   ];
   const tabData = [
     { label: 'All', propertyType: 'All' }, // Add the "All" tab
-    ...propertyTypes.map((propertyType) => ({
+    ...propertyTypes?.map((propertyType) => ({
       label: propertyType,
       propertyType: propertyType,
     })),
@@ -85,8 +89,10 @@ export default function PropertyTabs({ data }) {
 
   const filteredProperties =
     propertyType === ''
-      ? properties
-      : properties.filter((property) => property.propertytype === propertyType);
+      ? PROPERTIES_LISTING
+      : PROPERTIES_LISTING.filter(
+          (property) => property.propertytype === propertyType
+        );
   const isAgent = 'true';
   const agenttab = value;
   return (
@@ -110,7 +116,7 @@ export default function PropertyTabs({ data }) {
               value={value}
               onChange={handleChange}
               aria-label='basic tabs example'>
-              {tabData.map((tab, index) => (
+              {tabData?.map((tab, index) => (
                 <Tab
                   key={index}
                   label={tab.label}
@@ -120,7 +126,7 @@ export default function PropertyTabs({ data }) {
               ))}
             </Tabs>
           </Box>
-          {tabData.map((tab, index) => (
+          {tabData?.map((tab, index) => (
             <CustomTabPanel
               key={index}
               value={value}
@@ -143,3 +149,5 @@ export default function PropertyTabs({ data }) {
     </>
   );
 }
+
+export default PropertyTabs;

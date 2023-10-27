@@ -1,11 +1,15 @@
 import { Box, Typography } from '@mui/material';
-import { hero_Section_Content } from '@/app/constants/Constants';
-import { hero_Section_Images } from '@/app/constants/Constants';
-import HeroSlider from '../sliders/HeroSlider';
 import { Button } from '@mui/material';
 
+import HeroSlider from '../sliders/HeroSlider';
+
+import {
+  HERO_SECTION_CONTENT,
+  HERO_SECTION_IMAGES,
+} from '@/app/constants/Constants';
+
 const HeroSection = () => {
-  const { heading, logo } = hero_Section_Content;
+  const { heading, logo } = HERO_SECTION_CONTENT;
 
   return (
     <>
@@ -133,7 +137,7 @@ const HeroSection = () => {
           effect={'fade'}
           pagination={true}
           delay={1500}
-          data={hero_Section_Images}
+          SlidesData={HERO_SECTION_IMAGES}
         />
       </Box>
     </>
