@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import { Avatar } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 const PropertyList = ({ data }) => {
@@ -17,23 +17,22 @@ const PropertyList = ({ data }) => {
                   display: "flex",
                   width: "60%",
                   justifyContent: "space-between",
+                  alignItems: "center",
+                  paddingTop: "10px"
                 }}
               >
                 <Box
                   sx={{
-                    padding: "20px 0px 5px 31px",
+                    padding: "0px 0px 0px 31px",
                   }}
                 >
                   <Typography
-                    variant="h6"
+                    variant="Body1"
                     sx={{
                       color: "#000",
-                      fontSize: "16px",
-                      fontStyle: "normal",
-                      fontWeight: "bold",
-
-                      lineHeight: "normal",
-                      fontFamily: "Inter",
+                      fontWeight: 600,
+                      fontSize: "12px",
+                      lineHeight: "19.36px",
                     }}
                   >
                     {data.proprtyTitle}
@@ -41,23 +40,23 @@ const PropertyList = ({ data }) => {
                 </Box>
                 <Box
                   sx={{
-                    padding: "12px 0px 10px 20px",
+                    padding: "0px 0px 0px 20px",
                   }}
                 >
                   {data.icons}
                 </Box>
               </Box>
               <Typography
-                variant="body2"
+                // variant="body2"
                 sx={{
                   color: "#666",
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Inter",
                   fontSize: "14px",
                   fontStyle: "normal",
                   fontWeight: 400,
-                  lineHeight: "normal",
+                  lineHeight: "16.94px",
                   fontFamily: "Inter, sans-serif",
-                  letterSpacing: "0.56px",
+                  letterSpacing: "4%",
                   paddingLeft: "31px",
                   paddingBottom: "2px",
                 }}

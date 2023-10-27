@@ -68,34 +68,40 @@ const RightSidebar = () => {
   ];
   const profileData = [
     {
-        image : "./images/Live-bidding-icons/Profile.png/",
-        name : "Kashif Z",
-        stateName : "KZ Real Estate"
-    }
-  ]
+      image: "./images/Live-bidding-icons/Profile.png/",
+      name: "Kashif Z",
+      stateName: "KZ Real Estate",
+    },
+  ];
 
   return (
     <React.Fragment>
-      <Grid container spacing={2} rowSpacing={2}>
-        <Box
+      <Grid container  rowSpacing={1}>
+        <Grid
           border={2}
+          item
           sx={{
             border: "1px solid #E4E4E4",
             borderRadius: "10px",
             background: "#F FF",
             width: "100%",
             height: "100%",
+            marginRight: "5px",
           }}
         >
-          <Profile data={profileData}/>
+          <Profile data={profileData} />
           <ProfileCompletnes />
           <AvailableConnects />
           <CustomDivider />
           <PropertyList data={liveBiddingPropertyList} />
           <CustomDivider />
           <Cateogries data={myCategory} />
-        </Box>
-        <Proposals data={liveBiddingProposals} />
+        </Grid>
+        <Grid xs={12} item sx={{
+          marginRight: "5px"
+        }}>
+          <Proposals data={liveBiddingProposals} />
+        </Grid>
       </Grid>
     </React.Fragment>
   );

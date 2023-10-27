@@ -8,10 +8,9 @@ import LeftSideBar from "./LeftSideBar/LeftSideBar";
 const ContainerLayout = () => {
   return (
     <Grid container spacing={2} >
-      <Grid item xs={2} >
-        {/* <LeftSideBar /> */}
+      <Grid item xs={2}  sx={{ height:"100vh"}}>
         <LeftSideBar />
-      </Grid>
+      </Grid>   
       <Grid item lg={8}  md={12}  sm={12} xs={12}>
             <BiddingDetails />
       </Grid>

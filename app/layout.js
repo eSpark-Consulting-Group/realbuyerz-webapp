@@ -1,43 +1,35 @@
+import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./theme";
 import "./globals.css";
 import Footer from "@/src/components/layouts/Footer";
 import MainHeader from "@/src/components/layouts/MainHeader";
+import { Box, Container } from "@mui/system";
+import { footerData } from "./constents/constents";
+import DashboardHeader from "@/src/components/layouts/DashboardHeader";
 
+import { Inter } from 'next/font/google'
+ 
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
 export default function RootLayout({ children }) {
-
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <body className="font-inter">
-        <div class="super_container">
-          <MainHeader />
-          <div class="content">{children}</div>
-          <Footer />
-        </div>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Box class="super_container">
+            {/* <MainHeader /> */}
+            <DashboardHeader />
+            <Box class="content">{children}</Box>
+            <Footer data={footerData} />
+          </Box>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
-
-
-
-// import "./globals.css";
-// import Footer from "@/src/components/layouts/Footer";
-// import MainHeader from "@/src/components/layouts/MainHeader";
-// import Dashboard from "./about/page";
-// import DashboardHeader from "@/src/components/layouts/DashboardHeader";
-
-// export default function RootLayout({ children }) {
-
-//   return (
-//     <html lang="en">
-//       <body className="font-inter">
-//         <div class="super_container">
-//           <DashboardHeader />
-//           {/* <MainHeader /> */}
-//           <div class="content">{children}</div>
-//           <Footer />
-//         </div>
-//       </body>
-//     </html>
-//   );
-// }

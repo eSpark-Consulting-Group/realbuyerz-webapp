@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography , Button } from "@mui/material";
 import { Box } from "@mui/system";
 
 function Proposals({ data }) {
@@ -20,11 +20,10 @@ function Proposals({ data }) {
                 variant="h6"
                 sx={{
                   color: "#000",
-                  fontSize: "16px",
+                  fontSize: "12px",
                   fontStyle: "normal",
-                  fontWeight: "bold",
+                  fontWeight: "600",
                   lineHeight: "normal",
-                  fontFamily: "Inter",
                 }}
               >
                 {items.proposalTitle}
@@ -34,7 +33,6 @@ function Proposals({ data }) {
                 sx={{
                   fontSize: "1rem",
                   fontWeight: "bold",
-                  fontFamily: "Inter, sans-serif",
                   paddingTop: "10px",
                   color: "#FB631C",
                   fontFamily: "Inter, sans-serif",

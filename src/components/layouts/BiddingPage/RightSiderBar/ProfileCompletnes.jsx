@@ -32,9 +32,9 @@ const ProfileCompletnes = () => {
         <Box></Box>
         <Typography
           sx={{
-            fontSize: "1rem",
-            fontWeight: "bold",
-            fontFamily: "Inter, sans-serif",
+            fontSize: "12px",
+            fontWeight: "600",
+            // fontFamily: "Inter",
             paddingLeft: "30px",
             paddingTop: "20px"
           }}
@@ -51,7 +51,7 @@ const ProfileCompletnes = () => {
           }}
         >
           <BorderLinearProgress variant="determinate" value={90} sx={{ flex: 1 }} />
-          <Typography sx={{ ml:1 , mr:7 }}>{95}%</Typography>
+          <Typography sx={{ ml:1 , mr:5 }}>{95}%</Typography>
         </Box>
         <Box
           sx={{
@@ -65,12 +65,10 @@ const ProfileCompletnes = () => {
           sx={{
             width: "80%",
             color: "#000",
-            fontFamily: "Inter, sans-serif",
-            fontSize: "14px",
+            fontSize: "12px",
             fontStyle: "normal",
-            fontWeight: 400,
+            fontWeight: 500,
             lineHeight: "normal",
-            fontFamily: "Inter, sans-serif",
             padding: "20px 20px 50px 30px",
           }}
         >

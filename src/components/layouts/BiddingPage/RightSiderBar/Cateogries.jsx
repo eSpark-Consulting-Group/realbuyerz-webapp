@@ -18,6 +18,7 @@ const Cateogries = ({ data }) => {
                   display: "flex",
                   width: "60%",
                   justifyContent: "space-between",
+                  alignItems:"center"
                 }}
               >
                 <Box
@@ -29,11 +30,10 @@ const Cateogries = ({ data }) => {
                     variant="h6"
                     sx={{
                       color: "#000",
-                      fontSize: "16px",
+                      fontSize: "12px",
                       fontStyle: "normal",
-                      fontWeight: "bold",
+                      fontWeight: "600",
                       lineHeight: "normal",
-                      fontFamily: "Inter",
                     }}
                   >
                     {items.mainTitle}
@@ -41,7 +41,7 @@ const Cateogries = ({ data }) => {
                 </Box>
                 <Box
                   sx={{
-                    padding: "0px 0px px 20px",
+                    padding: "0px 0px 0px 20px",
                   }}
                 >
                   {items.icons}
