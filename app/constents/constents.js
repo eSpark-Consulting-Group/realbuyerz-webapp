@@ -1,32 +1,32 @@
 export const pages = [
   {
-    menu: "Home",
+    menu: 'Home',
     auth: true,
-    path: "/home",
+    path: '/home',
   },
   {
-    menu: "Properties",
+    menu: 'Properties',
     auth: true,
-    path: "/properties",
+    path: '/properties',
   },
   {
-    menu: "Project",
+    menu: 'Project',
     auth: true,
-    path: "/project",
+    path: '/project',
   },
   {
-    menu: "Blogs",
+    menu: 'Blogs',
     auth: true,
-    path: "/blogs",
+    path: '/blogs',
   },
   {
-    menu: "jagah360",
+    menu: 'jagah360',
     auth: true,
-    path: "/jagah360",
+    path: '/jagah360',
   },
   {
-    menu: "Sell & rent for me",
+    menu: 'Sell & rent for me',
     auth: true,
-    path: "/Sell-&-rent-for-me",
+    path: '/Sell-&-rent-for-me',
   },
 ];
