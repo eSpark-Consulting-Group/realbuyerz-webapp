@@ -8,7 +8,7 @@ import { Grid } from "@mui/material";
 import Chips from "./isAgentChip";
 import PropertyListingCard from "./PropertyListingCard";
 import Link from "next/link";
-import { properties } from "../constents/PropertiesConstant";
+import { properties } from "../../../app/constents/PropertiesConstant";
 
 function CustomTabPanel({ value, index, propertyType }) {
     const filteredProperties =

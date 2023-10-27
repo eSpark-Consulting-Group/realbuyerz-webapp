@@ -103,71 +103,71 @@ export const agentProfileDetails = [
     buttonTitle: "Let's Talk",
   },
 
-  
+
 
 ];
 
 export const SliderCardData = [
-    {
-        title: "Index Industrial Park",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle.png"
-    },
-    {
-        title: "Gulshan-e-Iqbal",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle16974.png"
-    },
-    {
-        title: "Gulshan-e-Johar",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle.png"
-    },
-    {
-        title: "Malir",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle16974.png"
+  {
+    title: "Index Industrial Park",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle.png"
+  },
+  {
+    title: "Gulshan-e-Iqbal",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle16974.png"
+  },
+  {
+    title: "Gulshan-e-Johar",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle.png"
+  },
+  {
+    title: "Malir",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle16974.png"
 
-    },
-    {
-        title: "Gulshan-e-Johar",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle.png"
-    },
-    {
-        title: "Malir",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle16974.png"
+  },
+  {
+    title: "Gulshan-e-Johar",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle.png"
+  },
+  {
+    title: "Malir",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle16974.png"
 
-    },
-    {
-        title: "Gulshan-e-Johar",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle.png"
-    },
-    {
-        title: "Malir",
-        location: "Hub Rever Road",
-        startingFrom: "Pak 3.0 Crore",
-        seeDetail : "See Details",
-        image : "/images/agent-profile-icons/Rectangle16974.png"
+  },
+  {
+    title: "Gulshan-e-Johar",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle.png"
+  },
+  {
+    title: "Malir",
+    location: "Hub Rever Road",
+    startingFrom: "Pak 3.0 Crore",
+    seeDetail: "See Details",
+    image: "/images/agent-profile-icons/Rectangle16974.png"
 
-    },
-  ]
-   export const RecentPropertie = {
-    title : "Recent Properties By Arman Khan"
-  }
+  },
+]
+export const RecentPropertie = {
+  title: "Recent Properties By Arman Khan"
+}
