@@ -60,8 +60,8 @@ export const footerCtaData = {
     },
   ],
   appIcons: [
-    { icon: '/images/social-icons/AppStoreDark.svg', alt: 'App Store Dark' },
-    { icon: '/images/social-icons/GooglePlayDark.svg', alt: 'Visa Card' },
+    { icon: '/images/social-icons/AppStoreDark.svg', alt: 'App Store Dark', link: "#" },
+    { icon: '/images/social-icons/GooglePlayDark.svg', alt: 'Visa Card', link: "#" },
   ],
   appImage: '/images/footer-cta/RealBuyerz-Mobile-App.png',
   paymentMethodsDescription: 'Safe & secure Payment method',
@@ -106,7 +106,7 @@ export const footerData = {
     description: 'Where convenience is at your fingertip.',
     options: [
       { logo: '/images/social-icons/GooglePlay.svg', title: 'Google Play', link: '#' },
-      { logo: '/images/social-icons/AppStore.svg', title: 'App Store', link: '#' }
+      { logo: '/images/social-icons/AppStore.svg', title: 'App Store', link: '#', }
     ]
   },
 };

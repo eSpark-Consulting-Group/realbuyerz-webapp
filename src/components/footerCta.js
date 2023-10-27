@@ -67,7 +67,7 @@ function FooterCta({ data }) {
                     <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
                         {data.appIcons.map((appicon, index) => (
                             <Link
-                                href='#'
+                                href={appicon.link}
                                 key={index}
                                 item
                                 xs={3}
