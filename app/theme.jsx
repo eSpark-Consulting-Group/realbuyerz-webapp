@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -20,7 +20,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: ['Inter', 'Roboto', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,

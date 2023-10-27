@@ -9,12 +9,12 @@ import {
   featuredProperties,
   partners,
   popularLocationsData,
-} from './constents/HomeConstants';
+} from './constants/HomeConstants';
 import PopularLocations from '@/src/components/HomePage/PopularLocations';
 import CreateAccount from '@/src/components/HomePage/CreateAccount';
-import { SliderCardData } from './constents/AgentProfileConstant';
+import { SliderCardData } from './constants/AgentProfileConstant';
 import FooterCta from '@/src/components/footerCta';
-import { footerCtaData } from './constents/constents';
+import { footerCtaData } from './constants/Constants';
 
 export default function Home() {
   return (

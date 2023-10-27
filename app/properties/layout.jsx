@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container } from '@mui/material';
 import FooterCta from '@/src/components/footerCta';
-import { footerCtaData } from '../constents/constents';
+import { footerCtaData } from '../constants/Constants';
 
 const InnerPageLayout = ({ children }) => {
-    return (
-        <>
-            <Container>{children}</Container>
-            <FooterCta data={footerCtaData} />
-        </>
-    );
+  return (
+    <>
+      <Container>{children}</Container>
+      <FooterCta data={footerCtaData} />
+    </>
+  );
 };
 
 export default InnerPageLayout;

@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
-import { pages } from "@/app/constents/constents";
+import { pages } from "@/app/constants/Constants";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Button } from "@mui/material";
 
@@ -73,7 +73,7 @@ export default function MainHeader() {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/dashboard"
+                href="/"
                 sx={{
                   display: { xs: "flex" },
                   fontFamily: "monospace",
@@ -83,7 +83,7 @@ export default function MainHeader() {
                   textDecoration: "none",
                 }}
               >
-                <img src="/images/LOGO.png" alt="" />
+                <img src="/images/RealBuyers-Logo.svg" alt="" />
               </Typography>
             </Box>
             <Box
@@ -141,7 +141,7 @@ export default function MainHeader() {
                       textDecoration: "none",
                     }}
                     href={item?.path}
-                    // sx={{ textDecoration: "none" }}
+                  // sx={{ textDecoration: "none" }}
                   >
                     {item?.menu}
                   </Link>

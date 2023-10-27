@@ -1,7 +1,7 @@
 import FooterCta from '@/src/components/footerCta';
 import { Typography } from '@mui/material';
 import React from 'react';
-import { footerCtaData } from '../constents/constents';
+import { footerCtaData } from '../constants/Constants';
 
 const Dashboard = () => {
   return (

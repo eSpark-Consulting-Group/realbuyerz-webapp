@@ -9,7 +9,7 @@ import {
   SliderCardData,
   agentProfileDetails,
   info,
-} from "../constents/AgentProfileConstant";
+} from "../constants/AgentProfileConstant";
 import RecentPropertyTitle from "@/src/components/AgentProfile/RecentPropertyTitle";
 import { Box } from "@mui/system";
 
