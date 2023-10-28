@@ -5,7 +5,7 @@ const theme = createTheme({
     palette: {
         primary: {
             main: '#fb631c',
-        },
+        }, 
         secondary: {
             main: '#EDF7FF',
         },
@@ -13,14 +13,17 @@ const theme = createTheme({
             default: '#ffffff',
         },
         text: {
-            primary: '#000',
+            primaryy: '#000',
             primaryInvert: '#fff',
             secondary: '#333',
             secondaryInvert: '#bfbfbf',
+            dimSecondary:'#515151'
+
         },
     },
     typography: {
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: ['Inter', 'Roboto', 'sans-serif'].join(','),
+        
         h1: {
             fontSize: '40px',
             fontWeight: 700,

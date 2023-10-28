@@ -2,18 +2,18 @@ import React from "react";
 import { Grid } from "@mui/material";
 
 import Sliders from "@/src/component/Slider/slider";
-import ProfileAgent from "@/src/component/Profile/profile";
-import PropertyLocation from "@/src/component/PropertyDetails/propertyDetails";
-import PropertyDescription from "@/src/component/PropertyDescription/propertyDescription";
-
+import ProfileAgent from "@/src/component/Profile/ProfileAgent";
+import PropertyOverview from "@/src/component/PropertyOverview/PropertyOverview";
+import PropertyDetails from "@/src/component/PropertyDescription/PropertyDetail";
+import { propertyData } from "@/src/component/propertyConstants";
 const propertyDeal = () => {
   return (
     <>
       <Grid container sx={{ paddingTop: "20px", display: "flex", justifyContent: "center" }}>
         <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "50px" }}>
           <Sliders />
-          <PropertyLocation />
-          <PropertyDescription />
+          <PropertyOverview />
+          <PropertyDetails propertyData={propertyData}/>
         </Grid>
         <Grid item xs={12} md={4}>
           <ProfileAgent />

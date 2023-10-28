@@ -8,8 +8,7 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
-import { propertyData } from '../propertyconstants';
-
+import { propertyData } from '../propertyConstants';
 export default function Sliders() {
   return (
     <>

@@ -13,15 +13,15 @@ export const propertyData = {
     price: "1.5 Crore",
     avartar: "assets/images/avatar.svg",
     name: "Arman Khan",
-    description: "t was popularised in the 1960s with the release of Letraset sheets containing Lorem",
+    agentdescription: "It was popularised in the 1960s with the release of Letraset sheets containing Lorem",
     SliderImages: [{
-        images: "/assets/images/silder2.jpg"
+        images: "/assets/images/appartments.jpg"
     },
     {
-        images: "/assets/images/silder3.jpg"
+        images: "/assets/images/houses.jpg"
     },
     {
-        images: "/assets/images/silder4.jpg"
+        images: "/assets/images/commercial.jpg"
     }],
     PropertyDetails: {
         type: "Residential plot",
@@ -32,7 +32,7 @@ export const propertyData = {
         bath: "05",
         parking: "02"
     },
-    tableData: [
+    propertyAttributes: [
         { label: "Type" },
         { label: "Location" },
         { label: "Price" },

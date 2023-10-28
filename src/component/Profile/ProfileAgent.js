@@ -2,10 +2,10 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
-import ViewAgentProfile from './viewagentprofile';
+import Price from './PropertyPrice';
 import AgentDescription from './agentdescription';
-import Price from './price';
-import { propertyData } from '../propertyconstants';
+import ViewAgentProfile from './viewagentprofile';
+import { propertyData } from '../propertyConstants';
 
 const ProfileAgent = () => {
     return (
@@ -37,7 +37,7 @@ const ProfileAgent = () => {
                         avatar={propertyData.avartar}
                         name={propertyData.name}
                     />
-                    <AgentDescription description={propertyData.description} />
+                    <AgentDescription description={propertyData.agentdescription} />
                 </Box>
             </Grid>
         </Grid>

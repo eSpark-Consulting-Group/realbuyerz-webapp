@@ -11,10 +11,10 @@ import {
   Paper,
   TableContainer, useMediaQuery
 } from "@mui/material";
-
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
-import { propertyData } from '../propertyconstants';
+
+import { propertyData } from '../propertyConstants';
 
 const useStyles = makeStyles({
   root: {
@@ -27,8 +27,7 @@ const useStyles = makeStyles({
 
   }
 });
-const PropertyLocation = () => {
-
+const PropertyOverview = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -43,10 +42,9 @@ const PropertyLocation = () => {
           marginRight: { xs: "50px", md: "50px" },
         }}
       >
-        <Typography sx={{ fontFamily: "Inter", fontWeight: 600 }} variant='h3'>
+        <Typography sx={{  fontWeight: 600 }} variant='h3'>
           Overview
         </Typography>
-
         <TableContainer
           component={Paper}
           sx={{
@@ -57,9 +55,7 @@ const PropertyLocation = () => {
         >
           <Table sx={{
             borderRadius: "20px"
-
           }}>
-
             <TableHead
               className={classes.root}
             >
@@ -69,14 +65,13 @@ const PropertyLocation = () => {
 
                 }}
               >
-                {propertyData.tableData.map((item, index) => (
+                {propertyData.propertyAttributes.map((propertytype, index) => (
                   <TableCell key={index} sx={{ borderCollapse: "collapse", color: "white" }}>
-                    {item.label}
+                    {propertytype.label}
                   </TableCell>
                 ))}
               </TableRow>
             </TableHead>
-
             <TableBody >
               <TableRow >
                 {Object.keys(propertyData.PropertyDetails).map((key, index) => (
@@ -92,5 +87,5 @@ const PropertyLocation = () => {
     </>
   );
 };
-export default PropertyLocation;
+export default PropertyOverview;
 

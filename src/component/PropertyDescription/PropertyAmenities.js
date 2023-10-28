@@ -1,26 +1,25 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const Amenities = ({ amenity }) => {
+const PropertyAmenities = ({ amenities }) => {
     return (
         <div>
-            <Typography sx={{ fontFamily: 'Inter' }} variant="h6">
+            <Typography sx={{ fontSize:"18px" , fontWeight: 600,}} >
                 Amenities
             </Typography>
-            {amenity.map((amenity, index) => (
-                <Typography
+            {amenities.map((item, index) => (
+                <Typography 
                     sx={{
                         padding: '3px',
-                        fontFamily: 'Inter',
-                        fontSize: '18px',
+                        fontSize: '16px',
                         fontWeight: 500,
                     }}
                     key={index}
                 >
-                    {amenity}
+                    {item}
                 </Typography>
             ))}
         </div>
     );
 };
-export default Amenities;
+export default PropertyAmenities;
