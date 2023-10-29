@@ -88,7 +88,6 @@ function FeaturedProperties({ data }) {
                           textAlign: 'center',
                           color: 'white',
                           fontSize: 10,
-                          fontFamily: 'Inter, sans-serif',
                         }}>
                         {item.location}
                       </Typography>

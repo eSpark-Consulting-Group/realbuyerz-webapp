@@ -36,7 +36,6 @@ function PropertiesSlider({ data }) {
                       sx={{
                         color: '#FB631C',
                         fontWeight: '600',
-                        fontFamily: 'Inter',
                         fontSize: '18px',
                         fontStyle: 'normal',
                       }}>
@@ -54,7 +53,6 @@ function PropertiesSlider({ data }) {
                           sx={{
                             color: '#909394',
                             fontWeight: '300',
-                            fontFamily: 'Inter',
                             fontSize: '15px',
                             fontStyle: 'normal',
                           }}>
@@ -85,7 +83,6 @@ function PropertiesSlider({ data }) {
                         sx={{
                           color: '#909394',
                           fontWeight: '600',
-                          fontFamily: 'Inter',
                           fontSize: '16px',
                           fontStyle: 'normal',
                         }}>
@@ -96,7 +93,6 @@ function PropertiesSlider({ data }) {
                         sx={{
                           color: '#FB631C',
                           fontWeight: '500',
-                          fontFamily: 'Inter',
                           marginLeft: 1,
                           fontSize: '14px',
                         }}>
@@ -160,7 +156,6 @@ function PropertiesSlider({ data }) {
                   color: '#909394',
                   fontSize: '14px',
                   fontWeight: '300',
-                  fontFamily: 'Inter',
                   padding: 1.8,
                 }}>
                 <Typography
@@ -168,7 +163,6 @@ function PropertiesSlider({ data }) {
                   align='center'
                   fontSize='0.875rem'
                   fontWeight='500'
-                  fontFamily='Inter'
                   fontStyle='normal'
                   color='#000000'>
                   See Details
