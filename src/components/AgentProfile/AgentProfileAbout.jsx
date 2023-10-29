@@ -1,18 +1,17 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import AgentTitle from "./AgentTitle";
 
-const AgentAbout = ({ about }) => {
+import AgentAboutTitle from "./AgentAboutTitle";
+
+const AgentAbout = ({ data }) => {
   return (
     <Box
       sx={{
         marginTop: "40px",
       }}
     >
-      <AgentTitle title={"About Arman Khan"} />
-      {about.map((items) => {
-        return (
+      <AgentAboutTitle title={data.contactInfo.agentName} />
           <Typography
           variant="body1"
             sx={{
@@ -23,10 +22,8 @@ const AgentAbout = ({ about }) => {
               lineHeight: "25px",
             }}
           >
-            {items.about}
+            {data.about.description}
           </Typography>
-        );
-      })}
     </Box>
   );
 };

@@ -1,26 +1,22 @@
 "use client";
+import React from "react";
+import { Box } from "@mui/system";
+
+import {agentProfileData} from "../constents/AgentProfile"
 import AgentAbout from "@/src/components/AgentProfile/AgentProfileAbout";
-import AgentProfileState from "@/src/components/AgentProfile/AgentProfileState";
 import AgentProfiles from "@/src/components/AgentProfile/AgentProfiles";
 import AgentSlider from "@/src/components/AgentProfile/SlickSlider";
-import React from "react";
-import {
-  RecentPropertie,
-  SliderCardData,
-  agentProfileDetails,
-  info,
-} from "../constents/AgentProfileConstant";
 import RecentPropertyTitle from "@/src/components/AgentProfile/RecentPropertyTitle";
-import { Box } from "@mui/system";
+import AgentProperties from "@/src/components/AgentProfile/AgentProperties";
 
 const AgentProfile = () => {
   return (
       <Box className="w-[70vw] mx-auto mt-4">
-        <AgentProfiles data={agentProfileDetails}/>
-        <AgentProfileState />
-        <AgentAbout about={info} />
-        <RecentPropertyTitle data={RecentPropertie} />
-        <AgentSlider data={SliderCardData} />
+        <AgentProfiles data={agentProfileData}/>
+        <AgentProperties data={agentProfileData} />
+        <AgentAbout data={agentProfileData} />
+        <RecentPropertyTitle data={agentProfileData} />
+        <AgentSlider data={agentProfileData} />
       </Box>
   );
 };
