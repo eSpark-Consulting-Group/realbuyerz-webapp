@@ -12,9 +12,10 @@ const AgentAbout = ({ data }) => {
       }}
     >
       <AgentTitle title={'About Arman Khan'} />
-      {data?.map((items) => {
+      {data?.map((items, index) => {
         return (
           <Typography
+            key={index}
             variant="body1"
             sx={{
               width: '100%',

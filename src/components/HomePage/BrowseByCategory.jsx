@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 
 import Heading from './Heading';
+import Image from 'next/image';
 
 function BrowseByCategory({ data }) {
   return (
@@ -35,7 +36,12 @@ function BrowseByCategory({ data }) {
                     alignItems: 'center',
                   }}
                 >
-                  <img src={category?.image} alt={category?.name} />
+                  <Image
+                    src={category?.image}
+                    alt={category?.name}
+                    height={30}
+                    width={30}
+                  />
                   <Typography variant="body1" sx={{ py: '8px' }}>
                     {category?.name}
                   </Typography>

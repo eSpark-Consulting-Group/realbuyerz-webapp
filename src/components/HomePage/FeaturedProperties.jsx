@@ -5,6 +5,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import Heading from './Heading';
+import Image from 'next/image';
 
 function FeaturedProperties({ data }) {
   return (
@@ -181,6 +182,7 @@ function FeaturedProperties({ data }) {
                   <Grid container>
                     {item?.amenities?.map((amenity, index) => (
                       <Grid
+                        key={index}
                         item
                         xs={4}
                         style={{
@@ -189,8 +191,10 @@ function FeaturedProperties({ data }) {
                           alignItems: 'center',
                         }}
                       >
-                        <img
-                          key={index}
+                        <Image
+                          alt=""
+                          width={20}
+                          height={20}
                           src={amenity}
                           alt={`Amenity ${index}`}
                         />
