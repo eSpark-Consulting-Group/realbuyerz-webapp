@@ -26,7 +26,7 @@ function BrowseByCategory({ data }) {
                 border: '2px solid #fb631c',
               }}
             >
-              <a href="#">
+              <a href="/">
                 <Box
                   sx={{
                     background: '#fff',

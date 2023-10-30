@@ -39,7 +39,7 @@ function CustomTabPanel({ value, index, propertyType }) {
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
-            {propertyTitle?.map(({ id, title }, index) => (
+            {propertyTitle?.map(({ id, title }) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight="300" fontSize="16px" textAlign="center">
                   <Link href={`/property/${id}`}>{title}</Link>

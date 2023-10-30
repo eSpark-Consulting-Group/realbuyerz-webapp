@@ -192,7 +192,6 @@ function FeaturedProperties({ data }) {
                         }}
                       >
                         <Image
-                          alt=""
                           width={20}
                           height={20}
                           src={amenity}

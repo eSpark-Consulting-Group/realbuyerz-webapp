@@ -17,7 +17,6 @@ function HeroSlider({
   effect,
   navigation,
   pagination,
-  autoplay,
   delay,
   SlidesData,
 }) {

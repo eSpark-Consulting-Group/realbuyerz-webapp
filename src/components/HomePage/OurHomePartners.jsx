@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
 import Image from 'next/image';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 function OurHomePartners({ data }) {
   const sliderSettings = {
@@ -57,7 +57,7 @@ function OurHomePartners({ data }) {
                   alignItems: 'center',
                 }}
               >
-                <a href="#">
+                <a href="/">
                   <Image
                     src={partner?.image}
                     alt={partner?.name}

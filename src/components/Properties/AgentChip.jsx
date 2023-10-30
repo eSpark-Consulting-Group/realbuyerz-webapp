@@ -26,7 +26,7 @@ function DeletableSquareChip({ label, onDelete }) {
 }
 
 function Chips({ data }) {
-  const [selectedChips, setSelectedChips] = useState([]);
+  // const [selectedChips, setSelectedChips] = useState([]);
 
   const handleDeleteChip = (chipToDelete) => () => {
     setSelectedChips((chips) => chips.filter((chip) => chip !== chipToDelete));
@@ -55,7 +55,7 @@ function Chips({ data }) {
         );
       })}
       <Button
-        href="#"
+        href="/"
         sx={{ color: '#126FAA', fontWeight: '500' }}
         onClick={handleClearAllChips}
       >

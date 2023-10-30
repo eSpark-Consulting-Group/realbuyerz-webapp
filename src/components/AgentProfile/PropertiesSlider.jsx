@@ -11,15 +11,11 @@ import { Box, Grid, SvgIcon } from '@mui/material';
 function PropertiesSlider({ data }) {
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   return (
     <>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
         return (
-          <Card sx={{ maxWidth: 315 }}>
+          <Card sx={{ maxWidth: 315 }} key={index}>
             <CardMedia
               component="img"
               height="194"
