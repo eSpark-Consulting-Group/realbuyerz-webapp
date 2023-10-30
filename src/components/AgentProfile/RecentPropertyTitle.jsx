@@ -9,9 +9,10 @@ const RecentPropertyTitle = ({ data }) => {
   return (
     <Typography
       variant={variant}
-      align='center'
+      align="center"
       fontWeight={600}
-      marginBottom='50px'>
+      marginBottom="50px"
+    >
       {data.title}
     </Typography>
   );

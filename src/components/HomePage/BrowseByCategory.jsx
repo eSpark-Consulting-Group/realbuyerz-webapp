@@ -23,8 +23,9 @@ function BrowseByCategory({ data }) {
                 mx: '15px',
                 my: '15px',
                 border: '2px solid #fb631c',
-              }}>
-              <a href='#'>
+              }}
+            >
+              <a href="#">
                 <Box
                   sx={{
                     background: '#fff',
@@ -32,9 +33,10 @@ function BrowseByCategory({ data }) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                  }}>
+                  }}
+                >
                   <img src={category?.image} alt={category?.name} />
-                  <Typography variant='body1' sx={{ py: '8px' }}>
+                  <Typography variant="body1" sx={{ py: '8px' }}>
                     {category?.name}
                   </Typography>
                 </Box>

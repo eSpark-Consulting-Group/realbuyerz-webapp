@@ -5,7 +5,7 @@ import PropertyTabs from '@/src/components/Properties/PropertyTabs';
 
 const Listing = () => {
   return (
-    <Box className='min-h-screen' sx={{ py: '80px' }}>
+    <Box className="min-h-screen" sx={{ py: '80px' }}>
       <PropertyTabs />
     </Box>
   );

@@ -28,19 +28,20 @@ function CustomTabPanel({ value, index, propertyType }) {
 
   return (
     <div
-      role='tabpanel'
+      role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}>
+      aria-labelledby={`simple-tab-${index}`}
+    >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography variant='h2' py={2}>
+          <Typography variant="h2" py={2}>
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
             {propertyTitle.map(({ id, title }, index) => (
               <Grid item key={id} {...itemsPerRow}>
-                <Typography fontWeight='300' fontSize='16px' textAlign='center'>
+                <Typography fontWeight="300" fontSize="16px" textAlign="center">
                   <Link href={`/property/${id}`}>{title}</Link>
                 </Typography>
               </Grid>
@@ -100,21 +101,23 @@ export default function PropertyTabs({ data }) {
         <AgentChip
           data={filteredProperties}
           chips={agenttab}
-          label='Agent'
-          variant='outlined'
-          color='primary'
+          label="Agent"
+          variant="outlined"
+          color="primary"
           sx={{ mb: 2 }}
         />
       )}
 
       <Box
-        sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
+        sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
+      >
         <Box sx={{ width: '100%' }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs
               value={value}
               onChange={handleChange}
-              aria-label='basic tabs example'>
+              aria-label="basic tabs example"
+            >
               {tabData.map((tab, index) => (
                 <Tab
                   key={index}
@@ -142,7 +145,8 @@ export default function PropertyTabs({ data }) {
           border: '1px solid #E4E4E4',
           my: '50px',
           padding: '56px 30px',
-        }}>
+        }}
+      >
         <PropertyListingCard data={filteredProperties} />
       </Box>
     </>

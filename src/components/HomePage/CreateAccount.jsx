@@ -25,8 +25,9 @@ function Typewriter({ text }) {
 
   return (
     <Typography
-      variant='h1'
-      sx={{ color: '#fff', mb: '30px', fontWeight: '600', fontSize: '40px' }}>
+      variant="h1"
+      sx={{ color: '#fff', mb: '30px', fontWeight: '600', fontSize: '40px' }}
+    >
       {displayedText}|
     </Typography>
   );
@@ -43,8 +44,9 @@ function CreateAccount() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-      }}>
-      <Typewriter text='Live Properties Buying & Selling' />
+      }}
+    >
+      <Typewriter text="Live Properties Buying & Selling" />
       <Button
         sx={{
           mx: '15px',
@@ -53,8 +55,9 @@ function CreateAccount() {
           height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
           color: '#fff',
         }}
-        variant='primary'
-        onClick={() => handleFilter('sale')}>
+        variant="primary"
+        onClick={() => handleFilter('sale')}
+      >
         <Typography sx={{ color: '#fff' }}>Create Account</Typography>
       </Button>
     </Box>

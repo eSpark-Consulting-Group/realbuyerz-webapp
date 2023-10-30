@@ -31,7 +31,8 @@ function HeroSlider({
         }}
         autoplay={{ delay: delay }}
         modules={[EffectFade, Autoplay, Navigation, Pagination]}
-        className='hero_slider'>
+        className="hero_slider"
+      >
         {SlidesData?.map((slide, index) => (
           <SwiperSlide key={index}>
             <img src={slide.image} />

@@ -12,7 +12,8 @@ const AgentProfiles = ({ data }) => {
               position: 'relative',
               background:
                 'linear-gradient(180deg, rgba(75, 183, 255, 0.16) 0%, rgba(75, 183, 255, 0.04) 54.17%)',
-            }}>
+            }}
+          >
             <Box
               sx={{
                 backgroundColor: 'white',
@@ -22,14 +23,16 @@ const AgentProfiles = ({ data }) => {
                 top: 0,
                 bottom: 0,
                 borderRadius: '0 110px 110px 0',
-              }}></Box>
+              }}
+            ></Box>
 
             <Box
               item
               sx={{
                 display: 'flex',
                 position: 'relative',
-              }}>
+              }}
+            >
               <Grid
                 sx={{
                   width: '180px',
@@ -38,10 +41,11 @@ const AgentProfiles = ({ data }) => {
                   display: 'flex',
                   alignItem: 'center',
                   justifyContent: 'center',
-                }}>
+                }}
+              >
                 <img
-                  src='/images/Ellipse.png'
-                  alt='Profile'
+                  src="/images/Ellipse.png"
+                  alt="Profile"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -53,55 +57,62 @@ const AgentProfiles = ({ data }) => {
                 sx={{
                   padding: 2,
                   width: '100%',
-                }}>
+                }}
+              >
                 <Grid
                   container
-                  justifyContent='space-between'
+                  justifyContent="space-between"
                   sx={{
                     height: 'auto',
                     width: '100%',
-                  }}>
+                  }}
+                >
                   <Grid item xs={4} sx={{ display: 'flex', width: 'auto' }}>
                     <Box
                       sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         marginLeft: '50px',
-                      }}>
+                      }}
+                    >
                       <Typography
-                        variant='h4'
+                        variant="h4"
                         sx={{
                           color: 'white',
                           fontWeight: 'bold',
                           color: '#1176AD',
                           mt: 2,
-                        }}>
+                        }}
+                      >
                         {item.title}
                       </Typography>
                       <Typography
-                        variant='body1'
+                        variant="body1"
                         sx={{
                           color: '#777777',
                           fontWeight: 'medium',
                           marginTop: 1,
-                        }}>
+                        }}
+                      >
                         {item.locationIcon}
                         {item.location}
                       </Typography>
                       <Typography
-                        variant='body1'
+                        variant="body1"
                         sx={{
                           color: '#777777',
                           fontWeight: 'medium',
                           mt: 1,
                           marginBottom: 0,
-                        }}>
+                        }}
+                      >
                         {item.salesIcon}
                         {item.numberOfSale}
                       </Typography>
                       <Typography
-                        variant='body1'
-                        sx={{ color: '#777777', fontWeight: 'medium', mt: 1 }}>
+                        variant="body1"
+                        sx={{ color: '#777777', fontWeight: 'medium', mt: 1 }}
+                      >
                         {item.rentIcon}
                         {item.numberOfRent}
                       </Typography>
@@ -117,7 +128,8 @@ const AgentProfiles = ({ data }) => {
                       display: 'flex',
                       alignItems: 'flex-end',
                       paddingRight: '10px',
-                    }}>
+                    }}
+                  >
                     <Paper
                       sx={{
                         background: 'white',
@@ -125,10 +137,12 @@ const AgentProfiles = ({ data }) => {
                         boxShadow: 2,
                         padding: 2,
                         marginLeft: 'auto',
-                      }}>
+                      }}
+                    >
                       <Typography
-                        variant='body2'
-                        sx={{ fontWeight: 'bold', color: '#126FAA' }}>
+                        variant="body2"
+                        sx={{ fontWeight: 'bold', color: '#126FAA' }}
+                      >
                         {item.buttonTitle}
                       </Typography>
                     </Paper>

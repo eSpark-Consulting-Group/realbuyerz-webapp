@@ -18,7 +18,7 @@ import {
 
 const AgentProfile = () => {
   return (
-    <Box className='w-[70vw] mx-auto mt-4'>
+    <Box className="mx-auto mt-4 w-[70vw]">
       <AgentProfiles data={AGENT_PROFILE_DETAILS} />
       <AgentProfileState data={PROPERTIES} />
       <AgentAbout data={INFO} />

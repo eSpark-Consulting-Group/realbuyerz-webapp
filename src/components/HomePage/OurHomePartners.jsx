@@ -55,8 +55,9 @@ function OurHomePartners({ data }) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                }}>
-                <a href='#'>
+                }}
+              >
+                <a href="#">
                   <Image
                     src={partner?.image}
                     alt={partner?.name}

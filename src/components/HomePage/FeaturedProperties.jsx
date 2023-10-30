@@ -16,12 +16,13 @@ function FeaturedProperties({ data }) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-      }}>
+      }}
+    >
       <Heading
         heading={'Featured Properties'}
         paragraph={'Find your dream projects from our latest projects'}
       />
-      <Box className='full-container-width mx-auto'>
+      <Box className="full-container-width mx-auto">
         <Grid container sx={{ display: 'flex', pt: '69px', pb: '48px' }}>
           {data?.map((item, index) => (
             <Grid
@@ -43,7 +44,8 @@ function FeaturedProperties({ data }) {
                   sm: '10px',
                   md: '10px',
                 },
-              }}>
+              }}
+            >
               <Box
                 sx={{
                   borderRadius: '5px',
@@ -54,21 +56,25 @@ function FeaturedProperties({ data }) {
                   backgroundSize: 'cover',
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
-                }}>
+                }}
+              >
                 <Box
                   sx={{
                     display: 'flex',
                     width: '100%',
-                  }}>
+                  }}
+                >
                   <Box
                     sx={{
                       width: '80%',
-                    }}></Box>
+                    }}
+                  ></Box>
                   <Box
                     sx={{
                       width: '20%',
                       position: 'relative',
-                    }}>
+                    }}
+                  >
                     <Box
                       sx={{
                         width: 70,
@@ -78,7 +84,8 @@ function FeaturedProperties({ data }) {
                         justifyContent: 'flex-end',
                         alignItems: 'flex-end',
                         backgroundImage: `url("/images/amenities/location.svg")`,
-                      }}>
+                      }}
+                    >
                       <Typography
                         sx={{
                           left: 12,
@@ -88,7 +95,8 @@ function FeaturedProperties({ data }) {
                           textAlign: 'center',
                           color: 'white',
                           fontSize: 10,
-                        }}>
+                        }}
+                      >
                         {item.location}
                       </Typography>
                     </Box>
@@ -101,14 +109,16 @@ function FeaturedProperties({ data }) {
                     mr: '15%',
                     mt: '50%',
                     borderLeft: '10px #1176ad solid',
-                  }}>
+                  }}
+                >
                   <Box
                     sx={{
                       justifyContent: 'flex-start',
                       alignItems: 'flex-start',
                       textAlign: 'left',
                       px: '5%',
-                    }}>
+                    }}
+                  >
                     <Typography
                       sx={{
                         color: '#fb631c',
@@ -116,7 +126,8 @@ function FeaturedProperties({ data }) {
                         fontWeight: '600',
                         fontSize: ' 18px',
                         pb: '15px',
-                      }}>
+                      }}
+                    >
                       {item.propertyName}
                     </Typography>
                     <Typography
@@ -126,39 +137,43 @@ function FeaturedProperties({ data }) {
                         fontWeight: '700',
                         fontSize: ' 15px',
                         pb: '15px',
-                      }}>
-                      <LocationOnIcon color='#1176ad' fontSize='12px' />{' '}
+                      }}
+                    >
+                      <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
                       {item.location}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: '5px' }}>
                       <Typography
-                        variant='body1'
+                        variant="body1"
                         sx={{
                           textAlign: 'left',
                           color: '#1176AD',
                           fontSize: '1rem',
                           fontWeight: '600',
-                        }}>
+                        }}
+                      >
                         {'Starting from: '}
                       </Typography>
                       <Typography
-                        variant='body2'
+                        variant="body2"
                         sx={{
                           textAlign: 'left',
                           color: '#fb631c',
                           fontSize: '0.875rem',
                           fontWeight: '500',
-                        }}>
+                        }}
+                      >
                         {item.currency}
                       </Typography>
                       <Typography
-                        variant='body1'
+                        variant="body1"
                         sx={{
                           textAlign: 'left',
                           color: '#fb631c',
                           fontSize: '1rem',
                           fontWeight: '600',
-                        }}>
+                        }}
+                      >
                         {item.price}
                       </Typography>
                     </Box>
@@ -172,7 +187,8 @@ function FeaturedProperties({ data }) {
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
-                        }}>
+                        }}
+                      >
                         <img
                           key={index}
                           src={amenity}

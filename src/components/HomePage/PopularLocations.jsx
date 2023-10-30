@@ -42,7 +42,8 @@ function PopularLocations({ data }) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-      }}>
+      }}
+    >
       <Container sx={{ px: '10%' }}>
         <Heading
           heading={'Popular Locations'}
@@ -61,9 +62,11 @@ function PopularLocations({ data }) {
                 color: filterType === 'sale' ? '#fff' : 'primary',
               }}
               variant={filterType === 'sale' ? 'primary' : 'outlined'}
-              onClick={() => handleFilter('sale')}>
+              onClick={() => handleFilter('sale')}
+            >
               <Typography
-                sx={{ color: filterType === 'sale' ? '#fff' : 'primary' }}>
+                sx={{ color: filterType === 'sale' ? '#fff' : 'primary' }}
+              >
                 For Sale
               </Typography>
             </Button>
@@ -77,9 +80,11 @@ function PopularLocations({ data }) {
                 color: filterType === 'rent' ? '#fff' : 'primary',
               }}
               variant={filterType === 'rent' ? 'primary' : 'outlined'}
-              onClick={() => handleFilter('rent')}>
+              onClick={() => handleFilter('rent')}
+            >
               <Typography
-                sx={{ color: filterType === 'rent' ? '#fff' : 'primary' }}>
+                sx={{ color: filterType === 'rent' ? '#fff' : 'primary' }}
+              >
                 {' '}
                 By Rent
               </Typography>
@@ -95,7 +100,8 @@ function PopularLocations({ data }) {
                     border: '1px solid #cbcbcb',
                     mx: '15px',
                     my: '15px',
-                  }}>
+                  }}
+                >
                   <Box
                     sx={{
                       py: '10px',
@@ -103,7 +109,8 @@ function PopularLocations({ data }) {
                       color: '#333',
                       fontWeight: '600',
                       fontSize: '16px',
-                    }}>
+                    }}
+                  >
                     {item?.title}
                   </Box>
                   <Box
@@ -114,11 +121,12 @@ function PopularLocations({ data }) {
                       textAlign: 'left',
                       fontWeight: '500',
                       fontSize: '14px',
-                    }}>
+                    }}
+                  >
                     {item?.locations.map((location) => (
                       <>
-                        <Link href='#'>
-                          <Typography variant='body1' sx={{}}>
+                        <Link href="#">
+                          <Typography variant="body1" sx={{}}>
                             {location}
                           </Typography>
                         </Link>
@@ -137,9 +145,10 @@ function PopularLocations({ data }) {
             display: 'flex',
             justifyContent: 'center',
             textAlign: 'center',
-          }}>
-          <a href='#' onClick={scrollToTop}>
-            <Image src='/images/bgs/GototheTop.svg' width={80} height={80} />
+          }}
+        >
+          <a href="#" onClick={scrollToTop}>
+            <Image src="/images/bgs/GototheTop.svg" width={80} height={80} />
           </a>
         </Box>
       </Container>

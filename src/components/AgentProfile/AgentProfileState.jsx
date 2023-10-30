@@ -14,7 +14,8 @@ const AgentProfileState = ({ data }) => {
         [theme.breakpoints.up('lg')]: {
           width: '450px',
         },
-      }}>
+      }}
+    >
       <Box sx={{ pt: 8 }}>
         <AgentTitle title={'Properties By Arman Khan'} />
 

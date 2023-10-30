@@ -9,10 +9,10 @@ function DeletableSquareChip({ label, onDelete }) {
   return (
     <Chip
       label={label}
-      variant='outlined'
-      color='primary'
+      variant="outlined"
+      color="primary"
       onDelete={onDelete}
-      deleteIcon={<ClearIcon color='icon' />}
+      deleteIcon={<ClearIcon color="icon" />}
       sx={{
         fontSize: '18px',
         borderRadius: '4px',
@@ -55,9 +55,10 @@ function Chips({ data }) {
         );
       })}
       <Button
-        href='#'
+        href="#"
         sx={{ color: '#126FAA', fontWeight: '500' }}
-        onClick={handleClearAllChips}>
+        onClick={handleClearAllChips}
+      >
         <Typography>Clear</Typography>
       </Button>
     </Box>

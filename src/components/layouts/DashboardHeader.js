@@ -8,4 +8,4 @@ function DashboardHeader() {
   );
 }
 
-export default DashboardHeader
+export default DashboardHeader;

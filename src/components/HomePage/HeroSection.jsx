@@ -27,7 +27,8 @@ const HeroSection = () => {
             lg: '600px',
             xl: '678px',
           },
-        }}>
+        }}
+      >
         <Box
           sx={{
             position: 'absolute',
@@ -49,7 +50,8 @@ const HeroSection = () => {
             top: { xs: 80, sm: 110, md: 150, lg: 190, xl: 200 },
           }}
           src={logo}
-          component={'img'}></Box>
+          component={'img'}
+        ></Box>
         <Typography
           sx={{
             zIndex: 2,
@@ -73,10 +75,11 @@ const HeroSection = () => {
             '-webkit-text-stroke-color': 'white',
             fontWeight: { xs: 900 },
           }}
-          variant='h2'
+          variant="h2"
           component={'h2'}
           color={'primary'}
-          data-aos='fade-right'>
+          data-aos="fade-right"
+        >
           {heading}
         </Typography>
         <Box
@@ -94,7 +97,8 @@ const HeroSection = () => {
             position: 'absolute',
             gap: 2,
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
-          }}>
+          }}
+        >
           <Button
             sx={{
               width: {
@@ -110,7 +114,8 @@ const HeroSection = () => {
               height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
               textAlign: 'start',
             }}
-            variant='primary'>
+            variant="primary"
+          >
             <Typography sx={{ color: '#fff' }}> Buyer</Typography>
           </Button>
           <Button
@@ -127,7 +132,8 @@ const HeroSection = () => {
               lineHeight: 'normal',
               height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
             }}
-            variant='primary'>
+            variant="primary"
+          >
             <Typography sx={{ color: '#fff' }}>Seller</Typography>
           </Button>
         </Box>

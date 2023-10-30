@@ -19,7 +19,7 @@ import { FOOTER_CTA_DATA } from './constants/Constants';
 
 function Home() {
   return (
-    <div className='min-h-screen'>
+    <div className="min-h-screen">
       <HeroSection />
       <BrowseByCategory data={CATEGORIES} />
       <FeaturedProperties data={FEATURED_PROPERTIES} />

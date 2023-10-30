@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 
 import { PAGES } from '@/app/constants/Constants';
+import Image from 'next/image';
 
 const settings = ['Login', 'Sign up'];
 
@@ -28,9 +29,6 @@ function MainHeader() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleNavMenu = (path) => {
-    // nevigate...
-  };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -41,26 +39,28 @@ function MainHeader() {
 
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
-      <Container maxWidth='xxl' sx={{ backgroundColor: 'white', p: 1 }}>
+      <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
         <Toolbar disableGutters>
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: 'flex' },
               alignItems: 'center',
-            }}>
+            }}
+          >
             <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
               // color="inherit"
               sx={{
                 display: { xs: 'block', md: 'none' },
                 p: 0,
                 color: '#000',
-              }}>
+              }}
+            >
               <MenuIcon />
             </IconButton>
             <Box
@@ -68,20 +68,27 @@ function MainHeader() {
                 display: { xs: 'flex' },
                 mx: { xs: 'auto', md: 0 },
                 alignItems: 'center',
-              }}>
+              }}
+            >
               <Typography
-                variant='h6'
+                variant="h6"
                 noWrap
-                component='a'
-                href='/'
+                component="a"
+                href="/"
                 sx={{
                   display: { xs: 'flex' },
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   // color: "inherit",
                   textDecoration: 'none',
-                }}>
-                <img src='/images/RealBuyers-Logo.svg' alt='' />
+                }}
+              >
+                <Image
+                  src="/images/RealBuyers-Logo.svg"
+                  alt=""
+                  height={37}
+                  width={155}
+                />
               </Typography>
             </Box>
             <Box
@@ -90,12 +97,13 @@ function MainHeader() {
                 justifyContent: 'center',
                 gap: 4,
                 display: { xs: 'none', sm: 'none', md: 'flex' },
-              }}>
+              }}
+            >
               {PAGES?.map((page, i) => (
                 <Typography
                   key={i}
                   href={page?.path}
-                  variant='a'
+                  variant="a"
                   component={'a'}
                   // color={"primary"}
                   sx={{
@@ -105,13 +113,14 @@ function MainHeader() {
                     fontStyle: 'normal',
                     fontWeight: 600,
                     lineHeight: 'normal',
-                  }}>
+                  }}
+                >
                   {page?.menu}
                 </Typography>
               ))}
             </Box>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -127,7 +136,8 @@ function MainHeader() {
               sx={{
                 display: { sm: 'block', md: 'block' },
                 color: '#000',
-              }}>
+              }}
+            >
               {PAGES?.map((item, i) => (
                 <MenuItem key={i} onClick={handleCloseNavMenu}>
                   <Link
@@ -145,9 +155,9 @@ function MainHeader() {
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='Open settings'>
+            <Tooltip title="Open settings">
               <Button
-                variant='primary'
+                variant="primary"
                 sx={{
                   width: '120px',
                   height: '40px',
@@ -158,13 +168,14 @@ function MainHeader() {
                     xl: 'block',
                   },
                 }}
-                onClick={handleOpenUserMenu}>
+                onClick={handleOpenUserMenu}
+              >
                 <Typography sx={{ color: '#fff' }}>Sign in</Typography>
               </Button>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
@@ -176,10 +187,11 @@ function MainHeader() {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
+              onClose={handleCloseUserMenu}
+            >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign='center'>{setting}</Typography>
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -190,4 +202,4 @@ function MainHeader() {
   );
 }
 
-export default MainHeader
+export default MainHeader;

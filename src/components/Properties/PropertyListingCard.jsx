@@ -42,7 +42,7 @@ function PropertyListingCard({ data }) {
         <Grid
           key={index}
           container
-          justifyContent='center'
+          justifyContent="center"
           sx={{
             my: '30px',
             display: 'flex',
@@ -53,7 +53,8 @@ function PropertyListingCard({ data }) {
             '@media (max-width: 768px)': {
               flexDirection: 'column',
             },
-          }}>
+          }}
+        >
           <Grid item xs={12} md={4}>
             <Box
               sx={{
@@ -62,11 +63,12 @@ function PropertyListingCard({ data }) {
                 height: '85%',
                 width: '90%',
                 position: 'relative',
-              }}>
+              }}
+            >
               <Image
                 src={property.imageUrl}
-                layout='fill'
-                objectFit='cover'
+                layout="fill"
+                objectFit="cover"
                 style={styles.image}
                 sx={{
                   borderRadius: '5px ',
@@ -85,44 +87,52 @@ function PropertyListingCard({ data }) {
               justifyContent: 'center',
               pr: '76px',
               pl: '20px',
-            }}>
+            }}
+          >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <Typography
                 // variant="secondary"
-                sx={{ fontSize: '20px', fontWeight: '500' }}>
+                sx={{ fontSize: '20px', fontWeight: '500' }}
+              >
                 PKR
               </Typography>
               <Typography
                 // variant="h3"
-                sx={{ fontSize: '25px', fontWeight: '600' }}>
+                sx={{ fontSize: '25px', fontWeight: '600' }}
+              >
                 {property.price}
               </Typography>
             </Box>
             <Typography
               // variant="secondary"
-              sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}>
+              sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
+            >
               {property.location}
             </Typography>
             <Typography
               // variant="secondary"
-              sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}>
+              sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
+            >
               {property.area} sqft
             </Typography>
             <Typography
               // variant="h3"
-              sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}>
+              sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
+            >
               {property.direction}
             </Typography>
             <Typography
               // variant="secondary"
-              sx={{ fontSize: '16px', fontWeight: '400' }}>
+              sx={{ fontSize: '16px', fontWeight: '400' }}
+            >
               {property.description}
             </Typography>
 
-            <div className='posted-1-day-ago'>
+            <div className="posted-1-day-ago">
               <Typography
                 // variant="body2"
-                sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}>
+                sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
+              >
                 Posted {property.postedDate}
               </Typography>
             </div>
@@ -131,18 +141,19 @@ function PropertyListingCard({ data }) {
               spacing={2}
               style={styles.section}
               gap={'20px'}
-              sx={{ display: 'flex' }}>
-              <Box className='view-more'>
+              sx={{ display: 'flex' }}
+            >
+              <Box className="view-more">
                 <Link href={`/property/${property.id}`}>
-                  <Button variant='primary'>
-                    <Typography variant='secondary'>View More</Typography>
+                  <Button variant="primary">
+                    <Typography variant="secondary">View More</Typography>
                   </Button>
                 </Link>
               </Box>
-              <Box className='agent-profile'>
+              <Box className="agent-profile">
                 <Link href={`/property/${property.agentName}`}>
-                  <Button variant='primary'>
-                    <Typography variant='secondary'>Agent Profile</Typography>
+                  <Button variant="primary">
+                    <Typography variant="secondary">Agent Profile</Typography>
                   </Button>
                 </Link>
               </Box>
@@ -155,13 +166,13 @@ function PropertyListingCard({ data }) {
           count={Math.ceil(data.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
-          variant='outlined'
-          shape='rounded'
+          variant="outlined"
+          shape="rounded"
           siblingCount={1}
           boundaryCount={1}
           // showFirstButton
           // showLastButton
-          color='primary'
+          color="primary"
         />
       </Box>
     </>

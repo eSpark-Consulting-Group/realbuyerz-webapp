@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "npx prettier --check '**/*.{js,jsx}' --ignore-path .gitignore",
+    "format:fix": "npx prettier --write '**/*.{js,jsx}' --ignore-path .gitignore",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": "eslint --cache --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -30,8 +41,22 @@
     "swiper": "^10.3.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.22.15",
     "autoprefixer": "^10.4.16",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.52.0",
+    "eslint-config-next": "^14.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
     "tailwindcss": "^3.3.3"
   }
 }

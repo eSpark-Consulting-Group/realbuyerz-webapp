@@ -17,7 +17,8 @@ function NewlyListedProperties({ data }) {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-          }}>
+          }}
+        >
           <Heading
             heading={'Newly Listed  Properties'}
             paragraph={'Find your dream property from our latest properties '}
