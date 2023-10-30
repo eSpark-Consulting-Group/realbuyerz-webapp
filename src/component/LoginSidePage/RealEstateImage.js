@@ -2,9 +2,8 @@ import React from "react";
 import { Box } from "@mui/system";
 import Image from "next/image";
 
-const LoginImage = () => {
+const RealEstate = () => {
     return (
-
         < Box >
             <Image
                 src={"assets/images/boximage.svg"}
@@ -14,4 +13,4 @@ const LoginImage = () => {
         </Box>
     )
 }
-export default LoginImage;
+export default RealEstate;

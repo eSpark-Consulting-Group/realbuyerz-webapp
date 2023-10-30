@@ -2,7 +2,7 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
-import LoginCard from './logincard';
+import LoginCard from './LoginCard';
 
 const LoginBox = () => {
     return (

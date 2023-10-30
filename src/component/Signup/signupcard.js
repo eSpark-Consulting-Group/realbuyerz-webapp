@@ -5,9 +5,7 @@ import {
     Box,
     TextField,
     Button,
-    InputLabel,
-    Select,
-    MenuItem,
+    MenuItem
 } from '@mui/material';
 import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
@@ -21,7 +19,6 @@ const SignupCard = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState(true)
     const [confirmPassword, setConfirmPassword] = useState(true)
-
     const handlePasswordToggle = () => {
         setShowPassword(!showPassword);
     };
@@ -144,9 +141,7 @@ const SignupCard = () => {
                                             </IconButton>
                                         </InputAdornment>
                                     ),
-
                                 }}
-
                                 onChange={handlePassword}
                             />
                             <TextField
@@ -167,7 +162,6 @@ const SignupCard = () => {
                                         </InputAdornment>
                                     ),
                                 }}
-
                                 onChange={handleConfirmPassword}
                             />
                             {/* {isPasswordMatch ? (
