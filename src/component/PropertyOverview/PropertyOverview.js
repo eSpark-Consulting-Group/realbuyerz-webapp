@@ -15,7 +15,7 @@ import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
 
 import { propertyData } from '../propertyConstants';
-
+import { propertyEstate } from '../propertyConstants';
 const useStyles = makeStyles({
   root: {
     color: "white",
@@ -24,7 +24,6 @@ const useStyles = makeStyles({
     borderColor: "green",
     marginBottom: "10px",
     padding: '0 30px',
-
   }
 });
 const PropertyOverview = () => {
@@ -65,7 +64,7 @@ const PropertyOverview = () => {
 
                 }}
               >
-                {propertyData.propertyAttributes.map((propertytype, index) => (
+                {propertyEstate.propertyAttributes.map((propertytype, index) => (
                   <TableCell key={index} sx={{ borderCollapse: "collapse", color: "white" }}>
                     {propertytype.label}
                   </TableCell>

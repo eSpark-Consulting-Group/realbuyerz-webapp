@@ -19,7 +19,6 @@ const PropertyDetails = ({propertyData}) => {
           <PropertyMapLocation locationpurpose={propertyData.location.purpose}
             propertyType={propertyData.location.propertyType}
             city={propertyData.location.city} />
-
           <Box>
             <PropertyAmenities amenities={propertyData.amenities} />
           </Box>
@@ -32,7 +31,6 @@ const PropertyDetails = ({propertyData}) => {
         </Box>
       </Grid>
     </Grid>
-
   );
 }
 export default PropertyDetails;

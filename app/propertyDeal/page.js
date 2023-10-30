@@ -6,6 +6,7 @@ import ProfileAgent from "@/src/component/Profile/ProfileAgent";
 import PropertyOverview from "@/src/component/PropertyOverview/PropertyOverview";
 import PropertyDetails from "@/src/component/PropertyDescription/PropertyDetail";
 import { propertyData } from "@/src/component/propertyConstants";
+
 const propertyDeal = () => {
   return (
     <>
