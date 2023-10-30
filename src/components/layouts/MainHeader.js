@@ -54,7 +54,6 @@ function MainHeader() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              // color="inherit"
               sx={{
                 display: { xs: 'block', md: 'none' },
                 p: 0,
@@ -79,7 +78,6 @@ function MainHeader() {
                   display: { xs: 'flex' },
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  // color: "inherit",
                   textDecoration: 'none',
                 }}
               >
@@ -105,7 +103,6 @@ function MainHeader() {
                   href={page?.path}
                   variant="a"
                   component={'a'}
-                  // color={"primary"}
                   sx={{
                     color: '#000',
                     fontFamily: 'Roboto',
@@ -146,7 +143,6 @@ function MainHeader() {
                       textDecoration: 'none',
                     }}
                     href={item?.path}
-                  // sx={{ textDecoration: "none" }}
                   >
                     {item?.menu}
                   </Link>
