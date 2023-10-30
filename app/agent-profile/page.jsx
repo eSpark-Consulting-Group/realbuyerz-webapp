@@ -14,7 +14,7 @@ import {
   AGENT_PROFILE_DETAILS,
   INFO,
   PROPERTIES,
-} from '../constants/AgentProfileConstant';
+} from '../constants/AgentProfile';
 
 const AgentProfile = () => {
   return (

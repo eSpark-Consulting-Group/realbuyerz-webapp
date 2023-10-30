@@ -13,8 +13,8 @@ import {
   FEATURED_PROPERTIES,
   PARTNERS,
   POPULAR_LOCATIONS_DATA,
-} from './constants/HomeConstants';
-import { SLIDER_CARD_DATA } from './constants/AgentProfileConstant';
+} from './constants/Home';
+import { SLIDER_CARD_DATA } from './constants/AgentProfile';
 import { FOOTER_CTA_DATA } from './constants/Constants';
 
 function Home() {

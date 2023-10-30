@@ -38,7 +38,7 @@ function PropertyListingCard({ data }) {
   };
   return (
     <>
-      {currentItems.map((property, index) => (
+      {currentItems?.map((property, index) => (
         <Grid
           key={index}
           container

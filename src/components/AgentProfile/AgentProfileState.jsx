@@ -19,7 +19,7 @@ const AgentProfileState = ({ data }) => {
       <Box sx={{ pt: 8 }}>
         <AgentTitle title={'Properties By Arman Khan'} />
 
-        {data.map((items, index) => (
+        {data?.map((items, index) => (
           <Box key={index} sx={{ pt: 2 }}>
             <PropertyHeader title={items.title} view={items.view} />
             <PropertyCardBody items={items} />

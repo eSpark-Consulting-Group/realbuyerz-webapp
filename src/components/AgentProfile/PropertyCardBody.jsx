@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from '@mui/material';
 const PropertyCardBody = ({ items }) => {
   return (
     <Grid container spacing={1} pb={4}>
-      {['1', '2', '3'].map((number) => (
+      {['1', '2', '3']?.map((number) => (
         <Grid item xs={12} sm={12} md={6} lg={4} key={number}>
           <Box
             sx={{

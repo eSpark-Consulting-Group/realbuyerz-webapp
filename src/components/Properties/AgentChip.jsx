@@ -38,13 +38,13 @@ function Chips({ data }) {
 
   const uniqueAgentPropertyTypes = [
     ...new Set(
-      data.map((property) => `${property.agentName}-${property.propertytype}`)
+      data?.map((property) => `${property.agentName}-${property.propertytype}`)
     ),
   ];
 
   return (
     <Box sx={{ display: 'contents' }}>
-      {uniqueAgentPropertyTypes.map((label, index) => {
+      {uniqueAgentPropertyTypes?.map((label, index) => {
         const [agentName, propertyType] = label.split('-');
         return (
           <DeletableSquareChip

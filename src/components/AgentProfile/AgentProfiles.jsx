@@ -4,7 +4,7 @@ import { Box, Grid, Typography, Paper } from '@mui/material';
 const AgentProfiles = ({ data }) => {
   return (
     <>
-      {data.map((item) => {
+      {data?.map((item) => {
         return (
           <Box
             sx={{

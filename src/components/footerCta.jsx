@@ -45,7 +45,7 @@ function FooterCta({ data }) {
             {data?.description}
           </Typography>
           <Grid container sx={{ display: 'flex', gap: '30px' }}>
-            {data?.features.map((feature, index) => (
+            {data?.features?.map((feature, index) => (
               <Grid
                 key={index}
                 item
@@ -70,7 +70,7 @@ function FooterCta({ data }) {
             ))}
           </Grid>
           <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
-            {data.appIcons.map((appicon, index) => (
+            {data.appIcons?.map((appicon, index) => (
               <Link
                 href={appicon.link}
                 key={index}
@@ -123,7 +123,7 @@ function FooterCta({ data }) {
             },
           }}
         >
-          {data.paymentMethods.map((method, index) => (
+          {data.paymentMethods?.map((method, index) => (
             <Box key={index}>
               <img src={method.icon} alt={method.alt} />
             </Box>

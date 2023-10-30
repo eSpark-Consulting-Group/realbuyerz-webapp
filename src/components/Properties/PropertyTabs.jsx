@@ -9,7 +9,7 @@ import { Grid } from '@mui/material';
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
-import { PROPERTIES_LISTING } from '@/app/constants/PropertiesConstant';
+import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
 function CustomTabPanel({ value, index, propertyType }) {
   const filteredProperties =
@@ -19,7 +19,7 @@ function CustomTabPanel({ value, index, propertyType }) {
           (property) => property.propertytype === propertyType
         );
 
-  const propertyTitle = filteredProperties.map((property) => ({
+  const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
     title: property.title,
   }));
@@ -39,7 +39,7 @@ function CustomTabPanel({ value, index, propertyType }) {
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
-            {propertyTitle.map(({ id, title }, index) => (
+            {propertyTitle?.map(({ id, title }, index) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight="300" fontSize="16px" textAlign="center">
                   <Link href={`/property/${id}`}>{title}</Link>
@@ -69,11 +69,11 @@ export default function PropertyTabs({ data }) {
   }, []);
 
   const propertyTypes = [
-    ...new Set(PROPERTIES_LISTING.map((property) => property.propertytype)),
+    ...new Set(PROPERTIES_LISTING?.map((property) => property.propertytype)),
   ];
   const tabData = [
     { label: 'All', propertyType: 'All' }, // Add the "All" tab
-    ...propertyTypes.map((propertyType) => ({
+    ...propertyTypes?.map((propertyType) => ({
       label: propertyType,
       propertyType: propertyType,
     })),
@@ -118,7 +118,7 @@ export default function PropertyTabs({ data }) {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              {tabData.map((tab, index) => (
+              {tabData?.map((tab, index) => (
                 <Tab
                   key={index}
                   label={tab.label}
@@ -128,7 +128,7 @@ export default function PropertyTabs({ data }) {
               ))}
             </Tabs>
           </Box>
-          {tabData.map((tab, index) => (
+          {tabData?.map((tab, index) => (
             <CustomTabPanel
               key={index}
               value={value}

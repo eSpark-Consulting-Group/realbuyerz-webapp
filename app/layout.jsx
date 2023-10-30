@@ -9,9 +9,9 @@ import theme from './theme';
 
 import './globals.css';
 
-import Footer from '@/src/components/layouts/Footer';
 import MainHeader from '@/src/components/layouts/MainHeader';
 
+import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from './constants/Constants';
 
 function RootLayout({ children }) {

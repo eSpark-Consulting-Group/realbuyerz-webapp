@@ -17,7 +17,7 @@ function PropertiesSlider({ data }) {
 
   return (
     <>
-      {data.map((item) => {
+      {data?.map((item) => {
         return (
           <Card sx={{ maxWidth: 315 }}>
             <CardMedia

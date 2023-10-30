@@ -91,7 +91,7 @@ function PopularLocations({ data }) {
             </Button>
           </Box>
           <Grid container sx={{ display: 'flex' }}>
-            {filteredData.map((item, index) => (
+            {filteredData?.map((item, index) => (
               <Grid item xs={4} key={index}>
                 <Box
                   sx={{
@@ -123,7 +123,7 @@ function PopularLocations({ data }) {
                       fontSize: '14px',
                     }}
                   >
-                    {item?.locations.map((location) => (
+                    {item?.locations?.map((location) => (
                       <>
                         <Link href="#">
                           <Typography variant="body1" sx={{}}>

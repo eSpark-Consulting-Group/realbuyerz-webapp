@@ -46,7 +46,7 @@ function OurHomePartners({ data }) {
       <Heading heading={'Our Home Partners'} />
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
-          {data.map((partner) => (
+          {data?.map((partner) => (
             <Box key={partner?.id} sx={{ padding: '10px' }}>
               <Box
                 sx={{
