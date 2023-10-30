@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Box, Grid, SvgIcon } from '@mui/material';
 
 function PropertiesSlider({ data }) {
-  const [expanded, setExpanded] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(false);
 
   return (
     <>

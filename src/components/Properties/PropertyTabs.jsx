@@ -15,9 +15,7 @@ function CustomTabPanel({ value, index, propertyType }) {
   const filteredProperties =
     value === 0
       ? PROPERTIES_LISTING
-      : PROPERTIES_LISTING.filter(
-          (property) => property.propertytype === propertyType
-        );
+      : PROPERTIES_LISTING.filter((property) => property.propertytype === propertyType);
 
   const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
@@ -60,7 +58,7 @@ function a11yProps(index) {
   };
 }
 
-export default function PropertyTabs({ data }) {
+export default function PropertyTabs({ }) {
   const [value, setValue] = useState(0);
   const [propertyType, setPropertyType] = useState(''); // Add this line to store the selected property type
 
@@ -68,12 +66,19 @@ export default function PropertyTabs({ data }) {
     setValue(0);
   }, []);
 
-  const propertyTypes = [
-    ...new Set(PROPERTIES_LISTING?.map((property) => property.propertytype)),
-  ];
+  const uniquePropertyTypes = [];
+  const seenPropertyTypes = {};
+
+  PROPERTIES_LISTING?.forEach((property) => {
+    if (!seenPropertyTypes[property.propertytype]) {
+      uniquePropertyTypes.push(property.propertytype);
+      seenPropertyTypes[property.propertytype] = true;
+    }
+  });
+
   const tabData = [
-    { label: 'All', propertyType: 'All' }, // Add the "All" tab
-    ...propertyTypes?.map((propertyType) => ({
+    { label: 'All', propertyType: 'All' },
+    ...uniquePropertyTypes.map((propertyType) => ({
       label: propertyType,
       propertyType: propertyType,
     })),
@@ -91,8 +96,8 @@ export default function PropertyTabs({ data }) {
     propertyType === ''
       ? PROPERTIES_LISTING
       : PROPERTIES_LISTING.filter(
-          (property) => property.propertytype === propertyType
-        );
+        (property) => property.propertytype === propertyType
+      );
   const isAgent = 'true';
   const agenttab = value;
   return (
