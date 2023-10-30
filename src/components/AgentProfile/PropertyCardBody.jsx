@@ -18,7 +18,6 @@ const PropertyCardBody = ({ items }) => {
               alignItems: 'center',
               justifyContent: 'center',
               boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-              borderColor: '#E5E7EB',
               borderWidth: 1,
             }}
           >

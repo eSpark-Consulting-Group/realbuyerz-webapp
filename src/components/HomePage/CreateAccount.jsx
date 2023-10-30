@@ -56,7 +56,6 @@ function CreateAccount() {
           color: '#fff',
         }}
         variant="primary"
-        onClick={() => handleFilter('sale')}
       >
         <Typography sx={{ color: '#fff' }}>Create Account</Typography>
       </Button>

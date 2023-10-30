@@ -61,9 +61,9 @@ function AgentPropertiesSlider({ data }) {
   return (
     <>
       <Slider {...settings}>
-        {data?.map((item) => {
+        {data?.map((item, index) => {
           return (
-            <Card sx={{ maxWidth: 315 }}>
+            <Card key={index} sx={{ maxWidth: 315 }}>
               <CardMedia
                 component="img"
                 height="194"

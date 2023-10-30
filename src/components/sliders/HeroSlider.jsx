@@ -10,13 +10,13 @@ import '../../../app/globals.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
 
 function HeroSlider({
   spaceBetween,
   effect,
   navigation,
   pagination,
-  autoplay,
   delay,
   SlidesData,
 }) {
@@ -35,7 +35,7 @@ function HeroSlider({
       >
         {SlidesData?.map((slide, index) => (
           <SwiperSlide key={index}>
-            <img src={slide.image} />
+            <Image layout="fill" objectFit="cover" src={slide.image} alt="" />
           </SwiperSlide>
         ))}
       </Swiper>

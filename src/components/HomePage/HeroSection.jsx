@@ -71,8 +71,8 @@ const HeroSection = () => {
               lg: '30px',
               xl: '36px',
             },
-            '-webkit-text-stroke-width': '1px',
-            '-webkit-text-stroke-color': 'white',
+            WebkitTextStrokeWidth: '1px',
+            WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
           }}
           variant="h2"
