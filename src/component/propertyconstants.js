@@ -24,16 +24,6 @@ export const propertyData = {
         bath: "05",
         parking: "02"
     },
-    propertyAttributes: [
-        { label: "Type" },
-        { label: "Location" },
-        { label: "Price" },
-        { label: "Purpose" },
-        { label: "Bedroom" },
-        { label: "Bath" },
-        { label: "Parking" },
-    ]
-
 };
 
 export const propertyEstate={
