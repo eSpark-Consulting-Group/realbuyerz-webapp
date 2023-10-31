@@ -54,7 +54,7 @@ function FooterCta({ data }) {
                 md={2.5}
                 sx={{ display: 'flex', gap: '10px', py: '15px' }}
               >
-                <Image src={feature.icon} height={30} width={30} />
+                <Image src={feature.icon} height={30} width={30} alt="" />
                 <Box>
                   <Typography
                     sx={{
@@ -128,9 +128,12 @@ function FooterCta({ data }) {
           {data?.paymentMethods?.map((method, index) => (
             <Box key={index}>
               <Image src={method.icon} alt={method.alt} width={35} height={7} />
-            </Grid>
+            </Box>
+          ))}
+        </Grid>
+      </Grid>
     </Box>
-        );
+  );
 }
 
-        export default FooterCta;
+export default FooterCta;
