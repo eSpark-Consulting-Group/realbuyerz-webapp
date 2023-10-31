@@ -24,12 +24,11 @@ const ViewAgentProfile = ({ avatar, name }) => {
             >
                 <Avatar src={avatar} sx={{ width: 100, height: 100 }} />
                 <Typography
+                variant='secondary'
                     sx={{
                         ml: 2,
                         fontSize: 25,
-                        fontWeight: 600,
-                        fontFamily: 'Inter',
-                        color: '#333',
+                        fontWeight: 600,      
                     }}
                 >
                     {name}
@@ -43,14 +42,12 @@ const ViewAgentProfile = ({ avatar, name }) => {
                     background: '#F5F6FB',
                 }}
             >
-                <Button
+                <Button variant='dimSecondary'
                     sx={{
                         width: '100%',
                         fontSize: 20,
                         background: '#F5F6FB',
                         fontWeight: 500,
-                        fontFamily: 'Inter',
-                        color: '#515151',
                         textTransform: 'capitalize',
                         '&:hover': {
                             background: '#F5F6FB',

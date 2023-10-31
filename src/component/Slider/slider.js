@@ -8,8 +8,7 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
-import { propertyData } from '../propertyconstants';
-
+import { propertyEstate } from '../propertyConstants';
 export default function Sliders() {
   return (
     <>
@@ -20,7 +19,9 @@ export default function Sliders() {
             modules={[Navigation]}
             style={{ width: '100%', height: '100%', borderRadius: '15px' }}
           >
-            {propertyData.SliderImages.map((item, index) => (
+            {propertyEstate.SliderImages.map((item, index) => (
+                console.log("slider",propertyEstate.SliderImages),
+
               <SwiperSlide key={index}>
                 <Image
                   src={item.images}

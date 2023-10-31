@@ -3,11 +3,9 @@ import { Typography } from "@mui/material";
 
 const AgentDescription = ({ description }) => {
     return (
-        <Typography
+        <Typography variant="primary"
             sx={{
                 width: '100%',
-                fontFamily: 'Inter',
-                color: 'zinc',
                 fontSize: 16,
                 fontWeight: 400,
                 textAlign: 'start',
