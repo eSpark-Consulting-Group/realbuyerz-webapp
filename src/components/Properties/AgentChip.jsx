@@ -29,18 +29,25 @@ function Chips({ data }) {
   const [selectedChips, setSelectedChips] = useState([]);
 
   const handleDeleteChip = (chipToDelete) => () => {
-    setSelectedChips((chips) => chips.filter((chip) => chip !== chipToDelete));
+    setSelectedChips((chips) =>
+      chips.filter((_, index) => chips[index] !== chipToDelete)
+    );
   };
 
   const handleClearAllChips = () => {
     setSelectedChips([]);
   };
 
-  const uniqueAgentPropertyTypes = [
-    ...new Set(
-      data?.map((property) => `${property.agentName}-${property.propertytype}`)
-    ),
-  ];
+  const uniqueAgentPropertyTypes = [];
+  const seenPropertyTypes = {};
+
+  data?.forEach((property) => {
+    const key = `${property.agentName}-${property.propertytype}`;
+    if (!seenPropertyTypes[key]) {
+      uniqueAgentPropertyTypes.push(key);
+      seenPropertyTypes[key] = true;
+    }
+  });
 
   return (
     <Box sx={{ display: 'contents' }}>
@@ -55,7 +62,6 @@ function Chips({ data }) {
         );
       })}
       <Button
-        href="#"
         sx={{ color: '#126FAA', fontWeight: '500' }}
         onClick={handleClearAllChips}
       >

@@ -123,15 +123,15 @@ function PopularLocations({ data }) {
                       fontSize: '14px',
                     }}
                   >
-                    {item?.locations?.map((location) => (
-                      <>
-                        <Link href="#">
+                    {item?.locations?.map((location, index) => (
+                      <Box key={index}>
+                        <Link href="/">
                           <Typography variant="body1" sx={{}}>
                             {location}
                           </Typography>
                         </Link>
                         <br />
-                      </>
+                      </Box>
                     ))}
                   </Box>
                 </Box>
@@ -147,9 +147,14 @@ function PopularLocations({ data }) {
             textAlign: 'center',
           }}
         >
-          <a href="#" onClick={scrollToTop}>
-            <Image src="/images/bgs/GototheTop.svg" width={80} height={80} />
-          </a>
+          <Button onClick={scrollToTop}>
+            <Image
+              src="/images/bgs/GototheTop.svg"
+              width={80}
+              height={80}
+              alt=""
+            />
+          </Button>
         </Box>
       </Container>
     </Box>

@@ -28,6 +28,7 @@
     "@mui/styles": "^5.14.14",
     "@mui/system": "^5.14.14",
     "@reduxjs/toolkit": "^1.9.7",
+    "core-js": "^3.33.1",
     "jquery": "^3.7.1",
     "material-ui-image": "^3.3.2",
     "next": "13.5.5",

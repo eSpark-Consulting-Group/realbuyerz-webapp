@@ -1,4 +1,3 @@
-import AgentPropertiesSlider from '@/src/components/AgentProfile/AgentPropertiesSlider';
 import BrowseByCategory from '@/src/components/HomePage/BrowseByCategory';
 import FeaturedProperties from '@/src/components/HomePage/FeaturedProperties';
 import HeroSection from '@/src/components/HomePage/HeroSection';

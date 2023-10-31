@@ -1,12 +1,14 @@
 import React from 'react';
 import { Box, Grid, Typography, Paper } from '@mui/material';
+import Image from 'next/image';
 
 const AgentProfiles = ({ data }) => {
   return (
     <>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
         return (
           <Box
+            key={index}
             sx={{
               width: '100%',
               position: 'relative',
@@ -43,9 +45,11 @@ const AgentProfiles = ({ data }) => {
                   justifyContent: 'center',
                 }}
               >
-                <img
+                <Image
                   src="/images/Ellipse.png"
                   alt="Profile"
+                  width={197}
+                  height={197}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -78,7 +82,6 @@ const AgentProfiles = ({ data }) => {
                       <Typography
                         variant="h4"
                         sx={{
-                          color: 'white',
                           fontWeight: 'bold',
                           color: '#1176AD',
                           mt: 2,
