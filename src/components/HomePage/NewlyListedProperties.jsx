@@ -2,8 +2,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import Heading from './Heading';
-
-import AgentPropertiesSlider from '../AgentProfile/AgentPropertiesSlider';
+import AgentProperties from '../AgentProfile/AgentProperties';
 
 function NewlyListedProperties({ data }) {
   return (
@@ -24,7 +23,7 @@ function NewlyListedProperties({ data }) {
             paragraph={'Find your dream property from our latest properties '}
           />
           <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>
-            <AgentPropertiesSlider data={data} />
+            <AgentProperties data={data} />
           </Box>
         </Box>
       </Box>

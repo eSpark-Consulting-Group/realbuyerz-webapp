@@ -1,29 +1,49 @@
+// 'use client';
+// import React from 'react';
+// import { Box } from '@mui/system';
+
+// // import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
+// import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
+// // import AgentSlider from '@/src/components/AgentProfile/SlickSlider';
+// // import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
+
+// import { AGENT_PROFILE_DATA } from '../constants/AgentProfile';
+// import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
+
+// const AgentProfile = () => {
+//   return (
+//     <Box className='mx-auto mt-4 w-[70vw]'>
+//       <AgentProfiles data={AGENT_PROFILE_DATA} />
+//       <AgentProperties data={AGENT_PROFILE_DATA} />
+
+//       {/*<AgentAbout data={AGENT_PROFILE_DATA} />
+//       <RecentPropertyTitle data={AGENT_PROFILE_DATA} />*/}
+//       <AgentSlider data={AGENT_PROFILE_DATA} />
+//     </Box>
+//   );
+// };
+
+// export default AgentProfile;
+
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
 
 import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
-import AgentProfileState from '@/src/components/AgentProfile/AgentProfileState';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
-import AgentPropertiesSlider from '@/src/components/AgentProfile/AgentPropertiesSlider';
+import AgentSlider from '@/src/components/AgentProfile/SlickSlider';
 import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
-
-import {
-  RECENT_PROPERTIES,
-  SLIDER_CARD_DATA,
-  AGENT_PROFILE_DETAILS,
-  INFO,
-  PROPERTIES,
-} from '../constants/AgentProfile';
+import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
+import { AGENT_PROFILE_DATA } from '../constants/AgentProfile';
 
 const AgentProfile = () => {
   return (
     <Box className="mx-auto mt-4 w-[70vw]">
-      <AgentProfiles data={AGENT_PROFILE_DETAILS} />
-      <AgentProfileState data={PROPERTIES} />
-      <AgentAbout data={INFO} />
-      <RecentPropertyTitle data={RECENT_PROPERTIES} />
-      <AgentPropertiesSlider data={SLIDER_CARD_DATA} />
+      <AgentProfiles data={AGENT_PROFILE_DATA} />
+      <AgentProperties data={AGENT_PROFILE_DATA} />
+      <AgentAbout data={AGENT_PROFILE_DATA} />
+      <RecentPropertyTitle data={AGENT_PROFILE_DATA} />
+      <AgentSlider data={AGENT_PROFILE_DATA} />
     </Box>
   );
 };
