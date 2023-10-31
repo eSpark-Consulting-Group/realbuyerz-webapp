@@ -1,18 +1,18 @@
-import React from "react";
-import { Grid, Typography, SvgIcon } from "@mui/material";
+import React from 'react';
+import { Grid, Typography, SvgIcon } from '@mui/material';
 
 const PropertyHeader = ({ title, view }) => {
   return (
     <div>
-      <Grid container justifyContent="space-between" >
+      <Grid container justifyContent="space-between">
         <Grid item>
           <Typography
             sx={{
               fontSize: 15,
-              fontWeight: "normal",
-              display: "flex",
-              alignItems: "center",
-              color: "#777777",
+              fontWeight: 'normal',
+              display: 'flex',
+              alignItems: 'center',
+              color: '#777777',
               paddingBottom: 1,
             }}
           >
@@ -33,10 +33,10 @@ const PropertyHeader = ({ title, view }) => {
           <Typography
             sx={{
               fontSize: 15,
-              fontWeight: "normal",
-              display: "flex",
-              alignItems: "center",
-              color: "orange",
+              fontWeight: 'normal',
+              display: 'flex',
+              alignItems: 'center',
+              color: 'orange',
             }}
           >
             {view}
