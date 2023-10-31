@@ -30,7 +30,7 @@ const PropertyCardRentBody = ({ data }) => {
                   textAlign: 'center',
                 }}
               >
-                {data.propertiesForRent.types[propertyType]}
+                {data?.propertiesForRent.types[propertyType]}
               </Typography>
               <Typography
                 sx={{ fontSize: 'xs', color: '#777777', fontWeight: 'light' }}

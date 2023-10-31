@@ -65,7 +65,7 @@ const SlickSlider = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data.recentProperties.properties.map((item) => {
+        {data?.recentProperties.properties.map((item) => {
           return (
             <Card sx={{ maxWidth: 315 }} key={item}>
               <CardMedia

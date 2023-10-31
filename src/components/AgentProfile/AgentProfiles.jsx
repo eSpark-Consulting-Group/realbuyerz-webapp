@@ -33,7 +33,7 @@ const AgentProfiles = ({ data }) => {
           position: 'relative',
         }}
       >
-        <AgentImage image={data.contactInfo.agentImage} />
+        <AgentImage image={data?.contactInfo.agentImage} />
         <Grid
           sx={{
             padding: 2,

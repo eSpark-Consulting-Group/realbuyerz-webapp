@@ -12,7 +12,7 @@ const RecentPropertyTitle = ({ data }) => {
       fontWeight={600}
       marginBottom="50px"
     >
-      Recent Properties By {data.contactInfo.agentName}
+      Recent Properties By {data?.contactInfo.agentName}
     </Typography>
   );
 };
