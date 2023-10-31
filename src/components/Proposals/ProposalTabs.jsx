@@ -45,7 +45,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ProposalTabs({ }) {
+export default function ProposalTabs() {
   const [value, setValue] = useState(0);
   const [proposalStatus, setProposalStatus] = useState(''); // Add this line to store the selected proposal type
 

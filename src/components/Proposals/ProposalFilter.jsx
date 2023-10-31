@@ -8,6 +8,7 @@ import {
   InputLabel,
   Select,
 } from '@mui/material';
+import ProposalTabs from './ProposalTabs';
 
 const ProposalFilter = () => {
   const [dropdown1, setDropdown1] = useState('');
@@ -22,7 +23,7 @@ const ProposalFilter = () => {
     setDropdown4('');
   };
 
-  return (
+  return (<>
     <Grid container spacing={2} alignItems="center">
       <Grid item xs={3}>
         <Typography variant="subtitle1">Label 1</Typography>
@@ -70,6 +71,8 @@ const ProposalFilter = () => {
         </Button>
       </Grid>
     </Grid>
+    <ProposalTabs />
+  </>
   );
 };
 
