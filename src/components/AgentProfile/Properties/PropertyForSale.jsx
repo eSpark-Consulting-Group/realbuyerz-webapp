@@ -25,7 +25,7 @@ const PropertyForSale = ({ data }) => {
               alt="home"
             />{' '}
             &nbsp;
-            {`${data.propertiesForSale.count} Properties For Sale`}
+            {`${data?.propertiesForSale.count} Properties For Sale`}
           </Typography>
         </Grid>
         <Grid item>

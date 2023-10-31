@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { Image } from 'next/image';
 
 const AgentImage = ({ image }) => {
   return (

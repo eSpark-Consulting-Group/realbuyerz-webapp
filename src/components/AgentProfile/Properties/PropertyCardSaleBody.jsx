@@ -30,7 +30,7 @@ const PropertyCardSaleBody = ({ data }) => {
                   textAlign: 'center',
                 }}
               >
-                {data.propertiesForSale.types[propertyType]}
+                {data?.propertiesForSale.types[propertyType]}
               </Typography>
               <Typography
                 sx={{ fontSize: 'xs', color: '#777777', fontWeight: 'light' }}
