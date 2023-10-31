@@ -36,7 +36,7 @@ const Cateogries = ({ data }) => {
                       lineHeight: "normal",
                     }}
                   >
-                    {items.mainTitle}
+                    {items.mainTitle} 
                   </Typography>
                 </Box>
                 <Box
@@ -62,7 +62,7 @@ const Cateogries = ({ data }) => {
                   letterSpacing: "0.56px",
                 }}
               >
-                {items.categoryTyes}
+                 {items.categoryTyes} 
               </Typography>
             </Grid>
           </>

@@ -6,6 +6,7 @@ import { Avatar, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 const PropertyList = ({ data }) => {
+  console.log(data, "dataaaa")
   return (
     <Box sx={{mb: 2}}>
       <Grid item xs={12}>

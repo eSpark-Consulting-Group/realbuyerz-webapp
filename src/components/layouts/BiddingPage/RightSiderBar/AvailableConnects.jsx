@@ -1,7 +1,7 @@
-import { Grid, Typography } from "@mui/material";
 import React from "react";
+import { Grid, Typography } from "@mui/material";
 
-const AvailableConnects = () => {
+const AvailableConnects = ({data}) => {
   return (
     <>
       <Grid item xs={12}>
@@ -17,7 +17,7 @@ const AvailableConnects = () => {
             lineHeight: "normal",
           }}
         >
-          50 Available Connects
+          {data.availableConnects} Available Connects
         </Typography>
       </Grid>
     </>

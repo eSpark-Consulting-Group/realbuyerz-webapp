@@ -6,7 +6,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 
-const ProfileCompletnes = () => {
+const ProfileCompletnes = ({data}) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -34,7 +34,6 @@ const ProfileCompletnes = () => {
           sx={{
             fontSize: "12px",
             fontWeight: "600",
-            // fontFamily: "Inter",
             paddingLeft: "30px",
             paddingTop: "20px"
           }}
@@ -45,13 +44,12 @@ const ProfileCompletnes = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            // mt: 2,
             paddingLeft: "30px",
             paddingBottom: "15px",
           }}
         >
           <BorderLinearProgress variant="determinate" value={90} sx={{ flex: 1 }} />
-          <Typography sx={{ ml:1 , mr:5 }}>{95}%</Typography>
+          <Typography sx={{ ml:1 , mr:5 }}>{data.profileCompleteness}%</Typography>
         </Box>
         <Box
           sx={{

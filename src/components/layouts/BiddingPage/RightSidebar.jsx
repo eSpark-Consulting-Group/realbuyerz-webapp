@@ -13,7 +13,7 @@ import ProfileCompletnes from "./RightSiderBar/ProfileCompletnes";
 import AvailableConnects from "./RightSiderBar/AvailableConnects";
 import CustomDivider from "./RightSiderBar/CustomDivider";
 
-const RightSidebar = () => {
+const RightSidebar = ({data}) => {
   const icons = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -89,13 +89,13 @@ const RightSidebar = () => {
             marginRight: "5px",
           }}
         >
-          <Profile data={profileData} />
-          <ProfileCompletnes />
-          <AvailableConnects />
+          <Profile data={data.profileInfo} />
+          <ProfileCompletnes data={data.profileInfo} />
+          <AvailableConnects data={data.profileInfo} />
           <CustomDivider />
-          <PropertyList data={liveBiddingPropertyList} />
+          <PropertyList data={data.profileInfo.propertyListed} />
           <CustomDivider />
-          <Cateogries data={myCategory} />
+          <Cateogries data={data.profileInfo.categories} />
         </Grid>
         <Grid xs={12} item sx={{
           marginRight: "5px"
