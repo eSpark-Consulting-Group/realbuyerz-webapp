@@ -71,7 +71,7 @@ function FooterCta({ data }) {
             ))}
           </Grid>
           <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
-            {data.appIcons?.map((appicon, index) => (
+            {data?.appIcons?.map((appicon, index) => (
               <Link
                 href={appicon.link}
                 key={index}
@@ -109,7 +109,7 @@ function FooterCta({ data }) {
       <Grid container sx={{ py: '28px' }}>
         <Grid item xs={12} md={8.5}>
           <Typography variant="body1">
-            {data.paymentMethodsDescription}
+            {data?.paymentMethodsDescription}
           </Typography>
         </Grid>
         <Grid
@@ -125,15 +125,12 @@ function FooterCta({ data }) {
             },
           }}
         >
-          {data.paymentMethods?.map((method, index) => (
+          {data?.paymentMethods?.map((method, index) => (
             <Box key={index}>
               <Image src={method.icon} alt={method.alt} width={35} height={7} />
-            </Box>
-          ))}
-        </Grid>
-      </Grid>
+            </Grid>
     </Box>
-  );
+        );
 }
 
-export default FooterCta;
+        export default FooterCta;

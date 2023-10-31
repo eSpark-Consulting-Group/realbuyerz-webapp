@@ -19,7 +19,7 @@ const AgentProperties = ({ data }) => {
       }}
     >
       <Box sx={{ pt: 8 }}>
-        <AgentTitle title={data?.contactInfo?.agentName} />
+        <AgentTitle title={data?.contactInfo.agentName} />
         <Box sx={{ pt: 2 }}>
           <PropertyForSale data={data?.propertyDetails} />
           <PropertyCardRentBody data={data?.propertyDetails} />

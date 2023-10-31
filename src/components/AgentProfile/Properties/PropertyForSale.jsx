@@ -19,25 +19,12 @@ const PropertyForSale = ({ data }) => {
           >
             <Image
               src="./images/agent-profile-icons/home.svg"
-              width={15}
-              height={15}
-              alt="hub rever"
-            />
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: 15,
-                fontWeight: 'normal',
-                display: 'flex',
-                alignItems: 'center',
-                color: '#333',
-                // paddingBottom: 1,
-                ml: 1,
-              }}
-            >
-              {`${data?.propertiesForSale.count} Properties For Sale`}
-            </Typography>
-          </Box>
+              style={{ display: 'inline' }}
+              alt="home"
+            />{' '}
+            &nbsp;
+            {`${data?.propertiesForSale.count} Properties For Sale`}
+          </Typography>
         </Grid>
         <Grid item>
           <Box
