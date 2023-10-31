@@ -15,7 +15,7 @@ import SliderCardPrice from './Slider/SliderCardPrice';
 import SliderCardSeeDetails from './Slider/SliderCardSeeDetails';
 import SliderCardIcons from './Slider/SliderCardIcons';
 
-const SlickSlider = ({ data }) => {
+const PropertySlider = ({ data }) => {
   var settings = {
     dots: false,
     infinite: false,
@@ -65,7 +65,7 @@ const SlickSlider = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data.recentProperties.properties.map((item) => {
+        {data?.recentProperties.properties.map((item) => {
           return (
             <Card sx={{ maxWidth: 315 }} key={item}>
               <CardMedia
@@ -102,4 +102,4 @@ const SlickSlider = ({ data }) => {
     </>
   );
 };
-export default SlickSlider;
+export default PropertySlider;

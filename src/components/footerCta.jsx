@@ -2,6 +2,7 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function FooterCta({ data }) {
   return (
@@ -53,7 +54,7 @@ function FooterCta({ data }) {
                 md={2.5}
                 sx={{ display: 'flex', gap: '10px', py: '15px' }}
               >
-                <img src={feature.icon} height={'30px'} width={'30px'} />
+                <Image src={feature.icon} height={30} width={30} />
                 <Box>
                   <Typography
                     sx={{
@@ -78,10 +79,11 @@ function FooterCta({ data }) {
                 xs={3}
                 sx={{ display: 'flex', gap: '20px' }}
               >
-                <img
+                <Image
                   src={appicon.icon}
-                  style={{ maxWidth: '100%', height: 'auto' }}
                   alt={appicon.title}
+                  width={145}
+                  height={40}
                 />
               </Link>
             ))}
@@ -100,7 +102,7 @@ function FooterCta({ data }) {
           }}
         >
           <Box>
-            <img src={data.appImage} alt="App" />
+            <Image src={data.appImage} alt="App" width={350} height={400} />
           </Box>
         </Grid>
       </Grid>
@@ -125,7 +127,7 @@ function FooterCta({ data }) {
         >
           {data.paymentMethods?.map((method, index) => (
             <Box key={index}>
-              <img src={method.icon} alt={method.alt} />
+              <Image src={method.icon} alt={method.alt} width={35} height={7} />
             </Box>
           ))}
         </Grid>

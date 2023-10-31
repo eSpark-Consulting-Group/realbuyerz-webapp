@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { Image } from 'next/image';
+import Image from 'next/image';
 
 const AgentImage = ({ image }) => {
   return (
@@ -14,21 +14,7 @@ const AgentImage = ({ image }) => {
         justifyContent: 'center',
       }}
     >
-      {/* <Image 
-      src={image} 
-      width={"100%"}
-       height={'100%'}
-       zIndex: '1'
-      /> */}
-      <img
-        src={image}
-        alt="Profile"
-        style={{
-          width: '100%',
-          height: '100%',
-          zIndex: 1,
-        }}
-      />
+      <Image src={image} alt={'image'} width={400} height={400} />
     </Grid>
   );
 };

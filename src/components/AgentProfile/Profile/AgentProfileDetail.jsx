@@ -19,7 +19,7 @@ const AgentProfileDetail = ({ data }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
         >
-          {data.contactInfo.agentName}
+          {data?.contactInfo.agentName}
         </Typography>
         <Box
           sx={{
@@ -54,7 +54,7 @@ const AgentProfileDetail = ({ data }) => {
             variant="body1"
             sx={{ color: '#777777', fontWeight: 'medium', marginTop: 1, mx: 1 }}
           >
-            {data.propertyDetails.propertiesForSale.count} For Sale
+            {data?.propertyDetails.propertiesForSale.count} For Sale
           </Typography>
         </Box>
         <Box
@@ -72,7 +72,7 @@ const AgentProfileDetail = ({ data }) => {
             variant="body1"
             sx={{ color: '#777777', fontWeight: 'medium', marginTop: 1, mx: 1 }}
           >
-            {data.propertyDetails.propertiesForRent.count} For Rent
+            {data?.propertyDetails.propertiesForRent.count} For Rent
           </Typography>
         </Box>
       </Box>

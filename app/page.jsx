@@ -13,7 +13,7 @@ import {
   PARTNERS,
   POPULAR_LOCATIONS_DATA,
 } from './constants/Home';
-import { SLIDER_CARD_DATA } from './constants/AgentProfile';
+import { AGENT_PROFILE_DATA } from './constants/AgentProfile';
 import { FOOTER_CTA_DATA } from './constants/Constants';
 
 function Home() {
@@ -24,7 +24,7 @@ function Home() {
       <FeaturedProperties data={FEATURED_PROPERTIES} />
       <CreateAccount />
       <OurHomePartners data={PARTNERS} />
-      <NewlyListedProperties data={SLIDER_CARD_DATA} />
+      <NewlyListedProperties data={AGENT_PROFILE_DATA} />
       <PopularLocations data={POPULAR_LOCATIONS_DATA} />
       <FooterCta data={FOOTER_CTA_DATA} />
     </div>
