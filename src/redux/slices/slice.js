@@ -1,19 +1,28 @@
 // redux/slice.js
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  // Define your initial state here
+  count: 0, // Initial counter value
 };
 
-const appSlice = createSlice({
-  name: "app",
+const counterSlice = createSlice({
+  name: 'counter',
   initialState,
   reducers: {
-    // Define your reducers here
+    // Reducer to increment the counter by 1
+    increment: (state) => {
+      state.count += 1;
+    },
+    // Reducer to decrement the counter by 1
+    decrement: (state) => {
+      state.count -= 1;
+    },
+    // Reducer to increment the counter by a specific amount
+    incrementByAmount: (state, action) => {
+      state.count += action.payload;
+    },
   },
 });
 
-export const {
-  /* your actions */
-} = appSlice.actions;
-export default appSlice.reducer;
+export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export default counterSlice.reducer;

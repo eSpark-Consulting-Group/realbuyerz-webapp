@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+root {
+  --primary-color: #fb631c;
+  --secondary-color: #333;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,7 +13,7 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-} */
+}
 
 /* body {
   color: rgb(var(--foreground-rgb));
@@ -25,8 +24,17 @@
     )
     rgb(var(--background-start-rgb));
 } */
+
+/* hero slider */
+
 .container-full-width {
   width: 100%;
+}
+.full-container-width {
+  max-width: 1920px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .container-width {
@@ -45,4 +53,87 @@
 
 .left-section {
   width: 15%;
+}
+
+.hero_slider {
+  width: 100%;
+  height: 100%;
+}
+
+.hero_slider .swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.hero_slider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero_slider .swiper-pagination-bullet {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 15px;
+  height: 15px;
+}
+.hero_slider .swiper-pagination-bullet-active {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+}
+
+.slick-prev:before {
+  content: url('../public/images/agent-profile-icons//Left.svg') !important;
+}
+.slick-next:before {
+  content: url('../public/images/agent-profile-icons//Right.svg') !important;
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+.slick-list {
+  margin-left: 45px !important;
+}
+
+@media (max-width: 1860px) {
+  .slick-list {
+    margin-left: 24px !important;
+  }
+}
+@media (max-width: 1400px) {
+  .slick-list {
+    margin-left: 20px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .slick-list {
+    margin-left: 25px !important;
+  }
+}
+@media (max-width: 600px) {
+  .slick-list {
+    margin-left: 45px !important;
+  }
+}
+@media (max-width: 550px) {
+  .slick-list {
+    margin-left: 35px !important;
+  }
+}
+@media (max-width: 500px) {
+  .slick-list {
+    margin-left: 21px !important;
+  }
+}
+@media (max-width: 400px) {
+  .slick-list {
+    margin-left: 20px !important;
+  }
+}
+@media (max-width: 350px) {
+  .slick-list {
+    margin-left: 19px !important;
+  }
 }
