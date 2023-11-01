@@ -3,8 +3,6 @@ import { Grid } from '@mui/material';
 import SidePage from '@/src/components/loginsignup/LoginSidePage/sidepage';
 import LoginBox from '@/src/components/loginsignup/Login/loginbox';
 
-
-
 const Signin = () => {
   return (
     <Grid
