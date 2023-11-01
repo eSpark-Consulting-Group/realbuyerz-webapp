@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -63,7 +63,7 @@ export default function DashboardHeader() {
               // color="inherit"
               sx={{ display: { xs: "block", md: "none", lg: "none" }, p: 0, color: "#000" }}
             >
-              <MenuIcon />
+              {/* <MenuIcon /> */}
             </IconButton>
             <Box
               sx={{
@@ -76,7 +76,6 @@ export default function DashboardHeader() {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/dashboard"
                 sx={{
                   display: { xs: "flex" },
                   fontFamily: "monospace",
@@ -85,7 +84,9 @@ export default function DashboardHeader() {
                   marginRight: 5,
                   // color: "inherit",
                   textDecoration: "none",
+                  cursor: "pointer"
                 }}
+                
               >
                 <img src="/images/drawer.png" alt="" />
               </Typography>
@@ -111,7 +112,7 @@ export default function DashboardHeader() {
                 flexGrow: 1,
                 justifyContent: "end",
                 gap: 4,
-                display: { xs: "none", sm: "none", md: "flex" },
+                display: { xs: "none", sm: "none", md: "none",  lg: "flex" },
               }}
             >
               {headerMenu.map((item) => {

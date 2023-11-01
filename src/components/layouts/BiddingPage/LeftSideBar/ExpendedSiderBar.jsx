@@ -1,25 +1,18 @@
-import React, { useState } from "react";
-import { Button, Grid, Typography } from "@mui/material";
+import React from "react";
+import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { liveBiddingIcon } from "@/app/constents/Live-bidding/constents";
 
-import LiveBiddingList from "./LiveBiddingList";
+import Image from "next/image";
+import ExpendedLiveBiddingList from "./ExpendedLiveBiddingList";
 
-const LeftSideBar = ({ data }) => {
-  const [isCollapsed, setIsCollapsed] = useState("100%");
-  const [isOpen, setIsOpen] = useState("");
-
-  const collapsed = () => {
-    setIsCollapsed("0%");
-    setIsOpen("none");
-  };
+const ExpendedSiderBar = ({ data , isCollapsed, }) => {
   return (
     <Box
+
       sx={{
-        width: `${isCollapsed}`,
-        display: `${isOpen}`,
+        width: isCollapsed,
         height: "100vh",
-        backgroundColor: "#f8f8f8",
+        transition: 'width 1.3s ease',
       }}
     >
       <Grid
@@ -39,7 +32,7 @@ const LeftSideBar = ({ data }) => {
             borderRadius: 15,
           }}
         >
-          <Button onClick={() => collapsed()}>isCollapsed</Button>
+          {/* <Button onClick={() => collapsed()}>isCollapsed</Button> */}
           <Box
             sx={{
               width: "98%",
@@ -50,7 +43,11 @@ const LeftSideBar = ({ data }) => {
               alignItems: "center",
             }}
           >
-            {liveBiddingIcon}
+            <Image
+              src={"/images/Live-bidding-icons/liveBidding.svg"}
+              width={30}
+              height={30}
+            />
             <Typography
               sx={{
                 color: "#FB631C",
@@ -62,10 +59,10 @@ const LeftSideBar = ({ data }) => {
               Live Bidding
             </Typography>
           </Box>
-          <LiveBiddingList list={data.menuItems} />
+          <ExpendedLiveBiddingList list={data.menuItems} />
         </Grid>
       </Grid>
     </Box>
   );
 };
-export default LeftSideBar;
+export default ExpendedSiderBar;

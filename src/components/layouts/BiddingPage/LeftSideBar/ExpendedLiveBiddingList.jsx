@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+import { Box, Collapse, IconButton, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import Image from 'next/image';
+
+const ExpendedLiveBiddingList = ({ list }) => {
+  const [openItemId, setOpenItemId] = useState(null);
+
+  const toggleCollapse = (itemId) => {
+    if (itemId === openItemId) {
+      setOpenItemId(null);
+    } else {
+      setOpenItemId(itemId);
+    }
+  };
+
+  return (
+    <Box>
+      {list.map((item) => {
+        const isItemOpen = item.id === openItemId;
+
+        return (
+          <Box key={item.id}>
+            <Box
+              sx={{
+                width: '100%',
+                borderRadius: '15px',
+                display: 'flex',
+                padding: '10px',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  src={item.icons}
+                  width={30}
+                  height={30}
+                  alt='icons'
+                />
+                <Typography
+                  sx={{
+                    color: '#000',
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    px: '20px',
+                  }}
+                >
+                  {item.itemName}
+                </Typography>
+              </Box>
+              {item.accordianIcon && (
+                <IconButton onClick={() => toggleCollapse(item.id)}>
+                  {isItemOpen ? <ExpandLessIcon sx={{ color: '#000' }} /> : <ExpandMoreIcon sx={{ color: '#000' }} />}
+                </IconButton>
+              )}
+            </Box>
+            <Collapse in={isItemOpen}>
+              {item.actions && item.actions.length > 0 && (
+                <Box
+                  sx={{
+                    paddingLeft: '30px',
+                    marginLeft: '30px',
+                  }}
+                >
+                  <ul>
+                    {item.actions.map((action, index) => (
+                      <li
+                        style={{
+                          fontWeight: '500',
+                          fontSize: '14px',
+                          paddingBottom: '10px',
+                        }}
+                      >
+                        <a href={action.link}>{action.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </Box>
+              )}
+            </Collapse>
+          </Box>
+        );
+      })}
+    </Box>
+  );
+};
+
+export default ExpendedLiveBiddingList;

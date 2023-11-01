@@ -1,233 +1,148 @@
-export const  liveBiddingIcon = (
-    <svg
-    width="30"
-    height="30"
-    viewBox="0 0 30 30"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M18.4762 21.75H22.0476V18H24.4286V21.75H28V24.25H24.4286V28H22.0476V24.25H18.4762V21.75ZM11.3333 8.625C13 8.625 14.3095 10 14.3095 11.75C14.3095 13.5 13 14.875 11.3333 14.875C9.66667 14.875 8.35714 13.5 8.35714 11.75C8.35714 10 9.66667 8.625 11.3333 8.625ZM11.3333 3C15.9762 3 19.6667 6.875 19.6667 11.75C19.6667 18.25 11.3333 28 11.3333 28C11.3333 28 3 18.25 3 11.75C3 6.875 6.69048 3 11.3333 3ZM11.3333 5.5C8 5.5 5.38095 8.25 5.38095 11.75C5.38095 13 5.38095 15.5 11.3333 23.875C17.2857 15.5 17.2857 13 17.2857 11.75C17.2857 8.25 14.6667 5.5 11.3333 5.5Z"
-      fill="#FB631C"
-    />
-  </svg>
-)
+export const headerMenu = [
+  {
+    searchIcon :  "/images/Live-bidding-icons/headerSearchIcon.svg",
+    linkIcon : "/images/Live-bidding-icons/headerGotopageIcon.svg",
+    myListingIcon: "/images/Live-bidding-icons/headerHandBell.svg",
+    PostListingIcon: "/images/Live-bidding-icons/headerBell.svg",
+    profileIcon: "/images/Live-bidding-icons/headerProfileIcon.svg",
+  }
 
-const managemantIcon = (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M29.9618 23.7645L29.3152 20.4549C29.2738 20.2439 29.1999 20.0459 29.0979 19.8729C28.9959 19.6999 28.868 19.5555 28.7218 19.4482C28.5749 19.3393 28.4127 19.2695 28.2447 19.2428C28.0768 19.2161 27.9063 19.233 27.7435 19.2927L20.1568 22.0665L15.0001 19.2495L21.5251 17.0827C21.9706 16.5676 22.2932 15.8983 22.4551 15.1535L21.9435 12.7686L8.33338 14.9289H0V27.8907H8.33338L15.7584 29.9732C16.1621 30.0208 16.5686 30.0085 16.9701 29.9365L29.0702 25.7153C29.3876 25.6051 29.6591 25.3384 29.8268 24.9721C29.9096 24.7919 29.9642 24.5923 29.9873 24.3847C30.0105 24.1771 30.0018 23.9677 29.9618 23.7645ZM5.00003 25.7304H1.66668V17.0892H5.00003V25.7304ZM16.5368 27.8518C16.4616 27.8772 16.3844 27.8902 16.3068 27.8907C16.2423 27.891 16.1781 27.8823 16.1151 27.8648L8.33338 25.6504V17.1324L20.5485 15.1708L11.6667 19.2495L19.5351 24.0713L20.0634 24.3456L20.6101 24.1447L27.8035 21.5156L28.2435 23.7667L16.5368 27.8518Z"
-        fill="#777777"
-      />
-      <path
-        d="M17.3521 11.2753L25.8993 11.2687L25.9004 4.81891L21.6093 0.743529L17.3416 4.97204L17.3521 11.2753Z"
-        stroke="#777777"
-      />
-    </svg>
-  );
-  
-  const AgentStings = (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M15.5 3C17.1576 3 18.7473 3.65848 19.9194 4.83058C21.0915 6.00268 21.75 7.5924 21.75 9.25C21.75 10.9076 21.0915 12.4973 19.9194 13.6694C18.7473 14.8415 17.1576 15.5 15.5 15.5C13.8424 15.5 12.2527 14.8415 11.0806 13.6694C9.90848 12.4973 9.25 10.9076 9.25 9.25C9.25 7.5924 9.90848 6.00268 11.0806 4.83058C12.2527 3.65848 13.8424 3 15.5 3ZM15.5 6.125C14.6712 6.125 13.8763 6.45424 13.2903 7.04029C12.7042 7.62634 12.375 8.4212 12.375 9.25C12.375 10.0788 12.7042 10.8737 13.2903 11.4597C13.8763 12.0458 14.6712 12.375 15.5 12.375C16.3288 12.375 17.1237 12.0458 17.7097 11.4597C18.2958 10.8737 18.625 10.0788 18.625 9.25C18.625 8.4212 18.2958 7.62634 17.7097 7.04029C17.1237 6.45424 16.3288 6.125 15.5 6.125ZM15.5 17.0625C19.6719 17.0625 28 19.1406 28 23.3125V28H3V23.3125C3 19.1406 11.3281 17.0625 15.5 17.0625ZM15.5 20.0312C10.8594 20.0312 5.96875 22.3125 5.96875 23.3125V25.0312H25.0312V23.3125C25.0312 22.3125 20.1406 20.0312 15.5 20.0312Z"
-        fill="#777777"
-      />
-    </svg>
-  );
-  
-  const propShops = (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M9.25 10.6923V8.76923C9.25 7.23914 9.90848 5.77171 11.0806 4.68977C12.2527 3.60783 13.8424 3 15.5 3C17.1576 3 18.7473 3.60783 19.9194 4.68977C21.0915 5.77171 21.75 7.23914 21.75 8.76923V10.6923M4.04167 10.6923C3.7654 10.6923 3.50045 10.7936 3.3051 10.9739C3.10975 11.1543 3 11.3988 3 11.6538V24.6346C3 26.4519 4.67708 28 6.64583 28H24.3542C26.3229 28 28 26.527 28 24.7097V11.6538C28 11.3988 27.8903 11.1543 27.6949 10.9739C27.4996 10.7936 27.2346 10.6923 26.9583 10.6923H4.04167Z"
-        stroke="#777777"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M9.25 13.5762V14.5377C9.25 16.0678 9.90848 17.5352 11.0806 18.6172C12.2527 19.6991 13.8424 20.3069 15.5 20.3069C17.1576 20.3069 18.7473 19.6991 19.9194 18.6172C21.0915 17.5352 21.75 16.0678 21.75 14.5377V13.5762"
-        stroke="#777777"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  );
-  const inbox = (
-    <svg
-      width="25"
-      height="20"
-      viewBox="0 0 25 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M25 2.5C25 1.125 23.875 0 22.5 0H2.5C1.125 0 0 1.125 0 2.5V17.5C0 18.875 1.125 20 2.5 20H22.5C23.875 20 25 18.875 25 17.5V2.5ZM22.5 2.5L12.5 8.75L2.5 2.5H22.5ZM22.5 17.5H2.5V5L12.5 11.25L22.5 5V17.5Z"
-        fill="#777777"
-      />
-    </svg>
-  );
-  
-  const accordian = (
-    <svg
-      width="9"
-      height="5"
-      viewBox="0 0 9 5"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M4.98622 4.80911C4.85946 4.93134 4.68755 5 4.50831 5C4.32906 5 4.15715 4.93134 4.03039 4.80911L0.206369 1.12092C0.141806 1.06078 0.0903082 0.98884 0.0548807 0.909297C0.0194533 0.829754 0.00080548 0.744202 2.55226e-05 0.657634C-0.000754434 0.571066 0.0163492 0.485216 0.0503381 0.405091C0.084327 0.324966 0.134521 0.252172 0.19799 0.190957C0.26146 0.129742 0.336934 0.0813313 0.42001 0.0485497C0.503085 0.0157682 0.592098 -0.000727636 0.681854 2.46164e-05C0.77161 0.000776869 0.860312 0.0187623 0.942784 0.0529313C1.02526 0.0871004 1.09985 0.136769 1.1622 0.199038L4.50831 3.42629L7.85441 0.199038C7.9819 0.0802769 8.15265 0.0145621 8.32989 0.0160475C8.50713 0.017533 8.67668 0.0860998 8.80201 0.20698C8.92734 0.327861 8.99843 0.491383 8.99997 0.662327C9.00151 0.833271 8.93338 0.99796 8.81024 1.12092L4.98622 4.80911Z"
-        fill="black"
-      />
-    </svg>
-  );
-const propertyListedIcons = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      // {...props}
-    >
-      <circle cx="15" cy="15" r="14.5" fill="white" stroke="#E7E7E7" />
-      <path
-        d="M7 19.7409V23H10.2591L19.8713 13.3878L16.6122 10.1287L7 19.7409ZM23 10.2591L19.7409 7L17.5421 9.2075L20.8012 12.4666L23 10.2591Z"
-        fill="#FB631C"
-      />
-    </svg>
-  );
-  
+] 
 export const liveBiddingData = {
-    menuItems : [
+  menuItems: [
+    {
+      id: 1,
+      icons: '/images/Live-bidding-icons/propertyManagement.svg',
+      itemName: "Property Management",
+      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
+      actions: [
         {
-          id: 1,
-          icons: managemantIcon,
-          itemName: "Property Management",
-          accordianIcon: accordian,
-          actions: [
-            {
-              title: "Post Listing",
-              link: "#",
-            },
-            {
-              title: "All Listing",
-              link: "#",
-            },
-          ],
+          title: "Post Listing",
+          link: "#",
         },
         {
-          id: 2,
-          icons: inbox,
-          itemName: "Inbox",
-        },
-        {
-          id: 3,
-          icons: AgentStings,
-          itemName: "Agent Settings",
-          accordianIcon: accordian,
-          actions: [
-            {
-              title: "Agent Profile",
-              link: "#",
-            },
-            {
-              title: "Preferences",
-              link: "#",
-            },
-          ],
-        },
-        {
-          id: 4,
-          icons: propShops,
-          itemName: "Prop Shop",
-          accordianIcon: accordian,
-          actions: [
-            {
-              title: "Buy Product",
-              link: "#",
-            },
-            {
-              title: "Order History",
-              link: "#",
-            },
-          ],
-        },
-      ],    
-    liveBidding : {
-        title: "LIVE BIDDING IN PROPERTIES",
-        description: "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
-        postedTime: "Posted 39 minutes ago",
-        status: "BUYING",
-        city: "KARACHI",
-        area: "GULSHAN-E-IQBAL",
-        proposal: "5 to 10",
-        connects: 8,
-        estRange: "80M",
-    },
-    profileInfo : {
-        image: "./images/Live-bidding-icons/Profile.png/",
-        name: "Kashif Z",
-        stateName: "KZ Real Estate",
-        profileCompleteness: "95",
-        availableConnects: "50",
-        propertyListed: [{
-            proprtyTitle: "Property Listed",
-            propertyType: "50 property listed",
-            icons: propertyListedIcons,
-          },
-          {
-            proprtyTitle: "Profile Visibilty",
-            propertyType: "Public",
-          },
-          {
-            proprtyTitle: "Lead Preferences",
-            propertyType: "Open to contract",
-          }
-        ],
-        profileVisibility: "Public",    
-        leadPreference : "  Open to Contract",
-        categories: [
-        {
-          mainTitle: "My Categories",
-          icons: propertyListedIcons,
-        },
-        {
-          categoryTyes: "House",
-        },
-        {
-          categoryTyes: "Plots",
-        },
-        {
-          categoryTyes: "Commercials",
+          title: "All Listing",
+          link: "#",
         },
       ],
-        proposal: "My Proposals",
-    }
-
-
-
-
+    },
+    {
+      id: 2,
+      icons: '/images/Live-bidding-icons/Inbox.svg',
+      itemName: "Inbox",
+    },
+    {
+      id: 3,
+      icons: '/images/Live-bidding-icons/agentSettings.svg',
+      itemName: "Agent Settings",
+      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
+      actions: [
+        {
+          title: "Agent Profile",
+          link: "#",
+        },
+        {
+          title: "Preferences",
+          link: "#",
+        },
+      ],
+    },
+    {
+      id: 4,
+      icons: '/images/Live-bidding-icons/propShop.svg',
+      itemName: "Prop Shop",
+      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
+      actions: [
+        {
+          title: "Buy Product",
+          link: "#",
+        },
+        {
+          title: "Order History",
+          link: "#",
+        },
+      ],
+    },
+  ],
+  liveBidding: [
+    {
+      title: "NEED 4 BEDROOM APARTMENT",
+      description: "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
+      postedTime: "Posted 39 minutes ago",
+      status: "BUYING",
+      city: "KARACHI",
+      area: "GULSHAN-E-IQBAL",
+      proposal: "5 to 10",
+      connects: 8,
+      estRange: "80M",
+    },
+    {
+      title: "NEED 4 BEDROOM APARTMENT",
+      description: "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
+      postedTime: "Posted 39 minutes ago",
+      status: "BUYING",
+      city: "KARACHI",
+      area: "GULSHAN-E-IQBAL",
+      proposal: "5 to 10",
+      connects: 8,
+      estRange: "80M",
+    },
+    {
+      title: "NEED 4 BEDROOM APARTMENT",
+      description: "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
+      postedTime: "Posted 39 minutes ago",
+      status: "BUYING",
+      city: "KARACHI",
+      area: "GULSHAN-E-IQBAL",
+      proposal: "5 to 10",
+      connects: 8,
+      estRange: "80M",
+    },
+    {
+      title: "NEED 4 BEDROOM APARTMENT",
+      description: "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
+      postedTime: "Posted 39 minutes ago",
+      status: "BUYING",
+      city: "KARACHI",
+      area: "GULSHAN-E-IQBAL",
+      proposal: "5 to 10",
+      connects: 8,
+      estRange: "80M",
+    },
+  ],
+    profileInfo: {
+    image: "./images/Live-bidding-icons/Profile.png/",
+    name: "Kashif Z",
+    stateName: "KZ Real Estate",
+    profileCompleteness: "95",
+    availableConnects: "50",
+    propertyListed: {
+      propertyType: "50 property listed",
+      icons: '/images/Live-bidding-icons/category.svg',
+    },
+    ProfileVisibilty: {
+      proprtyTitle: "Profile Visibilty",
+      propertyType: "Public",
+    },
+    LeadPreferences: {
+      proprtyTitle: "Lead Preferences",
+      propertyType: "Open to contract",
+    },
+    categories: [
+      {
+        mainTitle: "My Categories",
+        icons: '/images/Live-bidding-icons/category.svg',
+      },
+      {
+        categoryTyes: "House",
+      },
+      {
+        categoryTyes: "Plots",
+      },
+      {
+        categoryTyes: "Commercials",
+      },
+    ],
+    proposal: "My Proposals",
   }
-  
+}

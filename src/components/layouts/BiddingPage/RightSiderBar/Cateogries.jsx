@@ -1,71 +1,75 @@
-import { Typography, Grid  } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
+import Image from "next/image";
 import React from "react";
 
 const Cateogries = ({ data }) => {
   return (
     <Box sx={{
-        mt: 2,
-        mb:3
+      mt: 2,
+      mb: 3
     }}>
+      <Box
+        sx={{
+          display: "flex",
+          width: "60%",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}
+      >
+        <Box
+          sx={{
+            padding: "0px 0px 0px 31px",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#000",
+              fontSize: "12px",
+              fontStyle: "normal",
+              fontWeight: "600",
+              lineHeight: "normal",
+            }}
+          >
+            My Categories
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            padding: "0px 0px 0px 20px",
+          }}
+        >
+          <Image
+            src='/images/Live-bidding-icons/category.svg'
+            width={30}
+            height={30}
+            alt='icons'
+          />
+        </Box>
+      </Box>
       {data.map((items) => {
         return (
-          <>
-            <Grid item xs={12}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  width: "60%",
-                  justifyContent: "space-between",
-                  alignItems:"center"
-                }}
-              >
-                <Box
-                  sx={{
-                    padding: "0px 0px 0px 31px",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: "#000",
-                      fontSize: "12px",
-                      fontStyle: "normal",
-                      fontWeight: "600",
-                      lineHeight: "normal",
-                    }}
-                  >
-                    {items.mainTitle} 
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    padding: "0px 0px 0px 20px",
-                  }}
-                >
-                  {items.icons}
-                </Box>
-              </Box>
+          <Grid item xs={12}
+          >
 
-              <Typography
-                variant="body1"
-                sx={{
-                  paddingLeft: "31px",
-                  paddingBottom: "7px",
-                  color: "#FB631C",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "14px",
-                  fontStyle: "normal",
-                  fontWeight: 500,
-                  lineHeight: "normal",
-                  letterSpacing: "0.56px",
-                }}
-              >
-                 {items.categoryTyes} 
-              </Typography>
-            </Grid>
-          </>
+            <Typography
+              variant="body1"
+              sx={{
+                paddingLeft: "31px",
+                paddingBottom: "7px",
+                color: "#FB631C",
+                fontFamily: "Inter, sans-serif",
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "normal",
+                letterSpacing: "0.56px",
+              }}
+            >
+              {items.categoryTyes}
+            </Typography>
+          </Grid>
         );
       })}
     </Box>
