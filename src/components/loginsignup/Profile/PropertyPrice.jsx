@@ -39,7 +39,12 @@ const Price = ({ price }) => {
           borderRadius: 10,
         }}
       >
-        <Image src="assets/images/msgicon.svg" width={30} height={26} />
+        <Image
+          src="assets/images/msgicon.svg"
+          width={30}
+          height={26}
+          alt={''}
+        />
         <span>Message</span>
       </Button>
     </>

@@ -70,7 +70,7 @@ function PropertyListingCard({ data }) {
                 layout="fill"
                 objectFit="cover"
                 style={styles.image}
-                alt=""
+                alt={''}
                 sx={{
                   borderRadius: '5px ',
                 }}
@@ -92,38 +92,38 @@ function PropertyListingCard({ data }) {
           >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <Typography
-                // variant="secondary"
+                // variant='secondary'
                 sx={{ fontSize: '20px', fontWeight: '500' }}
               >
                 PKR
               </Typography>
               <Typography
-                // variant="h3"
+                // variant='h3'
                 sx={{ fontSize: '25px', fontWeight: '600' }}
               >
                 {property.price}
               </Typography>
             </Box>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
             >
               {property.location}
             </Typography>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
               {property.area} sqft
             </Typography>
             <Typography
-              // variant="h3"
+              // variant='h3'
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {property.direction}
             </Typography>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400' }}
             >
               {property.description}
@@ -131,7 +131,7 @@ function PropertyListingCard({ data }) {
 
             <div>
               <Typography
-                // variant="body2"
+                // variant='body2'
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
               >
                 Posted {property.postedDate}

@@ -8,7 +8,9 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
-import { propertyEstate } from '../propertyConstants';
+
+import { propertyEstate } from '@/app/constants/propertyconstants';
+
 export default function Sliders() {
   return (
     <>

@@ -54,7 +54,7 @@ function FooterCta({ data }) {
                 md={2.5}
                 sx={{ display: 'flex', gap: '10px', py: '15px' }}
               >
-                <Image src={feature.icon} height={30} width={30} alt="" />
+                <Image src={feature.icon} height={30} width={30} alt={''} />
                 <Box>
                   <Typography
                     sx={{

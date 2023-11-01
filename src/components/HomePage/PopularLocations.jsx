@@ -38,7 +38,7 @@ function PopularLocations({ data }) {
         pt: '90px',
         pb: '30px',
         textAlign: 'center',
-        backgroundImage: `url("/images/bgs/featured-properties-background.png")`,
+        backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -152,7 +152,7 @@ function PopularLocations({ data }) {
               src="/images/bgs/GototheTop.svg"
               width={80}
               height={80}
-              alt=""
+              alt={''}
             />
           </Button>
         </Box>

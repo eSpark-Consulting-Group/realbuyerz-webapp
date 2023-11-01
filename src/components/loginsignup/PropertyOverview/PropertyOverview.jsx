@@ -14,9 +14,11 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
+import {
+  propertyData,
+  propertyEstate,
+} from '@/app/constants/propertyconstants';
 
-import { propertyData } from '../propertyConstants';
-import { propertyEstate } from '../propertyConstants';
 const useStyles = makeStyles({
   root: {
     color: 'white',
