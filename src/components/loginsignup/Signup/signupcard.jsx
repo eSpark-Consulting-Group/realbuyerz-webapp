@@ -254,14 +254,14 @@ const SignupCard = () => {
               }}
             >
               Already have an account?{' '}
-              <span
+              <Typography
                 style={{
                   color: '#FB631C',
                 }}
                 onClick={() => router.push('/signin')}
               >
                 Sign in
-              </span>
+              </Typography>
             </Typography>
           </Box>
         </Box>

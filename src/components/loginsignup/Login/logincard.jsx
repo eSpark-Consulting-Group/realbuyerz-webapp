@@ -222,7 +222,7 @@ const LoginCard = () => {
               }}
             >
               Doesn’t have an account yet?{' '}
-              <span
+              <Typography
                 style={{
                   color: '#FB631C',
                   fontWeight: 400,
@@ -230,7 +230,7 @@ const LoginCard = () => {
                 onClick={() => router.push('/signup')}
               >
                 Sign up
-              </span>
+              </Typography>
             </Typography>
           </Box>
         </Box>
