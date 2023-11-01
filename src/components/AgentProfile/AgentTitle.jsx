@@ -7,12 +7,12 @@ const AgentTitle = ({ title }) => {
       variant="h4"
       sx={{
         color: 'primary',
-        fontWeight: 600,
+        fontWeight: 500,
         fontSize: '25px',
         fontStyle: 'normal',
       }}
     >
-      {title}
+      Properties By {title}
     </Typography>
   );
 };
