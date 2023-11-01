@@ -5,8 +5,7 @@ import Sliders from '@/src/components/loginsignup/Slider/slider';
 import ProfileAgent from '@/src/components/loginsignup/Profile/ProfileAgent';
 import PropertyOverview from '@/src/components/loginsignup/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/loginsignup/PropertyDescription/PropertyDetail';
-import { propertyData } from '@/app/constants/propertyconstants';
-
+import { PROPERTY_DATA } from '@/app/constants/PropertyConstants';
 const propertyDeal = () => {
   return (
     <>
@@ -28,7 +27,7 @@ const propertyDeal = () => {
         >
           <Sliders />
           <PropertyOverview />
-          <PropertyDetails propertyData={propertyData} />
+          <PropertyDetails propertyData={PROPERTY_DATA} />
         </Grid>
         <Grid item xs={12} md={4}>
           <ProfileAgent />

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 import FooterCta from '@/src/components/footerCta';
 import { FOOTER_CTA_DATA } from '../constants/Constants';
 
 const InnerPageLayout = ({ children }) => {
   return (
     <>
-      <Container>{children}</Container>
+      <Box className="wide-container">{children}</Box>
       <FooterCta data={FOOTER_CTA_DATA} />
     </>
   );

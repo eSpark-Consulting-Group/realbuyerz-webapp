@@ -9,9 +9,8 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
-import { propertyEstate } from '@/app/constants/propertyconstants';
-
-export default function Sliders() {
+import { PROPERTY_ESTATE } from '@/app/constants/PropertyConstants';
+const Sliders=()=> {
   return (
     <>
       <Grid container spacing={2}>
@@ -21,9 +20,9 @@ export default function Sliders() {
             modules={[Navigation]}
             style={{ width: '100%', height: '100%', borderRadius: '15px' }}
           >
-            {propertyEstate.SliderImages.map(
+            {PROPERTY_ESTATE.sliderImages.map(
               (item, index) => (
-                console.log('slider', propertyEstate.SliderImages),
+                console.log('slider', PROPERTY_ESTATE.SliderImages),
                 (
                   <SwiperSlide key={index}>
                     <Image
@@ -43,3 +42,4 @@ export default function Sliders() {
     </>
   );
 }
+export default Sliders;

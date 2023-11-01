@@ -1,5 +1,5 @@
 //dynamic
-export const propertyData = {
+export const PROPERTY_DATA = {
   title: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
   description:
     'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
@@ -18,11 +18,11 @@ export const propertyData = {
     city: 'Karachi',
   },
   price: '1.5 Crore',
-  avartar: 'assets/images/avatar.svg',
+  avartar: '/images/agent-profile/avatar.svg',
   name: 'Arman Khan',
-  agentdescription:
+  agentDescription:
     'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-  PropertyDetails: {
+  propertyDetails: {
     type: 'Residential plot',
     location: 'Scheme 33,Karachi',
     price: '1.5 Crore',
@@ -33,16 +33,16 @@ export const propertyData = {
   },
 };
 
-export const propertyEstate = {
-  SliderImages: [
+export const PROPERTY_ESTATE = {
+  sliderImages: [
     {
-      images: '/assets/images/appartments.jpg',
+      images: '/images/slider/appartments.svg',
     },
     {
-      images: '/assets/images/houses.jpg',
+      images: '/images/slider/houses.svg',
     },
     {
-      images: '/assets/images/commercial.jpg',
+      images: '/images/slider/commercial.svg',
     },
   ],
   propertyAttributes: [

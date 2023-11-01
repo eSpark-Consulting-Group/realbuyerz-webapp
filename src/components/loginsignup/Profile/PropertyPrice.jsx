@@ -40,7 +40,7 @@ const Price = ({ price }) => {
         }}
       >
         <Image
-          src="assets/images/msgicon.svg"
+          src="/images/agent-profile/msgicon.svg"
           width={30}
           height={26}
           alt={''}

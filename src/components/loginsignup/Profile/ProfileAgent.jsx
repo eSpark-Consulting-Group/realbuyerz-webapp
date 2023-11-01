@@ -4,9 +4,8 @@ import { Grid, Box } from '@mui/material';
 
 import Price from './PropertyPrice';
 import AgentDescription from './AgentDescription';
-import ViewAgentProfile from './viewagentprofile';
-import { propertyData } from '../../../../app/constants/propertyconstants';
-
+import ViewAgentProfile from './ViewAgentProfile';
+import { PROPERTY_DATA } from '@/app/constants/PropertyConstants';
 const ProfileAgent = () => {
   return (
     <Grid container spacing={2}>
@@ -32,12 +31,12 @@ const ProfileAgent = () => {
             mx: { xs: 'auto', md: '0px' },
           }}
         >
-          <Price price={propertyData.price} />
+          <Price price={PROPERTY_DATA.price} />
           <ViewAgentProfile
-            avatar={propertyData.avartar}
-            name={propertyData.name}
+            avatar={PROPERTY_DATA.avartar}
+            name={PROPERTY_DATA.name}
           />
-          <AgentDescription description={propertyData.agentdescription} />
+          <AgentDescription description={PROPERTY_DATA.agentDescription} />
         </Box>
       </Grid>
     </Grid>
