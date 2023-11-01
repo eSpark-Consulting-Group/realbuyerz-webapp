@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
+
 const ReachBuyer = () => {
   const simplesteps = 'In a few simple steps!';
   const MillionsBuyers = 'Reach Millions of Buyers on our Platforms';

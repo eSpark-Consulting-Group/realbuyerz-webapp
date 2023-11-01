@@ -17,12 +17,14 @@ const SelectCityType = () => {
           fontFamily: 'Inter',
           fontWeight: 400,
           gap: '8px',
+
         }}
       >
         <Image src={PropertyInformation.city.images} width={47} height={45} />
         <Typography
           sx={{
             color: '#333333',
+
           }}
         >
           {PropertyInformation.city.text}{' '}
@@ -33,6 +35,7 @@ const SelectCityType = () => {
         sx={{
           width: { xs: '100%', md: '400px' },
           color: '#777777',
+          marginLeft: { xs: "0px", md: "50px" }
         }}
         variant="outlined"
         value={value}

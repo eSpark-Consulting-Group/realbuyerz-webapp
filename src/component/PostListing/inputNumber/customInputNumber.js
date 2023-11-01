@@ -1,5 +1,6 @@
 import React from 'react';
 import { InputAdornment, IconButton, Box, Input } from '@mui/material';
+
 import Image from 'next/image';
 
 const CustomNumberInput = ({ value, onChange }) => {
@@ -8,7 +9,6 @@ const CustomNumberInput = ({ value, onChange }) => {
     const formattedValue = sanitizedValue.replace(/([+-])+/g, '$1');
     onChange(formattedValue);
   };
-
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
     onChange((numericValue + 1).toString());
@@ -20,7 +20,7 @@ const CustomNumberInput = ({ value, onChange }) => {
   return (
     <Box
       sx={{
-        width: '150px',
+        width: '140px',
         display: 'flex',
         justifyContent: 'space-between',
         gap: '6px',

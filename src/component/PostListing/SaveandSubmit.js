@@ -1,7 +1,10 @@
 import React from 'react';
-import { Typography, Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
+
 const SubmitButton = () => {
+  const Savedraft = "Save as draft";
+  const SubmitAd = "Submit Ad"
   return (
     <Grid container>
       <Grid
@@ -21,7 +24,6 @@ const SubmitButton = () => {
             alignItems: 'center',
             gap: '10px',
             width: '90%',
-            background: 'white',
           }}
         >
           <HideUnhideButton />
@@ -38,7 +40,7 @@ const SubmitButton = () => {
               fontWeight: 400,
             }}
           >
-            Save as draft
+            {Savedraft}
           </Button>
           <Button
             style={{
@@ -53,7 +55,7 @@ const SubmitButton = () => {
               fontWeight: 400,
             }}
           >
-            Submit Ad
+            {SubmitAd}
           </Button>
         </Box>
       </Grid>

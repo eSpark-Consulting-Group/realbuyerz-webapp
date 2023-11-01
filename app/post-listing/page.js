@@ -1,17 +1,17 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
+
 import BuyersPlatform from '@/src/component/PostListing/BuyersPlatform';
 import AdInformation from '@/src/component/PostListing/AdInformation';
-import PropertySize from '@/src/component/PostListing/propertysize';
-import PropertyFeature from '@/src/component/PostListing/FeatureAndAmenties';
+import PropertySize from '@/src/component/PostListing/PropertySize';
+import PropertyFeatures from '@/src/component/PostListing/PropertyFeature';
 import PropertyGallery from '@/src/component/PostListing/PropertMediaGallery';
 import SubmitButton from '@/src/component/PostListing/SaveandSubmit';
 import Purpose from '@/src/component/PostListing/Purpose';
 const PostListing = () => {
   return (
     <Grid container sx={{ paddingTop: '30px', background: '#F4F5F7' }}>
-      <Grid item xs={12} md={1} sx={{ background: 'pink' }}>
-        JJJDJ
+      <Grid item xs={12} md={1} >
       </Grid>
       <Grid item xs={12} md={10}>
         <Box
@@ -29,13 +29,12 @@ const PostListing = () => {
           <AdInformation />
           <Purpose />
           <PropertySize />
-          <PropertyFeature />
+          <PropertyFeatures />
           <PropertyGallery />
           <SubmitButton />
         </Box>
       </Grid>
-      <Grid item xs={12} md={1} sx={{ background: 'pink' }}>
-        XXX
+      <Grid item xs={12} md={1}>
       </Grid>
     </Grid>
   );

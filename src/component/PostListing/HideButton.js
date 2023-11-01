@@ -20,8 +20,8 @@ function HideUnhideButton() {
         borderRadius: '5px',
         border: '1px solid #FB631C',
         background: '#FFF',
-        display: 'flex', // Display as flex container
-        justifyContent: 'center', //
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
       {isHidden ? (
@@ -33,7 +33,6 @@ function HideUnhideButton() {
           <VisibilityIcon />
         </IconButton>
       )}
-      {/* {isHidden ? <p>Content is hidden</p> : <p>Content is visible</p>} */}
     </Box>
   );
 }

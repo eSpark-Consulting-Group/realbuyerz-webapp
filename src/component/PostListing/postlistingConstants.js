@@ -94,14 +94,14 @@ export const PropertyInformation = {
       image: 'assets/images/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      option1: '1000sq',
+      option1: '1000sq'
     },
     {
       image: 'assets/images/amount.svg',
       text: 'Amount ',
       placeholder: 'Enter Amount.',
-      option2: '2000sq',
-    },
+      option2: '2000sq'
+    }
   ],
   installment: [
     {

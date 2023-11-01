@@ -2,7 +2,9 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
+
 import { PropertyInformation } from './postlistingConstants';
+
 const ListingInfo = () => {
   return (
     <Box

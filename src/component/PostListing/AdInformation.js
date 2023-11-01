@@ -1,11 +1,11 @@
 import React from 'react';
 import { Typography, Box, TextField, Grid } from '@mui/material';
 import Image from 'next/image';
+
 import { PropertyInformation } from './postlistingConstants';
 import PostTitle from './PostTitle';
-import ImageTitle from './imagewithtitle';
-import RBTextField from './TextField';
-import BackgroundImageBox from './RealBuyerBackgroundImage';
+import PropertyAddInformation from './PropertyAddInformation';
+
 const AdInformation = () => {
   return (
     <Grid container>
@@ -40,7 +40,7 @@ const AdInformation = () => {
               justifyContent: 'center',
               flexDirection: 'column',
               alignItems: 'center',
-              width: { xs: '80%', md: '600px' }, // Set width to 100% on xs screens and 700px on md screens
+              width: { xs: '80%', md: '600px' },
               padding: { xs: '20px', md: '50px' },
               backgroundImage: 'url("/assets/images/realbuyer.svg")',
               backgroundSize: 'cover',
@@ -52,64 +52,7 @@ const AdInformation = () => {
               marginTop: { xs: '10px', md: '0' },
             }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              {PropertyInformation.addInfo.map((item, index) => (
-                <Box
-                  sx={{
-                    padding: '10px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    gap: '15px',
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignSelf: 'flex-start',
-                      justifyContent: 'center',
-                      fontSize: '20px',
-                      fontFamily: 'Inter',
-                      fontWeight: 400,
-                      gap: '8px',
-                    }}
-                    key={index}
-                  >
-                    <Image src={item.image} width={45} height={45} />
-                    <Typography
-                      sx={{
-                        color: '#333333',
-                      }}
-                    >
-                      {item.text}
-                    </Typography>
-                    <span style={{ color: '#FF0000' }}>*</span>
-                  </Box>
-                  {/* <RBTextField placeholder={item.placeholder}
-                        /> */}
-
-                  <TextField
-                    placeholder={item.placeholder}
-                    sx={{
-                      marginLeft: { xs: '0px', md: '50px' },
-                      width: { xs: '100%', md: '600px' },
-                      '& placholder': {
-                        textOverflow: 'ellipsis',
-                        whiteSpace: { xs: 'nowrap', md: 'normal' }, // Set to nowrap on xs screen to enable ellipsis
-                        overflow: 'hidden',
-                      },
-                    }}
-                  />
-                </Box>
-              ))}
-            </Box>
+            <PropertyAddInformation PropertyInformation={PropertyInformation.addInfo} />
           </Box>
         </Box>
       </Grid>
