@@ -18,16 +18,16 @@ function scrollToTop() {
 
 function PopularLocations({ data }) {
   const [filteredData, setFilteredData] = React.useState(
-    data.filter((item) => item.type === 'sale')
+    data?.filter((item) => item.type === 'sale')
   );
   const [filterType, setFilterType] = React.useState('sale');
 
   const handleFilter = (type) => {
     setFilterType(type);
     if (type === 'sale') {
-      setFilteredData(data.filter((item) => item.type === 'sale'));
+      setFilteredData(data?.filter((item) => item.type === 'sale'));
     } else if (type === 'rent') {
-      setFilteredData(data.filter((item) => item.type === 'rent'));
+      setFilteredData(data?.filter((item) => item.type === 'rent'));
     } else {
       setFilteredData(data);
     }

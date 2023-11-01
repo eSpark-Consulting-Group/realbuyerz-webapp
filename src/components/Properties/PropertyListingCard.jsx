@@ -31,7 +31,7 @@ function PropertyListingCard({ data }) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -129,7 +129,7 @@ function PropertyListingCard({ data }) {
               {property.description}
             </Typography>
 
-            <div className="posted-1-day-ago">
+            <div>
               <Typography
                 // variant="body2"
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
@@ -144,14 +144,14 @@ function PropertyListingCard({ data }) {
               gap={'20px'}
               sx={{ display: 'flex' }}
             >
-              <Box className="view-more">
+              <Box>
                 <Link href={`/property/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">View More</Typography>
                   </Button>
                 </Link>
               </Box>
-              <Box className="agent-profile">
+              <Box>
                 <Link href={`/property/${property.agentName}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">Agent Profile</Typography>
@@ -164,7 +164,7 @@ function PropertyListingCard({ data }) {
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(data.length / itemsPerPage)}
+          count={Math.ceil(data?.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"
