@@ -31,7 +31,7 @@ function PropertyListingCard({ data }) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -70,7 +70,7 @@ function PropertyListingCard({ data }) {
                 layout="fill"
                 objectFit="cover"
                 style={styles.image}
-                alt=""
+                alt={''}
                 sx={{
                   borderRadius: '5px ',
                 }}
@@ -92,46 +92,46 @@ function PropertyListingCard({ data }) {
           >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <Typography
-                // variant="secondary"
+                // variant='secondary'
                 sx={{ fontSize: '20px', fontWeight: '500' }}
               >
                 PKR
               </Typography>
               <Typography
-                // variant="h3"
+                // variant='h3'
                 sx={{ fontSize: '25px', fontWeight: '600' }}
               >
                 {property.price}
               </Typography>
             </Box>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
             >
               {property.location}
             </Typography>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
               {property.area} sqft
             </Typography>
             <Typography
-              // variant="h3"
+              // variant='h3'
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {property.direction}
             </Typography>
             <Typography
-              // variant="secondary"
+              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400' }}
             >
               {property.description}
             </Typography>
 
-            <div className="posted-1-day-ago">
+            <div>
               <Typography
-                // variant="body2"
+                // variant='body2'
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
               >
                 Posted {property.postedDate}
@@ -144,14 +144,14 @@ function PropertyListingCard({ data }) {
               gap={'20px'}
               sx={{ display: 'flex' }}
             >
-              <Box className="view-more">
+              <Box>
                 <Link href={`/property/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">View More</Typography>
                   </Button>
                 </Link>
               </Box>
-              <Box className="agent-profile">
+              <Box>
                 <Link href={`/property/${property.agentName}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">Agent Profile</Typography>
@@ -164,7 +164,7 @@ function PropertyListingCard({ data }) {
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(data.length / itemsPerPage)}
+          count={Math.ceil(data?.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"

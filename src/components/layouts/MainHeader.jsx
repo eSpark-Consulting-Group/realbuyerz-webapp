@@ -83,7 +83,7 @@ function MainHeader() {
               >
                 <Image
                   src="/images/RealBuyers-Logo.svg"
-                  alt=""
+                  alt={''}
                   height={37}
                   width={155}
                 />
