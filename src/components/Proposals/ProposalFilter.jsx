@@ -7,8 +7,12 @@ import {
   FormControl,
   InputLabel,
   Select,
+  Box,
 } from '@mui/material';
+
 import ProposalTabs from './ProposalTabs';
+
+import { PROPOSAL_LISTING } from '@/app/constants/propsals';
 
 const ProposalFilter = () => {
   const [dropdown1, setDropdown1] = useState('');
@@ -23,56 +27,73 @@ const ProposalFilter = () => {
     setDropdown4('');
   };
 
-  return (<>
-    <Grid container spacing={2} alignItems="center">
-      <Grid item xs={3}>
-        <Typography variant="subtitle1">Label 1</Typography>
-        <FormControl fullWidth>
-          <Select value={dropdown1} placeholder={'Dropdown 4'} onChange={(e) => setDropdown1(e.target.value)}>
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-        </FormControl>
+  return (
+    <>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={3}>
+          <Typography variant="subtitle1">Label 1</Typography>
+          <FormControl fullWidth>
+            <Select
+              value={dropdown1}
+              placeholder={'Dropdown 4'}
+              onChange={(e) => setDropdown1(e.target.value)}
+            >
+              <MenuItem value="option1">Option 1</MenuItem>
+              <MenuItem value="option2">Option 2</MenuItem>
+              <MenuItem value="option3">Option 3</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={3}>
+          <Typography variant="subtitle1">Label 2</Typography>
+          <FormControl fullWidth>
+            <Select
+              value={dropdown2}
+              placeholder={'Dropdown 4'}
+              onChange={(e) => setDropdown2(e.target.value)}
+            >
+              <MenuItem value="option1">Option 1</MenuItem>
+              <MenuItem value="option2">Option 2</MenuItem>
+              <MenuItem value="option3">Option 3</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={3}>
+          <Typography variant="subtitle1">Label 3</Typography>
+          <FormControl fullWidth>
+            <Select
+              value={dropdown3}
+              placeholder={'Dropdown 4'}
+              onChange={(e) => setDropdown3(e.target.value)}
+            >
+              <MenuItem value="option1">Option 1</MenuItem>
+              <MenuItem value="option2">Option 2</MenuItem>
+              <MenuItem value="option3">Option 3</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Box item xs={3}>
+          <Typography variant="subtitle1">Label 4</Typography>
+          <FormControl fullWidth>
+            <Select
+              value={dropdown4}
+              placeholder={'Dropdown 4'}
+              onChange={(e) => setDropdown4(e.target.value)}
+            >
+              <MenuItem value="option1">Option 1</MenuItem>
+              <MenuItem value="option2">Option 2</MenuItem>
+              <MenuItem value="option3">Option 3</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Grid item xs={12}>
+          <Button onClick={handleClearButtonClick}>
+            Clear
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item xs={3}>
-        <Typography variant="subtitle1">Label 2</Typography>
-        <FormControl fullWidth>
-          <Select value={dropdown2} placeholder={'Dropdown 4'} onChange={(e) => setDropdown2(e.target.value)}>
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={3}>
-        <Typography variant="subtitle1">Label 3</Typography>
-        <FormControl fullWidth>
-          <Select value={dropdown3} placeholder={'Dropdown 4'} onChange={(e) => setDropdown3(e.target.value)}>
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={3}>
-        <Typography variant="subtitle1">Label 4</Typography>
-        <FormControl fullWidth>
-          <Select value={dropdown4} placeholder={'Dropdown 4'} onChange={(e) => setDropdown4(e.target.value)}>
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="outlined" onClick={handleClearButtonClick}>
-          Clear
-        </Button>
-      </Grid>
-    </Grid>
-    <ProposalTabs />
-  </>
+      <ProposalTabs filteredData={PROPOSAL_LISTING} />
+    </>
   );
 };
 

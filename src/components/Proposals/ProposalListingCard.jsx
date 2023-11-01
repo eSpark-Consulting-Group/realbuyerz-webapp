@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Typography,
-  Grid,
-  Button,
-  Pagination
-} from '@mui/material';
+import { Box, Typography, Grid, Button, Pagination } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -112,17 +106,23 @@ function ProposalListingCard({ data }) {
             </Box>
 
             {/* Location */}
-            <Typography sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}>
+            <Typography
+              sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
+            >
               {proposal.location}
             </Typography>
 
             {/* Area */}
-            <Typography sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}>
+            <Typography
+              sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
+            >
               {proposal.area} sqft
             </Typography>
 
             {/* Direction */}
-            <Typography sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}>
+            <Typography
+              sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
+            >
               {proposal.direction}
             </Typography>
 
@@ -133,7 +133,9 @@ function ProposalListingCard({ data }) {
 
             {/* Posted Date */}
             <div className="posted-1-day-ago">
-              <Typography sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}>
+              <Typography
+                sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
+              >
                 Posted {proposal.postedDate}
               </Typography>
             </div>

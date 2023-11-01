@@ -3,15 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { PROPOSAL_LISTING } from '@/app/constants/propsals';
 import ProposalListingCard from './ProposalListingCard';
-import ProposalFilter from './ProposalFilter';
 
-function CustomTabPanel({ value, index, proposalStatus }) {
+function CustomTabPanel({ data, value, index, proposalStatus }) {
   const filteredProperties =
     value === 0
-      ? PROPOSAL_LISTING
-      : PROPOSAL_LISTING.filter(
+      ? data
+      : data.filter(
         (proposal) => proposal.proposalStatus === proposalStatus
       );
 
@@ -38,25 +36,26 @@ function CustomTabPanel({ value, index, proposalStatus }) {
   );
 }
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
 
-export default function ProposalTabs() {
+
+function ProposalTabs({ filteredData }) {
   const [value, setValue] = useState(0);
-  const [proposalStatus, setProposalStatus] = useState(''); // Add this line to store the selected proposal type
+  const [proposalStatus, setProposalStatus] = useState('');
 
   useEffect(() => {
     setValue(0);
   }, []);
 
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
   const uniqueProposalStatuss = [];
   const seenProposalStatuss = {};
 
-  PROPOSAL_LISTING?.forEach((proposal) => {
+  filteredData?.forEach((proposal) => {
     if (!seenProposalStatuss[proposal.proposalStatus]) {
       uniqueProposalStatuss.push(proposal.proposalStatus);
       seenProposalStatuss[proposal.proposalStatus] = true;
@@ -81,20 +80,13 @@ export default function ProposalTabs() {
     );
   };
 
-  // const filteredProposals =
-  //   proposalStatus === ''
-  //     ? PROPOSAL_LISTING
-  //     : PROPOSAL_LISTING.filter(
-  //       (proposal) => proposal.proposalStatus === proposalStatus
-  //     );
   return (
     <>
-
       <Box
         sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
       >
         <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs
               value={value}
               onChange={handleChange}
@@ -103,9 +95,10 @@ export default function ProposalTabs() {
               {tabData?.map((tab, index) => {
                 const filteredCount =
                   tab.proposalStatus === 'All'
-                    ? PROPOSAL_LISTING.length
-                    : PROPOSAL_LISTING.filter(
-                      (proposal) => proposal.proposalStatus === tab.proposalStatus
+                    ? filteredData.length
+                    : filteredData.filter(
+                      (proposal) =>
+                        proposal.proposalStatus === tab.proposalStatus
                     ).length;
 
                 return (
@@ -121,6 +114,7 @@ export default function ProposalTabs() {
           </Box>
           {tabData?.map((tab, index) => (
             <CustomTabPanel
+              data={filteredData}
               key={index}
               value={value}
               index={index}
@@ -132,3 +126,4 @@ export default function ProposalTabs() {
     </>
   );
 }
+export default ProposalTabs;
