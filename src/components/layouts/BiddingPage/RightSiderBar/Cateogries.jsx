@@ -1,7 +1,7 @@
+import React from "react";
 import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import React from "react";
 
 const Cateogries = ({ data }) => {
   return (

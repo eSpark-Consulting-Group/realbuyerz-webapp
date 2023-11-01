@@ -32,10 +32,9 @@ const ExpendedSiderBar = ({ data , isCollapsed, }) => {
             borderRadius: 15,
           }}
         >
-          {/* <Button onClick={() => collapsed()}>isCollapsed</Button> */}
           <Box
             sx={{
-              width: "98%",
+              width: "200px",
               backgroundColor: "#FF631C33",
               borderRadius: "15px",
               display: "flex",

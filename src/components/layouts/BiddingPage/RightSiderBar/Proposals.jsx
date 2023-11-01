@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 function Proposals({ data }) {
   return (
-    <Grid xs={12} columnSpacing={2}>
+    <Grid xs={12} columnSpacing={2} sx={{mb: 3}}>
       <Box
         sx={{
           border: "1px solid #E4E4E4",

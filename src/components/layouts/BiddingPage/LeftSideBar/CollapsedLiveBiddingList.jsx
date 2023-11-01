@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Collapse, IconButton, Typography } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { Box } from '@mui/material';
 import Image from 'next/image';
 
 const CollapsedLiveBiddingList = ({ list }) => {
   const [openItemId, setOpenItemId] = useState(null);
-
-  const toggleCollapse = (itemId) => {
-    if (itemId === openItemId) {
-      setOpenItemId(null);
-    } else {
-      setOpenItemId(itemId);
-    }
-  };
 
   return (
     <Box>

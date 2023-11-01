@@ -1,14 +1,14 @@
-export const headerMenu = [
+export const HEADER_MENU  = [
   {
     searchIcon :  "/images/Live-bidding-icons/headerSearchIcon.svg",
     linkIcon : "/images/Live-bidding-icons/headerGotopageIcon.svg",
     myListingIcon: "/images/Live-bidding-icons/headerHandBell.svg",
-    PostListingIcon: "/images/Live-bidding-icons/headerBell.svg",
+    PostListingIcon: "/images/Live-bidding-icons/postListing.svg",
     profileIcon: "/images/Live-bidding-icons/headerProfileIcon.svg",
   }
 
 ] 
-export const liveBiddingData = {
+export const LIVE_BIDDING_DATA = {
   menuItems: [
     {
       id: 1,

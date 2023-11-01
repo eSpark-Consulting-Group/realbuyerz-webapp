@@ -1,21 +1,13 @@
 import React from "react";
 import {  Grid } from "@mui/material";
 import { Box } from "@mui/system";
-
 import Image from "next/image";
+
 import CollapsedLiveBiddingList from "./CollapsedLiveBiddingList";
 
 const CollapsedSideBar = ({ data, isCollapsed }) => {
   return (
     <Box
-    //   sx={{
-    //     // width: `${isCollapsed}`,
-    //     width: `20%`,
-    //     // display: `${isOpen}`,
-    //     height: "100vh",
-    //     // backgroundColor: "#f8f8f8",
-    //     transition: 'width 0.9s ease'
-    //   }}
     style={{
         width: isCollapsed,
         transition: 'width 1.3s ease',

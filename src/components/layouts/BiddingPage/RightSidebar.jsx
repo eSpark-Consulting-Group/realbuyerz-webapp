@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import { Avatar, Divider } from "@mui/material";
-import Typography from "@mui/material/Typography";
+
 import Cateogries from "./RightSiderBar/Cateogries";
 import Proposals from "./RightSiderBar/Proposals";
 import PropertyList from "./RightSiderBar/PropertyList";

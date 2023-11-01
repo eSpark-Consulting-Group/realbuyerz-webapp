@@ -25,6 +25,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
             <Box
               sx={{
                 width: '100%',
+                maxWidth:"300px",
                 borderRadius: '15px',
                 display: 'flex',
                 padding: '10px',

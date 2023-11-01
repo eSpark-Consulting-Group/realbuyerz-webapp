@@ -2,8 +2,9 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Title from "./Title";
 import Image from "next/image";
+
+import Title from "./Title";
 
 const PropertyList = ({ data }) => {
   return (
@@ -39,7 +40,6 @@ const PropertyList = ({ data }) => {
           </Box>
         </Box>
         <Typography
-          // variant="body2"
           sx={{
             color: "#666",
             fontFamily: "Inter",

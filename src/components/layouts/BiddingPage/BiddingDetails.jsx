@@ -7,13 +7,10 @@ import LiveBiddingTitle from "./LiveBiddingTitle";
 import LiveBinddingPropertiesList from "./LiveBinddingPropertiesList";
 
 const BiddingDetails = ({ data }) => {
-  console.log(data, "arry")
   return (
     <Box className="scrollable">
       <LiveBiddingTitle data={"LIVE BIDDING IN PROPERTIES"} />
-      {
-        data.liveBidding.map((item)=>(
-          // console.log(item,"i")
+      {data.liveBidding.map((item) => (
         <Grid container spacing={2} xs={12}>
           <Box
             sx={{
@@ -58,7 +55,9 @@ const BiddingDetails = ({ data }) => {
                   lineHeight: "normal",
                 }}
               >
-                <Typography variant="h4" sx={{ ml: 0.4 }}>{item?.title}</Typography>
+                <Typography variant="h4" sx={{ ml: 0.4 }}>
+                  {item?.title}
+                </Typography>
               </Grid>
               <Grid
                 item
@@ -78,9 +77,7 @@ const BiddingDetails = ({ data }) => {
                 <Box>
                   <Typography variant="body1">
                     Est. Range:{" "}
-                    <span style={{ fontWeight: "bold" }}>
-                      {item.estRange}
-                    </span>
+                    <span style={{ fontWeight: "bold" }}>{item.estRange}</span>
                   </Typography>
                 </Box>
               </Grid>
@@ -164,14 +161,12 @@ const BiddingDetails = ({ data }) => {
                 marginLeft: "0px",
                 borderRadius: "200px 16px  16px 200px",
                 top: "0",
-                right: '0px'
+                right: "0px",
               }}
             ></Box>
           </Box>
         </Grid>
-
-        ))
-      }
+      ))}
     </Box>
   );
 };
