@@ -1,13 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import { Typography, Box, TextField, Button, MenuItem } from '@mui/material';
-import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useRouter } from 'next/navigation';
-
+import LoginWithGoogle from '../Login/LoginWithGoogle';
 const SignupCard = () => {
   const [value, setValue] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +29,7 @@ const SignupCard = () => {
       <Box
         sx={{
           width: { xs: '95%', md: '450px' },
-          height: { xs: '650px', md: '605px' },
+          height: { xs: '650px', md: '618px' },
           padding: 8,
           paddingTop: '20px',
           display: 'flex',
@@ -39,7 +38,7 @@ const SignupCard = () => {
           boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
           borderRadius: 2,
           background: 'white',
-          marginTop: '20px',
+          marginTop: '11px',
           zIndex: 2,
         }}
       >
@@ -163,107 +162,13 @@ const SignupCard = () => {
                             )} */}
             </Box>
           </form>
-
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Button
-              style={{
-                background: '#FB631C',
-                width: '100px',
-                borderRadius: '5px',
-                color: 'white',
-                fontSize: '14px',
-                '&:hover': {
-                  background: '#FF631C',
-                },
-              }}
-            >
-              Sign up
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <hr
-              style={{
-                width: '135px',
-                border: '1px #A5A5A5 solid',
-              }}
-            ></hr>
-            <Typography
-              sx={{
-                color: '#909394',
-              }}
-            >
-              {' '}
-              Or
-            </Typography>
-
-            <hr
-              style={{
-                width: '135px',
-                border: '1px #A5A5A5 solid',
-              }}
-            ></hr>
-          </Box>
-
-          <Button
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
-              width: { xs: '150px', md: '250px' },
-              height: '37px',
-              fontSize: { xs: '12px', md: '15px' },
-              fontWeight: 500,
-              gap: '10px',
-              color: '#909394',
-              fontFamily: 'Inter',
-              mx: 'auto',
-              textTransform: 'math-auto',
-            }}
-          >
-            <Image
-              src="assets/images/google.svg"
-              width={24}
-              height={24}
-              alt={''}
-            />
-            Login with Google
-          </Button>
-          <Box
-            sx={{
-              textAlign: 'center',
-              fontSize: '16px',
-              fontFamily: 'Inter',
-              fontweight: 400,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333333',
-              }}
-            >
-              Already have an account?{' '}
-              <Typography
-                style={{
-                  color: '#FB631C',
-                }}
-                onClick={() => router.push('/signin')}
-              >
-                Sign in
-              </Typography>
-            </Typography>
-          </Box>
+          <LoginWithGoogle
+            login=" Sign up"
+            sign="Sign in"
+            account=" Already have an account?"
+            googlelogin=" Login with Google"
+            onSigninClick={() => router.push('/signin')}
+          />
         </Box>
       </Box>
     </>

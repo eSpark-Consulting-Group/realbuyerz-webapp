@@ -22,7 +22,7 @@ const LoginBox = () => {
               justifyContent: 'flex-end',
               width: { xs: '200px', md: '500px' },
               height: '800px',
-              backgroundImage: 'url("/assets/images/Rectangle.svg")',
+              backgroundImage: 'url("/images/signup_page/Rectangle.svg")',
               backgroundRepeat: 'no-repeat',
             }}
           >

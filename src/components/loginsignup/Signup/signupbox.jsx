@@ -22,7 +22,7 @@ const SignupBox = () => {
               justifyContent: 'flex-end',
               width: '500px',
               height: '800px',
-              backgroundImage: 'url("/assets/images/Rectangle.svg")',
+              backgroundImage: 'url("/images/signup_page/Rectangle.svg")',
               backgroundRepeat: 'no-repeat',
             }}
           >

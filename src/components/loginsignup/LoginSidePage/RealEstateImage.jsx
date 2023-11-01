@@ -6,7 +6,7 @@ const RealEstate = () => {
   return (
     <Box>
       <Image
-        src={'assets/images/boximage.svg'}
+        src={'/images/signup_page/boximage.svg'}
         width={550}
         height={500}
         alt={''}
