@@ -5,58 +5,126 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import RBInput from './RBInput';
+import { Button, Typography } from '@mui/material';
+import RBSelect from './RBSelect';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  // textAlign: 'center',
   //   justifyContent: 'center',
   alignItems: 'center',
   display: 'flex',
   border: 'none',
-  //   boxShadow: 'none',
+  boxShadow: 'none',
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm() {
+export default function ProfileForm({ data }) {
+  const { heading, buttonText, image, feilds, passwordFeilds } = data;
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={5}>
+      <Grid
+        item
+        container
+        spacing={1}
+        xs={9}
+        sx={{
+          mx: 'auto',
+          width: '100%',
+          height: 'auto',
+          backgroundImage: `url('${image}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          border: '2px solid black',
+          justifyContent: {
+            xs: '',
+            sm: '',
+            md: 'space-around',
+            lg: 'space-evenly',
+            xl: 'space-evenly',
+          },
+        }}
+      >
         <Grid item xs={12}>
           <Item>Profile Section</Item>
         </Grid>
-        <Grid item xs={6}>
-          <Item sx={{ width: '100%' }}>
-            <RBInput />
+
+        {feilds?.map((feild, index) => {
+          const {
+            id,
+            label,
+            place,
+            type,
+            helperText,
+            dropdowns,
+            rows,
+            buttonText,
+          } = feild;
+          return (
+            <Grid key={index} item xs={5} sm={12} md={6} lg={6} xl={5}>
+              <Item>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    rowGap: '18px',
+                  }}
+                >
+                  <Typography variant="h6">{label}</Typography>
+                  <Box sx={{ display: 'flex', gap: 2 }}>
+                    <RBSelect menuItem={dropdowns} sx={{ width: '12%' }} />
+                    <RBInput
+                      sx={{
+                        width: {
+                          xs: '',
+                          sm: '',
+                          md: '100%',
+                          lg: '430px',
+                          xl: '430px',
+                        },
+                        // height: '45px',
+                      }}
+                      type={type}
+                      place={place}
+                      helperText={helperText}
+                      id={id}
+                      rows={rows}
+                    />
+                    {buttonText && (
+                      <Button
+                        variant="primary"
+                        sx={{
+                          // width: '100px',
+                          // height: '30px',
+                          borderRadius: '5px',
+                          alignSelf: 'center',
+                        }}
+                      >
+                        {buttonText}
+                      </Button>
+                    )}
+                  </Box>
+                </Box>
+              </Item>
+            </Grid>
+          );
+        })}
+        <Grid item xs={12} sx={{ paddingLeft: '0 !important' }}>
+          <Item
+            sx={{
+              background: 'rgba(218, 233, 242, 0.40)',
+              height: '71px',
+              paddingLeft: 5,
+            }}
+          >
+            <Typography variant="h6" color={'text'}>
+              Change Password
+            </Typography>
           </Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid item xs={12}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={12}>
-          <Item>xs=8</Item>
         </Grid>
       </Grid>
     </Box>

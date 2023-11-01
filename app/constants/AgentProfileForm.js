@@ -1,0 +1,97 @@
+export const Agent_Profile_Form_Data = {
+  heading: 'Change Password',
+  buttonText: 'Save changes',
+  image: '/images/agent_form/agent_form_background.png',
+  feilds: [
+    {
+      label: 'Full Name',
+      place: 'Enter First Name',
+      type: 'text',
+      helperText: 'First Name',
+    },
+    {
+      label: '',
+      place: 'Enter Last Name',
+      type: 'text',
+      helperText: 'Last Name',
+    },
+    {
+      label: 'Email',
+      place: '@gmail.com',
+      type: 'email',
+      helperText: '',
+    },
+    {
+      label: 'Landline',
+      place: 'Enter Landline',
+      type: 'number',
+      helperText: '',
+    },
+    {
+      label: 'Whatsapp',
+      place: '+92',
+      type: 'number',
+      helperText: '',
+      dropdowns: ['Pakistan', 'Japan', 'China'],
+    },
+    {
+      label: 'Mobile',
+      place: '+92',
+      type: 'number',
+      helperText: '',
+      dropdowns: ['Pakistan', 'Japan', 'China'],
+      buttonText: 'Verify',
+    },
+    {
+      label: 'Country',
+      place: 'Enter Country',
+      type: 'text',
+      helperText: '',
+    },
+    {
+      label: 'City',
+      place: 'Enter City',
+      type: 'text',
+      helperText: '',
+    },
+    {
+      label: 'Address',
+      place: 'Add Address',
+      type: 'text',
+      helperText: '',
+    },
+    {
+      id: 'outlined-multiline-static',
+      label: 'Bio',
+      place: 'Enter Bio',
+      type: 'textArea',
+      helperText: '',
+      rows: '4',
+    },
+  ],
+  passwordFeilds: [
+    {
+      label: 'Enter Old Password',
+      place: 'Enter Old Password',
+      type: 'password',
+      helperText: '',
+    },
+    {
+      label: 'Enter New Password',
+      place: 'Enter New Password',
+      type: 'password',
+      helperText: '',
+    },
+    {
+      label: 'Confirm Password',
+      place: 'Confirm Password',
+      type: 'password',
+      helperText: '',
+    },
+    {
+      label: 'Update details in all property listings',
+      type: 'checkbox',
+      helperText: '',
+    },
+  ],
+};

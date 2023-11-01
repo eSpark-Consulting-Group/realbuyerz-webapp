@@ -1,17 +1,34 @@
 import { FormHelperText, TextField, Typography } from '@mui/material';
 import React from 'react';
 
-const RBInput = ({ label, fullWidth, defaultValue, id, sx, helperText }) => {
+const RBInput = ({
+  label,
+  place,
+  defaultValue,
+  id,
+  sx,
+  helperText,
+  type,
+  rows,
+}) => {
   return (
     <div>
-      <Typography>{label}</Typography>
       <TextField
-        fullWidth={fullWidth}
+        fullWidth
+        type={type}
         sx={sx}
         id={id}
+        label={label}
+        placeholder={place}
         defaultValue={defaultValue}
+        multiline
+        rows={rows}
       />
-      <FormHelperText id="component-helper-text">{helperText}</FormHelperText>
+      {helperText && (
+        <FormHelperText sx={{ p: 1 }} id="component-helper-text">
+          {helperText}
+        </FormHelperText>
+      )}
     </div>
   );
 };

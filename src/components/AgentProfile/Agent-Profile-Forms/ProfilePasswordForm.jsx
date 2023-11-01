@@ -23,18 +23,6 @@ export default function ProfilePasswordForm() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={5}>
-        <Grid item xs={12}>
-          <Item
-            sx={{
-              background: 'rgba(218, 233, 242, 0.40)',
-              height: '71px',
-            }}
-          >
-            <Typography variant="h6" color={'text'}>
-              Change Password
-            </Typography>
-          </Item>
-        </Grid>
         <Grid item xs={6}>
           <Item>xs=8</Item>
         </Grid>
