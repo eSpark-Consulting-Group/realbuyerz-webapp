@@ -1,14 +1,14 @@
-import React from "react";
-import { Grid } from "@mui/material";
+import React from 'react';
+import { Grid } from '@mui/material';
 
-import SignupBox from "../Signup/SignupBox";
-import LoginSidePage from "../LoginSidePage/LoginSidePage";
-import LoginBox from "./LoginBox";
+import SignupBox from '../Signup/SignupBox';
+import LoginSidePage from '../LoginSidePage/LoginSidePage';
+import LoginBox from './LoginBox';
 
-const LoginSignupLayout = ({isSign}) => {
-    return (
-        <>
-         <Grid item xs={12} md={1} />
+const LoginSignupLayout = ({ IsLoginPage }) => {
+  return (
+    <>
+      <Grid item xs={12} md={1} />
       <Grid
         item
         xs={12}
@@ -20,15 +20,15 @@ const LoginSignupLayout = ({isSign}) => {
           flexDirection: { xs: 'column', md: 'row' },
         }}
       >
-        <Grid item xs={12} md={6} sx={{}}>
+        <Grid item xs={12} md={6} >
           <LoginSidePage />
         </Grid>
-        <Grid item xs={12} md={6} sx={{}}>
-            {isSign ? <LoginBox /> : <SignupBox />}
+        <Grid item xs={12} md={6} >
+          {IsLoginPage ? <LoginBox /> : <SignupBox />}
         </Grid>
       </Grid>
-            <Grid item xs={12} md={1} />
-        </>
-    )
-}
+      <Grid item xs={12} md={1} />
+    </>
+  );
+};
 export default LoginSignupLayout;

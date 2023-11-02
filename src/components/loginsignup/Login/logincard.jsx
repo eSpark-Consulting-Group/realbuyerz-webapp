@@ -1,19 +1,13 @@
 import React from 'react';
-import {
-  Typography,
-  Box,
-  FormControlLabel,
-  Checkbox,
-} from '@mui/material';
+import { Typography, Box, FormControlLabel, Checkbox } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from './LoginWithGoogle';
-import FormData from './LoginForm';
+import FormContainer from './LoginForm';
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const LoginCard = () => {
-  const welcome = " Hey! Welcome";
-  const forgetPassword = "Forget Password?";
-    const router = useRouter();
+  const router = useRouter();
   return (
     <>
       <Box
@@ -50,9 +44,9 @@ const LoginCard = () => {
               fontFamily: 'Inter',
             }}
           >
-           {welcome}
+            {LOGIN_FORM.loginForm.welcome}
           </Typography>
-          <FormData isLoginForm={true} />
+          <FormContainer isLoginForm={true} />
           <Box
             sx={{
               display: 'flex',
@@ -74,10 +68,10 @@ const LoginCard = () => {
                 marginTop: 2,
               }}
             >
-             {forgetPassword}
+              {LOGIN_FORM.loginForm.forgetPassword}
             </Typography>
             <FormControlLabel
-              label="Remember me"
+              label={LOGIN_FORM.loginForm.rememberMe}
               control={<Checkbox size="small" color="primary" />}
               sx={{
                 display: 'flex',
@@ -87,11 +81,12 @@ const LoginCard = () => {
               }}
             />
           </Box>
-          <LoginWithGoogle login="Log in"
-            sign="Sign up"
-            account="Doesn’t have an account yet?"
-            googlelogin=" Login with Google"
-             onSigninClick={() => router.push('/signup')}
+          <LoginWithGoogle
+            buttonLabel={LOGIN_FORM.loginForm.login}
+            label={LOGIN_FORM.signupForm.signin}
+            accountCreationMessage={LOGIN_FORM.signupForm.label}
+            loginButton={LOGIN_FORM.loginForm.googlelogin}
+            onSigninClick={() => router.push('/signup')}
           />
         </Box>
       </Box>

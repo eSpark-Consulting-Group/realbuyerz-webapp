@@ -5,7 +5,8 @@ import { Typography, Box} from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import FormData from '../Login/LoginForm';
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import FormContainer from '../Login/LoginForm';
 
 const SignupCard = () => {
     const router = useRouter();
@@ -44,7 +45,7 @@ const SignupCard = () => {
               fontFamily: 'Inter',
             }}
           >
-            Create Account
+            {LOGIN_FORM.loginForm.createAccount}
           </Typography>
           <Typography
             sx={{
@@ -54,14 +55,14 @@ const SignupCard = () => {
               fontFamily: 'Inter',
             }}
           >
-            It’s Quick & Easy
+            {LOGIN_FORM.loginForm.quickEasy}
           </Typography>
-          <FormData isLoginForm={false} />
+          <FormContainer isLoginForm={false} />
           <LoginWithGoogle
-            login=" Sign up"
-            sign="Sign in"
-            account=" Already have an account?"
-            googlelogin=" Login with Google"
+            buttonLabel={LOGIN_FORM.signupForm.signup}
+            label={LOGIN_FORM.signupForm.signin}
+            accountCreationMessage={LOGIN_FORM.loginForm.label}
+            loginButton={LOGIN_FORM.loginForm.googlelogin}
             onSigninClick={() => router.push('/signin')}
           />
         </Box>

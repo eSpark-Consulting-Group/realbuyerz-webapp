@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Box, Button } from "@mui/material";
 import Image from "next/image";
 
-const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) => {
+const LoginWithGoogle = ({ buttonLabel,loginButton, label, accountCreationMessage,  onSigninClick }) => {
     return (
         <>
             <Box
@@ -23,7 +23,7 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                         },
                     }}
                 >
-                    {login}
+                    {buttonLabel}
                 </Button>
             </Box >
             <Box
@@ -83,7 +83,8 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                         height={24}
                         alt={''}
                     />
-                    {googlelogin}
+                    {loginButton}
+                  
                 </Button>
             </Box>
             <Box
@@ -94,6 +95,7 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                     textAlign: 'center',
                     fontSize: '16px',
                     fontWeight: 400,
+                    gap:"5px"
                 }}
             >
                 <Typography
@@ -101,7 +103,7 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                         color: '#333333',
                     }}
                 >
-                    {account}
+                    {accountCreationMessage}
                 </Typography>
                 <Typography
                     style={{
@@ -110,7 +112,7 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                     }}
                     onClick={onSigninClick}
                 >
-                    {' '} {sign}
+                   {label}
                 </Typography>
             </Box>
         </>
