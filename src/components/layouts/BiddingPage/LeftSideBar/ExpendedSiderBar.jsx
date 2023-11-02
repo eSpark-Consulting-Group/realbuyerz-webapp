@@ -1,11 +1,12 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import Image from "next/image";
 import ExpendedLiveBiddingList from "./ExpendedLiveBiddingList";
 
-const ExpendedSiderBar = ({ data , isCollapsed, }) => {
+const ExpendedSiderBar = ({ data, isCollapsed, isExpended }) => {
   return (
     <Box
 
@@ -32,6 +33,14 @@ const ExpendedSiderBar = ({ data , isCollapsed, }) => {
             borderRadius: 15,
           }}
         >
+          <Box sx={{ position: 'relative' }}>
+            <Box sx={{
+              position: "absolute",
+              right: 0
+            }}>
+             <ArrowBackIosNewIcon onClick={isExpended} fontSize="small" sx={{ cursor: "pointer"}}/>
+            </Box>
+          </Box>
           <Box
             sx={{
               width: "200px",
@@ -57,8 +66,10 @@ const ExpendedSiderBar = ({ data , isCollapsed, }) => {
             >
               Live Bidding
             </Typography>
+
           </Box>
           <ExpendedLiveBiddingList list={data.menuItems} />
+          
         </Grid>
       </Grid>
     </Box>

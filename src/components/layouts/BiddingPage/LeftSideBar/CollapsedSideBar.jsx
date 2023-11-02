@@ -2,10 +2,11 @@ import React from "react";
 import {  Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import CollapsedLiveBiddingList from "./CollapsedLiveBiddingList";
 
-const CollapsedSideBar = ({ data, isCollapsed }) => {
+const CollapsedSideBar = ({ data, isCollapsed , isCollaps}) => {
   return (
     <Box
     style={{
@@ -13,6 +14,14 @@ const CollapsedSideBar = ({ data, isCollapsed }) => {
         transition: 'width 1.3s ease',
       }}  
     >
+      <Box sx={{ position: 'relative' }}>
+          <Box sx={{
+            position: "absolute",
+            right: 0,
+          }}>
+           <ArrowForwardIosIcon fontSize="small" onClick={isCollaps} sx={{ cursor: "pointer"}}/>
+          </Box>
+        </Box>
       <Grid
         container
         columnSpacing={{ xs: 1, sm: 2, md: 4, lg: 5 }}

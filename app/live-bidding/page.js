@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react";
 import { Button, Grid } from "@mui/material";
+import { Box } from "@mui/system";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import BiddingDetails from "@/src/components/layouts/BiddingPage/BiddingDetails";
 import ExpendedSiderBar from "@/src/components/layouts/BiddingPage/LeftSideBar/ExpendedSiderBar";
@@ -20,17 +22,23 @@ const page = () => {
   return (
     <>
       <Grid container spacing={2} >
-        <Grid item lg={2} md={12} sm={12} xs={12} 
-        // sx={{ backgroundColor: "#f8f8f8", mt:2.5 }}
+        <Grid item lg={2} md={12} sm={12} xs={12}
         >
-          <Button onClick={() => collapsed()}>isCollapsed</Button>
+          <Box sx={{ position: 'relative' }}>
+            <Box sx={{
+              position: "absolute",
+              right: 0
+            }}>
+            </Box>
+          </Box>
+
           {isCollapsed === fullWidth ? (
-            <ExpendedSiderBar isCollapsed={isCollapsed} data={LIVE_BIDDING_DATA} />
+            <ExpendedSiderBar isCollapsed={isCollapsed} data={LIVE_BIDDING_DATA} isExpended= {collapsed}/>
           ) : (
-            <CollapsedSideBar isCollapsed={isCollapsed} data={LIVE_BIDDING_DATA} />
+            <CollapsedSideBar isCollapsed={isCollapsed} data={LIVE_BIDDING_DATA}  isCollaps= {collapsed}/>
           )}
         </Grid>
-        <Grid item lg={8} md={12} sm={12} xs={12} sx={{mt:2}}>
+        <Grid item lg={8} md={12} sm={12} xs={12} sx={{ mt: 2 }}>
           <BiddingDetails data={LIVE_BIDDING_DATA} />
         </Grid>
         <Grid item lg={2} md={12} sm={12} xs={12} sx={{ marginTop: "70px" }}>
