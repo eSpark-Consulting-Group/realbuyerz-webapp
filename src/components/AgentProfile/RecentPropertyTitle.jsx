@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const RecentPropertyTitle = ({ data }) => {
@@ -13,7 +12,7 @@ const RecentPropertyTitle = ({ data }) => {
       fontWeight={600}
       marginBottom="50px"
     >
-      {data.title}
+      Recent Properties By {data?.contactInfo.agentName}
     </Typography>
   );
 };

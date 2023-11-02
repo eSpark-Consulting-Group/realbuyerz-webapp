@@ -13,7 +13,7 @@ function FeaturedProperties({ data }) {
       sx={{
         pt: '90px',
         textAlign: 'center',
-        backgroundImage: `url("/images/bgs/featured-properties-background.png")`,
+        backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -84,7 +84,7 @@ function FeaturedProperties({ data }) {
                         position: 'relative',
                         justifyContent: 'flex-end',
                         alignItems: 'flex-end',
-                        backgroundImage: `url("/images/amenities/location.svg")`,
+                        backgroundImage: `url('/images/amenities/location.svg')`,
                       }}
                     >
                       <Typography

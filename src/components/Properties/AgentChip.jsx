@@ -33,6 +33,7 @@ function Chips({ data }) {
       chips?.filter((_, index) => chips[index] !== chipToDelete)
     );
   };
+  console.log(selectedChips);
 
   const handleClearAllChips = () => {
     setSelectedChips([]);
