@@ -1,18 +1,76 @@
 export const CHAT_DATA = [
     {
-        userId: 'user1',
-        name:"Jhon doe",
+        userId: 'inComing1',
+        name: 'Jhon doe',
         image: './images/inbox/chatIcon.svg',
+        activeUserId: 'inComing1', // Specify the active user
         messages: [
             {
                 id: 1,
-                sender: 'user1',
+                sender: 'inComing1',
                 content: 'Chat with jhon',
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
                 id: 2,
-                sender: 'user2',
+                sender: 'outGoing1',
+                content: ' my msg ddddddddd;lkk hello world ',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing1',
+                content: ' my msg CHANGE SENDER STRUCTURE',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'outGoing1',
+                content: ' my msg',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing1',
+                content: ' my msg CHANGE SENDER STRUCTURE',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'outGoing1',
+                content: ' my msg',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'outGoing1',
+                content: ' my msg',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing1',
+                content: ' my msg CHANGE SENDER STRUCTURE',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            // Add more messages for this conversation
+        ],
+    },
+    {
+        userId: 'inComing2',
+        name: 'Jhoni Sence',
+        image: './images/house.svg',
+        activeUserId: 'inComing2', // Specify the active user
+        messages: [
+            {
+                id: 1,
+                sender: 'outGoing2',
+                content: 'Chat with hasni',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing2',
                 content: ' my msg',
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
@@ -20,19 +78,20 @@ export const CHAT_DATA = [
         ],
     },
     {
-        userId: 'user1',
-        name:"Jhon doe",
-        image: './images/inbox/chatIcon.svg',
+        userId: 'inComing3',
+        name: 'Captal',
+        image: './images/arrow.svg',
+        activeUserId: 'inComing2', // Specify the active user
         messages: [
             {
                 id: 1,
-                sender: 'user1',
-                content: 'Chat with hasni',
+                sender: 'outGoing3',
+                content: 'Chat with hasnidlkfj',
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
                 id: 2,
-                sender: 'user2',
+                sender: 'inComing3',
                 content: ' my msg',
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
@@ -42,6 +101,30 @@ export const CHAT_DATA = [
  
     // Add more conversations here
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // const INBOX_DATA = {
