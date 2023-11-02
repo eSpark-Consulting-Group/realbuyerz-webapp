@@ -1,0 +1,28 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .chat-message {
+    max-width: 70%;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+  }
+  
+  .sender {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+    color: #000;
+    margin-left: auto; /* Push sender messages to the right */
+  }
+  
+  .receiver {
+    align-self: flex-start;
+    background-color: #fff;
+    color: #000;
+    margin-right: auto; /* Push receiver messages to the left */
+  }
+  
