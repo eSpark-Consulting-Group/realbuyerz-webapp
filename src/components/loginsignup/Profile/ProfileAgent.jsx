@@ -6,6 +6,7 @@ import Price from './PropertyPrice';
 import AgentDescription from './AgentDescription';
 import ViewAgentProfile from './ViewAgentProfile';
 import { PROPERTY_DATA } from '@/app/constants/PropertyConstants';
+
 const ProfileAgent = () => {
   return (
     <Grid container spacing={2}>
@@ -33,7 +34,7 @@ const ProfileAgent = () => {
         >
           <Price price={PROPERTY_DATA.price} />
           <ViewAgentProfile
-            avatar={PROPERTY_DATA.avartar}
+            avatar={PROPERTY_DATA.avatar}
             name={PROPERTY_DATA.name}
           />
           <AgentDescription description={PROPERTY_DATA.agentDescription} />

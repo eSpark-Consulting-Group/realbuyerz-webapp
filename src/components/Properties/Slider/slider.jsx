@@ -10,6 +10,7 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
 import { PROPERTY_ESTATE } from '@/app/constants/PropertyConstants';
+
 const Sliders=()=> {
   return (
     <>
@@ -22,7 +23,6 @@ const Sliders=()=> {
           >
             {PROPERTY_ESTATE.sliderImages.map(
               (item, index) => (
-                console.log('slider', PROPERTY_ESTATE.SliderImages),
                 (
                   <SwiperSlide key={index}>
                     <Image
