@@ -1,4 +1,5 @@
 import { FormHelperText, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
 
 const RBInput = ({
@@ -12,7 +13,7 @@ const RBInput = ({
   rows,
 }) => {
   return (
-    <div>
+    <Box sx={{width:"100%"}}>
       <TextField
         fullWidth
         type={type}
@@ -29,7 +30,7 @@ const RBInput = ({
           {helperText}
         </FormHelperText>
       )}
-    </div>
+    </Box>
   );
 };
 

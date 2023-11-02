@@ -26,31 +26,26 @@ export default function ProfileForm({ data }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
-        item
         container
         spacing={1}
-        xs={9}
+        xs={11}
+        md={9}
+        item
         sx={{
           mx: 'auto',
-          width: '100%',
-          height: 'auto',
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           border: '2px solid black',
-          justifyContent: {
-            xs: '',
-            sm: '',
-            md: 'space-around',
-            lg: 'space-evenly',
-            xl: 'space-evenly',
-          },
+          pr: { xs: 1, md: 0 },
+          columnGap:4,
+          // p:5
+          
         }}
       >
         <Grid item xs={12}>
           <Item>Profile Section</Item>
         </Grid>
-
         {feilds?.map((feild, index) => {
           const {
             id,
@@ -61,52 +56,59 @@ export default function ProfileForm({ data }) {
             dropdowns,
             rows,
             buttonText,
+            pt,
+            sizes,
           } = feild;
           return (
-            <Grid key={index} item xs={5} sm={12} md={6} lg={6} xl={5}>
+            <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
               <Item>
                 <Box
                   sx={{
-                    width: '100%',
+                    width: '90%',
                     height: '100%',
+                    mx:'auto',
+                    pt: { xs: 0, md: `${pt}` },
+                  }}
+                >
+                  <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     rowGap: '18px',
-                  }}
-                >
-                  <Typography variant="h6">{label}</Typography>
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <RBSelect menuItem={dropdowns} sx={{ width: '12%' }} />
-                    <RBInput
-                      sx={{
-                        width: {
-                          xs: '',
-                          sm: '',
-                          md: '100%',
-                          lg: '430px',
-                          xl: '430px',
-                        },
-                        // height: '45px',
-                      }}
-                      type={type}
-                      place={place}
-                      helperText={helperText}
-                      id={id}
-                      rows={rows}
-                    />
-                    {buttonText && (
-                      <Button
-                        variant="primary"
+                  }}>
+                    <Typography variant="h6">{label}</Typography>
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                      <RBSelect menuItem={dropdowns} sx={{ width: '12%' }} />
+                      <RBInput
                         sx={{
-                          // width: '100px',
-                          // height: '30px',
-                          borderRadius: '5px',
-                          alignSelf: 'center',
+                          width: {
+                            xs: '100%',
+                            sm: '100%',
+                            md: '100%',
+                            lg: '430px',
+                            xl: '430px',
+                          },
+                          // height: '45px',
                         }}
-                      >
-                        {buttonText}
-                      </Button>
-                    )}
+                        type={type}
+                        place={place}
+                        helperText={helperText}
+                        id={id}
+                        rows={rows}
+                      />
+                      {buttonText && (
+                        <Button
+                          variant="primary"
+                          sx={{
+                            // width: '100px',
+                            // height: '30px',
+                            borderRadius: '5px',
+                            alignSelf: 'center',
+                          }}
+                        >
+                          {buttonText}
+                        </Button>
+                      )}
+                    </Box>
                   </Box>
                 </Box>
               </Item>
