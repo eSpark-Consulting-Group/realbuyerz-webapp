@@ -1,29 +1,14 @@
 'use client';
-import React, { useState } from 'react';
-import { Typography, Box, TextField, Button, MenuItem } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import React from 'react';
+
+import { Typography, Box} from '@mui/material';
 import { useRouter } from 'next/navigation';
+
 import LoginWithGoogle from '../Login/LoginWithGoogle';
+import FormData from '../Login/LoginForm';
+
 const SignupCard = () => {
-  const [value, setValue] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState(true);
-  const [confirmPassword, setConfirmPassword] = useState(true);
-  const handlePasswordToggle = () => {
-    setShowPassword(!showPassword);
-  };
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleConfirmPassword = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-  const isPasswordMatch = password === confirmPassword;
-  console.log(isPasswordMatch, setPassword, setConfirmPassword);
-  const router = useRouter();
+    const router = useRouter();
   return (
     <>
       <Box
@@ -38,7 +23,7 @@ const SignupCard = () => {
           boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
           borderRadius: 2,
           background: 'white',
-          marginTop: '11px',
+          marginTop: '-20px',
           zIndex: 2,
         }}
       >
@@ -71,97 +56,7 @@ const SignupCard = () => {
           >
             It’s Quick & Easy
           </Typography>
-          <form>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '7px',
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  gap: '4px',
-                }}
-              >
-                <TextField label="First Name" variant="outlined" fullWidth />
-                <TextField label="Last Name" variant="outlined" fullWidth />
-              </Box>
-              <TextField label="Email Address" variant="outlined" fullWidth />
-              <TextField
-                label="Contact Number"
-                variant="outlined"
-                type="number"
-                fullWidth
-              />
-              <TextField
-                style={{ width: '100%', color: '#777777' }}
-                variant="outlined"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                select
-                label="Applicant"
-              >
-                <MenuItem key={1} value="test0">
-                  None
-                </MenuItem>
-                <MenuItem key={2} value="test1">
-                  Test 1
-                </MenuItem>
-                <MenuItem key={3} value="test2">
-                  Test 2
-                </MenuItem>
-              </TextField>
-              <TextField
-                placeholder="Password"
-                label="Password"
-                variant="outlined"
-                type={showPassword ? 'text' : 'password'}
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        style={{ color: '#444444' }}
-                        onClick={handlePasswordToggle}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                onChange={handlePassword}
-              />
-              <TextField
-                label="Confirm Password"
-                variant="outlined"
-                type={showPassword ? 'text' : 'password'}
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        style={{ color: '#444444' }}
-                        onClick={handlePasswordToggle}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                onChange={handleConfirmPassword}
-              />
-              {/* {isPasswordMatch ? (
-                                <p style={{ color: 'green' }}>Passwords match!</p>
-                            ) : (
-                                <p style={{ color: 'red' }}>Passwords do not match.</p>
-                            )} */}
-            </Box>
-          </form>
+          <FormData isLoginForm={false} />
           <LoginWithGoogle
             login=" Sign up"
             sign="Sign in"

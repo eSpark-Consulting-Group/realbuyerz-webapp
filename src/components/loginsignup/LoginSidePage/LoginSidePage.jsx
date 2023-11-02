@@ -2,11 +2,11 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import RealEstate from './RealEstateImage';
-import BuildingImage from './BuildingImage';
+import RealEstateImage from './RealEstateImage';
+import PropertyBuilding from './BuildingImage';
 import LoginPageText from './LoginPageText';
 
-const SidePage = () => {
+const LoginSidePage = () => {
   return (
     <Grid>
       <Grid
@@ -23,11 +23,11 @@ const SidePage = () => {
           padding: '10px',
         }}
       >
-        <RealEstate />
+        <RealEstateImage />
         <LoginPageText />
-        <BuildingImage />
+        <PropertyBuilding />
       </Grid>
     </Grid>
   );
 };
-export default SidePage;
+export default LoginSidePage;

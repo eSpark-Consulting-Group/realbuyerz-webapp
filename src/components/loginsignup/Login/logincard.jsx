@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Typography,
   Box,
-  TextField,
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 import LoginWithGoogle from './LoginWithGoogle';
+import FormData from './LoginForm';
 
 const LoginCard = () => {
   const welcome = " Hey! Welcome";
   const forgetPassword = "Forget Password?";
-  const [showPassword, setShowPassword] = useState(false);
-  const handlePasswordToggle = () => {
-    setShowPassword(!showPassword);
-  };
     const router = useRouter();
   return (
     <>
@@ -59,40 +52,7 @@ const LoginCard = () => {
           >
            {welcome}
           </Typography>
-          <form>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px',
-              }}
-            >
-              <TextField
-                label="Email / Username"
-                variant="outlined"
-                fullWidth
-              />
-              <TextField
-                label="Password"
-                variant="outlined"
-                type={showPassword ? 'text' : 'password'}
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        style={{ color: '#444444' }}
-                        onClick={handlePasswordToggle}
-                        edge="end"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Box>
-          </form>
+          <FormData isLoginForm={true} />
           <Box
             sx={{
               display: 'flex',

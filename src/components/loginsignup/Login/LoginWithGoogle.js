@@ -4,7 +4,6 @@ import Image from "next/image";
 
 const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) => {
     return (
-
         <>
             <Box
                 sx={{
@@ -91,7 +90,7 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    flexDirection: "row",
+                    flexDirection: { xs: "column", md: "row" },
                     textAlign: 'center',
                     fontSize: '16px',
                     fontWeight: 400,
@@ -103,15 +102,15 @@ const LoginWithGoogle = ({ login, sign, account, googlelogin, onSigninClick }) =
                     }}
                 >
                     {account}
-                    <Typography
-                        style={{
-                            color: '#FB631C',
-                            fontWeight: 400,
-                        }}
-                        onClick={onSigninClick}
-                    >
-                        {sign}
-                    </Typography>
+                </Typography>
+                <Typography
+                    style={{
+                        color: '#FB631C',
+                        fontWeight: 400,
+                    }}
+                    onClick={onSigninClick}
+                >
+                    {' '} {sign}
                 </Typography>
             </Box>
         </>
