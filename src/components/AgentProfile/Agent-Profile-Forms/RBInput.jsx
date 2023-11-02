@@ -11,9 +11,10 @@ const RBInput = ({
   helperText,
   type,
   rows,
+  multiline,
 }) => {
   return (
-    <Box sx={{width:"100%"}}>
+    <>
       <TextField
         fullWidth
         type={type}
@@ -22,15 +23,10 @@ const RBInput = ({
         label={label}
         placeholder={place}
         defaultValue={defaultValue}
-        multiline
+        multiline={multiline}
         rows={rows}
       />
-      {helperText && (
-        <FormHelperText sx={{ p: 1 }} id="component-helper-text">
-          {helperText}
-        </FormHelperText>
-      )}
-    </Box>
+    </>
   );
 };
 

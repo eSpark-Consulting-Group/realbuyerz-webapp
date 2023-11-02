@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import RBInput from './RBInput';
 import { Button, Typography } from '@mui/material';
 import RBSelect from './RBSelect';
+import RBHelperText from './RBHelperText';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -23,29 +24,33 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ProfileForm({ data }) {
   const { heading, buttonText, image, feilds, passwordFeilds } = data;
+  // const [selectedCountryObject, SetselectedCountryObject] = React.useState();
+  const [country, setCountry] = React.useState(
+    '/images/agent_form/pakistan_flag.png'
+  );
+
+  const handleChange = (e) => {
+    setCountry(e.target.value);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
         container
         spacing={1}
-        xs={11}
-        md={9}
+        xs={12}
+        md={12}
         item
         sx={{
           mx: 'auto',
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
-          border: '2px solid black',
           pr: { xs: 1, md: 0 },
-          columnGap:4,
-          // p:5
-          
+          pt: { xs: 2, md: 7 },
+          pb: { xs: 2, md: 7 },
         }}
       >
-        <Grid item xs={12}>
-          <Item>Profile Section</Item>
-        </Grid>
         {feilds?.map((feild, index) => {
           const {
             id,
@@ -58,49 +63,76 @@ export default function ProfileForm({ data }) {
             buttonText,
             pt,
             sizes,
+            width,
+            multiline,
           } = feild;
+          const iconsArray = dropdowns?.map((item) => item.icon);
+          const selectedCountryObject = dropdowns?.find(
+            (item) => item.icon === country
+          );
+
           return (
             <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
               <Item>
                 <Box
                   sx={{
-                    width: '90%',
+                    width: '100%',
                     height: '100%',
-                    mx:'auto',
+                    mx: 'auto',
                     pt: { xs: 0, md: `${pt}` },
+                    pl: { lg: 5, md: 5 },
                   }}
                 >
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    rowGap: '18px',
-                  }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      rowGap: '18px',
+                    }}
+                  >
                     <Typography variant="h6">{label}</Typography>
-                    <Box sx={{ display: 'flex', gap: 2 }}>
-                      <RBSelect menuItem={dropdowns} sx={{ width: '12%' }} />
+                    <Box
+                      sx={{
+                        display: `${
+                          label === 'Whatsapp' || label === 'Mobile'
+                            ? 'flex'
+                            : 'null'
+                        }`,
+                        gap: 2,
+                      }}
+                    >
+                      <RBSelect
+                        menuItem={iconsArray}
+                        value={country}
+                        label={'Select Country'}
+                        onChange={handleChange}
+                        sx={{
+                          width: { md: '65px', lg: '90px' },
+                          height: { lg: '53px' },
+                        }}
+                      />
                       <RBInput
                         sx={{
-                          width: {
-                            xs: '100%',
-                            sm: '100%',
-                            md: '100%',
-                            lg: '430px',
-                            xl: '430px',
-                          },
-                          // height: '45px',
+                          width: width,
                         }}
                         type={type}
-                        place={place}
+                        place={`${place} ${
+                          label === 'Whatsapp' || label === 'Mobile'
+                            ? selectedCountryObject?.code
+                            : 'Phone Number'
+                        }`}
                         helperText={helperText}
                         id={id}
                         rows={rows}
+                        multiline={multiline}
                       />
+                      {helperText && <RBHelperText helperText={helperText} />}
                       {buttonText && (
                         <Button
                           variant="primary"
                           sx={{
-                            // width: '100px',
-                            // height: '30px',
+                            width: '100px',
+                            height: '30px',
                             borderRadius: '5px',
                             alignSelf: 'center',
                           }}
@@ -115,19 +147,6 @@ export default function ProfileForm({ data }) {
             </Grid>
           );
         })}
-        <Grid item xs={12} sx={{ paddingLeft: '0 !important' }}>
-          <Item
-            sx={{
-              background: 'rgba(218, 233, 242, 0.40)',
-              height: '71px',
-              paddingLeft: 5,
-            }}
-          >
-            <Typography variant="h6" color={'text'}>
-              Change Password
-            </Typography>
-          </Item>
-        </Grid>
       </Grid>
     </Box>
   );

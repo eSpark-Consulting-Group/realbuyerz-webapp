@@ -8,67 +8,99 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter First Name',
       type: 'text',
       helperText: 'First Name',
-      sizes:{xs:12, sm:12, md:5}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
     {
       label: '',
       place: 'Enter Last Name',
       type: 'text',
       helperText: 'Last Name',
-      pt:'25px',
-      sizes:{xs:12, sm:12, md:5}
+      pt: '25px',
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
     {
       label: 'Email',
       place: '@gmail.com',
       type: 'email',
       helperText: '',
-      sizes:{xs:12, sm:12, md:5}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
     {
       label: 'Landline',
       place: 'Enter Landline',
       type: 'number',
       helperText: '',
-      sizes:{xs:12, sm:12, md:4}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
-    // {
-    //   label: 'Whatsapp',
-    //   place: '+92',
-    //   type: 'number',
-    //   helperText: '',
-    //   dropdowns: ['Pakistan', 'Japan', 'China'],
-    // sizes:{xs:12, sm:12, md:6}
-    // },
-    // {
-    //   label: 'Mobile',
-    //   place: '+92',
-    //   type: 'number',
-    //   helperText: '',
-    //   dropdowns: ['Pakistan', 'Japan', 'China'],
-    //   buttonText: 'Verify',
-    // sizes:{xs:12, sm:12, md:6}
-    // },
+    {
+      label: 'Whatsapp',
+      place: '',
+      type: 'number',
+      helperText: '',
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '70%' },
+      dropdowns: [
+        {
+          icon: '/images/agent_form/pakistan_flag.png',
+          code: '+92',
+          label: 'Pakistan',
+        },
+        {
+          icon: '/images/agent_form/pakistan_flag.png',
+          code: '+91',
+          label: 'India',
+        },
+      ],
+
+      sizes: { xs: 12, sm: 12, md: 5 },
+    },
+    {
+      label: 'Mobile',
+      place: '',
+      type: 'number',
+      helperText: '',
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '50%' },
+      dropdowns: [
+        {
+          icon: '/images/agent_form/pakistan_flag.png',
+          code: '+92',
+          label: 'Pakistan',
+        },
+        {
+          icon: '/images/agent_form/pakistan_flag.png',
+          code: '+91',
+          label: 'China',
+        },
+      ],
+      buttonText: 'Verify',
+      sizes: { xs: 12, sm: 12, md: 6 },
+    },
     {
       label: 'Country',
       place: 'Enter Country',
       type: 'text',
       helperText: '',
-      sizes:{xs:12, sm:12, md:4}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
     {
       label: 'City',
       place: 'Enter City',
       type: 'text',
       helperText: '',
-      sizes:{xs:12, sm:12, md:6}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
+      sizes: { xs: 12, sm: 12, md: 5 },
     },
     {
       label: 'Address',
       place: 'Add Address',
       type: 'text',
       helperText: '',
-      sizes:{xs:12, sm:12, md:6}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      sizes: { xs: 12, sm: 12, md: 10 },
     },
     {
       id: 'outlined-multiline-static',
@@ -77,7 +109,9 @@ export const Agent_Profile_Form_Data = {
       type: 'textArea',
       helperText: '',
       rows: '4',
-      sizes:{xs:12, sm:12, md:6}
+      multiline: true,
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      sizes: { xs: 12, sm: 12, md: 10 },
     },
   ],
   passwordFeilds: [
@@ -86,27 +120,29 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter Old Password',
       type: 'password',
       helperText: '',
-      sizes:{xs:12, sm:12, md:6}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      sizes: { xs: 12, sm: 12, md: 10 },
     },
     {
       label: 'Enter New Password',
       place: 'Enter New Password',
       type: 'password',
       helperText: '',
-      sizes:{xs:12, sm:12, md:6}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      sizes: { xs: 12, sm: 12, md: 10 },
     },
     {
       label: 'Confirm Password',
       place: 'Confirm Password',
       type: 'password',
       helperText: '',
-      sizes:{xs:12, sm:12, md:6}
-    },
-    {
-      label: 'Update details in all property listings',
-      type: 'checkbox',
-      helperText: '',
-      sizes:{xs:12, sm:12, md:6}
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      sizes: { xs: 12, sm: 12, md: 10 },
     },
   ],
+  checkbox: {
+    label: 'Update details in all property listings',
+    type: 'checkbox',
+    helperText: '',
+  },
 };
