@@ -11,13 +11,6 @@ function CustomTabPanel({ data, value, index, proposalStatus }) {
       ? data
       : data.filter((proposal) => proposal.proposalStatus === proposalStatus);
 
-  const proposalTitle = filteredProperties?.map((proposal) => ({
-    id: proposal.id,
-    title: proposal.title,
-  }));
-
-  const itemsPerRow = { xs: 12, sm: 6, md: 4, lg: 3, xl: 3 };
-
   return (
     <div
       role="tabpanel"
@@ -44,6 +37,7 @@ function CustomTabPanel({ data, value, index, proposalStatus }) {
 function ProposalTabs({ filteredData }) {
   const [value, setValue] = useState(0);
   const [proposalStatus, setProposalStatus] = useState('');
+  console.log(proposalStatus);
 
   useEffect(() => {
     setValue(0);
@@ -99,10 +93,7 @@ function ProposalTabs({ filteredData }) {
                 const filteredCount =
                   tab.proposalStatus === 'All'
                     ? filteredData.length
-                    : filteredData.filter(
-                        (proposal) =>
-                          proposal.proposalStatus === tab.proposalStatus
-                      ).length;
+                    : filteredData.filter((proposal) => proposal.proposalStatus === tab.proposalStatus).length;
 
                 return (
                   <Tab

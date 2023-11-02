@@ -27,7 +27,7 @@ function DeletableSquareChip({ label, onDelete }) {
 
 function Chips({ data }) {
   const [selectedChips, setSelectedChips] = useState([]);
-
+  console.log(selectedChips);
   const handleDeleteChip = (chipToDelete) => () => {
     setSelectedChips((chips) =>
       chips?.filter((_, index) => chips[index] !== chipToDelete)
@@ -52,7 +52,7 @@ function Chips({ data }) {
   return (
     <Box sx={{ display: 'contents' }}>
       {uniqueAgentPropertyTypes?.map((label, index) => {
-        const [agentName, propertyType] = label?.split('-');
+        const [agentName, propertyType] = (label ?? '').split('-');
         return (
           <DeletableSquareChip
             key={index}

@@ -116,7 +116,7 @@ function ProposalListingCard({ data }) {
                   {proposal.title}
                 </Typography>
               </Grid>
-              <Grid item xs={3} className="restore-property" textAlign={"right"}>
+              <Grid item xs={3} textAlign={'right'}>
                 <Link href={`/proposal/${proposal.agentName}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
@@ -130,13 +130,25 @@ function ProposalListingCard({ data }) {
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
                 {stats.map((stat) => (
-                  <Box key={stat.value} sx={{ display: 'flex', fontSize: '16px', pt: '10px', gap: '5px' }}>
-                    <Typography sx={{ fontWeight: '500' }}>{stat.title}:</Typography>
-                    <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>{proposal[stat.value]}</Typography>
+                  <Box
+                    key={stat.value}
+                    sx={{
+                      display: 'flex',
+                      fontSize: '16px',
+                      pt: '10px',
+                      gap: '5px',
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: '500' }}>
+                      {stat.title}:
+                    </Typography>
+                    <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>
+                      {proposal[stat.value]}
+                    </Typography>
                   </Box>
                 ))}
               </Grid>
-              <Grid item xs={2} sx={{ justifyContent: 'center' }} >
+              <Grid item xs={2} sx={{ justifyContent: 'center' }}>
                 <Box
                   key={index}
                   sx={{
@@ -167,9 +179,8 @@ function ProposalListingCard({ data }) {
               {proposal.description}
             </Typography>
           </Grid>
-        </Grid >
-      ))
-      }
+        </Grid>
+      ))}
 
       {/* Pagination */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>

@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, Button, MenuItem, FormControl, Select } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Button,
+  MenuItem,
+  FormControl,
+  Select,
+} from '@mui/material';
 import ProposalTabs from './ProposalTabs';
-import { PROPERTIES_LISTING, PROPOSAL_LISTING } from '@/app/constants/Proposals';
+import {
+  PROPERTIES_LISTING,
+  PROPOSAL_LISTING,
+} from '@/app/constants/Proposals';
 import { filterData, getUniqueOptions } from '@/utils/proposalFilter';
 
 const ProposalFilter = () => {
@@ -18,33 +28,39 @@ const ProposalFilter = () => {
   const [Location, setLocation] = useState('');
   const [PropertyType, setPropertyType] = useState('');
 
-
   const handleListingTypeChange = (e) => {
     const selectedListValue = e.target.value;
     setListingType(selectedListValue);
-    setData(selectedListValue === 'proposal' ? PROPOSAL_LISTING : PROPERTIES_LISTING);
-    console.log('selectedListValue', selectedListValue);
+    setData(
+      selectedListValue === 'proposal' ? PROPOSAL_LISTING : PROPERTIES_LISTING
+    );
   };
-
-
-  console.log('listingType', listingType);
-  console.log(data);
 
   const [filteredData, setFilteredData] = useState(data);
   useEffect(() => {
-
-    const { purposeOptions, cityOptions, locationOptions, propertyTypeOptions } = getUniqueOptions(data);
+    const {
+      purposeOptions,
+      cityOptions,
+      locationOptions,
+      propertyTypeOptions,
+    } = getUniqueOptions(data);
     setPurposeOptions(purposeOptions);
     setCityOptions(cityOptions);
     setLocationOptions(locationOptions);
     setPropertyTypeOptions(propertyTypeOptions);
   }, [listingType, data]);
 
-  const handleDropdownChange = (e, setState, dropdownIndex) => {
+  const handleDropdownChange = (e, setState) => {
     const selectedValue = e.target.value;
     setState(selectedValue);
 
-    const filteredData = filterData(data, Purpose, City, Location, PropertyType);
+    const filteredData = filterData(
+      data,
+      Purpose,
+      City,
+      Location,
+      PropertyType
+    );
     setFilteredData(filteredData);
   };
 
@@ -112,17 +128,14 @@ const ProposalFilter = () => {
           <Button onClick={handleClearButtonClick}>Clear</Button>
         </Grid>
         <Grid item xs={12}>
-          <FormControl fullWidth >
-            <Select
-              value={listingType}
-              onChange={handleListingTypeChange}
-            >
+          <FormControl fullWidth>
+            <Select value={listingType} onChange={handleListingTypeChange}>
               <MenuItem value="proposal">Proposal</MenuItem>
               <MenuItem value="properties">Properties</MenuItem>
             </Select>
           </FormControl>
         </Grid>
-      </Grid >
+      </Grid>
       <ProposalTabs filteredData={filteredData} />
     </>
   );

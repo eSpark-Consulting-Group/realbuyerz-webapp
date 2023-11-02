@@ -129,7 +129,7 @@ function PropertyListingCard({ data }) {
               {property.description}
             </Typography>
 
-            <div className="posted-1-day-ago">
+            <div>
               <Typography
                 // variant="body2"
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
@@ -144,14 +144,14 @@ function PropertyListingCard({ data }) {
               gap={'20px'}
               sx={{ display: 'flex' }}
             >
-              <Box className="view-more">
+              <Box>
                 <Link href={`/property/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">View More</Typography>
                   </Button>
                 </Link>
               </Box>
-              <Box className="agent-profile">
+              <Box>
                 <Link href={`/property/${property.agentName}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">Agent Profile</Typography>
