@@ -1,103 +1,84 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Typography,
-  Button,
-  MenuItem,
-  FormControl,
-  Select,
-} from '@mui/material';
-
+import { Grid, Typography, Button, MenuItem, FormControl, Select } from '@mui/material';
 import ProposalTabs from './ProposalTabs';
-
-import { PROPOSAL_LISTING } from '@/app/constants/Proposals';
+import { PROPERTIES_LISTING, PROPOSAL_LISTING } from '@/app/constants/Proposals';
+import { filterData, getUniqueOptions } from '@/utils/proposalFilter';
 
 const ProposalFilter = () => {
+  const [listingType, setListingType] = useState('proposal');
+  const [data, setData] = useState(PROPOSAL_LISTING);
+
   const [purposeOptions, setPurposeOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
   const [locationOptions, setLocationOptions] = useState([]);
   const [propertyTypeOptions, setPropertyTypeOptions] = useState([]);
 
-  const [dropdown1, setDropdown1] = useState('');
-  const [dropdown2, setDropdown2] = useState('');
-  const [dropdown3, setDropdown3] = useState('');
-  const [dropdown4, setDropdown4] = useState('');
+  const [Purpose, setPurpose] = useState('');
+  const [City, setCity] = useState('');
+  const [Location, setLocation] = useState('');
+  const [PropertyType, setPropertyType] = useState('');
 
-  const [filteredData, setFilteredData] = useState(PROPOSAL_LISTING);
 
-  useEffect(() => {
-    const uniquePurposeOptions = Array.from(
-      new Set(PROPOSAL_LISTING.map((item) => item.purpose))
-    );
-    const uniqueCityOptions = Array.from(
-      new Set(PROPOSAL_LISTING.map((item) => item.city))
-    );
-    const uniqueLocationOptions = Array.from(
-      new Set(PROPOSAL_LISTING.map((item) => item.location))
-    );
-    const uniquePropertyTypeOptions = Array.from(
-      new Set(PROPOSAL_LISTING.map((item) => item.propertyType))
-    );
-
-    setPurposeOptions(uniquePurposeOptions);
-    setCityOptions(uniqueCityOptions);
-    setLocationOptions(uniqueLocationOptions);
-    setPropertyTypeOptions(uniquePropertyTypeOptions);
-  }, []);
-
-  const handleDropdownChange = (e, setState) => {
-    setState(e.target.value);
-    handleFilterChange(e.target.value);
+  const handleListingTypeChange = (e) => {
+    const selectedListValue = e.target.value;
+    setListingType(selectedListValue);
+    setData(selectedListValue === 'proposal' ? PROPOSAL_LISTING : PROPERTIES_LISTING);
+    console.log('selectedListValue', selectedListValue);
   };
 
-  const handleFilterChange = (value) => {
-    console.log('dropdown1', dropdown1);
-    const filteredData = PROPOSAL_LISTING.filter(
-      (item) =>
-        (dropdown1 === '' ||
-          item.purpose.toLowerCase() === dropdown1.toLowerCase()) &&
-        (dropdown2 === '' ||
-          item.city.toLowerCase() === dropdown2.toLowerCase()) &&
-        (dropdown3 === '' ||
-          item.location.toLowerCase() === dropdown3.toLowerCase()) &&
-        (dropdown4 === '' ||
-          item.propertyType.toLowerCase() === dropdown4.toLowerCase())
-    );
+
+  console.log('listingType', listingType);
+  console.log(data);
+
+  const [filteredData, setFilteredData] = useState(data);
+  useEffect(() => {
+
+    const { purposeOptions, cityOptions, locationOptions, propertyTypeOptions } = getUniqueOptions(data);
+    setPurposeOptions(purposeOptions);
+    setCityOptions(cityOptions);
+    setLocationOptions(locationOptions);
+    setPropertyTypeOptions(propertyTypeOptions);
+  }, [listingType, data]);
+
+  const handleDropdownChange = (e, setState, dropdownIndex) => {
+    const selectedValue = e.target.value;
+    setState(selectedValue);
+
+    const filteredData = filterData(data, Purpose, City, Location, PropertyType);
     setFilteredData(filteredData);
   };
 
   const handleClearButtonClick = () => {
-    setDropdown1('');
-    setDropdown2('');
-    setDropdown3('');
-    setDropdown4('');
-
-    setFilteredData(PROPOSAL_LISTING);
+    setPurpose('');
+    setCity('');
+    setLocation('');
+    setPropertyType('');
+    setFilteredData(data);
   };
 
   const dropdowns = [
     {
       label: 'Purpose',
-      state: dropdown1,
-      setState: setDropdown1,
+      state: Purpose,
+      setState: setPurpose,
       options: purposeOptions,
     },
     {
       label: 'City',
-      state: dropdown2,
-      setState: setDropdown2,
+      state: City,
+      setState: setCity,
       options: cityOptions,
     },
     {
       label: 'Location',
-      state: dropdown3,
-      setState: setDropdown3,
+      state: Location,
+      setState: setLocation,
       options: locationOptions,
     },
     {
       label: 'Property Type',
-      state: dropdown4,
-      setState: setDropdown4,
+      state: PropertyType,
+      setState: setPropertyType,
       options: propertyTypeOptions,
     },
   ];
@@ -107,17 +88,18 @@ const ProposalFilter = () => {
       <Grid container spacing={2} alignItems="center">
         {dropdowns.map((dropdown, index) => (
           <Grid item xs={3} key={index}>
-            <Typography variant="subtitle1">{dropdown.label}</Typography>
+            <Typography variant="subtitle1">{dropdown?.label}</Typography>
             <FormControl fullWidth>
               <Select
-                value={dropdown.state}
+                value={dropdown?.state}
+                displayEmpty
                 onChange={(e) => {
-                  handleDropdownChange(e, dropdown.setState);
+                  handleDropdownChange(e, dropdown?.setState, index);
                 }}
-                placeholder={`Select ${dropdown.label}`}
+                placeholder={`Select ${dropdown?.label}`}
               >
-                <MenuItem value="">{`Select ${dropdown.label}`}</MenuItem>
-                {dropdown.options.map((option, optionIndex) => (
+                <MenuItem value="">{`Select ${dropdown?.label}`}</MenuItem>
+                {dropdown?.options?.map((option, optionIndex) => (
                   <MenuItem key={optionIndex} value={option}>
                     {option}
                   </MenuItem>
@@ -129,7 +111,18 @@ const ProposalFilter = () => {
         <Grid item xs={12}>
           <Button onClick={handleClearButtonClick}>Clear</Button>
         </Grid>
-      </Grid>
+        <Grid item xs={12}>
+          <FormControl fullWidth >
+            <Select
+              value={listingType}
+              onChange={handleListingTypeChange}
+            >
+              <MenuItem value="proposal">Proposal</MenuItem>
+              <MenuItem value="properties">Properties</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid >
       <ProposalTabs filteredData={filteredData} />
     </>
   );

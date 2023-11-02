@@ -100,9 +100,9 @@ function ProposalTabs({ filteredData }) {
                   tab.proposalStatus === 'All'
                     ? filteredData.length
                     : filteredData.filter(
-                      (proposal) =>
-                        proposal.proposalStatus === tab.proposalStatus
-                    ).length;
+                        (proposal) =>
+                          proposal.proposalStatus === tab.proposalStatus
+                      ).length;
 
                 return (
                   <Tab
