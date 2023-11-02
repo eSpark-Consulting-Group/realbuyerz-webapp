@@ -26,7 +26,14 @@ function CustomTabPanel({ data, value, index, proposalStatus }) {
       aria-labelledby={`simple-tab-${index}`}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box
+          sx={{
+            px: '20px',
+            py: '20px',
+            overflow: 'scroll',
+            height: '100vh',
+          }}
+        >
           <ProposalListingCard data={filteredProperties} />
         </Box>
       )}
@@ -93,9 +100,9 @@ function ProposalTabs({ filteredData }) {
                   tab.proposalStatus === 'All'
                     ? filteredData.length
                     : filteredData.filter(
-                        (proposal) =>
-                          proposal.proposalStatus === tab.proposalStatus
-                      ).length;
+                      (proposal) =>
+                        proposal.proposalStatus === tab.proposalStatus
+                    ).length;
 
                 return (
                   <Tab

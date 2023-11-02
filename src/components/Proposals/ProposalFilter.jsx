@@ -10,7 +10,7 @@ import {
 
 import ProposalTabs from './ProposalTabs';
 
-import { PROPOSAL_LISTING } from '@/app/constants/propsals';
+import { PROPOSAL_LISTING } from '@/app/constants/Proposals';
 
 const ProposalFilter = () => {
   const [purposeOptions, setPurposeOptions] = useState([]);
@@ -51,7 +51,7 @@ const ProposalFilter = () => {
   };
 
   const handleFilterChange = (value) => {
-    console.log("dropdown1", dropdown1);
+    console.log('dropdown1', dropdown1);
     const filteredData = PROPOSAL_LISTING.filter(
       (item) =>
         (dropdown1 === '' ||
