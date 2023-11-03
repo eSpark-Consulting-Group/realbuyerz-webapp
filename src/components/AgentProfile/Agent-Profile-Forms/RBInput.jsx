@@ -9,9 +9,12 @@ const RBInput = ({
   id,
   sx,
   helperText,
+  value,
   type,
+  name,
   rows,
   multiline,
+  onChange,
 }) => {
   return (
     <>
@@ -20,11 +23,14 @@ const RBInput = ({
         type={type}
         sx={sx}
         id={id}
+        name={name}
+        value={value}
         label={label}
         placeholder={place}
         defaultValue={defaultValue}
         multiline={multiline}
         rows={rows}
+        onChange={onChange}
       />
     </>
   );

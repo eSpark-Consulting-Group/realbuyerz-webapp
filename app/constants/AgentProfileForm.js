@@ -5,6 +5,8 @@ export const Agent_Profile_Form_Data = {
   feilds: [
     {
       label: 'Full Name',
+      name: 'fname',
+      value: '',
       place: 'Enter First Name',
       type: 'text',
       helperText: 'First Name',
@@ -13,6 +15,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: '',
+      name: 'lname',
+      value: '',
       place: 'Enter Last Name',
       type: 'text',
       helperText: 'Last Name',
@@ -22,6 +26,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Email',
+      name: 'email',
+      value: '',
       place: '@gmail.com',
       type: 'email',
       helperText: '',
@@ -30,6 +36,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Landline',
+      name: 'landline',
+      value: '',
       place: 'Enter Landline',
       type: 'number',
       helperText: '',
@@ -40,8 +48,10 @@ export const Agent_Profile_Form_Data = {
       label: 'Whatsapp',
       place: '',
       type: 'number',
+      name: 'whatsapp',
+      value: '',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '70%' },
+      width: { xs: '100%', sm: '100%', md: '70%', lg: '70%' },
       dropdowns: [
         {
           icon: '/images/agent_form/pakistan_flag.png',
@@ -49,9 +59,19 @@ export const Agent_Profile_Form_Data = {
           label: 'Pakistan',
         },
         {
-          icon: '/images/agent_form/pakistan_flag.png',
+          icon: '/images/agent_form/indiaFlag.png',
           code: '+91',
           label: 'India',
+        },
+        {
+          icon: '/images/agent_form/chinaFlag.png',
+          code: '+42',
+          label: 'china',
+        },
+        {
+          icon: '/images/agent_form/australiaFlag.png',
+          code: '+45',
+          label: 'australia',
         },
       ],
 
@@ -61,8 +81,10 @@ export const Agent_Profile_Form_Data = {
       label: 'Mobile',
       place: '',
       type: 'number',
+      name: 'mobile',
+      value: '',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '50%' },
+      width: { xs: '100%', sm: '100%', md: '50%', lg: '50%' },
       dropdowns: [
         {
           icon: '/images/agent_form/pakistan_flag.png',
@@ -70,9 +92,19 @@ export const Agent_Profile_Form_Data = {
           label: 'Pakistan',
         },
         {
-          icon: '/images/agent_form/pakistan_flag.png',
+          icon: '/images/agent_form/indiaFlag.png',
           code: '+91',
-          label: 'China',
+          label: 'India',
+        },
+        {
+          icon: '/images/agent_form/chinaFlag.png',
+          code: '+42',
+          label: 'china',
+        },
+        {
+          icon: '/images/agent_form/australiaFlag.png',
+          code: '+45',
+          label: 'australia',
         },
       ],
       buttonText: 'Verify',
@@ -80,6 +112,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Country',
+      name: 'country',
+      value: '',
       place: 'Enter Country',
       type: 'text',
       helperText: '',
@@ -88,6 +122,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'City',
+      name: 'city',
+      value: '',
       place: 'Enter City',
       type: 'text',
       helperText: '',
@@ -96,6 +132,8 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Address',
+      name: 'address',
+      value: '',
       place: 'Add Address',
       type: 'text',
       helperText: '',
@@ -105,6 +143,8 @@ export const Agent_Profile_Form_Data = {
     {
       id: 'outlined-multiline-static',
       label: 'Bio',
+      name: 'bio',
+      value: '',
       place: 'Enter Bio',
       type: 'textArea',
       helperText: '',
@@ -117,31 +157,39 @@ export const Agent_Profile_Form_Data = {
   passwordFeilds: [
     {
       label: 'Enter Old Password',
+      name: 'oldPassword',
+      value: '',
       place: 'Enter Old Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
       sizes: { xs: 12, sm: 12, md: 10 },
     },
     {
       label: 'Enter New Password',
+      name: 'newPassword',
+      value: '',
       place: 'Enter New Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
       sizes: { xs: 12, sm: 12, md: 10 },
     },
     {
       label: 'Confirm Password',
+      name: 'ConfirmPassword',
+      value: '',
       place: 'Confirm Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '38%' },
+      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
       sizes: { xs: 12, sm: 12, md: 10 },
     },
   ],
   checkbox: {
     label: 'Update details in all property listings',
+    name: 'checkbox',
+    value: '',
     type: 'checkbox',
     helperText: '',
   },

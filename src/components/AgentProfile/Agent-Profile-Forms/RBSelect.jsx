@@ -26,11 +26,12 @@ export default function RBSelect({
             value={value}
             // label={label}
             onChange={onChange}
+            defaultValue={'hasasn'}
             sx={sx}
           >
             {menuItem?.map((items, i) => (
-              <MenuItem key={i} value={items}>
-                <Image src={items} width={30} height={30} alt="image" />
+              <MenuItem key={i} value={items?.icon}>
+                <Image src={items?.icon} width={30} height={30} alt="image" />
                 {/* {items} */}
               </MenuItem>
             ))}
