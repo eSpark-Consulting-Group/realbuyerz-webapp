@@ -3,36 +3,41 @@ export const CHAT_DATA = [
         userId: 'inComing1',
         name: 'Jhon doe',
         image: './images/inbox/chatIcon.svg',
-        activeUserId: 'inComing1', // Specify the active user
+        activeUserId: 'inComing1', 
         messages: [
             {
                 id: 1,
                 sender: 'inComing1',
-                content: 'Chat with jhon',
-                timestamp: new Date('2023-11-02T09:00:00'),
-            },
-            {
-                id: 2,
-                sender: 'outGoing1',
-                content: ' my msg ddddddddd;lkk hello world ',
+                content: 'Hello, finally i found time to text you please help in finding the right home for me.',
+                noOfday: "false",
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
                 id: 2,
                 sender: 'inComing1',
-                content: ' my msg CHANGE SENDER STRUCTURE',
+                content: 'Will you?',
+                noOfday: "false",
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
                 id: 2,
                 sender: 'outGoing1',
-                content: ' my msg',
+                content: 'Hi, sure!',
+                noOfday: "false",
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
                 id: 2,
                 sender: 'inComing1',
-                content: ' my msg CHANGE SENDER STRUCTURE',
+                content: 'Call?',
+                noOfday: "true",
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'outGoing1',
+                noOfday: "false",
+                content: 'You can directly liaise with me about the range. We want to negot a settlement that is fair to both sides.',
                 timestamp: new Date('2023-11-02T09:00:00'),
             },
             {
@@ -60,7 +65,7 @@ export const CHAT_DATA = [
         userId: 'inComing2',
         name: 'Jhoni Sence',
         image: './images/house.svg',
-        activeUserId: 'inComing2', // Specify the active user
+        activeUserId: 'inComing2', 
         messages: [
             {
                 id: 1,
@@ -81,7 +86,7 @@ export const CHAT_DATA = [
         userId: 'inComing3',
         name: 'Captal',
         image: './images/arrow.svg',
-        activeUserId: 'inComing2', // Specify the active user
+        activeUserId: 'inComing2', 
         messages: [
             {
                 id: 1,
@@ -98,6 +103,49 @@ export const CHAT_DATA = [
             // Add more messages for this conversation
         ],
     },
+    {
+        userId: 'inComing4',
+        name: 'Captal',
+        image: './images/arrow.svg',
+        activeUserId: 'inComing2', 
+        messages: [
+            {
+                id: 1,
+                sender: 'outGoing3',
+                content: 'Chat with hasnidlkfj',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing3',
+                content: ' my msg',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            // Add more messages for this conversation
+        ],
+    },
+    {
+        userId: 'inComing5',
+        name: 'Captal',
+        image: './images/arrow.svg',
+        activeUserId: 'inComing2', 
+        messages: [
+            {
+                id: 1,
+                sender: 'outGoing3',
+                content: 'Chat with hasnidlkfj',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            {
+                id: 2,
+                sender: 'inComing3',
+                content: ' my msg',
+                timestamp: new Date('2023-11-02T09:00:00'),
+            },
+            // Add more messages for this conversation
+        ],
+    },
+   
  
     // Add more conversations here
 ];
@@ -126,83 +174,3 @@ export const CHAT_DATA = [
 
 
 
-
-// const INBOX_DATA = {
-//     inbox: {
-//         title: "Inbox",
-//         messages: [
-//             {
-//                 sender: "John Doe",
-//                 message: "Lorem ipsum dolor sit amet. Bibendum feugiat sapien....",
-//                 time: "1:30PM",
-//                 avatar: "https://via.placeholder.com/40x40"
-//             },
-//             {
-//                 sender: "John Doe",
-//                 message: "Lorem ipsum dolor sit amet. Bibendum feugiat sapien....",
-//                 time: "5:30PM",
-//                 avatar: "https://via.placeholder.com/40x40"
-//             },
-//             {
-//                 sender: "John Doe",
-//                 message: "Lorem ipsum dolor sit amet. Bibendum feugiat sapien....",
-//                 time: "10:00AM",
-//                 avatar: "https://via.placeholder.com/40x40"
-//             },
-//             {
-//                 sender: "John Doe",
-//                 message: "Lorem ipsum dolor sit amet. Bibendum feugiat sapien....",
-//                 time: "3:00PM",
-//                 avatar: "https://via.placeholder.com/40x40"
-//             },
-//             {
-//                 sender: "John Doe",
-//                 message: "Lorem ipsum dolor sit amet. Bibendum feugiat sapien....",
-//                 time: "2:30PM",
-//                 avatar: "https://via.placeholder.com/40x40"
-//             }
-//         ]
-//     },
-//     archive: "Archive",
-//     notifications: [
-//         {
-//             type: "notification",
-//             content: "1",
-//             color: "bg-sky-700"
-//         },
-//         {
-//             type: "notification",
-//             content: "2",
-//             color: "bg-sky-700"
-//         }
-//     ],
-//     messages: [
-//         {
-//             sender: "John Doe",
-//             avatar: "https://via.placeholder.com/46x60",
-//             message: "Hello, finally I found time to text you. Please help in finding the right home for me."
-//         },
-//         {
-//             sender: "John Doe",
-//             avatar: "https://via.placeholder.com/46x60",
-//             message: "Will you?"
-//         },
-//         {
-//             sender: "You",
-//             message: "Hi, sure!"
-//         },
-//         {
-//             sender: "John Doe",
-//             avatar: "https://via.placeholder.com/40x40",
-//             message: "Call?"
-//         },
-//         {
-//             sender: "You",
-//             // avatar: "https://via.placeholder.com/50x50",
-//             message: "You can directly liaise with me about the range. We want to negotiate a settlement that is fair to both sides."
-//         },
-//     ],
-//     timestamps: [
-//         "2 days ago"
-//     ]
-// }
