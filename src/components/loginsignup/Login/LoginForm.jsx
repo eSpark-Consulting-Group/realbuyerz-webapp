@@ -1,29 +1,51 @@
 'use client';
 import React, { useState } from 'react';
-import { MenuItem, Box, TextField, Autocomplete } from '@mui/material';
+import { Box, TextField, Autocomplete, Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const FormContainer = ({ isLoginForm }) => {
-  const [value, setValue] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-      const [showConfirmPassword, setConfirmShowPassword] = useState(false);
-  const [password, setPassword] = useState(true);
-  const [confirmPassword, setConfirmPassword] = useState(true);
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-    };
-    
-  const handleConfirmPassword = (event) => {
-      setConfirmPassword(event.target.value);
-      setConfirmShowPassword(!showConfirmPassword)
-  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
+  const handleConfirmPasswordToggle = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    contactNumber: '',
+    applicant: '',
+    confirmPassword: '',
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleConsoleLog = () => {
+    console.log(formData);
+  };
+
   return (
     <>
       {isLoginForm ? (
@@ -35,12 +57,22 @@ const FormContainer = ({ isLoginForm }) => {
               gap: '10px',
             }}
           >
-            <TextField label="Email / Username" variant="outlined" fullWidth />
+            <TextField
+              label="Email / Username"
+              variant="outlined"
+              fullWidth
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
             <TextField
               label="Password"
               variant="outlined"
               type={showPassword ? 'text' : 'password'}
               fullWidth
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -73,15 +105,39 @@ const FormContainer = ({ isLoginForm }) => {
                 gap: '4px',
               }}
             >
-              <TextField label="First Name" variant="outlined" fullWidth />
-              <TextField label="Last Name" variant="outlined" fullWidth />
+              <TextField
+                label="First Name"
+                name="firstName"
+                variant="outlined"
+                fullWidth
+                value={formData.firstName}
+                onChange={handleInputChange}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                variant="outlined"
+                fullWidth
+                value={formData.lastName}
+                onChange={handleInputChange}
+              />
             </Box>
-            <TextField label="Email Address" variant="outlined" fullWidth />
+            <TextField
+              label="Email Address"
+              variant="outlined"
+              fullWidth
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
             <TextField
               label="Contact Number"
               variant="outlined"
               type="number"
               fullWidth
+              name="contactNumber"
+              value={formData.contactNumber}
+              onChange={handleInputChange}
             />
             <Autocomplete
               disablePortal
@@ -92,6 +148,7 @@ const FormContainer = ({ isLoginForm }) => {
               renderInput={(params) => (
                 <TextField {...params} label="Applicant" />
               )}
+              onChange={handleInputChange}
             />
             <TextField
               placeholder="Password"
@@ -114,18 +171,17 @@ const FormContainer = ({ isLoginForm }) => {
               }}
               onChange={handlePassword}
             />
-
             <TextField
               label="Confirm Password"
               variant="outlined"
-              type={showPassword ? 'text' : 'password'}
+              type={showConfirmPassword ? 'text' : 'password'}
               fullWidth
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       style={{ color: '#444444' }}
-                      onClick={handlePasswordToggle}
+                      onClick={handleConfirmPasswordToggle}
                       edge="end"
                     >
                       {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
@@ -135,48 +191,6 @@ const FormContainer = ({ isLoginForm }) => {
               }}
               onChange={handleConfirmPassword}
             />
-
-            {/* <TextField
-              placeholder="Password"
-              label="Password"
-              variant="outlined"
-              type={showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      onClick={handlePasswordToggle}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={handlePassword}
-            />
-            <TextField
-              label="Confirm Password"
-              variant="outlined"
-              type={showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      onClick={handlePasswordToggle}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={handleConfirmPassword}
-            /> */}
           </Box>
         </form>
       )}

@@ -18,9 +18,14 @@ const LoginSidePage = () => {
           justifyContent: 'center',
           flexDirection: 'column',
           alignItems: 'center',
-          background: 'white',
-          gap: '60px',
-          padding: '10px',
+          gap: '40px',
+          padding: '50px',
+          '@media (max-width: 1300px)': {
+            gap: '67px',
+          },
+          '@media (max-width: 1100px)': {
+            gap: '60px',
+          },
         }}
       >
         <RealEstateImage />

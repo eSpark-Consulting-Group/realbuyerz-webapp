@@ -5,9 +5,10 @@ const PropertyBuilding = () => {
   return (
     <Image
       src="/images/signup_page/highBuilding.svg"
-      width={440}
-      height={700}
-      alt={''}
+      width={488}
+      height={288}
+      alt={"building"}
+    
     />
   );
 };

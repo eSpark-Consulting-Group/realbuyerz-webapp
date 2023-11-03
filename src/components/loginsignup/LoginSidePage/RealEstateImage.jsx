@@ -9,7 +9,7 @@ const RealEstateImage = () => {
         src={'/images/signup_page/boxImage.svg'}
         width={550}
         height={500}
-        alt={''}
+        alt={"boxImage"}
       />
     </Box>
   );

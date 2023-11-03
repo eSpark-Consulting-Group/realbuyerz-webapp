@@ -6,10 +6,10 @@ export const LOGIN_FORM = {
         forgetPassword: "Forget Password?",
         welcome: "Hey! Welcome",
         login: "Log in",
-        googlelogin: "Login with Google",
+        googleLogin: "Login with Google",
         label: "Already have an account?",
-        connectwithus: "Lorem ipsum dolor sit amet",
-        propertydealer: "Vestibulum non tortor facilisis, tempus tellus quis"
+        connect: "Lorem ipsum dolor sit amet",
+        propertyDealer: "Vestibulum non tortor facilisis, tempus tellus quis"
     },
     signupForm: {
         signup: "Sign up",
@@ -22,5 +22,9 @@ export const LOGIN_FORM = {
         { value: 'agent', label: 'Agent' },
         { value: 'dealer', label: 'Dealer' },
     ],
+    rectangleHeight: {
+        signupFormHeight: "750px",
+        loginFormHeight: "656px"
+    }
 
 }

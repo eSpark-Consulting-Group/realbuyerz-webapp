@@ -4,6 +4,7 @@ import { Grid, Box } from '@mui/material';
 
 import RectangleBorderImage from '../Login/RectangleBorderImage';
 import SignupCard from './SignupCard';
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const SignupBox = () => {
   return (
@@ -16,7 +17,10 @@ const SignupBox = () => {
             width: { xs: '100%', md: '100%' },
           }}
         >
-          <RectangleBorderImage isLogin={false} />
+          <RectangleBorderImage
+            isLogin={false}
+            height={LOGIN_FORM.rectangleHeight.signupFormHeight}
+          />
           <Box
             sx={{
               display: { xs: 'flex', md: 'none' },

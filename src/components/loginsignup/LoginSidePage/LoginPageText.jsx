@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { Typography, Box } from '@mui/material';
+
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const LoginPageText = () => {
@@ -23,7 +24,7 @@ const LoginPageText = () => {
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.connectwithus }
+        {LOGIN_FORM.loginForm.connect}
       </Typography>
       <Typography
         sx={{
@@ -34,7 +35,7 @@ const LoginPageText = () => {
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.propertydealer}
+        {LOGIN_FORM.loginForm.propertyDealer}
       </Typography>
     </Box>
   );
