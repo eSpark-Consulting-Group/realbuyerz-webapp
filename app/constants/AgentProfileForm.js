@@ -2,6 +2,7 @@ export const Agent_Profile_Form_Data = {
   heading: 'Change Password',
   buttonText: 'Save changes',
   image: '/images/agent_form/agent_form_background.png',
+  Profile:{name:"Arman khan", email:'armankhan@gmail.com'},
   feilds: [
     {
       label: 'Full Name',
@@ -84,7 +85,7 @@ export const Agent_Profile_Form_Data = {
       name: 'mobile',
       value: '',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '50%', lg: '50%' },
+      width: { xs: '100%', sm: '85%', md: '50%', lg: '50%' },
       dropdowns: [
         {
           icon: '/images/agent_form/pakistan_flag.png',

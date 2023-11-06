@@ -20,12 +20,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm({ data }) {
+export default function ProfileForm({ data, handleChange, values, errors, touched }) {
   const { image, feilds } = data;
-  const [selectedCountryObject, SetselectedCountryObject] = React.useState();
-  const [inputData, setInputData] = React.useState(
-    Object.fromEntries(feilds.map((field) => [field.name, '']))
-  );
 
   const [selectedItem, setSelectedItem] = React.useState(
     '/images/agent_form/pakistan_flag.png'
@@ -34,20 +30,14 @@ export default function ProfileForm({ data }) {
     '/images/agent_form/pakistan_flag.png'
   );
 
-  const flagChange2 = () => {
+  const flagChange = (e) => {
+    const { value } = e.target
+    setSelectedItem(value)
+  }
+
+  const flagChange2 = (e) => {
     const { value } = e.target;
     setSelectedItem2(value);
-  };
-
-  const handleChange = (e, name, i) => {
-    const { value } = e.target;
-    console.log(inputData);
-
-    setInputData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    setSelectedItem(value);
   };
 
   return (
@@ -63,7 +53,7 @@ export default function ProfileForm({ data }) {
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
-          pr: { xs: 1, md: 0 },
+          pr: { xs: 2, md: 0 },
           pt: { xs: 2, md: 7 },
           pb: { xs: 2, md: 7 },
         }}
@@ -78,7 +68,6 @@ export default function ProfileForm({ data }) {
             dropdowns,
             rows,
             name,
-            value,
             buttonText,
             pt,
             sizes,
@@ -87,7 +76,7 @@ export default function ProfileForm({ data }) {
           } = feild;
 
           const selectedCountryObject = dropdowns?.find(
-            (item) => item.icon === selectedItem
+            (item) => item.icon === selectedItem && selectedItem2
           );
 
           return (
@@ -112,38 +101,35 @@ export default function ProfileForm({ data }) {
                     <Typography variant="h6">{label}</Typography>
                     <Box
                       sx={{
-                        display: `${
-                          label === 'Whatsapp' || label === 'Mobile'
-                            ? 'flex'
-                            : 'null'
-                        }`,
-                        gap: 2,
+                        display: { xs: `${label === 'Whatsapp' || label === 'Mobile'
+                          ? 'flex'
+                          : 'flex'
+                          }`},
+                        columnGap: 2,
+                        flexDirection:{xs:'column', sm:'row'},
+                        rowGap:{xs:3},
                       }}
                     >
                       {index == 4 ? (
                         <RBSelect
                           menuItem={dropdowns}
-                          // name={inputData[index]?.name}
                           value={selectedItem}
-                          // value={'wewe'}
                           label={'Select Country'}
-                          onChange={(e) => handleChange(e, name, index)}
+                          onChange={(e) => flagChange(e)}
                           sx={{
-                            width: { md: '65px', lg: '90px' },
-                            height: { lg: '53px' },
+                            width: { xs:'80px', sm:'auto', md: '65px', lg: '90px' },
+                            height: { xs:"53px", sm:'auto', lg: '53px' },
                           }}
                         />
                       ) : (
                         <RBSelect
                           menuItem={dropdowns}
-                          // name={inputData[index]?.name}
                           value={selectedItem2}
-                          // value={'wewe'}
                           label={'Select Country'}
-                          onChange={flagChange2}
+                          onChange={(e) => flagChange2(e)}
                           sx={{
-                            width: { md: '65px', lg: '90px' },
-                            height: { lg: '53px' },
+                            width: { xs:'80px', sm:'auto', md: '65px', lg: '90px' },
+                            height: { xs:"53px", sm:'auto', lg: '53px' },
                           }}
                         />
                       )}
@@ -151,29 +137,26 @@ export default function ProfileForm({ data }) {
                       <RBInput
                         sx={{
                           width: width,
+                          gap:1,
                         }}
-                        name={name}
-                        value={inputData[name]}
-                        onChange={(e) => handleChange(e, name)}
-                        type={type}
-                        place={`${place} ${
-                          label === 'Whatsapp' || label === 'Mobile'
-                            ? selectedCountryObject?.code
-                            : 'Phone Number'
-                        }`}
-                        helperText={helperText}
-                        id={id}
                         rows={rows}
+                        name={name}
                         multiline={multiline}
+                        value={values[name]}
+                        onChange={handleChange}
+                        error={errors[name] && touched[name] ? true : false}
+                        helperText={touched[name] && errors[name] || helperText}
+                        id={errors[name] && touched[name] || id ? 'errors[name] && touched[name]' : null}
+                        type={type}
+                        place={`${place}`}
                       />
-                      {helperText && <RBHelperText helperText={helperText} />}
                       {buttonText && (
                         <Button
                           variant="primary"
                           type="button"
                           sx={{
-                            // width: '100px',
-                            // height: '30px',
+                            width: {xs:'100%', sm:"auto"},
+                            height: {xs:'100%', sm :"auto"},
                             borderRadius: '5px',
                             alignSelf: 'center',
                           }}

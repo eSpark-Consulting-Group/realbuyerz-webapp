@@ -19,19 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfilePasswordForm({ data }) {
-  const { buttonText, image, passwordFeilds, checkbox } = data;
-  const [inputData, setInputData] = React.useState(
-    Object.fromEntries(passwordFeilds?.map((field) => [field.name, '']))
-  );
-  const handleChange = (e, name) => {
-    const { value } = e.target;
-    setInputData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  console.log(inputData, 'input123');
+export default function ProfilePasswordForm({ data, values, errors, touched, handleChange }) {
+  const { image, passwordFeilds, checkbox } = data;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -46,9 +35,9 @@ export default function ProfilePasswordForm({ data }) {
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
-          pr: { xs: 1, md: 0 },
+          pr: { xs: 2, md: 0 },
           pt: { xs: 2, md: 7 },
-          pb: { xs: 2, md: 7 },
+          pb: { xs: 2, md: 3 },
         }}
       >
         {passwordFeilds?.map((feild, index) => {
@@ -79,12 +68,13 @@ export default function ProfilePasswordForm({ data }) {
                         width: width,
                       }}
                       name={name}
-                      value={inputData[name]}
-                      onChange={(e) => handleChange(e, name)}
                       type={type}
                       place={place}
-                      helperText={helperText}
-                      id={id}
+                      value={values[name]}
+                      onChange={handleChange}
+                      error={errors[name] && touched[name] ? true : false}
+                      helperText={touched[name] && errors[name] || helperText}
+                      id={errors[name] && touched[name] || id ? 'errors[name] && touched[name]' : null}
                     />
                   </Box>
                 </Box>
@@ -93,27 +83,13 @@ export default function ProfilePasswordForm({ data }) {
           );
         })}
         <RBCheckbox
+          label={checkbox.label}
           sx={{
             ml: { xs: 2, md: 7 },
             my: { xs: 1, md: 1 },
             alignItems: 'center',
           }}
-          label={checkbox.label}
         />
-        <Button
-          sx={{
-            ml: { xs: 2, md: 7 },
-            mt: { xs: 2, md: 3 },
-            width: { xs: 'auto', md: '160px' },
-            height: { xs: 'auto', md: '45px' },
-          }}
-          variant="primary"
-          name={name}
-          value={inputData[name]}
-          onChange={(e) => handleChange(e, name)}
-        >
-          {buttonText}
-        </Button>
       </Grid>
     </Box>
   );

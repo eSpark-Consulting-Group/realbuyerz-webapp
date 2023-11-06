@@ -11,6 +11,7 @@ const RBInput = ({
   helperText,
   value,
   type,
+  error,
   name,
   rows,
   multiline,
@@ -25,7 +26,9 @@ const RBInput = ({
         id={id}
         name={name}
         value={value}
+        error={error}
         label={label}
+        helperText={helperText}
         placeholder={place}
         defaultValue={defaultValue}
         multiline={multiline}
