@@ -14,14 +14,18 @@ const PropertyDetails = ({ propertyData }) => {
       <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
         <Box sx={{ padding: '15px' }}>
           <PropertyTitle title={propertyData.propertyData.title} />
-          <PropertyDescription description={propertyData.propertyData.description} />
+          <PropertyDescription
+            description={propertyData.propertyData.description}
+          />
           <PropertyMapLocation
             locationpurpose={propertyData.propertyData.location.purpose}
             propertyType={propertyData.propertyData.location.propertyType}
             city={propertyData.propertyData.location.city}
           />
           <Box sx={{ pt: '15px' }}>
-            <PropertyAmenities amenities={propertyData.propertyData.amenities} />
+            <PropertyAmenities
+              amenities={propertyData.propertyData.amenities}
+            />
           </Box>
           <Box sx={{ pt: '15px' }}>
             <PropertyArea area={propertyData.propertyData.area} />

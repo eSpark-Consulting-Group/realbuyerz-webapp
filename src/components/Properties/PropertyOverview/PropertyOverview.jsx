@@ -16,7 +16,6 @@ import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
-
 const useStyles = makeStyles({
   root: {
     color: 'white',

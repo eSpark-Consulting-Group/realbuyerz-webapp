@@ -9,8 +9,6 @@ import { Grid } from '@mui/material';
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
-import { data } from '@/app/constants/Properties';
-
 function CustomTabPanel({ data, value, index, propertyType }) {
   const filteredProperties =
     value === 0
@@ -95,9 +93,7 @@ export default function PropertyTabs({ data }) {
   const filteredProperties =
     propertyType === ''
       ? data
-      : data.filter(
-        (property) => property.propertyData.type === propertyType
-      );
+      : data.filter((property) => property.propertyData.type === propertyType);
   const isAgent = 'true';
   const agenttab = value;
   return (

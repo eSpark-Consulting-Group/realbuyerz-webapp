@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
-
 const Sliders = ({ propertySlider }) => {
   return (
     <>

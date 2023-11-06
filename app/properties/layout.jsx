@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/material';
 import FooterCta from '@/src/components/footerCta';
 import { FOOTER_CTA_DATA } from '../constants/Constants';
 import { Container } from '@mui/system';

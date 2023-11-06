@@ -175,7 +175,8 @@ export const PROPERTIES_LISTING = [
         images: '/images/slider/commercial.svg',
       },
     ],
-  }, {
+  },
+  {
     id: 1,
     Propertytitle: 'House #1',
     coverImage: '/images/PropertyCardImageHouse.png',
@@ -351,7 +352,8 @@ export const PROPERTIES_LISTING = [
         images: '/images/slider/commercial.svg',
       },
     ],
-  }, {
+  },
+  {
     id: 1,
     Propertytitle: 'House #1',
     coverImage: '/images/PropertyCardImageHouse.png',
@@ -527,7 +529,8 @@ export const PROPERTIES_LISTING = [
         images: '/images/slider/commercial.svg',
       },
     ],
-  }, {
+  },
+  {
     id: 1,
     Propertytitle: 'House #1',
     coverImage: '/images/PropertyCardImageHouse.png',
