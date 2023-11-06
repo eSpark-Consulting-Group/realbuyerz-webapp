@@ -1,10 +1,25 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useRef } from 'react';
 import { Grid, Typography, Box, Divider } from '@mui/material';
-
 import Image from 'next/image';
 import ChatMsg from './ChatMsg';
 
 const Conversation = ({ activeConversation, activeUserId }) => {
+  const chatContainerRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [activeConversation]);
+
+  const handleSendMessage = () => {
+    const message = inputRef.current.value;
+    console.log('Message:', message);
+    // You can now send the message to your desired destination, such as updating the state or making an API call.
+  };
+
   return (
     <Grid
       item
@@ -19,7 +34,7 @@ const Conversation = ({ activeConversation, activeUserId }) => {
       <Box
         sx={{
           border: '1px solid #E4E4E4',
-          height: '450px',
+          height: '470px',
           borderRadius: '10px',
           overflow: 'hidden',
         }}
@@ -62,23 +77,33 @@ const Conversation = ({ activeConversation, activeUserId }) => {
           <Box
             sx={{
               width: '100%',
-              height: '300px',
-              overflow: 'hidden',
-              overflowY: 'scroll',
+              height: '302px',
+              overflow: 'auto',
+              scrollbarWidth: 'thin',
+              '&::-webkit-scrollbar': {
+                width: '0px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'transparent',
+              },
               position: 'relative',
               mt: 2.5,
               mb: 2.5,
             }}
+            ref={chatContainerRef}
           >
             {activeConversation &&
-              activeConversation.messages.map((message) => (
-                <ChatMsg
-                  key={message.id}
-                  message={message}
-                  isSender={message.sender === activeUserId}
-                  iconSrc={activeConversation.image}
-                />
-              ))}
+              activeConversation.messages
+                // .slice()
+                // .reverse() // Reverse the messages to show the latest at the bottom
+                .map((message) => (
+                  <ChatMsg
+                    key={message.id}
+                    message={message}
+                    isSender={message.sender === activeUserId}
+                    iconSrc={activeConversation.image}
+                  />
+                ))}
           </Box>
 
           <Box
@@ -93,7 +118,7 @@ const Conversation = ({ activeConversation, activeUserId }) => {
             <Box
               sx={{
                 borderRadius: '40px',
-                width: '90%',
+                width: '91.5%',
                 height: '50px',
                 position: 'relative',
                 mx: 1,
@@ -119,6 +144,7 @@ const Conversation = ({ activeConversation, activeUserId }) => {
                 />
               </button>
               <input
+                ref={inputRef} // Use the ref to access the input field
                 type="text"
                 style={{
                   width: '100%',
@@ -130,12 +156,16 @@ const Conversation = ({ activeConversation, activeUserId }) => {
                 placeholder="Write message"
               />
             </Box>
-            <Image
-              src={'./images/inbox/sendIcon.svg'}
-              width={40}
-              height={40}
-              alt="chatIcon"
-            />
+            <button
+              onClick={handleSendMessage}
+              >
+              <Image
+                src={'./images/inbox/sendIcon.svg'}
+                width={40}
+                height={40}
+                alt="chatIcon"
+              />
+            </button>
           </Box>
         </Box>
       </Box>

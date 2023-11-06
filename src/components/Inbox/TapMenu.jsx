@@ -28,8 +28,8 @@ const TapMenu = () => {
           >
             <Image
               src={'/images/inbox/reloadIcon.svg'}
-              width={25}
-              height={25}
+              width={20}
+              height={20}
               alt="profile"
             />
           </Button>
@@ -60,7 +60,7 @@ const TapMenu = () => {
         </Box>
         <Box sx={{ position: 'relative' }}>
           <Button
-            disableRipple // Add this to disable the ripple effect on click
+            disableRipple 
             sx={{
               color: activeTab === 'archive' ? '#FB631C' : '#000',
               '&:hover': {

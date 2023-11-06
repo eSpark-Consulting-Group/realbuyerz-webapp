@@ -11,12 +11,23 @@ const ChatMenu = ({ data, handleConversationClick, activeUserId }) => {
       sx={{
         borderTop: '1px solid #E4E4E4',
         borderRight: '1px solid #E4E4E4',
-        height: '485px',
-        overflow: 'hidden',
-        overflowY: 'scroll',
+        height: '505px',
+        overflow: 'auto', 
+        scrollbarWidth: 'thin',
+        '&::-webkit-scrollbar': {
+          width: '0px', 
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'transparent',
+        },
       }}
     >
-      {data.map((item) => (
+      {data.map((item) => {
+         const lastMessage = item.messages[item.messages.length - 1];
+         const lastMessageTime = lastMessage.time;
+         console.log(lastMessageTime); // This will print "12:00PM" 
+       
+        return(
         <Box
           key={item.userId}
           xs={12}
@@ -24,12 +35,12 @@ const ChatMenu = ({ data, handleConversationClick, activeUserId }) => {
             display: 'flex',
             justifyContent: 'space-between',
             cursor: 'pointer',
-            padding: 0.6,
+            padding: .6,
             backgroundColor: activeUserId === item.userId ? '#EDF7FF' : '#fff',
           }}
           onClick={() => handleConversationClick(item.userId)}
         >
-          <Box sx={{ display: 'flex' }}>
+          <Box sx={{ display: 'flex' }} >
             <Image src={item.image} width={30} height={30} alt="chatIcon" />
             <Box sx={{ mx: 1 }}>
               <Typography
@@ -63,18 +74,26 @@ const ChatMenu = ({ data, handleConversationClick, activeUserId }) => {
                 fontWeight: 300,
               }}
             >
-              2:30PM
+              
+             {lastMessageTime}
             </Typography>
             {item.badge === 'true' ? (
               <Badge
-                badgeContent={4}
-                color="secondary"
-                sx={{ ml: 2.5, backgroundColor: '#126FAA' }}
+                badgeContent={item.badgeContent}
+                color="customColor"
+                sx={{
+                  ml: 2.5,
+                  "& .MuiBadge-badge": {
+                    color: "white",
+                  },
+                }}
               ></Badge>
             ) : null}
           </Box>
         </Box>
-      ))}
+      )}
+      
+      )}
     </Grid>
   );
 };

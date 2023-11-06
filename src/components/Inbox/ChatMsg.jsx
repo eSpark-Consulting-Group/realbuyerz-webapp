@@ -43,8 +43,8 @@ const ChatMsg = ({ message, isSender, iconSrc }) => {
                 mx: 1,
                 backgroundColor: isSender ? '#F1F1F1' : '#FFEEE7',
                 borderRadius: isSender
-                  ? '0px 10px 10px 10px'
-                  : '10px, 10px, 0px, 10px',
+                ? '0px 10px 10px 10px'
+                : '10px 10px 0px 10px',
                 color: '000',
                 fontSize: '13px',
                 fontStyle: 'normal',
