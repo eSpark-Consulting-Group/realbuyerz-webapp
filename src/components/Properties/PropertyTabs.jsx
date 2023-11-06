@@ -9,17 +9,17 @@ import { Grid } from '@mui/material';
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
-import { PROPERTIES_LISTING } from '@/app/constants/Properties';
+import { data } from '@/app/constants/Properties';
 
 function CustomTabPanel({ data, value, index, propertyType }) {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter((property) => property.propertytype === propertyType);
+      : data.filter((property) => property.propertyData.type === propertyType);
 
   const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
-    title: property.title,
+    Propertytitle: property.Propertytitle,
   }));
 
   const itemsPerRow = { xs: 12, sm: 6, md: 4, lg: 3, xl: 3 };
@@ -37,10 +37,10 @@ function CustomTabPanel({ data, value, index, propertyType }) {
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
-            {propertyTitle?.map(({ id, title }) => (
+            {propertyTitle?.map(({ id, Propertytitle }) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight="300" fontSize="16px" textAlign="center">
-                  <Link href={`/property/${id}`}>{title}</Link>
+                  <Link href={`/properties/${id}`}>{Propertytitle}</Link>
                 </Typography>
               </Grid>
             ))}
@@ -69,10 +69,10 @@ export default function PropertyTabs({ data }) {
   const uniquePropertyTypes = [];
   const seenPropertyTypes = {};
 
-  PROPERTIES_LISTING?.forEach((property) => {
-    if (!seenPropertyTypes[property.propertytype]) {
-      uniquePropertyTypes.push(property.propertytype);
-      seenPropertyTypes[property.propertytype] = true;
+  data?.forEach((property) => {
+    if (!seenPropertyTypes[property.propertyData.type]) {
+      uniquePropertyTypes.push(property.propertyData.type);
+      seenPropertyTypes[property.propertyData.type] = true;
     }
   });
 
@@ -94,10 +94,10 @@ export default function PropertyTabs({ data }) {
 
   const filteredProperties =
     propertyType === ''
-      ? PROPERTIES_LISTING
-      : PROPERTIES_LISTING.filter(
-          (property) => property.propertytype === propertyType
-        );
+      ? data
+      : data.filter(
+        (property) => property.propertyData.type === propertyType
+      );
   const isAgent = 'true';
   const agenttab = value;
   return (
@@ -153,7 +153,7 @@ export default function PropertyTabs({ data }) {
           padding: '56px 30px',
         }}
       >
-        <PropertyListingCard data={filteredProperties} />
+        <PropertyListingCard propertyData={filteredProperties} />
       </Box>
     </>
   );

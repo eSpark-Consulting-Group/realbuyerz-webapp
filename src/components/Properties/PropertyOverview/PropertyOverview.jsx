@@ -14,10 +14,8 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
-import {
-  PROPERTY_DATA,
-  PROPERTY_ESTATE,
-} from '@/app/constants/PropertyConstants';
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +27,7 @@ const useStyles = makeStyles({
     padding: '0 30px',
   },
 });
-const PropertyOverview = () => {
+const PropertyOverview = ({ propertyData }) => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -66,13 +64,13 @@ const PropertyOverview = () => {
                   gap: '10px',
                 }}
               >
-                {PROPERTY_ESTATE.propertyAttributes.map(
+                {PROPERTY_ESTATE?.propertyAttributes?.map(
                   (propertytype, index) => (
                     <TableCell
                       key={index}
                       sx={{ borderCollapse: 'collapse', color: 'white' }}
                     >
-                      {propertytype.label}
+                      {propertytype?.label}
                     </TableCell>
                   )
                 )}
@@ -80,7 +78,7 @@ const PropertyOverview = () => {
             </TableHead>
             <TableBody>
               <TableRow>
-                {Object.keys(PROPERTY_DATA.propertyDetails).map(
+                {Object.keys(propertyData?.propertyDetails).map(
                   (key, index) => (
                     <TableCell
                       key={index}
@@ -90,7 +88,7 @@ const PropertyOverview = () => {
                         marginBottom: '20px',
                       }}
                     >
-                      {PROPERTY_DATA.propertyDetails[key]}
+                      {propertyData?.propertyDetails[key]}
                     </TableCell>
                   )
                 )}
