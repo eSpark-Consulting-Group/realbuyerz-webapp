@@ -12,7 +12,7 @@ const Signin = () => {
         paddingBottom: '100px',
       }}
     >
-      <LoginSignupLayout IsLoginPage={true} />
+      <LoginSignupLayout isLoginPage={true} />
     </Grid>
   );
 };

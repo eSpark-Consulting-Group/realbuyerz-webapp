@@ -5,7 +5,7 @@ import SignupBox from '../Signup/SignupBox';
 import LoginSidePage from '../LoginSidePage/LoginSidePage';
 import LoginBox from './LoginBox';
 
-const LoginSignupLayout = ({ IsLoginPage }) => {
+const LoginSignupLayout = ({ isLoginPage }) => {
   return (
     <>
       <Grid item xs={12} md={1} />
@@ -24,7 +24,7 @@ const LoginSignupLayout = ({ IsLoginPage }) => {
           <LoginSidePage />
         </Grid>
         <Grid item xs={12} md={6} >
-          {IsLoginPage ? <LoginBox /> : <SignupBox />}
+          {isLoginPage ? <LoginBox /> : <SignupBox />}
         </Grid>
       </Grid>
       <Grid item xs={12} md={1} />

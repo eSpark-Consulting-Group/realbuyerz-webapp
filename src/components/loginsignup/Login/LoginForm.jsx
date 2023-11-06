@@ -1,40 +1,33 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete, Button } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+// import IconButton from '@mui/material/IconButton';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import Visibility from '@mui/icons-material/Visibility';
+// import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import PasswordFields from './PasswordTextfield';
 
 const FormContainer = ({ isLoginForm }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [showPassword, setShowPassword] = useState(false);
+  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // const [password, setPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handlePasswordToggle = () => {
-    setShowPassword(!showPassword);
-  };
-  const handleConfirmPasswordToggle = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleConfirmPassword = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    contactNumber: '',
-    applicant: '',
-    confirmPassword: '',
-  });
+  // const handlePasswordToggle = () => {
+  //   setShowPassword(!showPassword);
+  // };
+  // const handleConfirmPasswordToggle = () => {
+  //   setShowConfirmPassword(!showConfirmPassword);
+  // };
+  // const handlePassword = (event) => {
+  //   setPassword(event.target.value);
+  // };
+  // const handleConfirmPassword = (event) => {
+  //   setConfirmPassword(event.target.value);
+  // };
+  const [formData, setFormData] = useState(LOGIN_FORM.initialFormData);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -65,19 +58,21 @@ const FormContainer = ({ isLoginForm }) => {
               value={formData.email}
               onChange={handleInputChange}
             />
-            <TextField
+<PasswordFields type="password" />
+            {/* <TextField
               label="Password"
               variant="outlined"
               type={showPassword ? 'text' : 'password'}
               fullWidth
               name="password"
-              value={formData.password}
-              onChange={handleInputChange}
+              // value={formData.password}
+              onChange={handlePassword}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       style={{ color: '#444444' }}
+                      // onClick={handlePassword}
                       onClick={handlePasswordToggle}
                       edge="end"
                     >
@@ -86,7 +81,7 @@ const FormContainer = ({ isLoginForm }) => {
                   </InputAdornment>
                 ),
               }}
-            />
+            /> */}
           </Box>
         </form>
       ) : (
@@ -149,8 +144,10 @@ const FormContainer = ({ isLoginForm }) => {
                 <TextField {...params} label="Applicant" />
               )}
               onChange={handleInputChange}
-            />
-            <TextField
+              />
+              <PasswordFields type="passwordConfirm" />
+
+            {/* <TextField
               placeholder="Password"
               label="Password"
               variant="outlined"
@@ -170,8 +167,8 @@ const FormContainer = ({ isLoginForm }) => {
                 ),
               }}
               onChange={handlePassword}
-            />
-            <TextField
+            /> */}
+            {/* <TextField
               label="Confirm Password"
               variant="outlined"
               type={showConfirmPassword ? 'text' : 'password'}
@@ -190,7 +187,7 @@ const FormContainer = ({ isLoginForm }) => {
                 ),
               }}
               onChange={handleConfirmPassword}
-            />
+            /> */}
           </Box>
         </form>
       )}

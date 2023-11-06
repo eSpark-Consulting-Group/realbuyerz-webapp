@@ -25,6 +25,15 @@ export const LOGIN_FORM = {
     rectangleHeight: {
         signupFormHeight: "750px",
         loginFormHeight: "656px"
-    }
+    },
+    initialFormData: {
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        contactNumber: '',
+        applicant: '',
+        confirmPassword: '',
+    },
 
 }
