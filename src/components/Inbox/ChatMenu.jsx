@@ -1,24 +1,24 @@
-import { Badge, Grid, Typography } from '@mui/material'
-import { Box } from '@mui/system'
-import Image from 'next/image'
-import React, { useState } from 'react'
+import { Badge, Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 const ChatMenu = ({ data, handleConversationClick, activeUserId }) => {
-    console.log(activeUserId, "idd")
+
     return (
-        <Grid item xs={4} sx={{ borderTop: "1px solid #E4E4E4", borderRight: "1px solid #E4E4E4", height: "auto" }}>
+        <Grid item xs={3} sx={{ borderTop: "1px solid #E4E4E4", borderRight: "1px solid #E4E4E4", height: "485px" , overflow: "hidden", overflowY: "scroll",}}>
             {data.map((item) => (
                 <Box
                     key={item.userId}
                     xs={12}
-                    sx={{ display: 'flex', justifyContent: 'space-between', cursor: "pointer", padding: 2, backgroundColor: activeUserId === item.userId ? '#EDF7FF' : '#fff', }}
+                    sx={{ display: 'flex', justifyContent: 'space-between', cursor: "pointer", padding: 0.6, backgroundColor: activeUserId === item.userId ? '#EDF7FF' : '#fff',}}
                     onClick={() => handleConversationClick(item.userId)}
                 >
                     <Box sx={{ display: "flex" }}>
                         <Image
                             src={item.image}
-                            width={50}
-                            height={50}
+                            width={30}
+                            height={30}
                             alt="chatIcon"
                         />
                         <Box sx={{ mx: 1 }}>
@@ -34,13 +34,16 @@ const ChatMenu = ({ data, handleConversationClick, activeUserId }) => {
                         <Typography sx={{ color: "#909394", fontSize: "12px", lineHeight: "14.52px", fontWeight: 300 }}>
                             2:30PM
                         </Typography>
-                        <Badge badgeContent={4} color="primary" sx={{ml:2.5}}>
-                        </Badge>
+                        {item.badge === 'true' ? (
+                           <Badge badgeContent={4} color="secondary" sx={{ ml: 2.5, backgroundColor: '#126FAA' }}>
+                           </Badge>
+                           
+                        ) : null}
                     </Box>
                 </Box>
             ))}
         </Grid>
-    )
+    );
 }
 
-export default ChatMenu
+export default ChatMenu;

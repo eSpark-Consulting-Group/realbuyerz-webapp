@@ -81,6 +81,20 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'customColor' },
+          style: {
+            textTransform: 'capitalize',
+            backgroundColor: '#126FAA !important',
+            borderRadius: '5px',
+            color: '#fff',
+            position: 'relative',
+            '&:hover': {
+              backgroundColor: '#EDF7FF',
+              color: '#fb631c',
+            },
+          },
+        },
+        {
           props: { variant: 'outlined' },
           style: {
             textTransform: 'capitalize',

@@ -6,7 +6,7 @@ import ChatMsg from './ChatMsg'
 
 const Conversation = ({ activeConversation, activeUserId }) => {
     return (
-        <Grid item xs={8} sx={{ borderTop: "1px solid #E4E4E4", borderRadius: "0px 0px 10px 0px", height: "auto", p: 2, }}>
+        <Grid item xs={9} sx={{ borderTop: "1px solid #E4E4E4", borderRadius: "0px 0px 10px 0px", height: "auto", p: 2, }}>
             <Box sx={{
                 border: "1px solid #E4E4E4", height: "450px", borderRadius: "10px",
                 overflow: "hidden",
@@ -15,11 +15,11 @@ const Conversation = ({ activeConversation, activeUserId }) => {
                     <Box sx={{ display: 'flex', alignContent: "center", alignItems: "center" }}>
                         <Image
                             src={activeConversation?.image}
-                            width={30}
-                            height={30}
+                            width={40}
+                            height={40}
                             alt="chatIcon"
                         />
-                        <Typography sx={{ mx: 1 }}>
+                        <Typography sx={{ mx: .5 }}>
                             {activeConversation?.name}
                         </Typography>
                     </Box>
@@ -34,7 +34,7 @@ const Conversation = ({ activeConversation, activeUserId }) => {
                 </Box>
                 <Divider />
                 <Box sx={{ display: "flex", flexDirection: 'column', justifyContent: 'space-between', }}>
-                    <Box sx={{ width: "100%", height: "300px", overflow: "hidden", overflowY: "scroll", position: "relative", mt: 2.5, mb: 2.5 }}>
+                    <Box sx={{ width: "100%", height: "300px", overflow: "hidden", overflowY: "scroll", position: "relative", mt: 2.5, mb: 2.5, }}>
                         {activeConversation && activeConversation.messages.map((message) => (
                             <ChatMsg
                                 key={message.id}

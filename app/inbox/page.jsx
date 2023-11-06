@@ -8,14 +8,12 @@ import { CHAT_DATA } from '../constants/Inbox'
 
 
 const page = () => {
-    console.log("sasd")
-    console.warn("sadada")
     return (
         <Grid container spacing={2} >
             <Grid item lg={2} md={12} sm={12} xs={12}
             >
             </Grid>
-            <Grid item lg={8} md={12} sm={12} xs={12} sx={{ mt: 2 }}>
+            <Grid item lg={8} md={12} sm={12} xs={12} sx={{ mt: 5 , mb: 5}}>
                 <InboxContent data={CHAT_DATA}/>
                 {/* <Chat CHAT_DATA={CHAT_DATA} /> */}
             </Grid>
