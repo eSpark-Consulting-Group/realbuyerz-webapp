@@ -25,7 +25,6 @@
     "@mui/icons-material": "^5.14.14",
     "@mui/material": "^5.14.14",
     "@mui/styled-engine-sc": "^6.0.0-alpha.2",
-    "@mui/styles": "^5.14.14",
     "@mui/system": "^5.14.14",
     "@reduxjs/toolkit": "^1.9.7",
     "core-js": "^3.33.1",

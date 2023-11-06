@@ -13,21 +13,9 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { makeStyles } from '@mui/styles/';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
-const useStyles = makeStyles({
-  root: {
-    color: 'white',
-    background: 'black',
-    borderRadius: 30,
-    borderColor: 'green',
-    marginBottom: '10px',
-    padding: '0 30px',
-  },
-});
 const PropertyOverview = ({ propertyData }) => {
-  const classes = useStyles();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
@@ -57,7 +45,7 @@ const PropertyOverview = ({ propertyData }) => {
               borderRadius: '20px',
             }}
           >
-            <TableHead className={classes.root}>
+            <TableHead>
               <TableRow
                 sx={{
                   gap: '10px',
