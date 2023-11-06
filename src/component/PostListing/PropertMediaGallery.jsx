@@ -18,55 +18,47 @@ const PropertyGallery = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundImage: 'url("/assets/images/realbuyer.svg")',
+          backgroundSize: '70% 70%',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
         }}
       >
         <Box
           sx={{
-            background: 'white',
+         
             display: 'flex',
-            justifyContent: 'center',
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             width: '90%',
             height: { xs: '900px', md: '681px' },
-            justifyContent: 'flex-start',
           }}
         >
           <PostTitle text={PropertyInformation.postTitles.imagesvidoes} />
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: { xs: '80%', md: '830px' },
-              padding: { xs: '20px', md: '50px' },
-              backgroundImage: 'url("/assets/images/realbuyer.svg")',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              mx: 'auto',
-              marginTop: { xs: '10px', md: '0' },
-              '@media (max-width: 600px)': {
-                backgroundImage: 'none',
-              },
-            }}
-          >
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                gap: '15px',
+              flexDirection: "column",
+                justifyContent:"center",
+              alignItems: "center",
+                padding:"70px"
               }}
-            >
+          >
+            <Box sx={{
+              display: 'flex',
+              flexDirection: "column",
+              gap:"20px"
+
+            }}>
               <Box
                 sx={{
-                  display: 'flex',
+                display: 'flex',
                   alignSelf: 'flex-start',
                   alignItems: 'center',
                   fontSize: { xs: '20px', md: '25px' },
                   fontWeight: 400,
-                  gap: '10px',
+                gap: '10px',
                 }}
               >
                 <Image
@@ -92,8 +84,8 @@ const PropertyGallery = () => {
                 </Box>
               </Box>
             </Box>
+            </Box>
           </Box>
-        </Box>
       </Grid>
     </Grid>
   );

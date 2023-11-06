@@ -1,9 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import {
-  Box,
-  Grid,
-} from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 import { PropertyInformation } from './postlistingConstants';
 import PostTitle from './PostTitle';
@@ -23,21 +20,22 @@ const Purpose = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundImage: 'url("/assets/images/realbuyer.svg")',
+          backgroundSize: '70% 70%',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            background: 'white',
-            alignItems: 'center',
             height: { xs: '1000px', md: '900px' },
-            width: '90%',
-            gap: "5px",
-            justifyContent: 'flex-start',
+            width: '90%', 
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <PostTitle text={PropertyInformation.postTitles.locationandpurpose} />
@@ -45,10 +43,11 @@ const Purpose = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              width: { xs: '80%', md: '700px' },
-              gap: "10px",
-              height: "800px",
-              alignItems: "flex-start",
+              width: { xs: '90%', md: '700px' },
+              height: { xs: '1000px', md: '600px' },
+              background:"pink",
+              gap: '30px',
+              padding: { xs: '0px', md: '40px' },
             }}
           >
             <PropertyStatus

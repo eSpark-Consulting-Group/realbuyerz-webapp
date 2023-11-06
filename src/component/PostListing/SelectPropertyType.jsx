@@ -16,7 +16,7 @@ const SelectProperyType = () => {
       width: { xs: '100%', md: '500px' },
       height: { xs: "500px", md: "300px" },
     }}>
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -31,7 +31,7 @@ const SelectProperyType = () => {
             backgroundImage: 'none',
           },
         }}
-      >
+      > */}
         <Box
           sx={{
             display: 'flex',
@@ -111,7 +111,6 @@ const SelectProperyType = () => {
               </Button>
             ))}
           </Box>
-        </Box>
       </Box>
     </Box>
   );

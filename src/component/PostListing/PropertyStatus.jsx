@@ -9,7 +9,6 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
             <Box
                 sx={{
                     display: 'flex',
-                    alignSelf: 'flex-start',
                     alignItems: 'center',
                     fontSize: '20px',
                     fontFamily: 'Inter',
@@ -36,8 +35,6 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
                     gap: '10px',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
                     marginLeft: { xs: "0px", md: "50px" }
                 }}
             >

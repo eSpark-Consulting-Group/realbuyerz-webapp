@@ -18,6 +18,7 @@ const PostListing = () => {
           sx={{
             width: '100%',
             display: 'flex',
+            background: "white",
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
@@ -27,7 +28,7 @@ const PostListing = () => {
         >
           <BuyersPlatform />
           <AdInformation />
-          <Purpose />
+          {/* <Purpose /> */}
           <PropertySize />
           <PropertyFeatures />
           <PropertyGallery />

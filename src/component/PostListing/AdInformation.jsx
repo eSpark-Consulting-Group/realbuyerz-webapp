@@ -17,43 +17,26 @@ const AdInformation = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundImage: 'url("/assets/images/realbuyer.svg")',
+          backgroundSize: '70% 70%',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
         }}
       >
         <Box
           sx={{
-            background: 'white',
             display: 'flex',
-            justifyContent: 'center',
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             height: '681px',
             width: '90%',
-            justifyContent: 'flex-start',
           }}
         >
           <PostTitle text={PropertyInformation.postTitles.adInfo} />
-
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              alignItems: 'center',
-              width: { xs: '80%', md: '600px' },
-              padding: { xs: '20px', md: '50px' },
-              backgroundImage: 'url("/assets/images/realbuyer.svg")',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              mx: 'auto',
-              '@media (max-width: 600px)': {
-                backgroundImage: 'none',
-              },
-              marginTop: { xs: '10px', md: '0' },
-            }}
-          >
-            <PropertyAddInformation PropertyInformation={PropertyInformation.addInfo} />
-          </Box>
+          <PropertyAddInformation
+            PropertyInformation={PropertyInformation.addInfo}
+          />
         </Box>
       </Grid>
     </Grid>
