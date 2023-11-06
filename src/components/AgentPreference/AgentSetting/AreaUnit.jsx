@@ -1,38 +1,38 @@
 import React from 'react';
 import { Box, Typography, TextField } from '@mui/material';
 
-import { NOTIFICATION } from '@/app/constants/Preference';
-
-const AreaUnit = () => {
-  console.log('me', NOTIFICATION.measurement);
+const AreaUnit = ({ Measure }) => {
   return (
     <Box>
-      {Object.keys(NOTIFICATION.measurement).map((key) => (
+      {Measure.map((item, index) => (
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            padding: '10px',
+            padding: '8px',
             gap: '15px',
           }}
-          key={key}
+          key={index}
         >
-              <Typography sx={{
-               color: 'black',
-                  fontSize: '20px',
-                  fontFamily: 'Inter',
-                  fontWeight: 400,
-          }}>{NOTIFICATION.measurement[key]}</Typography>
-          <TextField label="PKR" variant="outlined" type="number" fullWidth />
+          <Typography
+            sx={{
+              color: 'black',
+              fontSize: '20px',
+              fontFamily: 'Inter',
+              fontWeight: 400,
+            }}
+          >
+            {item.label}
+          </Typography>
+          <TextField
+            placeholder={item.placeholder}
+            variant="outlined"
+            type="number"
+            fullWidth
+          />
         </Box>
       ))}
     </Box>
   );
 };
 export default AreaUnit;
-// //{Object.keys(NOTIFICATION.measurement).map((key) => (
-//   <div key={key}>
-//     <h3>{key}</h3>
-//     <p>{NOTIFICATION.measurement[key]}</p>
-//   </div>
-// ))}//

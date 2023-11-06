@@ -1,74 +1,66 @@
 import React from 'react';
-import { Typography, Box, Grid, Button } from '@mui/material';
-import NotificationEnable from './NotificationEnable';
-import { NOTIFICATION } from '@/app/constants/Preference';
+import { Typography, Box, Grid } from '@mui/material';
+
+import Notification from './Notification';
+import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
+
 const PreferenceSetting = () => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       <Grid
         item
         xs={12}
         md={10}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          backgroundImage: 'url("/images/RealBuyers.svg")',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '70% 70%',   
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            background: 'skyblue',
-            width: '1100px',
+            width: '100%',
             height: '1152px',
+            justifyContent: 'center',
+            margin: 0,
+            border: '2px solid #F4F5F7',
           }}
         >
-          <Box>
-            <Typography
-              sx={{ color: 'black', fontSize: '25px', fontWeight: 500 }}
-            >
-              {NOTIFICATION.Heading.preference}
-            </Typography>
-          </Box>
-         <Box Box
+          <Box
             sx={{
               display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: { xs: '80%', md: '830px' },
-              padding: { xs: '20px', md: '50px' },
-              backgroundImage: 'url("/images/RealBuyers.svg")',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              mx: 'auto',
-              marginTop: { xs: '10px', md: '0' },
-              '@media (max-width: 600px)': {
-                backgroundImage: 'none',
-              },
+              flexDirection: 'column',
+              marginBottom: { xs: '170px', md: '250px' },
+              width: { xs: '100%', md: '70%' },
+              padding: '40px',
+              gap: '40px',
             }}
           >
-          <NotificationEnable />
-            <AreaUnit />
-            </Box>
+            <Typography
+              sx={{
+                color: 'black',
+                fontSize: '25px',
+                fontWeight: 500,
+                padding:"8px"
+              }}
+            >
+              {AGENT_PREFERENCES.heading.preference}
+            </Typography>
+            <Notification isNotifyEnable={AGENT_PREFERENCES.updates} />
+            <AreaUnit Measure={AGENT_PREFERENCES.propertySize} />
             <SaveChanges />
-            
-          {/* {NOTIFICATION.notification.map((item, index) => {
-          <Box sx={{
-            display: "flex",
-              justifyContent: "space-between",
-            
-            
-          }}
-              key={index}
-          > 
-              <Typography>{ item.title}</Typography>
-              <Typography>{item.description}</Typography>
-      <Switch {...label} />
-
-                </Box>
-            })} */}
+          </Box>
         </Box>
       </Grid>
     </Grid>

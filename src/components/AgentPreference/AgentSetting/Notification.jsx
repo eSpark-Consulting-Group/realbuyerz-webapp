@@ -1,29 +1,25 @@
 'use client';
 import React from 'react';
 import { Typography, Box, Switch } from '@mui/material';
-import { NOTIFICATION } from '@/app/constants/Preference';
 
-const NotificationEnable = () => {
+const Notification = ({isNotifyEnable}) => {
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
-  console.log('notify', NOTIFICATION.notification);
-
   return (
     <>
       <Box>
-        {NOTIFICATION?.notification.map((item, index) => (
+        {isNotifyEnable.map((item, index) => (
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               borderBottom: '1px solid gray',
-              padding: '15px',
               gap: '10px',
+              padding:"10px"
             }}
           >
             <Box
               sx={{
                 display: 'flex',
-
                 justifyContent: 'space-between',
               }}
               key={index}
@@ -45,8 +41,8 @@ const NotificationEnable = () => {
                   color: '#666666',
                   fontSize: '18px',
                   fontFamily: 'Inter',
-                  fontWeight: 400,
-                }}>{item.description}</Typography>
+                fontWeight: 400,
+                  }}>{item.description}</Typography>
             </Box>
           </Box>
         ))}
@@ -54,4 +50,4 @@ const NotificationEnable = () => {
     </>
   );
 };
-export default NotificationEnable;
+export default Notification;
