@@ -1,32 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete, Button } from '@mui/material';
-// import IconButton from '@mui/material/IconButton';
-// import InputAdornment from '@mui/material/InputAdornment';
-// import Visibility from '@mui/icons-material/Visibility';
-// import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 import PasswordFields from './PasswordTextfield';
+import PasswordAndConfirmFields from './PasswordAndConfirmeField';
 
 const FormContainer = ({ isLoginForm }) => {
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-
-  // const handlePasswordToggle = () => {
-  //   setShowPassword(!showPassword);
-  // };
-  // const handleConfirmPasswordToggle = () => {
-  //   setShowConfirmPassword(!showConfirmPassword);
-  // };
-  // const handlePassword = (event) => {
-  //   setPassword(event.target.value);
-  // };
-  // const handleConfirmPassword = (event) => {
-  //   setConfirmPassword(event.target.value);
-  // };
   const [formData, setFormData] = useState(LOGIN_FORM.initialFormData);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -35,10 +15,6 @@ const FormContainer = ({ isLoginForm }) => {
       [name]: value,
     });
   };
-  const handleConsoleLog = () => {
-    console.log(formData);
-  };
-
   return (
     <>
       {isLoginForm ? (
@@ -58,30 +34,7 @@ const FormContainer = ({ isLoginForm }) => {
               value={formData.email}
               onChange={handleInputChange}
             />
-<PasswordFields type="password" />
-            {/* <TextField
-              label="Password"
-              variant="outlined"
-              type={showPassword ? 'text' : 'password'}
-              fullWidth
-              name="password"
-              // value={formData.password}
-              onChange={handlePassword}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      // onClick={handlePassword}
-                      onClick={handlePasswordToggle}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            /> */}
+            <PasswordFields />
           </Box>
         </form>
       ) : (
@@ -144,50 +97,8 @@ const FormContainer = ({ isLoginForm }) => {
                 <TextField {...params} label="Applicant" />
               )}
               onChange={handleInputChange}
-              />
-              <PasswordFields type="passwordConfirm" />
-
-            {/* <TextField
-              placeholder="Password"
-              label="Password"
-              variant="outlined"
-              type={showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      onClick={handlePasswordToggle}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={handlePassword}
-            /> */}
-            {/* <TextField
-              label="Confirm Password"
-              variant="outlined"
-              type={showConfirmPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      onClick={handleConfirmPasswordToggle}
-                      edge="end"
-                    >
-                      {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={handleConfirmPassword}
-            /> */}
+            />
+            <PasswordAndConfirmFields />
           </Box>
         </form>
       )}
