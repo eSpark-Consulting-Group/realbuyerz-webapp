@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 
 import { PROPERTY_ESTATE } from '@/app/constants/PropertyConstants';
 
-const Sliders=()=> {
+const Sliders = () => {
   return (
     <>
       <Grid container spacing={2}>
@@ -21,25 +21,21 @@ const Sliders=()=> {
             modules={[Navigation]}
             style={{ width: '100%', height: '100%', borderRadius: '15px' }}
           >
-            {PROPERTY_ESTATE.sliderImages.map(
-              (item, index) => (
-                (
-                  <SwiperSlide key={index}>
-                    <Image
-                      src={item.images}
-                      alt={`Slide ${index + 1}`}
-                      width={870}
-                      height={500}
-                      style={{ objectFit: 'cover', borderRadius: '20px' }}
-                    />
-                  </SwiperSlide>
-                )
-              )
-            )}
+            {PROPERTY_ESTATE.sliderImages.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={item.images}
+                  alt={`Slide ${index + 1}`}
+                  width={870}
+                  height={500}
+                  style={{ objectFit: 'cover', borderRadius: '20px' }}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </Grid>
       </Grid>
     </>
   );
-}
+};
 export default Sliders;

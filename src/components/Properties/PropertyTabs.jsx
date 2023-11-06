@@ -15,9 +15,7 @@ function CustomTabPanel({ data, value, index, propertyType }) {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter(
-        (property) => property.propertytype === propertyType
-      );
+      : data.filter((property) => property.propertytype === propertyType);
 
   const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
@@ -98,8 +96,8 @@ export default function PropertyTabs({ data }) {
     propertyType === ''
       ? PROPERTIES_LISTING
       : PROPERTIES_LISTING.filter(
-        (property) => property.propertytype === propertyType
-      );
+          (property) => property.propertytype === propertyType
+        );
   const isAgent = 'true';
   const agenttab = value;
   return (
@@ -136,7 +134,8 @@ export default function PropertyTabs({ data }) {
             </Tabs>
           </Box>
           {tabData?.map((tab, index) => (
-            <CustomTabPanel data={data}
+            <CustomTabPanel
+              data={data}
               key={index}
               value={value}
               index={index}

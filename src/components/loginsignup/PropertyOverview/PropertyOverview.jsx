@@ -14,7 +14,10 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles/';
-import { PROPERTY_DATA,PROPERTY_ESTATE } from '@/app/constants/PropertyConstants';
+import {
+  PROPERTY_DATA,
+  PROPERTY_ESTATE,
+} from '@/app/constants/PropertyConstants';
 
 const useStyles = makeStyles({
   root: {
@@ -77,18 +80,20 @@ const PropertyOverview = () => {
             </TableHead>
             <TableBody>
               <TableRow>
-                {Object.keys(PROPERTY_DATA.propertyDetails).map((key, index) => (
-                  <TableCell
-                    key={index}
-                    sx={{
-                      background: '#F8F8F8',
-                      border: '1px solid #B8B8B8',
-                      marginBottom: '20px',
-                    }}
-                  >
-                    {PROPERTY_DATA.propertyDetails[key]}
-                  </TableCell>
-                ))}
+                {Object.keys(PROPERTY_DATA.propertyDetails).map(
+                  (key, index) => (
+                    <TableCell
+                      key={index}
+                      sx={{
+                        background: '#F8F8F8',
+                        border: '1px solid #B8B8B8',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      {PROPERTY_DATA.propertyDetails[key]}
+                    </TableCell>
+                  )
+                )}
               </TableRow>
             </TableBody>
           </Table>
