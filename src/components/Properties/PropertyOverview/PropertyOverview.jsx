@@ -10,14 +10,10 @@ import {
   Typography,
   Paper,
   TableContainer,
-  useMediaQuery,
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const PropertyOverview = ({ propertyData }) => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <>
       <Box
@@ -36,7 +32,7 @@ const PropertyOverview = ({ propertyData }) => {
           component={Paper}
           sx={{
             justifyContent: { xs: 'center', md: 'none' },
-            overflow: isSmallScreen ? 'auto' : 'hidden',
+            overflow: 'hidden',
             borderSpacing: '10px',
           }}
         >
@@ -55,7 +51,12 @@ const PropertyOverview = ({ propertyData }) => {
                   (propertytype, index) => (
                     <TableCell
                       key={index}
-                      sx={{ borderCollapse: 'collapse', color: 'white' }}
+                      sx={{
+                        borderCollapse: 'collapse',
+                        color: 'white',
+                        backgroundColor: 'black',
+                        overflow: 'hidden',
+                      }}
                     >
                       {propertytype?.label}
                     </TableCell>

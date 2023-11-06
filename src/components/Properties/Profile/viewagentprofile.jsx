@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Button, Avatar, Box } from '@mui/material';
 import Link from 'next/link';
 
-const ViewAgentProfile = ({ avatar, name, link }) => {
+const ViewAgentProfile = ({ image, name, link }) => {
   return (
     <Box
       sx={{
@@ -23,7 +23,7 @@ const ViewAgentProfile = ({ avatar, name, link }) => {
           p: 2,
         }}
       >
-        <Avatar src={avatar} sx={{ width: 100, height: 100 }} />
+        <Avatar src={image} sx={{ width: 100, height: 100 }} />
         <Typography
           variant="secondary"
           sx={{

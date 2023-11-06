@@ -36,7 +36,7 @@ const ProfileAgent = ({ agentData }) => {
             link={agentData?.agentData?.chatLink}
           />
           <ViewAgentProfile
-            avatar={agentData?.agentData?.avatar}
+            image={agentData?.agentData?.profileimage}
             name={agentData?.agentData?.name}
             link={agentData?.agentData?.profileLink}
           />

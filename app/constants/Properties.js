@@ -30,7 +30,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -89,7 +89,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -148,7 +148,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -207,7 +207,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -266,7 +266,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -325,7 +325,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -384,7 +384,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -443,7 +443,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -502,7 +502,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -561,7 +561,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -620,7 +620,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -679,7 +679,7 @@ export const PROPERTIES_LISTING = [
     agentData: {
       id: 1,
       price: '1.5 Crore',
-      avatar: '/images/agent-profile/avatar.svg',
+      profileimage: '/images/agent-profile/profileimage.svg',
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
