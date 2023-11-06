@@ -3,8 +3,8 @@ import React from 'react';
 import { Grid, Box } from '@mui/material';
 
 import Price from './PropertyPrice';
-import AgentDescription from './AgentDescription';
-import ViewAgentProfile from './ViewAgentProfile';
+import AgentDescription from './agentdescription';
+import ViewAgentProfile from './viewagentprofile';
 
 const ProfileAgent = ({ agentData }) => {
   return (

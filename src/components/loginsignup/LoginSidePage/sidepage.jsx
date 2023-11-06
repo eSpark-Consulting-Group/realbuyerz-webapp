@@ -3,8 +3,8 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import RealEstate from './RealEstateImage';
-import BuildingImage from './Buildingimage';
 import LoginPageText from './LoginPageText';
+import BuildingImage from './buildingimage';
 
 const SidePage = () => {
   return (
