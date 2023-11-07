@@ -1,4 +1,4 @@
-export const PropertyInformation = {
+export const PROPERTY_INFORMATION = {
   property: [
     {
       image: '/assets/images/home.svg',
@@ -160,3 +160,15 @@ export const PropertyInformation = {
     },
   ],
 };
+
+export const PROPERTY_BUYING_DETAIL = {
+  sellingDetails: {
+    title: '',
+    description: '',
+    enterUnit: '',
+    enterAmount: '',
+    addAmenities: '',
+    uploadImage: '',
+    uploadvideo:''
+  }
+}

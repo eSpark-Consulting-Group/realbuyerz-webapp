@@ -1,12 +1,26 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import { Typography, Box, TextField, Grid } from '@mui/material';
 import Image from 'next/image';
 
-import { PropertyInformation } from './postlistingConstants';
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
 import PropertyAddInformation from './PropertyAddInformation';
+import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
-const AdInformation = () => {
+const AdInformation = ({inputChange}) => {
+  const [propertyData, setPropertyData] = useState(PROPERTY_BUYING_DETAIL)
+   const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPropertyData({
+      ...propertyData,
+      [name]: value,
+    });
+  };
+
+  // const handleClick = () => {
+  //   console.log("propertyData",propertyData)
+  // }
   return (
     <Grid container>
       <Grid
@@ -18,7 +32,7 @@ const AdInformation = () => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/assets/images/realbuyer.svg")',
-          backgroundSize: '70% 70%',
+          backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
         }}
@@ -33,10 +47,19 @@ const AdInformation = () => {
             width: '90%',
           }}
         >
-          <PostTitle text={PropertyInformation.postTitles.adInfo} />
-          <PropertyAddInformation
-            PropertyInformation={PropertyInformation.addInfo}
-          />
+          <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <PropertyAddInformation
+              inputChange={handleInputChange}
+              PropertyInformation={PROPERTY_INFORMATION.addInfo}
+            />
+          </Box>
         </Box>
       </Grid>
     </Grid>

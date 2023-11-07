@@ -3,9 +3,9 @@ import { Box } from '@mui/system';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-import { PropertyInformation } from './postlistingConstants';
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 
-const ListingInfo = () => {
+const ListingInfo = ({propertyInfo}) => {
   return (
     <Box
       sx={{
@@ -14,7 +14,7 @@ const ListingInfo = () => {
         flexWrap: 'wrap',
       }}
     >
-      {PropertyInformation.property.map((item, index) => (
+      {propertyInfo.map((item, index) => (
         <Box
           sx={{
             display: 'flex',

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Typography, Box, TextField, MenuItem } from '@mui/material';
 import Image from 'next/image';
 
-import { PropertyInformation } from './postlistingConstants';
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 
-const SelectCityType = () => {
+const SelectCityType = ({image,label}) => {
   const [value, setValue] = useState('');
   return (
     <>
@@ -20,14 +20,14 @@ const SelectCityType = () => {
 
         }}
       >
-        <Image src={PropertyInformation.city.images} width={47} height={45} />
+        <Image src={image} width={47} height={45} />
         <Typography
           sx={{
             color: '#333333',
 
           }}
         >
-          {PropertyInformation.city.text}{' '}
+          {label}{' '}
         </Typography>
         <span style={{ color: '#FF0000' }}>*</span>
       </Box>

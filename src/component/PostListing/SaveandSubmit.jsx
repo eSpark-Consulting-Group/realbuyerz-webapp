@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 
-const SubmitButton = () => {
+const SubmitButton = ({handleClickButton}) => {
   const Savedraft = "Save as draft";
   const SubmitAd = "Submit Ad"
   return (
@@ -54,6 +54,7 @@ const SubmitButton = () => {
               fontSize: '15px',
               fontWeight: 400,
             }}
+            onClick={handleClickButton}
           >
             {SubmitAd}
           </Button>

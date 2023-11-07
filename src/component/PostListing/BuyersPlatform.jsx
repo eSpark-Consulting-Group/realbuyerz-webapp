@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Box } from '@mui/material';
 import ListingInfo from './Listinginfo';
 import ReachBuyer from './ReachBuyer';
-
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 const BuyersPlatform = () => {
   return (
     <Grid container>
@@ -29,7 +29,7 @@ const BuyersPlatform = () => {
           }}
         >
           <ReachBuyer />
-          <ListingInfo />
+          <ListingInfo propertyInfo={PROPERTY_INFORMATION.property} />
         </Box>
       </Grid>
     </Grid>

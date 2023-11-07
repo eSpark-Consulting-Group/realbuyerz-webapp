@@ -2,15 +2,14 @@ import React from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 import Image from 'next/image';
 
-const PropertyAddInformation = ({ PropertyInformation }) => {
+const PropertyAddInformation = ({ PropertyInformation,inputChange }) => {
   return (
     <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-              paddingTop: '40px',
-      
+        paddingTop: '40px',
+        width: '700px',
       }}
     >
       {PropertyInformation.map((item, index) => (
@@ -18,8 +17,7 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
           sx={{
             padding: '15px',
             display: 'flex',
-                  flexDirection: 'column',
-            //   background:"pink",
+            flexDirection: 'column',
             gap: '15px',
           }}
         >
@@ -56,6 +54,8 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
                 overflow: 'hidden',
               },
             }}
+            name={item.name}
+            onChange={inputChange}
             multiline
           />
         </Box>

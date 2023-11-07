@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 import Image from 'next/image';
 
-import { PropertyInformation } from './postlistingConstants';
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
 import UploadMediaInstructions from './UploadMediaInstructions';
 import UploadGalleryButton from './UploadGalleryButton';
@@ -19,14 +19,13 @@ const PropertyGallery = () => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/assets/images/realbuyer.svg")',
-          backgroundSize: '70% 70%',
+          backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
         }}
       >
         <Box
           sx={{
-         
             display: 'flex',
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
@@ -35,7 +34,7 @@ const PropertyGallery = () => {
             height: { xs: '900px', md: '681px' },
           }}
         >
-          <PostTitle text={PropertyInformation.postTitles.imagesvidoes} />
+          <PostTitle text={PROPERTY_INFORMATION.postTitles.imagesvidoes} />
             <Box
               sx={{
                 display: 'flex',
@@ -62,11 +61,11 @@ const PropertyGallery = () => {
                 }}
               >
                 <Image
-                  src={PropertyInformation.upload.images}
+                  src={PROPERTY_INFORMATION.upload.images}
                   width={47}
                   height={45}
                 />
-                <Typography>{PropertyInformation.upload.text}</Typography>
+                <Typography>{PROPERTY_INFORMATION.upload.text}</Typography>
               </Box>
               <Box
                 sx={{
@@ -77,10 +76,10 @@ const PropertyGallery = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                 }}
               >
-                <UploadGalleryButton PropertyInformation={PropertyInformation.uploadButton} />
+                <UploadGalleryButton PropertyInformation={PROPERTY_INFORMATION.uploadButton} />
                 <Box>
                   {' '}
-                  <UploadMediaInstructions PropertyInformation={PropertyInformation.uploadInstruction} />
+                  <UploadMediaInstructions PropertyInformation={PROPERTY_INFORMATION.uploadInstruction} />
                 </Box>
               </Box>
             </Box>

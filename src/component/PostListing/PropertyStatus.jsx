@@ -35,7 +35,7 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
                     gap: '10px',
-                    marginLeft: { xs: "0px", md: "50px" }
+                    marginLeft: { xs: "50px", md: "50px" }
                 }}
             >
                 {PropertySell.map((item, index) => (
