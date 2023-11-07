@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { Divider, Grid } from '@mui/material';
-import ProposalHeader from '@/src/components/proposal/proposalHeader';
+import ProposalHeader from '@/src/components/proposal/ProposalHeader';
 import ProposalApplicant from '@/src/components/proposal/ProposalApplicant';
 import ProposalMedia from '@/src/components/proposal/ProposalMedia';
 
