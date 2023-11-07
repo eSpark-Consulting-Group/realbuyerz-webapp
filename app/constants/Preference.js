@@ -18,20 +18,24 @@ export const AGENT_PREFERENCES = {
     },
     propertySize: [
         {
-            label: "Currency",
-            placeholder: "PKR",
+            label: 'Currency',
+            placeholder: 'PKR',
+            name: 'currency',
         },
         {
             label: 'Area Unit',
-            placeholder: "Sq.Ft"
-        }
+            placeholder: 'Sq.Ft',
+            name: 'areaUnit',
+        },
     ],
-    // propertySize: {
-    //     currency: 'Currency',
-    //     areaUnit: 'Area Unit',
-    // },
-    // areaUnit: {
-    //     PKR: 'PKR',
-    //     sqft: 'Sq.Ft',
-    // },
+};
+
+export const PROPERTY_AREASIZE_AND_REPORT = {
+    report: {
+        emailNotification: false,
+        newsLetter: false,
+        automatedReports: false,
+        currency: '',
+        areaUnit: '',
+    },
 };

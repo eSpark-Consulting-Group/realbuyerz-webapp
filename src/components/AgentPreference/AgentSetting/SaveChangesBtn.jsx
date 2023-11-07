@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
 
-const SaveChanges = () => {
+const SaveChanges = ({handleClickBtn}) => {
   return (
     <Box
       sx={{
@@ -20,7 +20,9 @@ const SaveChanges = () => {
           fontFamily: 'Inter',
           fontWeight: 400,
         }}
+          onClick={handleClickBtn}
       >
+      
         Save Changes
       </Button>
     </Box>

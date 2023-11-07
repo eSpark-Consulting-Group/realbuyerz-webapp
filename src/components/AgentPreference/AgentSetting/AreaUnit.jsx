@@ -1,7 +1,21 @@
-import React from 'react';
-import { Box, Typography, TextField } from '@mui/material';
+'use client'
+import React, { useState } from 'react';
+import { Box, Typography, TextField, Button } from '@mui/material';
 
-const AreaUnit = ({ Measure }) => {
+import { AGENT_PREFERENCES } from '@/app/constants/Preference';
+
+const AreaUnit = ({ Measure,Report,InputChange }) => {
+    const [emailData, setEmailData] = useState(Report);
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setEmailData({
+  //     ...emailData,
+  //     [name]: value,
+  //   });
+  // };
+  // const handleClick = () => {
+  //   console.log("data",emailData)
+  // }
   return (
     <Box>
       {Measure.map((item, index) => (
@@ -26,12 +40,16 @@ const AreaUnit = ({ Measure }) => {
           </Typography>
           <TextField
             placeholder={item.placeholder}
+            // value={`${emailData.currency} ${emailData.areaUnit}`}
+            name={item.name}
             variant="outlined"
             type="number"
             fullWidth
+            onChange={InputChange}
           />
         </Box>
       ))}
+{/* <Button onClick={handleClick}>Ok</Button> */}
     </Box>
   );
 };

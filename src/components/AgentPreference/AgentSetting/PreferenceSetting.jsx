@@ -1,12 +1,26 @@
-import React from 'react';
+'use client';
+import React,{useState} from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
 import Notification from './Notification';
 import { AGENT_PREFERENCES } from '@/app/constants/Preference';
+import { PROPERTY_AREASIZE_AND_REPORT } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 
 const PreferenceSetting = () => {
+      const [emailData, setEmailData] = useState(PROPERTY_AREASIZE_AND_REPORT.report);
+   const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEmailData({
+      ...emailData,
+      [name]: value,
+    });
+  };
+  const handleClick = () => {
+    console.log("data",emailData)
+    console.log("hello")
+  }
   return (
     <Grid
       container
@@ -57,9 +71,18 @@ const PreferenceSetting = () => {
             >
               {AGENT_PREFERENCES.heading.preference}
             </Typography>
-            <Notification isNotifyEnable={AGENT_PREFERENCES.updates} />
-            <AreaUnit Measure={AGENT_PREFERENCES.propertySize} />
-            <SaveChanges />
+            <Notification isNotifyEnable={AGENT_PREFERENCES.updates}
+              Reports={PROPERTY_AREASIZE_AND_REPORT.report}
+               InputChange={handleInputChange}
+            />
+            <AreaUnit Measure={AGENT_PREFERENCES.propertySize}
+              Reports={PROPERTY_AREASIZE_AND_REPORT.report}
+              InputChange={handleInputChange}
+            />
+            <SaveChanges handleClickBtn={handleClick}
+                           
+
+ />
           </Box>
         </Box>
       </Grid>
