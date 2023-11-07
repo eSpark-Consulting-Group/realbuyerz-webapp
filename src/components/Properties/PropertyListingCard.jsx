@@ -59,7 +59,7 @@ function PropertyListingCard({ data }) {
             <Box
               sx={{
                 m: '20px 20px 20px 20px',
-                borderRadius: '5px ',
+                borderRadius: '5px',
                 height: '85%',
                 width: '90%',
                 position: 'relative',
@@ -72,7 +72,7 @@ function PropertyListingCard({ data }) {
                 style={styles.image}
                 alt={''}
                 sx={{
-                  borderRadius: '5px ',
+                  borderRadius: '5px',
                 }}
               />
             </Box>

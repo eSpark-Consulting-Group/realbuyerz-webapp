@@ -82,7 +82,7 @@ function MainHeader() {
                 }}
               >
                 <Image
-                  src="/images/RealBuyers-Logo.svg"
+                  src="./images/RealBuyers-Logo.svg"
                   alt={''}
                   height={37}
                   width={155}
@@ -139,7 +139,7 @@ function MainHeader() {
                 <MenuItem key={i} onClick={handleCloseNavMenu}>
                   <Link
                     style={{
-                      color: '#1976d2 ',
+                      color: '#1976d2',
                       textDecoration: 'none',
                     }}
                     href={item?.path}

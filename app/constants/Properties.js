@@ -20,7 +20,7 @@ export const PROPERTIES_LISTING = [
     agentName: 'Arman khan',
     imageUrl: '/images/PropertyCardImagePlots.jpeg',
     price: '10 Crore',
-    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1 ',
+    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1',
     description:
       'Plot for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
     direction: 'West Open',
@@ -65,7 +65,7 @@ export const PROPERTIES_LISTING = [
     agentName: 'Arman khan',
     imageUrl: '/images/PropertyCardImagePlots.jpeg',
     price: '10 Crore',
-    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1 ',
+    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1',
     description:
       'Plot for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
     direction: 'West Open',
@@ -110,7 +110,7 @@ export const PROPERTIES_LISTING = [
     agentName: 'Arman khan',
     imageUrl: '/images/PropertyCardImagePlots.jpeg',
     price: '10 Crore',
-    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1 ',
+    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1',
     description:
       'Plot for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
     direction: 'West Open',
@@ -155,7 +155,7 @@ export const PROPERTIES_LISTING = [
     agentName: 'Arman khan',
     imageUrl: '/images/PropertyCardImagePlots.jpeg',
     price: '10 Crore',
-    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1 ',
+    location: 'Stanhope Feilds, 47 Park Lane, Mayfair, London W1',
     description:
       'Plot for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
     direction: 'West Open',

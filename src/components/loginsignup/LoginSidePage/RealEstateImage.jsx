@@ -5,12 +5,7 @@ import Image from 'next/image';
 const RealEstate = () => {
   return (
     <Box>
-      <Image
-        src={'assets/images/boximage.svg'}
-        width={550}
-        height={500}
-        alt={''}
-      />
+      <Image src={'./images/boximage.svg'} width={550} height={500} alt={''} />
     </Box>
   );
 };

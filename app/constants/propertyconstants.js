@@ -18,7 +18,7 @@ export const propertyData = {
     city: 'Karachi',
   },
   price: '1.5 Crore',
-  avartar: 'assets/images/avatar.svg',
+  avartar: '/images/avatar.svg',
   name: 'Arman Khan',
   agentdescription:
     'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
@@ -36,13 +36,13 @@ export const propertyData = {
 export const propertyEstate = {
   SliderImages: [
     {
-      images: '/assets/images/appartments.jpg',
+      images: '//images/appartments.jpg',
     },
     {
-      images: '/assets/images/houses.jpg',
+      images: '//images/houses.jpg',
     },
     {
-      images: '/assets/images/commercial.jpg',
+      images: '//images/commercial.jpg',
     },
   ],
   propertyAttributes: [

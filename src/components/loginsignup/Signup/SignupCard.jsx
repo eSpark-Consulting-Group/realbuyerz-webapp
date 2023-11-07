@@ -232,12 +232,7 @@ const SignupCard = () => {
               textTransform: 'math-auto',
             }}
           >
-            <Image
-              src="assets/images/google.svg"
-              width={24}
-              height={24}
-              alt={''}
-            />
+            <Image src="./images/google.svg" width={24} height={24} alt={''} />
             Login with Google
           </Button>
           <Box

@@ -200,7 +200,7 @@ const LoginCard = () => {
               }}
             >
               <Image
-                src="assets/images/google.svg"
+                src="./images/google.svg"
                 width={24}
                 height={24}
                 alt={''}
