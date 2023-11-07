@@ -1,5 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import Image from 'next/image';
+import { Box } from '@mui/system';
 
 // import { arrowIcon, salesIcon } from '@/app/constents/AgentProfile';
 
@@ -8,44 +10,61 @@ const PropertyForSale = ({ data }) => {
     <>
       <Grid container justifyContent="space-between">
         <Grid item>
-          <Typography
+          <Box
             sx={{
-              fontSize: 15,
-              fontWeight: 'normal',
               display: 'flex',
-              alignItems: 'center',
-              textAlign: 'center',
-              color: '#333',
-              paddingBottom: 1,
+              verticalAlign: 'baseline',
+              marginBottom: 1,
             }}
           >
-            <img
+            <Image
               src="./images/agent-profile-icons/home.svg"
-              style={{ display: 'inline' }}
-              alt="home"
-            />{' '}
-            &nbsp;
-            {`${data?.propertiesForSale.count} Properties For Sale`}
-          </Typography>
+              width={15}
+              height={15}
+              alt="hub rever"
+            />
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: 15,
+                fontWeight: 'normal',
+                display: 'flex',
+                alignItems: 'center',
+                color: '#333',
+                // paddingBottom: 1,
+                ml: 1,
+              }}
+            >
+              {`${data?.propertiesForSale.count} Properties For Sale`}
+            </Typography>
+          </Box>
         </Grid>
         <Grid item>
-          <Typography
+          <Box
             sx={{
-              fontSize: 15,
-              fontWeight: 'normal',
               display: 'flex',
-              alignItems: 'center',
-              color: 'orange',
+              verticalAlign: 'baseline',
             }}
           >
-            View &nbsp;
-            <img
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: 15,
+                fontWeight: 'normal',
+                display: 'flex',
+                alignItems: 'center',
+                color: 'orange',
+              }}
+            >
+              View &nbsp;
+            </Typography>
+            <Image
               src="./images/agent-profile-icons/arrow.svg"
-              style={{ display: 'inline' }}
-              alt="home"
-            />{' '}
-            &nbsp;
-          </Typography>
+              width={9}
+              height={9}
+              alt="hub rever"
+            />
+          </Box>
         </Grid>
       </Grid>
     </>
