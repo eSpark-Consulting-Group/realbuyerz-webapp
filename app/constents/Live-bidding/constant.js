@@ -14,7 +14,6 @@ export const LIVE_BIDDING_DATA = {
       id: 1,
       icons: '/images/Live-bidding-icons/propertyManagement.svg',
       itemName: "Property Management",
-      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
       actions: [
         {
           title: "Post Listing",
@@ -35,7 +34,6 @@ export const LIVE_BIDDING_DATA = {
       id: 3,
       icons: '/images/Live-bidding-icons/agentSettings.svg',
       itemName: "Agent Settings",
-      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
       actions: [
         {
           title: "Agent Profile",
@@ -51,7 +49,6 @@ export const LIVE_BIDDING_DATA = {
       id: 4,
       icons: '/images/Live-bidding-icons/propShop.svg',
       itemName: "Prop Shop",
-      accordianIcon: '/images/Live-bidding-icons/accordian.svg',
       actions: [
         {
           title: "Buy Product",

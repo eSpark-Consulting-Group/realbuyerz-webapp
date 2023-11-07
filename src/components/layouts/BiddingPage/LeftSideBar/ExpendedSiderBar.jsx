@@ -69,7 +69,6 @@ const ExpendedSiderBar = ({ data, isCollapsed, isExpended }) => {
 
           </Box>
           <ExpendedLiveBiddingList list={data.menuItems} />
-          
         </Grid>
       </Grid>
     </Box>

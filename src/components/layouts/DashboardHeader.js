@@ -17,7 +17,7 @@ import Link from "next/link";
 import { pages } from "@/app/constents/constents";
 import { Button, SvgIcon } from "@mui/material";
 import CustomIcon from "./BiddingPage/CustomIcon";
-import { HEADER_MENU } from "@/app/constents/Live-bidding/constents";
+import { HEADER_MENU } from "@/app/constents/Live-bidding/constant";
 import Image from "next/image";
 import { border } from "@mui/system";
 
@@ -258,17 +258,18 @@ export default function DashboardHeader() {
                   justifyContent: "end",
                   gap: 4,
                   display: { xs: "block", sm: "block", md: "none", lg: "none" },
+                  flexDirection: 'column'
                 }}
               >
                 {HEADER_MENU.map((item) => {
                   return (
                     <>
-                     <Box sx={{p: 2}}>
+                     <Box sx={{p: 2,}}>
                       <Image
                         src={item.searchIcon}
                         width={35}
                         height={35}
-                        style={{ marginRight: 30 }}
+                        style={{ marginRight: 30, marginBottom: 8 }}
                       />
                       <Image
                         src={item.linkIcon}
@@ -290,9 +291,11 @@ export default function DashboardHeader() {
                       </Link>
                       <Button
                         sx={{
+                          display: 'block',
                           color: "#000",
                           border: "1px solid #E7E7E7",
-                          mx: 2,
+                          // mx: 2,
+                          my:2
                         }}
                       >
                         <Box sx={{display: 'flex', marginRight:'8px', marginLeft: '8px' , p:.5}} >
@@ -306,7 +309,7 @@ export default function DashboardHeader() {
                           </Typography>
                         </Box>
                       </Button>
-                      <Button variant={"primary"}>
+                      <Button variant={"primary"} sx={{display: 'block'}}>
                       <Box sx={{display: 'flex', marginRight:'8px', marginLeft: '8px' , p:.6}} >
                           <Image
                             src={item.PostListingIcon}
@@ -323,7 +326,7 @@ export default function DashboardHeader() {
                         sx={{
                           p: 0,
                           color: "#FF631C",
-                          ml: 2,
+                          my: 2
                         }}
                       >
                         <Badge
@@ -332,6 +335,7 @@ export default function DashboardHeader() {
                           sx={{
                             width: 25,
                             height: 25,
+                            display: 'block',
                             "& .MuiBadge-badge": {
                               color: "white",
                               width: 10,
@@ -359,7 +363,7 @@ export default function DashboardHeader() {
                             display: "flex",
                             color: "black",
                             alignItems: "center",
-                            mx: 2,
+                            mx: 4,
                           }}
                         >
                           Arman Espark

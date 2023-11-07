@@ -19,6 +19,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
     <Box>
       {list.map((item) => {
         const isItemOpen = item.id === openItemId;
+        console.log(item, 'item---')
 
         return (
           <Box key={item.id}>
@@ -56,7 +57,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   {item.itemName}
                 </Typography>
               </Box>
-              {item.accordianIcon && (
+              {item.actions && (
                 <IconButton onClick={() => toggleCollapse(item.id)}>
                   {isItemOpen ? <ExpandLessIcon sx={{ color: '#000' }} /> : <ExpandMoreIcon sx={{ color: '#000' }} />}
                 </IconButton>
