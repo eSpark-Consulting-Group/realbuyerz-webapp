@@ -19,7 +19,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfilePasswordForm({ data, values, errors, touched, handleChange }) {
+export default function ProfilePasswordForm({
+  data,
+  values,
+  errors,
+  touched,
+  handleChange,
+}) {
   const { image, passwordFeilds, checkbox } = data;
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -73,8 +79,12 @@ export default function ProfilePasswordForm({ data, values, errors, touched, han
                       value={values[name]}
                       onChange={handleChange}
                       error={errors[name] && touched[name] ? true : false}
-                      helperText={touched[name] && errors[name] || helperText}
-                      id={errors[name] && touched[name] || id ? 'errors[name] && touched[name]' : null}
+                      helperText={(touched[name] && errors[name]) || helperText}
+                      id={
+                        (errors[name] && touched[name]) || id
+                          ? 'errors[name] && touched[name]'
+                          : null
+                      }
                     />
                   </Box>
                 </Box>

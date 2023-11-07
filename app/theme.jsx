@@ -128,7 +128,6 @@ const theme = createTheme({
       xl: 1920,
     },
   },
-}
-);
+});
 
 export default theme;
