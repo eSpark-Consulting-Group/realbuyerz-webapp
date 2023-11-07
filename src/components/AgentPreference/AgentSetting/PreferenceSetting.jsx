@@ -9,17 +9,37 @@ import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 
 const PreferenceSetting = () => {
-      const [emailData, setEmailData] = useState(PROPERTY_AREASIZE_AND_REPORT.report);
-   const handleInputChange = (event) => {
+  const [formData, setFormData] = useState({
+    emailData: PROPERTY_AREASIZE_AND_REPORT.report.areaUnit,
+    emailData: PROPERTY_AREASIZE_AND_REPORT.report.currency,
+    toggleData: AGENT_PREFERENCES.updates,
+  });
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEmailData({
-      ...emailData,
-      [name]: value,
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      emailData: {
+        ...prevData.emailData,
+        [name]: value,
+      },
+    }));
+  };
+  const handleInputChangeToggle = (name, checked) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      toggleData: prevData.toggleData.map((item) => {
+        if (item.title === name) {
+          return {
+            ...item,
+            value: checked,
+          };
+        }
+        return item;
+      }),
+    }));
   };
   const handleClick = () => {
-    console.log("data",emailData)
-    console.log("hello")
+    console.log("data",formData)
   }
   return (
     <Grid
@@ -73,14 +93,13 @@ const PreferenceSetting = () => {
             </Typography>
             <Notification isNotifyEnable={AGENT_PREFERENCES.updates}
               Reports={PROPERTY_AREASIZE_AND_REPORT.report}
-               InputChange={handleInputChange}
+               inputChange={handleInputChangeToggle}
             />
             <AreaUnit Measure={AGENT_PREFERENCES.propertySize}
               Reports={PROPERTY_AREASIZE_AND_REPORT.report}
-              InputChange={handleInputChange}
+              inputChange={handleInputChange}
             />
-            <SaveChanges handleClickBtn={handleClick}
-                           
+            <SaveChanges handleClickButton={handleClick}
 
  />
           </Box>

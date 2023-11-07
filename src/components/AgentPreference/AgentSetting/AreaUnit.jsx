@@ -4,7 +4,7 @@ import { Box, Typography, TextField, Button } from '@mui/material';
 
 import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 
-const AreaUnit = ({ Measure,Report,InputChange }) => {
+const AreaUnit = ({ Measure,Report,inputChange }) => {
     const [emailData, setEmailData] = useState(Report);
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
@@ -45,7 +45,7 @@ const AreaUnit = ({ Measure,Report,InputChange }) => {
             variant="outlined"
             type="number"
             fullWidth
-            onChange={InputChange}
+            onChange={inputChange}
           />
         </Box>
       ))}
