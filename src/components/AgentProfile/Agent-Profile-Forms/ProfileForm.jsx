@@ -7,9 +7,10 @@ import Grid from '@mui/material/Grid';
 import RBInput from './RBInput';
 import { Button, Typography } from '@mui/material';
 import RBSelect from './RBSelect';
-import RBHelperText from './RBHelperText';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import AgentProfiles from '../AgentProfiles';
+import { ProfileInfo } from '@/app/constants/AgentProfileForm';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -69,12 +70,21 @@ export default function ProfileForm({
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          backgroundSize: { xs: '', sm: '60% auto' },
+          backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '60%' },
           pr: { xs: 2, md: 0 },
-          pt: { xs: 2, md: 7 },
+          pt: { xs: 2, md: 1 },
           pb: { xs: 2, md: 7 },
         }}
       >
+        <Grid item xs={12} md={11} lg={10}>
+          <Item>
+            <Box
+              sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
+            >
+              <AgentProfiles data={ProfileInfo} />
+            </Box>
+          </Item>
+        </Grid>
         {feilds?.map((feild, index) => {
           const {
             id,

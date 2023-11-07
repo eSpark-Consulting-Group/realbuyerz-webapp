@@ -41,6 +41,7 @@ export default function ProfilePasswordForm({
           backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
+          backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '50%' },
           pr: { xs: 2, md: 0 },
           pt: { xs: 2, md: 7 },
           pb: { xs: 2, md: 3 },

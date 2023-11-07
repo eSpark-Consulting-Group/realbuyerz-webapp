@@ -1,5 +1,8 @@
 'use client';
-import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
+import {
+  Agent_Profile_Form_Data,
+  ProfileInfo,
+} from '@/app/constants/AgentProfileForm';
 import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
 import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
 import ProfilePasswordForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfilePasswordForm';
@@ -9,7 +12,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import { Button } from '@mui/material';
 import { useFormik } from 'formik';
 import { EditProfileSchema } from '@/src/components/Schemas';
@@ -58,7 +60,6 @@ const AgentProfile = () => {
           my: { xs: 4, sm: 10 },
         }}
       >
-        <AgentProfiles data={AGENT_PROFILE_DATA} />
         <ProfileForm
           values={values}
           errors={errors}

@@ -50,7 +50,7 @@ export const Agent_Profile_Form_Data = {
       place: '',
       type: 'number',
       name: 'whatsapp',
-      value: '',
+      value: '', 
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '70%', lg: '70%' },
       dropdowns: [
@@ -194,4 +194,17 @@ export const Agent_Profile_Form_Data = {
     type: 'checkbox',
     helperText: '',
   },
+};
+
+export const ProfileInfo = {
+  image: '/images/profile.png',
+  title: 'Arman Khan',
+  description: [
+    {
+      email: 'armanespark@gmail.com',
+      alt: 'amenities',
+      text: '',
+      icon: '',
+    },
+  ],
 };
