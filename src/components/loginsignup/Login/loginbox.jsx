@@ -4,8 +4,6 @@ import { Grid, Box } from '@mui/material';
 
 import LoginCard from './logincard';
 
-
-
 const LoginBox = () => {
   return (
     <Grid container>
