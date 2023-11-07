@@ -2,7 +2,7 @@ export const Agent_Profile_Form_Data = {
   heading: 'Change Password',
   buttonText: 'Save changes',
   image: '/images/agent_form/agent_form_background.png',
-  Profile:{name:"Arman khan", email:'armankhan@gmail.com'},
+  Profile: { name: 'Arman khan', email: 'armankhan@gmail.com' },
   feilds: [
     {
       label: 'Full Name',
@@ -178,7 +178,7 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Confirm Password',
-      name: 'ConfirmPassword',
+      name: 'confirmPassword',
       value: '',
       place: 'Confirm Password',
       type: 'password',
