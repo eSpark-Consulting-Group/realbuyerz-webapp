@@ -120,7 +120,7 @@ function ProposalListingCard({ data }) {
                 <Link href={`/proposal/${proposal.agentName}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
-                      Restore-Property
+                      Restore Property
                     </Typography>
                   </Button>
                 </Link>

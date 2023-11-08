@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import FooterCta from '@/src/components/footerCta';
+import FooterCta from '@/src/components/FooterCta';
 import { FOOTER_CTA_DATA } from '../constants/Constants';
 
 const InnerPageLayout = ({ children }) => {

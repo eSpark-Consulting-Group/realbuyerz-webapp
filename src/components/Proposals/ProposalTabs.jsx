@@ -93,7 +93,10 @@ function ProposalTabs({ filteredData }) {
                 const filteredCount =
                   tab.proposalStatus === 'All'
                     ? filteredData.length
-                    : filteredData.filter((proposal) => proposal.proposalStatus === tab.proposalStatus).length;
+                    : filteredData.filter(
+                        (proposal) =>
+                          proposal.proposalStatus === tab.proposalStatus
+                      ).length;
 
                 return (
                   <Tab
