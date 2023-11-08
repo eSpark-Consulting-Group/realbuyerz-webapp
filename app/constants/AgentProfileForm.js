@@ -3,7 +3,7 @@ export const Agent_Profile_Form_Data = {
   buttonText: 'Save changes',
   image: '/images/agent_form/agent_form_background.png',
   Profile: { name: 'Arman khan', email: 'armankhan@gmail.com' },
-  feilds: [
+  fields: [
     {
       label: 'Full Name',
       name: 'fname',
@@ -50,7 +50,7 @@ export const Agent_Profile_Form_Data = {
       place: '',
       type: 'number',
       name: 'whatsapp',
-      value: '', 
+      value: '',
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '70%', lg: '70%' },
       dropdowns: [
@@ -155,7 +155,7 @@ export const Agent_Profile_Form_Data = {
       sizes: { xs: 12, sm: 12, md: 10 },
     },
   ],
-  passwordFeilds: [
+  passwordfields: [
     {
       label: 'Enter Old Password',
       name: 'oldPassword',

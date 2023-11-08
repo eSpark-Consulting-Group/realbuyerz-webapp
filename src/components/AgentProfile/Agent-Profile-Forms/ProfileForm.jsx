@@ -29,16 +29,13 @@ export default function ProfileForm({
   values,
   errors,
   touched,
+  FirstDropdownValue,
+  setFirstDropdownValue,
+  SecondDropdownValue,
+  setSecondDropdownValue,
 }) {
-  const { image, feilds } = data;
+  const { image, fields } = data;
   const [verifyText, setVerifyText] = React.useState('unverified');
-
-  const [selectedItem, setSelectedItem] = React.useState(
-    '/images/agent_form/pakistan_flag.png'
-  );
-  const [selectedItem2, setSelectedItem2] = React.useState(
-    '/images/agent_form/pakistan_flag.png'
-  );
 
   const handleVerify = (name) => {
     if (values[name] !== '') {
@@ -49,12 +46,12 @@ export default function ProfileForm({
   };
   const flagChange = (e) => {
     const { value } = e.target;
-    setSelectedItem(value);
+    setFirstDropdownValue(value);
   };
 
   const flagChange2 = (e) => {
     const { value } = e.target;
-    setSelectedItem2(value);
+    setSecondDropdownValue(value);
   };
 
   return (
@@ -85,7 +82,7 @@ export default function ProfileForm({
             </Box>
           </Item>
         </Grid>
-        {feilds?.map((feild, index) => {
+        {fields?.map((field, index) => {
           const {
             id,
             label,
@@ -100,15 +97,14 @@ export default function ProfileForm({
             sizes,
             width,
             multiline,
-          } = feild;
+          } = field;
 
-          const selectedCountryObject1 = dropdowns?.find(
-            (item) => item.icon === selectedItem
-          );
-          const selectedCountryObject2 = dropdowns?.find(
-            (item) => item.icon === selectedItem2
-          );
-
+          const selectedCountryObject1 =
+            dropdowns &&
+            dropdowns?.find((item) => item.icon === FirstDropdownValue);
+          const selectedCountryObject2 =
+            dropdowns &&
+            dropdowns?.find((item) => item.icon === SecondDropdownValue);
           return (
             <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
               <Item>
@@ -176,7 +172,7 @@ export default function ProfileForm({
                       {label == 'Whatsapp' ? (
                         <RBSelect
                           menuItem={dropdowns}
-                          value={selectedItem}
+                          value={FirstDropdownValue}
                           label={'Select Country'}
                           onChange={(e) => flagChange(e)}
                           sx={{
@@ -192,7 +188,7 @@ export default function ProfileForm({
                       ) : (
                         <RBSelect
                           menuItem={dropdowns}
-                          value={selectedItem2}
+                          value={SecondDropdownValue}
                           label={'Select Country'}
                           onChange={(e) => flagChange2(e)}
                           sx={{
@@ -212,6 +208,10 @@ export default function ProfileForm({
                           width: width,
                           gap: 1,
                           textAlign: 'left',
+                          '& input[type=number]::-webkit-inner-spin-button': {
+                            WebkitAppearance: 'none',
+                            margin: 0,
+                          },
                         }}
                         rows={rows}
                         name={name}

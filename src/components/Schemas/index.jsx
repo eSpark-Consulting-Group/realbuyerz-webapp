@@ -9,7 +9,6 @@ export const EditProfileSchema = Yup.object({
   country: Yup.string().min(3).max(25).required('Enter Country'),
   city: Yup.string().min(3).max(25).required('Enter City'),
   address: Yup.string().min(3).max(40).required('Enter Address'),
-  address: Yup.string().min(3).max(40).required('Enter Address'),
   bio: Yup.string().min(10),
   oldPassword: Yup.string().min(6).max(8).required('Enter Old Password'),
   newPassword: Yup.string().min(6).max(8).required('Enter New Password'),

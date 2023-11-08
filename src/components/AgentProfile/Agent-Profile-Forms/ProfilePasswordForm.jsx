@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import RBInput from './RBInput';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import RBCheckbox from './RBCheckbox';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,7 +26,7 @@ export default function ProfilePasswordForm({
   touched,
   handleChange,
 }) {
-  const { image, passwordFeilds, checkbox } = data;
+  const { image, passwordfields, checkbox } = data;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -47,9 +47,9 @@ export default function ProfilePasswordForm({
           pb: { xs: 2, md: 3 },
         }}
       >
-        {passwordFeilds?.map((feild, index) => {
+        {passwordfields?.map((field, index) => {
           const { id, label, place, type, helperText, sizes, width, name } =
-            feild;
+            field;
           return (
             <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
               <Item>

@@ -3,9 +3,7 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-// import { locationIcon, rentIcon, salesIcon } from '@/app/constents/AgentProfile';
-
-const AgentProfileDetail = ({ title, description, data }) => {
+const AgentProfileDetail = ({ title, description }) => {
   return (
     <Grid
       item

@@ -1,51 +1,55 @@
 'use client';
-import {
-  Agent_Profile_Form_Data,
-  ProfileInfo,
-} from '@/app/constants/AgentProfileForm';
+import React from 'react';
+import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
 import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
 import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
 import ProfilePasswordForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfilePasswordForm';
-import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import { useFormik } from 'formik';
 import { EditProfileSchema } from '@/src/components/Schemas';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  alignItems: 'center',
-  display: 'flex',
-  border: 'none',
-  boxShadow: 'none',
-  color: theme.palette.text.secondary,
-}));
-
 const AgentProfile = () => {
-  const { feilds, buttonText, passwordFeilds, Profile } =
-    Agent_Profile_Form_Data;
+  const [FirstDropdownValue, setFirstDropdownValue] = React.useState(
+    '/images/agent_form/pakistan_flag.png'
+  );
+  const [SecondDropdownValue, setSecondDropdownValue] = React.useState(
+    '/images/agent_form/pakistan_flag.png'
+  );
+
+  const { fields, buttonText, passwordfields } = Agent_Profile_Form_Data;
+
+  const dropdowns = fields
+    ?.filter((item) => item?.dropdowns)
+    .map((val) => val?.dropdowns);
+
+  const FirstDropSelect = dropdowns[0]?.find(
+    (item) => item.icon === FirstDropdownValue
+  );
+  const SecondDropSelect = dropdowns[1]?.find(
+    (item) => item.icon === SecondDropdownValue
+  );
   const userDetail = Object.fromEntries(
-    feilds.map((field) => [field.name, ''])
+    fields.map((field) => [field.name, ''])
   );
   const userPassword = Object.fromEntries(
-    passwordFeilds?.map((field) => [field.name, ''])
+    passwordfields?.map((field) => [field.name, ''])
   );
-  const allFeilds = { ...userDetail, ...userPassword };
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: allFeilds,
-      validationSchema: EditProfileSchema,
-      onSubmit: (values, action) => {
-        console.log(values, 'values');
-        action.resetForm();
-      },
-    });
+  const allfields = { ...userDetail, ...userPassword };
+  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    initialValues: allfields,
+    validationSchema: EditProfileSchema,
+    onSubmit: (values, action) => {
+      values.whatsapp = `${FirstDropSelect?.code}${values.whatsapp}`;
+      values.mobile = `${SecondDropSelect?.code}${values.mobile}`;
+
+      console.log(values, 'values');
+      action.resetForm();
+    },
+  });
+
   return (
     <Box>
       <Grid
@@ -66,6 +70,10 @@ const AgentProfile = () => {
           touched={touched}
           handleChange={handleChange}
           data={Agent_Profile_Form_Data}
+          FirstDropdownValue={FirstDropdownValue}
+          setFirstDropdownValue={setFirstDropdownValue}
+          SecondDropdownValue={SecondDropdownValue}
+          setSecondDropdownValue={setSecondDropdownValue}
         />
         <ProfileFormMidText />
         <ProfilePasswordForm
