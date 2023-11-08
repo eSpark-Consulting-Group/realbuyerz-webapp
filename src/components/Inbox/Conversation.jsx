@@ -1,23 +1,43 @@
-'use client'
-import React, { useEffect, useRef } from 'react';
-import { Grid, Typography, Box, Divider } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Grid,
+  Typography,
+  Box,
+  Divider,
+  Popover,
+  List,
+  ListItem,
+  ListItemText,
+} from '@mui/material';
 import Image from 'next/image';
+
 import ChatMsg from './ChatMsg';
+import InputMessage from './InputMessage';
 
 const Conversation = ({ activeConversation, activeUserId }) => {
   const chatContainerRef = useRef(null);
   const inputRef = useRef(null);
 
+  const [popoverAnchorEl, setPopoverAnchorEl] = useState(null);
+
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
     }
   }, [activeConversation]);
 
   const handleSendMessage = () => {
     const message = inputRef.current.value;
     console.log('Message:', message);
-    // You can now send the message to your desired destination, such as updating the state or making an API call.
+  };
+
+  const handleOpenPopover = (event) => {
+    setPopoverAnchorEl(event.currentTarget);
+  };
+
+  const handleClosePopover = () => {
+    setPopoverAnchorEl(null);
   };
 
   return (
@@ -51,8 +71,8 @@ const Conversation = ({ activeConversation, activeUserId }) => {
           >
             <Image
               src={activeConversation?.image}
-              width={40}
-              height={40}
+              width={50}
+              height={50}
               alt="chatIcon"
             />
             <Typography sx={{ mx: 0.5 }}>{activeConversation?.name}</Typography>
@@ -63,7 +83,36 @@ const Conversation = ({ activeConversation, activeUserId }) => {
               width={30}
               height={30}
               alt="settingIcon"
+              onClick={handleOpenPopover}
             />
+            <Popover
+              open={Boolean(popoverAnchorEl)}
+              anchorEl={popoverAnchorEl}
+              onClose={handleClosePopover}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <List>
+                <ListItem button>
+                  <ListItemText primary="Mark as unread" />
+                </ListItem>
+                <ListItem button>
+                  <ListItemText primary="Edit" />
+                </ListItem>
+                <ListItem button>
+                  <ListItemText primary="Delete" />
+                </ListItem>
+                <ListItem button>
+                  <ListItemText primary="Archive" />
+                </ListItem>
+              </List>
+            </Popover>
           </Box>
         </Box>
         <Divider />
@@ -77,7 +126,7 @@ const Conversation = ({ activeConversation, activeUserId }) => {
           <Box
             sx={{
               width: '100%',
-              height: '302px',
+              height: '290px',
               overflow: 'auto',
               scrollbarWidth: 'thin',
               '&::-webkit-scrollbar': {
@@ -93,80 +142,19 @@ const Conversation = ({ activeConversation, activeUserId }) => {
             ref={chatContainerRef}
           >
             {activeConversation &&
-              activeConversation.messages
-                // .slice()
-                // .reverse() // Reverse the messages to show the latest at the bottom
-                .map((message) => (
-                  <ChatMsg
-                    key={message.id}
-                    message={message}
-                    isSender={message.sender === activeUserId}
-                    iconSrc={activeConversation.image}
-                  />
-                ))}
-          </Box>
-
-          <Box
-            sx={{
-              display: 'flex',
-              alignContent: 'center',
-              mx: '4',
-              position: 'sticky',
-              bottom: 10,
-            }}
-          >
-            <Box
-              sx={{
-                borderRadius: '40px',
-                width: '91.5%',
-                height: '50px',
-                position: 'relative',
-                mx: 1,
-              }}
-            >
-              <button
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  left: '20px',
-                  zIndex: 1,
-                  border: 'none',
-                  background: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                <Image
-                  src={'./images/inbox/addIcon.svg'}
-                  width={30}
-                  height={30}
-                  alt="chatIcon"
+              activeConversation.messages.map((message) => (
+                <ChatMsg
+                  key={message.id}
+                  message={message}
+                  isSender={message.sender === activeUserId}
+                  iconSrc={activeConversation.image}
                 />
-              </button>
-              <input
-                ref={inputRef} // Use the ref to access the input field
-                type="text"
-                style={{
-                  width: '100%',
-                  height: '50px',
-                  border: '1px solid #E4E4E4',
-                  borderRadius: '50px',
-                  paddingLeft: '60px',
-                }}
-                placeholder="Write message"
-              />
-            </Box>
-            <button
-              onClick={handleSendMessage}
-              >
-              <Image
-                src={'./images/inbox/sendIcon.svg'}
-                width={40}
-                height={40}
-                alt="chatIcon"
-              />
-            </button>
+              ))}
           </Box>
+          <InputMessage
+            inputRef={inputRef}
+            handleSendMessage={handleSendMessage}
+          />
         </Box>
       </Box>
     </Grid>

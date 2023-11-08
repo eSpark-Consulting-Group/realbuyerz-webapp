@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-const TapMenu = () => {
-  const [activeTab, setActiveTab] = useState('inbox');
-
+const TapMenu = ({ activeTab, setActiveTab }) => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
@@ -53,14 +51,14 @@ const TapMenu = () => {
                 border: '1px solid #FB631C',
                 width: '60px',
                 position: 'absolute',
-                top: 61,
+                top: 60.5,
               }}
             ></Box>
           )}
         </Box>
         <Box sx={{ position: 'relative' }}>
           <Button
-            disableRipple 
+            disableRipple
             sx={{
               color: activeTab === 'archive' ? '#FB631C' : '#000',
               '&:hover': {
@@ -77,7 +75,7 @@ const TapMenu = () => {
                 border: '1px solid #FB631C',
                 width: '60px',
                 position: 'absolute',
-                top: 61,
+                top: 60.5,
               }}
             ></Box>
           )}

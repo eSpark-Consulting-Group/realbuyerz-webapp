@@ -1,22 +1,25 @@
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import Image from 'next/image';
 import React from 'react';
-import ChatDate from './ChatDate';
+import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 
 const ChatMsg = ({ message, isSender, iconSrc }) => {
-  const messageStyle = {
-    // maxWidth: '70%',
-    width: '100%',
-    borderRadius: '5px',
-    wordWrap: 'break-word',
-    float: isSender ? 'left' : 'right',
-    color: '#000',
-  };
+  // const timestamp = dayjs(message.timestamp);
+  // const currentTime = dayjs();
+  // let time = timestamp.format('MM/DD/YYYY, hh:mm:ss A');
+  // const hoursDifference = currentTime.diff(timestamp, 'hour');
+  // const daysDifference = currentTime.diff(timestamp, 'day');
 
   return (
     <>
-      <Box style={messageStyle}>
+      <Box
+        sx={{
+          width: '100%',
+          borderRadius: '5px',
+          wordWrap: 'break-word',
+          float: isSender ? 'left' : 'right',
+          color: '#000',
+        }}
+      >
         <Box
           sx={{
             padding: 0.9,
@@ -34,8 +37,8 @@ const ChatMsg = ({ message, isSender, iconSrc }) => {
               justifyContent: isSender ? 'start' : 'end',
             }}
           >
-            {message.sender.startsWith('inComing') && (
-              <Image src={iconSrc} width={30} height={30} alt="chatIcon" />
+            {message.sender !== 2 && (
+              <Image src={iconSrc} width={40} height={40} alt="chatIcon" />
             )}
             <Typography
               sx={{
@@ -43,8 +46,8 @@ const ChatMsg = ({ message, isSender, iconSrc }) => {
                 mx: 1,
                 backgroundColor: isSender ? '#F1F1F1' : '#FFEEE7',
                 borderRadius: isSender
-                ? '0px 10px 10px 10px'
-                : '10px 10px 0px 10px',
+                  ? '0px 10px 10px 10px'
+                  : '10px 10px 0px 10px',
                 color: '000',
                 fontSize: '13px',
                 fontStyle: 'normal',
@@ -56,7 +59,28 @@ const ChatMsg = ({ message, isSender, iconSrc }) => {
             </Typography>
           </Box>
         </Box>
-        {message.noOfday === 'true' ? <ChatDate date={'2 days ago'} /> : ''}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          <Typography
+            sx={{
+              color: '#909394',
+              fontSize: '12px',
+              lineHeight: '14.52px',
+              fontWeight: 300,
+            }}
+          >
+            {/* {hoursDifference > 24 ? (
+              <Typography sx={{width: 830}}>
+                <ChatDate date={`${daysDifference} days ago`} />
+              </Typography>
+            ) : null} */}
+          </Typography>
+        </Box>
       </Box>
     </>
   );

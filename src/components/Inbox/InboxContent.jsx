@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
+
 import TapMenu from './TapMenu';
 import ChatMenu from './ChatMenu';
 import Conversation from './Conversation';
 
 const InboxContent = ({ data }) => {
-  const [activeUserId, setActiveUserId] = useState('inComing1');
+  const [activeUserId, setActiveUserId] = useState(1);
+  const [activeTab, setActiveTab] = useState('inbox');
 
   const handleConversationClick = (userId) => {
     setActiveUserId(userId);
@@ -26,11 +28,12 @@ const InboxContent = ({ data }) => {
       }}
     >
       <Grid container>
-        <TapMenu />
+        <TapMenu activeTab={activeTab} setActiveTab={setActiveTab} />
         <ChatMenu
           data={data}
           handleConversationClick={handleConversationClick}
           activeUserId={activeUserId}
+          activeTab={activeTab}
         />
         <Conversation
           activeConversation={activeConversation}
