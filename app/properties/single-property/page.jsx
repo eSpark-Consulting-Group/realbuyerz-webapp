@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import Sliders from '@/src/components/loginsignup/Slider/slider';
+import Sliders from '@/src/components/loginsignup/Slider/Slider';
 import ProfileAgent from '@/src/components/loginsignup/Profile/ProfileAgent';
 import PropertyOverview from '@/src/components/loginsignup/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/loginsignup/PropertyDescription/PropertyDetail';
