@@ -17,7 +17,7 @@ function scrollToTop() {
 }
 
 function PopularLocations({ data }) {
-  const [filteredData, setFilteredData] = React.useState(
+  const [filteredProposalsData, setFilteredProposalsData] = React.useState(
     data?.filter((item) => item.type === 'sale')
   );
   const [filterType, setFilterType] = React.useState('sale');
@@ -25,11 +25,11 @@ function PopularLocations({ data }) {
   const handleFilter = (type) => {
     setFilterType(type);
     if (type === 'sale') {
-      setFilteredData(data?.filter((item) => item.type === 'sale'));
+      setFilteredProposalsData(data?.filter((item) => item.type === 'sale'));
     } else if (type === 'rent') {
-      setFilteredData(data?.filter((item) => item.type === 'rent'));
+      setFilteredProposalsData(data?.filter((item) => item.type === 'rent'));
     } else {
-      setFilteredData(data);
+      setFilteredProposalsData(data);
     }
   };
   return (
@@ -91,7 +91,7 @@ function PopularLocations({ data }) {
             </Button>
           </Box>
           <Grid container sx={{ display: 'flex' }}>
-            {filteredData?.map((item, index) => (
+            {filteredProposalsData?.map((item, index) => (
               <Grid item xs={4} key={index}>
                 <Box
                   sx={{

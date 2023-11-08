@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
-import { propertyEstate } from '@/app/constants/propertyconstants';
+import { propertyEstate } from '@/app/constants/property';
 
 export default function Slider() {
   return (
