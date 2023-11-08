@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Grid,
+  Box,
   Typography,
   Button,
   MenuItem,
@@ -8,135 +9,162 @@ import {
   Select,
 } from '@mui/material';
 import ProposalTabs from './ProposalTabs';
+import Link from 'next/link';
+
 import {
+  CONSTANTS,
+  LISTING_TYPE,
   PROPERTIES_LISTING,
   PROPOSAL_LISTING,
 } from '@/app/constants/Proposals';
-import { filterData, getUniqueOptions } from '@/utils/proposalFilter';
+
+import { filterData, getUniqueFilteredOptions } from '@/utils/proposalFilter';
 
 const ProposalFilter = () => {
-  const [listingType, setListingType] = useState('proposal');
-  const [data, setData] = useState(PROPOSAL_LISTING);
+  const [listingType, setListingType] = useState('proposals');
+  const [selectedData, setSelectedData] = useState(PROPOSAL_LISTING);
 
   const [purposeOptions, setPurposeOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
   const [locationOptions, setLocationOptions] = useState([]);
   const [propertyTypeOptions, setPropertyTypeOptions] = useState([]);
 
-  const [Purpose, setPurpose] = useState('');
-  const [City, setCity] = useState('');
-  const [Location, setLocation] = useState('');
-  const [PropertyType, setPropertyType] = useState('');
+  const [selectedPurpose, setSelectedPurpose] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedPropertyType, setSelectedPropertyType] = useState('');
 
   const handleListingTypeChange = (e) => {
     const selectedListValue = e.target.value;
     setListingType(selectedListValue);
-    setData(
-      selectedListValue === 'proposal' ? PROPOSAL_LISTING : PROPERTIES_LISTING
+    setSelectedData(
+      selectedListValue === 'proposals' ? PROPOSAL_LISTING : PROPERTIES_LISTING
     );
   };
 
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredProposalsData, setFilteredProposalsData] = useState(selectedData);
   useEffect(() => {
     const {
       purposeOptions,
       cityOptions,
       locationOptions,
       propertyTypeOptions,
-    } = getUniqueOptions(data);
+    } = getUniqueFilteredOptions(selectedData);
     setPurposeOptions(purposeOptions);
     setCityOptions(cityOptions);
     setLocationOptions(locationOptions);
     setPropertyTypeOptions(propertyTypeOptions);
-  }, [listingType, data]);
+  }, [listingType, selectedData]);
 
   const handleDropdownChange = (e, setState) => {
     const selectedValue = e.target.value;
     setState(selectedValue);
 
-    const filteredData = filterData(
-      data,
-      Purpose,
-      City,
-      Location,
-      PropertyType
+    const filteredProposalsData = filterData(
+      selectedData,
+      selectedPurpose,
+      selectedCity,
+      selectedLocation,
+      selectedPropertyType
     );
-    setFilteredData(filteredData);
+    setFilteredProposalsData(filteredProposalsData);
   };
 
   const handleClearButtonClick = () => {
-    setPurpose('');
-    setCity('');
-    setLocation('');
-    setPropertyType('');
-    setFilteredData(data);
+    setSelectedPurpose('');
+    setSelectedCity('');
+    setSelectedLocation('');
+    setSelectedPropertyType('');
+    setFilteredProposalsData(selectedData);
   };
 
   const dropdowns = [
     {
       label: 'Purpose',
-      state: Purpose,
-      setState: setPurpose,
+      state: selectedPurpose,
+      setState: setSelectedPurpose,
       options: purposeOptions,
     },
     {
       label: 'City',
-      state: City,
-      setState: setCity,
+      state: selectedCity,
+      setState: setSelectedCity,
       options: cityOptions,
     },
     {
       label: 'Location',
-      state: Location,
-      setState: setLocation,
+      state: selectedLocation,
+      setState: setSelectedLocation,
       options: locationOptions,
     },
     {
       label: 'Property Type',
-      state: PropertyType,
-      setState: setPropertyType,
+      state: selectedPropertyType,
+      setState: setSelectedPropertyType,
       options: propertyTypeOptions,
     },
   ];
 
   return (
     <>
-      <Grid container spacing={2} alignItems="center">
-        {dropdowns.map((dropdown, index) => (
-          <Grid item xs={3} key={index}>
-            <Typography variant="subtitle1">{dropdown?.label}</Typography>
-            <FormControl fullWidth>
-              <Select
-                value={dropdown?.state}
-                displayEmpty
-                onChange={(e) => {
-                  handleDropdownChange(e, dropdown?.setState, index);
-                }}
-                placeholder={`Select ${dropdown?.label}`}
-              >
-                <MenuItem value="">{`Select ${dropdown?.label}`}</MenuItem>
-                {dropdown?.options?.map((option, optionIndex) => (
-                  <MenuItem key={optionIndex} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+      <Box fullWidth sx={{ display: 'flex', gap: '10px', pb: '30px' }}>
+        <Box width={'95%'} xs={12}>
+          <Grid container spacing={2} alignItems="center">
+            {dropdowns.map((dropdown, index) => (
+              <Grid item xs={3} key={index}>
+                <Typography variant="subtitle1">{dropdown?.label}</Typography>
+                <FormControl fullWidth>
+                  <Select
+                    value={dropdown?.state}
+                    displayEmpty
+                    onChange={(e) => {
+                      handleDropdownChange(e, dropdown?.setState, index);
+                    }}
+                    placeholder={`Select ${dropdown?.label}`}
+                  >
+                    <MenuItem value="">{`Select ${dropdown?.label}`}</MenuItem>
+                    {dropdown?.options?.map((option, optionIndex) => (
+                      <MenuItem key={optionIndex} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-        <Grid item xs={12}>
-          <Button onClick={handleClearButtonClick}>Clear</Button>
+        </Box>
+        <Box
+          width={'auto'}
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            verticalAlign: 'center',
+          }}
+        >
+          <Link href={CONSTANTS.resetButton.link} onClick={handleClearButtonClick}>
+            <Typography sx={{ textDecoration: 'underline', color: '#126FAA' }}>{CONSTANTS.resetButton.text}</Typography>
+          </Link>
+        </Box>
+
+      </Box>
+
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={9}>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={3}>
           <FormControl fullWidth>
             <Select value={listingType} onChange={handleListingTypeChange}>
-              <MenuItem value="proposal">Proposal</MenuItem>
-              <MenuItem value="properties">Properties</MenuItem>
+              {LISTING_TYPE.map((item) => (
+                <MenuItem key={item.value} value={item.value}>
+                  {item.label}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
       </Grid>
-      <ProposalTabs filteredData={filteredData} />
+      <ProposalTabs filteredProposalsData={filteredProposalsData} />
     </>
   );
 };

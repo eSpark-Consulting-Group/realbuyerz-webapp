@@ -1,15 +1,15 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ProposalListingCard from './ProposalListingCard';
+import { getUniqueProposalStatus } from '@/utils/propertyFilter'; // Import utility functions
 
-function CustomTabPanel({ data, value, index, proposalStatus }) {
+function CustomTabPanel({ data, value, index, tabProposalStatus }) {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter((proposal) => proposal.proposalStatus === proposalStatus);
+      : data.filter((proposal) => proposal.proposalStatus === tabProposalStatus);
 
   return (
     <div
@@ -27,100 +27,77 @@ function CustomTabPanel({ data, value, index, proposalStatus }) {
             height: '100vh',
           }}
         >
-          <ProposalListingCard data={filteredProperties} />
+          <ProposalListingCard proposalsData={filteredProperties} />
         </Box>
       )}
     </div>
   );
 }
 
-function ProposalTabs({ filteredData }) {
+function ProposalTabs({ filteredProposalsData }) {
   const [value, setValue] = useState(0);
-  const [proposalStatus, setProposalStatus] = useState('');
-  console.log(proposalStatus);
 
   useEffect(() => {
     setValue(0);
   }, []);
 
-  function a11yProps(index) {
+  const a11yProps = (index) => {
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     };
-  }
-  const uniqueProposalStatuss = [];
-  const seenProposalStatuss = {};
+  };
 
-  filteredData?.forEach((proposal) => {
-    if (!seenProposalStatuss[proposal.proposalStatus]) {
-      uniqueProposalStatuss.push(proposal.proposalStatus);
-      seenProposalStatuss[proposal.proposalStatus] = true;
-    }
-  });
+  const uniqueProposalStatuses = getUniqueProposalStatus(filteredProposalsData);
 
   const tabData = [
-    { label: 'All', proposalStatus: 'All' },
-    ...uniqueProposalStatuss.map((proposalStatus) => ({
+    { label: 'All', tabProposalStatus: 'All' },
+    ...uniqueProposalStatuses.map((proposalStatus) => ({
       label: proposalStatus,
-      proposalStatus: proposalStatus,
+      tabProposalStatus: proposalStatus,
     })),
   ];
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    const selectedProposalStatus = tabData[newValue].label;
-
-    // Update the selected proposal type
-    setProposalStatus(
-      selectedProposalStatus === 'All' ? '' : selectedProposalStatus
-    );
   };
 
   return (
-    <>
-      <Box
-        sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
-      >
-        <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
-            >
-              {tabData?.map((tab, index) => {
-                const filteredCount =
-                  tab.proposalStatus === 'All'
-                    ? filteredData.length
-                    : filteredData.filter(
-                        (proposal) =>
-                          proposal.proposalStatus === tab.proposalStatus
-                      ).length;
+    <Box sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            {tabData?.map((tab, index) => {
+              const filteredCount =
+                tab.tabProposalStatus === 'All'
+                  ? filteredProposalsData.length
+                  : filteredProposalsData.filter(
+                    (proposal) => proposal.proposalStatus === tab.tabProposalStatus
+                  ).length;
 
-                return (
-                  <Tab
-                    key={index}
-                    label={`${tab.label} (${filteredCount})`}
-                    sx={{ fontSize: '20px', fontWeight: '700' }}
-                    {...a11yProps(index)}
-                  />
-                );
-              })}
-            </Tabs>
-          </Box>
-          {tabData?.map((tab, index) => (
-            <CustomTabPanel
-              data={filteredData}
-              key={index}
-              value={value}
-              index={index}
-              proposalStatus={tab.proposalStatus}
-            />
-          ))}
+              return (
+                <Tab
+                  key={tab.label}
+                  label={`${tab.label} (${filteredCount})`}
+                  sx={{ fontSize: '20px', fontWeight: '700' }}
+                  {...a11yProps(index)}
+                />
+              );
+            })}
+          </Tabs>
         </Box>
+        {tabData?.map((tab, index) => (
+          <CustomTabPanel
+            data={filteredProposalsData}
+            key={tab.label}
+            value={value}
+            index={index}
+            tabProposalStatus={tab.tabProposalStatus}
+          />
+        ))}
       </Box>
-    </>
+    </Box>
   );
 }
+
 export default ProposalTabs;

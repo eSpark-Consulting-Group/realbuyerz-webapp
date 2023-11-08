@@ -1,21 +1,21 @@
-export const filterData = (data, Purpose, City, Location, PropertyType) => {
-  return data.filter(
+export const filterData = (selectedData, purpose, city, location, propertyType) => {
+  return selectedData.filter(
     (item) =>
-      (Purpose === '' ||
-        item.purpose.toLowerCase() === Purpose.toLowerCase()) &&
-      (City === '' || item.city.toLowerCase() === City.toLowerCase()) &&
-      (Location === '' ||
-        item.location.toLowerCase() === Location.toLowerCase()) &&
-      (PropertyType === '' ||
-        item.propertyType.toLowerCase() === PropertyType.toLowerCase())
+      (purpose === '' ||
+        item.purpose.toLowerCase() === purpose.toLowerCase()) &&
+      (city === '' || item.city.toLowerCase() === city.toLowerCase()) &&
+      (location === '' ||
+        item.location.toLowerCase() === location.toLowerCase()) &&
+      (propertyType === '' ||
+        item.propertyType.toLowerCase() === propertyType.toLowerCase())
   );
 };
 
-export const getUniqueOptions = (data) => {
-  const uniquePurposeOptions = getUniqueValues(data, 'purpose');
-  const uniqueCityOptions = getUniqueValues(data, 'city');
-  const uniqueLocationOptions = getUniqueValues(data, 'location');
-  const uniquePropertyTypeOptions = getUniqueValues(data, 'propertyType');
+export const getUniqueFilteredOptions = (selectedData) => {
+  const uniquePurposeOptions = getUniqueFilteredValues(selectedData, 'purpose');
+  const uniqueCityOptions = getUniqueFilteredValues(selectedData, 'city');
+  const uniqueLocationOptions = getUniqueFilteredValues(selectedData, 'location');
+  const uniquePropertyTypeOptions = getUniqueFilteredValues(selectedData, 'propertyType');
 
   return {
     purposeOptions: uniquePurposeOptions,
@@ -25,12 +25,12 @@ export const getUniqueOptions = (data) => {
   };
 };
 
-const getUniqueValues = (data, key) => {
-  const uniqueValues = [];
-  data.forEach((item) => {
-    if (uniqueValues.indexOf(item[key]) === -1) {
-      uniqueValues.push(item[key]);
+const getUniqueFilteredValues = (selectedData, key) => {
+  const uniqueFilteredValues = [];
+  selectedData.forEach((item) => {
+    if (uniqueFilteredValues.indexOf(item[key]) === -1) {
+      uniqueFilteredValues.push(item[key]);
     }
   });
-  return uniqueValues;
+  return uniqueFilteredValues;
 };
