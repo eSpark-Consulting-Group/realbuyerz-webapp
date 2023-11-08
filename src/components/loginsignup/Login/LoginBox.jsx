@@ -2,9 +2,9 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
-import SignupCard from './signupcard';
+import LoginCard from './LoginCard';
 
-const SignupBox = () => {
+const LoginBox = () => {
   return (
     <Grid container>
       <Grid item xs={12} md={12} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -20,7 +20,7 @@ const SignupBox = () => {
             sx={{
               display: { xs: 'none', md: 'flex' },
               justifyContent: 'flex-end',
-              width: '500px',
+              width: { xs: '200px', md: '500px' },
               height: '800px',
               backgroundImage: 'url("/assets/images/Rectangle.svg")',
               backgroundRepeat: 'no-repeat',
@@ -29,10 +29,10 @@ const SignupBox = () => {
             <Box
               sx={{
                 marginRight: '-80px',
-                paddingTop: '10px',
+                paddingTop: '40px',
               }}
             >
-              <SignupCard />
+              <LoginCard />
             </Box>
           </Box>
           <Box
@@ -42,11 +42,11 @@ const SignupBox = () => {
               width: '100%',
             }}
           >
-            <SignupCard />
+            <LoginCard />
           </Box>
         </Box>
       </Grid>
     </Grid>
   );
 };
-export default SignupBox;
+export default LoginBox;

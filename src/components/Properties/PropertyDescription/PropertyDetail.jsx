@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import PropertyTitle from './PropertyTitle';
-import PropertyDescription from './propertyDescription';
+import PropertyDescription from './PropertyDescription';
 import PropertyDemand from './PropertyDemand';
 import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';

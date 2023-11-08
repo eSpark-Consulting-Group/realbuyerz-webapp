@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 
 import RealEstate from './RealEstateImage';
 import LoginPageText from './LoginPageText';
-import BuildingImage from './buildingimage';
+import BuildingImage from './BuildingImage';
 
 const SidePage = () => {
   return (
