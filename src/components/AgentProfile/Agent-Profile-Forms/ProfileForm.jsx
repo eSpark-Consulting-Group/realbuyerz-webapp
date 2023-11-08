@@ -4,13 +4,15 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import RBInput from './RBInput';
-import { Button, Typography } from '@mui/material';
-import RBSelect from './RBSelect';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { Button, Typography } from '@mui/material';
+
+import RBInput from './RBInput';
+import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
-import { ProfileInfo } from '@/app/constants/AgentProfileForm';
+
+import { PROFILE_INFO } from '@/app/constants/AgentProfileForm';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -78,7 +80,7 @@ export default function ProfileForm({
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={ProfileInfo} />
+              <AgentProfiles data={PROFILE_INFO} />
             </Box>
           </Item>
         </Grid>

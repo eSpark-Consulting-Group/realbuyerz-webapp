@@ -196,7 +196,7 @@ export const Agent_Profile_Form_Data = {
   },
 };
 
-export const ProfileInfo = {
+export const PROFILE_INFO = {
   image: '/images/profile.png',
   title: 'Arman Khan',
   description: [
