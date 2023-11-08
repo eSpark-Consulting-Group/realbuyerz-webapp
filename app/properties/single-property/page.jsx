@@ -5,7 +5,7 @@ import Sliders from '@/src/components/loginsignup/Slider/Slider';
 import ProfileAgent from '@/src/components/loginsignup/Profile/ProfileAgent';
 import PropertyOverview from '@/src/components/loginsignup/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/loginsignup/PropertyDescription/PropertyDetail';
-import { propertyData } from '@/app/constants/propertyconstants';
+import { propertyData } from '@/app/constants/property';
 
 const propertyDeal = () => {
   return (

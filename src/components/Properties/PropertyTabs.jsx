@@ -62,7 +62,7 @@ function a11yProps(index) {
 
 export default function PropertyTabs() {
   const [value, setValue] = useState(0);
-  const [propertyType, setPropertyType] = useState(''); // Add this line to store the selected property type
+  const [propertyType, setPropertyType] = useState('');
 
   useEffect(() => {
     setValue(0);

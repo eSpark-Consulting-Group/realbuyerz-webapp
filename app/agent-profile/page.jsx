@@ -7,7 +7,7 @@ import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
 import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
-import { AGENT_PROFILE_DATA } from '../constants/AgentProfile';
+import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
 const AgentProfile = () => {
   return (
