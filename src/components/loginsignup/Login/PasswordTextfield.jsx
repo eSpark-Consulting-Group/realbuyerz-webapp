@@ -1,11 +1,11 @@
-import React,{useState} from "react";
-import { TextField } from "@mui/material";
+import React, { useState } from 'react';
+import { TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM } from "@/app/constants/LoginConstants";
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const PasswordFields = () => {
   const [formData, setFormData] = useState(LOGIN_FORM.passwordFields);
@@ -23,9 +23,9 @@ const PasswordFields = () => {
       [name]: value,
     });
   };
-    return (
-        <>
-         <TextField
+  return (
+    <>
+      <TextField
         label="Password"
         variant="outlined"
         type={formData.showPassword ? 'text' : 'password'}
@@ -47,7 +47,7 @@ const PasswordFields = () => {
           ),
         }}
       />
-         {/* <TextField
+      {/* <TextField
               label="Password"
               variant="outlined"
               type={showPassword ? 'text' : 'password'}
@@ -70,8 +70,7 @@ const PasswordFields = () => {
                 ),
               }}
             /> */}
-         
-            </>
-    )
-}
+    </>
+  );
+};
 export default PasswordFields;

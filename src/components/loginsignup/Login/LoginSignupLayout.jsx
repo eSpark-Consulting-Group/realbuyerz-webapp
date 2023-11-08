@@ -20,10 +20,10 @@ const LoginSignupLayout = ({ isLoginPage }) => {
           flexDirection: { xs: 'column', md: 'row' },
         }}
       >
-        <Grid item xs={12} md={6} >
+        <Grid item xs={12} md={6}>
           <LoginSidePage />
         </Grid>
-        <Grid item xs={12} md={6} >
+        <Grid item xs={12} md={6}>
           {isLoginPage ? <LoginBox /> : <SignupBox />}
         </Grid>
       </Grid>

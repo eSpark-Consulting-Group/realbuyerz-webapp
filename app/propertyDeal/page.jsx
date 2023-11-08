@@ -1,11 +1,11 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import Sliders from '@/src/components/Properties/Slider/slider';
-import ProfileAgent from '@/src/components/loginsignup/Profile/ProfileAgent';
+import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import { propertyData } from '@/app/constants/propertyconstants';
+import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 
 const propertyDeal = () => {
   return (
