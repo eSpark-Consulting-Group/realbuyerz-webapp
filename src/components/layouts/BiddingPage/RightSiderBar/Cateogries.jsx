@@ -12,7 +12,9 @@ const Cateogries = ({ data }) => {
       <Box
         sx={{
           display: "flex",
-          width: "60%",
+          width: "65%",
+          maxWidth: '210px',
+          minWidth: '180px',
           justifyContent: "space-between",
           alignItems: "center"
         }}

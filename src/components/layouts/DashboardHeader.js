@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -69,7 +69,7 @@ export default function DashboardHeader() {
                 color: "#000",
               }}
             >
-              {/* <MenuIcon /> */}
+              <MenuIcon />
             </IconButton>
             <Box
               sx={{
@@ -263,65 +263,88 @@ export default function DashboardHeader() {
                 {HEADER_MENU.map((item) => {
                   return (
                     <>
-                      <Box>
-                        {item.searchIcon}
-                        &nbsp;&nbsp; &nbsp;&nbsp;
-                        {item.linkIcon}
-                        <Link
-                          href="/"
-                          style={{
-                            display: "inline-block",
-                            color: "#666666",
-                            textDecoration: "none",
-                            borderRadius: "4px",
-                            marginRight: "14px",
-                          }}
-                        >
-                          Go to Rb.com
-                        </Link>
-                        <Button
+                     <Box sx={{p: 2}}>
+                      <Image
+                        src={item.searchIcon}
+                        width={35}
+                        height={35}
+                        style={{ marginRight: 30 }}
+                      />
+                      <Image
+                        src={item.linkIcon}
+                        width={20}
+                        height={20}
+                        style={{ marginRight: 8 }}
+                      />
+                      <Link
+                        href="/"
+                        style={{
+                          display: "inline-block",
+                          color: "#666666",
+                          textDecoration: "none",
+                          borderRadius: "4px",
+                          marginRight: "14px",
+                        }}
+                      >
+                        Go to Rb.com
+                      </Link>
+                      <Button
+                        sx={{
+                          color: "#000",
+                          border: "1px solid #E7E7E7",
+                          mx: 2,
+                        }}
+                      >
+                        <Box sx={{display: 'flex', marginRight:'8px', marginLeft: '8px' , p:.5}} >
+                          <Image
+                            src={item.myListingIcon}
+                            width={20}
+                            height={20}
+                          />
+                          <Typography mx={1}>
+                            My Listing
+                          </Typography>
+                        </Box>
+                      </Button>
+                      <Button variant={"primary"}>
+                      <Box sx={{display: 'flex', marginRight:'8px', marginLeft: '8px' , p:.6}} >
+                          <Image
+                            src={item.PostListingIcon}
+                            width={20}
+                            height={20}
+                          />
+                          <Typography mx={1}>
+                          Post Listing
+                          </Typography>
+                        </Box>
+                      </Button>
+                      <IconButton
+                        onClick={handleOpenUserMenu}
+                        sx={{
+                          p: 0,
+                          color: "#FF631C",
+                          ml: 2,
+                        }}
+                      >
+                        <Badge
+                          badgeContent={4}
+                          color="customColor"
                           sx={{
-                            color: "#000",
-                            border: "1px solid #E7E7E7",
-                            mx: 2,
+                            width: 25,
+                            height: 25,
+                            "& .MuiBadge-badge": {
+                              color: "white",
+                              width: 10,
+                              height: 20,
+                            },
                           }}
                         >
-                          {item.myListingIcon}
-                          &nbsp;My Listings &nbsp;
-                        </Button>
-                        <Button variant={"primary"}>
-                          &nbsp;
-                          {item.PostListingIcon}
-                          &nbsp; Post Listing &nbsp;
-                        </Button>
-                        <IconButton
-                          onClick={handleOpenUserMenu}
-                          sx={{
-                            p: 0,
-                            color: "#FF631C",
-                            // mx: 2,
-                            ml: 2,
-                          }}
-                        >
-                          <Badge
-                            badgeContent={4}
-                            color="customColor"
-                            sx={{
-                              width: 25,
-                              height: 25,
-                              "& .MuiBadge-badge": {
-                                color: "white",
-                                width: 10,
-                                height: 20,
-                              },
-                            }}
-                          >
-                            <NotificationsIcon
-                              sx={{ fontSize: 35, color: "customColor" }}
-                            />
-                          </Badge>
-                        </IconButton>
-                      </Box>
+                          <NotificationsIcon
+                            sx={{ fontSize: 35, color: "customColor" }}
+                          />
+                        </Badge>
+                      </IconButton>
+                    </Box>
                       <Box
                         sx={{
                           display: "flex",
@@ -341,7 +364,7 @@ export default function DashboardHeader() {
                         >
                           Arman Espark
                         </Typography>
-                        {item.profileIcon}
+                        <Image src={item.profileIcon} width={40} height={40} />
                       </Box>
                     </>
                   );

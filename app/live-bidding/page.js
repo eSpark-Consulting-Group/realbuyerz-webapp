@@ -1,8 +1,7 @@
 "use client"
 import { useState } from "react";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import BiddingDetails from "@/src/components/layouts/BiddingPage/BiddingDetails";
 import ExpendedSiderBar from "@/src/components/layouts/BiddingPage/LeftSideBar/ExpendedSiderBar";
@@ -22,12 +21,12 @@ const page = () => {
   return (
     <>
       <Grid container spacing={2} >
-        <Grid item lg={2} md={12} sm={12} xs={12}
-        >
+        <Grid item lg={2} md={12} sm={12} xs={12} >
           <Box sx={{ position: 'relative' }}>
             <Box sx={{
               position: "absolute",
               right: 0
+              
             }}>
             </Box>
           </Box>

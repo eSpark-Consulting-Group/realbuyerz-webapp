@@ -12,6 +12,7 @@ const CollapsedSideBar = ({ data, isCollapsed , isCollaps}) => {
     style={{
         width: isCollapsed,
         transition: 'width 1.3s ease',
+        height: '100%'
       }}  
     >
       <Box sx={{ position: 'relative' }}>

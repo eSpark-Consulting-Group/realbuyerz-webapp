@@ -40,7 +40,7 @@ function Proposals({ data }) {
             letterSpacing: "0.56px",
           }}
         >
-          {data}
+          My Proposals
         </Typography>
       </Box>
     </Grid>

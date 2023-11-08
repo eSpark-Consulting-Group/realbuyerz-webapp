@@ -37,7 +37,7 @@ const RightSidebar = ({data}) => {
         <Grid xs={12} item sx={{
           marginRight: "5px"
         }}>
-          <Proposals data={data.profileInfo.proposal} />
+          <Proposals />
         </Grid>
       </Grid>
     </React.Fragment>

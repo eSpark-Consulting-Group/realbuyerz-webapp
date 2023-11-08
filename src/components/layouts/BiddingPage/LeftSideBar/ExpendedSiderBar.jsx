@@ -9,10 +9,9 @@ import ExpendedLiveBiddingList from "./ExpendedLiveBiddingList";
 const ExpendedSiderBar = ({ data, isCollapsed, isExpended }) => {
   return (
     <Box
-
       sx={{
         width: isCollapsed,
-        height: "100vh",
+        height: "100%",
         transition: 'width 1.3s ease',
       }}
     >
@@ -22,7 +21,7 @@ const ExpendedSiderBar = ({ data, isCollapsed, isExpended }) => {
         sx={{
           backgroundColor: "#f8f8f8",
           width: "100vw",
-          height: "100vh",
+          height: "100%",
         }}
       >
         <Grid
@@ -31,6 +30,7 @@ const ExpendedSiderBar = ({ data, isCollapsed, isExpended }) => {
           sx={{
             padding: "15px",
             borderRadius: 15,
+            height: "100%", 
           }}
         >
           <Box sx={{ position: 'relative' }}>

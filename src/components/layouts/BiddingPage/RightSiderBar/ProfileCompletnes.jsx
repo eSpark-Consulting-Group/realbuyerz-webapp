@@ -55,7 +55,7 @@ const ProfileCompletnes = ({data}) => {
           sx={{
             width: "100%",
             height: "0px",
-            border: "2px solid #E5E5E5",
+            border: "1px solid #E5E5E5",
           }}
         ></Box>
         <Typography

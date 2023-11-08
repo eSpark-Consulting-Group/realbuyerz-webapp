@@ -48,7 +48,7 @@ const Profile = ({ data }) => {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            {data.stateName}
+            {data.agencyName}
           </Typography>
         </Grid>
       </Grid>

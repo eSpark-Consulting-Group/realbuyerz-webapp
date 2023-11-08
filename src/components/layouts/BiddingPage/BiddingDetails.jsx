@@ -28,7 +28,7 @@ const BiddingDetails = ({ data }) => {
             <Box
               sx={{
                 position: "absolute",
-                width: "300px",
+                width: {xs: '250px', sm: '250px', lg: "300px"},
                 height: "100%",
                 background: "#EDF7FF",
                 zIndex: -1,
@@ -45,23 +45,27 @@ const BiddingDetails = ({ data }) => {
             >
               <Grid
                 item
-                xs={7}
+                lg={7}
+                md={4}
                 sx={{
                   color: "#333",
-                  fontFamily: "Inter",
-                  fontSize: "20px",
-                  fontStyle: "normal",
-                  fontWeight: "700",
-                  lineHeight: "normal",
+                  // fontFamily: "Inter",
+                  // fontSize: "20px",
+                  // fontStyle: "normal",
+                  // fontWeight: "700",
+                  // lineHeight: "normal",
                 }}
               >
                 <Typography variant="h4" sx={{ ml: 0.4 }}>
                   {item?.title}
                 </Typography>
+                <Typography variant="body1" sx={{ml: 0.5}}>{item?.postedTime}</Typography>
               </Grid>
               <Grid
                 item
-                xs={3}
+                lg={3}
+                md={4}
+                // sm={12}
                 sx={{
                   textAlign: "right",
                   alignContent: "end",
@@ -77,14 +81,14 @@ const BiddingDetails = ({ data }) => {
                 <Box>
                   <Typography variant="body1">
                     Est. Range:{" "}
-                    <span style={{ fontWeight: "bold" }}>{item.estRange}</span>
+                    <span style={{ fontWeight: "bold" ,color: "#333333"}}>{item.estRange}</span>
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={2}>
+              <Grid item lg={2} md={4} sm={12}>
                 <Box
                   sx={{
-                    paddingLeft: "93px",
+                    paddingLeft: {sm: "0px", md: '80px', lg: "85px"},
                   }}
                 >
                   <Button
@@ -99,7 +103,7 @@ const BiddingDetails = ({ data }) => {
                   </Button>
                 </Box>
               </Grid>
-              <Box
+              {/* <Box
                 sx={{
                   color: "#333",
                   fontFamily: "Inter",
@@ -111,16 +115,12 @@ const BiddingDetails = ({ data }) => {
                 }}
               >
                 <Typography variant="body1">{item?.postedTime}</Typography>
-              </Box>
+              </Box> */}
 
               <Box
                 sx={{
                   color: "#333",
-                  fontFamily: "Inter",
-                  fontSize: "12px",
-                  fontStyle: "normal",
-                  fontWeight: 500,
-                  paddingRight: "10px",
+                  paddingRight: "20px",
                   paddingLeft: "20px",
                   paddingTop: "40px",
                   paddingBottom: "20px",
@@ -130,9 +130,10 @@ const BiddingDetails = ({ data }) => {
                   variant="body2"
                   sx={{
                     fontWeight: "500",
-                    fontSize: "14px",
+                    fontSize: "13.8px",
                     lineHeight: "14.52px",
                     fontFamilly: "inter",
+                    mb:1
                   }}
                 >
                   {item?.description}
@@ -141,7 +142,7 @@ const BiddingDetails = ({ data }) => {
                   variant="body2"
                   sx={{
                     fontWeight: "500",
-                    fontSize: "14px",
+                    fontSize: "13.8px",
                     lineHeight: "14.52px",
                     fontFamilly: "inter",
                   }}
@@ -154,7 +155,7 @@ const BiddingDetails = ({ data }) => {
             <Box
               sx={{
                 position: "absolute",
-                width: "300px",
+                width: {xs: '250px', sm: '250px', lg: "300px"},
                 height: "100%",
                 background: "#EDF7FF",
                 zIndex: -1,

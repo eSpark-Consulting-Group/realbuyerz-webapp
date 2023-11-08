@@ -13,7 +13,9 @@ const PropertyList = ({ data }) => {
         <Box
           sx={{
             display: "flex",
-            width: "60%",
+            width: "65%",
+            maxWidth: '210px',
+            minWidth: '180px',
             justifyContent: "space-between",
             alignItems: "center"
           }}
@@ -24,7 +26,7 @@ const PropertyList = ({ data }) => {
             }}
           >
 
-            <Title title={'Property Listed'} />
+            <Title title={'Property Listed'} /> 
           </Box>
           <Box
             sx={{

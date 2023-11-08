@@ -113,26 +113,19 @@ export const LIVE_BIDDING_DATA = {
     profileInfo: {
     image: "./images/Live-bidding-icons/Profile.png/",
     name: "Kashif Z",
-    stateName: "KZ Real Estate",
+    agencyName: "KZ Real Estate",
     profileCompleteness: "95",
     availableConnects: "50",
     propertyListed: {
       propertyType: "50 property listed",
-      icons: '/images/Live-bidding-icons/category.svg',
     },
     ProfileVisibilty: {
-      proprtyTitle: "Profile Visibilty",
       propertyType: "Public",
     },
     LeadPreferences: {
-      proprtyTitle: "Lead Preferences",
       propertyType: "Open to contract",
     },
     categories: [
-      {
-        mainTitle: "My Categories",
-        icons: '/images/Live-bidding-icons/category.svg',
-      },
       {
         categoryTyes: "House",
       },
@@ -143,6 +136,5 @@ export const LIVE_BIDDING_DATA = {
         categoryTyes: "Commercials",
       },
     ],
-    proposal: "My Proposals",
   }
 }
