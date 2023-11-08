@@ -264,9 +264,8 @@ export const PROPERTIES_LISTING = [
 ];
 
 export const CONSTANTS = {
-  resetButton: { text: 'Reset', link: '' }
-
-}
+  resetButton: { text: 'Reset', link: '' },
+};
 
 export const PROPERTY_STATS = [
   { title: 'Purpose', value: 'purpose' },
@@ -276,6 +275,6 @@ export const PROPERTY_STATS = [
 ];
 
 export const LISTING_TYPE = [
-  { value: "proposals", label: "Proposals" },
-  { value: "properties", label: "Properties" }
+  { value: 'proposals', label: 'Proposals' },
+  { value: 'properties', label: 'Properties' },
 ];

@@ -1,4 +1,10 @@
-export const filterData = (selectedData, purpose, city, location, propertyType) => {
+export const filterData = (
+  selectedData,
+  purpose,
+  city,
+  location,
+  propertyType
+) => {
   return selectedData.filter(
     (item) =>
       (purpose === '' ||
@@ -14,8 +20,14 @@ export const filterData = (selectedData, purpose, city, location, propertyType) 
 export const getUniqueFilteredOptions = (selectedData) => {
   const uniquePurposeOptions = getUniqueFilteredValues(selectedData, 'purpose');
   const uniqueCityOptions = getUniqueFilteredValues(selectedData, 'city');
-  const uniqueLocationOptions = getUniqueFilteredValues(selectedData, 'location');
-  const uniquePropertyTypeOptions = getUniqueFilteredValues(selectedData, 'propertyType');
+  const uniqueLocationOptions = getUniqueFilteredValues(
+    selectedData,
+    'location'
+  );
+  const uniquePropertyTypeOptions = getUniqueFilteredValues(
+    selectedData,
+    'propertyType'
+  );
 
   return {
     purposeOptions: uniquePurposeOptions,

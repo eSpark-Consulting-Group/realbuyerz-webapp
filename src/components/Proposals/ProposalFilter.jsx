@@ -42,7 +42,8 @@ const ProposalFilter = () => {
     );
   };
 
-  const [filteredProposalsData, setFilteredProposalsData] = useState(selectedData);
+  const [filteredProposalsData, setFilteredProposalsData] =
+    useState(selectedData);
   useEffect(() => {
     const {
       purposeOptions,
@@ -142,16 +143,19 @@ const ProposalFilter = () => {
             verticalAlign: 'center',
           }}
         >
-          <Link href={CONSTANTS.resetButton.link} onClick={handleClearButtonClick}>
-            <Typography sx={{ textDecoration: 'underline', color: '#126FAA' }}>{CONSTANTS.resetButton.text}</Typography>
+          <Link
+            href={CONSTANTS.resetButton.link}
+            onClick={handleClearButtonClick}
+          >
+            <Typography sx={{ textDecoration: 'underline', color: '#126FAA' }}>
+              {CONSTANTS.resetButton.text}
+            </Typography>
           </Link>
         </Box>
-
       </Box>
 
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={9}>
-        </Grid>
+        <Grid item xs={9}></Grid>
         <Grid item xs={3}>
           <FormControl fullWidth>
             <Select value={listingType} onChange={handleListingTypeChange}>

@@ -15,5 +15,7 @@ export function getUniqueProposalStatus(selectedData) {
 export function getFilteredCount(selectedData, proposalStatus) {
   return proposalStatus === 'All'
     ? selectedData.length
-    : selectedData.filter((proposal) => proposal.proposalStatus === proposalStatus).length;
+    : selectedData.filter(
+        (proposal) => proposal.proposalStatus === proposalStatus
+      ).length;
 }

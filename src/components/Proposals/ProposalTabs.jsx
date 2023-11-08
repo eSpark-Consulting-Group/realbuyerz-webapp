@@ -9,7 +9,9 @@ function CustomTabPanel({ data, value, index, tabProposalStatus }) {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter((proposal) => proposal.proposalStatus === tabProposalStatus);
+      : data.filter(
+          (proposal) => proposal.proposalStatus === tabProposalStatus
+        );
 
   return (
     <div
@@ -66,14 +68,19 @@ function ProposalTabs({ filteredProposalsData }) {
     <Box sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
             {tabData?.map((tab, index) => {
               const filteredCount =
                 tab.tabProposalStatus === 'All'
                   ? filteredProposalsData.length
                   : filteredProposalsData.filter(
-                    (proposal) => proposal.proposalStatus === tab.tabProposalStatus
-                  ).length;
+                      (proposal) =>
+                        proposal.proposalStatus === tab.tabProposalStatus
+                    ).length;
 
               return (
                 <Tab
