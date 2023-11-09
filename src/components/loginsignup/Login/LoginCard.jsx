@@ -8,26 +8,6 @@ import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const LoginCard = () => {
   const router = useRouter();
-import React, { useState } from 'react';
-import {
-  Typography,
-  Box,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Button,
-} from '@mui/material';
-import Image from 'next/image';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useRouter } from 'next/navigation';
-
-const LoginCard = () => {
-  const router = useRouter();
-  const [showPassword, setShowPassword] = useState(false);
- 
   return (
     <>
       <Box

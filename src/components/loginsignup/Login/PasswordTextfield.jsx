@@ -47,29 +47,6 @@ const PasswordFields = () => {
           ),
         }}
       />
-      {/* <TextField
-              label="Password"
-              variant="outlined"
-              type={showPassword ? 'text' : 'password'}
-              fullWidth
-              name="password"
-              // value={formData.password}
-              onChange={handlePassword}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      style={{ color: '#444444' }}
-                      // onClick={handlePassword}
-                      onClick={handlePasswordToggle}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            /> */}
     </>
   );
 };
