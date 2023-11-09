@@ -3,15 +3,19 @@ import React from 'react';
 import FooterCta from '@/src/components/FooterCta';
 
 import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
+import { Grid } from '@mui/material';
+import DashboardContent from '@/src/components/UserDashboard/DashboardContent';
 
 const Dashboard = () => {
   return (
     <>
-      <div className="flex min-h-screen">
-        <div className="left-section">Left Section</div>
-        <div className="main-section">Mid Section</div>
-        <div className="right-section">Right Section</div>
-      </div>
+      <Grid container>
+        <Grid xs={2}></Grid>
+        <Grid xs={8} item>
+          <DashboardContent />
+        </Grid>
+        <Grid xs={2}></Grid>
+      </Grid>
       <FooterCta data={FOOTER_CTA_DATA} />
     </>
   );
