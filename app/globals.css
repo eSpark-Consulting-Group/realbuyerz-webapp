@@ -54,7 +54,6 @@ root {
 .left-section {
   width: 15%;
 }
-<<<<<<< HEAD
 .scrollable {
   height: 100vh; /* or any value */
   overflow-y: auto;
@@ -62,7 +61,6 @@ root {
 .scrollable::-webkit-scrollbar {
   display: none;
 }
-=======
 
 .hero_slider {
   width: 100%;
@@ -93,10 +91,10 @@ root {
 }
 
 .slick-prev:before {
-  content: url('../public/images/agent-profile-icons//Left.svg') !important;
+  content: url('../public/images/agent-profile-icons/Left.svg') !important;
 }
 .slick-next:before {
-  content: url('../public/images/agent-profile-icons//Right.svg') !important;
+  content: url('../public/images/agent-profile-icons/Right.svg') !important;
 }
 
 .slick-slide {
@@ -146,4 +144,3 @@ root {
     margin-left: 19px !important;
   }
 }
->>>>>>> epic/issue/1

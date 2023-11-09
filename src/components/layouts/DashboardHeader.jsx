@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
@@ -15,7 +14,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import Link from "next/link";
-import { pages } from "@/app/constents/Constants";
+// import { pages } from "@/app/constents/Constants";
 import { Button, SvgIcon } from "@mui/material";
 import CustomIcon from "./BiddingPage/CustomIcon";
 import { HEADER_MENU, MENU_ITEM } from "@/app/constents/LiveBidding";
@@ -150,7 +149,7 @@ export default function DashboardHeader() {
                 display: { xs: "none", sm: "none", md: "none", lg: "flex" },
               }}
             >
-              {HEADER_MENU.map((item) => {
+              {HEADER_MENU?.map((item) => {
                 return (
                   <>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -305,7 +304,7 @@ export default function DashboardHeader() {
                   flexDirection: "column",
                 }}
               >
-                {HEADER_MENU.map((item) => {
+                {HEADER_MENU?.map((item) => {
                   return (
                     <>
                       <Box sx={{ p: 2 }}>
@@ -435,16 +434,3 @@ export default function DashboardHeader() {
     </AppBar>
   );
 }
-=======
-'use client';
-
-function DashboardHeader() {
-  return (
-    <>
-      <h1>Headder</h1>
-    </>
-  );
-}
-
-export default DashboardHeader;
->>>>>>> epic/issue/1
