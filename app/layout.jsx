@@ -12,7 +12,7 @@ import './globals.css';
 import MainHeader from '@/src/components/layouts/MainHeader';
 
 import Footer from '@/src/components/layouts/Footer';
-import { FOOTER_DATA } from './constants/Constants';
+import { FOOTER_DATA } from '@/app/constants/Constants';
 
 function RootLayout({ children }) {
   return (
