@@ -11,6 +11,7 @@ import {
   Paper,
   TableContainer,
 } from '@mui/material';
+
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const PropertyOverview = ({ propertyData }) => {
