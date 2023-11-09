@@ -4,20 +4,22 @@ import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 
 import LiveBiddingTitle from "./LiveBiddingTitle";
-import LiveBinddingPropertiesList from "./LiveBinddingPropertiesList";
+import LiveBiddingPropertiesList from "./LiveBiddingPropertiesList";
+import { LIST_ITEM, MAIN_TITLE, VIEW } from "@/app/constents/LiveBidding";
 
-const BiddingDetails = ({ data }) => {
+const BiddingDetails = ({ liveBiddingData }) => {
   return (
     <Box className="scrollable">
-      <LiveBiddingTitle data={"LIVE BIDDING IN PROPERTIES"} />
-      {data.liveBidding.map((item) => (
-        <Grid container spacing={2} xs={12}>
+      <LiveBiddingTitle title={MAIN_TITLE} />
+      {liveBiddingData?.liveBidding?.map((item, index) => (
+        <Grid container spacing={2} xs={12} key={index}>
           <Box
             sx={{
               width: "100%",
               height: "auto",
               marginLeft: 3,
-              backgroundColor: "#AAD9FF",
+              backgroundColor: "#EDF7FF",
+              border: "1px solid #AAD9FF",
               borderRadius: "16px",
               marginTop: "30px",
               position: "relative",
@@ -28,12 +30,13 @@ const BiddingDetails = ({ data }) => {
             <Box
               sx={{
                 position: "absolute",
-                width: {xs: '250px', sm: '250px', lg: "300px"},
+                width: { sm: "260px", lg: "300px" },
                 height: "100%",
-                background: "#EDF7FF",
+                background: "#F6FBFF",
                 zIndex: -1,
                 marginLeft: "0px",
                 borderRadius: "16px 200px 200px 16px",
+                display: { xs: "none", sm: "block" },
               }}
             ></Box>
             <Grid
@@ -49,23 +52,19 @@ const BiddingDetails = ({ data }) => {
                 md={4}
                 sx={{
                   color: "#333",
-                  // fontFamily: "Inter",
-                  // fontSize: "20px",
-                  // fontStyle: "normal",
-                  // fontWeight: "700",
-                  // lineHeight: "normal",
                 }}
               >
                 <Typography variant="h4" sx={{ ml: 0.4 }}>
                   {item?.title}
                 </Typography>
-                <Typography variant="body1" sx={{ml: 0.5}}>{item?.postedTime}</Typography>
+                <Typography variant="body1" sx={{ ml: 0.5 }}>
+                  {item?.postedTime}
+                </Typography>
               </Grid>
               <Grid
                 item
                 lg={3}
                 md={4}
-                // sm={12}
                 sx={{
                   textAlign: "right",
                   alignContent: "end",
@@ -81,14 +80,16 @@ const BiddingDetails = ({ data }) => {
                 <Box>
                   <Typography variant="body1">
                     Est. Range:{" "}
-                    <span style={{ fontWeight: "bold" ,color: "#333333"}}>{item.estRange}</span>
+                    <span style={{ fontWeight: "bold", color: "#333333" }}>
+                      {item.estRange}
+                    </span>
                   </Typography>
                 </Box>
               </Grid>
               <Grid item lg={2} md={4} sm={12}>
                 <Box
                   sx={{
-                    paddingLeft: {sm: "0px", md: '80px', lg: "85px"},
+                    paddingLeft: { sm: "0px", md: "80px", lg: "85px" },
                   }}
                 >
                   <Button
@@ -99,24 +100,10 @@ const BiddingDetails = ({ data }) => {
                       padding: "0px",
                     }}
                   >
-                    View
+                    {VIEW}
                   </Button>
                 </Box>
               </Grid>
-              {/* <Box
-                sx={{
-                  color: "#333",
-                  fontFamily: "Inter",
-                  fontSize: "12px",
-                  fontStyle: "normal",
-                  fontWeight: 400,
-                  paddingRight: "10px",
-                  paddingLeft: "20px",
-                }}
-              >
-                <Typography variant="body1">{item?.postedTime}</Typography>
-              </Box> */}
-
               <Box
                 sx={{
                   color: "#333",
@@ -133,7 +120,7 @@ const BiddingDetails = ({ data }) => {
                     fontSize: "13.8px",
                     lineHeight: "14.52px",
                     fontFamilly: "inter",
-                    mb:1
+                    mb: 1,
                   }}
                 >
                   {item?.description}
@@ -150,19 +137,20 @@ const BiddingDetails = ({ data }) => {
                   {item?.description}
                 </Typography>
               </Box>
-              <LiveBinddingPropertiesList list={item} />
+              <LiveBiddingPropertiesList list={item.list} listKey={LIST_ITEM} />
             </Grid>
             <Box
               sx={{
                 position: "absolute",
-                width: {xs: '250px', sm: '250px', lg: "300px"},
+                width: { sm: "260px", lg: "300px" },
                 height: "100%",
-                background: "#EDF7FF",
+                background: "#F6FBFF",
                 zIndex: -1,
                 marginLeft: "0px",
                 borderRadius: "200px 16px  16px 200px",
                 top: "0",
                 right: "0px",
+                display: { xs: "none", sm: "block" },
               }}
             ></Box>
           </Box>

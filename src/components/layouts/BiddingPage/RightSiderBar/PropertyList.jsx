@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import Title from "./Title";
 
-const PropertyList = ({ data }) => {
+const PropertyList = ({ profileInfo }) => {
   return (
     <Box sx={{ mb: 2 }}>
       <Grid item xs={12}>
@@ -14,10 +14,10 @@ const PropertyList = ({ data }) => {
           sx={{
             display: "flex",
             width: "65%",
-            maxWidth: '210px',
-            minWidth: '180px',
+            maxWidth: "210px",
+            minWidth: "180px",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Box
@@ -25,8 +25,7 @@ const PropertyList = ({ data }) => {
               padding: "0px 0px 0px 0px",
             }}
           >
-
-            <Title title={'Property Listed'} /> 
+            <Title title={"Property Listed"} />
           </Box>
           <Box
             sx={{
@@ -34,10 +33,10 @@ const PropertyList = ({ data }) => {
             }}
           >
             <Image
-              src='/images/Live-bidding-icons/category.svg'
+              src="/images/Live-bidding-icons/category.svg"
               width={30}
               height={30}
-              alt='icons'
+              alt="icons"
             />
           </Box>
         </Box>
@@ -55,11 +54,10 @@ const PropertyList = ({ data }) => {
             paddingBottom: "2px",
           }}
         >
-          {data.propertyListed.propertyType}
+          {`${profileInfo.propertyListed} property listed`}
         </Typography>
-        <Title title={'Profile Visibilty'} />
+        <Title title={"Profile Visibilty"} />
         <Typography
-          // variant="body2"
           sx={{
             color: "#666",
             fontFamily: "Inter",
@@ -73,11 +71,10 @@ const PropertyList = ({ data }) => {
             paddingBottom: "2px",
           }}
         >
-          {data.ProfileVisibilty.propertyType}
+          {profileInfo.ProfileVisibilty}
         </Typography>
-        <Title title={'Lead Preferences'} />
+        <Title title={"Lead Preferences"} />
         <Typography
-          // variant="body2"
           sx={{
             color: "#666",
             fontFamily: "Inter",
@@ -91,7 +88,7 @@ const PropertyList = ({ data }) => {
             paddingBottom: "2px",
           }}
         >
-          {data.LeadPreferences.propertyType}
+          {profileInfo.LeadPreferences}
         </Typography>
       </Grid>
     </Box>

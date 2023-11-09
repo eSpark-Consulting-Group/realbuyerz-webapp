@@ -3,20 +3,22 @@ import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
 
-const Cateogries = ({ data }) => {
+const Cateogries = ({ categories }) => {
   return (
-    <Box sx={{
-      mt: 2,
-      mb: 3
-    }}>
+    <Box
+      sx={{
+        mt: 2,
+        mb: 3,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           width: "65%",
-          maxWidth: '210px',
-          minWidth: '180px',
+          maxWidth: "210px",
+          minWidth: "180px",
           justifyContent: "space-between",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <Box
@@ -43,18 +45,16 @@ const Cateogries = ({ data }) => {
           }}
         >
           <Image
-            src='/images/Live-bidding-icons/category.svg'
+            src="/images/Live-bidding-icons/category.svg"
             width={30}
             height={30}
-            alt='icons'
+            alt="icons"
           />
         </Box>
       </Box>
-      {data.map((items) => {
+      {categories.map((items, index) => {
         return (
-          <Grid item xs={12}
-          >
-
+          <Grid item xs={12} key={index}>
             <Typography
               variant="body1"
               sx={{
@@ -69,7 +69,7 @@ const Cateogries = ({ data }) => {
                 letterSpacing: "0.56px",
               }}
             >
-              {items.categoryTyes}
+              {items.categoryName}
             </Typography>
           </Grid>
         );

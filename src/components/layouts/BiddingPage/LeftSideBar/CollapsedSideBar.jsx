@@ -1,33 +1,39 @@
 import React from "react";
-import {  Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import CollapsedLiveBiddingList from "./CollapsedLiveBiddingList";
 
-const CollapsedSideBar = ({ data, isCollapsed , isCollaps}) => {
+const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
   return (
     <Box
-    style={{
+      style={{
         width: isCollapsed,
-        transition: 'width 1.3s ease',
-        height: '100%'
-      }}  
+        height: "100%",
+        borderRight : "2px solid #E4E4E4"
+      }}
     >
-      <Box sx={{ position: 'relative' }}>
-          <Box sx={{
+      <Box sx={{ position: "relative" }}>
+        <Box
+          sx={{
             position: "absolute",
             right: 0,
-          }}>
-           <ArrowForwardIosIcon fontSize="small" onClick={isCollaps} sx={{ cursor: "pointer"}}/>
-          </Box>
+          }}
+        >
+          <ArrowForwardIosIcon
+            fontSize="small"
+            onClick={isCollaps}
+            sx={{ cursor: "pointer" }}
+          />
         </Box>
+      </Box>
       <Grid
         container
         columnSpacing={{ xs: 1, sm: 2, md: 4, lg: 5 }}
         sx={{
-          backgroundColor: "#f8f8f8",
+          backgroundColor: "#fff",
           width: "100vw",
           height: "100vh",
         }}
@@ -53,9 +59,10 @@ const CollapsedSideBar = ({ data, isCollapsed , isCollaps}) => {
               src={"/images/Live-bidding-icons/liveBidding.svg"}
               width={30}
               height={30}
+              alt="icon"
             />
           </Box>
-          <CollapsedLiveBiddingList list={data.menuItems} />
+          <CollapsedLiveBiddingList list={menuItem} />
         </Grid>
       </Grid>
     </Box>

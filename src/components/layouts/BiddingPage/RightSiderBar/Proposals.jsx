@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 
 function Proposals({ data }) {
   return (
-    <Grid xs={12} columnSpacing={2} sx={{mb: 3}}>
+    <Grid xs={12} columnSpacing={2} sx={{ mb: 3 }}>
       <Box
         sx={{
           border: "1px solid #E4E4E4",

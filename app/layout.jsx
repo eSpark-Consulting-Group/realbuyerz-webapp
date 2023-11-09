@@ -9,13 +9,13 @@ import { Box, Container } from "@mui/system";
 import { footerData } from "./constents/constents";
 import DashboardHeader from "@/src/components/layouts/DashboardHeader";
 
-import { Inter } from 'next/font/google'
- 
+import { Inter } from "next/font/google";
+
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
+  subsets: ["latin"],
+  display: "swap",
+});
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>

@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Avatar } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-const Profile = ({ data }) => {
+const Profile = ({ profileInfo }) => {
   return (
     <>
       <Grid
@@ -17,7 +17,7 @@ const Profile = ({ data }) => {
       >
         <Grid item xs={12}>
           <Avatar
-            src={data.image}
+            src={profileInfo.image}
             sx={{
               width: "52px",
               height: "52px",
@@ -37,7 +37,7 @@ const Profile = ({ data }) => {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            {data.name}
+            {profileInfo.name}
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -48,7 +48,7 @@ const Profile = ({ data }) => {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            {data.agencyName}
+            {profileInfo.agencyName}
           </Typography>
         </Grid>
       </Grid>

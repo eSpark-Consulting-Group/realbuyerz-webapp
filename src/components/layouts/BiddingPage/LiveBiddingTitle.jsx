@@ -1,21 +1,23 @@
-import React from 'react'
-import { Typography } from '@mui/material'
+import React from "react";
+import { Typography } from "@mui/material";
 
-const LiveBiddingTitle = ({data}) => {
+const LiveBiddingTitle = ({ title }) => {
   return (
-    <Typography variant='h4'
-    sx={{
+    <Typography
+      variant="h4"
+      sx={{
         paddingTop: "60px",
-        textAlign: 'center',
+        textAlign: "center",
         fontStyle: "normal",
         fontWeight: 600,
-        fontSize: '30px',
-        lineHeight: 'normal',
-        letterSpacing: '1.95px',        
-    }}>
-       {data}
+        fontSize: "30px",
+        lineHeight: "normal",
+        letterSpacing: "1.95px",
+      }}
+    >
+      {title}
     </Typography>
-  )
-}
+  );
+};
 
-export default LiveBiddingTitle
+export default LiveBiddingTitle;

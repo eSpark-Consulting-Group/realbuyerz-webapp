@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 
-const AvailableConnects = ({data}) => {
+const AvailableConnects = ({ profileInfo }) => {
   return (
     <>
       <Grid item xs={12}>
         <Typography
-        variant={'body2'}
+          variant={"body2"}
           sx={{
             padding: "20px 0px 20px 31px",
             color: "#FB631C",
@@ -17,7 +17,7 @@ const AvailableConnects = ({data}) => {
             lineHeight: "normal",
           }}
         >
-          {data.availableConnects} Available Connects
+          {profileInfo.availableConnects} Available Connects
         </Typography>
       </Grid>
     </>

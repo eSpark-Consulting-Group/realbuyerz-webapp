@@ -1,65 +1,64 @@
-'use client'
-import { createTheme } from '@mui/material/styles';
+"use client";
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#fb631c',
+      main: "#fb631c",
     },
     secondary: {
-      main: '#EDF7FF',
+      main: "#EDF7FF",
     },
     customColor: {
-      main: "#1176AD"
+      main: "#1176AD",
     },
     background: {
-      default: '#ffffff',
+      default: "#ffffff",
     },
     text: {
-      primary: '#000',
-      primaryinvert: '#fff',
-      secondary: '#333',
-      primaryinvert: '#bfbfbf',
+      primary: "#000",
+      primaryinvert: "#fff",
+      secondary: "#333",
+      primaryinvert: "#bfbfbf",
     },
-   
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
     h1: {
-      fontSize: '40px',
+      fontSize: "40px",
       fontWeight: 700,
     },
     h2: {
-      fontSize: '36px',
+      fontSize: "36px",
       fontWeight: 600,
     },
     h3: {
-      fontSize: '30px',
+      fontSize: "30px",
       fontWeight: 600,
     },
     h4: {
-      fontSize: '24px',
+      fontSize: "24px",
       fontWeight: 700,
     },
     h5: {
-      fontSize: '20px',
+      fontSize: "20px",
       fontWeight: 600,
     },
     h6: {
-      fontSize: '16px',
+      fontSize: "16px",
       fontWeight: 700,
     },
     body1: {
-      fontSize: '14px',
+      fontSize: "14px",
     },
     button: {
-      textTransform: 'capitalize',
+      textTransform: "capitalize",
     },
     link: {
-      textDecoration: 'none',
-      color: '#fb631c',
-      '&:hover': {
-        color: '#EDF7FF',
+      textDecoration: "none",
+      color: "#fb631c",
+      "&:hover": {
+        color: "#EDF7FF",
       },
     },
   },
@@ -71,29 +70,29 @@ const theme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: 'primary' },
+          props: { variant: "primary" },
           style: {
-            textTransform: 'capitalize',
-            backgroundColor: '#fb631c !important',
-            borderRadius: '5px',
-            color: '#fff',
-            position: 'relative',
-            '&:hover': {
-              backgroundColor: '#EDF7FF',
+            textTransform: "capitalize",
+            backgroundColor: "#fb631c !important",
+            borderRadius: "5px",
+            color: "#fff",
+            position: "relative",
+            "&:hover": {
+              backgroundColor: "#EDF7FF",
               // color: '#fb631c',
-              color: '#fff',
+              color: "#fff",
             },
           },
         },
         {
-          props: { variant: 'outlined' },
+          props: { variant: "outlined" },
           style: {
-            textTransform: 'capitalize',
-            borderColor: '#fb631c',
-            color: '#fb631c',
-            '&:hover': {
-              backgroundColor: '#fb631c',
-              color: '#fff',
+            textTransform: "capitalize",
+            borderColor: "#fb631c",
+            color: "#fb631c",
+            "&:hover": {
+              backgroundColor: "#fb631c",
+              color: "#fff",
             },
           },
         },
@@ -101,16 +100,16 @@ const theme = createTheme({
     },
     MuiLink: {
       defaultProps: {
-        variant: 'link',
+        variant: "link",
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          color: '#fb631c',
-          '&:hover': {
-            backgroundColor: '#EDF7FF',
-            color: '#fb631c',
+          color: "#fb631c",
+          "&:hover": {
+            backgroundColor: "#EDF7FF",
+            color: "#fb631c",
           },
         },
       },
@@ -118,8 +117,8 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: '1920px',
-          margin: '0 auto',
+          maxWidth: "1920px",
+          margin: "0 auto",
         },
       },
     },

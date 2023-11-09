@@ -1,12 +1,12 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
+import { Grid, Typography } from "@mui/material";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 
-const ProfileCompletnes = ({data}) => {
+const ProfileCompletness = ({ profileInfo }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -35,7 +35,7 @@ const ProfileCompletnes = ({data}) => {
             fontSize: "12px",
             fontWeight: "600",
             paddingLeft: "30px",
-            paddingTop: "20px"
+            paddingTop: "20px",
           }}
         >
           Profile Completeness:
@@ -48,8 +48,14 @@ const ProfileCompletnes = ({data}) => {
             paddingBottom: "15px",
           }}
         >
-          <BorderLinearProgress variant="determinate" value={90} sx={{ flex: 1 }} />
-          <Typography sx={{ ml:1 , mr:5 }}>{data.profileCompleteness}%</Typography>
+          <BorderLinearProgress
+            variant="determinate"
+            value={90}
+            sx={{ flex: 1 }}
+          />
+          <Typography sx={{ ml: 1, mr: 5 }}>
+            {profileInfo.profileCompleteness}%
+          </Typography>
         </Box>
         <Box
           sx={{
@@ -77,4 +83,4 @@ const ProfileCompletnes = ({data}) => {
   );
 };
 
-export default ProfileCompletnes;
+export default ProfileCompletness;

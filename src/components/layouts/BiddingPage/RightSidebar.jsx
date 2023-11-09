@@ -2,41 +2,45 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 
-import Cateogries from "./RightSiderBar/Cateogries";
-import Proposals from "./RightSiderBar/Proposals";
-import PropertyList from "./RightSiderBar/PropertyList";
 import Profile from "./RightSiderBar/Profile";
-import ProfileCompletnes from "./RightSiderBar/ProfileCompletnes";
-import AvailableConnects from "./RightSiderBar/AvailableConnects";
+import Proposals from "./RightSiderBar/Proposals";
+import Cateogries from "./RightSiderBar/Cateogries";
+import PropertyList from "./RightSiderBar/PropertyList";
 import CustomDivider from "./RightSiderBar/CustomDivider";
+import ProfileCompletness from "./RightSiderBar/ProfileCompletness";
+import AvailableConnects from "./RightSiderBar/AvailableConnects";
 
-const RightSidebar = ({data}) => {
+const RightSidebar = ({ profileInfo }) => {
   return (
     <React.Fragment>
-      <Grid container  rowSpacing={1}>
+      <Grid container rowSpacing={1}>
         <Grid
           border={2}
           item
           sx={{
             border: "1px solid #E4E4E4",
             borderRadius: "10px",
-            background: "#F FF",
+            background: "#FFF",
             width: "100%",
             height: "100%",
             marginRight: "5px",
           }}
         >
-          <Profile data={data.profileInfo} />
-          <ProfileCompletnes data={data.profileInfo} />
-          <AvailableConnects data={data.profileInfo} />
+          <Profile profileInfo={profileInfo} />
+          <ProfileCompletness profileInfo={profileInfo} />
+          <AvailableConnects profileInfo={profileInfo} />
           <CustomDivider />
-          <PropertyList data={data.profileInfo} />
+          <PropertyList profileInfo={profileInfo} />
           <CustomDivider />
-          <Cateogries data={data.profileInfo.categories} />
+          <Cateogries categories={profileInfo.categories} />
         </Grid>
-        <Grid xs={12} item sx={{
-          marginRight: "5px"
-        }}>
+        <Grid
+          xs={12}
+          item
+          sx={{
+            marginRight: "5px",
+          }}
+        >
           <Proposals />
         </Grid>
       </Grid>
