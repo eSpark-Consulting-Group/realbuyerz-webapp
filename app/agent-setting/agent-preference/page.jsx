@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import PreferenceSetting from '@/src/components/AgentPreference/AgentSetting/PreferenceSetting';
+import PreferenceSettings from '@/src/components/AgentPreference/AgentSetting/PreferenceSettings';
+
 const AgentPreferenceLayout = () => {
   return (
     <Grid
@@ -18,7 +19,7 @@ const AgentPreferenceLayout = () => {
           width: '100%',
         }}
       >
-        <PreferenceSetting />
+        <PreferenceSettings />
       </Grid>
 
       <Grid item xs={12} md={2} />

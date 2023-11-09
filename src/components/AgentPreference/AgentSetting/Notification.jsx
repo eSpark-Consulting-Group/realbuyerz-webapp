@@ -1,14 +1,12 @@
 'use client';
-import React, { useState } from 'react';
-import { Typography, Box, Switch, Button } from '@mui/material';
+import React from 'react';
+import { Typography, Box, Switch } from '@mui/material';
 
-const Notification = ({ isNotifyEnable ,inputChange}) => {
-
-  const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const Notification = ({ notificationData ,handleInputChange}) => {
   return (
     <>
       <Box>
-        {isNotifyEnable.map((item, index) => {
+        {notificationData?.map((item, index) => {
           return (
             <Box
               sx={{
@@ -38,8 +36,7 @@ const Notification = ({ isNotifyEnable ,inputChange}) => {
                 </Typography>
                 <Switch
                 value={item.value}
-                onChange={(event) => inputChange(item.title, event.target.checked)}
-                  {...label}
+                onChange={(event) => handleInputChange(item.title, event.target.checked)}
                 />
               </Box>
               <Box>

@@ -8,10 +8,9 @@ import { PROPERTY_AREASIZE_AND_REPORT } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 
-const PreferenceSetting = () => {
+const PreferenceSettings = () => {
   const [formData, setFormData] = useState({
-    emailData: PROPERTY_AREASIZE_AND_REPORT.report.areaUnit,
-    emailData: PROPERTY_AREASIZE_AND_REPORT.report.currency,
+    emailData: PROPERTY_AREASIZE_AND_REPORT.report,
     toggleData: AGENT_PREFERENCES.updates,
   });
   const handleInputChange = (event) => {
@@ -38,6 +37,7 @@ const PreferenceSetting = () => {
       }),
     }));
   };
+
   const handleClick = () => {
     console.log("data",formData)
   }
@@ -89,17 +89,16 @@ const PreferenceSetting = () => {
                 padding:"8px"
               }}
             >
-              {AGENT_PREFERENCES.heading.preference}
+              {AGENT_PREFERENCES.heading}
             </Typography>
-            <Notification isNotifyEnable={AGENT_PREFERENCES.updates}
-              Reports={PROPERTY_AREASIZE_AND_REPORT.report}
-               inputChange={handleInputChangeToggle}
+            <Notification notificationData={AGENT_PREFERENCES.updates}
+               handleInputChange={handleInputChangeToggle}
             />
-            <AreaUnit Measure={AGENT_PREFERENCES.propertySize}
-              Reports={PROPERTY_AREASIZE_AND_REPORT.report}
-              inputChange={handleInputChange}
+            <AreaUnit measure={AGENT_PREFERENCES.propertySize}
+              handleInputChange={handleInputChange}
             />
             <SaveChanges handleClickButton={handleClick}
+              saveChangeButton={AGENT_PREFERENCES.saveChanges}
 
  />
           </Box>
@@ -108,4 +107,4 @@ const PreferenceSetting = () => {
     </Grid>
   );
 };
-export default PreferenceSetting;
+export default PreferenceSettings;

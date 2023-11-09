@@ -1,24 +1,23 @@
 export const AGENT_PREFERENCES = {
+    heading: 'Preferences',
+    saveChanges: ' Save Changes',
     updates: [
         {
             title: 'Email Notification',
             description: 'Allow to receive email notification',
-            value: false
+            value: false,
         },
         {
             title: 'NewsLetters',
             description: 'Allow to stay updated & receive newsletter',
-            value: false
+            value: false,
         },
         {
             title: 'Automated Reports',
             description: 'Allow to send us reports automatically incase of any issue',
-            value: false
+            value: false,
         },
     ],
-    heading: {
-        preference: 'Preferences',
-    },
     propertySize: [
         {
             label: 'Currency',

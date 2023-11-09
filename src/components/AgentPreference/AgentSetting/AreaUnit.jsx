@@ -1,24 +1,11 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 
-import { AGENT_PREFERENCES } from '@/app/constants/Preference';
-
-const AreaUnit = ({ Measure,Report,inputChange }) => {
-    const [emailData, setEmailData] = useState(Report);
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setEmailData({
-  //     ...emailData,
-  //     [name]: value,
-  //   });
-  // };
-  // const handleClick = () => {
-  //   console.log("data",emailData)
-  // }
+const AreaUnit = ({ measure,handleInputChange }) => {
   return (
     <Box>
-      {Measure.map((item, index) => (
+      {measure?.map((item, index) => (
         <Box
           sx={{
             display: 'flex',
@@ -40,16 +27,14 @@ const AreaUnit = ({ Measure,Report,inputChange }) => {
           </Typography>
           <TextField
             placeholder={item.placeholder}
-            // value={`${emailData.currency} ${emailData.areaUnit}`}
             name={item.name}
             variant="outlined"
             type="number"
             fullWidth
-            onChange={inputChange}
+            onChange={handleInputChange}
           />
         </Box>
       ))}
-{/* <Button onClick={handleClick}>Ok</Button> */}
     </Box>
   );
 };
