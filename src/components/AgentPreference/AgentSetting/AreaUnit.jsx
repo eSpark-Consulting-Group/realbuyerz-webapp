@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 
-const AreaUnit = ({ measure,handleInputChange }) => {
+const AreaUnit = ({ measure, handleInputChange }) => {
   return (
     <Box>
       {measure?.map((item, index) => (
@@ -32,6 +32,12 @@ const AreaUnit = ({ measure,handleInputChange }) => {
             type="number"
             fullWidth
             onChange={handleInputChange}
+            sx={{
+              '& input[type=number]::-webkit-inner-spin-button': {
+                '-webkit-appearance': 'none',
+                margin: 0,
+              },
+            }}
           />
         </Box>
       ))}
