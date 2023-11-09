@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import SidePage from '@/src/components/loginsignup/LoginSidePage/sidepage';
-import LoginBox from '@/src/components/loginsignup/Login/loginbox';
+import SidePage from '@/src/components/loginsignup/LoginSidePage/SidePage';
+import LoginBox from '@/src/components/loginsignup/Login/LoginBox';
 
 const Signin = () => {
   return (
