@@ -14,7 +14,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import Link from "next/link";
-import { pages } from "@/app/constents/constents";
+import { pages } from "@/app/constents/Constants";
 import { Button, SvgIcon } from "@mui/material";
 import CustomIcon from "./BiddingPage/CustomIcon";
 import { HEADER_MENU, MENU_ITEM } from "@/app/constents/LiveBidding";

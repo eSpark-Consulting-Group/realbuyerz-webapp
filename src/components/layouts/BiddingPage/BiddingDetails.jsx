@@ -5,7 +5,8 @@ import { Button } from "@mui/material";
 
 import LiveBiddingTitle from "./LiveBiddingTitle";
 import LiveBiddingPropertiesList from "./LiveBiddingPropertiesList";
-import { LIST_ITEM, MAIN_TITLE, VIEW } from "@/app/constents/LiveBidding";
+
+import { MAIN_TITLE, VIEW } from "@/app/constents/LiveBidding";
 
 const BiddingDetails = ({ liveBiddingData }) => {
   return (
@@ -137,7 +138,7 @@ const BiddingDetails = ({ liveBiddingData }) => {
                   {item?.description}
                 </Typography>
               </Box>
-              <LiveBiddingPropertiesList list={item.list} listKey={LIST_ITEM} />
+              <LiveBiddingPropertiesList list={item.list} />
             </Grid>
             <Box
               sx={{

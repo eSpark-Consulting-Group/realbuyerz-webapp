@@ -6,7 +6,7 @@ import "./globals.css";
 import Footer from "@/src/components/layouts/Footer";
 import MainHeader from "@/src/components/layouts/MainHeader";
 import { Box, Container } from "@mui/system";
-import { footerData } from "./constents/constents";
+import { footerData } from "./constents/Constants";
 import DashboardHeader from "@/src/components/layouts/DashboardHeader";
 
 import { Inter } from "next/font/google";
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
             {/* <MainHeader /> */}
             <DashboardHeader />
             <Box class="content">{children}</Box>
-            <Footer data={footerData} />
+            <Footer />
           </Box>
         </ThemeProvider>
       </body>

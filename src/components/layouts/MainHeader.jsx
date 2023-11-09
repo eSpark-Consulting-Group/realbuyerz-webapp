@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
-import { pages } from "@/app/constents/constents";
+import { pages } from "@/app/constents/Constants";
 
 const settings = ["Login", "Sign up"];
 
