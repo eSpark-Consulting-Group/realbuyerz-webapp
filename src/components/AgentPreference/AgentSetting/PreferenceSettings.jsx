@@ -1,5 +1,5 @@
 'use client';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
 import Notification from './Notification';
@@ -24,23 +24,31 @@ const PreferenceSettings = () => {
     }));
   };
   const handleInputChangeToggle = (name, checked) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      toggleData: prevData.toggleData.map((item) => {
-        if (item.title === name) {
+    setFormData((prevData) => {
+      const updatedToggleData = prevData.toggleData.map((item) => {
+        if (item.label === name) {
           return {
             ...item,
             value: checked,
           };
         }
         return item;
-      }),
-    }));
+      });
+      const updatedEmailData = {
+        ...prevData.emailData,
+        [name]: checked,
+      };
+      return {
+        ...prevData,
+        toggleData: updatedToggleData,
+        emailData: updatedEmailData,
+      };
+    });
   };
 
   const handleClick = () => {
-    console.log("data",formData)
-  }
+    console.log('data', formData);
+  };
   return (
     <Grid
       container
@@ -57,7 +65,7 @@ const PreferenceSettings = () => {
           backgroundImage: 'url("/images/RealBuyers.svg")',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '70% 70%',   
+          backgroundSize: '70% 70%',
         }}
       >
         <Box
@@ -86,21 +94,23 @@ const PreferenceSettings = () => {
                 color: 'black',
                 fontSize: '25px',
                 fontWeight: 500,
-                padding:"8px"
+                padding: '8px',
               }}
             >
               {AGENT_PREFERENCES.heading}
             </Typography>
-            <Notification notificationData={AGENT_PREFERENCES.updates}
-               handleInputChange={handleInputChangeToggle}
+            <Notification
+              notificationData={AGENT_PREFERENCES.updates}
+              handleInputChange={handleInputChangeToggle}
             />
-            <AreaUnit measure={AGENT_PREFERENCES.propertySize}
+            <AreaUnit
+              measure={AGENT_PREFERENCES.propertySize}
               handleInputChange={handleInputChange}
             />
-            <SaveChanges handleClickButton={handleClick}
+            <SaveChanges
+              handleClickButton={handleClick}
               saveChangeButton={AGENT_PREFERENCES.saveChanges}
-
- />
+            />
           </Box>
         </Box>
       </Grid>

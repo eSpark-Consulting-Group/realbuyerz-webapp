@@ -2,7 +2,7 @@
 import React from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 
-const Notification = ({ notificationData ,handleInputChange}) => {
+const Notification = ({ notificationData, handleInputChange }) => {
   return (
     <>
       <Box>
@@ -35,8 +35,10 @@ const Notification = ({ notificationData ,handleInputChange}) => {
                   {item.title}
                 </Typography>
                 <Switch
-                value={item.value}
-                onChange={(event) => handleInputChange(item.title, event.target.checked)}
+                  value={item.value}
+                  onChange={(event) =>
+                    handleInputChange(item.label, event.target.checked)
+                  }
                 />
               </Box>
               <Box>
