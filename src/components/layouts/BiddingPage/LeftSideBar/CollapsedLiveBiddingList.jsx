@@ -1,6 +1,6 @@
-import React from "react";
-import { Box } from "@mui/material";
-import Image from "next/image";
+import React from 'react';
+import { Box } from '@mui/material';
+import Image from 'next/image';
 
 const CollapsedLiveBiddingList = ({ list }) => {
   return (
@@ -9,21 +9,21 @@ const CollapsedLiveBiddingList = ({ list }) => {
         <Box key={item.id}>
           <Box
             sx={{
-              width: "100%",
-              borderRadius: "15px",
-              display: "flex",
-              padding: "10px",
-              alignItems: "center",
-              justifyContent: "space-between",
+              width: '100%',
+              borderRadius: '15px',
+              display: 'flex',
+              padding: '10px',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}
           >
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
-               <Image src={item.icon} width={30} height={30} alt="icons" />
+              <Image src={item.icon} width={30} height={30} alt="icons" />
             </Box>
           </Box>
         </Box>

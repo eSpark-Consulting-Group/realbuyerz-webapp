@@ -144,3 +144,9 @@ root {
     margin-left: 19px !important;
   }
 }
+
+.EZDrawer__container {
+  height: '100%' !important;
+  width: auto !important;
+  margin-top: 73px;
+}

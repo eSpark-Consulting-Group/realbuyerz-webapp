@@ -1,7 +1,7 @@
-import React from "react";
-import { Typography, Grid } from "@mui/material";
-import { Box } from "@mui/system";
-import Image from "next/image";
+import React from 'react';
+import { Typography, Grid } from '@mui/material';
+import { Box } from '@mui/system';
+import Image from 'next/image';
 
 const Cateogries = ({ categories }) => {
   return (
@@ -13,27 +13,27 @@ const Cateogries = ({ categories }) => {
     >
       <Box
         sx={{
-          display: "flex",
-          width: "65%",
-          maxWidth: "210px",
-          minWidth: "180px",
-          justifyContent: "space-between",
-          alignItems: "center",
+          display: 'flex',
+          width: '65%',
+          maxWidth: '210px',
+          minWidth: '180px',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <Box
           sx={{
-            padding: "0px 0px 0px 31px",
+            padding: '0px 0px 0px 31px',
           }}
         >
           <Typography
             variant="h6"
             sx={{
-              color: "#000",
-              fontSize: "12px",
-              fontStyle: "normal",
-              fontWeight: "600",
-              lineHeight: "normal",
+              color: '#000',
+              fontSize: '12px',
+              fontStyle: 'normal',
+              fontWeight: '600',
+              lineHeight: 'normal',
             }}
           >
             My Categories
@@ -41,7 +41,7 @@ const Cateogries = ({ categories }) => {
         </Box>
         <Box
           sx={{
-            padding: "0px 0px 0px 20px",
+            padding: '0px 0px 0px 20px',
           }}
         >
           <Image
@@ -58,15 +58,15 @@ const Cateogries = ({ categories }) => {
             <Typography
               variant="body1"
               sx={{
-                paddingLeft: "31px",
-                paddingBottom: "7px",
-                color: "#FB631C",
-                fontFamily: "Inter, sans-serif",
-                fontSize: "14px",
-                fontStyle: "normal",
+                paddingLeft: '31px',
+                paddingBottom: '7px',
+                color: '#FB631C',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                fontStyle: 'normal',
                 fontWeight: 500,
-                lineHeight: "normal",
-                letterSpacing: "0.56px",
+                lineHeight: 'normal',
+                letterSpacing: '0.56px',
               }}
             >
               {items.categoryName}

@@ -1,30 +1,31 @@
-import React, { useState } from "react";
-import ExpendedSiderBar from "./LeftSideBar/ExpendedSiderBar";
-import CollapsedSideBar from "./LeftSideBar/CollapsedSideBar";
+import React, { useState } from 'react';
+import ExpendedSiderBar from './LeftSideBar/ExpendedSiderBar';
+import CollapsedSideBar from './LeftSideBar/CollapsedSideBar';
 
 const LeftSideBar = ({ menuItem }) => {
-  let fullWidth = "100%";
-  let iconWidth = "60px";
+  const fullWidth = '100%';
+  const iconWidth = '60px';
   const [isCollapsed, setIsCollapsed] = useState(fullWidth);
 
   const collapsed = () => {
     setIsCollapsed((prevWidth) =>
-      prevWidth === fullWidth ? iconWidth : fullWidth,
-       );
+      prevWidth === fullWidth ? iconWidth : fullWidth
+    );
   };
   return (
     <>
       {isCollapsed === fullWidth ? (
         <ExpendedSiderBar
           isCollapsed={isCollapsed}
-           menuItem={menuItem}
+          menuItem={menuItem}
           isExpended={collapsed}
         />
       ) : (
         <CollapsedSideBar
           isCollapsed={isCollapsed}
-            menuItem={menuItem}
-            isCollaps={collapsed}/>
+          menuItem={menuItem}
+          isCollaps={collapsed}
+        />
       )}
     </>
   );

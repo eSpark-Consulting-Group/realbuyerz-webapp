@@ -1,8 +1,6 @@
-"use client";
-import BiddingDetails from "@/src/components/layouts/BiddingPage/BiddingDetails";
-import {
-  LIVE_BIDDING_DATA,
-} from "@/app/constents/LiveBidding";
+'use client';
+import BiddingDetails from '@/src/components/layouts/BiddingPage/BiddingDetails';
+import { LIVE_BIDDING_DATA } from '@/app/constents/LiveBidding';
 
 const page = () => {
   return (

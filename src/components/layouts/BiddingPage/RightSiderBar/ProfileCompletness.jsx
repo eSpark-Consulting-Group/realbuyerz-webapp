@@ -1,10 +1,10 @@
-import React from "react";
-import { Box } from "@mui/system";
-import { styled } from "@mui/material/styles";
-import { Grid, Typography } from "@mui/material";
+import React from 'react';
+import { Box } from '@mui/system';
+import { styled } from '@mui/material/styles';
+import { Grid, Typography } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress";
+} from '@mui/material/LinearProgress';
 
 const ProfileCompletness = ({ profileInfo }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -12,11 +12,11 @@ const ProfileCompletness = ({ profileInfo }) => {
     borderRadius: 5,
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+        theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: theme.palette.mode === "light" ? "#FB631C" : "#308fe8",
+      backgroundColor: theme.palette.mode === 'light' ? '#FB631C' : '#308fe8',
     },
   }));
 
@@ -26,26 +26,26 @@ const ProfileCompletness = ({ profileInfo }) => {
         item
         xs={12}
         sx={{
-          backgroundColor: "#EDF7FF",
+          backgroundColor: '#EDF7FF',
         }}
       >
         <Box></Box>
         <Typography
           sx={{
-            fontSize: "12px",
-            fontWeight: "600",
-            paddingLeft: "30px",
-            paddingTop: "20px",
+            fontSize: '12px',
+            fontWeight: '600',
+            paddingLeft: '30px',
+            paddingTop: '20px',
           }}
         >
           Profile Completeness:
         </Typography>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            paddingLeft: "30px",
-            paddingBottom: "15px",
+            display: 'flex',
+            alignItems: 'center',
+            paddingLeft: '30px',
+            paddingBottom: '15px',
           }}
         >
           <BorderLinearProgress
@@ -59,21 +59,21 @@ const ProfileCompletness = ({ profileInfo }) => {
         </Box>
         <Box
           sx={{
-            width: "100%",
-            height: "0px",
-            border: "1px solid #E5E5E5",
+            width: '100%',
+            height: '0px',
+            border: '1px solid #E5E5E5',
           }}
         ></Box>
         <Typography
           variant="body2"
           sx={{
-            width: "80%",
-            color: "#000",
-            fontSize: "12px",
-            fontStyle: "normal",
+            width: '80%',
+            color: '#000',
+            fontSize: '12px',
+            fontStyle: 'normal',
             fontWeight: 500,
-            lineHeight: "normal",
-            padding: "20px 20px 50px 30px",
+            lineHeight: 'normal',
+            padding: '20px 20px 50px 30px',
           }}
         >
           Ways to stand out to clients right now...

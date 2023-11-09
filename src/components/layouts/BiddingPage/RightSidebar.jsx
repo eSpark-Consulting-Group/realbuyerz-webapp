@@ -1,14 +1,14 @@
-"use client";
-import React from "react";
-import Grid from "@mui/material/Grid";
+'use client';
+import React from 'react';
+import Grid from '@mui/material/Grid';
 
-import Profile from "./RightSiderBar/Profile";
-import Proposals from "./RightSiderBar/Proposals";
-import Cateogries from "./RightSiderBar/Cateogries";
-import PropertyList from "./RightSiderBar/PropertyList";
-import CustomDivider from "./RightSiderBar/CustomDivider";
-import ProfileCompletness from "./RightSiderBar/ProfileCompletness";
-import AvailableConnects from "./RightSiderBar/AvailableConnects";
+import Profile from './RightSiderBar/Profile';
+import Proposals from './RightSiderBar/Proposals';
+import Cateogries from './RightSiderBar/Cateogries';
+import PropertyList from './RightSiderBar/PropertyList';
+import CustomDivider from './RightSiderBar/CustomDivider';
+import ProfileCompletness from './RightSiderBar/ProfileCompletness';
+import AvailableConnects from './RightSiderBar/AvailableConnects';
 
 const RightSidebar = ({ profileInfo }) => {
   return (
@@ -18,12 +18,12 @@ const RightSidebar = ({ profileInfo }) => {
           border={2}
           item
           sx={{
-            border: "1px solid #E4E4E4",
-            borderRadius: "10px",
-            background: "#FFF",
-            width: "100%",
-            height: "100%",
-            marginRight: "5px",
+            border: '1px solid #E4E4E4',
+            borderRadius: '10px',
+            background: '#FFF',
+            width: '100%',
+            height: '100%',
+            marginRight: '5px',
           }}
         >
           <Profile profileInfo={profileInfo} />
@@ -38,7 +38,7 @@ const RightSidebar = ({ profileInfo }) => {
           xs={12}
           item
           sx={{
-            marginRight: "5px",
+            marginRight: '5px',
           }}
         >
           <Proposals />

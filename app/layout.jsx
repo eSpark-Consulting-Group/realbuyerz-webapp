@@ -23,8 +23,8 @@ function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>
-            <MainHeader />
-            {/* <DashboardHeader /> */}
+            {/* <MainHeader /> */}
+            <DashboardHeader />
             <Box>{children}</Box>
             <Footer data={FOOTER_DATA} />
           </Box>
