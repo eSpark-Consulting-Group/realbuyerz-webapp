@@ -1,35 +1,35 @@
-import React from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import theme from "./theme";
-import "./globals.css";
-import Footer from "@/src/components/layouts/Footer";
-import MainHeader from "@/src/components/layouts/MainHeader";
-import { Box, Container } from "@mui/system";
-import { footerData } from "./constents/Constants";
-import DashboardHeader from "@/src/components/layouts/DashboardHeader";
+'use client';
+import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { Box } from '@mui/system';
+import Head from 'next/head';
 
-import { Inter } from "next/font/google";
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme';
 
-// If loading a variable font, you don't need to specify the font weight
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
-export default function RootLayout({ children }) {
+import './globals.css';
+
+import MainHeader from '@/src/components/layouts/MainHeader';
+
+import Footer from '@/src/components/layouts/Footer';
+import { FOOTER_DATA } from '@/app/constants/Constants';
+
+function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="font-inter">
+    <html lang="en">
+      <Head></Head>
+      <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Box class="super_container">
-            {/* <MainHeader /> */}
-            <DashboardHeader />
-            <Box class="content">{children}</Box>
-            <Footer />
+          <Box>
+            <MainHeader />
+            <Box>{children}</Box>
+            <Footer data={FOOTER_DATA} />
           </Box>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
+export default RootLayout;

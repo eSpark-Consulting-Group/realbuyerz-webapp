@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
@@ -434,3 +435,16 @@ export default function DashboardHeader() {
     </AppBar>
   );
 }
+=======
+'use client';
+
+function DashboardHeader() {
+  return (
+    <>
+      <h1>Headder</h1>
+    </>
+  );
+}
+
+export default DashboardHeader;
+>>>>>>> epic/issue/1
