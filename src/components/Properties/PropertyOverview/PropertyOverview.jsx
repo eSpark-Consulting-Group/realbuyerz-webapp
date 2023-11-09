@@ -13,11 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import {
-  propertyData,
-  propertyEstate,
-} from '@/app/constants/propertyconstants';
-
+import { propertyData, propertyEstate } from '@/app/constants/property';
 const PropertyOverview = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));

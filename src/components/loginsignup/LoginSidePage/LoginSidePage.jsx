@@ -2,8 +2,8 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import RealEstateImage from './RealEstateImage';
 import PropertyBuilding from './BuildingImage';
+import RealEstateImage from './RealEstateImage';
 import LoginPageText from './LoginPageText';
 
 const LoginSidePage = () => {
