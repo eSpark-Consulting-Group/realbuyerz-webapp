@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography, Button, Avatar, Box } from '@mui/material';
 import Link from 'next/link';
 
+import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
+
 const ViewAgentProfile = ({ image, name, link }) => {
   return (
     <Box
@@ -57,7 +59,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
               },
             }}
           >
-            View Agent Profile
+            {AGENT_PROFILE_DATA.agentProfile}
           </Button>
         </Link>
       </Box>
