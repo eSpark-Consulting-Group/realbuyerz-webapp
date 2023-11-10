@@ -82,7 +82,7 @@ function MainHeader() {
                 }}
               >
                 <Image
-                  src="./images/RealBuyers-Logo.svg"
+                  src="/images/RealBuyersLogo.svg"
                   alt={''}
                   height={37}
                   width={155}

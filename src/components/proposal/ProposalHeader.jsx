@@ -2,13 +2,16 @@ import React from 'react';
 import { Avatar, Grid, Box, Typography, Button } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Proposals } from '@/app/constants/Proposals';
+import Link from 'next/link';
+import Image from 'next/image';
 
-function ProposalHeader() {
+function ProposalHeader({ header }) {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
         <Box>
-          <Avatar src={''} sx={{ width: 60, height: 60 }} />
+          <Image src={header.avatar} width={60} height={60} sx={{ borderRadius: '50%' }} />
         </Box>
         <Box>
           <Typography
@@ -19,7 +22,9 @@ function ProposalHeader() {
               fontFamily: 'Inter',
               fontWeight: '500',
             }}
-          >{`John Doe`}</Typography>
+          >
+            {header.agentName}
+          </Typography>
           <br />
           <LocationOnIcon />
           <Typography
@@ -31,7 +36,7 @@ function ProposalHeader() {
               fontWeight: '500',
             }}
           >
-            {`city`}, {`country`} - {`3:16pm local time`}
+            {header.city}, {header.country} - {header.time} {header.timeZone}
           </Typography>
         </Box>
       </Grid>
@@ -47,6 +52,7 @@ function ProposalHeader() {
             width: '150px',
             height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
             color: '#FB631C',
+            border: '2px solid #FB631C',
             '&:hover': {
               color: '#fff',
             },
@@ -54,7 +60,7 @@ function ProposalHeader() {
           }}
           variant="outlined"
         >
-          Reject
+          {Proposals.rejectbuttons.title}
         </Button>
         <Button
           sx={{
@@ -67,7 +73,9 @@ function ProposalHeader() {
           }}
           variant="primary"
         >
-          <Typography sx={{ color: '#fff' }}>Connect</Typography>
+          <Typography sx={{ color: '#fff' }}>
+            {Proposals.connectbuttons.title}
+          </Typography>
         </Button>
       </Grid>
     </Grid>

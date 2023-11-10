@@ -1,18 +1,12 @@
 import React from 'react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
 import { Grid, Typography, Button } from '@mui/material';
 import ProposalSlider from './ProposalSlider';
 
-function ProposalMedia({ media, mediaType }) {
+function ProposalMedia({ media }) {
   return (
     <>
       <Grid container>
-        <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
+        <Grid item xs={6} gap={'26px'} sx={{ display: 'flex', padding: '5px' }}>
           <Typography
             variant="h2"
             sx={{
@@ -21,7 +15,9 @@ function ProposalMedia({ media, mediaType }) {
               fontFamily: 'Inter',
               fontWeight: '500',
             }}
-          >{`Project videos`}</Typography>
+          >
+            {`Project videos`}
+          </Typography>
         </Grid>
         <Grid
           item
@@ -47,7 +43,7 @@ function ProposalMedia({ media, mediaType }) {
         </Grid>
       </Grid>
       <Grid container sx={{ display: 'flex', gap: 'auto' }}>
-        <ProposalSlider data={media} sldierType={mediaType} />
+        <ProposalSlider data={media} />
       </Grid>
     </>
   );

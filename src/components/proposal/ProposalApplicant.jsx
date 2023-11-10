@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
-function ProposalApplicant() {
+function ProposalApplicant({ leftSection }) {
   return (
     <Grid
       item
@@ -12,12 +12,26 @@ function ProposalApplicant() {
         borderRight: '1px solid #E4E4E4',
       }}
     >
-      <Typography variant="h6" sx={{ pb: '10px' }}>
-        Applicant
+      <Typography
+        variant="h6"
+        sx={{
+          pb: '10px',
+          color: '#333',
+          fontSize: '12px',
+          fontWeight: '600',
+        }}
+      >
+        {leftSection.title}
       </Typography>
-      <Typography variant="body1">
-        Kashif has applied to or been invited to your or your company’s job need
-        experience custom template designers for custom posts archive creation
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#333',
+          fontSize: '12px',
+          fontWeight: '400',
+        }}
+      >
+        {leftSection.discription}
       </Typography>
     </Grid>
   );
