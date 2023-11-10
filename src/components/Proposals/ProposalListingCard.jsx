@@ -107,7 +107,13 @@ function ProposalListingCard({ proposalsData }) {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Typography sx={{ fontSize: '25px', fontWeight: '600', textTransform: 'uppercase' }}>
+                <Typography
+                  sx={{
+                    fontSize: '25px',
+                    fontWeight: '600',
+                    textTransform: 'uppercase',
+                  }}
+                >
                   {proposal.title}
                 </Typography>
               </Grid>

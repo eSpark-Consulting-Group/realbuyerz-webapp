@@ -1,17 +1,23 @@
 import React from 'react';
-import { Avatar, Grid, Box, Typography, Button } from '@mui/material';
+import { Grid, Box, Typography, Button } from '@mui/material';
+import Image from 'next/image';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 import { Proposals } from '@/app/constants/Proposals';
-import Link from 'next/link';
-import Image from 'next/image';
+
 
 function ProposalHeader({ header }) {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
         <Box>
-          <Image src={header?.avatar} width={60} height={60} sx={{ borderRadius: '50%' }} />
+          <Image
+            src={header?.avatar}
+            width={60}
+            height={60}
+            sx={{ borderRadius: '50%' }}
+          />
         </Box>
         <Box>
           <Typography
@@ -36,7 +42,8 @@ function ProposalHeader({ header }) {
               fontWeight: '500',
             }}
           >
-            {header?.city}, {header?.country} - {header?.time} {header?.timeZone}
+            {header?.city}, {header?.country} - {header?.time}{' '}
+            {header?.timeZone}
           </Typography>
         </Box>
       </Grid>

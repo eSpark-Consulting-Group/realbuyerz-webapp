@@ -52,7 +52,7 @@ export const PROPOSAL_LISTING = [
       '/images/proposals/images/proposalVideo5.png',
       '/images/proposals/images/proposalVideo6.png',
     ],
-  }
+  },
 ];
 export const PROPERTIES_LISTING = [];
 
@@ -60,13 +60,10 @@ export const CONSTANTS = {
   resetButton: { text: 'Reset', link: '' },
 };
 
-
 export const LISTING_TYPE = [
   { value: 'proposals', label: 'Proposals' },
   { value: 'properties', label: 'Properties' },
 ];
-
-
 
 export const Proposals = {
   location: {

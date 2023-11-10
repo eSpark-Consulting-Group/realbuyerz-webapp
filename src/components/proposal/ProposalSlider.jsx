@@ -46,7 +46,7 @@ const ProposalSlider = ({ media, mediaType }) => {
       },
     },
   };
-  console.log("media", media);
+  console.log('media', media);
   return (
     <>
       <Swiper {...swiperSettings}>
@@ -57,9 +57,7 @@ const ProposalSlider = ({ media, mediaType }) => {
                 <Image height={200} width={250} src={item} alt="" />
               ) : mediaType === 'videos' ? (
                 <Image height={200} width={250} src={item} alt="" />
-              ) : (
-                null
-              )}
+              ) : null}
             </Box>
           </SwiperSlide>
         ))}
