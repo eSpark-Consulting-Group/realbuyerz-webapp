@@ -27,7 +27,7 @@ function RootLayout({ children }) {
           <CssBaseline />
           <Box>
             {currentPath.include('/dashboard') ? (
-              <DashboardHeader subPath={pathParts[1]} />
+              <DashboardHeader />
             ) : (
               <MainHeader />
             )}
