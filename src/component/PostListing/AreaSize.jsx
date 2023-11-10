@@ -7,7 +7,28 @@ import {
   Autocomplete,
 } from '@mui/material';
 import Image from 'next/image';
+
+import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
+import { PROPERTY_INFORMATION } from './postlistingConstants';
+
 const AreaSize = ({ PropertySizeInformation }) => {
+  //   const [combinedData, setCombinedData] = useState({
+  //   seilingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+  //   propertySize: PROPERTY_INFORMATION.addInfo,
+  // });
+  const [propertyData, setPropertyData] = useState(
+    PROPERTY_BUYING_DETAIL.sellingDetails
+  );
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPropertyData({
+      ...propertyData,
+      sellingDetails: {
+        ...propertyData.sellingDetails,
+        [name]: value,
+      },
+    });
+  };
   const [value, setValue] = useState('');
   return (
     <>
@@ -50,16 +71,19 @@ const AreaSize = ({ PropertySizeInformation }) => {
               display: 'flex',
               flexDirection: { xs: 'column', sm: 'row', md: 'row' },
               gap: '10px',
-              marginLeft:"50px"
+              marginLeft: '50px',
             }}
           >
-            <TextField
+            {/* <TextField
               placeholder={item.placeholder}
               sx={{
                 width: { xs: '100%', md: '500px' },
               }}
-                  />
-                  {/* <Autocomplete
+              value={propertyData.sellingDetails[item.name]}
+              name={item.name}
+              onChange={handleInputChange}
+            /> */}
+            {/* <Autocomplete
               disablePortal
               id="combo-box-demo"
                       options={[
@@ -73,7 +97,7 @@ const AreaSize = ({ PropertySizeInformation }) => {
               )}
             //   onChange={handleInputChange}
             /> */}
-                  {/* <Autocomplete
+            {/* <Autocomplete
                       disablePortal
                       id={`combo-box-demo-${index}`}
                       options={[
@@ -86,24 +110,24 @@ const AreaSize = ({ PropertySizeInformation }) => {
                           <TextField {...params} label={params.label || "Select City"} />
               )}
             /> */}
-           <TextField
-                            sx={{
-                                width: { xs: '100%', md: '200px' },
-                                color: '#777777',
-                            }}
-                            variant="outlined"
-                            value={value}
-                            onChange={(e) => setValue(e.target.value)}
-                            select
-                            label="Select City"
-                        >
-                            <MenuItem key={1} value="test0">
-                                {item.option1}
-                            </MenuItem>
-                            <MenuItem key={2} value="test1">
-                                {item.option2}
-                            </MenuItem>
-                        </TextField>
+            <TextField
+              sx={{
+                width: { xs: '100%', md: '200px' },
+                color: '#777777',
+              }}
+              variant="outlined"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              select
+              label="Select City"
+            >
+              <MenuItem key={1} value="test0">
+                {item.option1}
+              </MenuItem>
+              <MenuItem key={2} value="test1">
+                {item.option2}
+              </MenuItem>
+            </TextField>
           </Box>
         </Box>
       ))}

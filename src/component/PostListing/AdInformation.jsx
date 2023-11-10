@@ -9,14 +9,14 @@ import PropertyAddInformation from './PropertyAddInformation';
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
 const AdInformation = ({inputChange}) => {
-  const [propertyData, setPropertyData] = useState(PROPERTY_BUYING_DETAIL)
-   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPropertyData({
-      ...propertyData,
-      [name]: value,
-    });
-  };
+  // const [propertyData, setPropertyData] = useState(PROPERTY_BUYING_DETAIL)
+  //  const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setPropertyData({
+  //     ...propertyData,
+  //     [name]: value,
+  //   });
+  // };
 
   // const handleClick = () => {
   //   console.log("propertyData",propertyData)
@@ -56,7 +56,7 @@ const AdInformation = ({inputChange}) => {
             }}
           >
             <PropertyAddInformation
-              inputChange={handleInputChange}
+              // inputChange={handleInputChange}
               PropertyInformation={PROPERTY_INFORMATION.addInfo}
             />
           </Box>

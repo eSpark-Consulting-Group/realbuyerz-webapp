@@ -12,9 +12,9 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        // justifyContent: 'center',
-                        // width: { xs: '100%', md: '80%', lg: 'auto' },
                         gap: '20px',
+                        background: "blue",
+                //   width: { xs: '400px', md: '800px' },
                         padding: "8px",
                     }}
                     key={index}
@@ -26,7 +26,6 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
                     <Box
                         sx={{
                             display: 'flex',
-                            // alignSelf: 'flex-start',
                             alignItems: 'center',
                             fontSize: '20px',
                             fontFamily: 'Inter',

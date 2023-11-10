@@ -7,7 +7,9 @@ import PostTitle from './PostTitle';
 import AreaSize from './AreaSize';
 import PropertInstallment from './PropertyInstallment';
 
+
 const PropertySize = () => {
+
   return (
     <Grid container>
       <Grid
@@ -38,30 +40,38 @@ const PropertySize = () => {
           <Box
             sx={{
               display: 'flex',
-              justifyContent:"center",
-              // flexDirection: 'column',
+              justifyContent: 'center',
               alignItems: 'center',
-              
             }}
           >
             <Box
               sx={{
-                display: "flex",
-                flexDirection:"column",
-                // alignItems: "center",
-                // justifyContent:"center",
-                width: {xs:"400px",md:'700px'},
-                paddingTop: '40px',
-                background:"pink"
-              
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: 'skyblue',
               }}
             >
-              <AreaSize
-                PropertySizeInformation={PROPERTY_INFORMATION.propertySize}
-              />
-              <PropertInstallment
-                PropertyInstallmentInfo={PROPERTY_INFORMATION.installment}
-              />
+              <Box
+                sx={{
+                  display: 'flex',
+                  width: { xs: '400px', md: '800px' },
+
+                  // //   flexDirection: "column",
+                  // // alignItems:"center",
+                  // justifyContent: 'center',
+                  paddingTop: '40px',
+                  background: 'green',
+                }}
+              >
+                <AreaSize
+                  PropertySizeInformation={PROPERTY_INFORMATION.propertySize}
+                />
+                <PropertInstallment
+                  PropertyInstallmentInfo={PROPERTY_INFORMATION.installment}
+                />
+              </Box>
             </Box>
           </Box>
         </Box>

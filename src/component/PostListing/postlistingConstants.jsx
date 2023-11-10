@@ -55,11 +55,13 @@ export const PROPERTY_INFORMATION = {
       image: 'assets/images/Title.svg',
       text: 'Title',
       placeholder: 'Enter property title e.g. Beautiful House in DHA Phase 5',
+      label: 'title',
     },
     {
       image: 'assets/images/Description.svg',
       text: 'Description',
       placeholder: 'Describe your property, it’s features, area it is in etc.',
+      label: 'description',
     },
   ],
   sell: [
@@ -94,14 +96,14 @@ export const PROPERTY_INFORMATION = {
       image: 'assets/images/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      option1: '1000sq'
+      option1: '1000sq',
     },
     {
       image: 'assets/images/amount.svg',
       text: 'Amount ',
       placeholder: 'Enter Amount.',
-      option2: '2000sq'
-    }
+      option2: '2000sq',
+    },
   ],
   installment: [
     {
@@ -169,6 +171,6 @@ export const PROPERTY_BUYING_DETAIL = {
     enterAmount: '',
     addAmenities: '',
     uploadImage: '',
-    uploadvideo:''
-  }
-}
+    uploadvideo: '',
+  },
+};
