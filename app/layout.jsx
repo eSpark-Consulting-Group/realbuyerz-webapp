@@ -18,7 +18,6 @@ import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 
 function RootLayout({ children }) {
   const currentPath = usePathname();
-  const pathParts = currentPath.split('/dashboard/');
 
   return (
     <html lang="en">
@@ -27,7 +26,7 @@ function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>
-            {currentPath.startsWith('/dashboard') ? (
+            {currentPath.include('/dashboard') ? (
               <DashboardHeader subPath={pathParts[1]} />
             ) : (
               <MainHeader />
