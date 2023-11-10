@@ -2,7 +2,9 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
+import RectangleBorderImage from '../Login/RectangleBorderImage';
 import SignupCard from './SignupCard';
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 
 const SignupBox = () => {
   return (
@@ -15,26 +17,10 @@ const SignupBox = () => {
             width: { xs: '100%', md: '100%' },
           }}
         >
-          <Box
-            component="div"
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              justifyContent: 'flex-end',
-              width: '500px',
-              height: '800px',
-              backgroundImage: 'url("/assets/images/Rectangle.svg")',
-              backgroundRepeat: 'no-repeat',
-            }}
-          >
-            <Box
-              sx={{
-                marginRight: '-80px',
-                paddingTop: '10px',
-              }}
-            >
-              <SignupCard />
-            </Box>
-          </Box>
+          <RectangleBorderImage
+            isLogin={false}
+            height={LOGIN_FORM.rectangleHeight.signupFormHeight}
+          />
           <Box
             sx={{
               display: { xs: 'flex', md: 'none' },
