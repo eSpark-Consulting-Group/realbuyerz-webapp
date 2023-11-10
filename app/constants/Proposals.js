@@ -7,6 +7,7 @@ export const PROPOSAL_LISTING = [
     title: '4 Bedrooms Apartment',
     description:
       'Lorem ipsum dolor sit amet consectetur. Pharetra non interdum id mauris arcu gravida sodales tellus. Erat in eget mollis nec eget sed viverra elit hac. Tempus tempus aenean in urna potenti maecenas lorem volutpat. Sollicitudin sed nisl ultrices elit nibh in lorem mattis orci. Ultrices lacus congue feugiat et. Purus volutpat urna vitae mauris nulla felis. Sed sodales ut euismod congue ut magna consectetur vulputate sit. Amet bibendum id pretium lacus bibendum eget. Egestas nibh magna ipsum sapien consectetur platea pulvinar vitae tincidunt. Id massa mauris mauris vitae sit in pellentesque enim mauris. Nisl ipsum est praesent pretium fermentum accumsan. Erat cum dolor enim rutrum risus eu.',
+    purpose: 'Buying',
     leftSection: {
       title: 'Applicant',
       discription:
@@ -65,6 +66,8 @@ export const LISTING_TYPE = [
   { value: 'properties', label: 'Properties' },
 ];
 
+
+
 export const Proposals = {
   location: {
     title: 'Location & Purpose',
@@ -89,3 +92,9 @@ export const Proposals = {
     link: '',
   },
 };
+// export const PROPERTY_STATS = [
+//   { title: 'Purpose', value: 'purpose' },
+//   { title: 'Property Type', value: 'propertyType' },
+//   { title: 'City', value: 'city' },
+//   { title: 'Location', value: 'location' },
+// ];
