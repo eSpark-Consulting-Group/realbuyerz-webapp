@@ -1,15 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './PostTitle';
+import PostTitle from './Posttitle';
 import AreaSize from './AreaSize';
 import PropertInstallment from './PropertyInstallment';
 
-
 const PropertySize = () => {
-
   return (
     <Grid container>
       <Grid
@@ -47,31 +45,17 @@ const PropertySize = () => {
             <Box
               sx={{
                 display: 'flex',
+                width: { xs: '400px', md: '770px' },
                 flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                background: 'skyblue',
+                paddingTop: '40px',
               }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  width: { xs: '400px', md: '800px' },
-
-                  // //   flexDirection: "column",
-                  // // alignItems:"center",
-                  // justifyContent: 'center',
-                  paddingTop: '40px',
-                  background: 'green',
-                }}
-              >
-                <AreaSize
-                  PropertySizeInformation={PROPERTY_INFORMATION.propertySize}
-                />
-                <PropertInstallment
-                  PropertyInstallmentInfo={PROPERTY_INFORMATION.installment}
-                />
-              </Box>
+              <AreaSize
+                PropertySizeInformation={PROPERTY_INFORMATION.propertySize}
+              />
+              <PropertInstallment
+                PropertyInstallmentInfo={PROPERTY_INFORMATION.installment}
+              />
             </Box>
           </Box>
         </Box>

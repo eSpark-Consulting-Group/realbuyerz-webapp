@@ -4,11 +4,38 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
+import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
-const SelectProperyType = ({image,label,iconTitle}) => {
+const SelectProperyType = ({ image, label, iconTitle }) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
-  const handleButtonClick = (index) => {
+  const handleActiveButtonClick = (index) => {
     setActiveButtonIndex(index);
+  };
+  const [propertyData, setPropertyData] = useState({
+    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    propertyTypeData: iconTitle.map((item) => ({ ...item, value: '' })),
+  });
+  const handleButtonClick = (index) => {
+    const selectedText = iconTitle[index].title;
+
+    setPropertyData((prevData) => {
+      const updatedPurposeData = [...prevData.propertyTypeData];
+      updatedPurposeData[index].value = selectedText;
+
+      const updatedSellingData = {
+        ...prevData.sellingData,
+        [iconTitle[index].label]: selectedText,
+      };
+
+      return {
+        ...prevData,
+        sellingData: updatedSellingData,
+        propertyTypeData: updatedPurposeData,
+      };
+    });
+  };
+  const handleClickOK = () => {
+    console.log('feompropertytype', propertyData);
   };
   return (
     <Box
@@ -36,11 +63,7 @@ const SelectProperyType = ({image,label,iconTitle}) => {
             gap: '8px',
           }}
         >
-          <Image
-            src={image}
-            width={47}
-            height={45}
-          />
+          <Image src={image} width={47} height={45} />
           <Typography
             sx={{
               color: '#333333',
@@ -73,7 +96,7 @@ const SelectProperyType = ({image,label,iconTitle}) => {
             },
           }}
         >
-          {iconTitle.map((item, index) => (
+          {propertyData.propertyTypeData.map((item, index) => (
             <Button
               sx={{
                 borderRadius: '20px',
@@ -89,12 +112,16 @@ const SelectProperyType = ({image,label,iconTitle}) => {
               }}
               key={index}
               disabled={index === activeButtonIndex}
-              onClick={() => handleButtonClick(index)}
+              onClick={() => {
+                handleActiveButtonClick(index);
+                handleButtonClick(index);
+              }}
             >
               <Image src={item.image} width={33} height={31} />
-              <Typography>{item.title}</Typography>
+              {item.title}
             </Button>
           ))}
+          <Button onClick={handleClickOK()}>Ok</Button>
         </Box>
       </Box>
     </Box>

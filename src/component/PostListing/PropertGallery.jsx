@@ -3,9 +3,9 @@ import { Typography, Box, Grid } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './PostTitle';
+import PostTitle from './Posttitle';
 import UploadMediaInstructions from './UploadMediaInstructions';
-import UploadGalleryButton from './UploadGalleryButton';
+import UploadMediaButton from './UploadMediaButton';
 
 const PropertyGallery = () => {
   return (
@@ -35,29 +35,30 @@ const PropertyGallery = () => {
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.imagesvidoes} />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '70px',
+            }}
+          >
             <Box
               sx={{
                 display: 'flex',
-              flexDirection: "column",
-                justifyContent:"center",
-              alignItems: "center",
-                padding:"70px"
+                flexDirection: 'column',
+                gap: '20px',
               }}
-          >
-            <Box sx={{
-              display: 'flex',
-              flexDirection: "column",
-              gap:"20px"
-
-            }}>
+            >
               <Box
                 sx={{
-                display: 'flex',
+                  display: 'flex',
                   alignSelf: 'flex-start',
                   alignItems: 'center',
                   fontSize: { xs: '20px', md: '25px' },
                   fontWeight: 400,
-                gap: '10px',
+                  gap: '10px',
                 }}
               >
                 <Image
@@ -76,15 +77,19 @@ const PropertyGallery = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                 }}
               >
-                <UploadGalleryButton PropertyInformation={PROPERTY_INFORMATION.uploadButton} />
+                <UploadMediaButton
+                  PropertyInformation={PROPERTY_INFORMATION.uploadButton}
+                />
                 <Box>
                   {' '}
-                  <UploadMediaInstructions PropertyInformation={PROPERTY_INFORMATION.uploadInstruction} />
+                  <UploadMediaInstructions
+                    PropertyInformation={PROPERTY_INFORMATION.uploadInstruction}
+                  />
                 </Box>
               </Box>
             </Box>
-            </Box>
           </Box>
+        </Box>
       </Grid>
     </Grid>
   );

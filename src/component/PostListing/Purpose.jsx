@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './PostTitle';
+import PostTitle from './Posttitle';
 import SelectProperyType from './SelectPropertyType';
 import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';
@@ -36,7 +36,9 @@ const Purpose = () => {
             width: '90%',
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION.postTitles.locationandpurpose} />
+          <PostTitle
+            text={PROPERTY_INFORMATION.postTitles.locationandpurpose}
+          />
           <Box
             sx={{
               display: 'flex',
@@ -52,19 +54,20 @@ const Purpose = () => {
                 height: { xs: '1000px', md: '600px' },
                 gap: { xs: '10px', md: '30px' },
                 padding: { xs: '0px', md: '40px' },
-
               }}
             >
               <PropertyStatus
                 PropertyInformation={PROPERTY_INFORMATION.purpose}
                 PropertySell={PROPERTY_INFORMATION.sell}
               />
-              <SelectProperyType image={PROPERTY_INFORMATION.propertyType.images}
+              <SelectProperyType
+                image={PROPERTY_INFORMATION.propertyType.images}
                 label={PROPERTY_INFORMATION.propertyType.text}
                 iconTitle={PROPERTY_INFORMATION.IconTitle}
               />
-              <SelectCityType image={PROPERTY_INFORMATION.city.images}
-              label={PROPERTY_INFORMATION.city.text}
+              <SelectCityType
+                image={PROPERTY_INFORMATION.city.images}
+                label={PROPERTY_INFORMATION.city.text}
               />
               <SelectLocationType />
             </Box>

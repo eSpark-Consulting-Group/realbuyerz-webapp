@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 
-const SubmitButton = ({handleClickButton}) => {
-  const Savedraft = "Save as draft";
-  const SubmitAd = "Submit Ad"
+const SubmitButton = ({ handleClickButton }) => {
+  const Savedraft = 'Save as draft';
+  const SubmitAd = 'Submit Ad';
   return (
     <Grid container>
       <Grid

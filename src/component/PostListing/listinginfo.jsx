@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
 
-const ListingInfo = ({propertyInfo}) => {
+const ListingInfo = ({ propertyInfo }) => {
   return (
     <Box
       sx={{

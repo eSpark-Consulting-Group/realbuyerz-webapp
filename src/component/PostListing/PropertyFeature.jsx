@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './PostTitle';
+import PostTitle from './Posttitle';
 import PropertyFacilities from './PropertyFacilities';
 import AddAmenities from './AddAmenities';
 

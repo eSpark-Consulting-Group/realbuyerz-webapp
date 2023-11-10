@@ -1,26 +1,12 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
-import { Typography, Box, TextField, Grid } from '@mui/material';
-import Image from 'next/image';
+import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './PostTitle';
+import PostTitle from './Posttitle';
 import PropertyAddInformation from './PropertyAddInformation';
-import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
-const AdInformation = ({inputChange}) => {
-  // const [propertyData, setPropertyData] = useState(PROPERTY_BUYING_DETAIL)
-  //  const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setPropertyData({
-  //     ...propertyData,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleClick = () => {
-  //   console.log("propertyData",propertyData)
-  // }
+const AdInformation = ({ inputChange }) => {
   return (
     <Grid container>
       <Grid
@@ -56,7 +42,6 @@ const AdInformation = ({inputChange}) => {
             }}
           >
             <PropertyAddInformation
-              // inputChange={handleInputChange}
               PropertyInformation={PROPERTY_INFORMATION.addInfo}
             />
           </Box>

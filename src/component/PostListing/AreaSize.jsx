@@ -5,34 +5,41 @@ import {
   TextField,
   MenuItem,
   Autocomplete,
+  Button,
 } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 import { PROPERTY_INFORMATION } from './postlistingConstants';
+import SelectCityType from './SelectCity';
 
 const AreaSize = ({ PropertySizeInformation }) => {
-  //   const [combinedData, setCombinedData] = useState({
-  //   seilingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-  //   propertySize: PROPERTY_INFORMATION.addInfo,
-  // });
-  const [propertyData, setPropertyData] = useState(
-    PROPERTY_BUYING_DETAIL.sellingDetails
-  );
+  const [propertyData, setPropertyData] = useState({
+    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    propertySize: PropertySizeInformation.map((item) => ({
+      ...item,
+      value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
+    })),
+  });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setPropertyData({
-      ...propertyData,
-      sellingDetails: {
-        ...propertyData.sellingDetails,
+    setPropertyData((prevData) => ({
+      ...prevData,
+      sellingData: {
+        ...prevData.sellingData,
         [name]: value,
       },
-    });
+      propertySize: prevData.propertySize.map((item) =>
+        item.label === name ? { ...item, value } : item
+      ),
+    }));
   };
-  const [value, setValue] = useState('');
+  const handleClickBtn = () => {
+    console.log('fromareacomponent', propertyData);
+  };
   return (
     <>
-      {PropertySizeInformation?.map((item, index) => (
+      {propertyData.propertySize?.map((item, index) => (
         <Box
           sx={{
             display: 'flex',
@@ -41,7 +48,6 @@ const AreaSize = ({ PropertySizeInformation }) => {
             alignItems: 'center',
             gap: '10px',
             padding: '5px',
-            // width: { xs: '100%', md: '80%', lg: 'auto' },
           }}
           key={index}
         >
@@ -74,63 +80,28 @@ const AreaSize = ({ PropertySizeInformation }) => {
               marginLeft: '50px',
             }}
           >
-            {/* <TextField
+            <TextField
               placeholder={item.placeholder}
               sx={{
                 width: { xs: '100%', md: '500px' },
               }}
-              value={propertyData.sellingDetails[item.name]}
-              name={item.name}
+              name={item.label}
               onChange={handleInputChange}
-            /> */}
-            {/* <Autocomplete
+            />
+            {/* <SelectCityType  /> */}
+            <Autocomplete
               disablePortal
               id="combo-box-demo"
-                      options={[
-                          item.option1,
-                          item.option2
-              ]}
-              getOptionLabel={(option) => option.label}
-              sx={{ width: '100%' }}
+              options={PROPERTY_INFORMATION.selectCityOptions}
+              sx={{ width: 200 }}
               renderInput={(params) => (
                 <TextField {...params} label="Select City" />
               )}
-            //   onChange={handleInputChange}
-            /> */}
-            {/* <Autocomplete
-                      disablePortal
-                      id={`combo-box-demo-${index}`}
-                      options={[
-                          item.option1,
-                          item.option2
-                      ]
-                      }
-                      sx={{ width: 200 }}
-                      renderInput={(params) => (
-                          <TextField {...params} label={params.label || "Select City"} />
-              )}
-            /> */}
-            <TextField
-              sx={{
-                width: { xs: '100%', md: '200px' },
-                color: '#777777',
-              }}
-              variant="outlined"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              select
-              label="Select City"
-            >
-              <MenuItem key={1} value="test0">
-                {item.option1}
-              </MenuItem>
-              <MenuItem key={2} value="test1">
-                {item.option2}
-              </MenuItem>
-            </TextField>
+            />
           </Box>
         </Box>
       ))}
+      <Button onClick={handleClickBtn}>OK</Button>
     </>
   );
 };

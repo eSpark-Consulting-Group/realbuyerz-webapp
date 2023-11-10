@@ -1,11 +1,34 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField, MenuItem } from '@mui/material';
+import {
+  Typography,
+  Box,
+  TextField,
+  Autocomplete,
+  Button,
+} from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
+import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
-const SelectCityType = ({image,label}) => {
-  const [value, setValue] = useState('');
+const SelectCityType = ({ image, label }) => {
+  const [propertData, setPropertyData] = useState({
+    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    selectCity: PROPERTY_INFORMATION.selectCityOptions,
+  });
+  const handleCityChange = (event, value) => {
+    setPropertyData((prevData) => ({
+      ...prevData,
+      sellingData: {
+        ...prevData.sellingData,
+        selectCityOptions: value ? value.label : '',
+      },
+    }));
+  };
+
+  const handleClick = () => {
+    console.log('fromselectcity', propertData);
+  };
   return (
     <>
       <Box
@@ -17,42 +40,29 @@ const SelectCityType = ({image,label}) => {
           fontFamily: 'Inter',
           fontWeight: 400,
           gap: '8px',
-
         }}
       >
         <Image src={image} width={47} height={45} />
         <Typography
           sx={{
             color: '#333333',
-
           }}
         >
           {label}{' '}
         </Typography>
         <span style={{ color: '#FF0000' }}>*</span>
       </Box>
-      <TextField
-        sx={{
-          width: { xs: '100%', md: '400px' },
-          color: '#777777',
-          marginLeft: { xs: "0px", md: "50px" }
-        }}
-        variant="outlined"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        select
-        label="Select City"
-      >
-        <MenuItem key={1} value="test0">
-          None
-        </MenuItem>
-        <MenuItem key={2} value="test1">
-          Test 1
-        </MenuItem>
-        <MenuItem key={3} value="test2">
-          Test 2
-        </MenuItem>
-      </TextField>
+
+      <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={propertData.selectCity}
+        sx={{ width: { xs: '50%', md: '300px' } }}
+        renderInput={(params) => <TextField {...params} label="Select City" />}
+        onChange={handleCityChange}
+      />
+
+      <Button onClick={handleClick}>Ok</Button>
     </>
   );
 };

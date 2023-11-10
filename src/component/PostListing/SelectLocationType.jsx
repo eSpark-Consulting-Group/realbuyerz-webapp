@@ -16,7 +16,11 @@ const SelectLocationType = () => {
         gap: '8px',
       }}
     >
-      <Image src={PROPERTY_INFORMATION.location.images} width={47} height={45} />
+      <Image
+        src={PROPERTY_INFORMATION.location.images}
+        width={47}
+        height={45}
+      />
       <Typography
         sx={{
           color: '#333333',

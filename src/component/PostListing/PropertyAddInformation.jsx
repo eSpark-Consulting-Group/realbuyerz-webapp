@@ -1,29 +1,38 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, TextField, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
-import { PROPERTY_INFORMATION } from './postlistingConstants';
 
-const PropertyAddInformation = ({ PropertyInformation, inputChange }) => {
+const PropertyAddInformation = ({
+  PropertyInformation,
+  inputChange,
+  handleClickButton,
+}) => {
   const [propertyData, setPropertyData] = useState({
-    seilingData:PROPERTY_BUYING_DETAIL.sellingDetails,
-    propertySize:PROPERTY_INFORMATION.addInfo
-  })
-const handleInputChange = (event) => {
-  const { name, value } = event.target;
-  setPropertyData((prevData) => ({
-    ...prevData,
-    sellingData: {
-      ...prevData.seilingData,
-      [name]: value,
-    },
-  }));
-};
-
+    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    addInfo: PropertyInformation.map((item) => ({
+      ...item,
+      value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
+    })),
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPropertyData((prevData) => ({
+      ...prevData,
+      sellingData: {
+        ...prevData.sellingData,
+        [name]: value,
+      },
+      addInfo: prevData.addInfo.map((item) =>
+        item.label === name ? { ...item, value } : item
+      ),
+    }));
+  };
   const handleClickBtn = () => {
-    console.log("fromaddcomponnet",propertyData)
-  }
+    console.log('fromaddcomponnet', propertyData);
+  };
+  console.log('property', propertyData);
   return (
     <Box
       sx={{
@@ -33,7 +42,7 @@ const handleInputChange = (event) => {
         width: '700px',
       }}
     >
-      {propertyData.propertySize((item, index) => (
+      {propertyData.addInfo.map((item, index) => (
         <Box
           sx={{
             padding: '15px',
