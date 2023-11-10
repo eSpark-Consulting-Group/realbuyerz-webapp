@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PROPERTY_STATS } from '@/app/constants/Proposals';
+import { PROPERTY_STATS, Proposals } from '@/app/constants/Proposals';
 
 const styles = {
   container: {
@@ -36,20 +36,37 @@ function ProposalListingCard({ proposalsData }) {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the range of currently displayed items
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const currentItems = proposalsData.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Handle pagination change
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
 
+  const renderLocationInfo = (location) => {
+    return Object.keys(location).slice(1).map((key) => (
+      <Box
+        key={key}
+        sx={{
+          display: 'flex',
+          fontSize: '16px',
+          pt: '10px',
+          gap: '5px',
+        }}
+      >
+        <Typography sx={{ fontWeight: '500' }}>
+          {Proposals?.location[key]}
+        </Typography>
+        <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>
+          {location[key]}
+        </Typography>
+      </Box>
+    ));
+  };
+
   return (
     <>
-      {currentItems?.map((proposal, index) => (
+      {proposalsData?.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      ).map((proposal, index) => (
         <Grid
           key={index}
           container
@@ -107,12 +124,12 @@ function ProposalListingCard({ proposalsData }) {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Typography sx={{ fontSize: '25px', fontWeight: '600' }}>
+                <Typography sx={{ fontSize: '25px', fontWeight: '600', textTransform: 'uppercase' }}>
                   {proposal.title}
                 </Typography>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`/proposal/${proposal.agentName}`}>
+                <Link href={`/proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       Restore Property
@@ -124,24 +141,7 @@ function ProposalListingCard({ proposalsData }) {
             <Divider sx={{ py: '5px' }} />
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
-                {PROPERTY_STATS?.map((propertyStats) => (
-                  <Box
-                    key={propertyStats.value}
-                    sx={{
-                      display: 'flex',
-                      fontSize: '16px',
-                      pt: '10px',
-                      gap: '5px',
-                    }}
-                  >
-                    <Typography sx={{ fontWeight: '500' }}>
-                      {propertyStats.title}:
-                    </Typography>
-                    <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>
-                      {proposal[propertyStats.value]}
-                    </Typography>
-                  </Box>
-                ))}
+                {renderLocationInfo(proposal.location)}
               </Grid>
               <Grid item xs={2} sx={{ justifyContent: 'center' }}>
                 <Box

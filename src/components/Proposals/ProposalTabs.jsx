@@ -10,8 +10,8 @@ function CustomTabPanel({ data, value, index, tabProposalStatus }) {
     value === 0
       ? data
       : data.filter(
-          (proposal) => proposal.proposalStatus === tabProposalStatus
-        );
+        (proposal) => proposal.proposalStatus === tabProposalStatus
+      );
 
   return (
     <div
@@ -78,9 +78,9 @@ function ProposalTabs({ filteredProposalsData }) {
                 tab.tabProposalStatus === 'All'
                   ? filteredProposalsData.length
                   : filteredProposalsData.filter(
-                      (proposal) =>
-                        proposal.proposalStatus === tab.tabProposalStatus
-                    ).length;
+                    (proposal) =>
+                      proposal.proposalStatus === tab.tabProposalStatus
+                  ).length;
 
               return (
                 <Tab

@@ -11,7 +11,7 @@ function ProposalHeader({ header }) {
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
         <Box>
-          <Image src={header.avatar} width={60} height={60} sx={{ borderRadius: '50%' }} />
+          <Image src={header?.avatar} width={60} height={60} sx={{ borderRadius: '50%' }} />
         </Box>
         <Box>
           <Typography
@@ -23,7 +23,7 @@ function ProposalHeader({ header }) {
               fontWeight: '500',
             }}
           >
-            {header.agentName}
+            {header?.agentName}
           </Typography>
           <br />
           <LocationOnIcon />
@@ -36,7 +36,7 @@ function ProposalHeader({ header }) {
               fontWeight: '500',
             }}
           >
-            {header.city}, {header.country} - {header.time} {header.timeZone}
+            {header?.city}, {header?.country} - {header?.time} {header?.timeZone}
           </Typography>
         </Box>
       </Grid>
@@ -60,7 +60,7 @@ function ProposalHeader({ header }) {
           }}
           variant="outlined"
         >
-          {Proposals.rejectbuttons.title}
+          {Proposals?.rejectbuttons?.title}
         </Button>
         <Button
           sx={{
@@ -74,7 +74,7 @@ function ProposalHeader({ header }) {
           variant="primary"
         >
           <Typography sx={{ color: '#fff' }}>
-            {Proposals.connectbuttons.title}
+            {Proposals?.connectbuttons?.title}
           </Typography>
         </Button>
       </Grid>

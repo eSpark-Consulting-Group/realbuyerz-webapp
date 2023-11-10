@@ -21,7 +21,7 @@ function ProposalApplicant({ leftSection }) {
           fontWeight: '600',
         }}
       >
-        {leftSection.title}
+        {leftSection?.title}
       </Typography>
       <Typography
         variant="body1"
@@ -31,7 +31,7 @@ function ProposalApplicant({ leftSection }) {
           fontWeight: '400',
         }}
       >
-        {leftSection.discription}
+        {leftSection?.discription}
       </Typography>
     </Grid>
   );

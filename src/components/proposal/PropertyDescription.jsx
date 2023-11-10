@@ -24,7 +24,7 @@ const PropertyDescription = ({ details }) => {
         }}
         variant="h3"
       >
-        {details.title}
+        {details?.title}
       </Typography>
       <Typography
         sx={{
@@ -34,7 +34,7 @@ const PropertyDescription = ({ details }) => {
           fontWeight: '400',
         }}
       >
-        {details.description}
+        {details?.description}
       </Typography>
     </div>
   );
