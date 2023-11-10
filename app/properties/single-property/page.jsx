@@ -5,7 +5,8 @@ import Sliders from '@/src/components/Properties/Slider/Slider';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
-import { propertyData } from '@/app/constants/propertyconstants';
+
+import { propertyData } from '@/app/constants/property';
 
 const propertyDeal = () => {
   return (
