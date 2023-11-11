@@ -46,7 +46,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                     color: '#000',
                     fontSize: '16px',
                     fontWeight: '500',
-                    px: '20px',
+                    px: '19px',
                   }}
                 >
                   {item.title}

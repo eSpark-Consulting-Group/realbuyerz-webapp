@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box } from '@mui/system';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Tooltip, Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import ExpendedLiveBiddingList from './ExpendedLiveBiddingList';
@@ -34,18 +34,25 @@ const ExpendedSiderBar = ({ menuItem, isCollapsed, isExpended }) => {
           }}
         >
           <Box sx={{ position: 'relative' }}>
-            <Box
-              sx={{
-                position: 'absolute',
-                right: 0,
-              }}
-            >
-              <ArrowBackIosNewIcon
-                onClick={isExpended}
-                fontSize="small"
-                sx={{ cursor: 'pointer' }}
-              />
-            </Box>
+            <Tooltip describeChild title="Click To Collapse">
+              <Box
+                sx={{
+                  position: 'absolute',
+                  right: -30,
+                  width: '36px',
+                  height: '35px',
+                  backgroundColor: '#FFF',
+                  borderRight: '2px solid #E4E4E4',
+                  borderRadius: '100%',
+                }}
+              >
+                <ArrowBackIosNewIcon
+                  onClick={isExpended}
+                  fontSize="small"
+                  sx={{ cursor: 'pointer', mt: 1, ml: 1, color: '#000' }}
+                />
+              </Box>
+            </Tooltip>
           </Box>
           <Box
             sx={{
@@ -69,7 +76,7 @@ const ExpendedSiderBar = ({ menuItem, isCollapsed, isExpended }) => {
                 color: '#FB631C',
                 fontSize: '16px',
                 fontWeight: '500',
-                px: '20px',
+                px: '19px',
               }}
             >
               Live Bidding

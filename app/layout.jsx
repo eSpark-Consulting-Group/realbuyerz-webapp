@@ -14,6 +14,7 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 import DashboardHeader from '@/src/components/layouts/DashboardHeader';
+console.log(MainHeader)
 
 function RootLayout({ children }) {
   return (
@@ -23,7 +24,7 @@ function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>
-            {/* <MainHeader /> */}
+            {/* <MainHeader /> */}  
             <DashboardHeader />
             <Box>{children}</Box>
             <Footer data={FOOTER_DATA} />

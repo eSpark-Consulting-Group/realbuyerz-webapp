@@ -7,13 +7,13 @@ import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import { HEADER_MENU, MENU_ITEM } from '@/app/constents/LiveBidding';
+import { Button } from '@mui/material';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import LeftSideBar from './BiddingPage/LeftSideBar';
 import DesktopDashboardHeader from './DesktopDashboardHeader';
+import { HEADER_MENU, MENU_ITEM } from '@/app/constents/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 
 export default function DashboardHeader() {
@@ -57,24 +57,24 @@ export default function DashboardHeader() {
               alignItems: 'center',
             }}
           >
-            <IconButton
+            <Button
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{
-                display: { xs: 'block', md: 'block', lg: 'none' },
+                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
                 p: 0,
                 color: '#000',
               }}
             >
               <MenuIcon />
-            </IconButton>
+            </Button>
             <Box
               sx={{
                 display: { xs: 'flex' },
-                mx: { xs: 'auto', md: 0 },
+                mx: { xs: 0, md: 0, sm: 0 },
                 alignItems: 'center',
               }}
             >
@@ -83,7 +83,7 @@ export default function DashboardHeader() {
                 noWrap
                 component="a"
                 sx={{
-                  display: { xs: 'flex' },
+                  display: { xs: 'flex', md: 'none', lg: 'none' },
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
@@ -132,7 +132,6 @@ export default function DashboardHeader() {
                 <Box
                   sx={{
                     height: '10%',
-                    backgroundColor: 'red',
                   }}
                 >
                   <LeftSideBar menuItem={MENU_ITEM} />

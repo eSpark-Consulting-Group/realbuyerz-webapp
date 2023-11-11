@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -16,18 +16,26 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
       }}
     >
       <Box sx={{ position: 'relative' }}>
-        <Box
-          sx={{
-            position: 'absolute',
-            right: 0,
-          }}
-        >
-          <ArrowForwardIosIcon
-            fontSize="small"
-            onClick={isCollaps}
-            sx={{ cursor: 'pointer' }}
-          />
-        </Box>
+        <Tooltip describeChild title="Click To Expand">
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 17,
+              right: -15,
+              width: '30px',
+              height: '30px',
+              backgroundColor: '#FFF',
+              borderRight: '2px solid #E4E4E4',
+              borderRadius: '100%',
+            }}
+          >
+            <ArrowForwardIosIcon
+              fontSize="small"
+              onClick={isCollaps}
+              sx={{ cursor: 'pointer', m: 0.6, color: '#000' }}
+            />
+          </Box>
+        </Tooltip>
       </Box>
       <Grid
         container
