@@ -4,15 +4,12 @@ import { Typography, Box, Grid } from '@mui/material';
 
 import Notification from './Notification';
 import { AGENT_PREFERENCES } from '@/app/constants/Preference';
-import { PROPERTY_AREASIZE_AND_REPORT } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
+import { createInitialState } from '@/utils/agentPreferenceState';
 
 const PreferenceSettings = () => {
-  const [formData, setFormData] = useState({
-    emailData: PROPERTY_AREASIZE_AND_REPORT.report,
-    toggleData: AGENT_PREFERENCES.updates,
-  });
+  const [formData, setFormData] = useState(createInitialState);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -25,23 +22,12 @@ const PreferenceSettings = () => {
   };
   const handleInputChangeToggle = (name, checked) => {
     setFormData((prevData) => {
-      const updatedToggleData = prevData.toggleData.map((item) => {
-        if (item.label === name) {
-          return {
-            ...item,
-            value: checked,
-          };
-        }
-        return item;
-      });
-      const updatedEmailData = {
-        ...prevData.emailData,
-        [name]: checked,
-      };
       return {
         ...prevData,
-        toggleData: updatedToggleData,
-        emailData: updatedEmailData,
+        toggleData: prevData.toggleData.map((item) =>
+          item.label === name ? { ...item, value: checked } : item
+        ),
+        emailData: { ...prevData.emailData, [name]: checked },
       };
     });
   };
@@ -63,7 +49,7 @@ const PreferenceSettings = () => {
         md={10}
         sx={{
           backgroundImage: 'url("/images/RealBuyers.svg")',
-          backgroundPosition: 'center top',
+          backgroundPosition: 'center 35%',
           backgroundRepeat: 'no-repeat',
           backgroundSize: '70% 70%',
         }}
