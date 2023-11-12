@@ -1,6 +1,6 @@
 export const ALL_PROPOSALS = 'All Proposals (1)';
 export const DASHBOARD_DATA = {
-  userOne: {
+  user: {
     title: 'John Doe',
     location: 'Pakistan',
     amount: '$100.00',
