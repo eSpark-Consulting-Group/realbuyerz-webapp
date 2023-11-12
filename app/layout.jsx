@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
+import { usePathname } from 'next/navigation';
 
 import './globals.css';
 
@@ -14,10 +15,9 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 import DashboardHeader from '@/src/components/layouts/DashboardHeader';
-console.log(MainHeader);
 
 function RootLayout({ children }) {
-  const currentPath = window.location.pathname;
+  const currentPath = usePathname();
   const pathParts = currentPath.split('/dashboard/');
 
   return (

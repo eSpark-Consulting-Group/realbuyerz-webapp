@@ -9,6 +9,8 @@ export const HEADER_MENU = [
 ];
 export const VIEW = 'View';
 export const MAIN_TITLE = 'LIVE BIDDING IN PROPERTIES';
+export const MY_LISTING = 'My Listing';
+export const POST_LISTING = 'Post Listing';
 
 export const MENU_ITEM = [
   {

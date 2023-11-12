@@ -3,7 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, Button, IconButton, Menu, Typography } from '@mui/material';
+import { Badge, IconButton, Menu, Typography } from '@mui/material';
+
+import { MY_LISTING, POST_LISTING } from '@/app/constants/LiveBidding';
+import MyListingResponsiveButton from './MyListingResponsiveButton';
+import PostListingResponsiveButton from './PostListingResponsiveButton';
 
 const MobileResponsiveDashboardHeader = ({
   HEADER_MENU,
@@ -75,51 +79,14 @@ const MobileResponsiveDashboardHeader = ({
                 >
                   Go to Rb.com
                 </Link>
-                <Button
-                  sx={{
-                    display: 'block',
-                    color: '#000',
-                    border: '1px solid #E7E7E7',
-                    // mx: 2,
-                    my: 2,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      marginRight: '8px',
-                      marginLeft: '8px',
-                      p: 0.5,
-                    }}
-                  >
-                    <Image
-                      src={item?.myListingIcon}
-                      width={20}
-                      height={20}
-                      alt={'icon'}
-                    />
-                    <Typography mx={1}>My Listing</Typography>
-                  </Box>
-                </Button>
-                <Button variant={'primary'} sx={{ display: 'block' }}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      marginRight: '8px',
-                      marginLeft: '8px',
-                      p: 0.6,
-                      color: '#fff',
-                    }}
-                  >
-                    <Image
-                      src={item?.PostListingIcon}
-                      width={20}
-                      height={20}
-                      alt={'icon'}
-                    />
-                    <Typography mx={1}>Post Listing</Typography>
-                  </Box>
-                </Button>
+                <MyListingResponsiveButton
+                  icon={item?.myListingIcon}
+                  buttonName={MY_LISTING}
+                />
+                <PostListingResponsiveButton
+                  icon={item?.PostListingIcon}
+                  buttonName={POST_LISTING}
+                />
                 <IconButton
                   onClick={handleOpenUserMenu}
                   sx={{
