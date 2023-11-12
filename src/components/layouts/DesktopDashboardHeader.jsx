@@ -4,6 +4,12 @@ import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Button, IconButton, Typography } from '@mui/material';
+import {
+  LINK_NAME,
+  LOGIN_PERSON_NAME,
+  MY_LISTING,
+  POST_LISTING,
+} from '@/app/constants/LiveBidding';
 
 const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
   return (
@@ -44,7 +50,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                   marginRight: '14px',
                 }}
               >
-                Go to Rb.com
+                {LINK_NAME}
               </Link>
               <Button
                 sx={{
@@ -67,7 +73,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                     height={20}
                     alt={'icon'}
                   />
-                  <Typography mx={1}>My Listing</Typography>
+                  <Typography mx={1}>{MY_LISTING}</Typography>
                 </Box>
               </Button>
               <Button variant={'primary'}>
@@ -86,7 +92,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                     height={20}
                     alt={'icon'}
                   />
-                  <Typography mx={1}>Post Listing</Typography>
+                  <Typography mx={1}>{POST_LISTING}</Typography>
                 </Box>
               </Button>
               <IconButton
@@ -133,7 +139,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                   mx: 2,
                 }}
               >
-                Arman Espark
+                {LOGIN_PERSON_NAME}
               </Typography>
               <Image
                 src={item?.profileIcon}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
+import { MY_CATEGORIES } from '@/app/constants/LiveBidding';
 
 const Cateogries = ({ categories }) => {
   return (
@@ -36,7 +37,7 @@ const Cateogries = ({ categories }) => {
               lineHeight: 'normal',
             }}
           >
-            My Categories
+            {MY_CATEGORIES}
           </Typography>
         </Box>
         <Box

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { PROPOSALS } from '@/app/constants/LiveBidding';
 
 function Proposals() {
   return (
@@ -23,7 +24,7 @@ function Proposals() {
             lineHeight: 'normal',
           }}
         >
-          Proposals:
+          {PROPOSALS}
         </Typography>
         <Typography
           variant="h2"

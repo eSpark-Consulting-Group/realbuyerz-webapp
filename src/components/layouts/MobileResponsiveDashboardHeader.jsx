@@ -5,7 +5,12 @@ import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, IconButton, Menu, Typography } from '@mui/material';
 
-import { MY_LISTING, POST_LISTING } from '@/app/constants/LiveBidding';
+import {
+  LINK_NAME,
+  LOGIN_PERSON_NAME,
+  MY_LISTING,
+  POST_LISTING,
+} from '@/app/constants/LiveBidding';
 import MyListingResponsiveButton from './MyListingResponsiveButton';
 import PostListingResponsiveButton from './PostListingResponsiveButton';
 
@@ -77,7 +82,7 @@ const MobileResponsiveDashboardHeader = ({
                     marginRight: '14px',
                   }}
                 >
-                  Go to Rb.com
+                  {LINK_NAME}
                 </Link>
                 <MyListingResponsiveButton
                   icon={item?.myListingIcon}
@@ -132,7 +137,7 @@ const MobileResponsiveDashboardHeader = ({
                     mx: 4,
                   }}
                 >
-                  Arman Espark
+                  {LOGIN_PERSON_NAME}
                 </Typography>
                 <Image
                   src={item?.profileIcon}

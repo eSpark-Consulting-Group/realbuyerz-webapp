@@ -5,6 +5,10 @@ import { Grid, Typography } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
+import {
+  PROFILE_COMPLETNESS,
+  PROFILE_COMPLETNESS_DESCRIPTION,
+} from '@/app/constants/LiveBidding';
 
 const ProfileCompletness = ({ profileInfo }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -38,7 +42,7 @@ const ProfileCompletness = ({ profileInfo }) => {
             paddingTop: '20px',
           }}
         >
-          Profile Completeness:
+          {PROFILE_COMPLETNESS}
         </Typography>
         <Box
           sx={{
@@ -76,7 +80,7 @@ const ProfileCompletness = ({ profileInfo }) => {
             padding: '20px 20px 50px 30px',
           }}
         >
-          Ways to stand out to clients right now...
+          {PROFILE_COMPLETNESS_DESCRIPTION}
         </Typography>
       </Grid>
     </>
