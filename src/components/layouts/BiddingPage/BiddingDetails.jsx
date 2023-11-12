@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import LiveBiddingTitle from './LiveBiddingTitle';
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
 
-import { MAIN_TITLE, VIEW } from '@/app/constents/LiveBidding';
+import { MAIN_TITLE, VIEW } from '@/app/constants/LiveBidding';
 
 const BiddingDetails = ({ liveBiddingData }) => {
   return (

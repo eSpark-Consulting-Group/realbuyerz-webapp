@@ -132,7 +132,7 @@ export const LIVE_BIDDING_DATA = {
   ],
 };
 export const PROFILE_INFO = {
-  image: './images/Live-bidding-icons/Profile.png/',
+  image: '/images/Live-bidding-icons/Profile.png',
   name: 'Kashif Z',
   agencyName: 'KZ Real Estate',
   profileCompleteness: '95',

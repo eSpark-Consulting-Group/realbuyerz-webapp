@@ -14,9 +14,12 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 import DashboardHeader from '@/src/components/layouts/DashboardHeader';
-console.log(MainHeader)
+console.log(MainHeader);
 
 function RootLayout({ children }) {
+  const currentPath = window.location.pathname;
+  const pathParts = currentPath.split('/dashboard/');
+
   return (
     <html lang="en">
       <Head></Head>
@@ -24,8 +27,11 @@ function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>
-            {/* <MainHeader /> */}  
-            <DashboardHeader />
+            {currentPath.startsWith('/dashboard') ? (
+              <DashboardHeader subPath={pathParts[1]} />
+            ) : (
+              <MainHeader />
+            )}
             <Box>{children}</Box>
             <Footer data={FOOTER_DATA} />
           </Box>

@@ -4,6 +4,7 @@ import { Avatar } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 const Profile = ({ profileInfo }) => {
+  console.log(profileInfo, 'info');
   return (
     <>
       <Grid

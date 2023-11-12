@@ -2,18 +2,18 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import LeftSideBar from './BiddingPage/LeftSideBar';
 import DesktopDashboardHeader from './DesktopDashboardHeader';
-import { HEADER_MENU, MENU_ITEM } from '@/app/constents/LiveBidding';
+import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 
 export default function DashboardHeader() {
@@ -69,7 +69,11 @@ export default function DashboardHeader() {
                 color: '#000',
               }}
             >
-              <MenuIcon />
+              <MenuIcon
+                sx={{
+                  cursor: 'pointer',
+                }}
+              />
             </Button>
             <Box
               sx={{

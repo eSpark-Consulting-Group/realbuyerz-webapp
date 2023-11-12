@@ -34,7 +34,7 @@ const ExpendedSiderBar = ({ menuItem, isCollapsed, isExpended }) => {
           }}
         >
           <Box sx={{ position: 'relative' }}>
-            <Tooltip describeChild title="Click To Collapse">
+            <Tooltip describeChild title="Hide Panel">
               <Box
                 sx={{
                   position: 'absolute',

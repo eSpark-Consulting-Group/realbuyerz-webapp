@@ -16,7 +16,7 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
       }}
     >
       <Box sx={{ position: 'relative' }}>
-        <Tooltip describeChild title="Click To Expand">
+        <Tooltip describeChild title="Show Panel">
           <Box
             sx={{
               position: 'absolute',

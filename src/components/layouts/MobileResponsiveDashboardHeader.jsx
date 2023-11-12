@@ -108,6 +108,7 @@ const MobileResponsiveDashboardHeader = ({
                       marginRight: '8px',
                       marginLeft: '8px',
                       p: 0.6,
+                      color: '#fff',
                     }}
                   >
                     <Image

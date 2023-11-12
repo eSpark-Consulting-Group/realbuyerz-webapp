@@ -77,6 +77,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                     marginRight: '8px',
                     marginLeft: '8px',
                     p: 0.6,
+                    color: '#fff',
                   }}
                 >
                   <Image
@@ -136,8 +137,8 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
               </Typography>
               <Image
                 src={item?.profileIcon}
-                width={40}
-                height={40}
+                width={41}
+                height={41}
                 alt={'icon'}
               />
             </Box>

@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 
 import LeftSideBar from '@/src/components/layouts/BiddingPage/LeftSideBar';
 import RightSidebar from '@/src/components/layouts/BiddingPage/RightSidebar';
-import { MENU_ITEM, PROFILE_INFO } from '../constents/LiveBidding';
+import { MENU_ITEM, PROFILE_INFO } from '../constants/LiveBidding';
 import { Box } from '@mui/system';
 
 const InnerPageLayout = ({ children }) => {
