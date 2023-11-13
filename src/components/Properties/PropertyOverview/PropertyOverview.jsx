@@ -10,13 +10,11 @@ import {
   Typography,
   Paper,
   TableContainer,
-  useMediaQuery,
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { propertyData, propertyEstate } from '@/app/constants/property';
-const PropertyOverview = () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+
+const PropertyOverview = ({ propertyData }) => {
   return (
     <>
       <Box
@@ -35,7 +33,7 @@ const PropertyOverview = () => {
           component={Paper}
           sx={{
             justifyContent: { xs: 'center', md: 'none' },
-            overflow: isSmallScreen ? 'auto' : 'hidden',
+            overflow: 'hidden',
             borderSpacing: '10px',
           }}
         >
@@ -50,13 +48,18 @@ const PropertyOverview = () => {
                   gap: '10px',
                 }}
               >
-                {propertyEstate.propertyAttributes.map(
+                {PROPERTY_ESTATE?.propertyAttributes?.map(
                   (propertytype, index) => (
                     <TableCell
                       key={index}
-                      sx={{ borderCollapse: 'collapse', color: 'white' }}
+                      sx={{
+                        borderCollapse: 'collapse',
+                        color: 'white',
+                        backgroundColor: 'black',
+                        overflow: 'hidden',
+                      }}
                     >
-                      {propertytype.label}
+                      {propertytype?.label}
                     </TableCell>
                   )
                 )}
@@ -64,18 +67,20 @@ const PropertyOverview = () => {
             </TableHead>
             <TableBody>
               <TableRow>
-                {Object.keys(propertyData.PropertyDetails).map((key, index) => (
-                  <TableCell
-                    key={index}
-                    sx={{
-                      background: '#F8F8F8',
-                      border: '1px solid #B8B8B8',
-                      marginBottom: '20px',
-                    }}
-                  >
-                    {propertyData.PropertyDetails[key]}
-                  </TableCell>
-                ))}
+                {Object.keys(propertyData?.propertyDetails).map(
+                  (key, index) => (
+                    <TableCell
+                      key={index}
+                      sx={{
+                        background: '#F8F8F8',
+                        border: '1px solid #B8B8B8',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      {propertyData?.propertyDetails[key]}
+                    </TableCell>
+                  )
+                )}
               </TableRow>
             </TableBody>
           </Table>

@@ -19,7 +19,7 @@ const NewlyListedProperties = ({ data }) => {
           }}
         >
           <Heading
-            heading={'Newly Listed  Properties'}
+            heading={'Newly Listed Properties'}
             paragraph={'Find your dream property from our latest properties '}
           />
           <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>

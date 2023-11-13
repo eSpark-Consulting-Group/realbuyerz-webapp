@@ -9,9 +9,7 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
-import { propertyEstate } from '@/app/constants/property';
-
-const Slider = () => {
+const Slider = ({ propertySlider }) => {
   return (
     <>
       <Grid container spacing={2}>
@@ -21,22 +19,17 @@ const Slider = () => {
             modules={[Navigation]}
             style={{ width: '100%', height: '100%', borderRadius: '15px' }}
           >
-            {propertyEstate.SliderImages.map(
-              (item, index) => (
-                console.log('slider', propertyEstate.SliderImages),
-                (
-                  <SwiperSlide key={index}>
-                    <Image
-                      src={item.images}
-                      alt={`Slide ${index + 1}`}
-                      width={870}
-                      height={500}
-                      style={{ objectFit: 'cover', borderRadius: '20px' }}
-                    />
-                  </SwiperSlide>
-                )
-              )
-            )}
+            {propertySlider?.sliderImages?.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={item.images}
+                  alt={`Slide ${index + 1}`}
+                  width={870}
+                  height={500}
+                  style={{ objectFit: 'cover', borderRadius: '20px' }}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </Grid>
       </Grid>

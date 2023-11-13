@@ -2,7 +2,7 @@ export const PROPOSAL_LISTING = [
   {
     id: '1',
     amount: '10M',
-    imageUrl: '/images/PropertyCardImageCommercial.jpeg',
+    imageUrl: '/images/properties/PropertyCardImageCommercial.jpeg',
     proposalStatus: 'Active',
     title: '4 Bedrooms Apartment',
     description:
@@ -89,9 +89,9 @@ export const Proposals = {
     link: '',
   },
 };
-export const PROPERTY_STATS = [
-  { title: 'Purpose', value: 'purpose' },
-  { title: 'Property Type', value: 'propertyType' },
-  { title: 'City', value: 'city' },
-  { title: 'Location', value: 'location' },
-];
+// export const PROPERTY_STATS = [
+//   { title: 'Purpose', value: 'purpose' },
+//   { title: 'Property Type', value: 'propertyType' },
+//   { title: 'City', value: 'city' },
+//   { title: 'Location', value: 'location' },
+// ];
