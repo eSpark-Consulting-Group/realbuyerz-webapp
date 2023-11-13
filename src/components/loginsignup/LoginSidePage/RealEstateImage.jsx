@@ -2,11 +2,16 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-const RealEstate = () => {
+const RealEstateImage = () => {
   return (
     <Box>
-      <Image src={'./images/boximage.svg'} width={550} height={500} alt={''} />
+      <Image
+        src={'/images/signup_page/boxImage.svg'}
+        width={550}
+        height={500}
+        alt={'boxImage'}
+      />
     </Box>
   );
 };
-export default RealEstate;
+export default RealEstateImage;

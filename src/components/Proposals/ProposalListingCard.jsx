@@ -118,7 +118,7 @@ function ProposalListingCard({ proposalsData }) {
                 </Typography>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`/proposals/${proposal.id}`}>
+                <Link href={`./proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       Restore Property

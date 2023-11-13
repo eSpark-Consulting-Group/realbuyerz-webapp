@@ -1,9 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
-const BuildingImage = () => {
+const PropertyBuilding = () => {
   return (
-    <Image src="./images/highbuilding.svg" width={440} height={700} alt={''} />
+    <Image
+      src="/images/signup_page/highBuilding.svg"
+      width={488}
+      height={288}
+      alt={'building'}
+    />
   );
 };
-export default BuildingImage;
+export default PropertyBuilding;
