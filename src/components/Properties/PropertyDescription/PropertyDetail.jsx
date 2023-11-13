@@ -2,11 +2,11 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import PropertyTitle from './PropertyTitle';
-import PropertyDescription from '../../proposals/PropertyDescription';
 import PropertyDemand from './PropertyDemand';
 import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
+import PropertyDescription from './PropertyDescription';
 
 const PropertyDetails = ({ propertyData }) => {
   return (
