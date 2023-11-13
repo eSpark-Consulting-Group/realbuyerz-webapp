@@ -1,28 +1,5 @@
 export const AGENT_PROFILE_DATA = {
-  image: '/images/profile.png',
-  title: 'Arman Khan',
-  text: 'Lets talk',
-  description: [
-    {
-      icon: '/images/agent-profile-icons/location.svg',
-      text: 'Karachi, Pakistan',
-      alt: 'amenities',
-      email: '',
-    },
-    {
-      icon: '/images/agent-profile-icons/home.svg',
-      text: 'For Sale',
-      alt: 'amenities',
-      email: '',
-    },
-    {
-      icon: '/images/agent-profile-icons/location.svg',
-      text: 'For Rent',
-      alt: 'amenities',
-      email: '',
-    },
-  ],
-
+  agentProfile: ' View Agent Profile',
   contactInfo: {
     agentName: 'Arman Khan',
     agentImage: '/images/profile.png',

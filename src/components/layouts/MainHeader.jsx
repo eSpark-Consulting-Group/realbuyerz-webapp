@@ -18,7 +18,7 @@ import Image from 'next/image';
 
 const settings = ['Login', 'Sign up'];
 
-function MainHeader() {
+const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -139,7 +139,7 @@ function MainHeader() {
                 <MenuItem key={i} onClick={handleCloseNavMenu}>
                   <Link
                     style={{
-                      color: '#1976d2 ',
+                      color: '#1976d2',
                       textDecoration: 'none',
                     }}
                     href={item?.path}
@@ -196,6 +196,6 @@ function MainHeader() {
       </Container>
     </AppBar>
   );
-}
+};
 
 export default MainHeader;

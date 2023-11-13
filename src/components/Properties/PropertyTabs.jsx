@@ -9,19 +9,15 @@ import { Grid } from '@mui/material';
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
-import { PROPERTIES_LISTING } from '@/app/constants/Properties';
-
-function CustomTabPanel({ value, index, propertyType }) {
+const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
-      ? PROPERTIES_LISTING
-      : PROPERTIES_LISTING.filter(
-          (property) => property.propertytype === propertyType
-        );
+      ? data
+      : data.filter((property) => property.propertyData.type === propertyType);
 
   const propertyTitle = filteredProperties?.map((property) => ({
     id: property.id,
-    title: property.title,
+    Propertytitle: property.Propertytitle,
   }));
 
   const itemsPerRow = { xs: 12, sm: 6, md: 4, lg: 3, xl: 3 };
@@ -39,10 +35,10 @@ function CustomTabPanel({ value, index, propertyType }) {
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
-            {propertyTitle?.map(({ id, title }) => (
+            {propertyTitle?.map(({ id, Propertytitle }) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight="300" fontSize="16px" textAlign="center">
-                  <Link href={`/property/${id}`}>{title}</Link>
+                  <Link href={`/properties/${id}`}>{Propertytitle}</Link>
                 </Typography>
               </Grid>
             ))}
@@ -51,16 +47,16 @@ function CustomTabPanel({ value, index, propertyType }) {
       )}
     </div>
   );
-}
+};
 
-function a11yProps(index) {
+const a11yProps = (index) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
-}
+};
 
-export default function PropertyTabs() {
+const PropertyTabs = ({ data }) => {
   const [value, setValue] = useState(0);
   const [propertyType, setPropertyType] = useState('');
 
@@ -71,10 +67,10 @@ export default function PropertyTabs() {
   const uniquePropertyTypes = [];
   const seenPropertyTypes = {};
 
-  PROPERTIES_LISTING?.forEach((property) => {
-    if (!seenPropertyTypes[property.propertytype]) {
-      uniquePropertyTypes.push(property.propertytype);
-      seenPropertyTypes[property.propertytype] = true;
+  data?.forEach((property) => {
+    if (!seenPropertyTypes[property.propertyData.type]) {
+      uniquePropertyTypes.push(property.propertyData.type);
+      seenPropertyTypes[property.propertyData.type] = true;
     }
   });
 
@@ -96,10 +92,8 @@ export default function PropertyTabs() {
 
   const filteredProperties =
     propertyType === ''
-      ? PROPERTIES_LISTING
-      : PROPERTIES_LISTING.filter(
-          (property) => property.propertytype === propertyType
-        );
+      ? data
+      : data.filter((property) => property.propertyData.type === propertyType);
   const isAgent = 'true';
   const agenttab = value;
   return (
@@ -137,6 +131,7 @@ export default function PropertyTabs() {
           </Box>
           {tabData?.map((tab, index) => (
             <CustomTabPanel
+              data={data}
               key={index}
               value={value}
               index={index}
@@ -154,8 +149,9 @@ export default function PropertyTabs() {
           padding: '56px 30px',
         }}
       >
-        <PropertyListingCard data={filteredProperties} />
+        <PropertyListingCard propertyData={filteredProperties} />
       </Box>
     </>
   );
-}
+};
+export default PropertyTabs;

@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import ProposalListingCard from './ProposalListingCard';
 import { getUniqueProposalStatus } from '@/utils/propertyFilter'; // Import utility functions
 
-function CustomTabPanel({ data, value, index, tabProposalStatus }) {
+const CustomTabPanel = ({ data, value, index, tabProposalStatus }) => {
   const filteredProperties =
     value === 0
       ? data
@@ -34,9 +34,9 @@ function CustomTabPanel({ data, value, index, tabProposalStatus }) {
       )}
     </div>
   );
-}
+};
 
-function ProposalTabs({ filteredProposalsData }) {
+const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -105,6 +105,6 @@ function ProposalTabs({ filteredProposalsData }) {
       </Box>
     </Box>
   );
-}
+};
 
 export default ProposalTabs;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
-function SliderCardSeeDetails() {
+const SliderCardSeeDetails = () => {
   return (
     <Grid
       item
@@ -28,6 +28,6 @@ function SliderCardSeeDetails() {
       </Typography>
     </Grid>
   );
-}
+};
 
 export default SliderCardSeeDetails;

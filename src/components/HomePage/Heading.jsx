@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-function Heading({ heading, paragraph }) {
+const Heading = ({ heading, paragraph }) => {
   return (
     <>
       <Typography
@@ -28,6 +28,6 @@ function Heading({ heading, paragraph }) {
       </Typography>
     </>
   );
-}
+};
 
 export default Heading;

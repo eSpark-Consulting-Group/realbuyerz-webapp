@@ -101,7 +101,7 @@ root {
   padding: 0 10px;
 }
 .slick-list {
-  margin-left: 20px !important;
+  margin-left: 20px !important; 
 }
 
 @media (max-width: 1860px) {

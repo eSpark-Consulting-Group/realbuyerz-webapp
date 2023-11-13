@@ -9,14 +9,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 
-function scrollToTop() {
+const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
-}
+};
 
-function PopularLocations({ data }) {
+const PopularLocations = ({ data }) => {
   const [filteredProposalsData, setFilteredProposalsData] = React.useState(
     data?.filter((item) => item.type === 'sale')
   );
@@ -159,6 +159,6 @@ function PopularLocations({ data }) {
       </Container>
     </Box>
   );
-}
+};
 
 export default PopularLocations;
