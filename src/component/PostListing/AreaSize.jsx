@@ -10,8 +10,6 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import SelectCityType from './SelectCity';
-
 
 const AreaSize = ({ PropertySizeInformation }) => {
   const [propertyData, setPropertyData] = useState({
@@ -20,7 +18,7 @@ const AreaSize = ({ PropertySizeInformation }) => {
       ...item,
       value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
     })),
-        selectCity: PROPERTY_INFORMATION.selectCityOptions,
+    selectCity: PROPERTY_INFORMATION.selectCityOptions,
   });
 
   const handleInputChange = (event) => {
@@ -36,7 +34,7 @@ const AreaSize = ({ PropertySizeInformation }) => {
       ),
     }));
   };
-   const handleCityChange = ( value) => {
+  const handleCityChange = (value) => {
     setPropertyData((prevData) => ({
       ...prevData,
       sellingData: {
@@ -99,17 +97,19 @@ const AreaSize = ({ PropertySizeInformation }) => {
               name={item.label}
               onChange={handleInputChange}
             />
-          
-             <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={propertyData.selectCity}
-        sx={{ width: { xs: '50%', md: '300px' } }}
-        renderInput={(params) => <TextField {...params} label="Select City" />}
-        onChange={handleCityChange}
-      />
-      {/* <Button onClick={handleClick}>Ok</Button> */}
-    
+
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={propertyData.selectCity}
+              sx={{ width: { xs: '50%', md: '300px' } }}
+              renderInput={(params) => (
+                <TextField {...params} label="Select City" />
+              )}
+              onChange={handleCityChange}
+            />
+            {/* <Button onClick={handleClick}>Ok</Button> */}
+
             {/* <Autocomplete
               disablePortal
               id="combo-box-demo"

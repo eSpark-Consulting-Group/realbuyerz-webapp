@@ -1,4 +1,7 @@
 export const PROPERTY_INFORMATION = {
+  addiotionalFeature:
+    'Add additional features e.g. Rooftop terrace, 24/7 security, Walking trails, Washing area etc',
+  addAmentiesLabel: 'Add Amenities',
   property: [
     {
       image: '/assets/images/home.svg',
@@ -214,6 +217,100 @@ export const PROPERTY_INFORMATION = {
       text: 'The video upload feature is optional; you can choose to upload photos without including a video.',
     },
   ],
+  addAmenities: [
+    {
+      image: '/images/add-amenities/swimmingPool.svg',
+      title: 'Swimming pool',
+    },
+    {
+      image: '/images/add-amenities/washingArea.svg',
+      title: 'Washing area',
+    },
+    {
+      image: '/images/add-amenities/mosque.svg',
+      title: 'Masjid',
+    },
+    {
+      image: '/images/add-amenities/fitnessCenter.svg',
+      title: 'Fitness center',
+    },
+    {
+      image: '/images/add-amenities/electricity.svg',
+      title: 'Hour Electricity',
+    },
+    {
+      image: '/images/add-amenities/corridor.svg',
+      title: 'Corridor',
+    },
+    {
+      image: 'images/add-amenities/clubHouse.svg',
+      title: 'Clubhouse',
+    },
+    {
+      image: '/images/add-amenities/autoGenerator.svg',
+      title: 'Auto Generator',
+    },
+    {
+      image: 'images/add-amenities/roPlant.svg',
+      title: 'R.O Plant',
+    },
+    {
+      image: '/images/add-amenities/playground.svg',
+      title: 'Playground',
+    },
+    {
+      image: '/images/add-amenities/boundaryWall.svg',
+      title: 'Complete Boundary Wall',
+    },
+    {
+      image: '/images/add-amenities/basketballCourts.svg',
+      title: 'Basketball courts',
+    },
+    {
+      image: '/images/add-amenities/servantArea.svg',
+      title: 'Servant Area',
+    },
+    {
+      image: '/images/add-amenities/basketballCourts.svg',
+      title: 'Basketball courts',
+    },
+    {
+      image: '/images/add-amenities/hugePark.svg',
+      title: 'Huge Park',
+    },
+    {
+      image: '/images/add-amenities/utilityStore.svg',
+      title: 'Utility Store',
+    },
+    {
+      image: '/images/add-amenities/walkingTrails.svg',
+      title: 'Walking trails',
+    },
+    {
+      image: '/images/add-amenities/services.svg',
+      title: 'Concierge services',
+    },
+    {
+      image: '/images/add-amenities/rooftopTerrace.svg',
+      title: 'Rooftop terrace',
+    },
+    {
+      image: '/images/add-amenities/petfriendlyFacilities.svg',
+      title: 'Pet-friendly facilities',
+    },
+    {
+      image: '/images/add-amenities/businessCenter.svg',
+      title: 'Business centre',
+    },
+    {
+      image: '/images/add-amenities/maintenance.svg',
+      title: 'On-site maintenance',
+    },
+    {
+      image: '/images/add-amenities/securityCamera.svg',
+      title: '24/7 security',
+    },
+  ],
 };
 
 export const PROPERTY_BUYING_DETAIL = {
@@ -237,8 +334,8 @@ export const PROPERTY_BUYING_DETAIL = {
     farmHouseBtn: '',
     roomBtn: '',
     pentHouseBtn: '',
-      incrementBtn: {
-      value: 0, 
+    incrementBtn: {
+      value: 0,
     },
   },
 };

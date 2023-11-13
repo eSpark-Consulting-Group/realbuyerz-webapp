@@ -6,7 +6,7 @@ import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
 import PropertyAddInformation from './PropertyAddInformation';
 
-const AdInformation = ({ inputChange }) => {
+const AdInformation = () => {
   return (
     <Grid container>
       <Grid

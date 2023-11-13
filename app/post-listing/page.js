@@ -9,14 +9,16 @@ import PropertyFeatures from '@/src/component/PostListing/PropertyFeature';
 import PropertyGallery from '@/src/component/PostListing/PropertGallery';
 import SubmitButton from '@/src/component/PostListing/SaveandSubmit';
 import Purpose from '@/src/component/PostListing/Purpose';
-import { PROPERTY_BUYING_DETAIL } from '@/src/component/PostListing/postlistingConstants';
 
 const PostListing = () => {
   const handleClick = () => {
     console.log('mainpropertyData', propertyData);
   };
   return (
-    <Grid container sx={{ paddingTop: '30px', background: '#F4F5F7', paddingBottom: "30px" }}>
+    <Grid
+      container
+      sx={{ paddingTop: '30px', background: '#F4F5F7', paddingBottom: '30px' }}
+    >
       <Grid item xs={12} md={1}></Grid>
       <Grid item xs={12} md={10}>
         <Box

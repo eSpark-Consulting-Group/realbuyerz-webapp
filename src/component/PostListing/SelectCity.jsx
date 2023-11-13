@@ -16,7 +16,7 @@ const SelectCityType = ({ image, label }) => {
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
     selectCity: PROPERTY_INFORMATION.selectCityOptions,
   });
-  const handleCityChange = ( value) => {
+  const handleCityChange = (value) => {
     setPropertyData((prevData) => ({
       ...prevData,
       sellingData: {

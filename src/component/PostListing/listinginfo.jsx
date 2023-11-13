@@ -21,7 +21,7 @@ const ListingInfo = ({ propertyInfo }) => {
           }}
           key={index}
         >
-          <Image src={item.image} width={40} height={40} alt="propertyimages"/>
+          <Image src={item.image} width={40} height={40} alt="propertyimages" />
           <Typography
             sx={{
               fontSize: { xs: '18px', md: '22px' },

@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
+import { PROPERTY_INFORMATION } from './postlistingConstants';
+
+import DialogBox from './DialogBox';
+
 const AddAmenities = () => {
-  const addiotionalFeature =
-    'Add additional features e.g. Rooftop terrace, 24/7 security, Walking trails, Washing area etc';
-  const addAmenties = 'Add Amenities';
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = (value) => {
+    setOpen(false);
+  };
   return (
     <Box
       sx={{
@@ -22,7 +30,7 @@ const AddAmenities = () => {
           fontWeight: 400,
         }}
       >
-        {addiotionalFeature}
+        {PROPERTY_INFORMATION.addiotionalFeature}
       </Typography>
       <Box
         sx={{
@@ -35,14 +43,25 @@ const AddAmenities = () => {
           padding: '10px',
         }}
       >
-        <Image src={'assets/images/add.svg'} width={20} height={20} alt="addition" />
+        <Image
+          src={'assets/images/add.svg'}
+          width={20}
+          height={20}
+          alt="addition"
+        />
         <Button
           sx={{
             color: '#FB631C',
           }}
+          onClick={handleClickOpen}
         >
-          {addAmenties}
+          {PROPERTY_INFORMATION.addAmentiesLabel}
         </Button>
+        <DialogBox
+          open={open}
+          onClose={handleClose}
+          data={PROPERTY_INFORMATION.addAmenities}
+        />
       </Box>
     </Box>
   );

@@ -5,6 +5,7 @@ import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
 import PropertyFacilities from './PropertyFacilities';
 import AddAmenities from './AddAmenities';
+import SelectedItemsComponent from './SelectedAmenitiesItem';
 
 const PropertyFeatures = () => {
   return (
@@ -50,6 +51,7 @@ const PropertyFeatures = () => {
                 PropertyInformation={PROPERTY_INFORMATION.feature}
               />
               <AddAmenities />
+              <SelectedItemsComponent />
             </Box>
           </Box>
         </Box>
