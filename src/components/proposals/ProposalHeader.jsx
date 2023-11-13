@@ -6,7 +6,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import { Proposals } from '@/app/constants/Proposals';
 
-
 function ProposalHeader({ header }) {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
