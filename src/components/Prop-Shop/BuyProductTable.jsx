@@ -4,10 +4,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import SubscriptionHeader from './SubscriptionHeader';
+import PackageBox from './PackageBox';
+import PriceBox from './PriceBox';
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  paddingy: theme.spacing(1),
   alignItems: 'center',
   display: 'flex',
   border: 'none',
@@ -15,7 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function BuyProductTable() {
+export default function BuyProductTable({ columns, rows }) {
+  const { FirstHeaderName, SecondHeaderName } = columns
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -23,15 +28,48 @@ export default function BuyProductTable() {
         xs={12}
         md={12}
         item
-        sx={{
-          backgroundColor: 'red',
-        }}
       >
-        <Grid xs={12} md={6}>
-          <Item>Box 1</Item>
+        <Grid xs={12} md={12} lg={6}>
+          <Item>
+            <Box sx={{ padding: '13px', backgroundColor: '#EDF7FF', width: '100%', margin: 0 }}>
+              <SubscriptionHeader headerName={FirstHeaderName} />
+            </Box>
+          </Item>
+          {rows?.map((row, i) => (
+            <Item>
+              <Box key={i} sx={{
+                width:'100%',
+                height:{xs:'auto', md:'100px'},
+                py: {xs:2, sm: 3},
+                px: 4,
+              }}>
+                <PackageBox
+                  icon={row?.icon}
+                  text={row?.text}
+                  discription={row?.discription}
+                />
+              </Box>
+            </Item>
+          ))}
         </Grid>
-        <Grid xs={12} md={6}>
-          <Item>Box 2</Item>
+        <Grid xs={12} md={12} lg={6}>
+          <Item>
+            <Box sx={{ padding: '13px', backgroundColor: '#EDF7FF', width: '100%', margin: 0 }}>
+              <SubscriptionHeader headerName={SecondHeaderName} />
+            </Box>
+          </Item>
+          {rows?.map((row, i) => (
+            <Item>
+              <Box sx={{
+                width:'100%',
+                height:{xs:'auto', md:'100px'},
+                py: {xs:2, sm: 4},
+                px: 5,
+              }}>
+                <PriceBox price={row?.price} buttonText={row?.buttonText} />
+              </Box>
+            </Item>
+          ))}
         </Grid>
       </Grid>
     </Box>

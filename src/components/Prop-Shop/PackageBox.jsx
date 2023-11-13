@@ -8,7 +8,7 @@ const PackageBox = ({ icon, text, discription }) => {
       <Box>
         <Image src={icon} alt={'basic-image'} width={40} height={40} />
       </Box>
-      <Box>
+      <Box sx={{width:{xs:'75%', sm:'auto'}}}>
         <Typography variant="h6">{text}</Typography>
         <Typography variant="p" sx={{ color: '#A5A5A5' }}>
           {discription}
