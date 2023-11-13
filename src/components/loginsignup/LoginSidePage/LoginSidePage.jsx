@@ -6,7 +6,7 @@ import RealEstate from './RealEstateImage';
 import LoginPageText from './LoginPageText';
 import BuildingImage from './BuildingImage';
 
-const SidePage = () => {
+const LoginSidePage = () => {
   return (
     <Grid>
       <Grid
@@ -18,16 +18,21 @@ const SidePage = () => {
           justifyContent: 'center',
           flexDirection: 'column',
           alignItems: 'center',
-          background: 'white',
-          gap: '60px',
-          padding: '10px',
+          gap: '40px',
+          padding: '50px',
+          '@media (max-width: 1300px)': {
+            gap: '67px',
+          },
+          '@media (max-width: 1100px)': {
+            gap: '60px',
+          },
         }}
       >
-        <RealEstate />
+        <RealEstateImage />
         <LoginPageText />
-        <BuildingImage />
+        <PropertyBuilding />
       </Grid>
     </Grid>
   );
 };
-export default SidePage;
+export default LoginSidePage;
