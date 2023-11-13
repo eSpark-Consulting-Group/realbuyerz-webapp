@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
 
-function NewlyListedProperties({ data }) {
+const NewlyListedProperties = ({ data }) => {
   return (
     <>
       <Box>
@@ -19,7 +19,7 @@ function NewlyListedProperties({ data }) {
           }}
         >
           <Heading
-            heading={'Newly Listed  Properties'}
+            heading={'Newly Listed Properties'}
             paragraph={'Find your dream property from our latest properties '}
           />
           <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>
@@ -29,6 +29,6 @@ function NewlyListedProperties({ data }) {
       </Box>
     </>
   );
-}
+};
 
 export default NewlyListedProperties;

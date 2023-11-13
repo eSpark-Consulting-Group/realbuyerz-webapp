@@ -85,7 +85,7 @@ export const FOOTER_CTA_DATA = {
 };
 
 export const FOOTER_DATA = {
-  logo: '/images/RealBuyers-Logo.svg',
+  logo: '/images/RealBuyersLogo.svg',
   introText: {
     paragraph1:
       'Rb online is a digital platform designed to help you with all your real estate worries! We pledge to make real estate experiences more accessible to everyone - whether they need to buy, sell, or rent properties, products, projects, or services!',

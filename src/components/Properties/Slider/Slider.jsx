@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 
-const Sliders = ({ propertySlider }) => {
+const Slider = ({ propertySlider }) => {
   return (
     <>
       <Grid container spacing={2}>
@@ -36,4 +36,4 @@ const Sliders = ({ propertySlider }) => {
     </>
   );
 };
-export default Sliders;
+export default Slider;

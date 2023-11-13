@@ -91,17 +91,17 @@ root {
 }
 
 .slick-prev:before {
-  content: url('../public/images/agent-profile-icons/Left.svg') !important;
+  content: url('/images/agent-profile-icons/Left.svg') !important;
 }
 .slick-next:before {
-  content: url('../public/images/agent-profile-icons/Right.svg') !important;
+  content: url('/images/agent-profile-icons/Right.svg') !important;
 }
 
 .slick-slide {
   padding: 0 10px;
 }
 .slick-list {
-  margin-left: 20px !important;
+  margin-left: 20px !important; 
 }
 
 @media (max-width: 1860px) {
