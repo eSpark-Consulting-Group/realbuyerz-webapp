@@ -234,9 +234,10 @@ export default function ProfileForm({
                         place={`${place} ${
                           label === 'Whatsapp'
                             ? selectedCountryObject1?.code
-                            : '' || label === 'Mobile'
-                            ? selectedCountryObject2?.code
-                            : ''
+                            : '' ||
+                              (label === 'Mobile'
+                                ? selectedCountryObject2?.code
+                                : '')
                         }`}
                       />
                       {buttonText && (
