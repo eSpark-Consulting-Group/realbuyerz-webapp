@@ -6,7 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import { Proposals } from '@/app/constants/Proposals';
 
-function ProposalHeader({ header }) {
+const ProposalHeader = ({ header }) => {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
@@ -16,6 +16,7 @@ function ProposalHeader({ header }) {
             width={60}
             height={60}
             sx={{ borderRadius: '50%' }}
+            alt=""
           />
         </Box>
         <Box>
@@ -86,6 +87,6 @@ function ProposalHeader({ header }) {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default ProposalHeader;

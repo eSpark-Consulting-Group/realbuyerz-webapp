@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-function SliderCardPrice({ price }) {
+const SliderCardPrice = ({ price }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Typography
@@ -31,6 +31,6 @@ function SliderCardPrice({ price }) {
       </Typography>
     </Box>
   );
-}
+};
 
 export default SliderCardPrice;

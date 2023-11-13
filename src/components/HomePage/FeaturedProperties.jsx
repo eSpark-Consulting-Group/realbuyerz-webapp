@@ -7,7 +7,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Heading from './Heading';
 import Image from 'next/image';
 
-function FeaturedProperties({ data }) {
+const FeaturedProperties = ({ data }) => {
   return (
     <Box
       sx={{
@@ -208,6 +208,6 @@ function FeaturedProperties({ data }) {
       </Box>
     </Box>
   );
-}
+};
 
 export default FeaturedProperties;

@@ -89,9 +89,9 @@ export const Proposals = {
     link: '',
   },
 };
-// export const PROPERTY_STATS = [
-//   { title: 'Purpose', value: 'purpose' },
-//   { title: 'Property Type', value: 'propertyType' },
-//   { title: 'City', value: 'city' },
-//   { title: 'Location', value: 'location' },
-// ];
+export const PROPERTY_STATS = [
+  { title: 'Purpose', value: 'purpose' },
+  { title: 'Property Type', value: 'propertyType' },
+  { title: 'City', value: 'city' },
+  { title: 'Location', value: 'location' },
+];

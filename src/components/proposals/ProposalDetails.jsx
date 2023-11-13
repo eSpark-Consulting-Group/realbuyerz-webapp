@@ -3,7 +3,7 @@ import { Avatar, Grid, Box, Typography, Button } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-function ProposalHeader() {
+const ProposalHeader = () => {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
@@ -72,6 +72,6 @@ function ProposalHeader() {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default ProposalHeader;

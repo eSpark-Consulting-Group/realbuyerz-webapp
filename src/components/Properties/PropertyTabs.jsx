@@ -11,7 +11,7 @@ import PropertyListingCard from './PropertyListingCard';
 
 import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
-function CustomTabPanel({ value, index, propertyType }) {
+const CustomTabPanel = ({ value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? PROPERTIES_LISTING
@@ -51,16 +51,16 @@ function CustomTabPanel({ value, index, propertyType }) {
       )}
     </div>
   );
-}
+};
 
-function a11yProps(index) {
+const a11yProps = (index) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
-}
+};
 
-export default function PropertyTabs() {
+const PropertyTabs = () => {
   const [value, setValue] = useState(0);
   const [propertyType, setPropertyType] = useState('');
 
@@ -158,4 +158,5 @@ export default function PropertyTabs() {
       </Box>
     </>
   );
-}
+};
+export default PropertyTabs;

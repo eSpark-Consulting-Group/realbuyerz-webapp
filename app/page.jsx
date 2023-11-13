@@ -16,7 +16,7 @@ import {
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
 
-function Home() {
+const Home = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
@@ -29,6 +29,6 @@ function Home() {
       <FooterCta data={FOOTER_CTA_DATA} />
     </div>
   );
-}
+};
 
 export default Home;

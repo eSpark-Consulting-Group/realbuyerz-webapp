@@ -18,7 +18,7 @@ import Image from 'next/image';
 
 const settings = ['Login', 'Sign up'];
 
-function MainHeader() {
+const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -196,6 +196,6 @@ function MainHeader() {
       </Container>
     </AppBar>
   );
-}
+};
 
 export default MainHeader;

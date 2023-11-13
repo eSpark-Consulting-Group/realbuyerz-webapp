@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Button } from '@mui/material';
 import ProposalSlider from './ProposalSlider';
 
-function ProposalMedia({ media, mediaType }) {
+const ProposalMedia = ({ media, mediaType }) => {
   return (
     <>
       <Grid container>
@@ -47,6 +47,6 @@ function ProposalMedia({ media, mediaType }) {
       </Grid>
     </>
   );
-}
+};
 
 export default ProposalMedia;

@@ -15,7 +15,7 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 
-function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   const currentPath = usePathname();
 
   return (
@@ -37,6 +37,6 @@ function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

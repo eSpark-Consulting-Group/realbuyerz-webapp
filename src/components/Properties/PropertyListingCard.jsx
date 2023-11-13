@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-function PropertyListingCard({ data }) {
+const PropertyListingCard = ({ data }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -178,6 +178,6 @@ function PropertyListingCard({ data }) {
       </Box>
     </>
   );
-}
+};
 
 export default PropertyListingCard;

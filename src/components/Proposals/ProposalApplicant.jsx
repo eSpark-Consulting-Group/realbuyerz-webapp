@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
-function ProposalApplicant({ leftSection }) {
+const ProposalApplicant = ({ leftSection }) => {
   return (
     <Grid
       item
@@ -35,6 +35,6 @@ function ProposalApplicant({ leftSection }) {
       </Typography>
     </Grid>
   );
-}
+};
 
 export default ProposalApplicant;

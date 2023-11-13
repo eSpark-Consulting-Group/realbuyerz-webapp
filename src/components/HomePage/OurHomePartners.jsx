@@ -9,7 +9,7 @@ import Heading from './Heading';
 import Image from 'next/image';
 import { Box, Container } from '@mui/material';
 
-function OurHomePartners({ data }) {
+const OurHomePartners = ({ data }) => {
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -73,6 +73,6 @@ function OurHomePartners({ data }) {
       </Box>
     </Container>
   );
-}
+};
 
 export default OurHomePartners;

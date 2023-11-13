@@ -32,7 +32,7 @@ const styles = {
   },
 };
 
-function ProposalListingCard({ proposalsData }) {
+const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -198,6 +198,6 @@ function ProposalListingCard({ proposalsData }) {
       </Box>
     </>
   );
-}
+};
 
 export default ProposalListingCard;

@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 
 import { propertyEstate } from '@/app/constants/property';
 
-export default function Slider() {
+const Slider = () => {
   return (
     <>
       <Grid container spacing={2}>
@@ -42,4 +42,5 @@ export default function Slider() {
       </Grid>
     </>
   );
-}
+};
+export default Slider;
