@@ -13,7 +13,11 @@ import './globals.css';
 import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
+
 import { FOOTER_DATA } from '@/app/constants/Constants';
+
+import { store } from '@/src/redux/store';
+import { Provider } from 'react-redux';
 
 function RootLayout({ children }) {
   const currentPath = usePathname();
@@ -22,18 +26,20 @@ function RootLayout({ children }) {
     <html lang="en">
       <Head></Head>
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Box>
-            {currentPath.includes('/dashboard') ? (
-              <DashboardHeader />
-            ) : (
-              <MainHeader />
-            )}
-            <Box>{children}</Box>
-            <Footer data={FOOTER_DATA} />
-          </Box>
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Box>
+              {currentPath.includes('/dashboard') ? (
+                <DashboardHeader />
+              ) : (
+                <MainHeader />
+              )}
+              <Box>{children}</Box>
+              <Footer data={FOOTER_DATA} />
+            </Box>
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
