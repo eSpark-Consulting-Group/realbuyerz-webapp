@@ -1,4 +1,5 @@
 export const AGENT_PROFILE_DATA = {
+  agentProfile: ' View Agent Profile',
   contactInfo: {
     agentName: 'Arman Khan',
     agentImage: '/images/profile.png',

@@ -1,7 +1,10 @@
 import React from 'react';
 import { Typography, Button, Avatar, Box } from '@mui/material';
+import Link from 'next/link';
 
-const ViewAgentProfile = ({ avatar, name }) => {
+import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
+
+const ViewAgentProfile = ({ image, name, link }) => {
   return (
     <Box
       sx={{
@@ -22,7 +25,7 @@ const ViewAgentProfile = ({ avatar, name }) => {
           p: 2,
         }}
       >
-        <Avatar src={avatar} sx={{ width: 100, height: 100 }} />
+        <Avatar src={image} sx={{ width: 100, height: 100 }} />
         <Typography
           variant="secondary"
           sx={{
@@ -42,21 +45,23 @@ const ViewAgentProfile = ({ avatar, name }) => {
           background: '#F5F6FB',
         }}
       >
-        <Button
-          variant="dimSecondary"
-          sx={{
-            width: '100%',
-            fontSize: 20,
-            background: '#F5F6FB',
-            fontWeight: 500,
-            textTransform: 'capitalize',
-            '&:hover': {
+        <Link href={link}>
+          <Button
+            variant="dimSecondary"
+            sx={{
+              width: '100%',
+              fontSize: 20,
               background: '#F5F6FB',
-            },
-          }}
-        >
-          View Agent Profile
-        </Button>
+              fontWeight: 500,
+              textTransform: 'capitalize',
+              '&:hover': {
+                background: '#F5F6FB',
+              },
+            }}
+          >
+            {AGENT_PROFILE_DATA.agentProfile}
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

@@ -5,7 +5,6 @@ import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
 
 function NewlyListedProperties({ data }) {
-  console.log(data, 'ssss');
   return (
     <>
       <Box>

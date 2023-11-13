@@ -25,13 +25,13 @@ const styles = {
   },
 };
 
-function PropertyListingCard({ data }) {
+function PropertyListingCard({ propertyData }) {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = propertyData?.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -65,16 +65,18 @@ function PropertyListingCard({ data }) {
                 position: 'relative',
               }}
             >
-              <Image
-                src={property.imageUrl}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt={''}
-                sx={{
-                  borderRadius: '5px ',
-                }}
-              />
+              <Link href={`/properties/${property.id}`}>
+                <Image
+                  src={property.coverImage}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt={''}
+                  sx={{
+                    borderRadius: '5px ',
+                  }}
+                />
+              </Link>
             </Box>
           </Grid>
           <Grid
@@ -101,32 +103,32 @@ function PropertyListingCard({ data }) {
                 // variant='h3'
                 sx={{ fontSize: '25px', fontWeight: '600' }}
               >
-                {property.price}
+                {property.propertyData.propertyPrice}
               </Typography>
             </Box>
             <Typography
               // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
             >
-              {property.location}
+              {property.propertyData.location.address}
             </Typography>
             <Typography
               // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
-              {property.area} sqft
+              {property.propertyData.area}
             </Typography>
             <Typography
               // variant='h3'
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
-              {property.direction}
+              {property.propertyData.direction}
             </Typography>
             <Typography
               // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400' }}
             >
-              {property.description}
+              {property.propertyData.description}
             </Typography>
 
             <div>
@@ -145,14 +147,14 @@ function PropertyListingCard({ data }) {
               sx={{ display: 'flex' }}
             >
               <Box>
-                <Link href={`/property/${property.id}`}>
+                <Link href={`/properties/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">View More</Typography>
                   </Button>
                 </Link>
               </Box>
               <Box>
-                <Link href={`/property/${property.agentName}`}>
+                <Link href={`/agent/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">Agent Profile</Typography>
                   </Button>
@@ -164,7 +166,7 @@ function PropertyListingCard({ data }) {
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(data?.length / itemsPerPage)}
+          count={Math.ceil(propertyData?.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"
