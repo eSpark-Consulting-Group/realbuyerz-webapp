@@ -9,7 +9,7 @@ import { Grid } from '@mui/material';
 import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
-function CustomTabPanel({ data, value, index, propertyType }) {
+const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? data
@@ -47,16 +47,16 @@ function CustomTabPanel({ data, value, index, propertyType }) {
       )}
     </div>
   );
-}
+};
 
-function a11yProps(index) {
+const a11yProps = (index) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
-}
+};
 
-export default function PropertyTabs({ data }) {
+const PropertyTabs = ({ data }) => {
   const [value, setValue] = useState(0);
   const [propertyType, setPropertyType] = useState('');
 
@@ -153,4 +153,5 @@ export default function PropertyTabs({ data }) {
       </Box>
     </>
   );
-}
+};
+export default PropertyTabs;

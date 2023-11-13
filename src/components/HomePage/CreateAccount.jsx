@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-function Typewriter({ text }) {
+const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -31,9 +31,9 @@ function Typewriter({ text }) {
       {displayedText}|
     </Typography>
   );
-}
+};
 
-function CreateAccount() {
+const CreateAccount = () => {
   return (
     <Box
       sx={{
@@ -61,6 +61,6 @@ function CreateAccount() {
       </Button>
     </Box>
   );
-}
+};
 
 export default CreateAccount;

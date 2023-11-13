@@ -12,14 +12,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 
-function HeroSlider({
+const HeroSlider = ({
   spaceBetween,
   effect,
   navigation,
   pagination,
   delay,
   SlidesData,
-}) {
+}) => {
   return (
     <>
       <Swiper
@@ -41,6 +41,6 @@ function HeroSlider({
       </Swiper>
     </>
   );
-}
+};
 
 export default HeroSlider;

@@ -2,7 +2,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 1,
     Propertytitle: 'House #1',
-    coverImage: '/images/PropertyCardImageHouse.png',
+    coverImage: '/images/properties/PropertyCardImageHouse.png',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -61,7 +61,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 2,
     Propertytitle: 'Plot #1',
-    coverImage: '/images/PropertyCardImagePlots.jpeg',
+    coverImage: '/images/properties/PropertyCardImagePlots.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -120,7 +120,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 3,
     Propertytitle: 'Comemrcial #1',
-    coverImage: '/images/PropertyCardImageCommercial.jpeg',
+    coverImage: '/images/properties/PropertyCardImageCommercial.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -179,7 +179,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 1,
     Propertytitle: 'House #1',
-    coverImage: '/images/PropertyCardImageHouse.png',
+    coverImage: '/images/properties/PropertyCardImageHouse.png',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -238,7 +238,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 2,
     Propertytitle: 'Plot #1',
-    coverImage: '/images/PropertyCardImagePlots.jpeg',
+    coverImage: '/images/properties/PropertyCardImagePlots.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -297,7 +297,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 3,
     Propertytitle: 'Comemrcial #1',
-    coverImage: '/images/PropertyCardImageCommercial.jpeg',
+    coverImage: '/images/properties/PropertyCardImageCommercial.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -356,7 +356,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 1,
     Propertytitle: 'House #1',
-    coverImage: '/images/PropertyCardImageHouse.png',
+    coverImage: '/images/properties/PropertyCardImageHouse.png',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -415,7 +415,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 2,
     Propertytitle: 'Plot #1',
-    coverImage: '/images/PropertyCardImagePlots.jpeg',
+    coverImage: '/images/properties/PropertyCardImagePlots.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -474,7 +474,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 3,
     Propertytitle: 'Comemrcial #1',
-    coverImage: '/images/PropertyCardImageCommercial.jpeg',
+    coverImage: '/images/properties/PropertyCardImageCommercial.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -533,7 +533,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 1,
     Propertytitle: 'House #1',
-    coverImage: '/images/PropertyCardImageHouse.png',
+    coverImage: '/images/properties/PropertyCardImageHouse.png',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -592,7 +592,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 2,
     Propertytitle: 'Plot #1',
-    coverImage: '/images/PropertyCardImagePlots.jpeg',
+    coverImage: '/images/properties/PropertyCardImagePlots.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',
@@ -651,7 +651,7 @@ export const PROPERTIES_LISTING = [
   {
     id: 3,
     Propertytitle: 'Comemrcial #1',
-    coverImage: '/images/PropertyCardImageCommercial.jpeg',
+    coverImage: '/images/properties/PropertyCardImageCommercial.jpeg',
     postedDate: '1 day ago',
     propertyData: {
       propertyPrice: '1.2 Crore',

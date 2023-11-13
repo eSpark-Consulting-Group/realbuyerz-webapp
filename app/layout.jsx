@@ -7,6 +7,8 @@ import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import { usePathname } from 'next/navigation';
+import { store } from '@/src/redux/store';
+import { Provider } from 'react-redux';
 
 import './globals.css';
 
@@ -16,10 +18,7 @@ import Footer from '@/src/components/layouts/Footer';
 
 import { FOOTER_DATA } from '@/app/constants/Constants';
 
-import { store } from '@/src/redux/store';
-import { Provider } from 'react-redux';
-
-function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   const currentPath = usePathname();
 
   return (
@@ -43,6 +42,6 @@ function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
 
-export default RootLayout;
+export default RootLayout

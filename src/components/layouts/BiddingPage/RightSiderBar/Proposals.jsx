@@ -3,7 +3,7 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { PROPOSALS } from '@/app/constants/LiveBidding';
 
-function Proposals() {
+const Proposals = () => {
   return (
     <Grid xs={12} columnSpacing={2} sx={{ mb: 3 }}>
       <Box
@@ -44,6 +44,6 @@ function Proposals() {
       </Box>
     </Grid>
   );
-}
+};
 
 export default Proposals;

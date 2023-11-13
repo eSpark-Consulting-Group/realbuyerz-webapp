@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 
-function FooterCta({ data }) {
+const FooterCta = ({ data }) => {
   return (
     <Box
       sx={{
@@ -134,6 +134,6 @@ function FooterCta({ data }) {
       </Grid>
     </Box>
   );
-}
+};
 
 export default FooterCta;

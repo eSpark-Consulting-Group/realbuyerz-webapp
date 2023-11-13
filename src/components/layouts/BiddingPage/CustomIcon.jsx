@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-function CustomIcon(props) {
+const CustomIcon = (props) => {
   return (
     <svg
       width="41"
@@ -21,6 +21,6 @@ function CustomIcon(props) {
       <rect x="0.5" y="0.5" width="40" height="42" rx="4.5" stroke="#E7E7E7" />
     </svg>
   );
-}
+};
 
 export default CustomIcon;

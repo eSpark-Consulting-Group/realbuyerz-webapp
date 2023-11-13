@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-function PropertyListingCard({ propertyData }) {
+const PropertyListingCard = ({ propertyData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -59,24 +59,22 @@ function PropertyListingCard({ propertyData }) {
             <Box
               sx={{
                 m: '20px 20px 20px 20px',
-                borderRadius: '5px ',
+                borderRadius: '5px',
                 height: '85%',
                 width: '90%',
                 position: 'relative',
               }}
             >
-              <Link href={`/properties/${property.id}`}>
-                <Image
-                  src={property.coverImage}
-                  layout="fill"
-                  objectFit="cover"
-                  style={styles.image}
-                  alt={''}
-                  sx={{
-                    borderRadius: '5px ',
-                  }}
-                />
-              </Link>
+              <Image
+                src={property.coverImage}
+                layout="fill"
+                objectFit="cover"
+                style={styles.image}
+                alt={''}
+                sx={{
+                  borderRadius: '5px',
+                }}
+              />
             </Box>
           </Grid>
           <Grid
@@ -180,6 +178,6 @@ function PropertyListingCard({ propertyData }) {
       </Box>
     </>
   );
-}
+};
 
 export default PropertyListingCard;
