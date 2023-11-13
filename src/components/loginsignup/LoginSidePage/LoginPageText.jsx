@@ -1,0 +1,43 @@
+'use client';
+import React from 'react';
+import { Typography, Box } from '@mui/material';
+
+import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+
+const LoginPageText = () => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        mx: 'auto',
+      }}
+    >
+      <Typography
+        sx={{
+          color: '#126FAA',
+          fontSize: { xs: '25px', md: '35px' },
+          fontFamily: 'Inter',
+          fontWeight: 500,
+          textAlign: 'center',
+        }}
+      >
+        {LOGIN_FORM.loginForm.connect}
+      </Typography>
+      <Typography
+        sx={{
+          color: '#FF631C',
+          fontSize: { xs: '15px', md: '20px' },
+          fontFamily: 'Inter',
+          fontWeight: 400,
+          textAlign: 'center',
+        }}
+      >
+        {LOGIN_FORM.loginForm.propertyDealer}
+      </Typography>
+    </Box>
+  );
+};
+export default LoginPageText;
