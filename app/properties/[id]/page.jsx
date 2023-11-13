@@ -4,7 +4,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 
-import Sliders from '@/src/components/Properties/Slider/slider';
+import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
