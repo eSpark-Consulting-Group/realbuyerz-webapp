@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_INFORMATION } from './postlistingConstants';
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
 const SelectProperyType = ({ image, label, iconTitle }) => {
@@ -63,7 +62,7 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
             gap: '8px',
           }}
         >
-          <Image src={image} width={47} height={45} />
+          <Image src={image} width={47} height={45} alt="properttype" />
           <Typography
             sx={{
               color: '#333333',

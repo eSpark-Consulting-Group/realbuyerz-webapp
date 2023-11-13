@@ -3,8 +3,6 @@ import { Box } from '@mui/system';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from './postlistingConstants';
-
 const ListingInfo = ({ propertyInfo }) => {
   return (
     <Box
@@ -23,7 +21,7 @@ const ListingInfo = ({ propertyInfo }) => {
           }}
           key={index}
         >
-          <Image src={item.image} width={40} height={40} />
+          <Image src={item.image} width={40} height={40} alt="propertyimages"/>
           <Typography
             sx={{
               fontSize: { xs: '18px', md: '22px' },

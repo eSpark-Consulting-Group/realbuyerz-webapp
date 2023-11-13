@@ -1,9 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './Posttitle';
+import PostTitle from './PostTitle';
 import PropertyAddInformation from './PropertyAddInformation';
 
 const AdInformation = ({ inputChange }) => {

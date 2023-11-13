@@ -3,6 +3,7 @@ import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
+
 const SelectLocationType = () => {
   return (
     <Box
@@ -20,6 +21,7 @@ const SelectLocationType = () => {
         src={PROPERTY_INFORMATION.location.images}
         width={47}
         height={45}
+        alt="location"
       />
       <Typography
         sx={{

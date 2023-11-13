@@ -15,7 +15,7 @@ const UploadMediaButton = ({ PropertyInformation }) => {
       updatedMediaData[index].value = selectedText;
       const updatedSellingData = {
         ...prevData.sellingData,
-        [PropertyInformation[index].label]: selectedText,
+        [PropertyInformation[index].text]: selectedText,
       };
       return {
         ...prevData,
@@ -29,19 +29,32 @@ const UploadMediaButton = ({ PropertyInformation }) => {
   };
   const handleFileChange = async (event, index) => {
     const selectedFile = event.target.files[0];
+    if (index === 0 && !isImage(selectedFile)) {
+      alert('Please select an image file.');
+      return;
+    }
+    if (index === 1 && !isVideo(selectedFile)) {
+      alert('Please select a video file.');
+      return;
+    }
     const fileUrl = await readFileAsURL(selectedFile);
     console.log(`Selected file URL for button ${index + 1}:`, fileUrl);
-
     setPropertyData((prevData) => {
       const updatedSellingData = {
         ...prevData.sellingData,
-        [PropertyInformation[index].label]: fileUrl,
+        [PropertyInformation[index].text]: fileUrl,
       };
       return {
         ...prevData,
         sellingData: updatedSellingData,
       };
     });
+  };
+  const isImage = (file) => {
+    return file.type.startsWith('image/');
+  };
+  const isVideo = (file) => {
+    return file.type.startsWith('video/');
   };
   const readFileAsURL = (file) => {
     return new Promise((resolve) => {
@@ -91,7 +104,7 @@ const UploadMediaButton = ({ PropertyInformation }) => {
               {item.label}
             </Button>
             <Input
-              accept="image/*,video/*"
+              accept={index === 0 ? 'image/*' : 'video/*'}
               id={`file-upload-${index}`}
               type="file"
               style={{ display: 'none' }}
@@ -104,5 +117,4 @@ const UploadMediaButton = ({ PropertyInformation }) => {
     </Box>
   );
 };
-
 export default UploadMediaButton;

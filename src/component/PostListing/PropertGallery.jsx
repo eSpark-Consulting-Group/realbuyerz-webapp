@@ -3,7 +3,7 @@ import { Typography, Box, Grid } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './Posttitle';
+import PostTitle from './PostTitle';
 import UploadMediaInstructions from './UploadMediaInstructions';
 import UploadMediaButton from './UploadMediaButton';
 

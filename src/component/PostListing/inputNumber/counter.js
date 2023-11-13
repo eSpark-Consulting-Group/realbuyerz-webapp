@@ -7,11 +7,19 @@ const Counter = () => {
   const handleNumberChange = (newValue) => {
     setNumber(newValue);
   };
+  const [incrementValue, setIncrementValue] = useState(0);
+  const saveIncrement = (value) => {
+    setIncrementValue(value);
+    console.log('Increment value saved:', value);
+  };
   return (
     <div>
-      <CustomNumberInput value={number} onChange={handleNumberChange} />
+      <CustomNumberInput
+        value={number}
+        onChange={handleNumberChange}
+        onSaveIncrement={saveIncrement}
+      />
     </div>
   );
 };
-
 export default Counter;

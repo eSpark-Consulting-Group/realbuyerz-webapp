@@ -6,7 +6,6 @@ const PostTitle = ({ text }) => {
     <Box
       sx={{
         borderBottom: '1px solid #E4E4E4',
-        // width: '100%',
         padding: '15px',
       }}
     >

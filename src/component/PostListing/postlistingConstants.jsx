@@ -237,5 +237,8 @@ export const PROPERTY_BUYING_DETAIL = {
     farmHouseBtn: '',
     roomBtn: '',
     pentHouseBtn: '',
+      incrementBtn: {
+      value: 0, 
+    },
   },
 };

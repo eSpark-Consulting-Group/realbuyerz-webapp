@@ -35,7 +35,7 @@ const AddAmenities = () => {
           padding: '10px',
         }}
       >
-        <Image src={'assets/images/add.svg'} width={20} height={20} />
+        <Image src={'assets/images/add.svg'} width={20} height={20} alt="addition" />
         <Button
           sx={{
             color: '#FB631C',

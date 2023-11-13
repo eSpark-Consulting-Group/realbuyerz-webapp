@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-import PostTitle from './Posttitle';
+import PostTitle from './PostTitle';
 import SelectProperyType from './SelectPropertyType';
 import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';

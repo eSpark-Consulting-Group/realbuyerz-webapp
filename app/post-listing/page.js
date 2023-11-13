@@ -16,7 +16,7 @@ const PostListing = () => {
     console.log('mainpropertyData', propertyData);
   };
   return (
-    <Grid container sx={{ paddingTop: '30px', background: '#F4F5F7' }}>
+    <Grid container sx={{ paddingTop: '30px', background: '#F4F5F7', paddingBottom: "30px" }}>
       <Grid item xs={12} md={1}></Grid>
       <Grid item xs={12} md={10}>
         <Box

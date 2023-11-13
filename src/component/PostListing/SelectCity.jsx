@@ -12,11 +12,11 @@ import { PROPERTY_INFORMATION } from './postlistingConstants';
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
 const SelectCityType = ({ image, label }) => {
-  const [propertData, setPropertyData] = useState({
+  const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
     selectCity: PROPERTY_INFORMATION.selectCityOptions,
   });
-  const handleCityChange = (event, value) => {
+  const handleCityChange = ( value) => {
     setPropertyData((prevData) => ({
       ...prevData,
       sellingData: {
@@ -25,7 +25,6 @@ const SelectCityType = ({ image, label }) => {
       },
     }));
   };
-
   const handleClick = () => {
     console.log('fromselectcity', propertData);
   };
@@ -42,7 +41,7 @@ const SelectCityType = ({ image, label }) => {
           gap: '8px',
         }}
       >
-        <Image src={image} width={47} height={45} />
+        <Image src={image} width={47} height={45} alt="city" />
         <Typography
           sx={{
             color: '#333333',
@@ -52,16 +51,14 @@ const SelectCityType = ({ image, label }) => {
         </Typography>
         <span style={{ color: '#FF0000' }}>*</span>
       </Box>
-
       <Autocomplete
         disablePortal
         id="combo-box-demo"
-        options={propertData.selectCity}
+        options={propertyData.selectCity}
         sx={{ width: { xs: '50%', md: '300px' } }}
         renderInput={(params) => <TextField {...params} label="Select City" />}
         onChange={handleCityChange}
       />
-
       <Button onClick={handleClick}>Ok</Button>
     </>
   );

@@ -3,7 +3,6 @@ import {
   Typography,
   Box,
   TextField,
-  MenuItem,
   Autocomplete,
   Button,
 } from '@mui/material';
@@ -13,6 +12,7 @@ import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 import { PROPERTY_INFORMATION } from './postlistingConstants';
 import SelectCityType from './SelectCity';
 
+
 const AreaSize = ({ PropertySizeInformation }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
@@ -20,7 +20,9 @@ const AreaSize = ({ PropertySizeInformation }) => {
       ...item,
       value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
     })),
+        selectCity: PROPERTY_INFORMATION.selectCityOptions,
   });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPropertyData((prevData) => ({
@@ -32,6 +34,15 @@ const AreaSize = ({ PropertySizeInformation }) => {
       propertySize: prevData.propertySize.map((item) =>
         item.label === name ? { ...item, value } : item
       ),
+    }));
+  };
+   const handleCityChange = ( value) => {
+    setPropertyData((prevData) => ({
+      ...prevData,
+      sellingData: {
+        ...prevData.sellingData,
+        selectCityOptions: value ? value.label : '',
+      },
     }));
   };
   const handleClickBtn = () => {
@@ -62,7 +73,7 @@ const AreaSize = ({ PropertySizeInformation }) => {
               gap: '8px',
             }}
           >
-            <Image src={item.image} width={45} height={45} />
+            <Image src={item.image} width={45} height={45} alt="areasize" />
             <Typography
               sx={{
                 color: '#333333',
@@ -88,8 +99,18 @@ const AreaSize = ({ PropertySizeInformation }) => {
               name={item.label}
               onChange={handleInputChange}
             />
-            {/* <SelectCityType  /> */}
-            <Autocomplete
+          
+             <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={propertyData.selectCity}
+        sx={{ width: { xs: '50%', md: '300px' } }}
+        renderInput={(params) => <TextField {...params} label="Select City" />}
+        onChange={handleCityChange}
+      />
+      {/* <Button onClick={handleClick}>Ok</Button> */}
+    
+            {/* <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={PROPERTY_INFORMATION.selectCityOptions}
@@ -97,7 +118,7 @@ const AreaSize = ({ PropertySizeInformation }) => {
               renderInput={(params) => (
                 <TextField {...params} label="Select City" />
               )}
-            />
+            /> */}
           </Box>
         </Box>
       ))}
