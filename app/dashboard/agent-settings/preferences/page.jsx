@@ -14,20 +14,16 @@ const AgentPreferenceLayout = () => {
         justifyContent: 'center',
       }}
     >
-      <Grid item xs={12} md={2} />
       <Grid
         item
         xs={12}
-        md={8}
+        md={11.5}
         sx={{
           display: 'flex',
-          width: '100%',
         }}
       >
         <PreferenceSettings />
       </Grid>
-
-      <Grid item xs={12} md={2} />
     </Grid>
   );
 };

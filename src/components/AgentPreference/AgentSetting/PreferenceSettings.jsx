@@ -46,23 +46,24 @@ const PreferenceSettings = () => {
       <Grid
         item
         xs={12}
-        md={10}
         sx={{
-          backgroundImage: 'url("/images/RealBuyers.svg")',
-          backgroundPosition: 'center 35%',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '70% 70%',
+          background: 'white',
+          border: '1px #E4E4E4 solid',
+          borderRadius: '10px',
+          width: '100%',
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            width: '100%',
             height: '1152px',
             justifyContent: 'center',
             margin: 0,
-            border: '2px solid #F4F5F7',
+            backgroundImage: 'url("/images/RealBuyers.svg")',
+            backgroundPosition: 'center 35%',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: '70% 70%',
           }}
         >
           <Box
