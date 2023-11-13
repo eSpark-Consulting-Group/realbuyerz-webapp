@@ -9,6 +9,9 @@ const theme = createTheme({
     secondary: {
       main: '#EDF7FF',
     },
+    customColor: {
+      main: ' #1176AD',
+    },
     background: {
       default: '#ffffff',
     },

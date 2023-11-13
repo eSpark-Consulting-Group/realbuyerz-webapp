@@ -23,7 +23,7 @@ const ProfileFormMidText = () => {
       <Grid item xs={12}>
         <Item
           sx={{
-            background: 'rgba(218, 233, 242, 0.40)',
+            backgroundColor: '#F0F6FA',
             height: '71px',
             paddingLeft: { lg: 7, md: 7, xs: 2 },
           }}

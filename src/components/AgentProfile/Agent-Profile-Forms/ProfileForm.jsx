@@ -72,7 +72,7 @@ export default function ProfileForm({
           backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '60%' },
           pr: { xs: 2, md: 0 },
           pt: { xs: 2, md: 1 },
-          pb: { xs: 2, md: 7 },
+          pb: { xs: 2, md: 5 },
         }}
       >
         <Grid item xs={12} md={11} lg={10}>

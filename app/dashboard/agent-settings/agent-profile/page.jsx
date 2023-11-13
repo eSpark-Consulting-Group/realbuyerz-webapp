@@ -55,13 +55,14 @@ const AgentProfile = () => {
       <Grid
         container
         xs={11}
-        md={9}
         item
         sx={{
-          mx: 'auto',
+          mx: '30px',
           display: 'block',
           border: '2px solid #E4E4E4',
-          my: { xs: 4, sm: 10 },
+          background: '#fff',
+          borderRadius: '5px',
+          mb: '20px',
         }}
       >
         <ProfileForm

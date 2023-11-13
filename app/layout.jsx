@@ -6,15 +6,18 @@ import Head from 'next/head';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
+import { usePathname } from 'next/navigation';
 
 import './globals.css';
 
+import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 import MainHeader from '@/src/components/layouts/MainHeader';
-
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 
 function RootLayout({ children }) {
+  const currentPath = usePathname();
+
   return (
     <html lang="en">
       <Head></Head>
@@ -22,7 +25,11 @@ function RootLayout({ children }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>
-            <MainHeader />
+            {currentPath.includes('/dashboard') ? (
+              <DashboardHeader />
+            ) : (
+              <MainHeader />
+            )}
             <Box>{children}</Box>
             <Footer data={FOOTER_DATA} />
           </Box>
