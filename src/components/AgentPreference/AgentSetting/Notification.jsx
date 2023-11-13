@@ -5,58 +5,56 @@ import { Typography, Box, Switch } from '@mui/material';
 const Notification = ({ notificationData, handleInputChange }) => {
   return (
     <>
-      <Box>
-        {notificationData?.map((item, index) => {
-          return (
+      {notificationData?.map((item, index) => {
+        return (
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              borderBottom: '1px solid gray',
+              gap: '10px',
+              padding: '10px',
+            }}
+            key={index}
+          >
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                borderBottom: '1px solid gray',
-                gap: '10px',
-                padding: '10px',
+                justifyContent: 'space-between',
               }}
             >
-              <Box
+              <Typography
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
+                  color: 'black',
+                  fontSize: '20px',
+                  fontFamily: 'Inter',
+                  fontWeight: 400,
                 }}
-                key={index}
               >
-                <Typography
-                  sx={{
-                    color: 'black',
-                    fontSize: '20px',
-                    fontFamily: 'Inter',
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.title}
-                </Typography>
-                <Switch
-                  value={item.value}
-                  onChange={(event) =>
-                    handleInputChange(item.label, event.target.checked)
-                  }
-                />
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    color: '#666666',
-                    fontSize: '18px',
-                    fontFamily: 'Inter',
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.description}
-                </Typography>
-              </Box>
+                {item.title}
+              </Typography>
+              <Switch
+                value={item.value}
+                onChange={(event) =>
+                  handleInputChange(item.label, event.target.checked)
+                }
+              />
             </Box>
-          );
-        })}
-      </Box>
+            <Box>
+              <Typography
+                sx={{
+                  color: '#666666',
+                  fontSize: '18px',
+                  fontFamily: 'Inter',
+                  fontWeight: 400,
+                }}
+              >
+                {item.description}
+              </Typography>
+            </Box>
+          </Box>
+        );
+      })}
     </>
   );
 };

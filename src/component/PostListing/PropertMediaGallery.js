@@ -30,7 +30,6 @@ const PropertyGallery = () => {
             borderRadius: '10px',
             width: '90%',
             height: { xs: '900px', md: '681px' },
-            justifyContent: 'flex-start',
           }}
         >
           <PostTitle text={PropertyInformation.postTitles.imagesvidoes} />
@@ -73,6 +72,7 @@ const PropertyGallery = () => {
                   src={PropertyInformation.upload.images}
                   width={47}
                   height={45}
+                  alt="uploadImages"
                 />
                 <Typography>{PropertyInformation.upload.text}</Typography>
               </Box>
@@ -85,10 +85,14 @@ const PropertyGallery = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                 }}
               >
-                <UploadGalleryButton PropertyInformation={PropertyInformation.uploadButton} />
+                <UploadGalleryButton
+                  PropertyInformation={PropertyInformation.uploadButton}
+                />
                 <Box>
                   {' '}
-                  <UploadMediaInstructions PropertyInformation={PropertyInformation.uploadInstruction} />
+                  <UploadMediaInstructions
+                    PropertyInformation={PropertyInformation.uploadInstruction}
+                  />
                 </Box>
               </Box>
             </Box>
