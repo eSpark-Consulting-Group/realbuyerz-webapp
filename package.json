@@ -26,6 +26,8 @@
     "@mui/material": "^5.14.14",
     "@mui/styled-engine-sc": "^6.0.0-alpha.2",
     "@mui/system": "^5.14.14",
+    "@mui/x-data-grid": "^6.18.1",
+    "@next/font": "^14.0.0",
     "@reduxjs/toolkit": "^1.9.7",
     "next": "13.5.5",
     "react": "^18",
