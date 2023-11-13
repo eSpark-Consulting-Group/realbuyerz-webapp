@@ -100,13 +100,14 @@ export default function ProfileForm({
             width,
             multiline,
           } = field;
-
           const selectedCountryObject1 =
             dropdowns &&
-            dropdowns?.find((item) => item.icon === FirstDropdownValue);
+            dropdowns.find((item) => item.icon === FirstDropdownValue);
+
           const selectedCountryObject2 =
             dropdowns &&
-            dropdowns?.find((item) => item.icon === SecondDropdownValue);
+            dropdowns.find((item) => item.icon === SecondDropdownValue);
+
           return (
             <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
               <Item>
