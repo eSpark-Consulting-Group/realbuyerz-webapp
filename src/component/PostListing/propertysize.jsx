@@ -45,9 +45,12 @@ const PropertySize = () => {
             <Box
               sx={{
                 display: 'flex',
-                width: { xs: '400px', md: '770px' },
+                width: { xs: '600px', md: '770px' },
                 flexDirection: 'column',
                 paddingTop: '40px',
+                '@media (min-width: 960px) and (max-width: 1500px)': {
+                  width: '600px',
+                },
               }}
             >
               <AreaSize

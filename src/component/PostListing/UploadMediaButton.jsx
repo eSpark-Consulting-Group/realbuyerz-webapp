@@ -73,7 +73,7 @@ const UploadMediaButton = ({ PropertyInformation }) => {
         justifyContent: 'center',
         fontFamily: 'Inter',
         fontWeight: 400,
-        width: { xs: '100%', md: '800px' },
+        padding: '50px',
         alignItems: 'center',
         gap: '20px',
       }}

@@ -1,12 +1,25 @@
-import React from 'react';
-import { Typography, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
-import { display } from '@mui/system';
+
+import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
 const SelectedItemsComponent = ({ selectedItems }) => {
+  const [selectedAmenities, setSelectedAmenities] = useState({
+    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+  });
+
+  const handleSaveAmenities = () => {
+    const updatedSellingDetails = { ...selectedAmenities.sellingData };
+    const selectedTitles = selectedItems.map((item) => item.title);
+    updatedSellingDetails.selectedAmenities = selectedTitles;
+    setSelectedAmenities({
+      sellingDetails: updatedSellingDetails,
+    });
+    console.log('list', selectedAmenities);
+  };
   return (
     <div>
-      {/* <h2>Selected Amenities:</h2> */}
       <ul
         style={{
           display: 'flex',
@@ -28,6 +41,7 @@ const SelectedItemsComponent = ({ selectedItems }) => {
           </li>
         ))}
       </ul>
+      <Button onClick={handleSaveAmenities}>Ok</Button>
     </div>
   );
 };

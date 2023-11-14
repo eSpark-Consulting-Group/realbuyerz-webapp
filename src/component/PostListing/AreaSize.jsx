@@ -34,13 +34,17 @@ const AreaSize = ({ PropertySizeInformation }) => {
       ),
     }));
   };
-  const handleCityChange = (value) => {
+  const handleCityChange = (event, value) => {
     setPropertyData((prevData) => ({
       ...prevData,
       sellingData: {
         ...prevData.sellingData,
         selectCityOptions: value ? value.label : '',
       },
+      selectCity: prevData.selectCity.map((city) => ({
+        ...city,
+        value: city.label === (value ? value.label : '') ? value.label : '',
+      })),
     }));
   };
   const handleClickBtn = () => {
@@ -93,6 +97,9 @@ const AreaSize = ({ PropertySizeInformation }) => {
               placeholder={item.placeholder}
               sx={{
                 width: { xs: '100%', md: '500px' },
+                '@media (min-width: 960px) and (max-width: 1500px)': {
+                  width: '250px',
+                },
               }}
               name={item.label}
               onChange={handleInputChange}
@@ -102,23 +109,17 @@ const AreaSize = ({ PropertySizeInformation }) => {
               disablePortal
               id="combo-box-demo"
               options={propertyData.selectCity}
-              sx={{ width: { xs: '50%', md: '300px' } }}
+              sx={{
+                width: { xs: '50%', md: '200px' },
+                '@media (min-width: 961px) and (max-width: 1500px)': {
+                  width: '150px',
+                },
+              }}
               renderInput={(params) => (
                 <TextField {...params} label="Select City" />
               )}
               onChange={handleCityChange}
             />
-            {/* <Button onClick={handleClick}>Ok</Button> */}
-
-            {/* <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={PROPERTY_INFORMATION.selectCityOptions}
-              sx={{ width: 200 }}
-              renderInput={(params) => (
-                <TextField {...params} label="Select City" />
-              )}
-            /> */}
           </Box>
         </Box>
       ))}

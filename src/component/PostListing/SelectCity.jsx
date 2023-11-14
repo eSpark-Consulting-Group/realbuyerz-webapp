@@ -16,17 +16,21 @@ const SelectCityType = ({ image, label }) => {
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
     selectCity: PROPERTY_INFORMATION.selectCityOptions,
   });
-  const handleCityChange = (value) => {
+  const handleCityChange = (event, value) => {
     setPropertyData((prevData) => ({
       ...prevData,
       sellingData: {
         ...prevData.sellingData,
         selectCityOptions: value ? value.label : '',
       },
+      selectCity: prevData.selectCity.map((city) => ({
+        ...city,
+        value: city.label === (value ? value.label : '') ? value.label : '',
+      })),
     }));
   };
   const handleClick = () => {
-    console.log('fromselectcity', propertData);
+    console.log('fromselectcity', propertyData);
   };
   return (
     <>

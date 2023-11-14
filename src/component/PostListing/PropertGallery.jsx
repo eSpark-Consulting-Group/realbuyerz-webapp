@@ -31,7 +31,10 @@ const PropertyGallery = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             width: '90%',
-            height: { xs: '900px', md: '681px' },
+            height: { xs: '900px', md: '581px' },
+            '@media (min-width: 960px) and (max-width: 1399px)': {
+              height: '780px',
+            },
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.imagesvidoes} />
@@ -41,51 +44,46 @@ const PropertyGallery = () => {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '70px',
+              gap: '20px',
+              padding: '50px',
+              background: 'white',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
+                alignItems: 'center',
+                fontSize: { xs: '20px', md: '25px' },
+                fontWeight: 400,
+                gap: '10px',
               }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignSelf: 'flex-start',
-                  alignItems: 'center',
-                  fontSize: { xs: '20px', md: '25px' },
-                  fontWeight: 400,
-                  gap: '10px',
-                }}
-              >
-                <Image
-                  src={PROPERTY_INFORMATION.upload.images}
-                  width={47}
-                  height={45}
+              <Image
+                src={PROPERTY_INFORMATION.upload.images}
+                width={47}
+                height={45}
+              />
+              <Typography>{PROPERTY_INFORMATION.upload.text}</Typography>
+            </Box>
+            <Box
+              sx={{
+                width: { xs: '100%', md: '80%' },
+                border: '1px #FB631C dotted',
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                '@media (min-width: 960px) and (max-width: 1200px)': {
+                  flexDirection: 'column',
+                },
+              }}
+            >
+              <UploadMediaButton
+                PropertyInformation={PROPERTY_INFORMATION.uploadButton}
+              />
+              <Box>
+                {' '}
+                <UploadMediaInstructions
+                  PropertyInformation={PROPERTY_INFORMATION.uploadInstruction}
                 />
-                <Typography>{PROPERTY_INFORMATION.upload.text}</Typography>
-              </Box>
-              <Box
-                sx={{
-                  width: { xs: '100%', md: '743px' },
-                  height: { xs: 'auto', md: '350px' },
-                  border: '1px #FB631C dotted',
-                  display: 'flex',
-                  flexDirection: { xs: 'column', md: 'row' },
-                }}
-              >
-                <UploadMediaButton
-                  PropertyInformation={PROPERTY_INFORMATION.uploadButton}
-                />
-                <Box>
-                  {' '}
-                  <UploadMediaInstructions
-                    PropertyInformation={PROPERTY_INFORMATION.uploadInstruction}
-                  />
-                </Box>
               </Box>
             </Box>
           </Box>

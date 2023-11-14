@@ -15,7 +15,7 @@ const AddAmenities = ({ onSelected }) => {
   };
   const handleClose = () => {
     setOpen(false);
-    onSelected(selectedItems); // Pass selected items to PropertyFeatures
+    onSelected(selectedItems);
   };
   return (
     <Box

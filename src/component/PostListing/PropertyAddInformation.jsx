@@ -4,11 +4,7 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from './postlistingConstants';
 
-const PropertyAddInformation = ({
-  PropertyInformation,
-  inputChange,
-  handleClickButton,
-}) => {
+const PropertyAddInformation = ({ PropertyInformation }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
     addInfo: PropertyInformation.map((item) => ({
@@ -33,6 +29,7 @@ const PropertyAddInformation = ({
     console.log('fromaddcomponnet', propertyData);
   };
   console.log('property', propertyData);
+  const specialIndex = 1;
   return (
     <Box
       sx={{
@@ -77,11 +74,15 @@ const PropertyAddInformation = ({
             placeholder={item.placeholder}
             sx={{
               marginLeft: { xs: '0px', md: '50px' },
-              width: { xs: '100%', md: '600px' },
-              '& placholder': {
-                textOverflow: 'ellipsis',
-                whiteSpace: { xs: 'nowrap', md: 'normal' },
-                overflow: 'hidden',
+              width: { xs: '90%', md: '600px' },
+              '@media (min-width: 961px) and (max-width: 1200px)': {
+                width: '300px',
+              },
+              '& placeholder': {
+                paddingRight: '10px',
+              },
+              '& textarea': {
+                padding: index === specialIndex ? '30px' : 'auto',
               },
             }}
             name={item.label}

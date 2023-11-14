@@ -32,7 +32,7 @@ const PropertyFacilities = ({ PropertyInformation }) => {
           >
             <Image src={item.image} width={47} height={45} />
             <Typography>{item.title}</Typography>
-            <Counter />
+            <Counter identifier={`facility_${index}`} />
           </Box>
         </Box>
       ))}

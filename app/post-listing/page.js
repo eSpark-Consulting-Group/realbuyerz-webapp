@@ -19,11 +19,10 @@ const PostListing = () => {
       container
       sx={{ paddingTop: '30px', background: '#F4F5F7', paddingBottom: '30px' }}
     >
-      <Grid item xs={12} md={1}></Grid>
-      <Grid item xs={12} md={10}>
+      <Grid item xs={12} md={12}>
         <Box
           sx={{
-            width: '100%',
+            width: { xs: '100%', md: '60%' },
             display: 'flex',
             background: 'white',
             justifyContent: 'center',
@@ -42,7 +41,6 @@ const PostListing = () => {
           <SubmitButton handleClickButton={handleClick} />
         </Box>
       </Grid>
-      <Grid item xs={12} md={1}></Grid>
     </Grid>
   );
 };

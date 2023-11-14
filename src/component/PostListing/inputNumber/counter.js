@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CustomNumberInput from './customInputNumber';
 
-const Counter = () => {
+const Counter = ({ identifier }) => {
   const [number, setNumber] = useState('0');
   const handleNumberChange = (newValue) => {
     setNumber(newValue);
@@ -10,7 +10,8 @@ const Counter = () => {
   const [incrementValue, setIncrementValue] = useState(0);
   const saveIncrement = (value) => {
     setIncrementValue(value);
-    console.log('Increment value saved:', value);
+    // console.log('Increment value saved:', value);
+    console.log(`Increment value saved for ${identifier}:`, value);
   };
   return (
     <div>
@@ -18,6 +19,7 @@ const Counter = () => {
         value={number}
         onChange={handleNumberChange}
         onSaveIncrement={saveIncrement}
+        identifier={identifier}
       />
     </div>
   );

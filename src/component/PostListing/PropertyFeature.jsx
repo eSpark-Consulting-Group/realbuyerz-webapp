@@ -55,7 +55,6 @@ const PropertyFeatures = () => {
               <PropertyFacilities
                 PropertyInformation={PROPERTY_INFORMATION.feature}
               />
-              {/* <AddAmenities /> */}
               <AddAmenities onSelected={handleSelectedItems} />
               {selectedItems.length > 0 && (
                 <Box

@@ -4,7 +4,12 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../postlistingConstants';
 
-const CustomNumberInput = ({ value, onChange, onSaveIncrement }) => {
+const CustomNumberInput = ({
+  value,
+  onChange,
+  onSaveIncrement,
+  identifier,
+}) => {
   const [incrementValue, setIncrementValue] = useState(
     PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn.value
   );
@@ -15,16 +20,14 @@ const CustomNumberInput = ({ value, onChange, onSaveIncrement }) => {
   };
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
-    // onChange((numericValue + 1).toString());
-    // const newValue = (numericValue + 1).toString();
     const newIncrementValue = numericValue + 1;
-    // PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn.value = newValue;
-    // onSaveIncrement(newValue);
-    PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn.value =
+    PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn[identifier] =
       newIncrementValue;
+
+    onSaveIncrement(newIncrementValue, identifier);
+
     onChange(newIncrementValue.toString());
-    // onChange(newValue);
-    // console.log('Increment value:', newValue);
+    console.log('Increment value:', numericValue);
   };
   const handleDecrement = () => {
     const numericValue = parseFloat(value) || 0;

@@ -137,15 +137,13 @@ export const PROPERTY_INFORMATION = {
   selectCityOptions: [
     {
       label: 'Karachi',
-      value: 'Karachi',
+      value: '',
       name: 'selectCityOptions',
-      values: '',
     },
     {
       label: 'Lahore',
-      value: 'Lahore',
+      value: '',
       name: 'selectCityOptions',
-      values: '',
     },
   ],
 
@@ -325,17 +323,19 @@ export const PROPERTY_BUYING_DETAIL = {
     uploadImage: '',
     uploadVideo: '',
     selectCityOptions: '',
-    sellBtn: '',
-    rentBtn: '',
-    houseBtn: '',
-    flatBtn: '',
-    upperPortionBtn: '',
-    lowerPortionBtn: '',
-    farmHouseBtn: '',
-    roomBtn: '',
-    pentHouseBtn: '',
-    incrementBtn: {
-      value: 0,
+    selectedPurpose: '',
+    SelectPropertyType: {
+      Home: {
+        houseBtn: '',
+        flatBtn: '',
+        upperPortionBtn: '',
+        lowerPortionBtn: '',
+        farmHouseBtn: '',
+        roomBtn: '',
+        pentHouseBtn: '',
+      },
     },
+    selectedAmenities: {},
+    incrementBtn: {},
   },
 };

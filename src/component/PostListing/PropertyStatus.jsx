@@ -17,7 +17,7 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
       updatedPurposeData[index].value = selectedText;
       const updatedSellingData = {
         ...prevData.sellingData,
-        sellBtn: selectedText,
+        selectedPurpose: selectedText,
       };
       return {
         ...prevData,

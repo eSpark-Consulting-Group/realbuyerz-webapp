@@ -12,26 +12,19 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
   });
   const handleInputChangeToggle = (name, checked) => {
     setPropertyData((prevData) => {
-      const updatedToggleData = prevData.toggleData.map((item) => {
-        if (item.label === name) {
-          return {
-            ...item,
-            value: checked,
-          };
-        }
-        return item;
-      });
-      const updatedsellingData = {
-        ...prevData.sellingData,
-        [name]: checked,
-      };
+      const updatedToggleData = prevData.toggleData.map((item) =>
+        item.label === name ? { ...item, value: checked } : item
+      );
+      const updatedSellingData = { ...prevData.sellingData, [name]: checked };
+
       return {
         ...prevData,
         toggleData: updatedToggleData,
-        sellingData: updatedsellingData,
+        sellingData: updatedSellingData,
       };
     });
   };
+
   const handleClickBtn = () => {
     console.log('frominstallmentcomponent', propertyData);
   };

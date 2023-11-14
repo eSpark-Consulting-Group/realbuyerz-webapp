@@ -20,12 +20,22 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
     setPropertyData((prevData) => {
       const updatedPurposeData = [...prevData.propertyTypeData];
       updatedPurposeData[index].value = selectedText;
-
       const updatedSellingData = {
         ...prevData.sellingData,
-        [iconTitle[index].label]: selectedText,
+        SelectPropertyType: {
+          ...prevData.sellingData.SelectPropertyType,
+          Home: {
+            ...prevData.sellingData.SelectPropertyType.Home,
+            [iconTitle[index].label]: selectedText,
+          },
+        },
       };
-
+      if (selectedText === 'Rent House') {
+        updatedSellingData.SelectedPurpose = {
+          ...prevData.sellingData.SelectedPurpose,
+          rentBtn: selectedText,
+        };
+      }
       return {
         ...prevData,
         sellingData: updatedSellingData,
