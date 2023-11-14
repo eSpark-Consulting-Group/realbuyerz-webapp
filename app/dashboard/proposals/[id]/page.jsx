@@ -4,12 +4,12 @@ import { Box } from '@mui/system';
 import { Divider, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 
-import ProposalHeader from '@/src/components/proposals/ProposalHeader';
-import ProposalApplicant from '@/src/components/proposals/ProposalApplicant';
-import ProposalMedia from '@/src/components/proposals/ProposalMedia';
-import ProposalMapLocation from '@/src/components/proposals/ProposalMapLocation';
-import ProposalStats from '@/src/components/proposals/ProposalStats';
-import PropertyDescription from '@/src/components/proposals/PropertyDescription';
+import ProposalApplicant from '@/src/components/Proposals/ProposalApplicant';
+import ProposalHeader from '@/src/components/Proposals/ProposalHeader';
+import PropertyDescription from '@/src/components/Proposals/PropertyDescription';
+import ProposalMapLocation from '@/src/components/Proposals/ProposalMapLocation';
+import ProposalStats from '@/src/components/Proposals/ProposalStats';
+import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
 
 import { PROPOSAL_LISTING } from '@/app/constants/Proposals';
 

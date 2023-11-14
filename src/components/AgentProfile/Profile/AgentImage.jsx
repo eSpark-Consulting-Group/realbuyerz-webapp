@@ -8,7 +8,8 @@ const AgentImage = ({ image }) => {
       sx={{
         width: '180px',
         height: '160px',
-        margin: 'auto',
+        margin: { xs: 'auto', md: 'auto' },
+        pt: { xs: 1, sm: 0 },
         display: 'flex',
         alignItem: 'center',
         justifyContent: 'center',

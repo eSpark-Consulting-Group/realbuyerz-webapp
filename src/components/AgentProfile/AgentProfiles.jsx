@@ -6,6 +6,7 @@ import LetsTalk from './Profile/LetsTalk';
 import AgentImage from './Profile/AgentImage';
 
 const AgentProfiles = ({ data }) => {
+  const { image, title, text, description } = data;
   return (
     <Box
       sx={{
@@ -18,26 +19,39 @@ const AgentProfiles = ({ data }) => {
       <Box
         sx={{
           backgroundColor: 'white',
-          width: '185px',
+          width: {
+            xs: 'auto',
+            sm: '160px',
+            md: '165px',
+            lg: '180px',
+          },
           position: 'absolute',
           left: 0,
           top: 0,
           bottom: 0,
-          borderRadius: '0 110px 110px 0',
+          borderRadius: {
+            xs: '0',
+            sm: '0 110px 110px 0',
+            md: '0 100px 110px 0',
+            lg: '0 90px 90px 0',
+          },
         }}
       ></Box>
       <Box
         item
         sx={{
-          display: 'flex',
+          display: { xs: 'block', sm: 'flex' },
           position: 'relative',
+          padding: { xs: 2, sm: 0 },
         }}
       >
-        <AgentImage image={data?.contactInfo.agentImage} />
+        <AgentImage image={image} />
         <Grid
           sx={{
             padding: 2,
             width: '100%',
+            display: 'flex',
+            alignItems: 'center',
           }}
         >
           <Grid
@@ -48,8 +62,8 @@ const AgentProfiles = ({ data }) => {
               width: '100%',
             }}
           >
-            <AgentProfileDetail data={data} />
-            <LetsTalk />
+            <AgentProfileDetail title={title} description={description} />
+            <LetsTalk text={text} />
           </Grid>
         </Grid>
       </Box>

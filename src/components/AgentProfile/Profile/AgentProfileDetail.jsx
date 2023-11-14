@@ -3,78 +3,68 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-// import { locationIcon, rentIcon, salesIcon } from '@/app/constents/AgentProfile';
-
-const AgentProfileDetail = ({ data }) => {
+const AgentProfileDetail = ({ title, description }) => {
   return (
-    <Grid item xs={4} sx={{ display: 'flex', width: 'auto' }}>
+    <Grid
+      item
+      xs={11}
+      sm={12}
+      md={6}
+      sx={{
+        display: 'flex',
+        width: '100%',
+        mx: { xs: 'auto', sm: 0 },
+        justifyContent: { xs: 'center', sm: 'start' },
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          marginLeft: '50px',
+          width: '100%',
+          marginLeft: { xs: 0, sm: '50px' },
+          my: { xs: 2 },
+          alignItems: { xs: 'center', sm: 'start' },
         }}
       >
         <Typography
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
         >
-          {data?.contactInfo.agentName}
+          {title}
         </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-          }}
-        >
-          <Image
-            src="./images/agent-profile-icons/location.svg"
-            width={15}
-            height={15}
-            alt="amenities"
-          />
-          <Typography
-            variant="body1"
-            sx={{ color: '#777777', fontWeight: 'medium', marginTop: 1, mx: 1 }}
+        {description?.map((item, i) => (
+          <Box
+            key={i}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
-            Karachi, Pakistan
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-          }}
-        >
-          <Image
-            src="./images/agent-profile-icons/home.svg"
-            width={15}
-            height={15}
-            alt="amenities"
-          />
-          <Typography
-            variant="body1"
-            sx={{ color: '#777777', fontWeight: 'medium', marginTop: 1, mx: 1 }}
-          >
-            {data?.propertyDetails.propertiesForSale.count} For Sale
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-          }}
-        >
-          <Image
-            src="./images/agent-profile-icons/keys.svg"
-            width={15}
-            height={15}
-            alt="amenities"
-          />
-          <Typography
-            variant="body1"
-            sx={{ color: '#777777', fontWeight: 'medium', marginTop: 1, mx: 1 }}
-          >
-            {data?.propertyDetails.propertiesForRent.count} For Rent
-          </Typography>
-        </Box>
+            {item?.icon && (
+              <Box sx={{ mr: 1, mt: 1 }}>
+                <Image
+                  src={item?.icon}
+                  width={15}
+                  height={15}
+                  alt={item?.alt}
+                />
+              </Box>
+            )}
+            <Typography
+              variant="body1"
+              sx={{
+                color: '#777777',
+                fontWeight: 'medium',
+                marginTop: 1,
+              }}
+            >
+              {item?.text}
+              {item?.email}
+            </Typography>
+          </Box>
+        ))}
       </Box>
     </Grid>
   );

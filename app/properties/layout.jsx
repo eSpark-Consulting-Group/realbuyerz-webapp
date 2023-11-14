@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
+
 import FooterCta from '@/src/components/FooterCta';
 
 import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
