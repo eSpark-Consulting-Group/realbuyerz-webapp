@@ -1,7 +1,6 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, Grid } from '@mui/material';
 import React from 'react';
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
-import { Grid } from 'chakra-ui';
 import BuyConnectSelect from './BuyConnectSelect';
 
 const BuyConnects = ({ title, discription, image, buttonText, feilds }) => {
