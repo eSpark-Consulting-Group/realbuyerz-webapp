@@ -1,9 +1,9 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const BidDescription = ({ details }) => {
   return (
-    <div>
+    <Box sx={{ py: '20px' }}>
       <Typography
         variant="h2"
         sx={{
@@ -11,9 +11,10 @@ const BidDescription = ({ details }) => {
           color: '#000',
           fontSize: '20px',
           fontWeight: '500',
+          textAlign: 'center',
         }}
       >
-        Property Details
+        Clients Requirement
       </Typography>
       <Typography
         sx={{
@@ -36,7 +37,7 @@ const BidDescription = ({ details }) => {
       >
         {details?.description}
       </Typography>
-    </div>
+    </Box>
   );
 };
 export default BidDescription;

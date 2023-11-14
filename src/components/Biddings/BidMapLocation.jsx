@@ -36,7 +36,7 @@ const BidMapLocation = ({ location }) => {
   };
 
   return (
-    <Box sx={{ padding: '5px' }}>
+    <Box sx={{ padding: '5px', pt: '25px', pb: '35px' }}>
       <Typography
         sx={{
           color: '#000',

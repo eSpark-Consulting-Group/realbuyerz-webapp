@@ -1,28 +1,32 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@mui/material';
-import ProposalSlider from './BidSlider';
+import BidSlider from './BidSlider';
+import { BIDDINGS } from '@/app/constants/Biddings';
 
-const BidMedia = ({ media, mediaType }) => {
+const BidMedia = ({ title, media, mediaType }) => {
   return (
     <>
       <Grid container>
-        <Grid item xs={6} gap={'26px'} sx={{ display: 'flex', padding: '5px' }}>
+        <Grid
+          item
+          xs={6}
+          sx={{ py: '40px', display: 'flex', justifyContent: 'flex-start' }}
+        >
           <Typography
             variant="h2"
             sx={{
-              color: 'black',
+              color: '#000',
               fontSize: '20px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >
-            {`Project videos`}
+            {title}
           </Typography>
         </Grid>
         <Grid
           item
           xs={6}
-          sx={{ p: '40px', display: 'flex', justifyContent: 'flex-end' }}
+          sx={{ py: '40px', display: 'flex', justifyContent: 'flex-end' }}
         >
           <Button
             sx={{
@@ -38,12 +42,12 @@ const BidMedia = ({ media, mediaType }) => {
             }}
             variant="outlined"
           >
-            View All
+            {BIDDINGS.ViewAllbutton.title}
           </Button>
         </Grid>
       </Grid>
       <Grid container sx={{ display: 'flex', gap: 'auto' }}>
-        <ProposalSlider media={media} mediaType={mediaType} />
+        <BidSlider media={media} mediaType={mediaType} />
       </Grid>
     </>
   );
