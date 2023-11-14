@@ -11,10 +11,10 @@ import Typography from '@mui/material/Typography';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
-import LeftSideBar from './BiddingPage/LeftSideBar';
 import DesktopDashboardHeader from './DesktopDashboardHeader';
 import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
+import LeftSideBar from './LeftSideBar/LeftSideBar';
 
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
