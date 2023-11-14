@@ -11,7 +11,7 @@ const OrderSummary = ({ title, Total, buttonText }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         textAlign: 'center',
-        px: 4.5,
+        px: { xs: 4.5, sm: 4.5, md: 3.5, lg: 3 },
       }}
     >
       <Box sx={{ borderBottom: '2px solid #E4E4E4', p: 3 }}>
@@ -21,7 +21,7 @@ const OrderSummary = ({ title, Total, buttonText }) => {
         sx={{
           borderBottom: '2px solid #E4E4E4',
           py: 3,
-          display: { xs: 'block', sm: 'flex' },
+          display: { xs: 'block', sm: 'flex', md: 'block', lg: 'flex' },
           justifyContent: 'space-between',
         }}
       >
@@ -30,10 +30,10 @@ const OrderSummary = ({ title, Total, buttonText }) => {
             variant="h5"
             sx={{
               fontSize: { xs: '18px', md: '16px', lg: '20px' },
-              mb: { xs: 1, sm: 0 },
+              mb: { xs: 1, sm: 0, md: 1, lg: 0 },
             }}
           >
-            Refresh Credits (1x)
+            Basic (1x)
           </Typography>
         </Box>
         <Box>
@@ -46,14 +46,17 @@ const OrderSummary = ({ title, Total, buttonText }) => {
         sx={{
           pb: 3,
           pt: 2.5,
-          display: { xs: 'block', sm: 'flex' },
+          display: { xs: 'block', sm: 'flex', md: 'block', lg: 'flex' },
           justifyContent: 'space-between',
         }}
       >
         <Box>
           <Typography
             variant="h4"
-            sx={{ fontSize: { xs: '20px', sm: '22px' }, mb: { xs: 2, sm: 0 } }}
+            sx={{
+              fontSize: { xs: '20px', sm: '22px' },
+              mb: { xs: 1, sm: 0, md: 1, lg: 0 },
+            }}
           >
             {Total}
           </Typography>

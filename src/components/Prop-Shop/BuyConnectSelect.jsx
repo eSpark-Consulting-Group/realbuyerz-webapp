@@ -4,12 +4,18 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function BuyConnectSelect({
-  onChange,
-  value,
+  // handleChange,
+  // value,
   name,
-  menuItem,
+  // menuItem,
   sx,
 }) {
+  const [age, setAge] = React.useState(0);
+
+  const handleChange = (e) => {
+    console.log('abcdefgh', e.target.value);
+    setAge(e.target.value);
+  };
   return (
     <>
       <FormControl sx={{ width: '100%' }}>
@@ -17,15 +23,14 @@ export default function BuyConnectSelect({
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           name={name}
-          value={value}
-          onChange={onChange}
+          value={age}
+          onChange={handleChange}
           sx={sx}
         >
-          {menuItem?.map((items, i) => (
-            <MenuItem key={i} value={items?.value}>
-              {items}
-            </MenuItem>
-          ))}
+          <MenuItem value={0}>0</MenuItem>
+          <MenuItem value={1500}>1500</MenuItem>
+          <MenuItem value={2500}>2500</MenuItem>
+          <MenuItem value={3500}>3500</MenuItem>
         </Select>
       </FormControl>
     </>

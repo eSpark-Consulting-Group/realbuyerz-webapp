@@ -2,17 +2,9 @@ import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import { Grid } from 'chakra-ui';
-import RBSelect from '../AgentProfile/Agent-Profile-Forms/RBSelect';
 import BuyConnectSelect from './BuyConnectSelect';
 
-const BuyConnects = ({
-  title,
-  discription,
-  image,
-  buttonText,
-  feilds,
-  dropdown,
-}) => {
+const BuyConnects = ({ title, discription, image, buttonText, feilds }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container xs={12} item>
@@ -72,13 +64,18 @@ const BuyConnects = ({
                     type={field?.type}
                     place={field?.place}
                     sx={{
-                      width: { xs: '100%', sm: '100%', md: '100%', lg: '40%' },
+                      width: { xs: '100%', sm: '100%', md: '100%', lg: '50%' },
                     }}
                   />
                 ) : null}
 
                 {field?.id == 2 ? (
-                  <BuyConnectSelect sx={{ width: { xs: 'auto', lg: '40%' } }} />
+                  <BuyConnectSelect
+                    // value={age}
+                    // menuItem={dropDownItems}
+                    // handleChange={handleChange}
+                    sx={{ width: { xs: 'auto', lg: '50%' } }}
+                  />
                 ) : null}
               </Box>
             ))}

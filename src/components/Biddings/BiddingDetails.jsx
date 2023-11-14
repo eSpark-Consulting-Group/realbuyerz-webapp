@@ -3,15 +3,13 @@ import { Grid, Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
-import LiveBiddingTitle from './LiveBiddingTitle';
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
 
-import { MAIN_TITLE, VIEW } from '@/app/constants/LiveBidding';
+import { ESTIMATE_RANGE, VIEW } from '@/app/constants/LiveBidding';
 
-const BiddingDetails = ({ liveBiddingData }) => {
+const BiddingDetails = ({ liveBiddingData, Height }) => {
   return (
-    <Box className="scrollable">
-      <LiveBiddingTitle title={MAIN_TITLE} />
+    <Box className="scrollable" sx={{ height: Height }}>
       {liveBiddingData?.liveBidding?.map((item, index) => (
         <Grid container spacing={2} xs={12} key={index}>
           <Box
@@ -65,7 +63,7 @@ const BiddingDetails = ({ liveBiddingData }) => {
               <Grid
                 item
                 lg={3}
-                md={4}
+                md={8}
                 sx={{
                   textAlign: 'right',
                   alignContent: 'end',
@@ -80,17 +78,17 @@ const BiddingDetails = ({ liveBiddingData }) => {
               >
                 <Box>
                   <Typography variant="body1">
-                    Est. Range:{' '}
+                    {ESTIMATE_RANGE}{' '}
                     <span style={{ fontWeight: 'bold', color: '#333333' }}>
                       {item.estRange}
                     </span>
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={2} md={4} sm={12}>
+              <Grid item lg={2} md={12} sm={12}>
                 <Box
                   sx={{
-                    paddingLeft: { sm: '0px', md: '80px', lg: '85px' },
+                    paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
                   }}
                 >
                   <Button

@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Subscription from './Subscription';
-import ProductCart from './ProductCart';
 import BuyConnects from './BuyConnects';
 import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
 
@@ -26,12 +25,12 @@ export default function BuyProduct() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container xs={12} md={12} lg={12} item>
-        <Grid xs={12} sm={12} md={12} lg={11} item>
+        <Grid xs={12} sm={12} md={12} lg={12} item>
           <Item>
             <Subscription title={Buy_Product_Data?.title} />
           </Item>
         </Grid>
-        <Grid xs={12} sm={12} md={12} lg={11} item>
+        <Grid xs={12} sm={12} md={12} lg={12} item>
           <Item>
             <BuyConnects
               title={title}
@@ -40,11 +39,6 @@ export default function BuyProduct() {
               discription={discription}
               buttonText={buttonText}
             />
-          </Item>
-        </Grid>
-        <Grid xs={12} sm={12} md={12} lg={5} item>
-          <Item>
-            <ProductCart />
           </Item>
         </Grid>
       </Grid>

@@ -1,18 +1,17 @@
-'use client';
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import { Grid } from '@mui/material';
 
-import Profile from './RightSiderBar/Profile';
-import Proposals from './RightSiderBar/Proposals';
-import Cateogries from './RightSiderBar/Cateogries';
-import PropertyList from './RightSiderBar/PropertyList';
-import CustomDivider from './RightSiderBar/CustomDivider';
-import ProfileCompletness from './RightSiderBar/ProfileCompletness';
-import AvailableConnects from './RightSiderBar/AvailableConnects';
+import Proposals from '@/src/components/layouts/RightSiderBar/Proposals';
+import Cateogries from '@/src/components/layouts/RightSiderBar/Cateogries';
+import PropertyList from '@/src/components/layouts/RightSiderBar/PropertyList';
+import CustomDivider from '@/src/components/layouts/RightSiderBar/CustomDivider';
+import ProfileCompletness from '@/src/components/layouts/RightSiderBar/ProfileCompletness';
+import AvailableConnects from '@/src/components/layouts/RightSiderBar/AvailableConnects';
+import Profile from '@/src/components/layouts/RightSiderBar/Profile';
 
-const RightSidebar = ({ profileInfo }) => {
+const BiddingProfile = ({ profileInfo }) => {
   return (
-    <React.Fragment>
+    <>
       <Grid container rowSpacing={1}>
         <Grid
           border={2}
@@ -44,8 +43,8 @@ const RightSidebar = ({ profileInfo }) => {
           <Proposals />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </>
   );
 };
 
-export default RightSidebar;
+export default BiddingProfile;

@@ -11,6 +11,7 @@ const EmptyCart = ({ title, item }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         textAlign: 'center',
+        my: { xs: 0, md: 2 },
       }}
     >
       <Image

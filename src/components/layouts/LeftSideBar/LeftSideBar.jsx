@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ExpendedSiderBar from './LeftSideBar/ExpendedSiderBar';
-import CollapsedSideBar from './LeftSideBar/CollapsedSideBar';
+import ExpendedSiderBar from './ExpendedSiderBar';
+import CollapsedSideBar from './CollapsedSideBar';
 
 const LeftSideBar = ({ menuItem }) => {
   const fullWidth = '100%';
