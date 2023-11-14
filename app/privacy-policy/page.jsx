@@ -2,7 +2,8 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import { CARDS, PRIVACY_POLICY } from '../constants/PrivacyPolicy';
+import { CARDS } from '../constants/PrivacyPolicy';
+
 import PolicyCard from '@/src/components/PrivacyPolicy/PolicyCard';
 
 const PrivacyPolicy = () => {
