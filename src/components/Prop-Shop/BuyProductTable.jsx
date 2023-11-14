@@ -20,29 +20,33 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BuyProductTable({ columns, rows }) {
-  const { FirstHeaderName, SecondHeaderName } = columns
+  const { FirstHeaderName, SecondHeaderName } = columns;
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid
-        container
-        xs={12}
-        md={12}
-        item
-      >
+      <Grid container xs={12} md={12} item>
         <Grid xs={12} md={12} lg={6}>
           <Item>
-            <Box sx={{ padding: '13px', backgroundColor: '#EDF7FF', width: '100%', margin: 0 }}>
+            <Box
+              sx={{
+                padding: '13px',
+                backgroundColor: '#EDF7FF',
+                width: '100%',
+                margin: 0,
+              }}
+            >
               <SubscriptionHeader headerName={FirstHeaderName} />
             </Box>
           </Item>
           {rows?.map((row, i) => (
-            <Item>
-              <Box key={i} sx={{
-                width:'100%',
-                height:{xs:'auto', md:'100px'},
-                py: {xs:2, sm: 3},
-                px: 4,
-              }}>
+            <Item key={i}>
+              <Box
+                sx={{
+                  width: '100%',
+                  height: { xs: 'auto', md: '100px' },
+                  py: { xs: 2, sm: 3 },
+                  px: 4,
+                }}
+              >
                 <PackageBox
                   icon={row?.icon}
                   text={row?.text}
@@ -54,18 +58,27 @@ export default function BuyProductTable({ columns, rows }) {
         </Grid>
         <Grid xs={12} md={12} lg={6}>
           <Item>
-            <Box sx={{ padding: '13px', backgroundColor: '#EDF7FF', width: '100%', margin: 0 }}>
+            <Box
+              sx={{
+                padding: '13px',
+                backgroundColor: '#EDF7FF',
+                width: '100%',
+                margin: 0,
+              }}
+            >
               <SubscriptionHeader headerName={SecondHeaderName} />
             </Box>
           </Item>
           {rows?.map((row, i) => (
-            <Item>
-              <Box sx={{
-                width:'100%',
-                height:{xs:'auto', md:'100px'},
-                py: {xs:2, sm: 4},
-                px: 5,
-              }}>
+            <Item key={i}>
+              <Box
+                sx={{
+                  width: '100%',
+                  height: { xs: 'auto', md: '100px' },
+                  py: { xs: 2, sm: 4 },
+                  px: 5,
+                }}
+              >
                 <PriceBox price={row?.price} buttonText={row?.buttonText} />
               </Box>
             </Item>

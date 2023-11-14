@@ -2,8 +2,8 @@ export const title = 'Subscription';
 export const Buy_Product_Data = {
   title: 'Subscription',
   BuyProductColumns: {
-    FirstHeaderName: "Package",
-    SecondHeaderName: "Price",
+    FirstHeaderName: 'Package',
+    SecondHeaderName: 'Price',
   },
   BuyProductRows: [
     {
@@ -33,8 +33,7 @@ export const Buy_Product_Data = {
       price: 'Rs.17500',
       buttonText: 'Add to cart',
     },
-  ]
-}
+  ],
+};
 
-export const Empty_Cart_data = {title:'Added in cart', item:'No items'}
-
+export const Empty_Cart_data = { title: 'Added in cart', item: 'No items' };
