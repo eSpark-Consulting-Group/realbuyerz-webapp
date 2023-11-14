@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-const OrderSummary = () => {
+const OrderSummary = ({ title, Total, buttonText }) => {
   return (
     <Box
       sx={{
@@ -15,7 +15,7 @@ const OrderSummary = () => {
       }}
     >
       <Box sx={{ borderBottom: '2px solid #E4E4E4', p: 3 }}>
-        <Typography variant="h4">Order Summary</Typography>
+        <Typography variant="h4">{title}</Typography>
       </Box>
       <Box
         sx={{
@@ -55,7 +55,7 @@ const OrderSummary = () => {
             variant="h4"
             sx={{ fontSize: { xs: '20px', sm: '22px' }, mb: { xs: 2, sm: 0 } }}
           >
-            Total:
+            {Total}
           </Typography>
         </Box>
         <Box>
@@ -73,7 +73,7 @@ const OrderSummary = () => {
           }}
           variant="outlined"
         >
-          Proceed To Payment
+          {buttonText}
         </Button>
       </Box>
     </Box>

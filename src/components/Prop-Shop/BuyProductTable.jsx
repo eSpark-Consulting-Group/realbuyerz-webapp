@@ -23,8 +23,8 @@ export default function BuyProductTable({ columns, rows }) {
   const { FirstHeaderName, SecondHeaderName } = columns;
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container xs={12} md={12} item>
-        <Grid xs={12} md={12} lg={6}>
+      <Grid container item xs={12} md={12} spacing={0}>
+        <Grid xs={12} md={12} lg={6} item>
           <Item>
             <Box
               sx={{
@@ -56,7 +56,7 @@ export default function BuyProductTable({ columns, rows }) {
             </Item>
           ))}
         </Grid>
-        <Grid xs={12} md={12} lg={6}>
+        <Grid xs={12} md={12} lg={6} item>
           <Item>
             <Box
               sx={{

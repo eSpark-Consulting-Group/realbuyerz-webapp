@@ -21,7 +21,7 @@ const PriceBox = ({ price, buttonText }) => {
           sx={{
             width: { xs: '100%', sm: '161px' },
             height: '41px',
-            borderRadius: '10px',
+            borderRadius: { xs: '7px', sm: '10px' },
           }}
         >
           {buttonText}
