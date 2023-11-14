@@ -36,3 +36,5 @@ export const Buy_Product_Data = {
   ]
 }
 
+export const Empty_Cart_data = {title:'Added in cart', item:'No items'}
+

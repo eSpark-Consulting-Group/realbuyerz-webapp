@@ -6,6 +6,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Subscription from './Subscription';
 import { title } from '@/app/constants/BuyProduct';
+import ProductCart from './ProductCart';
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
   ...theme.typography.body2,
@@ -27,15 +29,11 @@ export default function BuyProduct() {
         lg={11}
         Item
         sx={{
-          // pr: { xs: 2, md: 0 },
-          // pt: { xs: 2, md: 1 },
-          // pb: { xs: 2, md: 7 },
-          border: '2px solid #E4E4E4',
-          borderRadius: '10px',
-          backgroundColor: '#fff',
+       //
         }}
       >
         <Subscription title={title} />
+        <ProductCart />
       </Grid>
     </Box>
   );

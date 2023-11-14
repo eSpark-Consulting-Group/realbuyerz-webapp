@@ -1,12 +1,12 @@
 import BuyProduct from '@/src/components/Prop-Shop/BuyProduct';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 
 const page = () => {
   return (
-    <div>
+    <Box>
       <BuyProduct />
-    </div>
+    </Box>
   );
 };
 
