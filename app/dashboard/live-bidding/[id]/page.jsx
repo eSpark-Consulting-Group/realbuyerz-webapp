@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import { Box } from '@mui/system';
 import { Divider, Grid } from '@mui/material';
@@ -8,9 +8,10 @@ import BidMedia from '@/src/components/Biddings/BidMedia';
 import BidMapLocation from '@/src/components/Biddings/BidMapLocation';
 import BidDescription from '@/src/components/Biddings/BidDescription';
 import BidHeader from '@/src/components/Biddings/BidHeader';
-import { BIDDINGS, BIDDING_LIST } from '@/app/constants/Biddings';
 import RightSection from '@/src/components/Biddings/RightSection';
 import BidData from '@/src/components/Biddings/BidData';
+
+import { BIDDINGS, BIDDING_LIST } from '@/app/constants/Biddings';
 
 const Page = () => {
   const pathname = usePathname();
