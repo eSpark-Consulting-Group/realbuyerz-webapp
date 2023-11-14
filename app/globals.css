@@ -54,6 +54,13 @@ root {
 .left-section {
   width: 15%;
 }
+.scrollable {
+  height: 100vh; /* or any value */
+  overflow-y: auto;
+}
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
 
 .hero_slider {
   width: 100%;
@@ -84,10 +91,10 @@ root {
 }
 
 .slick-prev:before {
-  content: url('../public/images/agent-profile-icons//Left.svg') !important;
+  content: url('../public/images/agent-profile-icons/Left.svg') !important;
 }
 .slick-next:before {
-  content: url('../public/images/agent-profile-icons//Right.svg') !important;
+  content: url('../public/images/agent-profile-icons/Right.svg') !important;
 }
 
 .slick-slide {
@@ -136,4 +143,10 @@ root {
   .slick-list {
     margin-left: 19px !important;
   }
+}
+
+.EZDrawer__container {
+  height: '100%' !important;
+  width: auto !important;
+  /* margin-top: 73px; */
 }
