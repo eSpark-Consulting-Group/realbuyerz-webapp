@@ -6,13 +6,16 @@ import { PROPERTY_INFORMATION } from './postlistingConstants';
 
 import DialogBox from './DialogBox';
 
-const AddAmenities = () => {
+const AddAmenities = ({ onSelected }) => {
   const [open, setOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
+    onSelected(selectedItems); // Pass selected items to PropertyFeatures
   };
   return (
     <Box
@@ -59,8 +62,10 @@ const AddAmenities = () => {
         </Button>
         <DialogBox
           open={open}
-          onClose={handleClose}
+          // onClose={handleClose}
+          onClose={() => handleClose()} // Ensure onClose is a function
           data={PROPERTY_INFORMATION.addAmenities}
+          onSelected={setSelectedItems} // Pass the selected items to AddAmenities
         />
       </Box>
     </Box>

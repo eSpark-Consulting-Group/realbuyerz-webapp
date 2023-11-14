@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Typography } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
@@ -8,6 +8,11 @@ import AddAmenities from './AddAmenities';
 import SelectedItemsComponent from './SelectedAmenitiesItem';
 
 const PropertyFeatures = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const handleSelectedItems = (items) => {
+    setSelectedItems(items);
+  };
   return (
     <Grid container>
       <Grid
@@ -50,8 +55,21 @@ const PropertyFeatures = () => {
               <PropertyFacilities
                 PropertyInformation={PROPERTY_INFORMATION.feature}
               />
-              <AddAmenities />
-              <SelectedItemsComponent />
+              {/* <AddAmenities /> */}
+              <AddAmenities onSelected={handleSelectedItems} />
+              {selectedItems.length > 0 && (
+                <Box
+                  sx={{
+                    marginTop: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography variant="h6">Selected Amenities:</Typography>
+                  <SelectedItemsComponent selectedItems={selectedItems} />
+                </Box>
+              )}{' '}
             </Box>
           </Box>
         </Box>

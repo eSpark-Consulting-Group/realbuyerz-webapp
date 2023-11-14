@@ -1,26 +1,29 @@
 import React from 'react';
-import {
-  Dialog,
-  DialogContent,
-} from '@mui/material';
+import { Dialog, DialogContent, Box } from '@mui/material';
 
 import Facilities from './Facilities';
 
 const DialogBox = (props) => {
-  const { onClose, selectedValue, open, data } = props;
+  const { onClose, open, data, onSelected } = props;
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose();
   };
 
-  const handleCancelButton = (value) => {
-    onClose(value);
+  const handleCancelButton = () => {
+    onClose();
   };
   return (
     <>
       <Dialog onClose={handleClose} open={open}>
-        <DialogContent>
-          <Facilities cancel={handleCancelButton} Data={data} />
-        </DialogContent>
+        <Box>
+          <DialogContent>
+            <Facilities
+              cancel={handleCancelButton}
+              Data={data}
+              onSelected={onSelected}
+            />
+          </DialogContent>
+        </Box>
       </Dialog>
     </>
   );
