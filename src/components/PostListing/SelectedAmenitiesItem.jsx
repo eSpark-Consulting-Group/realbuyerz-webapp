@@ -36,7 +36,7 @@ const SelectedItemsComponent = ({ selectedItems }) => {
             }}
             key={index}
           >
-            <Image src={item.image} width={30} height={30} />
+            <Image src={item.image} width={30} height={30} alt="amenities" />
             <Typography>{item.title}</Typography>
           </li>
         ))}

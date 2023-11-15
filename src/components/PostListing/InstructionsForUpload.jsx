@@ -21,7 +21,7 @@ const UploadInstructions = ({ PropertyInformation }) => {
                   listStyle: 'none',
                 }}
               >
-                <Image src={item.image} width={17} height={13} />
+                <Image src={item.image} width={17} height={13} alt="'tick" />
                 <Typography
                   sx={{
                     color: '#333333',
