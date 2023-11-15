@@ -45,5 +45,4 @@ const SelectedItemsComponent = ({ selectedItems }) => {
     </div>
   );
 };
-
 export default SelectedItemsComponent;
