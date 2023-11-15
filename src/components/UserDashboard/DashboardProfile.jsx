@@ -1,153 +1,42 @@
-import { Button, Divider, Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import Image from 'next/image';
 import React from 'react';
+import { Box } from '@mui/system';
+import { Divider, Grid } from '@mui/material';
 
-const DashboardProfile = ({ DASHBOARD_DATA }) => {
+import UserProfileImage from './UserProfileImage';
+import UserProfileDetails from './UserProfileDetails';
+
+const DashboardProfile = ({ proposalData }) => {
   return (
     <>
-      {DASHBOARD_DATA.map((item, index) => (
+      {proposalData.map((item, index) => (
         <>
           <Box
             key={index}
             sx={{
-              padding: '44px 54px 44px 54px',
+              padding: '44px 45px 44px 40px',
             }}
           >
             <Grid container>
-              <Grid item lg={2} sx={{ position: 'relative' }}>
-                <Image
-                  src={'/images/Profile.png'}
-                  width={156}
-                  height={159}
-                  alt="profile"
-                />
-
-                <Box
-                  sx={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    backgroundColor: 'white',
-                    position: 'absolute',
-                    top: 112,
-                    right: 11,
-                    p: 0.5,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '10px',
-                      height: '10px',
-                      borderRadius: '50%',
-                      backgroundColor: '#18DD00',
-                      alignContent: 'center',
-                      alignItems: 'center',
-                      textAlign: 'center',
-                    }}
-                  ></Box>
-                </Box>
+              <Grid
+                item
+                xl={2}
+                lg={3}
+                md={5}
+                sx={{ position: 'relative', width: '156px', height: '156px' }}
+              >
+                <UserProfileImage image={item.image} />
               </Grid>
-              <Grid item lg={10} sx={{ pl: 2 }}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={3}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                    }}
-                  >
-                    <Box
-                      sx={
-                        {
-                          // py: 1
-                        }
-                      }
-                    >
-                      <Typography
-                        sx={{
-                          color: '#126FAA',
-                          fontFamily: 'Inter',
-                          fontSize: '18px',
-                          fontStyle: 'normal',
-                          fontWeight: 500,
-                          lineHeight: 'normal',
-                          py: 0.3,
-                        }}
-                      >
-                        {item?.title}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: '#757474',
-                          fontFamily: 'Inter',
-                          fontSize: '15px',
-                          fontStyle: 'normal',
-                          fontWeight: 500,
-                          lineHeight: 'normal',
-                        }}
-                      >
-                        {item?.location}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: '#000',
-                          fontFamily: 'Inter',
-                          fontSize: '15px',
-                          fontStyle: 'normal',
-                          fontWeight: 500,
-                          lineHeight: 'normal',
-                          py: 0.3,
-                        }}
-                      >
-                        {item?.amount}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={9}
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'flex-end',
-                      //   alignItems: 'center',
-                    }}
-                  >
-                    <Button
-                      variant="primary"
-                      sx={{
-                        width: '200px',
-                        height: '42px',
-                        borderRadius: '50px',
-                        border: '1px solid #FB631C',
-                      }}
-                    >
-                      View
-                    </Button>
-                  </Grid>
-                  <Box
-                    sx={{
-                      mt: 1.5,
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: '#000',
-                        //   fontFamily: 'Inter',
-                        fontSize: '15px',
-                        fontWeight: 300,
-                        lineHeight: '18.15px',
-                      }}
-                    >
-                      {item?.description}
-                    </Typography>
-                  </Box>
-                </Grid>
+              <Grid item xl={10} lg={9} md={7}>
+                <UserProfileDetails
+                  Title={item.title}
+                  Location={item.location}
+                  Amount={item.amount}
+                  Description={item.description}
+                />
               </Grid>
             </Grid>
           </Box>
-          <Divider />
+          {index == proposalData.length - 1 ? null : <Divider />}
         </>
       ))}
     </>

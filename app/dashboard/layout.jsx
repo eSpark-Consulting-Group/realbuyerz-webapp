@@ -2,10 +2,10 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import LeftSideBar from '@/src/components/layouts/BiddingPage/LeftSideBar';
-import RightSidebar from '@/src/components/layouts/BiddingPage/RightSidebar';
 import { MENU_ITEM, PROFILE_INFO } from '../constants/LiveBidding';
 import { Box } from '@mui/system';
+import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
+import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
 
 const InnerPageLayout = ({ children }) => {
   return (
