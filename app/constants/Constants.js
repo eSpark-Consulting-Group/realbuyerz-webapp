@@ -100,8 +100,8 @@ export const FOOTER_DATA = {
   usefulLinks: [
     { title: 'Blogs', link: '#' },
     { title: 'Careers', link: '#' },
-    { title: 'Privacy Policy', link: '#' },
-    { title: 'Terms & Conditions', link: '#' },
+    { title: 'Privacy Policy', link: '/privacy-policy' },
+    { title: 'Terms & Conditions', link: '/terms-conditions' },
     { title: 'Contact Us', link: '#' },
     { title: 'FAQs', link: '#' },
   ],
