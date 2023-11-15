@@ -26,7 +26,7 @@ function SingleProperty() {
         <Grid
           item
           xs={12}
-          md={6}
+          md={8}
           sx={{
             display: 'flex',
             flexDirection: 'column',
