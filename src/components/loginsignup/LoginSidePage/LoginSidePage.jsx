@@ -5,7 +5,8 @@ import { Grid } from '@mui/material';
 import LoginPageText from './LoginPageText';
 import RealEstateImage from './RealEstateImage';
 import PropertyBuilding from './BuildingImage';
-
+import CongratsModal from '../../Modal/CongratulationModal';
+import VerificationModal from '../../Modal/VerificationModal';
 const LoginSidePage = () => {
   return (
     <Grid>
@@ -31,6 +32,8 @@ const LoginSidePage = () => {
         <RealEstateImage />
         <LoginPageText />
         <PropertyBuilding />
+        <CongratsModal />
+        <VerificationModal/>
       </Grid>
     </Grid>
   );
