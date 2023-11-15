@@ -29,9 +29,6 @@ const SelectCityType = ({ image, label }) => {
       })),
     }));
   };
-  const handleClick = () => {
-    console.log('fromselectcity', propertyData);
-  };
   return (
     <>
       <Box
@@ -63,7 +60,6 @@ const SelectCityType = ({ image, label }) => {
         renderInput={(params) => <TextField {...params} label="Select City" />}
         onChange={handleCityChange}
       />
-      <Button onClick={handleClick}>Ok</Button>
     </>
   );
 };

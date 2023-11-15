@@ -24,10 +24,6 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
       };
     });
   };
-
-  const handleClickBtn = () => {
-    console.log('frominstallmentcomponent', propertyData);
-  };
   return (
     <>
       {propertyData.toggleData?.map((item, index) => (
@@ -94,7 +90,6 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
           </Box>
         </Box>
       ))}
-      <Button onClick={handleClickBtn}>Toggle</Button>
     </>
   );
 };

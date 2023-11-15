@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 import Image from 'next/image';
-import SelectedItemsComponent from './SelectedAmenitiesItem';
-import PropertyFeatures from './PropertyFeature';
+
+import { PROPERTY_INFORMATION } from './postlistingConstants';
 
 const Facilities = ({ Data, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
 
   const handleCheckboxChange = (index) => {
     const updatedAmenities = [...selectedAmenities];
-
-    // Toggle the selection status of the checkbox at the specified index
     updatedAmenities[index] = !updatedAmenities[index];
-
-    // Update the state with the new array
     setSelectedAmenities(updatedAmenities);
   };
 
   const handleSaveButton = () => {
-    // Filter out the selected amenities
     const selectedItems = Data.filter(
       (item, index) => selectedAmenities[index]
     );
-    onSelected(selectedItems); // Pass the selected items to AddAmenities
-    // onClose();
+    onSelected(selectedItems);
+    { onClose }
     console.log('Selected Amenities:', selectedItems);
   };
   return (
@@ -31,7 +26,12 @@ const Facilities = ({ Data, cancel, onSelected, onClose }) => {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: {
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          },
+          width: '100%',
         }}
       >
         {Data?.map((item, index) => (
@@ -78,7 +78,7 @@ const Facilities = ({ Data, cancel, onSelected, onClose }) => {
           onClick={cancel}
         >
           {' '}
-          Cancel
+          {PROPERTY_INFORMATION.cancel}
         </Button>
         <Button
           style={{
@@ -88,7 +88,7 @@ const Facilities = ({ Data, cancel, onSelected, onClose }) => {
           }}
           onClick={handleSaveButton}
         >
-          Save
+          {PROPERTY_INFORMATION.save}
         </Button>
       </Box>
     </>

@@ -43,9 +43,6 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
       };
     });
   };
-  const handleClickOK = () => {
-    console.log('feompropertytype', propertyData);
-  };
   return (
     <Box
       sx={{
@@ -130,7 +127,6 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
               {item.title}
             </Button>
           ))}
-          <Button onClick={handleClickOK()}>Ok</Button>
         </Box>
       </Box>
     </Box>

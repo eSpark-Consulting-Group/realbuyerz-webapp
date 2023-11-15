@@ -8,7 +8,7 @@ import PropertySize from '@/src/component/PostListing/Propertysize';
 import PropertyFeatures from '@/src/component/PostListing/PropertyFeature';
 import PropertyGallery from '@/src/component/PostListing/PropertGallery';
 import SubmitButton from '@/src/component/PostListing/SaveandSubmit';
-import Purpose from '@/src/component/PostListing/Purpose';
+import PropertyPurpose from '@/src/component/PostListing/PropertyPurpose';
 
 const PostListing = () => {
   const handleClick = () => {
@@ -34,7 +34,7 @@ const PostListing = () => {
         >
           <BuyersPlatform />
           <AdInformation />
-          <Purpose />
+          <PropertyPurpose />
           <PropertySize />
           <PropertyFeatures />
           <PropertyGallery />

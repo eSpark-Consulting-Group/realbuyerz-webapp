@@ -2,6 +2,8 @@ export const PROPERTY_INFORMATION = {
   addiotionalFeature:
     'Add additional features e.g. Rooftop terrace, 24/7 security, Walking trails, Washing area etc',
   addAmentiesLabel: 'Add Amenities',
+  save: "Save",
+  cancel:"Cancel",
   property: [
     {
       image: '/assets/images/home.svg',

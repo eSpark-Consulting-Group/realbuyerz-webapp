@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-const UploadMediaInstructions = ({ PropertyInformation }) => {
+const UploadInstructions = ({ PropertyInformation }) => {
   return (
     <>
       {PropertyInformation.map((item, index) => (
@@ -37,4 +37,4 @@ const UploadMediaInstructions = ({ PropertyInformation }) => {
     </>
   );
 };
-export default UploadMediaInstructions;
+export default UploadInstructions;

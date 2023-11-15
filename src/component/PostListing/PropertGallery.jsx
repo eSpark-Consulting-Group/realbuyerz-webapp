@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
 import PostTitle from './PostTitle';
-import UploadMediaInstructions from './UploadMediaInstructions';
 import UploadMediaButton from './UploadMediaButton';
+import UploadInstructions from './InstructionsForUpload';
 
 const PropertyGallery = () => {
   return (
@@ -31,7 +31,7 @@ const PropertyGallery = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             width: '90%',
-            height: { xs: '900px', md: '581px' },
+            height: { xs: '1100px', md: '581px' },
             '@media (min-width: 960px) and (max-width: 1399px)': {
               height: '780px',
             },
@@ -42,8 +42,6 @@ const PropertyGallery = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
               gap: '20px',
               padding: '50px',
               background: 'white',
@@ -68,7 +66,11 @@ const PropertyGallery = () => {
             <Box
               sx={{
                 width: { xs: '100%', md: '80%' },
-                border: '1px #FB631C dotted',
+                height: { xs: "770px", md: "350px" },
+                 '@media (min-width: 960px) and (max-width: 1399px)': {
+              height: '550px',
+            },
+                border: '1px #FB631C dashed',
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },
                 '@media (min-width: 960px) and (max-width: 1200px)': {
@@ -81,7 +83,7 @@ const PropertyGallery = () => {
               />
               <Box>
                 {' '}
-                <UploadMediaInstructions
+                <UploadInstructions
                   PropertyInformation={PROPERTY_INFORMATION.uploadInstruction}
                 />
               </Box>

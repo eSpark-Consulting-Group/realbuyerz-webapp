@@ -3,8 +3,7 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from './postlistingConstants';
-
-import DialogBox from './DialogBox';
+import AmenitiesModal from './AmenitiesModal';
 
 const AddAmenities = ({ onSelected }) => {
   const [open, setOpen] = useState(false);
@@ -60,12 +59,11 @@ const AddAmenities = ({ onSelected }) => {
         >
           {PROPERTY_INFORMATION.addAmentiesLabel}
         </Button>
-        <DialogBox
+        <AmenitiesModal
           open={open}
-          // onClose={handleClose}
-          onClose={() => handleClose()} // Ensure onClose is a function
+          onClose={() => handleClose()} 
           data={PROPERTY_INFORMATION.addAmenities}
-          onSelected={setSelectedItems} // Pass the selected items to AddAmenities
+          onSelected={setSelectedItems}
         />
       </Box>
     </Box>

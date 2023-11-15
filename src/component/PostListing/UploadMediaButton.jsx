@@ -24,9 +24,6 @@ const UploadMediaButton = ({ PropertyInformation }) => {
       };
     });
   };
-  const handleClickBtn = () => {
-    console.log('fromuplaodgallerycomponent', propertyData);
-  };
   const handleFileChange = async (event, index) => {
     const selectedFile = event.target.files[0];
     if (index === 0 && !isImage(selectedFile)) {
@@ -88,12 +85,16 @@ const UploadMediaButton = ({ PropertyInformation }) => {
             }}
           >
             <Button
-              style={{
-                width: '200px',
-                color: 'white',
-                fontSize: '20px',
-                padding: '8px',
-                backgroundColor: '#FB631C',
+              sx={{
+                width: {
+                  xs: '150px',
+                  md: '200px',
+                },
+                color: index === 0 ? 'white' : '#FB631C',
+                background: index === 0 ? '#FB631C' : 'white',
+                fontSize: { xs: '12px', md:'20px'},
+                padding: { xs: '4px', md: "8px" },
+                // backgroundColor: '#FB631C',
                 textTransform: 'capitalize',
                 borderRadius: '10px',
                 border: '1px #FB631C solid',
@@ -112,7 +113,6 @@ const UploadMediaButton = ({ PropertyInformation }) => {
             />
           </label>
         ))}
-        <Button onClick={handleClickBtn}>Ok</Button>
       </>
     </Box>
   );

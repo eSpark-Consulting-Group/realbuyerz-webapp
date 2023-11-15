@@ -47,9 +47,6 @@ const AreaSize = ({ PropertySizeInformation }) => {
       })),
     }));
   };
-  const handleClickBtn = () => {
-    console.log('fromareacomponent', propertyData);
-  };
   return (
     <>
       {propertyData.propertySize?.map((item, index) => (
@@ -123,7 +120,6 @@ const AreaSize = ({ PropertySizeInformation }) => {
           </Box>
         </Box>
       ))}
-      <Button onClick={handleClickBtn}>OK</Button>
     </>
   );
 };

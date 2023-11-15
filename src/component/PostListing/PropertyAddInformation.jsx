@@ -25,9 +25,6 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
       ),
     }));
   };
-  const handleClickBtn = () => {
-    console.log('fromaddcomponnet', propertyData);
-  };
   console.log('property', propertyData);
   const specialIndex = 1;
   return (
@@ -83,6 +80,8 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
               },
               '& textarea': {
                 padding: index === specialIndex ? '30px' : 'auto',
+                marginLeft: index === specialIndex ? "-27px" : 0,
+                 marginTop: index === specialIndex ? "10px" : 0,
               },
             }}
             name={item.label}
@@ -91,7 +90,6 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
           />
         </Box>
       ))}
-      <Button onClick={handleClickBtn}>OK</Button>
     </Box>
   );
 };

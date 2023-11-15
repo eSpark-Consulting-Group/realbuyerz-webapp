@@ -26,9 +26,6 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
       };
     });
   };
-  const handleClickBtn = () => {
-    console.log('frompurposecomponent', propertyData);
-  };
   return (
     <>
       <Box
@@ -78,7 +75,6 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
             </Button>
           </Box>
         ))}
-        <Button onClick={handleClickBtn}>Ok</Button>
       </Box>
     </>
   );

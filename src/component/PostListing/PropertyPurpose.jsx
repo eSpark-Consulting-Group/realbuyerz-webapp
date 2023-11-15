@@ -9,7 +9,7 @@ import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';
 import PropertyStatus from './PropertyStatus';
 
-const Purpose = () => {
+const PropertyPurpose = () => {
   return (
     <Grid container>
       <Grid
@@ -77,4 +77,4 @@ const Purpose = () => {
     </Grid>
   );
 };
-export default Purpose;
+export default PropertyPurpose;

@@ -48,8 +48,8 @@ const PropertySize = () => {
                 width: { xs: '600px', md: '770px' },
                 flexDirection: 'column',
                 paddingTop: '40px',
-                '@media (min-width: 960px) and (max-width: 1500px)': {
-                  width: '600px',
+                '@media (min-width: 960px) and (max-width: 1330px)': {
+                  width: '90%',
                 },
               }}
             >
