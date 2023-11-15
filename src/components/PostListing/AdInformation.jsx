@@ -3,8 +3,8 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
-import PostTitle from './PostTitle';
 import PropertyAddInformation from './PropertyAddInformation';
+import PostTitle from './PostTitle';
 
 const AdInformation = () => {
   return (
