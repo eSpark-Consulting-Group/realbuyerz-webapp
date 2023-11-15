@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-function DeletableSquareChip({ label, onDelete }) {
+const DeletableSquareChip = ({ label, onDelete }) => {
   return (
     <Chip
       label={label}
@@ -23,9 +23,9 @@ function DeletableSquareChip({ label, onDelete }) {
       }}
     />
   );
-}
+};
 
-function Chips({ data }) {
+const Chips = ({ data }) => {
   const [selectedChips, setSelectedChips] = useState([]);
   console.log(selectedChips);
   const handleDeleteChip = (chipToDelete) => () => {
@@ -43,7 +43,7 @@ function Chips({ data }) {
   const seenPropertyTypes = {};
 
   data?.forEach((property) => {
-    const key = `${property?.agentName}-${property?.propertytype}`;
+    const key = `${property.agentData.name}-${property.propertyData.type}`;
     if (!seenPropertyTypes[key]) {
       uniqueAgentPropertyTypes?.push(key);
       seenPropertyTypes[key] = true;
@@ -70,6 +70,6 @@ function Chips({ data }) {
       </Button>
     </Box>
   );
-}
+};
 
 export default Chips;

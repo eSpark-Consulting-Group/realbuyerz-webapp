@@ -16,7 +16,7 @@ import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
-export default function DashboardHeader() {
+const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   console.log(anchorElUser);
@@ -157,4 +157,6 @@ export default function DashboardHeader() {
       </Container>
     </AppBar>
   );
-}
+};
+
+export default DashboardHeader;

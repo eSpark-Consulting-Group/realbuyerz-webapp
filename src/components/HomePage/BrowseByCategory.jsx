@@ -4,7 +4,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import Heading from './Heading';
 import Image from 'next/image';
 
-function BrowseByCategory({ data }) {
+const BrowseByCategory = ({ data }) => {
   return (
     <Container sx={{ pt: '90px', textAlign: 'center' }}>
       <Heading
@@ -53,6 +53,6 @@ function BrowseByCategory({ data }) {
       </Box>
     </Container>
   );
-}
+};
 
 export default BrowseByCategory;
