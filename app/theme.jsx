@@ -79,7 +79,7 @@ const theme = createTheme({
             position: 'relative',
             '&:hover': {
               backgroundColor: '#EDF7FF',
-              color: '#fb631c',
+              color: '#fff',
             },
           },
         },

@@ -1,11 +1,13 @@
 'use client';
-import BiddingDetails from '@/src/components/layouts/BiddingPage/BiddingDetails';
-import { LIVE_BIDDING_DATA } from '@/app/constants/LiveBidding';
+import { LIVE_BIDDING_DATA, MAIN_TITLE } from '@/app/constants/LiveBidding';
+import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
+import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
 
 const page = () => {
   return (
     <>
-      <BiddingDetails liveBiddingData={LIVE_BIDDING_DATA} />
+      <LiveBiddingTitle title={MAIN_TITLE} />
+      <BiddingDetails liveBiddingData={LIVE_BIDDING_DATA} Height={'100vh'} />
     </>
   );
 };

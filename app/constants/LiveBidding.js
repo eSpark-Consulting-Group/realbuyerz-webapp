@@ -18,6 +18,7 @@ export const PROFILE_COMPLETNESS_DESCRIPTION =
   ' Ways to stand out to clients right now...';
 export const MY_CATEGORIES = 'My Categories';
 export const PROPOSALS = 'Proposals:';
+export const ESTIMATE_RANGE = 'Est. Range:';
 
 export const MENU_ITEM = [
   {
