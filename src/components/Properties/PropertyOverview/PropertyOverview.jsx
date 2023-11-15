@@ -3,7 +3,6 @@ import React from 'react';
 import {
   Box,
   Table,
-  TableHead,
   TableBody,
   TableRow,
   TableCell,
@@ -38,13 +37,12 @@ const PropertyOverview = ({ propertyData }) => {
             borderSpacing: '10px',
             borderRadius: '50px',
             px: '20px',
-            backgroundColor: '#000'
+            backgroundColor: '#000',
           }}
         >
-          <Table >
+          <Table>
             <TableBody>
-              <TableRow sx={{
-              }}>
+              <TableRow sx={{}}>
                 {PROPERTY_ESTATE?.propertyAttributes?.map(
                   (propertytype, index) => (
                     <TableCell
@@ -65,14 +63,12 @@ const PropertyOverview = ({ propertyData }) => {
           </Table>
         </TableContainer>
 
-
         <TableContainer
           component={Paper}
           sx={{
             justifyContent: { xs: 'center', md: 'none' },
             overflow: 'hidden',
             borderSpacing: '10px',
-
           }}
         >
           <Table
