@@ -1,109 +1,58 @@
+import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    properties: [
-        {
-            id: '',
-            Propertytitle: '',
-            coverImage: '',
-            postedDate: '',
-            propertyData: {
-                propertyPrice: '',
-                propertyDemand: '',
-                area: '',
-                title: '',
-                description: '',
-                type: '',
-                direction: '',
-                location: {
-                    address: '',
-                    purpose: '',
-                    Type: '',
-                    city: '',
-                },
-                amenities: [],
-            },
-            agentData: {
-                id: '',
-                price: '',
-                profileimage: '',
-                name: '',
-                agentDescription: '',
-                profileLink: '',
-                chatLink: '',
-            },
-            propertyDetails: {
-                type: '',
-                location: '',
-                price: '',
-                purpose: '',
-                bedroom: '',
-                bath: '',
-                parking: '',
-            },
-            sliderImages: [
-                {
-                    images: '',
-                },
-                {
-                    images: '',
-                },
-                {
-                    images: '',
-                },
-            ],
-        },
-    ],
-};
+const properties = PROPERTIES_LISTING;
+
+const initialState = { properties };
 
 function generateUniqueId(properties) {
-    let newId = (properties.length + 1).toString();
-    while (properties.some((property) => property.id === newId)) {
-        newId = (parseInt(newId, 10) + 1).toString();
-    }
-    return newId;
+  let newId = (properties.length + 1).toString();
+  while (properties.some((property) => property.id === newId)) {
+    newId = (parseInt(newId, 10) + 1).toString();
+  }
+  return newId;
 }
 
 const propertiesSlice = createSlice({
-    name: 'properties',
-    initialState,
-    reducers: {
-        addProperty: (state, action) => {
-            const newProperty = {
-                ...action.payload,
-                id: generateUniqueId(state.properties),
-            };
-            state.properties.push(newProperty);
-        },
-
-        updateProperty: (state, action) => {
-            const { id, updatedProperty } = action.payload;
-            const index = state.properties.findIndex(
-                (property) => property.id === id
-            );
-            if (index !== -1) {
-                state.properties[index] = {
-                    ...state.properties[index],
-                    ...updatedProperty,
-                };
-            }
-        },
-
-        deleteProperty: (state, action) => {
-            const id = action.payload;
-            state.properties = state.properties.filter(
-                (property) => property.id !== id
-            );
-        },
-
-        selectProperty: (state, action) => {
-            const { id } = action.payload;
-            state.selectedProperty =
-                state.properties.find((property) => property.id === id) || null;
-        },
+  name: 'properties',
+  initialState,
+  reducers: {
+    addProperty: (state, action) => {
+      const newProperty = {
+        ...action.payload,
+        id: generateUniqueId(state.properties),
+      };
+      state.properties.push(newProperty);
     },
+
+    updateProperty: (state, action) => {
+      const { id, updatedProperty } = action.payload;
+      const index = state.properties.findIndex(
+        (property) => property.id === id
+      );
+      if (index !== -1) {
+        state.properties[index] = {
+          ...state.properties[index],
+          ...updatedProperty,
+        };
+      }
+    },
+
+    deleteProperty: (state, action) => {
+      const id = action.payload;
+      state.properties = state.properties.filter(
+        (property) => property.id !== id
+      );
+    },
+
+    selectProperty: (state, action) => {
+      const { id } = action.payload;
+      state.selectedProperty =
+        state.properties.find((property) => property.id === id) || null;
+    },
+  },
 });
 
 export const { addProperty, updateProperty, deleteProperty, selectProperty } =
-    propertiesSlice.actions;
+  propertiesSlice.actions;
 export default propertiesSlice.reducer;
