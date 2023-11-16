@@ -1,0 +1,101 @@
+'use client';
+import React, { useState } from 'react';
+import { Box, Typography, TextField, Button } from '@mui/material';
+
+import { verificationState } from '@/utils/verification';
+
+const VerificationCode = ({ receivedCode }) => {
+  const [verificationCode, setVerificationCode] = useState(verificationState);
+  const [inputValues, setInputValues] = useState(['', '', '', '']);
+  const [verificationResult, setVerificationResult] = useState();
+  const handleChange = (index, value) => {
+    const { num } = receivedCode[index];
+    const newValue = value ? value.slice(-1) : '';
+    const newInputValues = [...inputValues];
+    newInputValues[index] = newValue;
+    setInputValues(newInputValues);
+    setVerificationCode((prevCode) => ({
+      verified: {
+        ...prevCode.verified,
+        [num]: value,
+      },
+    }));
+  };
+  const isInputValid = Object.values(verificationCode.verified).every((value) =>
+    /^\d$/.test(value)
+  );
+  const isLengthValid =
+    Object.values(verificationCode.verified).join('').length === 4;
+
+  const handleConfirm = () => {
+    if (isInputValid && isLengthValid) {
+      setVerificationResult('Verification Successfully');
+    } else {
+      setVerificationResult('Verification Failed');
+    }
+  };
+  return (
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
+        {Object.values(receivedCode).map((_, index) => (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              borderRadius: '5px',
+              border: '1px solid #126FAA',
+              background: '#FFF',
+              boxShadow: '1px 2px 5px 1px rgba(0, 0, 0, 0.25)',
+              height: '70px',
+              width: '60px',
+            }}
+            key={index}
+          >
+            <Typography
+              sx={{
+                color: '#126FAA',
+                textAlign: 'center',
+                fontFamily: 'Inter',
+                fontSize: '20px',
+              }}
+            >
+              <TextField
+                value={inputValues[index]}
+                onChange={(e) => handleChange(index, e.target.value)}
+                type="number"
+                InputProps={{
+                  style: {
+                    borderRadius: 0,
+                    outline: 'none',
+                  },
+                }}
+              />
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+      <Button
+        style={{
+          background: '#126FAA',
+          color: 'white',
+          fontWeight: '500px',
+          fontSize: '20px',
+          width: '150px',
+          borderRadius: '10px',
+        }}
+        onClick={handleConfirm}
+      >
+        Confirm
+      </Button>
+      {verificationResult && <Box>{verificationResult}</Box>}
+    </>
+  );
+};
+
+export default VerificationCode;

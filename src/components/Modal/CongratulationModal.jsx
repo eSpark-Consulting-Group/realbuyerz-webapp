@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 
-import { Modal_Text } from '@/app/constants/Modal';
+import { VERIFICATION_OTP } from '@/app/constants/Modal';
 
 const CongratsModal = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,7 @@ const CongratsModal = () => {
       <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
-            width: '500px',
+            width: { xs: '100%', sm: '50%', md: '500px' },
             background: '#E8F6FF',
             borderRadius: '27px',
             margin: 'auto',
@@ -22,6 +22,7 @@ const CongratsModal = () => {
             justifyContent: 'space-around',
             alignItems: 'flex-end',
             flexWrap: 'nowrap',
+            marginTop: '210px',
           }}
         >
           <Box
@@ -30,6 +31,7 @@ const CongratsModal = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
+              width: '100%',
               gap: '10px',
               height: '200px',
             }}
@@ -41,7 +43,7 @@ const CongratsModal = () => {
                 fontFamily: 'Inter',
               }}
             >
-              {Modal_Text.congrats}
+              {VERIFICATION_OTP.congrats}
             </Typography>
             <Typography
               sx={{
@@ -49,7 +51,7 @@ const CongratsModal = () => {
                 fontSize: '16px',
               }}
             >
-             {Modal_Text.verifiedNum}
+              {VERIFICATION_OTP.verifiedNum}
             </Typography>
             <Button
               style={{
@@ -61,7 +63,7 @@ const CongratsModal = () => {
                 borderRadius: '10px',
               }}
             >
-             {Modal_Text.confirm}
+              {VERIFICATION_OTP.confirm}
             </Button>
           </Box>
         </Box>

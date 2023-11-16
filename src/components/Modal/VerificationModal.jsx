@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
+import Image from 'next/image';
 
-import { Modal_Text } from '@/app/constants/Modal';
+import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import VerificationCode from './VerificationCode';
 
 const VerificationModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
     <>
       <Button onClick={handleOpen}>Open Verification modal</Button>
       <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
-            width: '500px',
+            width: { xs: '100%', sm: '50%', md: '500px' },
             background: '#E8F6FF',
             borderRadius: '27px',
             margin: 'auto',
-            height: '335px',
+            height: { xs: '400px', md: '370px' },
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'flex-end',
             flexWrap: 'nowrap',
+            marginTop: '210px',
+            flexDirection: 'column-reverse',
           }}
         >
           <Box
@@ -29,9 +34,9 @@ const VerificationModal = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
+              width: '100%',
               gap: '10px',
-              height: '200px',
+              height: { xs: '400px', md: '550px' },
             }}
           >
             <Typography
@@ -41,7 +46,7 @@ const VerificationModal = () => {
                 fontFamily: 'Inter',
               }}
             >
-              {Modal_Text.verificationCode}
+              {VERIFICATION_OTP.verificationCode}
             </Typography>
             <Typography
               sx={{
@@ -50,20 +55,9 @@ const VerificationModal = () => {
                 color: '#666',
               }}
             >
-              {Modal_Text.code}
+              {VERIFICATION_OTP.code}
             </Typography>
-            <Button
-              style={{
-                background: '#126FAA',
-                color: 'white',
-                fontWeight: '500px',
-                fontSize: '20px',
-                width: '150px',
-                borderRadius: '10px',
-              }}
-            >
-              {Modal_Text.confirm}
-            </Button>
+            <VerificationCode receivedCode={VERIFICATION_OTP.otpCode} />
             <Typography
               sx={{
                 fontWeight: '500px',
@@ -71,7 +65,7 @@ const VerificationModal = () => {
                 fontFamily: 'Inter',
               }}
             >
-              {Modal_Text.attempts}
+              {VERIFICATION_OTP.attempts}
             </Typography>
             <hr style={{ width: '100%', background: '#979797' }} />
             <Typography
@@ -81,7 +75,8 @@ const VerificationModal = () => {
                 fontFamily: 'Inter',
               }}
             >
-              {Modal_Text.codeOtp}
+              {VERIFICATION_OTP.codeOtp}
+              {'  '}
               <span
                 style={{
                   color: '#126FAA',
@@ -92,6 +87,21 @@ const VerificationModal = () => {
                 Resend Code
               </span>
             </Typography>
+          </Box>
+          <Box
+            sx={{
+              marginRight: '25px',
+              marginTop: '13px',
+            }}
+          >
+            <Image
+              src={'/images/modal/close.svg'}
+              width={28}
+              height={28}
+              alt="close"
+              sx={{}}
+              onClick={handleClose}
+            />
           </Box>
         </Box>
       </Modal>
