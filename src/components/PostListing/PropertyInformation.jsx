@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField } from '@mui/material';
+import { Typography, Box, TextField,Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { createInformationState } from '@/utils/addInfo';
 
-const PropertyInformation = ({ propertyInformation }) => {
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    addInfo: propertyInformation.map((item) => ({
-      ...item,
-      value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
-    })),
-  });
+const PropertyInformation = ({propertyInformation}) => {
+  const [propertyData, setPropertyData] = useState(createInformationState(propertyInformation,PROPERTY_BUYING_DETAIL))
+  //   sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+  //   addInfo: propertyInformation.map((item) => ({
+  //     ...item,
+  //     value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
+  
+  //   })),
+  // });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPropertyData((prevData) => ({
@@ -20,11 +22,14 @@ const PropertyInformation = ({ propertyInformation }) => {
         ...prevData.sellingData,
         [name]: value,
       },
-      addInfo: prevData.addInfo.map((item) =>
+      addInfo: prevData.InfoData.addInfo.map((item) =>
         item.label === name ? { ...item, value } : item
       ),
     }));
   };
+  const handleBtn = () => {
+    console.log("kk",propertyData);
+  }
   console.log('property', propertyData);
   const specialIndex = 1;
   return (
@@ -36,7 +41,7 @@ const PropertyInformation = ({ propertyInformation }) => {
         width: '700px',
       }}
     >
-      {propertyData.addInfo.map((item, index) => (
+      {propertyData.InfoData.addInfo.map((item, index) => (
         <Box
           sx={{
             padding: '15px',
@@ -90,6 +95,7 @@ const PropertyInformation = ({ propertyInformation }) => {
           />
         </Box>
       ))}
+      <Button onClick={handleBtn}>Ok</Button>
     </Box>
   );
 };
