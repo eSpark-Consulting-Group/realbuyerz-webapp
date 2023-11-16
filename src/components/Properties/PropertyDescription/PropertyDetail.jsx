@@ -3,10 +3,10 @@ import { Box, Grid } from '@mui/material';
 
 import PropertyTitle from './PropertyTitle';
 import PropertyDemand from './PropertyDemand';
-import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
 import PropertyDescription from './PropertyDescription';
+import PropertyLocation from './PropertyLocation';
 
 const PropertyDetails = ({ propertyData }) => {
   return (
@@ -17,11 +17,7 @@ const PropertyDetails = ({ propertyData }) => {
           <PropertyDescription
             description={propertyData.propertyData.description}
           />
-          <PropertyMapLocation
-            locationpurpose={propertyData.propertyData.location.purpose}
-            propertyType={propertyData.propertyData.location.propertyType}
-            city={propertyData.propertyData.location.city}
-          />
+          <PropertyLocation propertyData={propertyData} />
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
               amenities={propertyData.propertyData.amenities}

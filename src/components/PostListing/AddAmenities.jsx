@@ -7,14 +7,14 @@ import AmenitiesModal from './AmenitiesModal';
 
 const AddAmenities = ({ onSelected }) => {
   const [open, setOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
-    onSelected(selectedItems);
+    onSelected(selectedAmenities);
   };
   return (
     <Box
@@ -63,7 +63,7 @@ const AddAmenities = ({ onSelected }) => {
           open={open}
           onClose={() => handleClose()}
           data={PROPERTY_INFORMATION.addAmenities}
-          onSelected={setSelectedItems}
+          onSelected={setSelectedAmenities}
         />
       </Box>
     </Box>

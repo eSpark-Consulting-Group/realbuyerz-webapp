@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 
-const PropertyAddInformation = ({ PropertyInformation }) => {
+const PropertyInformation = ({ propertyInformation }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    addInfo: PropertyInformation.map((item) => ({
+    addInfo: propertyInformation.map((item) => ({
       ...item,
       value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
     })),
@@ -93,4 +93,4 @@ const PropertyAddInformation = ({ PropertyInformation }) => {
     </Box>
   );
 };
-export default PropertyAddInformation;
+export default PropertyInformation;

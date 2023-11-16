@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
 import PostTitle from './PostTitle';
 import UploadMediaButton from './UploadMediaButton';
-import UploadInstructions from './InstructionsForUpload';
+import InstructionsForUpload from './InstructionsForUpload';
 
 const PropertyGallery = () => {
   return (
@@ -73,18 +73,18 @@ const PropertyGallery = () => {
                 border: '1px #FB631C dashed',
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },
-                '@media (min-width: 960px) and (max-width: 1200px)': {
+                '@media (min-width: 960px) and (max-width: 1300px)': {
                   flexDirection: 'column',
                 },
               }}
             >
               <UploadMediaButton
-                PropertyInformation={PROPERTY_INFORMATION.uploadButton}
+                propertyInformation={PROPERTY_INFORMATION.uploadButton}
               />
               <Box>
                 {' '}
-                <UploadInstructions
-                  PropertyInformation={PROPERTY_INFORMATION.uploadInstruction}
+                <InstructionsForUpload
+                  propertyInformation={PROPERTY_INFORMATION.uploadInstruction}
                 />
               </Box>
             </Box>

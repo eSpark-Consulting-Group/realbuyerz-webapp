@@ -1,22 +1,22 @@
+/*eslint no-undef: 0*/
 import React, { useState } from 'react';
 import { Box, Button, Input } from '@mui/material';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 
-const UploadMediaButton = ({ PropertyInformation }) => {
-  let Promise;
+const UploadMediaButton = ({ propertyInformation }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    mediaData: PropertyInformation.map((item) => ({ ...item, value: '' })),
+    mediaData: propertyInformation.map((item) => ({ ...item, value: '' })),
   });
   const handleButtonClick = (index) => {
-    const selectedText = PropertyInformation[index].text;
+    const selectedText = propertyInformation[index].text;
     setPropertyData((prevData) => {
       const updatedMediaData = [...prevData.mediaData];
       updatedMediaData[index].value = selectedText;
       const updatedSellingData = {
         ...prevData.sellingData,
-        [PropertyInformation[index].text]: selectedText,
+        [propertyInformation[index].text]: selectedText,
       };
       return {
         ...prevData,
@@ -40,7 +40,7 @@ const UploadMediaButton = ({ PropertyInformation }) => {
     setPropertyData((prevData) => {
       const updatedSellingData = {
         ...prevData.sellingData,
-        [PropertyInformation[index].text]: fileUrl,
+        [propertyInformation[index].text]: fileUrl,
       };
       return {
         ...prevData,
@@ -94,7 +94,6 @@ const UploadMediaButton = ({ PropertyInformation }) => {
                 },
                 color: index === 0 ? 'white' : '#FB631C',
                 background: index === 0 ? '#FB631C' : 'white',
-                // backgroundColor:"#FB631C",
                 fontSize: { xs: '12px', md: '20px' },
                 padding: { xs: '4px', md: '8px' },
                 textTransform: 'capitalize',

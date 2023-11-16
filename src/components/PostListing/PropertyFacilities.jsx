@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 import Counter from './inputNumber/counter';
 
-const PropertyFacilities = ({ PropertyInformation }) => {
+const PropertyFacilities = ({ propertyInformation }) => {
   return (
     <>
-      {PropertyInformation.map((item, index) => (
+      {propertyInformation.map((item, index) => (
         <Box
           sx={{
             display: 'flex',

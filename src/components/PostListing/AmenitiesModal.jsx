@@ -32,7 +32,7 @@ const AmenitiesModal = (props) => {
         >
           <Facilities
             cancel={handleCancelButton}
-            Data={data}
+            facilitiesData={data}
             onSelected={onSelected}
           />
         </Box>

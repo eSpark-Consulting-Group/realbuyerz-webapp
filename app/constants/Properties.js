@@ -708,7 +708,15 @@ export const PROPERTIES_LISTING = [
     ],
   },
 ];
-
+export const PROPERTY_PURPOSE = {
+  propertyPurpose: {
+    locationAndPurpose: 'Location & Purpose',
+    purpose: 'Purpose',
+    propertyType: 'Property Type',
+    city: 'City',
+    location: 'Location',
+  },
+};
 export const PROPERTY_ESTATE = {
   propertyAttributes: [
     { label: 'Type' },

@@ -3,8 +3,8 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
-import PropertyAddInformation from './PropertyAddInformation';
 import PostTitle from './PostTitle';
+import PropertyInformation from './PropertyInformation';
 
 const AdInformation = () => {
   return (
@@ -41,8 +41,8 @@ const AdInformation = () => {
               alignItems: 'center',
             }}
           >
-            <PropertyAddInformation
-              PropertyInformation={PROPERTY_INFORMATION.addInfo}
+            <PropertyInformation
+              propertyInformation={PROPERTY_INFORMATION.addInfo}
             />
           </Box>
         </Box>

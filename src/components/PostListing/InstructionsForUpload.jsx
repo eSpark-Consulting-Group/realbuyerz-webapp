@@ -2,10 +2,10 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-const UploadInstructions = ({ PropertyInformation }) => {
+const InstructionsForUpload = ({ propertyInformation }) => {
   return (
     <>
-      {PropertyInformation.map((item, index) => (
+      {propertyInformation.map((item, index) => (
         <Box sx={{ padding: '11px' }} key={index}>
           <ul>
             <li>
@@ -37,4 +37,4 @@ const UploadInstructions = ({ PropertyInformation }) => {
     </>
   );
 };
-export default UploadInstructions;
+export default InstructionsForUpload;

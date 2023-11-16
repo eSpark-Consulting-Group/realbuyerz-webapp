@@ -4,9 +4,8 @@ import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
 
-const Facilities = ({ Data, cancel, onSelected, onClose }) => {
+const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-
   const handleCheckboxChange = (index) => {
     const updatedAmenities = [...selectedAmenities];
     updatedAmenities[index] = !updatedAmenities[index];
@@ -14,7 +13,7 @@ const Facilities = ({ Data, cancel, onSelected, onClose }) => {
   };
 
   const handleSaveButton = () => {
-    const selectedItems = Data.filter(
+    const selectedItems = facilitiesData.filter(
       (item, index) => selectedAmenities[index]
     );
     onSelected(selectedItems);
@@ -36,7 +35,7 @@ const Facilities = ({ Data, cancel, onSelected, onClose }) => {
           width: '100%',
         }}
       >
-        {Data?.map((item, index) => (
+        {facilitiesData?.map((item, index) => (
           <Box
             sx={{
               display: 'flex',

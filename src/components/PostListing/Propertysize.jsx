@@ -4,8 +4,8 @@ import { Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
 import PostTitle from './PostTitle';
-import AreaSize from './AreaSize';
-import PropertInstallment from './PropertyInstallment';
+import PropertyAreaSize from './PropertyAreaSize';
+import PropertyInstallment from './PropertyInstallment';
 
 const PropertySize = () => {
   return (
@@ -53,11 +53,11 @@ const PropertySize = () => {
                 },
               }}
             >
-              <AreaSize
-                PropertySizeInformation={PROPERTY_INFORMATION.propertySize}
+              <PropertyAreaSize
+                propertySizeInformation={PROPERTY_INFORMATION.propertySize}
               />
-              <PropertInstallment
-                PropertyInstallmentInfo={PROPERTY_INFORMATION.installment}
+              <PropertyInstallment
+                propertyInstallmentInfo={PROPERTY_INFORMATION.installment}
               />
             </Box>
           </Box>

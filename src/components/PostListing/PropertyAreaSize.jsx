@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
 
-const AreaSize = ({ PropertySizeInformation }) => {
+const PropertyAreaSize = ({ propertySizeInformation }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    propertySize: PropertySizeInformation.map((item) => ({
+    propertySize: propertySizeInformation.map((item) => ({
       ...item,
       value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
     })),
@@ -117,4 +117,4 @@ const AreaSize = ({ PropertySizeInformation }) => {
     </>
   );
 };
-export default AreaSize;
+export default PropertyAreaSize;

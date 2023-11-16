@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Button, Grid } from '@mui/material';
+
 import HideUnhideButton from './HideButton';
+import { PROPERTY_INFORMATION } from '@/app/constants/postlistingConstants';
 
 const SubmitButton = ({ handleClickButton }) => {
-  const Savedraft = 'Save as draft';
-  const SubmitAd = 'Submit Ad';
   return (
     <Grid container>
       <Grid
@@ -40,7 +40,7 @@ const SubmitButton = ({ handleClickButton }) => {
               fontWeight: 400,
             }}
           >
-            {Savedraft}
+            {PROPERTY_INFORMATION.saveDraft}
           </Button>
           <Button
             style={{
@@ -56,7 +56,7 @@ const SubmitButton = ({ handleClickButton }) => {
             }}
             onClick={handleClickButton}
           >
-            {SubmitAd}
+            {PROPERTY_INFORMATION.submitAd}
           </Button>
         </Box>
       </Grid>

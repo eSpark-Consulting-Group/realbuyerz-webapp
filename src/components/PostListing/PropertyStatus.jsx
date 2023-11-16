@@ -4,14 +4,14 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 
-const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
+const PropertyStatus = ({ propertyInformation, propertySell }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    purposeData: PropertySell.map((item) => ({ ...item, value: '' })),
+    purposeData: propertySell.map((item) => ({ ...item, value: '' })),
   });
 
   const handleButtonClick = (index) => {
-    const selectedText = PropertySell[index].text;
+    const selectedText = propertySell[index].text;
     setPropertyData((prevData) => {
       const updatedPurposeData = [...prevData.purposeData];
       updatedPurposeData[index].value = selectedText;
@@ -52,7 +52,7 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
             }}
           >
             <Image
-              src={PropertyInformation.images}
+              src={propertyInformation.images}
               width={47}
               height={45}
               alt="purpose"
@@ -62,7 +62,7 @@ const PropertyStatus = ({ PropertyInformation, PropertySell }) => {
                 color: '#333333',
               }}
             >
-              {PropertyInformation.text}{' '}
+              {propertyInformation.text}{' '}
             </Typography>
             <span style={{ color: '#FF0000' }}>*</span>
           </Box>

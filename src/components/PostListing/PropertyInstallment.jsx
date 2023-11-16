@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-
 import { Typography, Box, Switch } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 
-const PropertInstallment = ({ PropertyInstallmentInfo }) => {
+const PropertyInstallment = ({ propertyInstallmentInfo }) => {
   const [propertyData, setPropertyData] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    toggleData: PropertyInstallmentInfo,
+    toggleData: propertyInstallmentInfo,
   });
   const handleInputChangeToggle = (name, checked) => {
     setPropertyData((prevData) => {
@@ -98,4 +97,4 @@ const PropertInstallment = ({ PropertyInstallmentInfo }) => {
     </>
   );
 };
-export default PropertInstallment;
+export default PropertyInstallment;

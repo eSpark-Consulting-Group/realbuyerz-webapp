@@ -4,6 +4,8 @@ export const PROPERTY_INFORMATION = {
   addAmentiesLabel: 'Add Amenities',
   save: 'Save',
   cancel: 'Cancel',
+  saveDraft: 'Save as draft',
+  submitAd: 'Submit Ad',
   property: [
     {
       image: '/images/listing-page/home.svg',
@@ -140,12 +142,10 @@ export const PROPERTY_INFORMATION = {
     {
       label: 'Karachi',
       value: '',
-      name: 'selectCityOptions',
     },
     {
       label: 'Lahore',
       value: '',
-      name: 'selectCityOptions',
     },
   ],
 
@@ -243,7 +243,7 @@ export const PROPERTY_INFORMATION = {
       title: 'Corridor',
     },
     {
-      image: 'images/add-amenities/clubHouse.svg',
+      image: '/images/add-amenities/clubHouse.svg',
       title: 'Clubhouse',
     },
     {
@@ -251,7 +251,7 @@ export const PROPERTY_INFORMATION = {
       title: 'Auto Generator',
     },
     {
-      image: 'images/add-amenities/roPlant.svg',
+      image: '/images/add-amenities/roPlant.svg',
       title: 'R.O Plant',
     },
     {

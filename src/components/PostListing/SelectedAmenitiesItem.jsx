@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
 
-const SelectedItemsComponent = ({ selectedItems }) => {
+const SelectedAmenitiesItems = ({ selectedItems }) => {
   const [selectedAmenities, setSelectedAmenities] = useState({
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
   });
@@ -45,4 +45,4 @@ const SelectedItemsComponent = ({ selectedItems }) => {
     </div>
   );
 };
-export default SelectedItemsComponent;
+export default SelectedAmenitiesItems;

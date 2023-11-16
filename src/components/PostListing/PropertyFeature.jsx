@@ -5,7 +5,7 @@ import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstant
 import PostTitle from './PostTitle';
 import PropertyFacilities from './PropertyFacilities';
 import AddAmenities from './AddAmenities';
-import SelectedItemsComponent from './SelectedAmenitiesItem';
+import SelectedAmenitiesItems from './SelectedAmenitiesItem';
 
 const PropertyFeatures = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -53,7 +53,7 @@ const PropertyFeatures = () => {
               }}
             >
               <PropertyFacilities
-                PropertyInformation={PROPERTY_INFORMATION.feature}
+                propertyInformation={PROPERTY_INFORMATION.feature}
               />
               <AddAmenities onSelected={handleSelectedItems} />
               {selectedItems.length > 0 && (
@@ -66,7 +66,7 @@ const PropertyFeatures = () => {
                   }}
                 >
                   <Typography variant="h6">Selected Amenities:</Typography>
-                  <SelectedItemsComponent selectedItems={selectedItems} />
+                  <SelectedAmenitiesItems selectedItems={selectedItems} />
                 </Box>
               )}{' '}
             </Box>

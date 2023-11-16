@@ -52,8 +52,8 @@ const PropertyPurpose = () => {
             }}
           >
             <PropertyStatus
-              PropertyInformation={PROPERTY_INFORMATION.purpose}
-              PropertySell={PROPERTY_INFORMATION.sell}
+              propertyInformation={PROPERTY_INFORMATION.purpose}
+              propertySell={PROPERTY_INFORMATION.sell}
             />
             <SelectProperyType
               image={PROPERTY_INFORMATION.propertyType.images}
