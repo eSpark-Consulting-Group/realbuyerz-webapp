@@ -131,3 +131,8 @@ export const FOOTER_DATA = {
     ],
   },
 };
+
+export const PAGES_INFO = {
+  tncPageTitle: 'Term and Conditions',
+  policyPageTitle: 'Privacy Policy',
+};

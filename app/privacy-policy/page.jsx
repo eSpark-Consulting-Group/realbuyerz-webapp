@@ -1,10 +1,11 @@
 'use client';
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-
 import { CARDS } from '../constants/PrivacyPolicy';
 
 import PolicyCard from '@/src/components/PrivacyPolicy/PolicyCard';
+
+import { PAGES_INFO } from '../constants/Constants';
 
 const PrivacyPolicy = () => {
   return (
@@ -28,7 +29,7 @@ const PrivacyPolicy = () => {
           pb: '60px',
         }}
       >
-        Privacy Policy
+        {PAGES_INFO?.policyPageTitle}
       </Typography>
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         {CARDS.map((card, index) => (

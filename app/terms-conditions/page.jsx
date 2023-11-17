@@ -1,10 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { TERM_CONDOTIONS } from '../constants/TermCondition';
+
+import { TERM_CONDITIONS } from '../constants/TermCondition';
+import { PAGES_INFO } from '../constants/Constants';
 
 const TermsConditions = () => {
-  const [selectedTab, setSelectedTab] = useState(TERM_CONDOTIONS[0]);
+  const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
@@ -31,7 +33,7 @@ const TermsConditions = () => {
           pb: '60px',
         }}
       >
-        Terms and Conditions
+        {PAGES_INFO?.tncPageTitle}
       </Typography>
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         <Grid
@@ -51,7 +53,7 @@ const TermsConditions = () => {
               flexDirection: 'column',
             }}
           >
-            {TERM_CONDOTIONS?.map((item) => (
+            {TERM_CONDITIONS?.map((item) => (
               <Box
                 key={item.id}
                 variant={'outland'}
@@ -65,7 +67,8 @@ const TermsConditions = () => {
                     backgroundColor: '#FFEEE7',
                     borderRadius: '50px',
                   },
-                  borderRadius: '5px',
+                  borderRadius: '50px',
+                  backgroundColor: selectedTab === item ? '#FFEEE7' : 'inherit',
                   padding: '10px',
                   px: '20px',
                   display: 'flex', // Add display flex
