@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { CARDS } from '../constants/PrivacyPolicy';
 
 import PolicyCard from '@/src/components/PrivacyPolicy/PolicyCard';
 
+import { CARDS } from '../constants/PrivacyPolicy';
 import { PAGES_INFO } from '../constants/Constants';
 
 const PrivacyPolicy = () => {
