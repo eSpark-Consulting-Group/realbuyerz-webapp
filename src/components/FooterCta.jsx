@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Slide, Bounce } from "react-awesome-reveal";
+import { Bounce } from "react-awesome-reveal";
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';

@@ -1,3 +1,5 @@
+'use client'
+import { Bounce, Slide } from "react-awesome-reveal";
 import { Box, Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
@@ -98,44 +100,45 @@ const HeroSection = () => {
             gap: 2,
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
+        ><Slide direction="right"><Button
+          sx={{
+            width: {
+              xs: '40px',
+              sm: '60px',
+              md: '120px',
+              lg: '120px',
+              xl: '120px',
+            },
+            fontStyle: 'normal',
+            fontWeight: 600,
+            lineHeight: 'normal',
+            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+            textAlign: 'start',
+          }}
+          variant="primary"
         >
-          <Button
-            sx={{
-              width: {
-                xs: '40px',
-                sm: '60px',
-                md: '120px',
-                lg: '120px',
-                xl: '120px',
-              },
-              fontStyle: 'normal',
-              fontWeight: 600,
-              lineHeight: 'normal',
-              height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-              textAlign: 'start',
-            }}
-            variant="primary"
-          >
-            <Typography sx={{ color: '#fff' }}> Buyer</Typography>
-          </Button>
-          <Button
-            sx={{
-              width: {
-                xs: '120px',
-                sm: '120px',
-                md: '120px',
-                lg: '120px',
-                xl: '120px',
-              },
-              fontStyle: 'normal',
-              fontWeight: 600,
-              lineHeight: 'normal',
-              height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-            }}
-            variant="primary"
-          >
-            <Typography sx={{ color: '#fff' }}>Seller</Typography>
-          </Button>
+          <Typography sx={{ color: '#fff' }}> Buyer</Typography>
+        </Button></Slide>
+          <Slide direction="right">
+
+            <Button
+              sx={{
+                width: {
+                  xs: '120px',
+                  sm: '120px',
+                  md: '120px',
+                  lg: '120px',
+                  xl: '120px',
+                },
+                fontStyle: 'normal',
+                fontWeight: 600,
+                lineHeight: 'normal',
+                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+              }}
+              variant="primary"
+            >
+              <Typography sx={{ color: '#fff' }}>Seller</Typography>
+            </Button></Slide>
         </Box>
         <HeroSlider
           effect={'fade'}
