@@ -3,7 +3,7 @@ import { Grid, Box } from '@mui/material';
 import ListingInfo from './Listinginfo';
 import ReachBuyer from './ReachBuyer';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const BuyersPlatform = () => {
   return (

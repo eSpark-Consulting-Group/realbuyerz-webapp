@@ -1,8 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
-
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import MapFrame from './MapFrame';
 
 const SelectLocationType = () => {

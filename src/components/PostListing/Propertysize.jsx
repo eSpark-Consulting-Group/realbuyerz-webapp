@@ -2,7 +2,10 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import {
+  PROPERTY_BUYING_DETAIL,
+  PROPERTY_INFORMATION,
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyAreaSize from './PropertyAreaSize';
 import PropertyInstallment from './PropertyInstallment';
@@ -55,9 +58,12 @@ const PropertySize = () => {
             >
               <PropertyAreaSize
                 propertySizeInformation={PROPERTY_INFORMATION.propertySize}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                selectCity={PROPERTY_INFORMATION.selectCityOptions}
               />
               <PropertyInstallment
                 propertyInstallmentInfo={PROPERTY_INFORMATION.installment}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
               />
             </Box>
           </Box>

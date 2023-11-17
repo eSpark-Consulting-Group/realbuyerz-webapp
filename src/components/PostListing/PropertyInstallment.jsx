@@ -2,30 +2,37 @@ import React, { useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { createInstallmentState } from '@/utils/propertyInstallment';
 
-const PropertyInstallment = ({ propertyInstallmentInfo }) => {
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    toggleData: propertyInstallmentInfo,
-  });
+const PropertyInstallment = ({
+  propertyInstallmentInfo,
+  propertyBuyingDetails,
+}) => {
+  const [propertyData, setPropertyData] = useState(
+    createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
+  );
   const handleInputChangeToggle = (name, checked) => {
     setPropertyData((prevData) => {
-      const updatedToggleData = prevData.toggleData.map((item) =>
-        item.label === name ? { ...item, value: checked } : item
+      const updatedToggleData = prevData.installmentData.toggleData.map(
+        (item) => (item.label === name ? { ...item, value: checked } : item)
       );
-      const updatedSellingData = { ...prevData.sellingData, [name]: checked };
+      const updatedSellingData = {
+        ...prevData.installmentData.sellingData,
+        [name]: checked,
+      };
 
       return {
         ...prevData,
-        toggleData: updatedToggleData,
-        sellingData: updatedSellingData,
+        installmentData: {
+          toggleData: updatedToggleData,
+          sellingData: updatedSellingData,
+        },
       };
     });
   };
   return (
     <>
-      {propertyData.toggleData?.map((item, index) => (
+      {propertyData.installmentData.toggleData?.map((item, index) => (
         <Box
           sx={{
             display: 'flex',
@@ -74,7 +81,6 @@ const PropertyInstallment = ({ propertyInstallmentInfo }) => {
               }
             />
           </Box>
-
           <Box
             sx={{
               display: 'flex',

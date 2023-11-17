@@ -2,30 +2,36 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { createPropertyStatusState } from '@/utils/propertyStatus';
 
-const PropertyStatus = ({ propertyInformation, propertySell }) => {
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    purposeData: propertySell.map((item) => ({ ...item, value: '' })),
-  });
+const PropertyStatus = ({
+  propertyInformation,
+  propertySell,
+  propertyBuyingDetails,
+}) => {
+  const [propertyData, setPropertyData] = useState(
+    createPropertyStatusState(propertySell, propertyBuyingDetails)
+  );
 
   const handleButtonClick = (index) => {
     const selectedText = propertySell[index].text;
     setPropertyData((prevData) => {
-      const updatedPurposeData = [...prevData.purposeData];
+      const updatedPurposeData = [...prevData.propertyStatusData.purposeData];
       updatedPurposeData[index].value = selectedText;
       const updatedSellingData = {
-        ...prevData.sellingData,
+        ...prevData.propertyStatusData.sellingData,
         selectedPurpose: selectedText,
       };
       return {
         ...prevData,
-        sellingData: updatedSellingData,
-        purposeData: updatedPurposeData,
+        propertyStatusData: {
+          sellingData: updatedSellingData,
+          purposeData: updatedPurposeData,
+        },
       };
     });
   };
+  console.log('hehe', propertyData);
   return (
     <>
       <Box
@@ -74,7 +80,7 @@ const PropertyStatus = ({ propertyInformation, propertySell }) => {
               marginLeft: { xs: '50px', md: '50px' },
             }}
           >
-            {propertyData.purposeData.map((item, index) => (
+            {propertyData.propertyStatusData.purposeData.map((item, index) => (
               <Box
                 sx={{
                   display: 'flex',

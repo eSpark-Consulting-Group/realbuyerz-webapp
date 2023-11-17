@@ -2,26 +2,33 @@
 import React, { useState } from 'react';
 import { Box, Button, Input } from '@mui/material';
 
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { createMediaDataState } from '@/utils/mediaData';
 
-const UploadMediaButton = ({ propertyInformation }) => {
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    mediaData: propertyInformation.map((item) => ({ ...item, value: '' })),
-  });
+const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
+  const [propertyData, setPropertyData] = useState(
+    createMediaDataState(propertyInformation, propertyBuyingDetails)
+  );
   const handleButtonClick = (index) => {
     const selectedText = propertyInformation[index].text;
+    console.log('selectedText:', selectedText);
+
     setPropertyData((prevData) => {
-      const updatedMediaData = [...prevData.mediaData];
-      updatedMediaData[index].value = selectedText;
+      const updatedMediaData = [...prevData.uploadedMediaData.mediaData];
+      updatedMediaData[index].text = selectedText;
+      console.log('updatedMediaData:', updatedMediaData);
+
       const updatedSellingData = {
         ...prevData.sellingData,
         [propertyInformation[index].text]: selectedText,
       };
+      console.log('updatedSellingData:', updatedSellingData);
+
       return {
         ...prevData,
-        sellingData: updatedSellingData,
-        mediaData: updatedMediaData,
+        uploadedMediaData: {
+          sellingData: updatedSellingData,
+          mediaData: updatedMediaData,
+        },
       };
     });
   };
@@ -63,6 +70,7 @@ const UploadMediaButton = ({ propertyInformation }) => {
       reader.readAsDataURL(file);
     });
   };
+  console.log('iplo', propertyData);
   return (
     <Box
       sx={{
@@ -77,7 +85,7 @@ const UploadMediaButton = ({ propertyInformation }) => {
       }}
     >
       <>
-        {propertyData.mediaData.map((item, index) => (
+        {propertyData.uploadedMediaData.mediaData.map((item, index) => (
           <label
             htmlFor={`file-upload-${index}`}
             style={{

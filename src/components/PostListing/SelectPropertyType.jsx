@@ -3,46 +3,55 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { createPropertyTypeState } from '@/utils/propertyType';
 
-const SelectProperyType = ({ image, label, iconTitle }) => {
+const SelectProperyType = ({
+  image,
+  label,
+  iconTitle,
+  propertyBuyingDetails,
+}) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const handleActiveButtonClick = (index) => {
     setActiveButtonIndex(index);
   };
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    propertyTypeData: iconTitle.map((item) => ({ ...item, value: '' })),
-  });
+  const [propertyData, setPropertyData] = useState(
+    createPropertyTypeState(iconTitle, propertyBuyingDetails)
+  );
   const handleButtonClick = (index) => {
     const selectedText = iconTitle[index].title;
 
     setPropertyData((prevData) => {
-      const updatedPurposeData = [...prevData.propertyTypeData];
+      const updatedPurposeData = [
+        ...prevData.propertyTypeInfo.propertyTypeData,
+      ];
       updatedPurposeData[index].value = selectedText;
       const updatedSellingData = {
-        ...prevData.sellingData,
+        ...prevData.propertyTypeInfo.sellingData,
         SelectPropertyType: {
-          ...prevData.sellingData.SelectPropertyType,
+          ...prevData.propertyTypeInfo.sellingData.SelectPropertyType,
           Home: {
-            ...prevData.sellingData.SelectPropertyType.Home,
+            ...prevData.propertyTypeInfo.sellingData.SelectPropertyType.Home,
             [iconTitle[index].label]: selectedText,
           },
         },
       };
       if (selectedText === 'Rent House') {
-        updatedSellingData.SelectedPurpose = {
-          ...prevData.sellingData.SelectedPurpose,
+        updatedSellingData.SelectPropertyType = {
+          ...prevData.propertyTypeInfo.sellingData.SelectPropertyType,
           rentBtn: selectedText,
         };
       }
       return {
         ...prevData,
-        sellingData: updatedSellingData,
-        propertyTypeData: updatedPurposeData,
+        propertyTypeInfo: {
+          sellingData: updatedSellingData,
+          propertyTypeData: updatedPurposeData,
+        },
       };
     });
   };
+  console.log('uu', propertyData);
   return (
     <Box
       sx={{
@@ -102,7 +111,7 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
             },
           }}
         >
-          {propertyData.propertyTypeData.map((item, index) => (
+          {propertyData.propertyTypeInfo.propertyTypeData.map((item, index) => (
             <Button
               sx={{
                 borderRadius: '20px',
@@ -132,5 +141,4 @@ const SelectProperyType = ({ image, label, iconTitle }) => {
     </Box>
   );
 };
-
 export default SelectProperyType;

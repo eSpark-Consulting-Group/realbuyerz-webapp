@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);

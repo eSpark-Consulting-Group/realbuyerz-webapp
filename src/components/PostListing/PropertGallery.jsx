@@ -2,7 +2,10 @@ import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import {
+  PROPERTY_BUYING_DETAIL,
+  PROPERTY_INFORMATION,
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import UploadMediaButton from './UploadMediaButton';
 import InstructionsForUpload from './InstructionsForUpload';
@@ -80,6 +83,7 @@ const PropertyGallery = () => {
             >
               <UploadMediaButton
                 propertyInformation={PROPERTY_INFORMATION.uploadButton}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
               />
               <Box>
                 {' '}

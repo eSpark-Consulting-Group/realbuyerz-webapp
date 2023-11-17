@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 
 const SelectedAmenitiesItems = ({ selectedItems }) => {
   const [selectedAmenities, setSelectedAmenities] = useState({

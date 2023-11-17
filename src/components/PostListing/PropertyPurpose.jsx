@@ -2,7 +2,10 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import {
+  PROPERTY_BUYING_DETAIL,
+  PROPERTY_INFORMATION,
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import SelectProperyType from './SelectPropertyType';
 import SelectCityType from './SelectCity';
@@ -54,15 +57,19 @@ const PropertyPurpose = () => {
             <PropertyStatus
               propertyInformation={PROPERTY_INFORMATION.purpose}
               propertySell={PROPERTY_INFORMATION.sell}
+              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
             />
             <SelectProperyType
               image={PROPERTY_INFORMATION.propertyType.images}
               label={PROPERTY_INFORMATION.propertyType.text}
               iconTitle={PROPERTY_INFORMATION.IconTitle}
+              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
             />
             <SelectCityType
               image={PROPERTY_INFORMATION.city.images}
               label={PROPERTY_INFORMATION.city.text}
+              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+              cityOptions={PROPERTY_INFORMATION.selectCityOptions}
             />
             <SelectLocationType />
           </Box>

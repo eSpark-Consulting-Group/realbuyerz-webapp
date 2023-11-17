@@ -2,27 +2,35 @@ import React, { useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
-import { PROPERTY_BUYING_DETAIL } from '../../../app/constants/postlistingConstants';
+import { selectCityState } from '@/utils/selectCityOption';
 
-const SelectCityType = ({ image, label }) => {
-  const [propertyData, setPropertyData] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    selectCity: PROPERTY_INFORMATION.selectCityOptions,
-  });
+const SelectCityType = ({
+  image,
+  label,
+  propertyBuyingDetails,
+  cityOptions,
+}) => {
+  const [propertyData, setPropertyData] = useState(
+    selectCityState(propertyBuyingDetails, cityOptions)
+  );
   const handleCityChange = (event, value) => {
     setPropertyData((prevData) => ({
       ...prevData,
-      sellingData: {
-        ...prevData.sellingData,
-        selectCityOptions: value ? value.label : '',
+      selectedCity: {
+        sellingData: {
+          ...prevData.selectedCity.sellingData,
+          selectCityOptions: value ? value.label : '',
+        },
+        selectCityOption: prevData.selectedCity.selectCityOption.map(
+          (city) => ({
+            ...city,
+            value: city.label === (value ? value.label : '') ? value.label : '',
+          })
+        ),
       },
-      selectCity: prevData.selectCity.map((city) => ({
-        ...city,
-        value: city.label === (value ? value.label : '') ? value.label : '',
-      })),
     }));
   };
+  console.log('qq', propertyData);
   return (
     <>
       <Box
@@ -65,7 +73,7 @@ const SelectCityType = ({ image, label }) => {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={propertyData.selectCity}
+            options={propertyData.selectedCity.selectCityOption}
             sx={{
               width: { xs: '100%', sm: '300px', md: '350px' },
               marginLeft: { xs: '60px', md: '50px' },

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyFacilities from './PropertyFacilities';
 import AddAmenities from './AddAmenities';

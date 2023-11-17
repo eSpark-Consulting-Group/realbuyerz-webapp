@@ -324,7 +324,7 @@ export const PROPERTY_BUYING_DETAIL = {
     addAmenities: '',
     uploadImage: '',
     uploadVideo: '',
-    selectCityOptions: '',
+    selectCityOptions: {},
     selectedPurpose: '',
     SelectPropertyType: {
       Home: {

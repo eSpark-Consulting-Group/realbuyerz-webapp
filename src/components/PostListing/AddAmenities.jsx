@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
 import AmenitiesModal from './AmenitiesModal';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const AddAmenities = ({ onSelected }) => {
   const [open, setOpen] = useState(false);

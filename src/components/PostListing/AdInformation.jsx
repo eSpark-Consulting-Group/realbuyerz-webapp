@@ -2,7 +2,10 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '../../../app/constants/postlistingConstants';
+import {
+  PROPERTY_INFORMATION,
+  PROPERTY_BUYING_DETAIL,
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyInformation from './PropertyInformation';
 
@@ -42,7 +45,8 @@ const AdInformation = () => {
             }}
           >
             <PropertyInformation
-              propertyInformation={PROPERTY_INFORMATION.addInfo}
+              propertyDetails={PROPERTY_INFORMATION.addInfo}
+              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
             />
           </Box>
         </Box>
