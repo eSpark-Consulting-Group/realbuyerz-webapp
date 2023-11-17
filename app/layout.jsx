@@ -33,7 +33,7 @@ const RootLayout = ({ children }) => {
             <Box>{children}</Box>
             <Footer data={FOOTER_DATA} />
           </Box>
-        </ThemeProvider>  
+        </ThemeProvider>
       </body>
     </html>
   );
