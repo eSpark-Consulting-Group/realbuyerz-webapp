@@ -30,7 +30,7 @@ const InnerPageLayout = ({ children }) => {
         <Grid item lg={8} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
           {children}
         </Grid>
-        <Grid item lg={2} md={3} sm={12} xs={12} sx={{ marginTop: '70px' }}>
+        <Grid item lg={2} md={3} sm={12} xs={12}>
           <RightSidebar profileInfo={PROFILE_INFO} />
         </Grid>
       </Grid>
