@@ -104,8 +104,7 @@ const DashboardHeader = () => {
                   alt={'icon'}
                   style={{ marginTop: 2 }}
                 />
-              </Typography>
-
+              </Typography>{' '}
               <Typography
                 variant="h6"
                 noWrap

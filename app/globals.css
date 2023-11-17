@@ -6,6 +6,11 @@ root {
   --primary-color: #fb631c;
   --secondary-color: #333;
 }
+body {
+  font-family: 'Inter' !important;
+}
+.inter{ font-family: 'Inter' !important;}
+.roboto{ font-family: 'Roboto'  !important;}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -150,3 +155,4 @@ root {
   width: auto !important;
   /* margin-top: 73px; */
 }
+

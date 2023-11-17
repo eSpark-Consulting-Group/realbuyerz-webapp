@@ -15,13 +15,17 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
 
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
 
   return (
     <html lang="en">
       <Head></Head>
-      <body>
+      <body className={`${inter.className} inter `}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box>

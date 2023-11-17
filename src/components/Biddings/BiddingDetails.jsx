@@ -68,7 +68,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                   textAlign: 'right',
                   alignContent: 'end',
                   color: '#333',
-                  fontFamily: 'Inter',
                   fontSize: '15px',
                   fontStyle: 'normal',
                   fontWeight: 700,
