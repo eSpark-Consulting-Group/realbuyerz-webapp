@@ -2,6 +2,7 @@ export const BUY_BUTTON = 'BUY';
 export const CONNECTIONS = 'Connections';
 export const LISTING = 'Listing';
 export const PER_MONTH = 'Per Month';
+export const OPEN = 'OPEN';
 
 export const PLAN_PRICE = {
   Basic: {
@@ -10,7 +11,7 @@ export const PLAN_PRICE = {
     listing: '4',
     connections: '60',
   },
-  Hot: {
+  Premium: {
     packageName: 'Hot',
     price: '25',
     listing: '12',

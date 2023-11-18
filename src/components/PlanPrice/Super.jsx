@@ -1,14 +1,16 @@
-import { Button, List, ListItem, Typography } from '@mui/material';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { Box } from '@mui/system';
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
+import { Box } from '@mui/system';
+import { List, ListItem, Typography } from '@mui/material';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+
 import {
   BUY_BUTTON,
   CONNECTIONS,
   LISTING,
   PER_MONTH,
 } from '@/app/constants/PricePlane';
+import BuyButton from './BuyButton';
 
 const Super = ({ SuperData }) => {
   return (
@@ -20,7 +22,6 @@ const Super = ({ SuperData }) => {
         borderRadius: '30px',
         background: '#FFF',
         boxShadow: '1px 4px 15px 0px rgba(0, 0, 0, 0.70)',
-        zIndex: 1,
       }}
     >
       <Box
@@ -32,7 +33,12 @@ const Super = ({ SuperData }) => {
           position: 'relative',
         }}
       >
-        <Image src={'/images/plan-price/blue.png'} width={1000} height={100} />
+        <Image
+          src={'/images/plan-price/blue.png'}
+          width={1000}
+          height={100}
+          alt="image"
+        />
         <Typography
           sx={{
             fontFamily: 'Inter',
@@ -139,21 +145,7 @@ const Super = ({ SuperData }) => {
             justifyContent: 'center',
           }}
         >
-          <Button
-            sx={{
-              fontFamily: 'Inter',
-              fontWeight: 500,
-              fontSize: '20px',
-              lineHeight: '24.2px',
-              alignItems: 'center',
-              border: '2px solid #1176AD',
-              borderRadius: '30px',
-              width: '111px',
-              color: '#1176AD',
-            }}
-          >
-            {BUY_BUTTON}
-          </Button>
+          <BuyButton BuyButton={BUY_BUTTON} />
         </Box>
       </Box>
     </Box>

@@ -1,16 +1,17 @@
 'use client';
-import { Button, List, ListItem, Typography } from '@mui/material';
+import React from 'react';
+import Image from 'next/image';
+import { Box } from '@mui/system';
+import { List, ListItem, Typography } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+
 import {
   BUY_BUTTON,
   CONNECTIONS,
   LISTING,
   PER_MONTH,
 } from '@/app/constants/PricePlane';
-
-import { Box } from '@mui/system';
-import Image from 'next/image';
-import React from 'react';
+import BuyButton from './BuyButton';
 
 const Basic = ({ BasicData }) => {
   return (
@@ -22,7 +23,6 @@ const Basic = ({ BasicData }) => {
         borderRadius: '30px',
         background: '#FFF',
         boxShadow: '1px 4px 15px 0px rgba(0, 0, 0, 0.70)',
-        zIndex: 1,
       }}
     >
       <Box
@@ -39,6 +39,7 @@ const Basic = ({ BasicData }) => {
           layout="responsive"
           width={2000}
           height={100}
+          alt="image"
         />
         <Typography
           sx={{
@@ -76,7 +77,7 @@ const Basic = ({ BasicData }) => {
               color: '#444444',
             }}
           >
-            {`$ ${BasicData.price} `}
+            {`$ ${BasicData.price}`}
           </Typography>
           <Typography
             sx={{
@@ -147,21 +148,7 @@ const Basic = ({ BasicData }) => {
             justifyContent: 'center',
           }}
         >
-          <Button
-            sx={{
-              fontFamily: 'Inter',
-              fontWeight: 500,
-              fontSize: '20px',
-              lineHeight: '24.2px',
-              alignItems: 'center',
-              border: '2px solid #1176AD',
-              borderRadius: '30px',
-              width: '111px',
-              color: '#1176AD',
-            }}
-          >
-            {BUY_BUTTON}
-          </Button>
+          <BuyButton BuyButton={BUY_BUTTON} />
         </Box>
       </Box>
     </Box>

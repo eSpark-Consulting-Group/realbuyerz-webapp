@@ -1,9 +1,9 @@
-import { Button, List, ListItem, Typography } from '@mui/material';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-
-import { Box } from '@mui/system';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import React from 'react';
+import { Box } from '@mui/system';
+import { List, ListItem, Typography } from '@mui/material';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 import {
   BUY_BUTTON,
@@ -11,8 +11,22 @@ import {
   LISTING,
   PER_MONTH,
 } from '@/app/constants/PricePlane';
+import BuyButton from './BuyButton';
 
-const Hot = ({ HotData }) => {
+const Premium = ({ PremiumData }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      const containerWidth = document.documentElement.clientWidth;
+      setIsSmallScreen(containerWidth < 960);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <Box
       sx={{
@@ -22,7 +36,6 @@ const Hot = ({ HotData }) => {
         borderRadius: '30px',
         background: '#FFF',
         boxShadow: '1px 4px 15px 0px rgba(0, 0, 0, 0.70)',
-        zIndex: 1000,
       }}
     >
       <Box
@@ -34,7 +47,22 @@ const Hot = ({ HotData }) => {
           position: 'relative',
         }}
       >
-        <Image src={'/images/plan-price/Yellow.png'} width={250} height={100} />
+        {isSmallScreen ? (
+          <Image
+            src={'/images/plan-price/mobailImage.png'}
+            width={1000}
+            height={100}
+            alt="image"
+          />
+        ) : (
+          <Image
+            src={'/images/plan-price/Yellow.png'}
+            width={1000}
+            height={100}
+            alt="image"
+          />
+        )}
+
         <Box
           sx={{
             width: '164.831px',
@@ -59,7 +87,7 @@ const Hot = ({ HotData }) => {
               left: 110,
             }}
           >
-            {HotData.packageName}
+            {PremiumData.packageName}
           </Typography>
           <Typography
             sx={{
@@ -70,7 +98,7 @@ const Hot = ({ HotData }) => {
               color: '#444444',
             }}
           >
-            {`$ ${HotData.price} `}
+            {`$ ${PremiumData.price} `}
           </Typography>
           <Typography
             sx={{
@@ -97,7 +125,7 @@ const Hot = ({ HotData }) => {
         <Box
           sx={{
             px: 6,
-            mb: { lg: 1 },
+            mb: 1,
           }}
         >
           <List component="ul" sx={{ my: 0 }}>
@@ -112,9 +140,9 @@ const Hot = ({ HotData }) => {
               }}
             >
               <FiberManualRecordIcon
-                sx={{ fontSize: 'small', marginRight: 1 }}
+                sx={{ fontSize: 'small', marginRight: 0.5 }}
               />
-              {`${HotData.listing} ${LISTING}`}
+              {`${PremiumData.listing} ${LISTING}`}
             </ListItem>
             <ListItem
               sx={{
@@ -126,41 +154,27 @@ const Hot = ({ HotData }) => {
               }}
             >
               <FiberManualRecordIcon
-                sx={{ fontSize: 'small', marginRight: 1 }}
+                sx={{ fontSize: 'small', marginRight: 0.5 }}
               />
-              {`${HotData.connections}${CONNECTIONS}`}
+              {`${PremiumData.connections} ${CONNECTIONS}`}
             </ListItem>
           </List>
         </Box>
         <Box
           sx={{
             width: '100%',
-            // height: '39px',
+            height: '39px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: { lg: 4 },
+            mt: { md: 4 },
           }}
         >
-          <Button
-            sx={{
-              fontFamily: 'Inter',
-              fontWeight: 500,
-              fontSize: '20px',
-              lineHeight: '24.2px',
-              alignItems: 'center',
-              border: '2px solid #1176AD',
-              borderRadius: '30px',
-              width: '111px',
-              color: '#1176AD',
-            }}
-          >
-            {BUY_BUTTON}
-          </Button>
+          <BuyButton BuyButton={BUY_BUTTON} />
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default Hot;
+export default Premium;

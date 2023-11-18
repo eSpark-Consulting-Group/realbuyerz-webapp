@@ -144,6 +144,16 @@ root {
     margin-left: 19px !important;
   }
 }
+@media (min-width: 0px) and (max-width: 375px) {
+  .MobileScreenMarginTop {
+    margin-top: 760px ;
+  }
+}
+@media (min-width: 376px) and (max-width: 652px) {
+  .MobileScreenMarginTop {
+    margin-top: 585px ;
+  }
+}
 
 .EZDrawer__container {
   height: '100%' !important;

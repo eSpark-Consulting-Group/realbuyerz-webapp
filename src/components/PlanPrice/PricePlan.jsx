@@ -1,12 +1,13 @@
 'use client';
-import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import Basic from './Basic';
-import Hot from './Hot';
-import Super from './Super';
-import { PLAN_PRICE } from '@/app/constants/PricePlane';
 import { Button, Grid, Modal } from '@mui/material';
+import { Box } from '@mui/system';
 import Image from 'next/image';
+
+import { OPEN, PLAN_PRICE } from '@/app/constants/PricePlane';
+import Super from './Super';
+import Basic from './Basic';
+import Premium from './Premium';
 
 const PricePlan = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const PricePlan = () => {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>{OPEN}</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -23,32 +24,26 @@ const PricePlan = () => {
       >
         <Box
           sx={{
+            height: '100%',
             p: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            // minHeight: '100vh',
-            // position: 'absolute',
-            // top: 0,
-            // left: 0,
-            // right: 0,
-            // bottom: 0,
             margin: 'auto',
             overflowY: { xs: 'scroll', sm: 'scroll' },
-            // maxHeight: '100vh',
-            height: '100vh',
           }}
         >
           <Button
             onClick={handleClose}
             sx={{
-              // display: { xs: 'none', md: 'block' },
-              marginLeft: { xs: 0, sm: 50, md: 88 },
+              marginLeft: { xs: 20, sm: 66, md: 92 },
+              position: 'absolute',
+              top: { xs: 0, sm: -5, md: 150 },
             }}
           >
             <Image
-              src={'/images/plan-price/Vector.png'}
+              src={'/images/plan-price/close.png'}
               width={30}
               height={30}
               alt="close"
@@ -58,37 +53,22 @@ const PricePlan = () => {
           <Grid
             container
             rowSpacing={3}
-            columnSpacing={{ xs: 3, sm: 0, md: 0, lg: 0 }}
+            columnSpacing={{ xs: 3, sm: 9, md: 0, lg: 0 }}
             sx={{
               alignItems: 'center',
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}
           >
-            <Grid item sx={{ marginTop: { xs: '430px', sm: 0 } }}>
+            <Grid item className="MobileScreenMarginTop">
               <Basic BasicData={PLAN_PRICE.Basic} />
             </Grid>
             <Grid item>
-              <Hot HotData={PLAN_PRICE.Hot} />
+              <Premium PremiumData={PLAN_PRICE.Premium} />
             </Grid>
             <Grid item>
               <Super SuperData={PLAN_PRICE.Super} />
             </Grid>
-            {/* <Grid item xs={12}>  <Button
-                            onClick={handleClose}
-                            sx={{
-                                display: { md: 'none', xs: 'inline' },
-                                position: 'absolute',
-                                top: 0,
-                                right: 0
-                            }}
-                        >
-                            <Image
-                                src={'/images/plan-price/close.svg'}
-                                width={35}
-                                height={35}
-                                alt='close' />
-                        </Button></Grid> */}
           </Grid>
         </Box>
       </Modal>
