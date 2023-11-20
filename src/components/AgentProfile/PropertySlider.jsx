@@ -1,12 +1,14 @@
 'use client';
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Fade } from "react-awesome-reveal";
+
 import { Box, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import SliderCardTitle from './Slider/SliderCardTitle';
 import SliderCardLocation from './Slider/SliderCardLocation';
@@ -67,35 +69,37 @@ const PropertySlider = ({ data }) => {
       <Slider {...settings}>
         {data?.recentProperties.properties.map((item) => {
           return (
-            <Card sx={{ maxWidth: 315, "&:hover": { boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)' } }} key={item}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={item.image}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Box>
-                  <Grid container rowSpacing={1}>
-                    <Grid item xs={12}>
-                      <SliderCardTitle title={item.name} />
+            <Fade direction="left"  >
+              <Card sx={{ maxWidth: 315, "&:hover": { boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)' } }} key={item}>
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={item.image}
+                  alt="Paella dish"
+                />
+                <CardContent>
+                  <Box>
+                    <Grid container rowSpacing={1}>
+                      <Grid item xs={12}>
+                        <SliderCardTitle title={item.name} />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <SliderCardLocation location={item.location} />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <SliderCardPrice price={item.price} />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                      <SliderCardLocation location={item.location} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <SliderCardPrice price={item.price} />
-                    </Grid>
+                  </Box>
+                  <Grid container rowSpacing={2} sx={{ marginTop: 0 }}>
+                    <SliderCardIcons />
                   </Grid>
-                </Box>
-                <Grid container rowSpacing={2} sx={{ marginTop: 0 }}>
-                  <SliderCardIcons />
+                </CardContent>
+                <Grid container>
+                  <SliderCardSeeDetails />
                 </Grid>
-              </CardContent>
-              <Grid container>
-                <SliderCardSeeDetails />
-              </Grid>
-            </Card>
+              </Card></Fade>
+
           );
         })}
       </Slider>
