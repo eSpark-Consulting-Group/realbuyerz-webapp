@@ -354,9 +354,6 @@ export const FEATURED_PROPERTIES = [
   },
 ];
 
-
-
-
 export const PROPERTY_DATA_Old = {
   listingTypes: [
     { name: 'Houses', title: 'houses' },

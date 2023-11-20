@@ -3,7 +3,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Fade } from "react-awesome-reveal";
+import { Fade } from 'react-awesome-reveal';
 
 import { Box, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -67,10 +67,18 @@ const PropertySlider = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data?.recentProperties.properties.map((item) => {
+        {data?.recentProperties.properties.map((item, index) => {
           return (
-            <Fade direction="left"  >
-              <Card sx={{ maxWidth: 315, "&:hover": { boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)' } }} key={item}>
+            <Fade key={index} direction="left">
+              <Card
+                sx={{
+                  maxWidth: 315,
+                  '&:hover': {
+                    boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)',
+                  },
+                }}
+                key={item}
+              >
                 <CardMedia
                   component="img"
                   height="194"
@@ -98,8 +106,8 @@ const PropertySlider = ({ data }) => {
                 <Grid container>
                   <SliderCardSeeDetails />
                 </Grid>
-              </Card></Fade>
-
+              </Card>
+            </Fade>
           );
         })}
       </Slider>

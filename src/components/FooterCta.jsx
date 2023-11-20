@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Bounce } from "react-awesome-reveal";
+import { Bounce } from 'react-awesome-reveal';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -91,7 +91,6 @@ const FooterCta = ({ data }) => {
               ))}
             </Box>
           </Bounce>
-
         </Grid>
         <Grid
           item
@@ -105,13 +104,11 @@ const FooterCta = ({ data }) => {
             },
           }}
         >
-          <Bounce direction="right" triggerOnce >
+          <Bounce direction="right" triggerOnce>
             <Box>
-
               <Image src={data.appImage} alt="App" width={350} height={400} />
-
             </Box>
-          </Bounce >
+          </Bounce>
         </Grid>
       </Grid>
       <Grid container sx={{ py: '28px' }}>

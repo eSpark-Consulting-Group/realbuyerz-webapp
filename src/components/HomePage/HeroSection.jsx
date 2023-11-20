@@ -1,5 +1,6 @@
-'use client'
-import { Bounce, Slide } from "react-awesome-reveal";
+'use client';
+import { Bounce } from 'react-awesome-reveal';
+
 import { Box, Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
@@ -100,27 +101,29 @@ const HeroSection = () => {
             gap: 2,
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
-        ><Bounce direction="left" triggerOnce ><Button
-          sx={{
-            width: {
-              xs: '40px',
-              sm: '60px',
-              md: '120px',
-              lg: '120px',
-              xl: '120px',
-            },
-            fontStyle: 'normal',
-            fontWeight: 600,
-            lineHeight: 'normal',
-            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-            textAlign: 'start',
-          }}
-          variant="primary"
         >
-          <Typography sx={{ color: '#fff' }}> Buyer</Typography>
-        </Button></Bounce>
-          <Bounce direction="right" triggerOnce >
-
+          <Bounce direction="left" triggerOnce>
+            <Button
+              sx={{
+                width: {
+                  xs: '40px',
+                  sm: '60px',
+                  md: '120px',
+                  lg: '120px',
+                  xl: '120px',
+                },
+                fontStyle: 'normal',
+                fontWeight: 600,
+                lineHeight: 'normal',
+                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                textAlign: 'start',
+              }}
+              variant="primary"
+            >
+              <Typography sx={{ color: '#fff' }}> Buyer</Typography>
+            </Button>
+          </Bounce>
+          <Bounce direction="right" triggerOnce>
             <Button
               sx={{
                 width: {
@@ -138,7 +141,8 @@ const HeroSection = () => {
               variant="primary"
             >
               <Typography sx={{ color: '#fff' }}>Seller</Typography>
-            </Button></Bounce>
+            </Button>
+          </Bounce>
         </Box>
         <HeroSlider
           effect={'fade'}
