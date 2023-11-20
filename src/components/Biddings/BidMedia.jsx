@@ -1,11 +1,40 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@mui/material';
+import { Grid, Typography, Button, Modal } from '@mui/material';
 import BidSlider from './BidSlider';
 import { BIDDINGS } from '@/app/constants/Biddings';
+import { Box } from '@mui/system';
 
 const BidMedia = ({ title, media, mediaType }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            backgroundColor: '#fff',
+            width: '50%',
+            height: '70%',
+            margin: 'auto',
+            borderRadius: '30px',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+            }}
+          >
+            <Button>close</Button>
+          </Box>
+        </Box>
+      </Modal>
       <Grid container>
         <Grid
           item
@@ -41,6 +70,7 @@ const BidMedia = ({ title, media, mediaType }) => {
               borderRadius: '50px',
             }}
             variant="outlined"
+            onClick={handleOpen}
           >
             {BIDDINGS.ViewAllbutton.title}
           </Button>

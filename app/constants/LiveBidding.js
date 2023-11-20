@@ -76,6 +76,7 @@ export const MENU_ITEM = [
 export const LIVE_BIDDING_DATA = {
   liveBidding: [
     {
+      id: 1,
       title: 'NEED 4 BEDROOM APARTMENT',
       description:
         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
@@ -92,6 +93,7 @@ export const LIVE_BIDDING_DATA = {
       ],
     },
     {
+      id: 2,
       title: 'NEED 4 BEDROOM APARTMENT',
       description:
         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
@@ -108,6 +110,7 @@ export const LIVE_BIDDING_DATA = {
       ],
     },
     {
+      id: 3,
       title: 'NEED 4 BEDROOM APARTMENT',
       description:
         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
@@ -124,6 +127,7 @@ export const LIVE_BIDDING_DATA = {
       ],
     },
     {
+      id: 4,
       title: 'NEED 4 BEDROOM APARTMENT',
       description:
         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",

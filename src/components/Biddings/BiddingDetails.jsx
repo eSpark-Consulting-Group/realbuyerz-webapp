@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
 import { ESTIMATE_RANGE, VIEW } from '@/app/constants/LiveBidding';
+// import { Link } from 'react-router-dom';
 
 const BiddingDetails = ({ liveBiddingData, Height }) => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -102,16 +103,20 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
                       }}
                     >
-                      <Button
-                        sx={{
-                          border: '1px solid #FB631C',
-                          borderRadius: '90px',
-                          alignItems: 'end',
-                          padding: '0px',
-                        }}
-                      >
-                        {VIEW}
-                      </Button>
+                      <a href={`./live-bidding/${item.id}`}>
+                        {/* <a> */}
+                        <Button
+                          sx={{
+                            border: '1px solid #FB631C',
+                            borderRadius: '90px',
+                            alignItems: 'end',
+                            padding: '0px',
+                          }}
+                        >
+                          {VIEW}
+                        </Button>
+                        {/* </a> */}
+                      </a>
                     </Box>
                   </Grid>
                   <Box
