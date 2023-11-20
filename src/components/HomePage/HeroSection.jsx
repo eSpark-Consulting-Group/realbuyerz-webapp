@@ -100,7 +100,7 @@ const HeroSection = () => {
             gap: 2,
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
-        ><Slide direction="right"><Button
+        ><Bounce direction="left" triggerOnce ><Button
           sx={{
             width: {
               xs: '40px',
@@ -118,8 +118,8 @@ const HeroSection = () => {
           variant="primary"
         >
           <Typography sx={{ color: '#fff' }}> Buyer</Typography>
-        </Button></Slide>
-          <Slide direction="right">
+        </Button></Bounce>
+          <Bounce direction="right" triggerOnce >
 
             <Button
               sx={{
@@ -138,7 +138,7 @@ const HeroSection = () => {
               variant="primary"
             >
               <Typography sx={{ color: '#fff' }}>Seller</Typography>
-            </Button></Slide>
+            </Button></Bounce>
         </Box>
         <HeroSlider
           effect={'fade'}
