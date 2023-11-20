@@ -111,10 +111,16 @@ const FeaturedProperties = ({ data }) => {
                   p={2}
                   sx={{
                     display: isHovered ? 'block' : 'none',
+                    transform: '500px',
                     background: '#fff',
                     mr: '15%',
                     mt: '50%',
                     borderLeft: '10px #1176ad solid',
+                    transition: 'transform 3s ease-in-out',
+                    '&:hover': {
+                      display: 'block',
+                      transform: '0px',
+                    },
                   }}
                 >
                   <Box

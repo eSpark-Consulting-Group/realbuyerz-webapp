@@ -1,0 +1,10 @@
+.yourComponent {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 1s;
+}
+
+.yourComponent.hovered {
+  width: 300px;
+}
