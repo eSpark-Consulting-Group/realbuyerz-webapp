@@ -25,7 +25,7 @@ const BuyersPlatform = () => {
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            width: '90%',
+            width: '100%',
             gap: '6px',
             padding: { xs: '20px', md: '50px' },
           }}

@@ -16,15 +16,6 @@ const PropertyAreaSize = ({
       selectCity
     )
   );
-
-  //   sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-  //   propertySize: propertySizeInformation.map((item) => ({
-  //     ...item,
-  //     value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
-  //   })),
-  //   selectCity: PROPERTY_INFORMATION.selectCityOptions,
-  // });
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPropertyData((prevData) => ({
@@ -41,6 +32,7 @@ const PropertyAreaSize = ({
       },
     }));
   };
+
   const handleCityChange = (event, value) => {
     setPropertyData((prevData) => ({
       ...prevData,
@@ -59,89 +51,79 @@ const PropertyAreaSize = ({
       },
     }));
   };
-
-  console.log('pp', propertyData);
-
   return (
     <>
-      {propertyData.propertySizeAndAmount.propertySize?.map(
-        (item, index) => (
-          console.log('item', item),
-          (
-            <Box
+      {propertyData.propertySizeAndAmount.propertySize?.map((item, index) => (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '5px',
+          }}
+          key={index}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignSelf: 'flex-start',
+              alignItems: 'center',
+              fontSize: '20px',
+              fontFamily: 'Inter',
+              fontWeight: 400,
+              gap: '8px',
+            }}
+          >
+            <Image src={item.image} width={45} height={45} alt="areasize" />
+            <Typography
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '5px',
+                color: '#333333',
               }}
-              key={index}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignSelf: 'flex-start',
-                  alignItems: 'center',
-                  fontSize: '20px',
-                  fontFamily: 'Inter',
-                  fontWeight: 400,
-                  gap: '8px',
-                }}
-              >
-                <Image src={item.image} width={45} height={45} alt="areasize" />
-                <Typography
-                  sx={{
-                    color: '#333333',
-                  }}
-                >
-                  {item.text}{' '}
-                </Typography>
-                <span style={{ color: '#FF0000' }}>*</span>
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row', md: 'row' },
-                  gap: '10px',
-                  marginLeft: '50px',
-                }}
-              >
-                <TextField
-                  placeholder={item.placeholder}
-                  sx={{
-                    width: { xs: '100%', md: '500px' },
-                    '@media (min-width: 960px) and (max-width: 1500px)': {
-                      width: '250px',
-                    },
-                  }}
-                  name={item.label}
-                  onChange={handleInputChange}
-                />
+              {item.text}{' '}
+            </Typography>
+            <span style={{ color: '#FF0000' }}>*</span>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row', md: 'row' },
+              gap: '10px',
+              marginLeft: '50px',
+            }}
+          >
+            <TextField
+              placeholder={item.placeholder}
+              sx={{
+                width: { xs: '100%', md: '500px' },
+                '@media (min-width: 960px) and (max-width: 1500px)': {
+                  width: '250px',
+                },
+              }}
+              name={item.label}
+              onChange={handleInputChange}
+            />
 
-                <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  options={
-                    propertyData?.propertySizeAndAmount?.selectCityOption
-                  }
-                  sx={{
-                    width: { xs: '50%', md: '200px' },
-                    '@media (min-width: 961px) and (max-width: 1500px)': {
-                      width: '150px',
-                    },
-                  }}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Select City" />
-                  )}
-                  onChange={handleCityChange}
-                />
-              </Box>
-            </Box>
-          )
-        )
-      )}
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={propertyData?.propertySizeAndAmount?.selectCityOption}
+              sx={{
+                width: { xs: '50%', md: '200px' },
+                '@media (min-width: 961px) and (max-width: 1500px)': {
+                  width: '150px',
+                },
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Select City" />
+              )}
+              onChange={handleCityChange}
+            />
+          </Box>
+        </Box>
+      ))}
     </>
   );
 };

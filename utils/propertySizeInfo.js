@@ -16,6 +16,5 @@ export const createPropertySizeState = (
     })),
     selectCityOption: selectCity,
   };
-  console.log('ss', propertySizeAndAmount);
   return { propertySizeAndAmount };
 };

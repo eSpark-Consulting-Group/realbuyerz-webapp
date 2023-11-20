@@ -31,80 +31,68 @@ const PropertyStatus = ({
       };
     });
   };
-  console.log('hehe', propertyData);
   return (
     <>
       <Box
         sx={{
           display: 'flex',
-          width: { xs: '100%', md: '500px' },
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
+            alignItems: 'center',
+            fontSize: '20px',
+            fontFamily: 'Inter',
+            fontWeight: 400,
+            gap: '8px',
           }}
         >
-          <Box
+          <Image
+            src={propertyInformation.images}
+            width={47}
+            height={45}
+            alt="purpose"
+          />
+          <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: '20px',
-              fontFamily: 'Inter',
-              fontWeight: 400,
-              gap: '8px',
+              color: '#333333',
             }}
           >
-            <Image
-              src={propertyInformation.images}
-              width={47}
-              height={45}
-              alt="purpose"
-            />
-            <Typography
+            {propertyInformation.text}{' '}
+          </Typography>
+          <span style={{ color: '#FF0000' }}>*</span>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: '10px',
+            marginLeft: { xs: '50px', md: '50px' },
+          }}
+        >
+          {propertyData.propertyStatusData.purposeData.map((item, index) => (
+            <Box
               sx={{
-                color: '#333333',
+                display: 'flex',
+                justifyContent: 'center',
+                borderRadius: '20px',
+                border: '1px #E7E7E7 solid',
+                width: { xs: '120px', md: '150px' },
+                height: { xs: '50px', md: '60px' },
+                alignItems: 'center',
+                // padding: '10px',
               }}
+              key={index}
             >
-              {propertyInformation.text}{' '}
-            </Typography>
-            <span style={{ color: '#FF0000' }}>*</span>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              gap: '10px',
-              marginLeft: { xs: '50px', md: '50px' },
-            }}
-          >
-            {propertyData.propertyStatusData.purposeData.map((item, index) => (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  borderRadius: '20px',
-                  border: '1px #E7E7E7 solid',
-                  width: { xs: '120px', md: '150px' },
-                  height: { xs: '50px', md: '60px' },
-                  alignItems: 'center',
-                }}
-                key={index}
-              >
-                <Image
-                  src={item.images}
-                  width={33}
-                  height={31}
-                  alt="sell-rent"
-                />
-                <Button onClick={() => handleButtonClick(index)}>
-                  {item.text}
-                </Button>
-              </Box>
-            ))}
-          </Box>
+              <Image src={item.images} width={33} height={31} alt="sell-rent" />
+              <Button onClick={() => handleButtonClick(index)}>
+                {item.text}
+              </Button>
+            </Box>
+          ))}
         </Box>
       </Box>
     </>

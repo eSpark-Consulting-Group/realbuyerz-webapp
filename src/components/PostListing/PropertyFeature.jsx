@@ -32,7 +32,7 @@ const PropertyFeatures = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             height: { xs: '800px', md: '650px' },
-            width: '90%',
+            width: '100%',
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.featureamenities} />

@@ -8,53 +8,37 @@ const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
   const [propertyData, setPropertyData] = useState(
     createMediaDataState(propertyInformation, propertyBuyingDetails)
   );
-  const handleButtonClick = (index) => {
-    const selectedText = propertyInformation[index].text;
-    console.log('selectedText:', selectedText);
 
-    setPropertyData((prevData) => {
-      const updatedMediaData = [...prevData.uploadedMediaData.mediaData];
-      updatedMediaData[index].text = selectedText;
-      console.log('updatedMediaData:', updatedMediaData);
-
-      const updatedSellingData = {
-        ...prevData.sellingData,
-        [propertyInformation[index].text]: selectedText,
-      };
-      console.log('updatedSellingData:', updatedSellingData);
-
-      return {
-        ...prevData,
-        uploadedMediaData: {
-          sellingData: updatedSellingData,
-          mediaData: updatedMediaData,
-        },
-      };
-    });
-  };
   const handleFileChange = async (event, index) => {
     const selectedFile = event.target.files[0];
-    if (index === 0 && !isImage(selectedFile)) {
-      alert('Please select an image file.');
-      return;
-    }
-    if (index === 1 && !isVideo(selectedFile)) {
-      alert('Please select a video file.');
-      return;
-    }
-    const fileUrl = await readFileAsURL(selectedFile);
-    console.log(`Selected file URL for button ${index + 1}:`, fileUrl);
-    setPropertyData((prevData) => {
-      const updatedSellingData = {
-        ...prevData.sellingData,
-        [propertyInformation[index].text]: fileUrl,
-      };
-      return {
+
+    if (
+      (index === 0 && isImage(selectedFile)) ||
+      (index === 1 && isVideo(selectedFile))
+    ) {
+      const fileUrl = await readFileAsURL(selectedFile);
+      const fieldName = index === 0 ? 'uploadImage' : 'uploadVideo';
+
+      console.log(`Selected ${fieldName} file URL:`, fileUrl);
+
+      setPropertyData((prevData) => ({
         ...prevData,
-        sellingData: updatedSellingData,
-      };
-    });
+        uploadedMediaData: {
+          ...prevData.uploadedMediaData,
+          sellingData: {
+            ...prevData.uploadedMediaData.sellingData,
+            [fieldName]: fileUrl,
+          },
+          mediaData: prevData.uploadedMediaData.mediaData.map((item, i) =>
+            i === index ? { ...item, value: fileUrl } : item
+          ),
+        },
+      }));
+    } else {
+      alert('Please select a valid file type.');
+    }
   };
+
   const isImage = (file) => {
     return file.type.startsWith('image/');
   };
@@ -70,7 +54,6 @@ const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
       reader.readAsDataURL(file);
     });
   };
-  console.log('iplo', propertyData);
   return (
     <Box
       sx={{
@@ -113,7 +96,6 @@ const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
                 },
               }}
               component="span"
-              onClick={() => handleButtonClick(index)}
             >
               {item.label}
             </Button>

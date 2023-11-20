@@ -4,7 +4,6 @@ export const createInformationState = (
   propertyInformation,
   propertyBuyingDetails
 ) => {
-  console.log('test', propertyInformation, propertyBuyingDetails);
   if (!propertyBuyingDetails) {
     return {};
   }

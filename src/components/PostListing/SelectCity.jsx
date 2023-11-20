@@ -30,60 +30,50 @@ const SelectCityType = ({
       },
     }));
   };
-  console.log('qq', propertyData);
   return (
     <>
       <Box
         sx={{
           display: 'flex',
-          width: {
-            xs: '100%',
-            md: '500px',
-          },
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          gap: '6px',
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
+            alignSelf: 'flex-start',
+            alignItems: 'center',
+            fontSize: '20px',
+            fontFamily: 'Inter',
+            fontWeight: 400,
+            gap: '10px',
           }}
         >
-          <Box
+          <Image src={image} width={47} height={45} alt="city" />
+          <Typography
             sx={{
-              display: 'flex',
-              alignSelf: 'flex-start',
-              alignItems: 'center',
-              fontSize: '20px',
-              fontFamily: 'Inter',
-              fontWeight: 400,
-              gap: '8px',
+              color: '#333333',
             }}
           >
-            <Image src={image} width={47} height={45} alt="city" />
-            <Typography
-              sx={{
-                color: '#333333',
-              }}
-            >
-              {label}{' '}
-            </Typography>
-            <span style={{ color: '#FF0000' }}>*</span>
-          </Box>
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={propertyData.selectedCity.selectCityOption}
-            sx={{
-              width: { xs: '100%', sm: '300px', md: '350px' },
-              marginLeft: { xs: '60px', md: '50px' },
-            }}
-            renderInput={(params) => (
-              <TextField {...params} label="Select City" />
-            )}
-            onChange={handleCityChange}
-          />
+            {label}{' '}
+          </Typography>
+          <span style={{ color: '#FF0000' }}>*</span>
         </Box>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={propertyData.selectedCity.selectCityOption}
+          sx={{
+            width: { xs: '100%', sm: '300px', md: '320px' },
+            marginLeft: { xs: '30px', md: '50px' },
+          }}
+          renderInput={(params) => (
+            <TextField {...params} label="Select City" />
+          )}
+          onChange={handleCityChange}
+        />
       </Box>
     </>
   );

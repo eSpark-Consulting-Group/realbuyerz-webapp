@@ -19,7 +19,7 @@ const PostListing = () => {
       <Grid item xs={12} md={12}>
         <Box
           sx={{
-            width: { xs: '100%', md: '100%' },
+            width: '100%',
             display: 'flex',
             background: 'white',
             justifyContent: 'center',

@@ -23,7 +23,7 @@ const AdInformation = () => {
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
           backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'center top 38%',
         }}
       >
         <Box
@@ -33,7 +33,7 @@ const AdInformation = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             height: '681px',
-            width: '90%',
+            width: '100%',
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />

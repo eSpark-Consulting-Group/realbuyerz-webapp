@@ -26,7 +26,7 @@ const PropertyPurpose = () => {
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
           backgroundSize: '50% 50%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'center top 35%',
         }}
       >
         <Box
@@ -36,7 +36,7 @@ const PropertyPurpose = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             height: { xs: '1200px', md: '1000px' },
-            width: '90%',
+            width: '100%',
           }}
         >
           <PostTitle
@@ -54,24 +54,33 @@ const PropertyPurpose = () => {
               padding: { xs: '0px', md: '40px' },
             }}
           >
-            <PropertyStatus
-              propertyInformation={PROPERTY_INFORMATION.purpose}
-              propertySell={PROPERTY_INFORMATION.sell}
-              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-            />
-            <SelectProperyType
-              image={PROPERTY_INFORMATION.propertyType.images}
-              label={PROPERTY_INFORMATION.propertyType.text}
-              iconTitle={PROPERTY_INFORMATION.IconTitle}
-              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-            />
-            <SelectCityType
-              image={PROPERTY_INFORMATION.city.images}
-              label={PROPERTY_INFORMATION.city.text}
-              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-              cityOptions={PROPERTY_INFORMATION.selectCityOptions}
-            />
-            <SelectLocationType />
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '70%',
+                gap: { xs: '10px', md: '30px' },
+              }}
+            >
+              <PropertyStatus
+                propertyInformation={PROPERTY_INFORMATION.purpose}
+                propertySell={PROPERTY_INFORMATION.sell}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+              />
+              <SelectProperyType
+                image={PROPERTY_INFORMATION.propertyType.images}
+                label={PROPERTY_INFORMATION.propertyType.text}
+                iconTitle={PROPERTY_INFORMATION.IconTitle}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+              />
+              <SelectCityType
+                image={PROPERTY_INFORMATION.city.images}
+                label={PROPERTY_INFORMATION.city.text}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                cityOptions={PROPERTY_INFORMATION.selectCityOptions}
+              />
+              <SelectLocationType />
+            </Box>
           </Box>
         </Box>
       </Grid>

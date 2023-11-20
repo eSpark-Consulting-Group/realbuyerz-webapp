@@ -12,7 +12,6 @@ const CustomNumberInput = ({
   identifier,
 }) => {
   const [incrementValue, setIncrementValue] = useState(incrementCounterState);
-  console.log('TESTTT', incrementValue);
   const handleInputChange = (inputValue) => {
     const sanitizedValue = inputValue.replace(/[^0-9+-]/g, '');
     const formattedValue = sanitizedValue.replace(/([+-])+/g, '$1');

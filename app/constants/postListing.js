@@ -124,7 +124,6 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      option: '1000sq',
       label: 'enterUnit',
       value: '',
     },
@@ -132,7 +131,6 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/amount.svg',
       text: 'Amount ',
       placeholder: 'Enter Amount.',
-      option: '2000sq',
       label: 'enterAmount',
       value: '',
     },
@@ -186,7 +184,7 @@ export const PROPERTY_INFORMATION = {
   uploadButton: [
     {
       label: 'Upload Images',
-      text: 'uploadImages',
+      text: 'uploadImage',
       value: '',
     },
     {

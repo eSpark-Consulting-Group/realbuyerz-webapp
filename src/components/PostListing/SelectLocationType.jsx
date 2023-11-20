@@ -11,7 +11,6 @@ const SelectLocationType = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          width: { xs: '100%', md: '500px' },
         }}
       >
         <Box

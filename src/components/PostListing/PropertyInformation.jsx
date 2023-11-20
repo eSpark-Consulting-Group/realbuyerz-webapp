@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField, Button } from '@mui/material';
+import { Typography, Box, TextField } from '@mui/material';
 import Image from 'next/image';
 
 import { createInformationState } from '@/utils/addInfo';
@@ -23,23 +23,19 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
       },
     }));
   };
-  const handleBtn = () => {
-    console.log('kk', propertyData);
-  };
   const specialIndex = 1;
   return (
     <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: '40px',
-        width: '700px',
+        paddingTop: '60px',
+        width: '65%',
       }}
     >
       {propertyData.adInfoData.addInfo.map((item, index) => (
         <Box
           sx={{
-            padding: '15px',
             display: 'flex',
             flexDirection: 'column',
             gap: '15px',
@@ -70,9 +66,9 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
           <TextField
             placeholder={item.placeholder}
             sx={{
-              marginLeft: { xs: '0px', md: '50px' },
+              marginLeft: { xs: '10px', sm: '40px', md: '50px' },
               width: { xs: '90%', md: '600px' },
-              '@media (min-width: 961px) and (max-width: 1200px)': {
+              '@media (min-width: 960px) and (max-width: 1300px)': {
                 width: '300px',
               },
               '& placeholder': {
@@ -90,7 +86,6 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
           />
         </Box>
       ))}
-      <Button onClick={handleBtn}>Ok</Button>
     </Box>
   );
 };

@@ -24,7 +24,7 @@ const PropertySize = () => {
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
           backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'center top 40%',
         }}
       >
         <Box
@@ -33,7 +33,7 @@ const PropertySize = () => {
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            width: '90%',
+            width: '100%',
             height: { xs: '1000px', md: '730px' },
           }}
         >
