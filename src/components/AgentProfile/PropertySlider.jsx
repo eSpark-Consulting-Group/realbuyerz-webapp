@@ -18,7 +18,7 @@ import SliderCardIcons from './Slider/SliderCardIcons';
 const PropertySlider = ({ data }) => {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     adaptiveHeight: true,
     speed: 500,
     slidesToShow: 4,
@@ -67,7 +67,7 @@ const PropertySlider = ({ data }) => {
       <Slider {...settings}>
         {data?.recentProperties.properties.map((item) => {
           return (
-            <Card sx={{ maxWidth: 315 }} key={item}>
+            <Card sx={{ maxWidth: 315, "&:hover": { boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)' } }} key={item}>
               <CardMedia
                 component="img"
                 height="194"
