@@ -13,17 +13,21 @@ const BrowseByCategory = ({ data }) => {
           'To browse & buy in your areas of interest. Look of properties by category'
         }
       />
-      <Box sx={{ padding: '20px' }}>
-        <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{
+        background: '#F5F6FB',
+        my: '20px'
+      }}>
+        <Grid container sx={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
           {data?.map((category) => (
             <Grid
               item
               key={category?.id}
               sx={{
                 p: '20px',
-                mx: '15px',
                 my: '15px',
-                border: '2px solid #fb631c',
+                background: '#FFF',
+                border: '2px solid #fff',
+                "&:hover": { border: '2px solid #fb631c' }
               }}
             >
               <a href="/">
@@ -51,7 +55,7 @@ const BrowseByCategory = ({ data }) => {
           ))}
         </Grid>
       </Box>
-    </Container>
+    </Container >
   );
 };
 
