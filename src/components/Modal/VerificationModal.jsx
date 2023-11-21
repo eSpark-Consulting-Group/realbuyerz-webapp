@@ -12,7 +12,9 @@ const VerificationModal = () => {
   };
   return (
     <>
-      <Button onClick={handleModalToggle}>Open Verification modal</Button>
+      <Button onClick={handleModalToggle}>
+        {VERIFICATION_OTP.openVerificationModal}
+      </Button>
       <Modal open={open} onClose={handleModalToggle}>
         <Box
           sx={{

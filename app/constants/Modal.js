@@ -9,26 +9,27 @@ export const VERIFICATION_OTP = {
   openModal: 'Open modal',
   resendCode: 'Resend Code',
   continue: 'Continue',
+  openVerificationModal: 'Open Verification modal',
   otpCode: [
     {
-      num: 'digit_one',
+      num: 'code_one',
     },
     {
-      num: 'digit_two',
+      num: 'code_two',
     },
     {
-      num: 'digit_three',
+      num: 'code_three',
     },
     {
-      num: 'digit_four',
+      num: 'code_four',
     },
   ],
 };
 export const VERIFICATION_CODE = {
   codeOTP: {
-    digit_one: '',
-    digit_two: '',
-    digit_three: '',
-    digit_four: '',
+    code_one: '',
+    code_two: '',
+    code_three: '',
+    code_four: '',
   },
 };

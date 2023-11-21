@@ -5,6 +5,7 @@ import { Box, Typography, TextField, Button } from '@mui/material';
 import { verificationState } from '@/utils/verification';
 import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import CongratsModal from './CongratulationModal';
+import { handleVerificationChange } from '@/utils/codeValidation';
 
 const VerificationCode = ({ receivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
@@ -13,25 +14,20 @@ const VerificationCode = ({ receivedCode }) => {
   const [verificationResult, setVerificationResult] = useState();
   const [inputValues, setInputValues] = useState(['', '', '', '']);
   const handleChange = (index, value) => {
-    const { num } = receivedCode[index];
-    const newValue = value ? value.slice(-1) : '';
-    const newInputValues = [...inputValues];
-    newInputValues[index] = newValue;
-    setInputValues(newInputValues);
-    setVerificationCode((prevCode) => ({
-      verified: {
-        ...prevCode.verified,
-        [num]: value,
-      },
-    }));
+    handleVerificationChange(
+      index,
+      value,
+      receivedCode,
+      inputValues,
+      setVerificationCode,
+      setInputValues
+    );
   };
-  console.log('pp', verificationCode);
   const isInputValid = Object.values(verificationCode.verified).every((value) =>
     /^\d$/.test(value)
   );
   const isLengthValid =
     Object.values(verificationCode.verified).join('').length === 4;
-
   const handleConfirm = () => {
     if (isInputValid && isLengthValid) {
       setVerificationResult('Verification Successfully');
@@ -79,6 +75,10 @@ const VerificationCode = ({ receivedCode }) => {
                   style: {
                     borderRadius: 0,
                     outline: 'none',
+                  },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    '-webkit-appearance': 'none',
+                    margin: 0,
                   },
                 }}
               />
