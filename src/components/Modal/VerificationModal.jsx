@@ -7,13 +7,15 @@ import VerificationCode from './VerificationCode';
 
 const VerificationModal = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   return (
     <>
-      <Button onClick={handleOpen}>Open Verification modal</Button>
-      <Modal open={open} onClose={handleClose}>
+      <Button onClick={handleModalToggle}>Open Verification modal</Button>
+      <Modal open={open} onClose={handleModalToggle}>
         <Box
           sx={{
             width: { xs: '100%', sm: '50%', md: '500px' },
@@ -84,7 +86,7 @@ const VerificationModal = () => {
                   fontWeight: 500,
                 }}
               >
-                Resend Code
+                {VERIFICATION_OTP.resendCode}
               </span>
             </Typography>
           </Box>
@@ -99,7 +101,6 @@ const VerificationModal = () => {
               width={28}
               height={28}
               alt="close"
-              sx={{}}
               onClick={handleClose}
             />
           </Box>

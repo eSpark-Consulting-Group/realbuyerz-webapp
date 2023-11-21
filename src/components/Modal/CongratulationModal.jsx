@@ -5,12 +5,15 @@ import { VERIFICATION_OTP } from '@/app/constants/Modal';
 
 const CongratsModal = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal open={open} onClose={handleClose}>
+      <Button onClick={handleModalToggle}>{VERIFICATION_OTP.openModal}</Button>
+      <Modal open={open} onClose={handleModalToggle}>
         <Box
           sx={{
             width: { xs: '100%', sm: '50%', md: '500px' },
@@ -63,7 +66,7 @@ const CongratsModal = () => {
                 borderRadius: '10px',
               }}
             >
-              {VERIFICATION_OTP.confirm}
+              {VERIFICATION_OTP.continue}
             </Button>
           </Box>
         </Box>

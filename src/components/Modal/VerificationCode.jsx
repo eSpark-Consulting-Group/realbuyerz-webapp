@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 
 import { verificationState } from '@/utils/verification';
+import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import CongratsModal from './CongratulationModal';
 
 const VerificationCode = ({ receivedCode }) => {
   const [verificationCode, setVerificationCode] = useState(verificationState);
@@ -33,6 +35,9 @@ const VerificationCode = ({ receivedCode }) => {
     } else {
       setVerificationResult('Verification Failed');
     }
+  };
+  const handleOpenModal = () => {
+    <CongratsModal />;
   };
   return (
     <>
@@ -91,7 +96,7 @@ const VerificationCode = ({ receivedCode }) => {
         }}
         onClick={handleConfirm}
       >
-        Confirm
+        {VERIFICATION_OTP.confirm}
       </Button>
       {verificationResult && <Box>{verificationResult}</Box>}
     </>

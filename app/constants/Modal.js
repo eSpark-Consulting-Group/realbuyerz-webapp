@@ -6,6 +6,9 @@ export const VERIFICATION_OTP = {
   code: 'Please enter the code we have sent to the number 0********20',
   attempts: '1 / 5 attempts - 125 seconds remaining',
   codeOtp: 'Didn’t receive OTP code?',
+  openModal: 'Open modal',
+  resendCode: 'Resend Code',
+  continue: 'Continue',
   otpCode: [
     {
       num: 'digit_one',
