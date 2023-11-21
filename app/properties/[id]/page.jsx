@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 import Sliders from '@/src/components/Properties/Slider/Slider';
-import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 
@@ -36,7 +35,6 @@ function SingleProperty() {
           }}
         >
           <Sliders propertySlider={property} />
-          <PropertyOverview propertyData={property} />
           <PropertyDetails propertyData={property} />
         </Grid>
         <Grid item xs={12} md={4}>

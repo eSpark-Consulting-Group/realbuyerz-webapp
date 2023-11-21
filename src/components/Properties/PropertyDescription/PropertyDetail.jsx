@@ -7,15 +7,33 @@ import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
 import PropertyDescription from './PropertyDescription';
+import PropertyOverview from '../PropertyOverview/PropertyOverview';
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 const PropertyDetails = ({ propertyData }) => {
+  const properties = useSelector((state) => state.properties.properties);
+
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 1];
+  const property = properties[id - 1];
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
         <Box sx={{ padding: '15px' }}>
-          <PropertyTitle title={propertyData.propertyData.title} />
+          <PropertyOverview
+            propertyData={property}
+            overview={PROPERTY_ESTATE.propertyDetails.overview}
+          />
+          <PropertyTitle
+            title={propertyData.propertyData.title}
+            heading={PROPERTY_ESTATE.propertyDetails.title}
+          />
           <PropertyDescription
             description={propertyData.propertyData.description}
+            heading={PROPERTY_ESTATE.propertyDetails.decription}
           />
           <PropertyMapLocation
             locationpurpose={propertyData.propertyData.location.purpose}
@@ -25,13 +43,20 @@ const PropertyDetails = ({ propertyData }) => {
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
               amenities={propertyData.propertyData.amenities}
+              heading={PROPERTY_ESTATE.propertyDetails.amenities}
             />
           </Box>
           <Box sx={{ pt: '15px' }}>
-            <PropertyArea area={propertyData.propertyData.area} />
+            <PropertyArea
+              area={propertyData.propertyData.area}
+              heading={PROPERTY_ESTATE.propertyDetails.area}
+            />
           </Box>
           <Box sx={{ pt: '15px' }}>
-            <PropertyDemand demand={propertyData.propertyData.propertyDemand} />
+            <PropertyDemand
+              demand={propertyData.propertyData.propertyDemand}
+              heading={PROPERTY_ESTATE.propertyDetails.demand}
+            />
           </Box>
         </Box>
       </Grid>

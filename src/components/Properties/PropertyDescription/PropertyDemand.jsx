@@ -1,11 +1,21 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const PropertyDemand = ({ demand }) => {
+const PropertyDemand = ({ demand, heading }) => {
   return (
     <div>
-      <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Demand</Typography>
-      <Typography sx={{ padding: '3px', fontSize: '16px', fontWeight: 400 }}>
+      <Typography
+        sx={{ fontSize: { xs: '14px', md: '18px' }, fontWeight: 600 }}
+      >
+        {heading}
+      </Typography>
+      <Typography
+        sx={{
+          padding: '3px',
+          fontSize: { xs: '14px', md: '16px' },
+          fontWeight: 400,
+        }}
+      >
         {demand}
       </Typography>
     </div>

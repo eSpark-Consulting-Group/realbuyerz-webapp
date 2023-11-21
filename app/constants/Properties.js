@@ -647,4 +647,15 @@ export const PROPERTY_ESTATE = {
     { label: 'Bath' },
     { label: 'Parking' },
   ],
+  propertyDetails: {
+    overview: 'Overview',
+    title: 'Title',
+    decription: 'Description',
+    area: 'Area',
+    amenities: 'Amenities',
+    demand: 'Demand',
+    reach: 'Reach out to us:',
+    pkr: 'PKR',
+    message: 'Message',
+  },
 };
