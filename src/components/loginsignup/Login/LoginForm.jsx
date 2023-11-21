@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmeField';
 

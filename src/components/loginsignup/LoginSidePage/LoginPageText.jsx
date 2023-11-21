@@ -2,7 +2,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 const LoginPageText = () => {
   return (

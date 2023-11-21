@@ -4,7 +4,7 @@ import { Typography, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 import FormContainer from '../Login/LoginForm';
 
 const SignupCard = () => {
@@ -14,7 +14,7 @@ const SignupCard = () => {
       <Box
         sx={{
           width: { xs: '90%', md: '500px' },
-          height: { xs: '650px', md: '622px' },
+          height: { xs: '650px', md: '610px' },
           paddingTop: '20px',
           display: 'flex',
           flexDirection: 'column',
@@ -22,7 +22,7 @@ const SignupCard = () => {
           boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
           borderRadius: 2,
           background: 'white',
-          marginTop: '14px',
+          marginTop: '22px',
           zIndex: 2,
           '@media (max-width: 1286px)': {
             width: '400px',

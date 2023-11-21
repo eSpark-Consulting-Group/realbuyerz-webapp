@@ -5,6 +5,7 @@ export const LOGIN_FORM = {
     rememberMe: 'Remember me',
     forgetPassword: 'Forget Password?',
     welcome: 'Hey! Welcome',
+    verifiedBuyers: 'Login to reach out hundreds of verified buyers daily',
     login: 'Log in',
     googleLogin: 'Login with Google',
     label: 'Already have an account?',
