@@ -11,7 +11,7 @@ const Notification = ({ notificationData, handleInputChange }) => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              borderBottom: '1px solid gray',
+              borderBottom: '2px solid #f4f5f7',
               gap: '10px',
               padding: '10px',
             }}

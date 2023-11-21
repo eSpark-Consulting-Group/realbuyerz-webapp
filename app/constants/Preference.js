@@ -9,7 +9,7 @@ export const AGENT_PREFERENCES = {
       value: false,
     },
     {
-      title: 'News Letter',
+      title: 'NewsLetter',
       description: 'Allow to stay updated & receive newsletter',
       label: 'newsLetter',
       value: false,
