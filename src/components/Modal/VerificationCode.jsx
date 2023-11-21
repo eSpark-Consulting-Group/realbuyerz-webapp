@@ -7,9 +7,11 @@ import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import CongratsModal from './CongratulationModal';
 
 const VerificationCode = ({ receivedCode }) => {
+  const [isVerificationSuccessful, setIsVerificationSuccessful] =
+    useState(false);
   const [verificationCode, setVerificationCode] = useState(verificationState);
-  const [inputValues, setInputValues] = useState(['', '', '', '']);
   const [verificationResult, setVerificationResult] = useState();
+  const [inputValues, setInputValues] = useState(['', '', '', '']);
   const handleChange = (index, value) => {
     const { num } = receivedCode[index];
     const newValue = value ? value.slice(-1) : '';
@@ -23,6 +25,7 @@ const VerificationCode = ({ receivedCode }) => {
       },
     }));
   };
+  console.log('pp', verificationCode);
   const isInputValid = Object.values(verificationCode.verified).every((value) =>
     /^\d$/.test(value)
   );
@@ -32,12 +35,10 @@ const VerificationCode = ({ receivedCode }) => {
   const handleConfirm = () => {
     if (isInputValid && isLengthValid) {
       setVerificationResult('Verification Successfully');
+      setIsVerificationSuccessful(true);
     } else {
       setVerificationResult('Verification Failed');
     }
-  };
-  const handleOpenModal = () => {
-    <CongratsModal />;
   };
   return (
     <>
@@ -98,6 +99,9 @@ const VerificationCode = ({ receivedCode }) => {
       >
         {VERIFICATION_OTP.confirm}
       </Button>
+      {isVerificationSuccessful && (
+        <CongratsModal onClose={() => setIsVerificationSuccessful(false)} />
+      )}
       {verificationResult && <Box>{verificationResult}</Box>}
     </>
   );

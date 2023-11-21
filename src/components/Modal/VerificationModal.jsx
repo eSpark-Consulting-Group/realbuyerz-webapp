@@ -7,8 +7,6 @@ import VerificationCode from './VerificationCode';
 
 const VerificationModal = () => {
   const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
   const handleModalToggle = () => {
     setOpen(!open);
   };
@@ -101,7 +99,7 @@ const VerificationModal = () => {
               width={28}
               height={28}
               alt="close"
-              onClick={handleClose}
+              onClick={handleModalToggle}
             />
           </Box>
         </Box>

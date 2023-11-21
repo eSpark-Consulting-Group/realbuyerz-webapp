@@ -5,8 +5,6 @@ import { VERIFICATION_OTP } from '@/app/constants/Modal';
 
 const CongratsModal = () => {
   const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
   const handleModalToggle = () => {
     setOpen(!open);
   };
@@ -20,14 +18,38 @@ const CongratsModal = () => {
             background: '#E8F6FF',
             borderRadius: '27px',
             margin: 'auto',
-            height: '335px',
+            height: ' 353px',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'space-around',
             alignItems: 'flex-end',
             flexWrap: 'nowrap',
             marginTop: '210px',
           }}
         >
+          <Box
+            sx={{
+              width: '100%',
+              height: '180px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '& img': {
+                width: '200px',
+                animation: '$animateFrames 5s infinite',
+                alignSelf: 'center',
+              },
+              '@keyframes animateFrames': {
+                '0%': { transform: 'translateX(0%)' },
+                '25%': { transform: 'translateX(-100%)' },
+                '50%': { transform: 'translateX(-200%)' },
+                '75%': { transform: 'translateX(-300%)' },
+                '100%': { transform: 'translateX(0%)' },
+              },
+            }}
+          >
+            <img src="/images/congrats/congrats.gif" alt="Frame 2" />
+          </Box>
           <Box
             sx={{
               display: 'flex',
