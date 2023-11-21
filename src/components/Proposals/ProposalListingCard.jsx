@@ -9,7 +9,8 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PROPERTY_STATS } from '@/app/constants/Proposals';
+
+// import { PROPERTY_STATS } from '@/app/constants/Proposals';
 
 const styles = {
   container: {
@@ -36,13 +37,11 @@ const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the range of currently displayed items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const currentItems = proposalsData.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle pagination change
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
@@ -130,7 +129,7 @@ const ProposalListingCard = ({ proposalsData }) => {
             <Divider sx={{ py: '5px' }} />
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
-                {PROPERTY_STATS?.map((propertyStats) => (
+                {/* {PROPERTY_STATS?.map((propertyStats) => (
                   <Box
                     key={propertyStats.value}
                     sx={{
@@ -147,7 +146,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                       {proposal[propertyStats.value]}
                     </Typography>
                   </Box>
-                ))}
+                ))} */}
               </Grid>
               <Grid item xs={2} sx={{ justifyContent: 'center' }}>
                 <Box
