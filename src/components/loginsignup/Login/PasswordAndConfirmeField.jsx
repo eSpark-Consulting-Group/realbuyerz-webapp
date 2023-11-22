@@ -33,6 +33,10 @@ const PasswordAndConfirmFields = () => {
         value={formData.password}
         onChange={handleFieldChange}
         InputProps={{
+          sx: {
+            height: '40px',
+          },
+
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -45,6 +49,11 @@ const PasswordAndConfirmFields = () => {
             </InputAdornment>
           ),
         }}
+        InputLabelProps={{
+          sx: {
+            fontSize: '11px',
+          },
+        }}
       />
       <TextField
         label="Confirm Password"
@@ -55,6 +64,9 @@ const PasswordAndConfirmFields = () => {
         value={formData.confirmPassword}
         onChange={handleFieldChange}
         InputProps={{
+          sx: {
+            height: '40px',
+          },
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -70,6 +82,11 @@ const PasswordAndConfirmFields = () => {
               </IconButton>
             </InputAdornment>
           ),
+        }}
+        InputLabelProps={{
+          sx: {
+            fontSize: '11px',
+          },
         }}
       />
     </>

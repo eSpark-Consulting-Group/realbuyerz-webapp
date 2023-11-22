@@ -60,6 +60,10 @@ const FormContainer = ({ isLoginForm }) => {
                 fullWidth
                 value={formData.firstName}
                 onChange={handleInputChange}
+                InputProps={{ sx: { height: '40px' } }}
+                InputLabelProps={{
+                  sx: { fontSize: '11px' },
+                }}
               />
               <TextField
                 label="Last Name"
@@ -68,6 +72,10 @@ const FormContainer = ({ isLoginForm }) => {
                 fullWidth
                 value={formData.lastName}
                 onChange={handleInputChange}
+                InputProps={{ sx: { height: '40px' } }}
+                InputLabelProps={{
+                  sx: { fontSize: '11px' },
+                }}
               />
             </Box>
             <TextField
@@ -77,6 +85,10 @@ const FormContainer = ({ isLoginForm }) => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              InputProps={{ sx: { height: '40px' } }}
+              InputLabelProps={{
+                sx: { fontSize: '11px' },
+              }}
             />
             <TextField
               label="Contact Number"
@@ -86,15 +98,27 @@ const FormContainer = ({ isLoginForm }) => {
               name="contactNumber"
               value={formData.contactNumber}
               onChange={handleInputChange}
+              InputProps={{
+                sx: { height: '40px', background: 'none' },
+              }}
+              InputLabelProps={{
+                sx: { fontSize: '11px' },
+              }}
             />
             <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={LOGIN_FORM.dropdownOptions}
               getOptionLabel={(option) => option.label}
-              sx={{ width: '100%' }}
+              sx={{ width: '100%', height: '50px' }}
               renderInput={(params) => (
-                <TextField {...params} label="Applicant" />
+                <TextField
+                  {...params}
+                  label="Applicant"
+                  InputLabelProps={{
+                    sx: { fontSize: '11px' },
+                  }} // InputProps={{ sx: { height: '60px' } }}
+                />
               )}
               onChange={handleInputChange}
             />
