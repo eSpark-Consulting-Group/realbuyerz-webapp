@@ -3,6 +3,7 @@ import { Grid, Typography, Button, Modal } from '@mui/material';
 import BidSlider from './BidSlider';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import { Box } from '@mui/system';
+import Gallery from '../Gallary';
 
 const BidMedia = ({ title, media, mediaType }) => {
   const [open, setOpen] = React.useState(false);
@@ -21,9 +22,11 @@ const BidMedia = ({ title, media, mediaType }) => {
           sx={{
             backgroundColor: '#fff',
             width: '50%',
-            height: '70%',
-            margin: 'auto',
+            height: 'auto',
+            mx: 'auto',
+            my: 'auto',
             borderRadius: '30px',
+            padding: '60px',
           }}
         >
           <Box
@@ -33,6 +36,7 @@ const BidMedia = ({ title, media, mediaType }) => {
           >
             <Button>close</Button>
           </Box>
+          <Gallery images={media} />
         </Box>
       </Modal>
       <Grid container>
