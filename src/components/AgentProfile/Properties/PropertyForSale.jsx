@@ -18,7 +18,7 @@ const PropertyForSale = ({ data }) => {
             }}
           >
             <Image
-              src="./images/agent-profile-icons/home.svg"
+              src="/images/agent-profile-icons/home.svg"
               width={15}
               height={15}
               alt="hub rever"
@@ -59,7 +59,7 @@ const PropertyForSale = ({ data }) => {
               View &nbsp;
             </Typography>
             <Image
-              src="./images/agent-profile-icons/arrow.svg"
+              src="/images/agent-profile-icons/arrow.svg"
               width={9}
               height={9}
               alt="hub rever"

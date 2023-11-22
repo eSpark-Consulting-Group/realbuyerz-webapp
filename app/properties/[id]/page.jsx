@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import { Grid } from '@mui/material';
+// import { Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
@@ -9,6 +9,7 @@ import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
+
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
 function SingleProperty() {
@@ -17,7 +18,19 @@ function SingleProperty() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
+
+  // Check if properties array is empty or property is undefined
+  if (!properties || properties.length === 0) {
+    return <div>No properties found</div>;
+  }
+
   const property = properties[id - 1];
+
+  // Check if property is undefined
+  if (!property) {
+    return <div>Property not found</div>;
+  }
+
   return (
     <>
       <Grid
@@ -38,10 +51,12 @@ function SingleProperty() {
         >
           <Sliders propertySlider={property} />
           <PropertyDetails propertyData={property} />
-          <PropertySlider data={AGENT_PROFILE_DATA} />
         </Grid>
         <Grid item xs={12} md={4}>
           <ProfileAgent agentData={property} />
+        </Grid>
+        <Grid item xs={12} sx={{ pb: '30px' }}>
+          <PropertySlider data={AGENT_PROFILE_DATA} />
         </Grid>
       </Grid>
     </>

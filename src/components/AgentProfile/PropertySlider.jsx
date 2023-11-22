@@ -71,20 +71,20 @@ const PropertySlider = ({ data }) => {
               <CardMedia
                 component="img"
                 height="194"
-                image={item.image}
+                image={item?.image}
                 alt="Paella dish"
               />
               <CardContent>
                 <Box>
                   <Grid container rowSpacing={1}>
                     <Grid item xs={12}>
-                      <SliderCardTitle title={item.name} />
+                      <SliderCardTitle title={item?.name} />
                     </Grid>
                     <Grid item xs={12}>
-                      <SliderCardLocation location={item.location} />
+                      <SliderCardLocation location={item?.location} />
                     </Grid>
                     <Grid item xs={12}>
-                      <SliderCardPrice price={item.price} />
+                      <SliderCardPrice price={item?.price} />
                     </Grid>
                   </Grid>
                 </Box>
