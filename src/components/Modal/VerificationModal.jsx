@@ -1,21 +1,14 @@
-import React, { useState } from 'react';
-import { Modal, Button, Box, Typography } from '@mui/material';
+import React from 'react';
+import { Modal, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
 import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import VerificationCode from './VerificationCode';
 
-const VerificationModal = () => {
-  const [open, setOpen] = useState(false);
-  const handleModalToggle = () => {
-    setOpen(!open);
-  };
+const VerificationModal = ({ open, onCloseModal }) => {
   return (
     <>
-      <Button onClick={handleModalToggle}>
-        {VERIFICATION_OTP.openVerificationModal}
-      </Button>
-      <Modal open={open} onClose={handleModalToggle}>
+      <Modal open={open} onClose={onCloseModal}>
         <Box
           sx={{
             width: { xs: '100%', sm: '50%', md: '500px' },
@@ -101,7 +94,7 @@ const VerificationModal = () => {
               width={28}
               height={28}
               alt="close"
-              onClick={handleModalToggle}
+              onClick={onCloseModal}
             />
           </Box>
         </Box>

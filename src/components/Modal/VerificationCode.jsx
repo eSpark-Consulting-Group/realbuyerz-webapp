@@ -10,6 +10,8 @@ import { handleVerificationChange } from '@/utils/codeValidation';
 const VerificationCode = ({ receivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
+  const [open, setOpen] = useState(false);
+
   const [verificationCode, setVerificationCode] = useState(verificationState);
   const [verificationResult, setVerificationResult] = useState();
   const [inputValues, setInputValues] = useState(['', '', '', '']);
@@ -32,9 +34,15 @@ const VerificationCode = ({ receivedCode }) => {
     if (isInputValid && isLengthValid) {
       setVerificationResult('Verification Successfully');
       setIsVerificationSuccessful(true);
+      if (setIsVerificationSuccessful) {
+        handleModalToggle();
+      }
     } else {
       setVerificationResult('Verification Failed');
     }
+  };
+  const handleModalToggle = () => {
+    setOpen(!open);
   };
   return (
     <>
@@ -100,7 +108,11 @@ const VerificationCode = ({ receivedCode }) => {
         {VERIFICATION_OTP.confirm}
       </Button>
       {isVerificationSuccessful && (
-        <CongratsModal onClose={() => setIsVerificationSuccessful(false)} />
+        <CongratsModal
+          onClose={() => setIsVerificationSuccessful(false)}
+          open={open}
+          onCloseModal={handleModalToggle}
+        />
       )}
       {verificationResult && <Box>{verificationResult}</Box>}
     </>

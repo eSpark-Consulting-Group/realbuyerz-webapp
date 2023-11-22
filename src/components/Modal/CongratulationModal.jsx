@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 
 import { VERIFICATION_OTP } from '@/app/constants/Modal';
 
-const CongratsModal = () => {
-  const [open, setOpen] = useState(false);
-  const handleModalToggle = () => {
-    setOpen(!open);
-  };
+const CongratsModal = ({ open, onCloseModal }) => {
   return (
     <>
-      <Button onClick={handleModalToggle}>{VERIFICATION_OTP.openModal}</Button>
-      <Modal open={open} onClose={handleModalToggle}>
+      <Modal open={open} onClose={onCloseModal}>
         <Box
           sx={{
             width: { xs: '100%', sm: '50%', md: '500px' },
@@ -48,7 +43,7 @@ const CongratsModal = () => {
               },
             }}
           >
-            <img src="/images/congrats/congrats.gif" alt="Frame 2" />
+            <img src="/images/congrats/congrats.gif" alt="congrats" />
           </Box>
           <Box
             sx={{
@@ -87,6 +82,7 @@ const CongratsModal = () => {
                 width: '150px',
                 borderRadius: '10px',
               }}
+              onClose={onCloseModal}
             >
               {VERIFICATION_OTP.continue}
             </Button>

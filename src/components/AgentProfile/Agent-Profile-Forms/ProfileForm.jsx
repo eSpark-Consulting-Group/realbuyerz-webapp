@@ -41,7 +41,10 @@ export default function ProfileForm({
   const [verifyText, setVerifyText] = React.useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
-
+  const [open, setOpen] = useState(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   const handleVerify = (name) => {
     if (values[name] !== '') {
       setVerifyText('verified');
@@ -253,7 +256,9 @@ export default function ProfileForm({
                               ? true
                               : false
                           }
-                          onClick={() => handleVerify(name)}
+                          onClick={() => {
+                            handleVerify(name), handleModalToggle();
+                          }}
                           sx={{
                             width: { xs: '100%', sm: 'auto' },
                             height: { xs: '100%', sm: 'auto' },
@@ -275,6 +280,8 @@ export default function ProfileForm({
         {isVerificationSuccessful && (
           <VerificationModal
             onClose={() => setIsVerificationSuccessful(false)}
+            onCloseModal={handleModalToggle}
+            open={open}
           />
         )}
       </Grid>
