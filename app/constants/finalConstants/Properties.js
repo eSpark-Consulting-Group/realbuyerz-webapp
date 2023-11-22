@@ -1,65 +1,51 @@
-export const PROPERTIES_LISTING = [
-    {
-      id: 1,
-      Propertytitle: 'House #1',
-      coverImage: '/images/properties/PropertyCardImageHouse.png',
-      postedDate: '1 day ago',
-      propertyData: {
-        propertyPrice: '1.2 Crore',
-        propertyDemand: '1 Crore 50 Lac',
-        area: '1080 sq.ft',
-        title: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
-        description:
-          'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
-        type: 'Houses',
-        direction: 'East Open',
-        location: {
-          address: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33',
-          purpose: 'Sell',
-          Type: 'House',
-          city: 'Karachi',
-        },
-        amenities: [
-          'Park',
-          'Masjid',
-          'Playground',
-          '24 Hours CCTV Security System',
-          '24 Hours Water Supply',
-        ],
+//renamed form PROPERTIES_LISTING to PROPERTIES_DATA and links Added
+//Reason: name is Not UNique and Promenent name
+// FEATURED_PROPERTIES & NEWLY_LSITED_PROPERTIES Merged Propeties
+export const PROPERTIES_DATA = [
+  {
+    id: 1,
+    title: 'House #1',
+    propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
+    propertyDescription:
+        'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
+    coverImage: '/images/properties/PropertyCardImageHouse.png', 
+    date:'2023-11-22T14:29:32Z',
+    dateWords: '1 day ago',
+    agent: 1,
+    user: 1,
+    new: true,
+    featured:true,
+    categories:[1,2],
+    amenities: [11, 14, 12, 15, 12],
+    sliderImages: [
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
+    ],
+    propertyData: {
+      agentPrice: '1.2 Crore',
+      propertyDemand: '1 Crore 50 Lac',
+      propertyArea: '1080 sq.ft',
+      propertyType: 'Houses',
+      propertyDirection: 'East Open',
+      propertyLocation: {
+        address: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33',
+        purpose: 'Sell',
+        Type: 'House',
+        city: 'Karachi',
       },
-      agentData: {
-        id: 1,
-        price: '1.5 Crore',
-        profileimage: '/images/agent-profile/profileimage.svg',
-        name: 'Arman Khan',
-        agentDescription:
-          'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-        profileLink: '/agents/1',
-        chatLink: '/chat/agent/1',
-      },
-      propertyDetails: {
-        type: 'Residential plot',
-        location: 'Scheme 33,Karachi',
-        price: '1.5 Crore',
-        purpose: 'For Sale',
-        bedroom: '03',
-        bath: '05',
-        parking: '02',
-      },
-      sliderImages: [
-        {
-          images: '/images/slider/apartments.svg',
-        },
-        {
-          images: '/images/slider/houses.svg',
-        },
-        {
-          images: '/images/slider/commercial.svg',
-        },
-      ],
     },
-]
-
+    propertyOverview: {
+      type: 'Residential plot',
+      location: 'Scheme 33,Karachi',
+      price: '1.5 Crore',
+      purpose: 'For Sale',
+      bedroom: '03',
+      bath: '05',
+      parking: '02',
+    },
+  },
+];
 //renamed form CATEGORIES to PROPERTIES_CATEGORIES and links Added
 //Reason: catgories is Not UNique and Promenent name
 export const PROPERTIES_CATEGORIES = [
@@ -112,12 +98,198 @@ export const PROPERTIES_CATEGORIES = [
     link: '/',
   },
 ];
-
-// reduce Data lenght for efficey prpouse 
+//renamed form AMENITIES to PROPERTIES_AMENITIES and links Added
+//Reason: AMENITIES is Not UNique and Promenent name
+export const PROPERTIES_AMENITIES = [
+  {
+    id: 1,
+    title: 'Bedrooms',
+    name: 'bedrooms',
+    icon: '/images/amenities/bedrooms.svg',
+    link: '/',
+  },
+  {
+    id: 2,
+    title: 'Bathrooms',
+    name: 'bathrooms',
+    icon: '/images/amenities/bathrooms.svg',
+    link: '/',
+  },
+  {
+    id: 3,
+    title: 'Parking',
+    name: 'parking',
+    icon: '/images/amenities/parking.svg',
+    link: '/',
+  },
+  {
+    id: 4,
+    title: 'Swimming pool',
+    name: 'swimming-pool',
+    icon: '/images/amenities/swimming-pool.svg',
+    link: '/',
+  },
+  {
+    id: 5,
+    title: 'Washing area',
+    name: 'washing-area',
+    icon: '/images/amenities/washing-area.svg',
+    link: '/',
+  },
+  {
+    id: 6,
+    title: 'Masjid',
+    name: 'masjid',
+    icon: '/images/amenities/masjid.svg',
+    link: '/',
+  },
+  {
+    id: 7,
+    title: 'Fitness center',
+    name: 'fitness-center',
+    icon: '/images/amenities/fitness-center.svg',
+    link: '/',
+  },
+  {
+    id: 8,
+    title: 'Hour Electricity',
+    name: 'hour-electricity',
+    icon: '/images/amenities/hour-electricity.svg',
+    link: '/',
+  },
+  {
+    id: 9,
+    title: 'Corridor',
+    name: 'corridor',
+    icon: '/images/amenities/corridor.svg',
+    link: '/',
+  },
+  {
+    id: 10,
+    title: 'Clubhouse',
+    name: 'clubhouse',
+    icon: '/images/amenities/clubhouse.svg',
+    link: '/',
+  },
+  {
+    id: 11,
+    title: 'R.O Plant',
+    name: 'ro-plant',
+    icon: '/images/amenities/r.o-plant.svg',
+    link: '/',
+  },
+  {
+    id: 12,
+    title: 'Auto Generator',
+    name: 'auto-generator',
+    icon: '/images/amenities/auto-generator.svg',
+    link: '/',
+  },
+  {
+    id: 13,
+    title: 'Playground',
+    name: 'playground',
+    icon: '/images/amenities/playground.svg',
+    link: '/',
+  },
+  {
+    id: 14,
+    title: 'Servant Area',
+    name: 'servant-area',
+    icon: '/images/amenities/servant-area.svg',
+    link: '/',
+  },
+  {
+    id: 15,
+    title: 'Complete Boundary Wall',
+    name: 'complete-boundary-wall',
+    icon: '/images/amenities/complete-boundary-wall.svg',
+    link: '/',
+  },
+  {
+    id: 16,
+    title: 'Senior citizen area',
+    name: 'senior-citizen-area',
+    icon: '/images/amenities/senior-citizen-area.svg',
+    link: '/',
+  },
+  {
+    id: 17,
+    title: 'Basketball courts',
+    name: 'basketball-courts',
+    icon: '/images/amenities/basketball-courts.svg',
+    link: '/',
+  },
+  {
+    id: 18,
+    title: 'Huge Park',
+    name: 'huge-park',
+    icon: '/images/amenities/huge-park.svg',
+    link: '/',
+  },
+  {
+    id: 19,
+    title: 'Utility Store',
+    name: 'utility-store',
+    icon: '/images/amenities/utility-store.svg',
+    link: '/',
+  },
+  {
+    id: 20,
+    title: 'Walking trails',
+    name: 'walking-trails',
+    icon: '/images/amenities/walking-trails.svg',
+    link: '/',
+  },
+  {
+    id: 21,
+    title: 'Concierge services',
+    name: 'concierge-services',
+    icon: '/images/amenities/concierge-services.svg',
+    link: '/',
+  },
+  {
+    id: 22,
+    title: 'Rooftop terrace',
+    name: 'rooftop-terrace',
+    icon: '/images/amenities/rooftop-terrace.svg',
+    link: '/',
+  },
+  {
+    id: 23,
+    title: 'Pet-friendly facilities',
+    name: 'pet-friendly-facilities',
+    icon: '/images/amenities/pet-friendly-facilities.svg',
+    link: '/',
+  },
+  {
+    id: 24,
+    title: 'On-site maintenance',
+    name: 'on-site-maintenance',
+    icon: '/images/amenities/on-site-maintenance.svg',
+    link: '/',
+  },
+  {
+    id: 25,
+    title: 'Business centre',
+    name: 'business-centre',
+    icon: '/images/amenities/business-centre.svg',
+    link: '/',
+  },
+  {
+    id: 26,
+    title: '24/7 security',
+    name: '24/7-security',
+    icon: '/images/amenities/24/7-security.svg',
+    link: '/',
+  },
+];
+// reduce Data lenght for efficey prpouse
 //Reason: to much data (from 200 lines to 20)
 export const POPULAR_LOCATIONS_DATA = {
-  title:'Popular Locations',
-  description:'To browse & buy in your areas of interest. Look of properties by category',
+  title: 'Popular Locations',
+  description:
+    'To browse & buy in your areas of interest. Look of properties by category',
   listingType: ['Sell', 'Rent'],
   property_types: [
     'Houses',
@@ -140,3 +312,29 @@ export const POPULAR_LOCATIONS_DATA = {
     'Sargodha',
   ],
 };
+
+export const ADD_PROPERTY = {
+  propertyTitle:'',
+  propertyDescription:'',
+  locationPurpose:{
+    adPurpose:'',
+    propertyType:'',
+    propertyCity:'',
+    geoLocation:''
+  },
+  sizeBudget:{
+    propertyArea:{area:'', unit:''},
+    propertyAmount:{amount:'', unit:''},
+    instalmentAvailable:true,
+    readyPossession:true,
+  },
+  amenities:[
+    {id:'', count:''},
+    {id:'', count:''},
+    {id:'', count:''},
+  ],
+  media:{
+    images:[],
+    videos:[],
+  }
+}
