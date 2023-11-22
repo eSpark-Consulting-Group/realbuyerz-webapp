@@ -7,7 +7,7 @@ import LoginWithGoogle from '../Login/LoginWithGoogle';
 import { LOGIN_FORM } from '@/app/constants/Login';
 import FormContainer from '../Login/LoginForm';
 
-const  SignupCard = () => {
+const SignupCard = () => {
   const router = useRouter();
   return (
     <>
@@ -39,7 +39,7 @@ const  SignupCard = () => {
             width: { xs: '70%', md: '386px' },
             height: '562px',
             gap: { xs: '5px', md: '8px' },
-            paddingTop: "40px",
+            paddingTop: '40px',
           }}
         >
           <Typography

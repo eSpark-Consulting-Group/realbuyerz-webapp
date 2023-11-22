@@ -34,7 +34,6 @@ const PasswordFields = () => {
         value={formData.password}
         onChange={handleInputChange}
         InputProps={{
-                  
           endAdornment: (
             <InputAdornment position="end">
               <IconButton

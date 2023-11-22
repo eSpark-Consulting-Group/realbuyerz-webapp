@@ -8,6 +8,15 @@ import PasswordAndConfirmFields from './PasswordAndConfirmeField';
 
 const FormContainer = ({ isLoginForm }) => {
   const [formData, setFormData] = useState(LOGIN_FORM.initialFormData);
+  const handleInputContactNumber = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue.length <= 11) {
+      setFormData({
+        ...formData,
+        [event.target.name]: inputValue,
+      });
+    }
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -33,6 +42,20 @@ const FormContainer = ({ isLoginForm }) => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              inputProps={{
+                style: {
+                  background: '#fff',
+                },
+              }}
+              InputProps={{
+                sx: {
+                  '&:-webkit-autofill': {
+                    transition: 'background-color 5000s ease-in-out 0s',
+                    webkitTextFillColor: '#000',
+                    background: '#fff !important',
+                  },
+                },
+              }}
             />
             <PasswordFields />
           </Box>
@@ -97,12 +120,12 @@ const FormContainer = ({ isLoginForm }) => {
               fullWidth
               name="contactNumber"
               value={formData.contactNumber}
-              onChange={handleInputChange}
+              onChange={handleInputContactNumber}
               InputProps={{
                 sx: { height: '40px', background: 'none' },
               }}
               InputLabelProps={{
-                sx: { fontSize: '11px' },
+                sx: { fontSize: '10.5px' },
               }}
             />
             <Autocomplete
