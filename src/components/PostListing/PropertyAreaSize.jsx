@@ -117,7 +117,13 @@ const PropertyAreaSize = ({
                 },
               }}
               renderInput={(params) => (
-                <TextField {...params} label="Select City" />
+                <TextField
+                  {...params}
+                  label="Select City"
+                  InputLabelProps={{
+                    sx: { fontSize: { xs: '10px', md: '15px' } },
+                  }}
+                />
               )}
               onChange={handleCityChange}
             />
