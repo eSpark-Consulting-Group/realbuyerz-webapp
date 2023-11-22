@@ -1,7 +1,15 @@
-import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
+import { Box, Button, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/src/redux/slices/settings/PakageCartSlice';
 
-const PriceBox = ({ price, buttonText }) => {
+const PriceBox = ({ price, buttonText, id, data }) => {
+  const dispatch = useDispatch();
+
+  const handleAdd = () => {
+    dispatch(addToCart(data?.filter((x) => x.id === id)[0]));
+  };
+
   return (
     <Box
       sx={{
@@ -23,6 +31,7 @@ const PriceBox = ({ price, buttonText }) => {
             height: '41px',
             borderRadius: { xs: '7px', sm: '10px' },
           }}
+          onClick={handleAdd}
         >
           {buttonText}
         </Button>

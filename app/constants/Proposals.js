@@ -54,7 +54,6 @@ export const PROPOSAL_LISTING = [
     ],
   },
 ];
-
 export const PROPERTIES_LISTING = [];
 
 export const CONSTANTS = {

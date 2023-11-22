@@ -3,7 +3,34 @@ import React from 'react';
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import BuyConnectSelect from './BuyConnectSelect';
 
-const BuyConnects = ({ title, discription, image, buttonText, feilds }) => {
+const BuyConnects = ({
+  title,
+  discription,
+  image,
+  buttonText,
+  feilds,
+  dropdown,
+}) => {
+  const { items } = dropdown;
+
+  const userDetail = Object.fromEntries(
+    feilds.map((field) => [field.name, field.value])
+  );
+
+  const [buyConnectData, setBuyConnectData] = React.useState({
+    ...userDetail,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBuyConnectData({
+      ...buyConnectData,
+      [name]: value,
+    });
+  };
+
+  console.log(buyConnectData, 'dropValue');
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container xs={12} item>
@@ -62,17 +89,27 @@ const BuyConnects = ({ title, discription, image, buttonText, feilds }) => {
                   <RBInput
                     type={field?.type}
                     place={field?.place}
+                    value={field?.value}
+                    name={field?.name}
+                    onChange={handleChange}
+                    disabled={true}
                     sx={{
                       width: { xs: '100%', sm: '100%', md: '100%', lg: '50%' },
+                      '& input[type=number]::-webkit-inner-spin-button': {
+                        WebkitAppearance: 'none',
+                        margin: 0,
+                      },
                     }}
                   />
                 ) : null}
 
                 {field?.id == 2 ? (
                   <BuyConnectSelect
-                    // value={age}
-                    // menuItem={dropDownItems}
-                    // handleChange={handleChange}
+                    name={field?.name}
+                    placeHolder={'Ok'}
+                    value={buyConnectData.select_the_amount_to_buy}
+                    menuItem={items}
+                    onChange={handleChange}
                     sx={{ width: { xs: 'auto', lg: '50%' } }}
                   />
                 ) : null}

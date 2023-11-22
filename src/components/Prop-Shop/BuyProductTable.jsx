@@ -79,7 +79,12 @@ export default function BuyProductTable({ columns, rows }) {
                   px: 5,
                 }}
               >
-                <PriceBox price={row?.price} buttonText={row?.buttonText} />
+                <PriceBox
+                  price={row?.price}
+                  buttonText={row?.buttonText}
+                  id={row?.id}
+                  data={rows}
+                />
               </Box>
             </Item>
           ))}

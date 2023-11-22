@@ -20,7 +20,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BuyProduct() {
-  const { title, discription, image, buttonText, textField } = Buy_Connects;
+  const { title, discription, image, buttonText, textField, dropdown } =
+    Buy_Connects;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -38,6 +39,7 @@ export default function BuyProduct() {
               feilds={textField}
               discription={discription}
               buttonText={buttonText}
+              dropdown={dropdown}
             />
           </Item>
         </Grid>

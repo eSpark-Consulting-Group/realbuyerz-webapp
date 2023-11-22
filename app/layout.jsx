@@ -3,20 +3,16 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import Head from 'next/head';
-
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import { usePathname } from 'next/navigation';
-import { store } from '@/src/redux/store';
-import { Provider } from 'react-redux';
-
 import './globals.css';
-
 import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
-
 import { FOOTER_DATA } from '@/app/constants/Constants';
+import { Provider } from 'react-redux';
+import { store } from '@/src/redux/store';
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();

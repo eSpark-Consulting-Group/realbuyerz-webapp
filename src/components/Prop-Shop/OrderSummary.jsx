@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-const OrderSummary = ({ title, Total, buttonText }) => {
+const OrderSummary = ({ title, Total, buttonText, item, totalPrice }) => {
+  console.log(item, 'item');
   return (
     <Box
       sx={{
@@ -33,15 +34,16 @@ const OrderSummary = ({ title, Total, buttonText }) => {
               mb: { xs: 1, sm: 0, md: 1, lg: 0 },
             }}
           >
-            Basic (1x)
+            {item?.text} ({item?.quantity + 'x'})
           </Typography>
         </Box>
         <Box>
           <Typography variant="h6" sx={{ color: '#333', fontWeight: 400 }}>
-            Rs 2500
+            Rs: {item?.price * item?.quantity}
           </Typography>
         </Box>
       </Box>
+
       <Box
         sx={{
           pb: 3,
@@ -63,7 +65,7 @@ const OrderSummary = ({ title, Total, buttonText }) => {
         </Box>
         <Box>
           <Typography variant="h5" sx={{ color: '#126FAA' }}>
-            Rs 2500
+            {totalPrice}
           </Typography>
         </Box>
       </Box>
