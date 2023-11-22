@@ -1,9 +1,8 @@
-import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const amenities = {};
+const propertyAmenities = {};
 
-const initialState = { amenities };
+const initialState = { };
 
 function generateUniqueId(amenities) {
   let newId = (amenities.length + 1).toString();
@@ -13,10 +12,10 @@ function generateUniqueId(amenities) {
   return newId;
 }
 
-const amenitiesCategoriesSlice = createSlice({
-  name: 'amenities',
+const propertiesAmenitiesSlice = createSlice({
+  name: 'propertyAmenities',
   initialState,
   reducers: {},
 });
 
-export default amenitiesCategoriesSlice.reducer;
+export default propertiesAmenitiesSlice.reducer;

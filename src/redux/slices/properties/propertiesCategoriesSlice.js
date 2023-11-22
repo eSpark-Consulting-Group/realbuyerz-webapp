@@ -1,9 +1,8 @@
-import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const categories = {};
+const propertyCategories = {};
 
-const initialState = { categories };
+const initialState = {};
 
 function generateUniqueId(categories) {
   let newId = (categories.length + 1).toString();
@@ -14,7 +13,7 @@ function generateUniqueId(categories) {
 }
 
 const propertiesCategoriesSlice = createSlice({
-  name: 'categories',
+  name: 'propertyCategories',
   initialState,
   reducers: {},
 });
