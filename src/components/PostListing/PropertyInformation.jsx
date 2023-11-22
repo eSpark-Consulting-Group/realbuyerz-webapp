@@ -38,7 +38,7 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '15px',
+            gap: '18px',
           }}
           key={index}
         >
@@ -50,6 +50,7 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
               fontSize: '20px',
               fontFamily: 'Inter',
               fontWeight: 400,
+              alignItems: 'center',
               gap: '8px',
             }}
           >
@@ -71,13 +72,8 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
               '@media (min-width: 960px) and (max-width: 1300px)': {
                 width: '300px',
               },
-              '& placeholder': {
-                paddingRight: '10px',
-              },
               '& textarea': {
-                padding: index === specialIndex ? '30px' : 'auto',
-                marginLeft: index === specialIndex ? '-27px' : 0,
-                marginTop: index === specialIndex ? '10px' : 0,
+                minHeight: index === specialIndex ? '192px' : '0',
               },
             }}
             name={item.label}
