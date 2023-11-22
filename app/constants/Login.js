@@ -1,5 +1,5 @@
 export const LOGIN_FORM = {
-  loginForm: {
+  loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
     rememberMe: 'Remember me',
@@ -27,6 +27,9 @@ export const LOGIN_FORM = {
     signupFormHeight: '750px',
     loginFormHeight: '656px',
   },
+};
+
+export const LOGIN_FORM_DATA = {
   initialFormData: {
     email: '',
     password: '',

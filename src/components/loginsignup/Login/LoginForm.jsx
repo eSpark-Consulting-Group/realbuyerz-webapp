@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
-import PasswordAndConfirmFields from './PasswordAndConfirmeField';
+import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
 const FormContainer = ({ isLoginForm }) => {
-  const [formData, setFormData] = useState(LOGIN_FORM.initialFormData);
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
   const handleInputContactNumber = (event) => {
     const inputValue = event.target.value;
     if (inputValue.length <= 11) {
@@ -140,7 +140,7 @@ const FormContainer = ({ isLoginForm }) => {
                   label="Applicant"
                   InputLabelProps={{
                     sx: { fontSize: '11px' },
-                  }} // InputProps={{ sx: { height: '60px' } }}
+                  }}
                 />
               )}
               onChange={handleInputChange}

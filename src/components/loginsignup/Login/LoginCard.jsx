@@ -48,12 +48,12 @@ const LoginCard = () => {
               fontFamily: 'Inter',
             }}
           >
-            {LOGIN_FORM.loginForm.welcome}
+            {LOGIN_FORM.loginCard.welcome}
           </Typography>
           <Typography
             sx={{ fontSize: { xs: '12px', md: '15px' }, fontFamily: 'Inter' }}
           >
-            {LOGIN_FORM.loginForm.verifiedBuyers}
+            {LOGIN_FORM.loginCard.verifiedBuyers}
           </Typography>
           <FormContainer isLoginForm={true} />
           <Box
@@ -77,10 +77,10 @@ const LoginCard = () => {
                 marginTop: 2,
               }}
             >
-              {LOGIN_FORM.loginForm.forgetPassword}
+              {LOGIN_FORM.loginCard.forgetPassword}
             </Typography>
             <FormControlLabel
-              label={LOGIN_FORM.loginForm.rememberMe}
+              label={LOGIN_FORM.loginCard.rememberMe}
               control={<Checkbox size="small" color="primary" />}
               sx={{
                 display: 'flex',
@@ -91,10 +91,10 @@ const LoginCard = () => {
             />
           </Box>
           <LoginWithGoogle
-            buttonLabel={LOGIN_FORM.loginForm.login}
+            buttonLabel={LOGIN_FORM.loginCard.login}
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.signupForm.label}
-            loginButton={LOGIN_FORM.loginForm.googleLogin}
+            loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signup')}
           />
         </Box>

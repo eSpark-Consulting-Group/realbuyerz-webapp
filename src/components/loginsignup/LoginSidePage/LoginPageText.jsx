@@ -24,7 +24,7 @@ const LoginPageText = () => {
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.connect}
+        {LOGIN_FORM.loginCard.connect}
       </Typography>
       <Typography
         sx={{
@@ -35,7 +35,7 @@ const LoginPageText = () => {
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.propertyDealer}
+        {LOGIN_FORM.loginCard.propertyDealer}
       </Typography>
     </Box>
   );

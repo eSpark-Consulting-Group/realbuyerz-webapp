@@ -15,7 +15,6 @@ const SignupCard = () => {
         sx={{
           width: { xs: '90%', md: '500px' },
           height: { xs: '650px', md: '580px' },
-          // paddingTop: '20px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -50,7 +49,7 @@ const SignupCard = () => {
               fontFamily: 'Inter',
             }}
           >
-            {LOGIN_FORM.loginForm.createAccount}
+            {LOGIN_FORM.loginCard.createAccount}
           </Typography>
           <Typography
             sx={{
@@ -60,14 +59,14 @@ const SignupCard = () => {
               fontFamily: 'Inter',
             }}
           >
-            {LOGIN_FORM.loginForm.quickEasy}
+            {LOGIN_FORM.loginCard.quickEasy}
           </Typography>
           <FormContainer isLoginForm={false} />
           <LoginWithGoogle
             buttonLabel={LOGIN_FORM.signupForm.signup}
             label={LOGIN_FORM.signupForm.signin}
-            accountCreationMessage={LOGIN_FORM.loginForm.label}
-            loginButton={LOGIN_FORM.loginForm.googleLogin}
+            accountCreationMessage={LOGIN_FORM.loginCard.label}
+            loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signin')}
           />
         </Box>
