@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
+import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
+import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
 function SingleProperty() {
   const properties = useSelector((state) => state.properties.properties);
@@ -36,6 +38,7 @@ function SingleProperty() {
         >
           <Sliders propertySlider={property} />
           <PropertyDetails propertyData={property} />
+          <PropertySlider data={AGENT_PROFILE_DATA} />
         </Grid>
         <Grid item xs={12} md={4}>
           <ProfileAgent agentData={property} />
