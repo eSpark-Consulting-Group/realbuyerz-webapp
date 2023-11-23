@@ -12,7 +12,6 @@ import RightSection from '@/src/components/Biddings/RightSection';
 import BidData from '@/src/components/Biddings/BidData';
 
 import { BIDDINGS, BIDDING_LIST } from '@/app/constants/Biddings';
-import Gallery from '@/src/components/Gallary';
 
 const Page = () => {
   const pathname = usePathname();

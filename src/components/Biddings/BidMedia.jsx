@@ -4,6 +4,8 @@ import BidSlider from './BidSlider';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import { Box } from '@mui/system';
 import Gallery from '../Gallary';
+import VideoSlider from '../VideoSlider';
+import Image from 'next/image';
 
 const BidMedia = ({ title, media, mediaType }) => {
   const [open, setOpen] = React.useState(false);
@@ -17,28 +19,68 @@ const BidMedia = ({ title, media, mediaType }) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
-        <Box
-          sx={{
-            backgroundColor: '#fff',
-            width: '50%',
-            height: 'auto',
-            mx: 'auto',
-            my: 'auto',
-            borderRadius: '30px',
-            padding: '60px',
-          }}
-        >
+        {mediaType === 'images' ? (
           <Box
             sx={{
-              display: 'flex',
+              backgroundColor: '#fff',
+              width: { lg: '55%', xs: '100%' },
+              height: '569px',
+              borderRadius: '30px',
+              margin: 'auto',
+              padding: '0px 80px',
             }}
           >
-            <Button>close</Button>
+            <Box sx={{ width: '100%', height: '100%' }}>
+              <Gallery images={media} handleClose={handleClose} />
+            </Box>
           </Box>
-          <Gallery images={media} />
-        </Box>
+        ) : (
+          <Box
+            sx={{
+              position: 'relative',
+              width: { xs: '100%', md: '53%' },
+              mx: '0pxauto',
+            }}
+          >
+            <Button
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                right: -15,
+                top: -70,
+                cursor: 'pointer',
+              }}
+            >
+              <Image
+                src={'/images/biddings/images/close.png'}
+                width={30}
+                height={30}
+                alt="close"
+              />
+            </Button>
+            <Box
+              sx={{
+                borderRadius: '30px',
+              }}
+            >
+              <Box>
+                <VideoSlider
+                  videos={media}
+                  modalWidth={1050}
+                  modalHeight={569}
+                />
+              </Box>
+            </Box>
+          </Box>
+        )}
       </Modal>
+
       <Grid container>
         <Grid
           item
