@@ -9,6 +9,7 @@ import { Box, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Link from 'next/link';
 
 import SliderCardTitle from './Slider/SliderCardTitle';
 import SliderCardLocation from './Slider/SliderCardLocation';
@@ -42,7 +43,7 @@ const PropertySlider = ({ data }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: false,
+          infinite: true,
           adaptiveHeight: true,
           dots: true,
         },
@@ -79,23 +80,25 @@ const PropertySlider = ({ data }) => {
                 }}
                 key={item}
               >
-                <CardMedia
-                  component="img"
-                  height="194"
-                  image={item.image}
-                  alt="Paella dish"
-                />
+                <Link href={`/properties/${item?.id}`}>
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={item?.image}
+                    alt="Paella dish"
+                  />
+                </Link>
                 <CardContent>
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>
-                        <SliderCardTitle title={item.name} />
+                        <SliderCardTitle title={item} />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardLocation location={item.location} />
+                        <SliderCardLocation location={item?.location} />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardPrice price={item.price} />
+                        <SliderCardPrice price={item?.price} />
                       </Grid>
                     </Grid>
                   </Box>
@@ -104,7 +107,7 @@ const PropertySlider = ({ data }) => {
                   </Grid>
                 </CardContent>
                 <Grid container>
-                  <SliderCardSeeDetails />
+                  <SliderCardSeeDetails link={item} />
                 </Grid>
               </Card>
             </Fade>
