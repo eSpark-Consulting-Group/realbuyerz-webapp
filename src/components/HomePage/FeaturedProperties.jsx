@@ -8,7 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Heading from './Heading';
 
 const FeaturedProperties = ({ data }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <Box
       sx={{
@@ -59,8 +59,8 @@ const FeaturedProperties = ({ data }) => {
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Box
                   sx={{
@@ -110,17 +110,18 @@ const FeaturedProperties = ({ data }) => {
                 <Box
                   p={2}
                   sx={{
-                    display: isHovered ? 'block' : 'none',
-                    transform: '500px',
+                    display: hoveredIndex === index ? 'block' : 'none',
+                    // opacity: hoveredIndex === index ? 1 : 0,
+                    // transform: `translateX(${hoveredIndex === index ? '0%' : '-100%'
+                    //   })`,
+                    zIndex: '-1',
                     background: '#fff',
                     mr: '15%',
                     mt: '50%',
                     borderLeft: '10px #1176ad solid',
-                    transition: 'transform 3s ease-in-out',
-                    '&:hover': {
-                      display: 'block',
-                      transform: '0px',
-                    },
+                    // transition:
+                    //   'opacity .5s ease-in-out, transform 0.3s ease-in-out',
+                    overflow: 'revert-layer',
                   }}
                 >
                   <Box
