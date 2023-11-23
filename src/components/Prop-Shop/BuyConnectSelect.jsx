@@ -11,7 +11,6 @@ export default function BuyConnectSelect({
   onChange,
   placeHolder,
 }) {
-  console.log('abcdefgh', value);
   return (
     <>
       <FormControl sx={{ width: '100%' }}>

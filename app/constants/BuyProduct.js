@@ -98,7 +98,7 @@ export const Buy_Connects = {
       label: 'Your new connects balance will be',
       type: 'number',
       place: '0',
-      value: 50,
+      value: 0,
     },
     {
       id: 5,
@@ -106,7 +106,7 @@ export const Buy_Connects = {
       label: 'These connects will expire on',
       type: 'string',
       place: '0',
-      value: '11/22/2023',
+      value: '11/22/2024',
     },
   ],
 };

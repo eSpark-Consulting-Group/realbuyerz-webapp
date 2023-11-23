@@ -2,6 +2,8 @@ import { Box, Button, Typography, Grid } from '@mui/material';
 import React from 'react';
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import BuyConnectSelect from './BuyConnectSelect';
+import { useDispatch } from 'react-redux';
+import { buy } from '@/src/redux/slices/settings/PakageCartSlice';
 
 const BuyConnects = ({
   title,
@@ -12,7 +14,7 @@ const BuyConnects = ({
   dropdown,
 }) => {
   const { items } = dropdown;
-
+  const dispatch = useDispatch();
   const userDetail = Object.fromEntries(
     feilds.map((field) => [field.name, field.value])
   );
@@ -23,13 +25,36 @@ const BuyConnects = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBuyConnectData({
-      ...buyConnectData,
-      [name]: value,
-    });
+    if (name === 'select_the_amount_to_buy') {
+      const find = items.find((item) => item.value === value);
+      setBuyConnectData({
+        ...buyConnectData,
+        [name]: value,
+        your_account_will_be_charged: Number(String(find.value).split('$')[1]),
+        your_new_connects_balance_will_be:
+          Number(find.item) + Number(buyConnectData?.your_available_connects),
+        new_connects: Number(find.item),
+      });
+    } else {
+      setBuyConnectData({
+        ...buyConnectData,
+        [name]: value,
+      });
+    }
   };
-
-  console.log(buyConnectData, 'dropValue');
+  const handleBuy = () => {
+    if (buyConnectData.select_the_amount_to_buy == 0) {
+      null;
+    } else {
+      dispatch(buy(buyConnectData));
+      // setBuyConnectData({
+      //   ...buyConnectData,
+      //   select_the_amount_to_buy: 0,
+      //   your_account_will_be_charged: 0,
+      //   your_new_connects_balance_will_be: 0,
+      // });
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -89,7 +114,8 @@ const BuyConnects = ({
                   <RBInput
                     type={field?.type}
                     place={field?.place}
-                    value={field?.value}
+                    // value={buyConnectData[field?.name]}
+                    value={buyConnectData[field?.name]}
                     name={field?.name}
                     onChange={handleChange}
                     disabled={true}
@@ -106,11 +132,15 @@ const BuyConnects = ({
                 {field?.id == 2 ? (
                   <BuyConnectSelect
                     name={field?.name}
-                    placeHolder={'Ok'}
-                    value={buyConnectData.select_the_amount_to_buy}
+                    value={buyConnectData?.select_the_amount_to_buy}
                     menuItem={items}
                     onChange={handleChange}
-                    sx={{ width: { xs: 'auto', lg: '50%' } }}
+                    sx={{
+                      width: {
+                        xs: 'auto',
+                        lg: '50%',
+                      },
+                    }}
                   />
                 ) : null}
               </Box>
@@ -120,6 +150,7 @@ const BuyConnects = ({
           <Box sx={{ px: 4, py: 2 }}>
             <Button
               variant="outlined"
+              onClick={handleBuy}
               sx={{
                 width: { xs: '100%', sm: '161px' },
                 height: '41px',
