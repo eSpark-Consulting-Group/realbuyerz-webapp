@@ -6,13 +6,16 @@ import { verificationState } from '@/utils/verification';
 import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/utils/codeValidation';
+import { isInputValid } from '@/utils/inputValid';
+import { isLengthValid } from '@/utils/lengthValid';
 
-const VerificationCode = ({ receivedCode }) => {
+const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
   const [open, setOpen] = useState(false);
-
-  const [verificationCode, setVerificationCode] = useState(verificationState);
+  const [verificationCode, setVerificationCode] = useState(
+    verificationState(receivedCode, otpReceivedCode)
+  );
   const [verificationResult, setVerificationResult] = useState();
   const [inputValues, setInputValues] = useState(['', '', '', '']);
   const handleChange = (index, value) => {
@@ -25,25 +28,28 @@ const VerificationCode = ({ receivedCode }) => {
       setInputValues
     );
   };
-  const isInputValid = Object.values(verificationCode.verified).every((value) =>
-    /^\d$/.test(value)
-  );
-  const isLengthValid =
-    Object.values(verificationCode.verified).join('').length === 4;
+  const code = verificationCode.verified;
+  console.log('code', code);
+  console.log('vercode', verificationCode);
+  const isValid = isInputValid(code);
+
+  const checkLength = isLengthValid(code);
+
   const handleConfirm = () => {
-    if (isInputValid && isLengthValid) {
-      setVerificationResult('Verification Successfully');
+    if (isValid && checkLength) {
+      setVerificationResult(VERIFICATION_OTP.verificationSuccessfully);
       setIsVerificationSuccessful(true);
       if (setIsVerificationSuccessful) {
         handleModalToggle();
       }
     } else {
-      setVerificationResult('Verification Failed');
+      setVerificationResult(VERIFICATION_OTP.verificationFail);
     }
   };
   const handleModalToggle = () => {
     setOpen(!open);
   };
+  console.log('pp', verificationCode);
   return (
     <>
       <Box

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import { VERIFICATION_CODE, VERIFICATION_OTP } from '@/app/constants/Modal';
 import VerificationCode from './VerificationCode';
 
 const VerificationModal = ({ open, onCloseModal }) => {
@@ -52,7 +52,10 @@ const VerificationModal = ({ open, onCloseModal }) => {
             >
               {VERIFICATION_OTP.code}
             </Typography>
-            <VerificationCode receivedCode={VERIFICATION_OTP.otpCode} />
+            <VerificationCode
+              receivedCode={VERIFICATION_OTP.otpCode}
+              otpReceivedCode={VERIFICATION_CODE.codeOTP}
+            />
             <Typography
               sx={{
                 fontWeight: '500px',

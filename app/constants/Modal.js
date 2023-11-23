@@ -10,6 +10,9 @@ export const VERIFICATION_OTP = {
   resendCode: 'Resend Code',
   continue: 'Continue',
   openVerificationModal: 'Open Verification modal',
+  verificationSuccessfully: 'Verification Successfully',
+  verificationFail: 'Verification Failed',
+  length: 4,
   otpCode: [
     {
       num: 'code_one',
