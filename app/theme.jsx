@@ -50,7 +50,6 @@ const theme = createTheme({
     },
     body1: {
       fontSize: '14px',
-      fontFamily: 'Inter',
     },
     button: {
       textTransform: 'capitalize',

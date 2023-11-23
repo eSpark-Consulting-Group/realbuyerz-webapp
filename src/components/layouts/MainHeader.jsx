@@ -105,7 +105,6 @@ const MainHeader = () => {
                   component={'a'}
                   sx={{
                     color: '#000',
-                    fontFamily: 'Roboto',
                     fontSize: '15px',
                     fontStyle: 'normal',
                     fontWeight: 600,
