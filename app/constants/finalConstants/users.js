@@ -9,9 +9,6 @@ export const USERS_DATA = [
     landline: +424564879798,
     mobile: +424564879798,
     whatsapp: +914564879798,
-    city: 'Karachi',
-    address: 'Hub River Road',
-    country: 'pakistan',
     // phone: {
     //   countryCode: '92',
     //   number: '3162265948',
@@ -24,12 +21,150 @@ export const USERS_DATA = [
     //   countryCode: '92',
     //   number: '3162265948',
     // },
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 2,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 3,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 4,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 5,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 6,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 7,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 8,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 9,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
+    properties: [1, 2, 3, 4],
+  },
+  {
+    id: 10,
+    userName: 'ArmanKhan',
+    profileImage: '',
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'armanespark@gmail.com',
+    landline: +424564879798,
+    mobile: +424564879798,
+    whatsapp: +914564879798,
+    city: 'Karachi',
+    address: 'Hub River Road',
+    country: 'pakistan',
     properties: [1, 2, 3, 4],
   },
 ];
 
-export const USER_DATA = [
-  {
+export const ADD_USER_DATA = [
+  { id:1, //id
     userName: 'muahhmadali', //string
     firstName: 'Muhammad', //string
     lastName: 'Ali', //string
@@ -44,9 +179,18 @@ export const USER_DATA = [
   },
 ];
 
-export const USER_AUTH = {
+export const ADD_USER_AUTH = {
+  id:1, //id
   userName: 'armankhan', //string
   confirmPassword: '456789', //string
   newPassword: '456789', //string
   oldPassword: '123456', //string
 };
+
+export const ADD_USER_IMAGE = {
+  id:1, //id
+  userName: 'armankhan', //string
+  profilePicture: '456789', //string
+  coverImage: '456789', //string
+};
+
