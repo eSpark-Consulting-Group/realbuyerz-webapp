@@ -11,10 +11,10 @@ import Typography from '@mui/material/Typography';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
-import LeftSideBar from './BiddingPage/LeftSideBar';
 import DesktopDashboardHeader from './DesktopDashboardHeader';
 import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
+import LeftSideBar from './LeftSideBar/LeftSideBar';
 
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -88,7 +88,6 @@ const DashboardHeader = () => {
                 component="a"
                 sx={{
                   display: { xs: 'flex', md: 'none', lg: 'none' },
-                  fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   marginRight: 5,
@@ -104,8 +103,7 @@ const DashboardHeader = () => {
                   alt={'icon'}
                   style={{ marginTop: 2 }}
                 />
-              </Typography>
-
+              </Typography>{' '}
               <Typography
                 variant="h6"
                 noWrap
@@ -113,7 +111,6 @@ const DashboardHeader = () => {
                 href="/dashboard"
                 sx={{
                   display: { xs: 'flex' },
-                  fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   textDecoration: 'none',

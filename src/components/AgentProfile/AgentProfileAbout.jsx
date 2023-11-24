@@ -16,7 +16,7 @@ const AgentAbout = ({ data }) => {
         variant="body1"
         sx={{
           width: '100%',
-          paddingBottom: '10px',
+          paddingBottom: '1 0px',
           paddingTop: '12px',
           color: 'zinc.800',
           lineHeight: '25px',

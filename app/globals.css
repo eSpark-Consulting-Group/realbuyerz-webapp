@@ -55,7 +55,7 @@ root {
   width: 15%;
 }
 .scrollable {
-  height: 100vh; /* or any value */
+  /* height: 100vh;  */
   overflow-y: auto;
 }
 .scrollable::-webkit-scrollbar {
@@ -150,3 +150,4 @@ root {
   width: auto !important;
   /* margin-top: 73px; */
 }
+

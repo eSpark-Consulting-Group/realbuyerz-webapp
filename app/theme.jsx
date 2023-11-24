@@ -23,7 +23,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Inter', 'Roboto', 'sans-serif'].join(','),
+    fontFamily: ['Inter', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,
@@ -79,7 +79,7 @@ const theme = createTheme({
             position: 'relative',
             '&:hover': {
               backgroundColor: '#EDF7FF',
-              color: '#fb631c',
+              color: '#fff',
             },
           },
         },

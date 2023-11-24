@@ -11,7 +11,7 @@ const SliderCardSeeDetails = () => {
         color: '#909394',
         fontSize: '14px',
         fontWeight: '300',
-        fontFamily: 'Inter',
+
         padding: 1.8,
       }}
     >
