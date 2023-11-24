@@ -1,16 +1,28 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade, Pagination, Navigation } from 'swiper/modules';
 
-const VideoSlider = ({ videos, modalWidth, modalHeight }) => {
+const VideoSlider = ({ videos, modalWidth }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
       <Swiper
+        effect={'fade'}
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={1}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+        }}
         className="mySwiper"
         pagination={{ el: '.swiper-pagination', clickable: true }}
         navigation={{
@@ -18,7 +30,7 @@ const VideoSlider = ({ videos, modalWidth, modalHeight }) => {
           prevEl: '.custom-swiper-button-prev',
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectFade, Pagination, Navigation]}
       >
         {videos?.map((video, index) => (
           <Box key={index}>
@@ -26,19 +38,19 @@ const VideoSlider = ({ videos, modalWidth, modalHeight }) => {
               sx={{
                 overflow: 'hidden',
               }}
-              key={index}
             >
               <Box
-                style={{
+                sx={{
                   width: `${modalWidth}px`,
-                  height: `${modalHeight}px`,
+                  height: { xs: 'auto', lg: '569px' },
                   borderRadius: '30px',
                 }}
               >
-                <img
+                <Image
                   src={video}
+                  width={1000}
+                  height={1000}
                   alt="slide_image"
-                  layout="responsive"
                   style={{
                     borderRadius: '30px',
                   }}
@@ -71,6 +83,7 @@ const VideoSlider = ({ videos, modalWidth, modalHeight }) => {
             position: 'absolute',
             left: 45,
             top: '50%',
+            // transform: {xs:'translateY(-150%)', sm:'translateY(-230%)',  lg:'translateY(-50%)',},
             transform: 'translateY(-50%)',
             zIndex: 1,
             cursor: 'pointer',

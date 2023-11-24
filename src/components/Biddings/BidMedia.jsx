@@ -1,11 +1,13 @@
 import React from 'react';
 import { Grid, Typography, Button, Modal } from '@mui/material';
+import Image from 'next/image';
+
 import BidSlider from './BidSlider';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import { Box } from '@mui/system';
-import Gallery from '../Gallary';
-import VideoSlider from '../VideoSlider';
-import Image from 'next/image';
+import MobleScreenSlider from './MobleScreenSlider';
+import VideoSlider from './VideoSlider';
+import DesktopScreenSlider from './DesktopScreenSlider';
 
 const BidMedia = ({ title, media, mediaType }) => {
   const [open, setOpen] = React.useState(false);
@@ -26,26 +28,48 @@ const BidMedia = ({ title, media, mediaType }) => {
         }}
       >
         {mediaType === 'images' ? (
-          <Box
-            sx={{
-              backgroundColor: '#fff',
-              width: { lg: '55%', xs: '100%' },
-              height: '569px',
-              borderRadius: '30px',
-              margin: 'auto',
-              padding: '0px 80px',
-            }}
-          >
-            <Box sx={{ width: '100%', height: '100%' }}>
-              <Gallery images={media} handleClose={handleClose} />
+          <>
+            <Box
+              className="fullScreen"
+              sx={{
+                backgroundColor: '#fff',
+                width: '1050px',
+                height: '569px',
+                borderRadius: '30px',
+                margin: 'auto',
+                padding: '0px 80px',
+              }}
+            >
+              <Box sx={{ width: '100%', height: '100%' }}>
+                <DesktopScreenSlider images={media} handleClose={handleClose} />
+              </Box>
             </Box>
-          </Box>
+            <Box
+              className="MobileScreen"
+              sx={{
+                position: 'relative',
+                width: { xs: '100%' },
+                height: 'auto !important',
+                mx: '0px auto',
+              }}
+            >
+              <Box>
+                <Box>
+                  <MobleScreenSlider
+                    videos={media}
+                    modalWidth={700}
+                    handleClose={handleClose}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </>
         ) : (
           <Box
             sx={{
               position: 'relative',
               width: { xs: '100%', md: '53%' },
-              mx: '0pxauto',
+              mx: '0px auto',
             }}
           >
             <Button
@@ -69,13 +93,7 @@ const BidMedia = ({ title, media, mediaType }) => {
                 borderRadius: '30px',
               }}
             >
-              <Box>
-                <VideoSlider
-                  videos={media}
-                  modalWidth={1050}
-                  modalHeight={569}
-                />
-              </Box>
+              <VideoSlider videos={media} modalWidth={1050} modalHeight={569} />
             </Box>
           </Box>
         )}
