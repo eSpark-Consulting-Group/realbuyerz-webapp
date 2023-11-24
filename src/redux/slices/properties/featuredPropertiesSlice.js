@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const featuredProperties = {};
 
-const initialState = {featuredProperties};
+const initialState = { featuredProperties };
 
 const featuredPropertiesSlice = createSlice({
   name: 'featuredProperties',
