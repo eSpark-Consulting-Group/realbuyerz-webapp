@@ -23,7 +23,6 @@ const SliderCardLocation = () => {
             sx={{
               color: '#909394',
               fontWeight: '300',
-              fontFamily: 'Inter',
               fontSize: '15px',
               fontStyle: 'normal',
               ml: 1,

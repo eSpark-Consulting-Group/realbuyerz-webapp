@@ -17,7 +17,7 @@ const SaveChanges = ({ handleClickButton, saveChangeButton }) => {
         sx={{
           color: 'white',
           fontSize: '15px',
-          fontFamily: 'Inter',
+
           fontWeight: 400,
         }}
         onClick={handleClickButton}
