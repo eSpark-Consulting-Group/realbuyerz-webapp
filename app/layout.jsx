@@ -17,7 +17,6 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 
 import { FOOTER_DATA } from '@/app/constants/Constants';
-import ErrorBoundary from './ErrorBoundary';
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
@@ -29,7 +28,6 @@ const RootLayout = ({ children }) => {
         <Provider store={store}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <ErrorBoundary>
             <Box>
               {currentPath.includes('/dashboard') ? (
                 <DashboardHeader />
@@ -38,8 +36,7 @@ const RootLayout = ({ children }) => {
               )}
               <Box>{children}</Box>
               <Footer data={FOOTER_DATA} />
-              </Box>
-              </ErrorBoundary>
+            </Box>
           </ThemeProvider>
         </Provider>
       </body>
