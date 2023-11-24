@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import AGENTS_DATA from '@/app/constants/AgentProfile';
 
-const agents = {};
+const agents = { AGENTS_DATA };
 
-const initialState = {};
+const initialState = { agents };
 
 function generateUniqueId(agents) {
   let newId = (agents.length + 1).toString();

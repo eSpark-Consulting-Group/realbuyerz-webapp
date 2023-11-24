@@ -13,7 +13,8 @@ import PropertyTabs from '@/src/components/Properties/PropertyTabs';
 const Listing = () => {
   // const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties.properties);
-
+  const all = useSelector((state) => state);
+  console.log(all);
   // const handleAddProperty = () => {
   //   const newProperty = {
   //     id: '3',

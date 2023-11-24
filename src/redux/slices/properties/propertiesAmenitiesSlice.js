@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const propertyAmenities = {};
 
-const initialState = {};
+const initialState = {propertyAmenities};
 
 function generateUniqueId(amenities) {
   let newId = (amenities.length + 1).toString();

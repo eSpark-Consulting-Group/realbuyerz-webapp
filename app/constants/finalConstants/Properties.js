@@ -7,15 +7,15 @@ export const PROPERTIES_DATA = [
     title: 'House #1',
     propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
     propertyDescription:
-        'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
-    coverImage: '/images/properties/PropertyCardImageHouse.png', 
-    date:'2023-11-22T14:29:32Z',
+      'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
+    coverImage: '/images/properties/PropertyCardImageHouse.png',
+    date: '2023-11-22T14:29:32Z',
     dateWords: '1 day ago',
     agent: 1,
     user: 1,
     new: true,
-    featured:true,
-    categories:[1,2],
+    featured: true,
+    categories: [1, 2],
     amenities: [11, 14, 12, 15, 12],
     sliderImages: [
       '/images/slider/apartments.svg',
@@ -314,27 +314,27 @@ export const POPULAR_LOCATIONS_DATA = {
 };
 
 export const ADD_PROPERTY = {
-  propertyTitle:'',
-  propertyDescription:'',
-  locationPurpose:{
-    adPurpose:'',
-    propertyType:'',
-    propertyCity:'',
-    geoLocation:''
+  propertyTitle: '',
+  propertyDescription: '',
+  locationPurpose: {
+    adPurpose: '',
+    propertyType: '',
+    propertyCity: '',
+    geoLocation: '',
   },
-  sizeBudget:{
-    propertyArea:{area:'', unit:''},
-    propertyAmount:{amount:'', unit:''},
-    instalmentAvailable:true,
-    readyPossession:true,
+  sizeBudget: {
+    propertyArea: { area: '', unit: '' },
+    propertyAmount: { amount: '', unit: '' },
+    instalmentAvailable: true,
+    readyPossession: true,
   },
-  amenities:[
-    {id:'', count:''},
-    {id:'', count:''},
-    {id:'', count:''},
+  amenities: [
+    { id: '', count: '' },
+    { id: '', count: '' },
+    { id: '', count: '' },
   ],
-  media:{
-    images:[],
-    videos:[],
-  }
-}
+  media: {
+    images: [],
+    videos: [],
+  },
+};

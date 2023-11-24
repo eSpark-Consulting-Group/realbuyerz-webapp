@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const newPrpoertiesSlice = {};
 
-const initialState = {};
+const initialState = {newPrpoertiesSlice};
 
 const newPropertiesSlice = createSlice({
   name: 'newPrpoerties',
