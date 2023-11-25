@@ -9,12 +9,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Parallax,
-  EffectCoverflow,
-  Pagination,
-  Navigation,
-} from 'swiper/modules';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
 const DesktopScreenSlider = ({ images, handleClose }) => {
   return (
@@ -38,7 +33,6 @@ const DesktopScreenSlider = ({ images, handleClose }) => {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        loop={true}
         slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
@@ -46,22 +40,28 @@ const DesktopScreenSlider = ({ images, handleClose }) => {
           depth: 100,
           modifier: 2.5,
         }}
+        className="swiper_container"
         pagination={{ el: '.swiper-pagination', clickable: true }}
         navigation={{
           nextEl: '.custom-swiper-button-next',
           prevEl: '.custom-swiper-button-prev',
           clickable: true,
         }}
-        modules={[Parallax, EffectCoverflow, Pagination, Navigation]}
-        className="swiper_container"
+        modules={[EffectCoverflow, Pagination, Navigation]}
       >
-        {images?.map((image, index) => {
-          return (
-            <SwiperSlide key={index} sx={{ mx: 'auto' }}>
-              <Image src={image} width={1000} height={1000} alt="slide_image" />
+        {images?.map((image, index) => (
+          <Box key={index}>
+            <SwiperSlide>
+              <Image
+                src={image}
+                width={1000}
+                height={1000}
+                alt="slide_image"
+                layout="responsive"
+              />
             </SwiperSlide>
-          );
-        })}
+          </Box>
+        ))}
       </Swiper>
       <Box
         className="custom-swiper-button-next"

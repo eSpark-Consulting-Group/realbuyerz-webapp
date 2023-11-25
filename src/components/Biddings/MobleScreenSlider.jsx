@@ -9,21 +9,21 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination, Navigation } from 'swiper/modules';
 
-const MobleScreenSlider = ({ videos, modalWidth, handleClose }) => {
+const MobleScreenSlider = ({ images, modalWidth, handleClose }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
       <Swiper
         effect={'fade'}
-        // grabCursor={true}
-        // centeredSlides={true}
-        // loop={true}
-        // slidesPerView={1}
-        // coverflowEffect={{
-        //     rotate: 0,
-        //     stretch: 0,
-        //     depth: 100,
-        //     modifier: 2.5,
-        // }}
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={1}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+        }}
         className="mySwiper"
         pagination={{ el: '.swiper-pagination', clickable: true }}
         navigation={{
@@ -33,7 +33,7 @@ const MobleScreenSlider = ({ videos, modalWidth, handleClose }) => {
         }}
         modules={[EffectFade, Pagination, Navigation]}
       >
-        {videos?.map((video, index) => (
+        {images?.map((image, index) => (
           <Box key={index}>
             <SwiperSlide
               sx={{
@@ -48,7 +48,7 @@ const MobleScreenSlider = ({ videos, modalWidth, handleClose }) => {
                 }}
               >
                 <Image
-                  src={video}
+                  src={image}
                   width={1000}
                   height={1000}
                   alt="slide_image"

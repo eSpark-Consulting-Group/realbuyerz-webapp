@@ -53,15 +53,11 @@ const BidMedia = ({ title, media, mediaType }) => {
                 mx: '0px auto',
               }}
             >
-              <Box>
-                <Box>
-                  <MobleScreenSlider
-                    videos={media}
-                    modalWidth={700}
-                    handleClose={handleClose}
-                  />
-                </Box>
-              </Box>
+              <MobleScreenSlider
+                images={media}
+                modalWidth={700}
+                handleClose={handleClose}
+              />
             </Box>
           </>
         ) : (
