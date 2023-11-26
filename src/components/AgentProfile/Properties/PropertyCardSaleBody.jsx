@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from '@mui/material';
 const PropertyCardSaleBody = ({ data }) => {
   return (
     <Grid container spacing={1} pb={4}>
-      {['houses', 'commercials', 'plots'].map((propertyType, index) => (
+      {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
         <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
           <Box
             sx={{
@@ -23,17 +23,25 @@ const PropertyCardSaleBody = ({ data }) => {
           >
             <Box>
               <Typography
-                sx={{
-                  fontSize: 'lg',
-                  fontWeight: 'bold',
-                  color: '#126FAA',
-                  textAlign: 'center',
-                }}
+               sx={{
+                color: '#126FAA',
+                fontSize: '18px',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                lineHeight: 'normal',
+                textAlign: 'center',
+              }}
               >
                 {data?.propertiesForSale.types[propertyType]}
               </Typography>
               <Typography
-                sx={{ fontSize: 'xs', color: '#777777', fontWeight: 'light' }}
+               sx={{
+                color: '#777',
+                fontSize: '12px',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal'
+              }}
               >
                 {propertyType}
               </Typography>

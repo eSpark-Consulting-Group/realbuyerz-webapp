@@ -8,9 +8,10 @@ const SliderCardTitle = ({ title }) => {
       sx={{
         color: '#FB631C',
         fontWeight: '600',
-
         fontSize: '18px',
         fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: 'normal',
       }}
     >
       {title}

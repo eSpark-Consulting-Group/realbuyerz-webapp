@@ -3,7 +3,7 @@ import { Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
-// import { arrowIcon, salesIcon } from '@/app/constents/AgentProfile';
+import { PROPERTIES_FOR_SALE, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
 const PropertyForSale = ({ data }) => {
   return (
@@ -21,21 +21,23 @@ const PropertyForSale = ({ data }) => {
               src="./images/agent-profile-icons/home.svg"
               width={15}
               height={15}
-              alt="hub rever"
+              alt="home-icon"
             />
             <Typography
               variant="body2"
               sx={{
+                color: '#333',
+               
                 fontSize: 15,
-                fontWeight: 'normal',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
                 display: 'flex',
                 alignItems: 'center',
-                color: '#333',
-                // paddingBottom: 1,
                 ml: 1,
               }}
             >
-              {`${data?.propertiesForSale.count} Properties For Sale`}
+              {`${data?.propertiesForSale.count} ${PROPERTIES_FOR_SALE}`}
             </Typography>
           </Box>
         </Grid>
@@ -49,20 +51,21 @@ const PropertyForSale = ({ data }) => {
             <Typography
               variant="body2"
               sx={{
+                color: '#FB631C',
+               
                 fontSize: 15,
-                fontWeight: 'normal',
-                display: 'flex',
-                alignItems: 'center',
-                color: 'orange',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
               }}
             >
-              View &nbsp;
+               {VIEW_BUTTON} &nbsp;
             </Typography>
             <Image
               src="./images/agent-profile-icons/arrow.svg"
               width={9}
               height={9}
-              alt="hub rever"
+              alt="arrow-icon"
             />
           </Box>
         </Grid>

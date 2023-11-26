@@ -65,39 +65,38 @@ const PropertySlider = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data?.recentProperties.properties.map((item) => {
-          return (
-            <Card sx={{ maxWidth: 315 }} key={item}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={item.image}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Box>
-                  <Grid container rowSpacing={1}>
-                    <Grid item xs={12}>
-                      <SliderCardTitle title={item.name} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <SliderCardLocation location={item.location} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <SliderCardPrice price={item.price} />
-                    </Grid>
+        {data?.recentProperties.properties.map((item) => (
+          <Card sx={{ maxWidth: 315 }} key={item}>
+            <CardMedia
+              component="img"
+              height="194"
+              image={item.image}
+              alt="Paella dish"
+            />
+            <CardContent>
+              <Box>
+                <Grid container rowSpacing={1}>
+                  <Grid item xs={12}>
+                    <SliderCardTitle title={item.name} />
                   </Grid>
-                </Box>
-                <Grid container rowSpacing={2} sx={{ marginTop: 0 }}>
-                  <SliderCardIcons />
+                  <Grid item xs={12}>
+                    <SliderCardLocation location={item.location} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <SliderCardPrice price={item.price} />
+                  </Grid>
                 </Grid>
-              </CardContent>
-              <Grid container>
-                <SliderCardSeeDetails />
+              </Box>
+              <Grid container rowSpacing={2} sx={{ marginTop: 0 }}>
+                <SliderCardIcons />
               </Grid>
-            </Card>
-          );
-        })}
+            </CardContent>
+            <Grid container>
+              <SliderCardSeeDetails />
+            </Grid>
+          </Card>
+        )
+        )}
       </Slider>
     </>
   );

@@ -8,7 +8,7 @@ const AgentAbout = ({ data }) => {
   return (
     <Box
       sx={{
-        marginTop: '40px',
+        marginTop: '12px',
       }}
     >
       <AgentAboutTitle title={data?.contactInfo.agentName} />
@@ -16,10 +16,12 @@ const AgentAbout = ({ data }) => {
         variant="body1"
         sx={{
           width: '100%',
-          paddingBottom: '1 0px',
-          paddingTop: '12px',
-          color: 'zinc.800',
+          color: '#333',
+          fontSize:'16px',
+          fontStyle: 'norml',
+          fontWeight: 400,
           lineHeight: '25px',
+          paddingBottom: '10px',
         }}
       >
         {data?.about.description}
