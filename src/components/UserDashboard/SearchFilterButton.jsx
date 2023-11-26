@@ -8,7 +8,20 @@ import TuneIcon from '@mui/icons-material/Tune';
 const SearchFilterButton = () => {
   return (
     <Grid container>
-      <Grid item xs={12} lg={7} md={7} sx={{ padding: '40px 40px  40px 40px' }}>
+      <Grid
+        item
+        xs={12}
+        lg={7}
+        md={6}
+        sm={6}
+        sx={{
+          padding: {
+            lg: '40px 54px  40px 54px',
+            md: '40px 0px  40px 54px',
+            xs: '40px 54px  40px 40px',
+          },
+        }}
+      >
         <FormGroup sx={{ position: 'relative' }}>
           <TextField
             variant="outlined"
@@ -62,12 +75,13 @@ const SearchFilterButton = () => {
         item
         xs={12}
         lg={5}
-        md={5}
+        md={6}
+        sm={5}
         sx={{
           padding: {
             xs: '0px 45px 0px 40px',
-            sm: '0px 45px  0px 40px',
-            md: '40px 45px  40px 40px',
+            sm: '40px 45px  0px 80px',
+            md: '40px 54px  40px 54px',
           },
           textAlign: { md: 'end', lg: 'end' },
         }}

@@ -69,6 +69,7 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
             lg: 'flex-end',
           },
           alignItems: 'center',
+          mt: { md: 4, lg: 0 },
         }}
       >
         <Button
@@ -91,8 +92,8 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
         <Typography
           sx={{
             color: '#000',
-            fontSize: '15px',
             fontWeight: 300,
+            fontSize: { xs: '15px', lg: '15.4px' },
             lineHeight: '18.15px',
           }}
         >
