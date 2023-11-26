@@ -13,6 +13,7 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
         width: isCollapsed,
         height: '100%',
         borderRight: '2px solid #E4E4E4',
+        backgroundColor: '#fff',
       }}
     >
       <Box sx={{ position: 'relative' }}>

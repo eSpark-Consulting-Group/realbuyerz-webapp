@@ -163,16 +163,10 @@ root {
   width: auto !important;
   /* margin-top: 73px; */
 }
-
-
-
-
 .modal-slider .swiper_container {
   position: relative;
   height: 100% !important;
 }
-
-
 .modal-slider .swiper-slide {
   position: relative;
   align-items: center;
@@ -181,20 +175,14 @@ root {
 .modal-slider {
   height: 100%;
 }
-
-
-
-
 .modal-slider .swiper-slide img {
   width: 300px !important;
   height: 200px !important;
 }
-
 .modal-slider .swiper-slide-shadow-left,
 .modal-slider .swiper-slide-shadow-right {
   display: none;
 }
-
 .modal-slider .slider-controler {
   position: relative;
   bottom: 2rem;
@@ -202,8 +190,6 @@ root {
   align-items: center;
   justify-content: center;
 }
-
-
 .modal-slider .swiper-slide-active img{
   scale: 1.9;
 
@@ -228,8 +214,6 @@ root {
 .MobileScreen{
   display: none;
 }
-
-
 .slider-controler .slider-arrow {
   background: var(--white);
   width: 3.5rem;
@@ -239,18 +223,14 @@ root {
   transform: translateX(-42%);
   filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
 }
-
 .slider-controler .slider-arrow ion-icon {
   font-size: 2rem;
   color: #222224;
 }
-
-
 #slider .swiper {
   width: 100%;
   height: 100%;
 }
-
 #slider .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -261,7 +241,6 @@ root {
   align-items: center;
   border-radius: 30px;
 }
-
 #slider .swiper-slide img {
   display: block;
   width: 100%;

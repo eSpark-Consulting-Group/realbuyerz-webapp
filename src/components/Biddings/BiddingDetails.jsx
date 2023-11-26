@@ -110,9 +110,14 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         <Button
                           sx={{
                             border: '1px solid #FB631C',
-                            borderRadius: '90px',
+                            backgroundColor: '#fff !important',
+                            borderRadius: '15px',
                             alignItems: 'end',
-                            padding: '0px',
+                            padding: '4px',
+                            fontSize: '12px',
+                            fontStyle: 'normal',
+                            fontWeight: 500,
+                            lineHeight: 'normal',
                           }}
                         >
                           {VIEW}

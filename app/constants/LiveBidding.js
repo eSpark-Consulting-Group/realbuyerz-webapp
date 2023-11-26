@@ -23,53 +23,63 @@ export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
 
 export const MENU_ITEM = [
+  // {
+  //   id: 1,
+  //   icon: '/images/Live-bidding-icons/liveBidding.svg',
+  //   title: 'Live Bidding',
+  //   link:'/dashboard/live-bidding',
+  // },
   {
-    id: 1,
+    id: 2,
     icon: '/images/Live-bidding-icons/propertyManagement.svg',
     title: 'Property Management',
+    link: '#',
     subItem: [
       {
         subTitle: 'Post Listing',
-        link: '#',
+        link: '/dashboard/property-managment/all-listings',
       },
       {
         subTitle: 'All Listing',
-        link: '#',
+        link: '/dashboard/property-managment/post-listing',
       },
     ],
-  },
-  {
-    id: 2,
-    icon: '/images/Live-bidding-icons/Inbox.svg',
-    title: 'Inbox',
   },
   {
     id: 3,
+    icon: '/images/Live-bidding-icons/Inbox.svg',
+    title: 'Inbox',
+    link: '/dashboard/inbox',
+  },
+  {
+    id: 4,
     icon: '/images/Live-bidding-icons/agentSettings.svg',
     title: 'Agent Settings',
+    link: '#',
     subItem: [
       {
         subTitle: 'Agent Profile',
-        link: '#',
+        link: '/dashboard/agent-setting/agent-profile',
       },
       {
         subTitle: 'Preferences',
-        link: '#',
+        link: '/dashboard/agent-setting/preferences',
       },
     ],
   },
   {
-    id: 4,
+    id: 5,
     icon: '/images/Live-bidding-icons/propShop.svg',
     title: 'Prop Shop',
+    link: '#',
     subItem: [
       {
         subTitle: 'Buy Product',
-        link: '#',
+        link: '/dashboard/prop-shop/buy-product',
       },
       {
         subTitle: 'Order History',
-        link: '#',
+        link: '/dashboard/prop-shop/order-history',
       },
     ],
   },

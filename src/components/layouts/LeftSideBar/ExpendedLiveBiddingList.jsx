@@ -18,6 +18,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
   return (
     <Box>
       {list?.map((item) => {
+        console.log(item, 'list');
         const isItemOpen = item.id === openItemId;
         return (
           <Box key={item.id}>
@@ -31,6 +32,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
+                '&:hover': { backgroundColor: '#FF631C33' },
               }}
               onClick={() => toggleCollapse(item.id)}
             >
@@ -38,6 +40,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
+                  // backgroundColor: '#FF631C33',
                 }}
               >
                 <Image src={item.icon} width={30} height={30} alt="icons" />
@@ -49,7 +52,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                     px: '19px',
                   }}
                 >
-                  {item.title}
+                  <a href={item.link}>{item.title}</a>
                 </Typography>
               </Box>
               {item.subItem && (
@@ -68,6 +71,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   sx={{
                     paddingLeft: '30px',
                     marginLeft: '30px',
+                    // backgroundColor: '#FF631C33',
                   }}
                 >
                   <ul>
