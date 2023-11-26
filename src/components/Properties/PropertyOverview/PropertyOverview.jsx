@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Box,
   Table,
+  TableHead,
   TableBody,
   TableRow,
   TableCell,
@@ -28,21 +29,25 @@ const PropertyOverview = ({ propertyData }) => {
         <Typography sx={{ fontWeight: 600 }} variant="h3">
           Overview
         </Typography>
-
         <TableContainer
           component={Paper}
           sx={{
             justifyContent: { xs: 'center', md: 'none' },
             overflow: 'hidden',
             borderSpacing: '10px',
-            borderRadius: '50px',
-            px: '20px',
-            backgroundColor: '#000',
           }}
         >
-          <Table>
-            <TableBody>
-              <TableRow sx={{}}>
+          <Table
+            sx={{
+              borderRadius: '20px',
+            }}
+          >
+            <TableHead>
+              <TableRow
+                sx={{
+                  gap: '10px',
+                }}
+              >
                 {PROPERTY_ESTATE?.propertyAttributes?.map(
                   (propertytype, index) => (
                     <TableCell
@@ -59,23 +64,7 @@ const PropertyOverview = ({ propertyData }) => {
                   )
                 )}
               </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <TableContainer
-          component={Paper}
-          sx={{
-            justifyContent: { xs: 'center', md: 'none' },
-            overflow: 'hidden',
-            borderSpacing: '10px',
-          }}
-        >
-          <Table
-            sx={{
-              borderRadius: '20px',
-            }}
-          >
+            </TableHead>
             <TableBody>
               <TableRow>
                 {Object.keys(propertyData?.propertyDetails).map(

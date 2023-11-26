@@ -40,7 +40,7 @@ const CreateAccount = () => {
         pt: '90px',
         pb: '100px',
         textAlign: 'center',
-        backgroundImage: `url('/images/bgs/CreateAccount.png')`,
+        backgroundImage: `url('/images/bgs/CreateAccount.gif')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
