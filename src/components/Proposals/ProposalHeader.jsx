@@ -25,7 +25,6 @@ const ProposalHeader = ({ header }) => {
             sx={{
               color: '#126FAA',
               fontSize: '15px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >
@@ -38,7 +37,6 @@ const ProposalHeader = ({ header }) => {
             sx={{
               color: '#757474',
               fontSize: '15px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >

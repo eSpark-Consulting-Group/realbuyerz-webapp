@@ -19,6 +19,8 @@ export const PROFILE_COMPLETNESS_DESCRIPTION =
 export const MY_CATEGORIES = 'My Categories';
 export const PROPOSALS = 'Proposals:';
 export const ESTIMATE_RANGE = 'Est. Range:';
+export const LOAD_MORE = 'Load More';
+export const SHOW_LESS = 'Show Less';
 
 export const MENU_ITEM = [
   {

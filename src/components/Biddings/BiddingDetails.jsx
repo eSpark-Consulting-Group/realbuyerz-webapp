@@ -4,8 +4,12 @@ import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
-import { ESTIMATE_RANGE, VIEW } from '@/app/constants/LiveBidding';
-// import { Link } from 'react-router-dom';
+import {
+  ESTIMATE_RANGE,
+  LOAD_MORE,
+  SHOW_LESS,
+  VIEW,
+} from '@/app/constants/LiveBidding';
 
 const BiddingDetails = ({ liveBiddingData, Height }) => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -80,7 +84,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                       textAlign: 'right',
                       alignContent: 'end',
                       color: '#333',
-                      fontFamily: 'Inter',
                       fontSize: '15px',
                       fontStyle: 'normal',
                       fontWeight: 700,
@@ -104,7 +107,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                       }}
                     >
                       <a href={`./live-bidding/${item.id}`}>
-                        {/* <a> */}
                         <Button
                           sx={{
                             border: '1px solid #FB631C',
@@ -115,7 +117,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         >
                           {VIEW}
                         </Button>
-                        {/* </a> */}
                       </a>
                     </Box>
                   </Grid>
@@ -178,13 +179,12 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
               sx={{
                 margin: 'auto',
                 color: '#1176AD',
-                // fontFamily: 'Inter',
                 fontWeight: 500,
                 fontSize: '20px',
                 lineHeight: '24.2px',
               }}
             >
-              Load More
+              {LOAD_MORE}
             </Button>
           </Box>
         )}
@@ -195,13 +195,12 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
               sx={{
                 margin: 'auto',
                 color: '#1176AD',
-                // fontFamily: 'Inter',
                 fontWeight: 500,
                 fontSize: '20px',
                 lineHeight: '24.2px',
               }}
             >
-              Show Less
+              {SHOW_LESS}
             </Button>
           </Box>
         )}

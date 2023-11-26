@@ -166,14 +166,12 @@ const ProposalListingCard = ({ proposalsData }) => {
               </Grid>
             </Grid>
             <Box sx={{ pt: '5px' }}></Box>
-
             {/* Direction */}
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {proposal.direction}
             </Typography>
-
             {/* Description */}
             <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
               {proposal.description}

@@ -143,7 +143,6 @@ export default function ProfileForm({
                             color: `${
                               verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
                             }`,
-                            fontFamily: 'Inter',
                             fontStyle: 'normal',
                             fontWeight: 400,
                             lineHeight: 'normal',
@@ -204,8 +203,7 @@ export default function ProfileForm({
                             height: { xs: '53px', sm: 'auto', lg: '53px' },
                           }}
                         />
-                      )}
-
+                      )}{' '}
                       <RBInput
                         sx={{
                           width: width,

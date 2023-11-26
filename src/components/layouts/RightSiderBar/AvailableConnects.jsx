@@ -10,7 +10,6 @@ const AvailableConnects = ({ profileInfo }) => {
           sx={{
             padding: '20px 0px 20px 31px',
             color: '#FB631C',
-            fontFamily: 'Inter, sans-serif',
             fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 500,
