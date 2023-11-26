@@ -56,7 +56,7 @@ const PropertyForRent = ({ data }) => {
                 lineHeight: 'normal',
               }}
             >
-               {VIEW_BUTTON} &nbsp;
+              {VIEW_BUTTON} &nbsp;
             </Typography>
             <Image
               src="./images/agent-profile-icons/arrow.svg"

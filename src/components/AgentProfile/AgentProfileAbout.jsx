@@ -17,7 +17,7 @@ const AgentAbout = ({ data }) => {
         sx={{
           width: '100%',
           color: '#333',
-          fontSize:'16px',
+          fontSize: '16px',
           fontStyle: 'norml',
           fontWeight: 400,
           lineHeight: '25px',

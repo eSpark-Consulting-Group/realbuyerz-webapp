@@ -24,7 +24,6 @@ const SliderCardLocation = () => {
             variant="body2"
             sx={{
               color: '#909394',
-              fontWeight: '300',            
               fontSize: '15px',
               fontStyle: 'normal',
               fontWeight: 300,
@@ -32,7 +31,7 @@ const SliderCardLocation = () => {
               ml: 1,
             }}
           >
-           {HUB_RIVER_ROAD}
+            {HUB_RIVER_ROAD}
           </Typography>
         </Box>
       </Grid>

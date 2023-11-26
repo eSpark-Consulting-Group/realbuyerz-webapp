@@ -18,13 +18,13 @@ const SliderCardSeeDetails = () => {
       <Typography
         variant="body1"
         sx={{
-          color: "#000",
+          color: '#000',
           display: 'flex',
-          justifyContent: "center",
+          justifyContent: 'center',
           fontSize: '14px',
-          fontStyle: "normal",
+          fontStyle: 'normal',
           fontWeight: 500,
-          lineHeight: "normal",
+          lineHeight: 'normal',
         }}
       >
         {SEE_DETAILS}

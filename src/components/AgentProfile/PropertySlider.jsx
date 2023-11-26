@@ -95,8 +95,7 @@ const PropertySlider = ({ data }) => {
               <SliderCardSeeDetails />
             </Grid>
           </Card>
-        )
-        )}
+        ))}
       </Slider>
     </>
   );

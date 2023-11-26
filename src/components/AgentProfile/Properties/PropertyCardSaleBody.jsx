@@ -23,25 +23,25 @@ const PropertyCardSaleBody = ({ data }) => {
           >
             <Box>
               <Typography
-               sx={{
-                color: '#126FAA',
-                fontSize: '18px',
-                fontStyle: 'normal',
-                fontWeight: 700,
-                lineHeight: 'normal',
-                textAlign: 'center',
-              }}
+                sx={{
+                  color: '#126FAA',
+                  fontSize: '18px',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  lineHeight: 'normal',
+                  textAlign: 'center',
+                }}
               >
                 {data?.propertiesForSale.types[propertyType]}
               </Typography>
               <Typography
-               sx={{
-                color: '#777',
-                fontSize: '12px',
-                fontStyle: 'normal',
-                fontWeight: 400,
-                lineHeight: 'normal'
-              }}
+                sx={{
+                  color: '#777',
+                  fontSize: '12px',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  lineHeight: 'normal',
+                }}
               >
                 {propertyType}
               </Typography>

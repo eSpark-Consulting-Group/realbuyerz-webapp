@@ -40,7 +40,7 @@ const PropertyCardRentBody = ({ data }) => {
                   fontSize: '12px',
                   fontStyle: 'normal',
                   fontWeight: 400,
-                  lineHeight: 'normal'
+                  lineHeight: 'normal',
                 }}
               >
                 {propertyType}

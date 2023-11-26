@@ -27,7 +27,7 @@ const PropertyForSale = ({ data }) => {
               variant="body2"
               sx={{
                 color: '#333',
-               
+
                 fontSize: 15,
                 fontStyle: 'normal',
                 fontWeight: 400,
@@ -52,14 +52,14 @@ const PropertyForSale = ({ data }) => {
               variant="body2"
               sx={{
                 color: '#FB631C',
-               
+
                 fontSize: 15,
                 fontStyle: 'normal',
                 fontWeight: 400,
                 lineHeight: 'normal',
               }}
             >
-               {VIEW_BUTTON} &nbsp;
+              {VIEW_BUTTON} &nbsp;
             </Typography>
             <Image
               src="./images/agent-profile-icons/arrow.svg"

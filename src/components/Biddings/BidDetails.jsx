@@ -16,7 +16,7 @@ const BidDetails = () => {
             sx={{
               color: '#126FAA',
               fontSize: '15px',
-             
+
               fontWeight: '500',
             }}
           >{`John Doe`}</Typography>
@@ -27,7 +27,7 @@ const BidDetails = () => {
             sx={{
               color: '#757474',
               fontSize: '15px',
-             
+
               fontWeight: '500',
             }}
           >

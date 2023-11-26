@@ -12,18 +12,17 @@ const RecentPropertyTitle = ({ data }) => {
       variant={variant}
       sx={{
         display: 'flex',
-        justifyContent:'center',
-        fontWeight:600 ,
+        justifyContent: 'center',
+        fontWeight: 600,
         fontSize: '30px',
         fontStyle: 'normal',
         lineHeight: 'normal',
         color: '#333',
-        marginBottom:"50px",
-        mt:2
-
+        marginBottom: '50px',
+        mt: 2,
       }}
     >
-       {`${RECENT_PROPERTIES} ${data?.contactInfo?.agentName}`}
+      {`${RECENT_PROPERTIES} ${data?.contactInfo?.agentName}`}
     </Typography>
   );
 };
