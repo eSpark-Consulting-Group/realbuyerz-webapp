@@ -17,6 +17,11 @@ const PopupModal = ({ Message }) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <Box
           sx={{
@@ -29,7 +34,6 @@ const PopupModal = ({ Message }) => {
             backgroundSize: { lg: 'cover', md: 'cover', sm: 'cover' },
             margin: 'auto',
             my: 'auto',
-            mt: '10%',
           }}
         >
           <Grid
@@ -45,19 +49,36 @@ const PopupModal = ({ Message }) => {
                 flexShrink: '0px',
                 pl: 5,
                 pr: { xs: 5, lg: 0 },
-                paddingTop: { lg: '330px', sm: '50px', md: '50px' },
               }}
             >
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  paddingTop: {
+                    xs: '0px',
+                    sm: '50px',
+                    md: '50px',
+                    lg: '165px',
+                  },
+                }}
+              >
+                <Image
+                  src={'/images/success.gif'}
+                  width={133}
+                  height={100}
+                  alt="success-icon"
+                />
+              </Box>
               <Typography
                 sx={{
                   color: '#333',
                   textAlign: 'center',
-                  // fontFamily: 'Inter',
                   fontSize: '30px',
                   fontStyle: 'normal',
                   fontWeight: 500,
                   lineHeight: 'normal',
-                  marginTop: { xs: '40px', sm: '0px' },
+                  marginTop: { xs: '0px', sm: '40px' },
                 }}
               >
                 {Message}
@@ -78,7 +99,8 @@ const PopupModal = ({ Message }) => {
                     color: '#fff',
                     borderRadius: ' 10px',
                     border: '2px solid #1176AD',
-                    marginTop: { xs: '15px', lg: '42px' },
+                    marginTop: { xs: '5px', sm: '15px', lg: '42px' },
+                    marginBottom: '-10px',
                   }}
                 >
                   {OK}
@@ -101,11 +123,10 @@ const PopupModal = ({ Message }) => {
             >
               <Box>
                 <Image
-                  src={
-                    'https://s3-alpha-sig.figma.com/img/b5c2/bcf3/122e6a8e71cb8c0ba0d44eb597993f83?Expires=1701043200&Signature=DmMD3AA40TQ0s0DhXlVGrgAqvRiDrL4rSuOlqz4Rk79YeHlAjD9ChSmsVEpnIUQsf2cqvlsOYKBqakDA0~T7GtSoT3fArJRtFJAfX6VnNEvpTZ1NEG553EW4ftwZy2adyJ~hPi8HaXpGsBZusqe4Uk99WxH-AX8zBb5PkspffWlLloi3724VLDDin3C2BhiEOuwPNxPP6c87DyJR2rBdN-heyr4H7oslTkYwwWvEwsIPpKhf~1yHnsCxt7QadELJi05MPc65HymGFfL1FdKJPX7FYOYUPw3tX~E7kcnZ3DQWbZ1nhBscAcXrq5JdHrZDEKAw7IQctdpLPStvfgkUWA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
-                  }
+                  src={'/images/successalert.gif'}
                   width={500}
                   height={100}
+                  alt="success-icon"
                 />
               </Box>
             </Grid>
