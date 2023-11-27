@@ -4,11 +4,14 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertyTypeState } from '@/utils/propertyType';
+import PlotType from './PlotType';
+import CommercialType from './CommercialType';
 
 const SelectProperyType = ({
   image,
   label,
   iconTitle,
+  plotType,
   propertyBuyingDetails,
 }) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
@@ -16,11 +19,13 @@ const SelectProperyType = ({
     setActiveButtonIndex(index);
   };
   const [propertyData, setPropertyData] = useState(
-    createPropertyTypeState(iconTitle, propertyBuyingDetails)
+    createPropertyTypeState(iconTitle,plotType, propertyBuyingDetails)
   );
+  
+  const [activePropertyType, setActivePropertyType] = useState(null);
   const handleButtonClick = (index) => {
     const selectedText = iconTitle[index].title;
-
+ setActivePropertyType(selectedText);
     setPropertyData((prevData) => {
       const updatedPurposeData = [
         ...prevData.propertyTypeInfo.propertyTypeData,
@@ -86,9 +91,24 @@ const SelectProperyType = ({
           alignItems: 'center',
         }}
       >
-        <Button sx={{ color: '#FB631C' }}>House</Button>
-        <Button sx={{ color: '#666' }}>Plot</Button>
-        <Button sx={{ color: '#666' }}>Commercial</Button>
+         <Button sx={{ color: activePropertyType === 'House' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('House')}>
+          House
+        </Button>
+        <Button sx={{ color: activePropertyType === 'Plot' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('Plot')}>
+          Plot
+        </Button>
+        <Button sx={{ color: activePropertyType === 'Commercial' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('Commercial')}>
+          Commercial
+        </Button>
+        {/* <Button sx={{ color: '#FB631C' }}
+        
+        >House</Button>
+        <Button sx={{ color: '#666' }}
+        onClick={handleProprtyType}
+        >Plot</Button>
+        <Button sx={{ color: '#666' }}
+        onClick={handleProprtyType}
+        >Commercial</Button> */}
       </Box>
       <hr style={{ width: '100%' }}></hr>
 
@@ -128,7 +148,10 @@ const SelectProperyType = ({
             {item.title}
           </Button>
         ))}
+       
       </Box>
+     {activePropertyType === 'Plot' && <PlotType />}
+      {activePropertyType === 'Commercial' && <CommercialType />}
     </Box>
   );
 };

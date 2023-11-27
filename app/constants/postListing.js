@@ -64,6 +64,76 @@ export const PROPERTY_INFORMATION = {
       value: '',
     },
   ],
+  propertyPlot: [
+    {
+      image: '/images/listing-page/housesell.svg',
+      title: 'Residential Plots',
+      label: 'residentialPlotsBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Commercial Plots',
+      label: 'CommercialPlotsBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Agriculture Land',
+      label: 'agricultureLandBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Industrail Land',
+      label: 'industrailLandBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Plot File',
+      label: 'plotFileBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Plot Form',
+      label: 'plotFormBtn',
+      value: '',
+    }
+  ],
+  propertyCommercial: [
+    {
+      image: '/images/listing-page/housesell.svg',
+      title: 'Office',
+      label: 'officeBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Shop',
+      label: 'shopBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Ware house',
+      label: 'wareHouseBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Building',
+      label: 'buildingBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      title: 'Other...',
+      label: 'otherBtn',
+      value: '',
+    },
+  ],
   postTitles: {
     adInfo: 'Ad information',
     locationandpurpose: 'Location & Purpose',
@@ -334,6 +404,21 @@ export const PROPERTY_BUYING_DETAIL = {
         roomBtn: '',
         pentHouseBtn: '',
       },
+      Plot: {
+        residentialPlotsBtn: '',
+        commercialPlotsBtn: '',
+        agricultureLandBtn: '',
+        industrailLandBtn: '',
+        plotFileBtn: '',
+        plotFormBtn: '',
+      },
+      Commercial: {
+        officeBtn: '',
+        shopBtn: '',
+        wareHouseBtn: '',
+        buildingBtn: '',
+        otherBtn: '',
+      }
     },
     selectedAmenities: {},
     incrementBtn: {},
