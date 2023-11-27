@@ -94,9 +94,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                 <Box
                   sx={{
                     paddingLeft: '45px',
-                    // marginLeft: '30px',
                     textAlign: 'left',
-                    // backgroundColor: '#FF631C33',
                   }}
                 >
                   <Typography variant="ul">

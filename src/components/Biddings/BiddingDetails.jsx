@@ -25,8 +25,8 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
     <Box className="scrollable" sx={{ height: Height }}>
       <>
         {liveBiddingData?.liveBidding
-          .slice(0, showAllItems ? liveBiddingData?.liveBidding.length : 2)
-          .map((item, index) => (
+          ?.slice(0, showAllItems ? liveBiddingData?.liveBidding?.length : 2)
+          ?.map((item, index) => (
             <Grid container spacing={2} xs={12} key={index}>
               <Box
                 sx={{

@@ -48,14 +48,6 @@ export const BIDDING_LIST = [
       walkingTrails: '',
       washingArea: '',
     },
-    // images: [
-    //   '/images/biddings/images/biddingImage1.png',
-    //   '/images/biddings/images/biddingImage2.png',
-    //   '/images/biddings/images/biddingImage3.png',
-    //   '/images/biddings/images/biddingImage4.png',
-    //   '/images/biddings/images/biddingImage5.png',
-    //   '/images/biddings/images/biddingImage6.png',
-    // ],
     images: [
       '/images/biddings/images/Image1.png',
       '/images/biddings/images/Image2.png',
