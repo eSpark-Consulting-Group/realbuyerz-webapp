@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { Bounce } from 'react-awesome-reveal';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -70,24 +71,26 @@ const FooterCta = ({ data }) => {
               </Grid>
             ))}
           </Grid>
-          <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
-            {data?.appIcons?.map((appicon, index) => (
-              <Link
-                href={appicon.link}
-                key={index}
-                item
-                xs={3}
-                sx={{ display: 'flex', gap: '20px' }}
-              >
-                <Image
-                  src={appicon.icon}
-                  alt={appicon.title}
-                  width={145}
-                  height={40}
-                />
-              </Link>
-            ))}
-          </Box>
+          <Bounce direction="left" triggerOnce>
+            <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
+              {data?.appIcons?.map((appicon, index) => (
+                <Link
+                  href={appicon.link}
+                  key={index}
+                  item
+                  xs={3}
+                  sx={{ display: 'flex', gap: '20px' }}
+                >
+                  <Image
+                    src={appicon.icon}
+                    alt={appicon.title}
+                    width={145}
+                    height={40}
+                  />
+                </Link>
+              ))}
+            </Box>
+          </Bounce>
         </Grid>
         <Grid
           item
@@ -101,9 +104,11 @@ const FooterCta = ({ data }) => {
             },
           }}
         >
-          <Box>
-            <Image src={data.appImage} alt="App" width={350} height={400} />
-          </Box>
+          <Bounce direction="right" triggerOnce>
+            <Box>
+              <Image src={data.appImage} alt="App" width={350} height={400} />
+            </Box>
+          </Bounce>
         </Grid>
       </Grid>
       <Grid container sx={{ py: '28px' }}>
