@@ -21,7 +21,6 @@ const Slider = ({ propertySlider }) => {
           >
             {propertySlider?.sliderImages?.map(
               (item, index) => (
-                console.log('item', propertySlider?.sliderImages),
                 (
                   <SwiperSlide key={index}>
                     <Image
