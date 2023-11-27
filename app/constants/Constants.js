@@ -131,3 +131,10 @@ export const FOOTER_DATA = {
     ],
   },
 };
+
+export const PAGES_INFO = {
+  reset: 'Try Again',
+  errorMessage: 'Something went wrong',
+  tncPageTitle: 'Term and Conditions',
+  policyPageTitle: 'Privacy Policy',
+};
