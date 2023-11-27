@@ -4,134 +4,139 @@ import { Modal, Button, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import LoginCard from '../Login/LoginCard';
+import ForgetPassword from './forgetPassword';
 
-const CheckEmailModal = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
+  const [showSignin, setshowSignin] = useState(false);
+  const [showForgetPassword, setshowForgetPassword] = useState(false);
+  const handleBackToLogin = () => {
+    setshowSignin(true);
+    setshowForgetPassword(false);
+  };
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            width: { xs: '100%', sm: '50%', md: '500px' },
-            margin: 'auto',
-            height: ' 400px',
+      {!showSignin ? (
+        <Modal
+          open={open}
+          onClose={onClose}
+          style={{
             display: 'flex',
-            background: '#fff',
             justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: '10px',
           }}
         >
           <Box
             sx={{
+              width: { xs: '100%', sm: '50%', md: '500px' },
+              margin: 'auto',
+              height: ' 400px',
+              background: '#fff',
               display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '360px',
-              height: '250px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: '10px',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
-                width: '70px',
-                marginBottom: '116px',
+                justifyContent: 'space-between',
+                width: { xs: '90%', sm: '80%', md: '360px' },
+                height: '270px',
+                '@media (max-width: 600px) and (min-width: 390px)': {
+                  width: '60% ',
+                },
               }}
             >
-              <Image
-                src="/images/signup_page/mailbox.svg"
-                width={50}
-                height={50}
-                alt="mailbox"
-              />
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                width: '270px',
-                gap: '10px',
-              }}
-            >
-              <Typography
+              <Box
                 sx={{
-                  fontWeight: '400px',
-                  fontSize: '24px',
+                  display: 'flex',
+                  width: { xs: '80px', md: '70px' },
+                  marginBottom: '116px',
                 }}
               >
-                {LOGIN_FORM.loginForm.checkEmail}{' '}
-              </Typography>
-              <Typography
+                <Image
+                  src="/images/signup_page/mailbox.svg"
+                  width={50}
+                  height={50}
+                  alt="mailbox"
+                />
+              </Box>
+              <Box
                 sx={{
-                  fontWeight: '400px',
-                  fontSize: '14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  width: '270px',
+                  gap: '10px',
                 }}
               >
-                {LOGIN_FORM.loginForm.resetPassword}
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: '400px',
-                  fontSize: '12px',
-                }}
-              >
-                {LOGIN_FORM.loginForm.dummyEmail}
-              </Typography>
-              <Button
-                style={{
-                  background: '#FF631C',
-                  color: 'white',
-                  fontWeight: '500px',
-                  fontSize: '14px',
-                  width: '98px',
-                  height: '29px',
-                  borderRadius: '5px',
-                }}
-              >
-                {LOGIN_FORM.loginForm.resend}
-              </Button>
-              <Typography
-                sx={{
-                  fontWeight: '400px',
-                  fontSize: '12px',
-                }}
-              >
-                {LOGIN_FORM.loginForm.needHelp}
-                <span
+                <Typography
+                  sx={{
+                    fontWeight: '400px',
+                    fontSize: '24px',
+                  }}
+                >
+                  {LOGIN_FORM.loginForm.checkEmail}{' '}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: '400px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {LOGIN_FORM.loginForm.resetPassword}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: '400px',
+                    fontSize: '12px',
+                  }}
+                >
+                  {email}
+                </Typography>
+                <Button
                   style={{
+                    background: '#FF631C',
+                    color: 'white',
+                    fontWeight: '500px',
+                    fontSize: '14px',
+                    width: '98px',
+                    height: '29px',
+                    borderRadius: '5px',
+                    marginTop: '15px',
+                  }}
+                  onClick={resendButton}
+                >
+                  {LOGIN_FORM.loginForm.resend}
+                </Button>
+                <Button
+                  sx={{
                     fontWeight: '400px',
                     fontSize: '12px',
                     color: '#126FAA',
+                    padding: 0,
+                    marginTop: '15px',
+                  }}
+                  onClick={() => {
+                    handleBackToLogin();
                   }}
                 >
-                  {LOGIN_FORM.loginForm.contactSupport}
-                </span>
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: '400px',
-                  fontSize: '12px',
-                  color: '#126FAA',
-                }}
-              >
-                {LOGIN_FORM.loginForm.backSignin}
-              </Typography>
+                  {LOGIN_FORM.loginForm.backSignin}
+                </Button>
+
+                 {showForgetPassword && (
+                <ForgetPassword BackToLogin={handleBackToLogin} />
+              )}
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </Modal>
+        </Modal>
+      ) : (
+        <>
+            <LoginCard  />
+        </>
+      )}
     </>
   );
 };
