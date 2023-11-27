@@ -34,7 +34,6 @@ const Profile = ({ profileInfo }) => {
               fontSize: '0.875rem',
               fontWeight: 'medium',
               textDecoration: 'underline',
-              fontFamily: 'Inter, sans-serif',
             }}
           >
             {profileInfo.name}
@@ -45,7 +44,6 @@ const Profile = ({ profileInfo }) => {
             sx={{
               fontSize: '1rem',
               fontWeight: 'bold',
-              fontFamily: 'Inter, sans-serif',
             }}
           >
             {profileInfo.agencyName}
