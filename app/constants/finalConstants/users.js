@@ -164,7 +164,8 @@ export const USERS_DATA = [
 ];
 
 export const ADD_USER_DATA = [
-  { id:1, //id
+  {
+    id: 1, //id
     userName: 'muahhmadali', //string
     firstName: 'Muhammad', //string
     lastName: 'Ali', //string
@@ -180,7 +181,7 @@ export const ADD_USER_DATA = [
 ];
 
 export const ADD_USER_AUTH = {
-  id:1, //id
+  id: 1, //id
   userName: 'armankhan', //string
   confirmPassword: '456789', //string
   newPassword: '456789', //string
@@ -188,9 +189,8 @@ export const ADD_USER_AUTH = {
 };
 
 export const ADD_USER_IMAGE = {
-  id:1, //id
+  id: 1, //id
   userName: 'armankhan', //string
   profilePicture: '456789', //string
   coverImage: '456789', //string
 };
-

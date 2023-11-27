@@ -173,7 +173,7 @@ export const AGENTS_DATA = [
   },
 ];
 
-export const ADD_AGENT_DATA ={
+export const ADD_AGENT_DATA = {
   id: 1, //id
   profileImage: '',
   userName: 'muahhmadali', //string
@@ -190,7 +190,7 @@ export const ADD_AGENT_DATA ={
 };
 
 export const ADD_AGENT_AUTH = {
-  id:1, //id
+  id: 1, //id
   userName: 'armankhan', //string
   confirmPassword: '456789', //string
   newPassword: '456789', //string
@@ -198,9 +198,8 @@ export const ADD_AGENT_AUTH = {
 };
 
 export const ADD_AGENT_IMAGE = {
-  id:1, //id
+  id: 1, //id
   userName: 'armankhan', //string
   profilePicture: '456789', //string
   coverImage: '456789', //string
 };
-
