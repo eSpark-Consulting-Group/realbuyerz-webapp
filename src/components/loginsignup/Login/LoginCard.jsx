@@ -45,7 +45,6 @@ const LoginCard = () => {
             sx={{
               color: '#FF631C',
               fontSize: { xs: '15px', md: '20px' },
-              fontFamily: 'Inter',
             }}
           >
             {LOGIN_FORM.loginForm.welcome}

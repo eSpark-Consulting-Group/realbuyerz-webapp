@@ -62,7 +62,6 @@ const Cateogries = ({ categories }) => {
                 paddingLeft: '31px',
                 paddingBottom: '7px',
                 color: '#FB631C',
-                fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',
                 fontStyle: 'normal',
                 fontWeight: 500,
