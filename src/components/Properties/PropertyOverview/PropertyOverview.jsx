@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Box,
   Table,
+  TableHead,
   TableBody,
   TableRow,
   TableCell,

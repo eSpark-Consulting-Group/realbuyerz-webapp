@@ -3,7 +3,6 @@ import React from 'react';
 
 import { Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { useSelector } from 'react-redux';
 
 import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
@@ -12,24 +11,13 @@ import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
-function SingleProperty() {
-  const properties = useSelector((state) => state.properties.properties);
+import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
+function SingleProperty() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-
-  // Check if properties array is empty or property is undefined
-  if (!properties || properties.length === 0) {
-    return <div>No properties found</div>;
-  }
-
-  const property = properties[id - 1];
-
-  // Check if property is undefined
-  if (!property) {
-    return <div>Property not found</div>;
-  }
+  const property = PROPERTIES_LISTING[id - 1];
 
   return (
     <>

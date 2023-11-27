@@ -100,6 +100,9 @@ const PopularLocations = ({ data }) => {
                     border: '1px solid #cbcbcb',
                     mx: '15px',
                     my: '15px',
+                    '&:hover': {
+                      boxShadow: '0px 0px 5px 0px rgba(18, 111, 170, 0.70)',
+                    },
                   }}
                 >
                   <Box

@@ -25,7 +25,6 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
             sx={{
               width: '100px',
               color: '#126FAA',
-              fontFamily: 'Inter',
               fontSize: '18px',
               fontStyle: 'normal',
               fontWeight: 500,
@@ -38,7 +37,6 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           <Typography
             sx={{
               color: '#757474',
-              fontFamily: 'Inter',
               fontSize: '15px',
               fontStyle: 'normal',
               fontWeight: 500,
@@ -50,7 +48,6 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           <Typography
             sx={{
               color: '#000',
-              fontFamily: 'Inter',
               fontSize: '15px',
               fontStyle: 'normal',
               fontWeight: 500,
@@ -94,7 +91,6 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
         <Typography
           sx={{
             color: '#000',
-            fontFamily: 'Inter',
             fontSize: '15px',
             fontWeight: 300,
             lineHeight: '18.15px',
