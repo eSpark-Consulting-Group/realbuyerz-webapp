@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Grid, Typography } from '@mui/material';
+import { SEE_DETAILS } from '@/app/constants/AgentProfile';
 
 const SliderCardSeeDetails = ({ link }) => {
   return (
@@ -29,7 +30,7 @@ const SliderCardSeeDetails = ({ link }) => {
           }}
         >
           <Typography variant="body1" color="#000000">
-            See Details
+            {SEE_DETAILS}
           </Typography>
         </Link>
       </Grid>
