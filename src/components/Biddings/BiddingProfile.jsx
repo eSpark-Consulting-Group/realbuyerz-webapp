@@ -12,7 +12,7 @@ import Profile from '@/src/components/layouts/RightSiderBar/Profile';
 const BiddingProfile = ({ profileInfo }) => {
   return (
     <>
-      <Grid container rowSpacing={1} sx={{ marginTop: '70px' }}>
+      <Grid container rowSpacing={1} sx={{ marginTop: '5px' }}>
         <Grid
           border={2}
           item

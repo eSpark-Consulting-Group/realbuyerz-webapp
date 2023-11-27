@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Collapse, IconButton, Typography } from '@mui/material';
+import { usePathname } from 'next/navigation';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ExpendedLiveBiddingList = ({ list }) => {
   const [openItemId, setOpenItemId] = useState(null);
+
+  const path = usePathname();
 
   const toggleCollapse = (itemId) => {
     if (itemId === openItemId) {
@@ -26,13 +30,20 @@ const ExpendedLiveBiddingList = ({ list }) => {
               sx={{
                 width: '100%',
                 maxWidth: '300px',
-                borderRadius: '15px',
+                mx: 'auto',
                 display: 'flex',
                 padding: '10px',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
-                '&:hover': { backgroundColor: '#FF631C33' },
+                backgroundColor: item?.link == path ? '#FF631C33' : null,
+                borderRadius: item?.link == path ? '12px' : 0,
+                '.active-link:active': {
+                  textDecoration: 'none',
+                },
+                '&:active': {
+                  backgroundColor: 'transparent !important',
+                },
               }}
               onClick={() => toggleCollapse(item.id)}
             >
@@ -40,23 +51,36 @@ const ExpendedLiveBiddingList = ({ list }) => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  // backgroundColor: '#FF631C33',
                 }}
               >
-                <Image src={item.icon} width={30} height={30} alt="icons" />
+                <Image
+                  src={path == item?.link ? item?.iconActive : item?.icon}
+                  width={30}
+                  height={30}
+                  alt="icons"
+                />
                 <Typography
                   sx={{
-                    color: '#000',
+                    color: item?.link == path ? '#FB631C !important' : '#000',
                     fontSize: '16px',
                     fontWeight: '500',
                     px: '19px',
                   }}
                 >
-                  <a href={item.link}>{item.title}</a>
+                  <Link
+                    rel="stylesheet"
+                    className="active-link"
+                    href={item?.link}
+                  >
+                    {item?.title}
+                  </Link>
                 </Typography>
               </Box>
               {item.subItem && (
-                <IconButton onClick={() => toggleCollapse(item.id)}>
+                <IconButton
+                  onClick={() => toggleCollapse(item.id)}
+                  sx={{ '&:hover': { backgroundColor: '#fff !important' } }}
+                >
                   {isItemOpen ? (
                     <ExpandLessIcon sx={{ color: '#000' }} />
                   ) : (
@@ -69,26 +93,44 @@ const ExpendedLiveBiddingList = ({ list }) => {
               {item.subItem && item.subItem.length > 0 && (
                 <Box
                   sx={{
-                    paddingLeft: '30px',
-                    marginLeft: '30px',
+                    paddingLeft: '45px',
+                    // marginLeft: '30px',
+                    textAlign: 'left',
                     // backgroundColor: '#FF631C33',
                   }}
                 >
-                  <ul>
+                  <Typography variant="ul">
                     {item.subItem.map((item, index) => (
-                      <li
-                        style={{
+                      <Typography
+                        variant="li"
+                        sx={{
                           fontWeight: '500',
                           fontSize: '14px',
-                          paddingBottom: '10px',
+                          display: 'block',
+                          padding: '10px',
+                          pl: '15px',
+                          width: '70%',
                           color: '#000',
+                          cursor: 'pointer',
+                          backgroundColor:
+                            item?.link == path ? '#FF631C33' : null,
+                          borderRadius: item?.link == path ? '12px' : 0,
+                          '.active-link:active': {
+                            textDecoration: 'none',
+                          },
                         }}
                         key={index}
                       >
-                        <a href={item.link}>{item.subTitle}</a>
-                      </li>
+                        <Link
+                          rel="stylesheet"
+                          className="active-link"
+                          href={item?.link}
+                        >
+                          {item?.subTitle}
+                        </Link>
+                      </Typography>
                     ))}
-                  </ul>
+                  </Typography>
                 </Box>
               )}
             </Collapse>

@@ -23,12 +23,13 @@ export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
 
 export const MENU_ITEM = [
-  // {
-  //   id: 1,
-  //   icon: '/images/Live-bidding-icons/liveBidding.svg',
-  //   title: 'Live Bidding',
-  //   link:'/dashboard/live-bidding',
-  // },
+  {
+    id: 1,
+    icon: '/images/Live-bidding-icons/liveBidding.svg',
+    iconActive: '/images/Live-bidding-icons/liveBiddingActive.svg',
+    title: 'Live Bidding',
+    link: '/dashboard/live-bidding',
+  },
   {
     id: 2,
     icon: '/images/Live-bidding-icons/propertyManagement.svg',
@@ -37,17 +38,18 @@ export const MENU_ITEM = [
     subItem: [
       {
         subTitle: 'Post Listing',
-        link: '/dashboard/property-managment/all-listings',
+        link: '/dashboard/property-managment/proposals/all-listings',
       },
       {
         subTitle: 'All Listing',
-        link: '/dashboard/property-managment/post-listing',
+        link: '/dashboard/property-managment/proposals/post-listing',
       },
     ],
   },
   {
     id: 3,
     icon: '/images/Live-bidding-icons/Inbox.svg',
+    iconActive: '/images/Live-bidding-icons/InboxActive.svg',
     title: 'Inbox',
     link: '/dashboard/inbox',
   },
@@ -59,11 +61,11 @@ export const MENU_ITEM = [
     subItem: [
       {
         subTitle: 'Agent Profile',
-        link: '/dashboard/agent-setting/agent-profile',
+        link: '/dashboard/agent-settings/agent-profile',
       },
       {
         subTitle: 'Preferences',
-        link: '/dashboard/agent-setting/preferences',
+        link: '/dashboard/agent-settings/preferences',
       },
     ],
   },
