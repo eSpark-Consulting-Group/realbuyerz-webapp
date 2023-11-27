@@ -1,11 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertyTypeState } from '@/utils/propertyType';
-import PlotType from './PlotType';
-import CommercialType from './CommercialType';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import PropertyTypes from './PropertyPlot';
 
 const SelectProperyType = ({
   image,
@@ -19,13 +19,13 @@ const SelectProperyType = ({
     setActiveButtonIndex(index);
   };
   const [propertyData, setPropertyData] = useState(
-    createPropertyTypeState(iconTitle,plotType, propertyBuyingDetails)
+    createPropertyTypeState(iconTitle, plotType, propertyBuyingDetails)
   );
-  
+
   const [activePropertyType, setActivePropertyType] = useState(null);
   const handleButtonClick = (index) => {
     const selectedText = iconTitle[index].title;
- setActivePropertyType(selectedText);
+    setActivePropertyType(selectedText);
     setPropertyData((prevData) => {
       const updatedPurposeData = [
         ...prevData.propertyTypeInfo.propertyTypeData,
@@ -56,6 +56,9 @@ const SelectProperyType = ({
       };
     });
   };
+  useEffect(() => {
+    setActivePropertyType('House');
+  }, []);
   return (
     <Box
       sx={{
@@ -91,13 +94,24 @@ const SelectProperyType = ({
           alignItems: 'center',
         }}
       >
-         <Button sx={{ color: activePropertyType === 'House' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('House')}>
+        <Button
+          sx={{ color: activePropertyType === 'House' ? '#FB631C' : '#666' }}
+          onClick={() => setActivePropertyType('House')}
+        >
           House
         </Button>
-        <Button sx={{ color: activePropertyType === 'Plot' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('Plot')}>
+        <Button
+          sx={{ color: activePropertyType === 'Plot' ? '#FB631C' : '#666' }}
+          onClick={() => setActivePropertyType('Plot')}
+        >
           Plot
         </Button>
-        <Button sx={{ color: activePropertyType === 'Commercial' ? '#FB631C' : '#666' }} onClick={() => setActivePropertyType('Commercial')}>
+        <Button
+          sx={{
+            color: activePropertyType === 'Commercial' ? '#FB631C' : '#666',
+          }}
+          onClick={() => setActivePropertyType('Commercial')}
+        >
           Commercial
         </Button>
         {/* <Button sx={{ color: '#FB631C' }}
@@ -111,47 +125,51 @@ const SelectProperyType = ({
         >Commercial</Button> */}
       </Box>
       <hr style={{ width: '100%' }}></hr>
-
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          padding: '8px',
-          gap: '10px',
-          '@media (max-width: 600px)': {
-            gridTemplateColumns: '1fr',
-          },
-        }}
-      >
-        {propertyData.propertyTypeInfo.propertyTypeData.map((item, index) => (
-          <Button
-            sx={{
-              borderRadius: '20px',
-              border: '1px solid #E7E7E7',
-              color: '#666',
-              background: '#fff',
-              display: 'flex',
-              flexDirection: { xs: 'row', md: 'row' },
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '9px',
-              padding: '5px',
-            }}
-            key={index}
-            disabled={index === activeButtonIndex}
-            onClick={() => {
-              handleActiveButtonClick(index);
-              handleButtonClick(index);
-            }}
-          >
-            <Image src={item.image} width={33} height={31} alt="property" />
-            {item.title}
-          </Button>
-        ))}
-       
-      </Box>
-     {activePropertyType === 'Plot' && <PlotType />}
-      {activePropertyType === 'Commercial' && <CommercialType />}
+      {activePropertyType === 'House' && (
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            padding: '8px',
+            gap: '10px',
+            '@media (max-width: 600px)': {
+              gridTemplateColumns: '1fr',
+            },
+          }}
+        >
+          {propertyData.propertyTypeInfo.propertyTypeData.map((item, index) => (
+            <Button
+              sx={{
+                borderRadius: '20px',
+                border: '1px solid #E7E7E7',
+                color: '#666',
+                background: '#fff',
+                display: 'flex',
+                flexDirection: { xs: 'row', md: 'row' },
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '9px',
+                padding: '5px',
+              }}
+              key={index}
+              disabled={index === activeButtonIndex}
+              onClick={() => {
+                handleActiveButtonClick(index);
+                handleButtonClick(index);
+              }}
+            >
+              <Image src={item.image} width={33} height={31} alt="property" />
+              {item.title}
+            </Button>
+          ))}
+        </Box>
+      )}
+      {activePropertyType === 'Plot' && (
+        <PropertyTypes data={PROPERTY_INFORMATION.propertyPlot} />
+      )}
+      {activePropertyType === 'Commercial' && (
+        <PropertyTypes data={PROPERTY_INFORMATION?.propertyCommercial} />
+      )}
     </Box>
   );
 };

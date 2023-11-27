@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box,Button } from '@mui/material';
+import { Box,Button,Typography } from '@mui/material';
 import Image from 'next/image';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 
-const CommercialType = () => {
+const PropertyTypes = ({data}) => {
     return (
           <Box
         sx={{
@@ -17,7 +17,7 @@ const CommercialType = () => {
           },
         }}
       >
-        {PROPERTY_INFORMATION?.propertyCommercial?.map((item, index) => (
+        {data?.map((item, index) => (
           <Button
             sx={{
               borderRadius: '20px',
@@ -46,4 +46,4 @@ const CommercialType = () => {
     )
 }
 
-export default CommercialType;
+export default PropertyTypes;
