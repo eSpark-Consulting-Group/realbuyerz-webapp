@@ -70,7 +70,7 @@ const PreferenceSettings = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              marginBottom: { xs: '170px', md: '250px' },
+              marginBottom: { xs: '170px', md: '180px' },
               width: { xs: '100%', md: '70%' },
               padding: '40px',
               gap: '40px',
