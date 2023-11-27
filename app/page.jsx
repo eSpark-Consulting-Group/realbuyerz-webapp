@@ -15,7 +15,6 @@ import {
 } from '@/app/constants/Home';
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
-import YourComponent from '@/src/components/YourComponent/YourComponent';
 
 const Home = () => {
   return (
@@ -28,7 +27,6 @@ const Home = () => {
       <NewlyListedProperties data={AGENT_PROFILE_DATA} />
       <PopularLocations data={POPULAR_LOCATIONS_DATA} />
       <FooterCta data={FOOTER_CTA_DATA} />
-      <YourComponent />
     </div>
   );
 };
