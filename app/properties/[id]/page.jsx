@@ -23,7 +23,7 @@ function SingleProperty() {
     <>
       <Grid
         container
-        sx={{ paddingTop: '20px', display: 'flex', justifyContent: 'center' }}
+        sx={{ paddingTop: '40px', display: 'flex', justifyContent: 'center' }}
       >
         <Grid
           item
