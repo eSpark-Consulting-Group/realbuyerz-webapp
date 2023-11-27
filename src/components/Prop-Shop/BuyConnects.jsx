@@ -1,22 +1,23 @@
-import { Box, Button, Typography, Grid } from '@mui/material';
 import React from 'react';
+import { Box, Button, Typography, Grid } from '@mui/material';
+import { useDispatch } from 'react-redux';
+
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import BuyConnectSelect from './BuyConnectSelect';
-import { useDispatch } from 'react-redux';
 import { buy } from '@/src/redux/slices/settings/PakageCartSlice';
 
 const BuyConnects = ({
   title,
-  discription,
+  description,
   image,
   buttonText,
-  feilds,
+  fields,
   dropdown,
 }) => {
   const { items } = dropdown;
   const dispatch = useDispatch();
   const userDetail = Object.fromEntries(
-    feilds.map((field) => [field.name, field.value])
+    fields.map((field) => [field.name, field.value])
   );
 
   const [buyConnectData, setBuyConnectData] = React.useState({
@@ -47,12 +48,6 @@ const BuyConnects = ({
       null;
     } else {
       dispatch(buy(buyConnectData));
-      // setBuyConnectData({
-      //   ...buyConnectData,
-      //   select_the_amount_to_buy: 0,
-      //   your_account_will_be_charged: 0,
-      //   your_new_connects_balance_will_be: 0,
-      // });
     }
   };
 
@@ -88,7 +83,7 @@ const BuyConnects = ({
               variant="h5"
               sx={{ fontWeight: 400, my: { xs: 1, lg: 0 } }}
             >
-              {discription}
+              {description}
             </Typography>
           </Box>
           <Box
@@ -97,7 +92,7 @@ const BuyConnects = ({
               py: 1.5,
             }}
           >
-            {feilds?.map((field, i) => (
+            {fields?.map((field, i) => (
               <Box key={i} sx={{ width: '100%' }}>
                 <Typography
                   variant="h5"
@@ -114,7 +109,6 @@ const BuyConnects = ({
                   <RBInput
                     type={field?.type}
                     place={field?.place}
-                    // value={buyConnectData[field?.name]}
                     value={buyConnectData[field?.name]}
                     name={field?.name}
                     onChange={handleChange}

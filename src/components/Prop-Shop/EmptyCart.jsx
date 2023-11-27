@@ -1,6 +1,6 @@
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 
 const EmptyCart = ({ title, item }) => {
   return (

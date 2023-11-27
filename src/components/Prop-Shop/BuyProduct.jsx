@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+
 import Subscription from './Subscription';
 import BuyConnects from './BuyConnects';
 import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
@@ -20,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BuyProduct() {
-  const { title, discription, image, buttonText, textField, dropdown } =
+  const { title, description, image, buttonText, textField, dropdown } =
     Buy_Connects;
 
   return (
@@ -36,8 +37,8 @@ export default function BuyProduct() {
             <BuyConnects
               title={title}
               image={image}
-              feilds={textField}
-              discription={discription}
+              fields={textField}
+              description={description}
               buttonText={buttonText}
               dropdown={dropdown}
             />
