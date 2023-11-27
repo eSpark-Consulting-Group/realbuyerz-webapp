@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 
 import Proposals from '@/src/components/layouts/RightSiderBar/Proposals';
@@ -11,7 +12,7 @@ import Profile from '@/src/components/layouts/RightSiderBar/Profile';
 
 const BiddingProfile = ({ profileInfo }) => {
   return (
-    <>
+    <Box sx={{ marginTop: '70px' }}>
       <Grid container rowSpacing={1}>
         <Grid
           border={2}
@@ -43,7 +44,7 @@ const BiddingProfile = ({ profileInfo }) => {
           <Proposals />
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 

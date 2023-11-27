@@ -16,7 +16,14 @@ const ProductCart = () => {
   const { title, item } = Empty_Cart_data;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        py: '23px',
+      }}
+    >
       <Grid
         container
         xs={11.7}
