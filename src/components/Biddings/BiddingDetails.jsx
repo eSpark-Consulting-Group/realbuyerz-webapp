@@ -68,7 +68,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                   textAlign: 'right',
                   alignContent: 'end',
                   color: '#333',
-                  fontFamily: 'Inter',
                   fontSize: '15px',
                   fontStyle: 'normal',
                   fontWeight: 700,
@@ -118,7 +117,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     fontWeight: '500',
                     fontSize: '13.8px',
                     lineHeight: '14.52px',
-                    fontFamilly: 'inter',
                     mb: 1,
                   }}
                 >
@@ -130,7 +128,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     fontWeight: '500',
                     fontSize: '13.8px',
                     lineHeight: '14.52px',
-                    fontFamilly: 'inter',
                   }}
                 >
                   {item?.description}

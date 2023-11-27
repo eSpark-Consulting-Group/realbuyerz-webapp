@@ -31,7 +31,6 @@ const Proposals = () => {
           sx={{
             paddingTop: '10px',
             color: '#FB631C',
-            fontFamily: 'Inter, sans-serif',
             fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 500,

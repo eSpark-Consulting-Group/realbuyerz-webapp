@@ -12,7 +12,6 @@ const ProposalMedia = ({ media, mediaType }) => {
             sx={{
               color: 'black',
               fontSize: '20px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >
