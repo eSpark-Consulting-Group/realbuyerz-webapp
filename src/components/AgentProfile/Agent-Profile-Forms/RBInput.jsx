@@ -15,6 +15,7 @@ const RBInput = ({
   rows,
   multiline,
   onChange,
+  ...props
 }) => {
   return (
     <>
@@ -33,6 +34,7 @@ const RBInput = ({
         multiline={multiline}
         rows={rows}
         onChange={onChange}
+        {...props}
       />
     </>
   );
