@@ -1,5 +1,40 @@
+export const FOR_SALE = 'For Sale';
+export const FOR_RENT = 'For Rent';
+export const RECENT_PROPERTIES = 'Recent Properties By';
+export const ABOUT = 'About';
+export const PROPERTIES_BY = 'Properties By';
+export const PROPERTIES_FOR_SALE = 'Properties For Sale';
+export const PROPERTIES_FOR_RENT = 'Properties For Rent';
+export const VIEW_BUTTON = 'View All';
+export const HUB_RIVER_ROAD = ' Hub River Road';
+export const STARTING_FROM = 'Starting from:';
+export const SEE_DETAILS = 'See Details';
+
 export const AGENT_PROFILE_DATA = {
   agentProfile: ' View Agent Profile',
+  image: '/images/profile.png',
+  title: 'Arman Khan',
+  text: 'Lets talk',
+  description: [
+    {
+      icon: '/images/agent-profile-icons/location.svg',
+      text: 'Karachi, Pakistan',
+      alt: 'amenities',
+      email: '',
+    },
+    {
+      icon: '/images/agent-profile-icons/home.svg',
+      text: 'For Sale',
+      alt: 'amenities',
+      email: '',
+    },
+    {
+      icon: '/images/agent-profile-icons/location.svg',
+      text: 'For Rent',
+      alt: 'amenities',
+      email: '',
+    },
+  ],
   contactInfo: {
     agentName: 'Arman Khan',
     agentImage: '/images/profile.png',
@@ -29,36 +64,42 @@ export const AGENT_PROFILE_DATA = {
   recentProperties: {
     properties: [
       {
+        id: '1',
         name: 'Index Industrial Park',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '2',
         name: 'Gulshan-e-Iqbal',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '3',
         name: 'Gulistan-e-Johar',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '4',
         name: 'Malir',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '5',
         name: 'Gulistan-e-Johar',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '6',
         name: 'Malir',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',

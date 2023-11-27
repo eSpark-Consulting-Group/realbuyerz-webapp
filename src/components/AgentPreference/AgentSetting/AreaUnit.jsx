@@ -19,7 +19,6 @@ const AreaUnit = ({ measure, handleInputChange }) => {
             sx={{
               color: 'black',
               fontSize: '20px',
-              fontFamily: 'Inter',
               fontWeight: 400,
             }}
           >

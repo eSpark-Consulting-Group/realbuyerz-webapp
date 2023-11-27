@@ -16,7 +16,6 @@ const ProposalHeader = () => {
             sx={{
               color: '#126FAA',
               fontSize: '15px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >{`John Doe`}</Typography>
@@ -27,7 +26,6 @@ const ProposalHeader = () => {
             sx={{
               color: '#757474',
               fontSize: '15px',
-              fontFamily: 'Inter',
               fontWeight: '500',
             }}
           >

@@ -1,18 +1,21 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
+import { PROPERTIES_BY } from '@/app/constants/AgentProfile';
+
 const AgentTitle = ({ title }) => {
   return (
     <Typography
       variant="h4"
       sx={{
-        color: 'primary',
-        fontWeight: 500,
+        color: '#000',
         fontSize: '25px',
         fontStyle: 'normal',
+        fontWeight: 500,
+        lineHeight: 'normal',
       }}
     >
-      Properties By {title}
+      {`${PROPERTIES_BY} ${title}`}
     </Typography>
   );
 };
