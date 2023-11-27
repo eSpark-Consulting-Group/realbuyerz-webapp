@@ -1,24 +1,26 @@
 'use client';
 import React from 'react';
-import { Typography, Box, Switch, Divider } from '@mui/material';
+import { Typography, Box, Switch } from '@mui/material';
 
 const Notification = ({ notificationData, handleInputChange }) => {
   return (
     <>
       {notificationData?.map((item, index) => {
         return (
-          <Box sx={{
-            padding: '0px 10px 10px 10px'
-          }}>
+          <Box
+            key={index}
+            sx={{
+              padding: '0px 10px 10px 10px',
+            }}
+          >
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 borderBottom: '2px solid #f4f5f7',
                 gap: '10px',
-                pb: 2
+                pb: 2,
               }}
-              key={index}
             >
               <Box
                 sx={{
@@ -37,9 +39,9 @@ const Notification = ({ notificationData, handleInputChange }) => {
                   {item.title}
                 </Typography>
                 <Switch
-                sx={{
-                  marginRight: {lg: '-12px'}
-                }}
+                  sx={{
+                    marginRight: { lg: '-12px' },
+                  }}
                   value={item.value}
                   onChange={(event) =>
                     handleInputChange(item.label, event.target.checked)
