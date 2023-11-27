@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -11,8 +11,11 @@ import { Button, Typography } from '@mui/material';
 import RBInput from './RBInput';
 import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
+import { profileValidationSchema } from '@/src/components/Schemas/profileValidationSchema';
 
 import { PROFILE_INFO } from '@/app/constants/AgentProfileForm';
+import { useFormik } from 'formik';
+import VerificationModal from '../../Modal/VerificationModal';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -27,21 +30,27 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ProfileForm({
   data,
-  handleChange,
-  values,
-  errors,
-  touched,
+
+  buttonText,
   FirstDropdownValue,
   setFirstDropdownValue,
   SecondDropdownValue,
   setSecondDropdownValue,
+  profileInitialValues,
 }) {
   const { image, fields } = data;
   const [verifyText, setVerifyText] = React.useState('unverified');
 
+  const [isVerificationSuccessful, setIsVerificationSuccessful] =
+    useState(false);
+  const [open, setOpen] = useState(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   const handleVerify = (name) => {
     if (values[name] !== '') {
       setVerifyText('verified');
+      setIsVerificationSuccessful(true);
     } else {
       setVerifyText('unverified');
     }
@@ -55,6 +64,19 @@ export default function ProfileForm({
     const { value } = e.target;
     setSecondDropdownValue(value);
   };
+
+  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      ...profileInitialValues,
+    },
+
+    validationSchema: profileValidationSchema,
+
+    onSubmit: (values, action) => {
+      console.log(values, 'values');
+      action.resetForm();
+    },
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -109,15 +131,22 @@ export default function ProfileForm({
             dropdowns.find((item) => item.icon === SecondDropdownValue);
 
           return (
-            <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
+            <Grid
+              key={index}
+              item
+              xs={sizes?.xs}
+              sm={sizes?.sm}
+              md={sizes?.md}
+              lg={sizes?.lg}
+            >
               <Item>
                 <Box
                   sx={{
                     width: '100%',
                     height: '100%',
                     mx: 'auto',
-                    pt: { xs: 0, md: `${pt}` },
-                    pl: { lg: 5, md: 5 },
+                    pt: pt,
+                    pl: { lg: 5, md: 2 },
                   }}
                 >
                   <Box
@@ -143,7 +172,6 @@ export default function ProfileForm({
                             color: `${
                               verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
                             }`,
-                            fontFamily: 'Inter',
                             fontStyle: 'normal',
                             fontWeight: 400,
                             lineHeight: 'normal',
@@ -204,8 +232,7 @@ export default function ProfileForm({
                             height: { xs: '53px', sm: 'auto', lg: '53px' },
                           }}
                         />
-                      )}
-
+                      )}{' '}
                       <RBInput
                         sx={{
                           width: width,
@@ -214,6 +241,9 @@ export default function ProfileForm({
                           '& input[type=number]::-webkit-inner-spin-button': {
                             WebkitAppearance: 'none',
                             margin: 0,
+                          },
+                          '.MuiFormHelperText-contained': {
+                            marginLeft: 0.5,
                           },
                         }}
                         rows={rows}
@@ -249,12 +279,14 @@ export default function ProfileForm({
                               ? true
                               : false
                           }
-                          onClick={() => handleVerify(name)}
+                          onClick={() => {
+                            handleVerify(name), handleModalToggle();
+                          }}
                           sx={{
                             width: { xs: '100%', sm: 'auto' },
-                            height: { xs: '100%', sm: 'auto' },
+                            height: { xs: '45px', sm: '53px' },
                             borderRadius: '5px',
-                            alignSelf: 'center',
+                            // alignSelf: 'center',
                             '&:hover': { color: '#fff' },
                           }}
                         >
@@ -268,7 +300,28 @@ export default function ProfileForm({
             </Grid>
           );
         })}
+        {isVerificationSuccessful && (
+          <VerificationModal
+            onClose={() => setIsVerificationSuccessful(false)}
+            onCloseModal={handleModalToggle}
+            open={open}
+          />
+        )}
       </Grid>
+      <Button
+        type="submit"
+        sx={{
+          ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
+          mb: { xs: 3, md: 5 },
+          width: { xs: '90%', sm: 'auto', md: '160px' },
+          height: { xs: '45px', md: '45px' },
+          '&:hover': { color: '#fff' },
+        }}
+        variant="primary"
+        onClick={handleSubmit}
+      >
+        {buttonText}
+      </Button>
     </Box>
   );
 }

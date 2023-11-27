@@ -11,12 +11,11 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
   return (
     <Box className="scrollable" sx={{ height: Height }}>
       {liveBiddingData?.liveBidding?.map((item, index) => (
-        <Grid container spacing={2} xs={12} key={index}>
+        <Grid container xs={12} key={index}>
           <Box
             sx={{
               width: '100%',
               height: 'auto',
-              marginLeft: 3,
               backgroundColor: '#EDF7FF',
               border: '1px solid #AAD9FF',
               borderRadius: '16px',
@@ -68,7 +67,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                   textAlign: 'right',
                   alignContent: 'end',
                   color: '#333',
-                  fontFamily: 'Inter',
                   fontSize: '15px',
                   fontStyle: 'normal',
                   fontWeight: 700,
@@ -88,7 +86,7 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
               <Grid item lg={2} md={12} sm={12}>
                 <Box
                   sx={{
-                    paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
+                    paddingLeft: { sm: '0px', md: '0px', lg: '75px' },
                   }}
                 >
                   <Button
@@ -118,7 +116,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     fontWeight: '500',
                     fontSize: '13.8px',
                     lineHeight: '14.52px',
-                    fontFamilly: 'inter',
                     mb: 1,
                   }}
                 >
@@ -130,7 +127,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     fontWeight: '500',
                     fontSize: '13.8px',
                     lineHeight: '14.52px',
-                    fontFamilly: 'inter',
                   }}
                 >
                   {item?.description}

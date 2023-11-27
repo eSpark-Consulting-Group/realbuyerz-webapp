@@ -74,12 +74,11 @@ const LoginWithGoogle = ({
             boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
             width: { xs: '200px', md: '250px' },
             padding: { xs: '8px', md: '10px' },
-            fontSize: { xs: '10px', sm: '15px', md: '15px' },
+            fontSize: { xs: '12px', sm: '15px', md: '14px' },
             fontWeight: 500,
-            gap: '5px',
+            gap: '12px',
             color: '#909394',
             borderRadius: 2,
-            fontFamily: 'Inter',
             textTransform: 'math-auto',
           }}
         >
@@ -87,7 +86,7 @@ const LoginWithGoogle = ({
             src="/images/signup_page/google.svg"
             width={24}
             height={24}
-            alt={''}
+            alt={'google'}
           />
           {loginButton}
         </Button>
@@ -106,6 +105,7 @@ const LoginWithGoogle = ({
         <Typography
           sx={{
             color: '#333333',
+            fontSize: { xs: '13px', md: '16px' },
           }}
         >
           {accountCreationMessage}
@@ -114,6 +114,7 @@ const LoginWithGoogle = ({
           style={{
             color: '#FB631C',
             fontWeight: 400,
+            fontSize: { xs: '12px', md: '16px' },
           }}
           onClick={() => {
             onSigninClick();

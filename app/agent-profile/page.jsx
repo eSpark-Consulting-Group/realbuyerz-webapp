@@ -11,7 +11,7 @@ import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
 const AgentProfile = () => {
   return (
-    <Box className="mx-auto mt-4 w-[70vw]">
+    <Box className="mx-auto mb-16 mt-4 w-[70vw]">
       <AgentProfiles data={AGENT_PROFILE_DATA} />
       <AgentProperties data={AGENT_PROFILE_DATA} />
       <AgentAbout data={AGENT_PROFILE_DATA} />

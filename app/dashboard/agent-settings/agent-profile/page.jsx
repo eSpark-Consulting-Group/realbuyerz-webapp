@@ -9,9 +9,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { EditProfileSchema } from '@/src/components/Schemas';
+import { passwordValidationSchema } from '@/src/components/Schemas/passwordValidationSchema';
 
 const AgentProfile = () => {
+  const [checkValue, setCheckValue] = React.useState(false);
+
   const [FirstDropdownValue, setFirstDropdownValue] = React.useState(
     '/images/agent_form/pakistan_flag.png'
   );
@@ -37,15 +39,28 @@ const AgentProfile = () => {
   const userPassword = Object.fromEntries(
     passwordfields?.map((field) => [field.name, ''])
   );
-  const allfields = { ...userDetail, ...userPassword };
+
+  const profileInitialValues = {
+    ...userDetail,
+  };
+
+  const passwordInitialValues = {
+    ...userPassword,
+  };
+
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
-    initialValues: allfields,
-    validationSchema: EditProfileSchema,
+    initialValues: {
+      ...passwordInitialValues,
+    },
+
+    validationSchema: passwordValidationSchema,
+
     onSubmit: (values, action) => {
       values.whatsapp = `${FirstDropSelect?.code}${values.whatsapp}`;
       values.mobile = `${SecondDropSelect?.code}${values.mobile}`;
 
       console.log(values, 'values');
+      setCheckValue(false);
       action.resetForm();
     },
   });
@@ -54,24 +69,28 @@ const AgentProfile = () => {
     <Box>
       <Grid
         container
-        xs={11}
+        xs={12}
         item
         sx={{
-          mx: '30px',
+          // mx: 'auto',
           display: 'block',
           border: '2px solid #E4E4E4',
           background: '#fff',
           borderRadius: '5px',
           mb: '20px',
+          textAlign: { xs: 'center', sm: 'left' },
         }}
       >
         <ProfileForm
           values={values}
           errors={errors}
           touched={touched}
+          buttonText={buttonText}
+          handleSubmit={handleSubmit}
           handleChange={handleChange}
           data={Agent_Profile_Form_Data}
           FirstDropdownValue={FirstDropdownValue}
+          profileInitialValues={profileInitialValues}
           setFirstDropdownValue={setFirstDropdownValue}
           SecondDropdownValue={SecondDropdownValue}
           setSecondDropdownValue={setSecondDropdownValue}
@@ -82,19 +101,21 @@ const AgentProfile = () => {
           errors={errors}
           touched={touched}
           handleChange={handleChange}
+          checked={checkValue}
+          setChecked={setCheckValue}
           data={Agent_Profile_Form_Data}
         />
         <Button
           type="submit"
           sx={{
-            ml: { xs: 2, md: 7 },
+            ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
             mb: { xs: 3, md: 5 },
             width: { xs: '90%', sm: 'auto', md: '160px' },
-            height: { xs: '100%', sm: 'auto', md: '45px' },
+            height: { xs: '45px', md: '45px' },
             '&:hover': { color: '#fff' },
           }}
           variant="primary"
-          onClick={handleSubmit}
+          onClick={checkValue ? handleSubmit : null}
         >
           {buttonText}
         </Button>

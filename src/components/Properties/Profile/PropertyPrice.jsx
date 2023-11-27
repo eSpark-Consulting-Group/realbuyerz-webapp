@@ -3,27 +3,27 @@ import { Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Price = ({ price, link }) => {
+const Price = ({ price, link, pkr, message, reach }) => {
   return (
     <>
       <Typography
         color="primaryy"
         sx={{
-          fontSize: 27,
+          fontSize: { xs: '20px', md: '27px' },
           fontWeight: 700,
           wordBreak: 'break-word',
         }}
       >
-        PKR {price}
+        {pkr} {price}
       </Typography>
       <Typography
         color="primaryy"
         sx={{
-          fontSize: 16,
+          fontSize: { xs: '12px', md: '16px' },
           fontWeight: 400,
         }}
       >
-        Reach out to us:
+        {reach}
       </Typography>
       <Link href={link}>
         <Button
@@ -47,7 +47,13 @@ const Price = ({ price, link }) => {
             height={26}
             alt={''}
           />
-          <span>Message</span>
+          <Typography
+            sx={{
+              fontSize: { xs: '15px', md: '25px' },
+            }}
+          >
+            {message}
+          </Typography>
         </Button>
       </Link>
     </>

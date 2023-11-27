@@ -10,8 +10,8 @@ const SeeAllPosting = ({ title }) => {
         fontSize: '20px',
         lineHeight: '24.2px',
         color: '#126FAA',
-        padding: 4,
-        mr: 2,
+        padding: { sm: 4, xs: 2 },
+        mr: { sm: 0 },
         textDecoration: 'underline',
         textUnderlineOffset: '4px',
       }}

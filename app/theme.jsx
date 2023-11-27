@@ -23,7 +23,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Inter', 'Roboto', 'sans-serif'].join(','),
+    fontFamily: ['Inter', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,

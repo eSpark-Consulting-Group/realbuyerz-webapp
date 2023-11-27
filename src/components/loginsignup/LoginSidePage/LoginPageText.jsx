@@ -2,7 +2,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 const LoginPageText = () => {
   return (
@@ -19,23 +19,23 @@ const LoginPageText = () => {
         sx={{
           color: '#126FAA',
           fontSize: { xs: '25px', md: '35px' },
-          fontFamily: 'Inter',
+
           fontWeight: 500,
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.connect}
+        {LOGIN_FORM.loginCard.connect}
       </Typography>
       <Typography
         sx={{
           color: '#FF631C',
           fontSize: { xs: '15px', md: '20px' },
-          fontFamily: 'Inter',
+
           fontWeight: 400,
           textAlign: 'center',
         }}
       >
-        {LOGIN_FORM.loginForm.propertyDealer}
+        {LOGIN_FORM.loginCard.propertyDealer}
       </Typography>
     </Box>
   );
