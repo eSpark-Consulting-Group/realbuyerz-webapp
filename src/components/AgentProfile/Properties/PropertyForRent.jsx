@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-// import { arrowIcon, salesIcon } from '@/app/constents/AgentProfile';
+import { PROPERTIES_FOR_RENT, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
 const PropertyForRent = ({ data }) => {
   return (
@@ -20,21 +20,22 @@ const PropertyForRent = ({ data }) => {
               src="./images/agent-profile-icons/home.svg"
               width={15}
               height={15}
-              alt="hub rever"
+              alt="Home-icon"
             />
             <Typography
               variant="body2"
               sx={{
+                color: '#333',
                 fontSize: 15,
-                fontWeight: 'normal',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
                 display: 'flex',
                 alignItems: 'center',
-                color: '#333',
-                // paddingBottom: 1,
                 ml: 1,
               }}
             >
-              {`${data?.propertiesForRent.count} Properties For Rent`}
+              {`${data?.propertiesForSale.count} ${PROPERTIES_FOR_RENT}`}
             </Typography>
           </Box>
         </Grid>
@@ -48,20 +49,20 @@ const PropertyForRent = ({ data }) => {
             <Typography
               variant="body2"
               sx={{
+                color: '#FB631C',
                 fontSize: 15,
-                fontWeight: 'normal',
-                display: 'flex',
-                alignItems: 'center',
-                color: 'orange',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
               }}
             >
-              View &nbsp;
+              {VIEW_BUTTON} &nbsp;
             </Typography>
             <Image
               src="./images/agent-profile-icons/arrow.svg"
               width={9}
               height={9}
-              alt="hub rever"
+              alt="arrow-icon"
             />
           </Box>
         </Grid>

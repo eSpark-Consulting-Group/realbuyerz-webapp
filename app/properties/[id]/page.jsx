@@ -3,20 +3,19 @@ import React from 'react';
 
 import { Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { useSelector } from 'react-redux';
 
 import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 
-function SingleProperty() {
-  const properties = useSelector((state) => state.properties.properties);
+import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
+function SingleProperty() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const property = properties[id - 1];
+  const property = PROPERTIES_LISTING[id - 1];
   return (
     <>
       <Grid
@@ -26,7 +25,7 @@ function SingleProperty() {
         <Grid
           item
           xs={12}
-          md={8}
+          md={6}
           sx={{
             display: 'flex',
             flexDirection: 'column',

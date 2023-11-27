@@ -3,6 +3,8 @@ import { Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
+import { HUB_RIVER_ROAD } from '@/app/constants/AgentProfile';
+
 const SliderCardLocation = () => {
   return (
     <Grid container justifyContent="flex-start" alignItems="center">
@@ -22,13 +24,14 @@ const SliderCardLocation = () => {
             variant="body2"
             sx={{
               color: '#909394',
-              fontWeight: '300',
               fontSize: '15px',
               fontStyle: 'normal',
+              fontWeight: 300,
+              lineHeight: 'normal',
               ml: 1,
             }}
           >
-            Hub River Road
+            {HUB_RIVER_ROAD}
           </Typography>
         </Box>
       </Grid>

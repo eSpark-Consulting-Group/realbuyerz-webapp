@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -15,6 +15,7 @@ import { profileValidationSchema } from '@/src/components/Schemas/profileValidat
 
 import { PROFILE_INFO } from '@/app/constants/AgentProfileForm';
 import { useFormik } from 'formik';
+import VerificationModal from '../../Modal/VerificationModal';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -39,11 +40,17 @@ export default function ProfileForm({
 }) {
   const { image, fields } = data;
   const [verifyText, setVerifyText] = React.useState('unverified');
-  console.log(values, 'valuesvalues');
 
+  const [isVerificationSuccessful, setIsVerificationSuccessful] =
+    useState(false);
+  const [open, setOpen] = useState(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   const handleVerify = (name) => {
     if (values[name] !== '') {
       setVerifyText('verified');
+      setIsVerificationSuccessful(true);
     } else {
       setVerifyText('unverified');
     }
@@ -272,7 +279,9 @@ export default function ProfileForm({
                               ? true
                               : false
                           }
-                          onClick={() => handleVerify(name)}
+                          onClick={() => {
+                            handleVerify(name), handleModalToggle();
+                          }}
                           sx={{
                             width: { xs: '100%', sm: 'auto' },
                             height: { xs: '45px', sm: '53px' },
@@ -291,6 +300,13 @@ export default function ProfileForm({
             </Grid>
           );
         })}
+        {isVerificationSuccessful && (
+          <VerificationModal
+            onClose={() => setIsVerificationSuccessful(false)}
+            onCloseModal={handleModalToggle}
+            open={open}
+          />
+        )}
       </Grid>
       <Button
         type="submit"

@@ -100,8 +100,8 @@ export const FOOTER_DATA = {
   usefulLinks: [
     { title: 'Blogs', link: '#' },
     { title: 'Careers', link: '#' },
-    { title: 'Privacy Policy', link: '/privacy-policy' },
-    { title: 'Terms & Conditions', link: '/terms-conditions' },
+    { title: 'Privacy Policy', link: '#' },
+    { title: 'Terms & Conditions', link: '#' },
     { title: 'Contact Us', link: '#' },
     { title: 'FAQs', link: '#' },
   ],
@@ -133,6 +133,8 @@ export const FOOTER_DATA = {
 };
 
 export const PAGES_INFO = {
+  reset: 'Try Again',
+  errorMessage: 'Something went wrong',
   tncPageTitle: 'Term and Conditions',
   policyPageTitle: 'Privacy Policy',
 };
