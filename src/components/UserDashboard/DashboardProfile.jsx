@@ -13,7 +13,7 @@ const DashboardProfile = ({ proposalData }) => {
           <Box
             key={index}
             sx={{
-              padding: '44px 54px 44px 54px',
+              padding: '44px 54px 44px 40px',
             }}
           >
             <Grid container>
@@ -22,7 +22,13 @@ const DashboardProfile = ({ proposalData }) => {
                 xl={2}
                 lg={3}
                 md={5}
-                sx={{ position: 'relative', width: '156px', height: '156px' }}
+                sx={{
+                  position: 'relative',
+                  width: '156px',
+                  height: '156px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
               >
                 <UserProfileImage image={item.image} />
               </Grid>

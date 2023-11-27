@@ -50,7 +50,7 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
               color: '#000',
               fontSize: '15px',
               fontStyle: 'normal',
-              fontWeight: 500,
+              fontWeight: 600,
               lineHeight: 'normal',
               py: 0.3,
             }}
@@ -93,8 +93,9 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           sx={{
             color: '#000',
             fontWeight: 300,
-            fontSize: { xs: '15px', lg: '15.4px' },
+            fontSize: { xs: '15px', lg: '15.2px' },
             lineHeight: '18.15px',
+            wordSpacing: '1px',
           }}
         >
           {Description}
