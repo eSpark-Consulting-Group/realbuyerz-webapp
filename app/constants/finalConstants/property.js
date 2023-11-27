@@ -16,10 +16,16 @@ export const ADD_PROPERTY = [
       geolocation: '', //text
     },
     sizeBudgets: {
-      propertyAreaSize: '121', //number
-      propertyAreaUnits: 'sqft', //text
-      propertyAreaAmount: '15,000,000', //number
-      propertyAreaUnits: 'RS', //text
+      propertyArea: {
+        area: 121, //number
+        unit: 'sqft', //text
+      },
+      propertyAmount: {
+        area: 121, //number
+        unit: 'sqft', //text
+      },
+      instalmentAvailable: true, //bolean
+      readyPossession: true, //bolean
     },
     featureAmenities: [
       // Array object
@@ -30,8 +36,8 @@ export const ADD_PROPERTY = [
     ],
     media: {
       //object Array
-      images: ['imagesrc1', 'imagesrc1', 'imagesrc1', 'imagesrc1', 'imagesrc1'], //array
-      videos: ['videosrc1', 'videosrc1', 'videosrc1', 'videosrc1', 'videosrc1'], //array
+      images: ['imagesrc1', 'imagesrc2', 'imagesrc3', 'imagesrc4', 'imagesrc5'], //array
+      videos: ['videosrc1', 'videosrc2', 'videosrc3', 'videosrc4', 'videosrc5'], //array
     },
   },
 ];
