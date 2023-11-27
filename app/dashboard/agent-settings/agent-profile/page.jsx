@@ -37,7 +37,9 @@ const AgentProfile = () => {
   const userPassword = Object.fromEntries(
     passwordfields?.map((field) => [field.name, ''])
   );
+
   const allfields = { ...userDetail, ...userPassword };
+
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues: allfields,
     validationSchema: EditProfileSchema,
