@@ -29,36 +29,42 @@ export const AGENT_PROFILE_DATA = {
   recentProperties: {
     properties: [
       {
+        id: '1',
         name: 'Index Industrial Park',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '2',
         name: 'Gulshan-e-Iqbal',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '3',
         name: 'Gulistan-e-Johar',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '4',
         name: 'Malir',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '5',
         name: 'Gulistan-e-Johar',
         image: '/images/agent-profile-icons/newhouse.png',
         price: '3.0 Crore PKR',
         location: 'Hub River Road',
       },
       {
+        id: '6',
         name: 'Malir',
         image: '/images/agent-profile-icons/house.png',
         price: '3.0 Crore PKR',
