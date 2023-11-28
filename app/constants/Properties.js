@@ -716,6 +716,11 @@ export const PROPERTY_PURPOSE = {
     city: 'City',
     location: 'Location',
   },
+  propertyType: {
+    house: 'House',
+    plots: 'Plots',
+    commercial: 'Commercial',
+  },
 };
 export const PROPERTY_ESTATE = {
   propertyAttributes: [

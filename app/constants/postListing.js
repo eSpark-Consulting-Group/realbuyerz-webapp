@@ -100,7 +100,7 @@ export const PROPERTY_INFORMATION = {
       title: 'Plot Form',
       label: 'plotFormBtn',
       value: '',
-    }
+    },
   ],
   propertyCommercial: [
     {
@@ -395,14 +395,14 @@ export const PROPERTY_BUYING_DETAIL = {
     selectCityOptions: {},
     selectedPurpose: '',
     SelectPropertyType: {
-      Home: {
+      House: {
         houseBtn: '',
         flatBtn: '',
         upperPortionBtn: '',
         lowerPortionBtn: '',
         farmHouseBtn: '',
         roomBtn: '',
-        pentHouseBtn: '',
+        rentHouseBtn: '',
       },
       Plot: {
         residentialPlotsBtn: '',
@@ -418,7 +418,7 @@ export const PROPERTY_BUYING_DETAIL = {
         wareHouseBtn: '',
         buildingBtn: '',
         otherBtn: '',
-      }
+      },
     },
     selectedAmenities: {},
     incrementBtn: {},

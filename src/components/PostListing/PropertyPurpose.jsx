@@ -72,6 +72,7 @@ const PropertyPurpose = () => {
                 label={PROPERTY_INFORMATION.propertyType.text}
                 iconTitle={PROPERTY_INFORMATION.IconTitle}
                 plotType={PROPERTY_INFORMATION.propertyPlot}
+                commercialType={PROPERTY_INFORMATION.propertyCommercial}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
               />
               <SelectCityType

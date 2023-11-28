@@ -4,14 +4,16 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertyTypeState } from '@/utils/propertyType';
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PropertyTypes from './PropertyPlot';
+import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
+import { handleButtonClick } from '@/utils/properyTypeData';
 
 const SelectProperyType = ({
   image,
   label,
   iconTitle,
   plotType,
+  commercialType,
   propertyBuyingDetails,
 }) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
@@ -19,43 +21,20 @@ const SelectProperyType = ({
     setActiveButtonIndex(index);
   };
   const [propertyData, setPropertyData] = useState(
-    createPropertyTypeState(iconTitle, plotType, propertyBuyingDetails)
+    createPropertyTypeState(
+      iconTitle,
+      plotType,
+      commercialType,
+      propertyBuyingDetails
+    )
   );
-
   const [activePropertyType, setActivePropertyType] = useState(null);
-  const handleButtonClick = (index) => {
-    const selectedText = iconTitle[index].title;
-    setActivePropertyType(selectedText);
-    setPropertyData((prevData) => {
-      const updatedPurposeData = [
-        ...prevData.propertyTypeInfo.propertyTypeData,
-      ];
-      updatedPurposeData[index].value = selectedText;
-      const updatedSellingData = {
-        ...prevData.propertyTypeInfo.sellingData,
-        SelectPropertyType: {
-          ...prevData.propertyTypeInfo.sellingData.SelectPropertyType,
-          Home: {
-            ...prevData.propertyTypeInfo.sellingData.SelectPropertyType.Home,
-            [iconTitle[index].label]: selectedText,
-          },
-        },
-      };
-      if (selectedText === 'Rent House') {
-        updatedSellingData.SelectPropertyType = {
-          ...prevData.propertyTypeInfo.sellingData.SelectPropertyType,
-          rentBtn: selectedText,
-        };
-      }
-      return {
-        ...prevData,
-        propertyTypeInfo: {
-          sellingData: updatedSellingData,
-          propertyTypeData: updatedPurposeData,
-        },
-      };
-    });
+  const handleButtonClickWrapper = (index) => {
+    setPropertyData((prevData) =>
+      handleButtonClick(index, iconTitle, plotType, commercialType, prevData)
+    );
   };
+  console.log('propertyData', propertyData);
   useEffect(() => {
     setActivePropertyType('House');
   }, []);
@@ -98,13 +77,13 @@ const SelectProperyType = ({
           sx={{ color: activePropertyType === 'House' ? '#FB631C' : '#666' }}
           onClick={() => setActivePropertyType('House')}
         >
-          House
+          {PROPERTY_PURPOSE.propertyType.house}
         </Button>
         <Button
-          sx={{ color: activePropertyType === 'Plot' ? '#FB631C' : '#666' }}
-          onClick={() => setActivePropertyType('Plot')}
+          sx={{ color: activePropertyType === 'Plots' ? '#FB631C' : '#666' }}
+          onClick={() => setActivePropertyType('Plots')}
         >
-          Plot
+          {PROPERTY_PURPOSE.propertyType.plots}
         </Button>
         <Button
           sx={{
@@ -112,17 +91,8 @@ const SelectProperyType = ({
           }}
           onClick={() => setActivePropertyType('Commercial')}
         >
-          Commercial
+          {PROPERTY_PURPOSE.propertyType.commercial}
         </Button>
-        {/* <Button sx={{ color: '#FB631C' }}
-        
-        >House</Button>
-        <Button sx={{ color: '#666' }}
-        onClick={handleProprtyType}
-        >Plot</Button>
-        <Button sx={{ color: '#666' }}
-        onClick={handleProprtyType}
-        >Commercial</Button> */}
       </Box>
       <hr style={{ width: '100%' }}></hr>
       {activePropertyType === 'House' && (
@@ -137,7 +107,7 @@ const SelectProperyType = ({
             },
           }}
         >
-          {propertyData.propertyTypeInfo.propertyTypeData.map((item, index) => (
+          {iconTitle.map((item, index) => (
             <Button
               sx={{
                 borderRadius: '20px',
@@ -155,7 +125,7 @@ const SelectProperyType = ({
               disabled={index === activeButtonIndex}
               onClick={() => {
                 handleActiveButtonClick(index);
-                handleButtonClick(index);
+                handleButtonClickWrapper(index);
               }}
             >
               <Image src={item.image} width={33} height={31} alt="property" />
@@ -164,11 +134,17 @@ const SelectProperyType = ({
           ))}
         </Box>
       )}
-      {activePropertyType === 'Plot' && (
-        <PropertyTypes data={PROPERTY_INFORMATION.propertyPlot} />
+      {activePropertyType === 'Plots' && (
+        <PropertyTypes
+          data={plotType}
+          handleButtonClick={handleButtonClickWrapper}
+        />
       )}
       {activePropertyType === 'Commercial' && (
-        <PropertyTypes data={PROPERTY_INFORMATION?.propertyCommercial} />
+        <PropertyTypes
+          data={commercialType}
+          handleButtonClick={handleButtonClickWrapper}
+        />
       )}
     </Box>
   );

@@ -1,12 +1,24 @@
 import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 
-export const createPropertyTypeState = (iconTitle, propertyBuyingDetails) => {
+export const createPropertyTypeState = (
+  iconTitle,
+  commercialType,
+  plotType,
+  propertyBuyingDetails
+) => {
   if (!propertyBuyingDetails) {
     return {};
   }
+  const mapArray = (array) =>
+    Array.isArray(array) ? array.map((item) => ({ ...item, value: '' })) : [];
   const propertyTypeInfo = {
     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-    propertyTypeData: iconTitle.map((item) => ({ ...item, value: '' })),
+    propertyTypeData: [
+      ...mapArray(iconTitle),
+      ...mapArray(commercialType),
+      ...mapArray(plotType),
+    ],
   };
+  console.log('test', propertyTypeInfo.propertyTypeData);
   return { propertyTypeInfo };
 };
