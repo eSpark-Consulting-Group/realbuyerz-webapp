@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-<<<<<<< HEAD
 import propertiesSlice from './slices/properties/propertiesSlice';
 import propertiesCategoriesSlice from './slices/properties/propertiesCategoriesSlice';
 import propertiesAmenitiesSlice from './slices/properties/propertiesAmenitiesSlice';
@@ -33,14 +32,5 @@ export const store = configureStore({
     chats: chatsSlice,
     blogs: blogsSlice,
     partners: partnersSlice,
-=======
-import appReducer from './slices/slice';
-import PakageCartSlice from './slices/settings/PakageCartSlice';
-
-export const store = configureStore({
-  reducer: {
-    app: appReducer,
-    PakageCart: PakageCartSlice,
->>>>>>> origin/epic/issue/1
   },
 });

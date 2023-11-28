@@ -8,14 +8,17 @@ import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
-
 import { PROPERTIES_LISTING } from '@/app/constants/Properties';
+import { useSelector } from 'react-redux';
+
+// import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
 function SingleProperty() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const property = PROPERTIES_LISTING[id - 1];
+  const properties = useSelector((state) => state.properties.properties);
+  const property = properties[id - 1];
   return (
     <>
       <Grid
@@ -25,7 +28,7 @@ function SingleProperty() {
         <Grid
           item
           xs={12}
-          md={6}
+          md={8}
           sx={{
             display: 'flex',
             flexDirection: 'column',

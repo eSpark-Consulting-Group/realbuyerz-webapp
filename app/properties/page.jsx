@@ -3,14 +3,13 @@ import React from 'react';
 import { Box } from '@mui/system';
 
 import PropertyTabs from '@/src/components/Properties/PropertyTabs';
+import { useSelector } from 'react-redux';
 
-import { PROPERTIES_LISTING } from '../constants/Properties';
+// import { PROPERTIES_LISTING } from '../constants/Properties';
 
 const Listing = () => {
   // const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties.properties);
-  const all = useSelector((state) => state);
-  console.log(all);
   // const handleAddProperty = () => {
   //   const newProperty = {
   //     id: '3',
