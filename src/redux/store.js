@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import propertiesSlice from './slices/properties/propertiesSlice';
 import propertiesCategoriesSlice from './slices/properties/propertiesCategoriesSlice';
 import propertiesAmenitiesSlice from './slices/properties/propertiesAmenitiesSlice';
@@ -14,6 +15,7 @@ import partnersSlice from './slices/global/partnersSlice';
 import agentsSlice from './slices/agents/agentsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
+import PakageCartSlice from './slices/settings/PakageCartSlice';
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +34,6 @@ export const store = configureStore({
     chats: chatsSlice,
     blogs: blogsSlice,
     partners: partnersSlice,
+    PakageCart: PakageCartSlice,
   },
 });

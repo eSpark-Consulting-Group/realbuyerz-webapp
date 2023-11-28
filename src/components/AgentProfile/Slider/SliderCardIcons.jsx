@@ -7,7 +7,7 @@ const SliderCardIcons = () => {
     <>
       <Grid item xs={4}>
         <Image
-          src="./images/agent-profile-icons/aminites2.svg"
+          src="/images/agent-profile-icons/aminites2.svg"
           width={20}
           height={20}
           style={{ display: 'inline' }}
@@ -16,7 +16,7 @@ const SliderCardIcons = () => {
       </Grid>
       <Grid item xs={4}>
         <Image
-          src="./images/agent-profile-icons/aminites3.svg"
+          src="/images/agent-profile-icons/aminites3.svg"
           width={20}
           height={20}
           style={{ display: 'inline' }}
@@ -25,7 +25,7 @@ const SliderCardIcons = () => {
       </Grid>
       <Grid item xs={4}>
         <Image
-          src="./images/agent-profile-icons/aminites1.svg"
+          src="/images/agent-profile-icons/aminites1.svg"
           width={20}
           height={20}
           style={{ display: 'inline' }}

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 const LoginCard = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const LoginCard = () => {
       >
         <Box
           sx={{
-            width: { xs: '70%', md: '320px' },
+            width: { xs: '70%', md: '330px' },
             display: 'flex',
             flexDirection: 'column',
             height: 'auto',
@@ -44,10 +44,16 @@ const LoginCard = () => {
           <Typography
             sx={{
               color: '#FF631C',
-              fontSize: { xs: '15px', md: '20px' },
+              fontSize: { xs: '15px', md: '30px' },
+              fontFamily: 'Inter',
             }}
           >
-            {LOGIN_FORM.loginForm.welcome}
+            {LOGIN_FORM.loginCard.welcome}
+          </Typography>
+          <Typography
+            sx={{ fontSize: { xs: '12px', md: '15px' }, fontFamily: 'Inter' }}
+          >
+            {LOGIN_FORM.loginCard.verifiedBuyers}
           </Typography>
           <FormContainer isLoginForm={true} />
           <Box
@@ -71,25 +77,24 @@ const LoginCard = () => {
                 marginTop: 2,
               }}
             >
-              {LOGIN_FORM.loginForm.forgetPassword}
+              {LOGIN_FORM.loginCard.forgetPassword}
             </Typography>
             <FormControlLabel
-              label={LOGIN_FORM.loginForm.rememberMe}
+              label={LOGIN_FORM.loginCard.rememberMe}
               control={<Checkbox size="small" color="primary" />}
               sx={{
                 display: 'flex',
                 flexDirection: 'row-reverse',
-                // marginLeft: '10px',
                 color: '#777777',
-                fontSize: { xs: '5px', md: '10px' },
+                fontSize: { xs: '5px', md: '12px' },
               }}
             />
           </Box>
           <LoginWithGoogle
-            buttonLabel={LOGIN_FORM.loginForm.login}
+            buttonLabel={LOGIN_FORM.loginCard.login}
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.signupForm.label}
-            loginButton={LOGIN_FORM.loginForm.googleLogin}
+            loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signup')}
           />
         </Box>

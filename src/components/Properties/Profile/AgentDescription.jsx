@@ -7,7 +7,7 @@ const AgentDescription = ({ description }) => {
       variant="primary"
       sx={{
         width: '100%',
-        fontSize: 16,
+        fontSize: { xs: '12px', md: '16px' },
         fontWeight: 400,
         textAlign: 'start',
       }}
