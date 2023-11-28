@@ -4,7 +4,6 @@ import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 
 import PropertyTabs from '@/src/components/Properties/PropertyTabs';
-import { useSelector } from 'react-redux';
 
 const Listing = () => {
   // const dispatch = useDispatch();
