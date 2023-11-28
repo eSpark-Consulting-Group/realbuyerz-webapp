@@ -4,7 +4,7 @@ import { Grid, Box } from '@mui/material';
 
 import RectangleBorderImage from '../Login/RectangleBorderImage';
 import SignupCard from './SignupCard';
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 const SignupBox = () => {
   return (
