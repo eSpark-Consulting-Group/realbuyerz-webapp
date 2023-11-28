@@ -5,10 +5,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM_DATA } from '@/app/constants/Login';
 
 const PasswordAndConfirmFields = () => {
-  const [formData, setFormData] = useState(LOGIN_FORM.passwordFields);
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleFieldToggle = (fieldName) => {
     setFormData({
       ...formData,
@@ -33,6 +33,10 @@ const PasswordAndConfirmFields = () => {
         value={formData.password}
         onChange={handleFieldChange}
         InputProps={{
+          sx: {
+            height: '40px',
+          },
+
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -45,6 +49,11 @@ const PasswordAndConfirmFields = () => {
             </InputAdornment>
           ),
         }}
+        InputLabelProps={{
+          sx: {
+            fontSize: '11px',
+          },
+        }}
       />
       <TextField
         label="Confirm Password"
@@ -55,6 +64,9 @@ const PasswordAndConfirmFields = () => {
         value={formData.confirmPassword}
         onChange={handleFieldChange}
         InputProps={{
+          sx: {
+            height: '40px',
+          },
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -70,6 +82,11 @@ const PasswordAndConfirmFields = () => {
               </IconButton>
             </InputAdornment>
           ),
+        }}
+        InputLabelProps={{
+          sx: {
+            fontSize: '11px',
+          },
         }}
       />
     </>

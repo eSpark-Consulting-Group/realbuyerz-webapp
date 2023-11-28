@@ -25,6 +25,8 @@ export default function ProfilePasswordForm({
   errors,
   touched,
   handleChange,
+  checked,
+  setChecked,
 }) {
   const { image, passwordfields, checkbox } = data;
   return (
@@ -51,7 +53,14 @@ export default function ProfilePasswordForm({
           const { id, label, place, type, helperText, sizes, width, name } =
             field;
           return (
-            <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md}>
+            <Grid
+              key={index}
+              item
+              xs={sizes?.xs}
+              sm={sizes?.sm}
+              md={sizes?.md}
+              lg={sizes?.lg}
+            >
               <Item>
                 <Box
                   sx={{
@@ -59,7 +68,7 @@ export default function ProfilePasswordForm({
                     height: '100%',
                     mx: 'auto',
                     pt: { xs: 0 },
-                    pl: { lg: 5, md: 5 },
+                    pl: { lg: 5, md: 2 },
                   }}
                 >
                   <Box
@@ -69,10 +78,19 @@ export default function ProfilePasswordForm({
                       rowGap: '18px',
                     }}
                   >
-                    <Typography variant="h6">{label}</Typography>
+                    <Typography
+                      variant="h6"
+                      sx={{ textAlign: 'left !important' }}
+                    >
+                      {label}
+                    </Typography>
                     <RBInput
                       sx={{
                         width: width,
+                        gap: 1,
+                        '.MuiFormHelperText-contained': {
+                          marginLeft: 0.5,
+                        },
                       }}
                       name={name}
                       type={type}
@@ -93,14 +111,19 @@ export default function ProfilePasswordForm({
             </Grid>
           );
         })}
-        <RBCheckbox
-          label={checkbox.label}
-          sx={{
-            ml: { xs: 2, md: 7 },
-            my: { xs: 1, md: 1 },
-            alignItems: 'center',
-          }}
-        />
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'left' }}>
+          <RBCheckbox
+            label={checkbox?.label}
+            checked={checked}
+            setChecked={setChecked}
+            sx={{
+              ml: { xs: 2, sm: 2, md: 4.2, lg: 7 },
+              my: { xs: 1, md: 1 },
+              alignItems: 'center',
+              color: 'black !important',
+            }}
+          />
+        </Box>
       </Grid>
     </Box>
   );

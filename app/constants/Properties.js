@@ -47,15 +47,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -106,15 +100,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -165,15 +153,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -224,15 +206,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -283,15 +259,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -342,15 +312,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -401,15 +365,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -460,15 +418,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -519,15 +471,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -578,15 +524,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -637,15 +577,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
   {
@@ -696,15 +630,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      {
-        images: '/images/slider/apartments.svg',
-      },
-      {
-        images: '/images/slider/houses.svg',
-      },
-      {
-        images: '/images/slider/commercial.svg',
-      },
+      '/images/slider/apartments.svg',
+      '/images/slider/houses.svg',
+      '/images/slider/commercial.svg',
     ],
   },
 ];
@@ -719,4 +647,15 @@ export const PROPERTY_ESTATE = {
     { label: 'Bath' },
     { label: 'Parking' },
   ],
+  propertyDetails: {
+    overview: 'Overview',
+    title: 'Title',
+    decription: 'Description',
+    area: 'Area',
+    amenities: 'Amenities',
+    demand: 'Demand',
+    reach: 'Reach out to us:',
+    pkr: 'PKR',
+    message: 'Message',
+  },
 };

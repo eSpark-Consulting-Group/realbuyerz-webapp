@@ -15,7 +15,7 @@ const SliderCardLocation = () => {
           }}
         >
           <Image
-            src="./images/agent-profile-icons/hub.svg"
+            src="/images/agent-profile-icons/hub.svg"
             width={10}
             height={10}
             alt="hub rever"
