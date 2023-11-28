@@ -38,7 +38,7 @@ function SingleProperty() {
           }}
         >
           <Sliders propertySlider={property} />
-          <PropertyDetails propertyData={property} />
+          <PropertyDetails propertyDetailsData={property} />
         </Grid>
         <Grid item xs={12} md={4}>
           <ProfileAgent agentData={property} />
