@@ -10,7 +10,7 @@ import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 const ProfileAgent = ({ agentData }) => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={11}>
+      <Grid item xs={12} md={12}>
         <Box
           sx={{
             maxWidth: {
