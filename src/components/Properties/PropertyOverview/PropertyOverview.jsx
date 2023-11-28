@@ -3,7 +3,6 @@ import React from 'react';
 import {
   Box,
   Table,
-  TableHead,
   TableBody,
   TableRow,
   TableCell,
@@ -14,77 +13,108 @@ import {
 
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
-const PropertyOverview = ({ propertyData }) => {
+const PropertyOverview = ({ propertyData, overview }) => {
   return (
     <>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          width: { xs: '80%', md: '90%' },
+          width: { xs: '100%', md: '100%' },
           gap: '9px',
-          marginRight: { xs: '50px', md: '50px' },
         }}
       >
-        <Typography sx={{ fontWeight: 600 }} variant="h3">
-          Overview
-        </Typography>
-        <TableContainer
-          component={Paper}
+        <Typography
           sx={{
-            justifyContent: { xs: 'center', md: 'none' },
-            overflow: 'hidden',
-            borderSpacing: '10px',
+            fontSize: { xs: '15px', md: '30px' },
+            fontWeight: 600,
+            marginLeft: '10px',
           }}
         >
-          <Table
+          {overview}
+        </Typography>
+        <Box
+          sx={{
+            border: '2px solid #F8F8F8',
+            borderTop: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+            height: '170px',
+          }}
+        >
+          <TableContainer
+            component={Paper}
             sx={{
-              borderRadius: '20px',
+              justifyContent: { xs: 'center', md: 'none' },
+              overflow: 'auto',
+              maxHeight: '300px',
+              borderSpacing: '10px',
+              borderRadius: '50px',
+              px: '20px',
+              backgroundColor: '#000',
+              marginBottom: '10px',
             }}
           >
-            <TableHead>
-              <TableRow
-                sx={{
-                  gap: '10px',
-                }}
-              >
-                {PROPERTY_ESTATE?.propertyAttributes?.map(
-                  (propertytype, index) => (
-                    <TableCell
-                      key={index}
-                      sx={{
-                        borderCollapse: 'collapse',
-                        color: 'white',
-                        backgroundColor: 'black',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {propertytype?.label}
-                    </TableCell>
-                  )
-                )}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                {Object.keys(propertyData?.propertyDetails).map(
-                  (key, index) => (
-                    <TableCell
-                      key={index}
-                      sx={{
-                        background: '#F8F8F8',
-                        border: '1px solid #B8B8B8',
-                        marginBottom: '20px',
-                      }}
-                    >
-                      {propertyData?.propertyDetails[key]}
-                    </TableCell>
-                  )
-                )}
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+            <Table>
+              <TableBody>
+                <TableRow sx={{}}>
+                  {PROPERTY_ESTATE?.propertyAttributes?.map(
+                    (propertytype, index) => (
+                      <TableCell
+                        key={index}
+                        sx={{
+                          borderCollapse: 'collapse',
+                          color: 'white',
+                          backgroundColor: 'black',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        {propertytype?.label}
+                      </TableCell>
+                    )
+                  )}
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <TableContainer
+            component={Paper}
+            sx={{
+              justifyContent: { xs: 'center', md: 'none' },
+              overflow: 'auto',
+              maxHeight: '300px',
+              borderSpacing: '10px',
+            }}
+          >
+            <Table
+              sx={{
+                borderRadius: '20px',
+              }}
+            >
+              <TableBody>
+                <TableRow>
+                  {Object.keys(propertyData?.propertyDetails).map(
+                    (key, index) => (
+                      <TableCell
+                        key={index}
+                        sx={{
+                          background: '#F8F8F8',
+                          border: '1px solid #B8B8B8',
+                          marginBottom: '20px',
+                          padding: '20px',
+                        }}
+                      >
+                        {propertyData?.propertyDetails[key]}
+                      </TableCell>
+                    )
+                  )}
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       </Box>
     </>
   );
