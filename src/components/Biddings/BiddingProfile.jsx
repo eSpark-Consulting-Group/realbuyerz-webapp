@@ -22,7 +22,7 @@ const BiddingProfile = ({ profileInfo }) => {
             background: '#FFF',
             width: '100%',
             height: '100%',
-            marginRight: {lg: '15px'},
+            marginRight: { lg: '15px' },
           }}
         >
           <Profile profileInfo={profileInfo} />
@@ -37,7 +37,7 @@ const BiddingProfile = ({ profileInfo }) => {
           xs={12}
           item
           sx={{
-            marginRight: {lg:'15px'},
+            marginRight: { lg: '15px' },
           }}
         >
           <Proposals />
