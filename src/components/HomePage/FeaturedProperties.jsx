@@ -1,13 +1,14 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import Image from 'next/image';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import Heading from './Heading';
-import Image from 'next/image';
 
 const FeaturedProperties = ({ data }) => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <Box
       sx={{
@@ -58,6 +59,8 @@ const FeaturedProperties = ({ data }) => {
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Box
                   sx={{
@@ -103,13 +106,22 @@ const FeaturedProperties = ({ data }) => {
                     </Box>
                   </Box>
                 </Box>
+
                 <Box
                   p={2}
                   sx={{
+                    display: hoveredIndex === index ? 'block' : 'none',
+                    // opacity: hoveredIndex === index ? 1 : 0,
+                    // transform: `translateX(${hoveredIndex === index ? '0%' : '-100%'
+                    //   })`,
+                    zIndex: '-1',
                     background: '#fff',
                     mr: '15%',
                     mt: '50%',
                     borderLeft: '10px #1176ad solid',
+                    // transition:
+                    //   'opacity .5s ease-in-out, transform 0.3s ease-in-out',
+                    overflow: 'revert-layer',
                   }}
                 >
                   <Box

@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -13,6 +13,7 @@ import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
 
 import { PROFILE_INFO } from '@/app/constants/AgentProfileForm';
+import VerificationModal from '../../Modal/VerificationModal';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -38,10 +39,16 @@ export default function ProfileForm({
 }) {
   const { image, fields } = data;
   const [verifyText, setVerifyText] = React.useState('unverified');
-
+  const [isVerificationSuccessful, setIsVerificationSuccessful] =
+    useState(false);
+  const [open, setOpen] = useState(false);
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
   const handleVerify = (name) => {
     if (values[name] !== '') {
       setVerifyText('verified');
+      setIsVerificationSuccessful(true);
     } else {
       setVerifyText('unverified');
     }
@@ -143,7 +150,6 @@ export default function ProfileForm({
                             color: `${
                               verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
                             }`,
-                            fontFamily: 'Inter',
                             fontStyle: 'normal',
                             fontWeight: 400,
                             lineHeight: 'normal',
@@ -204,8 +210,7 @@ export default function ProfileForm({
                             height: { xs: '53px', sm: 'auto', lg: '53px' },
                           }}
                         />
-                      )}
-
+                      )}{' '}
                       <RBInput
                         sx={{
                           width: width,
@@ -249,7 +254,9 @@ export default function ProfileForm({
                               ? true
                               : false
                           }
-                          onClick={() => handleVerify(name)}
+                          onClick={() => {
+                            handleVerify(name), handleModalToggle();
+                          }}
                           sx={{
                             width: { xs: '100%', sm: 'auto' },
                             height: { xs: '100%', sm: 'auto' },
@@ -268,6 +275,13 @@ export default function ProfileForm({
             </Grid>
           );
         })}
+        {isVerificationSuccessful && (
+          <VerificationModal
+            onClose={() => setIsVerificationSuccessful(false)}
+            onCloseModal={handleModalToggle}
+            open={open}
+          />
+        )}
       </Grid>
     </Box>
   );

@@ -1,14 +1,10 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
 
 import PropertyTabs from '@/src/components/Properties/PropertyTabs';
 
-// import {
-//   deleteProperty,
-//   updateProperty,
-// } from '@/src/redux/slices/propertiesSlice';
+import { PROPERTIES_LISTING } from '../constants/Properties';
 
 const Listing = () => {
   // const dispatch = useDispatch();
