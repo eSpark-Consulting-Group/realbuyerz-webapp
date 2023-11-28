@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://realbuyers.com/api';  // base URL
+const apiUrl = 'https://realbuyers.com/api'; // base URL
 
 const DynamicAPI = async (endpoint, method, payload, jwtToken) => {
   try {

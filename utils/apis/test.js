@@ -1,4 +1,4 @@
-const { addProperties, fetchProperties } = require("./properties");
+const { addProperties, fetchProperties } = require('./properties');
 
 const profileData = {
   // ... your profile data here ...

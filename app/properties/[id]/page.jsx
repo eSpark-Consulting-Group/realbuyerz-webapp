@@ -3,15 +3,12 @@ import React from 'react';
 
 import { Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyOverview from '@/src/components/Properties/PropertyOverview/PropertyOverview';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
-import { PROPERTIES_LISTING } from '@/app/constants/Properties';
-import { useSelector } from 'react-redux';
-
-// import { PROPERTIES_LISTING } from '@/app/constants/Properties';
 
 function SingleProperty() {
   const pathname = usePathname();
