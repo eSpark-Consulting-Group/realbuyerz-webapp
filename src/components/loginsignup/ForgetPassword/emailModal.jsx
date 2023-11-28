@@ -2,11 +2,10 @@
 import React, { useState } from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 import Image from 'next/image';
-
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 import LoginCard from '../Login/LoginCard';
-import ForgetPassword from './forgetPassword';
-
+import ForgetPassword from './ForgetPassword';
+import { updateReceivedEmail } from '@/utils/email';
 const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
   const [showSignin, setshowSignin] = useState(false);
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -106,7 +105,10 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                     borderRadius: '5px',
                     marginTop: '15px',
                   }}
-                  onClick={resendButton}
+                  onClick={() => {
+                    resendButton();
+                    updateReceivedEmail(email);
+                  }}
                 >
                   {LOGIN_FORM.loginForm.resend}
                 </Button>
@@ -124,21 +126,19 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                 >
                   {LOGIN_FORM.loginForm.backSignin}
                 </Button>
-
-                 {showForgetPassword && (
-                <ForgetPassword BackToLogin={handleBackToLogin} />
-              )}
+                {showForgetPassword && (
+                  <ForgetPassword BackToLogin={handleBackToLogin} />
+                )}
               </Box>
             </Box>
           </Box>
         </Modal>
       ) : (
         <>
-            <LoginCard  />
+          <LoginCard />
         </>
       )}
     </>
   );
 };
-
 export default CheckEmailModal;

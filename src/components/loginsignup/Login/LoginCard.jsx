@@ -1,16 +1,25 @@
-import React,{useState} from 'react';
-import { Typography, Box, FormControlLabel, Checkbox,Button } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Typography,
+  Box,
+  FormControlLabel,
+  Checkbox,
+  Button,
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
-import ForgetPassword from '../ForgetPassword/forgetPassword';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
 
 const LoginCard = () => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const handleClick = () => {
     setshowForgetPassword(true);
+  };
+  const handleClickTwo = () => {
+    setshowForgetPassword(false);
   };
   const router = useRouter();
   return (
@@ -101,7 +110,7 @@ const LoginCard = () => {
           </Box>
         </Box>
       ) : (
-        <ForgetPassword />
+        <ForgetPassword setShowForgetPassword={handleClickTwo} />
       )}
     </>
   );

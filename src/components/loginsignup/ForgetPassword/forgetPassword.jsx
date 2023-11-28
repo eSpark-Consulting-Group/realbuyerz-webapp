@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Typography, Grid, TextField, Button } from '@mui/material';
-
 import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 import CheckEmailModal from './emailModal';
+import { validateEmail } from '@/utils/validationEmail';
 
-const ForgetPassword = ({BackToLogin}) => {
+const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
@@ -18,18 +18,9 @@ const ForgetPassword = ({BackToLogin}) => {
   };
   const handleResent = () => {
     setResentEmail((PreEmails) => [...PreEmails, email]);
-  }
-  console.log("email",resentEmails)
-  const validateEmail = () => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    if (!emailRegex.test(email)) {
-      setError(LOGIN_FORM.loginForm.validEmail);
-      setisValidEmail(false);
-    } else {
-      setError('');
-      setisValidEmail(true);
-      handleModalToggle();
-    }
+  };
+  const handleValidation = () => {
+    validateEmail(email, setError, setisValidEmail, handleModalToggle);
   };
   return (
     <Grid container>
@@ -117,11 +108,10 @@ const ForgetPassword = ({BackToLogin}) => {
                   background: '#FF631C',
                 },
               }}
-              onClick={() => { validateEmail(), { BackToLogin } }}
+              onClick={handleValidation}
             >
               {LOGIN_FORM.loginForm.continue}
             </Button>
-
             {isValidEmail && (
               <CheckEmailModal
                 onClose={() => setisValidEmail(false)}
@@ -138,5 +128,4 @@ const ForgetPassword = ({BackToLogin}) => {
     </Grid>
   );
 };
-
 export default ForgetPassword;
