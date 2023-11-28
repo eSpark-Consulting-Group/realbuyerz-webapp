@@ -19,17 +19,22 @@ const UserDashboard = () => {
       <PostRequestButton />
       <Box
         sx={{
-          width: '100%',
+          width: { lg: '95%', xs: '100%' },
           background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
           mt: 6,
           mb: 6,
+          mx: 'auto',
         }}
       >
         <ViewAllPosting />
         <Divider />
-        <Box sx={{ p: 3 }}>
+        <Box
+          sx={{
+            p: { xs: 1, sm: 3 },
+          }}
+        >
           <BiddingDetails
             liveBiddingData={LIVE_BIDDING_DATA}
             Height={'78.5vh'}
@@ -38,12 +43,13 @@ const UserDashboard = () => {
       </Box>
       <Box
         sx={{
-          width: '100%',
+          width: { lg: '95%', xs: '100%' },
           background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
           mt: 6,
           mb: 6,
+          mx: 'auto',
         }}
       >
         <DashboardTitle
