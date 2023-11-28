@@ -22,7 +22,7 @@ const Slider = ({ propertySlider }) => {
             {propertySlider?.sliderImages?.map((item, index) => (
               <SwiperSlide key={index}>
                 <Image
-                  src={item.images}
+                  src={item}
                   alt={`Slide ${index + 1}`}
                   width={870}
                   height={500}
