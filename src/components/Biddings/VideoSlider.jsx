@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination, Navigation } from 'swiper/modules';
 
-const VideoSlider = ({ videos, modalWidth }) => {
+const VideoSlider = ({ videosSlider, modalWidth }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
       <Swiper
@@ -32,7 +32,7 @@ const VideoSlider = ({ videos, modalWidth }) => {
         }}
         modules={[EffectFade, Pagination, Navigation]}
       >
-        {videos?.map((video, index) => (
+        {videosSlider?.map((video, index) => (
           <Box key={index}>
             <SwiperSlide
               sx={{
@@ -83,7 +83,6 @@ const VideoSlider = ({ videos, modalWidth }) => {
             position: 'absolute',
             left: 45,
             top: '50%',
-            // transform: {xs:'translateY(-150%)', sm:'translateY(-230%)',  lg:'translateY(-50%)',},
             transform: 'translateY(-50%)',
             zIndex: 1,
             cursor: 'pointer',

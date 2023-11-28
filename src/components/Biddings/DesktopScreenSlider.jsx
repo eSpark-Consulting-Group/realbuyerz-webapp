@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
-const DesktopScreenSlider = ({ images, handleClose }) => {
+const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
   return (
     <Box
       className="modal-slider"
@@ -49,7 +49,7 @@ const DesktopScreenSlider = ({ images, handleClose }) => {
         }}
         modules={[EffectCoverflow, Pagination, Navigation]}
       >
-        {images?.map((image, index) => (
+        {imageSlider?.map((image, index) => (
           <Box key={index}>
             <SwiperSlide>
               <Image

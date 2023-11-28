@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination, Navigation } from 'swiper/modules';
 
-const MobleScreenSlider = ({ images, modalWidth, handleClose }) => {
+const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
       <Swiper
@@ -33,7 +33,7 @@ const MobleScreenSlider = ({ images, modalWidth, handleClose }) => {
         }}
         modules={[EffectFade, Pagination, Navigation]}
       >
-        {images?.map((image, index) => (
+        {imageSlider?.map((image, index) => (
           <Box key={index}>
             <SwiperSlide
               sx={{

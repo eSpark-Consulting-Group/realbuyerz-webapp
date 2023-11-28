@@ -41,7 +41,10 @@ const BidMedia = ({ title, media, mediaType }) => {
               }}
             >
               <Box sx={{ width: '100%', height: '100%' }}>
-                <DesktopScreenSlider images={media} handleClose={handleClose} />
+                <DesktopScreenSlider
+                  imageSlider={media}
+                  handleClose={handleClose}
+                />
               </Box>
             </Box>
             <Box
@@ -54,7 +57,7 @@ const BidMedia = ({ title, media, mediaType }) => {
               }}
             >
               <MobleScreenSlider
-                images={media}
+                imageSlider={media}
                 modalWidth={700}
                 handleClose={handleClose}
               />
@@ -89,7 +92,11 @@ const BidMedia = ({ title, media, mediaType }) => {
                 borderRadius: '30px',
               }}
             >
-              <VideoSlider videos={media} modalWidth={1050} modalHeight={569} />
+              <VideoSlider
+                videosSlider={media}
+                modalWidth={1050}
+                modalHeight={569}
+              />
             </Box>
           </Box>
         )}
