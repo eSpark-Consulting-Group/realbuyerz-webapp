@@ -9,8 +9,10 @@ import PropertyDescription from './PropertyDescription';
 import PropertyLocation from './PropertyLocation';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
+import PropertyOverview from '../PropertyOverview/PropertyOverview';
 
-const PropertyDetails = ({ propertyDetailsData }) => {
+const PropertyDetails = ({ propertyDetailsData, propertyData }) => {
   const properties = useSelector((state) => state.properties.properties);
 
   const pathname = usePathname();
@@ -33,7 +35,7 @@ const PropertyDetails = ({ propertyDetailsData }) => {
             description={propertyDetailsData.propertyData.description}
             heading={PROPERTY_ESTATE.propertyDetails.decription}
           />
-          <PropertyLocation propertyData={propertyData} />
+          <PropertyLocation propertyData={propertyDetailsData.propertyData} />
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
               amenities={propertyDetailsData.propertyData.amenities}

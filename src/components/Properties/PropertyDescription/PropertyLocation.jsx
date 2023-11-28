@@ -8,9 +8,9 @@ const PropertyLocation = ({ propertyData }) => {
   return (
     <Box sx={{ padding: '5px' }}>
       <PropertyLocationDetails
-        locationPurpose={propertyData.propertyData.location.purpose}
-        propertyType={propertyData.propertyData.location.Type}
-        city={propertyData.propertyData.location.city}
+        locationPurpose={propertyData.location.purpose}
+        propertyType={propertyData.location.Type}
+        city={propertyData.location.city}
       />
       <MapFrame width="100%" height="300px" />
     </Box>
