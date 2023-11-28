@@ -27,12 +27,11 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
         {liveBiddingData?.liveBidding
           ?.slice(0, showAllItems ? liveBiddingData?.liveBidding?.length : 2)
           ?.map((item, index) => (
-            <Grid container spacing={2} xs={12} key={index}>
+            <Grid container xs={12} key={index}>
               <Box
                 sx={{
                   width: '100%',
                   height: 'auto',
-                  marginLeft: 3,
                   backgroundColor: '#EDF7FF',
                   border: '1px solid #AAD9FF',
                   borderRadius: '16px',

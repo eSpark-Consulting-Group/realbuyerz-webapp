@@ -22,14 +22,13 @@ const ExpendedLiveBiddingList = ({ list }) => {
   return (
     <Box>
       {list?.map((item) => {
-        console.log(item, 'list');
         const isItemOpen = item.id === openItemId;
         return (
           <Box key={item.id}>
             <Box
               sx={{
-                width: '100%',
-                maxWidth: '300px',
+                width: { lg: '96%', xs: '100%' },
+                maxWidth: '290px',
                 mx: 'auto',
                 display: 'flex',
                 padding: '10px',
@@ -64,7 +63,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                     color: item?.link == path ? '#FB631C !important' : '#000',
                     fontSize: '16px',
                     fontWeight: '500',
-                    px: '19px',
+                    px: '15px',
                   }}
                 >
                   <Link
@@ -79,7 +78,10 @@ const ExpendedLiveBiddingList = ({ list }) => {
               {item.subItem && (
                 <IconButton
                   onClick={() => toggleCollapse(item.id)}
-                  sx={{ '&:hover': { backgroundColor: '#fff !important' } }}
+                  sx={{
+                    marginRight: { xs: '0px', lg: '-20px' },
+                    '&:hover': { backgroundColor: '#fff !important' },
+                  }}
                 >
                   {isItemOpen ? (
                     <ExpandLessIcon sx={{ color: '#000' }} />
