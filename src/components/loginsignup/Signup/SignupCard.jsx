@@ -46,7 +46,6 @@ const SignupCard = () => {
               color: '#FF631C',
               fontSize: '20px',
               fontWeight: 600,
-              fontFamily: 'Inter',
             }}
           >
             {LOGIN_FORM.loginCard.createAccount}
@@ -56,7 +55,6 @@ const SignupCard = () => {
               color: '#333333',
               fontSize: '16px',
               fontWeight: 400,
-              fontFamily: 'Inter',
             }}
           >
             {LOGIN_FORM.loginCard.quickEasy}

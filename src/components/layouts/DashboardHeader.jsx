@@ -88,7 +88,6 @@ const DashboardHeader = () => {
                 component="a"
                 sx={{
                   display: { xs: 'flex', md: 'none', lg: 'none' },
-                  fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   marginRight: 5,
@@ -104,8 +103,7 @@ const DashboardHeader = () => {
                   alt={'icon'}
                   style={{ marginTop: 2 }}
                 />
-              </Typography>
-
+              </Typography>{' '}
               <Typography
                 variant="h6"
                 noWrap
@@ -113,7 +111,6 @@ const DashboardHeader = () => {
                 href="/dashboard"
                 sx={{
                   display: { xs: 'flex' },
-                  fontFamily: 'monospace',
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   textDecoration: 'none',

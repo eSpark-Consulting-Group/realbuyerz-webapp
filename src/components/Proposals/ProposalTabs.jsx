@@ -81,7 +81,6 @@ const ProposalTabs = ({ filteredProposalsData }) => {
                       (proposal) =>
                         proposal.proposalStatus === tab.tabProposalStatus
                     ).length;
-
               return (
                 <Tab
                   key={tab.label}

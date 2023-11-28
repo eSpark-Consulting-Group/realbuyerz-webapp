@@ -128,7 +128,6 @@ const PropertyListingCard = ({ propertyData }) => {
             >
               {property.propertyData.description}
             </Typography>
-
             <div>
               <Typography
                 // variant='body2'

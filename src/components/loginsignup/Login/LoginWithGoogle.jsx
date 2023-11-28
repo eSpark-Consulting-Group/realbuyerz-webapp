@@ -79,7 +79,6 @@ const LoginWithGoogle = ({
             gap: '12px',
             color: '#909394',
             borderRadius: 2,
-            fontFamily: 'Inter',
             textTransform: 'math-auto',
           }}
         >

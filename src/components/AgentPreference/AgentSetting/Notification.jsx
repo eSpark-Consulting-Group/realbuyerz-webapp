@@ -27,7 +27,6 @@ const Notification = ({ notificationData, handleInputChange }) => {
                 sx={{
                   color: 'black',
                   fontSize: '20px',
-                  fontFamily: 'Inter',
                   fontWeight: 400,
                 }}
               >
@@ -45,7 +44,6 @@ const Notification = ({ notificationData, handleInputChange }) => {
                 sx={{
                   color: '#666666',
                   fontSize: '18px',
-                  fontFamily: 'Inter',
                   fontWeight: 400,
                 }}
               >

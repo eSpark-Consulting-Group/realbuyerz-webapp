@@ -19,7 +19,7 @@ const LoginPageText = () => {
         sx={{
           color: '#126FAA',
           fontSize: { xs: '25px', md: '35px' },
-          fontFamily: 'Inter',
+
           fontWeight: 500,
           textAlign: 'center',
         }}
@@ -30,7 +30,7 @@ const LoginPageText = () => {
         sx={{
           color: '#FF631C',
           fontSize: { xs: '15px', md: '20px' },
-          fontFamily: 'Inter',
+
           fontWeight: 400,
           textAlign: 'center',
         }}
