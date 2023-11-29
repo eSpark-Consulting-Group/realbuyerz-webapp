@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Tooltip } from '@mui/material';
 import { Box } from '@mui/system';
-import Image from 'next/image';
+
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import CollapsedLiveBiddingList from './CollapsedLiveBiddingList';
@@ -13,6 +13,7 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
         width: isCollapsed,
         height: '100%',
         borderRight: '2px solid #E4E4E4',
+        backgroundColor: '#fff',
       }}
     >
       <Box sx={{ position: 'relative' }}>
@@ -39,7 +40,7 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
       </Box>
       <Grid
         container
-        columnSpacing={{ xs: 1, sm: 2, md: 4, lg: 5 }}
+        columnSpacing={{ xs: 1, sm: 0, md: 0, lg: 0 }}
         sx={{
           backgroundColor: '#fff',
           width: '100vw',
@@ -50,26 +51,11 @@ const CollapsedSideBar = ({ menuItem, isCollapsed, isCollaps }) => {
           item
           xs={12}
           sx={{
-            padding: '15px',
+            pt: '20px',
+            mx: 'auto',
             borderRadius: 15,
           }}
         >
-          <Box
-            sx={{
-              backgroundColor: '#FF631C33',
-              borderRadius: '15px',
-              display: 'flex',
-              padding: '10px',
-              alignItems: 'center',
-            }}
-          >
-            <Image
-              src={'/images/Live-bidding-icons/liveBidding.svg'}
-              width={30}
-              height={30}
-              alt="icon"
-            />
-          </Box>
           <CollapsedLiveBiddingList list={menuItem} />
         </Grid>
       </Grid>
