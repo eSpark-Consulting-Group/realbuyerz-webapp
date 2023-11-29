@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField } from '@mui/material';
+import { Typography, Box, TextField, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createInformationState } from '@/utils/addInfo';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
+  // const data = useSelector((state) => state.properties.properties);
+  // console.log('data', state);
+  const dispatch = useDispatch();
+
   const [propertyData, setPropertyData] = useState(
     createInformationState(propertyDetails, propertyBuyingDetails)
   );
+  const handleClick = () => {
+    dispatch(savePropertyData(propertyData));
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPropertyData((prevData) => ({
@@ -82,6 +90,7 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
           />
         </Box>
       ))}
+      <Button onClick={handleClick}>Ok</Button>
     </Box>
   );
 };
