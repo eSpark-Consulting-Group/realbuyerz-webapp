@@ -11,12 +11,11 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
   return (
     <Box className="scrollable" sx={{ height: Height }}>
       {liveBiddingData?.liveBidding?.map((item, index) => (
-        <Grid container spacing={2} xs={12} key={index}>
+        <Grid container xs={12} key={index}>
           <Box
             sx={{
               width: '100%',
               height: 'auto',
-              marginLeft: 3,
               backgroundColor: '#EDF7FF',
               border: '1px solid #AAD9FF',
               borderRadius: '16px',
@@ -87,7 +86,7 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
               <Grid item lg={2} md={12} sm={12}>
                 <Box
                   sx={{
-                    paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
+                    paddingLeft: { sm: '0px', md: '0px', lg: '75px' },
                   }}
                 >
                   <Button

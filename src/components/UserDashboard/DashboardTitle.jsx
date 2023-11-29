@@ -9,7 +9,7 @@ const DashboardTitle = ({ title }) => {
         Weight: 500,
         fontSize: '25px',
         lineHeight: '30.26px',
-        padding: 4,
+        padding: { lg: 6, sm: 4, xs: 2 },
       }}
     >
       {title}
