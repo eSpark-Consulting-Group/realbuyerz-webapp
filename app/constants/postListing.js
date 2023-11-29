@@ -380,6 +380,49 @@ export const PROPERTY_INFORMATION = {
     },
   ],
 };
+export const PROPERTY_BUYING_NEW= [
+  {
+    title: '',
+    description: '',
+    enterUnit: '',
+    enterAmount: '',
+    installmentAvailable: false,
+    readyForProcession: false,
+    addAmenities: '',
+    uploadImage: '',
+    uploadVideo: '',
+    selectCityOptions: {},
+    selectedPurpose: '',
+    SelectPropertyType: {
+      House: {
+        houseBtn: '',
+        flatBtn: '',
+        upperPortionBtn: '',
+        lowerPortionBtn: '',
+        farmHouseBtn: '',
+        roomBtn: '',
+        rentHouseBtn: '',
+      },
+      Plot: {
+        residentialPlotsBtn: '',
+        commercialPlotsBtn: '',
+        agricultureLandBtn: '',
+        industrailLandBtn: '',
+        plotFileBtn: '',
+        plotFormBtn: '',
+      },
+      Commercial: {
+        officeBtn: '',
+        shopBtn: '',
+        wareHouseBtn: '',
+        buildingBtn: '',
+        otherBtn: '',
+      },
+    },
+    selectedAmenities: {},
+    incrementBtn: {},
+  }
+]
 
 export const PROPERTY_BUYING_DETAIL = {
   sellingDetails: {

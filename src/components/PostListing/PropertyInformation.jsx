@@ -3,21 +3,26 @@ import { Typography, Box, TextField, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createInformationState } from '@/utils/addInfo';
-import { useDispatch, useSelector } from 'react-redux';
 import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { PROPERTY_BUYING_NEW } from '@/app/constants/postListing';
 const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
-  // const data = useSelector((state) => state.properties.properties);
-  // console.log('data', state);
-  const dispatch = useDispatch();
-
   const [propertyData, setPropertyData] = useState(
     createInformationState(propertyDetails, propertyBuyingDetails)
   );
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    dispatch(savePropertyData(propertyData));
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.adInfoData.sellingData,
+    });
+    console.log(propertyData);
   };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+
     setPropertyData((prevData) => ({
       ...prevData,
       adInfoData: {
@@ -30,7 +35,26 @@ const PropertyInformation = ({ propertyDetails, propertyBuyingDetails }) => {
         ),
       },
     }));
+    // console.log("prevData", prevData);
   };
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setPropertyData((prevData) => ({
+  //     ...prevData,
+  //     adInfoData: {
+  //       sellingData: prevData.adInfoData.sellingData,
+  //       addInfo: prevData.adInfoData.addInfo.map((item) =>
+  //         item.label === name ? { ...item, value } : item
+  //       ),
+  //     },
+  //     [PROPERTY_BUYING_NEW]: {
+  //       ...prevData[PROPERTY_BUYING_NEW],
+  //       [name]: value,
+  //     },
+  //   }));
+  // };
+
   const specialIndex = 1;
   return (
     <Box

@@ -19,7 +19,6 @@ import LeftSideBar from './LeftSideBar/LeftSideBar';
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  console.log(anchorElUser);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
