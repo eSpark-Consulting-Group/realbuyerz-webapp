@@ -5,11 +5,6 @@ import { useSelector } from 'react-redux';
 
 import PropertyTabs from '@/src/components/Properties/PropertyTabs';
 
-// import {
-//   deleteProperty,
-//   updateProperty,
-// } from '@/src/redux/slices/propertiesSlice';
-
 const Listing = () => {
   // const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties.properties);
