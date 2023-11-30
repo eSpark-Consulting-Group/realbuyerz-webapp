@@ -44,3 +44,12 @@ export const PROPERTY_AREASIZE_AND_REPORT = {
     areaUnit: '',
   },
 };
+export const PREFERENCE = [
+  {
+    emailNotification: false,
+    newsLetter: false,
+    automatedReports: false,
+    currency: '',
+    areaUnit: '',
+  },
+];
