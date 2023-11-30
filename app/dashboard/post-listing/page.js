@@ -12,7 +12,6 @@ import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 import {
   createInformationState,
-  createPropertyStatusState,
   handleClickUtil,
   handleInputChangeUtil,
 } from '@/utils/addInfo';
@@ -21,28 +20,66 @@ import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
 } from '@/app/constants/postListing';
-import { handleButtonClickUtil } from '@/utils/propertyStatus';
+import {
+  createPropertyStatusState,
+  handleButtonClickUtil,
+} from '@/utils/propertyStatus';
+import { createMediaDataState, handleFileChangeUtil } from '@/utils/mediaData';
 
-const PostListing = () => {
+const PostListing = ({ propertySell }) => {
+  const initializePropertyData = () => {
+    const informationState = createInformationState(
+      PROPERTY_INFORMATION.addInfo,
+      PROPERTY_BUYING_DETAIL.sellingDetails
+    );
+    const propertyStatusState = createPropertyStatusState({
+      propertySell: PROPERTY_INFORMATION.sell,
+      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+    });
+    const uploadMediaData = createMediaDataState({
+      propertyInformation: PROPERTY_INFORMATION.uploadButton,
+      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+    });
+    return {
+      ...informationState,
+      ...propertyStatusState,
+      ...uploadMediaData,
+    };
+  };
+  const hehe = initializePropertyData();
+  console.log('ttt', hehe);
+  const [propertyData, setPropertyData] = useState(initializePropertyData());
+  useEffect(() => {
+    console.log('heh', propertyData);
+  }, [propertyData]);
+
   // const [propertyData, setPropertyData] = useState(
-  //   createInformationState({
-  //     propertyInformation: PROPERTY_INFORMATION.addInfo,
-  //     propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-  //   })
+  //   createInformationState(
+  //     PROPERTY_INFORMATION.addInfo,
+  //     PROPERTY_BUYING_DETAIL.sellingDetails
+  //   )
   // );
-  // const dispatch = useDispatch();
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setPropertyData((prevData) => handleInputChangeUtil(prevData, name, value));
-  // };
-  // const handleInputChangeSell = (index) => {
-  //   handleButtonClickUtil(index, propertyData, setPropertyData);
-  // };
+  const dispatch = useDispatch();
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPropertyData((prevData) => handleInputChangeUtil(prevData, name, value));
+  };
 
-  // const handleClick = () => {
-  //   handleClickUtil(dispatch, propertyData);
-  //   console.log('data', propertyData);
-  // };
+  const handleInputChangeSell = (index) => {
+    handleButtonClickUtil(index, propertyData, setPropertyData, propertySell);
+  };
+  const handleFileChange = async (event, index) => {
+    const selectedFile = event.target.files[0];
+
+    setPropertyData((prevData) =>
+      handleFileChangeUtil(prevData, index, selectedFile)
+    );
+  };
+
+  const handleClick = () => {
+    handleClickUtil(dispatch, propertyData);
+    console.log('data', propertyData);
+  };
   return (
     <Grid
       container
@@ -63,18 +100,21 @@ const PostListing = () => {
         >
           <BuyersPlatform />
           <AdInformation
-          // propertyData={propertyData}
-          // handleInputChange={handleInputChange}
+            propertyData={propertyData}
+            handleInputChange={handleInputChange}
           />
           <PropertyPurpose
-          // propertyData={propertyData}
-          // // handleClick={handleClick}
-          // handleInputChangeSell={handleInputChangeSell}
+            propertyData={propertyData}
+            // // handleClick={handleClick}
+            handleInputChangeSell={handleInputChangeSell}
           />
           <PropertySize />
           <PropertyFeatures />
-          <PropertyGallery />
-          <SubmitButton />
+          <PropertyGallery
+            handleFileChange={handleFileChange}
+            propertyData={propertyData}
+          />
+          <SubmitButton onClick={handleClick} />
         </Box>
       </Grid>
     </Grid>

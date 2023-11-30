@@ -17,20 +17,6 @@ export const createInformationState = (
   };
   return { adInfoData };
 };
-// export const createPropertyStatusState = (
-//   propertySell,
-//   propertyBuyingDetails
-// ) => {
-//   if (!propertyBuyingDetails) {
-//     return {};
-//   }
-//   const propertyStatusData = {
-//     sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-//     purposeData: propertySell.map((item) => ({ ...item, value: '' })),
-//   };
-//   return { propertyStatusData };
-// };
-
 export const handleInputChangeUtil = (prevData, name, value) => ({
   ...prevData,
   adInfoData: {
@@ -44,17 +30,18 @@ export const handleInputChangeUtil = (prevData, name, value) => ({
   },
 });
 
-export const handleClickUtil = (dispatch, propertyData, sellingData) => {
+export const handleClickUtil = (dispatch, propertyData) => {
   dispatch({
     type: savePropertyData,
     // payload: propertyData.adInfoData.sellingData,
     payload: {
       ...propertyData.adInfoData.sellingData,
-      ...propertyData.propertyStatusData.sellingData,
-
-      // propertyStatusData: propertyData.propertyStatusData.sellingData,
-      // adInfoData: propertyData.adInfoData.sellingData,
+      // ...propertyData.propertyStatusData.sellingData,
+      ...propertyData.uploadedMediaData.sellingData,
     },
+
+    //   // propertyStatusData: propertyData.propertyStatusData.sellingData,
+    //   // adInfoData: propertyData.adInfoData.sellingData,
   });
   console.log('tests', propertyData);
 };

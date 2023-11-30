@@ -10,39 +10,39 @@ const PropertyStatus = ({
   propertyInformation,
   propertySell,
   propertyBuyingDetails,
-  // propertyData,
-  // handleInputChangeSell,
+  propertyData,
+  handleInputChangeSell,
 }) => {
-  const [propertyData, setPropertyData] = useState(
-    createPropertyStatusState(propertySell, propertyBuyingDetails)
-  );
-  const dispatch = useDispatch();
+  // const [propertyData, setPropertyData] = useState(
+  //   createPropertyStatusState(propertySell, propertyBuyingDetails)
+  // );
+  // const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch({
-      type: savePropertyData,
-      payload: propertyData.propertyStatusData.sellingData,
-    });
-    console.log(propertyData);
-  };
-  const handleButtonClick = (index) => {
-    const selectedText = propertySell[index].text;
-    setPropertyData((prevData) => {
-      const updatedPurposeData = [...prevData.propertyStatusData.purposeData];
-      updatedPurposeData[index].value = selectedText;
-      const updatedSellingData = {
-        ...prevData.propertyStatusData.sellingData,
-        selectedPurpose: selectedText,
-      };
-      return {
-        ...prevData,
-        propertyStatusData: {
-          sellingData: updatedSellingData,
-          purposeData: updatedPurposeData,
-        },
-      };
-    });
-  };
+  // const handleClick = () => {
+  //   dispatch({
+  //     type: savePropertyData,
+  //     payload: propertyData.propertyStatusData.sellingData,
+  //   });
+  //   console.log(propertyData);
+  // };
+  // const handleButtonClick = (index) => {
+  //   const selectedText = propertySell[index].text;
+  //   setPropertyData((prevData) => {
+  //     const updatedPurposeData = [...prevData.propertyStatusData.purposeData];
+  //     updatedPurposeData[index].value = selectedText;
+  //     const updatedSellingData = {
+  //       ...prevData.propertyStatusData.sellingData,
+  //       selectedPurpose: selectedText,
+  //     };
+  //     return {
+  //       ...prevData,
+  //       propertyStatusData: {
+  //         sellingData: updatedSellingData,
+  //         purposeData: updatedPurposeData,
+  //       },
+  //     };
+  //   });
+  // };
   return (
     <>
       <Box
@@ -100,12 +100,11 @@ const PropertyStatus = ({
               key={index}
             >
               <Image src={item.images} width={33} height={31} alt="sell-rent" />
-              <Button onClick={() => handleButtonClick(index)}>
+              <Button onClick={() => handleInputChangeSell(index)}>
                 {item.text}
               </Button>
             </Box>
           ))}
-          <Button onClick={handleClick}>Ok</Button>
         </Box>
       </Box>
     </>

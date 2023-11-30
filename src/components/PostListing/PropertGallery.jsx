@@ -10,7 +10,7 @@ import PostTitle from './PostTitle';
 import UploadMediaButton from './UploadMediaButton';
 import InstructionsForUpload from './InstructionsForUpload';
 
-const PropertyGallery = () => {
+const PropertyGallery = ({ handleFileChange, propertyData }) => {
   return (
     <Grid container>
       <Grid
@@ -96,6 +96,8 @@ const PropertyGallery = () => {
                 <UploadMediaButton
                   propertyInformation={PROPERTY_INFORMATION.uploadButton}
                   propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                  handleFileChange={handleFileChange}
+                  propertyData={propertyData}
                 />
                 <Box>
                   {' '}

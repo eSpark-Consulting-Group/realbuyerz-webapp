@@ -13,12 +13,14 @@ import { useDispatch } from 'react-redux';
 const PropertyInformation = ({
   propertyDetails,
   propertyBuyingDetails,
+  propertyData,
+  handleInputChange,
   // handleClick,
 }) => {
-  const [propertyData, setPropertyData] = useState(
-    createInformationState(propertyDetails, propertyBuyingDetails)
-  );
-  const dispatch = useDispatch();
+  // const [propertyData, setPropertyData] = useState(
+  //   createInformationState(propertyDetails, propertyBuyingDetails)
+  // );
+  // const dispatch = useDispatch();
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setPropertyData((prevData) => handleInputChangeUtil(prevData, name, value));
@@ -27,30 +29,30 @@ const PropertyInformation = ({
   // const handleClick = () => {
   //   handleClickUtil(dispatch, propertyData);
   // };
-  const handleClick = () => {
-    dispatch({
-      type: savePropertyData,
-      payload: propertyData.adInfoData.sellingData,
-    });
-    console.log('tests', propertyData);
-  };
+  // const handleClick = () => {
+  //   dispatch({
+  //     type: savePropertyData,
+  //     payload: propertyData.adInfoData.sellingData,
+  //   });
+  //   console.log('tests', propertyData);
+  // };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
 
-    setPropertyData((prevData) => ({
-      ...prevData,
-      adInfoData: {
-        sellingData: {
-          ...prevData.adInfoData.sellingData,
-          [name]: value,
-        },
-        addInfo: prevData.adInfoData.addInfo.map((item) =>
-          item.label === name ? { ...item, value } : item
-        ),
-      },
-    }));
-  };
+  //   setPropertyData((prevData) => ({
+  //     ...prevData,
+  //     adInfoData: {
+  //       sellingData: {
+  //         ...prevData.adInfoData.sellingData,
+  //         [name]: value,
+  //       },
+  //       addInfo: prevData.adInfoData.addInfo.map((item) =>
+  //         item.label === name ? { ...item, value } : item
+  //       ),
+  //     },
+  //   }));
+  // };
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
 
@@ -80,7 +82,7 @@ const PropertyInformation = ({
           width: '65%',
         }}
       >
-        {propertyData.adInfoData.addInfo.map((item, index) => (
+        {propertyData?.adInfoData?.addInfo.map((item, index) => (
           <Box
             sx={{
               display: 'flex',
@@ -124,15 +126,15 @@ const PropertyInformation = ({
                 },
               }}
               name={item.label}
-              onChange={handleInputChange}
-              // onChange={(event) => {
-              //   handleInputChange(event);
-              // }}
+              // onChange={handleInputChange}
+              onChange={(event) => {
+                handleInputChange(event);
+              }}
               multiline
             />
           </Box>
         ))}
-        <Button onClick={handleClick}>Ok</Button>
+        {/* <Button onClick={handleClick}>Ok</Button> */}
       </Box>
       {/* <SubmitButton handleClick={handleClick} /> */}
     </>
