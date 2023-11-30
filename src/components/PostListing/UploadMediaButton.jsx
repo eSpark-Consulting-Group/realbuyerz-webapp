@@ -3,12 +3,22 @@ import React, { useState } from 'react';
 import { Box, Button, Input } from '@mui/material';
 
 import { createMediaDataState } from '@/utils/mediaData';
+import { useDispatch } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
   const [propertyData, setPropertyData] = useState(
     createMediaDataState(propertyInformation, propertyBuyingDetails)
   );
+  const dispatch = useDispatch();
 
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.uploadedMediaData.sellingData,
+    });
+    console.log(propertyData);
+  };
   const handleFileChange = async (event, index) => {
     const selectedFile = event.target.files[0];
 
@@ -108,6 +118,7 @@ const UploadMediaButton = ({ propertyInformation, propertyBuyingDetails }) => {
             />
           </label>
         ))}
+        <Button onClick={handleClick}>Ok</Button>
       </>
     </Box>
   );

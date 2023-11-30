@@ -7,6 +7,8 @@ import { createPropertyTypeState } from '@/utils/propertyType';
 import PropertyTypes from './PropertyPlot';
 import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
 import { handleButtonClick } from '@/utils/properyTypeData';
+import { useDispatch } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const SelectProperyType = ({
   image,
@@ -28,6 +30,15 @@ const SelectProperyType = ({
       propertyBuyingDetails
     )
   );
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.propertyTypeInfo.sellingData,
+    });
+    console.log(propertyData);
+  };
   const [activePropertyType, setActivePropertyType] = useState(null);
   const handleButtonClickWrapper = (index) => {
     setPropertyData((prevData) =>
@@ -146,6 +157,7 @@ const SelectProperyType = ({
           handleButtonClick={handleButtonClickWrapper}
         />
       )}
+      <Button onClick={handleClick}>Ok</Button>
     </Box>
   );
 };

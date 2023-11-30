@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import {
+  Typography,
+  Box,
+  TextField,
+  Autocomplete,
+  Button,
+} from '@mui/material';
 import Image from 'next/image';
 
 import { selectCityState } from '@/utils/selectCityOption';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+import { useDispatch } from 'react-redux';
 
 const SelectCityType = ({
   image,
@@ -13,6 +21,14 @@ const SelectCityType = ({
   const [propertyData, setPropertyData] = useState(
     selectCityState(propertyBuyingDetails, cityOptions)
   );
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.selectedCity.sellingData,
+    });
+    console.log(propertyData);
+  };
   const handleCityChange = (event, value) => {
     setPropertyData((prevData) => ({
       ...prevData,
@@ -75,6 +91,7 @@ const SelectCityType = ({
           onChange={handleCityChange}
         />
       </Box>
+      <Button onClick={handleClick}>Ok</Button>
     </>
   );
 };

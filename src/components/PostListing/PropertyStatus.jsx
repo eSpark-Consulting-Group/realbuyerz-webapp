@@ -3,16 +3,28 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertyStatusState } from '@/utils/propertyStatus';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+import { useDispatch } from 'react-redux';
 
 const PropertyStatus = ({
   propertyInformation,
   propertySell,
   propertyBuyingDetails,
+  // propertyData,
+  // handleInputChangeSell,
 }) => {
   const [propertyData, setPropertyData] = useState(
     createPropertyStatusState(propertySell, propertyBuyingDetails)
   );
+  const dispatch = useDispatch();
 
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.propertyStatusData.sellingData,
+    });
+    console.log(propertyData);
+  };
   const handleButtonClick = (index) => {
     const selectedText = propertySell[index].text;
     setPropertyData((prevData) => {
@@ -73,7 +85,7 @@ const PropertyStatus = ({
             marginLeft: { xs: '50px', md: '50px' },
           }}
         >
-          {propertyData.propertyStatusData.purposeData.map((item, index) => (
+          {propertyData?.propertyStatusData?.purposeData.map((item, index) => (
             <Box
               sx={{
                 display: 'flex',
@@ -93,6 +105,7 @@ const PropertyStatus = ({
               </Button>
             </Box>
           ))}
+          <Button onClick={handleClick}>Ok</Button>
         </Box>
       </Box>
     </>

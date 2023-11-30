@@ -12,7 +12,7 @@ import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';
 import PropertyStatus from './PropertyStatus';
 
-const PropertyPurpose = () => {
+const PropertyPurpose = ({ propertyData, handleInputChangeSell }) => {
   return (
     <Grid container>
       <Grid
@@ -66,6 +66,8 @@ const PropertyPurpose = () => {
                 propertyInformation={PROPERTY_INFORMATION.purpose}
                 propertySell={PROPERTY_INFORMATION.sell}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                propertyData={propertyData}
+                handleInputChangeSell={handleInputChangeSell}
               />
               <SelectProperyType
                 image={PROPERTY_INFORMATION.propertyType.images}

@@ -9,7 +9,7 @@ import {
 import PostTitle from './PostTitle';
 import PropertyInformation from './PropertyInformation';
 
-const AdInformation = () => {
+const AdInformation = ({ propertyData, handleInputChange, handleClick }) => {
   return (
     <Grid container>
       <Grid
@@ -47,6 +47,11 @@ const AdInformation = () => {
             <PropertyInformation
               propertyDetails={PROPERTY_INFORMATION.addInfo}
               propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+              propertyData={propertyData}
+              handleInputChange={handleInputChange}
+              handleClick={handleClick}
+              // onClick={onClick}
+              // onInputChange={onInputChange}
             />
           </Box>
         </Box>

@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 import { incrementCounterState } from '@/utils/counterIncrement';
+import { useDispatch } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const CustomNumberInput = ({
   value,
@@ -17,6 +19,15 @@ const CustomNumberInput = ({
     const formattedValue = sanitizedValue.replace(/([+-])+/g, '$1');
     onChange(formattedValue);
   };
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    // dispatch({
+    //   type: savePropertyData,
+    //   payload: PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn,
+    // });
+    // console.log(propertyData);
+  };
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
     const newIncrementValue = numericValue + 1;
@@ -26,6 +37,10 @@ const CustomNumberInput = ({
     setIncrementValue(newIncrementValue);
 
     onChange(newIncrementValue.toString());
+    dispatch({
+      type: savePropertyData,
+      payload: newIncrementValue,
+    });
     console.log('Increment value:', numericValue);
   };
   const handleDecrement = () => {

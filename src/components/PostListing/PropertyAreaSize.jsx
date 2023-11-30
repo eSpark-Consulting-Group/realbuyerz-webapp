@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import {
+  Typography,
+  Box,
+  TextField,
+  Autocomplete,
+  Button,
+} from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
+import { useDispatch } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -16,6 +24,14 @@ const PropertyAreaSize = ({
       selectCity
     )
   );
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.propertySizeAndAmount.sellingData,
+    });
+    console.log(propertyData);
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPropertyData((prevData) => ({
@@ -130,6 +146,7 @@ const PropertyAreaSize = ({
           </Box>
         </Box>
       ))}
+      <Button onClick={handleClick}> Ok</Button>
     </>
   );
 };

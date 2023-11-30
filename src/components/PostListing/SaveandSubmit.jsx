@@ -4,7 +4,7 @@ import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
-const SubmitButton = ({ handleClickButton }) => {
+const SubmitButton = ({ handleClick }) => {
   return (
     <Grid container>
       <Grid
@@ -54,7 +54,7 @@ const SubmitButton = ({ handleClickButton }) => {
               fontSize: '15px',
               fontWeight: 400,
             }}
-            onClick={handleClickButton}
+            onClick={handleClick}
           >
             {PROPERTY_INFORMATION.submitAd}
           </Button>

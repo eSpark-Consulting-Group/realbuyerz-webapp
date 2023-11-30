@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Typography, Box, Switch } from '@mui/material';
+import { Typography, Box, Switch, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { createInstallmentState } from '@/utils/propertyInstallment';
+import { useDispatch } from 'react-redux';
+import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
@@ -11,6 +13,15 @@ const PropertyInstallment = ({
   const [propertyData, setPropertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
+
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch({
+      type: savePropertyData,
+      payload: propertyData.installmentData.sellingData,
+    });
+    console.log(propertyData);
+  };
   const handleInputChangeToggle = (name, checked) => {
     setPropertyData((prevData) => {
       const updatedToggleData = prevData.installmentData.toggleData.map(
@@ -100,6 +111,7 @@ const PropertyInstallment = ({
           </Box>
         </Box>
       ))}
+      <Button onClick={handleClick}>Ok</Button>
     </>
   );
 };
