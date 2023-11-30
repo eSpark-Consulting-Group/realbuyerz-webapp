@@ -8,6 +8,8 @@ import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/utils/codeValidation';
 import { isInputValid } from '@/utils/inputValid';
 import { isLengthValid } from '@/utils/lengthValid';
+import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
+import { useDispatch } from 'react-redux';
 
 const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
@@ -30,11 +32,12 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   };
   const code = verificationCode.verified;
   console.log('code', code);
-  console.log('vercode', verificationCode);
   const isValid = isInputValid(code);
-
   const checkLength = isLengthValid(code);
-
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(saveVerificationCode(verificationCode.verified));
+  };
   const handleConfirm = () => {
     if (isValid && checkLength) {
       setVerificationResult(VERIFICATION_OTP.verificationSuccessfully);
@@ -49,7 +52,6 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const handleModalToggle = () => {
     setOpen(!open);
   };
-  console.log('pp', verificationCode);
   return (
     <>
       <Box
@@ -109,7 +111,9 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
           width: '150px',
           borderRadius: '10px',
         }}
-        onClick={handleConfirm}
+        onClick={() => {
+          handleConfirm(), handleClick();
+        }}
       >
         {VERIFICATION_OTP.confirm}
       </Button>

@@ -36,3 +36,12 @@ export const VERIFICATION_CODE = {
     code_four: '',
   },
 };
+
+export const VERIFIED_CODE = [
+  {
+    code_one: '',
+    code_two: '',
+    code_three: '',
+    code_four: '',
+  },
+];
