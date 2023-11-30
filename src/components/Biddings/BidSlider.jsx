@@ -46,19 +46,22 @@ const BidSlider = ({ media, mediaType }) => {
       },
     },
   };
-  console.log('media', media);
+  console.log('mediaType', mediaType);
   return (
     <>
       <Swiper {...swiperSettings}>
         {media?.map((item, index) => (
           <SwiperSlide key={index}>
-            <Box sx={{ pr: '50px' }}>
-              {mediaType === 'images' ? (
+            {mediaType === 'images' ? (
+              <Box sx={{ pr: '50px' }}>
                 <Image height={200} width={250} src={item} alt="" />
-              ) : mediaType === 'videos' ? (
+              </Box>
+            ) : mediaType === 'videos' ? (
+              <Box sx={{ pr: '50px' }}>
+                {' '}
                 <Image height={200} width={250} src={item} alt="" />
-              ) : null}
-            </Box>
+              </Box>
+            ) : null}
           </SwiperSlide>
         ))}
       </Swiper>

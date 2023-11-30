@@ -17,7 +17,7 @@ const InnerPageLayout = ({ children }) => {
         backgroundColor: '#F4F5F7',
       }}
     >
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid
           item
           lg={2}

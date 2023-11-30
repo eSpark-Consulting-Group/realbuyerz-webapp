@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 
 import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import Image from 'next/image';
 
 const CongratsModal = ({ open, onCloseModal }) => {
   return (
@@ -43,7 +44,12 @@ const CongratsModal = ({ open, onCloseModal }) => {
               },
             }}
           >
-            <img src="/images/congrats/congrats.gif" alt="congrats" />
+            <Image
+              src="/images/congrats/congrats.gif"
+              alt="congrats"
+              height={150}
+              width={150}
+            />
           </Box>
           <Box
             sx={{
