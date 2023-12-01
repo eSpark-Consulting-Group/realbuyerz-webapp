@@ -8,15 +8,15 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Tooltip from '@mui/material/Tooltip';
 import { Button } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
-
-import { PAGES } from '@/app/constants/Constants';
 import Image from 'next/image';
 
-const settings = ['Login', 'Sign up'];
+import { PAGES } from '@/app/constants/Constants';
+import ModalSignin from '../Modal/ModalSignin';
+
+const settings = ['My Account', 'Logout'];
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -37,6 +37,10 @@ const MainHeader = () => {
     setAnchorElUser(null);
   };
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const dashboard = 'Login Button';
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
@@ -149,8 +153,8 @@ const MainHeader = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
+            {dashboard ? (
               <Button
                 variant="primary"
                 sx={{
@@ -163,33 +167,84 @@ const MainHeader = () => {
                     xl: 'block',
                   },
                 }}
-                onClick={handleOpenUserMenu}
+                onClick={handleOpen}
               >
                 <Typography sx={{ color: '#fff' }}>Sign in</Typography>
               </Button>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings?.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            ) : (
+              <>
+                <Button
+                  sx={{
+                    width: '120px',
+                    height: '40px',
+                    display: {
+                      xs: 'none',
+                      sm: 'block',
+                      lg: 'block',
+                      xl: 'block',
+                    },
+                  }}
+                  onClick={handleOpenUserMenu}
+                >
+                  <Image
+                    src={'/Images/DashboardLogin.png'}
+                    width={80}
+                    height={40}
+                    alt="dashboardIcon"
+                  />
+                </Button>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <Typography
+                    sx={{
+                      textAlign: 'center',
+                      fontWeight: 600,
+                      color: '#000',
+                    }}
+                  >
+                    Arman khan
+                  </Typography>
+                  {settings?.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Button>
+                        <Typography
+                          sx={{
+                            width: '120px',
+                            padding: 0.7,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignContent: 'center',
+                            textAlign: 'center',
+                            border: '1px solid #D6D6D6',
+                            marginBottom: '5px',
+                            backgroundColor: '#F5F5F5',
+                            borderRadius: '5px',
+                            color: '#333333',
+                          }}
+                        >
+                          {setting}
+                        </Typography>
+                      </Button>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            )}
+            <ModalSignin handleClose={handleClose} open={open} />
           </Box>
         </Toolbar>
       </Container>

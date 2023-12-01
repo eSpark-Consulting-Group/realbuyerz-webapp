@@ -6,7 +6,7 @@ import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_FORM } from '@/app/constants/Login';
 
-const LoginCard = () => {
+const LoginCard = ({ handleClose }) => {
   const router = useRouter();
   return (
     <>
@@ -96,6 +96,7 @@ const LoginCard = () => {
             accountCreationMessage={LOGIN_FORM.signupForm.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signup')}
+            handleClose={handleClose}
           />
         </Box>
       </Box>
