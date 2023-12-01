@@ -17,7 +17,7 @@ const PropertyForRent = ({ data }) => {
             }}
           >
             <Image
-              src="./images/agent-profile-icons/home.svg"
+              src="/images/agent-profile-icons/home.svg"
               width={15}
               height={15}
               alt="Home-icon"
@@ -59,7 +59,7 @@ const PropertyForRent = ({ data }) => {
               {VIEW_BUTTON} &nbsp;
             </Typography>
             <Image
-              src="./images/agent-profile-icons/arrow.svg"
+              src="/images/agent-profile-icons/arrow.svg"
               width={9}
               height={9}
               alt="arrow-icon"

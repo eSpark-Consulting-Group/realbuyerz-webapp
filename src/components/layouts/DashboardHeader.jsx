@@ -6,7 +6,6 @@ import { Button } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
@@ -48,7 +47,10 @@ const DashboardHeader = () => {
       position="static"
       sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4' }}
     >
-      <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
+      <Box
+        maxWidth="fluid"
+        sx={{ backgroundColor: 'white', p: 1, px: { xs: 0, lg: 4 } }}
+      >
         <Toolbar disableGutters>
           <Box
             sx={{
@@ -151,7 +153,7 @@ const DashboardHeader = () => {
             />
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 };

@@ -5,6 +5,7 @@ import { Grid, Box } from '@mui/material';
 import Price from './PropertyPrice';
 import AgentDescription from './AgentDescription';
 import ViewAgentProfile from './ViewAgentProfile';
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const ProfileAgent = ({ agentData }) => {
   return (
@@ -34,6 +35,9 @@ const ProfileAgent = ({ agentData }) => {
           <Price
             price={agentData?.agentData?.price}
             link={agentData?.agentData?.chatLink}
+            pkr={PROPERTY_ESTATE.propertyDetails.pkr}
+            reach={PROPERTY_ESTATE.propertyDetails.reach}
+            message={PROPERTY_ESTATE.propertyDetails.message}
           />
           <ViewAgentProfile
             image={agentData?.agentData?.profileimage}

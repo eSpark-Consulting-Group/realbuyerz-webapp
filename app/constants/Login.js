@@ -1,11 +1,12 @@
 export const LOGIN_FORM = {
-  loginForm: {
+  loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
     rememberMe: 'Remember me',
     forgetPassword: 'Forget Password?',
     passwordForget: 'Forget Password',
     welcome: 'Hey! Welcome',
+    verifiedBuyers: 'Login to reach out hundreds of verified buyers daily',
     login: 'Log in',
     googleLogin: 'Login with Google',
     label: 'Already have an account?',
@@ -38,6 +39,9 @@ export const LOGIN_FORM = {
     signupFormHeight: '750px',
     loginFormHeight: '656px',
   },
+};
+
+export const LOGIN_FORM_DATA = {
   initialFormData: {
     email: '',
     password: '',

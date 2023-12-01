@@ -5,10 +5,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM_DATA } from '@/app/constants/Login';
 
 const PasswordFields = () => {
-  const [formData, setFormData] = useState(LOGIN_FORM.passwordFields);
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleTogglePasswordVisibility = () => {
     setFormData({
       ...formData,

@@ -1,157 +1,214 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
-
-import { ESTIMATE_RANGE, VIEW } from '@/app/constants/LiveBidding';
+import {
+  ESTIMATE_RANGE,
+  LOAD_MORE,
+  SHOW_LESS,
+  VIEW,
+} from '@/app/constants/LiveBidding';
 
 const BiddingDetails = ({ liveBiddingData, Height }) => {
+  const [showAllItems, setShowAllItems] = useState(false);
+
+  const handleShowMoreClick = () => {
+    setShowAllItems(true);
+  };
+  const handleShowLessClick = () => {
+    setShowAllItems(false);
+  };
+
   return (
     <Box className="scrollable" sx={{ height: Height }}>
-      {liveBiddingData?.liveBidding?.map((item, index) => (
-        <Grid container spacing={2} xs={12} key={index}>
-          <Box
-            sx={{
-              width: '100%',
-              height: 'auto',
-              marginLeft: 3,
-              backgroundColor: '#EDF7FF',
-              border: '1px solid #AAD9FF',
-              borderRadius: '16px',
-              marginTop: '30px',
-              position: 'relative',
-              zIndex: 1,
-              marginBottom: '20px',
-            }}
-          >
-            <Box
-              sx={{
-                position: 'absolute',
-                width: { sm: '260px', lg: '300px' },
-                height: '100%',
-                background: '#F6FBFF',
-                zIndex: -1,
-                marginLeft: '0px',
-                borderRadius: '16px 200px 200px 16px',
-                display: { xs: 'none', sm: 'block' },
-              }}
-            ></Box>
-            <Grid
-              container
-              spacing={2}
-              sx={{
-                padding: 6,
-              }}
-            >
-              <Grid
-                item
-                lg={7}
-                md={4}
-                sx={{
-                  color: '#333',
-                }}
-              >
-                <Typography variant="h4" sx={{ ml: 0.4 }}>
-                  {item?.title}
-                </Typography>
-                <Typography variant="body1" sx={{ ml: 0.5 }}>
-                  {item?.postedTime}
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                lg={3}
-                md={8}
-                sx={{
-                  textAlign: 'right',
-                  alignContent: 'end',
-                  color: '#333',
-                  fontSize: '15px',
-                  fontStyle: 'normal',
-                  fontWeight: 700,
-                  lineHeight: 'normal',
-                  paddingRight: '40px',
-                }}
-              >
-                <Box>
-                  <Typography variant="body1">
-                    {ESTIMATE_RANGE}{' '}
-                    <span style={{ fontWeight: 'bold', color: '#333333' }}>
-                      {item.estRange}
-                    </span>
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item lg={2} md={12} sm={12}>
-                <Box
-                  sx={{
-                    paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
-                  }}
-                >
-                  <Button
-                    sx={{
-                      border: '1px solid #FB631C',
-                      borderRadius: '90px',
-                      alignItems: 'end',
-                      padding: '0px',
-                    }}
-                  >
-                    {VIEW}
-                  </Button>
-                </Box>
-              </Grid>
+      <>
+        {liveBiddingData?.liveBidding
+          ?.slice(0, showAllItems ? liveBiddingData?.liveBidding?.length : 2)
+          ?.map((item, index) => (
+            <Grid container xs={12} key={index}>
               <Box
                 sx={{
-                  color: '#333',
-                  paddingRight: '20px',
-                  paddingLeft: '20px',
-                  paddingTop: '40px',
-                  paddingBottom: '20px',
+                  width: '100%',
+                  height: 'auto',
+                  backgroundColor: '#EDF7FF',
+                  border: '1px solid #AAD9FF',
+                  borderRadius: '16px',
+                  marginTop: '30px',
+                  position: 'relative',
+                  zIndex: 1,
+                  marginBottom: '20px',
                 }}
               >
-                <Typography
-                  variant="body2"
+                <Box
                   sx={{
-                    fontWeight: '500',
-                    fontSize: '13.8px',
-                    lineHeight: '14.52px',
-                    mb: 1,
+                    position: 'absolute',
+                    width: { sm: '260px', lg: '300px' },
+                    height: '100%',
+                    background: '#F6FBFF',
+                    zIndex: -1,
+                    marginLeft: '0px',
+                    borderRadius: '16px 200px 200px 16px',
+                    display: { xs: 'none', sm: 'block' },
+                  }}
+                ></Box>
+                <Grid
+                  container
+                  spacing={2}
+                  sx={{
+                    padding: 6,
                   }}
                 >
-                  {item?.description}
-                </Typography>
-                <Typography
-                  variant="body2"
+                  <Grid
+                    item
+                    lg={7}
+                    md={4}
+                    sx={{
+                      color: '#333',
+                    }}
+                  >
+                    <Typography variant="h4" sx={{ ml: 0.4 }}>
+                      {item?.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ ml: 0.5 }}>
+                      {item?.postedTime}
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    lg={3}
+                    md={8}
+                    sx={{
+                      textAlign: 'right',
+                      alignContent: 'end',
+                      color: '#333',
+                      fontSize: '15px',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      lineHeight: 'normal',
+                      paddingRight: '40px',
+                    }}
+                  >
+                    <Box>
+                      <Typography variant="body1">
+                        {ESTIMATE_RANGE}{' '}
+                        <span style={{ fontWeight: 'bold', color: '#333333' }}>
+                          {item.estRange}
+                        </span>
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item lg={2} md={12} sm={12}>
+                    <Box
+                      sx={{
+                        paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
+                      }}
+                    >
+                      <a href={`./live-bidding/${item.id}`}>
+                        <Button
+                          sx={{
+                            border: '1px solid #FB631C',
+                            backgroundColor: '#fff !important',
+                            borderRadius: '15px',
+                            alignItems: 'end',
+                            padding: '4px',
+                            fontSize: '12px',
+                            fontStyle: 'normal',
+                            fontWeight: 500,
+                            lineHeight: 'normal',
+                          }}
+                        >
+                          {VIEW}
+                        </Button>
+                      </a>
+                    </Box>
+                  </Grid>
+                  <Box
+                    sx={{
+                      color: '#333',
+                      paddingRight: '20px',
+                      paddingLeft: '20px',
+                      paddingTop: '40px',
+                      paddingBottom: '20px',
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontWeight: '500',
+                        fontSize: '13.8px',
+                        lineHeight: '14.52px',
+                        fontFamilly: 'inter',
+                        mb: 1,
+                      }}
+                    >
+                      {item?.description}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontWeight: '500',
+                        fontSize: '13.8px',
+                        lineHeight: '14.52px',
+                        fontFamilly: 'inter',
+                      }}
+                    >
+                      {item?.description}
+                    </Typography>
+                  </Box>
+                  <LiveBiddingPropertiesList list={item.list} />
+                </Grid>
+                <Box
                   sx={{
-                    fontWeight: '500',
-                    fontSize: '13.8px',
-                    lineHeight: '14.52px',
+                    position: 'absolute',
+                    width: { sm: '260px', lg: '300px' },
+                    height: '100%',
+                    background: '#F6FBFF',
+                    zIndex: -1,
+                    marginLeft: '0px',
+                    borderRadius: '200px 16px  16px 200px',
+                    top: '0',
+                    right: '0px',
+                    display: { xs: 'none', sm: 'block' },
                   }}
-                >
-                  {item?.description}
-                </Typography>
+                ></Box>
               </Box>
-              <LiveBiddingPropertiesList list={item.list} />
             </Grid>
-            <Box
+          ))}
+        {!showAllItems && (
+          <Box sx={{ textAlign: 'center', marginTop: 2 }}>
+            <Button
+              onClick={handleShowMoreClick}
               sx={{
-                position: 'absolute',
-                width: { sm: '260px', lg: '300px' },
-                height: '100%',
-                background: '#F6FBFF',
-                zIndex: -1,
-                marginLeft: '0px',
-                borderRadius: '200px 16px  16px 200px',
-                top: '0',
-                right: '0px',
-                display: { xs: 'none', sm: 'block' },
+                margin: 'auto',
+                color: '#1176AD',
+                fontWeight: 500,
+                fontSize: '20px',
+                lineHeight: '24.2px',
               }}
-            ></Box>
+            >
+              {LOAD_MORE}
+            </Button>
           </Box>
-        </Grid>
-      ))}
+        )}
+        {showAllItems && (
+          <Box sx={{ textAlign: 'center', marginTop: 2 }}>
+            <Button
+              onClick={handleShowLessClick}
+              sx={{
+                margin: 'auto',
+                color: '#1176AD',
+                fontWeight: 500,
+                fontSize: '20px',
+                lineHeight: '24.2px',
+              }}
+            >
+              {SHOW_LESS}
+            </Button>
+          </Box>
+        )}
+      </>
     </Box>
   );
 };

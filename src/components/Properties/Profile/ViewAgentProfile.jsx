@@ -30,7 +30,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
           variant="secondary"
           sx={{
             ml: 2,
-            fontSize: 25,
+            fontSize: { xs: '15px', md: '25px' },
             fontWeight: 600,
           }}
         >
@@ -50,7 +50,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
             variant="dimSecondary"
             sx={{
               width: '100%',
-              fontSize: 20,
+              fontSize: { xs: '15px', md: '20px' },
               background: '#F5F6FB',
               fontWeight: 500,
               textTransform: 'capitalize',

@@ -6,24 +6,24 @@ export const Agent_Profile_Form_Data = {
   fields: [
     {
       label: 'Full Name',
-      name: 'fname',
+      name: 'firstName',
       value: '',
       place: 'Enter First Name',
       type: 'text',
       helperText: 'First Name',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: '',
-      name: 'lname',
+      name: 'lastName',
       value: '',
       place: 'Enter Last Name',
       type: 'text',
       helperText: 'Last Name',
-      pt: '25px',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      pt: { xs: 0, lg: '25px' },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Email',
@@ -32,8 +32,8 @@ export const Agent_Profile_Form_Data = {
       place: '@gmail.com',
       type: 'email',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Landline',
@@ -42,8 +42,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter Landline',
       type: 'number',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Whatsapp',
@@ -52,7 +52,7 @@ export const Agent_Profile_Form_Data = {
       name: 'whatsapp',
       value: '',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '70%', lg: '70%' },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       dropdowns: [
         {
           icon: '/images/agent_form/pakistan_flag.png',
@@ -76,7 +76,7 @@ export const Agent_Profile_Form_Data = {
         },
       ],
 
-      sizes: { xs: 12, sm: 12, md: 5 },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Mobile',
@@ -85,7 +85,7 @@ export const Agent_Profile_Form_Data = {
       name: 'mobile',
       value: '',
       helperText: '',
-      width: { xs: '100%', sm: '85%', md: '50%', lg: '50%' },
+      width: { xs: '100%', sm: '85%', md: '76%', lg: '56.2%' },
       dropdowns: [
         {
           icon: '/images/agent_form/pakistan_flag.png',
@@ -109,7 +109,7 @@ export const Agent_Profile_Form_Data = {
         },
       ],
       buttonText: 'Verify',
-      sizes: { xs: 12, sm: 12, md: 6 },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 6 },
     },
     {
       label: 'Country',
@@ -118,8 +118,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter Country',
       type: 'text',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'City',
@@ -128,8 +128,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter City',
       type: 'text',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '80%' },
-      sizes: { xs: 12, sm: 12, md: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Address',
@@ -139,12 +139,12 @@ export const Agent_Profile_Form_Data = {
       type: 'text',
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 10 },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 9.6 },
     },
     {
       id: 'outlined-multiline-static',
       label: 'Bio',
-      name: 'bio',
+      name: 'about',
       value: '',
       place: 'Enter Bio',
       type: 'textArea',
@@ -152,7 +152,7 @@ export const Agent_Profile_Form_Data = {
       rows: '4',
       multiline: true,
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 10 },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 9.6 },
     },
   ],
   passwordfields: [
@@ -163,8 +163,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter Old Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
-      sizes: { xs: 12, sm: 12, md: 10 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Enter New Password',
@@ -173,8 +173,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Enter New Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
-      sizes: { xs: 12, sm: 12, md: 10 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
     {
       label: 'Confirm Password',
@@ -183,8 +183,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Confirm Password',
       type: 'password',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '50%', lg: '38%' },
-      sizes: { xs: 12, sm: 12, md: 10 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
     },
   ],
   checkbox: {
