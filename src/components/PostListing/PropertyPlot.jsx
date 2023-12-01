@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-const PropertyTypes = ({ handleButtonClick, data }) => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
-  const handleActiveButtonClick = (index) => {
-    setActiveButtonIndex(index);
-  };
+const PropertyTypes = ({
+  data,
+  handlePropetySubType,
+  activePropertySubType,
+}) => {
   return (
     <Box
       sx={{
@@ -23,9 +23,14 @@ const PropertyTypes = ({ handleButtonClick, data }) => {
         <Button
           sx={{
             borderRadius: '20px',
-            border: '1px solid #E7E7E7',
-            color: '#666',
-            background: '#fff',
+            border: `1px solid ${
+              activePropertySubType === item?.title ? '#126FAA' : '#E7E7E7'
+            }`,
+            color: activePropertySubType === item?.title ? '#FB631C' : '#666',
+            backgroundColor:
+              activePropertySubType === item?.title
+                ? '#F4F5F7 !important'
+                : '#fff',
             display: 'flex',
             flexDirection: { xs: 'row', md: 'row' },
             alignItems: 'center',
@@ -34,14 +39,21 @@ const PropertyTypes = ({ handleButtonClick, data }) => {
             padding: '5px',
           }}
           key={index}
-          disabled={index === activeButtonIndex}
           onClick={() => {
-            handleActiveButtonClick(index);
-            handleButtonClick(index);
+            handlePropetySubType(item?.title);
           }}
         >
-          <Image src={item.image} width={33} height={31} alt="property" />
-          {item.title}
+          <Image
+            src={
+              activePropertySubType == item?.title
+                ? item?.activeImage
+                : item?.image
+            }
+            width={33}
+            height={31}
+            alt="property"
+          />
+          {item?.title}
         </Button>
       ))}
     </Box>

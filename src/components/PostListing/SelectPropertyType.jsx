@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { createPropertyTypeState } from '@/utils/propertyType';
 import PropertyTypes from './PropertyPlot';
 import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
-import { handleButtonClick } from '@/utils/properyTypeData';
 import { useDispatch } from 'react-redux';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+
+import {
+  addPropertyType,
+  addpropetySubType,
+} from '@/src/redux/slices/postlisting/example';
 
 const SelectProperyType = ({
   image,
@@ -16,39 +18,31 @@ const SelectProperyType = ({
   iconTitle,
   plotType,
   commercialType,
-  propertyBuyingDetails,
 }) => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
-  const handleActiveButtonClick = (index) => {
-    setActiveButtonIndex(index);
-  };
-  const [propertyData, setPropertyData] = useState(
-    createPropertyTypeState(
-      iconTitle,
-      plotType,
-      commercialType,
-      propertyBuyingDetails
-    )
-  );
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch({
-      type: savePropertyData,
-      payload: propertyData.propertyTypeInfo.sellingData,
-    });
-    console.log(propertyData);
-  };
   const [activePropertyType, setActivePropertyType] = useState(null);
-  const handleButtonClickWrapper = (index) => {
-    setPropertyData((prevData) =>
-      handleButtonClick(index, iconTitle, plotType, commercialType, prevData)
-    );
+  const [activePropertySubType, setActivePropertySubType] = useState(null);
+  const [propertyType, setPropertyType] = React.useState();
+  const [propetySubType, setPropetySubType] = React.useState();
+
+  const dispatch = useDispatch();
+  dispatch(addPropertyType(propertyType));
+  dispatch(addpropetySubType(propetySubType));
+
+  const handlePropertyType = (text) => {
+    setActivePropertyType(text);
+    setPropertyType(text);
   };
-  console.log('propertyData', propertyData);
+
+  const handlePropetySubType = (text) => {
+    setActivePropertySubType(text);
+    setPropetySubType(text);
+  };
+
   useEffect(() => {
     setActivePropertyType('House');
+    setPropertyType('House');
   }, []);
+
   return (
     <Box
       sx={{
@@ -86,23 +80,29 @@ const SelectProperyType = ({
       >
         <Button
           sx={{ color: activePropertyType === 'House' ? '#FB631C' : '#666' }}
-          onClick={() => setActivePropertyType('House')}
+          onClick={() =>
+            handlePropertyType(PROPERTY_PURPOSE?.propertyType?.house)
+          }
         >
-          {PROPERTY_PURPOSE.propertyType.house}
+          {PROPERTY_PURPOSE?.propertyType?.house}
         </Button>
         <Button
           sx={{ color: activePropertyType === 'Plots' ? '#FB631C' : '#666' }}
-          onClick={() => setActivePropertyType('Plots')}
+          onClick={() =>
+            handlePropertyType(PROPERTY_PURPOSE?.propertyType?.plots)
+          }
         >
-          {PROPERTY_PURPOSE.propertyType.plots}
+          {PROPERTY_PURPOSE?.propertyType?.plots}
         </Button>
         <Button
           sx={{
             color: activePropertyType === 'Commercial' ? '#FB631C' : '#666',
           }}
-          onClick={() => setActivePropertyType('Commercial')}
+          onClick={() =>
+            handlePropertyType(PROPERTY_PURPOSE?.propertyType?.commercial)
+          }
         >
-          {PROPERTY_PURPOSE.propertyType.commercial}
+          {PROPERTY_PURPOSE?.propertyType?.commercial}
         </Button>
       </Box>
       <hr style={{ width: '100%' }}></hr>
@@ -122,9 +122,15 @@ const SelectProperyType = ({
             <Button
               sx={{
                 borderRadius: '20px',
-                border: '1px solid #E7E7E7',
-                color: '#666',
-                background: '#fff',
+                border: `1px solid ${
+                  activePropertySubType === item?.title ? '#126FAA' : '#E7E7E7'
+                }`,
+                color:
+                  activePropertySubType === item?.title ? '#FB631C' : '#666',
+                backgroundColor:
+                  activePropertySubType === item?.title
+                    ? '#F4F5F7 !important'
+                    : '#fff',
                 display: 'flex',
                 flexDirection: { xs: 'row', md: 'row' },
                 alignItems: 'center',
@@ -133,13 +139,20 @@ const SelectProperyType = ({
                 padding: '5px',
               }}
               key={index}
-              disabled={index === activeButtonIndex}
               onClick={() => {
-                handleActiveButtonClick(index);
-                handleButtonClickWrapper(index);
+                handlePropetySubType(item?.title);
               }}
             >
-              <Image src={item.image} width={33} height={31} alt="property" />
+              <Image
+                src={
+                  activePropertySubType === item?.title
+                    ? item?.activeImage
+                    : item?.image
+                }
+                width={33}
+                height={31}
+                alt="property"
+              />
               {item.title}
             </Button>
           ))}
@@ -148,16 +161,18 @@ const SelectProperyType = ({
       {activePropertyType === 'Plots' && (
         <PropertyTypes
           data={plotType}
-          handleButtonClick={handleButtonClickWrapper}
+          handlePropetySubType={handlePropetySubType}
+          activePropertySubType={activePropertySubType}
         />
       )}
       {activePropertyType === 'Commercial' && (
         <PropertyTypes
           data={commercialType}
-          handleButtonClick={handleButtonClickWrapper}
+          activePropertySubType={activePropertySubType}
+          propetySubType={propetySubType}
+          handlePropetySubType={handlePropetySubType}
         />
       )}
-      <Button onClick={handleClick}>Ok</Button>
     </Box>
   );
 };

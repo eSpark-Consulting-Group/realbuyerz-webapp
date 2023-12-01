@@ -1,75 +1,19 @@
 import React from 'react';
 import { Typography, Box, TextField } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import Image from 'next/image';
+import { addInformation } from '@/src/redux/slices/postlisting/example';
 
-// import {
-//   createInformationState,
-//   handleClickUtil,
-//   handleInputChangeUtil,
-// } from '@/utils/addInfo';
-// import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
-// import { useDispatch } from 'react-redux';
-
-const PropertyInformation = ({
-  // propertyDetails,
-  // propertyBuyingDetails,
-  propertyData,
-  handleInputChange,
-  // handleClick,
-}) => {
-  // const [propertyData, setPropertyData] = useState(
-  //   createInformationState(propertyDetails, propertyBuyingDetails)
-  // );
-  // const dispatch = useDispatch();
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setPropertyData((prevData) => handleInputChangeUtil(prevData, name, value));
-  // };
-
-  // const handleClick = () => {
-  //   handleClickUtil(dispatch, propertyData);
-  // };
-  // const handleClick = () => {
-  //   dispatch({
-  //     type: savePropertyData,
-  //     payload: propertyData.adInfoData.sellingData,
-  //   });
-  //   console.log('tests', propertyData);
-  // };
-
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setPropertyData((prevData) => ({
-  //     ...prevData,
-  //     adInfoData: {
-  //       sellingData: {
-  //         ...prevData.adInfoData.sellingData,
-  //         [name]: value,
-  //       },
-  //       addInfo: prevData.adInfoData.addInfo.map((item) =>
-  //         item.label === name ? { ...item, value } : item
-  //       ),
-  //     },
-  //   }));
-  // };
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setPropertyData((prevData) => ({
-  //     ...prevData,
-  //     adInfoData: {
-  //       sellingData: prevData.adInfoData.sellingData,
-  //       addInfo: prevData.adInfoData.addInfo.map((item) =>
-  //         item.label === name ? { ...item, value } : item
-  //       ),
-  //     },
-  //     [PROPERTY_BUYING_NEW]: {
-  //       ...prevData[PROPERTY_BUYING_NEW],
-  //       [name]: value,
-  //     },
-  //   }));
-  // };
+const PropertyInformation = ({ propertyData }) => {
+  const [adInformation, setAdInformation] = React.useState({});
+  const dispatch = useDispatch();
+  dispatch(addInformation(adInformation));
+  const handleChange = (key, val) => {
+    setAdInformation({
+      ...adInformation,
+      [key]: val,
+    });
+  };
 
   const specialIndex = 1;
   return (
@@ -125,18 +69,13 @@ const PropertyInformation = ({
                   minHeight: index === specialIndex ? '192px' : '0',
                 },
               }}
-              name={item.label}
-              // onChange={handleInputChange}
-              onChange={(event) => {
-                handleInputChange(event);
-              }}
+              name={item?.label}
+              onChange={(e) => handleChange(item?.label, e.target.value)}
               multiline
             />
           </Box>
         ))}
-        {/* <Button onClick={handleClick}>Ok</Button> */}
       </Box>
-      {/* <SubmitButton handleClick={handleClick} /> */}
     </>
   );
 };

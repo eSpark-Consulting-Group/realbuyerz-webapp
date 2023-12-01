@@ -17,6 +17,7 @@ import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import postListingSlice from './slices/postlisting/postListingSlice';
+import ExamplePageSlice from './slices/postlisting/example';
 
 export const store = configureStore({
   reducer: {
@@ -37,5 +38,6 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
+    ExamplePage: ExamplePageSlice,
   },
 });

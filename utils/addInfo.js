@@ -35,9 +35,9 @@ export const handleClickUtil = (dispatch, propertyData) => {
     type: savePropertyData,
     // payload: propertyData.adInfoData.sellingData,
     payload: {
-      ...propertyData.adInfoData.sellingData,
+      ...propertyData?.adInfoData?.sellingData,
       // ...propertyData.propertyStatusData.sellingData,
-      ...propertyData.uploadedMediaData.sellingData,
+      ...propertyData?.uploadedMediaData?.sellingData,
     },
 
     //   // propertyStatusData: propertyData.propertyStatusData.sellingData,

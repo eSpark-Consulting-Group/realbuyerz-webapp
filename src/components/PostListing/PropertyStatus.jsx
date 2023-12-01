@@ -1,48 +1,26 @@
 import React from 'react';
-import { Typography, Box, Button } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addLocationAndPuspose } from '@/src/redux/slices/postlisting/example';
 
-// import { createPropertyStatusState } from '@/utils/propertyStatus';
-// import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
-// import { useDispatch } from 'react-redux';
+const PropertyStatus = ({ propertyInformation, propertyData }) => {
+  const [activePropertyStatus, setActivePropertyStatus] = React.useState();
+  const [properStatusData, setProperStatusData] = React.useState();
+  const dispatch = useDispatch();
+  dispatch(addLocationAndPuspose(properStatusData));
+  const handleChange = (val) => {
+    setActivePropertyStatus(val);
+    setProperStatusData({
+      ...properStatusData,
+      adPurpose: val,
+    });
+  };
 
-const PropertyStatus = ({
-  propertyInformation,
-  // propertySell,
-  // propertyBuyingDetails,
-  propertyData,
-  handleInputChangeSell,
-}) => {
-  // const [propertyData, setPropertyData] = useState(
-  //   createPropertyStatusState(propertySell, propertyBuyingDetails)
-  // );
-  // const dispatch = useDispatch();
+  React.useEffect(() => {
+    setActivePropertyStatus({ adPurpose: 'Sell' });
+  }, []);
 
-  // const handleClick = () => {
-  //   dispatch({
-  //     type: savePropertyData,
-  //     payload: propertyData.propertyStatusData.sellingData,
-  //   });
-  //   console.log(propertyData);
-  // };
-  // const handleButtonClick = (index) => {
-  //   const selectedText = propertySell[index].text;
-  //   setPropertyData((prevData) => {
-  //     const updatedPurposeData = [...prevData.propertyStatusData.purposeData];
-  //     updatedPurposeData[index].value = selectedText;
-  //     const updatedSellingData = {
-  //       ...prevData.propertyStatusData.sellingData,
-  //       selectedPurpose: selectedText,
-  //     };
-  //     return {
-  //       ...prevData,
-  //       propertyStatusData: {
-  //         sellingData: updatedSellingData,
-  //         purposeData: updatedPurposeData,
-  //       },
-  //     };
-  //   });
-  // };
   return (
     <>
       <Box
@@ -73,7 +51,7 @@ const PropertyStatus = ({
               color: '#333333',
             }}
           >
-            {propertyInformation.text}{' '}
+            {propertyInformation.text}
           </Typography>
           <span style={{ color: '#FF0000' }}>*</span>
         </Box>
@@ -91,18 +69,36 @@ const PropertyStatus = ({
                 display: 'flex',
                 justifyContent: 'center',
                 borderRadius: '20px',
-                border: '1px #E7E7E7 solid',
                 width: { xs: '120px', md: '150px' },
                 height: { xs: '50px', md: '60px' },
                 alignItems: 'center',
-                // padding: '10px',
+                border: `1px solid ${
+                  activePropertyStatus === item?.text ? '#126FAA' : '#E7E7E7'
+                }`,
+                color: activePropertyStatus === item?.text ? '#FB631C' : '#666',
+                backgroundColor:
+                  activePropertyStatus === item?.text
+                    ? '#F4F5F7 !important'
+                    : '#fff',
               }}
               key={index}
+              onClick={() => handleChange(item?.text)}
             >
-              <Image src={item.images} width={33} height={31} alt="sell-rent" />
-              <Button onClick={() => handleInputChangeSell(index)}>
-                {item.text}
-              </Button>
+              <Image
+                src={
+                  activePropertyStatus == item?.text
+                    ? item?.activeImage
+                    : item?.image
+                }
+                width={33}
+                height={31}
+                alt="sell-rent"
+              />
+              <input
+                value={item?.text}
+                onClick={() => handleChange(item?.text)}
+                type="button"
+              />
             </Box>
           ))}
         </Box>
