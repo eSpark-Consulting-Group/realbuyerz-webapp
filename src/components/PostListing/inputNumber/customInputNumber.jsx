@@ -21,13 +21,14 @@ const CustomNumberInput = ({
   };
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    // dispatch({
-    //   type: savePropertyData,
-    //   payload: PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn,
-    // });
-    // console.log(propertyData);
-  };
+  // const handleClick = () => {
+  //   // dispatch({
+  //   //   type: savePropertyData,
+  //   //   payload: PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn,
+  //   // });
+  //   // console.log(propertyData);
+  // };
+
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
     const newIncrementValue = numericValue + 1;

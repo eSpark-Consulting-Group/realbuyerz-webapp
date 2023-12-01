@@ -9,7 +9,7 @@ import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+
 import {
   createInformationState,
   handleClickUtil,
@@ -59,6 +59,7 @@ const PostListing = ({ propertySell }) => {
   //     PROPERTY_BUYING_DETAIL.sellingDetails
   //   )
   // );
+
   const dispatch = useDispatch();
   const handleInputChange = (event) => {
     const { name, value } = event.target;

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Typography, Box, TextField, Button } from '@mui/material';
+import React from 'react';
+import { Typography, Box, TextField } from '@mui/material';
 import Image from 'next/image';
 
-import {
-  createInformationState,
-  handleClickUtil,
-  handleInputChangeUtil,
-} from '@/utils/addInfo';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
-import { useDispatch } from 'react-redux';
+// import {
+//   createInformationState,
+//   handleClickUtil,
+//   handleInputChangeUtil,
+// } from '@/utils/addInfo';
+// import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+// import { useDispatch } from 'react-redux';
 
 const PropertyInformation = ({
-  propertyDetails,
-  propertyBuyingDetails,
+  // propertyDetails,
+  // propertyBuyingDetails,
   propertyData,
   handleInputChange,
   // handleClick,

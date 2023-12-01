@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import PropertyOverview from '../PropertyOverview/PropertyOverview';
 
-const PropertyDetails = ({ propertyDetailsData, propertyData }) => {
+const PropertyDetails = ({ propertyDetailsData }) => {
   const properties = useSelector((state) => state.properties.properties);
 
   const pathname = usePathname();

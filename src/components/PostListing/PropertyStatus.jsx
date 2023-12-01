@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
-import { createPropertyStatusState } from '@/utils/propertyStatus';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
-import { useDispatch } from 'react-redux';
+// import { createPropertyStatusState } from '@/utils/propertyStatus';
+// import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+// import { useDispatch } from 'react-redux';
 
 const PropertyStatus = ({
   propertyInformation,
-  propertySell,
-  propertyBuyingDetails,
+  // propertySell,
+  // propertyBuyingDetails,
   propertyData,
   handleInputChangeSell,
 }) => {

@@ -380,7 +380,7 @@ export const PROPERTY_INFORMATION = {
     },
   ],
 };
-export const PROPERTY_BUYING_NEW= [
+export const PROPERTY_BUYING_NEW = [
   {
     title: '',
     description: '',
@@ -421,8 +421,8 @@ export const PROPERTY_BUYING_NEW= [
     },
     selectedAmenities: {},
     incrementBtn: {},
-  }
-]
+  },
+];
 
 export const PROPERTY_BUYING_DETAIL = {
   sellingDetails: {

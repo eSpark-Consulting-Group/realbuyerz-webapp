@@ -1,14 +1,14 @@
 /*eslint no-undef: 0*/
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button, Input, Typography } from '@mui/material';
 
-import { createMediaDataState } from '@/utils/mediaData';
-import { useDispatch } from 'react-redux';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
+// import { createMediaDataState } from '@/utils/mediaData';
+// import { useDispatch } from 'react-redux';
+// import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const UploadMediaButton = ({
-  propertyInformation,
-  propertyBuyingDetails,
+  // propertyInformation,
+  // propertyBuyingDetails,
   handleFileChange,
   propertyData,
 }) => {
