@@ -9,13 +9,9 @@ import {
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from './LoginWithGoogle';
-import FormContainer from './LoginForm';
-<<<<<<< HEAD
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
-import ForgetPassword from '../ForgetPassword/ForgetPassword';
-=======
+import FormContainer from './loginCard';
 import { LOGIN_FORM } from '@/app/constants/Login';
->>>>>>> epic/issue/1
+import ForgetPassword from '../ForgetPassword/forgetPassword';
 
 const LoginCard = () => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -31,12 +27,8 @@ const LoginCard = () => {
       {!showForgetPassword ? (
         <Box
           sx={{
-<<<<<<< HEAD
             width: { xs: '90%', md: '500px' },
             height: '600px',
-=======
-            width: { xs: '70%', md: '330px' },
->>>>>>> epic/issue/1
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -54,8 +46,6 @@ const LoginCard = () => {
             },
           }}
         >
-<<<<<<< HEAD
-=======
           <Typography
             sx={{
               color: '#FF631C',
@@ -70,8 +60,7 @@ const LoginCard = () => {
           >
             {LOGIN_FORM.loginCard.verifiedBuyers}
           </Typography>
-          <FormContainer isLoginForm={true} />
->>>>>>> epic/issue/1
+          <FormContainer isloginCard={true} />
           <Box
             sx={{
               width: { xs: '70%', md: '320px' },
@@ -82,27 +71,12 @@ const LoginCard = () => {
               gap: { xs: '7px', md: '15px' },
             }}
           >
-            <Typography
+            {/* <Typography
               sx={{
                 color: '#FF631C',
                 fontSize: { xs: '15px', md: '20px' },
               }}
             >
-<<<<<<< HEAD
-              {LOGIN_FORM.loginForm.welcome}
-            </Typography>
-            <FormContainer isLoginForm={true} />
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row', md: 'row' },
-                alignItems: 'baseline',
-                justifyContent: {
-                  xs: 'center',
-                  sm: 'space-between',
-                  md: 'space-between',
-                },
-=======
               {LOGIN_FORM.loginCard.forgetPassword}
             </Typography>
             <FormControlLabel
@@ -113,9 +87,8 @@ const LoginCard = () => {
                 flexDirection: 'row-reverse',
                 color: '#777777',
                 fontSize: { xs: '5px', md: '12px' },
->>>>>>> epic/issue/1
               }}
-            >
+            /> */}
               <Button
                 sx={{
                   textAlign: 'center',
@@ -126,10 +99,10 @@ const LoginCard = () => {
                 }}
                 onClick={handleClick}
               >
-                {LOGIN_FORM.loginForm.forgetPassword}
+                {LOGIN_FORM.loginCard.forgetPassword}
               </Button>
               <FormControlLabel
-                label={LOGIN_FORM.loginForm.rememberMe}
+                label={LOGIN_FORM.loginCard.rememberMe}
                 control={<Checkbox size="small" color="primary" />}
                 sx={{
                   display: 'flex',
@@ -140,24 +113,13 @@ const LoginCard = () => {
               />
             </Box>
             <LoginWithGoogle
-              buttonLabel={LOGIN_FORM.loginForm.login}
+              buttonLabel={LOGIN_FORM.loginCard.login}
               label={LOGIN_FORM.signupForm.signin}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
-              loginButton={LOGIN_FORM.loginForm.googleLogin}
+              loginButton={LOGIN_FORM.loginCard.googleLogin}
               onSigninClick={() => router.push('/signup')}
             />
           </Box>
-<<<<<<< HEAD
-=======
-          <LoginWithGoogle
-            buttonLabel={LOGIN_FORM.loginCard.login}
-            label={LOGIN_FORM.signupForm.signin}
-            accountCreationMessage={LOGIN_FORM.signupForm.label}
-            loginButton={LOGIN_FORM.loginCard.googleLogin}
-            onSigninClick={() => router.push('/signup')}
-          />
->>>>>>> epic/issue/1
-        </Box>
       ) : (
         <ForgetPassword setShowForgetPassword={handleClickTwo} />
       )}
