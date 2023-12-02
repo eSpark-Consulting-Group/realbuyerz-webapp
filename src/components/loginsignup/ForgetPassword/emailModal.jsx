@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+
+import { LOGIN_FORM } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
 import ForgetPassword from './ForgetPassword';
 import { updateReceivedEmail } from '@/utils/email';
+
 const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
   const [showSignin, setshowSignin] = useState(false);
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -76,7 +78,7 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                     fontSize: '24px',
                   }}
                 >
-                  {LOGIN_FORM.loginForm.checkEmail}{' '}
+                  {LOGIN_FORM.loginCard.checkEmail}{' '}
                 </Typography>
                 <Typography
                   sx={{
@@ -84,7 +86,7 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                     fontSize: '14px',
                   }}
                 >
-                  {LOGIN_FORM.loginForm.resetPassword}
+                  {LOGIN_FORM.loginCard.resetPassword}
                 </Typography>
                 <Typography
                   sx={{
@@ -110,7 +112,7 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                     updateReceivedEmail(email);
                   }}
                 >
-                  {LOGIN_FORM.loginForm.resend}
+                  {LOGIN_FORM.loginCard.resend}
                 </Button>
                 <Button
                   sx={{
@@ -124,7 +126,7 @@ const CheckEmailModal = ({ open, onClose, email, resendButton }) => {
                     handleBackToLogin();
                   }}
                 >
-                  {LOGIN_FORM.loginForm.backSignin}
+                  {LOGIN_FORM.loginCard.backSignin}
                 </Button>
                 {showForgetPassword && (
                   <ForgetPassword BackToLogin={handleBackToLogin} />

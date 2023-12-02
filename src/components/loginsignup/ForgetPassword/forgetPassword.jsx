@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Typography, Grid, TextField, Button } from '@mui/material';
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
 import CheckEmailModal from './emailModal';
 import { validateEmail } from '@/utils/validationEmail';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
@@ -67,7 +67,7 @@ const ForgetPassword = () => {
                 fontWeight: 600,
               }}
             >
-              {LOGIN_FORM.loginForm.passwordForget}
+              {LOGIN_FORM.loginCard.passwordForget}
             </Typography>
             <Typography
               sx={{
@@ -75,10 +75,10 @@ const ForgetPassword = () => {
                 fontWeight: 400,
               }}
             >
-              {LOGIN_FORM.loginForm.enterEmail}
+              {LOGIN_FORM.loginCard.enterEmail}
             </Typography>
             <TextField
-              label={LOGIN_FORM.loginForm.email}
+              label={LOGIN_FORM.loginCard.email}
               name="email"
               variant="outlined"
               fullWidth
@@ -110,7 +110,7 @@ const ForgetPassword = () => {
               }}
               onClick={handleValidation}
             >
-              {LOGIN_FORM.loginForm.continue}
+              {LOGIN_FORM.loginCard.continue}
             </Button>
             {isValidEmail && (
               <CheckEmailModal

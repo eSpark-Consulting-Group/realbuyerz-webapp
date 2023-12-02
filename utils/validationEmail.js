@@ -1,4 +1,4 @@
-import { LOGIN_FORM } from '@/app/constants/LoginConstants';
+import { LOGIN_FORM } from '@/app/constants/Login';
 
 export function validateEmail(
   email,
