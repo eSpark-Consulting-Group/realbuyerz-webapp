@@ -5,22 +5,20 @@ import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
-import ForgetPassword from './ForgetPassword';
-import { updateReceivedEmail } from '@/utils/email';
 
 const CheckEmailModal = ({
   open,
   onClose,
   email,
-  resendButton,
   setshowForgetPassword,
+  handleClick,
 }) => {
   const [showSignin, setshowSignin] = useState(false);
-  // const [showForgetPassword, setshowForgetPassword] = useState(false);
   const handleBackToLogin = () => {
     setshowSignin(true);
     setshowForgetPassword(false);
   };
+
   return (
     <>
       {!showSignin ? (
@@ -114,8 +112,7 @@ const CheckEmailModal = ({
                     marginTop: '15px',
                   }}
                   onClick={() => {
-                    resendButton();
-                    updateReceivedEmail(email);
+                    handleClick();
                   }}
                 >
                   {LOGIN_FORM.loginCard.resend}
@@ -134,9 +131,6 @@ const CheckEmailModal = ({
                 >
                   {LOGIN_FORM.loginCard.backSignin}
                 </Button>
-                {/* {showForgetPassword && (
-                  <ForgetPassword BackToLogin={handleBackToLogin} />
-                )} */}
               </Box>
             </Box>
           </Box>

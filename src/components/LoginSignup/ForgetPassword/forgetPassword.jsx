@@ -3,24 +3,27 @@ import { Box, Typography, Grid, TextField, Button } from '@mui/material';
 import CheckEmailModal from './emailModal';
 import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM } from '@/app/constants/Login';
+import { useDispatch } from 'react-redux';
+import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
 
 const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const [isValidEmail, setisValidEmail] = useState(false);
-  const [resentEmails, setResentEmail] = useState([]);
+  const dispatch = useDispatch();
   const handleModalToggle = () => {
     setOpen(!open);
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  const handleResent = () => {
-    setResentEmail((PreEmails) => [...PreEmails, email]);
-  };
   const handleValidation = () => {
     validateEmail(email, setError, setisValidEmail, handleModalToggle);
+  };
+  const handleClick = () => {
+    dispatch(updateReceivedEmail(email));
+    console.log('email', email);
   };
   return (
     <Grid container>
@@ -120,9 +123,8 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
                 open={open}
                 onCloseModal={handleModalToggle}
                 email={email}
-                resendButton={handleResent}
-                resentEmail={resentEmails}
                 setshowForgetPassword={setshowForgetPassword}
+                handleClick={handleClick}
               />
             )}
           </Box>
