@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
-import ForgetPassword from '../ForgetPassword/forgetPassword';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_FORM } from '@/app/constants/Login';

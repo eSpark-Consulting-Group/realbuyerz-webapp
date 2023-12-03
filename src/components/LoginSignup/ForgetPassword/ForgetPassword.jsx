@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Grid, TextField, Button } from '@mui/material';
-import CheckEmailModal from './emailModal';
+import CheckEmailModal from './EmailModal';
 import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM } from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
