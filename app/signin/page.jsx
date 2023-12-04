@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import LoginSignupLayout from '@/src/components/loginsignup/Login/LoginSignupLayout';
+import LoginSignupLayout from '@/src/components/LoginSignup/Login/LoginSignupLayout';
 
 const Signin = () => {
   return (
