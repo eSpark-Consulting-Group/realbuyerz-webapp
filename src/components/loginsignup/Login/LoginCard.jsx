@@ -13,7 +13,7 @@ import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_FORM } from '@/app/constants/Login';
 
-const LoginCard = ( {handleClose} ) => {
+const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const handleClick = () => {
     setshowForgetPassword(true);
