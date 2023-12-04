@@ -214,14 +214,16 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      label: 'enterUnit',
+      dropPlaceholder: 'Select Unit',
+      label: 'area',
       value: '',
     },
     {
       image: '/images/listing-page/amount.svg',
       text: 'Amount ',
-      placeholder: 'Enter Amount.',
-      label: 'enterAmount',
+      placeholder: 'Enter Amount',
+      dropPlaceholder: 'Select Currency',
+      label: 'amount',
       value: '',
     },
   ],
@@ -236,6 +238,10 @@ export const PROPERTY_INFORMATION = {
       value: '',
     },
   ],
+
+  aeraSizes: ['sq.ft', 'sq.yd', 'sq.m', 'Marla', 'Kanal'],
+
+  currency: ['PKR', 'CAD', 'SAR', 'AED', 'GBP', 'USD'],
 
   installment: [
     {

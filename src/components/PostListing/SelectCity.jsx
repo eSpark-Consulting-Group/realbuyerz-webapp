@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import {
-  Typography,
-  Box,
-  TextField,
-  Autocomplete,
-  Button,
-} from '@mui/material';
+import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
 import { selectCityState } from '@/utils/selectCityOption';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 import { useDispatch } from 'react-redux';
+import { addCity } from '@/src/redux/slices/postlisting/example';
 
 const SelectCityType = ({
   image,
@@ -18,18 +12,17 @@ const SelectCityType = ({
   propertyBuyingDetails,
   cityOptions,
 }) => {
-  const [propertyData, setPropertyData] = useState(
+  const [setPropertyData] = useState(
     selectCityState(propertyBuyingDetails, cityOptions)
   );
+  const [city, setCity] = React.useState();
   const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch({
-      type: savePropertyData,
-      payload: propertyData.selectedCity.sellingData,
-    });
-    console.log(propertyData);
-  };
+  const options = cityOptions?.map((opt) => opt?.label);
+  dispatch(addCity(city));
+
   const handleCityChange = (event, value) => {
+    const val = event.target.innerText;
+    setCity(val);
     setPropertyData((prevData) => ({
       ...prevData,
       selectedCity: {
@@ -80,7 +73,7 @@ const SelectCityType = ({
         <Autocomplete
           disablePortal
           id="combo-box-demo"
-          options={propertyData.selectedCity.selectCityOption}
+          options={options}
           sx={{
             width: { xs: '100%', sm: '300px', md: '320px' },
             marginLeft: { xs: '30px', md: '50px' },
@@ -91,7 +84,6 @@ const SelectCityType = ({
           onChange={handleCityChange}
         />
       </Box>
-      <Button onClick={handleClick}>Ok</Button>
     </>
   );
 };

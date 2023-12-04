@@ -5,21 +5,17 @@ import { useDispatch } from 'react-redux';
 import { addLocationAndPuspose } from '@/src/redux/slices/postlisting/example';
 
 const PropertyStatus = ({ propertyInformation, propertyData }) => {
-  const [activePropertyStatus, setActivePropertyStatus] = React.useState();
-  const [properStatusData, setProperStatusData] = React.useState();
+  const [activePropertyStatus, setActivePropertyStatus] =
+    React.useState('Sell');
+  const [properStatusData, setProperStatusData] =
+    React.useState(activePropertyStatus);
   const dispatch = useDispatch();
   dispatch(addLocationAndPuspose(properStatusData));
+
   const handleChange = (val) => {
     setActivePropertyStatus(val);
-    setProperStatusData({
-      ...properStatusData,
-      adPurpose: val,
-    });
+    setProperStatusData(val);
   };
-
-  React.useEffect(() => {
-    setActivePropertyStatus({ adPurpose: 'Sell' });
-  }, []);
 
   return (
     <>

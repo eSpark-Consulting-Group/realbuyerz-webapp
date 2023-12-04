@@ -1,71 +1,60 @@
 import React, { useState } from 'react';
-import {
-  Typography,
-  Box,
-  TextField,
-  Autocomplete,
-  Button,
-} from '@mui/material';
+import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
-import { useDispatch } from 'react-redux';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
   propertyBuyingDetails,
   selectCity,
+  aeraSizes,
+  currency,
 }) => {
-  const [propertyData, setPropertyData] = useState(
+  const [propertyArea, setPropertyArea] = React.useState({
+    area: '',
+    unit: '',
+  });
+  const [propertyAmount, setpropertyAmount] = React.useState({
+    amount: '',
+    unit: '',
+  });
+
+  const [propertyData] = useState(
     createPropertySizeState(
       propertySizeInformation,
       propertyBuyingDetails,
       selectCity
     )
   );
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch({
-      type: savePropertyData,
-      payload: propertyData.propertySizeAndAmount.sellingData,
-    });
-    console.log(propertyData);
-  };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPropertyData((prevData) => ({
-      ...prevData,
-      propertySizeAndAmount: {
-        sellingData: {
-          ...prevData.propertySizeAndAmount.sellingData,
-          [name]: value,
-        },
-        propertySize: prevData.propertySizeAndAmount.propertySize.map((item) =>
-          item.label === name ? { ...item, value } : item
-        ),
-        selectCityOption: prevData.propertySizeAndAmount.selectCityOption,
-      },
-    }));
+
+  const handleInputChange = (key, val) => {
+    if (key == 'area') {
+      setPropertyArea({
+        ...propertyArea,
+        [key]: val,
+      });
+    } else {
+      setpropertyAmount({
+        ...propertyAmount,
+        [key]: val,
+      });
+    }
   };
 
-  const handleCityChange = (event, value) => {
-    setPropertyData((prevData) => ({
-      ...prevData,
-      propertySizeAndAmount: {
-        ...prevData.propertySizeAndAmount,
-        sellingData: {
-          ...prevData.propertySizeAndAmount.sellingData,
-          selectCityOptions: value ? value.label : '',
-        },
-        selectCityOption: prevData.propertySizeAndAmount.selectCityOption.map(
-          (city) => ({
-            ...city,
-            value: city.label === (value ? value.label : '') ? value.label : '',
-          })
-        ),
-      },
-    }));
+  const handleCityChange = (e, index) => {
+    const val = e.target.innerText;
+    if (index == 0) {
+      setPropertyArea({
+        ...propertyArea,
+        unit: val,
+      });
+    } else {
+      setpropertyAmount({
+        ...propertyAmount,
+        unit: val,
+      });
+    }
   };
   return (
     <>
@@ -111,21 +100,21 @@ const PropertyAreaSize = ({
             }}
           >
             <TextField
-              placeholder={item.placeholder}
+              placeholder={item?.placeholder}
+              type="number"
               sx={{
                 width: { xs: '100%', md: '500px' },
                 '@media (min-width: 960px) and (max-width: 1500px)': {
                   width: '250px',
                 },
               }}
-              name={item.label}
-              onChange={handleInputChange}
+              name={item?.label}
+              onChange={(e) => handleInputChange(item?.label, e.target.value)}
             />
-
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={propertyData?.propertySizeAndAmount?.selectCityOption}
+              options={item.label == 'area' ? aeraSizes : currency}
               sx={{
                 width: { xs: '50%', md: '200px' },
                 '@media (min-width: 961px) and (max-width: 1500px)': {
@@ -135,18 +124,17 @@ const PropertyAreaSize = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Select City"
+                  label={item?.dropPlaceholder}
                   InputLabelProps={{
                     sx: { fontSize: { xs: '10px', md: '15px' } },
                   }}
                 />
               )}
-              onChange={handleCityChange}
+              onChange={(e) => handleCityChange(e, index)}
             />
           </Box>
         </Box>
       ))}
-      <Button onClick={handleClick}> Ok</Button>
     </>
   );
 };

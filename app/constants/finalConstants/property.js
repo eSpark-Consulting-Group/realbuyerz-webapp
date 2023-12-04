@@ -11,8 +11,11 @@ export const ADD_PROPERTY = [
       adPurpose: 'sell', // sell or rent //text
       propertyType: 'House', // house, plots, commercial, //text
       propetySubType: 'Flat', //text
-      // address:'401/B, Blossom Trade Center',
-      // location: 'Gulistan e Johar',
+      address: '401/B, Blossom Trade Center',
+      area: '',
+      location: 'Gulistan e Johar',
+      city: 'Karachi',
+      country: 'Pakistan',
       geolocation: '', //text
     },
     sizeBudgets: {

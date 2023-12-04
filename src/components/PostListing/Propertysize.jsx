@@ -60,6 +60,8 @@ const PropertySize = () => {
                 propertySizeInformation={PROPERTY_INFORMATION.propertySize}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
                 selectCity={PROPERTY_INFORMATION.selectCityOptions}
+                aeraSizes={PROPERTY_INFORMATION.aeraSizes}
+                currency={PROPERTY_INFORMATION.currency}
               />
               <PropertyInstallment
                 propertyInstallmentInfo={PROPERTY_INFORMATION.installment}

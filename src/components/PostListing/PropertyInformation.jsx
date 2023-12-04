@@ -58,7 +58,7 @@ const PropertyInformation = ({ propertyData }) => {
               <span style={{ color: '#FF0000' }}>*</span>
             </Box>
             <TextField
-              placeholder={item.placeholder}
+              placeholder={item?.placeholder}
               sx={{
                 marginLeft: { xs: '10px', sm: '40px', md: '50px' },
                 width: { xs: '90%', md: '600px' },
