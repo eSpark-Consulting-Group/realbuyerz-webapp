@@ -1,14 +1,20 @@
-import { VERIFIED_CODE } from '@/app/constants/Modal';
+import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import { createSlice } from '@reduxjs/toolkit';
 
-const verification = VERIFIED_CODE;
-const initialState = { verification };
+const initialState = {
+  verificationCode: {
+    code_one: '',
+    code_two: '',
+    code_three: '',
+    code_four: '',
+  },
+};
 const verificationSlice = createSlice({
-  name: 'verification',
+  name: VERIFICATION_OTP.name,
   initialState,
   reducers: {
     saveVerificationCode: (state, action) => {
-      state.verification = { ...action.payload };
+      state.verificationCode = { ...action.payload };
     },
   },
 });
