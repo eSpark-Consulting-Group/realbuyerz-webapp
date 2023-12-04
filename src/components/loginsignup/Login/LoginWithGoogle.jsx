@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 
 const LoginWithGoogle = ({
   buttonLabel,
@@ -9,9 +8,7 @@ const LoginWithGoogle = ({
   label,
   accountCreationMessage,
   onSigninClick,
-  handleClose,
 }) => {
-  const currentPath = usePathname();
   return (
     <>
       <Box
@@ -118,13 +115,9 @@ const LoginWithGoogle = ({
             color: '#FB631C',
             fontWeight: 400,
             fontSize: { xs: '12px', md: '16px' },
-            cursor: 'pointer',
           }}
           onClick={() => {
             onSigninClick();
-            if (currentPath !== '/signup' && currentPath !== '/signin') {
-              handleClose();
-            }
           }}
         >
           {label}
