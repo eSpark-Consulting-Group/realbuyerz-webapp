@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, Button, IconButton, Typography } from '@mui/material';
+import {
+  Badge,
+  Button,
+  IconButton,
+  Menu,
+  TextField,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import {
   LINK_NAME,
   LOGIN_PERSON_NAME,
@@ -11,7 +19,25 @@ import {
   POST_LISTING,
 } from '@/app/constants/LiveBidding';
 
-const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
+const DesktopDashboardHeader = ({ HEADER_MENU }) => {
+  // const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [search, setSearch] = useState();
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const SearchItem = () => {
+    console.log(search);
+  };
+
+  const searchInput = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <Box
       s
@@ -26,13 +52,57 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
         return (
           <>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Image
-                src={item?.searchIcon}
-                width={35}
-                height={35}
-                alt={'icon'}
-                style={{ marginRight: 30 }}
-              />
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Search">
+                  <Image
+                    onClick={handleOpenUserMenu}
+                    src={item?.searchIcon}
+                    width={35}
+                    height={35}
+                    alt={'icon'}
+                    style={{ marginRight: 30, cursor: 'pointer' }}
+                  />
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <Box
+                    sx={{
+                      padding: 2,
+                    }}
+                  >
+                    <TextField
+                      id="outlined-search"
+                      label="Search"
+                      type="search"
+                      size="small"
+                      onChange={(e) => searchInput(e)}
+                    />
+                    <Link href="/dashboard/proposals">
+                      <Button
+                        variant="primary"
+                        sx={{ mx: 1 }}
+                        onClick={SearchItem}
+                      >
+                        Search
+                      </Button>
+                    </Link>
+                  </Box>
+                </Menu>
+              </Box>
               <Image
                 src={item?.linkIcon}
                 width={20}
