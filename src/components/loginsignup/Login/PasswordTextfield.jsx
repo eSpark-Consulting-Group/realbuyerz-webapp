@@ -31,7 +31,6 @@ const PasswordFields = () => {
         type={formData.showPassword ? 'text' : 'password'}
         fullWidth
         name="password"
-        value={formData.password}
         onChange={handleInputChange}
         InputProps={{
           endAdornment: (

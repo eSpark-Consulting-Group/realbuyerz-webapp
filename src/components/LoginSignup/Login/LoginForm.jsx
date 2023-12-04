@@ -1,29 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { LOGIN_FORM } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
-const FormContainer = ({ isLoginForm }) => {
-  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
-  const handleInputContactNumber = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue.length <= 11) {
-      setFormData({
-        ...formData,
-        [event.target.name]: inputValue,
-      });
-    }
-  };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+const FormContainer = ({
+  isLoginForm,
+  handleInputContactNumber,
+  handleInputChange,
+}) => {
   return (
     <>
       {isLoginForm ? (
@@ -40,7 +27,6 @@ const FormContainer = ({ isLoginForm }) => {
               variant="outlined"
               fullWidth
               name="email"
-              value={formData.email}
               onChange={handleInputChange}
               inputProps={{
                 style: {
@@ -81,7 +67,6 @@ const FormContainer = ({ isLoginForm }) => {
                 name="firstName"
                 variant="outlined"
                 fullWidth
-                value={formData.firstName}
                 onChange={handleInputChange}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -93,7 +78,6 @@ const FormContainer = ({ isLoginForm }) => {
                 name="lastName"
                 variant="outlined"
                 fullWidth
-                value={formData.lastName}
                 onChange={handleInputChange}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -106,7 +90,6 @@ const FormContainer = ({ isLoginForm }) => {
               variant="outlined"
               fullWidth
               name="email"
-              value={formData.email}
               onChange={handleInputChange}
               InputProps={{ sx: { height: '40px' } }}
               InputLabelProps={{
@@ -119,7 +102,6 @@ const FormContainer = ({ isLoginForm }) => {
               type="number"
               fullWidth
               name="contactNumber"
-              value={formData.contactNumber}
               onChange={handleInputContactNumber}
               InputProps={{
                 sx: { height: '40px', background: 'none' },

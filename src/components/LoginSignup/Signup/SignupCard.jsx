@@ -1,13 +1,38 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import FormContainer from '../Login/LoginForm';
+import { useDispatch } from 'react-redux';
+import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const SignupCard = () => {
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+  const dispatch = useDispatch();
+  const handleInputContactNumber = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue.length <= 11) {
+      setFormData({
+        ...formData,
+        [event.target.name]: inputValue,
+      });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const loginClick = () => {
+    dispatch(saveLoginData(formData));
+    console.log('test', formData);
+  };
   const router = useRouter();
   return (
     <>
@@ -59,13 +84,19 @@ const SignupCard = () => {
           >
             {LOGIN_FORM.loginCard.quickEasy}
           </Typography>
-          <FormContainer isLoginForm={false} />
+          <FormContainer
+            isLoginForm={false}
+            formData={formData}
+            handleInputContactNumber={handleInputContactNumber}
+            handleInputChange={handleInputChange}
+          />
           <LoginWithGoogle
             buttonLabel={LOGIN_FORM.signupForm.signup}
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signin')}
+            loginClick={loginClick}
           />
         </Box>
       </Box>

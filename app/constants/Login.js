@@ -45,7 +45,7 @@ export const LOGIN_FORM_DATA = {
     firstName: '',
     lastName: '',
     contactNumber: '',
-    applicant: '',
+    usertype: ['user', 'agent', 'dealer'],
     confirmPassword: '',
   },
   passwordFields: {

@@ -11,12 +11,38 @@ import { useRouter } from 'next/navigation';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { useDispatch } from 'react-redux';
+import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const LoginCard = () => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+
+  const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
+  };
+  const loginClick = () => {
+    dispatch(saveLoginData(formData));
+    console.log('test', formData);
+  };
+  const handleInputContactNumber = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue.length <= 11) {
+      setFormData({
+        ...formData,
+        [event.target.name]: inputValue,
+      });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
   const router = useRouter();
   return (
@@ -61,7 +87,12 @@ const LoginCard = () => {
             >
               {LOGIN_FORM.loginCard.welcome}
             </Typography>
-            <FormContainer isLoginForm={true} />
+            <FormContainer
+              isLoginForm={true}
+              formData={formData}
+              handleInputContactNumber={handleInputContactNumber}
+              handleInputChange={handleInputChange}
+            />
             <Box
               sx={{
                 display: 'flex',
@@ -103,6 +134,7 @@ const LoginCard = () => {
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
               onSigninClick={() => router.push('/signup')}
+              loginClick={loginClick}
             />
           </Box>
         </Box>
