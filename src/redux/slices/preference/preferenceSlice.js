@@ -1,10 +1,17 @@
-import { PREFERENCE } from '@/app/constants/Preference';
+import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 import { createSlice } from '@reduxjs/toolkit';
 
-const preference = PREFERENCE;
-const initialState = { preference };
+const initialState = {
+  preference: {
+    emailNotification: false,
+    newsLetter: false,
+    automatedReports: false,
+    currency: '',
+    areaUnit: '',
+  },
+};
 const preferenceSlice = createSlice({
-  name: 'preference',
+  name: AGENT_PREFERENCES.preference,
   initialState,
   reducers: {
     savePreferenceData: (state, action) => {
