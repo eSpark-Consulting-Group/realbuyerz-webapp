@@ -16,7 +16,7 @@ import Image from 'next/image';
 import { PAGES } from '@/app/constants/Constants';
 import ModalSignin from '../Modal/ModalSignin';
 
-const settings = ['My Account', 'Logout'];
+// const settings = ['My Account', 'Logout'];
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -175,8 +175,8 @@ const MainHeader = () => {
               <>
                 <Button
                   sx={{
-                    width: '120px',
-                    height: '40px',
+                    // width: '120px',
+                    // height: '40px',
                     display: {
                       xs: 'none',
                       sm: 'block',
@@ -209,38 +209,82 @@ const MainHeader = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <Typography
+                  <Box
                     sx={{
-                      textAlign: 'center',
-                      fontWeight: 600,
-                      color: '#000',
+                      padding: 2,
                     }}
                   >
-                    Arman khan
-                  </Typography>
-                  {settings?.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Button>
-                        <Typography
-                          sx={{
-                            width: '120px',
-                            padding: 0.7,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignContent: 'center',
-                            textAlign: 'center',
-                            border: '1px solid #D6D6D6',
-                            marginBottom: '5px',
-                            backgroundColor: '#F5F5F5',
-                            borderRadius: '5px',
-                            color: '#333333',
-                          }}
-                        >
-                          {setting}
-                        </Typography>
-                      </Button>
+                    <Typography
+                      sx={{
+                        textAlign: 'center',
+                        fontWeight: 600,
+                        color: '#000',
+                        mt: -2,
+                      }}
+                    >
+                      Arman Espark
+                    </Typography>
+                    {/* {settings?.map((setting) => ( */}
+                    {/* <MenuItem >
+                    <>
+                      <Typography
+                        sx={{
+                          width: '120px',
+                          padding: 0.7,
+                          // display: 'flex',
+                          justifyContent: 'center',
+                          alignContent: 'center',
+                          textAlign: 'center',
+                          border: '1px solid #D6D6D6',
+                          marginBottom: '5px',
+                          backgroundColor: '#F5F5F5',
+                          borderRadius: '5px',
+                          color: '#333333',
+                        }}
+                      >
+                        {setting}
+                      </Typography>
+                    </>
+                  </MenuItem> */}
+                    <MenuItem
+                      sx={{
+                        width: '120px',
+                        padding: 0.7,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        textAlign: 'center',
+                        border: '1px solid #D6D6D6',
+                        marginBottom: '5px',
+                        backgroundColor: '#F5F5F5',
+                        borderRadius: '5px',
+                        color: '#333333',
+                        my: 2,
+                      }}
+                      onClick={handleClose}
+                    >
+                      My Account
                     </MenuItem>
-                  ))}
+                    <MenuItem
+                      onClick={handleClose}
+                      sx={{
+                        width: '120px',
+                        padding: 0.7,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        textAlign: 'center',
+                        border: '1px solid #D6D6D6',
+                        marginBottom: '5px',
+                        backgroundColor: '#F5F5F5',
+                        borderRadius: '5px',
+                        color: '#333333',
+                      }}
+                    >
+                      Logout
+                    </MenuItem>
+                    {/* ))} */}
+                  </Box>
                 </Menu>
               </>
             )}
