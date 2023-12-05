@@ -1,12 +1,10 @@
 import React from 'react';
 
+import ComingSoon from '@/src/components/Global/ComingSoon';
+
 const FAQs = () => {
     return (
-        <div className="min-h-screen ">
-            <div className="left-section p-4 text-white">
-                <h1>Faqs Page</h1>
-            </div>
-        </div>
+        <ComingSoon />
     );
 };
 
