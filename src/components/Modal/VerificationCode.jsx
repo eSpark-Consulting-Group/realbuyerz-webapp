@@ -87,14 +87,16 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
                 value={inputValues[index]}
                 onChange={(e) => handleChange(index, e.target.value)}
                 type="number"
+                 sx={{
+                '& input[type=number]::-webkit-inner-spin-button': {
+                  '-webkit-appearance': 'none',
+                  margin: 0,
+                },
+              }}
                 InputProps={{
                   style: {
                     borderRadius: 0,
                     outline: 'none',
-                  },
-                  '& input[type=number]::-webkit-inner-spin-button': {
-                    '-webkit-appearance': 'none',
-                    margin: 0,
                   },
                 }}
               />
