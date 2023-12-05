@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -29,9 +30,6 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
   };
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-  const SearchItem = () => {
-    console.log(search);
   };
 
   const searchInput = (e) => {
@@ -91,12 +89,8 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                       size="small"
                       onChange={(e) => searchInput(e)}
                     />
-                    <Link href="/dashboard/proposals">
-                      <Button
-                        variant="primary"
-                        sx={{ mx: 1 }}
-                        onClick={SearchItem}
-                      >
+                    <Link href={`/dashboard/proposals?search=${search}`}>
+                      <Button variant="primary" sx={{ mx: 1 }}>
                         Search
                       </Button>
                     </Link>
