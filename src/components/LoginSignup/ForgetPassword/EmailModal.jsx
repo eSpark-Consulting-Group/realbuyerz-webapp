@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
+import Continue from './Continue';
+import ResendPassword from '../ResetPassword/ResetPassword';
 
 const CheckEmailModal = ({
   open,
@@ -12,11 +14,13 @@ const CheckEmailModal = ({
   email,
   setshowForgetPassword,
   handleClick,
+  showSignin,
+  setshowSignin,
+  handleBackToLogin,
 }) => {
-  const [showSignin, setshowSignin] = useState(false);
-  const handleBackToLogin = () => {
-    setshowSignin(true);
-    setshowForgetPassword(false);
+  const [showReset, setshowReset] = useState(false);
+  const openResetForm = () => {
+    setshowReset(true);
   };
 
   return (
@@ -109,26 +113,38 @@ const CheckEmailModal = ({
                     width: '98px',
                     height: '29px',
                     borderRadius: '5px',
-                    marginTop: '15px',
+                    marginTop: '25px',
                   }}
                   onClick={() => {
                     handleClick();
+                    openResetForm();
                   }}
                 >
                   {LOGIN_FORM.loginCard.resend}
                 </Button>
+                {showReset && (
+                  <ResendPassword handleBackToLogin={handleBackToLogin} />
+)}
                 <Button
                   sx={{
                     fontWeight: '400px',
                     fontSize: '12px',
                     color: '#126FAA',
                     padding: 0,
-                    marginTop: '15px',
+                    textTransform: 'math-auto',
+                    marginTop: '50px',
+                    textDecoration: 'underline',
                   }}
                   onClick={() => {
                     handleBackToLogin();
                   }}
                 >
+                  <Image
+                    src="/images/modal/lessthan.svg"
+                    width={18}
+                    height={18}
+                    alt="lessthan"
+                  />
                   {LOGIN_FORM.loginCard.backSignin}
                 </Button>
               </Box>

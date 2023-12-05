@@ -18,10 +18,12 @@ import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 const LoginCard = () => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+  const router = useRouter();
 
   const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
+      // router.push('/forget-password')
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
@@ -35,7 +37,6 @@ const LoginCard = () => {
     });
   };
 
-  const router = useRouter();
   return (
     <>
       {!showForgetPassword ? (
@@ -120,7 +121,7 @@ const LoginCard = () => {
             </Box>
             <LoginWithGoogle
               buttonLabel={LOGIN_FORM.loginCard.login}
-              label={LOGIN_FORM.signupForm.signin}
+              label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
               onSigninClick={() => router.push('/signup')}
@@ -129,7 +130,8 @@ const LoginCard = () => {
           </Box>
         </Box>
       ) : (
-        <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
+          <ForgetPassword setshowForgetPassword={setshowForgetPassword}
+          />
       )}
     </>
   );

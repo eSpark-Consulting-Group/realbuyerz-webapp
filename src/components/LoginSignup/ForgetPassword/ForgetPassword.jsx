@@ -5,12 +5,23 @@ import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM } from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
 import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
+import Image from 'next/image';
+import Continue from './Continue';
+import { useRouter } from 'next/navigation';
 
-const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
+const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const [isValidEmail, setisValidEmail] = useState(false);
+  const [showSignin, setshowSignin] = useState(false);
+  const handleBackToLogin = () => {
+    setshowSignin(true);
+    setshowForgetPassword(false);
+    console.log('tsrr');
+  };
+    const router = useRouter();
+
   const dispatch = useDispatch();
   const handleModalToggle = () => {
     setOpen(!open);
@@ -22,6 +33,7 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
     validateEmail(email, setError, setisValidEmail, handleModalToggle);
   };
   const handleClick = () => {
+    router.push('/reset-password')
     dispatch(updateReceivedEmail(email));
     console.log('email', email);
   };
@@ -99,7 +111,10 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
                 {error}
               </Typography>
             )}
-            <Button
+            <Continue handleBackToLogin={handleBackToLogin}
+            handleValidation={handleValidation}
+            />
+            {/* <Button
               style={{
                 display: 'flex',
                 alignSelf: 'center',
@@ -112,12 +127,38 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
                 },
               }}
               onClick={() => {
-                handleValidation(), { BackToLogin };
+                handleValidation();
               }}
             >
               {LOGIN_FORM.loginCard.continue}
             </Button>
-            {isValidEmail && (
+           
+            <Button
+              sx={{
+                fontWeight: '400px',
+                fontSize: '12px',
+                color: '#126FAA',
+                padding: 0,
+                textTransform: 'math-auto',
+                marginTop: '50px',
+                textDecoration: 'underline',
+                display: "flex",
+                alignSelf: "baseline",
+                alignItems:"center"
+              }}
+              onClick={() => {
+                handleBackToLogin();
+              }}
+            >
+              <Image
+                src="/images/modal/lessthan.svg"
+                width={18}
+                height={18}
+                alt="lessthan"
+              />
+              {LOGIN_FORM.loginCard.backSignin}
+            </Button> */}
+             {isValidEmail && (
               <CheckEmailModal
                 onClose={() => setisValidEmail(false)}
                 open={open}
@@ -125,8 +166,12 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword }) => {
                 email={email}
                 setshowForgetPassword={setshowForgetPassword}
                 handleClick={handleClick}
+                showSignin={showSignin}
+                setshowSignin={setshowSignin}
+                handleBackToLogin={handleBackToLogin}
               />
             )}
+
           </Box>
         </Box>
       </Grid>
