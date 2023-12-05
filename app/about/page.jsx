@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Dashboard = () => {
+const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-red-500">
+    <div className="min-h-screen ">
       <div className="left-section p-4 text-white">
-        <h1>Padded Section</h1>
+        <h1>About Page</h1>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default AboutUs;
