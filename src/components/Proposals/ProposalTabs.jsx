@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import ProposalListingCard from './ProposalListingCard';
-import { getUniqueProposalStatus } from '@/utils/propertyFilter'; 
+import { getUniqueProposalStatus } from '@/utils/propertyFilter';
 import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
