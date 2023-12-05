@@ -7,7 +7,7 @@ import { VERIFICATION_OTP } from '@/app/constants/Modal';
 import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/utils/codeValidation';
 import { isInputValid } from '@/utils/inputValid';
-import { isLengthValid } from '@/utils/lengthValid';
+import { checkLength } from '@/utils/lengthValid';
 import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
 import { useDispatch } from 'react-redux';
 
@@ -31,20 +31,20 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
     );
   };
   const code = verificationCode.verified;
-  console.log('code', code);
   const isValid = isInputValid(code);
-  const checkLength = isLengthValid(code);
+  const isLengthValid = checkLength(code);
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(saveVerificationCode(verificationCode.verified));
   };
   const handleConfirm = () => {
-    if (isValid && checkLength) {
+    if (isValid && isLengthValid) {
       setVerificationResult(VERIFICATION_OTP.verificationSuccessfully);
       setIsVerificationSuccessful(true);
-      if (setIsVerificationSuccessful) {
-        handleModalToggle();
-      }
+      // if (setIsVerificationSuccessful) {
+      //   handleModalToggle();
+      // }
+      setIsVerificationSuccessful && handleModalToggle();
     } else {
       setVerificationResult(VERIFICATION_OTP.verificationFail);
     }
@@ -70,8 +70,10 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
               border: '1px solid #126FAA',
               background: '#FFF',
               boxShadow: '1px 2px 5px 1px rgba(0, 0, 0, 0.25)',
-              height: '70px',
+              height: '60px',
               width: '60px',
+              padding: '10px',
+              marginRight: '10px',
             }}
             key={index}
           >
@@ -87,16 +89,16 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
                 value={inputValues[index]}
                 onChange={(e) => handleChange(index, e.target.value)}
                 type="number"
-                 sx={{
-                '& input[type=number]::-webkit-inner-spin-button': {
-                  '-webkit-appearance': 'none',
-                  margin: 0,
-                },
-              }}
+                sx={{
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    '-webkit-appearance': 'none',
+                    margin: 0,
+                  },
+                  '& fieldset': { border: 'none' },
+                }}
                 InputProps={{
                   style: {
-                    borderRadius: 0,
-                    outline: 'none',
+                    color: '#126FAA',
                   },
                 }}
               />
