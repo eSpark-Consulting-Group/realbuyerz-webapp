@@ -27,16 +27,6 @@ const LoginCard = () => {
     dispatch(saveLoginData(formData));
     console.log('test', formData);
   };
-  const handleInputContactNumber = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue.length <= 11) {
-      setFormData({
-        ...formData,
-        [event.target.name]: inputValue,
-      });
-    }
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -90,7 +80,6 @@ const LoginCard = () => {
             <FormContainer
               isLoginForm={true}
               formData={formData}
-              handleInputContactNumber={handleInputContactNumber}
               handleInputChange={handleInputChange}
             />
             <Box

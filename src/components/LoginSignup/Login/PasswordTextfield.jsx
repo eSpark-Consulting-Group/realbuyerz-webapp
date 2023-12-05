@@ -7,20 +7,12 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { LOGIN_FORM_DATA } from '@/app/constants/Login';
 
-const PasswordFields = () => {
+const PasswordFields = ({ handleInputChange }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleTogglePasswordVisibility = () => {
     setFormData({
       ...formData,
       showPassword: !formData.showPassword,
-    });
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
     });
   };
   return (

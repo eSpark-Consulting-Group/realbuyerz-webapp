@@ -43,7 +43,7 @@ const FormContainer = ({
                 },
               }}
             />
-            <PasswordFields />
+            <PasswordFields handleInputChange={handleInputChange} />
           </Box>
         </form>
       ) : (
@@ -127,7 +127,7 @@ const FormContainer = ({
               )}
               onChange={handleInputChange}
             />
-            <PasswordAndConfirmFields />
+            <PasswordAndConfirmFields handleInputChange={handleInputChange} />
           </Box>
         </form>
       )}
