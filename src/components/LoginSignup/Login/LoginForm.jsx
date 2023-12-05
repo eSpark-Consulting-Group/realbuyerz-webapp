@@ -10,6 +10,7 @@ const FormContainer = ({
   isLoginForm,
   handleInputContactNumber,
   handleInputChange,
+  handleAutoCompleteInputChange,
 }) => {
   return (
     <>
@@ -103,6 +104,12 @@ const FormContainer = ({
               fullWidth
               name="contactNumber"
               onChange={handleInputContactNumber}
+              sx={{
+                '& input[type=number]::-webkit-inner-spin-button': {
+                  '-webkit-appearance': 'none',
+                  margin: 0,
+                },
+              }}
               InputProps={{
                 sx: { height: '40px', background: 'none' },
               }}
@@ -125,7 +132,10 @@ const FormContainer = ({
                   }}
                 />
               )}
-              onChange={handleInputChange}
+              // onChange={handleInputChange}
+              onChange={(event, newValue) =>
+                handleAutoCompleteInputChange(event, newValue)
+              }
             />
             <PasswordAndConfirmFields handleInputChange={handleInputChange} />
           </Box>

@@ -29,6 +29,13 @@ const SignupCard = () => {
       [name]: value,
     });
   };
+  const handleAutoCompleteInputChange = (event, newValue) => {
+    const fieldName = 'usertype';
+    setFormData({
+      ...formData,
+      [fieldName]: newValue ? [newValue.value] : [],
+    });
+  };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
     console.log('test', formData);
@@ -89,6 +96,7 @@ const SignupCard = () => {
             formData={formData}
             handleInputContactNumber={handleInputContactNumber}
             handleInputChange={handleInputChange}
+            handleAutoCompleteInputChange={handleAutoCompleteInputChange}
           />
           <LoginWithGoogle
             buttonLabel={LOGIN_FORM.signupForm.signup}
