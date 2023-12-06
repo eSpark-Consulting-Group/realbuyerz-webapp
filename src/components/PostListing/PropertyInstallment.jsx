@@ -3,34 +3,39 @@ import { Typography, Box, Switch } from '@mui/material';
 import Image from 'next/image';
 
 import { createInstallmentState } from '@/utils/propertyInstallment';
+import { useDispatch } from 'react-redux';
+import {
+  addInstallment,
+  addPossession,
+} from '@/src/redux/slices/postlisting/example';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
   propertyBuyingDetails,
 }) => {
-  const [propertyData, setPropertyData] = useState(
+  const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
+  const [installment, setInstallment] = React.useState();
+  const [possession, setPossession] = React.useState();
+  const dispatch = useDispatch();
 
-  const handleInputChangeToggle = (name, checked) => {
-    setPropertyData((prevData) => {
-      const updatedToggleData = prevData.installmentData.toggleData.map(
-        (item) => (item.label === name ? { ...item, value: checked } : item)
-      );
-      const updatedSellingData = {
-        ...prevData.installmentData.sellingData,
-        [name]: checked,
-      };
-
-      return {
-        ...prevData,
-        installmentData: {
-          toggleData: updatedToggleData,
-          sellingData: updatedSellingData,
-        },
-      };
-    });
+  const handleToggleChange = (key, val) => {
+    if (key == 'instalmentAvailable') {
+      setInstallment(val);
+    } else {
+      setPossession(val);
+    }
   };
+
+  React.useEffect(() => {
+    dispatch(addInstallment(installment));
+  }, [installment]);
+
+  React.useEffect(() => {
+    dispatch(addPossession(possession));
+  }, [possession]);
+
   return (
     <>
       {propertyData.installmentData.toggleData?.map((item, index) => (
@@ -76,9 +81,9 @@ const PropertyInstallment = ({
             </Box>
 
             <Switch
-              value={item.value}
+              value={item?.value}
               onChange={(event) =>
-                handleInputChangeToggle(item.label, event.target.checked)
+                handleToggleChange(item?.label, event.target.checked)
               }
             />
           </Box>

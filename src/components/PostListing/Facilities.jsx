@@ -3,9 +3,23 @@ import { Typography, Box, Checkbox, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { useDispatch } from 'react-redux';
+import { addAmenities } from '@/src/redux/slices/postlisting/example';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [amenities, setamenities] = React.useState();
+  const [amenitiesTitle, setAmenitiesTitle] = React.useState();
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(addAmenities(amenitiesTitle));
+  }, [amenitiesTitle]);
+
+  React.useEffect(() => {
+    setAmenitiesTitle(amenities?.map((item) => item.title));
+  }, [amenities]);
+
   const handleCheckboxChange = (index) => {
     const updatedAmenities = [...selectedAmenities];
     updatedAmenities[index] = !updatedAmenities[index];
@@ -20,8 +34,9 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
     {
       onClose;
     }
-    console.log('Selected Amenities:', selectedItems);
+    setamenities(selectedItems);
   };
+
   return (
     <>
       <Box

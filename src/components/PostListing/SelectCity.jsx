@@ -1,44 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
-import { selectCityState } from '@/utils/selectCityOption';
 import { useDispatch } from 'react-redux';
 import { addCity } from '@/src/redux/slices/postlisting/example';
 
-const SelectCityType = ({
-  image,
-  label,
-  propertyBuyingDetails,
-  cityOptions,
-}) => {
-  const [setPropertyData] = useState(
-    selectCityState(propertyBuyingDetails, cityOptions)
-  );
+const SelectCityType = ({ image, label, cityOptions }) => {
   const [city, setCity] = React.useState();
   const dispatch = useDispatch();
   const options = cityOptions?.map((opt) => opt?.label);
-  dispatch(addCity(city));
 
-  const handleCityChange = (event, value) => {
+  const handleCityChange = (event) => {
     const val = event.target.innerText;
     setCity(val);
-    setPropertyData((prevData) => ({
-      ...prevData,
-      selectedCity: {
-        sellingData: {
-          ...prevData.selectedCity.sellingData,
-          selectCityOptions: value ? value.label : '',
-        },
-        selectCityOption: prevData.selectedCity.selectCityOption.map(
-          (city) => ({
-            ...city,
-            value: city.label === (value ? value.label : '') ? value.label : '',
-          })
-        ),
-      },
-    }));
   };
+
+  React.useEffect(() => {
+    dispatch(addCity(city));
+  }, [city]);
+
   return (
     <>
       <Box

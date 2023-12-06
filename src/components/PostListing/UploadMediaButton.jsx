@@ -7,11 +7,12 @@ import { Box, Button, Input, Typography } from '@mui/material';
 // import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const UploadMediaButton = ({
-  // propertyInformation,
+  propertyInformation,
   // propertyBuyingDetails,
   handleFileChange,
   propertyData,
 }) => {
+  console.log('Aliliii', propertyData);
   // const [propertyData, setPropertyData] = useState(
   //   createMediaDataState(propertyInformation, propertyBuyingDetails)
   // );
@@ -83,51 +84,46 @@ const UploadMediaButton = ({
       }}
     >
       <>
-        {propertyData?.uploadedMediaData?.mediaData.map(
-          (item, index) => (
-            console.log('oo', item),
-            (
-              <label
-                htmlFor={`file-upload-${index}`}
-                style={{
-                  display: 'inline-block',
-                  cursor: 'pointer',
-                }}
-                key={index}
-              >
-                <Button
-                  sx={{
-                    width: {
-                      xs: '150px',
-                      md: '200px',
-                    },
-                    color: index === 0 ? 'white' : '#FB631C',
-                    background: index === 0 ? '#FB631C' : 'white',
-                    fontSize: { xs: '12px', md: '20px' },
-                    padding: { xs: '4px', md: '8px' },
-                    textTransform: 'capitalize',
-                    borderRadius: '10px',
-                    border: '1px #FB631C solid',
-                    '&:hover': {
-                      backgroundColor: index === 0 ? 'white' : '#FB631C',
-                      color: index === 0 ? '#FB631C' : 'white',
-                    },
-                  }}
-                  component="span"
-                >
-                  {item.label}
-                </Button>
-                <Input
-                  accept={index === 0 ? 'image/*' : 'video/*'}
-                  id={`file-upload-${index}`}
-                  type="file"
-                  style={{ display: 'none' }}
-                  onChange={(event) => handleFileChange(event, index)}
-                />
-              </label>
-            )
-          )
-        )}
+        {propertyInformation?.map((item, index) => (
+          <label
+            htmlFor={`file-upload-${index}`}
+            style={{
+              display: 'inline-block',
+              cursor: 'pointer',
+            }}
+            key={index}
+          >
+            <Button
+              sx={{
+                width: {
+                  xs: '150px',
+                  md: '200px',
+                },
+                color: index === 0 ? 'white' : '#FB631C',
+                background: index === 0 ? '#FB631C' : 'white',
+                fontSize: { xs: '12px', md: '20px' },
+                padding: { xs: '4px', md: '8px' },
+                textTransform: 'capitalize',
+                borderRadius: '10px',
+                border: '1px #FB631C solid',
+                '&:hover': {
+                  backgroundColor: index === 0 ? 'white' : '#FB631C',
+                  color: index === 0 ? '#FB631C' : 'white',
+                },
+              }}
+              component="span"
+            >
+              {item.label}
+            </Button>
+            <Input
+              accept={index === 0 ? 'image/*' : 'video/*'}
+              id={`file-upload-${index}`}
+              type="file"
+              style={{ display: 'none' }}
+              onChange={(event) => handleFileChange(event, index)}
+            />
+          </label>
+        ))}
         <Typography>kkk</Typography>
       </>
     </Box>

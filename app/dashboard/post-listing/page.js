@@ -81,6 +81,7 @@ const PostListing = ({ propertySell }) => {
     handleClickUtil(dispatch, propertyData);
     console.log('data', propertyData);
   };
+  console.log(propertyData, 'propertyDatakkk');
   return (
     <Grid
       container

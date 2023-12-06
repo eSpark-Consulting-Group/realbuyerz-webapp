@@ -3,6 +3,8 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
+import { useDispatch } from 'react-redux';
+import { addArea, addamount } from '@/src/redux/slices/postlisting/example';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -19,6 +21,7 @@ const PropertyAreaSize = ({
     amount: '',
     unit: '',
   });
+  const dispatch = useDispatch();
 
   const [propertyData] = useState(
     createPropertySizeState(
@@ -27,6 +30,14 @@ const PropertyAreaSize = ({
       selectCity
     )
   );
+
+  React.useEffect(() => {
+    dispatch(addArea(propertyArea));
+  }, [propertyArea]);
+
+  React.useEffect(() => {
+    dispatch(addamount(propertyAmount));
+  }, [propertyAmount]);
 
   const handleInputChange = (key, val) => {
     if (key == 'area') {

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
@@ -19,14 +19,12 @@ const SelectProperyType = ({
   plotType,
   commercialType,
 }) => {
-  const [activePropertyType, setActivePropertyType] = useState(null);
+  const [activePropertyType, setActivePropertyType] = useState('House');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
-  const [propertyType, setPropertyType] = React.useState();
+  const [propertyType, setPropertyType] = React.useState(activePropertyType);
   const [propetySubType, setPropetySubType] = React.useState();
 
   const dispatch = useDispatch();
-  dispatch(addPropertyType(propertyType));
-  dispatch(addpropetySubType(propetySubType));
 
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
@@ -38,10 +36,13 @@ const SelectProperyType = ({
     setPropetySubType(text);
   };
 
-  useEffect(() => {
-    setActivePropertyType('House');
-    setPropertyType('House');
-  }, []);
+  React.useEffect(() => {
+    dispatch(addPropertyType(propertyType));
+  }, [propertyType]);
+
+  React.useEffect(() => {
+    dispatch(addpropetySubType(propetySubType));
+  }, [propetySubType]);
 
   return (
     <Box

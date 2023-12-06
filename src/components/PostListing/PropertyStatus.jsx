@@ -10,12 +10,15 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
   const [properStatusData, setProperStatusData] =
     React.useState(activePropertyStatus);
   const dispatch = useDispatch();
-  dispatch(addLocationAndPuspose(properStatusData));
 
   const handleChange = (val) => {
     setActivePropertyStatus(val);
     setProperStatusData(val);
   };
+
+  React.useEffect(() => {
+    dispatch(addLocationAndPuspose(properStatusData));
+  }, [properStatusData]);
 
   return (
     <>

@@ -4,8 +4,8 @@ import { Box, Grid, Typography } from '@mui/material';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyFacilities from './PropertyFacilities';
-import AddAmenities from './AddAmenities';
 import SelectedAmenitiesItems from './SelectedAmenitiesItem';
+import AddAmenities from './AddAmenities';
 
 const PropertyFeatures = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -13,6 +13,7 @@ const PropertyFeatures = () => {
   const handleSelectedItems = (items) => {
     setSelectedItems(items);
   };
+
   return (
     <Grid container>
       <Grid
@@ -55,7 +56,10 @@ const PropertyFeatures = () => {
               <PropertyFacilities
                 propertyInformation={PROPERTY_INFORMATION.feature}
               />
-              <AddAmenities onSelected={handleSelectedItems} />
+              <AddAmenities
+                onSelected={handleSelectedItems}
+                selectedItems={selectedItems}
+              />
               {selectedItems.length > 0 && (
                 <Box
                   sx={{

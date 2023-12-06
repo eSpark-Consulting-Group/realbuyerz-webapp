@@ -7,13 +7,16 @@ import { addInformation } from '@/src/redux/slices/postlisting/example';
 const PropertyInformation = ({ propertyData }) => {
   const [adInformation, setAdInformation] = React.useState({});
   const dispatch = useDispatch();
-  dispatch(addInformation(adInformation));
   const handleChange = (key, val) => {
     setAdInformation({
       ...adInformation,
       [key]: val,
     });
   };
+
+  React.useEffect(() => {
+    dispatch(addInformation(adInformation));
+  }, [adInformation]);
 
   const specialIndex = 1;
   return (

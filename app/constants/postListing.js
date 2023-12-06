@@ -249,14 +249,14 @@ export const PROPERTY_INFORMATION = {
       title: 'Instalment available ',
       description: 'Enable if listing is available on instalments',
       value: false,
-      label: 'installmentAvailable',
+      label: 'instalmentAvailable',
     },
     {
       image: '/images/listing-page/notepad.svg',
       title: 'Ready For Possession ',
       description: 'Enable if listing is ready for possession',
       value: false,
-      label: 'readyForProcession',
+      label: 'readyPossession',
     },
   ],
   feature: [

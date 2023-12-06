@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { InputAdornment, IconButton, Box, Input } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 import { incrementCounterState } from '@/utils/counterIncrement';
 import { useDispatch } from 'react-redux';
 import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
@@ -21,19 +20,11 @@ const CustomNumberInput = ({
   };
   const dispatch = useDispatch();
 
-  // const handleClick = () => {
-  //   // dispatch({
-  //   //   type: savePropertyData,
-  //   //   payload: PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn,
-  //   // });
-  //   // console.log(propertyData);
-  // };
-
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
     const newIncrementValue = numericValue + 1;
-    PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn[identifier] =
-      newIncrementValue;
+    // PROPERTY_BUYING_DETAIL?.sellingDetails?.incrementBtn[identifier] =
+    //   newIncrementValue;
     onSaveIncrement(newIncrementValue, identifier);
     setIncrementValue(newIncrementValue);
 

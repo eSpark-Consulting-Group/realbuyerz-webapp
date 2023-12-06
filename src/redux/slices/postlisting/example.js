@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+const postListingEntities = {
   Ad_Infomation: '',
   locationAndPurpose: {
     adPurpose: '',
@@ -9,16 +9,32 @@ const initialState = {
     city: '',
     location: '',
   },
-  Property_Size_and_Pricing: {},
+  PropertySizeAndPricing: {
+    areaSize: '',
+    amount: '',
+    installment: '',
+    possession: '',
+  },
+  FeaturesAndAmenities: {
+    bedrooms: '',
+    bathrooms: '',
+    parking: '',
+    selectedAmenities: '',
+  },
+  PropertyImagesAndVideos: { images: [], videos: [] },
 };
+
+const initialState = postListingEntities;
+
 const ExamplePageSlice = createSlice({
-  name: 'ExamplePage',
+  name: 'postListingEntities',
   initialState,
   reducers: {
     //Ad_Infomation
     addInformation: (state, action) => {
       state.Ad_Infomation = { ...action.payload };
     },
+
     //locationAndPurpose
     addLocationAndPuspose: (state, action) => {
       state.locationAndPurpose.adPurpose = action.payload;
@@ -32,7 +48,35 @@ const ExamplePageSlice = createSlice({
     addCity: (state, action) => {
       state.locationAndPurpose.city = action.payload;
     },
-    //Property_Size_and_Pricing
+
+    //PropertySizeAndPricing
+    addArea: (state, action) => {
+      state.PropertySizeAndPricing.areaSize = action.payload;
+    },
+    addamount: (state, action) => {
+      state.PropertySizeAndPricing.amount = action.payload;
+    },
+    addInstallment: (state, action) => {
+      state.PropertySizeAndPricing.installment = action.payload;
+    },
+
+    addPossession: (state, action) => {
+      state.PropertySizeAndPricing.possession = action.payload;
+    },
+
+    // FeaturesAndAmenities
+    addBedrooms: (state, action) => {
+      state.FeaturesAndAmenities.bedrooms = action.payload;
+    },
+    addBathrooms: (state, action) => {
+      state.FeaturesAndAmenities.bathrooms = action.payload;
+    },
+    addParking: (state, action) => {
+      state.FeaturesAndAmenities.parking = action.payload;
+    },
+    addAmenities: (state, action) => {
+      state.FeaturesAndAmenities.selectedAmenities = action.payload;
+    },
   },
 });
 
@@ -42,5 +86,13 @@ export const {
   addPropertyType,
   addpropetySubType,
   addCity,
+  addArea,
+  addamount,
+  addInstallment,
+  addPossession,
+  addBedrooms,
+  addBathrooms,
+  addParking,
+  addAmenities,
 } = ExamplePageSlice.actions;
 export default ExamplePageSlice.reducer;

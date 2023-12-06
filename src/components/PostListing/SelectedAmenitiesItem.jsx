@@ -41,7 +41,6 @@ const SelectedAmenitiesItems = ({ selectedItems }) => {
           </li>
         ))}
       </ul>
-      <Button onClick={handleSaveAmenities}>Ok</Button>
     </div>
   );
 };
