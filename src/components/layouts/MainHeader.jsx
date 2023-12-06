@@ -8,15 +8,12 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import { Button } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import { PAGES } from '@/app/constants/Constants';
-import ModalSignin from '../Modal/ModalSignin';
-
-// const settings = ['My Account', 'Logout'];
+import SignInOutButton from './SignInOutButton';
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -40,7 +37,7 @@ const MainHeader = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const dashboard = 'Login Button';
+  const dashboard = '';
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
@@ -153,143 +150,15 @@ const MainHeader = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
-            {dashboard ? (
-              <Button
-                variant="primary"
-                sx={{
-                  width: '120px',
-                  height: '40px',
-                  display: {
-                    xs: 'none',
-                    sm: 'block',
-                    lg: 'block',
-                    xl: 'block',
-                  },
-                }}
-                onClick={handleOpen}
-              >
-                <Typography sx={{ color: '#fff' }}>Sign in</Typography>
-              </Button>
-            ) : (
-              <>
-                <Button
-                  sx={{
-                    // width: '120px',
-                    // height: '40px',
-                    display: {
-                      xs: 'none',
-                      sm: 'block',
-                      lg: 'block',
-                      xl: 'block',
-                    },
-                  }}
-                  onClick={handleOpenUserMenu}
-                >
-                  <Image
-                    src={'/Images/DashboardLogin.png'}
-                    width={80}
-                    height={40}
-                    alt="dashboardIcon"
-                  />
-                </Button>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <Box
-                    sx={{
-                      padding: 2,
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        textAlign: 'center',
-                        fontWeight: 600,
-                        color: '#000',
-                        mt: -2,
-                      }}
-                    >
-                      Arman Espark
-                    </Typography>
-                    {/* {settings?.map((setting) => ( */}
-                    {/* <MenuItem >
-                    <>
-                      <Typography
-                        sx={{
-                          width: '120px',
-                          padding: 0.7,
-                          // display: 'flex',
-                          justifyContent: 'center',
-                          alignContent: 'center',
-                          textAlign: 'center',
-                          border: '1px solid #D6D6D6',
-                          marginBottom: '5px',
-                          backgroundColor: '#F5F5F5',
-                          borderRadius: '5px',
-                          color: '#333333',
-                        }}
-                      >
-                        {setting}
-                      </Typography>
-                    </>
-                  </MenuItem> */}
-                    <MenuItem
-                      sx={{
-                        width: '120px',
-                        padding: 0.7,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        textAlign: 'center',
-                        border: '1px solid #D6D6D6',
-                        marginBottom: '5px',
-                        backgroundColor: '#F5F5F5',
-                        borderRadius: '5px',
-                        color: '#333333',
-                        my: 2,
-                      }}
-                      onClick={handleClose}
-                    >
-                      My Account
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleClose}
-                      sx={{
-                        width: '120px',
-                        padding: 0.7,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        textAlign: 'center',
-                        border: '1px solid #D6D6D6',
-                        marginBottom: '5px',
-                        backgroundColor: '#F5F5F5',
-                        borderRadius: '5px',
-                        color: '#333333',
-                      }}
-                    >
-                      Logout
-                    </MenuItem>
-                    {/* ))} */}
-                  </Box>
-                </Menu>
-              </>
-            )}
-            <ModalSignin handleClose={handleClose} open={open} />
-          </Box>
+          <SignInOutButton
+            dashboard={dashboard}
+            handleOpenUserMenu={handleOpenUserMenu}
+            anchorElUser={anchorElUser}
+            handleCloseUserMenu={handleCloseUserMenu}
+            handleClose={handleClose}
+            open={open}
+            handleOpen={handleOpen}
+          />
         </Toolbar>
       </Container>
     </AppBar>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, Button, IconButton, Typography } from '@mui/material';
+import { Badge, Button, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import {
   LINK_NAME,
   LOGIN_PERSON_NAME,
@@ -11,7 +11,7 @@ import {
   POST_LISTING,
 } from '@/app/constants/LiveBidding';
 
-const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
+const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUserMenu, anchorElUser }) => {
   return (
     <Box
       s
@@ -130,6 +130,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                 alignItems: 'center',
                 mx: 1,
               }}
+              onClick={handleOpenUserMenu}
             >
               <Typography
                 sx={{
@@ -147,6 +148,79 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu }) => {
                 height={41}
                 alt={'icon'}
               />
+               <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <Box
+                    sx={{
+                      padding: 2,
+                    }}
+                  >
+                    <MenuItem
+                      sx={{
+                        width: '120px',
+                        padding: 0.7,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        textAlign: 'center',
+                        border: '1px solid #D6D6D6',
+                        marginBottom: '5px',
+                        backgroundColor: '#F5F5F5',
+                        borderRadius: '5px',
+                        color: '#333333',
+                        my: 2,
+                      }}
+                      // onClick={handleSetting}
+                    >
+                      My Account
+                    </MenuItem>
+                    <MenuItem
+                      // onClick={handleLogout}
+                      sx={{
+                        background: '#FFF5F0'
+
+                      }}
+                    >
+                      <Box sx={{
+                        // width: '120px',
+                        padding: 0.7,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        textAlign: 'center',
+                        // border: '1px solid #D6D6D6',
+                        // marginBottom: '5px',
+                        // backgroundColor: '#F5F5F5',
+                        // borderRadius: '5px',
+                        // color: '#333333',
+                      }}>
+                        <Image
+                        src={'/images/Signout.png'}
+                        width={50}
+                        height={50}
+                        alt='Signout' />
+                        {/* <Button> */}  
+                            Sign Out
+                        {/* </Button> */}
+
+                      </Box>
+                    </MenuItem>
+                  </Box>
+                </Menu>
             </Box>
           </>
         );

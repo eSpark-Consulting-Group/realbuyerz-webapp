@@ -26,6 +26,9 @@ const DashboardHeader = () => {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -144,6 +147,8 @@ const DashboardHeader = () => {
             <DesktopDashboardHeader
               HEADER_MENU={HEADER_MENU}
               handleOpenUserMenu={handleOpenUserMenu}
+              handleCloseUserMenu={handleCloseUserMenu}
+              anchorElUser={anchorElUser}
             />
             <MobileResponsiveDashboardHeader
               HEADER_MENU={HEADER_MENU}

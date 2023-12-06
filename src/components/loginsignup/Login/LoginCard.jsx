@@ -105,14 +105,14 @@ const LoginCard = ({ handleClose }) => {
               onSigninClick={() => router.push('/signup')}
             />
           </Box>
-          <LoginWithGoogle
+          {/* <LoginWithGoogle
             buttonLabel={LOGIN_FORM.loginCard.login}
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.signupForm.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push('/signup')}
             handleClose={handleClose}
-          />
+          /> */}
         </Box>
       ) : (
         <ForgetPassword setshowForgetPassword={setshowForgetPassword} />

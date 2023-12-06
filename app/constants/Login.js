@@ -55,3 +55,8 @@ export const LOGIN_FORM_DATA = {
     showConfirmPassword: false,
   },
 };
+
+export const SIGN_IN = 'Sign in';
+export const LOGOUT = 'Logout';
+export const SETTINGS = 'My Account';
+export const LOGIN_PERSON_NAME = 'Arman Espark';
