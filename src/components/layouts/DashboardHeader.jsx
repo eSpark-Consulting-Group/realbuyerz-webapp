@@ -18,6 +18,7 @@ const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElSearch, setAnchorElSearch] = useState(null);
+  const [islogedIn, setIslogedIn] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,6 +31,9 @@ const DashboardHeader = () => {
   const handleOpenSearchMenu = (event) => {
     setAnchorElSearch(event.currentTarget);
   };
+  const handleOpenLoginMenu = (event) => {
+    setIslogedIn(event.currentTarget);
+  };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -41,6 +45,9 @@ const DashboardHeader = () => {
 
   const handleCloseSearchMenu = () => {
     setAnchorElSearch(null);
+  };
+  const handleCloseLoginMenu = () => {
+    setIslogedIn(null);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -163,6 +170,10 @@ const DashboardHeader = () => {
               handleOpenSearchMenu={handleOpenSearchMenu}
               handleCloseSearchMenu={handleCloseSearchMenu}
               anchorElSearch={anchorElSearch}
+              handleOpenLoginMenu={handleOpenLoginMenu}
+              handleCloseLoginMenu={handleCloseLoginMenu}
+              islogedIn={islogedIn}
+              setIslogedIn={setIslogedIn}
             />
             <MobileResponsiveDashboardHeader
               HEADER_MENU={HEADER_MENU}
