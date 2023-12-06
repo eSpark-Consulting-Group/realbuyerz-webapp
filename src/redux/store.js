@@ -16,8 +16,12 @@ import agentsSlice from './slices/agents/agentsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
+<<<<<<< HEAD
 import postListingSlice from './slices/postlisting/postListingSlice';
 import ExamplePageSlice from './slices/postlisting/example';
+=======
+import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
+>>>>>>> 333df19d2bd6e6cb3798d8369eb233e66550306d
 
 export const store = configureStore({
   reducer: {
@@ -38,6 +42,10 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
+<<<<<<< HEAD
     ExamplePage: ExamplePageSlice,
+=======
+    resendEmail: resendEmailSlice,
+>>>>>>> 333df19d2bd6e6cb3798d8369eb233e66550306d
   },
 });
