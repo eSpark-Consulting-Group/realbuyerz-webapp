@@ -152,7 +152,6 @@ const DashboardHeader = () => {
               HEADER_MENU={HEADER_MENU}
               handleCloseNavMenu={handleCloseNavMenu}
               anchorElNav={anchorElNav}
-              anchorElUser={anchorElUser}
               handleOpenUserMenu={handleOpenUserMenu}
               anchorElUser={anchorElUser}
               handleCloseUserMenu={handleCloseUserMenu}
