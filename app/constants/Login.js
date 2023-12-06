@@ -20,7 +20,6 @@ export const LOGIN_FORM = {
     resetPassword: 'We’ve sent password reset instructions to:',
     resend: 'Resend',
     backSignin: 'Back to sign-in',
-
   },
   signupForm: {
     signup: 'Sign up',
@@ -38,9 +37,9 @@ export const LOGIN_FORM = {
     loginFormHeight: '656px',
   },
   resetPasswordCard: {
-    resetPassword: "Reset Your Password",
-    createNewPassword: "Please create a new password"
-  }
+    resetPassword: 'Reset Your Password',
+    createNewPassword: 'Please create a new password',
+  },
 };
 
 export const LOGIN_FORM_DATA = {

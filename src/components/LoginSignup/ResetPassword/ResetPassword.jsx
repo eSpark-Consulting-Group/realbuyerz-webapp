@@ -1,11 +1,36 @@
 import React from 'react';
-import { Box, Typography, Grid, TextField } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const ResendPassword = ({ handleBackToLogin }) => {
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
+  const handleFieldToggle = (fieldName) => {
+    setFormData({
+      ...formData,
+      [fieldName]: !formData[fieldName],
+    });
+  };
+  const passwordsMatch = formData.password === formData.confirmPassword;
+  const checkPasswordMatch = () => {
+    if (passwordsMatch) {
+      alert('Password match');
+    } else {
+      alert('Password donot match');
+    }
+  };
+  const router = useRouter();
+  const BackToSignin = () => {
+    router.push('/auth/signin');
+  };
+  const handleValidation = () => {};
+  const handleContinue = () => {
+    router.push('/auth/signin');
+  };
   return (
     <Box
       sx={{
@@ -17,7 +42,7 @@ const ResendPassword = ({ handleBackToLogin }) => {
         alignItems: 'center',
         boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
         borderRadius: '10px',
-        background: 'gray',
+        background: '#fff',
         // marginTop: '127px',
 
         // paddingTop: '40px',
@@ -59,8 +84,18 @@ const ResendPassword = ({ handleBackToLogin }) => {
         >
           {LOGIN_FORM.resetPasswordCard.createNewPassword}
         </Typography>
-        <PasswordAndConfirmFields />
-        <Continue handleBackToLogin={handleBackToLogin} />
+        <PasswordAndConfirmFields
+          handleFieldToggle={handleFieldToggle}
+          formData={formData}
+          setFormData={setFormData}
+          passwordsMatch={passwordsMatch}
+        />
+        <Continue
+          checkPasswordMatch={checkPasswordMatch}
+          handleBackToLogin={BackToSignin}
+          // handleValidation={handleValidation}
+          handleContinue={handleContinue}
+        />
       </Box>
     </Box>
   );

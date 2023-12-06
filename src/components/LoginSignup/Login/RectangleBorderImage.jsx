@@ -7,7 +7,12 @@ import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import { useRouter } from 'next/navigation';
 import ResendPassword from '../ResetPassword/ResetPassword';
-const RectangleBorderImage = ({ isLogin, height, showComponent }) => {
+const RectangleBorderImage = ({
+  isLogin,
+  height,
+  showComponent,
+  paddingTop,
+}) => {
   const router = useRouter();
   let cardComponent;
 
@@ -37,6 +42,7 @@ const RectangleBorderImage = ({ isLogin, height, showComponent }) => {
         height: height,
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
+        paddingTop: showComponent === 'resetpassword' ? paddingTop : '0px', // Apply paddingTop conditionally
       }}
     >
       <Box

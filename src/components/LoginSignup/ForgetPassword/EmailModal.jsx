@@ -14,6 +14,7 @@ import { LOGIN_FORM } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
 import Continue from './Continue';
 import ResendPassword from '../ResetPassword/ResetPassword';
+import { useRouter } from 'next/navigation';
 
 const CheckEmailModal = ({
   open,
@@ -23,10 +24,10 @@ const CheckEmailModal = ({
   showSignin,
   handleBackToLogin,
 }) => {
-  const [showReset, setshowReset] = useState(false);
-  // const openResetForm = () => {
-  //   setshowReset(true);
-  // };
+  const router = useRouter();
+  const handleLogin = () => {
+    router.push('/auth/signin');
+  };
   const [isToastOpen, setIsToastOpen] = useState(false);
   const handleToast = () => {
     setIsToastOpen(true);
@@ -141,9 +142,9 @@ const CheckEmailModal = ({
                     Email sent sucessfully
                   </Alert>
                 )}
-                {showReset && (
+                {/* {showReset && (
                   <ResendPassword handleBackToLogin={handleBackToLogin} />
-                )}
+                )} */}
                 <Button
                   sx={{
                     fontWeight: '400px',
@@ -155,7 +156,8 @@ const CheckEmailModal = ({
                     textDecoration: 'underline',
                   }}
                   onClick={() => {
-                    handleBackToLogin();
+                    // handleBackToLogin();
+                    handleLogin();
                   }}
                 >
                   <Image

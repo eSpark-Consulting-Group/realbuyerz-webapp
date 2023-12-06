@@ -24,7 +24,7 @@ const LoginCard = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
-      router.push('/auth/forget-password')
+    router.push('/auth/forget-password');
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
@@ -130,8 +130,7 @@ const LoginCard = () => {
           </Box>
         </Box>
       ) : (
-        <ForgetPassword setshowForgetPassword={setshowForgetPassword}
-          />
+        <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
       )}
     </>
   );

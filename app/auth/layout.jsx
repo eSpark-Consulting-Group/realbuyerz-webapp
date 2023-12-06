@@ -25,7 +25,7 @@ const InnerPagesLayout = ({ children }) => {
             justifyContent: 'center',
             flexDirection: { xs: 'column', md: 'row' },
             paddingTop: '50px',
-            paddingBottom:"50px"
+            paddingBottom: '50px',
           }}
         >
           <Grid item xs={12} md={6}>

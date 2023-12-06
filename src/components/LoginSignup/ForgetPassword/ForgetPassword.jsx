@@ -14,7 +14,6 @@ const ForgetPassword = ({
   BackToLogin,
   setshowForgetPassword,
   onSigninClick,
-  onClick
 }) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
@@ -23,10 +22,6 @@ const ForgetPassword = ({
   const [showSignin, setshowSignin] = useState(false);
   const handleBackToLogin = () => {
     setshowSignin(true);
-    {
-      onClick
-
-  }
     router.push('/auth/signin');
   };
   const router = useRouter();
@@ -44,6 +39,9 @@ const ForgetPassword = ({
   const handleClick = () => {
     // router.push('/auth/reset-password');
     dispatch(updateReceivedEmail(email));
+  };
+  const handleContinue = () => {
+    handleValidation();
   };
   return (
     <Grid container>
@@ -121,7 +119,8 @@ const ForgetPassword = ({
             )}
             <Continue
               handleBackToLogin={handleBackToLogin}
-              handleValidation={handleValidation}
+              // handleValidation={handleValidation}
+              handleContinue={handleContinue}
             />
             {isValidEmail && (
               <CheckEmailModal
@@ -133,8 +132,8 @@ const ForgetPassword = ({
                 handleClick={handleClick}
                 showSignin={showSignin}
                 setshowSignin={setshowSignin}
-                handleBackToLogin={handleBackToLogin}
-                onClick={onClick}
+                // handleBackToLogin={handleBackToLogin}
+                // onClick={onClick}
               />
             )}
           </Box>
