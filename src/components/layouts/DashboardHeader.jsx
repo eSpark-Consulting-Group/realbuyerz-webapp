@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
@@ -18,14 +17,20 @@ import LeftSideBar from './LeftSideBar/LeftSideBar';
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  console.log(anchorElUser);
+  const [anchorElSearch, setAnchorElSearch] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
+  const handleOpenSearchMenu = (event) => {
+    setAnchorElSearch(event.currentTarget);
+  };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -34,7 +39,12 @@ const DashboardHeader = () => {
     setAnchorElNav(null);
   };
 
+  const handleCloseSearchMenu = () => {
+    setAnchorElSearch(null);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleDrawer = () => {
     const smThreshold = 960;
     const currentWidth = window.innerWidth;
@@ -45,6 +55,7 @@ const DashboardHeader = () => {
       setIsOpen(false);
     }
   };
+
   return (
     <AppBar
       position="static"
@@ -149,12 +160,17 @@ const DashboardHeader = () => {
               handleOpenUserMenu={handleOpenUserMenu}
               handleCloseUserMenu={handleCloseUserMenu}
               anchorElUser={anchorElUser}
+              handleOpenSearchMenu={handleOpenSearchMenu}
+              handleCloseSearchMenu={handleCloseSearchMenu}
+              anchorElSearch={anchorElSearch}
             />
             <MobileResponsiveDashboardHeader
               HEADER_MENU={HEADER_MENU}
               handleCloseNavMenu={handleCloseNavMenu}
               anchorElNav={anchorElNav}
               handleOpenUserMenu={handleOpenUserMenu}
+              anchorElUser={anchorElUser}
+              handleCloseUserMenu={handleCloseUserMenu}
             />
           </Box>
         </Toolbar>

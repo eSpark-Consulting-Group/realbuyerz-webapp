@@ -1,17 +1,37 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, Button, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import {
+  Badge,
+  Button,
+  IconButton,
+  Menu,
+  TextField,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import {
   LINK_NAME,
   LOGIN_PERSON_NAME,
   MY_LISTING,
   POST_LISTING,
-} from '@/app/constants/LiveBidding';
+  SEARCH,
+} from '@/app/constants/DashboardHeader';
 
-const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUserMenu, anchorElUser }) => {
+const DesktopDashboardHeader = ({
+  HEADER_MENU,
+  handleOpenSearchMenu,
+  anchorElSearch,
+  handleCloseSearchMenu,
+}) => {
+  const [search, setSearch] = useState();
+
+  const searchInput = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <Box
       s
@@ -26,13 +46,53 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUs
         return (
           <>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Image
-                src={item?.searchIcon}
-                width={35}
-                height={35}
-                alt={'icon'}
-                style={{ marginRight: 30 }}
-              />
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Search">
+                  <Image
+                    onClick={handleOpenSearchMenu}
+                    src={item?.searchIcon}
+                    width={35}
+                    height={35}
+                    alt={'icon'}
+                    style={{ marginRight: 30, cursor: 'pointer' }}
+                  />
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElSearch}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElSearch)}
+                  onClose={handleCloseSearchMenu}
+                >
+                  <Box
+                    sx={{
+                      padding: 2,
+                    }}
+                  >
+                    <TextField
+                      id="outlined-search"
+                      label="Search"
+                      type="search"
+                      size="small"
+                      onChange={(e) => searchInput(e)}
+                    />
+                    <Link href={`/dashboard/proposals?search=${search}`}>
+                      <Button variant="primary" sx={{ mx: 1 }}>
+                        {SEARCH}
+                      </Button>
+                    </Link>
+                  </Box>
+                </Menu>
+              </Box>
               <Image
                 src={item?.linkIcon}
                 width={20}
@@ -96,7 +156,6 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUs
                 </Box>
               </Button>
               <IconButton
-                onClick={handleOpenUserMenu}
                 sx={{
                   p: 0,
                   color: '#FF631C',
@@ -130,7 +189,6 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUs
                 alignItems: 'center',
                 mx: 1,
               }}
-              onClick={handleOpenUserMenu}
             >
               <Typography
                 sx={{
@@ -148,79 +206,6 @@ const DesktopDashboardHeader = ({ HEADER_MENU, handleOpenUserMenu, handleCloseUs
                 height={41}
                 alt={'icon'}
               />
-               <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <Box
-                    sx={{
-                      padding: 2,
-                    }}
-                  >
-                    <MenuItem
-                      sx={{
-                        width: '120px',
-                        padding: 0.7,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        textAlign: 'center',
-                        border: '1px solid #D6D6D6',
-                        marginBottom: '5px',
-                        backgroundColor: '#F5F5F5',
-                        borderRadius: '5px',
-                        color: '#333333',
-                        my: 2,
-                      }}
-                      // onClick={handleSetting}
-                    >
-                      My Account
-                    </MenuItem>
-                    <MenuItem
-                      // onClick={handleLogout}
-                      sx={{
-                        background: '#FFF5F0'
-
-                      }}
-                    >
-                      <Box sx={{
-                        // width: '120px',
-                        padding: 0.7,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        textAlign: 'center',
-                        // border: '1px solid #D6D6D6',
-                        // marginBottom: '5px',
-                        // backgroundColor: '#F5F5F5',
-                        // borderRadius: '5px',
-                        // color: '#333333',
-                      }}>
-                        <Image
-                        src={'/images/Signout.png'}
-                        width={50}
-                        height={50}
-                        alt='Signout' />
-                        {/* <Button> */}  
-                            Sign Out
-                        {/* </Button> */}
-
-                      </Box>
-                    </MenuItem>
-                  </Box>
-                </Menu>
             </Box>
           </>
         );
