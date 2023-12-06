@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { Box, Typography, Grid, TextField, Button } from '@mui/material';
 import CheckEmailModal from './EmailModal';
@@ -9,7 +10,12 @@ import Image from 'next/image';
 import Continue from './Continue';
 import { useRouter } from 'next/navigation';
 
-const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) => {
+const ForgetPassword = ({
+  BackToLogin,
+  setshowForgetPassword,
+  onSigninClick,
+  onClick
+}) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
@@ -17,10 +23,13 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) =>
   const [showSignin, setshowSignin] = useState(false);
   const handleBackToLogin = () => {
     setshowSignin(true);
-    setshowForgetPassword(false);
-    console.log('tsrr');
+    {
+      onClick
+
+  }
+    router.push('/auth/signin');
   };
-    const router = useRouter();
+  const router = useRouter();
 
   const dispatch = useDispatch();
   const handleModalToggle = () => {
@@ -33,9 +42,8 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) =>
     validateEmail(email, setError, setisValidEmail, handleModalToggle);
   };
   const handleClick = () => {
-    router.push('/reset-password')
+    // router.push('/auth/reset-password');
     dispatch(updateReceivedEmail(email));
-    console.log('email', email);
   };
   return (
     <Grid container>
@@ -111,54 +119,11 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) =>
                 {error}
               </Typography>
             )}
-            <Continue handleBackToLogin={handleBackToLogin}
-            handleValidation={handleValidation}
+            <Continue
+              handleBackToLogin={handleBackToLogin}
+              handleValidation={handleValidation}
             />
-            {/* <Button
-              style={{
-                display: 'flex',
-                alignSelf: 'center',
-                background: '#FB631C',
-                width: '100px',
-                borderRadius: '5px',
-                color: 'white',
-                '&:hover': {
-                  background: '#FF631C',
-                },
-              }}
-              onClick={() => {
-                handleValidation();
-              }}
-            >
-              {LOGIN_FORM.loginCard.continue}
-            </Button>
-           
-            <Button
-              sx={{
-                fontWeight: '400px',
-                fontSize: '12px',
-                color: '#126FAA',
-                padding: 0,
-                textTransform: 'math-auto',
-                marginTop: '50px',
-                textDecoration: 'underline',
-                display: "flex",
-                alignSelf: "baseline",
-                alignItems:"center"
-              }}
-              onClick={() => {
-                handleBackToLogin();
-              }}
-            >
-              <Image
-                src="/images/modal/lessthan.svg"
-                width={18}
-                height={18}
-                alt="lessthan"
-              />
-              {LOGIN_FORM.loginCard.backSignin}
-            </Button> */}
-             {isValidEmail && (
+            {isValidEmail && (
               <CheckEmailModal
                 onClose={() => setisValidEmail(false)}
                 open={open}
@@ -169,9 +134,9 @@ const ForgetPassword = ({ BackToLogin, setshowForgetPassword,onSigninClick }) =>
                 showSignin={showSignin}
                 setshowSignin={setshowSignin}
                 handleBackToLogin={handleBackToLogin}
+                onClick={onClick}
               />
             )}
-
           </Box>
         </Box>
       </Grid>

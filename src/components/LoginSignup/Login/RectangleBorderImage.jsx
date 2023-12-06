@@ -1,10 +1,32 @@
+'use client';
 import React from 'react';
 import { Box } from '@mui/system';
 
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
+import { useRouter } from 'next/navigation';
+import ResendPassword from '../ResetPassword/ResetPassword';
+const RectangleBorderImage = ({ isLogin, height, showComponent }) => {
+  const router = useRouter();
+  let cardComponent;
 
-const RectangleBorderImage = ({ isLogin, height }) => {
+  switch (showComponent) {
+    case 'signup':
+      cardComponent = <SignupCard />;
+      break;
+    case 'signin':
+      cardComponent = <LoginCard />;
+      break;
+    case 'forgetpassword':
+      cardComponent = <ForgetPassword />;
+      break;
+    case 'resetpassword':
+      cardComponent = <ResendPassword />;
+      break;
+    default:
+      cardComponent = null;
+  }
   return (
     <Box
       component="div"
@@ -31,7 +53,7 @@ const RectangleBorderImage = ({ isLogin, height }) => {
           },
         }}
       >
-        {isLogin ? <LoginCard /> : <SignupCard />}
+        {cardComponent}
       </Box>
     </Box>
   );

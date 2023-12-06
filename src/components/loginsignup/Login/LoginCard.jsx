@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import {
   Typography,
@@ -23,11 +24,10 @@ const LoginCard = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
-      // router.push('/forget-password')
+      router.push('/auth/forget-password')
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
-    console.log('test', formData);
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -124,13 +124,13 @@ const LoginCard = () => {
               label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push('/signup')}
+              onSigninClick={() => router.push('/auth/signup')}
               loginClick={loginClick}
             />
           </Box>
         </Box>
       ) : (
-          <ForgetPassword setshowForgetPassword={setshowForgetPassword}
+        <ForgetPassword setshowForgetPassword={setshowForgetPassword}
           />
       )}
     </>

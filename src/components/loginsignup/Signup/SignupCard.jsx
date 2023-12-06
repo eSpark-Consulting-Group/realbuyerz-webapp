@@ -103,7 +103,10 @@ const SignupCard = () => {
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
-            onSigninClick={() => router.push('/signin')}
+            onSigninClick={() => {
+              router.push('/auth/signin')
+            }
+            }
             loginClick={loginClick}
           />
         </Box>

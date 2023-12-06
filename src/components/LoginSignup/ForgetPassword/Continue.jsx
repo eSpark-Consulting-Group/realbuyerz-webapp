@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/Login';
 
-const Continue = ({handleBackToLogin,handleValidation}) => {
+const Continue = ({handleBackToLogin,handleValidation,}) => {
     return (
         <>
         <Button
@@ -39,9 +39,10 @@ const Continue = ({handleBackToLogin,handleValidation}) => {
                 alignSelf: "baseline",
                 alignItems:"center"
               }}
-              onClick={() => {
-                handleBackToLogin();
-              }}
+              onClick={() => 
+                handleBackToLogin()
+               
+              }
             >
               <Image
                 src="/images/modal/lessthan.svg"

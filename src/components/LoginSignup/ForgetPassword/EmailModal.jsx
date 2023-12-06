@@ -1,6 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import { Modal, Button, Box, Typography } from '@mui/material';
+import {
+  Modal,
+  Button,
+  Box,
+  Typography,
+  Alert,
+  AlertTitle,
+} from '@mui/material';
 import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/Login';
@@ -12,15 +19,21 @@ const CheckEmailModal = ({
   open,
   onClose,
   email,
-  setshowForgetPassword,
   handleClick,
   showSignin,
-  setshowSignin,
   handleBackToLogin,
 }) => {
   const [showReset, setshowReset] = useState(false);
-  const openResetForm = () => {
-    setshowReset(true);
+  // const openResetForm = () => {
+  //   setshowReset(true);
+  // };
+  const [isToastOpen, setIsToastOpen] = useState(false);
+  const handleToast = () => {
+    setIsToastOpen(true);
+
+    setTimeout(() => {
+      setIsToastOpen(false);
+    }, 5000);
   };
 
   return (
@@ -117,14 +130,20 @@ const CheckEmailModal = ({
                   }}
                   onClick={() => {
                     handleClick();
-                    openResetForm();
+                    handleToast();
+                    // openResetForm();
                   }}
                 >
                   {LOGIN_FORM.loginCard.resend}
                 </Button>
+                {isToastOpen && (
+                  <Alert variant="filled" severity="success">
+                    Email sent sucessfully
+                  </Alert>
+                )}
                 {showReset && (
                   <ResendPassword handleBackToLogin={handleBackToLogin} />
-)}
+                )}
                 <Button
                   sx={{
                     fontWeight: '400px',
