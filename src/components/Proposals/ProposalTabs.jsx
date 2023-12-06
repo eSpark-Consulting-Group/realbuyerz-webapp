@@ -4,9 +4,15 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
+
 import ProposalListingCard from './ProposalListingCard';
 import { getUniqueProposalStatus } from '@/utils/propertyFilter';
 import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
+import {
+  countFilteredData,
+  filterDataBySearch,
+  filterPropertiesByStatus,
+} from '@/utils/SearchFilter';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
@@ -48,37 +54,16 @@ const ProposalTabs = ({ filteredProposalsData }) => {
             aria-label="basic tabs example"
           >
             {tabData?.map((tab, index) => {
-              const filteredData = search
-                ? filteredProposalsData.filter(
-                    (item) =>
-                      item.amount?.toLowerCase() === search?.toLowerCase() ||
-                      item.title?.toLowerCase() === search?.toLowerCase() ||
-                      item.location?.propertyType.toLowerCase() ===
-                        search?.toLowerCase() ||
-                      item.location?.city.toLowerCase() ===
-                        search?.toLowerCase() ||
-                      item?.location?.location.toLowerCase() ===
-                        search?.toLowerCase() ||
-                      item.location?.purpose.toLowerCase() ===
-                        search?.toLowerCase()
-                  )
-                : null;
+              const filteredProperties = filterPropertiesByStatus(
+                filteredProposalsData,
+                tab.tabProposalStatus
+              );
 
-              const filteredDataCount =
-                filteredData?.length ||
-                (search ? 0 : filteredProposalsData.length);
-              const filteredPropertiesCount =
-                tab.tabProposalStatus === 'All'
-                  ? filteredProposalsData.length
-                  : filteredProposalsData.filter(
-                      (proposal) =>
-                        proposal.proposalStatus === tab.tabProposalStatus
-                    ).length;
-
-              const filteredCount =
-                tab.tabProposalStatus === 'All'
-                  ? filteredDataCount
-                  : filteredPropertiesCount;
+              const filteredCount = countFilteredData(
+                filteredProperties,
+                tab.tabProposalStatus,
+                search
+              );
 
               return (
                 <Tab
@@ -107,25 +92,14 @@ const ProposalTabs = ({ filteredProposalsData }) => {
 };
 
 const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
-  const filteredProperties =
-    value === 0
-      ? data
-      : data.filter(
-          (proposal) => proposal.proposalStatus === tabProposalStatus
-        );
-
-  const filteredData = search
-    ? filteredProperties?.filter(
-        (item) =>
-          item.amount?.toLowerCase() === search?.toLowerCase() ||
-          item.title?.toLowerCase() === search?.toLowerCase() ||
-          item.location?.propertyType.toLowerCase() === search?.toLowerCase() ||
-          item.location?.city.toLowerCase() === search?.toLowerCase() ||
-          item?.location?.location?.toLowerCase() === search?.toLowerCase() ||
-          item.location?.purpose.toLowerCase() === search?.toLowerCase()
-      )
-    : null;
+  const filteredProperties = filterPropertiesByStatus(data, tabProposalStatus);
+  const filteredData = filterDataBySearch(
+    filteredProperties,
+    tabProposalStatus,
+    search
+  );
   const displayData = filteredData || filteredProperties;
+
   return (
     <div
       role="tabpanel"

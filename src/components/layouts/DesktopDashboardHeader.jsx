@@ -18,7 +18,8 @@ import {
   LOGIN_PERSON_NAME,
   MY_LISTING,
   POST_LISTING,
-} from '@/app/constants/LiveBidding';
+  SEARCH,
+} from '@/app/constants/DashboardHeader';
 
 const DesktopDashboardHeader = ({ HEADER_MENU }) => {
   // const [anchorElNav, setAnchorElNav] = useState(null);
@@ -91,7 +92,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                     />
                     <Link href={`/dashboard/proposals?search=${search}`}>
                       <Button variant="primary" sx={{ mx: 1 }}>
-                        Search
+                        {SEARCH}
                       </Button>
                     </Link>
                   </Box>

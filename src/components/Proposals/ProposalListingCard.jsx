@@ -11,6 +11,8 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
+
 const styles = {
   container: {
     display: 'flex',
@@ -36,13 +38,11 @@ const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the range of currently displayed items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const currentItems = proposalsData.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle pagination change
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
@@ -121,7 +121,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 <Link href={`./proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
-                      Restore Property
+                      {RESTORE_PROPERTY}
                     </Typography>
                   </Button>
                 </Link>
@@ -188,7 +188,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                       fontSize: '14px',
                     }}
                   >
-                    Amount:
+                    {AMOUNT}
                   </Typography>
                   <Typography
                     sx={{
@@ -205,13 +205,11 @@ const ProposalListingCard = ({ proposalsData }) => {
               </Grid>
             </Grid>
             <Box sx={{ pt: '5px' }}></Box>
-            {/* Direction */}
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {proposal.direction}
             </Typography>
-            {/* Description */}
             <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
               {proposal.description}
             </Typography>
@@ -219,7 +217,6 @@ const ProposalListingCard = ({ proposalsData }) => {
         </Grid>
       ))}
 
-      {/* Pagination */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
           count={Math.ceil(proposalsData.length / itemsPerPage)}
