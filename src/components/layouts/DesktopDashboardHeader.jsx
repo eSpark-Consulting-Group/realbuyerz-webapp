@@ -22,7 +22,6 @@ import {
 } from '@/app/constants/DashboardHeader';
 
 const DesktopDashboardHeader = ({ HEADER_MENU }) => {
-  // const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [search, setSearch] = useState();
 
