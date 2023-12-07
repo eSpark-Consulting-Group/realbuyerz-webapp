@@ -1,29 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import {
-  Modal,
-  Button,
-  Box,
-  Typography,
-  Alert,
-  AlertTitle,
-} from '@mui/material';
+import { Modal, Button, Box, Typography, Alert } from '@mui/material';
 import Image from 'next/image';
 
 import { LOGIN_FORM } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
-import Continue from './Continue';
-import ResendPassword from '../ResetPassword/ResetPassword';
 import { useRouter } from 'next/navigation';
 
-const CheckEmailModal = ({
-  open,
-  onClose,
-  email,
-  handleClick,
-  showSignin,
-  handleBackToLogin,
-}) => {
+const CheckEmailModal = ({ open, onClose, email, handleClick, showSignin }) => {
   const router = useRouter();
   const handleLogin = () => {
     router.push('/auth/signin');
@@ -132,7 +116,6 @@ const CheckEmailModal = ({
                   onClick={() => {
                     handleClick();
                     handleToast();
-                    // openResetForm();
                   }}
                 >
                   {LOGIN_FORM.loginCard.resend}
@@ -142,9 +125,6 @@ const CheckEmailModal = ({
                     Email sent sucessfully
                   </Alert>
                 )}
-                {/* {showReset && (
-                  <ResendPassword handleBackToLogin={handleBackToLogin} />
-                )} */}
                 <Button
                   sx={{
                     fontWeight: '400px',
@@ -156,7 +136,6 @@ const CheckEmailModal = ({
                     textDecoration: 'underline',
                   }}
                   onClick={() => {
-                    // handleBackToLogin();
                     handleLogin();
                   }}
                 >

@@ -26,8 +26,6 @@ const Continue = ({
         onClick={() => {
           handleContinue();
           checkPasswordMatch();
-          //     handleValidation();
-          // handleBackToLogin();
         }}
       >
         {LOGIN_FORM.loginCard.continue}

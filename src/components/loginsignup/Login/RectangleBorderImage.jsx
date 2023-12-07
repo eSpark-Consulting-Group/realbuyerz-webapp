@@ -5,15 +5,9 @@ import { Box } from '@mui/system';
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import { useRouter } from 'next/navigation';
 import ResendPassword from '../ResetPassword/ResetPassword';
-const RectangleBorderImage = ({
-  isLogin,
-  height,
-  showComponent,
-  paddingTop,
-}) => {
-  const router = useRouter();
+
+const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
   let cardComponent;
 
   switch (showComponent) {
@@ -36,17 +30,21 @@ const RectangleBorderImage = ({
     <Box
       component="div"
       sx={{
-        display: { xs: 'none', md: 'flex' },
-        justifyContent: 'flex-end',
-        width: '427px',
+        display: 'flex',
+        justifyContent: { xs: 'center', md: 'flex-end' },
+        width: { xs: '100%', md: '427px' },
         height: height,
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
-        paddingTop: showComponent === 'resetpassword' ? paddingTop : '0px', // Apply paddingTop conditionally
+        paddingTop: showComponent === 'forgetpassword' ? paddingTop : '0px',
+        '@media (max-width: 960px)': {
+          background: 'none',
+        },
       }}
     >
       <Box
         sx={{
+          display: 'flex',
           marginRight: '-210px',
           '@media (max-width: 1286px)': {
             marginRight: '-110px',
@@ -56,6 +54,10 @@ const RectangleBorderImage = ({
           },
           '@media (max-width: 1048px)': {
             marginRight: '-53px',
+          },
+          '@media (max-width: 600px)': {
+            marginRight: '0px',
+            justifyContent: 'center',
           },
         }}
       >

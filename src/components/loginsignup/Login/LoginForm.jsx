@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
@@ -12,6 +12,14 @@ const FormContainer = ({
   handleInputChange,
   handleAutoCompleteInputChange,
 }) => {
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
+  const handleFieldToggle = (fieldName) => {
+    setFormData({
+      ...formData,
+      [fieldName]: !formData[fieldName],
+    });
+  };
+
   return (
     <>
       {isLoginForm ? (
@@ -132,12 +140,15 @@ const FormContainer = ({
                   }}
                 />
               )}
-              // onChange={handleInputChange}
               onChange={(event, newValue) =>
                 handleAutoCompleteInputChange(event, newValue)
               }
             />
-            <PasswordAndConfirmFields handleInputChange={handleInputChange} />
+            <PasswordAndConfirmFields
+              handleInputChange={handleInputChange}
+              handleFieldToggle={handleFieldToggle}
+              formData={formData}
+            />
           </Box>
         </form>
       )}

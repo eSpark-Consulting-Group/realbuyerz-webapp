@@ -13,11 +13,11 @@ const SignupCard = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
   const dispatch = useDispatch();
   const handleInputContactNumber = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue.length <= 11) {
+    const contactNumber = event.target.value;
+    if (contactNumber.length <= 11) {
       setFormData({
         ...formData,
-        [event.target.name]: inputValue,
+        [event.target.name]: contactNumber,
       });
     }
   };
@@ -38,7 +38,6 @@ const SignupCard = () => {
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
-    console.log('test', formData);
   };
   const router = useRouter();
   return (

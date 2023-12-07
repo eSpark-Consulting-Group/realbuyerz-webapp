@@ -11,7 +11,6 @@ const Signin = () => {
         <RectangleBorderImage
           showComponent="resetpassword"
           height={LOGIN_FORM.rectangleHeight.loginFormHeight}
-          paddingTop={16}
         />
       </Grid>
     </>

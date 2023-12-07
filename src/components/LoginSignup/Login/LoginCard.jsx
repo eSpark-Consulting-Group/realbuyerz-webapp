@@ -42,7 +42,7 @@ const LoginCard = () => {
       {!showForgetPassword ? (
         <Box
           sx={{
-            width: { xs: '90%', md: '500px' },
+            width: { xs: '80%', md: '500px' },
             height: '600px',
             display: 'flex',
             flexDirection: 'column',
