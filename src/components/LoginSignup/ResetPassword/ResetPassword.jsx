@@ -27,13 +27,13 @@ const ResendPassword = () => {
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
       alert('Password match');
-      router.push('/auth/signin');
+      router.push('/signin');
     } else {
       alert('Password donot match');
     }
   };
   const BackToSignin = () => {
-    router.push('/auth/signin');
+    router.push('/signin');
   };
   const handleContinue = () => {};
   return (

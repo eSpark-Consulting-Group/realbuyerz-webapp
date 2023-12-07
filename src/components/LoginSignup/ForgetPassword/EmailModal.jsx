@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 const CheckEmailModal = ({ open, onClose, email, handleClick, showSignin }) => {
   const router = useRouter();
   const handleLogin = () => {
-    router.push('/auth/signin');
+    router.push('/signin');
   };
   const [isToastOpen, setIsToastOpen] = useState(false);
   const handleToast = () => {

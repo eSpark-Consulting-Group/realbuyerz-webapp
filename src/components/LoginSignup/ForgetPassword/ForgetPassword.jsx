@@ -17,7 +17,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   const [showSignin, setshowSignin] = useState(false);
   const handleBackToLogin = () => {
     setshowSignin(true);
-    router.push('/auth/signin');
+    router.push('/signin');
   };
   const router = useRouter();
 

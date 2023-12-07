@@ -24,7 +24,7 @@ const LoginCard = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
-    router.push('/auth/forget-password');
+    router.push('/forget-password');
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
@@ -124,7 +124,7 @@ const LoginCard = () => {
               label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push('/auth/signup')}
+              onSigninClick={() => router.push('/signup')}
               loginClick={loginClick}
             />
           </Box>
