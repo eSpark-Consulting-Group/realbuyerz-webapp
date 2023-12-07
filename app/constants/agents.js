@@ -24,8 +24,6 @@ export const AGENTS_DATA = [
     address: 'Hub River Road',
     city: 'Karachi',
     country: 'pakistan',
-    city: 'Karachi',
-    country: 'pakistan',
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', //string
     properties: [1, 2, 3, 4],
@@ -47,7 +45,7 @@ export const AGENTS_DATA = [
     onlineStatus: true,
     counts: {
       totalCount: 150,
-      rentcount: {
+      rentCount: {
         total: 75,
         houses: 20,
         flats: 20,
@@ -58,7 +56,7 @@ export const AGENTS_DATA = [
         commercials: 20,
         // more Categories
       },
-      rentcount: {
+      sellCount: {
         total: 75,
         houses: 20,
         flats: 20,

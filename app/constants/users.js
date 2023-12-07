@@ -40,7 +40,7 @@ export const USERS_DATA = [
     onlineStatus: true,
     counts: {
       totalCount: 150,
-      rentcount: {
+      rentCount: {
         total: 75,
         houses: 20,
         flats: 20,
@@ -51,7 +51,7 @@ export const USERS_DATA = [
         commercials: 20,
         // more Categories
       },
-      rentcount: {
+      sellCount: {
         total: 75,
         houses: 20,
         flats: 20,
