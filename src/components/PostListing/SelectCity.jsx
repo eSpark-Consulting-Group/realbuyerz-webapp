@@ -3,7 +3,7 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
 import { useDispatch } from 'react-redux';
-import { addCity } from '@/src/redux/slices/postlisting/example';
+import { addCity } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const SelectCityType = ({ image, label, cityOptions }) => {
   const [city, setCity] = React.useState();

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import {
   addInstallment,
   addPossession,
-} from '@/src/redux/slices/postlisting/example';
+} from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,

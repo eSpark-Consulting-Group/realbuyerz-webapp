@@ -6,11 +6,11 @@ import {
   addBathrooms,
   addBedrooms,
   addParking,
-} from '@/src/redux/slices/postlisting/example';
+} from '@/src/redux/slices/postlisting/postListingSlice';
 
 const Counter = ({ identifier }) => {
   const [number, setNumber] = React.useState(0);
-  const [setIncrementValue] = React.useState(0);
+  const [incrementValue, setIncrementValue] = React.useState(0);
   const [bedroomValue, setBedroomValue] = React.useState(0);
   const [bathroomValue, setBathroomValue] = React.useState(0);
   const [parkingValue, setParkingValue] = React.useState(0);
@@ -44,13 +44,13 @@ const Counter = ({ identifier }) => {
 
   const saveIncrement = (value) => {
     setIncrementValue(value);
-    console.log(`Increment value saved for ${identifier}:`, value);
   };
 
   return (
     <div>
       <CustomNumberInput
         value={number}
+        incrementValue={incrementValue}
         onChange={handleNumberChange}
         onSaveIncrement={saveIncrement}
         identifier={identifier}

@@ -10,12 +10,8 @@ import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import {
-  createInformationState,
-  handleClickUtil,
-  handleInputChangeUtil,
-} from '@/utils/addInfo';
-import { useDispatch } from 'react-redux';
+import { createInformationState, handleInputChangeUtil } from '@/utils/addInfo';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
@@ -24,9 +20,15 @@ import {
   createPropertyStatusState,
   handleButtonClickUtil,
 } from '@/utils/propertyStatus';
-import { createMediaDataState, handleFileChangeUtil } from '@/utils/mediaData';
+import { createMediaDataState } from '@/utils/mediaData';
+import {
+  UploadImages,
+  UploadVideos,
+} from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PostListing = ({ propertySell }) => {
+  const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
+
   const initializePropertyData = () => {
     const informationState = createInformationState(
       PROPERTY_INFORMATION.addInfo,
@@ -53,13 +55,6 @@ const PostListing = ({ propertySell }) => {
     console.log('heh', propertyData);
   }, [propertyData]);
 
-  // const [propertyData, setPropertyData] = useState(
-  //   createInformationState(
-  //     PROPERTY_INFORMATION.addInfo,
-  //     PROPERTY_BUYING_DETAIL.sellingDetails
-  //   )
-  // );
-
   const dispatch = useDispatch();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -70,18 +65,21 @@ const PostListing = ({ propertySell }) => {
     handleButtonClickUtil(index, propertyData, setPropertyData, propertySell);
   };
   const handleFileChange = async (event, index) => {
-    const selectedFile = event.target.files[0];
-
-    setPropertyData((prevData) =>
-      handleFileChangeUtil(prevData, index, selectedFile)
+    const files = event.target.files[0];
+    const newImage = files?.name;
+    const newVideo = URL.createObjectURL(files);
+    if (index == 0 && files?.type?.startsWith('image/')) {
+      dispatch(UploadImages(newImage));
+    } else if (index == 1 && files?.type?.startsWith('video/')) {
+      dispatch(UploadVideos(newVideo));
+    }
+  };
+  const handleSubmitAd = () => {
+    console.log(
+      PostListigSelectedData,
+      'PostListigSelectedData on click SubmitAd'
     );
   };
-
-  const handleClick = () => {
-    handleClickUtil(dispatch, propertyData);
-    console.log('data', propertyData);
-  };
-  console.log(propertyData, 'propertyDatakkk');
   return (
     <Grid
       container
@@ -107,7 +105,6 @@ const PostListing = ({ propertySell }) => {
           />
           <PropertyPurpose
             propertyData={propertyData}
-            // // handleClick={handleClick}
             handleInputChangeSell={handleInputChangeSell}
           />
           <PropertySize />
@@ -116,7 +113,7 @@ const PostListing = ({ propertySell }) => {
             handleFileChange={handleFileChange}
             propertyData={propertyData}
           />
-          <SubmitButton onClick={handleClick} />
+          <SubmitButton handleSubmitAd={handleSubmitAd} />
         </Box>
       </Grid>
     </Grid>

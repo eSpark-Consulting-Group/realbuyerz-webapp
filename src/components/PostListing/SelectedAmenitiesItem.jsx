@@ -1,23 +1,8 @@
-import React, { useState } from 'react';
-import { Typography, Button } from '@mui/material';
+import React from 'react';
+import { Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
-
 const SelectedAmenitiesItems = ({ selectedItems }) => {
-  const [selectedAmenities, setSelectedAmenities] = useState({
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
-  });
-
-  const handleSaveAmenities = () => {
-    const updatedSellingDetails = { ...selectedAmenities.sellingData };
-    const selectedTitles = selectedItems.map((item) => item.title);
-    updatedSellingDetails.selectedAmenities = selectedTitles;
-    setSelectedAmenities({
-      sellingDetails: updatedSellingDetails,
-    });
-    console.log('list', selectedAmenities);
-  };
   return (
     <div>
       <ul

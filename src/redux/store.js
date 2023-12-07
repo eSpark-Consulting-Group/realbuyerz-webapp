@@ -17,12 +17,10 @@ import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import postListingSlice from './slices/postlisting/postListingSlice';
-import ExamplePageSlice from './slices/postlisting/example';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 
 export const store = configureStore({
   reducer: {
-    postListing: postListingSlice,
     properties: propertiesSlice,
     propertyCategories: propertiesCategoriesSlice,
     featuredProperties: featuredPropertiesSlice,
@@ -39,7 +37,7 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-    ExamplePage: ExamplePageSlice,
+    PostListing: postListingSlice,
     resendEmail: resendEmailSlice,
   },
 });

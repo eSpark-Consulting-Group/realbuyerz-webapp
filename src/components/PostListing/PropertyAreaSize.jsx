@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
 import { useDispatch } from 'react-redux';
-import { addArea, addamount } from '@/src/redux/slices/postlisting/example';
+import {
+  addArea,
+  addamount,
+} from '@/src/redux/slices/postlisting/postListingSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
