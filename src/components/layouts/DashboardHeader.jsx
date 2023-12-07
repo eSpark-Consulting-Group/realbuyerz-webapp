@@ -19,6 +19,7 @@ const DashboardHeader = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElSearch, setAnchorElSearch] = useState(null);
   const [islogedIn, setIslogedIn] = useState(null);
+  const [islogedInMobile, setIslogedInMobile] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +35,9 @@ const DashboardHeader = () => {
   const handleOpenLoginMenu = (event) => {
     setIslogedIn(event.currentTarget);
   };
+  const handleOpenMobileLoginMenu = (event) => {
+    setIslogedInMobile(event.currentTarget);
+  };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -48,6 +52,9 @@ const DashboardHeader = () => {
   };
   const handleCloseLoginMenu = () => {
     setIslogedIn(null);
+  };
+  const handleCloseMobileLoginMenu = () => {
+    setIslogedInMobile(null);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -80,24 +87,6 @@ const DashboardHeader = () => {
               alignItems: 'center',
             }}
           >
-            <Button
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              sx={{
-                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
-                p: 0,
-                color: '#000',
-              }}
-            >
-              <MenuIcon
-                sx={{
-                  cursor: 'pointer',
-                }}
-              />
-            </Button>
             <Box
               sx={{
                 display: { xs: 'flex' },
@@ -124,7 +113,7 @@ const DashboardHeader = () => {
                   width={20}
                   height={20}
                   alt={'icon'}
-                  style={{ marginTop: 2 }}
+                  style={{ marginTop: 2, marginLeft: 2 }}
                 />
               </Typography>{' '}
               <Typography
@@ -144,7 +133,7 @@ const DashboardHeader = () => {
                   width={155}
                   height={37}
                   alt={'icon'}
-                  style={{ marginTop: 2 }}
+                  style={{ marginTop: 2, marginLeft: 2 }}
                 />
               </Typography>
               <Drawer
@@ -182,7 +171,30 @@ const DashboardHeader = () => {
               handleOpenUserMenu={handleOpenUserMenu}
               anchorElUser={anchorElUser}
               handleCloseUserMenu={handleCloseUserMenu}
+              islogedInMobile={islogedInMobile}
+              handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
+              handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
             />
+          </Box>
+          <Box>
+            <Button
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              sx={{
+                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
+                p: 0,
+                color: '#000',
+              }}
+            >
+              <MenuIcon
+                sx={{
+                  cursor: 'pointer',
+                }}
+              />
+            </Button>
           </Box>
         </Toolbar>
       </Box>

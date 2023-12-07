@@ -32,7 +32,6 @@ const DesktopDashboardHeader = ({
   handleCloseLoginMenu,
   handleOpenLoginMenu,
   islogedIn,
-  setIslogedIn,
 }) => {
   const [search, setSearch] = useState();
 
@@ -41,7 +40,6 @@ const DesktopDashboardHeader = ({
   };
   const handleLogout = () => {
     handleCloseLoginMenu();
-    setIslogedIn(null);
   };
   return (
     <Box
@@ -201,7 +199,6 @@ const DesktopDashboardHeader = ({
                 mx: 1,
                 cursor: 'pointer',
               }}
-              onClick={handleOpenLoginMenu}
             >
               <Typography
                 sx={{
@@ -218,6 +215,7 @@ const DesktopDashboardHeader = ({
                 width={41}
                 height={41}
                 alt={'icon'}
+                onClick={handleOpenLoginMenu}
               />
               <Menu
                 sx={{ mt: '65px' }}
