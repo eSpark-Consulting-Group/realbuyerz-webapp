@@ -44,13 +44,14 @@ export const AGENTS_DATA = [
     autoReport: true, // true or false
     emailNotification: true, // true or false
     newsLetters: true, // true or false
+    onlineStatus: true,
     counts: {
       totalCount: 150,
       rentcount: {
         total: 75,
         houses: 20,
         flats: 20,
-        flots: 20,
+        plots: 20,
         farmHouses: 20,
         shops: 20,
         offices: 20,
@@ -61,7 +62,7 @@ export const AGENTS_DATA = [
         total: 75,
         houses: 20,
         flats: 20,
-        flots: 20,
+        plots: 20,
         farmHouses: 20,
         shops: 20,
         offices: 20,
