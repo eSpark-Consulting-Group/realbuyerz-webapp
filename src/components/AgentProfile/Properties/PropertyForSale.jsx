@@ -5,7 +5,8 @@ import { Box } from '@mui/system';
 
 import { PROPERTIES_FOR_SALE, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ data }) => {
+const PropertyForSale = ({ sellCount }) => {
+  console.log(sellCount, 'countsss')
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -37,7 +38,7 @@ const PropertyForSale = ({ data }) => {
                 ml: 1,
               }}
             >
-              {`${data?.propertiesForSale.count} ${PROPERTIES_FOR_SALE}`}
+              {`${sellCount?.total} ${PROPERTIES_FOR_SALE}`}
             </Typography>
           </Box>
         </Grid>

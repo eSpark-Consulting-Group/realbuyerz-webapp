@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Grid, Typography } from '@mui/material';
 
-const PropertyCardSaleBody = ({ data }) => {
+const PropertyCardSaleBody = ({ sellData }) => {
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
@@ -32,7 +32,7 @@ const PropertyCardSaleBody = ({ data }) => {
                   textAlign: 'center',
                 }}
               >
-                {data?.propertiesForSale.types[propertyType]}
+               {sellData?.sellCount[propertyType]}
               </Typography>
               <Typography
                 sx={{

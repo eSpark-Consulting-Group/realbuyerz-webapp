@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { PROPERTIES_FOR_RENT, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
-const PropertyForRent = ({ data }) => {
+const PropertyForRent = ({ rentCount }) => {
   return (
     <div>
       <Grid container justifyContent="space-between">
@@ -35,7 +35,7 @@ const PropertyForRent = ({ data }) => {
                 ml: 1,
               }}
             >
-              {`${data?.propertiesForSale.count} ${PROPERTIES_FOR_RENT}`}
+              {`${rentCount?.total} ${PROPERTIES_FOR_RENT}`}
             </Typography>
           </Box>
         </Grid>

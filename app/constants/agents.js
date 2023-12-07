@@ -1,7 +1,7 @@
 export const AGENTS_DATA = [
   {
     id: 1,
-    userName: 'ArmanKhan',
+    userName: 'Arman Khan',
     profileImage: '',
     firstName: 'Arman',
     lastName: 'Khan',
@@ -48,24 +48,24 @@ export const AGENTS_DATA = [
       totalCount: 150,
       rentCount: {
         total: 75,
-        houses: 20,
+        Houses: 20,
         flats: 20,
-        plots: 20,
+        Plots: 20,
         farmHouses: 20,
         shops: 20,
         offices: 20,
-        commercials: 20,
+        Commercials: 20,
         // more Categories
       },
       sellCount: {
         total: 75,
-        houses: 20,
+        Houses: 20,
         flats: 20,
-        plots: 20,
+        Plots: 20,
         farmHouses: 20,
         shops: 20,
         offices: 20,
-        commercials: 20,
+        Commercials: 20,
         // more Categories
       },
     },
