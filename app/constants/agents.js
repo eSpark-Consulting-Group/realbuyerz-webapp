@@ -39,6 +39,7 @@ export const AGENTS_DATA = [
     avaibleConnects: 50, // 0-100%
     areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
     currenyUnit: 'pkr', // pkr or usd etx
+    verificationStatus: true, // true or false
     autoReport: true, // true or false
     emailNotification: true, // true or false
     newsLetters: true, // true or false

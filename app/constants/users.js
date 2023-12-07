@@ -31,10 +31,10 @@ export const USERS_DATA = [
     profileVisibility: 'public', // profile or Public
     profileStatus: 'public', // public or Blocked or Reported or removed
     // profilePercentage: 50,
-    verificationStatus: 50, // 0-100%
     areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
     currenyUnit: 'pkr', // pkr or usd etx
     autoReport: true, // true or false
+    verificationStatus: true, // true or false
     emailNotification: true, // true or false
     newsLetters: true, // true or false
     onlineStatus: true,
