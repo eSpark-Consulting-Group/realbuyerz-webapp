@@ -1,11 +1,12 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
 import { PROPERTIES_FOR_SALE, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ data }) => {
+const PropertyForSale = ({ data,handleView }) => {
+
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -48,7 +49,7 @@ const PropertyForSale = ({ data }) => {
               verticalAlign: 'baseline',
             }}
           >
-            <Typography
+            <Button
               variant="body2"
               sx={{
                 color: '#FB631C',
@@ -58,15 +59,17 @@ const PropertyForSale = ({ data }) => {
                 fontWeight: 400,
                 lineHeight: 'normal',
               }}
+              onClick={handleView}
             >
               {VIEW_BUTTON} &nbsp;
-            </Typography>
-            <Image
+               <Image
               src="/images/agent-profile-icons/arrow.svg"
               width={9}
               height={9}
               alt="arrow-icon"
             />
+            </Button>
+           
           </Box>
         </Grid>
       </Grid>

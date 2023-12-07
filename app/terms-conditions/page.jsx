@@ -7,11 +7,10 @@ import { PAGES_INFO } from '../constants/Constants';
 
 const TermsConditions = () => {
   const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
-
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
-
+  console.log("content",selectedTab.content);
   return (
     <Box
       sx={{

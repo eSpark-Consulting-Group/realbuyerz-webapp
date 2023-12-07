@@ -1,8 +1,13 @@
 import React from 'react';
 
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 const PropertyCardRentBody = ({ data }) => {
+   const router = useRouter();
+  const handleView = () => {
+    router.push('/properties')
+  }
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
@@ -42,6 +47,7 @@ const PropertyCardRentBody = ({ data }) => {
                   fontWeight: 400,
                   lineHeight: 'normal',
                 }}
+              
               >
                 {propertyType}
               </Typography>

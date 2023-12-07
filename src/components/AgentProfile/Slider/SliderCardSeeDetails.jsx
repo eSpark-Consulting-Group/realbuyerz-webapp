@@ -29,7 +29,7 @@ const SliderCardSeeDetails = ({ link }) => {
             color: '#000000',
           }}
         >
-          <Typography variant="body1" color="#000000">
+          <Typography variant="body1" color="#000000" sx={{textAlign:"center"}}>
             {SEE_DETAILS}
           </Typography>
         </Link>
