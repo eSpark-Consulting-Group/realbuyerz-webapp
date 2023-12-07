@@ -23,7 +23,7 @@ export const AGENTS_DATA = [
     // },
     address: 'Hub River Road',
     city: 'Karachi',
-    country: 'pakistan',
+    country: 'Pakistan',
     about:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', //string
     properties: [1, 2, 3, 4],
@@ -32,13 +32,13 @@ export const AGENTS_DATA = [
     coverLetters: [1, 2, 3, 4],
     biddings: [1, 2, 3, 4],
     subsPackage: 'basic', // basic, hot, Super
-    leadprefernece: 'Open to contract', //Open to contract,
+    leadPreference: 'Open to contract', //Open to contract,
     profileVisibility: 'public', // profile or Public
     profileStatus: 'public', // public or Blocked or Reported or removed
     profilePercentage: 50,
-    avaibleConnects: 50, // 0-100%
+    availableConnects: 50, // 0-100%
     areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-    currenyUnit: 'pkr', // pkr or usd etx
+    currencyUnit: 'pkr', // pkr or usd etx
     verificationStatus: true, // true or false
     autoReport: true, // true or false
     emailNotification: true, // true or false
@@ -80,7 +80,7 @@ export const ADD_AGENT_DATA = {
   lastName: 'Ali', //string
   email: 'ali@esparkconsultants.com', //email
   address: 'Liaquatabad', //string
-  city: 'karachi', //string
+  city: 'Karachi', //string
   country: 'pakistan', //string
   landline: +424564879798, //tel
   mobile: +424564879798, //tel

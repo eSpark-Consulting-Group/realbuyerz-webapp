@@ -23,7 +23,7 @@ export const USERS_DATA = [
     // },
     city: 'Karachi',
     address: 'Hub River Road',
-    country: 'pakistan',
+    country: 'Pakistan',
     properties: [1, 2, 3, 4],
     listings: [1, 2, 3, 4],
     proposals: [1, 2, 3, 4],
@@ -32,7 +32,7 @@ export const USERS_DATA = [
     profileStatus: 'public', // public or Blocked or Reported or removed
     // profilePercentage: 50,
     areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-    currenyUnit: 'pkr', // pkr or usd etx
+    currencyUnit: 'pkr', // pkr or usd etx
     autoReport: true, // true or false
     verificationStatus: true, // true or false
     emailNotification: true, // true or false
