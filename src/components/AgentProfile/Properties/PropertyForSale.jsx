@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import { PROPERTIES_FOR_SALE, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
 const PropertyForSale = ({ sellCount }) => {
-  console.log(sellCount, 'countsss')
+  console.log(sellCount, 'countsss');
   return (
     <>
       <Grid container justifyContent="space-between">
