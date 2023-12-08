@@ -11,7 +11,7 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import DesktopDashboardHeader from './DesktopDashboardHeader';
-import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
+import { HEADER_MENU } from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
@@ -19,7 +19,6 @@ const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   console.log(anchorElUser);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -140,7 +139,7 @@ const DashboardHeader = () => {
                     height: '10%',
                   }}
                 >
-                  <LeftSideBar menuItem={MENU_ITEM} />
+                  <LeftSideBar />
                 </Box>
               </Drawer>
             </Box>

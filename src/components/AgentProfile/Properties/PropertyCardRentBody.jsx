@@ -1,13 +1,7 @@
 import React from 'react';
-
-import { Box, Button, Grid, Typography } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import { Box, Grid, Typography } from '@mui/material';
 
 const PropertyCardRentBody = ({ data }) => {
-  const router = useRouter();
-  const handleView = () => {
-    router.push('/properties');
-  };
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (

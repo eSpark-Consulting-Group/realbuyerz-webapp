@@ -18,7 +18,7 @@ export const ESTIMATE_RANGE = 'Est. Range:';
 export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
 
-export const MENU_ITEM = [
+export const AGENT_MENU_ITEM = [
   {
     id: 1,
     icon: '/images/Live-bidding-icons/liveBidding.svg',
@@ -82,7 +82,44 @@ export const MENU_ITEM = [
     ],
   },
 ];
-
+export const USER_MENU_ITEM = [
+  {
+    id: 1,
+    icon: '/images/dashboard-icon/dashboard.svg',
+    iconActive: '/images/dashboard-icon/dashboardActive.svg',
+    title: 'Dashboard',
+    link: '/dashboard/',
+  },
+  {
+    id: 2,
+    icon: '/images/Live-bidding-icons/propertyManagement.svg',
+    title: 'Post Request',
+    link: '/dashboard/post-listing',
+  },
+  {
+    id: 3,
+    icon: '/images/Live-bidding-icons/Inbox.svg',
+    iconActive: '/images/Live-bidding-icons/InboxActive.svg',
+    title: 'Inbox',
+    link: '/dashboard/inbox',
+  },
+  {
+    id: 4,
+    icon: '/images/Live-bidding-icons/agentSettings.svg',
+    title: 'User Settings',
+    link: '#',
+    subItem: [
+      {
+        subTitle: 'User Profile',
+        link: '/dashboard/agent-settings/agent-profile',
+      },
+      {
+        subTitle: 'Preferences',
+        link: '/dashboard/agent-settings/preferences',
+      },
+    ],
+  },
+];
 export const LIVE_BIDDING_DATA = {
   liveBidding: [
     {

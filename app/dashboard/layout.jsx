@@ -2,7 +2,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import { MENU_ITEM, PROFILE_INFO } from '../constants/LiveBidding';
+import { AGENT_MENU_ITEM, PROFILE_INFO } from '../constants/LiveBidding';
 import { Box } from '@mui/system';
 import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
 import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
@@ -28,7 +28,7 @@ const InnerPageLayout = ({ children }) => {
             display: { xs: 'none', sm: 'none', md: 'block' },
           }}
         >
-          <LeftSideBar menuItem={MENU_ITEM} />
+          <LeftSideBar menuItem={AGENT_MENU_ITEM} />
         </Grid>
         <Grid
           item

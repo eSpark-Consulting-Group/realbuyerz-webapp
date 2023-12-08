@@ -1,9 +1,14 @@
-import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const SeeAllPosting = ({ title }) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/dashboard/proposals');
+  };
   return (
-    <Typography
+    <Button
       sx={{
         font: 'Inter',
         Weight: 500,
@@ -14,10 +19,15 @@ const SeeAllPosting = ({ title }) => {
         mr: { sm: 0 },
         textDecoration: 'underline',
         textUnderlineOffset: '4px',
+        background: 'none',
+        '&:hover': {
+          background: 'none',
+        },
       }}
+      onClick={handleClick}
     >
       {title}
-    </Typography>
+    </Button>
   );
 };
 
