@@ -30,6 +30,9 @@ const DashboardHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => {
@@ -150,6 +153,8 @@ const DashboardHeader = () => {
               handleCloseNavMenu={handleCloseNavMenu}
               anchorElNav={anchorElNav}
               handleOpenUserMenu={handleOpenUserMenu}
+              anchorElUser={anchorElUser}
+              handleCloseUserMenu={handleCloseUserMenu}
             />
           </Box>
         </Toolbar>

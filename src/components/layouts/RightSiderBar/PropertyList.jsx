@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
 import Title from './Title';
+import Link from 'next/link';
 
 const PropertyList = ({ profileInfo }) => {
   return (
@@ -32,12 +33,14 @@ const PropertyList = ({ profileInfo }) => {
               padding: '10px 0px 0px 20px',
             }}
           >
-            <Image
-              src="/images/Live-bidding-icons/category.svg"
-              width={30}
-              height={30}
-              alt="icons"
-            />
+            <Link href="/dashboard/proposals">
+              <Image
+                src="/images/Live-bidding-icons/category.svg"
+                width={30}
+                height={30}
+                alt="icons"
+              />
+            </Link>
           </Box>
         </Box>
         <Typography

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import {
   Box,
@@ -9,7 +10,8 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PROPERTY_STATS } from '@/app/constants/Proposals';
+
+import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
 
 const styles = {
   container: {
@@ -36,13 +38,11 @@ const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the range of currently displayed items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const currentItems = proposalsData.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle pagination change
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
@@ -121,7 +121,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 <Link href={`./proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
-                      Restore Property
+                      {RESTORE_PROPERTY}
                     </Typography>
                   </Button>
                 </Link>
@@ -130,24 +130,44 @@ const ProposalListingCard = ({ proposalsData }) => {
             <Divider sx={{ py: '5px' }} />
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
-                {PROPERTY_STATS?.map((propertyStats) => (
-                  <Box
-                    key={propertyStats.value}
-                    sx={{
-                      display: 'flex',
-                      fontSize: '16px',
-                      pt: '10px',
-                      gap: '5px',
-                    }}
-                  >
-                    <Typography sx={{ fontWeight: '500' }}>
-                      {propertyStats.title}:
-                    </Typography>
-                    <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>
-                      {proposal[propertyStats.value]}
-                    </Typography>
-                  </Box>
-                ))}
+                {Object.keys(proposal.location).map((key) => {
+                  if (key !== 'geoLocation' && key !== 'area') {
+                    return (
+                      <Box
+                        key={key}
+                        sx={{
+                          display: 'flex',
+                          pt: '10px',
+                          gap: '5px',
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontWeight: 700,
+                            color: '#333',
+                            fontStyle: 'normal',
+                            lineHeight: 'normal',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {key}:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: '#126FAA',
+                            fontWeight: 600,
+                            fontStyle: 'normal',
+                            lineHeight: 'normal',
+                            fontSize: '14px',
+                          }}
+                        >
+                          {proposal.location[key]}
+                        </Typography>
+                      </Box>
+                    );
+                  }
+                  return null;
+                })}
               </Grid>
               <Grid item xs={2} sx={{ justifyContent: 'center' }}>
                 <Box
@@ -159,21 +179,37 @@ const ProposalListingCard = ({ proposalsData }) => {
                     gap: '5px',
                   }}
                 >
-                  <Typography sx={{ fontWeight: '500' }}>Amount:</Typography>
-                  <Typography sx={{ color: '#126FAA', fontWeight: '500' }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      color: '#333',
+                      fontStyle: 'normal',
+                      lineHeight: 'normal',
+                      fontSize: '14px',
+                    }}
+                  >
+                    {AMOUNT}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: '#126FAA',
+                      fontWeight: 600,
+                      fontStyle: 'normal',
+                      lineHeight: 'normal',
+                      fontSize: '14px',
+                    }}
+                  >
                     {proposal.amount}
                   </Typography>
                 </Box>
               </Grid>
             </Grid>
             <Box sx={{ pt: '5px' }}></Box>
-            {/* Direction */}
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {proposal.direction}
             </Typography>
-            {/* Description */}
             <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
               {proposal.description}
             </Typography>
@@ -181,7 +217,6 @@ const ProposalListingCard = ({ proposalsData }) => {
         </Grid>
       ))}
 
-      {/* Pagination */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
           count={Math.ceil(proposalsData.length / itemsPerPage)}
