@@ -4,7 +4,7 @@ import { Box, Grid, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import { COMING_SOON } from '@/app/constants/global';
+import { COMING_SOON } from '@/app/constants/Global';
 
 const ComingSoon = () => (
   <Box
@@ -29,7 +29,12 @@ const ComingSoon = () => (
       <Grid item xs={12}>
         <Box sx={{ px: '50px', py: '30px', textAlign: 'center' }}>
           <Box py={'20px'}>
-            <Image src={'/images/404/4042.gif'} height={500} width={500} />
+            <Image
+              src={'/images/404/4042.gif'}
+              height={500}
+              width={500}
+              alt=""
+            />
             {/* //jasy hi koi achi ismage mialy gi to repace Krdoonga for coming soon */}
           </Box>
           <Box pt={'20px'}>

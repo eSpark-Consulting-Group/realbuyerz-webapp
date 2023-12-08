@@ -4,7 +4,7 @@ import { Box, Grid, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import { NOT_FOUND } from '@/app/constants/global';
+import { NOT_FOUND } from '@/app/constants/Global';
 
 const NotFoundSection = () => (
   <Box
@@ -29,7 +29,12 @@ const NotFoundSection = () => (
       <Grid item xs={12}>
         <Box sx={{ px: '50px', py: '30px', textAlign: 'center' }}>
           <Box py={'20px'}>
-            <Image src={'/images/404/4042.gif'} height={500} width={500} />
+            <Image
+              src={'/images/404/4042.gif'}
+              height={500}
+              width={500}
+              alt=""
+            />
           </Box>
           <Box pt={'20px'}>
             <Typography

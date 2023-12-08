@@ -4,8 +4,6 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import { TERM_CONDITIONS } from '../constants/TermCondition';
 import { PAGES_INFO } from '../constants/Constants';
-import NoSSR from 'react-no-ssr';
-import NoSsr from '@mui/material';
 
 const TermsConditions = () => {
   const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
