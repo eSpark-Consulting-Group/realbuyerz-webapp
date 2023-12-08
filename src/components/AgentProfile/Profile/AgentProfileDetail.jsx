@@ -1,9 +1,19 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 
-const AgentProfileDetail = ({ title, description }) => {
+import ProfileInfo from './ProfileInfo';
+import {
+  ALT,
+  FOR_RENT,
+  FOR_RENT_ICON,
+  FOR_SALE,
+  FOR_SALE_ICON,
+  LOCATION_ICON,
+} from '@/app/constants/AgentProfile';
+
+const AgentProfileDetail = ({ description }) => {
+  console.log(description, 'dis');
   return (
     <Grid
       item
@@ -31,40 +41,27 @@ const AgentProfileDetail = ({ title, description }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
         >
-          {title}
+          {description?.userName}
         </Typography>
-        {description?.map((item, i) => (
-          <Box
-            key={i}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            {item?.icon && (
-              <Box sx={{ mr: 1, mt: 1 }}>
-                <Image
-                  src={item?.icon}
-                  width={15}
-                  height={15}
-                  alt={item?.alt}
-                />
-              </Box>
-            )}
-            <Typography
-              variant="body1"
-              sx={{
-                color: '#777777',
-                fontWeight: 'medium',
-                marginTop: 1,
-              }}
-            >
-              {item?.text}
-              {item?.email}
-            </Typography>
-          </Box>
-        ))}
+
+        <ProfileInfo
+          city={description.city}
+          country={description.country}
+          icon={LOCATION_ICON}
+          alt={ALT}
+        />
+        <ProfileInfo
+          count={description?.counts?.sellCount?.total}
+          title={FOR_SALE}
+          country={description.country}
+          icon={FOR_SALE_ICON}
+        />
+        <ProfileInfo
+          count={description?.counts?.rentCount?.total}
+          title={FOR_RENT}
+          country={description.country}
+          icon={FOR_RENT_ICON}
+        />
       </Box>
     </Grid>
   );

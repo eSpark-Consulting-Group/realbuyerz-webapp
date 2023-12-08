@@ -4,9 +4,9 @@ import { Box, Grid } from '@mui/material';
 import AgentProfileDetail from './Profile/AgentProfileDetail';
 import LetsTalk from './Profile/LetsTalk';
 import AgentImage from './Profile/AgentImage';
+import { LETS_TALK } from '@/app/constants/AgentProfile';
 
 const AgentProfiles = ({ data }) => {
-  const { image, title, text, description } = data;
   return (
     <Box
       sx={{
@@ -45,7 +45,7 @@ const AgentProfiles = ({ data }) => {
           padding: { xs: 2, sm: 0 },
         }}
       >
-        <AgentImage image={image} />
+        <AgentImage image={data.profileImage} />
         <Grid
           sx={{
             padding: 2,
@@ -62,8 +62,8 @@ const AgentProfiles = ({ data }) => {
               width: '100%',
             }}
           >
-            <AgentProfileDetail title={title} description={description} />
-            <LetsTalk text={text} />
+            <AgentProfileDetail description={data} />
+            <LetsTalk text={LETS_TALK} />
           </Grid>
         </Grid>
       </Box>

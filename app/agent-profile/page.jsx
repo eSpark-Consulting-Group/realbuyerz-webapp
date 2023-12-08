@@ -13,10 +13,10 @@ import { AGENTS_DATA } from '../constants/agents';
 const AgentProfile = () => {
   return (
     <Box className="mx-auto mb-16 mt-4 w-[70vw]">
-      <AgentProfiles data={AGENT_PROFILE_DATA} />
+      <AgentProfiles data={AGENTS_DATA[0]} />
       <AgentProperties data={AGENTS_DATA} />
-      <AgentAbout data={AGENT_PROFILE_DATA} />
-      <RecentPropertyTitle data={AGENT_PROFILE_DATA} />
+      <AgentAbout data={AGENTS_DATA} />
+      <RecentPropertyTitle data={AGENTS_DATA} />
       <AgentSlider data={AGENT_PROFILE_DATA} />
     </Box>
   );

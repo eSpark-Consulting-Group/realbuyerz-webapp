@@ -2,7 +2,7 @@ export const AGENTS_DATA = [
   {
     id: 1,
     userName: 'Arman Khan',
-    profileImage: '',
+    profileImage: '/images/profile.png',
     firstName: 'Arman',
     lastName: 'Khan',
     email: 'armanespark@gmail.com',
