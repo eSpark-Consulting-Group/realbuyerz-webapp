@@ -10,6 +10,7 @@ import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
 } from '@/app/constants/Constants';
+import Link from 'next/link';
 
 const HeroSection = () => {
   const { heading, logo } = HERO_SECTION_CONTENT;
@@ -64,7 +65,7 @@ const HeroSection = () => {
               sm: '440px',
               md: '610px',
               lg: '900px',
-              xl: '900px',
+              xl: '890px',
             },
             top: { xs: 170, sm: 250, md: 340, lg: 420, xl: 430 },
             fontSize: {
@@ -77,6 +78,8 @@ const HeroSection = () => {
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
+            wordSpacing: '-4px',
+            fontFamily: 'inherit',
           }}
           variant="h2"
           component={'h2'}
@@ -103,45 +106,51 @@ const HeroSection = () => {
           }}
         >
           <Bounce direction="left" triggerOnce>
-            <Button
-              sx={{
-                width: {
-                  xs: '40px',
-                  sm: '60px',
-                  md: '120px',
-                  lg: '120px',
-                  xl: '120px',
-                },
-                fontStyle: 'normal',
-                fontWeight: 600,
-                lineHeight: 'normal',
-                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-                textAlign: 'start',
-              }}
-              variant="primary"
-            >
-              <Typography sx={{ color: '#fff' }}> Buyer</Typography>
-            </Button>
+            <Link href="/signup/?user-type=agent">
+              {' '}
+              <Button
+                sx={{
+                  width: {
+                    xs: '40px',
+                    sm: '60px',
+                    md: '120px',
+                    lg: '120px',
+                    xl: '120px',
+                  },
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  textAlign: 'start',
+                }}
+                variant="primary"
+              >
+                <Typography sx={{ color: '#fff' }}> Buyer</Typography>
+              </Button>
+            </Link>
           </Bounce>
           <Bounce direction="right" triggerOnce>
-            <Button
-              sx={{
-                width: {
-                  xs: '120px',
-                  sm: '120px',
-                  md: '120px',
-                  lg: '120px',
-                  xl: '120px',
-                },
-                fontStyle: 'normal',
-                fontWeight: 600,
-                lineHeight: 'normal',
-                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-              }}
-              variant="primary"
-            >
-              <Typography sx={{ color: '#fff' }}>Seller</Typography>
-            </Button>
+            <Link href="/signup/?user-type=user">
+              {' '}
+              <Button
+                sx={{
+                  width: {
+                    xs: '120px',
+                    sm: '120px',
+                    md: '120px',
+                    lg: '120px',
+                    xl: '120px',
+                  },
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                }}
+                variant="primary"
+              >
+                <Typography sx={{ color: '#fff' }}>Seller</Typography>
+              </Button>
+            </Link>
           </Bounce>
         </Box>
         <HeroSlider

@@ -48,11 +48,12 @@ const BidMapLocation = ({ location }) => {
         {Proposals.location.title}
       </Typography>
       {renderLocationInfo()}
+      <br></br>
       <iframe
         title="Property Location"
         src={location.geoLocation}
         width="100%"
-        height="150"
+        height="200"
         frameBorder="0"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

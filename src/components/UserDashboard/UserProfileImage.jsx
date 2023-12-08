@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import Image from 'next/image';
 import React from 'react';
 
-const UserProfileImage = ({ image }) => {
+const UserProfileImage = ({ image, isActive }) => {
   return (
     <Badge>
       <Box
@@ -31,7 +31,8 @@ const UserProfileImage = ({ image }) => {
               width: '10px',
               height: '10px',
               borderRadius: '50%',
-              backgroundColor: '#18DD00',
+              // backgroundColor: '#18DD00',
+              backgroundColor: isActive ? '#18DD00' : 'gray',
               alignContent: 'center',
               alignItems: 'center',
               textAlign: 'center',
