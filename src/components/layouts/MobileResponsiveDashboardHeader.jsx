@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, IconButton, Menu, Typography } from '@mui/material';
+import {
+  Badge,
+  Button,
+  IconButton,
+  Menu,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 import {
   LINK_NAME,
@@ -13,13 +20,20 @@ import {
 } from '@/app/constants/LiveBidding';
 import MyListingResponsiveButton from './MyListingResponsiveButton';
 import PostListingResponsiveButton from './PostListingResponsiveButton';
+import { SEARCH } from '@/app/constants/DashboardHeader';
 
 const MobileResponsiveDashboardHeader = ({
   HEADER_MENU,
   handleCloseNavMenu,
   anchorElNav,
   handleOpenUserMenu,
+  anchorElUser,
+  handleCloseUserMenu,
 }) => {
+  const [search, setSearch] = useState();
+  const searchInput = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <Menu
       id="menu-appbar"
@@ -58,13 +72,58 @@ const MobileResponsiveDashboardHeader = ({
           return (
             <>
               <Box sx={{ p: 2 }}>
-                <Image
+                {/* <Image
                   src={item?.searchIcon}
                   width={35}
                   height={35}
                   alt="icon"
                   style={{ marginRight: 30, marginBottom: 8 }}
-                />
+                /> */}
+                <Box sx={{ flexGrow: 0 }}>
+                  <Image
+                    onClick={handleOpenUserMenu}
+                    src={item?.searchIcon}
+                    width={35}
+                    height={35}
+                    alt={'icon'}
+                    style={{ marginRight: 30, cursor: 'pointer' }}
+                  />
+                  <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <Box
+                      sx={{
+                        padding: 2,
+                      }}
+                    >
+                      <TextField
+                        id="outlined-search"
+                        label="Search"
+                        type="search"
+                        size="small"
+                        onChange={(e) => searchInput(e)}
+                      />
+                      <Link href={`/dashboard/proposals?search=${search}`}>
+                        <Button variant="primary" sx={{ mx: 1 }}>
+                          {SEARCH}
+                        </Button>
+                      </Link>
+                    </Box>
+                  </Menu>
+                </Box>
                 <Image
                   src={item?.linkIcon}
                   width={20}
