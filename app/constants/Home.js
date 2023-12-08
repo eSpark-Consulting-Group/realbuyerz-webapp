@@ -2,42 +2,42 @@ export const CATEGORIES = [
   {
     id: 1,
     image: '/images/categories/category1.svg',
-    name: 'Category 1',
+    name: 'Residential House',
   },
   {
     id: 2,
     image: '/images/categories/category2.svg',
-    name: 'Category 2',
+    name: 'Residential Apartment',
   },
   {
     id: 3,
     image: '/images/categories/category3.svg',
-    name: 'Category 3',
+    name: 'Upper Portion',
   },
   {
     id: 4,
     image: '/images/categories/category4.svg',
-    name: 'Category 4',
+    name: 'Lower Portion',
   },
   {
     id: 5,
     image: '/images/categories/category5.svg',
-    name: 'Category 5',
+    name: 'Pent House',
   },
   {
     id: 6,
     image: '/images/categories/category6.svg',
-    name: 'Category 6',
+    name: 'Farm House',
   },
   {
     id: 7,
     image: '/images/categories/category7.svg',
-    name: 'Category 7',
+    name: 'Residential Plot',
   },
   {
     id: 8,
     image: '/images/categories/category8.svg',
-    name: 'Category 8',
+    name: 'Commercial Shops',
   },
 ];
 
