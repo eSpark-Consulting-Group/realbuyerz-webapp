@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 import { MY_CATEGORIES } from '@/app/constants/LiveBidding';
 
 const Cateogries = ({ categories }) => {
@@ -35,12 +34,13 @@ const Cateogries = ({ categories }) => {
               fontStyle: 'normal',
               fontWeight: '600',
               lineHeight: 'normal',
+              my: 1,
             }}
           >
             {MY_CATEGORIES}
           </Typography>
         </Box>
-        <Box
+        {/* <Box
           sx={{
             padding: '0px 0px 0px 20px',
           }}
@@ -51,7 +51,7 @@ const Cateogries = ({ categories }) => {
             height={30}
             alt="icons"
           />
-        </Box>
+        </Box> */}
       </Box>
       {categories.map((items, index) => {
         return (

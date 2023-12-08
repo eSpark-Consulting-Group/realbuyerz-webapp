@@ -17,6 +17,7 @@ import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import preferenceSlice from './slices/preference/preferenceSlice';
+import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 
 export const store = configureStore({
   reducer: {
@@ -37,5 +38,6 @@ export const store = configureStore({
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
     preference: preferenceSlice,
+    resendEmail: resendEmailSlice,
   },
 });
