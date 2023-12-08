@@ -112,7 +112,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
           sx={{
             px: '20px',
             py: '20px',
-            overflowY: 'scroll',
+            overflowY: 'auto',
             height: '100vh',
           }}
         >

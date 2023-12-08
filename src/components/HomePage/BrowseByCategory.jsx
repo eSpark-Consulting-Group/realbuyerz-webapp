@@ -47,6 +47,7 @@ const BrowseByCategory = ({ data }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
+                    maxWidth: '100px',
                   }}
                 >
                   <Image
@@ -55,7 +56,12 @@ const BrowseByCategory = ({ data }) => {
                     height={30}
                     width={30}
                   />
-                  <Typography variant="body1" sx={{ py: '8px' }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      py: '8px',
+                    }}
+                  >
                     {category?.name}
                   </Typography>
                 </Box>

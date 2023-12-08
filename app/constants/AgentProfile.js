@@ -18,7 +18,7 @@ export const AGENT_PROFILE_DATA = {
   description: [
     {
       icon: '/images/agent-profile-icons/location.svg',
-      text: 'Karachi, Pakistan',
+      text: `Karachi, Pakistan`,
       alt: 'amenities',
       email: '',
     },

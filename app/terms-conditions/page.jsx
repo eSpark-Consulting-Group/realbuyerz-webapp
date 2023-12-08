@@ -1,17 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import { TERM_CONDITIONS } from '../constants/TermCondition';
 import { PAGES_INFO } from '../constants/Constants';
+import NoSSR from 'react-no-ssr';
+import NoSsr from '@mui/material';
 
 const TermsConditions = () => {
   const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
 
-  const handleTabClick = (tab) => {
-    setSelectedTab(tab);
+  const handleTabClick = (tabId) => {
+    const selectedTab = TERM_CONDITIONS.find((tab) => tab.id === tabId);
+    if (selectedTab) {
+      setSelectedTab(selectedTab);
+    }
   };
-
+  useEffect(() => {
+    // Run client-side code here
+    console.log('Client-side code executed');
+  }, []);
+  console.log('content', selectedTab.content);
   return (
     <Box
       sx={{
@@ -74,7 +83,7 @@ const TermsConditions = () => {
                   display: 'flex', // Add display flex
                   alignItems: 'center', // Center vertically
                 }}
-                onClick={() => handleTabClick(item)}
+                onClick={() => handleTabClick(item.id)}
               >
                 <Typography
                   variant="body1"
@@ -114,7 +123,7 @@ const TermsConditions = () => {
               {selectedTab?.title}
             </Typography>
 
-            <Typography
+            <p
               variant="body1"
               sx={{
                 color: '#333',
@@ -122,7 +131,7 @@ const TermsConditions = () => {
                 fontWeight: '400',
               }}
               dangerouslySetInnerHTML={{ __html: selectedTab?.content }}
-            />
+            ></p>
           </Box>
         </Grid>
       </Grid>

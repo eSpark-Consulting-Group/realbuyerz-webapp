@@ -8,7 +8,6 @@ const Dashboard = () => {
   return (
     <>
       <UserDashboard />
-      <FooterCta data={FOOTER_CTA_DATA} />
     </>
   );
 };
