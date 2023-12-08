@@ -11,7 +11,6 @@ import '../../../app/globals.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
-import styled from '@emotion/styled';
 
 const HeroSlider = ({
   spaceBetween,
@@ -21,20 +20,6 @@ const HeroSlider = ({
   delay,
   SlidesData,
 }) => {
-  const PaginationContainer = styled('div')({
-    position: 'absolute',
-    bottom: 2,
-    textAlign: 'center',
-  });
-  const CustomBullet = styled('div')({
-    backgroundColor: 'green', // Customize the bullet color
-    borderRadius: '50%',
-    cursor: 'pointer',
-  });
-
-  const CustomBulletActive = styled(CustomBullet)({
-    backgroundColor: '#333', // Customize the active bullet color
-  });
   return (
     <>
       <Swiper
@@ -43,10 +28,6 @@ const HeroSlider = ({
         navigation={navigation}
         pagination={{
           clickable: pagination,
-         
-          // el: `.${PaginationContainer}`, // Reference to the pagination element
-          // bulletClass: `${CustomBullet}`,
-          // bulletActiveClass: `${CustomBulletActive}`,
         }}
         autoplay={{ delay: delay }}
         modules={[EffectFade, Autoplay, Navigation, Pagination]}

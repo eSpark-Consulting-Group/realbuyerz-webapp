@@ -146,7 +146,13 @@ const ProposalFilter = () => {
             href={CONSTANTS.resetButton.link}
             onClick={handleClearButtonClick}
           >
-            <Typography sx={{ textDecoration: 'underline', color: '#126FAA', marginBottom:"15px" }}>
+            <Typography
+              sx={{
+                textDecoration: 'underline',
+                color: '#126FAA',
+                marginBottom: '15px',
+              }}
+            >
               {CONSTANTS.resetButton.text}
             </Typography>
           </Link>

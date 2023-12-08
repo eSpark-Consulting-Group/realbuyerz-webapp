@@ -37,7 +37,6 @@ const BrowseByCategory = ({ data }) => {
                 background: '#FFF',
                 border: '2px solid #fff',
                 '&:hover': { border: '2px solid #fb631c' },
-              
               }}
             >
               <a href="/">
@@ -48,7 +47,7 @@ const BrowseByCategory = ({ data }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    maxWidth:"100px",
+                    maxWidth: '100px',
                   }}
                 >
                   <Image

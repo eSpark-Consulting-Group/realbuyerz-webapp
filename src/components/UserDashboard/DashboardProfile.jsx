@@ -5,10 +5,9 @@ import { Button, Divider, Grid } from '@mui/material';
 import UserProfileImage from './UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
-import { ALL_PROPOSALS_DATA } from '@/app/constants/Dashboard';
 
-const DashboardProfile = ({ proposalData }) => {
-  const [showAllItems, setShowAllItems] = useState(ALL_PROPOSALS_DATA);
+const DashboardProfile = ({ proposalData, Height }) => {
+  const [showAllItems, setShowAllItems] = useState(false);
 
   const handleShowMoreClick = () => {
     setShowAllItems(true);
@@ -16,54 +15,58 @@ const DashboardProfile = ({ proposalData }) => {
   const handleShowLessClick = () => {
     setShowAllItems(false);
   };
+
   return (
-    <>
-      {proposalData.map((item, index) => (
-        <>
-          <Box
-            key={index}
-            sx={{
-              padding: '44px 54px 44px 40px',
-            }}
-          >
-            <Grid container>
-              <Grid
-                item
-                xl={2}
-                lg={3}
-                md={5}
+    <Box className="scrollable" sx={{ height: Height }}>
+      <>
+        {proposalData
+          ?.slice(0, showAllItems ? proposalData?.length : 2)
+          .map((item, index) => (
+            <>
+              <Box
+                key={index}
                 sx={{
-                  position: 'relative',
-                  width: '156px',
-                  height: '156px',
-                  display: 'flex',
-                  justifyContent: 'center',
+                  padding: '44px 54px 44px 40px',
                 }}
               >
-                <UserProfileImage image={item.image} />
-              </Grid>
-              <Grid
-                item
-                xl={10}
-                lg={9}
-                md={7}
-                sx={{
-                  pl: { sm: 0, md: 2 },
-                }}
-              >
-                <UserProfileDetails
-                  Title={item.title}
-                  Location={item.location}
-                  Amount={item.amount}
-                  Description={item.description}
-                />
-              </Grid>
-            </Grid>
-          </Box>
-          {index == proposalData.length - 1 ? null : <Divider />}
-        </>
-      ))}
-         {!showAllItems && (
+                <Grid container>
+                  <Grid
+                    item
+                    xl={2}
+                    lg={3}
+                    md={5}
+                    sx={{
+                      position: 'relative',
+                      width: '156px',
+                      height: '156px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <UserProfileImage image={item.image} isActive={false} />
+                  </Grid>
+                  <Grid
+                    item
+                    xl={10}
+                    lg={9}
+                    md={7}
+                    sx={{
+                      pl: { sm: 0, md: 2 },
+                    }}
+                  >
+                    <UserProfileDetails
+                      Title={item.title}
+                      Location={item.location}
+                      Amount={item.amount}
+                      Description={item.description}
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              {index == proposalData.length - 1 ? null : <Divider />}
+            </>
+          ))}
+        {!showAllItems && (
           <Box sx={{ textAlign: 'center', marginTop: 2 }}>
             <Button
               onClick={handleShowMoreClick}
@@ -95,7 +98,8 @@ const DashboardProfile = ({ proposalData }) => {
             </Button>
           </Box>
         )}
-    </>
+      </>
+    </Box>
   );
 };
 

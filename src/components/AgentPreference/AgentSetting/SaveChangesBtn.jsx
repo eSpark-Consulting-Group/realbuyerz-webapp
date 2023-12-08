@@ -11,7 +11,7 @@ const SaveChanges = ({ handleClickButton, saveChangeButton }) => {
         height: '44px',
         justifyContent: 'center',
         marginLeft: '11px',
-        borderRadius:"5px"
+        borderRadius: '5px',
       }}
     >
       <Button

@@ -13,8 +13,7 @@ const AgentProfiles = ({ data }) => {
         width: '100%',
         position: 'relative',
         background:
-        'linear-gradient(180deg, rgba(75, 183, 255, 0.16) 0%, rgba(75, 183, 255, 0.04) 54.17%)',
-        
+          'linear-gradient(180deg, rgba(75, 183, 255, 0.16) 0%, rgba(75, 183, 255, 0.04) 54.17%)',
       }}
     >
       <Box

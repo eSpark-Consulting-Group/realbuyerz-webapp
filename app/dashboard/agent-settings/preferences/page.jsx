@@ -20,7 +20,7 @@ const AgentPreferenceLayout = () => {
         md={11.5}
         sx={{
           display: 'flex',
-          paddingBottom:"200px"
+          paddingBottom: '200px',
         }}
       >
         <PreferenceSettings />

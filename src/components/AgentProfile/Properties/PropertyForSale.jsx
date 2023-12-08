@@ -5,8 +5,7 @@ import { Box } from '@mui/system';
 
 import { PROPERTIES_FOR_SALE, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ data,handleView }) => {
-
+const PropertyForSale = ({ data, handleView }) => {
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -62,14 +61,13 @@ const PropertyForSale = ({ data,handleView }) => {
               onClick={handleView}
             >
               {VIEW_BUTTON} &nbsp;
-               <Image
-              src="/images/agent-profile-icons/arrow.svg"
-              width={9}
-              height={9}
-              alt="arrow-icon"
-            />
+              <Image
+                src="/images/agent-profile-icons/arrow.svg"
+                width={9}
+                height={9}
+                alt="arrow-icon"
+              />
             </Button>
-           
           </Box>
         </Grid>
       </Grid>

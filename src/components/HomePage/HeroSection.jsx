@@ -64,7 +64,7 @@ const HeroSection = () => {
               sm: '440px',
               md: '610px',
               lg: '900px',
-              xl: '900px',
+              xl: '890px',
             },
             top: { xs: 170, sm: 250, md: 340, lg: 420, xl: 430 },
             fontSize: {
@@ -77,6 +77,8 @@ const HeroSection = () => {
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
+            wordSpacing: '-4px',
+            fontFamily: 'inherit',
           }}
           variant="h2"
           component={'h2'}

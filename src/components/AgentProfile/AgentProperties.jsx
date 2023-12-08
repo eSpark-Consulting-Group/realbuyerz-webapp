@@ -9,10 +9,10 @@ import PropertyForRent from './Properties/PropertyForRent';
 import { useRouter } from 'next/navigation';
 
 const AgentProperties = ({ data }) => {
-    const router = useRouter();
+  const router = useRouter();
   const handleView = () => {
-    router.push('/properties')
-  }
+    router.push('/properties');
+  };
   const theme = useTheme();
   return (
     <Box
@@ -26,11 +26,17 @@ const AgentProperties = ({ data }) => {
       <Box sx={{ pt: 8 }}>
         <AgentTitle title={data?.contactInfo.agentName} />
         <Box sx={{ pt: 2 }}>
-          <PropertyForSale data={data?.propertyDetails} handleView={handleView} />
+          <PropertyForSale
+            data={data?.propertyDetails}
+            handleView={handleView}
+          />
           <PropertyCardRentBody data={data?.propertyDetails} />
         </Box>
         <Box sx={{ pt: 2 }}>
-          <PropertyForRent data={data?.propertyDetails}  handleView={handleView} />
+          <PropertyForRent
+            data={data?.propertyDetails}
+            handleView={handleView}
+          />
           <PropertyCardSaleBody data={data?.propertyDetails} />
         </Box>
       </Box>
