@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Typography, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
@@ -20,7 +20,7 @@ const BuyConnects = ({
     fields.map((field) => [field.name, field.value])
   );
 
-  const [buyConnectData, setBuyConnectData] = React.useState({
+  const [buyConnectData, setBuyConnectData] = useState({
     ...userDetail,
   });
 

@@ -77,7 +77,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
               sx={{
                 color: '#126FAA',
                 textAlign: 'center',
-                fontFamily: 'Inter',
+
                 fontSize: '20px',
               }}
             >

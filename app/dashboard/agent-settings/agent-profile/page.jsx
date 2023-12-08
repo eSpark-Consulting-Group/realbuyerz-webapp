@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
 import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
 import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
@@ -12,12 +12,12 @@ import { useFormik } from 'formik';
 import { passwordValidationSchema } from '@/src/components/Schemas/passwordValidationSchema';
 
 const AgentProfile = () => {
-  const [checkValue, setCheckValue] = React.useState(false);
+  const [checkValue, setCheckValue] = useState(false);
 
-  const [FirstDropdownValue, setFirstDropdownValue] = React.useState(
+  const [FirstDropdownValue, setFirstDropdownValue] = useState(
     '/images/agent_form/pakistan_flag.png'
   );
-  const [SecondDropdownValue, setSecondDropdownValue] = React.useState(
+  const [SecondDropdownValue, setSecondDropdownValue] = useState(
     '/images/agent_form/pakistan_flag.png'
   );
 
