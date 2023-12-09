@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
-const ProfileInfo = ({ city, country, icon, alt, count, title }) => {
+const ProfileInfo = ({ location, icon, alt, count }) => {
   return (
     <Box
       sx={{
@@ -23,8 +23,8 @@ const ProfileInfo = ({ city, country, icon, alt, count, title }) => {
           marginTop: 1,
         }}
       >
-        {count && title && `${count} ${title} `}
-        {city && country && `${city},  ${country}`}
+        {count && `${count}`}
+        {location && `${location}`}
       </Typography>
     </Box>
   );

@@ -45,22 +45,19 @@ const AgentProfileDetail = ({ description }) => {
         </Typography>
 
         <ProfileInfo
-          city={description.city}
-          country={description.country}
+          location={`${description.country} ${description.city}`}
           icon={LOCATION_ICON}
           alt={ALT}
         />
         <ProfileInfo
-          count={description?.counts?.sellCount?.total}
-          title={FOR_SALE}
-          country={description.country}
+          count={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
           icon={FOR_SALE_ICON}
+          alt={ALT}
         />
         <ProfileInfo
-          count={description?.counts?.rentCount?.total}
-          title={FOR_RENT}
-          country={description.country}
+          count={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
           icon={FOR_RENT_ICON}
+          alt={ALT}
         />
       </Box>
     </Grid>
