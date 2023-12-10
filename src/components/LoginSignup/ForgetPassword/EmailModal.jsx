@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Modal, Button, Box, Typography, Alert } from '@mui/material';
 import Image from 'next/image';
 
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
 import LoginCard from '../Login/LoginCard';
 import { useRouter } from 'next/navigation';
 
 const CheckEmailModal = ({ open, onClose, email, handleClick, showSignin }) => {
   const router = useRouter();
   const handleLogin = () => {
-    router.push('/signin');
+    router.push(LOGIN_ROUTERS.signin);
   };
   const [isToastOpen, setIsToastOpen] = useState(false);
   const handleToast = () => {
@@ -122,7 +122,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick, showSignin }) => {
                 </Button>
                 {isToastOpen && (
                   <Alert variant="filled" severity="success">
-                    Email sent sucessfully
+                    {LOGIN_FORM.loginCard.emailSent}
                   </Alert>
                 )}
                 <Button

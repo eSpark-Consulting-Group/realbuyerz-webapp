@@ -12,7 +12,11 @@ import { useRouter } from 'next/navigation';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import {
+  LOGIN_FORM,
+  LOGIN_FORM_DATA,
+  LOGIN_ROUTERS,
+} from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
 import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
@@ -24,7 +28,7 @@ const LoginCard = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
-    router.push('/forget-password');
+    router.push(LOGIN_ROUTERS.forgetPassword);
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
@@ -124,7 +128,7 @@ const LoginCard = () => {
               label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push('/signup')}
+              onSigninClick={() => router.push(LOGIN_ROUTERS.signup)}
               loginClick={loginClick}
             />
           </Box>

@@ -2,22 +2,30 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import {
+  LOGIN_FORM,
+  LOGIN_FORM_DATA,
+  LOGIN_ROUTERS,
+} from '@/app/constants/Login';
 import FormContainer from '../Login/LoginForm';
-import { useDispatch } from 'react-redux';
 import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const SignupCard = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
   const dispatch = useDispatch();
-  const handleInputContactNumber = (event) => {
-    const contactNumber = event.target.value;
-    if (contactNumber.length <= 11) {
+  const [contactNumber, setContactNumber] = useState('');
+
+  const handleInputContactNumber = (e) => {
+    const newContactNumber = e.target.value;
+
+    if (newContactNumber.length <= 11) {
+      setContactNumber(newContactNumber);
       setFormData({
         ...formData,
-        [event.target.name]: contactNumber,
+        [e.target.name]: newContactNumber,
       });
     }
   };
@@ -93,6 +101,7 @@ const SignupCard = () => {
           <FormContainer
             isLoginForm={false}
             formData={formData}
+            contactNumber={contactNumber}
             handleInputContactNumber={handleInputContactNumber}
             handleInputChange={handleInputChange}
             handleAutoCompleteInputChange={handleAutoCompleteInputChange}
@@ -103,7 +112,7 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => {
-              router.push('/signin');
+              router.push(LOGIN_ROUTERS.signin);
             }}
             loginClick={loginClick}
           />

@@ -1,11 +1,14 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
-
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { useRouter } from 'next/navigation';
+import {
+  LOGIN_FORM,
+  LOGIN_FORM_DATA,
+  LOGIN_ROUTERS,
+} from '@/app/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 const ResendPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
@@ -26,14 +29,14 @@ const ResendPassword = () => {
   const passwordsMatch = formData.password === formData.confirmPassword;
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
-      alert('Password match');
-      router.push('/signin');
+      alert(LOGIN_FORM.loginCard.passwordMatch);
+      router.push(LOGIN_ROUTERS.signin);
     } else {
-      alert('Password donot match');
+      alert(LOGIN_FORM.loginCard.passwordDontMatch);
     }
   };
   const BackToSignin = () => {
-    router.push('/signin');
+    router.push(LOGIN_ROUTERS.signin);
   };
   const handleContinue = () => {};
   return (

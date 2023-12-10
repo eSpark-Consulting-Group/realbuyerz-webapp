@@ -1,4 +1,9 @@
 export const LOGIN_FORM = {
+  password: 'password',
+  email: 'email',
+  contactNo: 'contactNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
   loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
@@ -20,11 +25,15 @@ export const LOGIN_FORM = {
     resetPassword: 'We’ve sent password reset instructions to:',
     resend: 'Resend',
     backSignin: 'Back to sign-in',
+    emailSent: 'Email sent sucessfully',
+    passwordMatch: 'Password match',
+    passwordDontMatch: 'Password donot match',
   },
   signupForm: {
     signup: 'Sign up',
     signin: 'Sign in',
     label: 'Doesn’t have an account yet?',
+    maxLength: 11,
   },
   dropdownOptions: [
     { value: 'none', label: 'None' },
@@ -57,4 +66,10 @@ export const LOGIN_FORM_DATA = {
     confirmPassword: '',
     showConfirmPassword: false,
   },
+};
+
+export const LOGIN_ROUTERS = {
+  signin: '/signin',
+  signup: '/signup',
+  forgetPassword: '/forget-password',
 };

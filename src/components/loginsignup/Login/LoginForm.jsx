@@ -10,6 +10,7 @@ const FormContainer = ({
   isLoginForm,
   handleInputContactNumber,
   handleInputChange,
+  contactNumber,
   handleAutoCompleteInputChange,
 }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
@@ -35,7 +36,7 @@ const FormContainer = ({
               label="Email / Username"
               variant="outlined"
               fullWidth
-              name="email"
+              name={LOGIN_FORM.email}
               onChange={handleInputChange}
               inputProps={{
                 style: {
@@ -73,7 +74,7 @@ const FormContainer = ({
             >
               <TextField
                 label="First Name"
-                name="firstName"
+                name={LOGIN_FORM.firstName}
                 variant="outlined"
                 fullWidth
                 onChange={handleInputChange}
@@ -84,7 +85,7 @@ const FormContainer = ({
               />
               <TextField
                 label="Last Name"
-                name="lastName"
+                name={LOGIN_FORM.lastName}
                 variant="outlined"
                 fullWidth
                 onChange={handleInputChange}
@@ -98,7 +99,7 @@ const FormContainer = ({
               label="Email Address"
               variant="outlined"
               fullWidth
-              name="email"
+              name={LOGIN_FORM.email}
               onChange={handleInputChange}
               InputProps={{ sx: { height: '40px' } }}
               InputLabelProps={{
@@ -110,7 +111,8 @@ const FormContainer = ({
               variant="outlined"
               type="number"
               fullWidth
-              name="contactNumber"
+              name={LOGIN_FORM.contactNo}
+              value={contactNumber}
               onChange={handleInputContactNumber}
               sx={{
                 '& input[type=number]::-webkit-inner-spin-button': {
@@ -125,6 +127,7 @@ const FormContainer = ({
                 sx: { fontSize: '10.5px' },
               }}
             />
+
             <Autocomplete
               disablePortal
               id="combo-box-demo"
