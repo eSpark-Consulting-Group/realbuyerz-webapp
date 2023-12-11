@@ -4,9 +4,10 @@
 export const COVERLETTERS_DATA = [
   {
     id: 1,
+    propertyId: 1,
     title: 'House #1',
-    propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
-    propertyDescription:
+    coverLetterTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
+    coverLetterDescription:
       'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
     coverImage: '/images/properties/PropertyCardImageHouse.png',
     date: '2023-11-22T14:29:32Z',
