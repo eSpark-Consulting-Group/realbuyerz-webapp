@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
+import { usePathname } from 'next/navigation';
 import ProfileInfo from './ProfileInfo';
 import {
   ALT,
@@ -13,7 +14,7 @@ import {
 } from '@/app/constants/AgentProfile';
 
 const AgentProfileDetail = ({ description }) => {
-  console.log(description, 'dis');
+  const currentPath = usePathname();
   return (
     <Grid
       item
@@ -44,21 +45,27 @@ const AgentProfileDetail = ({ description }) => {
           {description?.userName}
         </Typography>
 
-        <ProfileInfo
-          location={`${description.country} ${description.city}`}
-          icon={LOCATION_ICON}
-          alt={ALT}
-        />
-        <ProfileInfo
-          count={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
-          icon={FOR_SALE_ICON}
-          alt={ALT}
-        />
-        <ProfileInfo
-          count={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
-          icon={FOR_RENT_ICON}
-          alt={ALT}
-        />
+        {currentPath === `/dashboard/agent-settings/agent-profile` ? (
+          <ProfileInfo title={description?.email} />
+        ) : (
+          <>
+            <ProfileInfo
+              title={`${description?.country} ${description?.city}`}
+              icon={LOCATION_ICON}
+              alt={ALT}
+            />
+            <ProfileInfo
+              title={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
+              icon={FOR_SALE_ICON}
+              alt={ALT}
+            />
+            <ProfileInfo
+              title={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
+              icon={FOR_RENT_ICON}
+              alt={ALT}
+            />
+          </>
+        )}
       </Box>
     </Grid>
   );

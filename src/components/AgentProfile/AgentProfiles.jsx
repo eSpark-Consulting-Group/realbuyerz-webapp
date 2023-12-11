@@ -1,12 +1,14 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
+import { usePathname } from 'next/navigation';
 import AgentProfileDetail from './Profile/AgentProfileDetail';
 import LetsTalk from './Profile/LetsTalk';
 import AgentImage from './Profile/AgentImage';
 import { LETS_TALK } from '@/app/constants/AgentProfile';
 
 const AgentProfiles = ({ data }) => {
+  const currentPath = usePathname();
   return (
     <Box
       sx={{
@@ -45,7 +47,7 @@ const AgentProfiles = ({ data }) => {
           padding: { xs: 2, sm: 0 },
         }}
       >
-        <AgentImage image={data.profileImage} />
+        <AgentImage image={data?.profileImage} />
         <Grid
           sx={{
             padding: 2,
@@ -63,7 +65,9 @@ const AgentProfiles = ({ data }) => {
             }}
           >
             <AgentProfileDetail description={data} />
-            <LetsTalk text={LETS_TALK} />
+            {currentPath.includes('/profile') ? (
+              <LetsTalk text={LETS_TALK} />
+            ) : null}
           </Grid>
         </Grid>
       </Box>

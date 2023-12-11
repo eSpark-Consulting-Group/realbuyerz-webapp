@@ -32,7 +32,7 @@ const PropertyCardRentBody = ({ rentData }) => {
                   textAlign: 'center',
                 }}
               >
-                {rentData?.rentCount[propertyType]}
+                {rentData[propertyType]}
               </Typography>
               <Typography
                 sx={{

@@ -22,7 +22,7 @@ const RecentPropertyTitle = ({ data }) => {
         mt: 2,
       }}
     >
-      {`${RECENT_PROPERTIES} ${data[0]?.userName}`}
+      {`${RECENT_PROPERTIES} ${data?.userName}`}
     </Typography>
   );
 };

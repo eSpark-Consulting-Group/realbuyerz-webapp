@@ -151,7 +151,7 @@ const PropertyListingCard = ({ propertyData }) => {
                 </Link>
               </Box>
               <Box>
-                <Link href={`/agent/${property.id}`}>
+                <Link href={`/profile/${property.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">Agent Profile</Typography>
                   </Button>

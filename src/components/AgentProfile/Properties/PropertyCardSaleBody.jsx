@@ -32,7 +32,7 @@ const PropertyCardSaleBody = ({ sellData }) => {
                   textAlign: 'center',
                 }}
               >
-                {sellData?.sellCount[propertyType]}
+                {sellData[propertyType]}
               </Typography>
               <Typography
                 sx={{
