@@ -34,17 +34,12 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const isValid = isInputValid(code);
   const isLengthValid = checkLength(code);
   const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(saveVerificationCode(verificationCode.verified));
-  };
   const handleConfirm = () => {
     if (isValid && isLengthValid) {
       setVerificationResult(VERIFICATION_OTP.verificationSuccessfully);
       setIsVerificationSuccessful(true);
-      // if (setIsVerificationSuccessful) {
-      //   handleModalToggle();
-      // }
       setIsVerificationSuccessful && handleModalToggle();
+      dispatch(saveVerificationCode(verificationCode.verified));
     } else {
       setVerificationResult(VERIFICATION_OTP.verificationFail);
     }
@@ -115,9 +110,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
           width: '150px',
           borderRadius: '10px',
         }}
-        onClick={() => {
-          handleConfirm(), handleClick();
-        }}
+        onClick={handleConfirm}
       >
         {VERIFICATION_OTP.confirm}
       </Button>
