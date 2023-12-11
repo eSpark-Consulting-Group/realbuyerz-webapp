@@ -19,37 +19,39 @@ const AgentProfile = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
 
-  const users = useSelector((state) => state?.users?.users?.userdata)
+  const users = useSelector((state) => state?.users?.users?.userdata);
   const user = users[id - 1];
   return (
-    <Box sx={{
-      mx: 'auto',
-      mb: 16,
-      mt: 4,
-      width: '70vw',
-    }} >
-      {
-        user ? (
-          <>
-            <AgentProfiles data={user} />
-            <AgentProperties data={user} />
-            <AgentAbout data={user} />
-            <RecentPropertyTitle data={user} />
-            <AgentSlider data={AGENT_PROFILE_DATA} />
-          </>
-        ) : (
-          <Typography variant='h1'
-            sx={{
-              height: '100vh',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center  '
-            }}>
-            {USER_NOT_FOUND}
-          </Typography>
-        )
-      }
-    </Box >
+    <Box
+      sx={{
+        mx: 'auto',
+        mb: 16,
+        mt: 4,
+        width: '70vw',
+      }}
+    >
+      {user ? (
+        <>
+          <AgentProfiles data={user} />
+          <AgentProperties data={user} />
+          <AgentAbout data={user} />
+          <RecentPropertyTitle data={user} />
+          <AgentSlider data={AGENT_PROFILE_DATA} />
+        </>
+      ) : (
+        <Typography
+          variant="h1"
+          sx={{
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center  ',
+          }}
+        >
+          {USER_NOT_FOUND}
+        </Typography>
+      )}
+    </Box>
   );
 };
 
