@@ -46,10 +46,6 @@ const ProposalListingCard = ({ proposalsData }) => {
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
-  const proposalId = 1;
-  const handleClick = () => {
-    router.push(`/dashboard/proposals/${proposalId}`);
-  };
 
   return (
     <>
@@ -80,17 +76,19 @@ const ProposalListingCard = ({ proposalsData }) => {
                 position: 'relative',
               }}
             >
-              <Image
-                src={proposal.imageUrl}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt=""
-                sx={{
-                  borderRadius: '5px ',
-                }}
-                onClick={handleClick}
-              />
+              <Link href={`/dashboard/proposals/${proposal.id}`}>
+                <Image
+                  src={proposal.imageUrl}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt=""
+                  sx={{
+                    borderRadius: '5px ',
+                  }}
+                />
+              </Link>
+
             </Box>
           </Grid>
           <Grid
@@ -112,18 +110,20 @@ const ProposalListingCard = ({ proposalsData }) => {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Typography
-                  sx={{
-                    fontSize: '25px',
-                    fontWeight: '600',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {proposal.title}
-                </Typography>
+                <Link href={`/dashboard/proposals/${proposal.id}`}>
+                  <Typography
+                    sx={{
+                      fontSize: '25px',
+                      fontWeight: '600',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {proposal.title}
+                  </Typography>
+                </Link>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`./proposals/${proposal.id}`}>
+                <Link href={`/dashboard/proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       {RESTORE_PROPERTY}

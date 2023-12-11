@@ -12,12 +12,10 @@ const InnerPageLayout = ({ children }) => {
   const pathname = usePathname();
   const PROPSHOP = '/prop-shop/buy-product';
   return (
-    <Box
-      sx={{
+    <>
+      <Grid container sx={{
         backgroundColor: '#F4F5F7',
-      }}
-    >
-      <Grid container>
+      }}>
         <Grid
           item
           lg={2}
@@ -36,7 +34,7 @@ const InnerPageLayout = ({ children }) => {
           md={6}
           sm={12}
           xs={12}
-          sx={{ mt: 2 }}
+          sx={{ m: '45px 45px 75px' }}
         >
           {children}
         </Grid>
@@ -51,7 +49,7 @@ const InnerPageLayout = ({ children }) => {
           <RightSidebar profileInfo={PROFILE_INFO} />
         </Grid>
       </Grid>
-    </Box>
+    </>
   );
 };
 
