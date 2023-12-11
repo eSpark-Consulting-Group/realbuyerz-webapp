@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
@@ -33,7 +33,7 @@ const FormContainer = ({
             }}
           >
             <TextField
-              label="Email / Username"
+              label={FORM_LABEL.emailUsername}
               variant="outlined"
               fullWidth
               name={LOGIN_FORM.email}
@@ -73,7 +73,7 @@ const FormContainer = ({
               }}
             >
               <TextField
-                label="First Name"
+                label={FORM_LABEL.firstName}
                 name={LOGIN_FORM.firstName}
                 variant="outlined"
                 fullWidth
@@ -84,7 +84,7 @@ const FormContainer = ({
                 }}
               />
               <TextField
-                label="Last Name"
+                label={FORM_LABEL.lastName}
                 name={LOGIN_FORM.lastName}
                 variant="outlined"
                 fullWidth
@@ -96,7 +96,7 @@ const FormContainer = ({
               />
             </Box>
             <TextField
-              label="Email Address"
+              label={FORM_LABEL.emailAddress}
               variant="outlined"
               fullWidth
               name={LOGIN_FORM.email}
@@ -107,9 +107,9 @@ const FormContainer = ({
               }}
             />
             <TextField
-              label="Contact Number"
+              label={FORM_LABEL.contactNo}
               variant="outlined"
-              type="number"
+              type={FORM_LABEL.number}
               fullWidth
               name={LOGIN_FORM.contactNo}
               value={contactNumber}
@@ -137,7 +137,7 @@ const FormContainer = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Applicant"
+                  label={FORM_LABEL.applicant}
                   InputLabelProps={{
                     sx: { fontSize: '11px' },
                   }}

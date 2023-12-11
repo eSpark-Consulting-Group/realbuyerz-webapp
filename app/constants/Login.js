@@ -1,9 +1,11 @@
 export const LOGIN_FORM = {
   password: 'password',
+  confirmPassword: 'confirmPassword',
   email: 'email',
   contactNo: 'contactNumber',
   firstName: 'firstName',
   lastName: 'lastName',
+  text: 'text',
   loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
@@ -34,6 +36,7 @@ export const LOGIN_FORM = {
     signin: 'Sign in',
     label: 'Doesn’t have an account yet?',
     maxLength: 11,
+    userType: 'usertype',
   },
   dropdownOptions: [
     { value: 'none', label: 'None' },
@@ -78,4 +81,16 @@ export const AUTH_COMPONENTS = {
   signup: 'signup',
   forgetPassword: 'forgetpassword',
   resetPassword: 'resetpassword',
+};
+
+export const FORM_LABEL = {
+  emailUsername: 'Email / Username',
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  emailAddress: 'Email Address',
+  contactNo: 'Contact Number',
+  applicant: 'Applicant',
+  number: 'number',
+  password: 'Password',
+  confirmPassword: 'Confirm Password',
 };

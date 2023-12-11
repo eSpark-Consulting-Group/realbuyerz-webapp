@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 
 const PasswordFields = ({ handleInputChange }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
@@ -18,9 +18,9 @@ const PasswordFields = ({ handleInputChange }) => {
   return (
     <>
       <TextField
-        label="Password"
+        label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? 'text' : LOGIN_FORM.password}
+        type={formData.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
         name={LOGIN_FORM.password}
         onChange={handleInputChange}

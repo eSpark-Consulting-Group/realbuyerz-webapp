@@ -4,7 +4,8 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { LOGIN_FORM } from '@/app/constants/Login';
+
+import { FORM_LABEL, LOGIN_FORM } from '@/app/constants/Login';
 
 const PasswordAndConfirmFields = ({
   handleInputChange,
@@ -15,9 +16,9 @@ const PasswordAndConfirmFields = ({
   return (
     <>
       <TextField
-        label="Password"
+        label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? 'text' : LOGIN_FORM.password}
+        type={formData.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
         name={LOGIN_FORM.password}
         onChange={handleInputChange}
@@ -44,11 +45,11 @@ const PasswordAndConfirmFields = ({
         }}
       />
       <TextField
-        label="Confirm Password"
+        label={FORM_LABEL.confirmPassword}
         variant="outlined"
         type={formData.showConfirmPassword ? 'text' : 'password'}
         fullWidth
-        name="confirmPassword"
+        name={LOGIN_FORM.confirmPassword}
         onChange={handleInputChange}
         InputProps={{
           sx: {

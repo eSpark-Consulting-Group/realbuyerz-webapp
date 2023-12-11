@@ -38,7 +38,7 @@ const SignupCard = () => {
     });
   };
   const handleAutoCompleteInputChange = (event, newValue) => {
-    const fieldName = 'usertype';
+    const fieldName = LOGIN_FORM.signupForm.userType;
     setFormData({
       ...formData,
       [fieldName]: newValue ? [newValue.value] : [],
