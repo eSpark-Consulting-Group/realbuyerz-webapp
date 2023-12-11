@@ -16,6 +16,7 @@ import { store } from '@/src/redux/store';
 
 import Link from 'next/link';
 import CustomHead from '@/src/components/layouts/customHead';
+import { PATH } from './constants/paths';
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
@@ -40,7 +41,7 @@ const RootLayout = ({ children }) => {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box>
-              {currentPath.includes('/dashboard') ? (
+              {currentPath.includes(PATH.dashboard) ? (
                 <DashboardHeader />
               ) : (
                 <MainHeader />

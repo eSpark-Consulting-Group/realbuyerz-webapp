@@ -3,11 +3,10 @@ import { seoContent } from '@/app/constants/SEOConstant';
 import { usePathname } from 'next/navigation';
 
 const CustomHead = () => {
-
   const currentPath = usePathname();
   // Find the matching SEO content based on the currentPath
-  const mataData = seoContent.find(item => item.link === currentPath) || {};
-  console.log("mataData", mataData);
+  const mataData = seoContent.find((item) => item.link === currentPath) || {};
+  console.log('mataData', mataData);
   return (
     <>
       <meta charSet="utf-8" />
@@ -33,8 +32,14 @@ const CustomHead = () => {
       <meta name="twitter:image" content={mataData?.ogImage} />
       <meta name="twitter:label1" content="Written by" />
       <meta name="twitter:data1" content={mataData?.articleAuthor} />
-      <meta property="article:modified_time" content={mataData?.articleModifiedTime} />
-      <meta property="article:published_time" content={mataData?.articlePublishTime} />
+      <meta
+        property="article:modified_time"
+        content={mataData?.articleModifiedTime}
+      />
+      <meta
+        property="article:published_time"
+        content={mataData?.articlePublishTime}
+      />
       <meta name="article:author" content={mataData?.articleAuthor} />
     </>
   );

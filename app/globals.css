@@ -59,7 +59,6 @@ root {
 .scrollable {
   /* height: 100vh;  */
   overflow-y: auto;
-
 }
 
 .scrollable::-webkit-scrollbar {
@@ -161,12 +160,12 @@ root {
 }
 @media (min-width: 0px) and (max-width: 375px) {
   .MobileScreenMarginTop {
-    margin-top: 760px ;
+    margin-top: 760px;
   }
 }
 @media (min-width: 376px) and (max-width: 652px) {
   .MobileScreenMarginTop {
-    margin-top: 585px ;
+    margin-top: 585px;
   }
 }
 
@@ -202,19 +201,18 @@ root {
   align-items: center;
   justify-content: center;
 }
-.modal-slider .swiper-slide-active img{
+.modal-slider .swiper-slide-active img {
   scale: 1.9;
-
 }
-.modal-slider .swiper-slide-active{
+.modal-slider .swiper-slide-active {
   z-index: 1000 !important;
 }
 
 @media (max-width: 1052px) {
-  .fullScreen{
+  .fullScreen {
     display: none;
   }
-  .MobileScreen{
+  .MobileScreen {
     display: block !important;
   }
   .modal-slider .swiper_container {
@@ -223,7 +221,7 @@ root {
     height: 100%;
   }
 }
-.MobileScreen{
+.MobileScreen {
   display: none;
 }
 .slider-controler .slider-arrow {

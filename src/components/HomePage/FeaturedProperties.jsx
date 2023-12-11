@@ -140,7 +140,7 @@ const FeaturedProperties = ({ data }) => {
                     }}
                   >
                     <Box sx={{ display: 'flex', width: '100%' }}>
-                      <Box sx={{ width: '90%' }} >
+                      <Box sx={{ width: '90%' }}>
                         <Typography
                           sx={{
                             color: '#fb631c',
@@ -153,9 +153,12 @@ const FeaturedProperties = ({ data }) => {
                           {item.propertyName}
                         </Typography>
                       </Box>
-                      <Box sx={{ width: '10%' }} onClick={handleToggleSave} >
-                        {saved === true ? <FavoriteIcon style={{ color: ' #fb631c' }} /> : <FavoriteBorderIcon style={{ color: ' #fb631c' }} />}
-
+                      <Box sx={{ width: '10%' }} onClick={handleToggleSave}>
+                        {saved === true ? (
+                          <FavoriteIcon style={{ color: ' #fb631c' }} />
+                        ) : (
+                          <FavoriteBorderIcon style={{ color: ' #fb631c' }} />
+                        )}
                       </Box>
                     </Box>
                     <Typography

@@ -12,7 +12,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
-import { useRouter } from 'next/navigation';
 
 const styles = {
   container: {
@@ -37,7 +36,6 @@ const styles = {
 const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const router = useRouter();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
@@ -88,7 +86,6 @@ const ProposalListingCard = ({ proposalsData }) => {
                   }}
                 />
               </Link>
-
             </Box>
           </Grid>
           <Grid
