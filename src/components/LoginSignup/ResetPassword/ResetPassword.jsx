@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import { Box, Typography } from '@mui/material';
+
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
@@ -26,7 +27,7 @@ const ResetPassword = () => {
     });
   };
   const router = useRouter();
-  const passwordsMatch = formData.password === formData.confirmPassword;
+  const passwordsMatch = formData?.password === formData?.confirmPassword;
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
       alert(LOGIN_FORM.loginCard.passwordMatch);
@@ -35,7 +36,7 @@ const ResetPassword = () => {
       alert(LOGIN_FORM.loginCard.passwordDontMatch);
     }
   };
-  const BackToSignin = () => {
+  const backToSignin = () => {
     router.push(LOGIN_ROUTERS.signin);
   };
   const handleContinue = () => {};
@@ -97,7 +98,7 @@ const ResetPassword = () => {
         />
         <Continue
           checkPasswordMatch={checkPasswordMatch}
-          handleBackToLogin={BackToSignin}
+          handleBackToLogin={backToSignin}
           handleContinue={handleContinue}
         />
       </Box>

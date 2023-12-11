@@ -5,7 +5,7 @@ import { Box } from '@mui/system';
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import { AUTH_COMPONENTS } from '@/app/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
 
 const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
@@ -36,7 +36,8 @@ const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
         height: height,
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
-        paddingTop: showComponent === 'forgetpassword' ? paddingTop : '0px',
+        paddingTop:
+          showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
         '@media (max-width: 960px)': {
           background: 'none',
         },

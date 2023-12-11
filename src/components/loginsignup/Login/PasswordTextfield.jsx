@@ -20,7 +20,7 @@ const PasswordFields = ({ handleInputChange }) => {
       <TextField
         label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
+        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
         name={LOGIN_FORM.password}
         onChange={handleInputChange}
@@ -32,7 +32,7 @@ const PasswordFields = ({ handleInputChange }) => {
                 onClick={handleTogglePasswordVisibility}
                 edge="end"
               >
-                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                {formData?.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
           ),

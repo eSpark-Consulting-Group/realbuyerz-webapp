@@ -6,6 +6,7 @@ export const LOGIN_FORM = {
   firstName: 'firstName',
   lastName: 'lastName',
   text: 'text',
+  forgetpassword: 'forgetpassword',
   loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',

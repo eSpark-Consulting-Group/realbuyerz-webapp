@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { Typography, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
+import { Typography, Box } from '@mui/material';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
 import {
@@ -21,7 +21,7 @@ const SignupCard = () => {
   const handleInputContactNumber = (e) => {
     const newContactNumber = e.target.value;
 
-    if (newContactNumber.length <= 11) {
+    if (newContactNumber.length <= LOGIN_FORM.signupForm.maxLength) {
       setContactNumber(newContactNumber);
       setFormData({
         ...formData,

@@ -1,22 +1,21 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Box, Typography, TextField } from '@mui/material';
+
 import CheckEmailModal from './EmailModal';
 import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
 import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
 import Continue from './Continue';
-import { useRouter } from 'next/navigation';
 
 const ForgetPassword = ({ setshowForgetPassword }) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const [isValidEmail, setisValidEmail] = useState(false);
-  const [showSignin, setshowSignin] = useState(false);
   const handleBackToLogin = () => {
-    setshowSignin(true);
     router.push(LOGIN_ROUTERS.signin);
   };
   const router = useRouter();
@@ -119,8 +118,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             email={email}
             setshowForgetPassword={setshowForgetPassword}
             handleClick={handleClick}
-            showSignin={showSignin}
-            setshowSignin={setshowSignin}
+            handleBackToLogin={handleBackToLogin}
           />
         )}
       </Box>
