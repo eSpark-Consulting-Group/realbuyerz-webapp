@@ -5,9 +5,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 
-const PasswordFields = () => {
+const PasswordFields = ({ handleInputChange }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleTogglePasswordVisibility = () => {
     setFormData({
@@ -15,23 +15,14 @@ const PasswordFields = () => {
       showPassword: !formData.showPassword,
     });
   };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
   return (
     <>
       <TextField
-        label="Password"
+        label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? 'text' : 'password'}
+        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
-        name="password"
-        value={formData.password}
+        name={LOGIN_FORM.password}
         onChange={handleInputChange}
         InputProps={{
           endAdornment: (
@@ -41,7 +32,7 @@ const PasswordFields = () => {
                 onClick={handleTogglePasswordVisibility}
                 edge="end"
               >
-                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                {formData?.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
           ),

@@ -1,13 +1,52 @@
 'use client';
-import React from 'react';
-import { Typography, Box } from '@mui/material';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { Typography, Box } from '@mui/material';
 
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import {
+  LOGIN_FORM,
+  LOGIN_FORM_DATA,
+  LOGIN_ROUTERS,
+} from '@/app/constants/Login';
 import FormContainer from '../Login/LoginForm';
+import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const SignupCard = () => {
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+  const dispatch = useDispatch();
+  const [contactNumber, setContactNumber] = useState('');
+
+  const handleInputContactNumber = (e) => {
+    const newContactNumber = e.target.value;
+
+    if (newContactNumber.length <= LOGIN_FORM.signupForm.maxLength) {
+      setContactNumber(newContactNumber);
+      setFormData({
+        ...formData,
+        [e.target.name]: newContactNumber,
+      });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleAutoCompleteInputChange = (event, newValue) => {
+    const fieldName = LOGIN_FORM.signupForm.userType;
+    setFormData({
+      ...formData,
+      [fieldName]: newValue ? [newValue.value] : [],
+    });
+  };
+  const loginClick = () => {
+    dispatch(saveLoginData(formData));
+  };
   const router = useRouter();
   return (
     <>
@@ -59,13 +98,23 @@ const SignupCard = () => {
           >
             {LOGIN_FORM.loginCard.quickEasy}
           </Typography>
-          <FormContainer isLoginForm={false} />
+          <FormContainer
+            isLoginForm={false}
+            formData={formData}
+            contactNumber={contactNumber}
+            handleInputContactNumber={handleInputContactNumber}
+            handleInputChange={handleInputChange}
+            handleAutoCompleteInputChange={handleAutoCompleteInputChange}
+          />
           <LoginWithGoogle
             buttonLabel={LOGIN_FORM.signupForm.signup}
             label={LOGIN_FORM.signupForm.signin}
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
-            onSigninClick={() => router.push('/signin')}
+            onSigninClick={() => {
+              router.push(LOGIN_ROUTERS.signin);
+            }}
+            loginClick={loginClick}
           />
         </Box>
       </Box>

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import {
   Typography,
@@ -6,25 +7,47 @@ import {
   Checkbox,
   Button,
 } from '@mui/material';
+
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import {
+  LOGIN_FORM,
+  LOGIN_FORM_DATA,
+  LOGIN_ROUTERS,
+} from '@/app/constants/Login';
+import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const LoginCard = () => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+  const router = useRouter();
+
+  const dispatch = useDispatch();
   const handleClick = () => {
     setshowForgetPassword(true);
+    router.push(LOGIN_ROUTERS.forgetPassword);
   };
-  const router = useRouter();
+  const loginClick = () => {
+    dispatch(saveLoginData(formData));
+  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
     <>
       {!showForgetPassword ? (
         <Box
           sx={{
-            width: { xs: '90%', md: '500px' },
+            width: { xs: '80%', md: '500px' },
             height: '600px',
             display: 'flex',
             flexDirection: 'column',
@@ -61,7 +84,11 @@ const LoginCard = () => {
             >
               {LOGIN_FORM.loginCard.welcome}
             </Typography>
-            <FormContainer isLoginForm={true} />
+            <FormContainer
+              isLoginForm={true}
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
             <Box
               sx={{
                 display: 'flex',
@@ -99,10 +126,11 @@ const LoginCard = () => {
             </Box>
             <LoginWithGoogle
               buttonLabel={LOGIN_FORM.loginCard.login}
-              label={LOGIN_FORM.signupForm.signin}
+              label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push('/signup')}
+              onSigninClick={() => router.push(LOGIN_ROUTERS.signup)}
+              loginClick={loginClick}
             />
           </Box>
         </Box>

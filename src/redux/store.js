@@ -19,6 +19,7 @@ import PakageCartSlice from './slices/settings/PakageCartSlice';
 import verificationSlice from './slices/verification/verificationSlice';
 import preferenceSlice from './slices/preference/preferenceSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
+import loginSlice from './slices/login/loginSlice';
 
 export const store = configureStore({
   reducer: {
@@ -41,5 +42,6 @@ export const store = configureStore({
     verification: verificationSlice,
     preference: preferenceSlice,
     resendEmail: resendEmailSlice,
+    login: loginSlice,
   },
 });
