@@ -18,8 +18,8 @@ const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElSearch, setAnchorElSearch] = useState(null);
-  const [islogedIn, setIslogedIn] = useState(null);
-  const [islogedInMobile, setIslogedInMobile] = useState(null);
+  const [isloggedIn, setisloggedIn] = useState(null);
+  const [isloggedInMobile, setisloggedInMobile] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,10 +33,10 @@ const DashboardHeader = () => {
     setAnchorElSearch(event.currentTarget);
   };
   const handleOpenLoginMenu = (event) => {
-    setIslogedIn(event.currentTarget);
+    setisloggedIn(event.currentTarget);
   };
   const handleOpenMobileLoginMenu = (event) => {
-    setIslogedInMobile(event.currentTarget);
+    setisloggedInMobile(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
@@ -51,10 +51,10 @@ const DashboardHeader = () => {
     setAnchorElSearch(null);
   };
   const handleCloseLoginMenu = () => {
-    setIslogedIn(null);
+    setisloggedIn(null);
   };
   const handleCloseMobileLoginMenu = () => {
-    setIslogedInMobile(null);
+    setisloggedInMobile(null);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -161,8 +161,8 @@ const DashboardHeader = () => {
               anchorElSearch={anchorElSearch}
               handleOpenLoginMenu={handleOpenLoginMenu}
               handleCloseLoginMenu={handleCloseLoginMenu}
-              islogedIn={islogedIn}
-              setIslogedIn={setIslogedIn}
+              isloggedIn={isloggedIn}
+              setisloggedIn={setisloggedIn}
             />
             <MobileResponsiveDashboardHeader
               HEADER_MENU={HEADER_MENU}
@@ -171,7 +171,7 @@ const DashboardHeader = () => {
               handleOpenUserMenu={handleOpenUserMenu}
               anchorElUser={anchorElUser}
               handleCloseUserMenu={handleCloseUserMenu}
-              islogedInMobile={islogedInMobile}
+              isloggedInMobile={isloggedInMobile}
               handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
               handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
             />

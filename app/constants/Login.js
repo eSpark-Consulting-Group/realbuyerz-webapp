@@ -59,4 +59,4 @@ export const LOGIN_FORM_DATA = {
 export const SIGN_IN = 'Sign in';
 export const LOGOUT = 'Logout';
 export const SETTINGS = 'My Account';
-export const LOGIN_PERSON_NAME = 'Arman Espark';
+export const USER_NAME = 'Arman Espark';

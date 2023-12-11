@@ -6,11 +6,11 @@ import { Menu, MenuItem, Typography } from '@mui/material';
 const SearchAndNotificationDesktopButton = ({
   handleCloseLoginMenu,
   handleOpenLoginMenu,
-  LOGIN_PERSON_NAME,
+  USER_NAME,
   handleLogout,
   profileIcon,
-  islogedIn,
-  SING_OUT,
+  isloggedIn,
+  SIGN_OUT,
   EMAIL,
 }) => {
   return (
@@ -32,7 +32,7 @@ const SearchAndNotificationDesktopButton = ({
           mx: 2,
         }}
       >
-        {LOGIN_PERSON_NAME}
+        {USER_NAME}
       </Typography>
       <Image
         src={profileIcon}
@@ -44,7 +44,7 @@ const SearchAndNotificationDesktopButton = ({
       <Menu
         sx={{ mt: '65px' }}
         id="menu-appbar"
-        anchorEl={islogedIn}
+        anchorEl={isloggedIn}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -54,7 +54,7 @@ const SearchAndNotificationDesktopButton = ({
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={Boolean(islogedIn)}
+        open={Boolean(isloggedIn)}
         onClose={handleCloseLoginMenu}
       >
         <Box sx={{ padding: 1, gap: 1 }}>
@@ -102,7 +102,7 @@ const SearchAndNotificationDesktopButton = ({
                     lineHeight: 'normal',
                   }}
                 >
-                  {LOGIN_PERSON_NAME}
+                  {USER_NAME}
                 </Typography>
                 <Typography
                   sx={{
@@ -161,7 +161,7 @@ const SearchAndNotificationDesktopButton = ({
                   lineHeight: 'normal',
                 }}
               >
-                {SING_OUT}
+                {SIGN_OUT}
               </Typography>
             </Box>
           </MenuItem>

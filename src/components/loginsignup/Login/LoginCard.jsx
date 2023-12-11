@@ -15,10 +15,15 @@ import { LOGIN_FORM } from '@/app/constants/Login';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
+  const router = useRouter();
+
   const handleClick = () => {
     setshowForgetPassword(true);
   };
-  const router = useRouter();
+  const handleSignIn = () => {
+    handleClose();
+    router.push('/signup');
+  };
   return (
     <>
       {!showForgetPassword ? (
@@ -102,7 +107,7 @@ const LoginCard = ({ handleClose }) => {
               label={LOGIN_FORM.signupForm.signin}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push('/signup')}
+              onSigninClick={handleSignIn}
               handleClose={handleClose}
             />
           </Box>

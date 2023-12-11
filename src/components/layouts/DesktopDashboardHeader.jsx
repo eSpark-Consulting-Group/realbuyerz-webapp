@@ -16,11 +16,12 @@ import {
 import {
   EMAIL,
   LINK_NAME,
-  LOGIN_PERSON_NAME,
+  USER_NAME,
   MY_LISTING,
   POST_LISTING,
   SEARCH,
-  SING_OUT,
+  SIGN_OUT,
+  CUSTOM_COLOR,
 } from '@/app/constants/DashboardHeader';
 import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
 
@@ -31,7 +32,7 @@ const DesktopDashboardHeader = ({
   handleCloseSearchMenu,
   handleCloseLoginMenu,
   handleOpenLoginMenu,
-  islogedIn,
+  isloggedIn,
 }) => {
   const [search, setSearch] = useState();
 
@@ -173,7 +174,7 @@ const DesktopDashboardHeader = ({
               >
                 <Badge
                   badgeContent={4}
-                  color="customColor"
+                  color={CUSTOM_COLOR}
                   sx={{
                     width: 25,
                     height: 25,
@@ -185,7 +186,7 @@ const DesktopDashboardHeader = ({
                   }}
                 >
                   <NotificationsIcon
-                    sx={{ fontSize: 35, color: 'customColor' }}
+                    sx={{ fontSize: 35, color: { CUSTOM_COLOR } }}
                   />
                 </Badge>
               </IconButton>
@@ -193,11 +194,11 @@ const DesktopDashboardHeader = ({
             <SearchAndNotificationDesktopButton
               handleCloseLoginMenu={handleCloseLoginMenu}
               handleOpenLoginMenu={handleOpenLoginMenu}
-              LOGIN_PERSON_NAME={LOGIN_PERSON_NAME}
+              USER_NAME={USER_NAME}
               profileIcon={item?.profileIcon}
               handleLogout={handleLogout}
-              islogedIn={islogedIn}
-              SING_OUT={SING_OUT}
+              isloggedIn={isloggedIn}
+              SIGN_OUT={SIGN_OUT}
               EMAIL={EMAIL}
             />
           </>

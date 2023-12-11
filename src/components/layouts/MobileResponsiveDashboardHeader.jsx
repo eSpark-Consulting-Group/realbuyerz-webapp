@@ -6,12 +6,12 @@ import { Menu } from '@mui/material';
 
 import {
   LINK_NAME,
-  LOGIN_PERSON_NAME,
+  USER_NAME,
   MY_LISTING,
   POST_LISTING,
   EMAIL,
   SEARCH,
-  SING_OUT,
+  SIGN_OUT,
 } from '@/app/constants/DashboardHeader';
 import MyListingResponsiveButton from './MyListingResponsiveButton';
 import PostListingResponsiveButton from './PostListingResponsiveButton';
@@ -24,7 +24,7 @@ const MobileResponsiveDashboardHeader = ({
   handleCloseUserMenu,
   handleCloseNavMenu,
   handleOpenUserMenu,
-  islogedInMobile,
+  isloggedInMobile,
   anchorElUser,
   HEADER_MENU,
   anchorElNav,
@@ -108,11 +108,11 @@ const MobileResponsiveDashboardHeader = ({
               <ProfileResponsiveButton
                 handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
                 handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
-                LOGIN_PERSON_NAME={LOGIN_PERSON_NAME}
-                islogedInMobile={islogedInMobile}
+                USER_NAME={USER_NAME}
+                isloggedInMobile={isloggedInMobile}
                 profileIcon={item?.profileIcon}
                 handleLogout={handleLogout}
-                SING_OUT={SING_OUT}
+                SIGN_OUT={SIGN_OUT}
                 EMAIL={EMAIL}
               />
             </>

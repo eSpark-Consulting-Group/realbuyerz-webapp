@@ -6,11 +6,11 @@ import { Menu, MenuItem, Typography } from '@mui/material';
 const ProfileResponsiveButton = ({
   handleOpenMobileLoginMenu,
   handleCloseMobileLoginMenu,
-  LOGIN_PERSON_NAME,
-  islogedInMobile,
+  USER_NAME,
+  isloggedInMobile,
   handleLogout,
   profileIcon,
-  SING_OUT,
+  SIGN_OUT,
   EMAIL,
 }) => {
   return (
@@ -32,7 +32,7 @@ const ProfileResponsiveButton = ({
           mx: 2,
         }}
       >
-        {LOGIN_PERSON_NAME}
+        {USER_NAME}
       </Typography>
       <Image
         src={profileIcon}
@@ -44,7 +44,7 @@ const ProfileResponsiveButton = ({
       <Menu
         sx={{ mt: '52px' }}
         id="menu-appbar"
-        anchorEl={islogedInMobile}
+        anchorEl={isloggedInMobile}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -54,7 +54,7 @@ const ProfileResponsiveButton = ({
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={Boolean(islogedInMobile)}
+        open={Boolean(isloggedInMobile)}
         onClose={handleCloseMobileLoginMenu}
       >
         <Box sx={{ padding: 1, gap: 1 }}>
@@ -102,7 +102,7 @@ const ProfileResponsiveButton = ({
                     lineHeight: 'normal',
                   }}
                 >
-                  {LOGIN_PERSON_NAME}
+                  {USER_NAME}
                 </Typography>
                 <Typography
                   sx={{
@@ -161,7 +161,7 @@ const ProfileResponsiveButton = ({
                   lineHeight: 'normal',
                 }}
               >
-                {SING_OUT}
+                {SIGN_OUT}
               </Typography>
             </Box>
           </MenuItem>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Button, IconButton, Menu, TextField } from '@mui/material';
+import { CUSTOM_COLOR } from '@/app/constants/DashboardHeader';
 
 const SearchAndNotificationResponsiveButton = ({
   handleOpenUserMenu,
@@ -35,7 +36,7 @@ const SearchAndNotificationResponsiveButton = ({
         >
           <Badge
             badgeContent={4}
-            color="customColor"
+            color={CUSTOM_COLOR}
             sx={{
               width: 25,
               height: 25,
@@ -47,7 +48,7 @@ const SearchAndNotificationResponsiveButton = ({
               },
             }}
           >
-            <NotificationsIcon sx={{ fontSize: 35, color: 'customColor' }} />
+            <NotificationsIcon sx={{ fontSize: 35, color: { CUSTOM_COLOR } }} />
           </Badge>
         </IconButton>
       </Box>

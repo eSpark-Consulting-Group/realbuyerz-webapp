@@ -4,12 +4,7 @@ import Image from 'next/image';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
 
 import ModalSignin from '../Modal/ModalSignin';
-import {
-  LOGOUT,
-  SETTINGS,
-  SIGN_IN,
-  LOGIN_PERSON_NAME,
-} from '@/app/constants/Login';
+import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/app/constants/Login';
 
 const SignInOutButton = ({
   dashboard,
@@ -78,7 +73,7 @@ const SignInOutButton = ({
                   mt: -2,
                 }}
               >
-                {LOGIN_PERSON_NAME}
+                {USER_NAME}
               </Typography>
               <MenuItem
                 sx={{

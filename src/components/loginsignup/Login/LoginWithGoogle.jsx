@@ -8,7 +8,10 @@ const LoginWithGoogle = ({
   label,
   accountCreationMessage,
   onSigninClick,
+  handleClose,
 }) => {
+  console.log(handleClose, 'handle clos');
+
   return (
     <>
       <Box
@@ -28,6 +31,8 @@ const LoginWithGoogle = ({
               background: '#FF631C',
             },
           }}
+          // onClick={handleLogIn}
+          onClick={() => handleClose()}
         >
           {buttonLabel}
         </Button>
