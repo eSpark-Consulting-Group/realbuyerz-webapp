@@ -224,5 +224,5 @@ export const PROFILE_INFO = {
 export const ROUTERS = {
   buyProducts: '/prop-shop/buy-product',
   bidding: '/biddings',
-  dasboardLiveBidding: '/dashboard/live-bidding',
+  dashboardLiveBidding: '/dashboard/live-bidding',
 };
