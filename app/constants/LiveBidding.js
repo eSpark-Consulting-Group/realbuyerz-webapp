@@ -18,6 +18,12 @@ export const ESTIMATE_RANGE = 'Est. Range:';
 export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
 
+export const MY_LISTING = 'My Listing';
+export const POST_LISTING = 'Post Listing';
+export const LOGIN_PERSON_NAME = 'Arman Espark';
+export const LINK_NAME = 'Go to Rb.com';
+export const SEARCH = 'Search';
+
 export const AGENT_MENU_ITEM = [
   {
     id: 1,
