@@ -5,23 +5,23 @@ import { Box } from '@mui/system';
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import ResendPassword from '../ResetPassword/ResetPassword';
+import { AUTH_COMPONENTS } from '@/app/constants/Login';
+import ResetPassword from '../ResetPassword/ResetPassword';
 
 const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
   let cardComponent;
-
   switch (showComponent) {
-    case 'signup':
+    case AUTH_COMPONENTS.signup:
       cardComponent = <SignupCard />;
       break;
-    case 'signin':
+    case AUTH_COMPONENTS.signin:
       cardComponent = <LoginCard />;
       break;
-    case 'forgetpassword':
+    case AUTH_COMPONENTS.forgetPassword:
       cardComponent = <ForgetPassword />;
       break;
-    case 'resetpassword':
-      cardComponent = <ResendPassword />;
+    case AUTH_COMPONENTS.resetPassword:
+      cardComponent = <ResetPassword />;
       break;
     default:
       cardComponent = null;

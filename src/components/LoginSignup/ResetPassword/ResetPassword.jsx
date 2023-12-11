@@ -10,7 +10,7 @@ import {
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
 
-const ResendPassword = () => {
+const ResetPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -104,4 +104,4 @@ const ResendPassword = () => {
     </Box>
   );
 };
-export default ResendPassword;
+export default ResetPassword;

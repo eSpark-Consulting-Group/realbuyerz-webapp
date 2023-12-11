@@ -73,3 +73,9 @@ export const LOGIN_ROUTERS = {
   signup: '/signup',
   forgetPassword: '/forget-password',
 };
+export const AUTH_COMPONENTS = {
+  signin: 'signin',
+  signup: 'signup',
+  forgetPassword: 'forgetpassword',
+  resetPassword: 'resetpassword',
+};
