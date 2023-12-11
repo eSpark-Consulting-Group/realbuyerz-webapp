@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,15 +12,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { PAGES } from '@/app/constants/Constants';
-import SignInOutButton from './SignInOutButton';
+import SignInButton from './SignInButton';
+import SignInResponsiveButton from './SignInResponsiveButton';
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -34,9 +36,9 @@ const MainHeader = () => {
     setAnchorElUser(null);
   };
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const toggleOpen = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
   const dashboard = '';
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
@@ -131,33 +133,48 @@ const MainHeader = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { sm: 'block', md: 'block' },
+                display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
                 color: '#000',
               }}
             >
               {PAGES?.map((item, i) => (
                 <MenuItem key={i} onClick={handleCloseNavMenu}>
-                  <Link
-                    style={{
-                      color: '#1976d2',
-                      textDecoration: 'none',
-                    }}
-                    href={item?.path}
-                  >
-                    {item?.menu}
-                  </Link>
+                  <>
+                    <Link
+                      style={{
+                        color: '#1976d2',
+                        textDecoration: 'none',
+                      }}
+                      href={item?.path}
+                    >
+                      {item?.menu}
+                    </Link>
+                  </>
                 </MenuItem>
               ))}
+              <MenuItem
+                sx={{ display: { xs: 'block', sm: 'none', md: 'none' } }}
+              >
+                <SignInResponsiveButton
+                  dashboard={dashboard}
+                  handleOpenUserMenu={handleOpenUserMenu}
+                  anchorElUser={anchorElUser}
+                  handleCloseUserMenu={handleCloseUserMenu}
+                  handleClose={toggleOpen}
+                  open={open}
+                  handleOpen={toggleOpen}
+                />
+              </MenuItem>
             </Menu>
           </Box>
-          <SignInOutButton
+          <SignInButton
             dashboard={dashboard}
             handleOpenUserMenu={handleOpenUserMenu}
             anchorElUser={anchorElUser}
             handleCloseUserMenu={handleCloseUserMenu}
-            handleClose={handleClose}
+            handleClose={toggleOpen}
             open={open}
-            handleOpen={handleOpen}
+            handleOpen={toggleOpen}
           />
         </Toolbar>
       </Container>

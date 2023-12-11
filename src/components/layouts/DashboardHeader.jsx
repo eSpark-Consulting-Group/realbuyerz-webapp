@@ -152,7 +152,7 @@ const DashboardHeader = () => {
               </Drawer>
             </Box>
             <DesktopDashboardHeader
-              HEADER_MENU={HEADER_MENU}
+              headerMenu={HEADER_MENU}
               handleOpenUserMenu={handleOpenUserMenu}
               handleCloseUserMenu={handleCloseUserMenu}
               anchorElUser={anchorElUser}
@@ -165,7 +165,7 @@ const DashboardHeader = () => {
               setisloggedIn={setisloggedIn}
             />
             <MobileResponsiveDashboardHeader
-              HEADER_MENU={HEADER_MENU}
+              headerMenu={HEADER_MENU}
               handleCloseNavMenu={handleCloseNavMenu}
               anchorElNav={anchorElNav}
               handleOpenUserMenu={handleOpenUserMenu}
@@ -179,7 +179,6 @@ const DashboardHeader = () => {
           <Box>
             <Button
               size="large"
-              aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}

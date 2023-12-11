@@ -6,7 +6,7 @@ import { Button, Menu, MenuItem, Typography } from '@mui/material';
 import ModalSignin from '../Modal/ModalSignin';
 import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/app/constants/Login';
 
-const SignInOutButton = ({
+const SignInButton = ({
   dashboard,
   handleOpenUserMenu,
   anchorElUser,
@@ -15,13 +15,8 @@ const SignInOutButton = ({
   open,
   handleOpen,
 }) => {
-  const handleSetting = () => {
-    console.log('Settings invoked');
-  };
-
-  const handleLogout = () => {
-    console.log('logout invoked');
-  };
+  const handleSetting = () => {};
+  const handleLogout = () => {};
   return (
     <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
       {dashboard ? (
@@ -138,4 +133,4 @@ const SignInOutButton = ({
   );
 };
 
-export default SignInOutButton;
+export default SignInButton;

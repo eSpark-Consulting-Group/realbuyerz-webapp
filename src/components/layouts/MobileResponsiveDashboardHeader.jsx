@@ -26,7 +26,7 @@ const MobileResponsiveDashboardHeader = ({
   handleOpenUserMenu,
   isloggedInMobile,
   anchorElUser,
-  HEADER_MENU,
+  headerMenu,
   anchorElNav,
 }) => {
   const [search, setSearch] = useState();
@@ -71,7 +71,7 @@ const MobileResponsiveDashboardHeader = ({
           width: '198px ',
         }}
       >
-        {HEADER_MENU?.map((item) => {
+        {headerMenu?.map((item) => {
           return (
             <>
               <Box sx={{ p: 2 }}>
@@ -108,12 +108,12 @@ const MobileResponsiveDashboardHeader = ({
               <ProfileResponsiveButton
                 handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
                 handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
-                USER_NAME={USER_NAME}
+                userName={USER_NAME}
                 isloggedInMobile={isloggedInMobile}
                 profileIcon={item?.profileIcon}
                 handleLogout={handleLogout}
-                SIGN_OUT={SIGN_OUT}
-                EMAIL={EMAIL}
+                signOut={SIGN_OUT}
+                email={EMAIL}
               />
             </>
           );

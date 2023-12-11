@@ -13,6 +13,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
+
 import {
   EMAIL,
   LINK_NAME,
@@ -26,7 +27,7 @@ import {
 import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
 
 const DesktopDashboardHeader = ({
-  HEADER_MENU,
+  headerMenu,
   handleOpenSearchMenu,
   anchorElSearch,
   handleCloseSearchMenu,
@@ -52,7 +53,7 @@ const DesktopDashboardHeader = ({
         display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
       }}
     >
-      {HEADER_MENU?.map((item) => {
+      {headerMenu?.map((item) => {
         return (
           <>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -194,12 +195,12 @@ const DesktopDashboardHeader = ({
             <SearchAndNotificationDesktopButton
               handleCloseLoginMenu={handleCloseLoginMenu}
               handleOpenLoginMenu={handleOpenLoginMenu}
-              USER_NAME={USER_NAME}
+              userName={USER_NAME}
               profileIcon={item?.profileIcon}
               handleLogout={handleLogout}
               isloggedIn={isloggedIn}
-              SIGN_OUT={SIGN_OUT}
-              EMAIL={EMAIL}
+              signOut={SIGN_OUT}
+              email={EMAIL}
             />
           </>
         );
