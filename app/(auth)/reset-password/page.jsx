@@ -2,18 +2,18 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
 
-const Signin = () => {
+const ResetPasswordForm = () => {
   return (
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent="resetpassword"
+          showComponent={AUTH_COMPONENTS.resetPassword}
           height={LOGIN_FORM.rectangleHeight.loginFormHeight}
         />
       </Grid>
     </>
   );
 };
-export default Signin;
+export default ResetPasswordForm;

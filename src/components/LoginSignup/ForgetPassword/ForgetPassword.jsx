@@ -88,7 +88,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
         </Typography>
         <TextField
           label={LOGIN_FORM.loginCard.email}
-          name="email"
+          name={LOGIN_FORM.email}
           variant="outlined"
           fullWidth
           value={email}

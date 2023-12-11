@@ -18,7 +18,7 @@ const PasswordAndConfirmFields = ({
       <TextField
         label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
+        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
         name={LOGIN_FORM.password}
         onChange={handleInputChange}
@@ -33,7 +33,7 @@ const PasswordAndConfirmFields = ({
                 onClick={() => handleFieldToggle('showPassword')}
                 edge="end"
               >
-                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                {formData?.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
           ),
@@ -62,7 +62,7 @@ const PasswordAndConfirmFields = ({
                 onClick={() => handleFieldToggle('showConfirmPassword')}
                 edge="end"
               >
-                {formData.showConfirmPassword ? (
+                {formData?.showConfirmPassword ? (
                   <Visibility />
                 ) : (
                   <VisibilityOff />

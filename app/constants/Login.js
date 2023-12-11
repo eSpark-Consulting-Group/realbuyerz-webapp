@@ -6,6 +6,7 @@ export const LOGIN_FORM = {
   firstName: 'firstName',
   lastName: 'lastName',
   text: 'text',
+  paddingTop: '-30px',
   forgetpassword: 'forgetpassword',
   loginCard: {
     createAccount: 'Create Account',
