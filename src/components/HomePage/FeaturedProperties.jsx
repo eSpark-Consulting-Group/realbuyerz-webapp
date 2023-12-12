@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -9,6 +11,10 @@ import Heading from './Heading';
 
 const FeaturedProperties = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [saved, setSaved] = useState(true);
+  const handleToggleSave = () => {
+    setSaved((prevSaved) => !prevSaved);
+  };
   return (
     <Box
       sx={{
@@ -133,17 +139,28 @@ const FeaturedProperties = ({ data }) => {
                       px: '5%',
                     }}
                   >
-                    <Typography
-                      sx={{
-                        color: '#fb631c',
-                        textAlign: 'left',
-                        fontWeight: '600',
-                        fontSize: ' 18px',
-                        pb: '15px',
-                      }}
-                    >
-                      {item.propertyName}
-                    </Typography>
+                    <Box sx={{ display: 'flex', width: '100%' }}>
+                      <Box sx={{ width: '90%' }}>
+                        <Typography
+                          sx={{
+                            color: '#fb631c',
+                            textAlign: 'left',
+                            fontWeight: '600',
+                            fontSize: ' 18px',
+                            pb: '15px',
+                          }}
+                        >
+                          {item.propertyName}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ width: '10%' }} onClick={handleToggleSave}>
+                        {saved === true ? (
+                          <FavoriteIcon style={{ color: ' #fb631c' }} />
+                        ) : (
+                          <FavoriteBorderIcon style={{ color: ' #fb631c' }} />
+                        )}
+                      </Box>
+                    </Box>
                     <Typography
                       sx={{
                         color: '#1176ad',

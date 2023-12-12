@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Image from 'next/image';
 import EditProfileModal from '../../Modal/EditProfileModal';
 const AgentImage = ({ image }) => {
-  const [ProfileImage] = React.useState(image);
+  const [ProfileImage] = useState(image);
 
   // const handlImageChange = (event) => {
   //   const file = event.target?.files[0];

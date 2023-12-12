@@ -15,13 +15,16 @@ import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 
 import Link from 'next/link';
+import CustomHead from '@/src/components/layouts/customHead';
+import { PATH } from './constants/paths';
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
-
+  console.log('currentPath', currentPath);
   return (
     <html lang="en">
       <Head>
+        <CustomHead />
         <Link rel="preconnect" href="https://fonts.googleapis.com" />
         <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <Link
@@ -38,7 +41,7 @@ const RootLayout = ({ children }) => {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box>
-              {currentPath.includes('/dashboard') ? (
+              {currentPath.includes(PATH.dashboard) ? (
                 <DashboardHeader />
               ) : (
                 <MainHeader />

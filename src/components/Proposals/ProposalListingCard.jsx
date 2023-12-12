@@ -12,7 +12,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
-import { useRouter } from 'next/navigation';
 
 const styles = {
   container: {
@@ -37,7 +36,6 @@ const styles = {
 const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const router = useRouter();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
@@ -45,10 +43,6 @@ const ProposalListingCard = ({ proposalsData }) => {
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
-  };
-  const proposalId = 1;
-  const handleClick = () => {
-    router.push(`/dashboard/proposals/${proposalId}`);
   };
 
   return (
@@ -80,17 +74,18 @@ const ProposalListingCard = ({ proposalsData }) => {
                 position: 'relative',
               }}
             >
-              <Image
-                src={proposal.imageUrl}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt=""
-                sx={{
-                  borderRadius: '5px ',
-                }}
-                onClick={handleClick}
-              />
+              <Link href={`/dashboard/proposals/${proposal.id}`}>
+                <Image
+                  src={proposal.imageUrl}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt=""
+                  sx={{
+                    borderRadius: '5px ',
+                  }}
+                />
+              </Link>
             </Box>
           </Grid>
           <Grid
@@ -112,18 +107,20 @@ const ProposalListingCard = ({ proposalsData }) => {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Typography
-                  sx={{
-                    fontSize: '25px',
-                    fontWeight: '600',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {proposal.title}
-                </Typography>
+                <Link href={`/dashboard/proposals/${proposal.id}`}>
+                  <Typography
+                    sx={{
+                      fontSize: '25px',
+                      fontWeight: '600',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {proposal.title}
+                  </Typography>
+                </Link>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`./proposals/${proposal.id}`}>
+                <Link href={`/dashboard/proposals/${proposal.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       {RESTORE_PROPERTY}
