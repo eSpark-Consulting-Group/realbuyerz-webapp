@@ -51,7 +51,7 @@ const PopularLocations = ({ data }) => {
             'To browse & buy in your areas of interest. Look of properties by category'
           }
         />
-        <Box sx={{ pt: '14px', pb: '58px' }}>
+        <Box sx={{ pt: '14px', pb: '8px' }}>
           <Box sx={{ pt: '14px', pb: '58px' }}>
             <Button
               sx={{

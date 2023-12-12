@@ -2,37 +2,39 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import {
-  Badge,
-  Button,
-  IconButton,
-  Menu,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Menu } from '@mui/material';
 
 import {
   LINK_NAME,
-  LOGIN_PERSON_NAME,
+  USER_NAME,
   MY_LISTING,
   POST_LISTING,
-} from '@/app/constants/LiveBidding';
+  EMAIL,
+  SEARCH,
+  SIGN_OUT,
+} from '@/app/constants/DashboardHeader';
 import MyListingResponsiveButton from './MyListingResponsiveButton';
 import PostListingResponsiveButton from './PostListingResponsiveButton';
-import { SEARCH } from '@/app/constants/DashboardHeader';
+import SearchAndNotificationResponsiveButton from './SearchAndNotificationResponsiveButton';
+import ProfileResponsiveButton from './ProfileResponsiveButton';
 
 const MobileResponsiveDashboardHeader = ({
-  HEADER_MENU,
-  handleCloseNavMenu,
-  anchorElNav,
-  handleOpenUserMenu,
-  anchorElUser,
+  handleCloseMobileLoginMenu,
+  handleOpenMobileLoginMenu,
   handleCloseUserMenu,
+  handleCloseNavMenu,
+  handleOpenUserMenu,
+  isloggedInMobile,
+  anchorElUser,
+  headerMenu,
+  anchorElNav,
 }) => {
   const [search, setSearch] = useState();
   const searchInput = (e) => {
     setSearch(e.target.value);
+  };
+  const handleLogout = () => {
+    handleCloseMobileLoginMenu();
   };
   return (
     <Menu
@@ -50,7 +52,7 @@ const MobileResponsiveDashboardHeader = ({
       open={Boolean(anchorElNav)}
       onClose={handleCloseNavMenu}
       sx={{
-        display: { sm: 'block', md: 'block' },
+        display: { sm: 'block', md: 'block', lg: 'none' },
         color: '#000',
       }}
     >
@@ -63,86 +65,37 @@ const MobileResponsiveDashboardHeader = ({
             xs: 'block',
             sm: 'block',
             md: 'block',
-            lg: 'none',
+            lg: 'block',
           },
           flexDirection: 'column',
+          width: '198px ',
         }}
       >
-        {HEADER_MENU?.map((item) => {
+        {headerMenu?.map((item) => {
           return (
             <>
               <Box sx={{ p: 2 }}>
-                {/* <Image
-                  src={item?.searchIcon}
-                  width={35}
-                  height={35}
-                  alt="icon"
-                  style={{ marginRight: 30, marginBottom: 8 }}
-                /> */}
-                <Box sx={{ flexGrow: 0 }}>
-                  <Image
-                    onClick={handleOpenUserMenu}
-                    src={item?.searchIcon}
-                    width={35}
-                    height={35}
-                    alt={'icon'}
-                    style={{ marginRight: 30, cursor: 'pointer' }}
-                  />
-                  <Menu
-                    sx={{ mt: '45px' }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    <Box
-                      sx={{
-                        padding: 2,
-                      }}
-                    >
-                      <TextField
-                        id="outlined-search"
-                        label="Search"
-                        type="search"
-                        size="small"
-                        onChange={(e) => searchInput(e)}
-                      />
-                      <Link href={`/dashboard/proposals?search=${search}`}>
-                        <Button variant="primary" sx={{ mx: 1 }}>
-                          {SEARCH}
-                        </Button>
-                      </Link>
-                    </Box>
-                  </Menu>
-                </Box>
-                <Image
-                  src={item?.linkIcon}
-                  width={20}
-                  height={20}
-                  alt="icon"
-                  style={{ marginRight: 8 }}
+                <SearchAndNotificationResponsiveButton
+                  handleCloseUserMenu={handleCloseUserMenu}
+                  handleOpenUserMenu={handleOpenUserMenu}
+                  searchIcon={item?.searchIcon}
+                  anchorElUser={anchorElUser}
+                  searchInput={searchInput}
+                  searchButtonName={SEARCH}
+                  search={search}
                 />
-                <Link
-                  href="/"
-                  style={{
-                    display: 'inline-block',
-                    color: '#666666',
-                    textDecoration: 'none',
-                    borderRadius: '4px',
-                    marginRight: '14px',
-                  }}
-                >
-                  {LINK_NAME}
-                </Link>
+                <Box sx={{ display: 'flex', mt: 2 }}>
+                  <Link href="/">
+                    <Image
+                      src={item?.linkIcon}
+                      width={20}
+                      height={20}
+                      alt="icon"
+                      style={{ marginRight: 10 }}
+                    />
+                  </Link>
+                  <Link href="/">{LINK_NAME}</Link>
+                </Box>
                 <MyListingResponsiveButton
                   icon={item?.myListingIcon}
                   buttonName={MY_LISTING}
@@ -151,60 +104,17 @@ const MobileResponsiveDashboardHeader = ({
                   icon={item?.PostListingIcon}
                   buttonName={POST_LISTING}
                 />
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{
-                    p: 0,
-                    color: '#FF631C',
-                    my: 2,
-                  }}
-                >
-                  <Badge
-                    badgeContent={4}
-                    color="customColor"
-                    sx={{
-                      width: 25,
-                      height: 25,
-                      display: 'block',
-                      '& .MuiBadge-badge': {
-                        color: 'white',
-                        width: 10,
-                        height: 20,
-                      },
-                    }}
-                  >
-                    <NotificationsIcon
-                      sx={{ fontSize: 35, color: 'customColor' }}
-                    />
-                  </Badge>
-                </IconButton>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  border: '1px solid #E7E7E7',
-                  borderRadius: '390px',
-                  alignItems: 'center',
-                  mx: 1,
-                }}
-              >
-                <Typography
-                  sx={{
-                    display: 'flex',
-                    color: 'black',
-                    alignItems: 'center',
-                    mx: 4,
-                  }}
-                >
-                  {LOGIN_PERSON_NAME}
-                </Typography>
-                <Image
-                  src={item?.profileIcon}
-                  width={40}
-                  height={40}
-                  alt={'icon'}
-                />
-              </Box>
+              <ProfileResponsiveButton
+                handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
+                handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
+                userName={USER_NAME}
+                isloggedInMobile={isloggedInMobile}
+                profileIcon={item?.profileIcon}
+                handleLogout={handleLogout}
+                signOut={SIGN_OUT}
+                email={EMAIL}
+              />
             </>
           );
         })}

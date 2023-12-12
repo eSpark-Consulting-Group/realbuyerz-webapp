@@ -73,6 +73,16 @@ export const LOGIN_FORM_DATA = {
   },
 };
 
+export const SIGN_IN = 'Sign in';
+export const LOGOUT = 'Logout';
+export const SETTINGS = 'My Account';
+export const USER_NAME = 'Arman Espark';
+
+export const ALT = {
+  BOX_IMAGE: 'boxImage',
+  BUILDING_IMAGE: 'building',
+};
+
 export const LOGIN_ROUTERS = {
   signin: '/signin',
   signup: '/signup',
