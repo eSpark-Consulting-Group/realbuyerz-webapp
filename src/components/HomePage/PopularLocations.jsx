@@ -8,6 +8,7 @@ import Heading from './Heading';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/app/constants/Home';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -46,10 +47,8 @@ const PopularLocations = ({ data }) => {
     >
       <Container sx={{ px: '10%' }}>
         <Heading
-          heading={'Popular Locations'}
-          paragraph={
-            'To browse & buy in your areas of interest. Look of properties by category'
-          }
+          heading={FEATURED_HEADINGS.popularLocations}
+          paragraph={FEATURED_HEADINGS.browseProperty}
         />
         <Box sx={{ pt: '14px', pb: '58px' }}>
           <Box sx={{ pt: '14px', pb: '58px' }}>
@@ -67,7 +66,7 @@ const PopularLocations = ({ data }) => {
               <Typography
                 sx={{ color: filterType === 'sale' ? '#fff' : 'primary' }}
               >
-                For Sale
+                {FEATURE_BUTTONS.forSale}
               </Typography>
             </Button>
             <Button
@@ -86,7 +85,7 @@ const PopularLocations = ({ data }) => {
                 sx={{ color: filterType === 'rent' ? '#fff' : 'primary' }}
               >
                 {' '}
-                By Rent
+                {FEATURE_BUTTONS.byRent}
               </Typography>
             </Button>
           </Box>

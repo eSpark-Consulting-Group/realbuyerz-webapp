@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const NewlyListedProperties = ({ data }) => {
   return (
@@ -19,8 +20,8 @@ const NewlyListedProperties = ({ data }) => {
           }}
         >
           <Heading
-            heading={'Newly Listed Properties'}
-            paragraph={'Find your dream property from our latest properties '}
+            heading={FEATURED_HEADINGS.listedProperty}
+            paragraph={FEATURED_HEADINGS.latestProject}
           />
           <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>
             <PropertySlider data={data} />

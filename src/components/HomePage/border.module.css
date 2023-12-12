@@ -1,0 +1,24 @@
+.gridItem {
+    padding: '20px';
+        margin-bottom: '15px';
+        background: '#FFF';
+        border: '2px solid #fff';
+        position: 'relative';
+        transition: border 0.3s ease;
+    /* Add transition for a smoother effect */
+
+    /* hover {
+            border: 2px solid #fb631c;
+            animation: rotateBorder 2s infinite linear;
+        } */
+    }
+
+@keyframes rotateBorder {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

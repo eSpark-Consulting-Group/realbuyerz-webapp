@@ -105,7 +105,7 @@ const HeroSection = () => {
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
         >
-          <Bounce direction="left" triggerOnce>
+          <Bounce direction="left" triggerOnce >
             <Link href="/signup/?user-type=agent">
               {' '}
               <Button
@@ -122,14 +122,31 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
                   textAlign: 'start',
+                  // backgroundColor: '#FB631C',
+                  // '&:hover': {
+                  //   // Fix: Use ':hover' instead of 'hover'
+                  //   background: '#fff',
+                  //   border: '1px solid #FB631C',
+                  // },
                 }}
                 variant="primary"
               >
-                <Typography sx={{ color: '#fff' }}> Buyer</Typography>
+                <Typography
+                  sx={{
+                    color: '#fff',
+                    '&:hover': {
+                      // Fix: Use ':hover' instead of 'hover'
+                      color: '#FB631C',
+                    },
+                  }}
+                >
+                  {' '}
+                  {HERO_SECTION_CONTENT.buyer}
+                </Typography>
               </Button>
             </Link>
           </Bounce>
-          <Bounce direction="right" triggerOnce>
+          <Bounce direction="right" triggerOnce >
             <Link href="/signup/?user-type=user">
               {' '}
               <Button
@@ -145,10 +162,24 @@ const HeroSection = () => {
                   fontWeight: 600,
                   lineHeight: 'normal',
                   height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  background: '#FB631C',
+                  '&:hover': {
+                    background: '#fff',
+                    border: '1px solid #FB631C',
+                  },
                 }}
                 variant="primary"
               >
-                <Typography sx={{ color: '#fff' }}>Seller</Typography>
+                <Typography
+                  sx={{
+                    color: '#fff',
+                    // '&:hover': {
+                    //   color: '#fb631c',
+                    // },
+                  }}
+                >
+                  {HERO_SECTION_CONTENT.seller}
+                </Typography>
               </Button>
             </Link>
           </Bounce>

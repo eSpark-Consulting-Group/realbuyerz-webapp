@@ -1,17 +1,26 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 
 import Heading from './Heading';
 import Image from 'next/image';
+import { HERO_SECTION_CONTENT } from '@/app/constants/Constants';
+import LinearProgressBar from './LinearProgress';
 
 const BrowseByCategory = ({ data }) => {
+  const [hovered, setHovered] = useState(Array(data.length).fill(false));
+  const handleItemHover = (index, isHovered) => {
+    setHovered((prevHoveredItems) => {
+      const updatedHoveredItems = [...prevHoveredItems];
+      updatedHoveredItems[index] = isHovered;
+      return updatedHoveredItems;
+    });
+  };
   return (
     <Container sx={{ pt: '90px', textAlign: 'center' }}>
       <Heading
-        heading={'Browse By Category'}
-        paragraph={
-          'To browse & buy in your areas of interest. Look of properties by category'
-        }
+        heading={HERO_SECTION_CONTENT.browseCategory}
+        paragraph={HERO_SECTION_CONTENT.propertiesCategory}
       />
       <Box
         sx={{
@@ -27,7 +36,7 @@ const BrowseByCategory = ({ data }) => {
             flexWrap: 'wrap',
           }}
         >
-          {data?.map((category) => (
+          {data?.map((category, index) => (
             <Grid
               item
               key={category?.id}
@@ -36,36 +45,44 @@ const BrowseByCategory = ({ data }) => {
                 my: '15px',
                 background: '#FFF',
                 border: '2px solid #fff',
-                '&:hover': { border: '2px solid #fb631c' },
+                position: 'relative',
+                // '&hover: border':{
+                //   transform: 'rotate(180deg)',
+                //   transformOrigin: '0 0',
+                // },
               }}
+              onMouseEnter={() => handleItemHover(index, true)}
+              onMouseLeave={() => handleItemHover(index, false)}
             >
-              <a href="/">
-                <Box
+              <LinearProgressBar position="top" hovered={hovered[index]} />
+              <LinearProgressBar position="bottom" hovered={hovered[index]} />
+              <LinearProgressBar position="left" hovered={hovered[index]} />
+              <LinearProgressBar position="right" hovered={hovered[index]} />
+              <Box
+                sx={{
+                  background: '#fff',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  maxWidth: '100px',
+                }}
+              >
+                <Image
+                  src={category?.image}
+                  alt={category?.name}
+                  height={30}
+                  width={30}
+                />
+                <Typography
+                  variant="body1"
                   sx={{
-                    background: '#fff',
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    maxWidth: '100px',
+                    py: '8px',
                   }}
                 >
-                  <Image
-                    src={category?.image}
-                    alt={category?.name}
-                    height={30}
-                    width={30}
-                  />
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      py: '8px',
-                    }}
-                  >
-                    {category?.name}
-                  </Typography>
-                </Box>
-              </a>
+                  {category?.name}
+                </Typography>
+              </Box>
             </Grid>
           ))}
         </Grid>

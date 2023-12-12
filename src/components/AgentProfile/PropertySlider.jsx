@@ -23,7 +23,7 @@ const PropertySlider = ({ data }) => {
     dots: false,
     infinite: true,
     adaptiveHeight: true,
-    speed: 500,
+    speed: 200,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -70,7 +70,7 @@ const PropertySlider = ({ data }) => {
       <Slider {...settings}>
         {data?.recentProperties.properties.map((item, index) => {
           return (
-            <Fade key={index} direction="left">
+            <Fade key={index} direction="right" duration={500}>
               <Card
                 sx={{
                   maxWidth: 315,

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -12,7 +13,7 @@ const Typewriter = ({ text }) => {
       interval = setInterval(() => {
         setDisplayedText((prevText) => prevText + text[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 200);
+      }, 150);
     } else {
       // Reset typewriter effect
       setCurrentIndex(0);
@@ -46,7 +47,7 @@ const CreateAccount = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Typewriter text="Live Properties Buying & Selling" />
+      <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
       <Button
         sx={{
           mx: '15px',
@@ -57,7 +58,9 @@ const CreateAccount = () => {
         }}
         variant="primary"
       >
-        <Typography sx={{ color: '#fff' }}>Create Account</Typography>
+        <Typography sx={{ color: '#fff' }}>
+          {FEATURED_HEADINGS.createAccount}
+        </Typography>
       </Button>
     </Box>
   );

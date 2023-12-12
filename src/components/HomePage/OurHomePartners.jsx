@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Heading from './Heading';
 import Image from 'next/image';
 import { Box, Container } from '@mui/material';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
@@ -17,8 +18,10 @@ const OurHomePartners = ({ data }) => {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000, // 3 seconds per slide
-    arrows: false, // Hide arrows
+    autoplaySpeed: 0,
+    arrows: false,
+    cssEase: 'linear',
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1200,
@@ -43,7 +46,7 @@ const OurHomePartners = ({ data }) => {
 
   return (
     <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
-      <Heading heading={'Our Home Partners'} />
+      <Heading heading={FEATURED_HEADINGS.homePartners} />
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
           {data?.map((partner) => (
