@@ -8,7 +8,7 @@ import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
 import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
-import Continue from './Continue';
+import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
 
 const ForgetPassword = ({ setshowForgetPassword }) => {
   const [email, setEmail] = useState('');
