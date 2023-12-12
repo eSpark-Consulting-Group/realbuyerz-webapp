@@ -145,7 +145,7 @@ const ProfileResponsiveButton = ({
                 src={'/images/Signout.png'}
                 width={15}
                 height={5}
-                alt="Signout"
+                alt={signOut}
               />
 
               <Typography

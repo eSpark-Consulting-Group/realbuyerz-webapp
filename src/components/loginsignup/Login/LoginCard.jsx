@@ -33,10 +33,11 @@ const LoginCard = ({ handleClose }) => {
   };
   const handleSignIn = () => {
     handleClose();
-    router.push(LOGIN_ROUTERS.signup)
+    router.push(LOGIN_ROUTERS.signup);
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
+    handleClose();
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;

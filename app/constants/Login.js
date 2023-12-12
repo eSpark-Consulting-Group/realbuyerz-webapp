@@ -73,12 +73,10 @@ export const LOGIN_FORM_DATA = {
   },
 };
 
-<<<<<<< HEAD
 export const SIGN_IN = 'Sign in';
 export const LOGOUT = 'Logout';
 export const SETTINGS = 'My Account';
 export const USER_NAME = 'Arman Espark';
-=======
 export const LOGIN_ROUTERS = {
   signin: '/signin',
   signup: '/signup',
@@ -102,4 +100,3 @@ export const FORM_LABEL = {
   password: 'Password',
   confirmPassword: 'Confirm Password',
 };
->>>>>>> epic/issue/1
