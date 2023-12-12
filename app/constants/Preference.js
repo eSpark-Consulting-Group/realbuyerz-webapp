@@ -1,6 +1,7 @@
 export const AGENT_PREFERENCES = {
   heading: 'Preferences',
   saveChanges: ' Save Changes',
+  preference: 'preference',
   updates: [
     {
       title: 'Email Notification',
@@ -44,3 +45,12 @@ export const PROPERTY_AREASIZE_AND_REPORT = {
     areaUnit: '',
   },
 };
+export const PREFERENCE = [
+  {
+    emailNotification: false,
+    newsLetter: false,
+    automatedReports: false,
+    currency: '',
+    areaUnit: '',
+  },
+];

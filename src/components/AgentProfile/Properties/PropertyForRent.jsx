@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import { PROPERTIES_FOR_RENT, VIEW_BUTTON } from '@/app/constants/AgentProfile';
 
-const PropertyForRent = ({ data }) => {
+const PropertyForRent = ({ data, handleView }) => {
   return (
     <div>
       <Grid container justifyContent="space-between">
@@ -43,10 +43,9 @@ const PropertyForRent = ({ data }) => {
           <Box
             sx={{
               display: 'flex',
-              verticalAlign: 'baseline',
             }}
           >
-            <Typography
+            <Button
               variant="body2"
               sx={{
                 color: '#FB631C',
@@ -55,15 +54,16 @@ const PropertyForRent = ({ data }) => {
                 fontWeight: 400,
                 lineHeight: 'normal',
               }}
+              onClick={handleView}
             >
               {VIEW_BUTTON} &nbsp;
-            </Typography>
-            <Image
-              src="/images/agent-profile-icons/arrow.svg"
-              width={9}
-              height={9}
-              alt="arrow-icon"
-            />
+              <Image
+                src="/images/agent-profile-icons/arrow.svg"
+                width={9}
+                height={9}
+                alt="arrow-icon"
+              />
+            </Button>
           </Box>
         </Grid>
       </Grid>

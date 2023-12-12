@@ -8,7 +8,11 @@ const LoginWithGoogle = ({
   label,
   accountCreationMessage,
   onSigninClick,
+<<<<<<< HEAD
   handleClose,
+=======
+  loginClick,
+>>>>>>> epic/issue/1
 }) => {
   return (
     <>
@@ -29,7 +33,11 @@ const LoginWithGoogle = ({
               background: '#FF631C',
             },
           }}
+<<<<<<< HEAD
           onClick={() => handleClose()}
+=======
+          onClick={loginClick}
+>>>>>>> epic/issue/1
         >
           {buttonLabel}
         </Button>

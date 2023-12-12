@@ -37,7 +37,7 @@ const Page = () => {
           <BidDescription details={bidding} />
           <Divider sx={{ pt: '10px', pb: '10px' }} />
           <BidMapLocation location={bidding?.location} />
-          <Divider sx={{ pt: '10px', pb: '10px' }} />
+          <Divider sx={{ pt: '5px', pb: '5px' }} />
           <BidData title={BIDDINGS?.amount?.title} data={bidding?.amount} />
           <Divider sx={{ pt: '10px', pb: '10px' }} />
           <BidData

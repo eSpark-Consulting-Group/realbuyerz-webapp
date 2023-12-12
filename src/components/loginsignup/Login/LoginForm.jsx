@@ -2,28 +2,25 @@
 import React, { useState } from 'react';
 import { Box, TextField, Autocomplete } from '@mui/material';
 
-import { LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
-const FormContainer = ({ isLoginForm }) => {
-  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
-  const handleInputContactNumber = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue.length <= 11) {
-      setFormData({
-        ...formData,
-        [event.target.name]: inputValue,
-      });
-    }
-  };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+const FormContainer = ({
+  isLoginForm,
+  handleInputContactNumber,
+  handleInputChange,
+  contactNumber,
+  handleAutoCompleteInputChange,
+}) => {
+  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
+  const handleFieldToggle = (fieldName) => {
     setFormData({
       ...formData,
-      [name]: value,
+      [fieldName]: !formData[fieldName],
     });
   };
+
   return (
     <>
       {isLoginForm ? (
@@ -36,11 +33,10 @@ const FormContainer = ({ isLoginForm }) => {
             }}
           >
             <TextField
-              label="Email / Username"
+              label={FORM_LABEL.emailUsername}
               variant="outlined"
               fullWidth
-              name="email"
-              value={formData.email}
+              name={LOGIN_FORM.email}
               onChange={handleInputChange}
               inputProps={{
                 style: {
@@ -57,7 +53,7 @@ const FormContainer = ({ isLoginForm }) => {
                 },
               }}
             />
-            <PasswordFields />
+            <PasswordFields handleInputChange={handleInputChange} />
           </Box>
         </form>
       ) : (
@@ -77,11 +73,10 @@ const FormContainer = ({ isLoginForm }) => {
               }}
             >
               <TextField
-                label="First Name"
-                name="firstName"
+                label={FORM_LABEL.firstName}
+                name={LOGIN_FORM.firstName}
                 variant="outlined"
                 fullWidth
-                value={formData.firstName}
                 onChange={handleInputChange}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -89,11 +84,10 @@ const FormContainer = ({ isLoginForm }) => {
                 }}
               />
               <TextField
-                label="Last Name"
-                name="lastName"
+                label={FORM_LABEL.lastName}
+                name={LOGIN_FORM.lastName}
                 variant="outlined"
                 fullWidth
-                value={formData.lastName}
                 onChange={handleInputChange}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -102,11 +96,10 @@ const FormContainer = ({ isLoginForm }) => {
               />
             </Box>
             <TextField
-              label="Email Address"
+              label={FORM_LABEL.emailAddress}
               variant="outlined"
               fullWidth
-              name="email"
-              value={formData.email}
+              name={LOGIN_FORM.email}
               onChange={handleInputChange}
               InputProps={{ sx: { height: '40px' } }}
               InputLabelProps={{
@@ -114,13 +107,19 @@ const FormContainer = ({ isLoginForm }) => {
               }}
             />
             <TextField
-              label="Contact Number"
+              label={FORM_LABEL.contactNo}
               variant="outlined"
-              type="number"
+              type={FORM_LABEL.number}
               fullWidth
-              name="contactNumber"
-              value={formData.contactNumber}
+              name={LOGIN_FORM.contactNo}
+              value={contactNumber}
               onChange={handleInputContactNumber}
+              sx={{
+                '& input[type=number]::-webkit-inner-spin-button': {
+                  '-webkit-appearance': 'none',
+                  margin: 0,
+                },
+              }}
               InputProps={{
                 sx: { height: '40px', background: 'none' },
               }}
@@ -128,6 +127,7 @@ const FormContainer = ({ isLoginForm }) => {
                 sx: { fontSize: '10.5px' },
               }}
             />
+
             <Autocomplete
               disablePortal
               id="combo-box-demo"
@@ -137,15 +137,21 @@ const FormContainer = ({ isLoginForm }) => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Applicant"
+                  label={FORM_LABEL.applicant}
                   InputLabelProps={{
                     sx: { fontSize: '11px' },
                   }}
                 />
               )}
-              onChange={handleInputChange}
+              onChange={(event, newValue) =>
+                handleAutoCompleteInputChange(event, newValue)
+              }
             />
-            <PasswordAndConfirmFields />
+            <PasswordAndConfirmFields
+              handleInputChange={handleInputChange}
+              handleFieldToggle={handleFieldToggle}
+              formData={formData}
+            />
           </Box>
         </form>
       )}

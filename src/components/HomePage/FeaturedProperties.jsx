@@ -53,7 +53,7 @@ const FeaturedProperties = ({ data }) => {
                 sx={{
                   borderRadius: '5px',
                   border: '1px solid #cbcbcb',
-                  height: '400px',
+                  height: '430px',
                   mx: '30px',
                   backgroundImage: `url('${item.bgImage}')`,
                   backgroundSize: 'cover',
@@ -85,6 +85,7 @@ const FeaturedProperties = ({ data }) => {
                         width: 70,
                         height: 18,
                         top: '10px',
+                        left: { xs: '0px', md: '13px' },
                         position: 'relative',
                         justifyContent: 'flex-end',
                         alignItems: 'flex-end',

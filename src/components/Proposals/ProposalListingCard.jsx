@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
+import { useRouter } from 'next/navigation';
 
 const styles = {
   container: {
@@ -33,11 +34,10 @@ const styles = {
     },
   },
 };
-
 const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-
+  const router = useRouter();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
@@ -45,6 +45,10 @@ const ProposalListingCard = ({ proposalsData }) => {
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
+  };
+  const proposalId = 1;
+  const handleClick = () => {
+    router.push(`/dashboard/proposals/${proposalId}`);
   };
 
   return (
@@ -85,6 +89,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 sx={{
                   borderRadius: '5px ',
                 }}
+                onClick={handleClick}
               />
             </Box>
           </Grid>

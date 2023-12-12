@@ -86,6 +86,9 @@ export const FOOTER_CTA_DATA = {
 
 export const FOOTER_DATA = {
   logo: '/images/RealBuyersLogo.svg',
+  link: '/',
+  usefulLink: 'Useful Links',
+  downloadApp: 'Download Our App',
   introText: {
     paragraph1:
       'Rb online is a digital platform designed to help you with all your real estate worries! We pledge to make real estate experiences more accessible to everyone - whether they need to buy, sell, or rent properties, products, projects, or services!',
@@ -98,12 +101,12 @@ export const FOOTER_DATA = {
   },
   phone: '+92 213 7131669',
   usefulLinks: [
-    { title: 'Blogs', link: '#' },
-    { title: 'Careers', link: '#' },
+    { title: 'Blogs', link: '/blogs' },
+    { title: 'Careers', link: '/careers' },
     { title: 'Privacy Policy', link: '/privacy-policy' },
     { title: 'Terms & Conditions', link: '/terms-conditions' },
-    { title: 'Contact Us', link: '#' },
-    { title: 'FAQs', link: '#' },
+    { title: 'Contact Us', link: '/contact-us' },
+    { title: 'FAQs', link: '/faqs' },
   ],
   socialMediaIcons: [
     { logo: '/images/social-icons/facebook.svg', title: 'facebook', link: '#' },

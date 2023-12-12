@@ -68,6 +68,7 @@ body header {
 .scrollable {
   /* height: 100vh;  */
   overflow-y: auto;
+
 }
 
 .scrollable::-webkit-scrollbar {
@@ -92,9 +93,10 @@ body header {
 
 .hero_slider .swiper-pagination-bullet {
   background-color: transparent;
-  border: 3px solid white;
+  border: 3px solid #fff;
   width: 15px;
   height: 15px;
+  opacity: 1;
 }
 
 .hero_slider .swiper-pagination-bullet-active {

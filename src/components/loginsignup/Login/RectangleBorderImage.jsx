@@ -1,24 +1,51 @@
+'use client';
 import React from 'react';
 import { Box } from '@mui/system';
 
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
+import ResetPassword from '../ResetPassword/ResetPassword';
 
-const RectangleBorderImage = ({ isLogin, height }) => {
+const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
+  let cardComponent;
+  switch (showComponent) {
+    case AUTH_COMPONENTS.signup:
+      cardComponent = <SignupCard />;
+      break;
+    case AUTH_COMPONENTS.signin:
+      cardComponent = <LoginCard />;
+      break;
+    case AUTH_COMPONENTS.forgetPassword:
+      cardComponent = <ForgetPassword />;
+      break;
+    case AUTH_COMPONENTS.resetPassword:
+      cardComponent = <ResetPassword />;
+      break;
+    default:
+      cardComponent = null;
+  }
   return (
     <Box
       component="div"
       sx={{
-        display: { xs: 'none', md: 'flex' },
-        justifyContent: 'flex-end',
-        width: '427px',
+        display: 'flex',
+        justifyContent: { xs: 'center', md: 'flex-end' },
+        width: { xs: '100%', md: '427px' },
         height: height,
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
+        paddingTop:
+          showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
+        '@media (max-width: 960px)': {
+          background: 'none',
+        },
       }}
     >
       <Box
         sx={{
+          display: 'flex',
           marginRight: '-210px',
           '@media (max-width: 1286px)': {
             marginRight: '-110px',
@@ -29,9 +56,13 @@ const RectangleBorderImage = ({ isLogin, height }) => {
           '@media (max-width: 1048px)': {
             marginRight: '-53px',
           },
+          '@media (max-width: 600px)': {
+            marginRight: '0px',
+            justifyContent: 'center',
+          },
         }}
       >
-        {isLogin ? <LoginCard /> : <SignupCard />}
+        {cardComponent}
       </Box>
     </Box>
   );
