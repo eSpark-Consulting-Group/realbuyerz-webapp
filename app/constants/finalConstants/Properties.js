@@ -313,38 +313,12 @@ export const POPULAR_LOCATIONS_DATA = {
   ],
 };
 
-// export const ADD_PROPERTY = {
-//   propertyTitle: '',
-//   propertyDescription: '',
-//   locationPurpose: {
-//     adPurpose: '',
-//     propertyType: '',
-//     propertyCity: '',
-//     geoLocation: '',
-//   },
-//   sizeBudget: {
-//     propertyArea: { area: '', unit: '' },
-//     propertyAmount: { amount: '', unit: '' },
-//     instalmentAvailable: true,
-//     readyPossession: true,
-//   },
-//   amenities: [
-//     { id: '', count: '' },
-//     { id: '', count: '' },
-//     { id: '', count: '' },
-//   ],
-//   media: {
-//     images: [],
-//     videos: [],
-//   },
-// };
-
 export const ADD_PROPERTY = [
   {
     id: 1, //id
-    title: 'Property Title', //text
-    description:
-      'loreum ipsum loreum ipsum loreum ipsum loreum ipsum loreum ipsum loreum ipsum ', //text
+    propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
+    propertyDescription:
+      'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
     userid: 1, // current user ID
     agentid: null,
     adStatus: 'published', // draft or published //text

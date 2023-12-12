@@ -4,6 +4,7 @@
 export const LISTINGS_DATA = [
   {
     id: 1,
+    propertyId: 1,
     title: 'House #1',
     listingTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
     listingDescription:
@@ -50,9 +51,10 @@ export const LISTINGS_DATA = [
 export const ADD_LISTING = [
   {
     id: 1, //id
-    title: 'Property Title', //text
-    description:
-      'loreum ipsum loreum ipsum loreum ipsum loreum ipsum loreum ipsum loreum ipsum ', //text
+    propertyId: 1,
+    listingTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
+    listingDescription:
+      'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
     userid: 1, // current user ID
     agentid: null,
     adStatus: 'published', // draft or published //text
