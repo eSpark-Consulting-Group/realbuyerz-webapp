@@ -79,9 +79,9 @@ export const SETTINGS = 'My Account';
 export const USER_NAME = 'Arman Espark';
 
 export const ALT = {
-  BOX_IMAGE : 'boxImage',
-  BUILDING_IMAGE : 'building'
-}
+  BOX_IMAGE: 'boxImage',
+  BUILDING_IMAGE: 'building',
+};
 
 export const LOGIN_ROUTERS = {
   signin: '/signin',
