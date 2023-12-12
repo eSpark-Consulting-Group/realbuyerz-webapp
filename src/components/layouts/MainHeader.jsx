@@ -11,6 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useDispatch } from 'react-redux';
+import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { PAGES } from '@/app/constants/Constants';
 import SignInButton from './SignInButton';
 import SignInResponsiveButton from './SignInResponsiveButton';
@@ -19,6 +21,7 @@ const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,7 +40,9 @@ const MainHeader = () => {
   };
 
   const toggleOpen = () => {
-    setOpen((prevOpen) => !prevOpen);
+    const newOpenState = !open;
+    setOpen(newOpenState);
+    dispatch(setOpenModal(newOpenState));
   };
   const dashboard = '';
   return (

@@ -20,6 +20,7 @@ import {
   LOGIN_ROUTERS,
 } from '@/app/constants/Login';
 import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
+import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -32,12 +33,12 @@ const LoginCard = ({ handleClose }) => {
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
   const handleSignIn = () => {
-    handleClose();
     router.push(LOGIN_ROUTERS.signup);
+    dispatch(setOpenModal(false));
   };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
-    handleClose();
+    dispatch(setOpenModal(false));
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
