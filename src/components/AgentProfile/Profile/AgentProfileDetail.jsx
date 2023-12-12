@@ -2,9 +2,9 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-import { usePathname } from 'next/navigation';
 import ProfileInfo from './ProfileInfo';
 import {
+  USER_TYPE,
   ALT,
   FOR_RENT,
   FOR_RENT_ICON,
@@ -14,7 +14,6 @@ import {
 } from '@/app/constants/AgentProfile';
 
 const AgentProfileDetail = ({ description }) => {
-  const currentPath = usePathname();
   return (
     <Grid
       item
@@ -45,7 +44,7 @@ const AgentProfileDetail = ({ description }) => {
           {description?.userName}
         </Typography>
 
-        {currentPath === `/dashboard/agent-settings/agent-profile` ? (
+        {description?.userType === `${USER_TYPE.user}` ? (
           <ProfileInfo title={description?.email} />
         ) : (
           <>

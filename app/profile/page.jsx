@@ -72,7 +72,6 @@ const AgentProfile = () => {
         xs={12}
         item
         sx={{
-          // mx: 'auto',
           display: 'block',
           border: '2px solid #E4E4E4',
           background: '#fff',

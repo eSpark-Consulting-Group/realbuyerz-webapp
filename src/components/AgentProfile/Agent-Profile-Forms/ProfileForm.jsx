@@ -77,7 +77,7 @@ export default function ProfileForm({
       action.resetForm();
     },
   });
-  const agentsData = useSelector((state) => state?.users?.users);
+  const user = useSelector((state) => state?.users?.users?.userdata);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -103,7 +103,7 @@ export default function ProfileForm({
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={agentsData} />
+              <AgentProfiles data={user} />
             </Box>
           </Item>
         </Grid>

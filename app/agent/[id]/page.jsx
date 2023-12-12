@@ -1,25 +1,25 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
+import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
+import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
 import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
-import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
-import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
-import { Typography } from '@mui/material';
-import { USER_NOT_FOUND } from '@/app/constants/users';
+import { USER_NOT_FOUND } from '@/app/constants/user';
 
 const AgentProfile = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
 
-  const users = useSelector((state) => state?.users?.users?.userdata);
+  const users = useSelector((state) => state?.agents?.agents?.agentData);
   const user = users[id - 1];
   return (
     <Box
