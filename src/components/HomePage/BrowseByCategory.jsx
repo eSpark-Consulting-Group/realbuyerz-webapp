@@ -46,10 +46,6 @@ const BrowseByCategory = ({ data }) => {
                 background: '#FFF',
                 border: '2px solid #fff',
                 position: 'relative',
-                // '&hover: border':{
-                //   transform: 'rotate(180deg)',
-                //   transformOrigin: '0 0',
-                // },
               }}
               onMouseEnter={() => handleItemHover(index, true)}
               onMouseLeave={() => handleItemHover(index, false)}

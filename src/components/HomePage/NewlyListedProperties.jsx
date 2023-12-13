@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/material';
+
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
 import { FEATURED_HEADINGS } from '@/app/constants/Home';

@@ -109,36 +109,13 @@ const FeaturedProperties = ({ data }) => {
                   </Box>
                 </Box>
                 <Collapse in={hoveredIndex === index}>
-                  <Box
-                    p={2}
-                    className={styles.slideInBox}
-
-                    // sx={{
-                    //   display: hoveredIndex === index ? 'block' : 'none',
-                    //   // opacity: hoveredIndex === index ? 1 : 0,
-                    //   // transform: `translateX(${hoveredIndex === index ? '0%' : '-100%'
-                    //   //   })`,
-                    //   zIndex: '-1',
-                    //   background: '#fff',
-                    //   mr: '15%',
-                    //   mt: '50%',
-                    //   borderLeft: '10px #1176ad solid',
-                    //   // transition: 'transform 0.3s ease-in-out', // Add a transition for smooth animation
-                    //   // transform: `translateX(${
-                    //   //   hoveredIndex === index ? '0%' : '-100%'
-                    //   // })`,
-                    //   // transition:
-                    //   //   'opacity .5s ease-in-out, transform 0.3s ease-in-out',
-                    //   overflow: 'revert-layer',
-                    // }}
-                  >
+                  <Box p={2} className={styles.slideInBox}>
                     <Box
                       sx={{
                         justifyContent: 'flex-start',
                         alignItems: 'flex-start',
                         textAlign: 'left',
                         px: '5%',
-                        // background:"green"s
                       }}
                     >
                       <Typography

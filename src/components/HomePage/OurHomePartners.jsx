@@ -1,20 +1,19 @@
 'use client';
 import React from 'react';
-
+import { Box, Container } from '@mui/material';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
-import Image from 'next/image';
-import { Box, Container } from '@mui/material';
 import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
@@ -22,6 +21,8 @@ const OurHomePartners = ({ data }) => {
     arrows: false,
     cssEase: 'linear',
     pauseOnHover: false,
+    animationDelay: '2s',
+    rtl: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -43,7 +44,6 @@ const OurHomePartners = ({ data }) => {
       },
     ],
   };
-
   return (
     <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
       <Heading heading={FEATURED_HEADINGS.homePartners} />

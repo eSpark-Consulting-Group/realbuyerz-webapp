@@ -1,8 +1,7 @@
 'use client';
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import { Bounce } from 'react-awesome-reveal';
-
-import { Box, Typography } from '@mui/material';
-import { Button } from '@mui/material';
 
 import HeroSlider from '../sliders/HeroSlider';
 
@@ -105,7 +104,7 @@ const HeroSection = () => {
             top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
           }}
         >
-          <Bounce direction="left" triggerOnce >
+          <Bounce direction="left" triggerOnce>
             <Link href="/signup/?user-type=agent">
               {' '}
               <Button
@@ -122,12 +121,6 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
                   textAlign: 'start',
-                  // backgroundColor: '#FB631C',
-                  // '&:hover': {
-                  //   // Fix: Use ':hover' instead of 'hover'
-                  //   background: '#fff',
-                  //   border: '1px solid #FB631C',
-                  // },
                 }}
                 variant="primary"
               >
@@ -135,7 +128,6 @@ const HeroSection = () => {
                   sx={{
                     color: '#fff',
                     '&:hover': {
-                      // Fix: Use ':hover' instead of 'hover'
                       color: '#FB631C',
                     },
                   }}
@@ -146,7 +138,7 @@ const HeroSection = () => {
               </Button>
             </Link>
           </Bounce>
-          <Bounce direction="right" triggerOnce >
+          <Bounce direction="right" triggerOnce>
             <Link href="/signup/?user-type=user">
               {' '}
               <Button

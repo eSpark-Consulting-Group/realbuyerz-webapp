@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
+
 import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const Typewriter = ({ text }) => {
@@ -15,12 +16,9 @@ const Typewriter = ({ text }) => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, 150);
     } else {
-      // Reset typewriter effect
       setCurrentIndex(0);
       setDisplayedText('');
     }
-
-    // Clear the interval on component unmount to avoid memory leaks
     return () => clearInterval(interval);
   }, [currentIndex, text]);
 
