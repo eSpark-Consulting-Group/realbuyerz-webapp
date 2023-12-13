@@ -1,24 +1,29 @@
 'use client';
 import React from 'react';
-
+import { Box, Container } from '@mui/material';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
-import Image from 'next/image';
-import { Box, Container } from '@mui/material';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
+import Link from 'next/link';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000, // 3 seconds per slide
-    arrows: false, // Hide arrows
+    autoplaySpeed: 0,
+    arrows: false,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    animationDelay: '2s',
+    rtl: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -40,10 +45,9 @@ const OurHomePartners = ({ data }) => {
       },
     ],
   };
-
   return (
     <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
-      <Heading heading={'Our Home Partners'} />
+      <Heading heading={FEATURED_HEADINGS.homePartners} />
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
           {data?.map((partner) => (
@@ -57,7 +61,7 @@ const OurHomePartners = ({ data }) => {
                   alignItems: 'center',
                 }}
               >
-                <a href="/">
+                <Link href={`/partners/${partner?.id}`}>
                   <Image
                     src={partner?.image}
                     alt={partner?.name}
@@ -65,7 +69,7 @@ const OurHomePartners = ({ data }) => {
                     width={400}
                     height={100}
                   />
-                </a>
+                </Link>
               </Box>
             </Box>
           ))}

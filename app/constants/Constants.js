@@ -35,6 +35,11 @@ export const HERO_SECTION_CONTENT = {
   heading:
     'Live buying, selling or rent vetted properties at the most trusted online real estate portal',
   logo: '/images/hero_section/logo.png',
+  buyer: 'Buyer',
+  seller: 'Seller',
+  propertiesCategory:
+    'To browse & buy in your areas of interest. Look of properties by category',
+  browseCategory: 'Browse By Category',
 };
 
 export const HERO_SECTION_IMAGES = [

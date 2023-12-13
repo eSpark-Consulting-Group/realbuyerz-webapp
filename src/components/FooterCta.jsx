@@ -71,7 +71,7 @@ const FooterCta = ({ data }) => {
               </Grid>
             ))}
           </Grid>
-          <Bounce direction="left" triggerOnce>
+          <Bounce direction="left" triggerOnce duration={200}>
             <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
               {data?.appIcons?.map((appicon, index) => (
                 <Link
@@ -104,7 +104,7 @@ const FooterCta = ({ data }) => {
             },
           }}
         >
-          <Bounce direction="right" triggerOnce>
+          <Bounce direction="right" triggerOnce duration={300}>
             <Box>
               <Image src={data.appImage} alt="App" width={350} height={400} />
             </Box>
