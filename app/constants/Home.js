@@ -396,3 +396,15 @@ export const FEATURE_BUTTONS = {
   forSale: 'For Sale',
   byRent: 'By Rent',
 };
+
+export const FEATURE_STYLES = {
+  opacityTwo: '2',
+  opacityZero: '0',
+};
+
+export const POSITIONS = {
+  top: { top: 0, left: 0, width: '100%', height: '2%' },
+  bottom: { bottom: 0, left: 0, width: '100%', height: '2px' },
+  left: { top: 0, left: 0, height: '100%', width: '2px' },
+  right: { top: 0, right: 0, height: '100%', width: '2px' },
+};

@@ -4,13 +4,7 @@
         background: '#FFF';
         border: '2px solid #fff';
         position: 'relative';
-        transition: border 0.3s ease;
-    /* Add transition for a smoother effect */
-
-    /* hover {
-            border: 2px solid #fb631c;
-            animation: rotateBorder 2s infinite linear;
-        } */
+        transition: border 0.3s ease,
     }
 
 @keyframes rotateBorder {

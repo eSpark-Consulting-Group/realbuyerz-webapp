@@ -165,9 +165,6 @@ const HeroSection = () => {
                 <Typography
                   sx={{
                     color: '#fff',
-                    // '&:hover': {
-                    //   color: '#fb631c',
-                    // },
                   }}
                 >
                   {HERO_SECTION_CONTENT.seller}
