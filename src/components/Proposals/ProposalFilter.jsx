@@ -19,9 +19,9 @@ import {
 
 import { filterData, getUniqueFilteredOptions } from '@/utils/proposalFilter';
 
-const ProposalFilter = () => {
+const ProposalFilter = ({ data }) => {
   const [listingType, setListingType] = useState('proposals');
-  const [selectedData, setSelectedData] = useState(PROPOSAL_LISTING);
+  const [selectedData, setSelectedData] = useState(data);
 
   const [purposeOptions, setPurposeOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
@@ -164,13 +164,16 @@ const ProposalFilter = () => {
         <Grid item xs={9}></Grid>
         <Grid item xs={3}>
           <FormControl fullWidth>
-            <Select value={listingType} onChange={handleListingTypeChange} sx={{ background: '#fff' }}>
+            <Select
+              value={listingType}
+              onChange={handleListingTypeChange}
+              sx={{ background: '#fff' }}
+            >
               {LISTING_TYPE.map((item) => (
                 <MenuItem key={item.value} value={item.value}>
                   {item.label}
                 </MenuItem>
               ))}
-
             </Select>
           </FormControl>
         </Grid>

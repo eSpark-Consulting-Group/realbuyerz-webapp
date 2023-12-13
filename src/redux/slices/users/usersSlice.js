@@ -1,6 +1,7 @@
+import { USERS_DATA } from '@/app/constants/users';
 import { createSlice } from '@reduxjs/toolkit';
 
-const users = {};
+const users = { USERS_DATA };
 
 const initialState = { users };
 
