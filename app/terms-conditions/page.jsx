@@ -8,10 +8,12 @@ import { PAGES_INFO } from '../constants/Constants';
 const TermsConditions = () => {
   const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
 
-  const handleTabClick = (tab) => {
-    setSelectedTab(tab);
+  const handleTabClick = (tabId) => {
+    const selectedTab = TERM_CONDITIONS.find((tab) => tab.id === tabId);
+    if (selectedTab) {
+      setSelectedTab(selectedTab);
+    }
   };
-
   return (
     <Box
       sx={{
@@ -71,10 +73,10 @@ const TermsConditions = () => {
                   backgroundColor: selectedTab === item ? '#FFEEE7' : 'inherit',
                   padding: '10px',
                   px: '20px',
-                  display: 'flex', // Add display flex
-                  alignItems: 'center', // Center vertically
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
-                onClick={() => handleTabClick(item)}
+                onClick={() => handleTabClick(item.id)}
               >
                 <Typography
                   variant="body1"
@@ -114,7 +116,7 @@ const TermsConditions = () => {
               {selectedTab?.title}
             </Typography>
 
-            <Typography
+            <p
               variant="body1"
               sx={{
                 color: '#333',
@@ -122,7 +124,7 @@ const TermsConditions = () => {
                 fontWeight: '400',
               }}
               dangerouslySetInnerHTML={{ __html: selectedTab?.content }}
-            />
+            ></p>
           </Box>
         </Grid>
       </Grid>

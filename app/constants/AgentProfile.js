@@ -9,6 +9,17 @@ export const VIEW_BUTTON = 'View All';
 export const HUB_RIVER_ROAD = ' Hub River Road';
 export const STARTING_FROM = 'Starting from:';
 export const SEE_DETAILS = 'See Details';
+export const LOCATION_ICON = '/images/agent-profile-icons/location.svg';
+export const FOR_SALE_ICON = '/images/agent-profile-icons/home.svg';
+export const FOR_RENT_ICON = '/images/agent-profile-icons/keys.svg';
+export const ALT = 'amenities';
+
+export const LETS_TALK = 'Lets talk';
+export const PROPERTIES = '/properties';
+export const USER_TYPE = {
+  user: 'user',
+  agent: 'agent',
+};
 
 export const AGENT_PROFILE_DATA = {
   agentProfile: ' View Agent Profile',
@@ -18,7 +29,7 @@ export const AGENT_PROFILE_DATA = {
   description: [
     {
       icon: '/images/agent-profile-icons/location.svg',
-      text: 'Karachi, Pakistan',
+      text: `Karachi, Pakistan`,
       alt: 'amenities',
       email: '',
     },

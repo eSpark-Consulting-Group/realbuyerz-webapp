@@ -45,7 +45,7 @@ const Footer = ({ data }) => {
       <Grid container justifyContent="center" sx={{ py: '50px' }}>
         <Grid item xs={5}>
           <Box sx={{ pr: '20%' }}>
-            <Link href="/">
+            <Link href={data?.link}>
               <Image src={data?.logo} alt="Logo" width={155} height={37} />
             </Link>
             <Typography
@@ -92,7 +92,7 @@ const Footer = ({ data }) => {
           {' '}
           <Box>
             <Typography variant="h6" color={'primary'} sx={{ pb: '20px' }}>
-              Useful Links
+              {data?.usefulLink}
             </Typography>
             {data?.usefulLinks?.map((link, index) => (
               <Link href={link?.link} key={index}>
@@ -108,7 +108,7 @@ const Footer = ({ data }) => {
             <Box>
               <Box sx={{ pb: '16px' }}>
                 <Typography variant="h6" color={'primary'} sx={{ pb: '20px' }}>
-                  Download Our App
+                  {data?.downloadApp}
                 </Typography>
                 <Typography variant="body1" sx={styles.text}>
                   {data?.appDownload?.description}

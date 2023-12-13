@@ -1,16 +1,24 @@
 'use client';
-import React from 'react';
-import { Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Box } from '@mui/material';
+import { usePathname } from 'next/navigation';
 
-import { MENU_ITEM, PROFILE_INFO } from '../constants/LiveBidding';
-import { Box } from '@mui/system';
+import {
+  AGENT_MENU_ITEM,
+  PROFILE_INFO,
+  ROUTERS,
+  USER_MENU_ITEM,
+} from '../constants/LiveBidding';
 import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
 import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
-import { usePathname } from 'next/navigation';
 
 const InnerPageLayout = ({ children }) => {
   const pathname = usePathname();
-  const PROPSHOP = '/prop-shop/buy-product';
+  const PROPSHOP = ROUTERS.buyProducts;
+  const [userType, setUserType] = useState('agent');
+  const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
+  console.log(setUserType); // this set is not using so thts y we use in a console  to avoid build issues
+
   return (
     <Box
       sx={{
@@ -28,7 +36,7 @@ const InnerPageLayout = ({ children }) => {
             display: { xs: 'none', sm: 'none', md: 'block' },
           }}
         >
-          <LeftSideBar menuItem={MENU_ITEM} />
+          <LeftSideBar menuItem={menuItem} />
         </Grid>
         <Grid
           item
@@ -46,7 +54,6 @@ const InnerPageLayout = ({ children }) => {
           md={3}
           sm={12}
           xs={12}
-          sx={{ marginTop: '70px' }}
         >
           <RightSidebar profileInfo={PROFILE_INFO} />
         </Grid>

@@ -1,9 +1,19 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 
-const AgentProfileDetail = ({ title, description }) => {
+import ProfileInfo from './ProfileInfo';
+import {
+  USER_TYPE,
+  ALT,
+  FOR_RENT,
+  FOR_RENT_ICON,
+  FOR_SALE,
+  FOR_SALE_ICON,
+  LOCATION_ICON,
+} from '@/app/constants/AgentProfile';
+
+const AgentProfileDetail = ({ description }) => {
   return (
     <Grid
       item
@@ -22,7 +32,7 @@ const AgentProfileDetail = ({ title, description }) => {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          marginLeft: { xs: 0, sm: '50px' },
+          marginLeft: { xs: 0, sm: '40px' },
           my: { xs: 2 },
           alignItems: { xs: 'center', sm: 'start' },
         }}
@@ -31,40 +41,30 @@ const AgentProfileDetail = ({ title, description }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
         >
-          {title}
+          {description?.userName}
         </Typography>
-        {description?.map((item, i) => (
-          <Box
-            key={i}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            {item?.icon && (
-              <Box sx={{ mr: 1, mt: 1 }}>
-                <Image
-                  src={item?.icon}
-                  width={15}
-                  height={15}
-                  alt={item?.alt}
-                />
-              </Box>
-            )}
-            <Typography
-              variant="body1"
-              sx={{
-                color: '#777777',
-                fontWeight: 'medium',
-                marginTop: 1,
-              }}
-            >
-              {item?.text}
-              {item?.email}
-            </Typography>
-          </Box>
-        ))}
+
+        {description?.userType === `${USER_TYPE.user}` ? (
+          <ProfileInfo title={description?.email} />
+        ) : (
+          <>
+            <ProfileInfo
+              title={`${description?.country} ${description?.city}`}
+              icon={LOCATION_ICON}
+              alt={ALT}
+            />
+            <ProfileInfo
+              title={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
+              icon={FOR_SALE_ICON}
+              alt={ALT}
+            />
+            <ProfileInfo
+              title={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
+              icon={FOR_RENT_ICON}
+              alt={ALT}
+            />
+          </>
+        )}
       </Box>
     </Grid>
   );

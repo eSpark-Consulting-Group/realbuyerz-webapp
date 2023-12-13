@@ -672,3 +672,12 @@ export const PROPERTY_ESTATE = {
     message: 'Message',
   },
 };
+
+export const PROPERTY_DETAILS = {
+  agentProfile: 'Agent Profile',
+  viewMore: 'View More',
+  posted: 'Posted',
+  pkr: 'PKR',
+  agent: '/agent/',
+  properties: '/properties/',
+};

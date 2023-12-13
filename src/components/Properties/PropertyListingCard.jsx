@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Grid, Button, Pagination } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PROPERTY_DETAILS } from '@/app/constants/Properties';
 
 const styles = {
   container: {
@@ -33,7 +34,7 @@ const PropertyListingCard = ({ propertyData }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = propertyData?.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (value) => {
     setCurrentPage(value);
   };
   return (
@@ -65,16 +66,18 @@ const PropertyListingCard = ({ propertyData }) => {
                 position: 'relative',
               }}
             >
-              <Image
-                src={property.coverImage}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt={''}
-                sx={{
-                  borderRadius: '5px',
-                }}
-              />
+              <Link href={`/properties/${property.id}`}>
+                <Image
+                  src={property.coverImage}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt={''}
+                  sx={{
+                    borderRadius: '5px',
+                  }}
+                />
+              </Link>
             </Box>
           </Grid>
           <Grid
@@ -91,49 +94,36 @@ const PropertyListingCard = ({ propertyData }) => {
             }}
           >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-              <Typography
-                // variant='secondary'
-                sx={{ fontSize: '20px', fontWeight: '500' }}
-              >
-                PKR
+              <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
+                {PROPERTY_DETAILS.pkr}
               </Typography>
-              <Typography
-                // variant='h3'
-                sx={{ fontSize: '25px', fontWeight: '600' }}
-              >
+              <Typography sx={{ fontSize: '25px', fontWeight: '600' }}>
                 {property.propertyData.propertyPrice}
               </Typography>
             </Box>
             <Typography
-              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
             >
               {property.propertyData.location.address}
             </Typography>
             <Typography
-              // variant='secondary'
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
               {property.propertyData.area}
             </Typography>
             <Typography
-              // variant='h3'
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
               {property.propertyData.direction}
             </Typography>
-            <Typography
-              // variant='secondary'
-              sx={{ fontSize: '16px', fontWeight: '400' }}
-            >
+            <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
               {property.propertyData.description}
             </Typography>
             <div>
               <Typography
-                // variant='body2'
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
               >
-                Posted {property.postedDate}
+                {`${PROPERTY_DETAILS.posted} ${property.postedDate}`}
               </Typography>
             </div>
             <Box
@@ -144,16 +134,20 @@ const PropertyListingCard = ({ propertyData }) => {
               sx={{ display: 'flex' }}
             >
               <Box>
-                <Link href={`/properties/${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.properties}${property.id}`}>
                   <Button variant="primary">
-                    <Typography variant="secondary">View More</Typography>
+                    <Typography variant="secondary">
+                      {PROPERTY_DETAILS.viewMore}
+                    </Typography>
                   </Button>
                 </Link>
               </Box>
               <Box>
-                <Link href={`/agent/${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.agent}${property.id}`}>
                   <Button variant="primary">
-                    <Typography variant="secondary">Agent Profile</Typography>
+                    <Typography variant="secondary">
+                      {PROPERTY_DETAILS.agentProfile}
+                    </Typography>
                   </Button>
                 </Link>
               </Box>

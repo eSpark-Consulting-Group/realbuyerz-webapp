@@ -7,13 +7,13 @@ import Grid from '@mui/material/Grid';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Button, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 import RBInput from './RBInput';
 import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
 import { profileValidationSchema } from '@/src/components/Schemas/profileValidationSchema';
 
-import { PROFILE_INFO } from '@/app/constants/AgentProfileForm';
 import { useFormik } from 'formik';
 import VerificationModal from '../../Modal/VerificationModal';
 
@@ -77,6 +77,7 @@ export default function ProfileForm({
       action.resetForm();
     },
   });
+  const user = useSelector((state) => state?.users?.users?.userdata);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -102,7 +103,7 @@ export default function ProfileForm({
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={PROFILE_INFO} />
+              <AgentProfiles data={user} />
             </Box>
           </Item>
         </Grid>

@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation';
 import BiddingProfile from '../../Biddings/BiddingProfile';
 import ShopCart from '../ShopCart/ShopCart';
 import ProductCart from '../../Prop-Shop/ProductCart';
+import { ROUTERS } from '@/app/constants/LiveBidding';
 
-const LIVEBIDDING = '/dashboard/live-bidding';
-const BIDDING = '/biddings';
-const PROPSHOP = '/prop-shop/buy-product';
+const LIVEBIDDING = ROUTERS.dasboardLiveBidding;
+const BIDDING = ROUTERS.bidding;
+const PROPSHOP = ROUTERS.buyProducts;
 
 const RightSidebar = ({ profileInfo }) => {
   const pathname = usePathname();

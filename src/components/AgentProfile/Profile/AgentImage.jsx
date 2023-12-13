@@ -1,24 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Image from 'next/image';
 import EditProfileModal from '../../Modal/EditProfileModal';
 const AgentImage = ({ image }) => {
-  const [ProfileImage] = React.useState(image);
-
-  // const handlImageChange = (event) => {
-  //   const file = event.target?.files[0];
-  //   if (file && file.type.startsWith('image/')) {
-  //     const uploadedImage = URL.createObjectURL(file);
-  //     setProfileImage(uploadedImage);
-  //     console.log(file, 'file');
-  //   }
-  // };
-
-  // const handlImageEdit = (event) => {
-  //   // const uploadedImage = URL.createObjectURL(event?.target);
-  //   // setProfileImage(uploadedImage);
-  // };
-
+  const [ProfileImage] = useState(image);
   return (
     <Grid
       sx={{
@@ -51,15 +36,6 @@ const AgentImage = ({ image }) => {
           p: 0.5,
         }}
       >
-        {/* <RBUpload
-          sx={{
-            backgroundColor: '#fb631c',
-            color: '#fff',
-            '&:hover': { backgroundColor: '#fb631c', color: '#fff' },
-          }}
-          onChange={handlImageChange}
-          onClick={handlImageEdit}
-        /> */}
         <EditProfileModal
           sx={{
             backgroundColor: '#fb631c',

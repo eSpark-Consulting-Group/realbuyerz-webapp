@@ -23,4 +23,24 @@ export const ALL_PROPOSALS_DATA = [
     description:
       'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
   },
+  {
+    image: '/Images/Profile.png',
+    title: 'John Doe',
+    location: 'Pakistan',
+    amount: '$100.00',
+    description:
+      'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
+  },
+  {
+    image: '/Images/Profile.png',
+    title: 'John Doe',
+    location: 'Pakistan',
+    amount: '$100.00',
+    description:
+      'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
+  },
 ];
+
+export const ROUTERS_POSTING = {
+  dashboardProposal: '/dashboard/proposals',
+};
