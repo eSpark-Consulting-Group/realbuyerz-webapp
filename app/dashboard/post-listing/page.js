@@ -28,32 +28,33 @@ import {
 
 const PostListing = ({ propertySell }) => {
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
+  console.log("test", PostListigSelectedData);
 
-  const initializePropertyData = () => {
-    const informationState = createInformationState(
-      PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
-    );
-    const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    return {
-      ...informationState,
-      ...propertyStatusState,
-      ...uploadMediaData,
-    };
-  };
-  const hehe = initializePropertyData();
-  console.log('ttt', hehe);
-  const [propertyData, setPropertyData] = useState(initializePropertyData());
-  useEffect(() => {
-    console.log('heh', propertyData);
-  }, [propertyData]);
+  // const initializePropertyData = () => {
+  //   const informationState = createInformationState(
+  //     PROPERTY_INFORMATION.addInfo,
+  //     PROPERTY_BUYING_DETAIL.sellingDetails
+  //   );
+  //   const propertyStatusState = createPropertyStatusState({
+  //     propertySell: PROPERTY_INFORMATION.sell,
+  //     propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+  //   });
+  //   const uploadMediaData = createMediaDataState({
+  //     propertyInformation: PROPERTY_INFORMATION.uploadButton,
+  //     propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+  //   });
+  //   return {
+  //     ...informationState,
+  //     ...propertyStatusState,
+  //     ...uploadMediaData,
+  //   };
+  // };
+  // const hehe = initializePropertyData();
+  // console.log('ttt', hehe);
+  // const [propertyData, setPropertyData] = useState(initializePropertyData());
+  // useEffect(() => {
+  //   console.log('heh', propertyData);
+  // }, [propertyData]);
 
   const dispatch = useDispatch();
   const handleInputChange = (event) => {
