@@ -64,34 +64,25 @@ const BrowseByCategory = ({ data }) => {
                   maxWidth: '100px',
                 }}
               >
-                <Image
-                  src={category?.image}
-                  alt={category?.name}
-                  height={30}
-                  width={30}
-                />
-                <Typography
-                  variant="body1"
-             > {category?.name}
-                </Typography>
-                
-                 
-              </Box>
+                <Link href={`/category/${category?.id}`}>
                   <Image
                     src={category?.image}
                     alt={category?.name}
                     height={30}
                     width={30}
                   />
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      py: '8px',
-                      px: '15px',
-                    }}
-                  >
-                    {category?.name}
-                  </Typography>
+                </Link>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    py: '8px',
+                    px: '15px',
+                  }}
+                >
+                  {' '}
+                  {category?.name}
+                </Typography>
+              </Box>
             </Grid>
           ))}
         </Grid>

@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { Box, Collapse, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styles from '@/src/components/HomePage/slider.module.css';
