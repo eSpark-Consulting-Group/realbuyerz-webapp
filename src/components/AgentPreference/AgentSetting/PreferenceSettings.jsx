@@ -1,15 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
 import Notification from './Notification';
 import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 import { createInitialState } from '@/utils/agentPreferenceState';
+import { savePreferenceData } from '@/src/redux/slices/preference/preferenceSlice';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
+  const dispatch = useDispatch();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -31,10 +34,10 @@ const PreferenceSettings = () => {
       };
     });
   };
-
   const handleClick = () => {
-    console.log('data', formData);
+    dispatch(savePreferenceData(formData.emailData));
   };
+
   return (
     <Grid
       container
@@ -70,7 +73,7 @@ const PreferenceSettings = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              marginBottom: { xs: '170px', md: '250px' },
+              marginBottom: { xs: '170px', md: '180px' },
               width: { xs: '100%', md: '70%' },
               padding: '40px',
               gap: '40px',

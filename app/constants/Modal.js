@@ -13,6 +13,7 @@ export const VERIFICATION_OTP = {
   verificationSuccessfully: 'Verification Successfully',
   verificationFail: 'Verification Failed',
   length: 4,
+  name: 'verification',
   otpCode: [
     {
       num: 'code_one',

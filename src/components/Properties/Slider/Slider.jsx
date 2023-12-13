@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, EffectFade } from 'swiper/modules';
 import { Grid } from '@mui/material';
 import Image from 'next/image';
 
@@ -15,8 +15,9 @@ const Slider = ({ propertySlider }) => {
       <Grid container spacing={2}>
         <Grid item xs={12} md={11}>
           <Swiper
+            effect={'fade'}
             navigation={true}
-            modules={[Navigation]}
+            modules={[EffectFade, Navigation]}
             style={{ width: '100%', height: '100%', borderRadius: '15px' }}
           >
             {propertySlider?.sliderImages?.map((item, index) => (
@@ -26,7 +27,10 @@ const Slider = ({ propertySlider }) => {
                   alt={`Slide ${index + 1}`}
                   width={870}
                   height={500}
-                  style={{ objectFit: 'cover', borderRadius: '20px' }}
+                  sx={{
+                    objectFit: 'cover',
+                    borderRadius: '20px',
+                  }}
                 />
               </SwiperSlide>
             ))}

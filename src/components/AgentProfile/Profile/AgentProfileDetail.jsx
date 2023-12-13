@@ -22,7 +22,7 @@ const AgentProfileDetail = ({ title, description }) => {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          marginLeft: { xs: 0, sm: '50px' },
+          marginLeft: { xs: 0, sm: '40px' },
           my: { xs: 2 },
           alignItems: { xs: 'center', sm: 'start' },
         }}
