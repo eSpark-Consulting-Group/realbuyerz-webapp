@@ -6,6 +6,7 @@ import Heading from './Heading';
 import Image from 'next/image';
 import { HERO_SECTION_CONTENT } from '@/app/constants/Constants';
 import LinearProgressBar from './LinearProgress';
+import Link from 'next/link';
 
 const BrowseByCategory = ({ data }) => {
   const [hovered, setHovered] = useState(Array(data.length).fill(false));
