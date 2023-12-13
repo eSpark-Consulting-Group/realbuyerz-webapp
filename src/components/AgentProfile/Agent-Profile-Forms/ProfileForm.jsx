@@ -39,7 +39,7 @@ export default function ProfileForm({
   profileInitialValues,
 }) {
   const { image, fields } = data;
-  const [verifyText, setVerifyText] = React.useState('unverified');
+  const [verifyText, setVerifyText] = useState('unverified');
 
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);

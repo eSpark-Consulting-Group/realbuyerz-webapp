@@ -14,7 +14,7 @@ const SliderCardSeeDetails = ({ link }) => {
           color: '#909394',
           fontSize: '14px',
           fontWeight: '300',
-          fontFamily: 'Inter',
+
           padding: 1.8,
         }}
       >
@@ -24,7 +24,7 @@ const SliderCardSeeDetails = ({ link }) => {
             align: 'center',
             fontSize: '0.875rem',
             fontWeight: '500',
-            fontFamily: 'Inter',
+
             fontStyle: 'normal',
             color: '#000000',
           }}

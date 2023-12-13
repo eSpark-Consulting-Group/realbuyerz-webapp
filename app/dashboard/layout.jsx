@@ -7,10 +7,10 @@ import { Box } from '@mui/system';
 import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
 import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
 import { usePathname } from 'next/navigation';
+import { PATH } from '../constants/paths';
 
 const InnerPageLayout = ({ children }) => {
   const pathname = usePathname();
-  const PROPSHOP = '/prop-shop/buy-product';
   return (
     <Box
       sx={{
@@ -32,17 +32,17 @@ const InnerPageLayout = ({ children }) => {
         </Grid>
         <Grid
           item
-          lg={pathname.includes(PROPSHOP) ? 7 : 8}
+          lg={pathname.includes(PATH.buyProduct) ? 7 : 8}
           md={6}
           sm={12}
           xs={12}
-          sx={{ mt: 2 }}
+          sx={{ m: '45px 45px 75px' }}
         >
           {children}
         </Grid>
         <Grid
           item
-          lg={pathname.includes(PROPSHOP) ? 3 : 2}
+          lg={pathname.includes(PATH.buyProduct) ? 3 : 2}
           md={3}
           sm={12}
           xs={12}

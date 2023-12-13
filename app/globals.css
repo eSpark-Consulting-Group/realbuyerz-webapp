@@ -68,7 +68,6 @@ body header {
 .scrollable {
   /* height: 100vh;  */
   overflow-y: auto;
-
 }
 
 .scrollable::-webkit-scrollbar {
@@ -222,7 +221,6 @@ body header {
 
 .modal-slider .swiper-slide-active img {
   scale: 1.9;
-
 }
 
 .modal-slider .swiper-slide-active {

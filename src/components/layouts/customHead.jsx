@@ -1,42 +1,47 @@
 import React from 'react';
-import Head from 'next/head';
+import { seoContent } from '@/app/constants/SEOConstant';
+import { usePathname } from 'next/navigation';
 
-const CustomHead = (props) => {
-  const {
-    title,
-    description,
-    ogTitle,
-    ogDescription,
-    ogUrl,
-    ogImage,
-    twitterTitle,
-    twitterDescription,
-    twitterImage,
-  } = props;
-
+const CustomHead = () => {
+  const currentPath = usePathname();
+  // Find the matching SEO content based on the currentPath
+  const mataData = seoContent.find((item) => item.link === currentPath) || {};
+  console.log('mataData', mataData);
   return (
-    <Head>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>{title}</title>
-      <meta name="description" content={description} />
+    <>
+      <meta charSet="utf-8" />
+      <meta name="robots" content="follow, index" />
+      <title>{mataData?.title}</title>
+      <meta name="description" content={mataData?.description} />
+      <link rel="canonical" href={mataData?.canonical} />
+      <meta property="og:locale" content={mataData?.ogLocal} />
+      <meta property="og:type" content={mataData?.ogType} />
+      <meta property="og:title" content={mataData?.ogTitle} />
+      <meta property="og:description" content={mataData?.ogDescription} />
+      <meta property="og:url" content={mataData?.ogUrl} />
+      <meta property="og:site_name" content={mataData?.ogSiteName} />
+      <meta property="og:image" content={mataData?.ogImage} />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:alt" content={mataData?.description} />
 
-      {/* Add links to stylesheets, favicon, or other external resources */}
-      <link rel="icon" href="/favicon.ico" />
-
-      {/* Open Graph meta tags for social media sharing */}
-      <meta property="og:title" content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:url" content={ogUrl} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:type" content="website" />
-
-      {/* Twitter Card meta tags for Twitter sharing */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={twitterTitle} />
-      <meta name="twitter:description" content={twitterDescription} />
-      <meta name="twitter:image" content={twitterImage} />
-    </Head>
+      <meta name="twitter:card" content={mataData?.twitterCard} />
+      <meta name="twitter:title" content={mataData?.twitterTitle} />
+      <meta name="twitter:description" content={mataData?.twitterDescription} />
+      <meta name="twitter:site" content={mataData?.ogSiteName} />
+      <meta name="twitter:creator" content="@RealBuyerz" />
+      <meta name="twitter:image" content={mataData?.ogImage} />
+      <meta name="twitter:label1" content="Written by" />
+      <meta name="twitter:data1" content={mataData?.articleAuthor} />
+      <meta
+        property="article:modified_time"
+        content={mataData?.articleModifiedTime}
+      />
+      <meta
+        property="article:published_time"
+        content={mataData?.articlePublishTime}
+      />
+      <meta name="article:author" content={mataData?.articleAuthor} />
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-
+import Link from 'next/link';
 import Heading from './Heading';
 import Image from 'next/image';
 
@@ -39,7 +39,7 @@ const BrowseByCategory = ({ data }) => {
                 '&:hover': { border: '2px solid #fb631c' },
               }}
             >
-              <a href="/">
+              <Link href={`/category/${category?.id}`}>
                 <Box
                   sx={{
                     background: '#fff',
@@ -60,12 +60,13 @@ const BrowseByCategory = ({ data }) => {
                     variant="body1"
                     sx={{
                       py: '8px',
+                      px: '15px',
                     }}
                   >
                     {category?.name}
                   </Typography>
                 </Box>
-              </a>
+              </Link>
             </Grid>
           ))}
         </Grid>
