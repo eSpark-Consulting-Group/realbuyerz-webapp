@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   loginFormData: '',
+  signupFormData: '',
 };
 const loginSlice = createSlice({
   name: LOGIN_FORM.loginCard.login,
@@ -11,8 +12,11 @@ const loginSlice = createSlice({
     saveLoginData: (state, action) => {
       state.loginFormData = { ...action.payload };
     },
+    saveSignupData: (state, action) => {
+      state.signupFormData = { ...action.payload };
+    },
   },
 });
 
-export const { saveLoginData } = loginSlice.actions;
+export const { saveLoginData, saveSignupData } = loginSlice.actions;
 export default loginSlice.reducer;

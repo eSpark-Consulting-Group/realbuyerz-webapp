@@ -47,7 +47,7 @@ const PasswordAndConfirmFields = ({
       <TextField
         label={FORM_LABEL.confirmPassword}
         variant="outlined"
-        type={formData.showConfirmPassword ? 'text' : 'password'}
+        type={formData?.showConfirmPassword ? 'text' : 'password'}
         fullWidth
         name={LOGIN_FORM.confirmPassword}
         onChange={handleInputChange}

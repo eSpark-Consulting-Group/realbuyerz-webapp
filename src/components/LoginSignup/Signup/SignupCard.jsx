@@ -4,19 +4,22 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 
-import LoginWithGoogle from '../Login/LoginWithGoogle';
+import { saveSignupData } from '@/src/redux/slices/login/loginSlice';
+
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
 } from '@/app/constants/Login';
+import LoginWithGoogle from '../Login/LoginWithGoogle';
 import FormContainer from '../Login/LoginForm';
-import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 
 const SignupCard = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
-  const dispatch = useDispatch();
   const [contactNumber, setContactNumber] = useState('');
+
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleInputContactNumber = (e) => {
     const newContactNumber = e.target.value;
@@ -45,9 +48,14 @@ const SignupCard = () => {
     });
   };
   const loginClick = () => {
-    dispatch(saveLoginData(formData));
+    if (
+      formData[LOGIN_FORM.password] !== formData[LOGIN_FORM.confirmPassword]
+    ) {
+      alert('Password and Confirm Password do not match');
+      return;
+    }
+    dispatch(saveSignupData(formData));
   };
-  const router = useRouter();
   return (
     <>
       <Box
