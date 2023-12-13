@@ -60,6 +60,9 @@ const theme = createTheme({
       '&:hover': {
         color: '#EDF7FF',
       },
+      '&:active': {
+        color: '#fb631c',
+      },
     },
   },
   spacing: 8,

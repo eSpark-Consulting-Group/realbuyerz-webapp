@@ -15,6 +15,7 @@ export const FOR_RENT_ICON = '/images/agent-profile-icons/keys.svg';
 export const ALT = 'amenities';
 
 export const LETS_TALK = 'Lets talk';
+export const PROPERTIES = '/properties';
 export const USER_TYPE = {
   user: 'user',
   agent: 'agent',
@@ -28,7 +29,7 @@ export const AGENT_PROFILE_DATA = {
   description: [
     {
       icon: '/images/agent-profile-icons/location.svg',
-      text: 'Karachi, Pakistan',
+      text: `Karachi, Pakistan`,
       alt: 'amenities',
       email: '',
     },

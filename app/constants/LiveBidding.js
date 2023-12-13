@@ -18,6 +18,12 @@ export const ESTIMATE_RANGE = 'Est. Range:';
 export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
 
+export const MY_LISTING = 'My Listing';
+export const POST_LISTING = 'Post Listing';
+export const LOGIN_PERSON_NAME = 'Arman Espark';
+export const LINK_NAME = 'Go to Rb.com';
+export const SEARCH = 'Search';
+
 export const MENU_ITEM = [
   {
     id: 1,
@@ -94,11 +100,11 @@ export const LIVE_BIDDING_DATA = {
       estRange: '80M',
       list: [
         {
-          status: 'BUYING',
-          city: 'KARACHI',
-          area: 'GULSHAN-E-IQBAL',
-          proposal: '5 to 10',
-          connects: 8,
+          Status: 'BUYING',
+          City: 'KARACHI',
+          Area: 'GULSHAN-E-IQBAL',
+          Proposal: '5 to 10',
+          Connects: 8,
         },
       ],
     },
@@ -111,11 +117,11 @@ export const LIVE_BIDDING_DATA = {
       estRange: '80M',
       list: [
         {
-          status: 'BUYING',
-          city: 'KARACHI',
-          area: 'GULSHAN-E-IQBAL',
-          proposal: '5 to 10',
-          connects: 8,
+          Status: 'BUYING',
+          City: 'KARACHI',
+          Area: 'GULSHAN-E-IQBAL',
+          Proposal: '5 to 10',
+          Connects: 8,
         },
       ],
     },
@@ -128,11 +134,11 @@ export const LIVE_BIDDING_DATA = {
       estRange: '80M',
       list: [
         {
-          status: 'BUYING',
-          city: 'KARACHI',
-          area: 'GULSHAN-E-IQBAL',
-          proposal: '5 to 10',
-          connects: 8,
+          Status: 'BUYING',
+          City: 'KARACHI',
+          Area: 'GULSHAN-E-IQBAL',
+          Proposal: '5 to 10',
+          Connects: 8,
         },
       ],
     },
@@ -145,11 +151,11 @@ export const LIVE_BIDDING_DATA = {
       estRange: '80M',
       list: [
         {
-          status: 'BUYING',
-          city: 'KARACHI',
-          area: 'GULSHAN-E-IQBAL',
-          proposal: '5 to 10',
-          connects: 8,
+          Status: 'BUYING',
+          City: 'KARACHI',
+          Area: 'GULSHAN-E-IQBAL',
+          Proposal: '5 to 10',
+          Connects: 8,
         },
       ],
     },

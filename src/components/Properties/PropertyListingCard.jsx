@@ -66,16 +66,18 @@ const PropertyListingCard = ({ propertyData }) => {
                 position: 'relative',
               }}
             >
-              <Image
-                src={property.coverImage}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt={''}
-                sx={{
-                  borderRadius: '5px',
-                }}
-              />
+              <Link href={`/properties/${property.id}`}>
+                <Image
+                  src={property.coverImage}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt={''}
+                  sx={{
+                    borderRadius: '5px',
+                  }}
+                />
+              </Link>
             </Box>
           </Grid>
           <Grid

@@ -57,7 +57,7 @@ const UserDashboard = () => {
         />
         <Divider />
         <SearchFilterButton />
-        <DashboardProfile proposalData={ALL_PROPOSALS_DATA} />
+        <DashboardProfile proposalData={ALL_PROPOSALS_DATA} Height={'67.5vh'} />
       </Box>
     </>
   );

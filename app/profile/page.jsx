@@ -66,7 +66,11 @@ const AgentProfile = () => {
   });
 
   return (
-    <Box>
+    <Box
+      sx={{
+        paddingLeft: '45px',
+      }}
+    >
       <Grid
         container
         xs={12}

@@ -1,42 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM } from '@/app/constants/Login';
 
-const PasswordAndConfirmFields = () => {
-  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
-  const handleFieldToggle = (fieldName) => {
-    setFormData({
-      ...formData,
-      [fieldName]: !formData[fieldName],
-    });
-  };
-  const handleFieldChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+const PasswordAndConfirmFields = ({
+  handleInputChange,
+  formData,
+  handleFieldToggle,
+  passwordsMatch,
+}) => {
   return (
     <>
       <TextField
-        label="Password"
+        label={FORM_LABEL.password}
         variant="outlined"
-        type={formData.showPassword ? 'text' : 'password'}
+        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
-        name="password"
-        value={formData.password}
-        onChange={handleFieldChange}
+        name={LOGIN_FORM.password}
+        onChange={handleInputChange}
         InputProps={{
           sx: {
             height: '40px',
           },
-
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -44,7 +33,7 @@ const PasswordAndConfirmFields = () => {
                 onClick={() => handleFieldToggle('showPassword')}
                 edge="end"
               >
-                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                {formData?.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
           ),
@@ -56,13 +45,12 @@ const PasswordAndConfirmFields = () => {
         }}
       />
       <TextField
-        label="Confirm Password"
+        label={FORM_LABEL.confirmPassword}
         variant="outlined"
         type={formData.showConfirmPassword ? 'text' : 'password'}
         fullWidth
-        name="confirmPassword"
-        value={formData.confirmPassword}
-        onChange={handleFieldChange}
+        name={LOGIN_FORM.confirmPassword}
+        onChange={handleInputChange}
         InputProps={{
           sx: {
             height: '40px',
@@ -74,7 +62,7 @@ const PasswordAndConfirmFields = () => {
                 onClick={() => handleFieldToggle('showConfirmPassword')}
                 edge="end"
               >
-                {formData.showConfirmPassword ? (
+                {formData?.showConfirmPassword ? (
                   <Visibility />
                 ) : (
                   <VisibilityOff />
@@ -89,6 +77,7 @@ const PasswordAndConfirmFields = () => {
           },
         }}
       />
+      {passwordsMatch}
     </>
   );
 };

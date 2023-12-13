@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,23 +7,26 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Tooltip from '@mui/material/Tooltip';
-import { Button } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
-
-import { PAGES } from '@/app/constants/Constants';
 import Image from 'next/image';
 
-const settings = ['Login', 'Sign up'];
+import { useDispatch } from 'react-redux';
+import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
+import { PAGES } from '@/app/constants/Constants';
+import SignInButton from './SignInButton';
+import SignInResponsiveButton from './SignInResponsiveButton';
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -37,6 +39,12 @@ const MainHeader = () => {
     setAnchorElUser(null);
   };
 
+  const toggleOpen = () => {
+    const newOpenState = !open;
+    setOpen(newOpenState);
+    dispatch(setOpenModal(newOpenState));
+  };
+  const dashboard = '';
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
@@ -130,67 +138,49 @@ const MainHeader = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { sm: 'block', md: 'block' },
+                display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
                 color: '#000',
               }}
             >
               {PAGES?.map((item, i) => (
                 <MenuItem key={i} onClick={handleCloseNavMenu}>
-                  <Link
-                    style={{
-                      color: '#1976d2',
-                      textDecoration: 'none',
-                    }}
-                    href={item?.path}
-                  >
-                    {item?.menu}
-                  </Link>
+                  <>
+                    <Link
+                      style={{
+                        color: '#1976d2',
+                        textDecoration: 'none',
+                      }}
+                      href={item?.path}
+                    >
+                      {item?.menu}
+                    </Link>
+                  </>
                 </MenuItem>
               ))}
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <Button
-                variant="primary"
-                sx={{
-                  width: '120px',
-                  height: '40px',
-                  display: {
-                    xs: 'none',
-                    sm: 'block',
-                    lg: 'block',
-                    xl: 'block',
-                  },
-                }}
-                onClick={handleOpenUserMenu}
+              <MenuItem
+                sx={{ display: { xs: 'block', sm: 'none', md: 'none' } }}
               >
-                <Typography sx={{ color: '#fff' }}>Sign in</Typography>
-              </Button>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings?.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+                <SignInResponsiveButton
+                  dashboard={dashboard}
+                  handleOpenUserMenu={handleOpenUserMenu}
+                  anchorElUser={anchorElUser}
+                  handleCloseUserMenu={handleCloseUserMenu}
+                  handleClose={toggleOpen}
+                  open={open}
+                  handleOpen={toggleOpen}
+                />
+              </MenuItem>
             </Menu>
           </Box>
+          <SignInButton
+            dashboard={dashboard}
+            handleOpenUserMenu={handleOpenUserMenu}
+            anchorElUser={anchorElUser}
+            handleCloseUserMenu={handleCloseUserMenu}
+            handleClose={toggleOpen}
+            open={open}
+            handleOpen={toggleOpen}
+          />
         </Toolbar>
       </Container>
     </AppBar>
