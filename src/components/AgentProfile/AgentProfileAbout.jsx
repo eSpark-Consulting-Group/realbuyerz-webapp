@@ -11,7 +11,7 @@ const AgentAbout = ({ data }) => {
         marginTop: '12px',
       }}
     >
-      <AgentAboutTitle title={data?.contactInfo.agentName} />
+      <AgentAboutTitle title={data?.userName} />
       <Typography
         variant="body1"
         sx={{
@@ -24,7 +24,7 @@ const AgentAbout = ({ data }) => {
           paddingBottom: '10px',
         }}
       >
-        {data?.about.description}
+        {data?.about}
       </Typography>
     </Box>
   );

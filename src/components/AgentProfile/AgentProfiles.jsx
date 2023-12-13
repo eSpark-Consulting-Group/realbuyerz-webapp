@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
+import { LETS_TALK, USER_TYPE } from '@/app/constants/AgentProfile';
 import AgentProfileDetail from './Profile/AgentProfileDetail';
-import LetsTalk from './Profile/LetsTalk';
 import AgentImage from './Profile/AgentImage';
+import LetsTalk from './Profile/LetsTalk';
 
 const AgentProfiles = ({ data }) => {
-  const { image, title, text, description } = data;
   return (
     <Box
       sx={{
@@ -45,7 +45,7 @@ const AgentProfiles = ({ data }) => {
           padding: { xs: 2, sm: 0 },
         }}
       >
-        <AgentImage image={image} />
+        <AgentImage image={data?.profileImage} />
         <Grid
           sx={{
             padding: 2,
@@ -62,8 +62,10 @@ const AgentProfiles = ({ data }) => {
               width: '100%',
             }}
           >
-            <AgentProfileDetail title={title} description={description} />
-            <LetsTalk text={text} />
+            <AgentProfileDetail description={data} />
+            {data?.userType === `${USER_TYPE.agent}` ? (
+              <LetsTalk text={LETS_TALK} />
+            ) : null}
           </Grid>
         </Grid>
       </Box>
