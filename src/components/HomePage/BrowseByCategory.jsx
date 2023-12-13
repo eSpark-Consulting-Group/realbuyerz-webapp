@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-import Link from 'next/link';
+
 import Heading from './Heading';
 import Image from 'next/image';
 import { HERO_SECTION_CONTENT } from '@/app/constants/Constants';

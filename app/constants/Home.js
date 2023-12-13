@@ -109,552 +109,192 @@ export const POPULAR_LOCATIONS_DATA = [
     title: 'Houses',
     type: 'sale',
     locations: [
-      {
-        name: 'Houses for Sell In Karachi',
-        link: '/properties/?property-type=house&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Houses for Sell In Lahore',
-        link: '/properties/?property-type=house&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Houses for Sell In Islamabad',
-        link: '/properties/?property-type=house&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Houses for Sell In Rawalpindi',
-        link: '/properties/?property-type=house&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Houses for Sell In Faislabad',
-        link: '/properties/?property-type=house&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Houses for Sell In Abbottabad',
-        link: '/properties/?property-type=house&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Houses for Sell In Multan',
-        link: '/properties/?property-type=house&purpose=sell&city=multan',
-      },
-      {
-        name: 'Houses for Sell In Hyderabad',
-        link: '/properties/?property-type=house&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Houses for Sell In Peshawar',
-        link: '/properties/?property-type=house&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Houses for Sell In Sargodha',
-        link: '/properties/?property-type=house&purpose=sell&city=sargodha',
-      },
+      'Houses For Sale In Karachi',
+      'Houses For Sale In Lahore',
+      'Houses For Sale In Islamabad',
+      'Houses For Sale In Rawalpindi',
+      'Houses For Sale In Faislabad',
+      'Houses For Sale In Abbottabad',
+      'Houses For Sale In Multan',
+      'Houses For Sale In Hyderabad',
+      'Houses For Sale In Peshawar',
+      'Houses For Sale In Sargodha',
     ],
   },
   {
     title: 'Flats',
     type: 'sale',
     locations: [
-      {
-        name: 'Flats for Sell In Karachi',
-        link: '/properties/?property-type=flats&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Flats for Sell In Lahore',
-        link: '/properties/?property-type=flats&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Flats for Sell In Islamabad',
-        link: '/properties/?property-type=flats&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Flats for Sell In Rawalpindi',
-        link: '/properties/?property-type=flats&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Flats for Sell In Faislabad',
-        link: '/properties/?property-type=flats&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Flats for Sell In Abbottabad',
-        link: '/properties/?property-type=flats&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Flats for Sell In Multan',
-        link: '/properties/?property-type=flats&purpose=sell&city=multan',
-      },
-      {
-        name: 'Flats for Sell In Hyderabad',
-        link: '/properties/?property-type=flats&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Flats for Sell In Peshawar',
-        link: '/properties/?property-type=flats&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Flats for Sell In Sargodha',
-        link: '/properties/?property-type=flats&purpose=sell&city=sargodha',
-      },
+      'Flats For Sale In Karachi',
+      'Flats For Sale In Lahore',
+      'Flats For Sale In Islamabad',
+      'Flats For Sale In Rawalpindi',
+      'Flats For Sale In Faislabad',
+      'Flats For Sale In Abbottabad',
+      'Flats For Sale In Multan',
+      'Flats For Sale In Hyderabad',
+      'Flats For Sale In Peshawar',
+      'Flats For Sale In Sargodha',
     ],
   },
   {
     title: 'Plots',
     type: 'sale',
     locations: [
-      {
-        name: 'Plots for Sell In Karachi',
-        link: '/properties/?property-type=plots&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Plots for Sell In Lahore',
-        link: '/properties/?property-type=plots&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Plots for Sell In Islamabad',
-        link: '/properties/?property-type=plots&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Plots for Sell In Rawalpindi',
-        link: '/properties/?property-type=plots&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Plots for Sell In Faislabad',
-        link: '/properties/?property-type=plots&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Plots for Sell In Abbottabad',
-        link: '/properties/?property-type=plots&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Plots for Sell In Multan',
-        link: '/properties/?property-type=plots&purpose=sell&city=multan',
-      },
-      {
-        name: 'Plots for Sell In Hyderabad',
-        link: '/properties/?property-type=plots&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Plots for Sell In Peshawar',
-        link: '/properties/?property-type=plots&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Plots for Sell In Sargodha',
-        link: '/properties/?property-type=plots&purpose=sell&city=sargodha',
-      },
+      'Plots For Sale In Karachi',
+      'Plots For Sale In Lahore',
+      'Plots For Sale In Islamabad',
+      'Plots For Sale In Rawalpindi',
+      'Plots For Sale In Faislabad',
+      'Plots For Sale In Abbottabad',
+      'Plots For Sale In Multan',
+      'Plots For Sale In Hyderabad',
+      'Plots For Sale In Peshawar',
+      'Plots For Sale In Sargodha',
     ],
   },
   {
     title: 'Farm Houses',
     type: 'sale',
     locations: [
-      {
-        name: 'Farm Houses for Sell In Karachi',
-        link: '/properties/?property-type=farm&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Farm Houses for Sell In Lahore',
-        link: '/properties/?property-type=farm&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Farm Houses for Sell In Islamabad',
-        link: '/properties/?property-type=farm&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Farm Houses for Sell In Rawalpindi',
-        link: '/properties/?property-type=farm&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Farm Houses for Sell In Faislabad',
-        link: '/properties/?property-type=farm&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Farm Houses for Sell In Abbottabad',
-        link: '/properties/?property-type=farm&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Farm Houses for Sell In Multan',
-        link: '/properties/?property-type=farm&purpose=sell&city=multan',
-      },
-      {
-        name: 'Farm Houses for Sell In Hyderabad',
-        link: '/properties/?property-type=farm&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Farm Houses for Sell In Peshawar',
-        link: '/properties/?property-type=farm&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Farm Houses for Sell In Sargodha',
-        link: '/properties/?property-type=farm&purpose=sell&city=sargodha',
-      },
+      'Farm Houses For Sale In Karachi',
+      'Farm Houses For Sale In Lahore',
+      'Farm Houses For Sale In Islamabad',
+      'Farm Houses For Sale In Rawalpindi',
+      'Farm Houses For Sale In Faislabad',
+      'Farm Houses For Sale In Abbottabad',
+      'Farm Houses For Sale In Multan',
+      'Farm Houses For Sale In Hyderabad',
+      'Farm Houses For Sale In Peshawar',
+      'Farm Houses For Sale In Sargodha',
     ],
   },
   {
     title: 'Shops',
     type: 'sale',
     locations: [
-      {
-        name: 'Shops for Sell In Karachi',
-        link: '/properties/?property-type=shops&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Shops for Sell In Lahore',
-        link: '/properties/?property-type=shops&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Shops for Sell In Islamabad',
-        link: '/properties/?property-type=shops&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Shops for Sell In Rawalpindi',
-        link: '/properties/?property-type=shops&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Shops for Sell In Faislabad',
-        link: '/properties/?property-type=shops&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Shops for Sell In Abbottabad',
-        link: '/properties/?property-type=shops&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Shops for Sell In Multan',
-        link: '/properties/?property-type=shops&purpose=sell&city=multan',
-      },
-      {
-        name: 'Shops for Sell In Hyderabad',
-        link: '/properties/?property-type=shops&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Shops for Sell In Peshawar',
-        link: '/properties/?property-type=shops&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Shops for Sell In Sargodha',
-        link: '/properties/?property-type=shops&purpose=sell&city=sargodha',
-      },
+      'Shops For Sale In Karachi',
+      'Shops For Sale In Lahore',
+      'Shops For Sale In Islamabad',
+      'Shops For Sale In Rawalpindi',
+      'Shops For Sale In Faislabad',
+      'Shops For Sale In Abbottabad',
+      'Shops For Sale In Multan',
+      'Shops For Sale In Hyderabad',
+      'Shops For Sale In Peshawar',
+      'Shops For Sale In Sargodha',
     ],
   },
   {
     title: 'Offices',
     type: 'sale',
     locations: [
-      {
-        name: 'Offices for Sell In Karachi',
-        link: '/properties/?property-type=offices&purpose=sell&city=karachi',
-      },
-      {
-        name: 'Offices for Sell In Lahore',
-        link: '/properties/?property-type=offices&purpose=sell&city=lahore',
-      },
-      {
-        name: 'Offices for Sell In Islamabad',
-        link: '/properties/?property-type=offices&purpose=sell&city=islamabad',
-      },
-      {
-        name: 'Offices for Sell In Rawalpindi',
-        link: '/properties/?property-type=offices&purpose=sell&city=rawalpindi',
-      },
-      {
-        name: 'Offices for Sell In Faislabad',
-        link: '/properties/?property-type=offices&purpose=sell&city=faislabad',
-      },
-      {
-        name: 'Offices for Sell In Abbottabad',
-        link: '/properties/?property-type=offices&purpose=sell&city=abbottabad',
-      },
-      {
-        name: 'Offices for Sell In Multan',
-        link: '/properties/?property-type=offices&purpose=sell&city=multan',
-      },
-      {
-        name: 'Offices for Sell In Hyderabad',
-        link: '/properties/?property-type=offices&purpose=sell&city=hyderabad',
-      },
-      {
-        name: 'Offices for Sell In Peshawar',
-        link: '/properties/?property-type=offices&purpose=sell&city=peshawar',
-      },
-      {
-        name: 'Offices for Sell In Sargodha',
-        link: '/properties/?property-type=offices&purpose=sell&city=sargodha',
-      },
+      'Offices For Sale In Karachi',
+      'Offices For Sale In Lahore',
+      'Offices For Sale In Islamabad',
+      'Offices For Sale In Rawalpindi',
+      'Offices For Sale In Faislabad',
+      'Offices For Sale In Abbottabad',
+      'Offices For Sale In Multan',
+      'Offices For Sale In Hyderabad',
+      'Offices For Sale In Peshawar',
+      'Offices For Sale In Sargodha',
     ],
   },
   {
     title: 'Houses',
     type: 'rent',
     locations: [
-      {
-        name: 'Houses for Rent In Karachi',
-        link: '/properties/?property-type=house&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Houses for Rent In Lahore',
-        link: '/properties/?property-type=house&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Houses for Rent In Islamabad',
-        link: '/properties/?property-type=house&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Houses for Rent In Rawalpindi',
-        link: '/properties/?property-type=house&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Houses for Rent In Faislabad',
-        link: '/properties/?property-type=house&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Houses for Rent In Abbottabad',
-        link: '/properties/?property-type=house&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Houses for Rent In Multan',
-        link: '/properties/?property-type=house&purpose=rent&city=multan',
-      },
-      {
-        name: 'Houses for Rent In Hyderabad',
-        link: '/properties/?property-type=house&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Houses for Rent In Peshawar',
-        link: '/properties/?property-type=house&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Houses for Rent In Sargodha',
-        link: '/properties/?property-type=house&purpose=rent&city=sargodha',
-      },
+      'Houses For Rent In Karachi',
+      'Houses For Rent In Lahore',
+      'Houses For Rent In Islamabad',
+      'Houses For Rent In Rawalpindi',
+      'Houses For Rent In Faislabad',
+      'Houses For Rent In Abbottabad',
+      'Houses For Rent In Multan',
+      'Houses For Rent In Hyderabad',
+      'Houses For Rent In Peshawar',
+      'Houses For Rent In Sargodha',
     ],
   },
   {
     title: 'Flats',
     type: 'rent',
     locations: [
-      {
-        name: 'Flats for Rent In Karachi',
-        link: '/properties/?property-type=flats&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Flats for Rent In Lahore',
-        link: '/properties/?property-type=flats&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Flats for Rent In Islamabad',
-        link: '/properties/?property-type=flats&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Flats for Rent In Rawalpindi',
-        link: '/properties/?property-type=flats&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Flats for Rent In Faislabad',
-        link: '/properties/?property-type=flats&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Flats for Rent In Abbottabad',
-        link: '/properties/?property-type=flats&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Flats for Rent In Multan',
-        link: '/properties/?property-type=flats&purpose=rent&city=multan',
-      },
-      {
-        name: 'Flats for Rent In Hyderabad',
-        link: '/properties/?property-type=flats&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Flats for Rent In Peshawar',
-        link: '/properties/?property-type=flats&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Flats for Rent In Sargodha',
-        link: '/properties/?property-type=flats&purpose=rent&city=sargodha',
-      },
+      'Flats For Rent In Karachi',
+      'Flats For Rent In Lahore',
+      'Flats For Rent In Islamabad',
+      'Flats For Rent In Rawalpindi',
+      'Flats For Rent In Faislabad',
+      'Flats For Rent In Abbottabad',
+      'Flats For Rent In Multan',
+      'Flats For Rent In Hyderabad',
+      'Flats For Rent In Peshawar',
+      'Flats For Rent In Sargodha',
     ],
   },
   {
     title: 'Plots',
     type: 'rent',
     locations: [
-      {
-        name: 'Plots for Rent In Karachi',
-        link: '/properties/?property-type=plots&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Plots for Rent In Lahore',
-        link: '/properties/?property-type=plots&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Plots for Rent In Islamabad',
-        link: '/properties/?property-type=plots&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Plots for Rent In Rawalpindi',
-        link: '/properties/?property-type=plots&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Plots for Rent In Faislabad',
-        link: '/properties/?property-type=plots&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Plots for Rent In Abbottabad',
-        link: '/properties/?property-type=plots&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Plots for Rent In Multan',
-        link: '/properties/?property-type=plots&purpose=rent&city=multan',
-      },
-      {
-        name: 'Plots for Rent In Hyderabad',
-        link: '/properties/?property-type=plots&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Plots for Rent In Peshawar',
-        link: '/properties/?property-type=plots&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Plots for Rent In Sargodha',
-        link: '/properties/?property-type=plots&purpose=rent&city=sargodha',
-      },
+      'Plots For Rent In Karachi',
+      'Plots For Rent In Lahore',
+      'Plots For Rent In Islamabad',
+      'Plots For Rent In Rawalpindi',
+      'Plots For Rent In Faislabad',
+      'Plots For Rent In Abbottabad',
+      'Plots For Rent In Multan',
+      'Plots For Rent In Hyderabad',
+      'Plots For Rent In Peshawar',
+      'Plots For Rent In Sargodha',
     ],
   },
   {
     title: 'Farm Houses',
     type: 'rent',
     locations: [
-      {
-        name: 'Farm Houses for Rent In Karachi',
-        link: '/properties/?property-type=farm&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Farm Houses for Rent In Lahore',
-        link: '/properties/?property-type=farm&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Farm Houses for Rent In Islamabad',
-        link: '/properties/?property-type=farm&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Farm Houses for Rent In Rawalpindi',
-        link: '/properties/?property-type=farm&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Farm Houses for Rent In Faislabad',
-        link: '/properties/?property-type=farm&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Farm Houses for Rent In Abbottabad',
-        link: '/properties/?property-type=farm&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Farm Houses for Rent In Multan',
-        link: '/properties/?property-type=farm&purpose=rent&city=multan',
-      },
-      {
-        name: 'Farm Houses for Rent In Hyderabad',
-        link: '/properties/?property-type=farm&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Farm Houses for Rent In Peshawar',
-        link: '/properties/?property-type=farm&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Farm Houses for Rent In Sargodha',
-        link: '/properties/?property-type=farm&purpose=rent&city=sargodha',
-      },
+      'Farm Houses For Rent In Karachi',
+      'Farm Houses For Rent In Lahore',
+      'Farm Houses For Rent In Islamabad',
+      'Farm Houses For Rent In Rawalpindi',
+      'Farm Houses For Rent In Faislabad',
+      'Farm Houses For Rent In Abbottabad',
+      'Farm Houses For Rent In Multan',
+      'Farm Houses For Rent In Hyderabad',
+      'Farm Houses For Rent In Peshawar',
+      'Farm Houses For Rent In Sargodha',
     ],
   },
   {
     title: 'Shops',
     type: 'rent',
     locations: [
-      {
-        name: 'Shops for Rent In Karachi',
-        link: '/properties/?property-type=shops&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Shops for Rent In Lahore',
-        link: '/properties/?property-type=shops&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Shops for Rent In Islamabad',
-        link: '/properties/?property-type=shops&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Shops for Rent In Rawalpindi',
-        link: '/properties/?property-type=shops&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Shops for Rent In Faislabad',
-        link: '/properties/?property-type=shops&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Shops for Rent In Abbottabad',
-        link: '/properties/?property-type=shops&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Shops for Rent In Multan',
-        link: '/properties/?property-type=shops&purpose=rent&city=multan',
-      },
-      {
-        name: 'Shops for Rent In Hyderabad',
-        link: '/properties/?property-type=shops&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Shops for Rent In Peshawar',
-        link: '/properties/?property-type=shops&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Shops for Rent In Sargodha',
-        link: '/properties/?property-type=shops&purpose=rent&city=sargodha',
-      },
+      'Shops For Rent In Karachi',
+      'Shops For Rent In Lahore',
+      'Shops For Rent In Islamabad',
+      'Shops For Rent In Rawalpindi',
+      'Shops For Rent In Faislabad',
+      'Shops For Rent In Abbottabad',
+      'Shops For Rent In Multan',
+      'Shops For Rent In Hyderabad',
+      'Shops For Rent In Peshawar',
+      'Shops For Rent In Sargodha',
     ],
   },
   {
     title: 'Offices',
     type: 'rent',
     locations: [
-      {
-        name: 'Offices for Rent In Karachi',
-        link: '/properties/?property-type=offices&purpose=rent&city=karachi',
-      },
-      {
-        name: 'Offices for Rent In Lahore',
-        link: '/properties/?property-type=offices&purpose=rent&city=lahore',
-      },
-      {
-        name: 'Offices for Rent In Islamabad',
-        link: '/properties/?property-type=offices&purpose=rent&city=islamabad',
-      },
-      {
-        name: 'Offices for Rent In Rawalpindi',
-        link: '/properties/?property-type=offices&purpose=rent&city=rawalpindi',
-      },
-      {
-        name: 'Offices for Rent In Faislabad',
-        link: '/properties/?property-type=offices&purpose=rent&city=faislabad',
-      },
-      {
-        name: 'Offices for Rent In Abbottabad',
-        link: '/properties/?property-type=offices&purpose=rent&city=abbottabad',
-      },
-      {
-        name: 'Offices for Rent In Multan',
-        link: '/properties/?property-type=offices&purpose=rent&city=multan',
-      },
-      {
-        name: 'Offices for Rent In Hyderabad',
-        link: '/properties/?property-type=offices&purpose=rent&city=hyderabad',
-      },
-      {
-        name: 'Offices for Rent In Peshawar',
-        link: '/properties/?property-type=offices&purpose=rent&city=peshawar',
-      },
-      {
-        name: 'Offices for Rent In Sargodha',
-        link: '/properties/?property-type=offices&purpose=rent&city=sargodha',
-      },
+      'Offices For Rent In Karachi',
+      'Offices For Rent In Lahore',
+      'Offices For Rent In Islamabad',
+      'Offices For Rent In Rawalpindi',
+      'Offices For Rent In Faislabad',
+      'Offices For Rent In Abbottabad',
+      'Offices For Rent In Multan',
+      'Offices For Rent In Hyderabad',
+      'Offices For Rent In Peshawar',
+      'Offices For Rent In Sargodha',
     ],
   },
 ];

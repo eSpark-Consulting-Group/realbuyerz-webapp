@@ -1,6 +1,10 @@
+import { USERS_DATA } from '@/app/constants/agents';
 import { createSlice } from '@reduxjs/toolkit';
 
-const agents = {};
+const agentData = USERS_DATA;
+const agents = {
+  agentData,
+};
 
 const initialState = { agents };
 

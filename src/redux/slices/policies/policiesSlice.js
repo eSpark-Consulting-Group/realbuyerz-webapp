@@ -1,7 +1,6 @@
-import { PRIVACY_POLICY } from '@/app/constants/PrivacyPolicy';
 import { createSlice } from '@reduxjs/toolkit';
 
-const policies = PRIVACY_POLICY;
+const policies = {};
 
 const initialState = { policies };
 

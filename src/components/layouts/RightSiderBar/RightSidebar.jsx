@@ -5,18 +5,22 @@ import { usePathname } from 'next/navigation';
 import BiddingProfile from '../../Biddings/BiddingProfile';
 import ShopCart from '../ShopCart/ShopCart';
 import ProductCart from '../../Prop-Shop/ProductCart';
-import { PATH } from '@/app/constants/paths';
+import { ROUTERS } from '@/app/constants/LiveBidding';
+
+const LIVEBIDDING = ROUTERS.dasboardLiveBidding;
+const BIDDING = ROUTERS.bidding;
+const PROPSHOP = ROUTERS.buyProducts;
 
 const RightSidebar = ({ profileInfo }) => {
   const pathname = usePathname();
   return (
     <>
-      {pathname.includes(PATH.biddings && PATH.liveBidding) ? (
+      {pathname.includes(BIDDING && LIVEBIDDING) ? (
         <BiddingProfile profileInfo={profileInfo} />
       ) : null}
 
-      {pathname.includes(PATH.biddings) ? <ShopCart /> : null}
-      {pathname.includes(PATH.buyProduct) ? <ProductCart /> : null}
+      {pathname.includes(BIDDING) ? <ShopCart /> : null}
+      {pathname.includes(PROPSHOP) ? <ProductCart /> : null}
     </>
   );
 };

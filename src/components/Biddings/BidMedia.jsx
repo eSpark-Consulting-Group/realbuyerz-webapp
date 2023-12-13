@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Typography, Button, Modal } from '@mui/material';
 import Image from 'next/image';
 
@@ -10,7 +10,7 @@ import VideoSlider from './VideoSlider';
 import DesktopScreenSlider from './DesktopScreenSlider';
 
 const BidMedia = ({ title, media, mediaType }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
