@@ -13,7 +13,8 @@ const FeaturedProperties = ({ data }) => {
   return (
     <Box
       sx={{
-        pt: '90px',
+        mt: '40px',
+        pt: '5px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
         backgroundSize: 'cover',
@@ -26,7 +27,7 @@ const FeaturedProperties = ({ data }) => {
         paragraph={FEATURED_HEADINGS.latestProject}
       />
       <Box className="full-container-width mx-auto">
-        <Grid container sx={{ display: 'flex', pt: '69px', pb: '48px' }}>
+        <Grid container sx={{ display: 'flex', pt: '69px', pb: '68px' }}>
           {data?.map((item, index) => (
             <Grid
               item

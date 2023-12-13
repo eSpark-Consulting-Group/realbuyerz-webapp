@@ -1,4 +1,13 @@
 export const LOGIN_FORM = {
+  password: 'password',
+  confirmPassword: 'confirmPassword',
+  email: 'email',
+  contactNo: 'contactNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  text: 'text',
+  paddingTop: '-30px',
+  forgetpassword: 'forgetpassword',
   loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
@@ -20,11 +29,16 @@ export const LOGIN_FORM = {
     resetPassword: 'We’ve sent password reset instructions to:',
     resend: 'Resend',
     backSignin: 'Back to sign-in',
+    emailSent: 'Email sent sucessfully',
+    passwordMatch: 'Password match',
+    passwordDontMatch: 'Password donot match',
   },
   signupForm: {
     signup: 'Sign up',
     signin: 'Sign in',
     label: 'Doesn’t have an account yet?',
+    maxLength: 11,
+    userType: 'usertype',
   },
   dropdownOptions: [
     { value: 'none', label: 'None' },
@@ -36,6 +50,10 @@ export const LOGIN_FORM = {
     signupFormHeight: '750px',
     loginFormHeight: '656px',
   },
+  resetPasswordCard: {
+    resetPassword: 'Reset Your Password',
+    createNewPassword: 'Please create a new password',
+  },
 };
 
 export const LOGIN_FORM_DATA = {
@@ -45,7 +63,6 @@ export const LOGIN_FORM_DATA = {
     firstName: '',
     lastName: '',
     contactNumber: '',
-    applicant: '',
     confirmPassword: '',
   },
   passwordFields: {
@@ -54,4 +71,38 @@ export const LOGIN_FORM_DATA = {
     confirmPassword: '',
     showConfirmPassword: false,
   },
+};
+
+export const SIGN_IN = 'Sign in';
+export const LOGOUT = 'Logout';
+export const SETTINGS = 'My Account';
+export const USER_NAME = 'Arman Espark';
+
+export const ALT = {
+  BOX_IMAGE: 'boxImage',
+  BUILDING_IMAGE: 'building',
+};
+
+export const LOGIN_ROUTERS = {
+  signin: '/signin',
+  signup: '/signup',
+  forgetPassword: '/forget-password',
+};
+export const AUTH_COMPONENTS = {
+  signin: 'signin',
+  signup: 'signup',
+  forgetPassword: 'forgetpassword',
+  resetPassword: 'resetpassword',
+};
+
+export const FORM_LABEL = {
+  emailUsername: 'Email / Username',
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  emailAddress: 'Email Address',
+  contactNo: 'Contact Number',
+  applicant: 'Applicant',
+  number: 'number',
+  password: 'Password',
+  confirmPassword: 'Confirm Password',
 };

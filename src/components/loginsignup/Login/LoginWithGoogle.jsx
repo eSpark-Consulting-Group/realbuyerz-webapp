@@ -8,6 +8,7 @@ const LoginWithGoogle = ({
   label,
   accountCreationMessage,
   onSigninClick,
+  loginClick,
 }) => {
   return (
     <>
@@ -28,6 +29,7 @@ const LoginWithGoogle = ({
               background: '#FF631C',
             },
           }}
+          onClick={loginClick}
         >
           {buttonLabel}
         </Button>

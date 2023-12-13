@@ -12,7 +12,7 @@ const NewlyListedProperties = ({ data }) => {
       <Box>
         <Box
           sx={{
-            pt: '90px',
+            pt: '14px',
             textAlign: 'center',
             backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
             backgroundSize: 'cover',
