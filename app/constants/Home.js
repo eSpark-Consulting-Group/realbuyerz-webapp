@@ -44,62 +44,62 @@ export const CATEGORIES = [
 export const PARTNERS = [
   {
     id: 1,
-    image: '/images/partners/partner1.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 1',
   },
   {
     id: 2,
-    image: '/images/partners/partner2.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 2',
   },
   {
     id: 3,
-    image: '/images/partners/partner3.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 3',
   },
   {
     id: 4,
-    image: '/images/partners/partner4.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 4',
   },
   {
     id: 5,
-    image: '/images/partners/partner5.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 5',
   },
   {
     id: 6,
-    image: '/images/partners/partner6.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 6',
   },
   {
     id: 7,
-    image: '/images/partners/partner7.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 7',
   },
   {
     id: 8,
-    image: '/images/partners/partner8.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 8',
   },
   {
     id: 9,
-    image: '/images/partners/partner9.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 9',
   },
   {
     id: 10,
-    image: '/images/partners/partner10.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 10',
   },
   {
     id: 11,
-    image: '/images/partners/partner11.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 11',
   },
   {
     id: 12,
-    image: '/images/partners/partner12.svg',
+    image: '/images/partners/partners.svg',
     name: 'Partner 12',
   },
 ];
@@ -379,4 +379,32 @@ export const PROPERTY_DATA_Old = {
     { name: 'Peshawar', title: 'peshawar' },
     { name: 'Sargodha', title: 'sargodha' },
   ],
+};
+
+export const FEATURED_HEADINGS = {
+  latestProject: 'Find your dream projects from our latest projects',
+  featureProperty: 'Featured Properties',
+  listedProperty: 'Newly Listed Properties',
+  homePartners: 'Our Home Partners',
+  sliderHeading: 'Live Properties Buying & Selling ',
+  createAccount: 'Create Account',
+  popularLocations: 'Popular Locations',
+  browseProperty:
+    'To browse & buy in your areas of interest. Look of properties by category',
+};
+export const FEATURE_BUTTONS = {
+  forSale: 'For Sale',
+  byRent: 'By Rent',
+};
+
+export const FEATURE_STYLES = {
+  opacityTwo: '2',
+  opacityZero: '0',
+};
+
+export const POSITIONS = {
+  top: { top: 0, left: 0, width: '100%', height: '2%' },
+  bottom: { bottom: 0, left: 0, width: '100%', height: '2px' },
+  left: { top: 0, left: 0, height: '100%', width: '2px' },
+  right: { top: 0, right: 0, height: '100%', width: '2px' },
 };

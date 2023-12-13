@@ -1,8 +1,7 @@
 'use client';
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import { Bounce } from 'react-awesome-reveal';
-
-import { Box, Typography } from '@mui/material';
-import { Button } from '@mui/material';
 
 import HeroSlider from '../sliders/HeroSlider';
 
@@ -125,7 +124,17 @@ const HeroSection = () => {
                 }}
                 variant="primary"
               >
-                <Typography sx={{ color: '#fff' }}> Buyer</Typography>
+                <Typography
+                  sx={{
+                    color: '#fff',
+                    '&:hover': {
+                      color: '#FB631C',
+                    },
+                  }}
+                >
+                  {' '}
+                  {HERO_SECTION_CONTENT.buyer}
+                </Typography>
               </Button>
             </Link>
           </Bounce>
@@ -145,10 +154,21 @@ const HeroSection = () => {
                   fontWeight: 600,
                   lineHeight: 'normal',
                   height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  background: '#FB631C',
+                  '&:hover': {
+                    background: '#fff',
+                    border: '1px solid #FB631C',
+                  },
                 }}
                 variant="primary"
               >
-                <Typography sx={{ color: '#fff' }}>Seller</Typography>
+                <Typography
+                  sx={{
+                    color: '#fff',
+                  }}
+                >
+                  {HERO_SECTION_CONTENT.seller}
+                </Typography>
               </Button>
             </Link>
           </Bounce>
