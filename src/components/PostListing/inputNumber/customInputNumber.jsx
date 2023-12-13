@@ -3,8 +3,6 @@ import { InputAdornment, IconButton, Box, Input } from '@mui/material';
 import Image from 'next/image';
 
 import { incrementCounterState } from '@/utils/counterIncrement';
-import { useDispatch } from 'react-redux';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const CustomNumberInput = ({
   value,
@@ -18,21 +16,18 @@ const CustomNumberInput = ({
     const formattedValue = sanitizedValue.replace(/([+-])+/g, '$1');
     onChange(formattedValue);
   };
-  const dispatch = useDispatch();
-
   const handleIncrement = () => {
     const numericValue = parseFloat(value) || 0;
     const newIncrementValue = numericValue + 1;
-    // PROPERTY_BUYING_DETAIL?.sellingDetails?.incrementBtn[identifier] =
-    //   newIncrementValue;
     onSaveIncrement(newIncrementValue, identifier);
     setIncrementValue(newIncrementValue);
 
     onChange(newIncrementValue.toString());
-    dispatch({
-      type: savePropertyData,
-      payload: newIncrementValue,
-    });
+    // dispatch({
+    //   type: savePropertyData,
+    //   payload: newIncrementValue,
+    // });
+    // dispatch(addAmenitiess( newIncrementValue))
     console.log('Increment value:', numericValue);
   };
   const handleDecrement = () => {
