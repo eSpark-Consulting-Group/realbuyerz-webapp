@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import { TERM_CONDITIONS } from '../constants/TermCondition';
@@ -14,11 +14,6 @@ const TermsConditions = () => {
       setSelectedTab(selectedTab);
     }
   };
-  useEffect(() => {
-    // Run client-side code here
-    console.log('Client-side code executed');
-  }, []);
-  console.log('content', selectedTab.content);
   return (
     <Box
       sx={{
@@ -78,8 +73,8 @@ const TermsConditions = () => {
                   backgroundColor: selectedTab === item ? '#FFEEE7' : 'inherit',
                   padding: '10px',
                   px: '20px',
-                  display: 'flex', // Add display flex
-                  alignItems: 'center', // Center vertically
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
                 onClick={() => handleTabClick(item.id)}
               >

@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import Link from 'next/link';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -48,20 +47,18 @@ const CreateAccount = () => {
       }}
     >
       <Typewriter text="Live Properties Buying & Selling" />
-      <Link href="/signup">
-        <Button
-          sx={{
-            mx: '15px',
-            fontWeight: 600,
-            width: '150px',
-            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-            color: '#fff',
-          }}
-          variant="primary"
-        >
-          <Typography sx={{ color: '#fff' }}>Create Account</Typography>
-        </Button>
-      </Link>
+      <Button
+        sx={{
+          mx: '15px',
+          fontWeight: 600,
+          width: '150px',
+          height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+          color: '#fff',
+        }}
+        variant="primary"
+      >
+        <Typography sx={{ color: '#fff' }}>Create Account</Typography>
+      </Button>
     </Box>
   );
 };

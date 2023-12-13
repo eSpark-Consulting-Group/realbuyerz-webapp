@@ -6,7 +6,6 @@ const LeftSideBar = ({ menuItem }) => {
   const fullWidth = '100%';
   const iconWidth = '60px';
   const [isCollapsed, setIsCollapsed] = useState(fullWidth);
-
   const collapsed = () => {
     setIsCollapsed((prevWidth) =>
       prevWidth === fullWidth ? iconWidth : fullWidth

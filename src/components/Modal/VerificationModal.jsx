@@ -38,6 +38,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
               sx={{
                 fontWeight: '500px',
                 fontSize: '25px',
+                fontFamily: 'Inter',
               }}
             >
               {VERIFICATION_OTP.verificationCode}
@@ -59,6 +60,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
               sx={{
                 fontWeight: '500px',
                 fontSize: '16px',
+                fontFamily: 'Inter',
               }}
             >
               {VERIFICATION_OTP.attempts}
@@ -68,6 +70,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
               sx={{
                 fontWeight: '500px',
                 fontSize: '16px',
+                fontFamily: 'Inter',
               }}
             >
               {VERIFICATION_OTP.codeOtp}

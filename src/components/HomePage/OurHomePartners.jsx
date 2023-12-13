@@ -7,7 +7,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Box, Container } from '@mui/material';
 
 const OurHomePartners = ({ data }) => {
@@ -43,38 +42,36 @@ const OurHomePartners = ({ data }) => {
   };
 
   return (
-    <>
-      <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
-        <Heading heading={'Our Home Partners'} />
-        <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
-          <Slider {...sliderSettings}>
-            {data?.map((partner) => (
-              <Box key={partner?.id} sx={{ padding: '10px' }}>
-                <Box
-                  sx={{
-                    background: '#fff',
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Link href={`/partners/${partner?.id}`}>
-                    <Image
-                      src={partner?.image}
-                      alt={partner?.name}
-                      title={partner?.name}
-                      width={400}
-                      height={100}
-                    />
-                  </Link>
-                </Box>
+    <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
+      <Heading heading={'Our Home Partners'} />
+      <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
+        <Slider {...sliderSettings}>
+          {data?.map((partner) => (
+            <Box key={partner?.id} sx={{ padding: '10px' }}>
+              <Box
+                sx={{
+                  background: '#fff',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <a href="/">
+                  <Image
+                    src={partner?.image}
+                    alt={partner?.name}
+                    title={partner?.name}
+                    width={400}
+                    height={100}
+                  />
+                </a>
               </Box>
-            ))}
-          </Slider>
-        </Box>
-      </Container>
-    </>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
+    </Container>
   );
 };
 

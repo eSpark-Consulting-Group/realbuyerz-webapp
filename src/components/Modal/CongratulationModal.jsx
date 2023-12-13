@@ -66,6 +66,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
               sx={{
                 fontWeight: '500px',
                 fontSize: '25px',
+                fontFamily: 'Inter',
               }}
             >
               {VERIFICATION_OTP.congrats}

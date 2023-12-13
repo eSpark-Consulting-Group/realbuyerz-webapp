@@ -10,13 +10,21 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import DesktopDashboardHeader from './DesktopDashboardHeader';
-import { HEADER_MENU, MENU_ITEM } from '@/app/constants/LiveBidding';
+import {
+  AGENT_MENU_ITEM,
+  HEADER_MENU,
+  USER_MENU_ITEM,
+} from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  console.log(anchorElUser);
+  const [userType, setUserType] = useState('agent');
+  const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
+  console.log(setUserType); // this set is not using so thts y we use in a console  to avoid build issues
   const [anchorElSearch, setAnchorElSearch] = useState(null);
   const [isloggedIn, setisloggedIn] = useState(null);
   const [isloggedInMobile, setisloggedInMobile] = useState(null);
@@ -147,7 +155,7 @@ const DashboardHeader = () => {
                     height: '10%',
                   }}
                 >
-                  <LeftSideBar menuItem={MENU_ITEM} />
+                  <LeftSideBar menuItem={menuItem} />
                 </Box>
               </Drawer>
             </Box>
