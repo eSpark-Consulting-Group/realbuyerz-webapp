@@ -32,7 +32,7 @@ const InnerPageLayout = ({ children }) => {
         </Grid>
         <Grid
           item
-          lg={pathname.includes(PATH.buyProduct) ? 7 : 8}
+          lg={7}
           md={6}
           sm={12}
           xs={12}
@@ -42,7 +42,7 @@ const InnerPageLayout = ({ children }) => {
         </Grid>
         <Grid
           item
-          lg={pathname.includes(PATH.buyProduct) ? 3 : 2}
+          lg={2.3}
           md={3}
           sm={12}
           xs={12}

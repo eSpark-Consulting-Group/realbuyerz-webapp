@@ -6,10 +6,10 @@ import { Box } from '@mui/system';
 
 const page = () => {
   return (
-    <Box sx={{ mx: 'auto', padding: 2 }}>
+    <>
       <LiveBiddingTitle title={MAIN_TITLE} />
       <BiddingDetails liveBiddingData={LIVE_BIDDING_DATA} Height={'100vh'} />
-    </Box>
+    </>
   );
 };
 

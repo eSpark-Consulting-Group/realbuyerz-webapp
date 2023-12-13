@@ -120,6 +120,7 @@ const ProposalFilter = () => {
                     onChange={(e) => {
                       handleDropdownChange(e, dropdown?.setState, index);
                     }}
+                    sx={{ background: '#fff' }}
                     placeholder={`Select ${dropdown?.label}`}
                   >
                     <MenuItem value="">{`Select ${dropdown?.label}`}</MenuItem>
@@ -163,12 +164,13 @@ const ProposalFilter = () => {
         <Grid item xs={9}></Grid>
         <Grid item xs={3}>
           <FormControl fullWidth>
-            <Select value={listingType} onChange={handleListingTypeChange}>
+            <Select value={listingType} onChange={handleListingTypeChange} sx={{ background: '#fff' }}>
               {LISTING_TYPE.map((item) => (
                 <MenuItem key={item.value} value={item.value}>
                   {item.label}
                 </MenuItem>
               ))}
+
             </Select>
           </FormControl>
         </Grid>

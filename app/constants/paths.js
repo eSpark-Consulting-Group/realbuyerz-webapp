@@ -1,7 +1,7 @@
 export const PATH = {
   home: '/',
   dashboard: '/dashboard',
-  buyProduct: '/prop-shop/buy-product',
+  buyProduct: '/dashboard/prop-shop/buy-product',
   liveBidding: '/dashboard/live-bidding',
   biddings: '/dashboard/biddings',
   notFound: '/_not-found',

@@ -45,7 +45,7 @@ const ProposalTabs = ({ filteredProposalsData }) => {
   };
 
   return (
-    <Box sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
+    <Box sx={{ background: '#fff', borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
