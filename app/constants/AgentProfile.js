@@ -14,14 +14,11 @@ export const FOR_SALE_ICON = '/images/agent-profile-icons/home.svg';
 export const FOR_RENT_ICON = '/images/agent-profile-icons/keys.svg';
 export const ALT = 'amenities';
 
-export const LABLE = {};
 export const LETS_TALK = 'Lets talk';
 export const USER_TYPE = {
   user: 'user',
   agent: 'agent',
 };
-export const USER = 'user';
-export const AGENT = 'agent';
 
 export const AGENT_PROFILE_DATA = {
   agentProfile: ' View Agent Profile',

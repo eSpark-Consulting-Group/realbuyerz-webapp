@@ -56,7 +56,7 @@ export const USERS_DATA = [
         Plots: 20,
         FarmHouses: 20,
         Shops: 20,
-        Sffices: 20,
+        Offices: 20,
         Commercials: 20,
         // more Categories
       },
@@ -67,7 +67,7 @@ export const USERS_DATA = [
         Plots: 20,
         FarmHouses: 20,
         Shops: 20,
-        Sffices: 20,
+        Offices: 20,
         Commercials: 20,
         // more Categories
       },
