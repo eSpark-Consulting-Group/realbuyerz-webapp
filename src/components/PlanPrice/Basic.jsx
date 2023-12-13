@@ -43,7 +43,6 @@ const Basic = ({ BasicData }) => {
         />
         <Typography
           sx={{
-            fontFamily: 'Inter',
             fontWeight: 600,
             fontSize: '30px',
             lineHeight: 'normal',
@@ -70,7 +69,6 @@ const Basic = ({ BasicData }) => {
         >
           <Typography
             sx={{
-              fontFamily: 'Inter',
               fontWeight: 700,
               fontSize: '40px',
               lineHeight: '48.41px',
@@ -90,7 +88,6 @@ const Basic = ({ BasicData }) => {
           ></Typography>
           <Typography
             sx={{
-              fontFamily: 'Inter',
               fontWeight: 600,
               fontSize: '16px',
               lineHeight: '13.36px',
@@ -111,7 +108,7 @@ const Basic = ({ BasicData }) => {
             <ListItem
               sx={{
                 color: '#00A69C',
-                fontFamily: 'Inter',
+
                 fontSize: '15px',
                 fontStyle: 'normal',
                 fontWeight: 400,
@@ -125,7 +122,6 @@ const Basic = ({ BasicData }) => {
             </ListItem>
             <ListItem
               sx={{
-                fontFamily: 'Inter',
                 fontWeight: 400,
                 fontSize: '15px',
                 lineHeight: '15px',

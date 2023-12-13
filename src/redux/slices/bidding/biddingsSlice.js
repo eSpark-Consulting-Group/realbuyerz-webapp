@@ -1,6 +1,7 @@
+import { BIDDINGS } from '@/app/constants/Biddings';
 import { createSlice } from '@reduxjs/toolkit';
 
-const biddings = {};
+const biddings = BIDDINGS;
 
 const initialState = { biddings };
 

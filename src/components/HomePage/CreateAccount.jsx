@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
+import Link from 'next/link';
 
 import { FEATURED_HEADINGS } from '@/app/constants/Home';
 

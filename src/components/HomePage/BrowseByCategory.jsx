@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-
+import Link from 'next/link';
 import Heading from './Heading';
 import Image from 'next/image';
 import { HERO_SECTION_CONTENT } from '@/app/constants/Constants';
@@ -72,13 +72,26 @@ const BrowseByCategory = ({ data }) => {
                 />
                 <Typography
                   variant="body1"
-                  sx={{
-                    py: '8px',
-                  }}
-                >
-                  {category?.name}
+             > {category?.name}
                 </Typography>
+                
+                 
               </Box>
+                  <Image
+                    src={category?.image}
+                    alt={category?.name}
+                    height={30}
+                    width={30}
+                  />
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      py: '8px',
+                      px: '15px',
+                    }}
+                  >
+                    {category?.name}
+                  </Typography>
             </Grid>
           ))}
         </Grid>
