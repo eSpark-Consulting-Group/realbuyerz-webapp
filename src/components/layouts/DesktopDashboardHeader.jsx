@@ -13,29 +13,36 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
+
 import {
+  EMAIL,
   LINK_NAME,
-  LOGIN_PERSON_NAME,
+  USER_NAME,
   MY_LISTING,
   POST_LISTING,
   SEARCH,
+  SIGN_OUT,
+  CUSTOM_COLOR,
 } from '@/app/constants/DashboardHeader';
+import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
 
-const DesktopDashboardHeader = ({ HEADER_MENU }) => {
-  const [anchorElUser, setAnchorElUser] = useState(null);
+const DesktopDashboardHeader = ({
+  headerMenu,
+  handleOpenSearchMenu,
+  anchorElSearch,
+  handleCloseSearchMenu,
+  handleCloseLoginMenu,
+  handleOpenLoginMenu,
+  isloggedIn,
+}) => {
   const [search, setSearch] = useState();
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   const searchInput = (e) => {
     setSearch(e.target.value);
   };
-
+  const handleLogout = () => {
+    handleCloseLoginMenu();
+  };
   return (
     <Box
       s
@@ -46,14 +53,14 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
         display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
       }}
     >
-      {HEADER_MENU?.map((item) => {
+      {headerMenu?.map((item) => {
         return (
           <>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Search">
                   <Image
-                    onClick={handleOpenUserMenu}
+                    onClick={handleOpenSearchMenu}
                     src={item?.searchIcon}
                     width={35}
                     height={35}
@@ -64,7 +71,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                 <Menu
                   sx={{ mt: '45px' }}
                   id="menu-appbar"
-                  anchorEl={anchorElUser}
+                  anchorEl={anchorElSearch}
                   anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right',
@@ -74,8 +81,8 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                     vertical: 'top',
                     horizontal: 'right',
                   }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
+                  open={Boolean(anchorElSearch)}
+                  onClose={handleCloseSearchMenu}
                 >
                   <Box
                     sx={{
@@ -160,7 +167,6 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                 </Box>
               </Button>
               <IconButton
-                onClick={handleOpenUserMenu}
                 sx={{
                   p: 0,
                   color: '#FF631C',
@@ -169,7 +175,7 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
               >
                 <Badge
                   badgeContent={4}
-                  color="customColor"
+                  color={CUSTOM_COLOR}
                   sx={{
                     width: 25,
                     height: 25,
@@ -181,37 +187,21 @@ const DesktopDashboardHeader = ({ HEADER_MENU }) => {
                   }}
                 >
                   <NotificationsIcon
-                    sx={{ fontSize: 35, color: 'customColor' }}
+                    sx={{ fontSize: 35, color: { CUSTOM_COLOR } }}
                   />
                 </Badge>
               </IconButton>
             </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                border: '1px solid #E7E7E7',
-                borderRadius: '390px',
-                alignItems: 'center',
-                mx: 1,
-              }}
-            >
-              <Typography
-                sx={{
-                  display: 'flex',
-                  color: 'black',
-                  alignItems: 'center',
-                  mx: 2,
-                }}
-              >
-                {LOGIN_PERSON_NAME}
-              </Typography>
-              <Image
-                src={item?.profileIcon}
-                width={41}
-                height={41}
-                alt={'icon'}
-              />
-            </Box>
+            <SearchAndNotificationDesktopButton
+              handleCloseLoginMenu={handleCloseLoginMenu}
+              handleOpenLoginMenu={handleOpenLoginMenu}
+              userName={USER_NAME}
+              profileIcon={item?.profileIcon}
+              handleLogout={handleLogout}
+              isloggedIn={isloggedIn}
+              signOut={SIGN_OUT}
+              email={EMAIL}
+            />
           </>
         );
       })}

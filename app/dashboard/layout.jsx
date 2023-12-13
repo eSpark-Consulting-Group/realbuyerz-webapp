@@ -54,7 +54,6 @@ const InnerPageLayout = ({ children }) => {
           md={3}
           sm={12}
           xs={12}
-          sx={{ marginTop: '70px' }}
         >
           <RightSidebar profileInfo={PROFILE_INFO} />
         </Grid>

@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
@@ -26,21 +25,48 @@ const DashboardHeader = () => {
   const [userType, setUserType] = useState('agent');
   const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
   console.log(setUserType); // this set is not using so thts y we use in a console  to avoid build issues
+  const [anchorElSearch, setAnchorElSearch] = useState(null);
+  const [isloggedIn, setisloggedIn] = useState(null);
+  const [isloggedInMobile, setisloggedInMobile] = useState(null);
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenSearchMenu = (event) => {
+    setAnchorElSearch(event.currentTarget);
+  };
+  const handleOpenLoginMenu = (event) => {
+    setisloggedIn(event.currentTarget);
+  };
+  const handleOpenMobileLoginMenu = (event) => {
+    setisloggedInMobile(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+
+  const handleCloseSearchMenu = () => {
+    setAnchorElSearch(null);
+  };
+  const handleCloseLoginMenu = () => {
+    setisloggedIn(null);
+  };
+  const handleCloseMobileLoginMenu = () => {
+    setisloggedInMobile(null);
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleDrawer = () => {
     const smThreshold = 960;
     const currentWidth = window.innerWidth;
@@ -51,6 +77,7 @@ const DashboardHeader = () => {
       setIsOpen(false);
     }
   };
+
   return (
     <AppBar
       position="static"
@@ -68,24 +95,6 @@ const DashboardHeader = () => {
               alignItems: 'center',
             }}
           >
-            <Button
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              sx={{
-                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
-                p: 0,
-                color: '#000',
-              }}
-            >
-              <MenuIcon
-                sx={{
-                  cursor: 'pointer',
-                }}
-              />
-            </Button>
             <Box
               sx={{
                 display: { xs: 'flex' },
@@ -112,7 +121,7 @@ const DashboardHeader = () => {
                   width={20}
                   height={20}
                   alt={'icon'}
-                  style={{ marginTop: 2 }}
+                  style={{ marginTop: 2, marginLeft: 2 }}
                 />
               </Typography>{' '}
               <Typography
@@ -132,7 +141,7 @@ const DashboardHeader = () => {
                   width={155}
                   height={37}
                   alt={'icon'}
-                  style={{ marginTop: 2 }}
+                  style={{ marginTop: 2, marginLeft: 2 }}
                 />
               </Typography>
               <Drawer
@@ -151,17 +160,48 @@ const DashboardHeader = () => {
               </Drawer>
             </Box>
             <DesktopDashboardHeader
-              HEADER_MENU={HEADER_MENU}
+              headerMenu={HEADER_MENU}
               handleOpenUserMenu={handleOpenUserMenu}
+              handleCloseUserMenu={handleCloseUserMenu}
+              anchorElUser={anchorElUser}
+              handleOpenSearchMenu={handleOpenSearchMenu}
+              handleCloseSearchMenu={handleCloseSearchMenu}
+              anchorElSearch={anchorElSearch}
+              handleOpenLoginMenu={handleOpenLoginMenu}
+              handleCloseLoginMenu={handleCloseLoginMenu}
+              isloggedIn={isloggedIn}
+              setisloggedIn={setisloggedIn}
             />
             <MobileResponsiveDashboardHeader
-              HEADER_MENU={HEADER_MENU}
+              headerMenu={HEADER_MENU}
               handleCloseNavMenu={handleCloseNavMenu}
               anchorElNav={anchorElNav}
               handleOpenUserMenu={handleOpenUserMenu}
               anchorElUser={anchorElUser}
               handleCloseUserMenu={handleCloseUserMenu}
+              isloggedInMobile={isloggedInMobile}
+              handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}
+              handleOpenMobileLoginMenu={handleOpenMobileLoginMenu}
             />
+          </Box>
+          <Box>
+            <Button
+              size="large"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              sx={{
+                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
+                p: 0,
+                color: '#000',
+              }}
+            >
+              <MenuIcon
+                sx={{
+                  cursor: 'pointer',
+                }}
+              />
+            </Button>
           </Box>
         </Toolbar>
       </Box>
