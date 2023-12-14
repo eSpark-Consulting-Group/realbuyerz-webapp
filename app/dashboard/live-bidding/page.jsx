@@ -2,7 +2,6 @@
 import { LIVE_BIDDING_DATA, MAIN_TITLE } from '@/app/constants/LiveBidding';
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
-import { Box } from '@mui/system';
 
 const page = () => {
   return (

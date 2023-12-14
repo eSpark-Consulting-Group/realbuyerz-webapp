@@ -3,8 +3,9 @@ import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const PropertyAmenities = ({ propertyData, heading }) => {
-
-  const amenities = useSelector((state) => state?.propertyAmenities?.propertyAmenities);
+  const amenities = useSelector(
+    (state) => state?.propertyAmenities?.propertyAmenities
+  );
 
   const filteredAmenities = amenities?.filter((amenity) =>
     propertyData?.amenities?.includes(amenity?.id)

@@ -11,7 +11,7 @@ const ProfileAgent = ({ data }) => {
   const agents = useSelector((state) => state?.agents?.agents?.agentData);
 
   const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
-  console.log("selectedAgent", selectedAgent);
+  console.log('selectedAgent', selectedAgent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${data} not found`);
@@ -54,9 +54,7 @@ const ProfileAgent = ({ data }) => {
             name={`${selectedAgent?.firstName} ${selectedAgent?.lastName} `}
             link={`agents/${selectedAgent?.id}`}
           />
-          <AgentDescription
-            description={selectedAgent?.about}
-          />
+          <AgentDescription description={selectedAgent?.about} />
         </Box>
       </Grid>
     </Grid>

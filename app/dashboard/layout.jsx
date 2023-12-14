@@ -1,23 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
-import { usePathname } from 'next/navigation';
 
 import {
   AGENT_MENU_ITEM,
   PROFILE_INFO,
-  ROUTERS,
   USER_MENU_ITEM,
 } from '../constants/LiveBidding';
 import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
 import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
 
 const InnerPageLayout = ({ children }) => {
-  const pathname = usePathname();
-  const PROPSHOP = ROUTERS.buyProducts;
-  const [userType, setUserType] = useState('agent');
+  const [userType] = useState('agent');
   const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
-  console.log(setUserType); // this set is not using so thts y we use in a console  to avoid build issues
 
   return (
     <Box

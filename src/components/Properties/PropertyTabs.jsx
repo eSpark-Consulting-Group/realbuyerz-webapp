@@ -13,7 +13,9 @@ const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter((property) => property?.propertyData?.propertyType === propertyType);
+      : data.filter(
+          (property) => property?.propertyData?.propertyType === propertyType
+        );
 
   const propertyTitle = filteredProperties?.map((property) => ({
     id: property?.id,
@@ -93,7 +95,9 @@ const PropertyTabs = ({ data }) => {
   const filteredProperties =
     propertyType === ''
       ? data
-      : data.filter((property) => property?.propertyData?.propertyType === propertyType);
+      : data.filter(
+          (property) => property?.propertyData?.propertyType === propertyType
+        );
   const isAgent = 'true';
   const agenttab = value;
   return (

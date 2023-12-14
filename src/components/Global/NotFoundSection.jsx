@@ -54,7 +54,8 @@ const NotFoundSection = ({ heading, message }) => (
                 color: '#333',
                 fontWeight: '400',
               }}
-            >{message || NOT_FOUND?.errorDescription}
+            >
+              {message || NOT_FOUND?.errorDescription}
             </Typography>
           </Box>
           <Box>

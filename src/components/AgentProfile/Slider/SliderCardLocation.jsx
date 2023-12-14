@@ -3,7 +3,6 @@ import { Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
-
 const SliderCardLocation = ({ location }) => {
   return (
     <Grid container justifyContent="flex-start" alignItems="center">
@@ -29,7 +28,8 @@ const SliderCardLocation = ({ location }) => {
               lineHeight: 'normal',
               ml: 1,
             }}
-          >{location}
+          >
+            {location}
           </Typography>
         </Box>
       </Grid>

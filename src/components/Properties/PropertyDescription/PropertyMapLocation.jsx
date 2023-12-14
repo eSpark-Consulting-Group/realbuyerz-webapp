@@ -2,7 +2,12 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-const PropertyMapLocation = ({ locationpurpose, propertyType, city, location }) => {
+const PropertyMapLocation = ({
+  locationpurpose,
+  propertyType,
+  city,
+  location,
+}) => {
   return (
     <Box sx={{ padding: '5px' }}>
       <Typography sx={{ fontSize: '18px', fontWeight: 500 }}>

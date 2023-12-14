@@ -24,8 +24,10 @@ const PropertySlider = ({ propertyData }) => {
   const properties = useSelector((state) => state?.properties?.properties);
   console.log(properties, 'properties');
 
-  const filteredProperties = properties.filter((property) =>
-    property.propertyType === propertyData?.propertyType && property?.subPropertyType === propertyData?.subPropertyType
+  const filteredProperties = properties.filter(
+    (property) =>
+      property.propertyType === propertyData?.propertyType &&
+      property?.subPropertyType === propertyData?.subPropertyType
   );
 
   console.log(filteredProperties, 'filtered properties');
@@ -103,13 +105,20 @@ const PropertySlider = ({ propertyData }) => {
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>
-                        <SliderCardTitle title={item?.propertyTitle} link={item} />
+                        <SliderCardTitle
+                          title={item?.propertyTitle}
+                          link={item}
+                        />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardLocation location={item?.propertyData?.propertyLocation?.area} />
+                        <SliderCardLocation
+                          location={item?.propertyData?.propertyLocation?.area}
+                        />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardPrice price={item?.propertyOverview?.price} />
+                        <SliderCardPrice
+                          price={item?.propertyOverview?.price}
+                        />
                       </Grid>
                     </Grid>
                   </Box>

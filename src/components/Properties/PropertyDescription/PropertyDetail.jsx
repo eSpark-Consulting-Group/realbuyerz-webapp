@@ -29,9 +29,7 @@ const PropertyDetails = ({ propertyDetailsData }) => {
           />
           <PropertyMapLocation
             locationpurpose={propertyDetailsData?.propertyOverview?.purpose}
-            propertyType={
-              propertyDetailsData?.propertyData?.propertyType
-            }
+            propertyType={propertyDetailsData?.propertyData?.propertyType}
             city={propertyDetailsData?.propertyData?.propertyLocation?.city}
             location={propertyDetailsData?.propertyData?.propertyLocation?.area}
           />
