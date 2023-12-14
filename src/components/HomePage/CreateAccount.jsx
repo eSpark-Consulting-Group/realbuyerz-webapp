@@ -1,7 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import Link from 'next/link';
+
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -13,14 +14,11 @@ const Typewriter = ({ text }) => {
       interval = setInterval(() => {
         setDisplayedText((prevText) => prevText + text[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 200);
+      }, 150);
     } else {
-      // Reset typewriter effect
       setCurrentIndex(0);
       setDisplayedText('');
     }
-
-    // Clear the interval on component unmount to avoid memory leaks
     return () => clearInterval(interval);
   }, [currentIndex, text]);
 
@@ -47,21 +45,21 @@ const CreateAccount = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Typewriter text="Live Properties Buying & Selling" />
-      <Link href="/signup">
-        <Button
-          sx={{
-            mx: '15px',
-            fontWeight: 600,
-            width: '150px',
-            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-            color: '#fff',
-          }}
-          variant="primary"
-        >
-          <Typography sx={{ color: '#fff' }}>Create Account</Typography>
-        </Button>
-      </Link>
+      <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
+      <Button
+        sx={{
+          mx: '15px',
+          fontWeight: 600,
+          width: '150px',
+          height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+          color: '#fff',
+        }}
+        variant="primary"
+      >
+        <Typography sx={{ color: '#fff' }}>
+          {FEATURED_HEADINGS.createAccount}
+        </Typography>
+      </Button>
     </Box>
   );
 };

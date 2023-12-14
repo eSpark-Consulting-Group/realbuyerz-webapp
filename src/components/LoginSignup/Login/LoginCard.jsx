@@ -20,8 +20,9 @@ import {
   LOGIN_ROUTERS,
 } from '@/app/constants/Login';
 import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
+import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 
-const LoginCard = () => {
+const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
   const router = useRouter();
@@ -31,8 +32,13 @@ const LoginCard = () => {
     setshowForgetPassword(true);
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
+  const handleSignIn = () => {
+    router.push(LOGIN_ROUTERS.signup);
+    dispatch(setOpenModal(false));
+  };
   const loginClick = () => {
     dispatch(saveLoginData(formData));
+    dispatch(setOpenModal(false));
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -129,7 +135,8 @@ const LoginCard = () => {
               label={LOGIN_FORM.signupForm.signup}
               accountCreationMessage={LOGIN_FORM.signupForm.label}
               loginButton={LOGIN_FORM.loginCard.googleLogin}
-              onSigninClick={() => router.push(LOGIN_ROUTERS.signup)}
+              onSigninClick={handleSignIn}
+              handleClose={handleClose}
               loginClick={loginClick}
             />
           </Box>

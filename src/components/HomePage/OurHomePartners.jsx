@@ -1,25 +1,29 @@
 'use client';
 import React from 'react';
-
+import { Box, Container } from '@mui/material';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
-import Image from 'next/image';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 import Link from 'next/link';
-import { Box, Container } from '@mui/material';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000, // 3 seconds per slide
-    arrows: false, // Hide arrows
+    autoplaySpeed: 0,
+    arrows: false,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    animationDelay: '2s',
+    rtl: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -41,40 +45,37 @@ const OurHomePartners = ({ data }) => {
       },
     ],
   };
-
   return (
-    <>
-      <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
-        <Heading heading={'Our Home Partners'} />
-        <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
-          <Slider {...sliderSettings}>
-            {data?.map((partner) => (
-              <Box key={partner?.id} sx={{ padding: '10px' }}>
-                <Box
-                  sx={{
-                    background: '#fff',
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Link href={`/partners/${partner?.id}`}>
-                    <Image
-                      src={partner?.image}
-                      alt={partner?.name}
-                      title={partner?.name}
-                      width={400}
-                      height={100}
-                    />
-                  </Link>
-                </Box>
+    <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
+      <Heading heading={FEATURED_HEADINGS.homePartners} />
+      <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
+        <Slider {...sliderSettings}>
+          {data?.map((partner) => (
+            <Box key={partner?.id} sx={{ padding: '10px' }}>
+              <Box
+                sx={{
+                  background: '#fff',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Link href={`/partners/${partner?.id}`}>
+                  <Image
+                    src={partner?.image}
+                    alt={partner?.name}
+                    title={partner?.name}
+                    width={400}
+                    height={100}
+                  />
+                </Link>
               </Box>
-            ))}
-          </Slider>
-        </Box>
-      </Container>
-    </>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
+    </Container>
   );
 };
 

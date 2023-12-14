@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,6 +8,7 @@ import Heading from './Heading';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/app/constants/Home';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -17,10 +18,10 @@ const scrollToTop = () => {
 };
 
 const PopularLocations = ({ data }) => {
-  const [filteredProposalsData, setFilteredProposalsData] = useState(
+  const [filteredProposalsData, setFilteredProposalsData] = React.useState(
     data?.filter((item) => item.type === 'sale')
   );
-  const [filterType, setFilterType] = useState('sale');
+  const [filterType, setFilterType] = React.useState('sale');
 
   const handleFilter = (type) => {
     setFilterType(type);
@@ -46,12 +47,10 @@ const PopularLocations = ({ data }) => {
     >
       <Container sx={{ px: '10%' }}>
         <Heading
-          heading={'Popular Locations'}
-          paragraph={
-            'To browse & buy in your areas of interest. Look of properties by category'
-          }
+          heading={FEATURED_HEADINGS.popularLocations}
+          paragraph={FEATURED_HEADINGS.browseProperty}
         />
-        <Box sx={{ pt: '14px', pb: '58px' }}>
+        <Box sx={{ pt: '14px', pb: '8px' }}>
           <Box sx={{ pt: '14px', pb: '58px' }}>
             <Button
               sx={{
@@ -67,7 +66,7 @@ const PopularLocations = ({ data }) => {
               <Typography
                 sx={{ color: filterType === 'sale' ? '#fff' : 'primary' }}
               >
-                For Sale
+                {FEATURE_BUTTONS.forSale}
               </Typography>
             </Button>
             <Button
@@ -86,7 +85,7 @@ const PopularLocations = ({ data }) => {
                 sx={{ color: filterType === 'rent' ? '#fff' : 'primary' }}
               >
                 {' '}
-                By Rent
+                {FEATURE_BUTTONS.byRent}
               </Typography>
             </Button>
           </Box>
@@ -128,9 +127,9 @@ const PopularLocations = ({ data }) => {
                   >
                     {item?.locations?.map((location, index) => (
                       <Box key={index}>
-                        <Link href={location?.link}>
+                        <Link href="/">
                           <Typography variant="body1" sx={{}}>
-                            {location?.name}
+                            {location}
                           </Typography>
                         </Link>
                         <br />
