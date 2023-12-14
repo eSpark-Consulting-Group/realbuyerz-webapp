@@ -28,7 +28,7 @@ const LoginCard = ({ handleClose }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const signUpData = useSelector((state) => state?.login?.signupFormData);
+  const signUpData = useSelector((state) => state?.auth?.signupFormData);
 
   const handleClick = () => {
     setshowForgetPassword(true);
