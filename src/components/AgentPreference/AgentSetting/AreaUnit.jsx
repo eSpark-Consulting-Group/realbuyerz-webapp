@@ -28,7 +28,6 @@ const AreaUnit = ({ measure, handleInputChange }) => {
             placeholder={item.placeholder}
             name={item.name}
             variant="outlined"
-            type="number"
             fullWidth
             onChange={handleInputChange}
             sx={{

@@ -12,13 +12,13 @@ export const AGENT_PREFERENCES = {
     {
       title: 'NewsLetter',
       description: 'Allow to stay updated & receive newsletter',
-      label: 'newsLetter',
+      label: 'newsLetters',
       value: false,
     },
     {
       title: 'Automated Reports',
       description: 'Allow to send us reports automatically incase of any issue',
-      label: 'automatedReports',
+      label: 'autoReport',
       value: false,
     },
   ],
@@ -26,7 +26,7 @@ export const AGENT_PREFERENCES = {
     {
       label: 'Currency',
       placeholder: 'PKR',
-      name: 'currency',
+      name: 'currencyUnit',
     },
     {
       label: 'Area Unit',
@@ -36,21 +36,22 @@ export const AGENT_PREFERENCES = {
   ],
 };
 
-export const PROPERTY_AREASIZE_AND_REPORT = {
-  report: {
-    emailNotification: false,
-    newsLetter: false,
-    automatedReports: false,
-    currency: '',
-    areaUnit: '',
-  },
-};
-export const PREFERENCE = [
-  {
-    emailNotification: false,
-    newsLetter: false,
-    automatedReports: false,
-    currency: '',
-    areaUnit: '',
-  },
-];
+// export const PROPERTY_AREASIZE_AND_REPORT = {
+//   report: {
+//     emailNotification: false,
+//     newsLetters: false,
+//     autoReport: false,
+//     currencyUnit: '',
+//     areaUnit: '',
+//   },
+// };
+
+// export const PREFERENCE = [
+//   {
+//     emailNotification: false,
+//     newsLetter: false,
+//     automatedReports: false,
+//     currency: '',
+//     areaUnit: '',
+//   },
+// ];
