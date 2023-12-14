@@ -1,4 +1,5 @@
 export const LOGIN_FORM = {
+  auth: 'auth',
   password: 'password',
   confirmPassword: 'confirmPassword',
   email: 'email',
@@ -73,6 +74,15 @@ export const LOGIN_FORM_DATA = {
   },
 };
 
+export const LOGIN_DATA = {
+  email: '',
+  password: '',
+  rememberCheck: false,
+};
+export const RESET_PASSWORD = {
+  password: '',
+  confirmPassword: '',
+};
 export const SIGN_IN = 'Sign in';
 export const LOGOUT = 'Logout';
 export const SETTINGS = 'My Account';

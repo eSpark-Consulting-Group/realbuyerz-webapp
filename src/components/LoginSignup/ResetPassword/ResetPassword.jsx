@@ -10,6 +10,8 @@ import {
 } from '@/app/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
+import { useDispatch } from 'react-redux';
+import { saveResetData } from '@/src/redux/slices/auth/authSlice';
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
@@ -27,6 +29,7 @@ const ResetPassword = () => {
     });
   };
   const router = useRouter();
+  const dispatch = useDispatch();
   const passwordsMatch = formData?.password === formData?.confirmPassword;
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
@@ -39,7 +42,9 @@ const ResetPassword = () => {
   const backToSignin = () => {
     router.push(LOGIN_ROUTERS.signin);
   };
-  const handleContinue = () => {};
+  const handleContinue = () => {
+    dispatch(saveResetData(formData));
+  };
   return (
     <Box
       sx={{
