@@ -2,12 +2,17 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
+import {
+  saveLoginData,
+  setLoggedIn,
+} from '@/src/redux/slices/login/loginSlice';
 import ModalSignin from '../Modal/ModalSignin';
 import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/app/constants/Login';
 
 const SignInButton = ({
-  dashboard,
+  isUserLoggedIn,
   handleOpenUserMenu,
   anchorElUser,
   handleCloseUserMenu,
@@ -15,11 +20,17 @@ const SignInButton = ({
   open,
   handleOpen,
 }) => {
+  const dispatch = useDispatch();
+
   const handleSetting = () => {};
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    dispatch(saveLoginData(''));
+    dispatch(setLoggedIn(false));
+    handleCloseUserMenu();
+  };
   return (
     <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
-      {dashboard ? (
+      {isUserLoggedIn === true ? (
         <>
           <Button
             sx={{
@@ -33,7 +44,7 @@ const SignInButton = ({
             onClick={handleOpenUserMenu}
           >
             <Image
-              src={'/Images/DashboardLogin.png'}
+              src={'/images/login.png'}
               width={80}
               height={40}
               alt="dashboardIcon"

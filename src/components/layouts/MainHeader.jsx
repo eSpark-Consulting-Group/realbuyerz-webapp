@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { PAGES } from '@/app/constants/Constants';
 import SignInButton from './SignInButton';
@@ -26,13 +26,12 @@ const MainHeader = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -44,7 +43,9 @@ const MainHeader = () => {
     setOpen(newOpenState);
     dispatch(setOpenModal(newOpenState));
   };
-  const dashboard = '';
+
+  const isUserLoggedIn = useSelector((state) => state?.login?.loggedInState);
+
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
@@ -161,7 +162,7 @@ const MainHeader = () => {
                 sx={{ display: { xs: 'block', sm: 'none', md: 'none' } }}
               >
                 <SignInResponsiveButton
-                  dashboard={dashboard}
+                  isUserLoggedIn={isUserLoggedIn}
                   handleOpenUserMenu={handleOpenUserMenu}
                   anchorElUser={anchorElUser}
                   handleCloseUserMenu={handleCloseUserMenu}
@@ -173,7 +174,7 @@ const MainHeader = () => {
             </Menu>
           </Box>
           <SignInButton
-            dashboard={dashboard}
+            isUserLoggedIn={isUserLoggedIn}
             handleOpenUserMenu={handleOpenUserMenu}
             anchorElUser={anchorElUser}
             handleCloseUserMenu={handleCloseUserMenu}

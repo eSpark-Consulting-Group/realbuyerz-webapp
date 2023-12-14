@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { FORM_LABEL, LOGIN_FORM } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/app/constants/Login';
 
 const PasswordAndConfirmFields = ({
   handleInputChange,
@@ -47,7 +47,9 @@ const PasswordAndConfirmFields = ({
       <TextField
         label={FORM_LABEL.confirmPassword}
         variant="outlined"
-        type={formData.showConfirmPassword ? 'text' : 'password'}
+        type={
+          formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password
+        }
         fullWidth
         name={LOGIN_FORM.confirmPassword}
         onChange={handleInputChange}
