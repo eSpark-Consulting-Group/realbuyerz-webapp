@@ -44,7 +44,7 @@ const SignInResponsiveButton = ({
             onClick={handleOpenUserMenu}
           >
             <Image
-              src={'/Images/DashboardLogin.png'}
+              src={'/Images/dashboardlogin.png'}
               width={80}
               height={40}
               alt="dashboardIcon"
