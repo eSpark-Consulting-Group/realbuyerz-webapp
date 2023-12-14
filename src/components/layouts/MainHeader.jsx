@@ -44,7 +44,7 @@ const MainHeader = () => {
     dispatch(setOpenModal(newOpenState));
   };
 
-  const isUserLoggedIn = useSelector((state) => state?.login?.loggedInState);
+  const isUserLoggedIn = useSelector((state) => state?.auth?.loggedInState);
 
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
