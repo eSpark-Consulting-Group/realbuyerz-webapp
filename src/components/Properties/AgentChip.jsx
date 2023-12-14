@@ -42,7 +42,7 @@ const Chips = ({ data }) => {
   const seenPropertyTypes = {};
 
   data?.forEach((property) => {
-    const key = `${property.agentData.name}-${property.propertyData.type}`;
+    const key = `${property?.agentData?.name}-${property?.propertyData?.propertyType}`;
     if (!seenPropertyTypes[key]) {
       uniqueAgentPropertyTypes?.push(key);
       seenPropertyTypes[key] = true;

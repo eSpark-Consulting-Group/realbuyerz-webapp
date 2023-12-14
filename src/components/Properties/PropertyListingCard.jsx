@@ -66,12 +66,12 @@ const PropertyListingCard = ({ propertyData }) => {
                 position: 'relative',
               }}
             >
-              <Link href={`/properties/${property.id}`}>
+              <Link href={`/properties/${property?.id}`}>
                 <Image
-                  src={property.coverImage}
+                  src={property?.coverImage}
                   layout="fill"
                   objectFit="cover"
-                  style={styles.image}
+                  style={styles?.image}
                   alt={''}
                   sx={{
                     borderRadius: '5px',
@@ -95,35 +95,35 @@ const PropertyListingCard = ({ propertyData }) => {
           >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
-                {PROPERTY_DETAILS.pkr}
+                {PROPERTY_DETAILS?.unit}
               </Typography>
               <Typography sx={{ fontSize: '25px', fontWeight: '600' }}>
-                {property.propertyData.propertyPrice}
+                {property?.propertyOverview?.price}
               </Typography>
             </Box>
             <Typography
               sx={{ fontSize: '16px', fontWeight: '400', pt: '30px' }}
             >
-              {property.propertyData.location.address}
+              {property?.propertyData?.propertyLocation?.address}
             </Typography>
             <Typography
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
-              {property.propertyData.area}
+              {property?.propertyData?.propertyArea}
             </Typography>
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
-              {property.propertyData.direction}
+              {property?.propertyData?.propertyDirection}
             </Typography>
             <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
-              {property.propertyData.description}
+              {property?.propertyDescription}
             </Typography>
             <div>
               <Typography
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
               >
-                {`${PROPERTY_DETAILS.posted} ${property.postedDate}`}
+                {`${PROPERTY_DETAILS.posted} ${property?.dateWords}`}
               </Typography>
             </div>
             <Box

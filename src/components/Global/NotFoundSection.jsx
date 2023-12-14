@@ -6,7 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { NOT_FOUND } from '@/app/constants/Global';
 
-const NotFoundSection = () => (
+const NotFoundSection = ({ heading, message }) => (
   <Box
     sx={{
       height: '90vh',
@@ -44,7 +44,7 @@ const NotFoundSection = () => (
                 fontWeight: '500',
               }}
             >
-              {NOT_FOUND?.pageTitle}
+              {heading || NOT_FOUND?.pageTitle}
             </Typography>
           </Box>
           <Box pb={'20px'}>
@@ -54,8 +54,7 @@ const NotFoundSection = () => (
                 color: '#333',
                 fontWeight: '400',
               }}
-            >
-              {NOT_FOUND?.errorDescription}
+            >{message || NOT_FOUND?.errorDescription}
             </Typography>
           </Box>
           <Box>

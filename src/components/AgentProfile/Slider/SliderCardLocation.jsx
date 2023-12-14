@@ -3,9 +3,8 @@ import { Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 
-import { HUB_RIVER_ROAD } from '@/app/constants/AgentProfile';
 
-const SliderCardLocation = () => {
+const SliderCardLocation = ({ location }) => {
   return (
     <Grid container justifyContent="flex-start" alignItems="center">
       <Grid item>
@@ -30,8 +29,7 @@ const SliderCardLocation = () => {
               lineHeight: 'normal',
               ml: 1,
             }}
-          >
-            {HUB_RIVER_ROAD}
+          >{location}
           </Typography>
         </Box>
       </Grid>

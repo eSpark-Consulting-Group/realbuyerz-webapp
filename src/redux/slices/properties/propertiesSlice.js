@@ -1,7 +1,8 @@
 import { PROPERTIES_LISTING } from '@/app/constants/Properties';
+import { PROPERTIES_DATA } from '@/app/constants/finalConstants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const properties = PROPERTIES_LISTING;
+const properties = PROPERTIES_DATA;
 
 const initialState = { properties };
 

@@ -1,5 +1,5 @@
-'use client';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Grid, Box } from '@mui/material';
 
 import Price from './PropertyPrice';
@@ -7,7 +7,17 @@ import AgentDescription from './AgentDescription';
 import ViewAgentProfile from './ViewAgentProfile';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
-const ProfileAgent = ({ agentData }) => {
+const ProfileAgent = ({ data }) => {
+  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+
+  const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
+  console.log("selectedAgent", selectedAgent);
+
+  if (!selectedAgent) {
+    console.error(`Agent with id ${data} not found`);
+    // Remove 'return null;' to allow the execution of the JSX block below
+  }
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={12}>
@@ -33,23 +43,24 @@ const ProfileAgent = ({ agentData }) => {
           }}
         >
           <Price
-            price={agentData?.agentData?.price}
-            link={agentData?.agentData?.chatLink}
-            pkr={PROPERTY_ESTATE.propertyDetails.pkr}
-            reach={PROPERTY_ESTATE.propertyDetails.reach}
-            message={PROPERTY_ESTATE.propertyDetails.message}
+            price={data?.propertyData?.agentPrice}
+            link={`/agents/inbox/${selectedAgent?.id}`}
+            pkr={PROPERTY_ESTATE?.propertyDetails?.unit}
+            reach={PROPERTY_ESTATE?.propertyDetails?.reach}
+            message={PROPERTY_ESTATE?.propertyDetails?.message}
           />
           <ViewAgentProfile
-            image={agentData?.agentData?.profileimage}
-            name={agentData?.agentData?.name}
-            link={agentData?.agentData?.profileLink}
+            image={selectedAgent?.profileImage}
+            name={`${selectedAgent?.firstName} ${selectedAgent?.lastName} `}
+            link={`agents/${selectedAgent?.id}`}
           />
           <AgentDescription
-            description={agentData?.agentData?.agentDescription}
+            description={selectedAgent?.about}
           />
         </Box>
       </Grid>
     </Grid>
   );
 };
+
 export default ProfileAgent;
