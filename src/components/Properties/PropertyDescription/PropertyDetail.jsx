@@ -3,14 +3,14 @@ import { Box, Grid } from '@mui/material';
 
 import PropertyTitle from './PropertyTitle';
 import PropertyDemand from './PropertyDemand';
-import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
 import PropertyDescription from './PropertyDescription';
-import PropertyOverview from '../PropertyOverview/PropertyOverview';
+import PropertyLocation from './PropertyLocation';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
+import PropertyOverview from '../PropertyOverview/PropertyOverview';
 
 const PropertyDetails = ({ propertyDetailsData }) => {
   const properties = useSelector((state) => state.properties.properties);
@@ -35,13 +35,7 @@ const PropertyDetails = ({ propertyDetailsData }) => {
             description={propertyDetailsData.propertyData.description}
             heading={PROPERTY_ESTATE.propertyDetails.decription}
           />
-          <PropertyMapLocation
-            locationpurpose={propertyDetailsData.propertyData.location.purpose}
-            propertyType={
-              propertyDetailsData.propertyData.location.propertyType
-            }
-            city={propertyDetailsData.propertyData.location.city}
-          />
+          <PropertyLocation propertyData={propertyDetailsData.propertyData} />
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
               amenities={propertyDetailsData.propertyData.amenities}

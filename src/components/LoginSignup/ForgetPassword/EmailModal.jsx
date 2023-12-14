@@ -44,13 +44,14 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
         >
           <Box
             sx={{
+              width: { xs: '100%', sm: '50%', md: '500px' },
+              margin: 'auto',
+              height: ' 400px',
+              background: '#fff',
               display: 'flex',
-              justifyContent: 'space-between',
-              width: { xs: '90%', sm: '80%', md: '360px' },
-              height: '270px',
-              '@media (max-width: 600px) and (min-width: 390px)': {
-                width: '60% ',
-              },
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: '10px',
             }}
           >
             <Box
