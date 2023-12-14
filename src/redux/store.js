@@ -17,7 +17,6 @@ import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import verificationSlice from './slices/verification/verificationSlice';
-import preferenceSlice from './slices/preference/preferenceSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
 import authSlice from './slices/auth/authSlice';
@@ -41,7 +40,6 @@ export const store = configureStore({
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
     verification: verificationSlice,
-    preference: preferenceSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,

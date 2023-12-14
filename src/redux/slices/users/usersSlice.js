@@ -16,11 +16,31 @@ const initialState = { users };
 // }
 
 const usersSlice = createSlice({
-  name: 'users',
+  name: USERS_DATA.users,
   initialState,
-  reducers: {},
+  reducers: {
+    savePreferenceData: (state, action) => {
+      const {
+        emailNotification,
+        newsLetters,
+        autoReport,
+        areaUnit,
+        currencyUnit,
+      } = action.payload;
+      state.users.userdata.emailNotification = emailNotification;
+      state.users.userdata.newsLetters = newsLetters;
+      state.users.userdata.autoReport = autoReport;
+      state.users.userdata.areaUnit = areaUnit;
+      state.users.userdata.currencyUnit = currencyUnit;
+    },
+  },
 });
 
-export const { adduser, updateuser, deleteuser, selectuser } =
-  usersSlice.actions;
+export const {
+  adduser,
+  updateuser,
+  deleteuser,
+  selectuser,
+  savePreferenceData,
+} = usersSlice.actions;
 export default usersSlice.reducer;
