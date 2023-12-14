@@ -52,7 +52,6 @@ const SignupCard = () => {
       formData[LOGIN_FORM.password] !== formData[LOGIN_FORM.confirmPassword]
     ) {
       alert('Password and Confirm Password do not match');
-      return;
     }
     dispatch(saveSignupData(formData));
   };

@@ -43,8 +43,8 @@ const MainHeader = () => {
     setOpen(newOpenState);
     dispatch(setOpenModal(newOpenState));
   };
-  const signUpData = useSelector((state) => state.login.signupFormData);
-  const loginData = useSelector((state) => state.login.loginFormData);
+  const signUpData = useSelector((state) => state?.login?.signupFormData);
+  const loginData = useSelector((state) => state?.login?.loginFormData);
   let isUserLoggedIn;
 
   if (

@@ -22,7 +22,6 @@ const SignInButton = ({
 
   const handleSetting = () => {};
   const handleLogout = () => {
-    // dispatch(saveSignupData({}));
     dispatch(saveLoginData(''));
     handleCloseUserMenu();
   };
