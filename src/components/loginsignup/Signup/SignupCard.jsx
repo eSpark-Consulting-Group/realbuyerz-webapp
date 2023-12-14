@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 
-import { saveSignupData } from '@/src/redux/slices/login/loginSlice';
+import { saveSignupData } from '@/src/redux/slices/auth/authSlice';
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
