@@ -22,9 +22,6 @@ import preferenceSlice from './slices/preference/preferenceSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import loginSlice from './slices/login/loginSlice';
 import signinSlice from './slices/signin/signinSlice';
-import coverLetterSlice from './slices/coverletter/coverLetterSlice';
-import PostRequest from '@/app/dashboard/post-request/page';
-import postRequestSlice from './slices/postRequest/postRequestSlice';
 
 export const store = configureStore({
   reducer: {
@@ -50,7 +47,5 @@ export const store = configureStore({
     resendEmail: resendEmailSlice,
     login: loginSlice,
     signin: signinSlice,
-    coverLetter: coverLetterSlice,
-    postRequest: postRequestSlice
   },
 });

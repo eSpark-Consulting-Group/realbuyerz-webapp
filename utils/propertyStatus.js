@@ -1,5 +1,4 @@
 import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
-import { savePropertyData } from '@/src/redux/slices/postlisting/postListingSlice';
 
 export const createPropertyStatusState = ({
   propertySell,
@@ -13,38 +12,4 @@ export const createPropertyStatusState = ({
     purposeData: propertySell.map((item) => ({ ...item, value: '' })),
   };
   return { propertyStatusData };
-};
-
-export const handleClick = (dispatch, propertyData) => {
-  dispatch({
-    type: savePropertyData,
-    payload: propertyData.propertyStatusData.sellingData,
-  });
-  console.log(propertyData);
-};
-export const handleButtonClickUtil = (
-  index,
-  prevData,
-  setPropertyData,
-  propertySell
-) => {
-  if (propertySell && Array.isArray(propertySell) && propertySell[index]) {
-    const selectedText = propertySell[index].text;
-    const updatedPurposeData = [...prevData.propertyStatusData.purposeData];
-    updatedPurposeData[index].value = selectedText;
-    const updatedSellingData = {
-      ...prevData.propertyStatusData.sellingData,
-      selectedPurpose: selectedText,
-    };
-    const updatedPropertyData = {
-      ...prevData,
-      propertyStatusData: {
-        sellingData: updatedSellingData,
-        purposeData: updatedPurposeData,
-      },
-    };
-    setPropertyData(updatedPropertyData);
-  } else {
-    console.error('Invalid propertySell or index');
-  }
 };
