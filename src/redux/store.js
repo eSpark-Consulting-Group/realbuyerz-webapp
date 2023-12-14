@@ -16,7 +16,7 @@ import agentsSlice from './slices/agents/agentsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
-import postListingSlice from './slices/postlisting/postListingSlice';
+import postListingSlice from './slices/buyingForm/buyingSlice';
 import verificationSlice from './slices/verification/verificationSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
@@ -40,7 +40,7 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-    PostListing: postListingSlice,
+    BuyingSellingForm: postListingSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,

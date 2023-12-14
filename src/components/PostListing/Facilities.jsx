@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
-import { addAmenities } from '@/src/redux/slices/postlisting/postListingSlice';
+import { addAmenities } from '@/src/redux/slices/buyingForm/buyingSlice';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
