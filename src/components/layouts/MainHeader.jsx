@@ -43,20 +43,9 @@ const MainHeader = () => {
     setOpen(newOpenState);
     dispatch(setOpenModal(newOpenState));
   };
-  const signUpData = useSelector((state) => state?.login?.signupFormData);
-  const loginData = useSelector((state) => state?.login?.loginFormData);
-  let isUserLoggedIn;
 
-  if (
-    signUpData &&
-    loginData &&
-    signUpData.email === loginData.email &&
-    signUpData.password === loginData.password
-  ) {
-    isUserLoggedIn = loginData;
-  } else {
-    isUserLoggedIn = '';
-  }
+  const isUserLoggedIn = useSelector((state) => state?.login?.loggedInState);
+
   return (
     <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
       <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>

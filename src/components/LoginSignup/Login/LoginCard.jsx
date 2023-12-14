@@ -7,7 +7,6 @@ import {
   Checkbox,
   Button,
 } from '@mui/material';
-
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,9 +17,13 @@ import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
+  NOT_MATCH,
 } from '@/app/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
+import {
+  saveLoginData,
+  setLoggedIn,
+} from '@/src/redux/slices/login/loginSlice';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -45,8 +48,9 @@ const LoginCard = ({ handleClose }) => {
       signUpData.password === formData.password
     ) {
       router.push('/');
+      dispatch(setLoggedIn(true));
     } else {
-      alert('Email or password does not match.');
+      alert(NOT_MATCH);
     }
 
     dispatch(saveLoginData(formData));

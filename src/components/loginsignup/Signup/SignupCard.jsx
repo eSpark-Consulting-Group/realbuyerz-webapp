@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 
 import { saveSignupData } from '@/src/redux/slices/login/loginSlice';
-
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
+  PASSWORD_ALERT,
 } from '@/app/constants/Login';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
 import FormContainer from '../Login/LoginForm';
@@ -51,7 +51,7 @@ const SignupCard = () => {
     if (
       formData[LOGIN_FORM.password] !== formData[LOGIN_FORM.confirmPassword]
     ) {
-      alert('Password and Confirm Password do not match');
+      alert(PASSWORD_ALERT);
     }
     dispatch(saveSignupData(formData));
   };
