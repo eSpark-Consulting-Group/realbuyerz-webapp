@@ -117,6 +117,7 @@ const LoginWithGoogle = ({
             color: '#FB631C',
             fontWeight: 400,
             fontSize: { xs: '12px', md: '16px' },
+            cursor: 'pointer',
           }}
           onClick={() => {
             onSigninClick();
