@@ -44,7 +44,7 @@ const SignInButton = ({
             onClick={handleOpenUserMenu}
           >
             <Image
-              src={'/Images/login.png'}
+              src={'/images/login.png'}
               width={80}
               height={40}
               alt="dashboardIcon"
