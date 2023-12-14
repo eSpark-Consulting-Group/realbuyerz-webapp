@@ -41,6 +41,7 @@ const LoginCard = ({ handleClose }) => {
     router.push(LOGIN_ROUTERS.signup);
     dispatch(setOpenModal(false));
   };
+
   const loginClick = () => {
     if (
       signUpData &&
