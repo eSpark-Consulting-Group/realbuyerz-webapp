@@ -6,7 +6,7 @@ import {
   addBathrooms,
   addBedrooms,
   addParking,
-} from '@/src/redux/slices/buyingForm/buyingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const Counter = ({ identifier }) => {
   const [number, setNumber] = React.useState(0);

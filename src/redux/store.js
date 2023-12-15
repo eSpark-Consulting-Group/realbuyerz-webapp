@@ -16,11 +16,11 @@ import agentsSlice from './slices/agents/agentsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
-import postListingSlice from './slices/buyingForm/buyingSlice';
 import verificationSlice from './slices/verification/verificationSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
 import authSlice from './slices/auth/authSlice';
+import buyingSellingSlice from './slices/buyingForm/buyingSellingSlice';
 
 export const store = configureStore({
   reducer: {
@@ -40,7 +40,7 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-    BuyingSellingForm: postListingSlice,
+    buyingSellingForm: buyingSellingSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,

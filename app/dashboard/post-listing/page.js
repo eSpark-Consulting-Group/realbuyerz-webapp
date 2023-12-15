@@ -20,7 +20,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import {
   UploadImages,
   UploadVideos,
-} from '@/src/redux/slices/buyingForm/buyingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PostListing = () => {
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);

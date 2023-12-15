@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
 import { useDispatch } from 'react-redux';
-import { addArea, addamount } from '@/src/redux/slices/buyingForm/buyingSlice';
+import {
+  addArea,
+  addamount,
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,

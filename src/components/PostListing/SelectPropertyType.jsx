@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import {
   addPropertyType,
   addpropetySubType,
-} from '@/src/redux/slices/buyingForm/buyingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const SelectProperyType = ({
   image,

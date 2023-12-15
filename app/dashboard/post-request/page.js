@@ -21,7 +21,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import {
   UploadImages,
   UploadVideos,
-} from '@/src/redux/slices/buyingForm/buyingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PostRequest = () => {
   const PostRequestSelectedData = useSelector((state) => state?.postRequest);
