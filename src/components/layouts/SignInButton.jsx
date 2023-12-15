@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import ModalSignin from '../Modal/ModalSignin';
 import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/app/constants/Login';
+import { useRouter } from 'next/navigation';
 
 const SignInButton = ({
   isUserLoggedIn,
@@ -18,12 +19,14 @@ const SignInButton = ({
   handleOpen,
 }) => {
   const dispatch = useDispatch();
+  const router = useRouter()
 
   const handleSetting = () => {};
   const handleLogout = () => {
     dispatch(saveLoginData(''));
     dispatch(setLoggedIn(false));
     handleCloseUserMenu();
+    router.push('/')
   };
   return (
     <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>

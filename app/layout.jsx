@@ -11,13 +11,17 @@ import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '@/app/constants/Constants';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { store } from '@/src/redux/store';
 
 import Link from 'next/link';
+import Dashboard from '@/src/components/layouts/Dashboard';
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
+
+  // const roleType = useSelector((state) => state?.auth?.signupFormData.usertype);
+  // console.log(roleType, 'role')
 
   return (
     <html lang="en">
@@ -44,6 +48,7 @@ const RootLayout = ({ children }) => {
                 <MainHeader />
               )}
               <Box>{children}</Box>
+              {/* <Dashboard /> */}
               <Footer data={FOOTER_DATA} />
             </Box>
           </ThemeProvider>
