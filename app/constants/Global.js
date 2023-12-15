@@ -8,4 +8,5 @@ export const NOT_FOUND = {
   pageTitle: 'Oops!',
   errorDescription: 'Error 404: Page Not Found',
   backButtonLabel: 'Back to Home',
+  backButtonLink: '/',
 };

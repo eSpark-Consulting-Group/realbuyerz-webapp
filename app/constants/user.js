@@ -25,6 +25,8 @@ export const USERS_DATA = {
   area: 'Gulistn e Johar',
   address: '301/A, Blossom Trade Center  ',
   country: 'Pakistan',
+  timeZone: 'GST +5:00',
+  time: '3:16pm',
   about:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', //string
   properties: [1, 2, 3, 4],

@@ -144,7 +144,7 @@ const ProposalFilter = ({ data }) => {
           }}
         >
           <Link
-            href={CONSTANTS.resetButton.link}
+            href={CONSTANTS?.resetButton?.link}
             onClick={handleClearButtonClick}
           >
             <Typography
@@ -154,7 +154,7 @@ const ProposalFilter = ({ data }) => {
                 marginBottom: '15px',
               }}
             >
-              {CONSTANTS.resetButton.text}
+              {CONSTANTS?.resetButton?.text}
             </Typography>
           </Link>
         </Box>
@@ -170,8 +170,8 @@ const ProposalFilter = ({ data }) => {
               sx={{ background: '#fff' }}
             >
               {LISTING_TYPE.map((item) => (
-                <MenuItem key={item.value} value={item.value}>
-                  {item.label}
+                <MenuItem key={item?.value} value={item?.value}>
+                  {item?.label}
                 </MenuItem>
               ))}
             </Select>

@@ -6,13 +6,13 @@ import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import ProposalListingCard from './ProposalListingCard';
-import { getUniqueProposalStatus } from '@/utils/propertyFilter';
 import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
 import {
   countFilteredData,
   filterDataBySearch,
   filterPropertiesByStatus,
 } from '@/utils/SearchFilter';
+import { getUniqueProposalStatus } from '@/utils/proposalFilter';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
@@ -123,7 +123,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
             height: '100vh',
           }}
         >
-          {displayData.length > 0 ? (
+          {displayData?.length > 0 ? (
             <ProposalListingCard proposalsData={displayData} />
           ) : (
             <Box

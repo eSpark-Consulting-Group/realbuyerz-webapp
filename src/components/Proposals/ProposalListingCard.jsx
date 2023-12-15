@@ -12,7 +12,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
-import { useRouter } from 'next/navigation';
 
 const styles = {
   container: {
@@ -37,18 +36,12 @@ const styles = {
 const ProposalListingCard = ({ proposalsData }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const router = useRouter();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
   const currentItems = proposalsData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
-  };
-  const proposalId = 1;
-  const handleClick = () => {
-    router.push(`/dashboard/proposals/${proposalId}`);
   };
 
   return (
@@ -80,17 +73,18 @@ const ProposalListingCard = ({ proposalsData }) => {
                 position: 'relative',
               }}
             >
-              <Image
-                src={proposal.imageUrl}
-                layout="fill"
-                objectFit="cover"
-                style={styles.image}
-                alt=""
-                sx={{
-                  borderRadius: '5px ',
-                }}
-                onClick={handleClick}
-              />
+              <Link href={`./proposals/${proposal?.id}`}>
+                <Image
+                  src={proposal?.coverImage}
+                  layout="fill"
+                  objectFit="cover"
+                  style={styles.image}
+                  alt=""
+                  sx={{
+                    borderRadius: '5px ',
+                  }}
+                />
+              </Link>
             </Box>
           </Grid>
           <Grid
@@ -112,18 +106,20 @@ const ProposalListingCard = ({ proposalsData }) => {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Typography
-                  sx={{
-                    fontSize: '25px',
-                    fontWeight: '600',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {proposal.title}
-                </Typography>
+                <Link href={`./proposals/${proposal?.id}`}>
+                  <Typography
+                    sx={{
+                      fontSize: '25px',
+                      fontWeight: '600',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {proposal?.proposalTitle}
+                  </Typography>
+                </Link>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`./proposals/${proposal.id}`}>
+                <Link href={`./proposals/${proposal?.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       {RESTORE_PROPERTY}
@@ -135,44 +131,46 @@ const ProposalListingCard = ({ proposalsData }) => {
             <Divider sx={{ py: '5px' }} />
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
-                {Object.keys(proposal.location).map((key) => {
-                  if (key !== 'geoLocation' && key !== 'area') {
-                    return (
-                      <Box
-                        key={key}
-                        sx={{
-                          display: 'flex',
-                          pt: '10px',
-                          gap: '5px',
-                        }}
-                      >
-                        <Typography
+                {Object.keys(proposal?.propertyData?.propertyLocation).map(
+                  (key) => {
+                    if (key !== 'geoLocation' && key !== 'area') {
+                      return (
+                        <Box
+                          key={key}
                           sx={{
-                            fontWeight: 700,
-                            color: '#333',
-                            fontStyle: 'normal',
-                            lineHeight: 'normal',
-                            fontSize: '14px',
+                            display: 'flex',
+                            pt: '10px',
+                            gap: '5px',
                           }}
                         >
-                          {key}:
-                        </Typography>
-                        <Typography
-                          sx={{
-                            color: '#126FAA',
-                            fontWeight: 600,
-                            fontStyle: 'normal',
-                            lineHeight: 'normal',
-                            fontSize: '14px',
-                          }}
-                        >
-                          {proposal.location[key]}
-                        </Typography>
-                      </Box>
-                    );
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              color: '#333',
+                              fontStyle: 'normal',
+                              lineHeight: 'normal',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {key}:
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: '#126FAA',
+                              fontWeight: 600,
+                              fontStyle: 'normal',
+                              lineHeight: 'normal',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {proposal?.propertyData?.propertyLocation[key]}
+                          </Typography>
+                        </Box>
+                      );
+                    }
+                    return null;
                   }
-                  return null;
-                })}
+                )}
               </Grid>
               <Grid item xs={2} sx={{ justifyContent: 'center' }}>
                 <Box
@@ -204,7 +202,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                       fontSize: '14px',
                     }}
                   >
-                    {proposal.amount}
+                    {proposal?.propertyOverview?.price}
                   </Typography>
                 </Box>
               </Grid>
@@ -213,10 +211,10 @@ const ProposalListingCard = ({ proposalsData }) => {
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
             >
-              {proposal.direction}
+              {proposal?.propertyData?.propertyDirection}
             </Typography>
             <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
-              {proposal.description}
+              {proposal?.proposalDescription}
             </Typography>
           </Grid>
         </Grid>
@@ -224,7 +222,7 @@ const ProposalListingCard = ({ proposalsData }) => {
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(proposalsData.length / itemsPerPage)}
+          count={Math.ceil(proposalsData?.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"

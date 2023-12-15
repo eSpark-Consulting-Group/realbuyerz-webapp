@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
-import AgentChip from './AgentChip';
+// import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
 const CustomTabPanel = ({ data, value, index, propertyType }) => {
@@ -98,11 +98,11 @@ const PropertyTabs = ({ data }) => {
       : data.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
-  const isAgent = 'true';
-  const agenttab = value;
+  // const isAgent = 'flase';
+  // const agenttab = value;
   return (
     <>
-      {isAgent == 'true' && (
+      {/* {isAgent == 'true' && (
         <AgentChip
           data={filteredProperties}
           chips={agenttab}
@@ -111,7 +111,7 @@ const PropertyTabs = ({ data }) => {
           color="primary"
           sx={{ mb: 2 }}
         />
-      )}
+      )} */}
 
       <Box
         sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}

@@ -1,18 +1,29 @@
 import React from 'react';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import { Proposals } from '@/app/constants/Proposals';
 
-const ProposalHeader = ({ header }) => {
+const ProposalHeader = ({ proposal }) => {
+  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+
+  const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
+  console.log('selectedAgent', selectedAgent);
+
+  if (!selectedAgent) {
+    console.error(`Agent with id ${proposal} not found`);
+    // Remove 'return null;' to allow the execution of the JSX block below
+  }
+
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
         <Box>
           <Image
-            src={header?.avatar}
+            src={selectedAgent?.profileImage}
             width={60}
             height={60}
             sx={{ borderRadius: '50%' }}
@@ -28,7 +39,8 @@ const ProposalHeader = ({ header }) => {
               fontWeight: '500',
             }}
           >
-            {header?.agentName}
+            {`${selectedAgent?.firstName} ${selectedAgent?.lastName}`}
+            {proposal?.agentName}
           </Typography>
           <br />
           <LocationOnIcon />
@@ -40,8 +52,8 @@ const ProposalHeader = ({ header }) => {
               fontWeight: '500',
             }}
           >
-            {header?.city}, {header?.country} - {header?.time}{' '}
-            {header?.timeZone}
+            {`${selectedAgent?.city}, ${selectedAgent?.country} - ${selectedAgent?.time} 
+            ${selectedAgent?.timeZone}`}
           </Typography>
         </Box>
       </Grid>

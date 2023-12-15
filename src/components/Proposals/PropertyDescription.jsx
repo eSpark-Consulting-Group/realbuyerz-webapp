@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const PropertyDescription = ({ details }) => {
+const PropertyDescription = ({ proposal }) => {
   return (
     <div>
       <Typography
@@ -24,7 +24,7 @@ const PropertyDescription = ({ details }) => {
         }}
         variant="h3"
       >
-        {details?.title}
+        {proposal?.proposalTitle}
       </Typography>
       <Typography
         sx={{
@@ -34,7 +34,7 @@ const PropertyDescription = ({ details }) => {
           fontWeight: '400',
         }}
       >
-        {details?.description}
+        {proposal?.proposalDescription}
       </Typography>
     </div>
   );

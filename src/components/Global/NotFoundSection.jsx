@@ -1,12 +1,13 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Box, Grid, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { NOT_FOUND } from '@/app/constants/Global';
 
-const NotFoundSection = ({ heading, message }) => (
+const NotFoundSection = ({ heading, message, link, goBackTo }) => (
   <Box
     sx={{
       height: '90vh',
@@ -59,20 +60,22 @@ const NotFoundSection = ({ heading, message }) => (
             </Typography>
           </Box>
           <Box>
-            <Button
-              variant="primary"
-              type="button"
-              sx={{
-                width: 'auto',
-                height: { xs: '35px', sm: '45px' },
-                textTransform: 'uppercase',
-                borderRadius: '5px',
-                '&:hover': { color: '#fff' },
-              }}
-            >
-              <ArrowBackIosIcon />
-              {NOT_FOUND?.backButtonLabel}
-            </Button>
+            <Link href={link || NOT_FOUND?.backButtonLink}>
+              <Button
+                variant="primary"
+                type="button"
+                sx={{
+                  width: 'auto',
+                  height: { xs: '35px', sm: '45px' },
+                  textTransform: 'uppercase',
+                  borderRadius: '5px',
+                  '&:hover': { color: '#fff' },
+                }}
+              >
+                <ArrowBackIosIcon />
+                {goBackTo || NOT_FOUND?.backButtonLabel}
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Grid>

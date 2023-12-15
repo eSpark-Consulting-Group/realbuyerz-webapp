@@ -32,7 +32,8 @@ const PropertyListingCard = ({ propertyData }) => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = propertyData?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems =
+    propertyData?.slice(indexOfFirstItem, indexOfLastItem) || [];
 
   const handlePageChange = (value) => {
     setCurrentPage(value);
@@ -95,7 +96,7 @@ const PropertyListingCard = ({ propertyData }) => {
           >
             <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
-                {PROPERTY_DETAILS?.unit}
+                {property?.propertyOverview?.unit}
               </Typography>
               <Typography sx={{ fontSize: '25px', fontWeight: '600' }}>
                 {property?.propertyOverview?.price}
@@ -109,7 +110,7 @@ const PropertyListingCard = ({ propertyData }) => {
             <Typography
               sx={{ fontSize: '16px', fontWeight: '600', pt: '15px' }}
             >
-              {property?.propertyData?.propertyArea}
+              {`${property?.propertyData?.propertyArea} ${property?.propertyData?.propertyAreaUnit} `}
             </Typography>
             <Typography
               sx={{ fontSize: '18px', fontWeight: '600', pt: '15px' }}
