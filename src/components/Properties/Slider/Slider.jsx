@@ -22,9 +22,6 @@ const Slider = ({ propertySlider }) => {
               width: '100%',
               height: '100%',
               borderRadius: '15px',
-              '@media only screen and (max-width: 940px)': {
-                  width: '130%',
-              },
             }}
           >
             {propertySlider?.sliderImages?.map((item, index) => (
@@ -32,8 +29,8 @@ const Slider = ({ propertySlider }) => {
                 <Image
                   src={item}
                   alt={`Slide ${index + 1}`}
-                  width={870}
-                  height={500}
+                  width={970}
+                  height={550}
                   sx={{
                     objectFit: 'cover',
                     borderRadius: '20px',

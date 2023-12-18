@@ -15,8 +15,8 @@ const ViewAgentProfile = ({ image, name, link }) => {
         background: 'white',
         borderRadius: 2,
         border: '1px solid #e0e0e0',
-        marginTop: "40px",
-        gap:"20px"
+        marginTop: '40px',
+        gap: '20px',
       }}
     >
       <Box

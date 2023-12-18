@@ -12,6 +12,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
           fontSize: { xs: '20px', md: '27px' },
           fontWeight: 700,
           wordBreak: 'break-word',
+          paddingBottom: '10px',
         }}
       >
         {pkr} {price}

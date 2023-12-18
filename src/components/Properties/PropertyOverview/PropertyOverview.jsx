@@ -68,7 +68,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           color: 'white',
                           backgroundColor: 'black',
                           overflow: 'hidden',
-                          border:"none"
+                          border: 'none',
                         }}
                       >
                         {propertytype?.label}
