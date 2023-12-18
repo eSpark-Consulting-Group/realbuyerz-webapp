@@ -1,5 +1,5 @@
 // pages/dashboard/agent.js
-'use client'
+'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const AgentDashboard = () => {
   const router = useRouter();
   const role = useSelector((state) => state?.auth?.signupFormData?.usertype);
-    const roleType = role.toString()
+  const roleType = role.toString();
 
   // Check if the user type is 'agent', otherwise redirect to the user dashboard
   if (roleType !== 'agent') {

@@ -19,14 +19,14 @@ const SignInButton = ({
   handleOpen,
 }) => {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSetting = () => {};
   const handleLogout = () => {
     dispatch(saveLoginData(''));
     dispatch(setLoggedIn(false));
     handleCloseUserMenu();
-    router.push('/')
+    router.push('/');
   };
   return (
     <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>

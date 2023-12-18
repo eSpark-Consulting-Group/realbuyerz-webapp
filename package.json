@@ -28,6 +28,7 @@
     "@mui/system": "^5.14.14",
     "@reduxjs/toolkit": "^1.9.7",
     "cookie": "^0.6.0",
+    "cookies-next": "^4.1.0",
     "formik": "^2.4.5",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",

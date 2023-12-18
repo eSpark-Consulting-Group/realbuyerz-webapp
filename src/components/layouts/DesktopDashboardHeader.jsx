@@ -25,6 +25,9 @@ import {
   CUSTOM_COLOR,
 } from '@/app/constants/DashboardHeader';
 import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
+import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 const DesktopDashboardHeader = ({
   headerMenu,
@@ -36,12 +39,16 @@ const DesktopDashboardHeader = ({
   isloggedIn,
 }) => {
   const [search, setSearch] = useState();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const searchInput = (e) => {
     setSearch(e.target.value);
   };
   const handleLogout = () => {
     handleCloseLoginMenu();
+    dispatch(setLoggedIn(false));
+    router.push('/');
   };
   return (
     <Box

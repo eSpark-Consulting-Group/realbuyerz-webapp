@@ -39,23 +39,14 @@ const LoginCard = ({ handleClose }) => {
     dispatch(setOpenModal(false));
   };
 
-  const roleType = useSelector((state) => state?.auth?.signupFormData?.usertype);
-  let userRole = roleType?.toString();
   const loginClick = () => {
-
     if (
       signUpData &&
       signUpData.email === formData.email &&
       signUpData.password === formData.password
     ) {
-      // Redirect to the appropriate route based on roleType
-      if (userRole === 'user') {
-        router.push('/user');
-      } else if (userRole === 'agent') {
-        router.push('/agents');
-      }
-
       dispatch(setLoggedIn(true));
+      router.push('/dashboard');
     } else {
       alert(NOT_MATCH);
     }
