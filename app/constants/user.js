@@ -1,4 +1,5 @@
 export const USERS_DATA = {
+  users: 'users', //for constants
   id: 1,
   userName: 'Arman Khan',
   profileImage: '/images/profile.png',
@@ -43,10 +44,10 @@ export const USERS_DATA = {
   availableConnects: 50, // 0-100%
   areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
   currencyUnit: 'pkr', // pkr or usd etx
-  autoReport: true, // true or false
+  autoReport: false, // true or false
   verificationStatus: true, // true or false
-  emailNotification: true, // true or false
-  newsLetters: true, // true or false
+  emailNotification: false, // true or false
+  newsLetters: false, // true or false
   onlineStatus: true,
   counts: {
     totalCount: 150,

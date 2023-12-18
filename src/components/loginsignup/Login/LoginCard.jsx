@@ -7,27 +7,29 @@ import {
   Checkbox,
   Button,
 } from '@mui/material';
-
 import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import {
+  LOGIN_DATA,
   LOGIN_FORM,
-  LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
+  NOT_MATCH,
 } from '@/app/constants/Login';
-import { saveLoginData } from '@/src/redux/slices/login/loginSlice';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
+import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
-  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
+  const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
 
   const dispatch = useDispatch();
+  const signUpData = useSelector((state) => state?.auth?.signupFormData);
+
   const handleClick = () => {
     setshowForgetPassword(true);
     router.push(LOGIN_ROUTERS.forgetPassword);
@@ -36,7 +38,19 @@ const LoginCard = ({ handleClose }) => {
     router.push(LOGIN_ROUTERS.signup);
     dispatch(setOpenModal(false));
   };
+
   const loginClick = () => {
+    if (
+      signUpData &&
+      signUpData.email === formData.email &&
+      signUpData.password === formData.password
+    ) {
+      router.push('/');
+      dispatch(setLoggedIn(true));
+    } else {
+      alert(NOT_MATCH);
+    }
+
     dispatch(saveLoginData(formData));
     dispatch(setOpenModal(false));
   };
@@ -128,6 +142,12 @@ const LoginCard = ({ handleClose }) => {
                   color: '#777777',
                   fontSize: { xs: '5px', md: '10px' },
                 }}
+                onChange={(e) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    rememberCheck: e.target.checked,
+                  }))
+                }
               />
             </Box>
             <LoginWithGoogle

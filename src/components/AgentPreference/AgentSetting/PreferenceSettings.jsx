@@ -8,7 +8,7 @@ import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 import { createInitialState } from '@/utils/agentPreferenceState';
-import { savePreferenceData } from '@/src/redux/slices/preference/preferenceSlice';
+import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);

@@ -3,11 +3,12 @@ import { Box, Grid } from '@mui/material';
 
 import PropertyTitle from './PropertyTitle';
 import PropertyDemand from './PropertyDemand';
-import PropertyMapLocation from './PropertyMapLocation';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
-import PropertyDescription from './PropertyDescription';
 import PropertyOverview from '../PropertyOverview/PropertyOverview';
+import PropertyDescription from './PropertyDescription';
+import PropertyMapLocation from './PropertyMapLocation';
+
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const PropertyDetails = ({ propertyDetailsData }) => {
