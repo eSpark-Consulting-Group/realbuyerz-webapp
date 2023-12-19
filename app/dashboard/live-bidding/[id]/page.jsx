@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { Divider, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 import BidMedia from '@/src/components/Biddings/BidMedia';
 import BidMapLocation from '@/src/components/Biddings/BidMapLocation';
@@ -12,12 +13,50 @@ import RightSection from '@/src/components/Biddings/RightSection';
 import BidData from '@/src/components/Biddings/BidData';
 
 import { BIDDINGS, BIDDING_LIST } from '@/app/constants/Biddings';
+import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
+import ProposalStats from '@/src/components/Proposals/ProposalStats';
+import ProposalMapLocation from '@/src/components/Proposals/ProposalMapLocation';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const bidding = BIDDING_LIST[id - 1];
+  const biddings = useSelector((state) => state.biddings.biddings);
+  const bidding = biddings[id - 1];
+  console.log(bidding, 'bidding');
+
+  if (isNaN(id) || id === undefined || id === null) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'Proposal id invalid, Please add the correct id.'}
+      />
+    );
+  }
+
+  console.log(bidding, 'biddingCurrentID');
+  if (!bidding) {
+    return (
+      <NotFoundSection
+        heading={'Sorry'}
+        message={`This proposal doesn't exist. Please add the correct id.`}
+      />
+    );
+  }
+
+  const proposals = useSelector((state) => state.proposals.proposals);
+  // console.log('proposals', proposals);
+  const selectedProposal = proposals.find((proposal) => proposal?.id == bidding?.proposalId);
+  // console.log('selectedProposal', selectedProposal);
+
+  if (!selectedProposal) {
+    console.error(`Proposal with id ${bidding.proposalId} not found`);
+  }
+  if (!proposals) {
+    return <LoadingSpinner />;
+  }
+
 
   return (
     <Box sx={{ background: '#fff', borderRadius: '10px', my: '30px' }}>
@@ -33,32 +72,24 @@ const Page = () => {
             pb: '25px',
           }}
         >
-          <BidHeader header={bidding} />
+          <BidHeader header={selectedProposal} />
           <BidDescription details={bidding} />
+          <ProposalMapLocation proposal={selectedProposal} />
           <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <BidMapLocation location={bidding?.location} />
-          <Divider sx={{ pt: '5px', pb: '5px' }} />
-          <BidData title={BIDDINGS?.amount?.title} data={bidding?.amount} />
-          <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <BidData
-            title={BIDDINGS?.amenities?.title}
-            data={bidding?.amenities}
-          />
+          <ProposalStats proposal={selectedProposal} />
           <Divider sx={{ pb: '10px' }} />
-          <BidMedia
-            title={'Property images'}
-            media={bidding?.images}
+          <ProposalMedia
+            media={selectedProposal?.propertyData?.propertyImages}
             mediaType={'images'}
           />
           <Divider sx={{ pt: '20px' }} />
-          <BidMedia
-            title={'Property videos'}
-            media={bidding?.videos}
+          <ProposalMedia
+            media={selectedProposal?.propertyData?.propertyVideos}
             mediaType={'videos'}
           />
         </Grid>
         <Grid item xs={12} md={3} sx={{ py: '70px', px: '25px' }}>
-          <RightSection rightSection={bidding} />
+          <RightSection rightSection={bidding} report={''} apply={''} save={''} />
         </Grid>
       </Grid>
     </Box>

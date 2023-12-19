@@ -46,7 +46,7 @@ const ProposalSlider = ({ media, mediaType }) => {
       },
     },
   };
-  console.log('media', media);
+
   return (
     <>
       <Swiper {...swiperSettings}>

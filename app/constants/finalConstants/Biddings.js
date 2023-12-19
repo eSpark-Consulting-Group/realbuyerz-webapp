@@ -4,50 +4,37 @@
 export const BIDDINGS_DATA = [
   {
     id: 1,
-    title: 'House #1',
-    propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
-    propertyDescription:
-      'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
-    coverImage: '/images/properties/PropertyCardImageHouse.png',
-    date: '2023-11-22T14:29:32Z',
-    dateWords: '1 day ago',
-    agent: 1,
-    user: 1,
+    propertyId: 1, 
+    proposalId:1,
+    biddingStatus: 'draft',
+    bidTitle: 'Need A Bedroom Appartment',
+    bidDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    creationDate: '2023-11-22T14:29:32Z',
+    connects:6,
+    user: 1,  
     new: true,
-    featured: true,
-    categories: [1, 2],
-    amenities: [11, 14, 12, 15, 12],
-    sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
-    ],
-    propertyData: {
-      agentPrice: '1.2 Crore',
-      propertyDemand: '1 Crore 50 Lac',
-      propertyArea: '1080 sq.ft',
-      propertyType: 'Houses',
-      propertyDirection: 'East Open',
-      propertyLocation: {
-        address: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33',
-        purpose: 'Sell',
-        Type: 'House',
-        city: 'Karachi',
-      },
-    },
-    propertyOverview: {
-      type: 'Residential plot',
-      location: 'Scheme 33,Karachi',
-      price: '1.5 Crore',
-      purpose: 'For Sale',
-      bedroom: '03',
-      bath: '05',
-      parking: '02',
-    },
+    saved: true,
+    flaged:false,
+  },
+  {
+    id: 2,
+    propertyId: 1, 
+    proposalId:1,
+    biddingStatus: 'draft',
+    bidTitle: 'NEED 4 BEDROOM APARTMENT',
+    bidDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    creationDate: '2023-11-22T14:29:32Z',
+    connects:6,
+    user: 1,  
+    new: true,
+    saved: true,
+    flaged:false,
   },
 ];
 
-export const ADD_PROPERTY = [
+export const ADD_biddibg = [
   {
     id: 1, //id
     propertyId: 1,

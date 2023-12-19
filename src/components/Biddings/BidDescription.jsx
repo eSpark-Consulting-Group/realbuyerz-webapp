@@ -22,10 +22,11 @@ const BidDescription = ({ details }) => {
           color: '#333',
           fontSize: '15px',
           fontWeight: '600',
+          textTransform: 'uppercase',
         }}
         variant="h3"
       >
-        {details?.title}
+        {details?.bidTitle}
       </Typography>
       <Typography
         sx={{
@@ -35,7 +36,7 @@ const BidDescription = ({ details }) => {
           fontWeight: '400',
         }}
       >
-        {details?.description}
+        {details?.bidDescription}
       </Typography>
     </Box>
   );

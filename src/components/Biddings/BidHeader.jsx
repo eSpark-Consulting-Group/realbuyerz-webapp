@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import Link from 'next/link';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -12,18 +13,20 @@ const BidHeader = ({ header }) => {
       >
         Posting Help Required
       </Typography>
-      <Typography
-        variant="body1"
-        sx={{
-          color: '#126FAA',
-          fontSize: '14px',
-          fontStyle: 'normal',
-          fontWeight: '500',
-          pb: '10px',
-        }}
-      >
-        {header?.postingTitle}
-      </Typography>
+      <Link href={`/dashboard/proposals/${header?.id}`}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: '#126FAA',
+            fontSize: '14px',
+            fontStyle: 'normal',
+            fontWeight: '500',
+            pb: '10px',
+          }}
+        >
+          {header?.proposalTitle}
+        </Typography>
+      </Link>
       <Typography
         variant="body1"
         sx={{
@@ -35,7 +38,7 @@ const BidHeader = ({ header }) => {
         }}
       >
         <LocationOnIcon fontSize={'14px'} />
-        Karachi
+        {header?.propertyData?.propertyLocation?.city}
       </Typography>
     </Box>
   );

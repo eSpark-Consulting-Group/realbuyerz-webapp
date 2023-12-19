@@ -2,8 +2,9 @@ import React from 'react';
 import { Button, Box, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
 import { BIDDINGS } from '@/app/constants/Biddings';
+import Link from 'next/link';
 
-const RightSection = ({ rightSection }) => {
+const RightSection = ({ rightSection, report, apply, save }) => {
   return (
     <Box>
       <Box>
@@ -22,6 +23,7 @@ const RightSection = ({ rightSection }) => {
             borderRadius: '50px',
           }}
           variant="outlined"
+          onClick={apply}
         >
           {BIDDINGS?.applybutton.title}
         </Button>
@@ -35,6 +37,7 @@ const RightSection = ({ rightSection }) => {
             width: '100%',
             borderRadius: '50px',
           }}
+          onClick={save}
           variant="primary"
         >
           <Typography sx={{ color: '#fff' }}>
@@ -43,18 +46,20 @@ const RightSection = ({ rightSection }) => {
         </Button>
       </Box>
       <Box>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '500',
-            pb: '10px',
-          }}
-        >
-          <FlagIcon fontSize={'16px'} /> {BIDDINGS?.flagInappropiate}
-        </Typography>
+        <Link href='#' onclick={report}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: '#126FAA',
+              fontSize: '12px',
+              fontStyle: 'normal',
+              fontWeight: '500',
+              pb: '10px',
+            }}
+          >
+            <FlagIcon fontSize={'16px'} /> {BIDDINGS?.flagInappropiate}
+          </Typography>
+        </Link>
       </Box>
       <Box sx={{ display: 'flex', gap: '5px' }}>
         <Typography
@@ -80,7 +85,7 @@ const RightSection = ({ rightSection }) => {
             pb: '10px',
           }}
         >
-          {rightSection.connectsCount} {BIDDINGS?.connects}
+          {rightSection.connects} {BIDDINGS?.connects}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', gap: '5px' }}>
@@ -110,7 +115,7 @@ const RightSection = ({ rightSection }) => {
           0
         </Typography>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
