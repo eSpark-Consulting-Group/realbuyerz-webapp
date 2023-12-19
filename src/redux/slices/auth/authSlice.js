@@ -10,6 +10,7 @@ const initialState = {
   logOut: false,
   role: '',
 };
+
 const authSlice = createSlice({
   name: LOGIN_FORM.auth,
   initialState,
@@ -17,13 +18,15 @@ const authSlice = createSlice({
     saveLoginData: (state, action) => {
       const authDetails = action.payload;
       state.loginFormData = { ...action.payload };
+
       if (authDetails.email === 'user' && authDetails.password === '12345') {
-        state.role === 'user';
+        state.role = 'user';
         setCookie('role', 'user');
         setCookie('logged', true);
       }
+
       if (authDetails.email === 'agent' && authDetails.password === '12345') {
-        state.role === 'agent';
+        state.role = 'agent';
         setCookie('role', 'agent');
         setCookie('logged', true);
       }

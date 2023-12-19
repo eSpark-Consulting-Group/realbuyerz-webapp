@@ -7,7 +7,7 @@ import ShopCart from '../ShopCart/ShopCart';
 import ProductCart from '../../Prop-Shop/ProductCart';
 import { ROUTERS } from '@/app/constants/LiveBidding';
 
-const LIVEBIDDING = ROUTERS.dasboardLiveBidding;
+const LIVEBIDDING = ROUTERS.dashboardLiveBidding;
 const BIDDING = ROUTERS.bidding;
 const PROPSHOP = ROUTERS.buyProducts;
 
@@ -15,7 +15,7 @@ const RightSidebar = ({ profileInfo }) => {
   const pathname = usePathname();
   return (
     <>
-      {pathname.includes(BIDDING && LIVEBIDDING) ? (
+      {pathname === LIVEBIDDING ? (
         <BiddingProfile profileInfo={profileInfo} />
       ) : null}
 

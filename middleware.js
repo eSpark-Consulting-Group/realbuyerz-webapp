@@ -1,31 +1,44 @@
 import { NextResponse } from 'next/server';
+import { ROUTES } from './app/constants/middleware';
 
-export function middleware(request) {
-  let isLoggedIn = request.cookies.get('logged');
-  let role = request.cookies.get('role');
+export const middleware = (request) => {
+  let isLoggedIn = request.cookies.get(ROUTES.logged);
+  let role = request.cookies.get(ROUTES.role);
 
   if (isLoggedIn) {
-    if (request.nextUrl.pathname === '/') {
-      if (role?.value === 'agent') {
-        if (!request.nextUrl.pathname.startsWith('/dashboard/live-bidding'))
+    if (
+      request.nextUrl.pathname === ROUTES.slash ||
+      request.nextUrl.pathname.startsWith(ROUTES.dashboard)
+    ) {
+      if (role?.value === ROUTES.agent) {
+        if (!request.nextUrl.pathname.startsWith(ROUTES.dashboardAgent)) {
           return NextResponse.redirect(
-            new URL('/dashboard/live-bidding', request.url)
+            new URL(ROUTES.dashboardAgent, request.url)
           );
+        }
       }
-      if (role?.value === 'user') {
-        if (!request.nextUrl.pathname.startsWith('/dashboard'))
-          return NextResponse.redirect(new URL('/dashboard', request.url));
+
+      if (role?.value === ROUTES.user) {
+        if (!request.nextUrl.pathname.startsWith(ROUTES.dashboardUser)) {
+          return NextResponse.redirect(
+            new URL(ROUTES.dashboardUser, request.url)
+          );
+        }
       }
     }
   }
 
   if (!isLoggedIn) {
-    if (request.nextUrl.pathname.startsWith('/dashboard'))
+    if (
+      request.nextUrl.pathname.startsWith(ROUTES.dashboard) ||
+      request.nextUrl.pathname === ROUTES.slash
+    ) {
       if (
-        !request.nextUrl.pathname.startsWith('/signin') &&
-        !request.nextUrl.pathname.startsWith('/signup')
+        !request.nextUrl.pathname.startsWith(ROUTES.signIn) &&
+        !request.nextUrl.pathname.startsWith(ROUTES.signUp)
       ) {
-        return NextResponse.redirect(new URL('/signin', request.url));
+        return NextResponse.redirect(new URL(ROUTES.signIn, request.url));
       }
+    }
   }
-}
+};
