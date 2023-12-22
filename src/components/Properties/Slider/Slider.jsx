@@ -12,21 +12,25 @@ import 'swiper/css/navigation';
 const Slider = ({ propertySlider }) => {
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={0}>
         <Grid item xs={12} md={11}>
           <Swiper
             effect={'fade'}
             navigation={true}
             modules={[EffectFade, Navigation]}
-            style={{ width: '100%', height: '100%', borderRadius: '15px' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '15px',
+            }}
           >
             {propertySlider?.sliderImages?.map((item, index) => (
               <SwiperSlide key={index}>
                 <Image
                   src={item}
                   alt={`Slide ${index + 1}`}
-                  width={870}
-                  height={500}
+                  width={970}
+                  height={550}
                   sx={{
                     objectFit: 'cover',
                     borderRadius: '20px',
