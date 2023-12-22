@@ -1,10 +1,13 @@
-import { postListingEntities } from '@/app/constants/postListing';
+import {
+  PROPERTY_INFORMATION,
+  postListingEntities,
+} from '@/app/constants/postListing';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = postListingEntities;
 
-const postListingSlice = createSlice({
-  name: 'postListing',
+const buyingSellingFormSlice = createSlice({
+  name: PROPERTY_INFORMATION.form,
   initialState,
   reducers: {
     //Ad_Infomation
@@ -81,5 +84,5 @@ export const {
   addAmenities,
   UploadImages,
   UploadVideos,
-} = postListingSlice.actions;
-export default postListingSlice.reducer;
+} = buyingSellingFormSlice.actions;
+export default buyingSellingFormSlice.reducer;

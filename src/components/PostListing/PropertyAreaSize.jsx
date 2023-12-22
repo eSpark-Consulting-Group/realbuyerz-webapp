@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import {
   addArea,
   addamount,
-} from '@/src/redux/slices/postlisting/postListingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
