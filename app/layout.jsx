@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import Head from 'next/head';
@@ -15,6 +16,9 @@ import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 
 import Link from 'next/link';
+
+// Create a client
+const queryClient = new QueryClient();
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
@@ -34,20 +38,22 @@ const RootLayout = ({ children }) => {
         />
       </Head>
       <body>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Box>
-              {currentPath.includes('/dashboard') ? (
-                <DashboardHeader />
-              ) : (
-                <MainHeader />
-              )}
-              <Box>{children}</Box>
-              <Footer data={FOOTER_DATA} />
-            </Box>
-          </ThemeProvider>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Box>
+                {currentPath.includes('/dashboard') ? (
+                  <DashboardHeader />
+                ) : (
+                  <MainHeader />
+                )}
+                <Box>{children}</Box>
+                <Footer data={FOOTER_DATA} />
+              </Box>
+            </ThemeProvider>
+          </Provider>
+        </QueryClientProvider>
       </body>
     </html>
   );

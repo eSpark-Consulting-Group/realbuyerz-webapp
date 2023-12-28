@@ -7,6 +7,7 @@ module.exports = {
     'plugin:tailwindcss/recommended',
     'next',
     'prettier',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   plugins: [
     'eslint-plugin-prettier',

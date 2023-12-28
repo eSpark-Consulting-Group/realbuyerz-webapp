@@ -26,7 +26,7 @@ export const ENDPOINTS = {
   propertiesAmenities: '',
   propertiesCategoris: '',
   addProposalListing: '',
-  signin: '',
+  login: 'user/login',
   signup: '',
   similarAreaProperties: '',
   singleBiddings: '',
