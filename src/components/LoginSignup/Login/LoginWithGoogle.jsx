@@ -9,6 +9,7 @@ const LoginWithGoogle = ({
   accountCreationMessage,
   onSigninClick,
   loginClick,
+  handleGoogleLogin,
 }) => {
   return (
     <>
@@ -83,6 +84,8 @@ const LoginWithGoogle = ({
             borderRadius: 2,
             textTransform: 'math-auto',
           }}
+
+          onClick={handleGoogleLogin}
         >
           <Image
             src="/images/signup_page/google.svg"

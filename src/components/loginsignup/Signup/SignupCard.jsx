@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
+import { useMutation } from '@tanstack/react-query';
 
 import { saveSignupData } from '@/src/redux/slices/auth/authSlice';
 import {
@@ -13,6 +14,8 @@ import {
 } from '@/app/constants/Login';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
 import FormContainer from '../Login/LoginForm';
+import { signup } from '@/utils/apis/auth/signup';
+import { loginWithGoogle } from '@/utils/apis/auth/loginWithGoogle';
 
 const SignupCard = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);
@@ -47,14 +50,43 @@ const SignupCard = () => {
       [fieldName]: newValue ? [newValue.value] : [],
     });
   };
-  const loginClick = () => {
+  const signupClick = () => {
     if (
       formData[LOGIN_FORM.password] !== formData[LOGIN_FORM.confirmPassword]
     ) {
       alert(PASSWORD_ALERT);
     }
+    mutate({ 
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+      mobile_number: formData.contactNumber,
+      role: "user"
+    });
     dispatch(saveSignupData(formData));
   };
+
+  const { mutate } = useMutation({
+    mutationFn: signup,
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      console.log('success', data);
+    },
+  });
+
+  const { mutate: googleLogin } = useMutation({
+    mutationFn: loginWithGoogle,
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      console.log('success', data);
+    },
+  });
+
+  const handleGoogleLogin = () => {
+    googleLogin();
+  }
+
   return (
     <>
       <Box
@@ -121,7 +153,8 @@ const SignupCard = () => {
             onSigninClick={() => {
               router.push(LOGIN_ROUTERS.signin);
             }}
-            loginClick={loginClick}
+            loginClick={signupClick}
+            handleGoogleLogin={handleGoogleLogin}
           />
         </Box>
       </Box>

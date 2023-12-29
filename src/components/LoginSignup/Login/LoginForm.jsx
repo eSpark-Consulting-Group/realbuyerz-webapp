@@ -127,26 +127,6 @@ const FormContainer = ({
                 sx: { fontSize: '10.5px' },
               }}
             />
-
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={LOGIN_FORM.dropdownOptions}
-              getOptionLabel={(option) => option.label}
-              sx={{ width: '100%', height: '50px' }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={FORM_LABEL.applicant}
-                  InputLabelProps={{
-                    sx: { fontSize: '11px' },
-                  }}
-                />
-              )}
-              onChange={(event, newValue) =>
-                handleAutoCompleteInputChange(event, newValue)
-              }
-            />
             <PasswordAndConfirmFields
               handleInputChange={handleInputChange}
               handleFieldToggle={handleFieldToggle}
