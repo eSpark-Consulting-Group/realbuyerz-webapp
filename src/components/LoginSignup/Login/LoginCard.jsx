@@ -38,6 +38,7 @@ const LoginCard = ({ handleClose }) => {
   };
 
   const handleSignIn = () => {
+    console.log('handleSignIn');
     router.push(LOGIN_ROUTERS.signup);
     dispatch(setOpenModal(false));
   };
@@ -45,8 +46,8 @@ const LoginCard = ({ handleClose }) => {
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      // Invalidate and refetch
-      console.log('success', data);
+      localStorage.setItem('token', data.token);
+      router.push(LOGIN_ROUTERS.dashboard);
     },
   });
 

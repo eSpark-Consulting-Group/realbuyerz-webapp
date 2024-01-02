@@ -53,14 +53,12 @@ const ResetPassword = () => {
 
   const { mutate } = useMutation({
     mutationFn: resetPassword,
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      console.log('success', data);
+    onSuccess: () => {
+      router.push(LOGIN_ROUTERS.signin);
     },
   });
 
   const handleRestPassword = () => {
-    console.log('formData', formData, searchParams.get('token'));
     mutate({ password: formData.password, token: searchParams.get('token') });
   }
 
