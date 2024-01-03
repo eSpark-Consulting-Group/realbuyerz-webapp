@@ -6,18 +6,20 @@ import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
-import AgentChip from './AgentChip';
+// import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
 const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter((property) => property.propertyData.type === propertyType);
+      : data.filter(
+          (property) => property?.propertyData?.propertyType === propertyType
+        );
 
   const propertyTitle = filteredProperties?.map((property) => ({
-    id: property.id,
-    Propertytitle: property.Propertytitle,
+    id: property?.id,
+    Propertytitle: property?.title,
   }));
 
   const itemsPerRow = { xs: 12, sm: 6, md: 4, lg: 3, xl: 3 };
@@ -68,9 +70,9 @@ const PropertyTabs = ({ data }) => {
   const seenPropertyTypes = {};
 
   data?.forEach((property) => {
-    if (!seenPropertyTypes[property.propertyData.type]) {
-      uniquePropertyTypes.push(property.propertyData.type);
-      seenPropertyTypes[property.propertyData.type] = true;
+    if (!seenPropertyTypes[property?.propertyData?.propertyType]) {
+      uniquePropertyTypes.push(property?.propertyData?.propertyType);
+      seenPropertyTypes[property?.propertyData?.propertyType] = true;
     }
   });
 
@@ -93,12 +95,14 @@ const PropertyTabs = ({ data }) => {
   const filteredProperties =
     propertyType === ''
       ? data
-      : data.filter((property) => property.propertyData.type === propertyType);
-  const isAgent = 'true';
-  const agenttab = value;
+      : data.filter(
+          (property) => property?.propertyData?.propertyType === propertyType
+        );
+  // const isAgent = 'flase';
+  // const agenttab = value;
   return (
     <>
-      {isAgent == 'true' && (
+      {/* {isAgent == 'true' && (
         <AgentChip
           data={filteredProperties}
           chips={agenttab}
@@ -107,7 +111,7 @@ const PropertyTabs = ({ data }) => {
           color="primary"
           sx={{ mb: 2 }}
         />
-      )}
+      )} */}
 
       <Box
         sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
@@ -122,7 +126,7 @@ const PropertyTabs = ({ data }) => {
               {tabData?.map((tab, index) => (
                 <Tab
                   key={index}
-                  label={tab.label}
+                  label={tab?.label}
                   sx={{ fontSize: '20px', fontWeight: '700' }}
                   {...a11yProps(index)}
                 />
@@ -135,7 +139,7 @@ const PropertyTabs = ({ data }) => {
               key={index}
               value={value}
               index={index}
-              propertyType={tab.propertyType}
+              propertyType={tab?.propertyType}
             />
           ))}
         </Box>

@@ -1,6 +1,7 @@
+import { PARTNERS } from '@/app/constants/Home';
 import { createSlice } from '@reduxjs/toolkit';
 
-const partners = {};
+const partners = { PARTNERS };
 
 const initialState = { partners };
 

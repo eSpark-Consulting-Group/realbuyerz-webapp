@@ -1,14 +1,14 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { addLocationAndPuspose } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyStatus = ({ propertyInformation, propertyData }) => {
-  const [activePropertyStatus, setActivePropertyStatus] =
-    React.useState('Sell');
+  const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
   const [properStatusData, setProperStatusData] =
-    React.useState(activePropertyStatus);
+    useState(activePropertyStatus);
   const dispatch = useDispatch();
 
   const handleChange = (val) => {
@@ -16,7 +16,7 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
     setProperStatusData(val);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addLocationAndPuspose(properStatusData));
   }, [properStatusData]);
 

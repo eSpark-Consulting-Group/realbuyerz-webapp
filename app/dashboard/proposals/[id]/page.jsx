@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { Divider, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 import ProposalApplicant from '@/src/components/Proposals/ProposalApplicant';
 import ProposalHeader from '@/src/components/Proposals/ProposalHeader';
@@ -10,29 +11,52 @@ import PropertyDescription from '@/src/components/Proposals/PropertyDescription'
 import ProposalMapLocation from '@/src/components/Proposals/ProposalMapLocation';
 import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
-
-import { PROPOSAL_LISTING } from '@/app/constants/Proposals';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const Proposal = PROPOSAL_LISTING[id - 1];
+  const proposals = useSelector((state) => state.proposals.proposals);
+  const proposal = proposals[id - 1];
+  if (isNaN(id) || id === undefined || id === null) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'Proposal id invalid, Please add correct id.'}
+      />
+    );
+  }
+  if (!proposal) {
+    return (
+      <NotFoundSection
+        heading={'Sorry'}
+        message={`This proposal doesnt exist. Please add correct id.`}
+      />
+    );
+  }
+  console.log('proposals', proposals);
   return (
     <Box sx={{ background: '#fff', borderRadius: '10px', p: '50px' }}>
-      <ProposalHeader header={Proposal?.header} />
+      <ProposalHeader proposal={proposal} />
       <Grid container>
-        <ProposalApplicant leftSection={Proposal?.leftSection} />
-        <Grid item xs={10} sx={{ p: '40px', justifyContent: 'center' }}>
-          <PropertyDescription details={Proposal} />
+        <ProposalApplicant proposal={proposal} />
+        <Grid item xs={9} sx={{ p: '40px', justifyContent: 'center' }}>
+          <PropertyDescription proposal={proposal} />
           <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <ProposalMapLocation location={Proposal?.location} />
+          <ProposalMapLocation proposal={proposal} />
           <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <ProposalStats stats={Proposal?.stats} />
+          <ProposalStats proposal={proposal} />
           <Divider sx={{ pb: '10px' }} />
-          <ProposalMedia media={Proposal?.images} mediaType={'images'} />
+          <ProposalMedia
+            media={proposal?.propertyData?.propertyImages}
+            mediaType={'images'}
+          />
           <Divider sx={{ pt: '20px', pb: '30px' }} />
-          <ProposalMedia media={Proposal?.videos} mediaType={'videos'} />
+          <ProposalMedia
+            media={proposal?.propertyData?.propertyVideos}
+            mediaType={'videos'}
+          />
         </Grid>
       </Grid>
     </Box>

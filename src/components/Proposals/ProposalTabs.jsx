@@ -6,13 +6,13 @@ import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import ProposalListingCard from './ProposalListingCard';
-import { getUniqueProposalStatus } from '@/utils/propertyFilter';
 import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
 import {
   countFilteredData,
   filterDataBySearch,
   filterPropertiesByStatus,
 } from '@/utils/SearchFilter';
+import { getUniqueProposalStatus } from '@/utils/proposalFilter';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
@@ -45,7 +45,14 @@ const ProposalTabs = ({ filteredProposalsData }) => {
   };
 
   return (
-    <Box sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}>
+    <Box
+      sx={{
+        background: '#fff',
+        borderRadius: '10px',
+        border: '1px solid #E4E4E4',
+        mt: '20px',
+      }}
+    >
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
@@ -116,7 +123,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
             height: '100vh',
           }}
         >
-          {displayData.length > 0 ? (
+          {displayData?.length > 0 ? (
             <ProposalListingCard proposalsData={displayData} />
           ) : (
             <Box

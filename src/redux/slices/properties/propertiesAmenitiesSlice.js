@@ -1,6 +1,7 @@
+import { PROPERTIES_AMENITIES } from '@/app/constants/finalConstants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const propertyAmenities = {};
+const propertyAmenities = PROPERTIES_AMENITIES;
 
 const initialState = { propertyAmenities };
 

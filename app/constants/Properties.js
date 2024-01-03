@@ -1,6 +1,7 @@
 export const PROPERTIES_LISTING = [
   {
     id: 1,
+    agent: 1,
     Propertytitle: 'House #1',
     coverImage: '/images/properties/PropertyCardImageHouse.png',
     postedDate: '1 day ago',
@@ -668,7 +669,7 @@ export const PROPERTY_ESTATE = {
     amenities: 'Amenities',
     demand: 'Demand',
     reach: 'Reach out to us:',
-    pkr: 'PKR',
+    unit: 'PKR',
     message: 'Message',
   },
 };

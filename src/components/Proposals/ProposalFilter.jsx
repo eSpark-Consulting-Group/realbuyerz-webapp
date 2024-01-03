@@ -19,9 +19,9 @@ import {
 
 import { filterData, getUniqueFilteredOptions } from '@/utils/proposalFilter';
 
-const ProposalFilter = () => {
+const ProposalFilter = ({ data }) => {
   const [listingType, setListingType] = useState('proposals');
-  const [selectedData, setSelectedData] = useState(PROPOSAL_LISTING);
+  const [selectedData, setSelectedData] = useState(data);
 
   const [purposeOptions, setPurposeOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
@@ -120,6 +120,7 @@ const ProposalFilter = () => {
                     onChange={(e) => {
                       handleDropdownChange(e, dropdown?.setState, index);
                     }}
+                    sx={{ background: '#fff' }}
                     placeholder={`Select ${dropdown?.label}`}
                   >
                     <MenuItem value="">{`Select ${dropdown?.label}`}</MenuItem>
@@ -143,7 +144,7 @@ const ProposalFilter = () => {
           }}
         >
           <Link
-            href={CONSTANTS.resetButton.link}
+            href={CONSTANTS?.resetButton?.link}
             onClick={handleClearButtonClick}
           >
             <Typography
@@ -153,7 +154,7 @@ const ProposalFilter = () => {
                 marginBottom: '15px',
               }}
             >
-              {CONSTANTS.resetButton.text}
+              {CONSTANTS?.resetButton?.text}
             </Typography>
           </Link>
         </Box>
@@ -163,10 +164,14 @@ const ProposalFilter = () => {
         <Grid item xs={9}></Grid>
         <Grid item xs={3}>
           <FormControl fullWidth>
-            <Select value={listingType} onChange={handleListingTypeChange}>
+            <Select
+              value={listingType}
+              onChange={handleListingTypeChange}
+              sx={{ background: '#fff' }}
+            >
               {LISTING_TYPE.map((item) => (
-                <MenuItem key={item.value} value={item.value}>
-                  {item.label}
+                <MenuItem key={item?.value} value={item?.value}>
+                  {item?.label}
                 </MenuItem>
               ))}
             </Select>

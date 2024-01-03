@@ -1,23 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
-import { usePathname } from 'next/navigation';
 
 import {
   AGENT_MENU_ITEM,
   PROFILE_INFO,
-  ROUTERS,
   USER_MENU_ITEM,
 } from '../constants/LiveBidding';
 import RightSidebar from '@/src/components/layouts/RightSiderBar/RightSidebar';
 import LeftSideBar from '@/src/components/layouts/LeftSideBar/LeftSideBar';
 
 const InnerPageLayout = ({ children }) => {
-  const pathname = usePathname();
-  const PROPSHOP = ROUTERS.buyProducts;
-  const [userType, setUserType] = useState('agent');
+  const [userType] = useState('agent');
   const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
-  console.log(setUserType); // this set is not using so thts y we use in a console  to avoid build issues
 
   return (
     <Box
@@ -38,23 +33,10 @@ const InnerPageLayout = ({ children }) => {
         >
           <LeftSideBar menuItem={menuItem} />
         </Grid>
-        <Grid
-          item
-          lg={pathname.includes(PROPSHOP) ? 7 : 8}
-          md={6}
-          sm={12}
-          xs={12}
-          sx={{ mt: 2 }}
-        >
+        <Grid item lg={7} md={6} sm={12} xs={12} sx={{ m: '45px 45px 75px' }}>
           {children}
         </Grid>
-        <Grid
-          item
-          lg={pathname.includes(PROPSHOP) ? 3 : 2}
-          md={3}
-          sm={12}
-          xs={12}
-        >
+        <Grid item lg={2.3} md={3} sm={12} xs={12} sx={{ marginTop: '70px' }}>
           <RightSidebar profileInfo={PROFILE_INFO} />
         </Grid>
       </Grid>

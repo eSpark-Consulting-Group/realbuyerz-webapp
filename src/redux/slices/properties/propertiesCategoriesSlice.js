@@ -1,6 +1,7 @@
+import { PROPERTIES_CATEGORIES } from '@/app/constants/finalConstants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
-const propertyCategories = {};
+const propertyCategories = PROPERTIES_CATEGORIES;
 
 const initialState = { propertyCategories };
 
