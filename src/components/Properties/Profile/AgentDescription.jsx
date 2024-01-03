@@ -10,6 +10,7 @@ const AgentDescription = ({ description }) => {
         fontSize: { xs: '12px', md: '16px' },
         fontWeight: 400,
         textAlign: 'start',
+        paddingBottom: '12px',
       }}
     >
       {description}

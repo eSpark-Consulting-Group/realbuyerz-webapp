@@ -15,14 +15,16 @@ const ViewAgentProfile = ({ image, name, link }) => {
         background: 'white',
         borderRadius: 2,
         border: '1px solid #e0e0e0',
+        marginTop: '40px',
+        gap: '20px',
       }}
     >
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          p: 2,
+          justifyContent: 'flex-start',
+          p: 1,
         }}
       >
         <Avatar src={image} sx={{ width: 100, height: 100 }} />

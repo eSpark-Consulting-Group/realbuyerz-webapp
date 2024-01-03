@@ -48,9 +48,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -101,9 +101,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -154,9 +154,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -207,9 +207,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -260,9 +260,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -313,9 +313,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -366,9 +366,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -419,9 +419,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -472,9 +472,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -525,9 +525,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -578,9 +578,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
   {
@@ -631,9 +631,9 @@ export const PROPERTIES_LISTING = [
       parking: '02',
     },
     sliderImages: [
-      '/images/slider/apartments.svg',
-      '/images/slider/houses.svg',
-      '/images/slider/commercial.svg',
+      '/images/slider/apartments.jpg',
+      '/images/slider/houses.jpg',
+      '/images/slider/commercial.jpg',
     ],
   },
 ];

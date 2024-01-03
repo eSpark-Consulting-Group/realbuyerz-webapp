@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
-import { addInformation } from '@/src/redux/slices/postlisting/postListingSlice';
+import { addInformation } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyInformation = ({ propertyData }) => {
   const [adInformation, setAdInformation] = useState({});

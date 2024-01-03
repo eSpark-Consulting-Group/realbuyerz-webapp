@@ -20,7 +20,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import {
   UploadImages,
   UploadVideos,
-} from '@/src/redux/slices/postlisting/postListingSlice';
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const CoverLetter = () => {
   const CoverLetterData = useSelector((state) => state?.coverLetter);

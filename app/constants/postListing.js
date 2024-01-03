@@ -1,4 +1,5 @@
 export const PROPERTY_INFORMATION = {
+  form: 'buyingSellingForm',
   addiotionalFeature:
     'Add additional features e.g. Rooftop terrace, 24/7 security, Walking trails, Washing area etc',
   addAmentiesLabel: 'Add Amenities',

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
-import { addLocationAndPuspose } from '@/src/redux/slices/postlisting/postListingSlice';
+import { addLocationAndPuspose } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyStatus = ({ propertyInformation, propertyData }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
