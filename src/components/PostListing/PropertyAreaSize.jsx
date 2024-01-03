@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import Image from 'next/image';
 
@@ -16,11 +17,11 @@ const PropertyAreaSize = ({
   aeraSizes,
   currency,
 }) => {
-  const [propertyArea, setPropertyArea] = React.useState({
+  const [propertyArea, setPropertyArea] = useState({
     area: '',
     unit: '',
   });
-  const [propertyAmount, setpropertyAmount] = React.useState({
+  const [propertyAmount, setpropertyAmount] = useState({
     amount: '',
     unit: '',
   });
@@ -34,11 +35,11 @@ const PropertyAreaSize = ({
     )
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addArea(propertyArea));
   }, [propertyArea]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addamount(propertyAmount));
   }, [propertyAmount]);
 

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 import Image from 'next/image';
 
@@ -8,15 +9,15 @@ import { addAmenities } from '@/src/redux/slices/postlisting/postListingSlice';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [amenities, setamenities] = React.useState();
-  const [amenitiesTitle, setAmenitiesTitle] = React.useState();
+  const [amenities, setamenities] = useState();
+  const [amenitiesTitle, setAmenitiesTitle] = useState();
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addAmenities(amenitiesTitle));
   }, [amenitiesTitle]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setAmenitiesTitle(amenities?.map((item) => item.title));
   }, [amenities]);
 

@@ -46,7 +46,7 @@ const RightSection = ({ rightSection, report, apply, save }) => {
         </Button>
       </Box>
       <Box>
-        <Link href='#' onclick={report}>
+        <Link href="#" onclick={report}>
           <Typography
             variant="body1"
             sx={{
@@ -115,7 +115,7 @@ const RightSection = ({ rightSection, report, apply, save }) => {
           0
         </Typography>
       </Box>
-    </Box >
+    </Box>
   );
 };
 

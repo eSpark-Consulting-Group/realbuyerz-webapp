@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 import Image from 'next/image';
 
@@ -16,8 +17,8 @@ const PropertyInstallment = ({
   const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
-  const [installment, setInstallment] = React.useState();
-  const [possession, setPossession] = React.useState();
+  const [installment, setInstallment] = useState();
+  const [possession, setPossession] = useState();
   const dispatch = useDispatch();
 
   const handleToggleChange = (key, val) => {
@@ -28,11 +29,11 @@ const PropertyInstallment = ({
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addInstallment(installment));
   }, [installment]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addPossession(possession));
   }, [possession]);
 
