@@ -1,13 +1,12 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
 
 const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
 });
-
 
 const theme = createTheme({
   palette: {
