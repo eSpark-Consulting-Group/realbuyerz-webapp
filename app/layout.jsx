@@ -11,6 +11,7 @@ import DashboardHeader from '@/src/components/layouts/DashboardHeader';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import Footer from '@/src/components/layouts/Footer';
 import Seo from '@/src/components/Global/SEO';
+
 import { FOOTER_DATA } from '@/app/constants/Constants';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
