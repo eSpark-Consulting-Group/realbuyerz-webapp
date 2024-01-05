@@ -11,7 +11,6 @@ const SeeAllPosting = ({ title }) => {
   return (
     <Button
       sx={{
-        font: 'Inter',
         Weight: 500,
         fontSize: '20px',
         lineHeight: '24.2px',

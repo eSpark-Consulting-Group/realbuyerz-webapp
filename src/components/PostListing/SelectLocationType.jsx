@@ -19,7 +19,6 @@ const SelectLocationType = () => {
             alignSelf: 'flex-start',
             alignItems: 'center',
             fontSize: '20px',
-            fontFamily: 'Inter',
             fontWeight: 400,
             gap: '8px',
           }}

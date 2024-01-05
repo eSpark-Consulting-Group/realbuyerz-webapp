@@ -34,7 +34,7 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
             display: 'flex',
             alignItems: 'center',
             fontSize: '20px',
-            fontFamily: 'Inter',
+
             fontWeight: 400,
             gap: '8px',
           }}

@@ -13,7 +13,7 @@ const PostTitle = ({ text }) => {
         sx={{
           color: '#126FAA',
           fontSize: '25px',
-          fontFamily: 'Inter',
+
           fontWeight: 600,
           textAlign: 'center',
           marginBottom: '10px',

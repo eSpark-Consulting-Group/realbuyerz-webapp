@@ -60,7 +60,7 @@ const PropertyInstallment = ({
                 display: 'flex',
                 alignItems: 'center',
                 fontSize: '20px',
-                fontFamily: 'Inter',
+
                 fontWeight: 400,
                 gap: '8px',
               }}

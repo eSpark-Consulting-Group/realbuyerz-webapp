@@ -15,7 +15,7 @@ const InstructionsForUpload = ({ propertyInformation }) => {
                   flexDirection: { xs: 'row', md: 'row' },
                   alignItems: 'center',
                   fontSize: '20px',
-                  fontFamily: 'Inter',
+
                   fontWeight: 400,
                   gap: '8px',
                   listStyle: 'none',

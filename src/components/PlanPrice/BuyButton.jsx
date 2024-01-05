@@ -6,7 +6,7 @@ const BuyButton = ({ BuyButton }) => {
     <Button
       sx={{
         width: '111px',
-        fontFamily: 'Inter',
+
         fontWeight: 500,
         fontSize: '20px',
         lineHeight: '24.2px',

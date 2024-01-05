@@ -78,7 +78,6 @@ const HeroSection = () => {
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
             wordSpacing: '-4px',
-            fontFamily: 'inherit',
           }}
           variant="h2"
           component={'h2'}

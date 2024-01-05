@@ -45,7 +45,7 @@ const PropertyInformation = ({ propertyData }) => {
                 alignSelf: 'flex-start',
                 justifyContent: 'center',
                 fontSize: '20px',
-                fontFamily: 'Inter',
+
                 fontWeight: 400,
                 alignItems: 'center',
                 gap: '8px',

@@ -36,7 +36,7 @@ const SelectCityType = ({ image, label, cityOptions }) => {
             alignSelf: 'flex-start',
             alignItems: 'center',
             fontSize: '20px',
-            fontFamily: 'Inter',
+
             fontWeight: 400,
             gap: '10px',
           }}

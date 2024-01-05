@@ -9,7 +9,7 @@ const UploadMediaButton = ({ propertyInformation, handleFileChange }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        fontFamily: 'Inter',
+
         fontWeight: 400,
         padding: '50px',
         alignItems: 'center',
