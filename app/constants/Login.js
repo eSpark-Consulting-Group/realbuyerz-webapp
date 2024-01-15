@@ -96,9 +96,10 @@ export const ALT = {
 };
 
 export const LOGIN_ROUTERS = {
-  signin: '/signin',
-  signup: '/signup',
+  signin: 'signin',
+  signup: 'signup',
   forgetPassword: '/forget-password',
+  dashboard: 'dashboard',
 };
 export const AUTH_COMPONENTS = {
   signin: 'signin',

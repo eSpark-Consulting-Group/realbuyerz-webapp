@@ -26,6 +26,7 @@ const PasswordAndConfirmFields = ({
           sx: {
             height: '40px',
           },
+          autoComplete: 'new-password',
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -57,6 +58,7 @@ const PasswordAndConfirmFields = ({
           sx: {
             height: '40px',
           },
+          autoComplete: 'confirm-password',
           endAdornment: (
             <InputAdornment position="end">
               <IconButton

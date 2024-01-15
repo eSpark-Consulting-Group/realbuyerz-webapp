@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import Head from 'next/head';
@@ -17,6 +18,9 @@ import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 import { SEO_DATA } from './constants/seo';
 
+// Create a client
+const queryClient = new QueryClient();
+
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
   const filterMeta = SEO_DATA?.filter((item) => item?.link == currentPath);
@@ -26,20 +30,22 @@ const RootLayout = ({ children }) => {
         <Seo data={filterMeta} alter={SEO_DATA[0]} />
       </Head>
       <body>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Box>
-              {currentPath.includes('/dashboard') ? (
-                <DashboardHeader />
-              ) : (
-                <MainHeader />
-              )}
-              <Box>{children}</Box>
-              <Footer data={FOOTER_DATA} />
-            </Box>
-          </ThemeProvider>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Box>
+                {currentPath.includes('/dashboard') ? (
+                  <DashboardHeader />
+                ) : (
+                  <MainHeader />
+                )}
+                <Box>{children}</Box>
+                <Footer data={FOOTER_DATA} />
+              </Box>
+            </ThemeProvider>
+          </Provider>
+        </QueryClientProvider>
       </body>
     </html>
   );

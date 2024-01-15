@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
 import { Box, Typography, TextField } from '@mui/material';
 
 import CheckEmailModal from './EmailModal';
@@ -9,6 +10,7 @@ import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
 import { useDispatch } from 'react-redux';
 import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
 import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
+import { forgetPassword } from '@/utils/apis/auth/forgetPassword';
 
 const ForgetPassword = ({ setshowForgetPassword }) => {
   const [email, setEmail] = useState('');
@@ -21,21 +23,50 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
+
+  const { mutate: getResetPasswordLink } = useMutation({
+    mutationFn: forgetPassword,
+    onSuccess: (data) => {
+     setOpen(true);
+    },
+  });
+
   const handleModalToggle = () => {
     setOpen(!open);
   };
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+
   const handleValidation = () => {
-    validateEmail(email, setError, setisValidEmail, handleModalToggle);
+    if(validateEmail(email)) {
+      setError(null);
+      setisValidEmail(true);
+      return true;
+    } else {
+      setError('Please enter a valid email address');
+      setisValidEmail(false);
+      return false;
+    }
   };
+
   const handleClick = () => {
     dispatch(updateReceivedEmail(email));
   };
+
   const handleContinue = () => {
-    handleValidation();
+    if(handleValidation()) {
+      console.log('email', email);
+      getResetPasswordLink({ to: email });
+    }
   };
+
+  const resendEmail = () => {
+    console.log('resend email');
+    getResetPasswordLink({ to: email });
+  };
+  
   const checkPasswordMatch = () => {};
   return (
     <Box
@@ -117,7 +148,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             onCloseModal={handleModalToggle}
             email={email}
             setshowForgetPassword={setshowForgetPassword}
-            handleClick={handleClick}
+            handleClick={resendEmail}
             handleBackToLogin={handleBackToLogin}
           />
         )}

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Box, Typography } from '@mui/material';
 
 import {
@@ -12,9 +13,11 @@ import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
 import { useDispatch } from 'react-redux';
 import { saveResetData } from '@/src/redux/slices/auth/authSlice';
+import { resetPassword } from '@/utils/apis/auth/resetPassword';
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -22,15 +25,19 @@ const ResetPassword = () => {
       [name]: value,
     });
   };
+
   const handleFieldToggle = (fieldName) => {
     setFormData({
       ...formData,
       [fieldName]: !formData[fieldName],
     });
   };
+
   const router = useRouter();
+  const searchParams = useSearchParams();
   const dispatch = useDispatch();
   const passwordsMatch = formData?.password === formData?.confirmPassword;
+
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
       alert(LOGIN_FORM.loginCard.passwordMatch);
@@ -39,12 +46,22 @@ const ResetPassword = () => {
       alert(LOGIN_FORM.loginCard.passwordDontMatch);
     }
   };
+
   const backToSignin = () => {
     router.push(LOGIN_ROUTERS.signin);
   };
-  const handleContinue = () => {
-    dispatch(saveResetData(formData));
-  };
+
+  const { mutate } = useMutation({
+    mutationFn: resetPassword,
+    onSuccess: () => {
+      router.push(LOGIN_ROUTERS.signin);
+    },
+  });
+
+  const handleRestPassword = () => {
+    mutate({ password: formData.password, token: searchParams.get('token') });
+  }
+
   return (
     <Box
       sx={{
@@ -104,7 +121,7 @@ const ResetPassword = () => {
         <Continue
           checkPasswordMatch={checkPasswordMatch}
           handleBackToLogin={backToSignin}
-          handleContinue={handleContinue}
+          handleContinue={handleRestPassword}
         />
       </Box>
     </Box>
