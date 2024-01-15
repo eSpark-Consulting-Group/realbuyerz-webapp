@@ -1,11 +1,12 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { addInformation } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyInformation = ({ propertyData }) => {
-  const [adInformation, setAdInformation] = React.useState({});
+  const [adInformation, setAdInformation] = useState({});
   const dispatch = useDispatch();
   const handleChange = (key, val) => {
     setAdInformation({
@@ -14,7 +15,7 @@ const PropertyInformation = ({ propertyData }) => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addInformation(adInformation));
   }, [adInformation]);
 
@@ -44,7 +45,7 @@ const PropertyInformation = ({ propertyData }) => {
                 alignSelf: 'flex-start',
                 justifyContent: 'center',
                 fontSize: '20px',
-                fontFamily: 'Inter',
+
                 fontWeight: 400,
                 alignItems: 'center',
                 gap: '8px',

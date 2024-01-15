@@ -11,7 +11,7 @@ const ReachBuyer = () => {
           textAlign: 'center',
           color: 'black',
           fontSize: { xs: '20px', md: '30px' },
-          fontFamily: 'Inter',
+
           fontWeight: 500,
         }}
       >
@@ -22,7 +22,7 @@ const ReachBuyer = () => {
           textAlign: 'center',
           color: '#126FAA',
           fontSize: { xs: '15px', md: '25px' },
-          fontFamily: 'Inter',
+
           fontWeight: 500,
         }}
       >

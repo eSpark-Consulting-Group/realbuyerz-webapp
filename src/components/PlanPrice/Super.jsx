@@ -41,7 +41,6 @@ const Super = ({ SuperData }) => {
         />
         <Typography
           sx={{
-            fontFamily: 'Inter',
             fontWeight: 600,
             fontSize: '30px',
             lineHeight: 'normal',
@@ -67,7 +66,6 @@ const Super = ({ SuperData }) => {
         >
           <Typography
             sx={{
-              fontFamily: 'Inter',
               fontWeight: 700,
               fontSize: '40px',
               lineHeight: '48.41px',
@@ -87,7 +85,6 @@ const Super = ({ SuperData }) => {
           ></Typography>
           <Typography
             sx={{
-              fontFamily: 'Inter',
               fontWeight: 600,
               fontSize: '16px',
               lineHeight: '13.36px',
@@ -108,7 +105,7 @@ const Super = ({ SuperData }) => {
             <ListItem
               sx={{
                 color: '#702FA9',
-                fontFamily: 'Inter',
+
                 fontSize: '15px',
                 fontStyle: 'normal',
                 fontWeight: 400,
@@ -122,7 +119,6 @@ const Super = ({ SuperData }) => {
             </ListItem>
             <ListItem
               sx={{
-                fontFamily: 'Inter',
                 fontWeight: 400,
                 fontSize: '15px',
                 lineHeight: '15px',

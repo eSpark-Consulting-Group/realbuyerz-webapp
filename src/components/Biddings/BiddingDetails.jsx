@@ -139,7 +139,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         fontWeight: '500',
                         fontSize: '13.8px',
                         lineHeight: '14.52px',
-                        fontFamilly: 'inter',
                         mb: 1,
                       }}
                     >
@@ -151,7 +150,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         fontWeight: '500',
                         fontSize: '13.8px',
                         lineHeight: '14.52px',
-                        fontFamilly: 'inter',
                       }}
                     >
                       {item?.description}

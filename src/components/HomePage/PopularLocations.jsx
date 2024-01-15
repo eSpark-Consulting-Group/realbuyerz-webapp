@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,10 +18,10 @@ const scrollToTop = () => {
 };
 
 const PopularLocations = ({ data }) => {
-  const [filteredProposalsData, setFilteredProposalsData] = React.useState(
+  const [filteredProposalsData, setFilteredProposalsData] = useState(
     data?.filter((item) => item.type === 'sale')
   );
-  const [filterType, setFilterType] = React.useState('sale');
+  const [filterType, setFilterType] = useState('sale');
 
   const handleFilter = (type) => {
     setFilterType(type);

@@ -2,20 +2,20 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
 
-const SliderCardTitle = ({ title }) => {
+const SliderCardTitle = ({ title, link }) => {
   return (
-    <Link href={`/properties/${title?.id}`}>
+    <Link href={`/properties/${link?.id}`}>
       <Typography
         variant="body1"
         sx={{
           color: '#FB631C',
           fontWeight: '600',
-          fontFamily: 'Inter',
+
           fontSize: '18px',
           fontStyle: 'normal',
         }}
       >
-        {title?.name}
+        {title}
       </Typography>
     </Link>
   );

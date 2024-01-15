@@ -96,7 +96,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             >
               <TableBody>
                 <TableRow>
-                  {Object.keys(propertyData?.propertyDetails).map(
+                  {Object.keys(propertyData?.propertyOverview).map(
                     (key, index) => (
                       <TableCell
                         key={index}
@@ -107,7 +107,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           padding: '20px',
                         }}
                       >
-                        {propertyData?.propertyDetails[key]}
+                        {propertyData?.propertyOverview[key]}
                       </TableCell>
                     )
                   )}

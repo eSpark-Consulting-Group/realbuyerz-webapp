@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 
 import { Proposals } from '@/app/constants/Proposals';
 
-const ProposalMapLocation = ({ location }) => {
+const ProposalMapLocation = ({ proposal }) => {
   const renderLocationInfo = () => {
     return Object.keys(Proposals.location)
       .slice(1) // Skip the first item
@@ -29,7 +29,7 @@ const ProposalMapLocation = ({ location }) => {
             }}
             variant="body1"
           >
-            {location[key]}
+            {proposal?.propertyData?.propertyLocation[key]}
           </Typography>
         </Box>
       ));
@@ -48,13 +48,14 @@ const ProposalMapLocation = ({ location }) => {
       </Typography>
       {renderLocationInfo()}
       <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14472.341891430968!2d67.115604!3d24.929158!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33feab1c28595%3A0xa3b2a5dc2f97a82e!2seSpark%20Consulting%20Group!5e0!3m2!1sen!2s!4v1702632437533!5m2!1sen!2s"
         title="Property Location"
-        src={location.geoLocation}
         width="100%"
         height="150"
+        allowfullscreen=""
         frameBorder="0"
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
+        referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </Box>
   );

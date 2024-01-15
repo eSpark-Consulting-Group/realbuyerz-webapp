@@ -25,7 +25,7 @@ const ListingInfo = ({ propertyInfo }) => {
           <Typography
             sx={{
               fontSize: { xs: '18px', md: '22px' },
-              fontFamily: 'Inter',
+
               fontWeight: 400,
               color: '#909394',
             }}

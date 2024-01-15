@@ -6,7 +6,12 @@ const ProposalMedia = ({ media, mediaType }) => {
   return (
     <>
       <Grid container>
-        <Grid item xs={6} gap={'26px'} sx={{ display: 'flex', padding: '5px' }}>
+        <Grid
+          item
+          xs={6}
+          gap={'26px'}
+          sx={{ display: 'flex', padding: '5px', alignItems: 'center' }}
+        >
           <Typography
             variant="h2"
             sx={{
@@ -15,9 +20,10 @@ const ProposalMedia = ({ media, mediaType }) => {
               fontWeight: '500',
             }}
           >
-            {`Project videos`}
+            {mediaType === 'videos' ? 'Project Videos' : 'Project Images'}
           </Typography>
         </Grid>
+
         <Grid
           item
           xs={6}

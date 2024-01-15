@@ -1,7 +1,7 @@
-import { PROPOSAL_LISTING } from '@/app/constants/Proposals';
+import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
 
-const proposals = PROPOSAL_LISTING;
+const proposals = PROPOSALS_DATA;
 
 const initialState = { proposals };
 

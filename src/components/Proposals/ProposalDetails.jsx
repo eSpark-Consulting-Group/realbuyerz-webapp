@@ -3,7 +3,7 @@ import { Avatar, Grid, Box, Typography, Button } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const ProposalHeader = () => {
+const ProposalHeader = ({ reject, connect }) => {
   return (
     <Grid container borderBottom={'1px solid #E4E4E4'}>
       <Grid item xs={6} gap={'26px'} sx={{ p: '30px', display: 'flex' }}>
@@ -39,6 +39,8 @@ const ProposalHeader = () => {
         sx={{ p: '40px', display: 'flex', justifyContent: 'flex-end' }}
       >
         <Button
+          onClick={reject}
+          variant="outlined"
           sx={{
             mx: '4px',
             fontWeight: 600,
@@ -50,11 +52,12 @@ const ProposalHeader = () => {
             },
             borderRadius: '50px',
           }}
-          variant="outlined"
         >
           Reject
         </Button>
         <Button
+          variant="primary"
+          onClick={connect}
           sx={{
             mx: '4px',
             fontWeight: 600,
@@ -63,7 +66,6 @@ const ProposalHeader = () => {
             color: '#fff',
             borderRadius: '50px',
           }}
-          variant="primary"
         >
           <Typography sx={{ color: '#fff' }}>Connect</Typography>
         </Button>

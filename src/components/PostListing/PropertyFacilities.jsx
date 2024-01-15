@@ -14,7 +14,7 @@ const PropertyFacilities = ({ propertyInformation }) => {
             justifyContent: { xs: 'center', md: 'space-between' },
             alignItems: 'center',
             fontSize: { xs: '18px', md: '20px' },
-            fontFamily: 'Inter',
+
             fontWeight: 400,
             gap: { xs: '0px', md: '8px' },
           }}

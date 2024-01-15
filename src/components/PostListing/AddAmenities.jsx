@@ -28,7 +28,7 @@ const AddAmenities = ({ onSelected }) => {
         sx={{
           color: '#666666',
           fontSize: { xs: '14px', md: '18px' },
-          fontFamily: 'Inter',
+
           fontWeight: 400,
         }}
       >

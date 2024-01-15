@@ -1,15 +1,23 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-const PropertyAmenities = ({ amenities, heading }) => {
+const PropertyAmenities = ({ propertyData, heading }) => {
+  const amenities = useSelector(
+    (state) => state?.propertyAmenities?.propertyAmenities
+  );
+
+  const filteredAmenities = amenities?.filter((amenity) =>
+    propertyData?.amenities?.includes(amenity?.id)
+  );
   return (
-    <div>
+    <>
       <Typography
         sx={{ fontSize: { xs: '14px', md: '18px' }, fontWeight: 600 }}
       >
         {heading}
       </Typography>
-      {amenities.map((item, index) => (
+      {filteredAmenities?.map((item, index) => (
         <Typography
           sx={{
             padding: '3px',
@@ -18,10 +26,10 @@ const PropertyAmenities = ({ amenities, heading }) => {
           }}
           key={index}
         >
-          {item}
+          {item?.title}
         </Typography>
       ))}
-    </div>
+    </>
   );
 };
 export default PropertyAmenities;

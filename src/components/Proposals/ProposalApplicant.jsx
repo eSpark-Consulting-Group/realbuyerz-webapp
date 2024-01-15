@@ -1,11 +1,21 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-const ProposalApplicant = ({ leftSection }) => {
+const ProposalApplicant = ({ proposal }) => {
+  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+
+  const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
+  console.log('selectedAgent', selectedAgent);
+
+  if (!selectedAgent) {
+    console.error(`Agent with id ${proposal} not found`);
+    // Remove 'return null;' to allow the execution of the JSX block below
+  }
   return (
     <Grid
       item
-      xs={2}
+      xs={3}
       sx={{
         p: '40px 40px 40px 20px',
         justifyContent: 'center',
@@ -21,8 +31,9 @@ const ProposalApplicant = ({ leftSection }) => {
           fontWeight: '600',
         }}
       >
-        {leftSection?.title}
+        {`Applicant`}
       </Typography>
+
       <Typography
         variant="body1"
         sx={{
@@ -31,7 +42,7 @@ const ProposalApplicant = ({ leftSection }) => {
           fontWeight: '400',
         }}
       >
-        {leftSection?.discription}
+        {`${selectedAgent?.firstName} has applied to or been invited to your or your company’s job need experience custom template designers for custom posts archive creation`}
       </Typography>
     </Grid>
   );

@@ -18,7 +18,20 @@ import SliderCardPrice from './Slider/SliderCardPrice';
 import SliderCardSeeDetails from './Slider/SliderCardSeeDetails';
 import SliderCardIcons from './Slider/SliderCardIcons';
 
-const PropertySlider = ({ data }) => {
+import { useSelector } from 'react-redux';
+
+const PropertySlider = ({ propertyData }) => {
+  const properties = useSelector((state) => state?.properties?.properties);
+  console.log(properties, 'properties');
+
+  const filteredProperties = properties.filter(
+    (property) =>
+      property.propertyType === propertyData?.propertyType &&
+      property?.subPropertyType === propertyData?.subPropertyType
+  );
+
+  console.log(filteredProperties, 'filtered properties');
+
   var settings = {
     dots: false,
     infinite: true,
@@ -68,7 +81,7 @@ const PropertySlider = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data?.recentProperties.properties.map((item, index) => {
+        {filteredProperties.map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>
               <Card
@@ -84,7 +97,7 @@ const PropertySlider = ({ data }) => {
                   <CardMedia
                     component="img"
                     height="194"
-                    image={item?.image}
+                    image={item?.coverImage}
                     alt="Paella dish"
                   />
                 </Link>
@@ -92,13 +105,20 @@ const PropertySlider = ({ data }) => {
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>
-                        <SliderCardTitle title={item} />
+                        <SliderCardTitle
+                          title={item?.propertyTitle}
+                          link={item}
+                        />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardLocation location={item?.location} />
+                        <SliderCardLocation
+                          location={item?.propertyData?.propertyLocation?.area}
+                        />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardPrice price={item?.price} />
+                        <SliderCardPrice
+                          price={item?.propertyOverview?.price}
+                        />
                       </Grid>
                     </Grid>
                   </Box>

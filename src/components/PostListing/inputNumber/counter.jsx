@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomNumberInput from './customInputNumber';
 import { useDispatch } from 'react-redux';
 import {
@@ -9,14 +9,14 @@ import {
 } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const Counter = ({ identifier }) => {
-  const [number, setNumber] = React.useState(0);
-  const [incrementValue, setIncrementValue] = React.useState(0);
-  const [bedroomValue, setBedroomValue] = React.useState(0);
-  const [bathroomValue, setBathroomValue] = React.useState(0);
-  const [parkingValue, setParkingValue] = React.useState(0);
+  const [number, setNumber] = useState(0);
+  const [incrementValue, setIncrementValue] = useState(0);
+  const [bedroomValue, setBedroomValue] = useState(0);
+  const [bathroomValue, setBathroomValue] = useState(0);
+  const [parkingValue, setParkingValue] = useState(0);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (identifier == 'facility_0') {
       setBedroomValue(Number(number));
     } else if (identifier == 'facility_1') {
@@ -26,15 +26,15 @@ const Counter = ({ identifier }) => {
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addBedrooms(bedroomValue));
   }, [bedroomValue]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addBathrooms(bathroomValue));
   }, [bathroomValue]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(addParking(parkingValue));
   }, [parkingValue]);
 
