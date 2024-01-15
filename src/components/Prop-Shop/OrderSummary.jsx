@@ -18,7 +18,7 @@ const OrderSummary = ({
   const HandleProceedToPayment = () => {
     dispatch(ProceedPayment(OrderSummaryPayLoad));
   };
-
+  
   return (
     <Box
       sx={{

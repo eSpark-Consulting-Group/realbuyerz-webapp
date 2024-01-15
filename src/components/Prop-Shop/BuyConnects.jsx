@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Typography, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
@@ -32,27 +32,24 @@ const BuyConnects = ({
       setBuyConnectData({
         ...buyConnectData,
         [name]: value,
-        your_account_will_be_charged: Number(String(find.value).split('$')[1]),
+        your_account_will_be_charged: Number(find.value),
         your_new_connects_balance_will_be:
           Number(find.item) + Number(buyConnectData?.your_available_connects),
         new_connects: Number(find.item),
       });
-      dispatch(buy(buyConnectData));
     } else {
       setBuyConnectData({
         ...buyConnectData,
         [name]: value,
       });
-      dispatch(buy(buyConnectData));
     }
   };
-  // const handleBuy = () => {
-  //   if (buyConnectData.select_the_amount_to_buy == 0) {
-  //     null;
-  //   } else {
-     
-  //   }
-  // };
+
+  useEffect(() => {
+    dispatch(buy(buyConnectData));
+  }, [buyConnectData, dispatch]);
+
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>

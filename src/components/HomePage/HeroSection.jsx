@@ -104,8 +104,7 @@ const HeroSection = () => {
           }}
         >
           <Bounce direction="left" triggerOnce>
-            <Link href="/signup/?user-type=agent">
-              {' '}
+            <Link href="/signup/">
               <Button
                 sx={{
                   width: {
@@ -138,7 +137,7 @@ const HeroSection = () => {
             </Link>
           </Bounce>
           <Bounce direction="right" triggerOnce>
-            <Link href="/signup/?user-type=user">
+            <Link href="/signup/">
               {' '}
               <Button
                 sx={{
