@@ -37,20 +37,22 @@ const BuyConnects = ({
           Number(find.item) + Number(buyConnectData?.your_available_connects),
         new_connects: Number(find.item),
       });
+      dispatch(buy(buyConnectData));
     } else {
       setBuyConnectData({
         ...buyConnectData,
         [name]: value,
       });
-    }
-  };
-  const handleBuy = () => {
-    if (buyConnectData.select_the_amount_to_buy == 0) {
-      null;
-    } else {
       dispatch(buy(buyConnectData));
     }
   };
+  // const handleBuy = () => {
+  //   if (buyConnectData.select_the_amount_to_buy == 0) {
+  //     null;
+  //   } else {
+     
+  //   }
+  // };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -141,8 +143,7 @@ const BuyConnects = ({
               </Box>
             ))}
           </Box>
-
-          <Box sx={{ px: 4, py: 2 }}>
+          {/* <Box sx={{ px: 4, py: 2 }}>
             <Button
               variant="outlined"
               onClick={handleBuy}
@@ -154,7 +155,7 @@ const BuyConnects = ({
             >
               {buttonText}
             </Button>
-          </Box>
+          </Box> */}
         </Box>
       </Grid>
     </Box>

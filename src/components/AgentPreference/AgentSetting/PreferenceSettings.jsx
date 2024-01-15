@@ -60,8 +60,7 @@ const PreferenceSettings = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            // height: '1152px',
-            justifyContent: 'center',
+            height: '100vh',
             margin: 0,
             backgroundImage: 'url("/images/RealBuyers.svg")',
             backgroundPosition: 'center 40%',
