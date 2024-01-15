@@ -8,16 +8,16 @@ export const AGENT_PREFERENCES = {
       description: 'Allow to receive email notification',
       value: false,
     },
-    {
-      title: 'NewsLetter',
-      description: 'Allow to stay updated & receive newsletter',
-      value: false,
-    },
-    {
-      title: 'Automated Reports',
-      description: 'Allow to send us reports automatically incase of any issue',
-      value: false,
-    },
+    // {
+    //   title: 'NewsLetter',
+    //   description: 'Allow to stay updated & receive newsletter',
+    //   value: false,
+    // },
+    // {
+    //   title: 'Automated Reports',
+    //   description: 'Allow to send us reports automatically incase of any issue',
+    //   value: false,
+    // },
   ],
   propertySize: [
     {

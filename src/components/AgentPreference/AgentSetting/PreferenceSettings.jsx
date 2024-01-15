@@ -60,7 +60,7 @@ const PreferenceSettings = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: '1152px',
+            // height: '1152px',
             justifyContent: 'center',
             margin: 0,
             backgroundImage: 'url("/images/RealBuyers.svg")',
@@ -73,7 +73,7 @@ const PreferenceSettings = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              marginBottom: { xs: '170px', md: '180px' },
+              // marginBottom: { xs: '170px', md: '180px' },
               width: { xs: '100%', md: '70%' },
               padding: '40px',
               gap: '40px',

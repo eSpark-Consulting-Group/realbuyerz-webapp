@@ -27,7 +27,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   const { mutate: getResetPasswordLink } = useMutation({
     mutationFn: forgetPassword,
     onSuccess: (data) => {
-     setOpen(true);
+      setOpen(true);
     },
   });
 
@@ -40,7 +40,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   };
 
   const handleValidation = () => {
-    if(validateEmail(email)) {
+    if (validateEmail(email)) {
       setError(null);
       setisValidEmail(true);
       return true;
@@ -56,7 +56,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   };
 
   const handleContinue = () => {
-    if(handleValidation()) {
+    if (handleValidation()) {
       console.log('email', email);
       getResetPasswordLink({ to: email });
     }
@@ -66,7 +66,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
     console.log('resend email');
     getResetPasswordLink({ to: email });
   };
-  
+
   const checkPasswordMatch = () => {};
   return (
     <Box

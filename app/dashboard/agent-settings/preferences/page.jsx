@@ -8,8 +8,8 @@ const AgentPreferenceLayout = () => {
     <Grid
       container
       sx={{
-        paddingTop: '40px',
-        paddingBottom: '40px',
+        // paddingTop: '40px',
+        // paddingBottom: '40px',
         display: 'flex',
         justifyContent: 'center',
       }}
@@ -17,13 +17,12 @@ const AgentPreferenceLayout = () => {
       <Grid
         item
         xs={12}
-        md={11.5}
         sx={{
           display: 'flex',
-          paddingBottom: '200px',
+        height:'100%',
         }}
       >
-        <PreferenceSettings />
+         <PreferenceSettings />
       </Grid>
     </Grid>
   );
