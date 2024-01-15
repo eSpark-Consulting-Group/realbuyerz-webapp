@@ -75,7 +75,7 @@ const Page = () => {
           <Divider sx={{ pt: '10px', pb: '10px' }} />
           <ProposalStats proposal={selectedProposal} />
           <Divider sx={{ pb: '10px' }} />
-          <ProposalMedia
+          {/* <ProposalMedia
             media={selectedProposal?.propertyData?.propertyImages}
             mediaType={'images'}
           />
@@ -83,7 +83,7 @@ const Page = () => {
           <ProposalMedia
             media={selectedProposal?.propertyData?.propertyVideos}
             mediaType={'videos'}
-          />
+          /> */}  
         </Grid>
         <Grid item xs={12} md={3} sx={{ py: '70px', px: '25px' }}>
           <RightSection

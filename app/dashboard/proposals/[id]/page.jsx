@@ -48,7 +48,7 @@ const Page = () => {
           <Divider sx={{ pt: '10px', pb: '10px' }} />
           <ProposalStats proposal={proposal} />
           <Divider sx={{ pb: '10px' }} />
-          <ProposalMedia
+          {/* <ProposalMedia
             media={proposal?.propertyData?.propertyImages}
             mediaType={'images'}
           />
@@ -56,7 +56,7 @@ const Page = () => {
           <ProposalMedia
             media={proposal?.propertyData?.propertyVideos}
             mediaType={'videos'}
-          />
+          /> */}
         </Grid>
       </Grid>
     </Box>
