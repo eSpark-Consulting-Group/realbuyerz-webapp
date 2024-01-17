@@ -35,13 +35,13 @@ const RootLayout = ({ children }) => {
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <Box>
-                {currentPath.includes('/dashboard') ? (
+                {/* {currentPath.includes('/dashboard') ? (
                   <DashboardHeader />
                 ) : (
                   <MainHeader />
-                )}
+                )} */}
                 <Box>{children}</Box>
-                <Footer data={FOOTER_DATA} />
+                {/* <Footer data={FOOTER_DATA} /> */}
               </Box>
             </ThemeProvider>
           </Provider>

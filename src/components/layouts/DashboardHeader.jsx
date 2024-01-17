@@ -79,11 +79,11 @@ const DashboardHeader = () => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4' }}
+      sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4', boxShadow: 0 }}
     >
       <Box
         maxWidth="fluid"
-        sx={{ backgroundColor: 'white', p: 1, px: { xs: 0, lg: 4 } }}
+        sx={{ backgroundColor: 'white', px: { xs: 0, lg: 4 } }}
       >
         <Toolbar disableGutters>
           <Box
