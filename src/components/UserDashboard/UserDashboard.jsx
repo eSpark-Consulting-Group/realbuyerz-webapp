@@ -19,13 +19,19 @@ const UserDashboard = () => {
       <PostRequestButton />
       <Box
         sx={{
-          width: { lg: '95%', xs: '100%' },
-          background: '#fff',
+         background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
           mt: 6,
           mb: 6,
-          mx: 'auto',
+          mx: { xs: 'auto', lg: 0 },
+            width: {xs:'100%', lg: '1200px'},
+            '@media (min-width: 1440px) and (max-width: 1568px)': {
+            width: '100%',
+            },
+            '@media (min-width: 960px) and (max-width: 1439px)': {
+            width: '90%',
+      },
         }}
       >
         <ViewAllPosting />
@@ -43,13 +49,20 @@ const UserDashboard = () => {
       </Box>
       <Box
         sx={{
-          width: { lg: '95%', xs: '100%' },
           background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
           mt: 6,
           mb: 6,
-          mx: 'auto',
+          mx: {xs: 'auto', lg: 0},
+          width: { xs: '100%', lg: '1200px' },
+          width: {xs:'100%', lg: '1200px'},
+          '@media (min-width: 1440px) and (max-width: 1568px)': {
+            width: '100%',
+          },
+          '@media (min-width: 960px) and (max-width: 1439px)': {
+            width: '90%',
+      },
         }}
       >
         <DashboardTitle

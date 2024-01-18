@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Subscription from './Subscription';
 import BuyConnects from './BuyConnects';
 import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
+import ProductCart from './ProductCart';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -26,13 +27,19 @@ export default function BuyProduct() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container xs={12} md={12} lg={12} item>
-        <Grid xs={12} sm={12} md={12} lg={12} item>
+      <Grid container xs={12} md={12} lg={12} item spacing={2.2}>
+        <Grid xs={12} sm={12} md={12} lg={8.5} item>
           <Item>
             <Subscription title={Buy_Product_Data?.title} />
           </Item>
         </Grid>
-        <Grid xs={12} sm={12} md={12} lg={12} item>
+          <Grid xs={12} sm={12} md={12} lg={3.5} item>
+          <Item>
+            <ProductCart />
+          </Item>
+        </Grid>
+
+        <Grid xs={12} sm={12} md={12} lg={8.5} item>
           <Item>
             <BuyConnects
               title={title}

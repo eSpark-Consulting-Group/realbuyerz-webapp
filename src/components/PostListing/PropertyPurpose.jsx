@@ -37,6 +37,7 @@ const PropertyPurpose = ({ propertyData }) => {
             borderRadius: '10px',
             height: { xs: '1200px', md: '1000px' },
             width: '100%',
+            backgroundColor: 'white'
           }}
         >
           <PostTitle

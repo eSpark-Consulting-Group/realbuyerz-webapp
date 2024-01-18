@@ -29,6 +29,7 @@ const RootLayout = ({ children }) => {
       <Head>
         <Seo data={filterMeta} alter={SEO_DATA[0]} />
       </Head>
+      
       <body>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>

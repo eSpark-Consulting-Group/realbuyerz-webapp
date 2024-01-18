@@ -14,7 +14,7 @@ import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMapLocation from '@/src/components/Proposals/ProposalMapLocation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const Page = () => {
+const page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -98,4 +98,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;

@@ -38,6 +38,7 @@ const PropertyGallery = ({ handleFileChange, propertyData }) => {
             borderRadius: '10px',
             width: '100%',
             height: { xs: '1100px', md: '581px' },
+             backgroundColor: 'white',
             '@media (min-width: 960px) and (max-width: 1399px)': {
               height: '780px',
             },

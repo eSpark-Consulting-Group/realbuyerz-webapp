@@ -4,15 +4,14 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 
 import SidebarAccordion from './SidebarAccordion';
 import { usePathname } from 'next/navigation';
-import { Agent_Routes, Client_Routes, User_Routes } from '@/app/constants/sidebar';
+import { Agent_Routes, User_Routes } from '@/app/constants/sidebar';
 
-const Sidebar = ({ userName }) => {
+const Sidebar = () => {
   const theme = useTheme();
   const pathName = usePathname();
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'));
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
-  const employee = pathName.includes('/employee/dashboard');
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -34,12 +33,12 @@ const Sidebar = ({ userName }) => {
   const renderLinks = () => {
     const agent = pathName.includes('/agent');
     const user = pathName.includes('/user');
-    
+
     if (agent) {
       return Agent_Routes;
     } else if (user) {
       return User_Routes;
-    } 
+    }
     else {
       null;
     }
@@ -54,49 +53,8 @@ const Sidebar = ({ userName }) => {
           height: '100vh',
           flexDirection: 'column',
           backgroundColor: '#fff',
-          // position: 'relative',
         }}
       >
-        {/* <Box
-          sx={{
-            borderBottom: '1px solid #E7E7E7',
-            position: 'relative',
-            width: '100%',
-          }}
-        >
-          {isSmallScreen ? (
-            <SidebarActiveUser userName={userName} />
-          ) : (
-            <ProfilePopper button={<SidebarActiveUser userName={userName} />} />
-          )}
-        </Box> */}
-
-        {/* {employee && (
-          <Box
-            sx={{
-              borderBottom: '1px solid #E7E7E7',
-              position: 'relative',
-              width: '100%',
-            }}
-          >
-            {isSmallScreen ? (
-              <SidebarWorkSpace
-                title={WORK_SPACE_TITLE}
-                image={WORK_SPACE_ICON}
-              />
-            ) : (
-              <WorkSpacePopper
-                button={
-                  <SidebarWorkSpace
-                    title={WORK_SPACE_TITLE}
-                    image={WORK_SPACE_ICON}
-                  />
-                }
-              />
-            )}
-          </Box>
-        )} */}
-
         <Box
           id={'accrodion'}
           component={'div'}
@@ -111,17 +69,7 @@ const Sidebar = ({ userName }) => {
         >
           <SidebarAccordion sidebarLinks={renderLinks()} />
         </Box>
-        <Box
-          sx={{
-            width: '100%',
-            position: 'relative',
-            bottom: 0,
-            backgroundColor: '#068987',
-          }}
-        >
-          {/* <SidebarLogo /> */}
-        </Box>
-      </Box>
+     </Box>
     </>
   );
 };

@@ -13,7 +13,7 @@ import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const Page = () => {
+const page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -37,6 +37,11 @@ const Page = () => {
   }
   console.log('proposals', proposals);
   return (
+      <Box sx={{
+        width: {
+          lg: '1200px', '@media (min-width: 1440px) and (max-width: 1568px)': {
+            width: '100%',
+      },}}}>
     <Box sx={{ background: '#fff', borderRadius: '10px', p: '50px' }}>
       <ProposalHeader proposal={proposal} />
       <Grid container>
@@ -59,7 +64,8 @@ const Page = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+      </Box>
+      </Box>
   );
 };
-export default Page;
+export default page;

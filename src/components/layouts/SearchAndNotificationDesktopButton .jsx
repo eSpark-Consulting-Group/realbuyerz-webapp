@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { Menu, MenuItem, Typography } from '@mui/material';
+import Link from 'next/link';
 
 const SearchAndNotificationDesktopButton = ({
   handleCloseLoginMenu,
@@ -161,7 +162,9 @@ const SearchAndNotificationDesktopButton = ({
                   lineHeight: 'normal',
                 }}
               >
-                {signOut}
+                <Link href={'/'}>
+                  {signOut}
+                  </Link>
               </Typography>
             </Box>
           </MenuItem>

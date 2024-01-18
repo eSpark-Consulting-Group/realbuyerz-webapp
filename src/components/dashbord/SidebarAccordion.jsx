@@ -30,6 +30,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
               sx={{
                 boxShadow: 'none !important',
                 width: '100%',
+                px: 0.3,
                 border: 0,
                 '.mui-vf72v2-MuiPaper-root-MuiAccordion-root.Mui-expanded': {
                   boxShadow: 'none !important',
@@ -44,50 +45,51 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                 sx={{
                   mx: 'auto',
                   p: 1.4,
-                  mb: 0,
-                  minHeight: '55px',
+                  mb: 1.4,
+                  minHeight: '40px',
                   gap: 2,
-                  width: '95%',
+                  width: '100%',
                   height: '43px',
-                 borderRadius: '10px',
-                  backgroundColor: `${
-                    item?.link == pathname ? '#FF631C33' : null
-                  }`,
+                  borderRadius: '10px',
+                  backgroundColor: `${item?.link == pathname ? '#FF631C33' : null
+                    }`,
                 }}
               >
                 {item?.icon && (
-                  <Image width={20} height={20} src={item?.link == pathname ? item?.active : item?.icon} alt="icon" />
+                  <Image width={30} height={30} src={item?.link == pathname ? item?.active : item?.icon} alt="icon" />
                 )}
-                {item?.link ? ( <Link
+                {item?.link ? (<Link
                   style={{ width: '100%', height: '100%' }}
                   href={`${item?.link}`}
                 >
                   <Typography
-                     sx={{
+                    sx={{
                       width: '100%',
                       height: '100%',
-                      fontSize : '17px',
+                      fontSize: '15px',
                       fontWeight: 400,
+                      pt: 0.4,
                       ml: 2,
-                      color: `${item?.link == pathname ? '#FB631C' : '#595959'}`,
+                      color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
                     }}
                   >
                     {item?.text}
                   </Typography>
                 </Link>) : (<Typography
-                    variant="body1"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                       fontSize : '17px',
-                      fontWeight: 400,
-                      ml: 2,
-                color: `${item?.link == pathname ? '#FB631C' : '#595959'}`,
-                    }}
-                  >
-                    {item?.text}
-                  </Typography>)}
-               
+                  variant="body1"
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    fontSize: '15px',
+                    fontWeight: 400,
+                    pt: 0.4,
+                    ml: 2,
+                    color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
+                  }}
+                >
+                  {item?.text}
+                </Typography>)}
+
               </AccordionSummary>
               {item?.sublinks &&
                 item?.sublinks?.map((eachItem, index) => (
@@ -95,23 +97,19 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                     <AccordionDetails
                       key={index}
                       sx={{
-                        pl: 6.5,
-                        pt: 1.5,
-                        pb: 1.5,
-                        mb: 0.7,
+                        mt: -1.4,
+                        ml: 5,
+                        pt: 1,
+                        pb: 1,
+                        mb: 3,
+                        width: '170px',
                         boxShadow: 'none !important',
                         alignItems: 'center',
-                        '&:hover': { backgroundColor: '#E6F5F4 !important' },
-                        borderRight: `${
-                          eachItem?.link == pathname
-                            ? '2px solid #068987 !important'
-                            : null
-                        }`,
-                        backgroundColor: `${
-                          eachItem?.link == pathname
-                            ? '#E6F5F4 !important'
-                            : null
-                        }`,
+                        borderRadius: '10px',
+                        backgroundColor: `${eachItem?.link == pathname
+                          ? '#FF631C33 !important'
+                          : null
+                          }`,
                       }}
                     >
                       <Link
@@ -119,11 +117,12 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                         href={`${eachItem?.link}`}
                       >
                         <Typography
-                          variant="body1"
                           sx={{
+                            fontSize: '14px',
+                            fontWeight: 400,
                             width: '100%',
                             height: '100%',
-                            color: '#595959',
+                            color: `${eachItem.link == pathname ? '#FB631C' : '#000'}`,
                           }}
                         >
                           {eachItem?.text}

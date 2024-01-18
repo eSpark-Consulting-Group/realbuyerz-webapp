@@ -4,12 +4,7 @@ export const PAGES = [
     auth: true,
     path: '/',
   },
-  {
-    menu: 'Properties',
-    auth: true,
-    path: '/properties',
-  },
-  {
+ {
     menu: 'Project',
     auth: true,
     path: '/project',

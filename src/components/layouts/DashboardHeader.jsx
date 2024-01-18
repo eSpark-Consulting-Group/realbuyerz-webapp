@@ -18,7 +18,7 @@ import {
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
-const DashboardHeader = () => {
+const DashboardHeader = ({openSidebar}) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userType, setUserType] = useState('agent');
@@ -112,6 +112,7 @@ const DashboardHeader = () => {
                   textDecoration: 'none',
                   cursor: 'pointer',
                 }}
+                // onClick={toggleDrawer}
                 onClick={toggleDrawer}
               >
                 <Image
@@ -126,7 +127,7 @@ const DashboardHeader = () => {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/dashboard"
+                href="/"
                 sx={{
                   display: { xs: 'flex' },
                   fontWeight: 700,

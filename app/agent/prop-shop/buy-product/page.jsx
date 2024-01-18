@@ -1,11 +1,13 @@
-import React from 'react'
+import BuyProduct from '@/src/components/Prop-Shop/BuyProduct';
+import { Box } from '@mui/material';
+import React from 'react';
 
 const page = () => {
   return (
-      <>
-          <h1>buy-product</h1>
-   </>
-  )
-}
+    <Box>
+      <BuyProduct />
+    </Box>
+  );
+};
 
-export default page
+export default page;

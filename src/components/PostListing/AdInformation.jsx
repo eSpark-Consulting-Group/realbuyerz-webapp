@@ -34,6 +34,7 @@ const AdInformation = ({ propertyData }) => {
             borderRadius: '10px',
             height: '681px',
             width: '100%',
+            backgroundColor: 'white'
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />

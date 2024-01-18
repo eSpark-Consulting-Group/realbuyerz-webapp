@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import UserDashboard from '@/src/components/UserDashboard/UserDashboard';
 
 const page = () => {
   return (
-      <>
-          <h1>Dashboard</h1>
-   </>
-  )
-}
+    <>
+      <UserDashboard />
+    </>
+  );
+};
 
-export default page
+export default page;

@@ -6,7 +6,6 @@ const LiveBiddingTitle = ({ title }) => {
     <Typography
       variant="h4"
       sx={{
-        paddingTop: '60px',
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 600,
