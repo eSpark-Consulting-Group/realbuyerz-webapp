@@ -679,6 +679,6 @@ export const PROPERTY_DETAILS = {
   viewMore: 'View More',
   posted: 'Posted',
   pkr: 'PKR',
-  agent: '/agent/',
-  properties: '/properties/',
+  agent: '/project/',
+  properties: '/project/',
 };

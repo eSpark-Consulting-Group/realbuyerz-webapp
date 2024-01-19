@@ -40,7 +40,7 @@ const CustomTabPanel = ({ data, value, index, propertyType }) => {
             {propertyTitle?.map(({ id, Propertytitle }) => (
               <Grid item key={id} {...itemsPerRow}>
                 <Typography fontWeight="300" fontSize="16px" textAlign="center">
-                  <Link href={`/properties/${id}`}>{Propertytitle}</Link>
+                  <Link href={`/project/${id}`}>{Propertytitle}</Link>
                 </Typography>
               </Grid>
             ))}
