@@ -18,7 +18,7 @@ import {
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
-const DashboardHeader = () => {
+const DashboardHeader = ({openSidebar}) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userType, setUserType] = useState('agent');
@@ -79,11 +79,11 @@ const DashboardHeader = () => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4' }}
+      sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4', boxShadow: 0 }}
     >
       <Box
         maxWidth="fluid"
-        sx={{ backgroundColor: 'white', p: 1, px: { xs: 0, lg: 4 } }}
+        sx={{ backgroundColor: 'white', px: { xs: 0, lg: 4 } }}
       >
         <Toolbar disableGutters>
           <Box
@@ -112,6 +112,7 @@ const DashboardHeader = () => {
                   textDecoration: 'none',
                   cursor: 'pointer',
                 }}
+                // onClick={toggleDrawer}
                 onClick={toggleDrawer}
               >
                 <Image
@@ -126,7 +127,7 @@ const DashboardHeader = () => {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/dashboard"
+                href="/"
                 sx={{
                   display: { xs: 'flex' },
                   fontWeight: 700,

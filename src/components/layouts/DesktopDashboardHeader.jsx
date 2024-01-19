@@ -39,7 +39,7 @@ const DesktopDashboardHeader = ({
 
   const searchInput = (e) => {
     setSearch(e.target.value);
-  };
+  };  
   const handleLogout = () => {
     handleCloseLoginMenu();
   };
@@ -62,8 +62,8 @@ const DesktopDashboardHeader = ({
                   <Image
                     onClick={handleOpenSearchMenu}
                     src={item?.searchIcon}
-                    width={35}
-                    height={35}
+                    width={41}
+                    height={43}
                     alt={'icon'}
                     style={{ marginRight: 30, cursor: 'pointer' }}
                   />
@@ -104,6 +104,7 @@ const DesktopDashboardHeader = ({
                   </Box>
                 </Menu>
               </Box>
+
               <Image
                 src={item?.linkIcon}
                 width={20}
@@ -119,11 +120,13 @@ const DesktopDashboardHeader = ({
                   textDecoration: 'none',
                   borderRadius: '4px',
                   marginRight: '14px',
+                  fontWeight: 500,
                 }}
               >
                 {LINK_NAME}
               </Link>
-              <Button
+
+              {/* <Button
                 sx={{
                   color: '#000',
                   border: '1px solid #E7E7E7',
@@ -165,7 +168,8 @@ const DesktopDashboardHeader = ({
                   />
                   <Typography mx={1}>{POST_LISTING}</Typography>
                 </Box>
-              </Button>
+              </Button> */}
+              
               <IconButton
                 sx={{
                   p: 0,
@@ -177,17 +181,19 @@ const DesktopDashboardHeader = ({
                   badgeContent={4}
                   color={CUSTOM_COLOR}
                   sx={{
-                    width: 25,
-                    height: 25,
+                    // width: 25,
+                    // height: 25,
                     '& .MuiBadge-badge': {
                       color: 'white',
+                      backgroundColor: '#1176AD',
                       width: 10,
-                      height: 20,
+                      fontSize: '10px',
+                      height: 15,
                     },
                   }}
                 >
                   <NotificationsIcon
-                    sx={{ fontSize: 35, color: { CUSTOM_COLOR } }}
+                    sx={{ fontSize: 30, color: { CUSTOM_COLOR } }}
                   />
                 </Badge>
               </IconButton>

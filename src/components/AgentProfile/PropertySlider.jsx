@@ -93,7 +93,7 @@ const PropertySlider = ({ propertyData }) => {
                 }}
                 key={item}
               >
-                <Link href={`/properties/${item?.id}`}>
+                <Link href={`/project/${item?.id}`}>
                   <CardMedia
                     component="img"
                     height="194"

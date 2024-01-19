@@ -73,7 +73,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 position: 'relative',
               }}
             >
-              <Link href={`./proposals/${proposal?.id}`}>
+              <Link href={`my-proposals/${proposal?.id}`}>
                 <Image
                   src={proposal?.coverImage}
                   layout="fill"
@@ -106,7 +106,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 xs={9}
                 sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
               >
-                <Link href={`./proposals/${proposal?.id}`}>
+                <Link href={`my-proposals/${proposal?.id}`}>
                   <Typography
                     sx={{
                       fontSize: '25px',
@@ -119,7 +119,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                 </Link>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`./proposals/${proposal?.id}`}>
+                <Link href={`my-proposals/${proposal?.id}`}>
                   <Button variant="primary">
                     <Typography variant="secondary">
                       {RESTORE_PROPERTY}

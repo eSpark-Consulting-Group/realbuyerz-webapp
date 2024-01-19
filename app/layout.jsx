@@ -29,19 +29,20 @@ const RootLayout = ({ children }) => {
       <Head>
         <Seo data={filterMeta} alter={SEO_DATA[0]} />
       </Head>
+      
       <body>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <Box>
-                {currentPath.includes('/dashboard') ? (
+                {/* {currentPath.includes('/dashboard') ? (
                   <DashboardHeader />
                 ) : (
                   <MainHeader />
-                )}
+                )} */}
                 <Box>{children}</Box>
-                <Footer data={FOOTER_DATA} />
+                {/* <Footer data={FOOTER_DATA} /> */}
               </Box>
             </ThemeProvider>
           </Provider>

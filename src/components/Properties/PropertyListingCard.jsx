@@ -67,7 +67,7 @@ const PropertyListingCard = ({ propertyData }) => {
                 position: 'relative',
               }}
             >
-              <Link href={`/properties/${property?.id}`}>
+              <Link href={`/project/${property?.id}`}>
                 <Image
                   src={property?.coverImage}
                   layout="fill"

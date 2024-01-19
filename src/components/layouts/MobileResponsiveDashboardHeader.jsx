@@ -52,7 +52,8 @@ const MobileResponsiveDashboardHeader = ({
       open={Boolean(anchorElNav)}
       onClose={handleCloseNavMenu}
       sx={{
-        display: { sm: 'block', md: 'block', lg: 'none' },
+        // display: { sm: 'block', md: 'block', lg: 'none' },
+        display: 'flex',
         color: '#000',
       }}
     >
@@ -96,14 +97,14 @@ const MobileResponsiveDashboardHeader = ({
                   </Link>
                   <Link href="/">{LINK_NAME}</Link>
                 </Box>
-                <MyListingResponsiveButton
+                {/* <MyListingResponsiveButton
                   icon={item?.myListingIcon}
                   buttonName={MY_LISTING}
                 />
                 <PostListingResponsiveButton
                   icon={item?.PostListingIcon}
                   buttonName={POST_LISTING}
-                />
+                /> */}
               </Box>
               <ProfileResponsiveButton
                 handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}

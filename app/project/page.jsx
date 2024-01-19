@@ -1,9 +1,17 @@
+'use client';
 import React from 'react';
+import { Box } from '@mui/system';
+import { useSelector } from 'react-redux';
 
-import ComingSoon from '@/src/components/Global/ComingSoon';
+import PropertyTabs from '@/src/components/Properties/PropertyTabs';
 
-const Projects = () => {
-  return <ComingSoon />;
+const Listing = () => {
+  const properties = useSelector((state) => state.properties.properties);
+  return (
+    <Box className="min-h-screen" sx={{ py: '80px' }}>
+      <PropertyTabs data={properties} />
+    </Box>
+  );
 };
 
-export default Projects;
+export default Listing;

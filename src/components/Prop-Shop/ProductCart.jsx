@@ -21,13 +21,11 @@ const ProductCart = () => {
         flexGrow: 1,
         display: 'flex',
         justifyContent: 'center',
-        py: '23px',
-      }}
+     }}
     >
       <Grid
         container
-        xs={11.7}
-        sm={11}
+        xs={12}
         item
         sx={{
           mx: { xs: 'auto', md: 0 },

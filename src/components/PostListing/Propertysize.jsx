@@ -35,6 +35,7 @@ const PropertySize = () => {
             borderRadius: '10px',
             width: '100%',
             height: { xs: '1000px', md: '730px' },
+            backgroundColor: 'white'  
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.sizeprice} />
