@@ -16,7 +16,7 @@ const BuyersPlatform = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-       }}
+        }}
       >
         <Box
           sx={{

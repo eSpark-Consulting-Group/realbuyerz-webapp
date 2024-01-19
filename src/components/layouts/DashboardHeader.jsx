@@ -18,7 +18,7 @@ import {
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 
-const DashboardHeader = ({openSidebar}) => {
+const DashboardHeader = ({ openSidebar }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userType, setUserType] = useState('agent');
@@ -79,7 +79,11 @@ const DashboardHeader = ({openSidebar}) => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: 'white', borderBottom: '2px solid #E4E4E4', boxShadow: 0 }}
+      sx={{
+        backgroundColor: 'white',
+        borderBottom: '2px solid #E4E4E4',
+        boxShadow: 0,
+      }}
     >
       <Box
         maxWidth="fluid"

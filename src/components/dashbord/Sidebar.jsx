@@ -38,8 +38,7 @@ const Sidebar = () => {
       return Agent_Routes;
     } else if (user) {
       return User_Routes;
-    }
-    else {
+    } else {
       null;
     }
   };
@@ -69,7 +68,7 @@ const Sidebar = () => {
         >
           <SidebarAccordion sidebarLinks={renderLinks()} />
         </Box>
-     </Box>
+      </Box>
     </>
   );
 };

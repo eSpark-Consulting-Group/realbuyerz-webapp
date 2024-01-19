@@ -37,7 +37,7 @@ const ProposalFilter = ({ data }) => {
     const selectedListValue = e.target.value;
     setListingType(selectedListValue);
     setSelectedData(
-      selectedListValue === 'proposals' ? PROPOSAL_LISTING : PROPERTIES_LISTING
+      selectedListValue === 'proposals' ? PROPOSAL_LISTING : PROPERTIES_LISTING,
     );
   };
 
@@ -65,7 +65,7 @@ const ProposalFilter = ({ data }) => {
       selectedPurpose,
       selectedCity,
       selectedLocation,
-      selectedPropertyType
+      selectedPropertyType,
     );
     setFilteredProposalsData(filteredProposalsData);
   };

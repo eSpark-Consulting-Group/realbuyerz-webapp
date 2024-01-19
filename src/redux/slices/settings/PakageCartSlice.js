@@ -23,7 +23,7 @@ export const PakageCartSlice = createSlice({
     buy: (state, action) => {
       state.connects = { ...action.payload };
       state.totalPrice += Math.round(
-        action.payload.your_account_will_be_charged * state.dollarRate
+        action.payload.your_account_will_be_charged * state.dollarRate,
       );
       state.emptyCard = false;
     },

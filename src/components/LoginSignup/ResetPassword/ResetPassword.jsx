@@ -60,7 +60,7 @@ const ResetPassword = () => {
 
   const handleRestPassword = () => {
     mutate({ password: formData.password, token: searchParams.get('token') });
-  }
+  };
 
   return (
     <Box

@@ -51,18 +51,51 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                   width: '100%',
                   height: '43px',
                   borderRadius: '10px',
-                  backgroundColor: `${item?.link == pathname ? '#FF631C33' : null
-                    }`,
+                  backgroundColor: `${
+                    item?.link == pathname ? '#FF631C33' : null
+                  }`,
                 }}
               >
                 {item?.icon && (
-                  <Image width={30} height={30} src={item?.link == pathname ? item?.active : item?.icon} alt="icon" />
+                  <Box
+                    component={'img'}
+                    alt="icon"
+                    sx={{
+                      width: '25px',
+                      height: '25px',
+                      '@media (min-width: 280px ) and (max-width: 319px)': {
+                        width: '20px',
+                        height: '20px',
+                      },
+                    }}
+                    src={item?.link == pathname ? item?.active : item?.icon}
+                  />
                 )}
-                {item?.link ? (<Link
-                  style={{ width: '100%', height: '100%' }}
-                  href={`${item?.link}`}
-                >
+                {item?.link ? (
+                  <Link
+                    style={{ width: '100%', height: '100%' }}
+                    href={`${item?.link}`}
+                  >
+                    <Typography
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        fontSize: '15px',
+                        fontWeight: 400,
+                        pt: 0.3,
+                        ml: 2,
+                        color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
+                        '@media (min-width: 280px ) and (max-width: 319px)': {
+                          fontSize: '13px',
+                        },
+                      }}
+                    >
+                      {item?.text}
+                    </Typography>
+                  </Link>
+                ) : (
                   <Typography
+                    variant="body1"
                     sx={{
                       width: '100%',
                       height: '100%',
@@ -71,25 +104,14 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                       pt: 0.4,
                       ml: 2,
                       color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
+                      '@media (min-width: 280px ) and (max-width: 319px)': {
+                        fontSize: '13px',
+                      },
                     }}
                   >
                     {item?.text}
                   </Typography>
-                </Link>) : (<Typography
-                  variant="body1"
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    fontSize: '15px',
-                    fontWeight: 400,
-                    pt: 0.4,
-                    ml: 2,
-                    color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
-                  }}
-                >
-                  {item?.text}
-                </Typography>)}
-
+                )}
               </AccordionSummary>
               {item?.sublinks &&
                 item?.sublinks?.map((eachItem, index) => (
@@ -106,10 +128,11 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                         boxShadow: 'none !important',
                         alignItems: 'center',
                         borderRadius: '10px',
-                        backgroundColor: `${eachItem?.link == pathname
-                          ? '#FF631C33 !important'
-                          : null
-                          }`,
+                        backgroundColor: `${
+                          eachItem?.link == pathname
+                            ? '#FF631C33 !important'
+                            : null
+                        }`,
                       }}
                     >
                       <Link

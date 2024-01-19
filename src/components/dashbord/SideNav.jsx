@@ -1,6 +1,6 @@
 import { SIDE_NAV_WIDTH } from '@/app/constants/sidebar';
 import Sidebar from './Sidebar';
-import { Drawer, useMediaQuery } from '@mui/material';
+import { Backdrop, Drawer, useMediaQuery } from '@mui/material';
 
 export const SideNav = (props) => {
   const { open, onClose } = props;
@@ -19,8 +19,8 @@ export const SideNav = (props) => {
             overflowX: 'hidden',
             overflowY: 'hidden',
             height: '100%',
-            top: 66,
-         },
+            top: 67,
+          },
         }}
         variant="permanent"
       >
@@ -34,11 +34,21 @@ export const SideNav = (props) => {
       anchor="left"
       onClose={onClose}
       open={open}
+      BackdropProps={{ click: false }}
+      BackdropComponent={(props) => (
+        <Backdrop {...props} sx={{ backgroundColor: 'rgba(0, 0, 0, 0)' }} />
+      )}
       PaperProps={{
         sx: {
           overflowX: 'hidden',
           overflowY: 'hidden',
-          width: 280,
+          boxShadow:
+            '0px 8px 10px -5px rgba(0,0,0,0.0), 0px 16px 24px 2px rgba(0,0,0,0.1), 0px 6px 30px 5px rgba(0,0,0,0.0)',
+          width: 300,
+          top: 67,
+          '@media (min-width: 280px ) and (max-width: 319px)': {
+            width: '270px',
+          },
         },
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}

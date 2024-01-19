@@ -25,7 +25,7 @@ const page = () => {
   const proposals = useSelector((state) => state.proposals.proposals);
   // console.log('proposals', proposals);
   const selectedProposal = proposals.find(
-    (proposal) => proposal?.id == bidding?.proposalId
+    (proposal) => proposal?.id == bidding?.proposalId,
   );
   // console.log('selectedProposal', selectedProposal);
 

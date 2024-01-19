@@ -15,7 +15,7 @@ const PropertyInstallment = ({
   propertyBuyingDetails,
 }) => {
   const [propertyData] = useState(
-    createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
+    createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails),
   );
   const [installment, setInstallment] = useState();
   const [possession, setPossession] = useState();

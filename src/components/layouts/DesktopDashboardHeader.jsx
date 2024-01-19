@@ -39,7 +39,7 @@ const DesktopDashboardHeader = ({
 
   const searchInput = (e) => {
     setSearch(e.target.value);
-  };  
+  };
   const handleLogout = () => {
     handleCloseLoginMenu();
   };
@@ -169,7 +169,7 @@ const DesktopDashboardHeader = ({
                   <Typography mx={1}>{POST_LISTING}</Typography>
                 </Box>
               </Button> */}
-              
+
               <IconButton
                 sx={{
                   p: 0,

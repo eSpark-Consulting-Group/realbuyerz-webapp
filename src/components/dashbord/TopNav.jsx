@@ -2,7 +2,6 @@ import { Box, useMediaQuery } from '@mui/material';
 import DashboardHeader from '../layouts/DashboardHeader';
 import ResponsiveNavbar from './AppBar';
 
-
 export const TopNav = (props) => {
   const { onNavOpen } = props;
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
@@ -15,12 +14,12 @@ export const TopNav = (props) => {
           backgroundColor: '#fff',
           top: 0,
           width: '100%',
-          height: '60px',
+          height: { xs: 66, sm: 66 },
           zIndex: 500,
         }}
       >
         <ResponsiveNavbar openSidebar={onNavOpen} />
-       {/* <DashboardHeader  openSidebar={onNavOpen} /> */}
+        {/* <DashboardHeader  openSidebar={onNavOpen} /> */}
       </Box>
     </>
   );

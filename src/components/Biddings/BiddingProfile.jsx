@@ -23,7 +23,7 @@ const BiddingProfile = ({ profileInfo }) => {
             background: '#FFF',
             width: '100%',
             height: '100%',
-           }}
+          }}
         >
           <Profile profileInfo={profileInfo} />
           <ProfileCompletness profileInfo={profileInfo} />

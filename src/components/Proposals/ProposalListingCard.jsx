@@ -169,7 +169,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                       );
                     }
                     return null;
-                  }
+                  },
                 )}
               </Grid>
               <Grid item xs={2} sx={{ justifyContent: 'center' }}>
