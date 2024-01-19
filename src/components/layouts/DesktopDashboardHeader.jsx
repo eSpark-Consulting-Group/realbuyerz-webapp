@@ -11,15 +11,12 @@ import {
   Menu,
   TextField,
   Tooltip,
-  Typography,
 } from '@mui/material';
 
 import {
   EMAIL,
   LINK_NAME,
   USER_NAME,
-  MY_LISTING,
-  POST_LISTING,
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,

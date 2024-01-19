@@ -7,8 +7,6 @@ import { Box, Typography, TextField } from '@mui/material';
 import CheckEmailModal from './EmailModal';
 import { validateEmail } from '@/utils/validationEmail';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
-import { useDispatch } from 'react-redux';
-import { updateReceivedEmail } from '@/src/redux/slices/resendEmail/resendEmailSlice';
 import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
 import { forgetPassword } from '@/utils/apis/auth/forgetPassword';
 
@@ -22,11 +20,9 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   };
   const router = useRouter();
 
-  const dispatch = useDispatch();
-
   const { mutate: getResetPasswordLink } = useMutation({
     mutationFn: forgetPassword,
-    onSuccess: (data) => {
+    onSuccess: () => {
       setOpen(true);
     },
   });
@@ -51,9 +47,9 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
     }
   };
 
-  const handleClick = () => {
-    dispatch(updateReceivedEmail(email));
-  };
+  // const handleClick = () => {
+  //   dispatch(updateReceivedEmail(email));
+  // };
 
   const handleContinue = () => {
     if (handleValidation()) {

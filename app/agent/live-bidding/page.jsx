@@ -12,7 +12,7 @@ import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
 import BiddingProfile from '@/src/components/Biddings/BiddingProfile';
 
-const page = () => {
+const Page = () => {
   const biddings = useSelector((state) => state.biddings.biddings);
   console.log(biddings, 'biddings');
 
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

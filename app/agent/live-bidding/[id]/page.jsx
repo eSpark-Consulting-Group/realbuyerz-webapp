@@ -14,7 +14,7 @@ import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMapLocation from '@/src/components/Proposals/ProposalMapLocation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const page = () => {
+const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -23,11 +23,10 @@ const page = () => {
   console.log(bidding, 'bidding');
 
   const proposals = useSelector((state) => state.proposals.proposals);
-  // console.log('proposals', proposals);
+
   const selectedProposal = proposals.find(
     (proposal) => proposal?.id == bidding?.proposalId,
   );
-  // console.log('selectedProposal', selectedProposal);
 
   if (isNaN(id) || id === undefined || id === null) {
     return (
@@ -98,4 +97,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

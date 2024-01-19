@@ -13,7 +13,7 @@ import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const page = () => {
+const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -73,4 +73,4 @@ const page = () => {
     </Box>
   );
 };
-export default page;
+export default Page;

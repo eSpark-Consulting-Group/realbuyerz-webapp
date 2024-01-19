@@ -53,10 +53,6 @@ export default function ResponsiveNavbar({ openSidebar }) {
     handleCloseLoginMenu();
   };
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
   return (
     <Box
       sx={{

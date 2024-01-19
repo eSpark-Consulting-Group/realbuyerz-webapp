@@ -22,7 +22,7 @@ import {
   UploadVideos,
 } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
-const page = () => {
+const Page = () => {
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
   console.log('test', PostListigSelectedData);
 
@@ -100,4 +100,4 @@ const page = () => {
     </Grid>
   );
 };
-export default page;
+export default Page;

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProposalFilter from '@/src/components/Proposals/ProposalFilter';
 import { Box } from '@mui/material';
 
-const page = () => {
+const Page = () => {
   const proposals = useSelector((state) => state.proposals.proposals);
   console.log('proposals', proposals);
   return (
@@ -25,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
