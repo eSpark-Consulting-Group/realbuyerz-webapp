@@ -9,6 +9,8 @@ import Subscription from './Subscription';
 import BuyConnects from './BuyConnects';
 import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
 import ProductCart from './ProductCart';
+import PaymentMethod from './PaymentMethod';
+import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -36,6 +38,11 @@ export default function BuyProduct() {
           <Grid xs={12} sm={12} md={12} lg={3.5} item>
           <Item>
             <ProductCart />
+          </Item>
+        </Grid>
+          <Grid xs={12} sm={12} md={12} lg={8.5} item>
+          <Item>
+            <PaymentMethod data={PAYMENT_METHODE_DATA} />
           </Item>
         </Grid>
 
