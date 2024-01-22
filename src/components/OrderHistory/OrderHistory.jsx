@@ -5,7 +5,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
 import { SpaceRow } from './SpaceRow';
 
@@ -13,30 +12,30 @@ const OrderHistory = ({ history }) => {
     const { tableHead, tableData, space, title } = history
     return (
         <>
-            <TableContainer component={Paper} sx={{ maxWidth: '1200px' }}>
+            <TableContainer sx={{ maxWidth: { lg: '1200px', xl: '1200px ', xxl: '1500px' }, border: '1px solid #E4E4E4 ', borderRadius: '10px', backgroundColor: '#fff' }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <SpaceRow space={space} title={title} />
                         <SpaceRow space={space} />
                         <TableRow>
                             {tableHead?.map((item) => (
-                                <TableCell>{item.name}</TableCell>
+                                <TableCell sx={{ maxWidth: '40px', textAlign: 'center', fontSize: '20px', color: '#969696', lineHeight: 'normal', fontWeight: 500 }}>{item}</TableCell>
                             ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {tableData?.map((row) => (
                             <TableRow
-                                key={row.name}
+                                key={row?.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
-                                    {row.name}
+                                <TableCell component="th" scope="row" sx={{ width: { md: '160px' }, textAlign: 'center', fontSize: '16px', color: '#333', lineHeight: 'normal', fontWeight: 500 }}>
+                                    {row?.name}
                                 </TableCell>
-                                <TableCell sx={{ maxWidth: '130px !important' }}>{row.description}</TableCell>
-                                <TableCell >{row.time}</TableCell>
-                                <TableCell >{row.date}</TableCell>
-                                <TableCell >{row.total}</TableCell>
+                                <TableCell sx={{ width: { md: '100px' }, fontSize: '16px', textAlign: { xs: 'center', md: 'left' }, color: '#333', lineHeight: '25px', fontWeight: 500 }}>{row?.description}</TableCell>
+                                <TableCell sx={{ width: { md: '160px' }, textAlign: 'center', fontSize: '16px', color: '#333', lineHeight: 'normal', fontWeight: 500 }}>{row?.time}</TableCell>
+                                <TableCell sx={{ width: { md: '110px' }, textAlign: 'center', fontSize: '16px', color: '#333', lineHeight: 'normal', fontWeight: 500 }}>{row?.date}</TableCell>
+                                <TableCell sx={{ width: { md: '155px' }, textAlign: 'center', fontSize: '16px', color: '#333', lineHeight: 'normal', fontWeight: 500 }}>{row?.total}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

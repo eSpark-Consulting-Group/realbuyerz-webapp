@@ -1,20 +1,5 @@
 export const orderHistory = {
-    tableHead: [
-        {
-            name: 'Ordered by'
-        },
-        {
-            name: 'Description'
-        },
-        {
-            name: 'Time'
-        },
-        {
-            name: 'Date'
-        },
-        {
-            name: 'Total'
-        }
+    tableHead: [ 'Ordered by','Description','Time','Date','Total'
     ],
     tableData: [
         {

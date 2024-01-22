@@ -9,7 +9,8 @@ export const SpaceRow = ({ space, title }) => (
             fontSize:'25px',
             fontStyle:'normal',
             fontWeight: 500,
-            lineHeight:'normal'
+            lineHeight:'normal',
+            pl:'30px'
           }}>
             {title}
           </TableCell>
@@ -17,9 +18,9 @@ export const SpaceRow = ({ space, title }) => (
       )}
       {!title && (
         <TableRow>
-          {space.map((item, index) => (
-            <TableCell key={index}>
-              {item.space}
+          {space?.map((item, index) => (
+            <TableCell key={index} sx={{padding:'25px'}}>
+              {item?.space}
             </TableCell>
           ))}
         </TableRow>
