@@ -7,34 +7,36 @@ import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const BuyersPlatform = () => {
   return (
-    <Grid container>
-      <Grid
-        item
-        xs={12}
-        md={12}
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box
+    <>
+      <Grid container>
+        <Grid
+          item
+          xs={12}
+          md={12}
           sx={{
-            background: 'white',
             display: 'flex',
-            flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
-            width: '100%',
-            gap: '6px',
-            padding: { xs: '20px', md: '50px' },
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <ReachBuyer />
-          <ListingInfo propertyInfo={PROPERTY_INFORMATION.property} />
-        </Box>
+          <Box
+            sx={{
+              background: 'white',
+              display: 'flex',
+              flexDirection: 'column',
+              border: '1px #E4E4E4 solid',
+              borderRadius: '10px',
+              width: '100%',
+              gap: 4,
+              padding: { xs: '30px', md: '28px', lg: '30px' },
+            }}
+          >
+            <ReachBuyer />
+            <ListingInfo propertyInfo={PROPERTY_INFORMATION.property} />
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 export default BuyersPlatform;

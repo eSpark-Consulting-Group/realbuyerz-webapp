@@ -8,6 +8,7 @@ export const HEADER_MENU = [
   },
 ];
 export const VIEW = 'View';
+export const VIEW_PROPSALS = 'View Proposals';
 export const MAIN_TITLE = 'LIVE BIDDING IN PROPERTIES';
 export const PROFILE_COMPLETNESS = 'Profile Completeness:';
 export const PROFILE_COMPLETNESS_DESCRIPTION =

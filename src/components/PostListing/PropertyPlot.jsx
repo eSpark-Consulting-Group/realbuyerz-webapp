@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
-import Image from 'next/image';
+import { Box, Typography } from '@mui/material';
 
 const PropertyTypes = ({
   data,
@@ -10,17 +9,15 @@ const PropertyTypes = ({
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        padding: '8px',
-        gap: '10px',
-        '@media (max-width: 600px)': {
-          gridTemplateColumns: '1fr',
-        },
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: { xs: 'center', sm: 'start' },
+        gap: 2,
+        py: 2,
       }}
     >
       {data?.map((item, index) => (
-        <Button
+        <Box
           sx={{
             borderRadius: '20px',
             border: `1px solid ${
@@ -33,28 +30,34 @@ const PropertyTypes = ({
                 : '#fff',
             display: 'flex',
             flexDirection: { xs: 'row', md: 'row' },
-            alignItems: 'center',
+            width: { xs: '80%', sm: '220px', md: '230px', lg: '250px' },
+            '@media (min-width: 600px) and (max-width: 751px )': {
+              width: '45%',
+            },
             justifyContent: 'center',
-            gap: '9px',
-            padding: '5px',
+            height: { xs: '50px', md: '55px' },
+            alignItems: 'center',
+            gap: '12px',
           }}
           key={index}
           onClick={() => {
             handlePropetySubType(item?.title);
           }}
         >
-          <Image
+          <Box
+            component={'img'}
+            sx={{ width: { xs: 25, sm: 33 }, height: { xs: 25, sm: 33 } }}
             src={
               activePropertySubType == item?.title
                 ? item?.activeImage
                 : item?.image
             }
-            width={33}
-            height={31}
             alt="property"
           />
-          {item?.title}
-        </Button>
+          <Typography sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}>
+            {item.title}
+          </Typography>
+        </Box>
       ))}
     </Box>
   );

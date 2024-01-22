@@ -5,22 +5,22 @@ import { Grid, Box } from '@mui/material';
 import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
-import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
-import PropertyGallery from '@/src/components/PostListing/PropertGallery';
+// import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
+// import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
+// import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 import { createInformationState } from '@/utils/addInfo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
-import {
-  UploadImages,
-  UploadVideos,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+// import {
+//   UploadImages,
+//   UploadVideos,
+// } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const Page = () => {
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
@@ -51,33 +51,30 @@ const Page = () => {
     console.log('propertyData', setPropertyData);
   }, [propertyData]);
 
-  const dispatch = useDispatch();
-  const handleFileChange = async (event, index) => {
-    const files = event.target.files[0];
-    const newImage = files?.name;
-    const newVideo = URL.createObjectURL(files);
-    if (index == 0 && files?.type?.startsWith('image/')) {
-      dispatch(UploadImages(newImage));
-    } else if (index == 1 && files?.type?.startsWith('video/')) {
-      dispatch(UploadVideos(newVideo));
-    }
-  };
-  const handleSubmitAd = () => {
-    console.log(
-      PostListigSelectedData,
-      'PostListigSelectedData on click SubmitAd',
-    );
-  };
+  // const dispatch = useDispatch();
+  // const handleFileChange = async (event, index) => {
+  //   const files = event.target.files[0];
+  //   const newImage = files?.name;
+  //   const newVideo = URL.createObjectURL(files);
+  //   if (index == 0 && files?.type?.startsWith('image/')) {
+  //     dispatch(UploadImages(newImage));
+  //   } else if (index == 1 && files?.type?.startsWith('video/')) {
+  //     dispatch(UploadVideos(newVideo));
+  //   }
+  // };
+  // const handleSubmitAd = () => {
+  //   console.log(
+  //     PostListigSelectedData,
+  //     'PostListigSelectedData on click SubmitAd',
+  //   );
+  // };
   return (
     <Grid container>
-      <Grid item xs={12} lg={12}>
+      <Grid item xs={12}>
         <Box
           sx={{
-            width: { xs: '100%', lg: '1200px' },
-            '@media (min-width: 1440px) and (max-width: 1568px)': {
-              width: '100%',
-            },
             display: 'flex',
+            maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
@@ -89,12 +86,12 @@ const Page = () => {
           <AdInformation propertyData={propertyData} />
           <PropertyPurpose propertyData={propertyData} />
           <PropertySize />
-          <PropertyFeatures />
-          <PropertyGallery
+          {/* <PropertyFeatures /> */}
+          {/* <PropertyGallery
             handleFileChange={handleFileChange}
             propertyData={propertyData}
-          />
-          <SubmitButton handleSubmitAd={handleSubmitAd} />
+          /> */}
+          {/* <SubmitButton handleSubmitAd={handleSubmitAd} /> */}
         </Box>
       </Grid>
     </Grid>

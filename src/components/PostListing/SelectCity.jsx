@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
-import Image from 'next/image';
 
 import { useDispatch } from 'react-redux';
 import { addCity } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
@@ -24,46 +23,88 @@ const SelectCityType = ({ image, label, cityOptions }) => {
     <>
       <Box
         sx={{
+          width: '100%',
+          height: 'auto',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          gap: '6px',
+          flexDirection: { xs: 'column', sm: 'row' },
+          alignItems: { xs: 'center', sm: 'start' },
+          justifyContent: { xs: 'center', md: 'center' },
+          gap: 2,
+          pb: { xs: 2, sm: 2 },
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            alignSelf: 'flex-start',
-            alignItems: 'center',
-            fontSize: '20px',
-
-            fontWeight: 400,
-            gap: '10px',
-          }}
-        >
-          <Image src={image} width={47} height={45} alt="city" />
-          <Typography
+        <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
+          <Box
             sx={{
-              color: '#333333',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'start',
+              gap: 1.5,
             }}
           >
-            {label}{' '}
-          </Typography>
-          <span style={{ color: '#FF0000' }}>*</span>
+            <Box
+              component={'img'}
+              sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
+              src={image}
+              alt="city"
+            />
+            <Typography
+              sx={{
+                fontSize: { xs: '17px', sm: '20px' },
+                fontWeight: 400,
+                color: '#333333',
+                display: { xs: 'flex', sm: 'none' },
+              }}
+            >
+              {label}
+              <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
+            </Typography>
+          </Box>
         </Box>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={options}
-          sx={{
-            width: { xs: '100%', sm: '300px', md: '320px' },
-            marginLeft: { xs: '30px', md: '50px' },
-          }}
-          renderInput={(params) => (
-            <TextField {...params} label="Select City" />
-          )}
-          onChange={handleCityChange}
-        />
+
+        <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
+          <Box
+            sx={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1,
+              mt: 0.8,
+              mb: 3,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: '17px', sm: '20px' },
+                fontWeight: 400,
+                color: '#333333',
+                mb: 2,
+                display: { xs: 'none', sm: 'flex' },
+              }}
+            >
+              {label}
+              <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
+            </Typography>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={options}
+              sx={{
+                '& .MuiAutocomplete-inputRoot': {
+                  borderRadius: '10px',
+                  border: '1px solid #E7E7E7',
+                },
+                width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Select City" />
+              )}
+              onChange={handleCityChange}
+            />
+          </Box>
+        </Box>
       </Box>
     </>
   );

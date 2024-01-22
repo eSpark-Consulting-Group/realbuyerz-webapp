@@ -32,7 +32,7 @@ const AdInformation = ({ propertyData }) => {
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            height: '681px',
+            height: 'auto',
             width: '100%',
             backgroundColor: 'white',
           }}
@@ -40,9 +40,11 @@ const AdInformation = ({ propertyData }) => {
           <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />
           <Box
             sx={{
+              width: '100%',
+              height: { xs: 'auto', md: '100%' },
               display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: 'space-evenly',
+              py: { xs: 5, sm: 7 },
             }}
           >
             <PropertyInformation

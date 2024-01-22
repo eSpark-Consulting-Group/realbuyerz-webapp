@@ -35,7 +35,7 @@ const PropertyPurpose = ({ propertyData }) => {
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            height: { xs: '1200px', md: '1000px' },
+            height: 'auto',
             width: '100%',
             backgroundColor: 'white',
           }}
@@ -45,22 +45,22 @@ const PropertyPurpose = ({ propertyData }) => {
           />
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
               width: '100%',
-              height: { xs: '1000px', md: '800px' },
-              gap: { xs: '10px', md: '30px' },
-              padding: { xs: '0px', md: '40px' },
+              height: { xs: 'auto', md: '100%' },
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              py: { xs: 5, sm: 7 },
             }}
           >
             <Box
               sx={{
                 display: 'flex',
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexDirection: 'column',
-                width: '70%',
-                gap: { xs: '10px', md: '30px' },
+                gap: { xs: 1, sm: 2 },
               }}
             >
               <PropertyStatus
