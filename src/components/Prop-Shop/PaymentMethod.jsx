@@ -1,11 +1,12 @@
-import React from 'react'
-import { Box, Button, Grid, Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { Box, Button, Grid, Radio, Typography } from '@mui/material'
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput'
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
-import { width } from '@mui/system';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { ProceedPayment, addPaymentMethod } from '@/src/redux/slices/settings/PakageCartSlice';
 
 
 
@@ -21,74 +22,150 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const PaymentMethod = ({ data }) => {
-    const { image, title, textField, checkBoxLable, masterCard, visaCard } = data
+    const { image, title, textField, checkBoxLable, cardType } = data
+    const [selectedValue, setSelectedValue] = useState('a');
+    const [addPayment, setAddPayment] = useState({})
+    const dispatch = useDispatch()
+
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
+    const inputHandleChange = (e) => {
+        const { name, value } = e.target;
+        setAddPayment((prevAddPayment) => ({
+            ...prevAddPayment,
+            [name]: value
+        }));
+    };
+    const addData = () => {
+        // Basic validation for the card number
+        if (selectedValue === 'a' && !/^\d{16}$/.test(addPayment.card_number)) {
+            console.log('Invalid card number');
+            return;
+        }
+    
+        // Basic validation for expiry date (Assuming MM-YY format)
+        // const currentDate = new Date();
+        // const [expiryMonth, expiryYear] = String(addPayment.expiry_date).split('-').map(Number);
+    
+        // // Adjusting the logic for expiry date validation
+        // if (
+        //     isNaN(expiryMonth) ||
+        //     isNaN(expiryYear) ||
+        //     expiryMonth < 1 ||
+        //     expiryMonth > 12 ||
+        //     expiryYear < currentDate.getFullYear() ||
+        //     (expiryYear === currentDate.getFullYear() && expiryMonth <= currentDate.getMonth() + 1)
+        // ) {
+        //     console.log('Invalid expiry date');
+        //     return;
+        // }
+    
+        // Basic validation for CVV (Assuming a 3-digit CVV)
+        if (!/^\d{3}$/.test(addPayment.cvv_no)) {
+            console.error('Invalid CVV');
+            return;
+        }
+    
+        dispatch(ProceedPayment(addPayment));
+    };
+    
+    
+    
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{
+            flexGrow: 1,
+            width: '100%',
+            height: { xs: 'auto', lg: '612px' },
+            border: '2px solid #E4E4E4',
+            borderRadius: '10px',
+
+            backgroundColor: '#fff',
+            backgroundImage: `url('${image}')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center',
+            backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' },
+
+        }}>
             <Grid
                 container xs={12} item
-                sx={{
-                    width: '100%',
-                    // height: { xs: 'auto', lg: '612px' },
-                    py: 2,
-                    border: '2px solid #E4E4E4',
-                    borderRadius: '10px',
-                    backgroundColor: '#fff',
-                    backgroundImage: `url('${image}')`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center center',
-                    backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '60%' },
-                }}
             >
                 <Grid item xs={12}>
 
                     <Box
                         sx={{
-                            display: { xs: 'block', lg: 'flex' },
                             alignItems: 'center',
-                            gap: 1,
+                            // gap: 1,
                             px: 4,
-                            py: 3,
+                            py: 4,
                             borderBottom: '2px solid #E4E4E4',
                         }}
                     >
-                        <Typography variant="h4">
+                        <Typography
+                            sx={{
+                                color: '#000',
+                                fontSize: { xs: '12.1px', sm: '24px' },
+                                fontStyle: 'normal',
+                                fontWeight: 700,
+                                lineHeight: 'normal'
+                            }}>
                             {title}
                         </Typography>
                     </Box>
                 </Grid>
-                <Grid container xs={12}
+                <Grid xs={12}
                     sx={{
-                        mx: '41px',
-                        my: '30px',
+                        mx: { md: '30px', lg: '38px', xl: '40px' },
+                        my: '40px',
                         width: '100%',
                         height: '70px',
                         backgroundColor: '#EDF7FF',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
-
-
+                        justifyContent: { sm: 'center' },
                     }}>
-                    <Grid items xs={2} sx={{
-
+                    <Grid items xs={2} sm={1} lg={1} sx={{
+                        // border: '1px solid blue',
+                        display: 'flex',
+                        justifyContent: { xs: 'center', sm: 'flex-start' }
                     }
                     }>
-                        dot
+                        <Radio
+                            checked={selectedValue === 'a'}
+                            onChange={handleChange}
+                            value="a"
+                            name="radio-buttons"
+                            inputProps={{ 'aria-label': 'A' }}
+                        />
 
                     </Grid>
-                    <Grid xs={2} sx={{
-
+                    <Grid xs={7} sm={7} lg={8} sx={{
+                        // border: '1px solid red',
+                        color: '#333',
+                        fontSize: { xs: '12.1px', sm: '20px' },
+                        fontStyle: 'normal',
+                        fontWeight: 600
                     }
                     }>
                         Credit Card Payment
 
                     </Grid>
-                    <Grid xs={2} sx={{
-
+                    <Grid xs={1} sm={2} lg={2} sx={{
+                        display: 'flex',
+                        justifyContent: { md: 'flex-end' }
                     }
                     }>
-                        <Image src={visaCard} width={60} height={100} alt='card' />
-
+                        <Box sx={{ display: 'flex', gap: '5px' }}>
+                            {cardType?.map((item, index) => (
+                                <Image
+                                    key={index}
+                                    src={item}
+                                    width={44}
+                                    height={28}
+                                    alt='card'
+                                />
+                            ))}
+                        </Box>
                     </Grid>
 
                 </Grid>
@@ -104,7 +181,8 @@ const PaymentMethod = ({ data }) => {
                         sizes,
                         width,
                         multiline,
-                        checkBox
+                        checkBox,
+                        values
                     } = field;
 
                     return (
@@ -123,32 +201,35 @@ const PaymentMethod = ({ data }) => {
                                         height: '100%',
                                         mx: 'auto',
                                         pt: pt,
-                                        pl: { lg: 5, md: 2 },
+                                        pl: { lg: 4, md: 2 },
                                     }}
                                 >
                                     <Box
                                         sx={{
                                             display: 'flex',
                                             flexDirection: 'column',
-                                            rowGap: '18px',
+                                            rowGap: '10px',
                                         }}
                                     >
                                         <Typography
-                                            variant="h6"
                                             sx={{
                                                 display: 'flex',
                                                 flexDirection: 'row',
                                                 alignItems: 'center',
                                                 gap: 1,
+                                                color: '#333',
+                                                fontSize: '20px',
+                                                fontStyle: 'normal',
+                                                fontWeight: 400
                                             }}
                                         >
                                             {label}
                                         </Typography>
                                         <Box
                                             sx={{
-                                                columnGap: 2,
+                                                // columnGap: 2,
                                                 flexDirection: { xs: 'column', sm: 'row' },
-                                                rowGap: { xs: 3 },
+                                                // rowGap: { xs: 3 },
                                             }}
                                         >
                                             <RBInput
@@ -156,38 +237,34 @@ const PaymentMethod = ({ data }) => {
                                                     width: width,
                                                     gap: 1,
                                                     textAlign: 'left',
-                                                    '& input[type=number]::-webkit-inner-spin-button': {
-                                                        WebkitAppearance: 'none',
-                                                        margin: 0,
-                                                    },
-                                                    '.MuiFormHelperText-contained': {
-                                                        marginLeft: 0.5,
-                                                    },
                                                 }}
                                                 rows={rows}
                                                 name={name}
                                                 multiline={multiline}
                                                 // value={values[name]}
-                                                // onChange={handleChange}
+                                                onChange={inputHandleChange}
                                                 // error={errors[name] && touched[name] ? true : false}
                                                 type={type}
-                                                place={`${place} ${label === 'Whatsapp'
-                                                    ? selectedCountryObject1?.code
-                                                    : '' ||
-                                                    (label === 'Mobile'
-                                                        ? selectedCountryObject2?.code
-                                                        : '')
-                                                    }`}
+                                                place={`${place}`}
                                             />
                                         </Box>
                                     </Box>
                                     {checkBox &&
-
                                         <Box>
-                                            <Typography>
+                                            <Typography sx={{
+                                                color: '#333',
+                                                fontSize: '14px',
+                                                fontStyle: 'normal',
+                                                fontWeight: 400,
+                                                my: 2
+
+                                            }}>
                                                 <RBCheckbox />
                                                 {checkBoxLable}
                                             </Typography>
+                                            <Button variant='primary' onClick={addData}>
+                                                Add 
+                                            </Button>
                                         </Box>
                                     }
                                 </Box>
@@ -196,8 +273,6 @@ const PaymentMethod = ({ data }) => {
                     );
                 })}
             </Grid>
-            {/* {checkBox && */}
-            {/* }    */}
         </Box>
     )
 }

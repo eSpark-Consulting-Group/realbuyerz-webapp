@@ -8,6 +8,8 @@ const initialState = {
   dollarRate: 285.13,
   orderSummary: '',
   emptyCard: true,
+  paymentMedthod: false,
+  paymentMedthodDetails: []
 };
 
 export const PakageCartSlice = createSlice({
@@ -28,15 +30,20 @@ export const PakageCartSlice = createSlice({
       state.emptyCard = false;
     },
     ProceedPayment: (state, action) => {
-      state.orderSummary = { ...action.payload };
-      state.cart = null;
-      state.connects = null;
-      state.totalPrice = 0;
-      state.totalQuantity = 0;
-      state.emptyCard = true;
+      state.paymentMedthodDetails = { ...action.payload };
+      // state.cart = null;
+      // state.connects = null;
+      // state.totalPrice = 0;
+      // state.totalQuantity = 0;
+      // state.emptyCard = true;
+      state.paymentMedthod = true;
     },
+    // addPaymentMethod: (state, action) => {
+    //   state.paymentMedthodDetails = { ...action.payload };
+    // },
+
   },
 });
 
-export const { addToCart, buy, ProceedPayment } = PakageCartSlice.actions;
+export const { addToCart, buy, ProceedPayment, addPaymentMethod } = PakageCartSlice.actions;
 export default PakageCartSlice.reducer;
