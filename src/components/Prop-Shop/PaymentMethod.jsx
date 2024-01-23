@@ -79,7 +79,9 @@ const PaymentMethod = ({ data }) => {
               value="a"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'A' }}
-              variant='primary'
+              sx={{
+              color : '#126FAA !important'  
+              }}
             />
 
           </Grid>
