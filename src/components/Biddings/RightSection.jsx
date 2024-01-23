@@ -4,11 +4,36 @@ import FlagIcon from '@mui/icons-material/Flag';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import Link from 'next/link';
 
-const RightSection = ({ rightSection, report, apply, save }) => {
+const RightSection = ({ rightSection, report, save }) => {
   return (
     <Box>
-      <Box>
-        <Button
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2.5,
+        }}
+      >
+        <Link href={'/agent/property-management/post-listing'}>
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: { xs: '100%', lg: '100%' },
+              height: '43.545px',
+              backgroundColor: '#FB631C',
+              borderRadius: '50px',
+              fontSize: '14px',
+              fontWeight: 500,
+              color: '#FFF',
+            }}
+          >
+            {BIDDINGS?.applybutton?.title}
+          </Typography>
+        </Link>
+        {/* <Button
           sx={{
             mx: '4px',
             mb: '20px',
@@ -25,8 +50,8 @@ const RightSection = ({ rightSection, report, apply, save }) => {
           variant="outlined"
           onClick={apply}
         >
-          {BIDDINGS?.applybutton.title}
-        </Button>
+          {BIDDINGS?.applybutton?.title}
+        </Button> */}
         <Button
           sx={{
             mx: '4px',
@@ -44,6 +69,24 @@ const RightSection = ({ rightSection, report, apply, save }) => {
             {BIDDINGS?.savebutton.title}
           </Typography>
         </Button>
+        <Link href={'/agent/property-management/post-listing'}>
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: { xs: '100%', lg: '100%' },
+              height: '43.545px',
+              backgroundColor: '#FB631C',
+              borderRadius: '50px',
+              fontSize: '14px',
+              fontWeight: 500,
+              color: '#FFF',
+            }}
+          >
+            {BIDDINGS?.savebutton.title}
+          </Typography>
+        </Link>
       </Box>
       <Box>
         <Link href="#" onclick={report}>

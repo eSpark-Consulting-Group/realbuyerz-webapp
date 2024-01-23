@@ -8,13 +8,15 @@ import {
   ESTIMATE_RANGE,
   LOAD_MORE,
   SHOW_LESS,
-  // VIEW,
+  VIEW,
   VIEW_PROPSALS,
 } from '@/app/constants/LiveBidding';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const BiddingDetails = ({ liveBiddingData, Height }) => {
   const [showAllItems, setShowAllItems] = useState(false);
+  const path = usePathname();
 
   const handleShowMoreClick = () => {
     setShowAllItems(true);
@@ -70,8 +72,9 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                 >
                   <Grid
                     item
-                    lg={9}
-                    md={9}
+                    md={8}
+                    lg={6.5}
+                    xl={`${path.includes('/user') ? 9 : 6.5}`}
                     sx={{
                       color: '#333',
                     }}
@@ -90,7 +93,9 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     item
                     xs={12}
                     sm={5}
-                    md={3}
+                    md={`${path.includes('/user') ? 3 : 4}`}
+                    lg={`${path.includes('/user') ? 4 : 2.5}`}
+                    xl={2}
                     sx={{
                       color: '#333',
                       fontSize: '15px',
@@ -103,7 +108,11 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'start',
+                        // justifyContent: 'start',
+                        justifyContent: {
+                          xs: 'start',
+                          md: `${path.includes('/user') ? 'end' : 'start'}`,
+                        },
                         '@media(min-width: 280px) and (max-width: 445px)': {
                           justifyContent: 'center',
                         },
@@ -124,35 +133,48 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         }}
                         component={'span'}
                       >
-                        {item.estRange}
+                        {item?.estRange}
                       </Typography>
                     </Box>
                   </Grid>
-                  {/* <Grid item lg={2} md={12} sm={12}>
-                    <Box
-                      sx={{
-                        paddingLeft: { sm: '0px', md: '0px', lg: '85px' },
-                      }}
-                    >
-                      <a href={`./live-bidding/${item.id}`}>
-                        <Button
-                          sx={{
-                            border: '1px solid #FB631C',
-                            backgroundColor: '#fff !important',
-                            borderRadius: '15px',
-                            alignItems: 'end',
-                            padding: '4px',
-                            fontSize: '12px',
-                            fontStyle: 'normal',
-                            fontWeight: 500,
-                            lineHeight: 'normal',
-                          }}
-                        >
-                          {VIEW}
-                        </Button>
-                      </a>
-                    </Box>
-                  </Grid> */}
+                  {path.includes('/agent') ? (
+                    <Grid item xs={12} sm={12} md={12} lg={3}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: {
+                            sm: 'start',
+                            lg: 'end',
+                          },
+                          '@media(min-width: 280px) and (max-width: 445px)': {
+                            justifyContent: 'center',
+                          },
+                          pt: 0.5,
+                          pr: 2,
+                        }}
+                      >
+                        <Link href={`live-bidding/${item?.id}`}>
+                          <Typography
+                            sx={{
+                              color: '#FB631C',
+                              width: '86px',
+                              height: '25px',
+                              display: 'flex',
+                              justifyContent: 'center',
+                              border: '1px solid #FB631C',
+                              backgroundColor: '#fff',
+                              borderRadius: '15px',
+                              alignItems: 'center',
+                              fontSize: '12px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            {VIEW}
+                          </Typography>
+                        </Link>
+                      </Box>
+                    </Grid>
+                  ) : null}
                   <Box
                     sx={{
                       color: '#333',
@@ -187,42 +209,47 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     </Typography>
                   </Box>
                   <LiveBiddingPropertiesList list={item?.list} />
-                  <Grid item xs={12}>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: {
-                          xs: 'center',
-                          sm: 'flex-start',
-                          md: 'flex-end',
-                        },
-                        px: { sm: '0px', md: '0px', lg: 6 },
-                        pt: { xs: 2, sm: 0 },
-                      }}
-                    >
-                      <Link href={`/live-bidding/${item?.id}`}>
-                        <Typography
-                          sx={{
-                            width: '200px',
-                            height: '42px',
-                            display: 'flex',
-                            alignItems: 'center',
+                  {path.includes('/user') ? (
+                    <Grid item xs={12}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: {
+                            xs: 'start',
+                            sm: 'flex-start',
+                            md: 'flex-end',
+                          },
+                          '@media(min-width: 280px) and (max-width: 445px)': {
                             justifyContent: 'center',
-                            borderRadius: '50px',
-                            border: '1px solid #D5E1D5',
-                            background: '#FB631C',
-                            color: '#FFF',
-                            fontSize: '16px',
-                            fontStyle: 'normal',
-                            fontWeight: 500,
-                            lineHeight: 'normal',
-                          }}
-                        >
-                          {VIEW_PROPSALS}
-                        </Typography>
-                      </Link>
-                    </Box>
-                  </Grid>
+                          },
+                          px: { sm: '0px', md: '0px', lg: 6 },
+                          pt: { xs: 2, sm: 0 },
+                        }}
+                      >
+                        <Link href={`dashboard/${item?.id}`}>
+                          <Typography
+                            sx={{
+                              width: '200px',
+                              height: '42px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: '50px',
+                              border: '1px solid #D5E1D5',
+                              background: '#FB631C',
+                              color: '#FFF',
+                              fontSize: '16px',
+                              fontStyle: 'normal',
+                              fontWeight: 500,
+                              lineHeight: 'normal',
+                            }}
+                          >
+                            {VIEW_PROPSALS}
+                          </Typography>
+                        </Link>
+                      </Box>
+                    </Grid>
+                  ) : null}
                 </Grid>
                 <Box
                   sx={{

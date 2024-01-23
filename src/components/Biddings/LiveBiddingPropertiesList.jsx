@@ -4,11 +4,28 @@ import { Box } from '@mui/system';
 
 const LiveBiddingPropertiesList = ({ list }) => {
   return (
-    <Box sx={{ paddingLeft: '17px' }}>
+    <Box
+      sx={{
+        width: '100%',
+        paddingLeft: '17px',
+        display: 'flex',
+        '@media(min-width: 280px) and (max-width: 445px)': {
+          justifyContent: 'center',
+        },
+      }}
+    >
       {list?.map((item, index) => (
         <div key={index}>
           {Object.keys(item).map((key) => (
-            <Box key={key} sx={{ display: 'flex' }}>
+            <Box
+              key={key}
+              sx={{
+                display: 'flex',
+                '@media(min-width: 280px) and (max-width: 445px)': {
+                  justifyContent: 'center',
+                },
+              }}
+            >
               <Typography
                 variant="body1"
                 sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}

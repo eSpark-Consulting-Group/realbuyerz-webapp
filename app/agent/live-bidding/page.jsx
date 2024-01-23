@@ -19,15 +19,17 @@ const Page = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={8.5} lg={9}>
-            <LiveBiddingTitle title={MAIN_TITLE} />
-            <BiddingDetails
-              liveBiddingData={LIVE_BIDDING_DATA}
-              Height={'100vh'}
-            />
+        <Grid container spacing={2.5}>
+          <Grid item xs={12} md={8.5} lg={9.2} xl={10}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+              <LiveBiddingTitle title={MAIN_TITLE} />
+              <BiddingDetails
+                liveBiddingData={LIVE_BIDDING_DATA}
+                Height={'100vh'}
+              />
+            </Box>
           </Grid>
-          <Grid item xs={12} md={3.5} lg={3}>
+          <Grid item xs={12} md={3.5} lg={2.8} xl={2}>
             <BiddingProfile profileInfo={PROFILE_INFO} />
           </Grid>
         </Grid>

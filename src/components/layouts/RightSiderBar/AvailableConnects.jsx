@@ -1,16 +1,27 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 
 const AvailableConnects = ({ profileInfo }) => {
   return (
     <>
-      <Grid item xs={12}>
+      <Grid
+        item
+        xs={12}
+        sx={{
+          py: 3,
+          gap: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          textAlign: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Typography
           variant={'body2'}
           sx={{
-            padding: '20px 0px 20px 31px',
             color: '#FB631C',
-            fontSize: '14px',
+            fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: 500,
             lineHeight: 'normal',
@@ -18,6 +29,27 @@ const AvailableConnects = ({ profileInfo }) => {
         >
           {profileInfo.availableConnects} Available Connects
         </Typography>
+        <Link href={'/agent/prop-shop/buy-product'}>
+          <Typography
+            sx={{
+              mx: 'auto',
+              width: '110px',
+              height: '33px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#FFF',
+              fontSize: '14px',
+              fontWeight: 500,
+              lineHeight: 'normal',
+              borderRadius: '5px',
+              border: '1px solid #E4E4E4',
+              background: '#FB631C',
+            }}
+          >
+            Buy now
+          </Typography>
+        </Link>
       </Grid>
     </>
   );

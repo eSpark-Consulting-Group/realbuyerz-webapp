@@ -25,7 +25,7 @@ const UserDashboard = () => {
           mt: 6,
           mb: 6,
           mx: { xs: 'auto', lg: 0 },
-          maxWidth: '1200px',
+          maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
         }}
       >
         <ViewAllPosting />
