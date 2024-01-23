@@ -12,7 +12,7 @@ const ProductCart = () => {
     (state) => state.PakageCart
   );
 
-  const { titile, Total, buttonText, successMessage, modalButtonText } = Order_Summary;
+  const { titile, Total, buttonText, successMessage, modalButtonText, confirmOrderLable } = Order_Summary;
   const { title, item } = Empty_Cart_data;
 
   return (
@@ -48,6 +48,7 @@ const ProductCart = () => {
             totalPrice={totalPrice}
             successMessage={successMessage}
             modalButtonText={modalButtonText}
+            confirmOrderLable={confirmOrderLable}
           />
         )}
       </Grid>

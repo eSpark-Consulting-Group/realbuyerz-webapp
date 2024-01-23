@@ -14,18 +14,19 @@ const OrderSummary = ({
   connects,
   dollarRate,
   modalButtonText,
-  successMessage
+  successMessage,
+  confirmOrderLable
 }) => {
   const OrderSummaryPayLoad = { ...cart, ...connects };
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { paymentMedthod } = useSelector(
+  const { paymentMedthod, paymentMedthodDetails } = useSelector(
     (state) => state.PakageCart
   );
 
   const HandleProceedToPayment = () => {
     dispatch(ProceedPayment(OrderSummaryPayLoad));
-    if(paymentMedthod){
+    if (paymentMedthod) {
       setIsModalOpen(true);
     }
   };
@@ -33,7 +34,6 @@ const OrderSummary = ({
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-
   return (
     <Box
       sx={{
@@ -148,8 +148,9 @@ const OrderSummary = ({
             },
           }}
           variant={!paymentMedthod && "primary"}
+          disabled={paymentMedthod ? paymentMedthodDetails.length <= 1 : false}
         >
-          {paymentMedthod ? 'Confirm your order' : buttonText}
+          {paymentMedthod ? confirmOrderLable : buttonText}
         </Button>
       </Box>
 
@@ -161,10 +162,10 @@ const OrderSummary = ({
       >
         <Box
           sx={{
-            display:'flex',
-            justifyContent:'center',
+            display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
-            width: '500px',
+            width: { xs: '80%', sm: '500px' },
             height: '400px',
             position: 'absolute',
             top: '50%',
@@ -180,21 +181,21 @@ const OrderSummary = ({
         >
           <Box>
             <Box
-            sx={{
-              display:'flex',
-              justifyContent:'center',
-              alignItems: 'center',
-              mx:'auto !important'
-            }}>
-            <Image
-              src={'/images/success.gif'}
-              width={100}
-              height={40}
-              sx={{mx:'auto'}}
-            />
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                mx: 'auto !important'
+              }}>
+              <Image
+                src={'/images/success.gif'}
+                width={100}
+                height={40}
+                sx={{ mx: 'auto' }}
+              />
 
             </Box>
-           
+
             <Typography id="modal-modal-title" sx={{
 
               display: 'flex',
@@ -216,9 +217,9 @@ const OrderSummary = ({
                 fontWeight: 500,
                 fontStyle: 'normal',
                 lineHeight: 'normal',
-                my:4
-              }}> {modalButtonText} </Button> 
-              </Box>          
+                my: 4
+              }}> {modalButtonText} </Button>
+          </Box>
         </Box>
       </Modal>
     </Box>

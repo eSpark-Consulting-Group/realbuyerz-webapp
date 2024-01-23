@@ -30,7 +30,7 @@ export const PakageCartSlice = createSlice({
       state.emptyCard = false;
     },
     ProceedPayment: (state, action) => {
-      state.paymentMedthodDetails = { ...action.payload };
+      state.orderSummary = { ...action.payload };
       // state.cart = null;
       // state.connects = null;
       // state.totalPrice = 0;
@@ -38,9 +38,9 @@ export const PakageCartSlice = createSlice({
       // state.emptyCard = true;
       state.paymentMedthod = true;
     },
-    // addPaymentMethod: (state, action) => {
-    //   state.paymentMedthodDetails = { ...action.payload };
-    // },
+    addPaymentMethod: (state, action) => {
+      state.paymentMedthodDetails = { ...action.payload };
+    },
 
   },
 });
