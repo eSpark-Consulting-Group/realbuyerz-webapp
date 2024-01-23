@@ -2,6 +2,8 @@ export const PAYMENT_METHODE_DATA = {
     title: 'Payment Method',
     image: '/images/agent_form/agent_form_background.png',
     checkBoxLable:'Save my payment details for further payments',
+    creditCardLable:'Credit Card Payment',
+    addButtonLable:'add',
     textField: [
       {
         id: 1,
@@ -22,19 +24,20 @@ export const PAYMENT_METHODE_DATA = {
         place: 'XXX-XXX-XXX-XXXX',
         value: 0,
         width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-        sizes: { xs: 12, sm: 12, md: 12, lg: 7 },
+        sizes: { xs: 12, sm: 12, md: 12, lg: 6 },
         checkBox:'true'
       },
       {
         id: 5,
         name: 'expiry_date',
         label: 'Expiry Date',
-        type: 'date',
-        place: 'XX-XX-XXXX',
-        value: 0,
+        type: 'string',
+        place: 'XX-YY',
+        value: '02-25',
         width: { xs: '100%', sm: '100%', md: '100%', lg: '96.6%' },
-        sizes: { xs: 12, sm: 12, md: 12, lg: 2.5 },
+        sizes: { xs: 12, sm: 12, md: 12, lg: 3 },
       },
+      
       {
         id: 4,
         name: 'cvv_no',
@@ -43,7 +46,7 @@ export const PAYMENT_METHODE_DATA = {
         place: 'XXX',
         value: 0,
         width: { xs: '100%', sm: '100%', md: '100%', lg: '82.6%' },
-        sizes: { xs: 12, sm: 12, md: 12, lg: 2.5 },
+        sizes: { xs: 12, sm: 12, md: 12, lg: 3},
       },
     ],
     cardType: [

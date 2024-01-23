@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import Image from 'next/image';
 
 import { ProceedPayment } from '@/src/redux/slices/settings/PakageCartSlice';
-import Image from 'next/image';
 
 const OrderSummary = ({
   title,
@@ -13,6 +13,8 @@ const OrderSummary = ({
   totalPrice,
   connects,
   dollarRate,
+  modalButtonText,
+  successMessage
 }) => {
   const OrderSummaryPayLoad = { ...cart, ...connects };
   const dispatch = useDispatch();
@@ -23,7 +25,9 @@ const OrderSummary = ({
 
   const HandleProceedToPayment = () => {
     dispatch(ProceedPayment(OrderSummaryPayLoad));
-    setIsModalOpen(true);
+    if(paymentMedthod){
+      setIsModalOpen(true);
+    }
   };
 
   const handleModalClose = () => {
@@ -169,7 +173,6 @@ const OrderSummary = ({
             bgcolor: 'background.paper',
             border: '2px solid #000',
             boxShadow: 24,
-            // padding: '48px 63px 47px 64px',
             textAlign: 'center',
             borderRadius: '10px',
             boxShadow: '-4px -4px 11px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
@@ -203,7 +206,7 @@ const OrderSummary = ({
               fontStyle: 'normal',
               lineHeight: 'normal'
             }}>
-              Your order is successfull.
+              {successMessage}
             </Typography>
             <Button variant='primary' onClick={handleModalClose}
               sx={{
@@ -212,10 +215,10 @@ const OrderSummary = ({
                 fontSize: '16px',
                 fontWeight: 500,
                 fontStyle: 'normal',
-                lineHeight: 'normal'
-              }}>Continue</Button> </Box>
-
-          
+                lineHeight: 'normal',
+                my:4
+              }}> {modalButtonText} </Button> 
+              </Box>          
         </Box>
       </Modal>
     </Box>
