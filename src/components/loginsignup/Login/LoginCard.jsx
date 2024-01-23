@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import Cookies from "js-cookie";
+import { useMutation } from '@tanstack/react-query';
 import {
   Typography,
   Box,
@@ -21,7 +21,8 @@ import {
   NOT_MATCH,
 } from '@/app/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { saveLoginData } from '@/src/redux/slices/auth/authSlice';
+import { login } from '@/utils/apis/auth/login';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -29,32 +30,34 @@ const LoginCard = ({ handleClose }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const signUpData = useSelector((state) => state?.auth?.signupFormData);
+  // const signUpData = useSelector((state) => state?.auth?.signupFormData);
 
   const handleClick = () => {
     setshowForgetPassword(true);
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
+
   const handleSignIn = () => {
+    console.log('handleSignIn');
     router.push(LOGIN_ROUTERS.signup);
     dispatch(setOpenModal(false));
   };
 
+  const { mutate } = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      localStorage.setItem('token', data.token);
+      router.push(LOGIN_ROUTERS.dashboard);
+    },
+  });
+
   const loginClick = () => {
-    if (
-      signUpData &&
-      signUpData.email === formData.email &&
-      signUpData.password === formData.password
-    ) {
-      router.push('/');
-      dispatch(setLoggedIn(true));
-    } else {
-      alert(NOT_MATCH);
-    }
+    mutate({ email: formData.email, password: formData.password });
 
     dispatch(saveLoginData(formData));
     dispatch(setOpenModal(false));
   };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
