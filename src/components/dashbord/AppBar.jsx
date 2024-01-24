@@ -11,6 +11,9 @@ import {
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
+  GotoPageIcon,
+  ProfileIcon,
+  SearchIcon,
 } from '@/app/constants/DashboardHeader';
 
 import Image from 'next/image';
@@ -120,7 +123,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                   }}
                 >
                   <Image
-                    src={'/images/Live-bidding-icons/headerGotopageIcon.svg'}
+                    src={GotoPageIcon}
                     width={20}
                     height={20}
                     alt={'icon'}
@@ -175,7 +178,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                   <Box
                     component={'img'}
                     onClick={handleOpenSearchMenu}
-                    src={'/images/Live-bidding-icons/headerSearchIcon.svg'}
+                    src={SearchIcon}
                     alt={'icon'}
                     sx={{
                       width: { xs: '30px', sm: '41px' },
@@ -231,7 +234,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={'/images/Live-bidding-icons/headerProfileIcon.svg'}
+                  src={ProfileIcon}
                   width={38}
                   height={38}
                   alt={'icon'}
@@ -243,9 +246,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     handleCloseLoginMenu={handleCloseLoginMenu}
                     handleOpenLoginMenu={handleOpenLoginMenu}
                     userName={USER_NAME}
-                    profileIcon={
-                      '/images/Live-bidding-icons/headerProfileIcon.svg'
-                    }
+                    profileIcon={ProfileIcon}
                     handleLogout={handleLogout}
                     isloggedIn={isloggedIn}
                     signOut={SIGN_OUT}

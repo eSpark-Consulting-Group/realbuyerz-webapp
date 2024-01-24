@@ -108,7 +108,6 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        // justifyContent: 'start',
                         justifyContent: {
                           xs: 'start',
                           md: `${path.includes('/user') ? 'end' : 'start'}`,

@@ -208,6 +208,7 @@ export const PROFILE_INFO = {
   propertyListed: '50',
   ProfileVisibilty: 'Public',
   LeadPreferences: 'Open to contract',
+  path: 'Open to contract',
 
   categories: [
     {
@@ -223,7 +224,8 @@ export const PROFILE_INFO = {
 };
 
 export const ROUTERS = {
-  buyProducts: '/prop-shop/buy-product',
+  buyProducts: '/agent/prop-shop/buy-product',
+  postListing: '/agent/property-management/post-listing',
   bidding: '/biddings',
   dashboardLiveBidding: '/dashboard/live-bidding',
 };

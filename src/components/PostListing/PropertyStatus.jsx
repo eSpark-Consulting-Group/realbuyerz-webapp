@@ -59,7 +59,6 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
             >
               {propertyInformation?.text}
             </Typography>
-            {/* <span style={{ color: '#FF0000' }}>*</span> */}
           </Box>
         </Box>
         <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>

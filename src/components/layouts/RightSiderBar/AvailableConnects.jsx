@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from 'next/link';
+import { ROUTERS } from '@/app/constants/LiveBidding';
 
 const AvailableConnects = ({ profileInfo }) => {
   return (
@@ -29,7 +30,7 @@ const AvailableConnects = ({ profileInfo }) => {
         >
           {profileInfo.availableConnects} Available Connects
         </Typography>
-        <Link href={'/agent/prop-shop/buy-product'}>
+        <Link href={ROUTERS?.buyProducts}>
           <Typography
             sx={{
               mx: 'auto',

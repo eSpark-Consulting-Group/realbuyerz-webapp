@@ -89,10 +89,10 @@ const AgentProfile = () => {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         data={Agent_Profile_Form_Data}
-        FirstDropdownValue={FirstDropdownValue}
+        firstDropdownValue={FirstDropdownValue}
         profileInitialValues={profileInitialValues}
         setFirstDropdownValue={setFirstDropdownValue}
-        SecondDropdownValue={SecondDropdownValue}
+        secondDropdownValue={SecondDropdownValue}
         setSecondDropdownValue={setSecondDropdownValue}
       />
       <ProfileFormMidText />
