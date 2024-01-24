@@ -43,7 +43,7 @@ const ProposalMapLocation = ({ proposal }) => {
   };
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: 4, pb: 5, borderBottom: '1px solid #E4E4E4' }}>
       <Typography
         sx={{
           color: '#000',

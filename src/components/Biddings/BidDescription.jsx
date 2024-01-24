@@ -6,7 +6,7 @@ const BidDescription = ({ details }) => {
     <Box
       sx={{
         width: '100%',
-        borderBottom: '2px solid #E4E4E4',
+        borderBottom: '1px solid #E4E4E4',
         p: 4,
       }}
     >

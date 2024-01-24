@@ -691,6 +691,8 @@ export const BIDDINGS = {
   },
   savebutton: {
     title: 'Save',
+    defaultImage: '/images/heart.svg',
+    hoverImage: '/images/heart-white.svg',
     link: '/',
   },
   ViewAllbutton: {
