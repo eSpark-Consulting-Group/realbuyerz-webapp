@@ -32,7 +32,7 @@ const PropertyFeatures = () => {
             flexDirection: 'column',
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
-            height: { xs: '800px', md: '650px' },
+            height: 'auto',
             width: '100%',
             backgroundColor: 'white',
           }}
@@ -48,9 +48,13 @@ const PropertyFeatures = () => {
             <Box
               sx={{
                 display: 'flex',
-                gap: { xs: '10px', md: '30px' },
-                width: { xs: '100%', md: '700px' },
-                padding: { xs: '50px', md: '40px' },
+                width: '100%',
+                height: '100%',
+                gap: 4.5,
+                p: 6,
+                pl: { xs: 6, sm: 12, md: 17, lg: 25 },
+                alignItems: { xs: 'center', sm: 'start' },
+                justifyContent: { xs: 'center' },
                 flexDirection: 'column',
               }}
             >
@@ -61,7 +65,7 @@ const PropertyFeatures = () => {
                 onSelected={handleSelectedItems}
                 selectedItems={selectedItems}
               />
-              {selectedItems.length > 0 && (
+              {selectedItems?.length > 0 && (
                 <Box
                   sx={{
                     marginTop: '20px',
