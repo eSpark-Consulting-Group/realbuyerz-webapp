@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
 import { useMutation } from '@tanstack/react-query';
 import {
   Typography,
@@ -9,7 +10,7 @@ import {
   Button,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
@@ -48,12 +49,13 @@ const LoginCard = ({ handleClose }) => {
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
       router.push(LOGIN_ROUTERS.dashboard);
+      Cookie.set('token', data.token);
+      Cookie.set('userType', data.userType);
     },
   });
 
   const loginClick = () => {
-    mutate({ email: formData.email, password: formData.password });
-
+    mutate({ email: formData.email, password: formData.password });  
     dispatch(saveLoginData(formData));
     dispatch(setOpenModal(false));
   };
