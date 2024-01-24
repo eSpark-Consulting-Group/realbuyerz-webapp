@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
+import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
@@ -29,11 +31,15 @@ const MobileResponsiveDashboardHeader = ({
   headerMenu,
   anchorElNav,
 }) => {
+  const router = useRouter()
   const [search, setSearch] = useState();
   const searchInput = (e) => {
     setSearch(e.target.value);
   };
   const handleLogout = () => {
+    Cookie.remove('token');
+    Cookie.remove('userType');
+    router.push('/signin');
     handleCloseMobileLoginMenu();
   };
   return (
