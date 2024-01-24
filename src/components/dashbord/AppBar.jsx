@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
+import { useRouter } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -29,6 +31,7 @@ import {
 import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotificationDesktopButton ';
 
 export default function ResponsiveNavbar({ openSidebar }) {
+  const router = useRouter();
   const [search, setSearch] = useState();
   const [anchorElSearch, setAnchorElSearch] = useState(null);
   const [isloggedIn, setisloggedIn] = useState(null);
@@ -53,6 +56,9 @@ export default function ResponsiveNavbar({ openSidebar }) {
   };
 
   const handleLogout = () => {
+    Cookie.remove('token');
+    Cookie.remove('userType');
+    router.push('/signin');
     handleCloseLoginMenu();
   };
 
