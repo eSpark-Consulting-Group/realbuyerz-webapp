@@ -32,9 +32,9 @@ export default function ProfileForm({
   data,
 
   buttonText,
-  FirstDropdownValue,
+  firstDropdownValue,
   setFirstDropdownValue,
-  SecondDropdownValue,
+  secondDropdownValue,
   setSecondDropdownValue,
   profileInitialValues,
 }) {
@@ -125,11 +125,11 @@ export default function ProfileForm({
           } = field;
           const selectedCountryObject1 =
             dropdowns &&
-            dropdowns.find((item) => item.icon === FirstDropdownValue);
+            dropdowns.find((item) => item.icon === firstDropdownValue);
 
           const selectedCountryObject2 =
             dropdowns &&
-            dropdowns.find((item) => item.icon === SecondDropdownValue);
+            dropdowns.find((item) => item.icon === secondDropdownValue);
 
           return (
             <Grid
@@ -204,7 +204,7 @@ export default function ProfileForm({
                       {label == 'Whatsapp' ? (
                         <RBSelect
                           menuItem={dropdowns}
-                          value={FirstDropdownValue}
+                          value={firstDropdownValue}
                           label={'Select Country'}
                           onChange={(e) => flagChange(e)}
                           sx={{
@@ -220,7 +220,7 @@ export default function ProfileForm({
                       ) : (
                         <RBSelect
                           menuItem={dropdowns}
-                          value={SecondDropdownValue}
+                          value={secondDropdownValue}
                           label={'Select Country'}
                           onChange={(e) => flagChange2(e)}
                           sx={{
@@ -287,7 +287,6 @@ export default function ProfileForm({
                             width: { xs: '100%', sm: 'auto' },
                             height: { xs: '45px', sm: '53px' },
                             borderRadius: '5px',
-                            // alignSelf: 'center',
                             '&:hover': { color: '#fff' },
                           }}
                         >

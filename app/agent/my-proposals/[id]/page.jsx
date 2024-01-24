@@ -13,7 +13,7 @@ import ProposalStats from '@/src/components/Proposals/ProposalStats';
 import ProposalMedia from '@/src/components/Proposals/ProposalMedia';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const page = () => {
+const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -37,35 +37,40 @@ const page = () => {
   }
   console.log('proposals', proposals);
   return (
-      <Box sx={{
+    <Box
+      sx={{
         width: {
-          lg: '1200px', '@media (min-width: 1440px) and (max-width: 1568px)': {
+          lg: '1200px',
+          '@media (min-width: 1440px) and (max-width: 1568px)': {
             width: '100%',
-      },}}}>
-    <Box sx={{ background: '#fff', borderRadius: '10px', p: '50px' }}>
-      <ProposalHeader proposal={proposal} />
-      <Grid container>
-        <ProposalApplicant proposal={proposal} />
-        <Grid item xs={9} sx={{ p: '40px', justifyContent: 'center' }}>
-          <PropertyDescription proposal={proposal} />
-          <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <ProposalMapLocation proposal={proposal} />
-          <Divider sx={{ pt: '10px', pb: '10px' }} />
-          <ProposalStats proposal={proposal} />
-          <Divider sx={{ pb: '10px' }} />
-          <ProposalMedia
-            media={proposal?.propertyData?.propertyImages}
-            mediaType={'images'}
-          />
-          <Divider sx={{ pt: '20px', pb: '30px' }} />
-          <ProposalMedia
-            media={proposal?.propertyData?.propertyVideos}
-            mediaType={'videos'}
-          />
+          },
+        },
+      }}
+    >
+      <Box sx={{ background: '#fff', borderRadius: '10px', p: '50px' }}>
+        <ProposalHeader proposal={proposal} />
+        <Grid container>
+          <ProposalApplicant proposal={proposal} />
+          <Grid item xs={9} sx={{ p: '40px', justifyContent: 'center' }}>
+            <PropertyDescription proposal={proposal} />
+            <Divider sx={{ pt: '10px', pb: '10px' }} />
+            <ProposalMapLocation proposal={proposal} />
+            <Divider sx={{ pt: '10px', pb: '10px' }} />
+            <ProposalStats proposal={proposal} />
+            <Divider sx={{ pb: '10px' }} />
+            <ProposalMedia
+              media={proposal?.propertyData?.propertyImages}
+              mediaType={'images'}
+            />
+            <Divider sx={{ pt: '20px', pb: '30px' }} />
+            <ProposalMedia
+              media={proposal?.propertyData?.propertyVideos}
+              mediaType={'videos'}
+            />
+          </Grid>
         </Grid>
-      </Grid>
       </Box>
-      </Box>
+    </Box>
   );
 };
-export default page;
+export default Page;

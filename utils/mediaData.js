@@ -1,6 +1,6 @@
 export const createMediaDataState = (
   propertyInformation,
-  propertyBuyingDetails
+  propertyBuyingDetails,
 ) => {
   if (!propertyBuyingDetails) {
     return {};
@@ -46,7 +46,7 @@ export const handleFileChangeUtil = async (prevData, index, selectedFile) => {
           [fieldName]: fileUrl,
         },
         mediaData: prevData.uploadedMediaData.mediaData.map((item, i) =>
-          i === index ? { ...item, value: fileUrl } : item
+          i === index ? { ...item, value: fileUrl } : item,
         ),
       },
     };

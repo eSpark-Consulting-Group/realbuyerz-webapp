@@ -9,7 +9,7 @@ import { Empty_Cart_data, Order_Summary } from '@/app/constants/BuyProduct';
 
 const ProductCart = () => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(
-    (state) => state.PakageCart
+    (state) => state.PakageCart,
   );
 
   const { titile, Total, buttonText } = Order_Summary;
@@ -21,7 +21,7 @@ const ProductCart = () => {
         flexGrow: 1,
         display: 'flex',
         justifyContent: 'center',
-     }}
+      }}
     >
       <Grid
         container

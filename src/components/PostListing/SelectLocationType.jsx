@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import Image from 'next/image';
+
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import MapFrame from './MapFrame';
 
@@ -9,37 +9,73 @@ const SelectLocationType = () => {
     <>
       <Box
         sx={{
+          width: '100%',
+          height: 'auto',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: { xs: 'column', sm: 'row' },
+          alignItems: { xs: 'center', sm: 'start' },
+          justifyContent: { xs: 'center', md: 'center' },
+          gap: 2,
+          pb: { xs: 2, sm: 2 },
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            alignSelf: 'flex-start',
-            alignItems: 'center',
-            fontSize: '20px',
-            fontWeight: 400,
-            gap: '8px',
-          }}
-        >
-          <Image
-            src={PROPERTY_INFORMATION.location.images}
-            width={47}
-            height={45}
-            alt="location"
-          />
-          <Typography
+        <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
+          <Box
             sx={{
-              color: '#333333',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'start',
+              gap: 1.5,
             }}
           >
-            {PROPERTY_INFORMATION.location.text}{' '}
-          </Typography>
-          <span style={{ color: '#FF0000' }}>*</span>
+            <Box
+              component={'img'}
+              sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
+              src={PROPERTY_INFORMATION.location.images}
+              alt="location"
+            />
+            <Typography
+              sx={{
+                fontSize: { xs: '17px', sm: '20px' },
+                fontWeight: 400,
+                color: '#333333',
+                display: { xs: 'flex', sm: 'none' },
+              }}
+            >
+              {PROPERTY_INFORMATION.location.text}
+              <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
+            </Typography>
+          </Box>
         </Box>
 
-        <MapFrame width="100%" height="150px" />
+        <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
+          <Box
+            sx={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1,
+              mt: 0.8,
+              mb: 3,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: '17px', sm: '20px' },
+                fontWeight: 400,
+                color: '#333333',
+                mb: 2,
+                display: { xs: 'none', sm: 'flex' },
+              }}
+            >
+              {PROPERTY_INFORMATION.location.text}
+              <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
+            </Typography>
+            <MapFrame width="100%" height="150px" />
+          </Box>
+        </Box>
       </Box>
     </>
   );

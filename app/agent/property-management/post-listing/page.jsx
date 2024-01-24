@@ -22,14 +22,14 @@ import {
   UploadVideos,
 } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
-const page = () => {
+const Page = () => {
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
   console.log('test', PostListigSelectedData);
 
   const initializePropertyData = () => {
     const informationState = createInformationState(
       PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
+      PROPERTY_BUYING_DETAIL.sellingDetails,
     );
     const propertyStatusState = createPropertyStatusState({
       propertySell: PROPERTY_INFORMATION.sell,
@@ -65,19 +65,17 @@ const page = () => {
   const handleSubmitAd = () => {
     console.log(
       PostListigSelectedData,
-      'PostListigSelectedData on click SubmitAd'
+      'PostListigSelectedData on click SubmitAd',
     );
   };
   return (
-    <Grid
-      container
-   >
+    <Grid container>
       <Grid item xs={12} lg={12}>
-       <Box
+        <Box
           sx={{
             width: { xs: '100%', lg: '1200px' },
             '@media (min-width: 1440px) and (max-width: 1568px)': {
-              width: '100%'  
+              width: '100%',
             },
             display: 'flex',
             justifyContent: 'center',
@@ -102,4 +100,4 @@ const page = () => {
     </Grid>
   );
 };
-export default page;
+export default Page;

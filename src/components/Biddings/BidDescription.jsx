@@ -3,14 +3,20 @@ import { Box, Typography } from '@mui/material';
 
 const BidDescription = ({ details }) => {
   return (
-    <Box sx={{ py: '20px' }}>
+    <Box
+      sx={{
+        width: '100%',
+        borderBottom: '1px solid #E4E4E4',
+        p: 4,
+      }}
+    >
       <Typography
         variant="h2"
         sx={{
-          pb: '20px',
+          mb: 5,
           color: '#000',
           fontSize: '20px',
-          fontWeight: '500',
+          fontWeight: 600,
           textAlign: 'center',
         }}
       >
@@ -20,8 +26,8 @@ const BidDescription = ({ details }) => {
         sx={{
           padding: '5px',
           color: '#333',
-          fontSize: '15px',
-          fontWeight: '600',
+          fontSize: '16px',
+          fontWeight: 700,
           textTransform: 'uppercase',
         }}
         variant="h3"
@@ -33,7 +39,8 @@ const BidDescription = ({ details }) => {
           padding: '5px',
           color: ' #333',
           fontSize: '12px',
-          fontWeight: '400',
+          fontWeight: 400,
+          lineHeight: 'normal',
         }}
       >
         {details?.bidDescription}

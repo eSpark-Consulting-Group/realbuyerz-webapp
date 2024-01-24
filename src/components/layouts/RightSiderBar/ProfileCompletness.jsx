@@ -30,58 +30,66 @@ const ProfileCompletness = ({ profileInfo }) => {
         item
         xs={12}
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
           backgroundColor: '#EDF7FF',
         }}
       >
-        <Box></Box>
-        <Typography
-          sx={{
-            fontSize: '12px',
-            fontWeight: '600',
-            paddingLeft: '30px',
-            paddingTop: '20px',
-          }}
-        >
-          {PROFILE_COMPLETNESS}
-        </Typography>
         <Box
           sx={{
+            width: 'auto',
             display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '30px',
-            paddingBottom: '15px',
+            flexDirection: 'column',
+            borderBottom: '2px solid #E5E5E5',
+            px: 4,
+            py: 1.5,
           }}
         >
-          <BorderLinearProgress
-            variant="determinate"
-            value={90}
-            sx={{ flex: 1 }}
-          />
-          <Typography sx={{ ml: 1, mr: 5 }}>
-            {profileInfo.profileCompleteness}%
+          <Typography
+            sx={{
+              fontSize: { xs: '14px', lg: '16px' },
+              fontWeight: 500,
+            }}
+          >
+            {PROFILE_COMPLETNESS}
+          </Typography>
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <BorderLinearProgress
+              variant="determinate"
+              value={90}
+              sx={{ width: '100%', flex: 1 }}
+            />
+            <Typography
+              sx={{
+                fontSize: { xs: '14px', lg: '16px' },
+                fontWeight: 500,
+                ml: 1.2,
+              }}
+            >
+              {profileInfo.profileCompleteness}%
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{ width: '100%', pl: 4, pr: 7, pt: 1.5, pb: 5 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: '#000',
+              fontSize: '14px',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: 'normal',
+            }}
+          >
+            {PROFILE_COMPLETNESS_DESCRIPTION}
           </Typography>
         </Box>
-        <Box
-          sx={{
-            width: '100%',
-            height: '0px',
-            border: '1px solid #E5E5E5',
-          }}
-        ></Box>
-        <Typography
-          variant="body2"
-          sx={{
-            width: '80%',
-            color: '#000',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: 'normal',
-            padding: '20px 20px 50px 30px',
-          }}
-        >
-          {PROFILE_COMPLETNESS_DESCRIPTION}
-        </Typography>
       </Grid>
     </>
   );

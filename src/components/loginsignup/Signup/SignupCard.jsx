@@ -56,13 +56,13 @@ const SignupCard = () => {
     ) {
       alert(PASSWORD_ALERT);
     }
-    mutate({ 
+    mutate({
       first_name: formData.firstName,
       last_name: formData.lastName,
       email: formData.email,
       password: formData.password,
       mobile_number: formData.contactNumber,
-      role: "user"
+      role: 'user',
     });
     dispatch(saveSignupData(formData));
   };
@@ -85,7 +85,7 @@ const SignupCard = () => {
 
   const handleGoogleLogin = () => {
     googleLogin();
-  }
+  };
 
   return (
     <>

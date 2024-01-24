@@ -6,9 +6,8 @@ const DashboardTitle = ({ title }) => {
     <Box
       sx={{
         Weight: 500,
-        fontSize: '25px',
+        fontSize: { xs: '22px', sm: '25px' },
         lineHeight: '30.26px',
-        padding: { lg: 6, sm: 4, xs: 2 },
       }}
     >
       {title}

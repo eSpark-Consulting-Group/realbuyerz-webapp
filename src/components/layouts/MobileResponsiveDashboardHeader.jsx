@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
@@ -9,14 +9,11 @@ import { Menu } from '@mui/material';
 import {
   LINK_NAME,
   USER_NAME,
-  MY_LISTING,
-  POST_LISTING,
   EMAIL,
   SEARCH,
   SIGN_OUT,
 } from '@/app/constants/DashboardHeader';
-import MyListingResponsiveButton from './MyListingResponsiveButton';
-import PostListingResponsiveButton from './PostListingResponsiveButton';
+
 import SearchAndNotificationResponsiveButton from './SearchAndNotificationResponsiveButton';
 import ProfileResponsiveButton from './ProfileResponsiveButton';
 
@@ -31,7 +28,7 @@ const MobileResponsiveDashboardHeader = ({
   headerMenu,
   anchorElNav,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [search, setSearch] = useState();
   const searchInput = (e) => {
     setSearch(e.target.value);
