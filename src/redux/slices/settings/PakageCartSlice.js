@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice , current} from '@reduxjs/toolkit';
 
 const initialState = {
   cart: '',
@@ -9,7 +9,7 @@ const initialState = {
   orderSummary: '',
   emptyCard: true,
   paymentMedthod: false,
-  paymentMedthodDetails: []
+  paymentMedthodDetails: [],
 };
 
 export const PakageCartSlice = createSlice({
@@ -31,19 +31,34 @@ export const PakageCartSlice = createSlice({
     },
     ProceedPayment: (state, action) => {
       state.orderSummary = { ...action.payload };
-      // state.cart = null;
-      // state.connects = null;
-      // state.totalPrice = 0;
-      // state.totalQuantity = 0;
-      // state.emptyCard = true;
       state.paymentMedthod = true;
     },
     addPaymentMethod: (state, action) => {
-      state.paymentMedthodDetails = { ...action.payload };
+      const paymentMethodWithSelection = {
+        ...action.payload,
+        isSelected: false,
+      };
+      state.paymentMedthodDetails = [...state.paymentMedthodDetails, paymentMethodWithSelection];
+
+      console.log(current(state, 'redux'))
     },
 
+    updatePaymentMethodSelection: (state, action) => {
+      const { cardNumber, isSelected } = action.payload;
+
+      state.paymentMedthodDetails = state.paymentMedthodDetails.map((card) =>
+        card.card_number === Number(cardNumber) ? { ...card, isSelected } : { ...card, isSelected: false }
+      );
+    },
   },
 });
 
-export const { addToCart, buy, ProceedPayment, addPaymentMethod } = PakageCartSlice.actions;
+export const {
+  addToCart,
+  buy,
+  ProceedPayment,
+  addPaymentMethod,
+  updatePaymentMethodSelection,
+} = PakageCartSlice.actions;
+
 export default PakageCartSlice.reducer;

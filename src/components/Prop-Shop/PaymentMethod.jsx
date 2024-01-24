@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Box, Button, Grid, Radio, Typography } from '@mui/material';
+import { Accordion, AccordionActions, AccordionDetails, AccordionSummary, Box, Button, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Image from 'next/image';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addPaymentMethod } from '@/src/redux/slices/settings/PakageCartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPaymentMethod, updatePaymentMethodSelection } from '@/src/redux/slices/settings/PakageCartSlice';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
@@ -25,8 +28,11 @@ const Item = styled(Paper)(({ theme }) => ({
 const PaymentMethod = ({ data }) => {
     const { image, title, textField, checkBoxLable, cardType, creditCardLable, addButtonLable } = data;
     const [selectedValue, setSelectedValue] = useState('a');
-    const dispatch = useDispatch();
-
+    const [selected, setSelected] = React.useState(false);
+    const { paymentMedthodDetails } = useSelector(
+        (state) => state.PakageCart
+        );
+        const dispatch = useDispatch();
     const addData = () => {
         formik.handleSubmit();
     };
@@ -43,13 +49,13 @@ const PaymentMethod = ({ data }) => {
             dispatch(addPaymentMethod(values));
         },
     });
-
     const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
-
+        const selectedCardNumber = event.target.value;
+        setSelected(selectedCardNumber);
+        dispatch(updatePaymentMethodSelection({ cardNumber: selectedCardNumber, isSelected: false }));
+      };
     return (
-        <Box sx={{ flexGrow: 1, width: '100%', height: { xs: 'auto', lg: '612px ' }, border: '2px solid #E4E4E4', borderRadius: '10px', backgroundColor: '#fff', backgroundImage: `url('${image}')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' } }}>
+        <Box sx={{ flexGrow: 1, width: '100%', height: { xs: 'auto', lg: 'auto ' }, border: '2px solid #E4E4E4', borderRadius: '10px', backgroundColor: '#fff', backgroundImage: `url('${image}')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' } }}>
             <Grid container xs={12} item>
                 <Grid item xs={12}>
                     <Box sx={{ alignItems: 'center', px: 4, py: 4, borderBottom: '2px solid #E4E4E4' }}>
@@ -73,7 +79,6 @@ const PaymentMethod = ({ data }) => {
                         display: 'flex',
                         justifyContent: { xs: 'center', sm: 'flex-start' },
                         pr: { lg: '100px !important', },
-
                     }
                     }>
                         <Radio
@@ -85,7 +90,6 @@ const PaymentMethod = ({ data }) => {
                             sx={{
                                 color: '#126FAA !important',
                                 pl: 0,
-                                pr: '650px !important',
                             }}
                         />
 
@@ -174,6 +178,50 @@ const PaymentMethod = ({ data }) => {
                     <Button variant='primary' onClick={addData}>
                         {addButtonLable}
                     </Button>
+                    <Box sx={{ my: '20px', maxWidth: '485px', }}>
+                        <Typography
+                            sx={{
+                                fontSize: '18px',
+                                fontWeight: 500,
+                                fontStyle: 'normal',
+                                py: 2,
+                                px: 3
+                            }}>
+                            My card
+                        </Typography>
+                        <RadioGroup
+                            row
+                            value={selected}
+                            name="radio-buttons-group"
+                            onChange={handleChange}
+                        >
+                            {paymentMedthodDetails.map((card) => (
+                                <Box sx={{
+                                    display: 'flex', justifyContent: 'space-between',
+                                    border: '1px solid #E7E7E7', borderRadius: '10px', my: 1, padding: 1
+                                }}>
+                                    <Box>
+                                        <FormControlLabel
+                                    key={card.card_number}
+                                    value={card.card_number}
+                                    control={<Radio />}
+                                    label={card.name_on_card}
+                                />
+                                    </Box>
+                                    <Box>
+                                        <Typography>{card.name_on_card}</Typography>
+                                        <Typography>{card.card_number}</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Button>
+                                            <DeleteIcon />
+                                        </Button>
+                                    </Box>
+                                </Box>
+                                
+                            ))}
+                        </RadioGroup>
+                    </Box>
                 </Box>
             </Grid>
         </Box>

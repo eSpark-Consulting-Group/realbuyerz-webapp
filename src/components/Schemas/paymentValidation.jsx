@@ -13,7 +13,7 @@ const paymentSchema = Yup.object().shape({
       const cardDate = new Date(`20${year}`, month - 1);
       return cardDate > currentDate;
     }),
-  cvv_no: Yup.string().matches(/^\d{3}$/, 'Invalid CVV').required('CVV is required'),
+  cvv_no: Yup.string().matches(/^\d{3,4}$/, 'Invalid CVV').required('CVV is required'),
 });
 
 export default paymentSchema;

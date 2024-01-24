@@ -31,7 +31,6 @@ export default function BuyProduct() {
     const { paymentMedthod } = useSelector(
       (state) => state.PakageCart
     );
-    console.log(paymentMedthod, 'paymentMedthod')
   return (
     <Box sx={{ flexGrow: 1 }}>
       
