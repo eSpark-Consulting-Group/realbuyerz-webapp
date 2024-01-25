@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';

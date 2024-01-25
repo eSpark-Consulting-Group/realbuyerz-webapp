@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
 import {
   Typography,
   Box,
@@ -18,7 +19,6 @@ import {
   LOGIN_DATA,
   LOGIN_FORM,
   LOGIN_ROUTERS,
-  NOT_MATCH,
 } from '@/app/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
@@ -30,7 +30,6 @@ const LoginCard = ({ handleClose }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const signUpData = useSelector((state) => state?.auth?.signupFormData);
 
   const handleClick = () => {
     setshowForgetPassword(true);
@@ -48,9 +47,9 @@ const LoginCard = ({ handleClose }) => {
       Cookie.set('token', data.token);
       Cookie.set('userType', data.userType);
       dispatch(setLoggedIn(data));
-      if(data.userType === 'user') {
+      if (data.userType === 'user') {
         router.push('/user/dashboard');
-      } else if(data.userType === 'agent') {
+      } else if (data.userType === 'agent') {
         router.push('/agent/live-bidding');
       }
     },

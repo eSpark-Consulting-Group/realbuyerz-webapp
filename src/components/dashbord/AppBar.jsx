@@ -33,11 +33,11 @@ import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotification
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 export default function ResponsiveNavbar({ openSidebar }) {
-  const router = useRouter()
-    const [search, setSearch] = useState();
-    const [anchorElSearch, setAnchorElSearch] = useState(null);
-    const [isloggedIn, setisloggedIn] = useState(null);
-    const dispatch = useDispatch();
+  const router = useRouter();
+  const [search, setSearch] = useState();
+  const [anchorElSearch, setAnchorElSearch] = useState(null);
+  const [isloggedIn, setisloggedIn] = useState(null);
+  const dispatch = useDispatch();
 
   const handleOpenSearchMenu = (event) => {
     setAnchorElSearch(event.currentTarget);
