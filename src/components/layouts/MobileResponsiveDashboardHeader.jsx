@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,6 +20,7 @@ import MyListingResponsiveButton from './MyListingResponsiveButton';
 import PostListingResponsiveButton from './PostListingResponsiveButton';
 import SearchAndNotificationResponsiveButton from './SearchAndNotificationResponsiveButton';
 import ProfileResponsiveButton from './ProfileResponsiveButton';
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 const MobileResponsiveDashboardHeader = ({
   handleCloseMobileLoginMenu,
@@ -33,12 +35,15 @@ const MobileResponsiveDashboardHeader = ({
 }) => {
   const router = useRouter()
   const [search, setSearch] = useState();
+  const dispatch = useDispatch();
+
   const searchInput = (e) => {
     setSearch(e.target.value);
   };
   const handleLogout = () => {
     Cookie.remove('token');
     Cookie.remove('userType');
+    dispatch(setLoggedOut());
     router.push('/signin');
     handleCloseMobileLoginMenu();
   };

@@ -6,6 +6,7 @@ const initialState = {
   signupFormData: '',
   resetFormData: '',
   loggedInState: false,
+  user: null,
 };
 const authSlice = createSlice({
   name: LOGIN_FORM.auth,
@@ -21,11 +22,16 @@ const authSlice = createSlice({
       state.resetFormData = { ...action.payload };
     },
     setLoggedIn: (state, action) => {
-      state.loggedInState = action.payload;
+      state.loggedInState = true;
+      state.user = action.payload.user
+    },
+    setLoggedOut: (state) => {
+      state.loggedInState = false;
+      state.user = null
     },
   },
 });
 
-export const { saveLoginData, saveSignupData, saveResetData, setLoggedIn } =
+export const { saveLoginData, saveSignupData, saveResetData, setLoggedIn, setLoggedOut } =
   authSlice.actions;
 export default authSlice.reducer;

@@ -22,7 +22,7 @@ import {
   NOT_MATCH,
 } from '@/app/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { saveLoginData } from '@/src/redux/slices/auth/authSlice';
+import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { login } from '@/utils/apis/auth/login';
 
 const LoginCard = ({ handleClose }) => {
@@ -48,14 +48,19 @@ const LoginCard = ({ handleClose }) => {
     mutationFn: login,
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
-      router.push(LOGIN_ROUTERS.dashboard);
       Cookie.set('token', data.token);
       Cookie.set('userType', data.userType);
+      dispatch(setLoggedIn(data));
+      if(data.userType === 'user') {
+        router.push('/user/dashboard');
+      } else if(data.userType === 'agent') {
+        router.push('/agent/live-bidding');
+      }
     },
   });
 
   const loginClick = () => {
-    mutate({ email: formData.email, password: formData.password });  
+    mutate({ email: formData.email, password: formData.password });
     dispatch(saveLoginData(formData));
     dispatch(setOpenModal(false));
   };
