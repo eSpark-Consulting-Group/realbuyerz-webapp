@@ -1,7 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import Cookie from 'js-cookie';
-import { useMutation } from '@tanstack/react-query';
 import {
   Typography,
   Box,
@@ -10,7 +8,7 @@ import {
   Button,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
@@ -31,15 +29,13 @@ const LoginCard = ({ handleClose }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  // const signUpData = useSelector((state) => state?.auth?.signupFormData);
+  const signUpData = useSelector((state) => state?.auth?.signupFormData);
 
   const handleClick = () => {
     setshowForgetPassword(true);
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
-
   const handleSignIn = () => {
-    console.log('handleSignIn');
     router.push(LOGIN_ROUTERS.signup);
     dispatch(setOpenModal(false));
   };
@@ -64,7 +60,6 @@ const LoginCard = ({ handleClose }) => {
     dispatch(saveLoginData(formData));
     dispatch(setOpenModal(false));
   };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({

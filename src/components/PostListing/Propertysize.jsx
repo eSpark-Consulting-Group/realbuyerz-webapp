@@ -34,27 +34,28 @@ const PropertySize = () => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             width: '100%',
-            height: { xs: '1000px', md: '730px' },
-            backgroundColor: 'white'  
+            height: 'auto',
+            backgroundColor: 'white',
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.sizeprice} />
           <Box
             sx={{
+              width: '100%',
+              height: { xs: 'auto', md: '100%' },
               display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: 'space-evenly',
+              py: 7,
             }}
           >
             <Box
               sx={{
                 display: 'flex',
-                width: { xs: '600px', md: '770px' },
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexDirection: 'column',
-                paddingTop: '40px',
-                '@media (min-width: 960px) and (max-width: 1330px)': {
-                  width: '90%',
-                },
               }}
             >
               <PropertyAreaSize

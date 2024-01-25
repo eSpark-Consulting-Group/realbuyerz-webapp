@@ -14,15 +14,12 @@ import {
   Menu,
   TextField,
   Tooltip,
-  Typography,
 } from '@mui/material';
 
 import {
   EMAIL,
   LINK_NAME,
   USER_NAME,
-  MY_LISTING,
-  POST_LISTING,
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
@@ -39,13 +36,13 @@ const DesktopDashboardHeader = ({
   handleOpenLoginMenu,
   isloggedIn,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
   const searchInput = (e) => {
     setSearch(e.target.value);
-  };  
+  };
   const handleLogout = () => {
     Cookie.remove('token');
     Cookie.remove('userType');
@@ -179,7 +176,7 @@ const DesktopDashboardHeader = ({
                   <Typography mx={1}>{POST_LISTING}</Typography>
                 </Box>
               </Button> */}
-              
+
               <IconButton
                 sx={{
                   p: 0,

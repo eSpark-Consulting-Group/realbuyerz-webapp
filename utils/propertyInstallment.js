@@ -1,6 +1,6 @@
 export const createInstallmentState = (
   propertyInstallmentInfo,
-  propertyBuyingDetails
+  propertyBuyingDetails,
 ) => {
   if (!propertyBuyingDetails) {
     return {};

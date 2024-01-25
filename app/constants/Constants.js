@@ -4,7 +4,7 @@ export const PAGES = [
     auth: true,
     path: '/',
   },
- {
+  {
     menu: 'Project',
     auth: true,
     path: '/project',

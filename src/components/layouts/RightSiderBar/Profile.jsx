@@ -12,7 +12,7 @@ const Profile = ({ profileInfo }) => {
           width: '100%',
           height: '100%',
           textAlign: 'center',
-          padding: '20px',
+          py: 1,
         }}
       >
         <Grid item xs={12}>
@@ -31,8 +31,8 @@ const Profile = ({ profileInfo }) => {
         <Grid item xs={12}>
           <Typography
             sx={{
-              fontSize: '0.875rem',
-              fontWeight: 'medium',
+              fontSize: '16px',
+              fontWeight: 500,
               textDecoration: 'underline',
             }}
           >
@@ -42,8 +42,8 @@ const Profile = ({ profileInfo }) => {
         <Grid item xs={12}>
           <Typography
             sx={{
-              fontSize: '1rem',
-              fontWeight: 'bold',
+              fontSize: '16px',
+              fontWeight: 700,
             }}
           >
             {profileInfo.agencyName}

@@ -84,7 +84,6 @@ const LoginWithGoogle = ({
             borderRadius: 2,
             textTransform: 'math-auto',
           }}
-
           onClick={handleGoogleLogin}
         >
           <Image

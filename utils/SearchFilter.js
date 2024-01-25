@@ -20,7 +20,7 @@ export const countFilteredData = (data, tabProposalStatus, search) => {
     filteredDataCount = filterDataBySearch(
       filteredProperties,
       tabProposalStatus,
-      search
+      search,
     )?.length;
   } else {
     filteredDataCount = search ? ZERO : data?.length;
@@ -53,7 +53,7 @@ export const filterPropertiesByStatus = (data, tabProposalStatus) => {
     return data;
   } else {
     return data?.filter(
-      (proposal) => proposal?.proposalStatus === tabProposalStatus
+      (proposal) => proposal?.proposalStatus === tabProposalStatus,
     );
   }
 };

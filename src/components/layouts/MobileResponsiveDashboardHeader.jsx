@@ -10,14 +10,11 @@ import { Menu } from '@mui/material';
 import {
   LINK_NAME,
   USER_NAME,
-  MY_LISTING,
-  POST_LISTING,
   EMAIL,
   SEARCH,
   SIGN_OUT,
 } from '@/app/constants/DashboardHeader';
-import MyListingResponsiveButton from './MyListingResponsiveButton';
-import PostListingResponsiveButton from './PostListingResponsiveButton';
+
 import SearchAndNotificationResponsiveButton from './SearchAndNotificationResponsiveButton';
 import ProfileResponsiveButton from './ProfileResponsiveButton';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
@@ -33,7 +30,7 @@ const MobileResponsiveDashboardHeader = ({
   headerMenu,
   anchorElNav,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 

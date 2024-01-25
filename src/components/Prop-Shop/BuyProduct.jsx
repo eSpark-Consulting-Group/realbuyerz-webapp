@@ -33,7 +33,7 @@ export default function BuyProduct() {
             <Subscription title={Buy_Product_Data?.title} />
           </Item>
         </Grid>
-          <Grid xs={12} sm={12} md={12} lg={3.5} item>
+        <Grid xs={12} sm={12} md={12} lg={3.5} item>
           <Item>
             <ProductCart />
           </Item>

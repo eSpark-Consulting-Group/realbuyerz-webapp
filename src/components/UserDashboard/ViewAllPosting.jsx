@@ -11,7 +11,15 @@ const ViewAllPosting = () => {
     <Box
       sx={{
         display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
         justifyContent: 'space-between',
+        '@media (min-width: 280px) and (max-width:445px)': {
+          flexDirection: 'column',
+          gap: 1,
+        },
+        px: { xs: 4, sm: 6, md: 7 },
+        py: 3,
       }}
     >
       <Box>

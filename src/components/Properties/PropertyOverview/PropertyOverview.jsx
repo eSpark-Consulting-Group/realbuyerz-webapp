@@ -73,7 +73,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                       >
                         {propertytype?.label}
                       </TableCell>
-                    )
+                    ),
                   )}
                 </TableRow>
               </TableBody>
@@ -109,7 +109,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                       >
                         {propertyData?.propertyOverview[key]}
                       </TableCell>
-                    )
+                    ),
                   )}
                 </TableRow>
               </TableBody>
