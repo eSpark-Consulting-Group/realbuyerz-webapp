@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -29,12 +30,14 @@ import {
   Tooltip,
 } from '@mui/material';
 import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotificationDesktopButton ';
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 export default function ResponsiveNavbar({ openSidebar }) {
   const router = useRouter();
   const [search, setSearch] = useState();
   const [anchorElSearch, setAnchorElSearch] = useState(null);
   const [isloggedIn, setisloggedIn] = useState(null);
+  const dispatch = useDispatch();
 
   const handleOpenSearchMenu = (event) => {
     setAnchorElSearch(event.currentTarget);
@@ -58,6 +61,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
   const handleLogout = () => {
     Cookie.remove('token');
     Cookie.remove('userType');
+    dispatch(setLoggedOut());
     router.push('/signin');
     handleCloseLoginMenu();
   };
