@@ -21,10 +21,18 @@ import {
   UploadImages,
   UploadVideos,
 } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import PreviewModal from '@/src/components/PostListing/PreviewModal';
 
 const Page = () => {
+  const [open, setOpen] = useState(false);
   const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
-  console.log('test', PostListigSelectedData);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const initializePropertyData = () => {
     const informationState = createInformationState(
@@ -94,7 +102,11 @@ const Page = () => {
             handleFileChange={handleFileChange}
             propertyData={propertyData}
           />
-          <SubmitButton handleSubmitAd={handleSubmitAd} />
+          <SubmitButton
+            handleSubmitAd={handleSubmitAd}
+            handleClickOpen={handleClickOpen}
+          />
+          <PreviewModal open={open} onClose={handleClose} data={''} />
         </Box>
       </Grid>
     </Grid>

@@ -34,7 +34,7 @@ const AddAmenities = ({ onSelected }) => {
           mb: 1,
         }}
       >
-        {PROPERTY_INFORMATION.addiotionalFeature}
+        {PROPERTY_INFORMATION?.addiotionalFeature}
       </Typography>
       <Button
         sx={{ width: '160px', height: '45px' }}
@@ -42,12 +42,12 @@ const AddAmenities = ({ onSelected }) => {
         variant="outlined"
         startIcon={<AddCircleIcon />}
       >
-        {PROPERTY_INFORMATION.addAmentiesLabel}
+        {PROPERTY_INFORMATION?.addAmentiesLabel}
       </Button>
       <AmenitiesModal
         open={open}
         onClose={() => handleClose()}
-        data={PROPERTY_INFORMATION.addAmenities}
+        data={PROPERTY_INFORMATION?.addAmenities}
         onSelected={setSelectedAmenities}
       />
     </Box>

@@ -94,7 +94,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
             />
             <Box
               component={'img'}
-              src={item.image}
+              src={item?.image}
               sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
               alt="amenities"
             />
@@ -106,7 +106,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
                 color: '#333',
               }}
             >
-              {item.title}
+              {item?.title}
             </Typography>
           </Box>
         ))}
@@ -120,7 +120,6 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
           justifyContent: { xs: 'center', sm: 'flex-end' },
           borderTop: '1px solid #E4E4E4',
           gap: '10px',
-          // pt: 4,
           pr: { xs: 0, sm: 7 },
         }}
       >
@@ -148,7 +147,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
           }}
           onClick={handleSaveButton}
         >
-          {PROPERTY_INFORMATION.save}
+          {PROPERTY_INFORMATION?.save}
         </Button>
       </Box>
     </>

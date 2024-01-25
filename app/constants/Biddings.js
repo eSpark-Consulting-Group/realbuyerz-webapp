@@ -667,6 +667,7 @@ export const BIDDINGS = {
     bathrooms: 'Bathrooms:',
     parking: 'Parking:',
   },
+  addedAmennities: { title: 'AddedAmennities' },
   amount: {
     title: 'Amount',
     range: 'Range',

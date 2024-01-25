@@ -1,17 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/system';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-function HideUnhideButton() {
-  const [isHidden, setIsHidden] = useState(false);
-
-  const toggleVisibility = () => {
-    setIsHidden(!isHidden);
-  };
-
+function HideUnhideButton({ handleClickOpen }) {
   return (
     <Box
       sx={{
@@ -24,15 +17,9 @@ function HideUnhideButton() {
         justifyContent: 'center',
       }}
     >
-      {isHidden ? (
-        <IconButton onClick={toggleVisibility}>
-          <VisibilityOffIcon />
-        </IconButton>
-      ) : (
-        <IconButton onClick={toggleVisibility}>
-          <VisibilityIcon />
-        </IconButton>
-      )}
+      <IconButton onClick={handleClickOpen}>
+        <VisibilityIcon />
+      </IconButton>
     </Box>
   );
 }
