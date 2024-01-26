@@ -44,6 +44,10 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
               flexShrink: 0,
               fontSize: { xs: '12px', sm: '15px' },
               fontWeight: 400,
+              '&:hover': {
+                color: '#fff',
+                backgroundColor: '#FB631C',
+              },
             }}
           >
             {PROPERTY_INFORMATION.saveDraft}
@@ -62,6 +66,10 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
               flexShrink: 0,
               fontSize: { xs: '13px', sm: '15px' },
               fontWeight: 400,
+              '&:hover': {
+                color: '#FB631C',
+                backgroundColor: '#fff',
+              },
             }}
             onClick={handleSubmitAd}
           >
