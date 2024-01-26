@@ -28,7 +28,7 @@ const propertiesSlice = createSlice({
     updateProperty: (state, action) => {
       const { id, updatedProperty } = action.payload;
       const index = state.properties.findIndex(
-        (property) => property.id === id,
+        (property) => property.id === id
       );
       if (index !== -1) {
         state.properties[index] = {
@@ -41,7 +41,7 @@ const propertiesSlice = createSlice({
     deleteProperty: (state, action) => {
       const id = action.payload;
       state.properties = state.properties.filter(
-        (property) => property.id !== id,
+        (property) => property.id !== id
       );
     },
 

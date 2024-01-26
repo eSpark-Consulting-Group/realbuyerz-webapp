@@ -150,7 +150,7 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
                       }}
                     />
                   </Box>
-                ),
+                )
               )}
             </Box>
           </Box>

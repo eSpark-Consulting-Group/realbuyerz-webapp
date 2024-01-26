@@ -4,7 +4,7 @@ export const createPropertyTypeState = (
   iconTitle,
   commercialType,
   plotType,
-  propertyBuyingDetails,
+  propertyBuyingDetails
 ) => {
   if (!propertyBuyingDetails) {
     return {};

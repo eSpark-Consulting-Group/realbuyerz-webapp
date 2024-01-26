@@ -3,7 +3,7 @@ export function handleButtonClick(
   iconTitle,
   plotType,
   commercialType,
-  prevData,
+  prevData
 ) {
   const selectedText = iconTitle[index]?.title;
   const selectedText2 = plotType[index]?.title;

@@ -22,6 +22,9 @@ const PostTitle = ({ text }) => {
             textWrap: 'wrap',
             px: 4,
           },
+          '@media (min-width: 320px) and (max-width:380px)': {
+            mx: 3,
+          },
           fontWeight: 600,
           textAlign: 'center',
         }}

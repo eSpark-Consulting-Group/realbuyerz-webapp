@@ -34,7 +34,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
 
   const handleSaveButton = () => {
     const selectedItems = facilitiesData.filter(
-      (item, index) => selectedAmenities[index],
+      (item, index) => selectedAmenities[index]
     );
     onSelected(selectedItems);
     {

@@ -276,7 +276,7 @@ export const PROPERTY_INFORMATION = {
   ],
   upload: {
     images: '/images/listing-page/select.svg',
-    text: 'Upload Images and video of your Property *',
+    text: 'Upload Images and video of your Property',
   },
   uploadButton: [
     {

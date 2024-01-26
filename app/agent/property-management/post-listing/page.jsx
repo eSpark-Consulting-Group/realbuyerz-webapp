@@ -37,7 +37,7 @@ const Page = () => {
   const initializePropertyData = () => {
     const informationState = createInformationState(
       PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails,
+      PROPERTY_BUYING_DETAIL.sellingDetails
     );
     const propertyStatusState = createPropertyStatusState({
       propertySell: PROPERTY_INFORMATION.sell,
@@ -73,7 +73,7 @@ const Page = () => {
   const handleSubmitAd = () => {
     console.log(
       PostListigSelectedData,
-      'PostListigSelectedData on click SubmitAd',
+      'PostListigSelectedData on click SubmitAd'
     );
   };
   return (

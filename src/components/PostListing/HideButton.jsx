@@ -8,7 +8,10 @@ function HideUnhideButton({ handleClickOpen }) {
   return (
     <Box
       sx={{
-        width: { xs: '200px', md: '45px' },
+        width: { xs: '20%', sm: '45px' },
+        '@media(min-width: 280px) and (max-width:319px)': {
+          width: '100%',
+        },
         height: '45px',
         borderRadius: '5px',
         border: '1px solid #FB631C',

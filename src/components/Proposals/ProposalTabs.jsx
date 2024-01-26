@@ -63,13 +63,13 @@ const ProposalTabs = ({ filteredProposalsData }) => {
             {tabData?.map((tab, index) => {
               const filteredProperties = filterPropertiesByStatus(
                 filteredProposalsData,
-                tab.tabProposalStatus,
+                tab.tabProposalStatus
               );
 
               const filteredCount = countFilteredData(
                 filteredProperties,
                 tab.tabProposalStatus,
-                search,
+                search
               );
 
               return (
@@ -103,7 +103,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
   const filteredData = filterDataBySearch(
     filteredProperties,
     tabProposalStatus,
-    search,
+    search
   );
   const displayData = filteredData || filteredProperties;
 
