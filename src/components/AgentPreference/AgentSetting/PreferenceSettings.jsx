@@ -42,66 +42,59 @@ const PreferenceSettings = () => {
     <Grid
       container
       sx={{
+        background: 'white',
         display: 'flex',
         justifyContent: 'center',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
       }}
     >
       <Grid
         item
         xs={12}
         sx={{
-          background: 'white',
-          border: '1px #E4E4E4 solid',
-          borderRadius: '10px',
-          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          margin: 0,
+          backgroundImage: 'url("/images/RealBuyers.svg")',
+          backgroundPosition: 'center 40%',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '68% 68%',
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: '1152px',
-            justifyContent: 'center',
-            margin: 0,
-            backgroundImage: 'url("/images/RealBuyers.svg")',
-            backgroundPosition: 'center 40%',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '68% 68%',
+            marginBottom: { xs: '170px', md: '180px' },
+            width: { xs: '100%', md: '70%' },
+            padding: '40px',
+            gap: '40px',
           }}
         >
-          <Box
+          <Typography
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginBottom: { xs: '170px', md: '180px' },
-              width: { xs: '100%', md: '70%' },
-              padding: '40px',
-              gap: '40px',
+              color: 'black',
+              fontSize: {sm:'20px', lg:'25px'},
+              fontWeight: 500,
+              padding: '8px',
             }}
           >
-            <Typography
-              sx={{
-                color: 'black',
-                fontSize: '25px',
-                fontWeight: 500,
-                padding: '8px',
-              }}
-            >
-              {AGENT_PREFERENCES.heading}
-            </Typography>
-            <Notification
-              notificationData={AGENT_PREFERENCES.updates}
-              handleInputChange={handleInputChangeToggle}
-            />
-            <AreaUnit
-              measure={AGENT_PREFERENCES.propertySize}
-              handleInputChange={handleInputChange}
-            />
-            <SaveChanges
-              handleClickButton={handleClick}
-              saveChangeButton={AGENT_PREFERENCES.saveChanges}
-            />
-          </Box>
+            {AGENT_PREFERENCES.heading}
+          </Typography>
+          <Notification
+            notificationData={AGENT_PREFERENCES.updates}
+            handleInputChange={handleInputChangeToggle}
+          />
+          <AreaUnit
+            measure={AGENT_PREFERENCES.propertySize}
+            handleInputChange={handleInputChange}
+          />
+          <SaveChanges
+            handleClickButton={handleClick}
+            saveChangeButton={AGENT_PREFERENCES.saveChanges}
+          />
         </Box>
       </Grid>
     </Grid>

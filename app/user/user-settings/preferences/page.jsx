@@ -10,7 +10,6 @@ const page = () => {
         sx={{
           mx: { xs: 'auto', lg: 0 },
           display: 'flex',
-          paddingBottom: '200px',
           width: { xs: '100%', lg: '1200px' },
           '@media (min-width: 1440px) and (max-width: 1568px)': {
             width: '100%',
