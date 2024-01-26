@@ -27,7 +27,7 @@ const PropertySlider = ({ propertyData }) => {
   const filteredProperties = properties.filter(
     (property) =>
       property.propertyType === propertyData?.propertyType &&
-      property?.subPropertyType === propertyData?.subPropertyType
+      property?.subPropertyType === propertyData?.subPropertyType,
   );
 
   console.log(filteredProperties, 'filtered properties');

@@ -10,7 +10,7 @@ export const filterData = (selectedData, purpose, city, location, type) => {
       (location === '' ||
         item?.location?.toLowerCase() === location?.toLowerCase()) &&
       (type === '' ||
-        item?.propertyData?.type?.toLowerCase() === type?.toLowerCase())
+        item?.propertyData?.type?.toLowerCase() === type?.toLowerCase()),
   );
 };
 
@@ -20,7 +20,7 @@ export const getUniqueFilteredOptions = (selectedData) => {
   const uniqueLocationOptions = getUniqueFilteredValues(selectedData, 'area');
   const uniquePropertyTypeOptions = getUniqueFilteredValues(
     selectedData,
-    'type'
+    'type',
   );
 
   return {
@@ -59,6 +59,6 @@ export function getFilteredCount(selectedData, proposalStatus) {
   return proposalStatus === 'All'
     ? selectedData?.length
     : selectedData?.filter(
-        (proposal) => proposal?.proposalStatus === proposalStatus
+        (proposal) => proposal?.proposalStatus === proposalStatus,
       )?.length;
 }

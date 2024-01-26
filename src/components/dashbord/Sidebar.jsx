@@ -1,16 +1,13 @@
 'use client';
 import React from 'react';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 
 import SidebarAccordion from './SidebarAccordion';
 import { usePathname } from 'next/navigation';
 import { Agent_Routes, User_Routes } from '@/app/constants/sidebar';
 
 const Sidebar = () => {
-  const theme = useTheme();
   const pathName = usePathname();
-
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'));
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
 
   React.useEffect(() => {
@@ -38,8 +35,7 @@ const Sidebar = () => {
       return Agent_Routes;
     } else if (user) {
       return User_Routes;
-    }
-    else {
+    } else {
       null;
     }
   };
@@ -69,7 +65,7 @@ const Sidebar = () => {
         >
           <SidebarAccordion sidebarLinks={renderLinks()} />
         </Box>
-     </Box>
+      </Box>
     </>
   );
 };

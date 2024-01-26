@@ -8,12 +8,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import './globals.css';
 import { usePathname } from 'next/navigation';
-import DashboardHeader from '@/src/components/layouts/DashboardHeader';
-import MainHeader from '@/src/components/layouts/MainHeader';
-import Footer from '@/src/components/layouts/Footer';
-import Seo from '@/src/components/Global/SEO';
 
-import { FOOTER_DATA } from '@/app/constants/Constants';
+import Seo from '@/src/components/Global/SEO';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 import { SEO_DATA } from './constants/seo';
@@ -29,20 +25,14 @@ const RootLayout = ({ children }) => {
       <Head>
         <Seo data={filterMeta} alter={SEO_DATA[0]} />
       </Head>
-      
+
       <body>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <Box>
-                {/* {currentPath.includes('/dashboard') ? (
-                  <DashboardHeader />
-                ) : (
-                  <MainHeader />
-                )} */}
                 <Box>{children}</Box>
-                {/* <Footer data={FOOTER_DATA} /> */}
               </Box>
             </ThemeProvider>
           </Provider>

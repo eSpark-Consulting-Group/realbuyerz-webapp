@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
-import Image from 'next/image';
 
 import { createInstallmentState } from '@/utils/propertyInstallment';
 import { useDispatch } from 'react-redux';
@@ -15,7 +14,7 @@ const PropertyInstallment = ({
   propertyBuyingDetails,
 }) => {
   const [propertyData] = useState(
-    createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
+    createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails),
   );
   const [installment, setInstallment] = useState();
   const [possession, setPossession] = useState();
@@ -39,70 +38,95 @@ const PropertyInstallment = ({
 
   return (
     <>
-      {propertyData.installmentData.toggleData?.map((item, index) => (
+      {propertyData?.installmentData.toggleData?.map((item, index) => (
         <Box
           sx={{
+            width: '100%',
+            height: 'auto',
             display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            padding: '8px',
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'center', sm: 'start' },
+            justifyContent: { xs: 'center', md: 'center' },
+            gap: 2,
+            pb: { xs: 2, sm: 2 },
           }}
           key={index}
         >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
+              width: { xs: '90%', sm: '45px' },
+              pl: '0 !important',
             }}
           >
             <Box
               sx={{
+                width: '100%',
                 display: 'flex',
+                justifyContent: 'start',
                 alignItems: 'center',
-                fontSize: '20px',
-
-                fontWeight: 400,
-                gap: '8px',
+                gap: 1.5,
               }}
             >
-              <Image
-                src={item.image}
-                width={45}
-                height={45}
+              <Box
+                component={'img'}
+                src={item?.image}
+                sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
                 alt="installment"
               />
               <Typography
                 sx={{
+                  fontSize: { xs: '17px', sm: '20px' },
+                  fontWeight: 400,
                   color: '#333333',
+                  display: { xs: 'flex', sm: 'none' },
                 }}
               >
-                {item.title}{' '}
+                {item?.title}
               </Typography>
-              <span style={{ color: '#FF0000' }}>*</span>
             </Box>
-
-            <Switch
-              value={item?.value}
-              onChange={(event) =>
-                handleToggleChange(item?.label, event.target.checked)
-              }
-            />
           </Box>
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              gap: '10px',
+              mb: 1.5,
+              width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' },
             }}
           >
-            <Typography
+            <Box
               sx={{
-                color: '#333333',
-                width: { xs: '100%', md: '650px' },
-                marginLeft: { xs: '20px', md: '50px' },
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                mt: 0.6,
+                mb: 1,
               }}
             >
-              {item.description}
+              <Typography
+                sx={{
+                  fontSize: { xs: '17px', sm: '20px' },
+                  fontWeight: 400,
+                  color: '#333333',
+                  display: { xs: 'none', sm: 'flex' },
+                }}
+              >
+                {item?.title}
+              </Typography>
+              <Switch
+                value={item?.value}
+                onChange={(event) =>
+                  handleToggleChange(item?.label, event.target.checked)
+                }
+              />
+            </Box>
+            <Typography
+              sx={{
+                fontSize: { xs: '16px', md: '18px' },
+                fontWeight: 400,
+                color: '#666',
+              }}
+            >
+              {item?.description}
             </Typography>
           </Box>
         </Box>

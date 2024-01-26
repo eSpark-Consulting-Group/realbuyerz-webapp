@@ -223,7 +223,7 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/amount.svg',
       text: 'Amount ',
       placeholder: 'Enter Amount',
-      dropPlaceholder: 'Select Currency',
+      dropPlaceholder: 'PKR',
       label: 'amount',
       value: '',
     },
