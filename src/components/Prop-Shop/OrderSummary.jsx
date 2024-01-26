@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
@@ -20,13 +20,13 @@ const OrderSummary = ({
   const OrderSummaryPayLoad = { ...cart, ...connects };
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { paymentMedthod, paymentMedthodDetails } = useSelector(
+  const { paymentMedthod, paymentMedthodDetails, formError } = useSelector(
     (state) => state.PakageCart
   );
 
   const HandleProceedToPayment = () => {
     dispatch(ProceedPayment(OrderSummaryPayLoad));
-    if (paymentMedthod) {
+    if (paymentMedthod && !formError) {
       setIsModalOpen(true);
     }
   };
@@ -148,12 +148,13 @@ const OrderSummary = ({
             },
           }}
           variant={!paymentMedthod && "primary"}
-          disabled={paymentMedthod ? paymentMedthodDetails.length <= 1 : false}
+          disabled={
+            paymentMedthod &&  (formError !== undefined  || paymentMedthodDetails.length < 1 )
+          }
         >
           {paymentMedthod ? confirmOrderLable : buttonText}
         </Button>
       </Box>
-
       <Modal
         open={isModalOpen}
         onClose={handleModalClose}
