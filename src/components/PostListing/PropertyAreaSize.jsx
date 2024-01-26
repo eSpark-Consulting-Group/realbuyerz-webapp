@@ -30,8 +30,8 @@ const PropertyAreaSize = ({
     createPropertySizeState(
       propertySizeInformation,
       propertyBuyingDetails,
-      selectCity,
-    ),
+      selectCity
+    )
   );
 
   useEffect(() => {

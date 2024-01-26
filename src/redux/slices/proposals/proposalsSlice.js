@@ -39,7 +39,7 @@ const proposalsSlice = createSlice({
     deleteProposal: (state, action) => {
       const id = action.payload;
       state.proposals = state.proposals.filter(
-        (property) => property.id !== id,
+        (property) => property.id !== id
       );
     },
 

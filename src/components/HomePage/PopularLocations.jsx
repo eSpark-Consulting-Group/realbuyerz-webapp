@@ -19,7 +19,7 @@ const scrollToTop = () => {
 
 const PopularLocations = ({ data }) => {
   const [filteredProposalsData, setFilteredProposalsData] = useState(
-    data?.filter((item) => item.type === 'sale'),
+    data?.filter((item) => item.type === 'sale')
   );
   const [filterType, setFilterType] = useState('sale');
 

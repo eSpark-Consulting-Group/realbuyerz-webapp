@@ -2,7 +2,7 @@ import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 
 export const createInformationState = (
   propertyInformation,
-  propertyBuyingDetails,
+  propertyBuyingDetails
 ) => {
   if (!propertyBuyingDetails) {
     return {};

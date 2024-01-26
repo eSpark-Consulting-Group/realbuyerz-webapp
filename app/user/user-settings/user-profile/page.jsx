@@ -14,10 +14,10 @@ const AgentProfile = () => {
   const [checkValue, setCheckValue] = useState(false);
 
   const [FirstDropdownValue, setFirstDropdownValue] = useState(
-    '/images/agent_form/pakistan_flag.png',
+    '/images/agent_form/pakistan_flag.png'
   );
   const [SecondDropdownValue, setSecondDropdownValue] = useState(
-    '/images/agent_form/pakistan_flag.png',
+    '/images/agent_form/pakistan_flag.png'
   );
 
   const { fields, buttonText, passwordfields } = Agent_Profile_Form_Data;
@@ -27,16 +27,16 @@ const AgentProfile = () => {
     .map((val) => val?.dropdowns);
 
   const FirstDropSelect = dropdowns[0]?.find(
-    (item) => item.icon === FirstDropdownValue,
+    (item) => item.icon === FirstDropdownValue
   );
   const SecondDropSelect = dropdowns[1]?.find(
-    (item) => item.icon === SecondDropdownValue,
+    (item) => item.icon === SecondDropdownValue
   );
   const userDetail = Object.fromEntries(
-    fields.map((field) => [field.name, '']),
+    fields.map((field) => [field.name, ''])
   );
   const userPassword = Object.fromEntries(
-    passwordfields?.map((field) => [field.name, '']),
+    passwordfields?.map((field) => [field.name, ''])
   );
 
   const profileInitialValues = {

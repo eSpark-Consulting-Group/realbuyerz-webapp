@@ -16,7 +16,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
     useState(false);
   const [open, setOpen] = useState(false);
   const [verificationCode, setVerificationCode] = useState(
-    verificationState(receivedCode, otpReceivedCode),
+    verificationState(receivedCode, otpReceivedCode)
   );
   const [verificationResult, setVerificationResult] = useState();
   const [inputValues, setInputValues] = useState(['', '', '', '']);
@@ -27,7 +27,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
       receivedCode,
       inputValues,
       setVerificationCode,
-      setInputValues,
+      setInputValues
     );
   };
   const code = verificationCode.verified;

@@ -18,7 +18,7 @@ const BuyConnects = ({
   const { items } = dropdown;
   const dispatch = useDispatch();
   const userDetail = Object.fromEntries(
-    fields.map((field) => [field.name, field.value]),
+    fields.map((field) => [field.name, field.value])
   );
 
   const [buyConnectData, setBuyConnectData] = useState({

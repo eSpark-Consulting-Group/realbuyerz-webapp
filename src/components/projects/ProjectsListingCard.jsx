@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Box, Typography, Grid, Button, Pagination } from '@mui/material';
+import { Box, Typography, Grid, Button } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PROPERTY_DETAILS } from '@/app/constants/Properties';
@@ -38,6 +38,7 @@ const ProjectsListingCard = ({ propertyData }) => {
   const handlePageChange = (value) => {
     setCurrentPage(value);
   };
+  console.log(handlePageChange);
   return (
     <>
       {currentItems?.map((property, index) => (
@@ -80,8 +81,8 @@ const ProjectsListingCard = ({ propertyData }) => {
                 />
               </Link>
             </Box>
-          {/* </Grid> */}
-          {/* <Grid
+            {/* </Grid> */}
+            {/* <Grid
             item
             xs={12}
             md={8}

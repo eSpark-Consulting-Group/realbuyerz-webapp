@@ -27,7 +27,7 @@ const Page = () => {
   const proposals = useSelector((state) => state.proposals.proposals);
 
   const selectedProposal = proposals.find(
-    (proposal) => proposal?.id == bidding?.proposalId,
+    (proposal) => proposal?.id == bidding?.proposalId
   );
 
   if (isNaN(id) || id === undefined || id === null) {
