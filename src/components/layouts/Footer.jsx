@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, useTheme, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,6 +11,8 @@ const styles = {
   container: {
     backgroundColor: '#F5F5F5',
     padding: '20px',
+    // paddingLeft: { xs: "30px", md: "0px" },
+
     color: '#fff',
     background:
       'linear-gradient(180deg, rgba(0, 15, 34, 1.00) 0%, rgba(14, 30, 46, 0.97) 60.69004535675049%, rgba(0, 21, 44, 1.00) 100%)',
@@ -40,10 +43,20 @@ const styles = {
   },
 };
 const Footer = ({ data }) => {
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'xl'));
   return (
     <Box sx={styles?.container}>
-      <Grid container justifyContent="center" sx={{ py: '50px' }}>
-        <Grid item xs={5}>
+      <Grid
+        container
+        justifyContent="center"
+        sx={{
+          py: '50px',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+        }}
+      >
+        <Grid item xs={12} md={5}>
           <Box sx={{ pr: '20%' }}>
             <Link href={data?.link}>
               <Image src={data?.logo} alt="Logo" width={155} height={37} />
@@ -88,10 +101,22 @@ const Footer = ({ data }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={2}>
+        <Grid
+          item
+          xs={12}
+          md={2}
+          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        >
           {' '}
           <Box>
-            <Typography variant="h6" color={'primary'} sx={{ pb: '20px' }}>
+            <Typography
+              variant="h6"
+              color={'primary'}
+              sx={{
+                pb: { xs: '10px', md: '20px' },
+                pt: { xs: '20px', md: '0px' },
+              }}
+            >
               {data?.usefulLink}
             </Typography>
             {data?.usefulLinks?.map((link, index) => (
@@ -103,7 +128,12 @@ const Footer = ({ data }) => {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={2}>
+        <Grid
+          item
+          xs={12}
+          md={2}
+          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        >
           <Box>
             <Box>
               <Box sx={{ pb: '16px' }}>
@@ -147,6 +177,89 @@ const Footer = ({ data }) => {
             </Box>
           </Box>
         </Grid>
+        <Box
+          sx={{
+            display: isMediumScreen ? 'none' : 'block',
+            '@media (min-width: 500px) and (max-width: 900px)': {
+              display: 'flex',
+              flexDirection: 'row',
+            },
+          }}
+        >
+          <Grid item xs={12} md={2}>
+            {' '}
+            <Box>
+              <Typography
+                variant="h6"
+                color={'primary'}
+                sx={{
+                  pb: { xs: '10px', md: '20px' },
+                  pt: { xs: '20px', md: '0px' },
+                }}
+              >
+                {data?.usefulLink}
+              </Typography>
+              {data?.usefulLinks?.map((link, index) => (
+                <Link href={link?.link} key={index}>
+                  <Typography key={index} variant="body1" sx={{ pb: '15px' }}>
+                    {link?.title}
+                  </Typography>
+                </Link>
+              ))}
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <Box>
+              <Box>
+                <Box sx={{ pb: '16px' }}>
+                  <Typography
+                    variant="h6"
+                    color={'primary'}
+                    sx={{
+                      pb: { xs: '10px', md: '20px' },
+                      pt: { xs: '20px', md: '0px' },
+                    }}
+                  >
+                    {data?.downloadApp}
+                  </Typography>
+                  <Typography variant="body1" sx={styles.text}>
+                    {data?.appDownload?.description}
+                  </Typography>
+                </Box>
+                <Box container spacing={2} sx={{ pb: '10px' }}>
+                  {data?.appDownload?.options?.map((option, index) => (
+                    <Grid key={index} item xs={6}>
+                      <Box sx={{ py: '10px' }}>
+                        <Link href={option?.link}>
+                          <Image
+                            src={option?.logo}
+                            alt={option?.title}
+                            width={150}
+                            height={40}
+                            style={styles.icon}
+                          />
+                        </Link>
+                      </Box>
+                    </Grid>
+                  ))}
+                </Box>
+                <Box sx={{ display: 'flex', gap: '8px', px: '5px' }}>
+                  {data?.socialMediaIcons?.map((socialIcon, index) => (
+                    <Link key={index} href={socialIcon?.link}>
+                      <Image
+                        key={index}
+                        src={socialIcon?.logo}
+                        alt={socialIcon?.title}
+                        width={25}
+                        height={25}
+                      />
+                    </Link>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </Grid>
+        </Box>
       </Grid>
     </Box>
   );
