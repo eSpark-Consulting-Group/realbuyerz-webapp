@@ -6,13 +6,12 @@ import Link from 'next/link';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import UsefulLink from './FooterResponsivness';
 
 const styles = {
   container: {
     backgroundColor: '#F5F5F5',
     padding: '20px',
-    // paddingLeft: { xs: "30px", md: "0px" },
-
     color: '#fff',
     background:
       'linear-gradient(180deg, rgba(0, 15, 34, 1.00) 0%, rgba(14, 30, 46, 0.97) 60.69004535675049%, rgba(0, 21, 44, 1.00) 100%)',
@@ -54,6 +53,9 @@ const Footer = ({ data }) => {
           py: '50px',
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
+          '@media (min-width:280px) and (max-width:500px)': {
+            paddingLeft: '40px',
+          },
         }}
       >
         <Grid item xs={12} md={5}>
@@ -107,7 +109,6 @@ const Footer = ({ data }) => {
           md={2}
           sx={{ display: isMediumScreen ? 'block' : 'none' }}
         >
-          {' '}
           <Box>
             <Typography
               variant="h6"
@@ -177,89 +178,11 @@ const Footer = ({ data }) => {
             </Box>
           </Box>
         </Grid>
-        <Box
-          sx={{
-            display: isMediumScreen ? 'none' : 'block',
-            '@media (min-width: 500px) and (max-width: 900px)': {
-              display: 'flex',
-              flexDirection: 'row',
-            },
-          }}
-        >
-          <Grid item xs={12} md={2}>
-            {' '}
-            <Box>
-              <Typography
-                variant="h6"
-                color={'primary'}
-                sx={{
-                  pb: { xs: '10px', md: '20px' },
-                  pt: { xs: '20px', md: '0px' },
-                }}
-              >
-                {data?.usefulLink}
-              </Typography>
-              {data?.usefulLinks?.map((link, index) => (
-                <Link href={link?.link} key={index}>
-                  <Typography key={index} variant="body1" sx={{ pb: '15px' }}>
-                    {link?.title}
-                  </Typography>
-                </Link>
-              ))}
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <Box>
-              <Box>
-                <Box sx={{ pb: '16px' }}>
-                  <Typography
-                    variant="h6"
-                    color={'primary'}
-                    sx={{
-                      pb: { xs: '10px', md: '20px' },
-                      pt: { xs: '20px', md: '0px' },
-                    }}
-                  >
-                    {data?.downloadApp}
-                  </Typography>
-                  <Typography variant="body1" sx={styles.text}>
-                    {data?.appDownload?.description}
-                  </Typography>
-                </Box>
-                <Box container spacing={2} sx={{ pb: '10px' }}>
-                  {data?.appDownload?.options?.map((option, index) => (
-                    <Grid key={index} item xs={6}>
-                      <Box sx={{ py: '10px' }}>
-                        <Link href={option?.link}>
-                          <Image
-                            src={option?.logo}
-                            alt={option?.title}
-                            width={150}
-                            height={40}
-                            style={styles.icon}
-                          />
-                        </Link>
-                      </Box>
-                    </Grid>
-                  ))}
-                </Box>
-                <Box sx={{ display: 'flex', gap: '8px', px: '5px' }}>
-                  {data?.socialMediaIcons?.map((socialIcon, index) => (
-                    <Link key={index} href={socialIcon?.link}>
-                      <Image
-                        key={index}
-                        src={socialIcon?.logo}
-                        alt={socialIcon?.title}
-                        width={25}
-                        height={25}
-                      />
-                    </Link>
-                  ))}
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
-        </Box>
+        <UsefulLink
+          data={data}
+          isMediumScreen={isMediumScreen}
+          styles={styles}
+        />
       </Grid>
     </Box>
   );
