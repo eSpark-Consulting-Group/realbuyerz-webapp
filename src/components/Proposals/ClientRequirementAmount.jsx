@@ -8,8 +8,6 @@ const ClientRequirementAmount = ({ amountData, amenities }) => {
   const { amount } = PropertySizeAndPricing;
   const { bathrooms, bedrooms, parking } = FeaturesAndAmenities;
 
-  console.log(buyingSellingForm, '456');
-
   return (
     <>
       {amountData && (

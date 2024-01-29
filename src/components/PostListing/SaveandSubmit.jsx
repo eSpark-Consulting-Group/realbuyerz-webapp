@@ -21,7 +21,7 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: { xs: 'center', sm: 'flex-end' },
-            '@media(min-width: 280px) and (max-width:319px)': {
+            '@media(min-width: 280px) and (max-width:400px)': {
               flexDirection: 'column',
             },
             alignItems: 'center',
@@ -33,7 +33,7 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
           <Button
             sx={{
               width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:319px)': {
+              '@media(min-width: 280px) and (max-width:400px)': {
                 width: '100%',
               },
               borderRadius: '5px',
@@ -55,7 +55,7 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
           <Button
             sx={{
               width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:319px)': {
+              '@media(min-width: 280px) and (max-width:400px)': {
                 width: '100%',
               },
               borderRadius: '5px',

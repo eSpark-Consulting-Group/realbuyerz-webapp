@@ -10,7 +10,7 @@ function HideUnhideButton({ handleClickOpen }) {
       onClick={handleClickOpen}
       sx={{
         width: { xs: '20%', sm: '45px' },
-        '@media(min-width: 280px) and (max-width:319px)': {
+        '@media(min-width: 280px) and (max-width:400px)': {
           width: '100%',
         },
         height: '45px',

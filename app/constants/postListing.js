@@ -496,7 +496,8 @@ export const PROPERTY_BUYING_DETAIL = {
 };
 
 export const postListingEntities = {
-  Ad_Infomation: '',
+  id: 1,
+  adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
     propertyType: '',
@@ -504,17 +505,17 @@ export const postListingEntities = {
     city: '',
     location: '',
   },
-  PropertySizeAndPricing: {
+  propertySizeAndPricing: {
     areaSize: '',
     amount: '',
     installment: '',
     possession: '',
   },
-  FeaturesAndAmenities: {
+  featuresAndAmenities: {
     bedrooms: '',
     bathrooms: '',
     parking: '',
     selectedAmenities: '',
   },
-  PropertyImagesAndVideos: { images: [], videos: [] },
+  propertyImagesAndVideos: { images: '', videos: '' },
 };

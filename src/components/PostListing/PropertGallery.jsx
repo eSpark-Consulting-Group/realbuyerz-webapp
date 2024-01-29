@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-} from '@/app/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
-import UploadMediaButton from './UploadMediaButton';
 import InstructionsForUpload from './InstructionsForUpload';
+import ImageUploader from './ImageUploader';
+import { useDispatch } from 'react-redux';
+import {
+  UploadImages,
+  UploadVideos,
+} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import VideoUploader from './VideoUploader';
 
-const PropertyGallery = ({ handleFileChange, propertyData }) => {
+const PropertyGallery = () => {
+  const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const maxImages = 5;
+  const maxVideos = 5;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(UploadImages(images));
+    dispatch(UploadVideos(videos));
+  }, [images, videos]);
+
+  const handleImageUpload = (type, file) => {
+    if (images.length < maxImages && type.includes('image')) {
+      setImages([...images, file]);
+    } else {
+      console.error('Maximum limit of images reached');
+    }
+  };
+
+  const handleVideoUpload = (type, file) => {
+    if (videos.length < maxVideos && type.includes('video')) {
+      setVideos([...videos, file]);
+    } else {
+      console.error('Maximum limit of videos reached');
+    }
+  };
+
   return (
     <Grid container>
       <Grid
@@ -36,7 +66,6 @@ const PropertyGallery = ({ handleFileChange, propertyData }) => {
             border: '1px #E4E4E4 solid',
             borderRadius: '10px',
             width: '100%',
-            // height: { xs: '1100px', md: '581px' },
             backgroundColor: 'white',
             '@media (min-width: 960px) and (max-width: 1399px)': {
               height: '780px',
@@ -125,7 +154,6 @@ const PropertyGallery = ({ handleFileChange, propertyData }) => {
                       width: '100%',
                       height: '100%',
                       display: 'flex',
-                      // backgroundColor: 'red',
                       flexDirection: 'column',
                       gap: 2,
                       mt: 0.8,
@@ -151,7 +179,7 @@ const PropertyGallery = ({ handleFileChange, propertyData }) => {
                         flexDirection: { xs: 'column', md: 'row' },
                         border: '1px #FB631C dashed',
                         display: 'flex',
-                        alignItems: 'start',
+                        alignItems: { xs: 'start', md: 'center' },
                         py: 3,
                         px: { xs: 3, sm: 5 },
                         '@media (min-width: 280px) and (max-width:424px)': {
@@ -159,14 +187,26 @@ const PropertyGallery = ({ handleFileChange, propertyData }) => {
                         },
                       }}
                     >
-                      <UploadMediaButton
-                        propertyInformation={PROPERTY_INFORMATION.uploadButton}
-                        propertyBuyingDetails={
-                          PROPERTY_BUYING_DETAIL?.sellingDetails
-                        }
-                        handleFileChange={handleFileChange}
-                        propertyData={propertyData}
-                      />
+                      <Box
+                        sx={{
+                          width: '100%',
+                          px: { xs: 1, md: 4 },
+                          display: 'flex',
+                          alignItems: { xs: 'start', md: 'center' },
+                          flexDirection: 'column',
+                          gap: 3,
+                          pb: { xs: 2, md: 0 },
+                        }}
+                      >
+                        <ImageUploader
+                          onUpload={handleImageUpload}
+                          maxImages={maxImages}
+                        />
+                        <VideoUploader
+                          onUpload={handleVideoUpload}
+                          maxVideos={maxVideos}
+                        />
+                      </Box>
                       <Box>
                         <InstructionsForUpload
                           propertyInformation={
