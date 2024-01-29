@@ -12,11 +12,11 @@ const FooterCta = ({ data }) => {
         background: '#F5F6FB',
         px: '15%',
         py: {
-          xs: '20px',  // Adjust padding for xs screen
-          sm: '40px',  // Adjust padding for sm screen
+          xs: '20px', // Adjust padding for xs screen
+          sm: '40px', // Adjust padding for sm screen
           md: '40px',
         },
-        margin: 'auto',  // Center the container
+        margin: 'auto', // Center the container
       }}
     >
       <Grid container>
@@ -30,7 +30,7 @@ const FooterCta = ({ data }) => {
             alignSelf: 'center',
             py: {
               xs: '20px',
-              sm: '40px',  // Adjust padding for sm screen
+              sm: '40px', // Adjust padding for sm screen
               md: '40px',
             },
           }}
@@ -103,7 +103,7 @@ const FooterCta = ({ data }) => {
           sx={{
             py: {
               xs: '20px',
-              sm: '40px',  // Adjust padding for sm screen
+              sm: '40px', // Adjust padding for sm screen
               md: '0px',
             },
           }}

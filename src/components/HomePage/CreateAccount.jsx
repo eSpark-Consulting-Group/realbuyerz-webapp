@@ -24,8 +24,12 @@ const Typewriter = ({ text }) => {
 
   return (
     <Typography
-      variant="h1"
-      sx={{ color: '#fff', mb: '30px', fontWeight: '600', fontSize: '40px' }}
+      sx={{
+        color: '#fff',
+        mb: '30px',
+        fontWeight: '600',
+        fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
+      }}
     >
       {displayedText}|
     </Typography>
@@ -45,7 +49,9 @@ const CreateAccount = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
+      <Typewriter
+        text={FEATURED_HEADINGS.sliderHeading}
+      />
       <Button
         sx={{
           mx: '15px',

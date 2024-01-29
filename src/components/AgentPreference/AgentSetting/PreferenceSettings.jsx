@@ -76,7 +76,7 @@ const PreferenceSettings = () => {
           <Typography
             sx={{
               color: 'black',
-              fontSize: {sm:'20px', lg:'25px'},
+              fontSize: { sm: '20px', lg: '25px' },
               fontWeight: 500,
               padding: '8px',
             }}
