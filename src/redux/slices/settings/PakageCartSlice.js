@@ -11,6 +11,7 @@ const initialState = {
   paymentMedthod: false,
   formError: '',
   paymentMedthodDetails: [],
+  checkOrder: []
 };
 
 export const PakageCartSlice = createSlice({
@@ -35,6 +36,7 @@ export const PakageCartSlice = createSlice({
       state.paymentMedthod = true;
     },
     addPaymentMethod: (state, action) => {
+      console.log(action.payload, 'slic')
       const paymentMethodWithSelection = {
         ...action.payload,
         isSelected: false,
@@ -56,6 +58,9 @@ export const PakageCartSlice = createSlice({
     setFormError: (state, action) => {
       state.formError = action.payload;
     },
+    setAfterClick: (state, action ) => {
+      state.checkOrder = action.payload
+    }
   },
 });
 
@@ -68,6 +73,7 @@ export const {
   deletePaymentMethod,
   setFormError,
   toggleCheckBox,
+  setAfterClick
 } = PakageCartSlice.actions;
 
 export default PakageCartSlice.reducer;

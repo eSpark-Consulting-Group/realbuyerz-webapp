@@ -6,11 +6,13 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPaymentMethod, updatePaymentMethodSelection, deletePaymentMethod, setFormError, } from '@/src/redux/slices/settings/PakageCartSlice';
 
-import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
 import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
-import paymentSchema from '../Schemas/paymentValidation';
-import PaymentMethodList from './PaymentMethodList';
+import { paymentSchema, easyPaisaSchema, jazzCashSchema } from '../Schemas/paymentValidation';
 import CreditCardType from './CreditCardType';
+import AccountType from './AccountType';
+import CardType from './MasterCard';
+import MasterCard from './MasterCard';
+import VisaCard from './VisaCard';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -24,12 +26,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const PaymentMethod = ({ data }) => {
-    const { image, title, textField, checkBoxLable, cardType, creditCardLable, addButtonLable } = data;
-    const [selectedValue, setSelectedValue] = useState('a');
+    const { image, title, cardName, accountNumber, textField, checkBoxLable, cardTypeImage, creditCardLable, addButtonLable, easyPaisa, jazzCash, mobileAccountType } = data;
+    const [selectedValue, setSelectedValue] = useState('name_on_card');
     const [selected, setSelected] = React.useState(false);
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
-    const { paymentMedthodDetails } = useSelector(
+    const { paymentMedthodDetails, checkOrder } = useSelector(
         (state) => state.PakageCart
     );
 
@@ -39,21 +41,39 @@ const PaymentMethod = ({ data }) => {
             card_number: '',
             expiry_date: '',
             cvv_no: '',
+            easypaisa_number: '',
+            jazzcash_number: '',
         },
-        validationSchema: paymentSchema,
+        validationSchema: selectedValue !== 'jazzcash' && selectedValue !== 'easypaisa' ? paymentSchema : selectedValue === 'easypaisa' ? easyPaisaSchema : selectedValue === 'jazzcash' && jazzCashSchema,
         onSubmit: (values) => {
             const updatedValues = { ...values, isCheckBox: checked }
+            delete updatedValues.easypaisa_number
+            delete updatedValues.jazzcash_number
             const findCard = paymentMedthodDetails.find((item) => {
                 return item.card_number === formik.values.card_number
             })
-            if (findCard) {
+            if (findCard && (selectedValue !== 'jazzcash' || selectedValue !== 'easypaisa')) {
                 dispatch(updatePaymentMethodSelection({ isSelected: findCard.isSelected, cardNumber: findCard.card_number, isCheckBox: checked }));
-            }
-            else {
+            } else if (selectedValue === 'jazzcash' || selectedValue === 'easypaisa') {
+                if (selectedValue === 'jazzcash') {
+                    dispatch(addPaymentMethod({ jazzcash_number: values.jazzcash_number }));
+                }
+                else {
+                    dispatch(addPaymentMethod({ easypaisa_number: values.easypaisa_number }));
+                }
+
+            } else {
                 dispatch(addPaymentMethod(updatedValues));
             }
+
         },
+
     });
+
+
+    const handleChangeRadioButton = (e,) => {
+        setSelectedValue(e.target.value)
+    }
 
     const handleChangeCheckBox = (event) => {
         const isChecked = event.target.checked;
@@ -84,12 +104,30 @@ const PaymentMethod = ({ data }) => {
     }, [formik.errors]);
 
     useEffect(() => {
-        if (formik.values.name_on_card && formik.values.card_number && formik.values.expiry_date && formik.values.cvv_no) {
+        if ((formik.values.name_on_card && formik.values.card_number && formik.values.expiry_date && formik.values.cvv_no) || (formik.values.jazzcash_number || formik.values.easypaisa_number)) {
             formik.handleSubmit();
         }
-    }, [formik.values, dispatch]);
+    }, [formik.values, dispatch, selectedValue]);
+    useEffect(() => {
+        if (selectedValue === 'name_on_card' || selectedValue === 'jazzcash' || selectedValue === 'easypaisa') {
+            formik.resetForm()
+        }
+    }, [selectedValue]);
+    function getCardType(cardNumber) {
+        const visaRegex = /^4\d{12}(?:\d{3})?$/;
+        const mastercardRegex = /^5[1-5]\d{14}$/;
+
+        if (visaRegex.test(cardNumber)) {
+            return "Visa";
+        } else if (mastercardRegex.test(cardNumber)) {
+            return "Mastercard";
+        } else {
+            return "Unknown";
+        }
+    }
+  
     return (
-        <Box sx={{ flexGrow: 1, width: '100%', height: { xs: 'auto', lg: 'auto ' }, border: '2px solid #E4E4E4', borderRadius: '10px', backgroundColor: '#fff', backgroundImage: `url('${image}')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' } }}>
+        <Box sx={{ flexGrow: 1, width: '100%', height: { xs: 'auto', lg: 'auto ' }, pb: '60px', border: '2px solid #E4E4E4', borderRadius: '10px', backgroundColor: '#fff', backgroundImage: `url('${image}')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' } }}>
             <Grid container xs={12} item>
                 <Grid item xs={12}>
                     <Box sx={{ alignItems: 'center', px: 4, py: 4, borderBottom: '2px solid #E4E4E4' }}>
@@ -98,54 +136,34 @@ const PaymentMethod = ({ data }) => {
                         </Typography>
                     </Box>
                 </Grid>
+                {
+                    checkOrder.map((card, index) => (
+                        card.isCheckBox && (
+                            <>
+                                {getCardType(card.card_number) === "Mastercard" && (
+                                    <MasterCard image={data?.masterCard?.image} cardName={data?.masterCard?.cardName} accountNumber={data?.masterCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
+                                )}
+                                {getCardType(card.card_number) === "Visa" && (
+                                    <VisaCard image={data?.visaCard?.image} cardName={data?.visaCard?.cardName} accountNumber={data?.visaCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
+                                )}
+                            </>
+                        )
+                    ))
+                }
                 <CreditCardType
-                    cardType={cardType}
+                    cardTypeImage={cardTypeImage}
                     creditCardLable={creditCardLable}
                     addButtonLable={addButtonLable}
                     selectedValue={selectedValue}
+                    handleChangeRadioButton={handleChangeRadioButton}
                     handleChange={handleChange}
+                    textField={textField}
+                    formik={formik}
                 />
-                {textField?.map((field, index) => {
-                    const { label, place, type, rows, name, pt, sizes, width, multiline } = field;
-                    return (
-                        <Grid key={index} item xs={sizes?.xs} sm={sizes?.sm} md={sizes?.md} lg={sizes?.lg}>
-                            <Item>
-                                <Box sx={{ width: '100%', height: '100%', mx: 'auto', pt: pt, pl: { lg: 4, md: 2 } }}>
-                                    <Box
-                                        sx={{ display: 'flex', flexDirection: 'column', rowGap: '20px', pb: '10px' }}>
-                                        <Typography sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 1, color: '#333', fontSize: '20px', fontWeight: 400 }}>
-                                            {label}
-                                        </Typography>
-                                    </Box>
-                                    <RBInput
-                                        sx={{
-                                            width: width, gap: 1, textAlign: 'left',
-                                            '& input[type=number]::-webkit-inner-spin-button': {
-                                                '-webkit-appearance': 'none',
-                                                margin: 0,
-                                            },
-                                        }}
-                                        rows={rows}
-                                        name={name}
-                                        multiline={multiline}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values[name]}
-                                        error={formik.touched[name] && Boolean(formik.errors[name])}
-                                        type={type}
-                                        place={`${place}`}
-                                    />
-                                    {formik.touched[name] && formik.errors[name] && (
-                                        <Typography sx={{ color: 'red', fontSize: '12px', fontStyle: 'normal', mt: 1 }}>
-                                            {formik.errors[name]}
-                                        </Typography>
-                                    )}
-                                </Box>
-                            </Item>
-                        </Grid>
-                    );
-                })}
-                <Box sx={{ alignItems: 'center', px: { xs: 1, md: 3, lg: 5 }, pb: { xs: '50px', sm: '70px', md: '100px', lg: '130px' } }}>
+                <Box sx={{
+                    alignItems: 'center', px: { xs: 1, md: 3, lg: 5 },
+                    //  pb: { xs: '50px', sm: '70px', md: '100px', lg: '130px' } 
+                }}>
                     <Typography sx={{
                         color: '#333',
                         fontSize: '14px',
@@ -160,13 +178,29 @@ const PaymentMethod = ({ data }) => {
                         />
                         {checkBoxLable}
                     </Typography>
-                    <PaymentMethodList
+                    {/* <PaymentMethodList
                         selected={selected}
                         handleChange={handleChange}
                         paymentMedthodDetails={paymentMedthodDetails}
                         handleDelete={handleDelete}
-                    />
+                    /> */}
                 </Box>
+                <AccountType
+                    AccountName={'Easy paisa'}
+                    selectedValue={selectedValue}
+                    handleChangeRadioButton={handleChangeRadioButton}
+                    handleChange={handleChange}
+                    textField={easyPaisa}
+                    formik={formik}
+                />
+                <AccountType
+                    AccountName={'Jazz Cash'}
+                    selectedValue={selectedValue}
+                    handleChangeRadioButton={handleChangeRadioButton}
+                    handleChange={handleChange}
+                    textField={jazzCash}
+                    formik={formik}
+                />
             </Grid>
         </Box>
     );

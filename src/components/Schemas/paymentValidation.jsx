@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const paymentSchema = Yup.object().shape({
+export const paymentSchema = Yup.object().shape({
   name_on_card: Yup.string().required('Name on card is required'),
   card_number: Yup.string().matches(/^\d{16}$/, 'Invalid card number').required('Card number is required'),
   expiry_date: Yup.string()
@@ -16,4 +16,9 @@ const paymentSchema = Yup.object().shape({
   cvv_no: Yup.string().matches(/^\d{3}$/, 'Invalid CVV').required('CVV is required'),
 });
 
-export default paymentSchema;
+export const jazzCashSchema = Yup.object().shape({
+  jazzcash_number: Yup.string().matches(/^\d{11}$/, 'Invalid JazzCash number').required('JazzCash number is required'),
+});
+export const easyPaisaSchema = Yup.object().shape({
+  easypaisa_number: Yup.string().matches(/^\d{11}$/, 'Invalid Easypaisa number').required('Easypaisa number is required'),
+});

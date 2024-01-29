@@ -3,7 +3,7 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 
-import { ProceedPayment } from '@/src/redux/slices/settings/PakageCartSlice';
+import { ProceedPayment, setAfterClick } from '@/src/redux/slices/settings/PakageCartSlice';
 
 const OrderSummary = ({
   title,
@@ -20,7 +20,7 @@ const OrderSummary = ({
   const OrderSummaryPayLoad = { ...cart, ...connects };
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { paymentMedthod, paymentMedthodDetails, formError } = useSelector(
+  const { paymentMedthod, paymentMedthodDetails, formError, } = useSelector(
     (state) => state.PakageCart
   );
 
@@ -29,6 +29,11 @@ const OrderSummary = ({
     if (paymentMedthod && !formError) {
       setIsModalOpen(true);
     }
+    const afterCheck = paymentMedthodDetails.filter((item) => (
+      item.isCheckBox === true
+    ))
+    dispatch(setAfterClick(afterCheck))
+    console.log(afterCheck, 'isss')
   };
 
   const handleModalClose = () => {
@@ -149,7 +154,7 @@ const OrderSummary = ({
           }}
           variant={!paymentMedthod && "primary"}
           disabled={
-            paymentMedthod &&  (formError !== undefined  || paymentMedthodDetails.length < 1 )
+            paymentMedthod && (formError !== undefined || paymentMedthodDetails.length < 1)
           }
         >
           {paymentMedthod ? confirmOrderLable : buttonText}
