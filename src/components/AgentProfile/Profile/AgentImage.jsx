@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
-import Image from 'next/image';
+
 import EditProfileModal from '../../Modal/EditProfileModal';
+import ButtonBaseDemo from './EditImage';
 const AgentImage = ({ image }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
   const [ProfileImage] = useState(image);
   return (
     <Grid
       sx={{
-        width: '180px',
-        height: '160px',
         margin: { xs: 'auto', md: 'auto' },
         pt: { xs: 1, sm: 0 },
         display: 'flex',
@@ -18,13 +19,7 @@ const AgentImage = ({ image }) => {
         position: 'relative',
       }}
     >
-      <Image
-        src={ProfileImage}
-        alt={'image'}
-        width={400}
-        height={400}
-        style={{ width: '100%', height: '100%', borderRadius: '100%' }}
-      />
+      <ButtonBaseDemo url={ProfileImage} handleOpen={handleOpen} />
       <Box
         sx={{
           zIndex: '1',
@@ -37,6 +32,9 @@ const AgentImage = ({ image }) => {
         }}
       >
         <EditProfileModal
+          open={open}
+          setOpen={setOpen}
+          handleOpen={handleOpen}
           sx={{
             backgroundColor: '#fb631c',
             color: '#fff',

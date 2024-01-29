@@ -17,27 +17,6 @@ const AgentProfiles = ({ data }) => {
       }}
     >
       <Box
-        sx={{
-          backgroundColor: 'white',
-          width: {
-            xs: 'auto',
-            sm: '160px',
-            md: '165px',
-            lg: '180px',
-          },
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          borderRadius: {
-            xs: '0',
-            sm: '0 110px 110px 0',
-            md: '0 100px 110px 0',
-            lg: '0 90px 90px 0',
-          },
-        }}
-      ></Box>
-      <Box
         item
         sx={{
           display: { xs: 'block', sm: 'flex' },

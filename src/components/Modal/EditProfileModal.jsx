@@ -1,10 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import EditIcon from '@mui/icons-material/Edit';
-import { IconButton } from '@mui/material';
 import Image from 'next/image';
 
 const style = {
@@ -19,16 +17,11 @@ const style = {
   p: 3,
 };
 
-export default function EditProfileModal({ sx }) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+export default function EditProfileModal({ open, setOpen }) {
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <IconButton component="label" size="small" sx={sx} onClick={handleOpen}>
-        <EditIcon fontSize="inherit" />
-      </IconButton>
       <Modal
         open={open}
         onClose={handleClose}
