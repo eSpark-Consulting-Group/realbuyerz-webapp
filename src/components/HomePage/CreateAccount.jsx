@@ -49,9 +49,7 @@ const CreateAccount = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Typewriter
-        text={FEATURED_HEADINGS.sliderHeading}
-      />
+      <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
       <Button
         sx={{
           mx: '15px',
