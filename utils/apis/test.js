@@ -4,6 +4,11 @@ const profileData = {
   // ... your profile data here ...
 };
 
+// Get JWT token
+const getTokenFunction = () => {
+  // ... your code here ...
+};
+
 const jwtToken = getTokenFunction();
 
 // Add properties
