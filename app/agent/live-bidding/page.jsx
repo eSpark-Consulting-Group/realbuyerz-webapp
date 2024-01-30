@@ -7,15 +7,12 @@ import {
   MAIN_TITLE,
   PROFILE_INFO,
 } from '@/app/constants/LiveBidding';
-import { useSelector } from 'react-redux';
+
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
 import BiddingProfile from '@/src/components/Biddings/BiddingProfile';
 
 const Page = () => {
-  const biddings = useSelector((state) => state.biddings.biddings);
-  console.log(biddings, 'biddings');
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>

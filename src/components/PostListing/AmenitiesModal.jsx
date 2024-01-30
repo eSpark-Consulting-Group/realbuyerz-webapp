@@ -21,20 +21,27 @@ const AmenitiesModal = (props) => {
       >
         <Box
           sx={{
-            background: 'white',
-            width: { xs: '100%', md: '40%' },
-            margin: 'auto',
-            marginTop: '200px',
-            '@media (min-width: 960px) and (max-width: 1500px)': {
-              width: '60%',
-            },
+            position: 'absolute',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+            width: { xs: '92%', lg: '1400px' },
+            bgcolor: 'background.paper',
+            borderRadius: '20px',
+            height: '687px',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            flexDirection: 'column',
           }}
         >
-          <Facilities
-            cancel={handleCancelButton}
-            facilitiesData={data}
-            onSelected={onSelected}
-          />
+          <Box sx={{ width: '100%' }}>
+            <Facilities
+              cancel={handleCancelButton}
+              facilitiesData={data}
+              onSelected={onSelected}
+            />
+          </Box>
         </Box>
       </Modal>
     </>

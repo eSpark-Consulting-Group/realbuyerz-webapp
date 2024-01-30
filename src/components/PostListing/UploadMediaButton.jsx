@@ -6,12 +6,16 @@ const UploadMediaButton = ({ propertyInformation, handleFileChange }) => {
   return (
     <Box
       sx={{
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-
         fontWeight: 400,
-        padding: '50px',
+        padding: { xs: '10px', md: '40px' },
+        '@media (min-width: 280px) and (max-width:424px)': {
+          padding: 0,
+          pb: 1,
+        },
         alignItems: 'center',
         gap: '20px',
       }}
@@ -21,6 +25,7 @@ const UploadMediaButton = ({ propertyInformation, handleFileChange }) => {
           <label
             htmlFor={`file-upload-${index}`}
             style={{
+              width: '100%',
               display: 'inline-block',
               cursor: 'pointer',
             }}
@@ -29,13 +34,13 @@ const UploadMediaButton = ({ propertyInformation, handleFileChange }) => {
             <Button
               sx={{
                 width: {
-                  xs: '150px',
-                  md: '200px',
+                  xs: '100%',
+                  sm: '200px',
                 },
                 color: index === 0 ? 'white' : '#FB631C',
                 background: index === 0 ? '#FB631C' : 'white',
-                fontSize: { xs: '12px', md: '20px' },
-                padding: { xs: '4px', md: '8px' },
+                fontSize: { xs: '15px', sm: '17px', md: '20px' },
+                padding: { xs: '7px', sm: '7px', md: '8px' },
                 textTransform: 'capitalize',
                 borderRadius: '10px',
                 border: '1px #FB631C solid',
