@@ -12,12 +12,16 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BiddingProfile from '@/src/components/Biddings/BiddingProfile';
 import { PROFILE_INFO } from '@/app/constants/LiveBidding';
 import ClientRequirementAmount from '@/src/components/Proposals/ClientRequirementAmount';
-import {
-  Client_Requirement_Amout,
-  Features_And_Amenities,
-} from '@/app/constants/ClientRequirement';
+
+// import {
+//   Client_Requirement_Title,
+//   Post_Listing_Preview_Data,
+// } from '@/app/constants/PreviewModal';
+import { BIDDINGS } from '@/app/constants/Biddings';
 
 const Page = () => {
+  const { amenities, amount, location } = BIDDINGS;
+
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -27,7 +31,7 @@ const Page = () => {
   const proposals = useSelector((state) => state.proposals.proposals);
 
   const selectedProposal = proposals.find(
-    (proposal) => proposal?.id == bidding?.proposalId,
+    (proposal) => proposal?.id == bidding?.proposalId
   );
 
   if (isNaN(id) || id === undefined || id === null) {
@@ -70,10 +74,10 @@ const Page = () => {
                   }}
                 >
                   <BidDescription details={bidding} />
-                  <ProposalMapLocation proposal={selectedProposal} />
+                  <ProposalMapLocation location={location} />
                   <ClientRequirementAmount
-                    amount={Client_Requirement_Amout}
-                    featuresAndAmenities={Features_And_Amenities}
+                    amountData={amount}
+                    amenities={amenities}
                   />
                 </Box>
               </Grid>

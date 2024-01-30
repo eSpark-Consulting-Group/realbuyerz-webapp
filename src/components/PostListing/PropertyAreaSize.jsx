@@ -30,8 +30,8 @@ const PropertyAreaSize = ({
     createPropertySizeState(
       propertySizeInformation,
       propertyBuyingDetails,
-      selectCity,
-    ),
+      selectCity
+    )
   );
 
   useEffect(() => {
@@ -120,6 +120,7 @@ const PropertyAreaSize = ({
               </Typography>
             </Box>
           </Box>
+
           <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
             <Box
               sx={{

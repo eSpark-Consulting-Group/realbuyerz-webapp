@@ -14,7 +14,6 @@ const PropertyFacilities = ({ propertyInformation }) => {
             justifyContent: { xs: 'center', md: 'space-between' },
             alignItems: 'center',
             fontSize: { xs: '18px', md: '20px' },
-
             fontWeight: 400,
             gap: { xs: '0px', md: '8px' },
           }}
@@ -23,16 +22,34 @@ const PropertyFacilities = ({ propertyInformation }) => {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
+              flexDirection: { xs: 'column', sm: 'row' },
               alignItems: 'center',
-              gap: '15px',
-              width: { xs: '200px', md: '300px' },
-              justifyContent: 'space-around',
+              gap: 2,
+              width: { xs: 'auto', md: 'auto' },
+              // justifyContent: 'space-around',
             }}
           >
-            <Image src={item.image} width={47} height={45} alt="facility" />
-            <Typography>{item.title}</Typography>
-            <Counter title={item?.title} identifier={`facility_${index}`} />
+            <Image src={item.image} width={50} height={50} alt="facility" />
+            <Box
+              sx={{
+                display: 'flex',
+                width: 'auto',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: 'center',
+                textAlign: { xs: 'center', sm: 'start' },
+                // justifyContent: 'space-between',
+                gap: 1,
+              }}
+            >
+              <Box sx={{ width: '130px' }}>
+                <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>
+                  {item.title}
+                </Typography>
+              </Box>
+              <Box sx={{ width: 'auto' }}>
+                <Counter title={item?.title} identifier={`facility_${index}`} />
+              </Box>
+            </Box>
           </Box>
         </Box>
       ))}

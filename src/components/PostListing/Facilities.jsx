@@ -1,7 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Typography, Box, Checkbox, Button } from '@mui/material';
-import Image from 'next/image';
+import {
+  Typography,
+  Box,
+  Checkbox,
+  Button,
+  FormControlLabel,
+} from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
@@ -18,7 +23,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   }, [amenitiesTitle]);
 
   useEffect(() => {
-    setAmenitiesTitle(amenities?.map((item) => item.title));
+    setAmenitiesTitle(amenities?.map((item) => item?.title));
   }, [amenities]);
 
   const handleCheckboxChange = (index) => {
@@ -29,7 +34,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
 
   const handleSaveButton = () => {
     const selectedItems = facilitiesData.filter(
-      (item, index) => selectedAmenities[index],
+      (item, index) => selectedAmenities[index]
     );
     onSelected(selectedItems);
     {
@@ -43,50 +48,85 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
       <Box
         sx={{
           display: 'grid',
+          py: 3,
           gridTemplateColumns: {
             xs: 'repeat(1, 1fr)',
             sm: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)',
+          },
+          '@media (min-width: 1200px) and (max-width: 1439px)': {
+            gridTemplateColumns: 'repeat(3, 1fr)',
           },
           width: '100%',
+          height: '550px',
+          overflowY: 'auto',
         }}
       >
         {facilitiesData?.map((item, index) => (
           <Box
             sx={{
+              mx: 'auto',
+              width: { xs: '98%', sm: '87%', md: '75%', lg: '80%' },
+              '@media (min-width: 1200px) and (max-width: 1439px)': {
+                width: '85%',
+              },
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
-              gap: '5px',
+              px: 3,
+              gap: 0.2,
+              mb: { xs: 1.5, md: 2.5 },
             }}
             key={index}
           >
-            <Checkbox
-              checked={selectedAmenities[index]}
-              onChange={() => {
-                handleCheckboxChange(index);
-              }}
+            <FormControlLabel
+              sx={{ width: '23px' }}
+              control={
+                <Checkbox
+                  sx={{ color: '#126FAA' }}
+                  checked={selectedAmenities[index]}
+                  onChange={() => {
+                    handleCheckboxChange(index);
+                  }}
+                />
+              }
             />
-            <Image src={item.image} width={35} height={35} alt="amenities" />
+            <Box
+              component={'img'}
+              src={item?.image}
+              sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
+              alt="amenities"
+            />
             <Typography
               sx={{
-                fontSize: '20px',
+                ml: 1.8,
+                fontSize: { xs: '15px', sm: '17px', lg: '20px' },
+                fontWeight: 400,
+                color: '#333',
               }}
             >
-              {item.title}
+              {item?.title}
             </Typography>
           </Box>
         ))}
       </Box>
       <Box
         sx={{
+          width: '100%',
+          height: '93px',
           display: 'flex',
-          justifyContent: 'flex-end',
+          alignItems: 'center',
+          justifyContent: { xs: 'center', sm: 'flex-end' },
+          borderTop: '1px solid #E4E4E4',
           gap: '10px',
+          pr: { xs: 0, sm: 7 },
         }}
       >
         <Button
           style={{
+            width: '100px',
+            height: '39px',
             background: 'white',
             borderRadius: '5px',
             color: '#FB631C',
@@ -99,13 +139,15 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
         </Button>
         <Button
           style={{
+            width: '100px',
+            height: '39px',
             background: '#FB631C',
             borderRadius: '5px',
             color: 'white',
           }}
           onClick={handleSaveButton}
         >
-          {PROPERTY_INFORMATION.save}
+          {PROPERTY_INFORMATION?.save}
         </Button>
       </Box>
     </>

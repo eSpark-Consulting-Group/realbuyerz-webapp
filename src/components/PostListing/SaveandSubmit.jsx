@@ -4,7 +4,7 @@ import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
-const SubmitButton = ({ handleSubmitAd }) => {
+const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
   return (
     <Grid container>
       <Grid
@@ -19,41 +19,57 @@ const SubmitButton = ({ handleSubmitAd }) => {
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            justifyContent: { xs: 'center', md: 'flex-end' },
+            flexDirection: 'row',
+            justifyContent: { xs: 'center', sm: 'flex-end' },
+            '@media(min-width: 280px) and (max-width:400px)': {
+              flexDirection: 'column',
+            },
             alignItems: 'center',
             gap: '10px',
             width: '90%',
           }}
         >
-          <HideUnhideButton />
+          <HideUnhideButton handleClickOpen={handleClickOpen} />
           <Button
-            style={{
-              width: '200px',
+            sx={{
+              width: { xs: '40%', sm: '200px' },
+              '@media(min-width: 280px) and (max-width:400px)': {
+                width: '100%',
+              },
               borderRadius: '5px',
               border: '1px solid #FB631C',
               background: '#FFF',
               color: '#FB631C',
               height: '45px',
               flexShrink: 0,
-              fontSize: '15px',
+              fontSize: { xs: '12px', sm: '15px' },
               fontWeight: 400,
+              '&:hover': {
+                color: '#fff',
+                backgroundColor: '#FB631C',
+              },
             }}
-            // onClick={onClick}
           >
             {PROPERTY_INFORMATION.saveDraft}
           </Button>
           <Button
-            style={{
-              width: '200px',
+            sx={{
+              width: { xs: '40%', sm: '200px' },
+              '@media(min-width: 280px) and (max-width:400px)': {
+                width: '100%',
+              },
               borderRadius: '5px',
               border: '1px solid #FB631C',
               color: '#fff',
               background: '#FB631C',
               height: '45px',
               flexShrink: 0,
-              fontSize: '15px',
+              fontSize: { xs: '13px', sm: '15px' },
               fontWeight: 400,
+              '&:hover': {
+                color: '#FB631C',
+                backgroundColor: '#fff',
+              },
             }}
             onClick={handleSubmitAd}
           >

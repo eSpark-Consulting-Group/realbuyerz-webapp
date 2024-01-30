@@ -7,7 +7,7 @@ import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 import { createInformationState } from '@/utils/addInfo';
-import { useSelector } from 'react-redux';
+
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
@@ -16,13 +16,10 @@ import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 
 const Page = () => {
-  const PostListigSelectedData = useSelector((state) => state?.ExamplePage);
-  console.log('test', PostListigSelectedData);
-
   const initializePropertyData = () => {
     const informationState = createInformationState(
       PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails,
+      PROPERTY_BUYING_DETAIL.sellingDetails
     );
     const propertyStatusState = createPropertyStatusState({
       propertySell: PROPERTY_INFORMATION.sell,

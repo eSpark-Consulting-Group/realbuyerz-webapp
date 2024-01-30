@@ -2,7 +2,7 @@ import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 export const createPropertySizeState = (
   propertySizeInformation,
   propertyBuyingDetails,
-  selectCity,
+  selectCity
 ) => {
   if (!propertyBuyingDetails) {
     return {};
