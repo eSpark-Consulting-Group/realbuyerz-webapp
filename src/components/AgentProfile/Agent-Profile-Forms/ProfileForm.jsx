@@ -8,15 +8,9 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Button, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-// import PhoneInput, {
-//   formatPhoneNumber,
-//   formatPhoneNumberIntl,
-//   isValidPhoneNumber,
-// } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 import RBInput from './RBInput';
-// import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
 import { useFormik } from 'formik';
 import VerificationModal from '../../Modal/VerificationModal';
@@ -34,16 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm({
-  data,
-  buttonText,
-  // firstDropdownValue,
-  // setFirstDropdownValue,
-  // secondDropdownValue,
-  // setSecondDropdownValue,
-  // profileInitialValues,
-}) {
-  const { image, fields } = data;
+export default function ProfileForm({ data, spacificAgent }) {
+  const { image, fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
@@ -51,17 +37,26 @@ export default function ProfileForm({
   const [open, setOpen] = useState(false);
 
   const Profile_Keys = {
-    about: '',
-    address: '',
-    city: '',
-    country: '',
-    email: '',
-    firstName: 'Ali' || '',
-    landline: '',
-    lastName: '',
-    mobile: '',
-    whatsapp: '',
+    about: `${spacificAgent?.about}` || '',
+    address: `${spacificAgent?.address}` || '',
+    city: `${spacificAgent?.city}` || '',
+    country: `${spacificAgent?.country}` || '',
+    email: `${spacificAgent?.email}` || '',
+    firstName: `${spacificAgent?.firstName}` || '',
+    landline: `${spacificAgent?.landline}` || '',
+    lastName: `${spacificAgent?.lastName}` || '',
+    mobile: `${spacificAgent?.mobile}` || '',
+    whatsapp: `${spacificAgent?.whatsapp}` || '',
   };
+
+  const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues: { ...Profile_Keys },
+      validationSchema: profileValidationSchema,
+      onSubmit: (values, action) => {
+        action.resetForm();
+      },
+    });
 
   const handleModalToggle = () => {
     setOpen(!open);
@@ -86,17 +81,6 @@ export default function ProfileForm({
     }
   };
 
-  const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: Profile_Keys,
-      validationSchema: profileValidationSchema,
-      onSubmit: (values, action) => {
-        console.log(values, 'values');
-        action.resetForm();
-      },
-    });
-
-  console.log(errors.whatsapp, 'errorsxx');
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -190,20 +174,35 @@ export default function ProfileForm({
                         defaultCountry={'PK'}
                         onChange={(e) => handlePhoneChange(e, field?.label)}
                       />
-                      <Typography>
+                      <Typography
+                        sx={{
+                          pt: 1.5,
+                          fontSize: '0.75rem',
+                          color: '#d32f2f',
+                          textAlign: 'left',
+                        }}
+                      >
                         {touched?.whatsapp && errors?.whatsapp}{' '}
                       </Typography>
                     </Box>
                   ) : null}
                   {field?.label == 'Mobile' ? (
-                    <>
-                      <PhoneInput
-                        placeholder="Enter phone number"
-                        value={values?.mobile}
-                        defaultCountry={'PK'}
-                        onChange={(e) => handlePhoneChange(e, field?.label)}
-                      />
-                      {field?.buttonText && (
+                    <Box sx={{ width: '100%' }}>
+                      <Box
+                        sx={{
+                          width: '100%',
+                          display: { xs: 'block', lg: 'flex' },
+                          gap: 1,
+                          alignItems: { xs: 'start', lg: 'center' },
+                        }}
+                      >
+                        <PhoneInput
+                          id="mobile"
+                          placeholder="Enter phone number"
+                          value={values?.mobile}
+                          defaultCountry={'PK'}
+                          onChange={(e) => handlePhoneChange(e, field?.label)}
+                        />
                         <Button
                           variant="primary"
                           type="button"
@@ -217,27 +216,50 @@ export default function ProfileForm({
                             handleVerify(field?.name), handleModalToggle();
                           }}
                           sx={{
-                            width: { xs: '100%', sm: 'auto' },
-                            height: { xs: '45px', sm: '53px' },
+                            mt: { xs: 2, lg: 0 },
+                            width: {
+                              xs: '98%',
+                              sm: '130px',
+                              md: '160px',
+                              lg: '100px',
+                            },
+                            height: { xs: '40px', md: '40px', lg: '30px' },
                             borderRadius: '5px',
                             '&:hover': { color: '#fff' },
                           }}
                         >
                           {'Verify'}
                         </Button>
-                      )}
+                      </Box>
                       <Box>
-                        <Typography>
+                        <Typography
+                          sx={{
+                            pt: 1.5,
+                            fontSize: '0.75rem',
+                            color: '#d32f2f',
+                            textAlign: 'left',
+                          }}
+                        >
                           {touched?.mobile && errors?.mobile}
                         </Typography>
                       </Box>
-                    </>
+                    </Box>
                   ) : null}
                   {field?.label == 'Mobile' ||
                   field?.label == 'Whatsapp' ? null : (
                     <RBInput
+                      inputProps={{
+                        style: {
+                          height: `${field?.label == 'Bio' ? 'auto' : '45px'}`,
+                          borderRadius: '5px',
+                          border: '1px solid #E7E7E7',
+                          fontSize: '15px',
+                          fontWeight: 400,
+                        },
+                      }}
                       sx={{
                         width: field?.width,
+                        '& fieldset': { border: 'none' },
                         gap: 1,
                         textAlign: 'left',
                         '& input[type=number]::-webkit-inner-spin-button': {

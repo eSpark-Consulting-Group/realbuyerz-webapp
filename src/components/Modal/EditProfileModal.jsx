@@ -1,24 +1,54 @@
-'use client';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Image from 'next/image';
+import ProfileCroper from '../AgentProfile/Agent-Profile-Forms/ProfileCroper';
+import { Button } from '@mui/material';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  background: '#E8F6FF',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  boxShadow: 24,
-  borderRadius: '27px',
-  p: 3,
-};
+// const style = {
+
+// };
 
 export default function EditProfileModal({ open, setOpen }) {
-  const handleClose = () => setOpen(false);
+  const [photoURL, setPhotoURL] = useState(null);
+  const [file, setFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadImageOpen, setUploadImageOpen] = useState(false);
+  const fileInputRef = useRef(null);
+
+  console.log(file, 'filexxx');
+
+  const handleClose = () => {
+    setOpen(false);
+    setUploadImageOpen(false);
+    setSelectedFile(null);
+  };
+
+  const handleUploadImage = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleEditImage = () => {
+    if (file) {
+      setUploadImageOpen(true);
+    }
+    // else if (!selectedFile) {
+    //   setUploadImageOpen(true);
+    // }
+    else {
+      null;
+    }
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      setUploadImageOpen(false);
+    } else {
+      setUploadImageOpen(true);
+      setSelectedFile(file);
+    }
+  };
 
   return (
     <div>
@@ -28,7 +58,31 @@ export default function EditProfileModal({ open, setOpen }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            background: '#E8F6FF',
+            transform: 'translate(-50%, -50%)',
+            width: { xs: '80%', sm: 400, md: 400 },
+            '@media (min-width:320px) and (max-width: 425px)': {
+              px: 1.5,
+              py: 3,
+              width: '90%',
+              borderRadius: '22px',
+            },
+            '@media (min-width:280px) and (max-width: 319px)': {
+              width: 270,
+              px: 1.5,
+              py: 3,
+              borderRadius: '22px',
+            },
+            boxShadow: 24,
+            borderRadius: { xs: '25px', sm: '27px' },
+            p: 3,
+          }}
+        >
           <Box
             sx={{
               bgcolor: 'red',
@@ -37,23 +91,57 @@ export default function EditProfileModal({ open, setOpen }) {
           >
             <Image
               src={'/images/modal/close.svg'}
-              width={28}
-              height={28}
+              width={25}
+              height={25}
               alt="close"
               onClick={handleClose}
               style={{
-                right: 0,
+                right: 1,
+                top: 5,
                 left: 'auto',
                 position: 'absolute',
               }}
             />
           </Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Upload Image
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 1 }}>
-            Upload Button Here....
-          </Typography>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            onChange={handleFileChange}
+          />
+          <Button onClick={handleUploadImage}>Upload Image</Button>
+          <Button onClick={handleEditImage}>Edit Image</Button>
+          {file && (
+            <Box
+              component={'img'}
+              sx={{
+                mt: 1,
+                mx: 'auto',
+                width: { xs: '197px' },
+                height: { xs: '197px' },
+                borderRadius: '100%',
+              }}
+              src={photoURL}
+              alt=""
+            />
+          )}
+          {uploadImageOpen && (
+            <Box sx={{ pt: 2 }}>
+              <ProfileCroper
+                photoURL={
+                  selectedFile
+                    ? URL?.createObjectURL(selectedFile)
+                    : null || !selectedFile
+                      ? photoURL
+                      : URL?.createObjectURL(selectedFile)
+                }
+                setOpenCrop={setUploadImageOpen}
+                setPhotoURL={setPhotoURL}
+                setFile={setFile}
+              />
+            </Box>
+          )}
         </Box>
       </Modal>
     </div>

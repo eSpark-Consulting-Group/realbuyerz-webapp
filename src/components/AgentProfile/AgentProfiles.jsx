@@ -22,6 +22,9 @@ const AgentProfiles = ({ data }) => {
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',
           padding: { xs: 2, sm: 0 },
+          '@media (min-width: 280px) and (max-width: 319px)': {
+            padding: 0,
+          },
         }}
       >
         <AgentImage image={data?.profileImage} />

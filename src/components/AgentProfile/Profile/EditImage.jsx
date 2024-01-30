@@ -30,6 +30,10 @@ export default function ButtonBaseDemo({ url, handleOpen }) {
         justifyContent: 'center',
         width: '220px',
         height: '220px',
+        '@media (min-width: 280px) and (max-width: 319px)': {
+          width: '200px',
+          height: '200px',
+        },
         backgroundColor: '#fff',
         mx: { xs: 'auto', sm: 0 },
         borderRadius: { xs: '100%', sm: '0 100% 100% 0' },

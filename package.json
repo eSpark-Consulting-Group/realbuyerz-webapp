@@ -36,6 +36,7 @@
     "react": "^18",
     "react-awesome-reveal": "^4.2.7",
     "react-dom": "^18",
+    "react-easy-crop": "^5.0.4",
     "react-modern-drawer": "^1.2.2",
     "react-phone-number-input": "^3.3.9",
     "react-redux": "^8.1.3",

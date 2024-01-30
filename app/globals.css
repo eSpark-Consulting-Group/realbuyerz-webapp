@@ -144,7 +144,6 @@ body header {
   padding-top: 4px;
   color: black;
 }
-
 .PhoneInputCountry {
   width: 90px;
   height: 45px;
@@ -189,7 +188,6 @@ body header {
   background: #fff;
   color: black;
   height: 45px;
-  width: 20%;
 }
 
 .PhoneInputInput::-webkit-inner-spin-button {
@@ -207,6 +205,12 @@ body header {
 
 .PhoneInputCountryIconImg {
   width: 34px;
+}
+
+@media (min-width: 1440px) and (2560px) {
+  #mobile {
+    width: 320px !important;
+  }
 }
 
 @media (max-width: 1860px) {
