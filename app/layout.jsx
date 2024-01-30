@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
@@ -7,7 +7,7 @@ import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import './globals.css';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 
 import Seo from '@/src/components/Global/SEO';
 import { Provider } from 'react-redux';
@@ -17,7 +17,6 @@ import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_CTA_DATA, FOOTER_DATA } from './constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/FooterCta';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -27,6 +26,14 @@ const RootLayout = ({ children }) => {
   const filterMeta = SEO_DATA?.filter((item) => item?.link == currentPath);
   const isDashboard =
     currentPath.includes('/agent/') || currentPath.includes('/user/');
+
+  useEffect(() => {
+    if (currentPath === '/agent') {
+      redirect('/agent/dashboard');
+    } else if (currentPath === '/user') {
+      redirect('/user/listing');
+    }
+  }, [currentPath]);
 
   return (
     <html lang="en">
