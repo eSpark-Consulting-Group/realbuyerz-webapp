@@ -1,12 +1,9 @@
 'use client';
-import Avatar from '@/src/components/UIElements/Avatar';
 import { a11yProps } from '@/src/utils/tabs';
-import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
-import moment from 'moment';
+import { Box, Grid, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { chatMessages, chatRooms } from '../../../src/constants/data/chats';
+import { chatRooms } from '../../../src/constants/data/chats';
 import ChatRooms from './ChatRooms';
-import Divider from '@mui/material/Divider';
 import ChatRoom from './ChatRoom';
 
 const page = () => {

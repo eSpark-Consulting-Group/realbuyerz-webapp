@@ -1,5 +1,4 @@
 import Avatar from '@/src/components/UIElements/Avatar';
-import { chatRooms } from '@/src/constants/data/chats';
 import { Box, Grid, Typography } from '@mui/material';
 import moment from 'moment';
 import React from 'react';
