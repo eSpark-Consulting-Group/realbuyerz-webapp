@@ -91,7 +91,7 @@ const PopularLocations = ({ data }) => {
           </Box>
           <Grid container sx={{ display: 'flex' }}>
             {filteredProposalsData?.map((item, index) => (
-              <Grid item xs={4} key={index}>
+              <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
                 <Box
                   sx={{
                     backgroundColor: '#fff',
@@ -128,9 +128,7 @@ const PopularLocations = ({ data }) => {
                     {item?.locations?.map((location, index) => (
                       <Box key={index}>
                         <Link href="/">
-                          <Typography variant="body1" sx={{}}>
-                            {location}
-                          </Typography>
+                          <Typography variant="body1">{location}</Typography>
                         </Link>
                         <br />
                       </Box>
