@@ -14,7 +14,7 @@ const RecentPropertyTitle = ({ data }) => {
         display: 'flex',
         justifyContent: 'center',
         fontWeight: 600,
-        fontSize: {lg:'30px', md:'25px', sm:'20px',xs:'20px'},
+        fontSize: { lg: '30px', md: '25px', sm: '20px', xs: '20px' },
         fontStyle: 'normal',
         lineHeight: 'normal',
         color: '#333',

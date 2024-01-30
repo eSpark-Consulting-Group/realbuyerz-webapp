@@ -25,7 +25,8 @@ const queryClient = new QueryClient();
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
   const filterMeta = SEO_DATA?.filter((item) => item?.link == currentPath);
- const isDashboard = currentPath.includes('/agent/') || currentPath.includes('/user/');
+  const isDashboard =
+    currentPath.includes('/agent/') || currentPath.includes('/user/');
 
   return (
     <html lang="en">
