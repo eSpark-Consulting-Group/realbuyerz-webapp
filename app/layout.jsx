@@ -28,10 +28,18 @@ const RootLayout = ({ children }) => {
     currentPath.includes('/agent/') || currentPath.includes('/user/');
 
   useEffect(() => {
-    if (currentPath === '/agent') {
-      redirect('/agent/dashboard');
-    } else if (currentPath === '/user') {
-      redirect('/user/listing');
+    if (
+      currentPath === '/agent' ||
+      currentPath === '/dashboard/agent' ||
+      currentPath === '/dashboard/agent'
+    ) {
+      redirect('/agent/live-bidding');
+    } else if (
+      currentPath === '/user' ||
+      currentPath === '/dashboard/user' ||
+      currentPath === '/dashboard/user'
+    ) {
+      redirect('/user/dashboard');
     }
   }, [currentPath]);
 
