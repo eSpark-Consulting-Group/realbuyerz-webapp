@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import moment from 'moment';
 import React from 'react';
 
-const ChatRooms = ({chatRoomState, setSelectedChatRoom }) => {
+const ChatRooms = ({ chatRoomState, setSelectedChatRoom }) => {
   const handleSelectChatRoom = (room) => setSelectedChatRoom(room);
   return (
     <Grid

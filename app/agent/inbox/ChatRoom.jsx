@@ -189,6 +189,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   //   return renderMessage(message, isSameSenderAsPrevious);
                   return (
                     <RenderMessage
+                      key={msgIndex}
                       data={message}
                       selectedChatRoom={selectedChatRoom}
                       isSameSenderAsPrevious={isSameSenderAsPrevious}

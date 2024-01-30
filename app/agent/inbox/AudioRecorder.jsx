@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
@@ -10,7 +10,6 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
   const [currentPlaybackTime, setCurrentPlaybackTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [renderedAudio, setRenderedAudio] = useState(null);
 
   const audioRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -60,9 +59,10 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
     setCurrentPlaybackTime(0);
     setTotalDuration(0);
     setIsRecording(true);
-    navigator?.mediaDevices?.getUserMedia({ audio: true })
+    navigator?.mediaDevices
+      ?.getUserMedia({ audio: true })
       .then((stream) => {
-        console.log({stream})
+        console.log({ stream });
         const mediaRecorder = new MediaRecorder(stream);
         mediaRecorderRef.current = mediaRecorder;
         audioRef.current.srcObject = stream;
@@ -84,7 +84,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
   };
   const handleStopRecording = () => {
     setIsRecording(false);
-    console.log({ref:mediaRecorderRef?.current, isRecording})
+    console.log({ ref: mediaRecorderRef?.current, isRecording });
     if (mediaRecorderRef?.current && isRecording) {
       mediaRecorderRef?.current?.stop();
       setIsRecording(false);
@@ -96,7 +96,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
       mediaRecorderRef?.current?.addEventListener('stop', () => {
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         const audioFile = new File([audioBlob], { type: 'recording.mp3' });
-        setRenderedAudio(audioFile);
+        console.log({ audioFile });
       });
     }
   };
@@ -126,9 +126,6 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
     recordedAudio?.pause();
     setIsPlaying(false);
   };
-  const sendRecording = async () => {
-    console.log({renderedAudio})
-  };
 
   const formatTime = (time) => {
     if (isNaN(time)) return '00:00';
@@ -138,7 +135,10 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
   };
 
   return (
-    <Box className="w-full-justify-end flex items-center text-2xl" sx={{maxHeight:'32px'}}>
+    <Box
+      className="w-full-justify-end flex items-center text-2xl"
+      sx={{ maxHeight: '32px' }}
+    >
       <Box className="pt-1">
         <Box
           component={'img'}
@@ -168,8 +168,8 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
                     alt="Play"
                     onClick={handlePlayRecording}
                     sx={{
-                        minWidth:'20px',
-                        minHeight:'20px',
+                      minWidth: '20px',
+                      minHeight: '20px',
                     }}
                   />
                 ) : (
@@ -179,8 +179,8 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
                     alt="Pause"
                     onClick={handlePauseRecording}
                     sx={{
-                        minWidth:'20px',
-                        minHeight:'20px',
+                      minWidth: '20px',
+                      minHeight: '20px',
                     }}
                   />
                 )}
@@ -188,14 +188,21 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
             )}
           </Box>
         )}
-        <Box style={{width:'100px'}} ref={waveFormRef} hidden={isRecording} />
+        <Box
+          style={{ width: '100px' }}
+          ref={waveFormRef}
+          hidden={isRecording}
+        />
         {recordedAudio && isPlaying && (
           <span>{formatTime(currentPlaybackTime)}</span>
         )}
         {recordedAudio && !isPlaying && (
           <span>{formatTime(totalDuration)}</span>
         )}
-        <audio ref={audioRef} hidden />
+        <Box>
+          <audio ref={audioRef} hidden />
+          <track kind="captions" srclang="en" />
+        </Box>
       </Box>
 
       <Box className="mr-4">

@@ -6,7 +6,7 @@ import { chatRooms } from '../../../src/constants/data/chats';
 import ChatRooms from './ChatRooms';
 import ChatRoom from './ChatRoom';
 
-const page = () => {
+const Page = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
   const [chatRoomState, setChatRoomState] = useState([]);
@@ -61,6 +61,7 @@ const page = () => {
     setCurrentTab(tab);
 
     setValue(newValue);
+    console.log({ currentTab });
   };
   const tabs = [
     {
@@ -137,4 +138,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

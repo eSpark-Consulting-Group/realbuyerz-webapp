@@ -16,36 +16,30 @@ const RenderMessage = ({
   const [selectedEmoji, setSelectedEmoji] = useState('');
   const componentRef = useRef(null);
   const initialTouchX = useRef(0);
-  
-  const handleMouseDown = (e) => {
-    console.log({ click: e });
+
+  const handleMouseDown = () => {
     setIsDragging(true);
     setDragDistance(0);
   };
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = () => {
     setIsDragging(true);
     setDragDistance(0);
-    initialTouchX.current = e.touches[0].clientX;
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = () => {
     if (isDragging) {
-      // const touchX = e.touches[0].clientX;
-      // const deltaX = touchX - initialTouchX.current;
       setDragDistance(15);
       setIsReplying(true);
       setReplyingMessage(data);
-      // initialTouchX.current = touchX;
     }
   };
 
   const handleTouchEnd = () => {
     setIsDragging(false);
     setDragDistance(0);
-    // Handle any additional logic when touch is released
   };
-  const handleMouseMove = (e) => {
+  const handleMouseMove = () => {
     if (isDragging) {
       setDragDistance(15);
       setIsReplying(true);
@@ -53,46 +47,40 @@ const RenderMessage = ({
     }
   };
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     setIsDragging(false);
     setDragDistance(0);
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     if (isDragging) {
       setIsDragging(false);
       setDragDistance(0);
     }
   };
-  const handleMouseDownSender = (e) => {
-    console.log({ click: e });
+  const handleMouseDownSender = () => {
     setIsDragging(true);
     setDragDistance(0);
   };
 
-  const handleTouchStartSender = (e) => {
+  const handleTouchStartSender = () => {
     setIsDragging(true);
     setDragDistance(0);
-    initialTouchX.current = e.touches[0].clientX;
   };
 
-  const handleTouchMoveSender = (e) => {
+  const handleTouchMoveSender = () => {
     if (isDragging) {
-      // const touchX = e.touches[0].clientX;
-      // const deltaX = touchX - initialTouchX.current;
       setDragDistance(15);
       setIsReplying(true);
       setReplyingMessage(data);
-      // initialTouchX.current = touchX;
     }
   };
 
   const handleTouchEndSender = () => {
     setIsDragging(false);
     setDragDistance(0);
-    // Handle any additional logic when touch is released
   };
-  const handleMouseMoveSender = (e) => {
+  const handleMouseMoveSender = () => {
     if (isDragging) {
       setDragDistance(15);
       setIsReplying(true);
@@ -100,12 +88,12 @@ const RenderMessage = ({
     }
   };
 
-  const handleMouseUpSender = (e) => {
+  const handleMouseUpSender = () => {
     setIsDragging(false);
     setDragDistance(0);
   };
 
-  const handleMouseLeaveSender = (e) => {
+  const handleMouseLeaveSender = () => {
     if (isDragging) {
       setIsDragging(false);
       setDragDistance(0);
@@ -189,7 +177,7 @@ const RenderMessage = ({
                     marginRight: emoIndex < 6 && '10px',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                        transform: 'translateY(-5px) scale(1.3)',
+                      transform: 'translateY(-5px) scale(1.3)',
                     },
                   }}
                   key={emoIndex}
@@ -358,7 +346,7 @@ const RenderMessage = ({
                   width: { xs: '25px', sm: '30px' },
                   height: { xs: '25px', sm: '30px' },
                   marginRight: emoIndex < 6 && '10px',
-                    transition:'all 0.3s ease',
+                  transition: 'all 0.3s ease',
                   //   borderRadius: '50%',
                   '&:hover': {
                     transform: 'translateY(-5px) scale(1.3)',
