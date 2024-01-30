@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
-import { addPaymentMethod, updatePaymentMethodSelection, deletePaymentMethod, setFormError, } from '@/src/redux/slices/settings/PakageCartSlice';
+import { addPaymentMethod, updatePaymentMethodSelection, deletePaymentMethod, setFormError, updateOrderMethodSelection, isResetForm, } from '@/src/redux/slices/settings/PakageCartSlice';
 import { paymentSchema, easyPaisaSchema, jazzCashSchema } from '../Schemas/paymentValidation';
 
 import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
@@ -13,26 +11,18 @@ import CreditCardType from './CreditCardType';
 import AccountType from './AccountType';
 import MasterCard from './MasterCard';
 import VisaCard from './VisaCard';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    alignItems: 'center',
-    display: 'flex',
-    border: 'none',
-    boxShadow: 'none',
-    color: theme.palette.text.secondary,
-}));
+import GeneralCard from './GeneralCard';
 
 const PaymentMethod = ({ data }) => {
     const { image, title, textField, checkBoxLable, cardTypeImage, creditCardLable, addButtonLable, easyPaisa, jazzCash, } = data;
-    const { JAZZ_CASH, EASY_PAISA, ACCOUNT_NAME_EASYPAISA, ACCOUNT_NAME_JAZZCASH, VISA, MASTER_CARD, NAME_ON_CARD, UNKNOWN } = PAYMENT_METHODE_DATA.constantLabel
+    const { JAZZ_CASH, EASY_PAISA, ACCOUNT_NAME_EASYPAISA, ACCOUNT_NAME_JAZZCASH, VISA, MASTER_CARD, NAME_ON_CARD, GENERAL_CARD } = PAYMENT_METHODE_DATA.constantLabel
     const [selectedValue, setSelectedValue] = useState(NAME_ON_CARD);
     const [selected, setSelected] = useState(false);
     const [checked, setChecked] = useState(false);
+    const [cardTypeNumber, setCardTypeNumber] = useState();
+
     const dispatch = useDispatch();
-    const { paymentMedthodDetails, checkOrder } = useSelector(
+    const { paymentMedthodDetails, checkOrder, resetCalled } = useSelector(
         (state) => state.PakageCart
     );
 
@@ -104,16 +94,56 @@ const PaymentMethod = ({ data }) => {
         dispatch(setFormError(Object.values(formik.errors)[0]));
     }, [formik.errors]);
 
+
     useEffect(() => {
-        if ((formik.values.name_on_card && formik.values.card_number && formik.values.expiry_date && formik.values.cvv_no) || (formik.values.jazzcash_number || formik.values.easypaisa_number)) {
+        if (
+            (formik.values.name_on_card &&
+                formik.values.card_number &&
+                formik.values.expiry_date &&
+                formik.values.cvv_no) ||
+            (selectedValue === EASY_PAISA && formik.values.easypaisa_number) ||
+            (selectedValue === JAZZ_CASH && formik.values.jazzcash_number)
+        ) {
             formik.handleSubmit();
         }
     }, [formik.values, dispatch, selectedValue]);
+
     useEffect(() => {
-        if (selectedValue === NAME_ON_CARD || selectedValue === JAZZ_CASH || selectedValue === EASY_PAISA) {
+        if (selectedValue === NAME_ON_CARD || selectedValue === JAZZ_CASH || selectedValue === EASY_PAISA || resetCalled === true) {
             formik.resetForm()
+            dispatch(isResetForm(false))
+            setChecked(false)
+        }
+    }, [selectedValue, resetCalled]);
+
+    useEffect(() => {
+        if (selectedValue === GENERAL_CARD || selectedValue === MASTER_CARD || selectedValue === VISA) {
+            // const findPayment = paymentMedthodDetails.filter((item) => (
+            //     item.card_number === cardTypeNumber
+            // ))
+            const findOrder = checkOrder.filter((item) => (
+                item.card_number === cardTypeNumber
+            ))
+            // findPayment.length === 1 &&
+            if ( findOrder.length === 1) {
+                // dispatch(updatePaymentMethodSelection({ cardNumber: findPayment[0].card_number, isSelected: true, isCheckBox: true }));
+                dispatch(updateOrderMethodSelection({ cardNumber: findOrder[0].card_number, isSelected: true, isCheckBox: true }));
+            }
+        }
+        else if (selectedValue === NAME_ON_CARD || selectedValue === EASY_PAISA || selectedValue === JAZZ_CASH  ) {
+            // paymentMedthodDetails.forEach((item) => {
+            //     dispatch(updatePaymentMethodSelection({ cardNumber: item.card_number, isSelected: false, isCheckBox: item.isCheckBox }));
+            //     return false
+            // })
+            checkOrder.forEach((item) => {
+                dispatch(updateOrderMethodSelection({ cardNumber: item.card_number, isSelected: false, isCheckBox: item.isCheckBox }));
+                return false
+            })
         }
     }, [selectedValue]);
+    console.log(resetCalled, 'homeeee')
+
+
     const getCardType = (cardNumber) => {
         const visaRegex = /^4\d{12}(?:\d{3})?$/;
         const mastercardRegex = /^5[1-5]\d{14}$/;
@@ -123,7 +153,7 @@ const PaymentMethod = ({ data }) => {
         } else if (mastercardRegex.test(cardNumber)) {
             return MASTER_CARD;
         } else {
-            return UNKNOWN;
+            return GENERAL_CARD;
         }
     }
 
@@ -142,10 +172,13 @@ const PaymentMethod = ({ data }) => {
                         card.isCheckBox && (
                             <>
                                 {getCardType(card.card_number) === MASTER_CARD && (
-                                    <MasterCard image={data?.masterCard?.image} cardName={data?.masterCard?.cardName} accountNumber={data?.masterCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
+                                    <MasterCard setCardTypeNumber={setCardTypeNumber} image={data?.masterCard?.image} cardName={data?.masterCard?.cardName} accountNumber={card?.card_number} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
                                 )}
                                 {getCardType(card.card_number) === VISA && (
-                                    <VisaCard image={data?.visaCard?.image} cardName={data?.visaCard?.cardName} accountNumber={data?.visaCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
+                                    <VisaCard setCardTypeNumber={setCardTypeNumber} image={data?.visaCard?.image} cardName={data?.visaCard?.cardName} accountNumber={card?.card_number} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
+                                )}
+                                {getCardType(card.card_number) === GENERAL_CARD && (
+                                    <GeneralCard setCardTypeNumber={setCardTypeNumber} image={data?.generalCard?.image} cardName={data?.generalCard?.cardName} accountNumber={card?.card_number} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
                                 )}
                             </>
                         )

@@ -27,18 +27,15 @@ const AccountType = ({ AccountName, textField, handleChange, formik, selectedVal
                     display: 'flex',
                     backgroundColor: selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? '#EDF7FF' : 'transparent',
                     alignItems: 'center',
-                    mx: { md: '30px', lg: '38px', xl: '40px' },
+                    mx: {  lg: '38px', xl: '40px' },
                     my: '10px',
-                    px: { lg: '40px' },
                     cursor: 'pointer',
                 }}
             >
-                <Grid item xs={2} sm={1} lg={1}
+                <Grid item xs={2} sm={1} lg={1} xl={1}
                     sx={{
                         display: 'flex',
-                        justifyContent: { xs: 'center', sm: 'flex-start' },
-                        pr: { lg: '90px !important', },
-                        pl: '0px !important'
+                        justifyContent: { xs: 'center', sm: 'center !important' },
                     }}
                 >
                     <Radio
@@ -51,24 +48,25 @@ const AccountType = ({ AccountName, textField, handleChange, formik, selectedVal
                         }}
                     />
                 </Grid>
-                <Grid item xs={5} sm={3} lg={8}>
+                <Grid item xs={5} sm={3} lg={8} xl={8}>
                     <Typography
                         sx={{
                             color: '#333',
                             fontSize: { xs: '12.1px', sm: '20px' },
                             fontStyle: 'normal',
                             fontWeight: 600,
+                            pl:{xl:'35px'},
                         }}
                     >
                         {AccountName}
                     </Typography>
                 </Grid>
-                <Grid item xs={5} sm={8} lg={2.7}
+                <Grid item xs={5} sm={8} lg={2.7} xl={2.7}
                     sx={{
                         display: 'flex',
                         justifyContent: { xs: 'flex-end' },
                     }}>
-                    {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? <KeyboardArrowDownIcon fontSize='large' /> : <KeyboardArrowRightIcon fontSize='large' />}
+                    {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? <KeyboardArrowDownIcon fontSize='large' sx={{color:'#666'}}/> : <KeyboardArrowRightIcon fontSize='large' sx={{color:'#666'}}/>}
                 </Grid>
             </Grid>
             {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') && (

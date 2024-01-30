@@ -17,8 +17,26 @@ export const paymentSchema = Yup.object().shape({
 });
 
 export const jazzCashSchema = Yup.object().shape({
-  jazzcash_number: Yup.string().matches(/^\d{11}$/, 'Invalid JazzCash number').required('JazzCash number is required'),
+  jazzcash_number: Yup.string().test(
+    'jazzcash-length',
+    'Invalid JazzCash number',
+    function (value) {
+      if (!value) return this.createError({ message: 'JazzCash number is required' });
+      const regex = value.startsWith('0') ? /^\d{11}$/ : /^\d{10}$/;
+      return regex.test(value);
+    }
+  ).required('JazzCash number is required'),
 });
+
 export const easyPaisaSchema = Yup.object().shape({
-  easypaisa_number: Yup.string().matches(/^\d{11}$/, 'Invalid Easypaisa number').required('Easypaisa number is required'),
+  easypaisa_number: Yup.string().test(
+    'easypaisa-length',
+    'Invalid Easypaisa number',
+    function (value) {
+      if (!value) return this.createError({ message: 'Easypaisa number is required' });
+      const regex = value.startsWith('0') ? /^\d{11}$/ : /^\d{10}$/;
+      return regex.test(value);
+    }
+  ).required('Easypaisa number is required'),
 });
+

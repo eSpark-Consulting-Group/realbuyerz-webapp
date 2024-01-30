@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Grid, Radio } from '@mui/material';
+import { Box, Grid, Radio, useMediaQuery } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -8,9 +8,10 @@ import InputTextField from './InputTextField';
 
 const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLable, selectedValue, handleChangeRadioButton, formik, NAME_ON_CARD }) => {
     const gridRef = useRef(null);
+    const isSmallScreen = useMediaQuery('(max-width:450px)');
 
     const handleClick = () => {
-        handleChangeRadioButton({ target: { value: 'name_on_card' } });
+        handleChangeRadioButton({ target: { value: NAME_ON_CARD } });
     };
 
     return (
@@ -20,23 +21,22 @@ const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLabl
                 container
                 onClick={handleClick}
                 sx={{
-                    mx: { md: '30px', lg: '38px', xl: '40px' },
+                    mx: {  lg: '38px', xl: '40px' },
                     my: '30px',
                     width: '100%',
                     height: '70px',
-                    backgroundColor: selectedValue === 'name_on_card' ? '#EDF7FF' : 'transparent',
+                    backgroundColor: selectedValue === NAME_ON_CARD ? '#EDF7FF' : 'transparent',
                     border: '1px solid #E9E9E9',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: { sm: 'center' },
                     cursor: 'pointer',}}>
-                <Grid item xs={4} sm={1} lg={1} sx={{
+                <Grid item xs={2} sm={1} lg={1} xl={1} sx={{
                     display: 'flex',
-                    justifyContent: { xs: 'center', sm: 'flex-start' },
+                    justifyContent: { xs: 'center', sm: 'center' },
                 }
                 }>
                     <Radio
-                        checked={selectedValue === 'name_on_card'}
+                        checked={selectedValue === NAME_ON_CARD}
                         onChange={handleChangeRadioButton}
                         value="name_on_card"
                         name="radio-buttons"
@@ -44,18 +44,21 @@ const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLabl
                         sx={{ color: '#126FAA !important' }}
                     />
                 </Grid>
-                <Grid item xs={8} sm={5} lg={3} sx={{
+                <Grid item xs={4} sm={5} lg={4} xl={3.5} sx={{
                     color: '#333',
-                    fontSize: { xs: '12.1px', sm: '20px' },
+                    fontSize: { xs: '11px', sm: '20px' },
                     fontStyle: 'normal',
-                    fontWeight: 600
+                    fontWeight: 600,
+                    display: 'flex',
+                    justifyContent: { xs: 'center', sm: 'center',xl:'flex-start' },
+                    pl:{xl:'35px'},
                 }
                 }>
                     {creditCardLable}
                 </Grid>
-                <Grid item xs={7} sm={2} lg={1} sx={{
+                <Grid item xs={4} sm={2} lg={1} xl={1.4} sx={{
                     display: 'flex',
-                    justifyContent: {xs:'center',  md: 'flex-end' }
+                    justifyContent: {xs:'center',  md: 'flex-start' }
                 }
                 }>
                     <Box sx={{ display: 'flex', gap: '5px' }}>
@@ -63,19 +66,23 @@ const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLabl
                             <Image
                                 key={index}
                                 src={item?.icon}
-                                width={44}
+                                width={isSmallScreen ? 25 : 44}
                                 height={28}
                                 alt={item?.alt}
                             />
                         ))}
                     </Box>
                 </Grid>
-                <Grid item xs={5} sm={4} lg={6} sx={{
+                <Grid item xs={2} sm={4} lg={6} xl={6} sx={{
                     display: 'flex',
-                    justifyContent: { sm: 'flex-end !important' }
+                    justifyContent: { xs: 'flex-end !important' },
+                    '@media (max-width: 400px)': {
+                        justifyContent: 'flex-start !important' ,
+                      },
+                      pr:{lg:'15px'}
                 }
                 }>
-                  {selectedValue === 'name_on_card' ? <KeyboardArrowDownIcon fontSize='large'/> : <KeyboardArrowRightIcon fontSize='large' sx={{color:'#666'}}/>}
+                  {selectedValue === NAME_ON_CARD ? <KeyboardArrowDownIcon fontSize='large' sx={{color:'#666'}}/> : <KeyboardArrowRightIcon fontSize='large' sx={{color:'#666'}}/>}
                 </Grid>
             </Grid>
             {selectedValue === NAME_ON_CARD && (

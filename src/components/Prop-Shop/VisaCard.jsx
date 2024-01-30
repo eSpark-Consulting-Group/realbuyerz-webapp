@@ -2,14 +2,23 @@ import { Box, Grid, Radio, Typography } from '@mui/material';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 
-const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton }) => {
+const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton, setCardTypeNumber }) => {
     const gridRef = useRef(null);
     const finalValue = cardName;
 
     const handleClick = () => {
         handleChangeRadioButton({ target: { value: finalValue } });
     };
+    const viweDetails = () =>{
+        setCardTypeNumber(accountNumber)
+    }
 
+    const maskAccountNumber = (number) => {
+        if (!number) return '';
+        const strNumber = String(number);
+        const masked = '*'.repeat(Math.max(0, strNumber.length - 4)) + strNumber.slice(-4);
+        return masked;
+    };
     return (
         <Grid
             ref={gridRef}
@@ -22,21 +31,20 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                 alignItems: 'center',
                 mx: { md: '30px', lg: '38px', xl: '40px' },
                 my: '10px',
-                px: '40px',
-                cursor: 'pointer', // Add cursor pointer to indicate clickable
+                cursor: 'pointer',
                 backgroundColor: selectedValue === finalValue ? '#EDF7FF' : 'transparent',
             }}
         >
-            <Grid item lg={1} xs={2} sm={1}
-            // sx={{
-            //     display: 'flex',
-            //     justifyContent: { xs: 'center', sm: 'flex-start' },
-            //     pr: { lg: '100px !important', },
-            // }}
+            <Grid item xl={1} lg={1} xs={2} sm={1}
+                sx={{
+                    display: 'flex',
+                    justifyContent: { xs: 'center', xl: 'center' },
+                }}
             >
                 <Radio
                     checked={selectedValue === finalValue}
                     onChange={handleChangeRadioButton}
+                    onClick={viweDetails}
                     value={finalValue}
                     name="radio-buttons"
                     inputProps={{ 'aria-label': 'A' }}
@@ -46,7 +54,7 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                     }}
                 />
             </Grid>
-            <Grid item lg={8} sx={{ display: 'flex' }}>
+            <Grid item xl={8} lg={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start',lg: 'flex-start', xl: 'flex-start' }, pl: { xl: '20px' }, }}>
                 <Box sx={{
                     display:'flex',
                     alignItems:'center',
@@ -79,7 +87,7 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                         lineHeight:'normal'
 
                     }}>
-                       {accountNumber}
+                      {maskAccountNumber(accountNumber)}
                     </Typography>
                 </Box>
             </Grid>

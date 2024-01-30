@@ -93,13 +93,18 @@ export const PAYMENT_METHODE_DATA = {
       cardName : 'Visa',
       accountNumber:'****1234',
     },
+    generalCard:{
+      image:'/images/agent_form/general.svg',
+      cardName : 'General',
+      accountNumber:'****1234',
+    },
     constantLabel:{
       JAZZ_CASH:'jazzcash',
       EASY_PAISA:'easypaisa',
       NAME_ON_CARD:'name_on_card',
       VISA:'Visa',
       MASTER_CARD:'Mastercard',
-      UNKNOWN:'Unknown',
+      GENERAL_CARD:'General',
       ACCOUNT_NAME_EASYPAISA:'Easy paisa',
       ACCOUNT_NAME_JAZZCASH:'Jazz Cash',
     }

@@ -11,7 +11,8 @@ const initialState = {
   paymentMedthod: false,
   formError: '',
   paymentMedthodDetails: [],
-  checkOrder: []
+  checkOrder: [],
+  resetCalled:false
 };
 
 export const PakageCartSlice = createSlice({
@@ -51,6 +52,16 @@ export const PakageCartSlice = createSlice({
         card.card_number === Number(cardNumber) ? { ...card, isSelected, isCheckBox } : { ...card, isSelected: false }
       );
     },
+  
+    updateOrderMethodSelection: (state, action) => {
+      const { cardNumber, isSelected, isCheckBox } = action.payload;
+      state.checkOrder = state.checkOrder.map((card) =>
+        card.card_number === Number(cardNumber) ? { ...card, isSelected, isCheckBox } : { ...card, isSelected: false }
+      );
+    },
+    removePaymentMethodSelection: (state, action) => {
+      state.paymentMedthodDetails = []
+    },
     deletePaymentMethod: (state, action) => {
       const indexToDelete = action.payload;
       state.paymentMedthodDetails.splice(indexToDelete, 1);
@@ -60,6 +71,9 @@ export const PakageCartSlice = createSlice({
     },
     setAfterClick: (state, action ) => {
       state.checkOrder = action.payload
+    },
+    isResetForm: (state, action ) => {
+      state.resetCalled = action.payload
     }
   },
 });
@@ -73,7 +87,10 @@ export const {
   deletePaymentMethod,
   setFormError,
   toggleCheckBox,
-  setAfterClick
+  setAfterClick,
+  updateOrderMethodSelection,
+  isResetForm,
+  removePaymentMethodSelection
 } = PakageCartSlice.actions;
 
 export default PakageCartSlice.reducer;
