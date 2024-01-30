@@ -11,7 +11,6 @@ const InnerPageLayout = ({ children }) => {
       <Box maxWidth={1322} mx={'auto'}>
         {children}
       </Box>
-      <FooterCta data={FOOTER_CTA_DATA} />
     </Box>
   );
 };

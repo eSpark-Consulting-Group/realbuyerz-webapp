@@ -21,7 +21,6 @@ import Footer from '@/src/components/layouts/Footer';
 const Home = () => {
   return (
     <>
-      <MainHeader />
       <div className="min-h-screen">
         <HeroSection />
         <BrowseByCategory data={CATEGORIES} />
@@ -30,9 +29,7 @@ const Home = () => {
         <OurHomePartners data={PARTNERS} />
         <NewlyListedProperties data={AGENT_PROFILE_DATA} />
         <PopularLocations data={POPULAR_LOCATIONS_DATA} />
-        <FooterCta data={FOOTER_CTA_DATA} />
       </div>
-      <Footer data={FOOTER_DATA} />
     </>
   );
 };

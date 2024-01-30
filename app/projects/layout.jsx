@@ -10,10 +10,7 @@ import Footer from '@/src/components/layouts/Footer';
 const InnerPageLayout = ({ children }) => {
   return (
     <>
-      <MainHeader />
       <Container>{children}</Container>
-      <FooterCta data={FOOTER_CTA_DATA} />
-      <Footer data={FOOTER_DATA} />
     </>
   );
 };
