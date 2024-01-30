@@ -200,8 +200,9 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
           <span>{formatTime(totalDuration)}</span>
         )}
         <Box>
-          <audio ref={audioRef} hidden />
-          <track kind="captions" srclang="en" />
+          <audio ref={audioRef} hidden>
+            <track kind="captions" srclang="en" />
+          </audio>
         </Box>
       </Box>
 

@@ -15,7 +15,6 @@ const RenderMessage = ({
   const [dragDistance, setDragDistance] = useState(0);
   const [selectedEmoji, setSelectedEmoji] = useState('');
   const componentRef = useRef(null);
-  const initialTouchX = useRef(0);
 
   const handleMouseDown = () => {
     setIsDragging(true);
