@@ -1,17 +1,24 @@
-import { Box, Grid, Radio, TextField } from '@mui/material'
-import Image from 'next/image'
-import React from 'react'
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import { Box, Grid, Radio } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import InputTextField from './InputTextField'
 
-const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLable, selectedValue, handleChangeRadioButton, formik }) => {
-    const selectValueOfRadio = textField.find((item) => item.name);
-    const finalValue = selectValueOfRadio.name;
+import InputTextField from './InputTextField';
+
+const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLable, selectedValue, handleChangeRadioButton, formik, NAME_ON_CARD }) => {
+    const gridRef = useRef(null);
+
+    const handleClick = () => {
+        handleChangeRadioButton({ target: { value: 'name_on_card' } });
+    };
+
     return (
         <>
-            <Grid xs={12}
-            container
+            <Grid
+                ref={gridRef}
+                container
+                onClick={handleClick}
                 sx={{
                     mx: { md: '30px', lg: '38px', xl: '40px' },
                     my: '30px',
@@ -22,22 +29,19 @@ const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLabl
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: { sm: 'center' },
-                }}>
+                    cursor: 'pointer',}}>
                 <Grid item xs={4} sm={1} lg={1} sx={{
                     display: 'flex',
                     justifyContent: { xs: 'center', sm: 'flex-start' },
-                    // pr: { lg: '100px !important', },
                 }
                 }>
                     <Radio
-                        checked={selectedValue === finalValue}
+                        checked={selectedValue === 'name_on_card'}
                         onChange={handleChangeRadioButton}
-                        value={finalValue}
+                        value="name_on_card"
                         name="radio-buttons"
                         inputProps={{ 'aria-label': 'A' }}
-                        sx={{
-                            color: '#126FAA !important',
-                        }}
+                        sx={{ color: '#126FAA !important' }}
                     />
                 </Grid>
                 <Grid item xs={8} sm={5} lg={3} sx={{
@@ -71,10 +75,10 @@ const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLabl
                     justifyContent: { sm: 'flex-end !important' }
                 }
                 }>
-                  {selectedValue === 'name_on_card' ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+                  {selectedValue === 'name_on_card' ? <KeyboardArrowDownIcon fontSize='large'/> : <KeyboardArrowRightIcon fontSize='large' sx={{color:'#666'}}/>}
                 </Grid>
             </Grid>
-            {selectedValue === 'name_on_card' && (
+            {selectedValue === NAME_ON_CARD && (
                 <InputTextField textField={textField} handleChange={handleChange} formik={formik} />
             )}
         </>

@@ -83,7 +83,6 @@ export const PAYMENT_METHODE_DATA = {
       sizes: { xs: 12, sm: 12, md: 12, lg: 6 },
     },
   ],
-  // savedCard:[
     masterCard:{
       image:'/images/agent_form/masterCard.svg',
       cardName : 'Mastercard',
@@ -94,5 +93,14 @@ export const PAYMENT_METHODE_DATA = {
       cardName : 'Visa',
       accountNumber:'****1234',
     },
-  // ]
+    constantLabel:{
+      JAZZ_CASH:'jazzcash',
+      EASY_PAISA:'easypaisa',
+      NAME_ON_CARD:'name_on_card',
+      VISA:'Visa',
+      MASTER_CARD:'Mastercard',
+      UNKNOWN:'Unknown',
+      ACCOUNT_NAME_EASYPAISA:'Easy paisa',
+      ACCOUNT_NAME_JAZZCASH:'Jazz Cash',
+    }
 };

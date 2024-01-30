@@ -1,12 +1,20 @@
-import { Box, Grid, Radio, Typography } from '@mui/material'
-import Image from 'next/image'
-import React from 'react'
+import { Box, Grid, Radio, Typography } from '@mui/material';
+import Image from 'next/image';
+import React, { useRef } from 'react';
 
-const MasterCard = ({image, cardName, accountNumber, selectedValue, handleChangeRadioButton }) => {
-    const finalValue = cardName
+const MasterCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton }) => {
+    const gridRef = useRef(null);
+    const finalValue = cardName;
+
+    const handleClick = () => {
+        handleChangeRadioButton({ target: { value: finalValue } });
+    };
+
     return (
         <Grid
+            ref={gridRef}
             container
+            onClick={handleClick}
             sx={{
                 border: '1px solid #E9E9E9',
                 height: '70px',
@@ -14,7 +22,9 @@ const MasterCard = ({image, cardName, accountNumber, selectedValue, handleChange
                 alignItems: 'center',
                 mx: { md: '30px', lg: '38px', xl: '40px' },
                 my: '10px',
-                px: '40px'
+                px: '40px',
+                cursor: 'pointer', // Add cursor pointer to indicate clickable
+                backgroundColor: selectedValue === finalValue ? '#EDF7FF' : 'transparent',
             }}
         >
             <Grid item lg={1} xs={2} sm={1}

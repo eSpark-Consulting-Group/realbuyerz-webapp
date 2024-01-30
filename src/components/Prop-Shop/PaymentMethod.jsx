@@ -4,13 +4,13 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
 import { addPaymentMethod, updatePaymentMethodSelection, deletePaymentMethod, setFormError, } from '@/src/redux/slices/settings/PakageCartSlice';
+import { paymentSchema, easyPaisaSchema, jazzCashSchema } from '../Schemas/paymentValidation';
 
 import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
-import { paymentSchema, easyPaisaSchema, jazzCashSchema } from '../Schemas/paymentValidation';
 import CreditCardType from './CreditCardType';
 import AccountType from './AccountType';
-import CardType from './MasterCard';
 import MasterCard from './MasterCard';
 import VisaCard from './VisaCard';
 
@@ -26,9 +26,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const PaymentMethod = ({ data }) => {
-    const { image, title, cardName, accountNumber, textField, checkBoxLable, cardTypeImage, creditCardLable, addButtonLable, easyPaisa, jazzCash, mobileAccountType } = data;
-    const [selectedValue, setSelectedValue] = useState('name_on_card');
-    const [selected, setSelected] = React.useState(false);
+    const { image, title, textField, checkBoxLable, cardTypeImage, creditCardLable, addButtonLable, easyPaisa, jazzCash, } = data;
+    const { JAZZ_CASH, EASY_PAISA, ACCOUNT_NAME_EASYPAISA, ACCOUNT_NAME_JAZZCASH, VISA, MASTER_CARD, NAME_ON_CARD, UNKNOWN } = PAYMENT_METHODE_DATA.constantLabel
+    const [selectedValue, setSelectedValue] = useState(NAME_ON_CARD);
+    const [selected, setSelected] = useState(false);
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
     const { paymentMedthodDetails, checkOrder } = useSelector(
@@ -44,7 +45,7 @@ const PaymentMethod = ({ data }) => {
             easypaisa_number: '',
             jazzcash_number: '',
         },
-        validationSchema: selectedValue !== 'jazzcash' && selectedValue !== 'easypaisa' ? paymentSchema : selectedValue === 'easypaisa' ? easyPaisaSchema : selectedValue === 'jazzcash' && jazzCashSchema,
+        validationSchema: selectedValue !== JAZZ_CASH && selectedValue !== EASY_PAISA ? paymentSchema : selectedValue === EASY_PAISA ? easyPaisaSchema : selectedValue === JAZZ_CASH && jazzCashSchema,
         onSubmit: (values) => {
             const updatedValues = { ...values, isCheckBox: checked }
             delete updatedValues.easypaisa_number
@@ -52,10 +53,10 @@ const PaymentMethod = ({ data }) => {
             const findCard = paymentMedthodDetails.find((item) => {
                 return item.card_number === formik.values.card_number
             })
-            if (findCard && (selectedValue !== 'jazzcash' || selectedValue !== 'easypaisa')) {
+            if (findCard && (selectedValue !== JAZZ_CASH || selectedValue !== EASY_PAISA)) {
                 dispatch(updatePaymentMethodSelection({ isSelected: findCard.isSelected, cardNumber: findCard.card_number, isCheckBox: checked }));
-            } else if (selectedValue === 'jazzcash' || selectedValue === 'easypaisa') {
-                if (selectedValue === 'jazzcash') {
+            } else if (selectedValue === JAZZ_CASH || selectedValue === EASY_PAISA) {
+                if (selectedValue === JAZZ_CASH) {
                     dispatch(addPaymentMethod({ jazzcash_number: values.jazzcash_number }));
                 }
                 else {
@@ -109,23 +110,23 @@ const PaymentMethod = ({ data }) => {
         }
     }, [formik.values, dispatch, selectedValue]);
     useEffect(() => {
-        if (selectedValue === 'name_on_card' || selectedValue === 'jazzcash' || selectedValue === 'easypaisa') {
+        if (selectedValue === NAME_ON_CARD || selectedValue === JAZZ_CASH || selectedValue === EASY_PAISA) {
             formik.resetForm()
         }
     }, [selectedValue]);
-    function getCardType(cardNumber) {
+    const getCardType = (cardNumber) => {
         const visaRegex = /^4\d{12}(?:\d{3})?$/;
         const mastercardRegex = /^5[1-5]\d{14}$/;
 
         if (visaRegex.test(cardNumber)) {
-            return "Visa";
+            return VISA;
         } else if (mastercardRegex.test(cardNumber)) {
-            return "Mastercard";
+            return MASTER_CARD;
         } else {
-            return "Unknown";
+            return UNKNOWN;
         }
     }
-  
+
     return (
         <Box sx={{ flexGrow: 1, width: '100%', height: { xs: 'auto', lg: 'auto ' }, pb: '60px', border: '2px solid #E4E4E4', borderRadius: '10px', backgroundColor: '#fff', backgroundImage: `url('${image}')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' } }}>
             <Grid container xs={12} item>
@@ -140,10 +141,10 @@ const PaymentMethod = ({ data }) => {
                     checkOrder.map((card, index) => (
                         card.isCheckBox && (
                             <>
-                                {getCardType(card.card_number) === "Mastercard" && (
+                                {getCardType(card.card_number) === MASTER_CARD && (
                                     <MasterCard image={data?.masterCard?.image} cardName={data?.masterCard?.cardName} accountNumber={data?.masterCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
                                 )}
-                                {getCardType(card.card_number) === "Visa" && (
+                                {getCardType(card.card_number) === VISA && (
                                     <VisaCard image={data?.visaCard?.image} cardName={data?.visaCard?.cardName} accountNumber={data?.visaCard?.accountNumber} selectedValue={selectedValue} handleChangeRadioButton={handleChangeRadioButton} />
                                 )}
                             </>
@@ -159,10 +160,10 @@ const PaymentMethod = ({ data }) => {
                     handleChange={handleChange}
                     textField={textField}
                     formik={formik}
+                    NAME_ON_CARD={NAME_ON_CARD}
                 />
                 <Box sx={{
                     alignItems: 'center', px: { xs: 1, md: 3, lg: 5 },
-                    //  pb: { xs: '50px', sm: '70px', md: '100px', lg: '130px' } 
                 }}>
                     <Typography sx={{
                         color: '#333',
@@ -178,15 +179,9 @@ const PaymentMethod = ({ data }) => {
                         />
                         {checkBoxLable}
                     </Typography>
-                    {/* <PaymentMethodList
-                        selected={selected}
-                        handleChange={handleChange}
-                        paymentMedthodDetails={paymentMedthodDetails}
-                        handleDelete={handleDelete}
-                    /> */}
                 </Box>
                 <AccountType
-                    AccountName={'Easy paisa'}
+                    AccountName={ACCOUNT_NAME_EASYPAISA}
                     selectedValue={selectedValue}
                     handleChangeRadioButton={handleChangeRadioButton}
                     handleChange={handleChange}
@@ -194,7 +189,7 @@ const PaymentMethod = ({ data }) => {
                     formik={formik}
                 />
                 <AccountType
-                    AccountName={'Jazz Cash'}
+                    AccountName={ACCOUNT_NAME_JAZZCASH}
                     selectedValue={selectedValue}
                     handleChangeRadioButton={handleChangeRadioButton}
                     handleChange={handleChange}
