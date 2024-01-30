@@ -5,7 +5,7 @@ const PropertyCardRentBody = ({ rentData }) => {
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
-        <Grid item xs={12} sm={12} md={6} lg={4} key={index}>
+        <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
           <Box
             sx={{
               width: '100%',
