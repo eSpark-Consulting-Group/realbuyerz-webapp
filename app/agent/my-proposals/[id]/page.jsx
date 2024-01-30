@@ -35,7 +35,6 @@ const Page = () => {
       />
     );
   }
-  console.log('proposals', proposals);
   return (
     <Box
       sx={{

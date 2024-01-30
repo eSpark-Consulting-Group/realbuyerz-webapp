@@ -21,7 +21,6 @@ const CustomNumberInput = ({
     const newIncrementValue = numericValue + 1;
     onSaveIncrement(newIncrementValue, identifier);
     setIncrementValue(newIncrementValue);
-
     onChange(newIncrementValue.toString());
     // dispatch({
     //   type: savePropertyData,
@@ -41,24 +40,39 @@ const CustomNumberInput = ({
     <>
       <Box
         sx={{
-          width: '140px',
+          width: '110px',
           display: 'flex',
           justifyContent: 'space-between',
           gap: '6px',
-          borderRadius: '10px',
+          p: 0,
+          borderRadius: '5px',
           background: '#EFEEEF',
-          border: '1px solid black',
-          height: '55px',
+          height: '35px',
         }}
       >
         <Input
+          sx={{
+            p: 0,
+            fontSize: '15px',
+            fontWeight: 500,
+            '&:before': {
+              borderBottom: 'none',
+            },
+            '&:after': {
+              borderBottom: 'none',
+            },
+          }}
           value={value}
           onChange={(e) => handleInputChange(e.target.value)}
           startAdornment={
             <InputAdornment position="end">
               <IconButton
                 sx={{
-                  width: '50px',
+                  width: '35px',
+                  pl: 0,
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
                 }}
               >
                 <Image
@@ -75,7 +89,11 @@ const CustomNumberInput = ({
             <InputAdornment position="start">
               <IconButton
                 sx={{
-                  width: '50px',
+                  width: '35px',
+                  pr: 0,
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
                 }}
               >
                 <Image

@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 
 const PropertyAmenities = ({ propertyData, heading }) => {
   const amenities = useSelector(
-    (state) => state?.propertyAmenities?.propertyAmenities,
+    (state) => state?.propertyAmenities?.propertyAmenities
   );
 
   const filteredAmenities = amenities?.filter((amenity) =>
-    propertyData?.amenities?.includes(amenity?.id),
+    propertyData?.amenities?.includes(amenity?.id)
   );
   return (
     <>

@@ -1,38 +1,36 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/system';
-import IconButton from '@mui/material/IconButton';
+
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-function HideUnhideButton() {
-  const [isHidden, setIsHidden] = useState(false);
-
-  const toggleVisibility = () => {
-    setIsHidden(!isHidden);
-  };
-
+function HideUnhideButton({ handleClickOpen }) {
   return (
     <Box
+      onClick={handleClickOpen}
       sx={{
-        width: { xs: '200px', md: '45px' },
+        width: { xs: '20%', sm: '45px' },
+        '@media(min-width: 280px) and (max-width:400px)': {
+          width: '100%',
+        },
         height: '45px',
+        color: '#FB631C',
         borderRadius: '5px',
         border: '1px solid #FB631C',
         background: '#FFF',
         display: 'flex',
         justifyContent: 'center',
+        cursor: 'pointer',
+        alignItems: 'center',
+        '&:hover': {
+          color: '#fff',
+          backgroundColor: '#FB631C',
+        },
       }}
     >
-      {isHidden ? (
-        <IconButton onClick={toggleVisibility}>
-          <VisibilityOffIcon />
-        </IconButton>
-      ) : (
-        <IconButton onClick={toggleVisibility}>
-          <VisibilityIcon />
-        </IconButton>
-      )}
+      {/* <IconButton> */}
+      <VisibilityIcon color="#FB631C" />
+      {/* </IconButton> */}
     </Box>
   );
 }

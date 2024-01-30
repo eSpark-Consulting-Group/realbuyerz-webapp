@@ -40,6 +40,10 @@ const BrowseByCategory = ({ data }) => {
           {data?.map((category, index) => (
             <Grid
               item
+              xs={6}
+              sm={3}
+              md={3}
+              lg={1}
               key={category?.id}
               sx={{
                 p: '20px',
@@ -63,6 +67,7 @@ const BrowseByCategory = ({ data }) => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   maxWidth: '100px',
+                  margin: 'auto',
                 }}
               >
                 <Link href={`/category/${category?.id}`}>
@@ -80,7 +85,6 @@ const BrowseByCategory = ({ data }) => {
                     px: '15px',
                   }}
                 >
-                  {' '}
                   {category?.name}
                 </Typography>
               </Box>

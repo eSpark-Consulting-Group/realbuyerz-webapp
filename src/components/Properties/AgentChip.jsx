@@ -30,7 +30,7 @@ const Chips = ({ data }) => {
   console.log(selectedChips);
   const handleDeleteChip = (chipToDelete) => () => {
     setSelectedChips((chips) =>
-      chips?.filter((_, index) => chips[index] !== chipToDelete),
+      chips?.filter((_, index) => chips[index] !== chipToDelete)
     );
   };
 
