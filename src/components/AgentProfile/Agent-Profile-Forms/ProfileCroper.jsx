@@ -34,7 +34,7 @@ const ProfileCroper = ({
       const { file, url } = await getCroppedImg(
         photoURL,
         croppedAreaPixels,
-        rotation,
+        rotation
       );
       setPhotoURL(url);
       setProfileImage(url);

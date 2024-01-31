@@ -5,9 +5,9 @@ export const PAGES = [
     path: '/',
   },
   {
-    menu: 'Project',
+    menu: 'Projects',
     auth: true,
-    path: '/project',
+    path: '/projects',
   },
   {
     menu: 'Blogs',

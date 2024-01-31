@@ -12,12 +12,12 @@ export const profileValidationSchema = Yup.object({
   about: Yup.string().min(10).required('Enter Bio'),
   whatsapp: Yup.string()
     .test('phone', 'Invalid Phone Number', (value) =>
-      value ? isValidPhoneNumber(value) : true,
+      value ? isValidPhoneNumber(value) : true
     )
     .required('Whatsapp is required'),
   mobile: Yup.string()
     .test('phone', 'Invalid Phone Number', (value) =>
-      value ? isValidPhoneNumber(value) : true,
+      value ? isValidPhoneNumber(value) : true
     )
     .required('Whatsapp is required'),
 });

@@ -4,7 +4,7 @@ export const handleVerificationChange = (
   receivedCode,
   inputValues,
   setVerificationCode,
-  setInputValues,
+  setInputValues
 ) => {
   const { num } = receivedCode[index];
   const newValue = value ? value.slice(-1) : '';
