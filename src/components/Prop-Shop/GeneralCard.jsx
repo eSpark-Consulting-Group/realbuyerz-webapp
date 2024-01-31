@@ -1,17 +1,19 @@
-import { Box, Grid, Radio, Typography } from '@mui/material';
-import Image from 'next/image';
 import React, { useRef } from 'react';
+import Image from 'next/image';
+import { Box, Grid, Radio, Typography } from '@mui/material';
 
-const GeneralCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton, setCardTypeNumber }) => {
+const GeneralCard = ({ image, setSelectedValue, cardName, accountNumber,  handleChangeRadioButton, setCardTypeNumber, cardNo, setTypeCard, typeCard }) => {
     const gridRef = useRef(null);
     const finalValue = cardName;
-    const viweDetails = () =>{
+    const viweDetails = () => {
         setCardTypeNumber(accountNumber)
-        console.log(accountNumber)
+        setTypeCard(cardNo)
     }
 
     const handleClick = () => {
-        handleChangeRadioButton({ target: { value: finalValue } });
+        setSelectedValue('')
+        setTypeCard(cardNo)
+
     };
 
     const maskAccountNumber = (number) => {
@@ -31,10 +33,10 @@ const GeneralCard = ({ image, cardName, accountNumber, selectedValue, handleChan
                 height: '70px',
                 display: 'flex',
                 alignItems: 'center',
-                mx: {md: '30px', lg: '38px', xl: '40px' },
+                mx: { md: '30px', lg: '38px', xl: '40px' },
                 my: '10px',
                 cursor: 'pointer',
-                backgroundColor: selectedValue === finalValue ? '#EDF7FF' : 'transparent',
+                backgroundColor: cardNo === typeCard ? '#EDF7FF' : 'transparent',
             }}
         >
             <Grid item xl={1} md={1} xs={2} sm={1}
@@ -44,7 +46,7 @@ const GeneralCard = ({ image, cardName, accountNumber, selectedValue, handleChan
                 }}
             >
                 <Radio
-                    checked={selectedValue === finalValue}
+                    checked={cardNo === typeCard}
                     onChange={handleChangeRadioButton}
                     onClick={viweDetails}
                     value={finalValue}
@@ -56,7 +58,7 @@ const GeneralCard = ({ image, cardName, accountNumber, selectedValue, handleChan
                     }}
                 />
             </Grid>
-            <Grid item xl={8} md={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start', lg: 'flex-start' ,xl: 'flex-start' }, pl: { xl: '20px' }, }}>
+            <Grid item xl={8} md={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start' }, pl: { xl: '20px' }, }}>
                 <Box sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -89,7 +91,7 @@ const GeneralCard = ({ image, cardName, accountNumber, selectedValue, handleChan
                             lineHeight: 'normal'
 
                         }}>
-                         {maskAccountNumber(accountNumber)}
+                        {maskAccountNumber(accountNumber)}
                     </Typography>
                 </Box>
             </Grid>

@@ -6,12 +6,13 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import InputTextField from './InputTextField';
 
-const CreditCardType = ({ textField, cardTypeImage, handleChange, creditCardLable, selectedValue, handleChangeRadioButton, formik, NAME_ON_CARD }) => {
+const CreditCardType = ({ textField, setTypeCard, cardTypeImage, handleChange, creditCardLable, selectedValue, handleChangeRadioButton, formik, NAME_ON_CARD }) => {
     const gridRef = useRef(null);
     const isSmallScreen = useMediaQuery('(max-width:450px)');
 
     const handleClick = () => {
         handleChangeRadioButton({ target: { value: NAME_ON_CARD } });
+        setTypeCard()
     };
 
     return (

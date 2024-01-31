@@ -1,16 +1,17 @@
-import { Box, Grid, Radio, Typography } from '@mui/material';
-import Image from 'next/image';
 import React, { useRef } from 'react';
-
-const MasterCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton , setCardTypeNumber }) => {
+import Image from 'next/image';
+import { Box, Grid, Radio, Typography } from '@mui/material';
+const MasterCard = ({ image, cardName,setSelectedValue, accountNumber, selectedValue, handleChangeRadioButton , setCardTypeNumber, setTypeCard, cardNo, typeCard }) => {
     const gridRef = useRef(null);
     const finalValue = cardName;
 
     const handleClick = () => {
-        handleChangeRadioButton({ target: { value: finalValue } });
+        setSelectedValue('')
+        setTypeCard(cardNo)
     };
     const viweDetails = () =>{
         setCardTypeNumber(accountNumber)
+        setTypeCard(cardNo)
     }
     const maskAccountNumber = (number) => {
         if (!number) return '';
@@ -42,7 +43,7 @@ const MasterCard = ({ image, cardName, accountNumber, selectedValue, handleChang
                 }}
             >
                  <Radio
-                    checked={selectedValue === finalValue}
+                    checked={cardNo === typeCard}
                     onChange={handleChangeRadioButton}
                     onClick={viweDetails}
                     value={finalValue}

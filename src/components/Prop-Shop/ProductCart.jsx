@@ -7,7 +7,13 @@ import OrderSummary from './OrderSummary';
 import EmptyCart from './EmptyCart';
 import { Empty_Cart_data, Order_Summary } from '@/app/constants/BuyProduct';
 
-const ProductCart = () => {
+const ProductCart = ({
+  setIsModalOpen,
+  isModalOpen,
+  handleChange,
+  state,
+  resetForm
+} ) => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(
     (state) => state.PakageCart
   );
@@ -49,6 +55,11 @@ const ProductCart = () => {
             successMessage={successMessage}
             modalButtonText={modalButtonText}
             confirmOrderLable={confirmOrderLable}
+            setIsModalOpen={setIsModalOpen}
+            isModalOpen={isModalOpen}
+            handleChange={handleChange}
+            state={state}
+            resetForm={resetForm}
           />
         )}
       </Grid>

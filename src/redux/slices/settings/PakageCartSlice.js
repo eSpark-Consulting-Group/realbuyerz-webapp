@@ -11,7 +11,6 @@ const initialState = {
   paymentMedthod: false,
   formError: '',
   paymentMedthodDetails: [],
-  checkOrder: [],
   resetCalled:false
 };
 
@@ -37,7 +36,6 @@ export const PakageCartSlice = createSlice({
       state.paymentMedthod = true;
     },
     addPaymentMethod: (state, action) => {
-      console.log(action.payload, 'slic')
       const paymentMethodWithSelection = {
         ...action.payload,
         isSelected: false,
@@ -53,24 +51,8 @@ export const PakageCartSlice = createSlice({
       );
     },
   
-    updateOrderMethodSelection: (state, action) => {
-      const { cardNumber, isSelected, isCheckBox } = action.payload;
-      state.checkOrder = state.checkOrder.map((card) =>
-        card.card_number === Number(cardNumber) ? { ...card, isSelected, isCheckBox } : { ...card, isSelected: false }
-      );
-    },
-    removePaymentMethodSelection: (state, action) => {
-      state.paymentMedthodDetails = []
-    },
-    deletePaymentMethod: (state, action) => {
-      const indexToDelete = action.payload;
-      state.paymentMedthodDetails.splice(indexToDelete, 1);
-    },
     setFormError: (state, action) => {
       state.formError = action.payload;
-    },
-    setAfterClick: (state, action ) => {
-      state.checkOrder = action.payload
     },
     isResetForm: (state, action ) => {
       state.resetCalled = action.payload

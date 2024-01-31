@@ -1,16 +1,18 @@
-import { Box, Grid, Radio, Typography } from '@mui/material';
-import Image from 'next/image';
 import React, { useRef } from 'react';
-
-const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeRadioButton, setCardTypeNumber }) => {
+import Image from 'next/image';
+import { Box, Grid, Radio, Typography } from '@mui/material';
+const VisaCard = ({ image, cardName,setSelectedValue, accountNumber, selectedValue, handleChangeRadioButton, setCardTypeNumber, setTypeCard, cardNo, typeCard }) => {
     const gridRef = useRef(null);
     const finalValue = cardName;
 
     const handleClick = () => {
-        handleChangeRadioButton({ target: { value: finalValue } });
+        setSelectedValue('')
+        setTypeCard(cardNo)
     };
-    const viweDetails = () =>{
+    const viweDetails = () => {
         setCardTypeNumber(accountNumber)
+        setTypeCard(cardNo)
+
     }
 
     const maskAccountNumber = (number) => {
@@ -42,7 +44,7 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                 }}
             >
                 <Radio
-                    checked={selectedValue === finalValue}
+                    checked={cardNo === typeCard}
                     onChange={handleChangeRadioButton}
                     onClick={viweDetails}
                     value={finalValue}
@@ -54,18 +56,18 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                     }}
                 />
             </Grid>
-            <Grid item xl={8} lg={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start',lg: 'flex-start', xl: 'flex-start' }, pl: { xl: '20px' }, }}>
+            <Grid item xl={8} lg={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start' }, pl: { xl: '20px' }, }}>
                 <Box sx={{
-                    display:'flex',
-                    alignItems:'center',
-                    mx:2
+                    display: 'flex',
+                    alignItems: 'center',
+                    mx: 2
                 }}>
                     <Image
-                    src={image}
-                    width={40}
-                    height={20}
-                    alt='card'
-                     />
+                        src={image}
+                        width={40}
+                        height={20}
+                        alt='card'
+                    />
                 </Box>
                 <Box>
                     <Typography
@@ -76,18 +78,17 @@ const VisaCard = ({ image, cardName, accountNumber, selectedValue, handleChangeR
                             fontWeight: 600
                         }}>
                         {cardName}
-                      
+
                     </Typography>
                     <Typography
-                     sx={{
-                        color: '#969696',
-                        fontSize: { xs: '12.1px', sm: '18px' },
-                        fontStyle: 'normal',
-                        fontWeight: 400,
-                        lineHeight:'normal'
-
-                    }}>
-                      {maskAccountNumber(accountNumber)}
+                        sx={{
+                            color: '#969696',
+                            fontSize: { xs: '12.1px', sm: '18px' },
+                            fontStyle: 'normal',
+                            fontWeight: 400,
+                            lineHeight: 'normal'
+                        }}>
+                        {maskAccountNumber(accountNumber)}
                     </Typography>
                 </Box>
             </Grid>

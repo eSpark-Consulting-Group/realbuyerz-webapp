@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
-
-import { ProceedPayment, isResetForm, removePaymentMethodSelection, setAfterClick } from '@/src/redux/slices/settings/PakageCartSlice';
 
 const OrderSummary = ({
   title,
@@ -15,31 +13,19 @@ const OrderSummary = ({
   dollarRate,
   modalButtonText,
   successMessage,
-  confirmOrderLable
+  confirmOrderLable,
+  setIsModalOpen,
+  isModalOpen,
+  handleChange,
+  state,
+
 }) => {
   const OrderSummaryPayLoad = { ...cart, ...connects };
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { paymentMedthod, paymentMedthodDetails, formError, checkOrder, resetCalled } = useSelector(
     (state) => state.PakageCart
   );
 
-  const HandleProceedToPayment = () => {
-    dispatch(ProceedPayment(OrderSummaryPayLoad));
-    if (paymentMedthod && !formError) {
-      setIsModalOpen(true);
-      dispatch(isResetForm(true))
-    }
-    const afterCheck = paymentMedthodDetails.filter((item) => (
-      item.isCheckBox === true
-    ))
- 
-
-      dispatch(setAfterClick([...checkOrder, ...paymentMedthodDetails]))
-      dispatch(removePaymentMethodSelection())
-    
-
-  };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -145,7 +131,7 @@ const OrderSummary = ({
 
       <Box sx={{ width: '100%', pb: 3, pt: 1 }}>
         <Button
-          onClick={HandleProceedToPayment}
+          onClick={handleChange}
           sx={{
             width: '100%',
             height: '60px',
@@ -159,12 +145,7 @@ const OrderSummary = ({
           }}
           variant={!paymentMedthod && "primary"}
           disabled={
-            paymentMedthod && (formError !== undefined  ||
-               
-                 checkOrder.some((item) => item.isSelected !== true) 
-           ||
-            paymentMedthodDetails.length > 0 && checkOrder.some((item) => item.isCheckBox === true) 
-              )
+            paymentMedthod && state
           }
 
         >
@@ -181,7 +162,7 @@ const OrderSummary = ({
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-end',
             width: { xs: '80%', sm: '500px' },
             height: '400px',
             position: 'absolute',
@@ -212,7 +193,6 @@ const OrderSummary = ({
               />
 
             </Box>
-
             <Typography id="modal-modal-title" sx={{
 
               display: 'flex',
@@ -222,20 +202,21 @@ const OrderSummary = ({
               fontSize: '30px',
               fontWeight: 500,
               fontStyle: 'normal',
-              lineHeight: 'normal'
+              lineHeight: 'normal',
             }}>
               {successMessage}
             </Typography>
-            <Button variant='primary' onClick={handleModalClose}
-              sx={{
-                color: '#fff',
-                textAlign: 'center',
-                fontSize: '16px',
-                fontWeight: 500,
-                fontStyle: 'normal',
-                lineHeight: 'normal',
-                my: 4
-              }}> {modalButtonText} </Button>
+              <Button variant='primary' onClick={handleModalClose}
+                sx={{
+                  color: '#fff',
+                  height: '40px',
+                  textAlign: 'center',
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  fontStyle: 'normal',
+                  lineHeight: 'normal',
+                  my: 7,
+                }}> {modalButtonText} </Button>
           </Box>
         </Box>
       </Modal>
