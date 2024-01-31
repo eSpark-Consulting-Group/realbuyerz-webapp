@@ -407,6 +407,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                           setIsSendingVoiceNote(true);
                         }}
                         sx={{
+                          // display: 'flex',
                           display: { xs: 'none', md: 'none' },
                           alignItems: 'center',
                           marginBottom: '10px',

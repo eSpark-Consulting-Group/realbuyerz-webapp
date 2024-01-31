@@ -3,8 +3,8 @@ import { a11yProps } from '@/src/utils/tabs';
 import { Box, Grid, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { chatRooms } from '../../../src/constants/data/chats';
-import ChatRooms from './ChatRooms';
-import ChatRoom from './ChatRoom';
+import ChatRooms from '@/src/components/Chat/ChatRooms';
+import ChatRoom from '@/src/components/Chat/ChatRoom';
 
 const Page = () => {
   const [value, setValue] = useState(0);
