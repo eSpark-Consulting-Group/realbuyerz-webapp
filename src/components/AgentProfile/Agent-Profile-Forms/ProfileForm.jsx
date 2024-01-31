@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Button, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-phone-number-input/style.css';
 
 import RBInput from './RBInput';
@@ -16,6 +16,7 @@ import { useFormik } from 'formik';
 import VerificationModal from '../../Modal/VerificationModal';
 import { profileValidationSchema } from '../../Schemas/profileValidationSchema';
 import PhoneInput from 'react-phone-number-input';
+import { handleEdit } from '@/src/redux/slices/loginAgents/loginAgentsSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -28,15 +29,17 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm({ data, spacificAgent }) {
+export default function ProfileForm({ data, spacificAgent, agentData }) {
   const { image, fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
   const user = useSelector((state) => state?.users?.users?.userdata);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const Profile_Keys = {
+    profileImage: `${spacificAgent?.profileImage}` || '',
     about: `${spacificAgent?.about}` || '',
     address: `${spacificAgent?.address}` || '',
     city: `${spacificAgent?.city}` || '',
@@ -51,10 +54,11 @@ export default function ProfileForm({ data, spacificAgent }) {
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
     useFormik({
-      initialValues: { ...Profile_Keys },
+      initialValues: { ...Profile_Keys, ...agentData },
       validationSchema: profileValidationSchema,
-      onSubmit: (values, action) => {
-        action.resetForm();
+      onSubmit: (values) => {
+        dispatch(handleEdit(values));
+        // action.resetForm();
       },
     });
 
@@ -105,7 +109,11 @@ export default function ProfileForm({ data, spacificAgent }) {
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={user} />
+              <AgentProfiles
+                data={user}
+                spacificAgent={spacificAgent}
+                imageValue={values?.profileImage}
+              />
             </Box>
           </Item>
         </Grid>

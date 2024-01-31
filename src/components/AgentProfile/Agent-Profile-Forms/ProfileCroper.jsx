@@ -13,7 +13,13 @@ import {
 import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
 
-const ProfileCroper = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
+const ProfileCroper = ({
+  photoURL,
+  setOpenCrop,
+  setPhotoURL,
+  setFile,
+  setProfileImage,
+}) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -31,6 +37,7 @@ const ProfileCroper = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
         rotation,
       );
       setPhotoURL(url);
+      setProfileImage(url);
       setFile(file);
       setOpenCrop(false);
     } catch (error) {

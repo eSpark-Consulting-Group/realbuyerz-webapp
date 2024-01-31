@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
 import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
 import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
@@ -10,7 +10,17 @@ import { useSelector } from 'react-redux';
 
 const AgentProfile = () => {
   const spacificAgent = useSelector((state) => state?.loginAgents[0]);
-  console.log(spacificAgent, 'spacificAgent');
+
+  const [agentData, setAgentData] = useState(spacificAgent || {});
+
+  useEffect(() => {
+    setAgentData(spacificAgent || {});
+  }, [spacificAgent]);
+
+  useEffect(() => {
+    setAgentData(spacificAgent || {});
+  }, [spacificAgent]);
+
   return (
     <Box
       sx={{
@@ -29,6 +39,7 @@ const AgentProfile = () => {
       }}
     >
       <ProfileForm
+        agentData={agentData}
         data={Agent_Profile_Form_Data}
         spacificAgent={spacificAgent}
       />

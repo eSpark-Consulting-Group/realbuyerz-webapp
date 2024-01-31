@@ -11,8 +11,8 @@ const initialState = [
     lastName: 'Ali',
     email: 'ali@esparkconsultants.com',
     landline: +923192013292,
-    mobile: +923192013292,
-    whatsapp: +923192013292,
+    mobile: '+923192013292',
+    whatsapp: '+923192013292',
     isVerified: true,
     userType: 'agent',
     city: 'Karachi',
@@ -75,10 +75,16 @@ const loginAgentsSlice = createSlice({
   initialState,
   reducers: {
     handleEdit: (state, action) => {
-      state.push(action.payload);
+      const updatedAgent = action.payload;
+      const agentIndex = state.findIndex(
+        (agent) => agent.id === updatedAgent.id,
+      );
+      if (agentIndex !== -1) {
+        state[agentIndex] = { ...state[agentIndex], ...updatedAgent };
+      }
     },
   },
 });
 
-export const { addAgent } = loginAgentsSlice.actions;
+export const { handleEdit } = loginAgentsSlice.actions;
 export default loginAgentsSlice.reducer;

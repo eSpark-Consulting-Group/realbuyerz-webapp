@@ -5,8 +5,9 @@ import EditProfileModal from '../../Modal/EditProfileModal';
 import ButtonBaseDemo from './EditImage';
 const AgentImage = ({ image }) => {
   const [open, setOpen] = useState(false);
+  const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
-  const [ProfileImage] = useState(image);
+  const [setProfileImage] = useState(image);
   return (
     <Grid
       sx={{
@@ -19,7 +20,7 @@ const AgentImage = ({ image }) => {
         position: 'relative',
       }}
     >
-      <ButtonBaseDemo url={ProfileImage} handleOpen={handleOpen} />
+      <ButtonBaseDemo url={image} handleOpen={handleOpen} />
       <Box
         sx={{
           zIndex: '1',
@@ -34,6 +35,9 @@ const AgentImage = ({ image }) => {
         <EditProfileModal
           open={open}
           setOpen={setOpen}
+          photoURL={photoURL}
+          setPhotoURL={setPhotoURL}
+          setProfileImage={setProfileImage}
           handleOpen={handleOpen}
           sx={{
             backgroundColor: '#fb631c',

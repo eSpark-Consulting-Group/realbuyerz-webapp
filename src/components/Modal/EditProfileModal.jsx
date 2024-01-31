@@ -9,8 +9,13 @@ import { Button } from '@mui/material';
 
 // };
 
-export default function EditProfileModal({ open, setOpen }) {
-  const [photoURL, setPhotoURL] = useState(null);
+export default function EditProfileModal({
+  open,
+  setOpen,
+  photoURL,
+  setPhotoURL,
+  setProfileImage,
+}) {
   const [file, setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadImageOpen, setUploadImageOpen] = useState(false);
@@ -138,6 +143,7 @@ export default function EditProfileModal({ open, setOpen }) {
                 }
                 setOpenCrop={setUploadImageOpen}
                 setPhotoURL={setPhotoURL}
+                setProfileImage={setProfileImage}
                 setFile={setFile}
               />
             </Box>
