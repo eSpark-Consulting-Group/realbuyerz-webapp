@@ -7,8 +7,13 @@ import { LIVE_BIDDING_DATA } from '@/app/constants/LiveBidding';
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
 import BiddingDetails from '../Biddings/BiddingDetails';
+import { useSelector } from 'react-redux';
 
 const UserDashboard = () => {
+  const Agent_Ads = useSelector(
+    (state) => state?.postListingAds?.agentPostings
+  );
+
   return (
     <>
       <PostRequestButton />
@@ -32,7 +37,8 @@ const UserDashboard = () => {
         >
           <BiddingDetails
             liveBiddingData={LIVE_BIDDING_DATA}
-            Height={'78.5vh'}
+            Agent_Ads={Agent_Ads}
+            Height={'1099px'}
           />
         </Box>
       </Box>

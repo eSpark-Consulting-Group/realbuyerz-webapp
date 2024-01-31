@@ -20,6 +20,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import { addId } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import { handlePostlistingAd } from '@/src/redux/slices/postlistingAd/postlistingAdSlice';
+import Link from 'next/link';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -62,6 +63,7 @@ const Page = () => {
     dispatch(handlePostlistingAd(PostListigSelectedData?.buyingSellingForm));
     dispatch(addId(randomNumber));
   };
+
   return (
     <Grid container>
       <Grid item xs={12} lg={12}>
@@ -79,6 +81,7 @@ const Page = () => {
             margin: { xs: 0, md: '0 auto', lg: 0 },
           }}
         >
+          <Link href={'/user/dashboard'}>click</Link>
           <BuyersPlatform />
           <AdInformation propertyData={propertyData} />
           <PropertyPurpose propertyData={propertyData} />
