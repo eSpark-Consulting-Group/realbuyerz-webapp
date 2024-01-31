@@ -203,7 +203,7 @@ const RenderMessage = ({
               transition: isDragging ? 'none' : 'left 0.3s ease-out',
             }}
           >
-            <Typography>{data?.content}</Typography>
+            <Typography sx={{ whiteSpace: 'pre-line' }}>{data?.content}</Typography>
             {selectedEmoji && (
               <Box
                 sx={{
@@ -249,6 +249,8 @@ const RenderMessage = ({
           display: 'flex',
           alignItems: 'flex-start',
           position: 'relative',
+          justifyContent:'flex-start',
+          minWidth:'300px'
         }}
       >
         {!isSameSenderAsPrevious && (
@@ -281,7 +283,7 @@ const RenderMessage = ({
             transition: isDragging ? 'none' : 'left 0.3s ease-out',
           }}
         >
-          <Typography>{data?.content}</Typography>
+          <Typography sx={{ whiteSpace: 'pre-line' }}>{data?.content}</Typography>
           {selectedEmoji && (
             <Box
               sx={{

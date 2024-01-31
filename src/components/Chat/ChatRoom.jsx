@@ -18,10 +18,18 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [replyingMessage, setReplyingMessage] = useState({});
   const [isSendingVoiceNote, setIsSendingVoiceNote] = useState(false);
+  const messageFieldRef = useRef(null)
   const handleCancelReply = () => {
     setIsReplying(false);
     setReplyingMessage({});
   };
+
+  const [conversation, setConversation] = useState([])
+
+  useEffect(() => {
+    setConversation([...chatMessages?.conversation])
+  }, [chatMessages])
+
 
   const uploadOptionsRef = useRef(null);
 
@@ -110,6 +118,90 @@ const ChatRoom = ({ selectedChatRoom }) => {
     );
   };
 
+  const [message, setMessage] = useState('');
+
+  const handleInput = (e) => {
+    // Update the state with the content of the contentEditable div
+    setMessage(e.target.innerText);
+  };
+
+  const handleKeyPress = (e) => {
+    // console.log({e})
+    // Check if the pressed key is Enter and Shift is also pressed
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      if (message === '') {
+        e.preventDefault();
+      }
+    }
+    else if (e.key === 'Enter' && e.shiftKey) {
+      // Add a new line character to the message
+      setMessage((prevMessage) => prevMessage + '\n');
+    } else if (e.key === 'Enter') {
+      // Handle sending the message or any other action you want
+      sendMessage();
+      // Prevent the default behavior of the Enter key (e.g., adding a new line)
+      e.preventDefault();
+    }
+  };
+
+  function generate15CharsDigitUniqueid() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const sections = [4, 6, 3]; // Define the number of characters in each section
+  
+    const generateSection = (length) => {
+      let section = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        section += characters[randomIndex];
+      }
+      return section;
+    };
+  
+    const uniqueId = sections.map(generateSection).join('-');
+    return uniqueId;
+  }
+
+
+  const sendMessage = () => {
+    // Implement your logic to send the message
+    const tempConversation = [...conversation]
+    const lastMessageDate = tempConversation[tempConversation.length - 1]
+    messageFieldRef.current.innerText = ''
+    console.log({
+      message, lastMessageDate,
+      messageFieldRef: messageFieldRef.current,
+      isTodayISLastDat: lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')
+    });
+    if(message.trim() === '') return
+    if(lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')) {
+      lastMessageDate?.messages.push({
+        timestamp:moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+        id:generate15CharsDigitUniqueid(),
+        sender:'You',
+        content:message.trim(),
+        read:false
+      })
+    }
+    else {
+      tempConversation.push({
+        date: moment(new Date()).format('yyyy-MM-DD'),
+        messages:[
+          {
+            timestamp:moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+            id:generate15CharsDigitUniqueid(),
+            sender:'You',
+            content:message.trim(),
+            read:false
+          }
+        ],
+        read:false
+      })
+    }
+    setConversation(tempConversation)
+    // Clear the input after sending the message
+    setMessage('');
+  };
+
   let prevSender = null;
 
   return (
@@ -177,7 +269,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
             borderBottom: 'solid 1px #E4E4E4',
           }}
         >
-          {chatMessages?.conversation?.map((days, daysIndex) => {
+          {conversation?.map((days, daysIndex) => {
             return (
               <Box key={daysIndex}>
                 <DashedLineText
@@ -437,10 +529,24 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     handleCancelSendingAudio={handleCancelSendingAudio}
                   />
                 ) : (
-                  <input
-                    className="send-message-input"
-                    placeholder="Write message"
-                  />
+                  // <input
+                  //   className="send-message-input"
+                  //   placeholder="Write message"
+                  // />
+                  // <textarea className="send-message-input"
+                  //   placeholder="Write message">
+
+                  // </textarea>
+                  <div
+                    className={'contentEditable'}
+                    contentEditable
+                    onInput={handleInput}
+                    onKeyDown={handleKeyPress}
+                    aria-label='Type your message...'
+                    ref={messageFieldRef}
+                  >
+                    {/* {message.trim() === '' && <div className={'placeholder'}>Type your message...</div>} */}
+                  </div>
                 )}
               </Box>
             </Box>
@@ -452,15 +558,12 @@ const ChatRoom = ({ selectedChatRoom }) => {
             sx={{
               marginLeft: { xs: '5px', sm: '10px' },
               marginRight: { xs: '5px', sm: '10px' },
-              //   flex: 1,
-              //   backgroundColor: 'rgba(255, 255, 255)',
               width: { xs: '20px', sm: '36px' },
               height: { xs: '20px', sm: '36px' },
             }}
           />
         </Box>
       </Box>
-      {/* <AudioRecorder /> */}
     </Grid>
   );
 };
