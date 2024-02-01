@@ -5,6 +5,8 @@ export const SEE_ALL_POSTING = 'See All Postings';
 export const FILTER_BUTTON = 'Filter';
 export const VIEW_BUTTON = 'View';
 export const ALL_PROPOSALS = 'All Proposals';
+export const ESTIMATE_RANGE = 'Est. Range:';
+export const PROPOSALS = 'Proposals';
 
 export const ALL_PROPOSALS_DATA = [
   {
@@ -43,4 +45,22 @@ export const ALL_PROPOSALS_DATA = [
 
 export const ROUTERS_POSTING = {
   dashboardProposal: '/dashboard/proposals',
+};
+
+export const PROPOSAL_DETAILS = {
+  id: 1,
+  title: 'NEED 4 BEDROOM APARTMENT',
+  description:
+    'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
+  postedTime: 'Posted 39 minutes ago',
+  estRange: '80M',
+  list: [
+    {
+      Status: 'BUYING',
+      City: 'KARACHI',
+      Area: 'GULSHAN-E-IQBAL',
+      Proposal: '5 to 10',
+      Connects: 8,
+    },
+  ],
 };

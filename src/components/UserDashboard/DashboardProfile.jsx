@@ -27,20 +27,27 @@ const DashboardProfile = ({ proposalData, Height }) => {
                 key={index}
                 sx={{
                   padding: '44px 54px 44px 40px',
+                  '@media(min-width: 280px) and (max-width: 445px)': {
+                    justifyContent: 'center',
+                  },
                 }}
               >
                 <Grid container>
                   <Grid
                     item
                     xl={2}
-                    lg={3}
-                    md={5}
+                    lg={2}
+                    md={3}
+                    sm={5}
+                    xs={12}
                     sx={{
                       position: 'relative',
                       width: '156px',
                       height: '156px',
                       display: 'flex',
-                      justifyContent: 'center',
+                      '@media(min-width: 280px) and (max-width: 445px)': {
+                        justifyContent: 'center',
+                      },
                     }}
                   >
                     <UserProfileImage image={item.image} isActive={false} />
@@ -48,10 +55,16 @@ const DashboardProfile = ({ proposalData, Height }) => {
                   <Grid
                     item
                     xl={10}
-                    lg={9}
-                    md={7}
+                    lg={10}
+                    md={9}
+                    sm={7}
+                    xs={12}
                     sx={{
                       pl: { sm: 0, md: 2 },
+                      '@media(min-width: 280px) and (max-width: 445px)': {
+                        display: 'flex',
+                        justifyContent: 'center',
+                      },
                     }}
                   >
                     <UserProfileDetails

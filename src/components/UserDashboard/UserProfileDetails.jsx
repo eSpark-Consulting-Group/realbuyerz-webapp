@@ -18,6 +18,9 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           justifyContent: {
             lg: 'flex-start',
           },
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: 'center',
+          },
         }}
       >
         <Box>
@@ -70,6 +73,9 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           },
           alignItems: 'center',
           mt: { md: 4, lg: 0 },
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: 'center',
+          },
         }}
       >
         <Button
@@ -96,6 +102,9 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
             fontSize: { xs: '15px', lg: '15.2px' },
             lineHeight: '18.15px',
             wordSpacing: '1px',
+            '@media(min-width: 280px) and (max-width: 445px)': {
+              textAlign: 'center',
+            },
           }}
         >
           {Description}

@@ -2,14 +2,19 @@
 import React from 'react';
 import { Box, Divider } from '@mui/material';
 
-import { ALL_PROPOSALS, ALL_PROPOSALS_DATA } from '@/app/constants/Dashboard';
-import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
-import SearchFilterButton from '@/src/components/UserDashboard/SearchFilterButton';
+import {
+  PROPOSALS,
+  ALL_PROPOSALS_DATA,
+  PROPOSAL_DETAILS,
+} from '@/app/constants/Dashboard';
 import DashboardProfile from '@/src/components/UserDashboard/DashboardProfile';
+import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
+import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
 
 const page = () => {
   return (
     <>
+      <DashboardTitle title={PROPOSALS} />
       <Box
         sx={{
           background: '#fff',
@@ -27,11 +32,10 @@ const page = () => {
           },
         }}
       >
-        <DashboardTitle
-          title={`${ALL_PROPOSALS} (${ALL_PROPOSALS_DATA.length}) `}
-        />
+        <ProposalDetails proposalDetails={PROPOSAL_DETAILS} />
         <Divider />
-        <SearchFilterButton />
+
+        {/* <SearchFilterButton /> */}
         <DashboardProfile proposalData={ALL_PROPOSALS_DATA} Height={'67.5vh'} />
       </Box>
     </>
