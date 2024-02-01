@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import {
   UploadImages,
   UploadVideos,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
 import VideoUploader from './VideoUploader';
 
 const PropertyGallery = () => {

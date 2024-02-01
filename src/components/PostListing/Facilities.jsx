@@ -10,7 +10,7 @@ import {
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
-import { addAmenities } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { addAmenities } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
