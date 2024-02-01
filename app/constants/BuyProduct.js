@@ -44,9 +44,9 @@ export const Order_Summary = {
   titile: 'Order Summary',
   Total: 'Total:',
   buttonText: 'Proceed To Payment',
-  successMessage:'Your order is successfull.',
-  modalButtonText:'Continue',
-  confirmOrderLable:'Confirm your order'
+  successMessage: 'Your order is successfull.',
+  modalButtonText: 'Continue',
+  confirmOrderLable: 'Confirm your order',
 };
 
 export const Buy_Connects = {

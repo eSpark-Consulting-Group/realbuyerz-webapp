@@ -10,7 +10,6 @@ export default function RBCheckbox({
   setChecked,
   onChange,
 }) {
-
   return (
     <FormControlLabel
       control={

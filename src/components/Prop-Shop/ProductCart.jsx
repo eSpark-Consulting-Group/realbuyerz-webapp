@@ -12,13 +12,20 @@ const ProductCart = ({
   isModalOpen,
   handleChange,
   state,
-  resetForm
-} ) => {
+  resetForm,
+}) => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(
     (state) => state.PakageCart
   );
 
-  const { titile, Total, buttonText, successMessage, modalButtonText, confirmOrderLable } = Order_Summary;
+  const {
+    titile,
+    Total,
+    buttonText,
+    successMessage,
+    modalButtonText,
+    confirmOrderLable,
+  } = Order_Summary;
   const { title, item } = Empty_Cart_data;
 
   return (

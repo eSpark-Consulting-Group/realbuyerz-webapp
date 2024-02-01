@@ -1,4 +1,4 @@
-import { createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cart: '',
@@ -11,7 +11,7 @@ const initialState = {
   paymentMedthod: false,
   formError: '',
   paymentMedthodDetails: [],
-  resetCalled:false
+  resetCalled: false,
 };
 
 export const PakageCartSlice = createSlice({
@@ -40,23 +40,27 @@ export const PakageCartSlice = createSlice({
         ...action.payload,
         isSelected: false,
       };
-      state.paymentMedthodDetails = [...state.paymentMedthodDetails, paymentMethodWithSelection];
-
+      state.paymentMedthodDetails = [
+        ...state.paymentMedthodDetails,
+        paymentMethodWithSelection,
+      ];
     },
 
     updatePaymentMethodSelection: (state, action) => {
       const { cardNumber, isSelected, isCheckBox } = action.payload;
       state.paymentMedthodDetails = state.paymentMedthodDetails.map((card) =>
-        card.card_number === Number(cardNumber) ? { ...card, isSelected, isCheckBox } : { ...card, isSelected: false }
+        card.card_number === Number(cardNumber)
+          ? { ...card, isSelected, isCheckBox }
+          : { ...card, isSelected: false }
       );
     },
-  
+
     setFormError: (state, action) => {
       state.formError = action.payload;
     },
-    isResetForm: (state, action ) => {
-      state.resetCalled = action.payload
-    }
+    isResetForm: (state, action) => {
+      state.resetCalled = action.payload;
+    },
   },
 });
 
@@ -72,7 +76,7 @@ export const {
   setAfterClick,
   updateOrderMethodSelection,
   isResetForm,
-  removePaymentMethodSelection
+  removePaymentMethodSelection,
 } = PakageCartSlice.actions;
 
 export default PakageCartSlice.reducer;

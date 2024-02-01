@@ -1,18 +1,18 @@
 export const PAYMENT_METHODE_DATA = {
   title: 'Payment Method',
   image: '/images/agent_form/agent_form_background.png',
-  checkBoxLable:'Save my payment details for further payments',
-  creditCardLable:'Credit Card Payment',
+  checkBoxLable: 'Save my payment details for further payments',
+  creditCardLable: 'Credit Card Payment',
   cardTypeImage: [
     {
-      icon:'/images/agent_form/visaCard.svg',
-      alt:'visa card'
+      icon: '/images/agent_form/visaCard.svg',
+      alt: 'visa card',
     },
     {
-     icon: '/images/agent_form/masterCard.svg',
-     alt:'master card'
-    }
-  ], 
+      icon: '/images/agent_form/masterCard.svg',
+      alt: 'master card',
+    },
+  ],
   textField: [
     {
       id: 1,
@@ -23,7 +23,7 @@ export const PAYMENT_METHODE_DATA = {
       value: 50,
       width: { xs: '100%', sm: '100%', md: '100%', lg: '96.8%' },
       sizes: { xs: 12, sm: 12, md: 12, lg: 12 },
-      pt:'-20px'
+      pt: '-20px',
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ export const PAYMENT_METHODE_DATA = {
       value: '02-25',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '97.6%' },
       sizes: { xs: 12, sm: 12, md: 12, lg: 2.8 },
-    },      
+    },
     {
       id: 4,
       name: 'cvv_no',
@@ -52,8 +52,8 @@ export const PAYMENT_METHODE_DATA = {
       type: 'number',
       place: 'XXX',
       value: 0,
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '85.6%', xl:'86%' },
-      sizes: { xs: 12, sm: 12, md: 12, lg: 3.2},
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '85.6%', xl: '86%' },
+      sizes: { xs: 12, sm: 12, md: 12, lg: 3.2 },
     },
   ],
   easyPaisa: [
@@ -82,29 +82,29 @@ export const PAYMENT_METHODE_DATA = {
       sizes: { xs: 12, sm: 12, md: 12, lg: 6 },
     },
   ],
-    masterCard:{
-      image:'/images/agent_form/masterCard.svg',
-      cardName : 'Mastercard',
-      accountNumber:'****1234',
-    },
-    visaCard:{
-      image:'/images/agent_form/visaCard.svg',
-      cardName : 'Visa',
-      accountNumber:'****1234',
-    },
-    generalCard:{
-      image:'/images/agent_form/general.svg',
-      cardName : 'General',
-      accountNumber:'****1234',
-    },
-    constantLabel:{
-      JAZZ_CASH:'jazzcash',
-      EASY_PAISA:'easypaisa',
-      NAME_ON_CARD:'name_on_card',
-      VISA:'Visa',
-      MASTER_CARD:'Mastercard',
-      GENERAL_CARD:'General',
-      ACCOUNT_NAME_EASYPAISA:'Easy paisa',
-      ACCOUNT_NAME_JAZZCASH:'Jazz Cash',
-    }
+  masterCard: {
+    image: '/images/agent_form/masterCard.svg',
+    cardName: 'Mastercard',
+    accountNumber: '****1234',
+  },
+  visaCard: {
+    image: '/images/agent_form/visaCard.svg',
+    cardName: 'Visa',
+    accountNumber: '****1234',
+  },
+  generalCard: {
+    image: '/images/agent_form/general.svg',
+    cardName: 'General',
+    accountNumber: '****1234',
+  },
+  constantLabel: {
+    JAZZ_CASH: 'jazzcash',
+    EASY_PAISA: 'easypaisa',
+    NAME_ON_CARD: 'name_on_card',
+    VISA: 'Visa',
+    MASTER_CARD: 'Mastercard',
+    GENERAL_CARD: 'General',
+    ACCOUNT_NAME_EASYPAISA: 'Easy paisa',
+    ACCOUNT_NAME_JAZZCASH: 'Jazz Cash',
+  },
 };

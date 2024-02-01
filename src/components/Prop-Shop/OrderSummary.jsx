@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Image from 'next/image';
 
 const OrderSummary = ({
@@ -18,14 +18,8 @@ const OrderSummary = ({
   isModalOpen,
   handleChange,
   state,
-
 }) => {
-  const OrderSummaryPayLoad = { ...cart, ...connects };
-  const dispatch = useDispatch();
-  const { paymentMedthod, paymentMedthodDetails, formError, checkOrder, resetCalled } = useSelector(
-    (state) => state.PakageCart
-  );
-
+  const { paymentMedthod } = useSelector((state) => state.PakageCart);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -143,11 +137,8 @@ const OrderSummary = ({
               color: '#EDF7FF',
             },
           }}
-          variant={!paymentMedthod && "primary"}
-          disabled={
-            paymentMedthod && state
-          }
-
+          variant={!paymentMedthod && 'primary'}
+          disabled={paymentMedthod && state}
         >
           {paymentMedthod ? confirmOrderLable : buttonText}
         </Button>
@@ -171,10 +162,10 @@ const OrderSummary = ({
             transform: 'translate(-50%, -50%)',
             bgcolor: 'background.paper',
             border: '2px solid #000',
-            boxShadow: 24,
             textAlign: 'center',
             borderRadius: '10px',
-            boxShadow: '-4px -4px 11px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+            boxShadow:
+              '-4px -4px 11px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
           }}
         >
           <Box>
@@ -183,40 +174,48 @@ const OrderSummary = ({
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                mx: 'auto !important'
-              }}>
+                mx: 'auto !important',
+              }}
+            >
               <Image
                 src={'/images/success.gif'}
                 width={100}
                 height={40}
                 sx={{ mx: 'auto' }}
               />
-
             </Box>
-            <Typography id="modal-modal-title" sx={{
-
-              display: 'flex',
-              justifyContent: 'center',
-              color: '#333',
-              textAlign: 'center',
-              fontSize: '30px',
-              fontWeight: 500,
-              fontStyle: 'normal',
-              lineHeight: 'normal',
-            }}>
+            <Typography
+              id="modal-modal-title"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                color: '#333',
+                textAlign: 'center',
+                fontSize: '30px',
+                fontWeight: 500,
+                fontStyle: 'normal',
+                lineHeight: 'normal',
+              }}
+            >
               {successMessage}
             </Typography>
-              <Button variant='primary' onClick={handleModalClose}
-                sx={{
-                  color: '#fff',
-                  height: '40px',
-                  textAlign: 'center',
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  fontStyle: 'normal',
-                  lineHeight: 'normal',
-                  my: 7,
-                }}> {modalButtonText} </Button>
+            <Button
+              variant="primary"
+              onClick={handleModalClose}
+              sx={{
+                color: '#fff',
+                height: '40px',
+                textAlign: 'center',
+                fontSize: '16px',
+                fontWeight: 500,
+                fontStyle: 'normal',
+                lineHeight: 'normal',
+                my: 7,
+              }}
+            >
+              {' '}
+              {modalButtonText}{' '}
+            </Button>
           </Box>
         </Box>
       </Modal>
