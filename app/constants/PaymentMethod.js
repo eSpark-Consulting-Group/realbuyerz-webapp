@@ -42,8 +42,8 @@ export const PAYMENT_METHODE_DATA = {
       type: 'string',
       place: 'XX-YY',
       value: '02-25',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '96.6%' },
-      sizes: { xs: 12, sm: 12, md: 12, lg: 3 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '97.6%' },
+      sizes: { xs: 12, sm: 12, md: 12, lg: 2.8 },
     },      
     {
       id: 4,
@@ -52,8 +52,8 @@ export const PAYMENT_METHODE_DATA = {
       type: 'number',
       place: 'XXX',
       value: 0,
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '82.6%', xl:'86%' },
-      sizes: { xs: 12, sm: 12, md: 12, lg: 3},
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '85.6%', xl:'86%' },
+      sizes: { xs: 12, sm: 12, md: 12, lg: 3.2},
     },
   ],
   easyPaisa: [
