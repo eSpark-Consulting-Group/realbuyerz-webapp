@@ -7,11 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import { SpaceRow } from './SpaceRow';
+import { Box } from '@mui/material';
 
 const OrderHistory = ({ history }) => {
     const { tableHead, tableData, space, title } = history
     return (
-        <>
+        <Box sx={{mt:'10px', mb: '60px'}}>
             <TableContainer sx={{ maxWidth: { lg: '1200px', xl: '1200px ', xxl: '1500px' }, border: '1px solid #E4E4E4 ', borderRadius: '10px', backgroundColor: '#fff' }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -41,7 +42,7 @@ const OrderHistory = ({ history }) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </>
+        </Box>
     )
 }
 
