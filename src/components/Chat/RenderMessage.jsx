@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Avatar from '@/src/components/UIElements/Avatar';
 import { Box, Typography } from '@mui/material';
+import RenderMessageContent from './RenderMessageContent';
 
 const RenderMessage = ({
   data,
@@ -130,7 +131,7 @@ const RenderMessage = ({
       >
         <Box
           sx={{
-            maxWidth: { xs: '100%', sm: '70%' },
+            // maxWidth: { xs: '100%', sm: '70%' },
             display: 'flex',
             alignItems: 'flex-start',
             position: 'relative',
@@ -203,7 +204,13 @@ const RenderMessage = ({
               transition: isDragging ? 'none' : 'left 0.3s ease-out',
             }}
           >
-            <Typography sx={{ whiteSpace: 'pre-line' }}>{data?.content}</Typography>
+            {data?.contentType === 'text' ? (
+              <Typography sx={{ whiteSpace: 'pre-line' }}>
+                {data?.content}
+              </Typography>
+            ) : data?.contentType === 'image' ? (
+              <RenderMessageContent data={data} />
+            ) : null}
             {selectedEmoji && (
               <Box
                 sx={{
@@ -249,8 +256,8 @@ const RenderMessage = ({
           display: 'flex',
           alignItems: 'flex-start',
           position: 'relative',
-          justifyContent:'flex-start',
-          minWidth:'300px'
+          justifyContent: 'flex-start',
+          minWidth: '300px',
         }}
       >
         {!isSameSenderAsPrevious && (
@@ -283,7 +290,13 @@ const RenderMessage = ({
             transition: isDragging ? 'none' : 'left 0.3s ease-out',
           }}
         >
-          <Typography sx={{ whiteSpace: 'pre-line' }}>{data?.content}</Typography>
+          {data?.contentType === 'text' ? (
+            <Typography sx={{ whiteSpace: 'pre-line' }}>
+              {data?.content}
+            </Typography>
+          ) : data?.contentType === 'image' ? (
+            <RenderMessageContent data={data} />
+          ) : null}
           {selectedEmoji && (
             <Box
               sx={{
@@ -310,6 +323,140 @@ const RenderMessage = ({
             </Box>
           )}
         </Box>
+        {/* {data?.contentType === 'text' ? (
+          <Box
+            ref={handleComponentRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            sx={{
+              marginLeft: {
+                xs: '0px',
+                sm: isSameSenderAsPrevious ? '56px' : '16px',
+              },
+              backgroundColor: '#F1F1F1',
+              padding: '12px 16px',
+              borderRadius: '0px 10px 10px 10px',
+              position: 'relative',
+              left: `${dragDistance}px`,
+              transition: isDragging ? 'none' : 'left 0.3s ease-out',
+            }}
+          >
+            <Typography sx={{ whiteSpace: 'pre-line' }}>
+              {data?.content}
+            </Typography>
+            {selectedEmoji && (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  left: '10px',
+                  bottom: '-15px',
+                  backgroundColor: 'rgba(255, 255, 255)',
+                  width: '25px',
+                  height: '25px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '50%',
+                  boxShadow: '0px 0px 5px 2px #ccc',
+                }}
+              >
+                <Box
+                  component={'img'}
+                  src={`/icons/${selectedEmoji}.svg`}
+                  alt={'Reaction'}
+                  sx={{ width: '15px', height: '15px', cursor: 'pointer' }}
+                  onClick={() => setSelectedEmoji('')}
+                />
+              </Box>
+            )}
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              display:'flex',
+              maxWidth: '65%',
+              flexWrap: 'wrap',
+              marginLeft: {
+                xs: '0px',
+                sm: isSameSenderAsPrevious ? '56px' : '16px',
+              },
+            }}
+          >
+            {data?.content?.map((img, imgIndex) => (
+              <Box
+                key={imgIndex}
+                ref={handleComponentRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseLeave}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                sx={{
+                  backgroundColor: '#F1F1F1',
+                  padding: '12px 16px',
+                  borderRadius: '0px 10px 10px 10px',
+                  position: 'relative',
+                  left: `${dragDistance}px`,
+                  transition: isDragging ? 'none' : 'left 0.3s ease-out',
+                  marginRight: imgIndex !== (data?.content.length - 1) && '20px'
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '80px',
+                    height: '80px',
+                    backgroundColor: '#fff',
+                  }}
+                >
+                  <Box
+                    component={'img'}
+                    sx={{
+                      width: '100%',
+                      // height: '100%',
+                    }}
+                    src={img}
+                    alt={'Image'}
+                  />
+                </Box>
+                {selectedEmoji && (
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      left: '10px',
+                      bottom: '-15px',
+                      backgroundColor: 'rgba(255, 255, 255)',
+                      width: '25px',
+                      height: '25px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: '50%',
+                      boxShadow: '0px 0px 5px 2px #ccc',
+                    }}
+                  >
+                    <Box
+                      component={'img'}
+                      src={`/icons/${selectedEmoji}.svg`}
+                      alt={'Reaction'}
+                      sx={{ width: '15px', height: '15px', cursor: 'pointer' }}
+                      onClick={() => setSelectedEmoji('')}
+                    />
+                  </Box>
+                )}
+              </Box>
+            ))}
+          </Box>
+        )} */}
         <Box
           component={'img'}
           src="/icons/SmileyIcon.svg"

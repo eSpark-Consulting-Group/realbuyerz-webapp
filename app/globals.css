@@ -286,10 +286,11 @@ body header {
 
 .send-message-input {
   /* resize: both; */
-  overflow: hidden;
+  /* overflow: hidden; */
   /* Hide the content that goes beyond the specified width and height */
   border: 1px solid #000;
   width: 100%;
+  max-height: 90px;
 }
 
 .send-message-input:focus {
@@ -406,11 +407,12 @@ body header {
 }
 
 .placeholder {
-  position: absolute;
+  /* position: absolute; */
   top: 50%;
   left: 10px;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   color: #999;
   pointer-events: none;
   user-select: none;
+  font-style: italic;
 }
