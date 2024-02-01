@@ -27,7 +27,7 @@ const ProductCart = ({
         flexGrow: 1,
         display: 'flex',
         justifyContent: 'center',
-     }}
+      }}
     >
       <Grid
         container

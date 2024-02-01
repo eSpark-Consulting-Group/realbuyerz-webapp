@@ -1,10 +1,12 @@
+'use client';
 import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, useTheme, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import UsefulLink from './FooterResponsivness';
 
 const styles = {
   container: {
@@ -40,10 +42,23 @@ const styles = {
   },
 };
 const Footer = ({ data }) => {
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'xl'));
   return (
     <Box sx={styles?.container}>
-      <Grid container justifyContent="center" sx={{ py: '50px' }}>
-        <Grid item xs={5}>
+      <Grid
+        container
+        justifyContent="center"
+        sx={{
+          py: '50px',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          '@media (min-width:280px) and (max-width:500px)': {
+            paddingLeft: '40px',
+          },
+        }}
+      >
+        <Grid item xs={12} md={5}>
           <Box sx={{ pr: '20%' }}>
             <Link href={data?.link}>
               <Image src={data?.logo} alt="Logo" width={155} height={37} />
@@ -88,10 +103,21 @@ const Footer = ({ data }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={2}>
-          {' '}
+        <Grid
+          item
+          xs={12}
+          md={2}
+          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        >
           <Box>
-            <Typography variant="h6" color={'primary'} sx={{ pb: '20px' }}>
+            <Typography
+              variant="h6"
+              color={'primary'}
+              sx={{
+                pb: { xs: '10px', md: '20px' },
+                pt: { xs: '20px', md: '0px' },
+              }}
+            >
               {data?.usefulLink}
             </Typography>
             {data?.usefulLinks?.map((link, index) => (
@@ -103,7 +129,12 @@ const Footer = ({ data }) => {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={2}>
+        <Grid
+          item
+          xs={12}
+          md={2}
+          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        >
           <Box>
             <Box>
               <Box sx={{ pb: '16px' }}>
@@ -147,6 +178,11 @@ const Footer = ({ data }) => {
             </Box>
           </Box>
         </Grid>
+        <UsefulLink
+          data={data}
+          isMediumScreen={isMediumScreen}
+          styles={styles}
+        />
       </Grid>
     </Box>
   );

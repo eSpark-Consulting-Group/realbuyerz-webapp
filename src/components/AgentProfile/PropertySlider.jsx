@@ -67,6 +67,7 @@ const PropertySlider = ({ propertyData }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
+          dots: true,
         },
       },
       {
@@ -74,6 +75,7 @@ const PropertySlider = ({ propertyData }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
         },
       },
     ],
@@ -81,7 +83,7 @@ const PropertySlider = ({ propertyData }) => {
   return (
     <>
       <Slider {...settings}>
-        {filteredProperties.map((item, index) => {
+        {filteredProperties.slice(0, 10).map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>
               <Card

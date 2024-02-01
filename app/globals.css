@@ -68,7 +68,6 @@ body header {
 .scrollable {
   /* height: 100vh;  */
   overflow-y: auto;
-
 }
 
 .scrollable::-webkit-scrollbar {
@@ -222,7 +221,6 @@ body header {
 
 .modal-slider .swiper-slide-active img {
   scale: 1.9;
-
 }
 
 .modal-slider .swiper-slide-active {
@@ -284,4 +282,92 @@ body header {
   display: block;
   width: 100%;
   height: 100%;
+}
+.send-message-input:focus {
+  outline: none;
+}
+
+/* styles/OutlineSmiley.module.css */
+.outlineSmiley {
+  font-size: 2rem; /* Adjust the font size as needed */
+  color: transparent; /* Make the emoji color transparent */
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  position: relative;
+}
+.reply-content-inbox{
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.reply-content-inbox::before {
+  content: ''; /* Add the emoji character again */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #FF631C; /* Set the color for the outline */
+}
+.expandingComponent{
+  /* animation: expandText 0.5s ease-in; */
+  /* transition: all 0.3s ease; */
+  max-width: fit-content;
+  /* width: auto; */
+  /* animation: drawIn 0.3s ease-in-out; */
+  animation: drawFromRight 0.3s ease-in-out;
+}
+@keyframes drawFromRight {
+  0% {
+    clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+@keyframes expandText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* styles.module.css */
+
+@keyframes drawIn {
+  0% {
+    clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+}
+
+@keyframes drawOut {
+  0% {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+  100% {
+    clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  }
+}
+
+.draw-in-animation {
+  animation: drawIn 0.3s ease-in-out;
+}
+
+.draw-out-animation {
+  animation: drawOut 0.3s ease-in-out;
+}
+
+.anition-upload-files-icon{
+  transition: all 0.3s ease;
+  transform: rotate(135deg);
+}
+.remove-anition-upload-files-icon{
+  transition: all 0.3s ease;
+  transform: rotate(0deg);
 }

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const page = () => {
   return (
-      <>
-          <h1>order-history</h1>
-   </>
-  )
-}
+    <>
+      <h1>order-history</h1>
+    </>
+  );
+};
 
-export default page
+export default page;

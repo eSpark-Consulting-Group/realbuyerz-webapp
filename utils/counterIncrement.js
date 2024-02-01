@@ -1,6 +1,6 @@
 import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 
-export const incrementCounterState = (propertyBuyingDetails) => {
+export const incrementCounterState = (propertyBuyingDetails, identifier) => {
   if (!propertyBuyingDetails) {
     return {};
   }

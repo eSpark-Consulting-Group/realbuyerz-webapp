@@ -162,9 +162,7 @@ const SearchAndNotificationDesktopButton = ({
                   lineHeight: 'normal',
                 }}
               >
-                <Link href={'/'}>
-                  {signOut}
-                  </Link>
+                <Link href={'/'}>{signOut}</Link>
               </Typography>
             </Box>
           </MenuItem>

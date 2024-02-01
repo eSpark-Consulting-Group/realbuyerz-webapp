@@ -18,7 +18,7 @@ export const Agent_Routes = [
       },
       {
         text: 'My Properties',
-       link: '/agent/property-management/my-properties',
+        link: '/agent/property-management/my-properties',
       },
     ],
   },
@@ -27,8 +27,8 @@ export const Agent_Routes = [
     active: '/images/icons/agent-icons/my-proposals-active.svg',
     text: 'My Proposals',
     link: '/agent/my-proposals',
-      sublinks: null
- },
+    sublinks: null,
+  },
   {
     icon: '/images/icons/agent-icons/inbox.svg',
     active: '/images/icons/agent-icons/inbox-active.svg',
@@ -39,13 +39,13 @@ export const Agent_Routes = [
   {
     icon: '/images/icons/agent-icons/agent-settings.svg',
     text: 'Agent Settings',
-   link: undefined,
+    link: undefined,
     sublinks: [
       {
         text: 'Agent Profile',
         link: '/agent/agent-settings/agent-profile',
-        },
-        {
+      },
+      {
         text: 'Preferences',
         link: '/agent/agent-settings/preferences',
       },
@@ -54,7 +54,7 @@ export const Agent_Routes = [
   {
     icon: '/images/icons/agent-icons/prop-shop.svg',
     text: 'Prop Shop',
-   link: undefined,
+    link: undefined,
     sublinks: [
       { text: 'Buy Product', link: '/agent/prop-shop/buy-product' },
       {
@@ -64,7 +64,7 @@ export const Agent_Routes = [
     ],
   },
 ];
- 
+
 export const User_Routes = [
   {
     icon: '/images/icons/user-icons/dashboard.svg',
@@ -85,8 +85,8 @@ export const User_Routes = [
     active: '/images/icons/user-icons/inbox-active.svg',
     text: 'Inbox',
     link: '/user/inbox',
-      sublinks: null
- },
+    sublinks: null,
+  },
   {
     icon: '/images/icons/user-icons/user-settings.svg',
     active: '/images/icons/user-icons/user-settings-active.svg',
@@ -96,11 +96,11 @@ export const User_Routes = [
       {
         text: 'User Profile',
         link: '/user/user-settings/user-profile',
-        },
-        {
+      },
+      {
         text: 'Preferences',
         link: '/user/user-settings/preferences',
       },
-    ]
+    ],
   },
 ];

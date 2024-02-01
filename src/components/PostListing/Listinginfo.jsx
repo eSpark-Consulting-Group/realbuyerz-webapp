@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 import { Typography } from '@mui/material';
 
 const ListingInfo = ({ propertyInfo }) => {
@@ -8,24 +7,32 @@ const ListingInfo = ({ propertyInfo }) => {
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        alignItems: { xs: 'flex-start', sm: 'center' },
+        flexDirection: { xs: 'column', md: 'row' },
         flexWrap: 'wrap',
+        gap: { xs: 4, md: 8 },
       }}
     >
       {propertyInfo.map((item, index) => (
         <Box
           sx={{
+            width: { xs: 'auto', sm: '500px', md: 'auto' },
             display: 'flex',
-            justifyContent: 'space-between',
-            gap: '15px',
+            alignItems: 'center',
+            gap: 2,
           }}
           key={index}
         >
-          <Image src={item.image} width={40} height={40} alt="propertyimages" />
+          <Box
+            component={'img'}
+            src={item.image}
+            sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
+            alt="propertyimages"
+          />
           <Typography
             sx={{
-              fontSize: { xs: '18px', md: '22px' },
-
+              fontSize: { xs: '15px', md: '18px', lg: '20px' },
               fontWeight: 400,
               color: '#909394',
             }}
