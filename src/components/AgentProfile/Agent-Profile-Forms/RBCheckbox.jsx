@@ -10,7 +10,7 @@ export default function RBCheckbox({
   setChecked,
   onChange,
 }) {
-  console.log(setChecked);
+  console.warn(setChecked);
   return (
     <FormControlLabel
       control={

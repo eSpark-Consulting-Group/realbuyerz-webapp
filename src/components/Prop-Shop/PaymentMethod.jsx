@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
-import { Grid, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { Grid } from '@mui/material';
+import { Box } from '@mui/system';
 import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
 import {
   updatePaymentMethodSelection,
   setFormError,
 } from '@/src/redux/slices/settings/PakageCartSlice';
+import { getCardType } from '@/utils/getCardType';
 
-import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
+import CheckBoxDescription from './CheckBoxDescription';
 import CreditCardType from './CreditCardType';
+import GeneralCard from './GeneralCard';
 import AccountType from './AccountType';
 import MasterCard from './MasterCard';
 import VisaCard from './VisaCard';
-import GeneralCard from './GeneralCard';
+import Title from './Title';
 
 const PaymentMethod = ({
   data,
@@ -105,19 +107,8 @@ const PaymentMethod = ({
     }
   }, [selectedValue]);
 
-  const getCardType = (cardNumber) => {
-    const visaRegex = /^4\d{12}(?:\d{3})?$/;
-    const mastercardRegex = /^5[1-5]\d{14}$/;
-
-    if (visaRegex.test(cardNumber)) {
-      return VISA;
-    } else if (mastercardRegex.test(cardNumber)) {
-      return MASTER_CARD;
-    } else {
-      return GENERAL_CARD;
-    }
-  };
-
+  const selectedCard = paymentMedthodDetails?.filter(card => card?.card_number === typeCard);
+  console.log(selectedCard)
   return (
     <Box
       sx={{
@@ -136,24 +127,7 @@ const PaymentMethod = ({
     >
       <Grid container xs={12} item>
         <Grid item xs={12}>
-          <Box
-            sx={{
-              alignItems: 'center',
-              px: 4,
-              py: 4,
-              borderBottom: '2px solid #E4E4E4',
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#000',
-                fontSize: { xs: '12.1px', sm: '24px' },
-                fontWeight: 700,
-              }}
-            >
-              {title}
-            </Typography>
-          </Box>
+          <Title title={title} />
         </Grid>
         {paymentMedthodDetails?.map(
           (card) =>
@@ -222,30 +196,12 @@ const PaymentMethod = ({
           NAME_ON_CARD={NAME_ON_CARD}
           setTypeCard={setTypeCard}
         />
-        <Box
-          sx={{
-            alignItems: 'center',
-            px: { xs: 1, md: 3, lg: 5 },
-          }}
-        >
-          <Typography
-            sx={{
-              color: '#333',
-              fontSize: '14px',
-              fontStyle: 'normal',
-              fontWeight: 400,
-              lineHeight: 'normal',
-            }}
-          >
-            <RBCheckbox
-              sx={{ pr: 0 }}
-              checked={checked}
-              onChange={handleChangeCheckBox}
-              setChecked={setChecked}
-            />
-            {checkBoxLable}
-          </Typography>
-        </Box>
+        <CheckBoxDescription
+          checked={checked}
+          setChecked={setChecked}
+          handleChangeCheckBox={handleChangeCheckBox}
+          checkBoxLable={checkBoxLable}
+        />
         <AccountType
           AccountName={ACCOUNT_NAME_EASYPAISA}
           selectedValue={selectedValue}
