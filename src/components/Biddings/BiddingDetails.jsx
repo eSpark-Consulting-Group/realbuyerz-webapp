@@ -14,7 +14,8 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const BiddingDetails = ({ liveBiddingData, Height }) => {
+const BiddingDetails = ({ Height, Agent_Ads }) => {
+  console.log(Agent_Ads, 'agentAdPostingsx');
   const [showAllItems, setShowAllItems] = useState(false);
   const path = usePathname();
 
@@ -28,9 +29,8 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
   return (
     <Box className="scrollable" sx={{ height: Height }}>
       <>
-        {liveBiddingData?.liveBidding
-          ?.slice(0, showAllItems ? liveBiddingData?.liveBidding?.length : 2)
-          ?.map((item, index) => (
+        {Agent_Ads?.slice(0, showAllItems ? Agent_Ads.length : 3)?.map(
+          (item, index) => (
             <Grid container xs={12} key={index}>
               <Box
                 sx={{
@@ -77,16 +77,21 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                     xl={`${path.includes('/user') ? 9 : 6.5}`}
                     sx={{
                       color: '#333',
+                      textWrap: 'wrap',
                     }}
                   >
                     <Typography
                       variant="h4"
-                      sx={{ ml: 0.4, fontSize: { xs: '21px' } }}
+                      sx={{
+                        ml: 0.4,
+                        fontSize: { xs: '21px' },
+                      }}
                     >
-                      {item?.title}
+                      {console.log(item, 'adInfomation')}
+                      {item?.adInfomation?.title}
                     </Typography>
                     <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                      {item?.postedTime}
+                      {'Posted 39 minutes ago'}
                     </Typography>
                   </Grid>
                   <Grid
@@ -132,7 +137,7 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         }}
                         component={'span'}
                       >
-                        {item?.estRange}
+                        {`${item?.propertySizeAndPricing?.amount?.amount}`}
                       </Typography>
                     </Box>
                   </Grid>
@@ -194,21 +199,14 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                         mb: 1,
                       }}
                     >
-                      {item?.description}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontWeight: '500',
-                        fontSize: '13.8px',
-                        lineHeight: '20.52px',
-                      }}
-                    >
-                      {item?.description}
+                      {item?.adInfomation?.description}
                     </Typography>
                   </Box>
-                  <LiveBiddingPropertiesList list={item?.list} />
-                  {path.includes('/user') ? (
+                  <LiveBiddingPropertiesList
+                    locationAndPurpose={item?.locationAndPurpose}
+                    areaSize={item?.propertySizeAndPricing?.areaSize}
+                  />
+                  {path?.includes('/user') ? (
                     <Grid item xs={12}>
                       <Box
                         sx={{
@@ -271,7 +269,8 @@ const BiddingDetails = ({ liveBiddingData, Height }) => {
                 ></Box>
               </Box>
             </Grid>
-          ))}
+          )
+        )}
         {!showAllItems ? (
           <Box sx={{ textAlign: 'center', marginTop: 5 }}>
             <Button

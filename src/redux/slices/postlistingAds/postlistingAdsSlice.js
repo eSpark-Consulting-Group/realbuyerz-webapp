@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const postlistingAdSlice = createSlice({
   name: 'PostlistingAdSlice',
-  initialState: [],
+  initialState: {
+    agentPostings: [],
+  },
   reducers: {
     handlePostlistingAd: (state, action) => {
-      state.push(action.payload);
+      state.agentPostings.push(action.payload);
     },
   },
 });

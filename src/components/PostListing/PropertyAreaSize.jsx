@@ -5,9 +5,13 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
 import { useDispatch } from 'react-redux';
 import {
-  addArea,
-  addamount,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostAmount,
+  handlePostArea,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestAmount,
+  handleRequestArea,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -35,11 +39,13 @@ const PropertyAreaSize = ({
   );
 
   useEffect(() => {
-    dispatch(addArea(propertyArea));
+    dispatch(handlePostArea(propertyArea));
+    dispatch(handleRequestArea(propertyArea));
   }, [propertyArea]);
 
   useEffect(() => {
-    dispatch(addamount(propertyAmount));
+    dispatch(handleRequestAmount(propertyAmount));
+    dispatch(handlePostAmount(propertyAmount));
   }, [propertyAmount]);
 
   const handleInputChange = (key, val) => {

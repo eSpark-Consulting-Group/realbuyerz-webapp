@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 
 import { useDispatch } from 'react-redux';
-import { addCity } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { handleReuestCity } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handlePostCity } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
 const SelectCityType = ({ image, label, cityOptions }) => {
   const [city, setCity] = useState();
@@ -16,7 +17,8 @@ const SelectCityType = ({ image, label, cityOptions }) => {
   };
 
   useEffect(() => {
-    dispatch(addCity(city));
+    dispatch(handleReuestCity(city));
+    dispatch(handlePostCity(city));
   }, [city]);
 
   return (

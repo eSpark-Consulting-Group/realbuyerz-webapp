@@ -14,6 +14,13 @@ import {
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
+import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRequestFormId } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
+import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
+import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -37,9 +44,27 @@ const Page = () => {
   };
 
   const [propertyData, setPropertyData] = useState(initializePropertyData());
+  const [open, setOpen] = useState(false);
+  const { postRequest } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log('propertyData', setPropertyData);
   }, [propertyData]);
+
+  const handleSubmitAd = () => {
+    const formId = Math.floor(Math.random() * 100) + 1;
+    dispatch(handleRequestFormId(formId));
+    // dispatch(handleRequestAgentId(formId));
+    dispatch(handleSumitUserAds(postRequest));
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Grid container>
@@ -59,6 +84,12 @@ const Page = () => {
           <AdInformation propertyData={propertyData} />
           <PropertyPurpose propertyData={propertyData} />
           <PropertySize />
+          <PropertyFeatures />
+          <SubmitButton
+            handleSubmitAd={handleSubmitAd}
+            handleClickOpen={handleClickOpen}
+          />
+          <PreviewModal open={open} onClose={handleClose} ads={postRequest} />
         </Box>
       </Grid>
     </Grid>
