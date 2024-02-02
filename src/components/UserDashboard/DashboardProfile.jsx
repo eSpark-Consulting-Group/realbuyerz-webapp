@@ -35,11 +35,11 @@ const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
                 <Grid container>
                   <Grid
                     item
-                    xl={2}
-                    lg={2}
-                    md={2}
-                    sm={3.5}
                     xs={12}
+                    sm={3.5}
+                    md={2}
+                    lg={2}
+                    xl={2}
                     sx={{
                       position: 'relative',
                       width: '156px',
@@ -54,11 +54,11 @@ const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
                   </Grid>
                   <Grid
                     item
-                    xl={10}
-                    lg={10}
-                    md={10}
-                    sm={8.5}
                     xs={12}
+                    sm={8.5}
+                    md={10}
+                    lg={10}
+                    xl={10}
                     sx={{
                       pl: { sm: 0, md: 2 },
                       '@media(min-width: 280px) and (max-width: 445px)': {
