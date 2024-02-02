@@ -18,10 +18,17 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [replyingMessage, setReplyingMessage] = useState({});
   const [isSendingVoiceNote, setIsSendingVoiceNote] = useState(false);
+  const messageFieldRef = useRef(null);
   const handleCancelReply = () => {
     setIsReplying(false);
     setReplyingMessage({});
   };
+
+  const [conversation, setConversation] = useState([]);
+
+  useEffect(() => {
+    setConversation([...chatMessages.conversation]);
+  }, [chatMessages]);
 
   const uploadOptionsRef = useRef(null);
 
@@ -69,6 +76,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
   }
 
   const [fileInput, setFileInput] = useState([]);
+  const [isSendingFiles, setIsSendingFiles] = useState(false);
   const handleFileInput = (event) => {
     const files = event.target.files;
     const fileArray = Array.from(files).map((data) => ({
@@ -77,10 +85,10 @@ const ChatRoom = ({ selectedChatRoom }) => {
     }));
     setFileInput((ps) => [...ps, ...fileArray]);
     setDisplayUploadOptions(false);
+    setIsSendingFiles(true);
   };
 
   const handleRemoveFile = (id) => {
-    // const fileIndex = fileInput.findIndex(el => el.id === id);
     const tempFiles = fileInput.filter((el) => el.id !== id);
     setFileInput(tempFiles);
   };
@@ -108,6 +116,121 @@ const ChatRoom = ({ selectedChatRoom }) => {
         <Box sx={{ flex: 1, height: '1px', background: '#ccc' }} />
       </Box>
     );
+  };
+
+  const [message, setMessage] = useState('');
+  const handleInput = () => {
+    setMessage(messageFieldRef.current.innerHTML);
+  };
+  const handleBlur = () => {
+    setMessage(messageFieldRef.current.innerHTML);
+  };
+
+  const handleKeyPress = (e) => {
+    if (
+      e.key === 'ArrowUp' ||
+      e.key === 'ArrowDown' ||
+      e.key === 'ArrowRight' ||
+      e.key === 'ArrowLeft'
+    ) {
+      if (message.trim() === '') {
+        e.preventDefault();
+      }
+    } else if (e.key === 'Enter' && e.shiftKey) {
+      setMessage((prevMessage) => prevMessage + '\n');
+    } else if (e.key === 'Enter') {
+      sendMessage();
+      e.preventDefault();
+    }
+  };
+
+  function generate15CharsDigitUniqueid() {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const sections = [4, 6, 3]; // Define the number of characters in each section
+
+    const generateSection = (length) => {
+      let section = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        section += characters[randomIndex];
+      }
+      return section;
+    };
+
+    const uniqueId = sections.map(generateSection).join('-');
+    return uniqueId;
+  }
+
+  const sendMessage = () => {
+    const tempConversation = [...conversation];
+    const lastMessageDate = tempConversation[tempConversation.length - 1];
+    if (isSendingFiles) {
+      if (!fileInput.length) {
+        return;
+      } else if (
+        lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')
+      ) {
+        lastMessageDate?.messages?.push({
+          timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+          id: generate15CharsDigitUniqueid(),
+          sender: 'You',
+          content: fileInput,
+          read: false,
+          contentType: 'image',
+        });
+        setFileInput([]);
+      } else {
+        tempConversation.push({
+          date: moment(new Date()).format('yyyy-MM-DD'),
+          messages: [
+            {
+              timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+              id: generate15CharsDigitUniqueid(),
+              sender: 'You',
+              content: fileInput,
+              read: false,
+              contentType: 'image',
+            },
+          ],
+          read: false,
+        });
+        setFileInput([]);
+      }
+    } else {
+      messageFieldRef.current.innerText = '';
+      if (message.trim() === '') return;
+      if (lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')) {
+        lastMessageDate?.messages.push({
+          timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+          id: generate15CharsDigitUniqueid(),
+          sender: 'You',
+          content: message.trim(),
+          read: false,
+          contentType: 'text',
+        });
+      } else {
+        tempConversation.push({
+          date: moment(new Date()).format('yyyy-MM-DD'),
+          messages: [
+            {
+              timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
+              id: generate15CharsDigitUniqueid(),
+              sender: 'You',
+              content: message.trim(),
+              read: false,
+              contentType: 'text',
+            },
+          ],
+          read: false,
+        });
+      }
+      setConversation(tempConversation);
+      // Clear the input after sending the message
+      setMessage('');
+      setFileInput([]);
+      setIsSendingFiles(false);
+    }
   };
 
   let prevSender = null;
@@ -177,7 +300,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
             borderBottom: 'solid 1px #E4E4E4',
           }}
         >
-          {chatMessages?.conversation?.map((days, daysIndex) => {
+          {conversation?.map((days, daysIndex) => {
             return (
               <Box key={daysIndex}>
                 <DashedLineText
@@ -437,10 +560,25 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     handleCancelSendingAudio={handleCancelSendingAudio}
                   />
                 ) : (
-                  <input
-                    className="send-message-input"
-                    placeholder="Write message"
-                  />
+                  <div
+                    role={'none'}
+                    className={'contentEditable'}
+                    contentEditable
+                    onInput={handleInput}
+                    onKeyDown={handleKeyPress}
+                    aria-label="Type your message..."
+                    aria-placeholder="Type your message..."
+                    ref={messageFieldRef}
+                    onBlur={handleBlur}
+                    onFocus={() => messageFieldRef.current.focus()}
+                  >
+                    {message.trim() === '' &&
+                      document?.activeElement !== messageFieldRef.current && (
+                        <div className={'placeholder'}>
+                          Type your message...
+                        </div>
+                      )}
+                  </div>
                 )}
               </Box>
             </Box>
@@ -452,15 +590,13 @@ const ChatRoom = ({ selectedChatRoom }) => {
             sx={{
               marginLeft: { xs: '5px', sm: '10px' },
               marginRight: { xs: '5px', sm: '10px' },
-              //   flex: 1,
-              //   backgroundColor: 'rgba(255, 255, 255)',
               width: { xs: '20px', sm: '36px' },
               height: { xs: '20px', sm: '36px' },
             }}
+            onClick={sendMessage}
           />
         </Box>
       </Box>
-      {/* <AudioRecorder /> */}
     </Grid>
   );
 };
