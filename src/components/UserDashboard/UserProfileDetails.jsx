@@ -1,14 +1,22 @@
-import { VIEW_BUTTON } from '@/app/constants/Dashboard';
-import { Button, Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import React from 'react';
+import Link from 'next/link';
+import { Box, Grid, Typography } from '@mui/material';
 
-const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
+const UserProfileDetails = ({
+  Title,
+  Location,
+  Amount,
+  Description,
+  ViewLabel,
+  Href,
+}) => {
   return (
     <Grid container>
       <Grid
         item
+        sm={4}
         md={3}
+        lg={3}
         xs={12}
         sx={{
           display: 'flex',
@@ -64,12 +72,14 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
       </Grid>
       <Grid
         item
-        md={9}
+        sm={8}
+        md={8}
+        lg={9}
         xs={12}
         sx={{
           display: 'flex',
           justifyContent: {
-            lg: 'flex-end',
+            sm: 'flex-end',
           },
           alignItems: 'center',
           mt: { md: 4, lg: 0 },
@@ -78,17 +88,24 @@ const UserProfileDetails = ({ Title, Location, Amount, Description }) => {
           },
         }}
       >
-        <Button
-          variant="primary"
-          sx={{
-            width: '200px',
-            height: '42px',
-            borderRadius: '50px',
-            border: '1px solid #FB631C',
-          }}
-        >
-          {VIEW_BUTTON}
-        </Button>
+        <Link href={Href}>
+          <Typography
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '200px',
+              height: '42px',
+              borderRadius: '50px',
+              background: '#FB631C',
+              border: '1px solid #FB631C',
+              color: '#fff',
+              cursor: 'pointer',
+            }}
+          >
+            {ViewLabel}
+          </Typography>
+        </Link>
       </Grid>
       <Box
         sx={{

@@ -6,14 +6,21 @@ import {
   PROPOSALS,
   ALL_PROPOSALS_DATA,
   PROPOSAL_DETAILS,
+  BACK_TO_DASHBOARD,
+  VIEW_BUTTON,
 } from '@/app/constants/Dashboard';
 import DashboardProfile from '@/src/components/UserDashboard/DashboardProfile';
 import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
 import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
+import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
 
 const page = () => {
   return (
     <>
+      <BackToDashboard
+        buttonLabel={BACK_TO_DASHBOARD}
+        link={'/user/dashboard'}
+      />
       <DashboardTitle title={PROPOSALS} />
       <Box
         sx={{
@@ -36,7 +43,11 @@ const page = () => {
         <Divider />
 
         {/* <SearchFilterButton /> */}
-        <DashboardProfile proposalData={ALL_PROPOSALS_DATA} Height={'67.5vh'} />
+        <DashboardProfile
+          proposalData={ALL_PROPOSALS_DATA}
+          Height={'67.5vh'}
+          ViewLabel={VIEW_BUTTON}
+        />
       </Box>
     </>
   );

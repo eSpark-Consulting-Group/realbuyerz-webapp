@@ -7,9 +7,11 @@ export const VIEW_BUTTON = 'View';
 export const ALL_PROPOSALS = 'All Proposals';
 export const ESTIMATE_RANGE = 'Est. Range:';
 export const PROPOSALS = 'Proposals';
+export const BACK_TO_DASHBOARD = 'Back to dashboard';
 
 export const ALL_PROPOSALS_DATA = [
   {
+    id: 1,
     image: '/Images/Profile.png',
     title: 'John Doe',
     location: 'Pakistan',
@@ -18,6 +20,7 @@ export const ALL_PROPOSALS_DATA = [
       'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
   },
   {
+    id: 2,
     image: '/Images/Profile.png',
     title: 'John Doe',
     location: 'Pakistan',
@@ -26,6 +29,7 @@ export const ALL_PROPOSALS_DATA = [
       'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
   },
   {
+    id: 3,
     image: '/Images/Profile.png',
     title: 'John Doe',
     location: 'Pakistan',
@@ -34,6 +38,7 @@ export const ALL_PROPOSALS_DATA = [
       'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
   },
   {
+    id: 4,
     image: '/Images/Profile.png',
     title: 'John Doe',
     location: 'Pakistan',
