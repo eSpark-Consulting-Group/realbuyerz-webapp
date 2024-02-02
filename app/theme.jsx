@@ -139,7 +139,7 @@ const theme = createTheme({
       md: 960,
       lg: 1440,
       xl: 1920,
-      xxl: 2560
+      xxl: 2560,
     },
   },
 });
