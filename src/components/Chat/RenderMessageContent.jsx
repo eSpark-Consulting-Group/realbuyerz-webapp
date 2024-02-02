@@ -3,7 +3,7 @@ import React from 'react';
 
 const RenderMessageContent = ({ data }) => {
   const images = data?.content?.slice(0, 4);
-//   console.log({ data });
+  //   console.log({ data });
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
