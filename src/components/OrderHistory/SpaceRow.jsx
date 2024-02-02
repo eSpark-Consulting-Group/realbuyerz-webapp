@@ -10,7 +10,7 @@ export const SpaceRow = ({ space, title }) => (
             fontStyle:'normal',
             fontWeight: 500,
             lineHeight:'normal',
-            pl:'30px'
+            pl:'40px'
           }}>
             {title}
           </TableCell>
