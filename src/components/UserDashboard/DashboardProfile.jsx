@@ -6,7 +6,7 @@ import UserProfileImage from './UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
 
-const DashboardProfile = ({ proposalData, Height }) => {
+const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
   const [showAllItems, setShowAllItems] = useState(false);
 
   const handleShowMoreClick = () => {
@@ -26,21 +26,28 @@ const DashboardProfile = ({ proposalData, Height }) => {
               <Box
                 key={index}
                 sx={{
-                  padding: '44px 54px 44px 40px',
+                  padding: '44px 54px 44px 54px',
+                  '@media(min-width: 280px) and (max-width: 445px)': {
+                    justifyContent: 'center',
+                  },
                 }}
               >
                 <Grid container>
                   <Grid
                     item
                     xl={2}
-                    lg={3}
-                    md={5}
+                    lg={2}
+                    md={2}
+                    sm={3.5}
+                    xs={12}
                     sx={{
                       position: 'relative',
                       width: '156px',
                       height: '156px',
                       display: 'flex',
-                      justifyContent: 'center',
+                      '@media(min-width: 280px) and (max-width: 445px)': {
+                        justifyContent: 'center',
+                      },
                     }}
                   >
                     <UserProfileImage image={item.image} isActive={false} />
@@ -48,10 +55,22 @@ const DashboardProfile = ({ proposalData, Height }) => {
                   <Grid
                     item
                     xl={10}
-                    lg={9}
-                    md={7}
+                    lg={10}
+                    md={10}
+                    sm={8.5}
+                    xs={12}
                     sx={{
                       pl: { sm: 0, md: 2 },
+                      '@media(min-width: 280px) and (max-width: 445px)': {
+                        display: 'flex',
+                        justifyContent: 'center',
+                      },
+                      '@media(min-width: 600px) and (max-width: 730px)': {
+                        pl: '10%',
+                      },
+                      '@media(min-width: 960px) and (max-width: 1260px)': {
+                        pl: '8%',
+                      },
                     }}
                   >
                     <UserProfileDetails
@@ -59,6 +78,8 @@ const DashboardProfile = ({ proposalData, Height }) => {
                       Location={item.location}
                       Amount={item.amount}
                       Description={item.description}
+                      ViewLabel={ViewLabel}
+                      Href={'/user/dashboard'}
                     />
                   </Grid>
                 </Grid>

@@ -84,6 +84,10 @@ const SearchFilterButton = () => {
             md: '40px 54px  40px 54px',
           },
           textAlign: { md: 'end', lg: 'end' },
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: 'center',
+          },
         }}
       >
         <Button

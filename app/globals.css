@@ -207,7 +207,7 @@ body header {
   width: 34px;
 }
 
-@media (min-width: 1440px) and (max-width:2560px) {
+@media (min-width: 1440px) and (max-width: 2560px) {
   #mobile {
     width: 320px !important;
   }

@@ -2,14 +2,26 @@
 import React from 'react';
 import { Box, Divider } from '@mui/material';
 
-import { ALL_PROPOSALS, ALL_PROPOSALS_DATA } from '@/app/constants/Dashboard';
-import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
-import SearchFilterButton from '@/src/components/UserDashboard/SearchFilterButton';
+import {
+  PROPOSALS,
+  ALL_PROPOSALS_DATA,
+  PROPOSAL_DETAILS,
+  BACK_TO_DASHBOARD,
+  VIEW_BUTTON,
+} from '@/app/constants/Dashboard';
 import DashboardProfile from '@/src/components/UserDashboard/DashboardProfile';
+import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
+import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
+import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
 
 const page = () => {
   return (
     <>
+      <BackToDashboard
+        buttonLabel={BACK_TO_DASHBOARD}
+        link={'/user/dashboard'}
+      />
+      <DashboardTitle title={PROPOSALS} />
       <Box
         sx={{
           background: '#fff',
@@ -27,12 +39,15 @@ const page = () => {
           },
         }}
       >
-        <DashboardTitle
-          title={`${ALL_PROPOSALS} (${ALL_PROPOSALS_DATA.length}) `}
-        />
+        <ProposalDetails proposalDetails={PROPOSAL_DETAILS} />
         <Divider />
-        <SearchFilterButton />
-        <DashboardProfile proposalData={ALL_PROPOSALS_DATA} Height={'67.5vh'} />
+
+        {/* <SearchFilterButton /> */}
+        <DashboardProfile
+          proposalData={ALL_PROPOSALS_DATA}
+          Height={'67.5vh'}
+          ViewLabel={VIEW_BUTTON}
+        />
       </Box>
     </>
   );
