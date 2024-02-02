@@ -496,7 +496,8 @@ export const PROPERTY_BUYING_DETAIL = {
 };
 
 export const postListingEntities = {
-  id: 1,
+  agentId: '',
+  formId: '',
   adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
@@ -518,4 +519,30 @@ export const postListingEntities = {
     selectedAmenities: '',
   },
   propertyImagesAndVideos: { images: '', videos: '' },
+};
+
+export const postRequestEntities = {
+  usertId: '',
+  formId: 1,
+  proposals: [],
+  adInfomation: '',
+  locationAndPurpose: {
+    adPurpose: '',
+    propertyType: '',
+    propetySubType: '',
+    city: '',
+    location: '',
+  },
+  propertySizeAndPricing: {
+    areaSize: '',
+    amount: '',
+    installment: '',
+    possession: '',
+  },
+  featuresAndAmenities: {
+    bedrooms: '',
+    bathrooms: '',
+    parking: '',
+    selectedAmenities: '',
+  },
 };

@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 const ClientRequirementAmount = ({ amountData, amenities }) => {
   const buyingSellingForm = useSelector((state) => state.buyingSellingForm);
   const { PropertySizeAndPricing, FeaturesAndAmenities } = buyingSellingForm;
-  const { amount } = PropertySizeAndPricing;
-  const { bathrooms, bedrooms, parking } = FeaturesAndAmenities;
+  // const { amount } = PropertySizeAndPricing;
+  // const { bathrooms, bedrooms, parking } = FeaturesAndAmenities;
 
   return (
     <>
@@ -24,7 +24,9 @@ const ClientRequirementAmount = ({ amountData, amenities }) => {
             <Typography
               sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
             >
-              {amount?.amount ? `${amount?.amount} ${amount?.unit}` : 0}
+              {PropertySizeAndPricing?.amount?.amount
+                ? `${PropertySizeAndPricing?.amount?.amount} ${PropertySizeAndPricing?.amount?.unit}`
+                : 0}
             </Typography>
           </Box>
         </Box>
@@ -45,7 +47,9 @@ const ClientRequirementAmount = ({ amountData, amenities }) => {
             <Typography
               sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
             >
-              {bedrooms ? bedrooms : 0}
+              {FeaturesAndAmenities?.bedrooms
+                ? FeaturesAndAmenities?.bedrooms
+                : 0}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', gap: 0.5, mt: 1 }}>
@@ -55,7 +59,9 @@ const ClientRequirementAmount = ({ amountData, amenities }) => {
             <Typography
               sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
             >
-              {bathrooms ? bathrooms : 0}
+              {FeaturesAndAmenities?.bathrooms
+                ? FeaturesAndAmenities?.bathrooms
+                : 0}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', gap: 0.5, mt: 1 }}>
@@ -65,7 +71,9 @@ const ClientRequirementAmount = ({ amountData, amenities }) => {
             <Typography
               sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
             >
-              {parking ? parking : 0}
+              {FeaturesAndAmenities?.parking
+                ? FeaturesAndAmenities?.parking
+                : 0}
             </Typography>
           </Box>
         </Box>

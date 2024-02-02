@@ -120,6 +120,99 @@ body header {
   margin-left: 20px !important;
 }
 
+/* ---------------------------- */
+/* country Input styling */
+/* ---------------------------- */
+.PhoneInputCountrySelect {
+  padding: 10px;
+  width: 7%;
+  border: 0;
+  font-size: 0px;
+  appearance: none;
+  font-weight: 600;
+  background-image: url(/images/dropdown-arrow.svg);
+  background-position: right 0.2rem center;
+  background-repeat: no-repeat;
+  order: 1;
+  color: black;
+  border: none !important;
+}
+
+.PhoneInput {
+  display: flex;
+  flex-direction: row;
+  padding-top: 4px;
+  color: black;
+}
+.PhoneInputCountry {
+  width: 90px;
+  height: 45px;
+  border: 0.903px solid #e7e7e7;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 10px;
+}
+
+.PhoneInputCountrySelect {
+  width: 100%;
+}
+
+.PhoneInputCountrySelectArrow {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+.PhoneInputCountrySelect option {
+  font-size: 14.448px;
+  color: black;
+}
+
+.PhoneInputCountryIcon {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountryIcon img {
+  width: 34px;
+  height: 34px;
+}
+
+.PhoneInputInput {
+  font-size: 14px;
+  padding-left: 9px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 0.903px solid #e7e7e7;
+  background: #fff;
+  color: black;
+  height: 45px;
+}
+
+.PhoneInputInput::-webkit-inner-spin-button {
+  display: none;
+}
+
+.PhoneInputInput:focus {
+  outline: none !important;
+  /* outline-color: black !important; */
+}
+
+.PhoneInputInput::placeholder {
+  color: #9c9c9cbc;
+}
+
+.PhoneInputCountryIconImg {
+  width: 34px;
+}
+
+@media (min-width: 1440px) and (max-width:2560px) {
+  #mobile {
+    width: 320px !important;
+  }
+}
+
 @media (max-width: 1860px) {
   .slick-list {
     margin-left: 24px !important;
@@ -159,6 +252,16 @@ body header {
 @media (max-width: 400px) {
   .slick-list {
     margin-left: 20px !important;
+  }
+  .PhoneInput {
+    flex-direction: column;
+    height: 115px !important;
+  }
+  .PhoneInputCountry {
+    margin-bottom: 15px;
+  }
+  .PhoneInputInput {
+    width: 100%;
   }
 }
 

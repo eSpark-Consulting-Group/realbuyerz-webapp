@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-import { addInformation } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { handlePostInformation } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import { handleRequestInformation } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyInformation = ({ propertyData }) => {
   const [adInformation, setAdInformation] = useState({});
@@ -16,7 +17,8 @@ const PropertyInformation = ({ propertyData }) => {
   };
 
   useEffect(() => {
-    dispatch(addInformation(adInformation));
+    dispatch(handlePostInformation(adInformation));
+    dispatch(handleRequestInformation(adInformation));
   }, [adInformation]);
 
   const specialIndex = 1;
