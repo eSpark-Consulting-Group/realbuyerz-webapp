@@ -5,11 +5,10 @@ const Heading = ({ heading, paragraph }) => {
   return (
     <>
       <Typography
-        variant="h1"
         sx={{
+          fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
           color: '#333333',
           fontWeight: '700',
-          fontSize: '40px',
           pb: '25px',
         }}
       >
@@ -20,7 +19,7 @@ const Heading = ({ heading, paragraph }) => {
         sx={{
           color: '#fb631c',
           fontWeight: '600',
-          fontSize: '18px',
+          fontSize: { xs: '14px', sm: '14px', md: '16px', lg: '18px' },
           pb: '20px',
         }}
       >

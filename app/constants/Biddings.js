@@ -667,6 +667,7 @@ export const BIDDINGS = {
     bathrooms: 'Bathrooms:',
     parking: 'Parking:',
   },
+  addedAmennities: { title: 'AddedAmennities' },
   amount: {
     title: 'Amount',
     range: 'Range',
@@ -691,6 +692,8 @@ export const BIDDINGS = {
   },
   savebutton: {
     title: 'Save',
+    defaultImage: '/images/heart.svg',
+    hoverImage: '/images/heart-white.svg',
     link: '/',
   },
   ViewAllbutton: {

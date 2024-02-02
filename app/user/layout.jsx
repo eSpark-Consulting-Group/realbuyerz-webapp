@@ -10,7 +10,6 @@ import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '../constants/Constants';
 import { SIDE_NAV_WIDTH } from '../constants/sidebar';
 
-
 const LayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
   flex: '1 1 auto',
@@ -28,7 +27,6 @@ const LayoutContainer = styled('div')({
 });
 
 const Layout = ({ children }) => {
-
   const pathname = usePathname();
   const [openNav, setOpenNav] = useState(true);
   const [child, setChild] = useState(false);
@@ -50,53 +48,56 @@ const Layout = ({ children }) => {
   return (
     <>
       <Suspense fallback={<p>Loading ....</p>}>
-      {child && (<>
-        <TopNav onNavOpen={() => setOpenNav(true)} />
-        <SideNav onClose={() => setOpenNav(false)} open={openNav} />
-        <LayoutRoot>
-          <LayoutContainer>
-            <Box sx={{ height: '100%', position: 'relative' }}>
-              <Box
-                sx={{
-                  top: 0,
-                  height: 'auto',
-                  position: 'relative',
-                  backgroundColor: '#F4F5F7',
-                  '@media (max-width: 400px)': {
-                    px: '20px',
-                  },
-                  px: {
-                    xs: '30px',
-                    sm: '30px',
-                    md: '50px',
-                    lg: '30px',
-                    xl: '30px',
-                  },
-                  pt: {
-                    xs: '50px',
-                    sm: '50px',
-                    md: '50px',
-                    lg: '50px',
-                    xl: '50px',
-                  },
-                  pb: {
-                    xs: '50px',
-                    sm: '50px',
-                    md: '50px',
-                    lg: '50px',
-                    xl: '50px',
-                  },
-                }}
-              >
-                {child && children}
-              </Box>
-              <Box sx={{ width: '100%', position: 'relative', bottom: 0 }}>
-                <Footer data={FOOTER_DATA} />
-               </Box>
-              </Box>
-          </LayoutContainer>
-        </LayoutRoot>
-      </>)}
+        {child && (
+          <>
+            <TopNav onNavOpen={() => setOpenNav(true)} />
+            <SideNav onClose={() => setOpenNav(false)} open={openNav} />
+            <LayoutRoot>
+              <LayoutContainer>
+                <Box sx={{ height: '100%', position: 'relative' }}>
+                  <Box
+                    sx={{
+                      top: 0,
+                      height: 'auto',
+                      position: 'relative',
+                      backgroundColor: '#F4F5F7',
+                      '@media (max-width: 400px)': {
+                        px: '12px',
+                        py: '30px',
+                      },
+                      px: {
+                        xs: '20px',
+                        sm: '30px',
+                        md: '50px',
+                        lg: '30px',
+                        xl: '30px',
+                      },
+                      pt: {
+                        xs: '40px',
+                        sm: '50px',
+                        md: '50px',
+                        lg: '50px',
+                        xl: '50px',
+                      },
+                      pb: {
+                        xs: '40px',
+                        sm: '50px',
+                        md: '50px',
+                        lg: '50px',
+                        xl: '50px',
+                      },
+                    }}
+                  >
+                    {child && children}
+                  </Box>
+                  <Box sx={{ width: '100%', position: 'relative', bottom: 0 }}>
+                    <Footer data={FOOTER_DATA} />
+                  </Box>
+                </Box>
+              </LayoutContainer>
+            </LayoutRoot>
+          </>
+        )}
       </Suspense>
     </>
   );

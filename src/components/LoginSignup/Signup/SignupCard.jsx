@@ -1,11 +1,12 @@
 'use client';
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 
-import { saveSignupData } from '@/src/redux/slices/auth/authSlice';
+import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
@@ -56,13 +57,13 @@ const SignupCard = () => {
     ) {
       alert(PASSWORD_ALERT);
     }
-    mutate({ 
+    mutate({
       first_name: formData.firstName,
       last_name: formData.lastName,
       email: formData.email,
       password: formData.password,
       mobile_number: formData.contactNumber,
-      role: "user"
+      role: 'user',
     });
     dispatch(saveSignupData(formData));
   };
@@ -71,7 +72,14 @@ const SignupCard = () => {
     mutationFn: signup,
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
-      router.push(LOGIN_ROUTERS.dashboard);
+      Cookie.set('token', data.token);
+      Cookie.set('userType', data.userType);
+      dispatch(setLoggedIn(data));
+      if (data.userType === 'user') {
+        router.push('/user/dashboard');
+      } else if (data.userType === 'agent') {
+        router.push('/agent/live-bidding');
+      }
     },
   });
 
@@ -85,7 +93,7 @@ const SignupCard = () => {
 
   const handleGoogleLogin = () => {
     googleLogin();
-  }
+  };
 
   return (
     <>

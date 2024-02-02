@@ -1,22 +1,15 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import { Button, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
-import { DASHBOARD, POST_A_REQUEST } from '@/app/constants/Dashboard';
+import { DASHBOARD } from '@/app/constants/Dashboard';
 
 const PostRequestButton = () => {
   return (
     <Box
       sx={{
-       mx: {xs: 'auto', lg: 0},
-        width: { xs: '100%', lg: '1200px' },
-           width: {xs:'100%', lg: '1200px'},
-            '@media (min-width: 1440px) and (max-width: 1568px)': {
-            width: '100%',
-            },
-            '@media (min-width: 960px) and (max-width: 1439px)': {
-            width: '90%',
-      },
+        mx: { xs: 'auto', lg: 0 },
+        maxWidth: '1200px',
       }}
     >
       <Grid container>
@@ -24,15 +17,18 @@ const PostRequestButton = () => {
           <Typography
             sx={{
               fontWeight: '500',
-              fontSize: '30px',
+              fontSize: { xs: '27px', sm: '30px' },
               lineHeight: '36.31px',
-              ml: { xs: 4 },
+              ml: 1,
+              '@media (max-width: 445px)': {
+                textAlign: 'center',
+              },
             }}
           >
             {DASHBOARD}
           </Typography>
         </Grid>
-        <Grid
+        {/* <Grid
           items
           xs={12}
           sm={6}
@@ -55,7 +51,7 @@ const PostRequestButton = () => {
           >
             {POST_A_REQUEST}
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );

@@ -1,5 +1,8 @@
 'use client';
 import React, { useState } from 'react';
+import Cookie from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box } from '@mui/system';
@@ -11,20 +14,18 @@ import {
   Menu,
   TextField,
   Tooltip,
-  Typography,
 } from '@mui/material';
 
 import {
   EMAIL,
   LINK_NAME,
   USER_NAME,
-  MY_LISTING,
-  POST_LISTING,
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
 } from '@/app/constants/DashboardHeader';
 import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 const DesktopDashboardHeader = ({
   headerMenu,
@@ -35,12 +36,18 @@ const DesktopDashboardHeader = ({
   handleOpenLoginMenu,
   isloggedIn,
 }) => {
+  const router = useRouter();
   const [search, setSearch] = useState();
+  const dispatch = useDispatch();
 
   const searchInput = (e) => {
     setSearch(e.target.value);
-  };  
+  };
   const handleLogout = () => {
+    Cookie.remove('token');
+    Cookie.remove('userType');
+    dispatch(setLoggedOut());
+    router.push('/signin');
     handleCloseLoginMenu();
   };
   return (
@@ -169,7 +176,7 @@ const DesktopDashboardHeader = ({
                   <Typography mx={1}>{POST_LISTING}</Typography>
                 </Box>
               </Button> */}
-              
+
               <IconButton
                 sx={{
                   p: 0,

@@ -18,7 +18,7 @@ const AreaUnit = ({ measure, handleInputChange }) => {
           <Typography
             sx={{
               color: 'black',
-              fontSize: '20px',
+              fontSize: { sm: '14px', md: '16px', lg: '20px' },
               fontWeight: 400,
             }}
           >
@@ -28,7 +28,9 @@ const AreaUnit = ({ measure, handleInputChange }) => {
             placeholder={item.placeholder}
             name={item.name}
             variant="outlined"
+            fontSize={{ sm: '14px', md: '16px', lg: '20px' }}
             fullWidth
+            // size={{{sm:'small', md:'medium', lg:''}}}
             onChange={handleInputChange}
             sx={{
               '& input[type=number]::-webkit-inner-spin-button': {

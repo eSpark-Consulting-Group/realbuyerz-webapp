@@ -11,8 +11,6 @@ import {
 } from '@/app/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
-import { useDispatch } from 'react-redux';
-import { saveResetData } from '@/src/redux/slices/auth/authSlice';
 import { resetPassword } from '@/utils/apis/auth/resetPassword';
 
 const ResetPassword = () => {
@@ -35,7 +33,6 @@ const ResetPassword = () => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const dispatch = useDispatch();
   const passwordsMatch = formData?.password === formData?.confirmPassword;
 
   const checkPasswordMatch = () => {
@@ -60,7 +57,7 @@ const ResetPassword = () => {
 
   const handleRestPassword = () => {
     mutate({ password: formData.password, token: searchParams.get('token') });
-  }
+  };
 
   return (
     <Box

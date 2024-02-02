@@ -223,7 +223,7 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/amount.svg',
       text: 'Amount ',
       placeholder: 'Enter Amount',
-      dropPlaceholder: 'Select Currency',
+      dropPlaceholder: 'PKR',
       label: 'amount',
       value: '',
     },
@@ -276,7 +276,7 @@ export const PROPERTY_INFORMATION = {
   ],
   upload: {
     images: '/images/listing-page/select.svg',
-    text: 'Upload Images and video of your Property *',
+    text: 'Upload Images and video of your Property',
   },
   uploadButton: [
     {
@@ -496,7 +496,8 @@ export const PROPERTY_BUYING_DETAIL = {
 };
 
 export const postListingEntities = {
-  Ad_Infomation: '',
+  id: 1,
+  adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
     propertyType: '',
@@ -504,17 +505,17 @@ export const postListingEntities = {
     city: '',
     location: '',
   },
-  PropertySizeAndPricing: {
+  propertySizeAndPricing: {
     areaSize: '',
     amount: '',
     installment: '',
     possession: '',
   },
-  FeaturesAndAmenities: {
+  featuresAndAmenities: {
     bedrooms: '',
     bathrooms: '',
     parking: '',
     selectedAmenities: '',
   },
-  PropertyImagesAndVideos: { images: [], videos: [] },
+  propertyImagesAndVideos: { images: '', videos: '' },
 };

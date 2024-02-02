@@ -9,7 +9,7 @@ const LiveBiddingTitle = ({ title }) => {
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 600,
-        fontSize: '30px',
+        fontSize: { xs: '22px', sm: '25px', md: '30px' },
         lineHeight: 'normal',
         letterSpacing: '1.95px',
       }}

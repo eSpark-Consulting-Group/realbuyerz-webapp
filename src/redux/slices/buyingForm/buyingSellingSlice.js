@@ -10,9 +10,14 @@ const buyingSellingFormSlice = createSlice({
   name: PROPERTY_INFORMATION.form,
   initialState,
   reducers: {
+    //agent Id & Name
+    addId: (state, action) => {
+      state.id = action.payload;
+    },
+
     //Ad_Infomation
     addInformation: (state, action) => {
-      state.Ad_Infomation = { ...action.payload };
+      state.adInfomation = { ...action.payload };
     },
 
     //locationAndPurpose
@@ -31,44 +36,45 @@ const buyingSellingFormSlice = createSlice({
 
     //PropertySizeAndPricing
     addArea: (state, action) => {
-      state.PropertySizeAndPricing.areaSize = action.payload;
+      state.propertySizeAndPricing.areaSize = action.payload;
     },
     addamount: (state, action) => {
-      state.PropertySizeAndPricing.amount = action.payload;
+      state.propertySizeAndPricing.amount = action.payload;
     },
     addInstallment: (state, action) => {
-      state.PropertySizeAndPricing.installment = action.payload;
+      state.propertySizeAndPricing.installment = action.payload;
     },
 
     addPossession: (state, action) => {
-      state.PropertySizeAndPricing.possession = action.payload;
+      state.propertySizeAndPricing.possession = action.payload;
     },
 
     // FeaturesAndAmenities
     addBedrooms: (state, action) => {
-      state.FeaturesAndAmenities.bedrooms = action.payload;
+      state.featuresAndAmenities.bedrooms = action.payload;
     },
     addBathrooms: (state, action) => {
-      state.FeaturesAndAmenities.bathrooms = action.payload;
+      state.featuresAndAmenities.bathrooms = action.payload;
     },
     addParking: (state, action) => {
-      state.FeaturesAndAmenities.parking = action.payload;
+      state.featuresAndAmenities.parking = action.payload;
     },
     addAmenities: (state, action) => {
-      state.FeaturesAndAmenities.selectedAmenities = action.payload;
+      state.featuresAndAmenities.selectedAmenities = action.payload;
     },
 
     // PropertyImagesandVideos
     UploadImages: (state, action) => {
-      state.PropertyImagesAndVideos.images.push(action.payload);
+      state.propertyImagesAndVideos.images = action.payload;
     },
     UploadVideos: (state, action) => {
-      state.PropertyImagesAndVideos.videos.push(action.payload);
+      state.propertyImagesAndVideos.videos = action.payload;
     },
   },
 });
 
 export const {
+  addId,
   addInformation,
   addLocationAndPuspose,
   addPropertyType,
