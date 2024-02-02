@@ -13,15 +13,18 @@ import chatsSlice from './slices/chat/chatsSlice';
 import blogsSlice from './slices/blogs/blogsSlice';
 import partnersSlice from './slices/global/partnersSlice';
 import agentsSlice from './slices/agents/agentsSlice';
-import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import verificationSlice from './slices/verification/verificationSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
 import authSlice from './slices/auth/authSlice';
-import buyingSellingSlice from './slices/buyingForm/buyingSellingSlice';
-import postlistingAdSlice from './slices/postlistingAd/postlistingAdSlice';
+import postlistingAdSlice from './slices/postlistingAds/postlistingAdsSlice';
+import userAdsSlice from './slices/userAds/userAdsSlice';
+import PostRequestSlice from './slices/previewPostRequest/postRequestSlice';
+import biddingsSlice from './slices/bidding/biddingsSlice';
+import PostListingSlice from './slices/previewPostListing/postListingSlice';
+import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -41,11 +44,18 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-    buyingSellingForm: buyingSellingSlice,
+    // Preview States Ads
+    postListing: PostListingSlice,
+    postRequest: PostRequestSlice,
+
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,
+
+    // Sumited Ads States
+    loginAgents: loginAgentsSlice,
     postListingAds: postlistingAdSlice,
+    postRequestAds: userAdsSlice,
   },
 });

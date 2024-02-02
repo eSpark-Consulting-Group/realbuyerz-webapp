@@ -10,7 +10,8 @@ import {
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
-import { addAmenities } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { handlePostAmenities } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import { handleRequestAmenities } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
@@ -19,7 +20,8 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addAmenities(amenitiesTitle));
+    dispatch(handleRequestAmenities(amenitiesTitle));
+    dispatch(handlePostAmenities(amenitiesTitle));
   }, [amenitiesTitle]);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
 
   const handleSaveButton = () => {
     const selectedItems = facilitiesData.filter(
-      (item, index) => selectedAmenities[index]
+      (index) => selectedAmenities[index]
     );
     onSelected(selectedItems);
     {

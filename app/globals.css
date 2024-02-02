@@ -120,6 +120,99 @@ body header {
   margin-left: 20px !important;
 }
 
+/* ---------------------------- */
+/* country Input styling */
+/* ---------------------------- */
+.PhoneInputCountrySelect {
+  padding: 10px;
+  width: 7%;
+  border: 0;
+  font-size: 0px;
+  appearance: none;
+  font-weight: 600;
+  background-image: url(/images/dropdown-arrow.svg);
+  background-position: right 0.2rem center;
+  background-repeat: no-repeat;
+  order: 1;
+  color: black;
+  border: none !important;
+}
+
+.PhoneInput {
+  display: flex;
+  flex-direction: row;
+  padding-top: 4px;
+  color: black;
+}
+.PhoneInputCountry {
+  width: 90px;
+  height: 45px;
+  border: 0.903px solid #e7e7e7;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 10px;
+}
+
+.PhoneInputCountrySelect {
+  width: 100%;
+}
+
+.PhoneInputCountrySelectArrow {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+.PhoneInputCountrySelect option {
+  font-size: 14.448px;
+  color: black;
+}
+
+.PhoneInputCountryIcon {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountryIcon img {
+  width: 34px;
+  height: 34px;
+}
+
+.PhoneInputInput {
+  font-size: 14px;
+  padding-left: 9px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 0.903px solid #e7e7e7;
+  background: #fff;
+  color: black;
+  height: 45px;
+}
+
+.PhoneInputInput::-webkit-inner-spin-button {
+  display: none;
+}
+
+.PhoneInputInput:focus {
+  outline: none !important;
+  /* outline-color: black !important; */
+}
+
+.PhoneInputInput::placeholder {
+  color: #9c9c9cbc;
+}
+
+.PhoneInputCountryIconImg {
+  width: 34px;
+}
+
+@media (min-width: 1440px) and (max-width: 2560px) {
+  #mobile {
+    width: 320px !important;
+  }
+}
+
 @media (max-width: 1860px) {
   .slick-list {
     margin-left: 24px !important;
@@ -159,6 +252,16 @@ body header {
 @media (max-width: 400px) {
   .slick-list {
     margin-left: 20px !important;
+  }
+  .PhoneInput {
+    flex-direction: column;
+    height: 115px !important;
+  }
+  .PhoneInputCountry {
+    margin-bottom: 15px;
+  }
+  .PhoneInputInput {
+    width: 100%;
   }
 }
 
@@ -283,34 +386,51 @@ body header {
   width: 100%;
   height: 100%;
 }
+
+.send-message-input {
+  /* resize: both; */
+  /* overflow: hidden; */
+  /* Hide the content that goes beyond the specified width and height */
+  border: 1px solid #000;
+  width: 100%;
+  max-height: 90px;
+}
+
 .send-message-input:focus {
   outline: none;
 }
 
 /* styles/OutlineSmiley.module.css */
 .outlineSmiley {
-  font-size: 2rem; /* Adjust the font size as needed */
-  color: transparent; /* Make the emoji color transparent */
+  font-size: 2rem;
+  /* Adjust the font size as needed */
+  color: transparent;
+  /* Make the emoji color transparent */
   display: inline-block;
   text-align: center;
   line-height: 1;
   position: relative;
 }
-.reply-content-inbox{
+
+.reply-content-inbox {
   position: relative;
   border-radius: 5px;
   overflow: hidden;
 }
+
 .reply-content-inbox::before {
-  content: ''; /* Add the emoji character again */
+  content: '';
+  /* Add the emoji character again */
   position: absolute;
   top: 0;
   left: 0;
   width: 5px;
   height: 100%;
-  background-color: #FF631C; /* Set the color for the outline */
+  background-color: #FF631C;
+  /* Set the color for the outline */
 }
-.expandingComponent{
+
+.expandingComponent {
   /* animation: expandText 0.5s ease-in; */
   /* transition: all 0.3s ease; */
   max-width: fit-content;
@@ -318,18 +438,22 @@ body header {
   /* animation: drawIn 0.3s ease-in-out; */
   animation: drawFromRight 0.3s ease-in-out;
 }
+
 @keyframes drawFromRight {
   0% {
     clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
   }
+
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
+
 @keyframes expandText {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -341,6 +465,7 @@ body header {
   0% {
     clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
   }
+
   100% {
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   }
@@ -350,6 +475,7 @@ body header {
   0% {
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   }
+
   100% {
     clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
   }
@@ -363,11 +489,33 @@ body header {
   animation: drawOut 0.3s ease-in-out;
 }
 
-.anition-upload-files-icon{
+.anition-upload-files-icon {
   transition: all 0.3s ease;
   transform: rotate(135deg);
 }
-.remove-anition-upload-files-icon{
+
+.remove-anition-upload-files-icon {
   transition: all 0.3s ease;
   transform: rotate(0deg);
+}
+
+.contentEditable {
+  min-height: 25px;
+  max-height: 90px;
+  overflow-y: auto;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  position: relative;
+}
+
+.placeholder {
+  /* position: absolute; */
+  top: 50%;
+  left: 10px;
+  /* transform: translateY(-50%); */
+  color: #999;
+  pointer-events: none;
+  user-select: none;
+  font-style: italic;
 }
