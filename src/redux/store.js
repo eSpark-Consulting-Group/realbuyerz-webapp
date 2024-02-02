@@ -21,6 +21,7 @@ import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
 import authSlice from './slices/auth/authSlice';
 import buyingSellingSlice from './slices/buyingForm/buyingSellingSlice';
+import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
 import postlistingAdSlice from './slices/postlistingAd/postlistingAdSlice';
 
 export const store = configureStore({
@@ -46,6 +47,7 @@ export const store = configureStore({
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,
+    loginAgents: loginAgentsSlice,
     postListingAds: postlistingAdSlice,
   },
 });
