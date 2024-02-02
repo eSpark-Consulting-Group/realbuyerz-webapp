@@ -71,7 +71,8 @@ const SubmitButton = ({ handleSubmitAd, handleClickOpen }) => {
                 backgroundColor: '#fff',
               },
             }}
-            onClick={handleSubmitAd}
+            // onClick={handleSubmitAd}
+            type="submit"
           >
             {PROPERTY_INFORMATION.submitAd}
           </Button>

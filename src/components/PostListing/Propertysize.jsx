@@ -10,7 +10,7 @@ import PostTitle from './PostTitle';
 import PropertyAreaSize from './PropertyAreaSize';
 import PropertyInstallment from './PropertyInstallment';
 
-const PropertySize = () => {
+const PropertySize = ({formik}) => {
   return (
     <Grid container>
       <Grid
@@ -64,10 +64,12 @@ const PropertySize = () => {
                 selectCity={PROPERTY_INFORMATION.selectCityOptions}
                 aeraSizes={PROPERTY_INFORMATION.aeraSizes}
                 currency={PROPERTY_INFORMATION.currency}
+                formik={formik}
               />
               <PropertyInstallment
                 propertyInstallmentInfo={PROPERTY_INFORMATION.installment}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                formik={formik}
               />
             </Box>
           </Box>

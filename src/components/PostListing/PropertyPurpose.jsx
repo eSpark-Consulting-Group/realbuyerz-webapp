@@ -12,7 +12,8 @@ import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';
 import PropertyStatus from './PropertyStatus';
 
-const PropertyPurpose = ({ propertyData }) => {
+const PropertyPurpose = ({ propertyData, formik }) => {
+  // console.log({propertyData})
   return (
     <Grid container>
       <Grid
@@ -68,6 +69,7 @@ const PropertyPurpose = ({ propertyData }) => {
                 propertySell={PROPERTY_INFORMATION.sell}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
                 propertyData={propertyData}
+                formik={formik}
               />
               <SelectProperyType
                 image={PROPERTY_INFORMATION.propertyType.images}
@@ -76,12 +78,14 @@ const PropertyPurpose = ({ propertyData }) => {
                 plotType={PROPERTY_INFORMATION.propertyPlot}
                 commercialType={PROPERTY_INFORMATION.propertyCommercial}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                formik={formik}
               />
               <SelectCityType
                 image={PROPERTY_INFORMATION.city.images}
                 label={PROPERTY_INFORMATION.city.text}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
                 cityOptions={PROPERTY_INFORMATION.selectCityOptions}
+                formik={formik}
               />
               <SelectLocationType />
             </Box>

@@ -21,6 +21,7 @@ const SelectProperyType = ({
   iconTitle,
   plotType,
   commercialType,
+  formik
 }) => {
   const [activePropertyType, setActivePropertyType] = useState('House');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
@@ -30,13 +31,17 @@ const SelectProperyType = ({
   const dispatch = useDispatch();
 
   const handlePropertyType = (text) => {
+    console.log({text})
     setActivePropertyType(text);
     setPropertyType(text);
+    formik.setFieldValue('proportyCategory',text)
   };
 
   const handlePropetySubType = (text) => {
+    console.log({text})
     setActivePropertySubType(text);
     setPropetySubType(text);
+    formik.setFieldValue('propertyType',text)
   };
 
   useEffect(() => {

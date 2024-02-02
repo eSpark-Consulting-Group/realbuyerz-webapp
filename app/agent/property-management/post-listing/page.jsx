@@ -22,6 +22,9 @@ import { handlePostAgentId } from '@/src/redux/slices/previewPostListing/postLis
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import Link from 'next/link';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -64,10 +67,65 @@ const Page = () => {
     // dispatch(handlePostFormId(formId));
     dispatch(handlePostlistingAd(postListing));
   };
+  const validationSchema = yup.object({
+    title: yup
+      .string('Enter title')
+      .required('Title is required'),
+    description: yup
+      .string('Enter description')
+      .required('Description is required'),
+    purpose: yup
+      .string(''),
+    proportyCategory: yup
+      .string(''),
+    propertyType: yup
+      .string(''),
+    city: yup
+      .string('Enter city')
+      .required('City is required'),
+    area: yup
+      .string('Enter area')
+      .required('Area is required'),
+    areaUnit: yup
+      .string('Enter area unit')
+      .required('Area unit is required'),
+    amount: yup
+      .string('Enter amount')
+      .required('Amount is required'),
+    amountCurrency: yup
+      .string('Enter amount currency')
+      .required('Amount currency is required'),
+      installmentAvailable: yup
+      .boolean(),
+    readyPossession: yup
+      .boolean(),
+      featuresAndAmenities: yup.mixed(),
+
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      purpose:'Sell',
+      proportyCategory:'House',
+      propertyType:'Sell',
+      instalmentAvailable:false,
+      readyPossession:false,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      console.log({values})
+    },
+    // validateOnChange: false,
+    // validateOnBlur: false,
+  });
+  // console.log({values:formik.values,errors:formik.errors,formik})
+
 
   return (
     <Grid container>
       <Grid item xs={12} lg={12}>
+      <form onSubmit={formik.handleSubmit}>
         <Box
           sx={{
             width: { xs: '100%', lg: '1200px', xxl: '1500px' },
@@ -84,17 +142,18 @@ const Page = () => {
         >
           <Link href={'/user/post-request'}>click</Link>
           <BuyersPlatform />
-          <AdInformation propertyData={propertyData} />
-          <PropertyPurpose propertyData={propertyData} />
-          <PropertySize />
-          <PropertyFeatures />
-          <PropertyGallery />
+          <AdInformation formik={formik} propertyData={propertyData} />
+          <PropertyPurpose formik={formik} propertyData={propertyData} />
+          <PropertySize formik={formik} />
+          <PropertyFeatures formik={formik} />
+          <PropertyGallery formik={formik} />
           <SubmitButton
             handleSubmitAd={handleSubmitAd}
             handleClickOpen={handleClickOpen}
           />
           <PreviewModal open={open} onClose={handleClose} ads={postListing} />
         </Box>
+        </form>
       </Grid>
     </Grid>
   );

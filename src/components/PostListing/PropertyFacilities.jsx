@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import Counter from './inputNumber/counter';
 
-const PropertyFacilities = ({ propertyInformation }) => {
+const PropertyFacilities = ({ propertyInformation, formik }) => {
   return (
     <>
       {propertyInformation.map((item, index) => (
@@ -47,7 +47,7 @@ const PropertyFacilities = ({ propertyInformation }) => {
                 </Typography>
               </Box>
               <Box sx={{ width: 'auto' }}>
-                <Counter title={item?.title} identifier={`facility_${index}`} />
+                <Counter name={item?.name} formik={formik} title={item?.title} identifier={`facility_${index}`} />
               </Box>
             </Box>
           </Box>
