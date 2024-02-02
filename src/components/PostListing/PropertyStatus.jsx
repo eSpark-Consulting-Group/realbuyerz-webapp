@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addLocationAndPuspose } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { handleRequestLocationAndPuspose } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handlePostLocationAndPuspose } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
 const PropertyStatus = ({ propertyInformation, propertyData }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
@@ -16,7 +17,8 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
   };
 
   useEffect(() => {
-    dispatch(addLocationAndPuspose(properStatusData));
+    dispatch(handleRequestLocationAndPuspose(properStatusData));
+    dispatch(handlePostLocationAndPuspose(properStatusData));
   }, [properStatusData]);
 
   return (

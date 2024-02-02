@@ -6,7 +6,7 @@ import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
 
-const AgentProfiles = ({ data }) => {
+const AgentProfiles = ({ data, spacificAgent, imageValue }) => {
   return (
     <Box
       sx={{
@@ -17,35 +17,17 @@ const AgentProfiles = ({ data }) => {
       }}
     >
       <Box
-        sx={{
-          backgroundColor: 'white',
-          width: {
-            xs: 'auto',
-            sm: '160px',
-            md: '165px',
-            lg: '180px',
-          },
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          borderRadius: {
-            xs: '0',
-            sm: '0 110px 110px 0',
-            md: '0 100px 110px 0',
-            lg: '0 90px 90px 0',
-          },
-        }}
-      ></Box>
-      <Box
         item
         sx={{
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',
           padding: { xs: 2, sm: 0 },
+          '@media (min-width: 280px) and (max-width: 319px)': {
+            padding: 0,
+          },
         }}
       >
-        <AgentImage image={data?.profileImage} />
+        <AgentImage image={imageValue} />
         <Grid
           sx={{
             padding: 2,
@@ -62,7 +44,10 @@ const AgentProfiles = ({ data }) => {
               width: '100%',
             }}
           >
-            <AgentProfileDetail description={data} />
+            <AgentProfileDetail
+              description={data}
+              spacificAgent={spacificAgent}
+            />
             {data?.userType === `${USER_TYPE.agent}` ? (
               <LetsTalk text={LETS_TALK} />
             ) : null}

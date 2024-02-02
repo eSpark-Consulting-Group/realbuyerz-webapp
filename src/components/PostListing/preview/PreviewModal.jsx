@@ -25,10 +25,10 @@ const PreviewModal = (props) => {
             transform: 'translate(-50%, -50%)',
             top: '50%',
             left: '50%',
-            width: { xs: '92%', md: '800px', xl: '1200px' },
+            width: { xs: '92%', xl: '800px', xxl: '1200px' },
             bgcolor: 'background.paper',
             borderRadius: '20px',
-            height: { xs: 'auto', sm: '800px', xl: '1400px' },
+            height: { xs: 'auto', xl: '800px', xxl: '1400px' },
             p: { xs: 2, sm: 3.5, md: 5 },
             '@media (min-width: 280px) and (max-width:424px)': {
               p: 1.5,

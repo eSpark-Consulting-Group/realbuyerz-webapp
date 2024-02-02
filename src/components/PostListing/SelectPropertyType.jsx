@@ -7,9 +7,13 @@ import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
 import { useDispatch } from 'react-redux';
 
 import {
-  addPropertyType,
-  addpropetySubType,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostPropertyType,
+  handlePostPropetySubType,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestPropertyType,
+  handleRequestPropetySubType,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const SelectProperyType = ({
   image,
@@ -36,11 +40,13 @@ const SelectProperyType = ({
   };
 
   useEffect(() => {
-    dispatch(addPropertyType(propertyType));
+    dispatch(handleRequestPropertyType(propertyType));
+    dispatch(handlePostPropertyType(propertyType));
   }, [propertyType]);
 
   useEffect(() => {
-    dispatch(addpropetySubType(propetySubType));
+    dispatch(handlePostPropetySubType(propetySubType));
+    dispatch(handleRequestPropetySubType(propetySubType));
   }, [propetySubType]);
 
   return (
