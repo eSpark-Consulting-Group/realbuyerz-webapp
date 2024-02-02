@@ -7,8 +7,8 @@ import InstructionsForUpload from './InstructionsForUpload';
 import ImageUploader from './ImageUploader';
 import { useDispatch } from 'react-redux';
 import {
-  UploadImages,
-  UploadVideos,
+  handlePostImages,
+  handlePostVideos,
 } from '@/src/redux/slices/previewPostListing/postListingSlice';
 import VideoUploader from './VideoUploader';
 
@@ -20,8 +20,8 @@ const PropertyGallery = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(UploadImages(images));
-    dispatch(UploadVideos(videos));
+    dispatch(handlePostImages(images));
+    dispatch(handlePostVideos(videos));
   }, [images, videos]);
 
   const handleImageUpload = (type, file) => {

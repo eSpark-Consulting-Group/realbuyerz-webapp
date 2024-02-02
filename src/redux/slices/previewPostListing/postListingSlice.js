@@ -11,8 +11,11 @@ const postListingSlice = createSlice({
   initialState,
   reducers: {
     //agent Id & Name
-    handlePostId: (state, action) => {
-      state.id = action.payload;
+    handlePostAgentId: (state, action) => {
+      state.agentId = action.payload;
+    },
+    handlePostFormId: (state, action) => {
+      state.formId = action.payload;
     },
 
     //Ad_Infomation
@@ -50,31 +53,32 @@ const postListingSlice = createSlice({
     },
 
     // FeaturesAndAmenities
-    addBedrooms: (state, action) => {
+    handlePostBedrooms: (state, action) => {
       state.featuresAndAmenities.bedrooms = action.payload;
     },
-    addBathrooms: (state, action) => {
+    handlePostBathrooms: (state, action) => {
       state.featuresAndAmenities.bathrooms = action.payload;
     },
-    addParking: (state, action) => {
+    handlePostParking: (state, action) => {
       state.featuresAndAmenities.parking = action.payload;
     },
-    addAmenities: (state, action) => {
+    handlePostAmenities: (state, action) => {
       state.featuresAndAmenities.selectedAmenities = action.payload;
     },
 
     // PropertyImagesandVideos
-    UploadImages: (state, action) => {
+    handlePostImages: (state, action) => {
       state.propertyImagesAndVideos.images = action.payload;
     },
-    UploadVideos: (state, action) => {
+    handlePostVideos: (state, action) => {
       state.propertyImagesAndVideos.videos = action.payload;
     },
   },
 });
 
 export const {
-  handlePostId,
+  handlePostAgentId,
+  handlePostFormId,
   handlePostInformation,
   handlePostLocationAndPuspose,
   handlePostPropertyType,
@@ -84,11 +88,11 @@ export const {
   handlePostAmount,
   handlePostInstallment,
   handlePostPossession,
-  addBedrooms,
-  addBathrooms,
-  addParking,
-  addAmenities,
-  UploadImages,
-  UploadVideos,
+  handlePostBedrooms,
+  handlePostBathrooms,
+  handlePostParking,
+  handlePostAmenities,
+  handlePostImages,
+  handlePostVideos,
 } = postListingSlice.actions;
 export default postListingSlice.reducer;

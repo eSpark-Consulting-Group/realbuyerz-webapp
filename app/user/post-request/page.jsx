@@ -17,7 +17,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { handleRequestId } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handleRequestFormId } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -53,8 +53,9 @@ const Page = () => {
   }, [propertyData]);
 
   const handleSubmitAd = () => {
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
-    dispatch(handleRequestId(randomNumber));
+    const formId = Math.floor(Math.random() * 100) + 1;
+    dispatch(handleRequestFormId(formId));
+    // dispatch(handleRequestAgentId(formId));
     dispatch(handleSumitUserAds(postRequest));
   };
 

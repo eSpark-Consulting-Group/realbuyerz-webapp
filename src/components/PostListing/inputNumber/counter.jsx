@@ -3,10 +3,15 @@ import React, { useEffect, useState } from 'react';
 import CustomNumberInput from './customInputNumber';
 import { useDispatch } from 'react-redux';
 import {
-  addBathrooms,
-  addBedrooms,
-  addParking,
+  handlePostBathrooms,
+  handlePostBedrooms,
+  handlePostParking,
 } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestBathrooms,
+  handleRequestBedrooms,
+  handleRequestParking,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const Counter = ({ identifier }) => {
   const [number, setNumber] = useState(0);
@@ -27,15 +32,18 @@ const Counter = ({ identifier }) => {
   });
 
   useEffect(() => {
-    dispatch(addBedrooms(bedroomValue));
+    dispatch(handleRequestBedrooms(bedroomValue));
+    dispatch(handlePostBedrooms(bedroomValue));
   }, [bedroomValue]);
 
   useEffect(() => {
-    dispatch(addBathrooms(bathroomValue));
+    dispatch(handleRequestBathrooms(bathroomValue));
+    dispatch(handlePostBathrooms(bathroomValue));
   }, [bathroomValue]);
 
   useEffect(() => {
-    dispatch(addParking(parkingValue));
+    dispatch(handleRequestParking(parkingValue));
+    dispatch(handlePostParking(parkingValue));
   }, [parkingValue]);
 
   const handleNumberChange = (newValue) => {

@@ -17,7 +17,7 @@ import {
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
-import { handlePostId } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import { handlePostAgentId } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
@@ -59,8 +59,9 @@ const Page = () => {
   const dispatch = useDispatch();
 
   const handleSubmitAd = () => {
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
-    dispatch(handlePostId(randomNumber));
+    const formId = Math.floor(Math.random() * 100) + 1;
+    dispatch(handlePostAgentId(formId));
+    // dispatch(handlePostFormId(formId));
     dispatch(handlePostlistingAd(postListing));
   };
 

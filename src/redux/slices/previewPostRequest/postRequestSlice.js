@@ -1,18 +1,22 @@
 import {
   PROPERTY_INFORMATION,
-  postListingEntities,
+  postRequestEntities,
 } from '@/app/constants/postListing';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = postListingEntities;
+const initialState = postRequestEntities;
 
 const postRequestSlice = createSlice({
   name: PROPERTY_INFORMATION.form,
   initialState,
   reducers: {
-    //agent Id & Name
-    handleRequestId: (state, action) => {
-      state.id = action.payload;
+    //agent Id & formId
+    handleRequestAgentId: (state, action) => {
+      state.usertId = action.payload;
+    },
+
+    handleRequestFormId: (state, action) => {
+      state.formId = action.payload;
     },
 
     //Ad_Infomation
@@ -50,23 +54,24 @@ const postRequestSlice = createSlice({
     },
 
     // FeaturesAndAmenities
-    addBedrooms: (state, action) => {
+    handleRequestBedrooms: (state, action) => {
       state.featuresAndAmenities.bedrooms = action.payload;
     },
-    addBathrooms: (state, action) => {
+    handleRequestBathrooms: (state, action) => {
       state.featuresAndAmenities.bathrooms = action.payload;
     },
-    addParking: (state, action) => {
+    handleRequestParking: (state, action) => {
       state.featuresAndAmenities.parking = action.payload;
     },
-    addAmenities: (state, action) => {
+    handleRequestAmenities: (state, action) => {
       state.featuresAndAmenities.selectedAmenities = action.payload;
     },
   },
 });
 
 export const {
-  handleRequestId,
+  handleRequestAgentId,
+  handleRequestFormId,
   handleRequestInformation,
   handleRequestLocationAndPuspose,
   handleRequestPropertyType,
@@ -76,10 +81,10 @@ export const {
   handleRequestAmount,
   handleRequestInstallment,
   handleRequestPossession,
-  addBedrooms,
-  addBathrooms,
-  addParking,
-  addAmenities,
+  handleRequestBedrooms,
+  handleRequestBathrooms,
+  handleRequestParking,
+  handleRequestAmenities,
   UploadImages,
   UploadVideos,
 } = postRequestSlice.actions;
