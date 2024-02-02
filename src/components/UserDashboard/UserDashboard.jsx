@@ -10,9 +10,7 @@ import BiddingDetails from '../Biddings/BiddingDetails';
 import { useSelector } from 'react-redux';
 
 const UserDashboard = () => {
-  const Agent_Ads = useSelector(
-    (state) => state?.postListingAds?.agentPostings
-  );
+  const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
 
   return (
     <>
@@ -37,7 +35,7 @@ const UserDashboard = () => {
         >
           <BiddingDetails
             liveBiddingData={LIVE_BIDDING_DATA}
-            Agent_Ads={Agent_Ads}
+            ads={userAds}
             Height={'1099px'}
           />
         </Box>

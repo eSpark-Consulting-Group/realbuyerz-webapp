@@ -546,3 +546,29 @@ export const postRequestEntities = {
     selectedAmenities: '',
   },
 };
+
+export const coverLetterSlice = {
+  agentId: '',
+  formId: '',
+  adInfomation: '',
+  locationAndPurpose: {
+    adPurpose: '',
+    propertyType: '',
+    propetySubType: '',
+    city: '',
+    location: '',
+  },
+  propertySizeAndPricing: {
+    areaSize: '',
+    amount: '',
+    installment: '',
+    possession: '',
+  },
+  featuresAndAmenities: {
+    bedrooms: '',
+    bathrooms: '',
+    parking: '',
+    selectedAmenities: '',
+  },
+  propertyImagesAndVideos: { images: '', videos: '' },
+};

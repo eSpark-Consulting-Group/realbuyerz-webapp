@@ -21,6 +21,7 @@ import { handleRequestFormId } from '@/src/redux/slices/previewPostRequest/postR
 import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
+import Link from 'next/link';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -80,6 +81,7 @@ const Page = () => {
             margin: { xs: 0, md: '0 auto', lg: 0 },
           }}
         >
+          <Link href={'/agent/live-bidding'}>agent</Link>
           <BuyersPlatform />
           <AdInformation propertyData={propertyData} />
           <PropertyPurpose propertyData={propertyData} />

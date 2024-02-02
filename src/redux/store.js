@@ -44,6 +44,7 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
+
     // Preview States Ads
     postListing: PostListingSlice,
     postRequest: PostRequestSlice,
