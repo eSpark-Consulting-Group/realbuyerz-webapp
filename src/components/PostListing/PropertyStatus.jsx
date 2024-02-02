@@ -12,7 +12,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const dispatch = useDispatch();
 
   const handleChange = (val) => {
-    formik.setFieldValue('purpose',val)
+    formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
     setProperStatusData(val);
   };

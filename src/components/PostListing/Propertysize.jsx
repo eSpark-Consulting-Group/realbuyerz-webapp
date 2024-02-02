@@ -10,7 +10,7 @@ import PostTitle from './PostTitle';
 import PropertyAreaSize from './PropertyAreaSize';
 import PropertyInstallment from './PropertyInstallment';
 
-const PropertySize = ({formik}) => {
+const PropertySize = ({ formik }) => {
   return (
     <Grid container>
       <Grid

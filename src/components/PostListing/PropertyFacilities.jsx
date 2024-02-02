@@ -47,7 +47,12 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
                 </Typography>
               </Box>
               <Box sx={{ width: 'auto' }}>
-                <Counter name={item?.name} formik={formik} title={item?.title} identifier={`facility_${index}`} />
+                <Counter
+                  name={item?.name}
+                  formik={formik}
+                  title={item?.title}
+                  identifier={`facility_${index}`}
+                />
               </Box>
             </Box>
           </Box>

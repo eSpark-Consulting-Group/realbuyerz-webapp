@@ -218,7 +218,7 @@ export const PROPERTY_INFORMATION = {
       dropPlaceholder: 'Select Unit',
       label: 'area',
       value: '',
-      unit:'areaUnit'
+      unit: 'areaUnit',
     },
     {
       image: '/images/listing-page/amount.svg',
@@ -227,7 +227,7 @@ export const PROPERTY_INFORMATION = {
       dropPlaceholder: 'PKR',
       label: 'amount',
       value: '',
-      unit:'amountCurrency'
+      unit: 'amountCurrency',
     },
   ],
 
@@ -266,17 +266,17 @@ export const PROPERTY_INFORMATION = {
     {
       image: '/images/listing-page/bed.svg',
       title: 'Bedrooms',
-      name:'bedrooms'
+      name: 'bedrooms',
     },
     {
       image: '/images/listing-page/room.svg',
       title: 'Bathrooms',
-      name:'bathrooms'
+      name: 'bathrooms',
     },
     {
       image: '/images/listing-page/parking.svg',
       title: 'Parking',
-      name:'parking'
+      name: 'parking',
     },
   ],
   upload: {

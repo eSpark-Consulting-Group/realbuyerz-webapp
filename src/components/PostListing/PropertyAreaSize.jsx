@@ -19,7 +19,7 @@ const PropertyAreaSize = ({
   selectCity,
   aeraSizes,
   currency,
-  formik
+  formik,
 }) => {
   const [propertyArea, setPropertyArea] = useState({
     area: '',
@@ -61,6 +61,7 @@ const PropertyAreaSize = ({
         [key]: val,
       });
     }
+    formik.setFieldValue(key, val);
   };
 
   const handleCityChange = (e, index, name) => {
@@ -76,7 +77,7 @@ const PropertyAreaSize = ({
         unit: val,
       });
     }
-    formik.setFieldValue(name,val)
+    formik.setFieldValue(name, val);
   };
   return (
     <>
@@ -136,7 +137,7 @@ const PropertyAreaSize = ({
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                position:'relative',
+                position: 'relative',
                 gap: 2,
                 mt: 0.8,
                 mb: 3,
@@ -181,9 +182,9 @@ const PropertyAreaSize = ({
                       '-webkit-appearance': 'none',
                       margin: 0,
                     },
-                    '& fieldset' : {
-                      border:formik.errors[item?.label] &&`solid 1px red`,
-                    }
+                    '& fieldset': {
+                      border: formik.errors[item?.label] && `solid 1px red`,
+                    },
                   }}
                   InputProps={{
                     style: {
@@ -192,16 +193,18 @@ const PropertyAreaSize = ({
                     },
                   }}
                   name={item?.label}
-                  // onChange={(e) =>
-                  //   handleInputChange(item?.label, e.target.value)
-                  // }
+                  onChange={(e) =>
+                    handleInputChange(item?.label, e.target.value)
+                  }
                   value={formik[item?.label]}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  error={formik.touched[item?.label] && Boolean(formik.errors[item?.label])}
+                  error={
+                    formik.touched[item?.label] &&
+                    Boolean(formik.errors[item?.label])
+                  }
                 />
                 <Autocomplete
-                name={item?.unit}
+                  name={item?.unit}
                   disablePortal
                   id="combo-box-demo"
                   options={item.label == 'area' ? aeraSizes : currency}
@@ -209,7 +212,7 @@ const PropertyAreaSize = ({
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
                       // border: '1px solid #E7E7E7',
-                      border: `1px solid ${formik.errors[item?.unit] ? 'red' :'#E7E7E7'}`,
+                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
                       borderRadius: '10px',
                     },
                   }}
@@ -227,14 +230,20 @@ const PropertyAreaSize = ({
                       }}
                     />
                   )}
-                  onChange={(e) => handleCityChange(e, index,item?.unit)}
+                  onChange={(e) => handleCityChange(e, index, item?.unit)}
                 />
               </Box>
-              {(formik.errors[item?.label] || formik.errors[item?.unit]) && <Typography sx={{
-                  position:'absolute',
-                  bottom:'-25px',
-                  color:'red'
-                }}>{'Please enter and select values'}</Typography>}
+              {(formik.errors[item?.label] || formik.errors[item?.unit]) && (
+                <Typography
+                  sx={{
+                    position: 'absolute',
+                    bottom: '-25px',
+                    color: 'red',
+                  }}
+                >
+                  {'Please enter and select values'}
+                </Typography>
+              )}
             </Box>
           </Box>
         </Box>

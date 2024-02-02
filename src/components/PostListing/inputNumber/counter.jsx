@@ -13,7 +13,7 @@ import {
   handleRequestParking,
 } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
-const Counter = ({ identifier,formik, name }) => {
+const Counter = ({ identifier, formik, name }) => {
   const [number, setNumber] = useState(0);
   const [incrementValue, setIncrementValue] = useState(0);
   const [bedroomValue, setBedroomValue] = useState(0);
@@ -47,12 +47,12 @@ const Counter = ({ identifier,formik, name }) => {
   }, [parkingValue]);
 
   const handleNumberChange = (newValue) => {
-    console.log({newValue,name})
+    console.log({ newValue, name });
     setNumber(newValue);
-    formik.setFieldValue('featuresAndAmenities',{
+    formik.setFieldValue('featuresAndAmenities', {
       ...formik.values.featuresAndAmenities,
-      [name]:newValue
-    })
+      [name]: newValue,
+    });
   };
 
   const saveIncrement = (value) => {

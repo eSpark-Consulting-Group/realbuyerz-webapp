@@ -1,18 +1,14 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import Image from 'next/image';
 
-const ProposalModal = ({ title, description, buttonLabel }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const ProposalModal = ({ title, description, buttonLabel, open, onClose }) => {
   return (
     <>
-      <Button onClick={handleOpen}>open</Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -67,7 +63,7 @@ const ProposalModal = ({ title, description, buttonLabel }) => {
           )}
           <Button
             variant="primary"
-            onClick={handleClose}
+            onClick={onClose}
             sx={{
               width: '135px',
               height: '40px',
