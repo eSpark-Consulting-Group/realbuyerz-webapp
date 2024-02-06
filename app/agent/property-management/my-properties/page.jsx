@@ -1,11 +1,16 @@
+'use client'
+import PropertiesFilter from '@/src/components/Properties/PropertiesFilter';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const page = () => {
+const Page = () => {
+  const properties = useSelector((state) => state?.postListingAds?.agentPostings);
+  console.log(properties, 'propertesss')
   return (
     <>
-      <h1>my-properties</h1>
+     <PropertiesFilter data={properties} />
     </>
   );
 };
 
-export default page;
+export default Page;
