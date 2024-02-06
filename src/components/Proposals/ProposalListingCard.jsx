@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
+import { AMOUNT, TRASH } from '@/app/constants/Proposals';
 
 const styles = {
   container: {
@@ -75,7 +75,7 @@ const ProposalListingCard = ({ proposalsData }) => {
             >
               <Link href={`my-proposals/${proposal?.id}`}>
                 <Image
-                  src={proposal?.coverImage}
+                  src={proposal?.imageUrl}
                   layout="fill"
                   objectFit="cover"
                   style={styles.image}
@@ -114,24 +114,22 @@ const ProposalListingCard = ({ proposalsData }) => {
                       textTransform: 'uppercase',
                     }}
                   >
-                    {proposal?.proposalTitle}
+                    {proposal?.title}
                   </Typography>
                 </Link>
               </Grid>
               <Grid item xs={3} textAlign={'right'}>
-                <Link href={`my-proposals/${proposal?.id}`}>
-                  <Button variant="primary">
-                    <Typography variant="secondary">
-                      {RESTORE_PROPERTY}
-                    </Typography>
-                  </Button>
-                </Link>
+                <Button variant="primary">
+                  <Typography variant="secondary">
+                    {TRASH}
+                  </Typography>
+                </Button>
               </Grid>
             </Grid>
             <Divider sx={{ py: '5px' }} />
             <Grid container>
               <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
-                {Object.keys(proposal?.propertyData?.propertyLocation).map(
+                {Object?.keys(proposal?.location).map(
                   (key) => {
                     if (key !== 'geoLocation' && key !== 'area') {
                       return (
@@ -163,7 +161,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                               fontSize: '14px',
                             }}
                           >
-                            {proposal?.propertyData?.propertyLocation[key]}
+                            {proposal?.location[key]}
                           </Typography>
                         </Box>
                       );
@@ -202,7 +200,7 @@ const ProposalListingCard = ({ proposalsData }) => {
                       fontSize: '14px',
                     }}
                   >
-                    {proposal?.propertyOverview?.price}
+                    {proposal?.amount}
                   </Typography>
                 </Box>
               </Grid>
@@ -213,8 +211,8 @@ const ProposalListingCard = ({ proposalsData }) => {
             >
               {proposal?.propertyData?.propertyDirection}
             </Typography>
-            <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
-              {proposal?.proposalDescription}
+            <Typography sx={{ fontSize: '12px', color: '#333333', fontWeight: '400' }}>
+              {proposal?.description}
             </Typography>
           </Grid>
         </Grid>

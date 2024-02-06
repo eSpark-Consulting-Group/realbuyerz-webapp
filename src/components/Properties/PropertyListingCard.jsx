@@ -27,6 +27,7 @@ const styles = {
 };
 
 const PropertyListingCard = ({ propertyData }) => {
+  console.log(propertyData, 'propertyData')
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 

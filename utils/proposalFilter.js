@@ -62,3 +62,7 @@ export function getFilteredCount(selectedData, proposalStatus) {
         (proposal) => proposal?.proposalStatus === proposalStatus
       )?.length;
 }
+
+export const filterPropertiesByStatus = (filteredProposalsData, status) => {
+  return filteredProposalsData.filter(proposal => proposal.proposalStatus === status);
+};

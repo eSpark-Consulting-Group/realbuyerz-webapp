@@ -1,7 +1,7 @@
-import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
+import { PROPOSALS_DATA, PROPOSAL_LISTING } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
 
-const proposals = PROPOSALS_DATA;
+const proposals = PROPOSAL_LISTING;
 
 const initialState = { proposals };
 
@@ -37,10 +37,8 @@ const proposalsSlice = createSlice({
     },
 
     deleteProposal: (state, action) => {
-      const id = action.payload;
-      state.proposals = state.proposals.filter(
-        (property) => property.id !== id
-      );
+      const index = action.payload;
+      state.proposals.splice(index, 1);
     },
 
     selectProposal: (state, action) => {
