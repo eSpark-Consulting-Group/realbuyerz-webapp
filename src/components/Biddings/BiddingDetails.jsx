@@ -51,7 +51,9 @@ const BiddingDetails = ({ height, ads }) => {
           <>
             {ads
               ?.slice(0, showAllItems ? ads.length : 3)
-              ?.map((item, index) => (
+              ?.map((item, index) => {
+                console.log({item})
+                return(
                 <Grid container xs={12} key={index}>
                   <Box
                     sx={{
@@ -292,7 +294,7 @@ const BiddingDetails = ({ height, ads }) => {
                     ></Box>
                   </Box>
                 </Grid>
-              ))}
+              )})}
             {ads.length > 3 ? (
               <>
                 {!showAllItems ? (

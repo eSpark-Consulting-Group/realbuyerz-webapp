@@ -235,6 +235,28 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   let prevSender = null;
 
+  const conversationRef = useRef(null)
+  const scrollToBottom = () => {
+    console.log({top:conversationRef.current.offsetTop})
+    if (conversationRef.current) {
+      const lastComponent = conversationRef.current;
+      const additionalOffset = 20; // Additional 20px to account for margin-bottom
+  
+      // Calculate total height including the additional offset
+      const totalHeight = lastComponent.getBoundingClientRect().height + additionalOffset;
+  
+      // Scroll smoothly to the bottom of the last component
+      lastComponent.parentElement.scrollTo({
+        top: lastComponent.offsetTop + totalHeight - lastComponent.parentElement.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+  useEffect(() => {
+    scrollToBottom()
+  }, [conversation])
+  
+
   return (
     <Grid
       item
@@ -300,6 +322,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
             borderBottom: 'solid 1px #E4E4E4',
           }}
         >
+          <Box ref={conversationRef}>
           {conversation?.map((days, daysIndex) => {
             return (
               <Box key={daysIndex}>
@@ -328,6 +351,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               </Box>
             );
           })}
+          </Box>
         </Box>
         <Box
           sx={{
