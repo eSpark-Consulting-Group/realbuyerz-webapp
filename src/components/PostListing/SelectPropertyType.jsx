@@ -14,6 +14,10 @@ import {
   handleRequestPropertyType,
   handleRequestPropetySubType,
 } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import {
+  handleCoverPropertyType,
+  handleCoverPropetySubType,
+} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const SelectProperyType = ({
   image,
@@ -47,11 +51,13 @@ const SelectProperyType = ({
   useEffect(() => {
     dispatch(handleRequestPropertyType(propertyType));
     dispatch(handlePostPropertyType(propertyType));
+    dispatch(handleCoverPropertyType(propertyType));
   }, [propertyType]);
 
   useEffect(() => {
     dispatch(handlePostPropetySubType(propetySubType));
     dispatch(handleRequestPropetySubType(propetySubType));
+    dispatch(handleCoverPropetySubType(propetySubType));
   }, [propetySubType]);
 
   return (

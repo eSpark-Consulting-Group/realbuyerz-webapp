@@ -29,7 +29,7 @@ const PreviewAmountAndFeature = ({
             >
               {PricingValues?.amount?.amount
                 ? PricingValues?.amount?.amount
-                : 0}
+                : null}
             </Typography>
           </Box>
         </Box>
@@ -67,16 +67,18 @@ const PreviewAmountAndFeature = ({
               {FeatureValues?.bathrooms}
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', gap: 0.5, mt: 1 }}>
-            <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
-              {amenities?.parking}
-            </Typography>
-            <Typography
-              sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
-            >
-              {FeatureValues?.parking}
-            </Typography>
-          </Box>
+          {FeatureValues?.parking > 0 && (
+            <Box sx={{ display: 'flex', gap: 0.5, mt: 1 }}>
+              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
+                {amenities?.parking}
+              </Typography>
+              <Typography
+                sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
+              >
+                {FeatureValues?.parking}
+              </Typography>
+            </Box>
+          )}
         </Box>
       )}
     </>

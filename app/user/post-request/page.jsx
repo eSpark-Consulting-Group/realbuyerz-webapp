@@ -137,7 +137,7 @@ const Page = () => {
         </form>
         <ProposalModal
           buttonLabel={'Continue'}
-          description={'Post listing submitted'}
+          description={'Your Proposal is submitted successfully.'}
           title={'Success'}
           open={isOpen}
           onClose={handleCloseSuccessModal}

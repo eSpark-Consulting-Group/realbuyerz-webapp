@@ -1,7 +1,7 @@
 import {
   PROPERTY_INFORMATION,
   coverLetterEntities,
-} from '@/app/constants/CoverListing';
+} from '@/app/constants/postListing';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = coverLetterEntities;
@@ -14,8 +14,8 @@ const coverLetterSlice = createSlice({
     handleCoverAgentId: (state, action) => {
       state.agentId = action.payload;
     },
-    handleCoverFormId: (state, action) => {
-      state.formId = action.payload;
+    handleCoverProposalId: (state, action) => {
+      state.proposalId = action.payload;
     },
 
     //Ad_Infomation
@@ -78,7 +78,7 @@ const coverLetterSlice = createSlice({
 
 export const {
   handleCoverAgentId,
-  handleCoverFormId,
+  handleCoverProposalId,
   handleCoverInformation,
   handleCoverLocationAndPuspose,
   handleCoverPropertyType,

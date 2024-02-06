@@ -13,7 +13,6 @@ import SelectLocationType from './SelectLocationType';
 import PropertyStatus from './PropertyStatus';
 
 const PropertyPurpose = ({ propertyData, formik }) => {
-  // console.log({propertyData})
   return (
     <Grid container>
       <Grid

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 // import { ROUTERS } from '@/app/constants/LiveBidding';
 
-const RightSection = ({ rightSection }) => {
+const RightSection = ({ postId }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -27,7 +27,7 @@ const RightSection = ({ rightSection }) => {
           gap: 2.5,
         }}
       >
-        <Link href={'cover-letter'}>
+        <Link href={`${postId}/cover-letter`}>
           <Typography
             sx={{
               display: 'flex',
@@ -45,7 +45,6 @@ const RightSection = ({ rightSection }) => {
             {BIDDINGS?.applybutton?.title}
           </Typography>
         </Link>
-
         <Link href={'#'}>
           <Typography
             onMouseEnter={handleMouseEnter}
@@ -116,7 +115,7 @@ const RightSection = ({ rightSection }) => {
             textWrap: 'wrap',
           }}
         >
-          {rightSection.connects} {BIDDINGS?.connects}
+          {/* {rightSection.connects} {BIDDINGS?.connects} */}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', gap: '5px' }}>
@@ -130,7 +129,6 @@ const RightSection = ({ rightSection }) => {
             pb: '10px',
           }}
         >
-          {' '}
           {BIDDINGS?.availableConnects}
         </Typography>
         <Typography
@@ -142,9 +140,7 @@ const RightSection = ({ rightSection }) => {
             fontWeight: '400',
             pb: '10px',
           }}
-        >
-          0
-        </Typography>
+        ></Typography>
       </Box>
     </Box>
   );

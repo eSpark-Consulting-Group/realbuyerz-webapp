@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { handlePostInformation } from '@/src/redux/slices/previewPostListing/postListingSlice';
 import { handleRequestInformation } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handleCoverInformation } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyInformation = ({ propertyData, formik }) => {
   const [adInformation, setAdInformation] = useState({});
@@ -20,6 +21,7 @@ const PropertyInformation = ({ propertyData, formik }) => {
   useEffect(() => {
     dispatch(handlePostInformation(adInformation));
     dispatch(handleRequestInformation(adInformation));
+    dispatch(handleCoverInformation(adInformation));
   }, [adInformation]);
 
   const specialIndex = 1;

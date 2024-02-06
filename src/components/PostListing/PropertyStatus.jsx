@@ -4,6 +4,7 @@ import { Typography, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { handleRequestLocationAndPuspose } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handlePostLocationAndPuspose } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import { handleCoverLocationAndPuspose } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
@@ -20,6 +21,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   useEffect(() => {
     dispatch(handleRequestLocationAndPuspose(properStatusData));
     dispatch(handlePostLocationAndPuspose(properStatusData));
+    dispatch(handleCoverLocationAndPuspose(properStatusData));
   }, [properStatusData]);
 
   return (

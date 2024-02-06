@@ -11,6 +11,10 @@ import {
   handlePostVideos,
 } from '@/src/redux/slices/previewPostListing/postListingSlice';
 import VideoUploader from './VideoUploader';
+import {
+  handleCoverImages,
+  handleCoverVideos,
+} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyGallery = () => {
   const [images, setImages] = useState([]);
@@ -21,7 +25,9 @@ const PropertyGallery = () => {
 
   useEffect(() => {
     dispatch(handlePostImages(images));
+    dispatch(handleCoverImages(images));
     dispatch(handlePostVideos(videos));
+    dispatch(handleCoverVideos(videos));
   }, [images, videos]);
 
   const handleImageUpload = (type, file) => {

@@ -12,6 +12,10 @@ import {
   handleRequestAmount,
   handleRequestArea,
 } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import {
+  handleCoverAmount,
+  handleCoverArea,
+} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -42,11 +46,13 @@ const PropertyAreaSize = ({
   useEffect(() => {
     dispatch(handlePostArea(propertyArea));
     dispatch(handleRequestArea(propertyArea));
+    dispatch(handleCoverArea(propertyArea));
   }, [propertyArea]);
 
   useEffect(() => {
     dispatch(handleRequestAmount(propertyAmount));
     dispatch(handlePostAmount(propertyAmount));
+    dispatch(handleCoverAmount(propertyAmount));
   }, [propertyAmount]);
 
   const handleInputChange = (key, val) => {

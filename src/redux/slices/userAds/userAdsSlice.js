@@ -9,8 +9,11 @@ const userAdsSlice = createSlice({
     handleSumitUserAds: (state, action) => {
       state.userPostings.push(action.payload);
     },
+    handleSendPorposals: (state, action) => {
+      state.userPostings.proposals.push(action.payload);
+    },
   },
 });
 
-export const { handleSumitUserAds } = userAdsSlice.actions;
+export const { handleSumitUserAds, handleSendPorposals } = userAdsSlice.actions;
 export default userAdsSlice.reducer;

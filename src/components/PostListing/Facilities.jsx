@@ -12,16 +12,17 @@ import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
 import { handlePostAmenities } from '@/src/redux/slices/previewPostListing/postListingSlice';
 import { handleRequestAmenities } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handleCoverAmenities } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [amenities, setamenities] = useState();
   const [amenitiesTitle, setAmenitiesTitle] = useState();
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(handleRequestAmenities(amenitiesTitle));
     dispatch(handlePostAmenities(amenitiesTitle));
+    dispatch(handleRequestAmenities(amenitiesTitle));
+    dispatch(handleCoverAmenities(amenitiesTitle));
   }, [amenitiesTitle]);
 
   useEffect(() => {

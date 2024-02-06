@@ -26,6 +26,7 @@ import biddingsSlice from './slices/bidding/biddingsSlice';
 import PostListingSlice from './slices/previewPostListing/postListingSlice';
 import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
 import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
+import coverLetterSlice from './slices/PreviewCoverLetter/coverLetterSlice';
 
 export const store = configureStore({
   reducer: {
@@ -45,15 +46,15 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-
-    // Preview States Ads
-    postListing: PostListingSlice,
-    postRequest: PostRequestSlice,
-
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,
+
+    // Preview States Ads
+    postListing: PostListingSlice,
+    postRequest: PostRequestSlice,
+    coverLetter: coverLetterSlice,
 
     // Sumited Ads States
     loginAgents: loginAgentsSlice,

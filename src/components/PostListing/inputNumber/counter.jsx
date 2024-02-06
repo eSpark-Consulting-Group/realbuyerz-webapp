@@ -12,6 +12,11 @@ import {
   handleRequestBedrooms,
   handleRequestParking,
 } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import {
+  handleCoverBathrooms,
+  handleCoverBedrooms,
+  handleCoverParking,
+} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const Counter = ({ identifier, formik, name }) => {
   const [number, setNumber] = useState(0);
@@ -34,16 +39,19 @@ const Counter = ({ identifier, formik, name }) => {
   useEffect(() => {
     dispatch(handleRequestBedrooms(bedroomValue));
     dispatch(handlePostBedrooms(bedroomValue));
+    dispatch(handleCoverBedrooms(bedroomValue));
   }, [bedroomValue]);
 
   useEffect(() => {
     dispatch(handleRequestBathrooms(bathroomValue));
     dispatch(handlePostBathrooms(bathroomValue));
+    dispatch(handleCoverBathrooms(bathroomValue));
   }, [bathroomValue]);
 
   useEffect(() => {
     dispatch(handleRequestParking(parkingValue));
     dispatch(handlePostParking(parkingValue));
+    dispatch(handleCoverParking(parkingValue));
   }, [parkingValue]);
 
   const handleNumberChange = (newValue) => {

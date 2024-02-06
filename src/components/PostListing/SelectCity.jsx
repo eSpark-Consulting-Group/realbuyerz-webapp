@@ -5,6 +5,7 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { handleReuestCity } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handlePostCity } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import { handleCoverCity } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const SelectCityType = ({ image, label, cityOptions, formik }) => {
   const [city, setCity] = useState();
@@ -20,6 +21,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
   useEffect(() => {
     dispatch(handleReuestCity(city));
     dispatch(handlePostCity(city));
+    dispatch(handleCoverCity(city));
   }, [city]);
 
   return (

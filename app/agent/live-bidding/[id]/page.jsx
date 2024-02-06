@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 // import { usePathname } from 'next/navigation';
 // import { useSelector } from 'react-redux';
 
@@ -22,18 +22,20 @@ import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail'
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
 import Location from '@/src/components/PostListing/preview/Location';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 const Page = () => {
   const { amenities, amount, location } = BIDDINGS;
-
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  // const biddings = useSelector((state) => state?.postRequestAds);
-  // const bidding = biddings[id - 1];
+  const userPostings = useSelector(
+    (state) => state?.postRequestAds?.userPostings
+  );
+  const spacificPost = userPostings.filter((item) => id == item?.formId)[0];
 
   // const proposals = useSelector((state) => state.proposals.proposals);
-  console.log(id, 'id');
+  console.log(spacificPost, 'spacificPost');
 
   // const selectedProposal = proposals.find(
   //   (proposal) => proposal?.id == bidding?.proposalId
@@ -78,26 +80,39 @@ const Page = () => {
                     borderRight: '1px solid #E4E4E4',
                   }}
                 >
-                  {/* {ads?.adInfomation?.title && ( */}
-                  <PropertyDetail
-                    title={'Property Details'}
-                    // values={ads?.adInfomation}
-                  />
-                  {/* )} */}
-                  {/* {ads?.locationAndPurpose && ( */}
-                  <Location
-                    location={location}
-                    // values={ads?.locationAndPurpose}
-                  />
-                  {/* )} */}
-                  {/* {ads?.featuresAndAmenities && ( */}
-                  <PreviewAmountAndFeature
-                    amountData={amount}
-                    amenities={amenities}
-                    // PricingValues={ads?.propertySizeAndPricing}
-                    // FeatureValues={ads?.featuresAndAmenities}
-                  />
-                  {/* )} */}
+                  <Typography
+                    sx={{
+                      fontSize: '20px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                      my: 2,
+                    }}
+                  >
+                    Clients Requirement
+                  </Typography>
+                  {spacificPost?.adInfomation?.title && (
+                    <PropertyDetail
+                      title={'Property Details'}
+                      values={spacificPost?.adInfomation}
+                    />
+                  )}
+                  {spacificPost?.locationAndPurpose && (
+                    <Location
+                      location={location}
+                      values={spacificPost?.locationAndPurpose}
+                    />
+                  )}
+                  {spacificPost?.featuresAndAmenities && (
+                    <>
+                      <PreviewAmountAndFeature
+                        amountData={amount}
+                        amenities={amenities}
+                        PricingValues={spacificPost?.propertySizeAndPricing}
+                        FeatureValues={spacificPost?.featuresAndAmenities}
+                      />
+                      {/* <PreviewAmenities list={spacificPost} /> */}
+                    </>
+                  )}
                 </Box>
               </Grid>
               <Grid item xs={12} md={3.5} xl={2.5}>
@@ -112,6 +127,7 @@ const Page = () => {
                   }}
                 >
                   <RightSection
+                    postId={spacificPost?.formId}
                     rightSection={''}
                     report={''}
                     apply={''}

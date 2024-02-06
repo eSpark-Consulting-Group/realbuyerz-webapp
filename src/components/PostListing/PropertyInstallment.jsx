@@ -12,6 +12,10 @@ import {
   handleRequestInstallment,
   handleRequestPossession,
 } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import {
+  handleCoverInstallment,
+  handleCoverPossession,
+} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
@@ -37,11 +41,13 @@ const PropertyInstallment = ({
   useEffect(() => {
     dispatch(handlePostInstallment(installment));
     dispatch(handleRequestInstallment(installment));
+    dispatch(handleCoverInstallment(installment));
   }, [installment]);
 
   useEffect(() => {
     dispatch(handleRequestPossession(possession));
     dispatch(handlePostPossession(possession));
+    dispatch(handleCoverPossession(possession));
   }, [possession]);
 
   return (

@@ -552,9 +552,9 @@ export const postRequestEntities = {
   },
 };
 
-export const coverLetterSlice = {
+export const coverLetterEntities = {
   agentId: '',
-  formId: '',
+  proposalId: '',
   adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
