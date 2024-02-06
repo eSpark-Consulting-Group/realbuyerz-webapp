@@ -24,6 +24,7 @@ import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
+import Link from 'next/link';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -103,6 +104,7 @@ const Page = () => {
       // alert(JSON.stringify(values, null, 2));
       console.log({ values });
       handleOpenSuccessModal();
+      handleSubmitAd();
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -123,15 +125,13 @@ const Page = () => {
               margin: { xs: 0, md: '0 auto', lg: 0 },
             }}
           >
+            <Link href={'/agent/live-bidding'}>agent</Link>
             <BuyersPlatform />
             <AdInformation formik={formik} propertyData={propertyData} />
             <PropertyPurpose formik={formik} propertyData={propertyData} />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
-            <SubmitButton
-              handleSubmitAd={handleSubmitAd}
-              handleClickOpen={handleClickOpen}
-            />
+            <SubmitButton handleClickOpen={handleClickOpen} />
             <PreviewModal open={open} onClose={handleClose} ads={postRequest} />
           </Box>
         </form>

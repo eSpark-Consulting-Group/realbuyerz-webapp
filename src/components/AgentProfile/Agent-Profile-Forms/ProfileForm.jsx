@@ -17,6 +17,7 @@ import VerificationModal from '../../Modal/VerificationModal';
 import { profileValidationSchema } from '../../Schemas/profileValidationSchema';
 import PhoneInput from 'react-phone-number-input';
 import { handleEdit } from '@/src/redux/slices/loginAgents/loginAgentsSlice';
+import { handleUserEdit } from '@/src/redux/slices/loginUsers/loginUsersSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -29,7 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm({ data, spacificAgent, agentData }) {
+export default function ProfileForm({ data, formValues }) {
   const { image, fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
@@ -39,25 +40,32 @@ export default function ProfileForm({ data, spacificAgent, agentData }) {
   const dispatch = useDispatch();
 
   const Profile_Keys = {
-    profileImage: `${spacificAgent?.profileImage}` || '',
-    about: `${spacificAgent?.about}` || '',
-    address: `${spacificAgent?.address}` || '',
-    city: `${spacificAgent?.city}` || '',
-    country: `${spacificAgent?.country}` || '',
-    email: `${spacificAgent?.email}` || '',
-    firstName: `${spacificAgent?.firstName}` || '',
-    landline: `${spacificAgent?.landline}` || '',
-    lastName: `${spacificAgent?.lastName}` || '',
-    mobile: `${spacificAgent?.mobile}` || '',
-    whatsapp: `${spacificAgent?.whatsapp}` || '',
+    profileImage: `${formValues?.profileImage}` || '',
+    about: `${formValues?.about}` || '',
+    address: `${formValues?.address}` || '',
+    city: `${formValues?.city}` || '',
+    country: `${formValues?.country}` || '',
+    email: `${formValues?.email}` || '',
+    firstName: `${formValues?.firstName}` || '',
+    landline: `${formValues?.landline}` || '',
+    lastName: `${formValues?.lastName}` || '',
+    mobile: `${formValues?.mobile}` || '',
+    whatsapp: `${formValues?.whatsapp}` || '',
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
     useFormik({
-      initialValues: { ...Profile_Keys, ...agentData },
+      initialValues: { ...Profile_Keys, ...formValues },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
-        dispatch(handleEdit(values));
+        if (formValues?.userType == 'agent') {
+          dispatch(handleEdit(values));
+        }
+        if (formValues?.userType == 'user') {
+          dispatch(handleUserEdit(values));
+        } else {
+          null;
+        }
         // action.resetForm();
       },
     });
@@ -109,11 +117,7 @@ export default function ProfileForm({ data, spacificAgent, agentData }) {
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles
-                data={user}
-                spacificAgent={spacificAgent}
-                imageValue={values?.profileImage}
-              />
+              <AgentProfiles data={user} spacificData={formValues} />
             </Box>
           </Item>
         </Grid>

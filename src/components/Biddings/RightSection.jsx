@@ -4,7 +4,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ROUTERS } from '@/app/constants/LiveBidding';
+// import { ROUTERS } from '@/app/constants/LiveBidding';
 
 const RightSection = ({ rightSection }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,7 +27,7 @@ const RightSection = ({ rightSection }) => {
           gap: 2.5,
         }}
       >
-        <Link href={ROUTERS?.postListing}>
+        <Link href={'cover-letter'}>
           <Typography
             sx={{
               display: 'flex',

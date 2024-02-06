@@ -3,11 +3,13 @@ import { Box, Grid } from '@mui/material';
 
 import EditProfileModal from '../../Modal/EditProfileModal';
 import ButtonBaseDemo from './EditImage';
-const AgentImage = ({ image }) => {
+
+const AgentImage = ({ spacificData }) => {
   const [open, setOpen] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
-  const [setProfileImage] = useState(image);
+  const [setProfileImage] = useState(spacificData?.profileImage);
+
   return (
     <Grid
       sx={{
@@ -20,7 +22,10 @@ const AgentImage = ({ image }) => {
         position: 'relative',
       }}
     >
-      <ButtonBaseDemo url={image} handleOpen={handleOpen} />
+      <ButtonBaseDemo
+        url={photoURL ? photoURL : spacificData?.profileImage}
+        handleOpen={handleOpen}
+      />
       <Box
         sx={{
           zIndex: '1',
@@ -37,6 +42,7 @@ const AgentImage = ({ image }) => {
           setOpen={setOpen}
           photoURL={photoURL}
           setPhotoURL={setPhotoURL}
+          spacificData={spacificData}
           setProfileImage={setProfileImage}
           handleOpen={handleOpen}
           sx={{
