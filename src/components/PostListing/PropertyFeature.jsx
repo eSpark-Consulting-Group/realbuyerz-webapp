@@ -8,7 +8,7 @@ import PropertyFacilities from './PropertyFacilities';
 
 import AddAmenities from './AddAmenities';
 
-const PropertyFeatures = () => {
+const PropertyFeatures = ({ formik }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (items) => {
@@ -64,6 +64,7 @@ const PropertyFeatures = () => {
             >
               <PropertyFacilities
                 propertyInformation={PROPERTY_INFORMATION.feature}
+                formik={formik}
               />
               <AddAmenities
                 onSelected={handleSelectedItems}

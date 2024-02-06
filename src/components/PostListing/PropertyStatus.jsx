@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux';
 import { handleRequestLocationAndPuspose } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handlePostLocationAndPuspose } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
-const PropertyStatus = ({ propertyInformation, propertyData }) => {
+const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
   const [properStatusData, setProperStatusData] =
     useState(activePropertyStatus);
   const dispatch = useDispatch();
 
   const handleChange = (val) => {
+    formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
     setProperStatusData(val);
   };

@@ -16,6 +16,7 @@ import {
 const PropertyInstallment = ({
   propertyInstallmentInfo,
   propertyBuyingDetails,
+  formik,
 }) => {
   const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
@@ -30,6 +31,7 @@ const PropertyInstallment = ({
     } else {
       setPossession(val);
     }
+    formik.setFieldValue(key, val);
   };
 
   useEffect(() => {
