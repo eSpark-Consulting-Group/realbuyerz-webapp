@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { handlePostInformation } from '@/src/redux/slices/previewPostListing/postListingSlice';
 import { handleRequestInformation } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
-const PropertyInformation = ({ propertyData }) => {
+const PropertyInformation = ({ propertyData, formik }) => {
   const [adInformation, setAdInformation] = useState({});
   const dispatch = useDispatch();
   const handleChange = (key, val) => {
@@ -14,6 +14,7 @@ const PropertyInformation = ({ propertyData }) => {
       ...adInformation,
       [key]: val,
     });
+    formik.setFieldValue(key, val);
   };
 
   useEffect(() => {
@@ -86,6 +87,7 @@ const PropertyInformation = ({ propertyData }) => {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  position: 'relative',
                   gap: 2,
                   mt: 0.8,
                   mb: 1,
@@ -111,11 +113,31 @@ const PropertyInformation = ({ propertyData }) => {
                     '& textarea': {
                       minHeight: index === specialIndex ? '192px' : '0',
                     },
+                    '& fieldset': {
+                      border: formik.errors[item?.label] && `solid 1px red`,
+                    },
                   }}
                   name={item?.label}
+                  value={formik[item?.label]}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched[item?.label] &&
+                    Boolean(formik.errors[item?.label])
+                  }
                   onChange={(e) => handleChange(item?.label, e.target.value)}
                   multiline
                 />
+                {formik.errors[item?.label] && (
+                  <Typography
+                    sx={{
+                      position: 'absolute',
+                      bottom: '-10px',
+                      color: 'red',
+                    }}
+                  >
+                    {formik.errors[item?.label]}
+                  </Typography>
+                )}
               </Box>
             </Box>
           </Box>

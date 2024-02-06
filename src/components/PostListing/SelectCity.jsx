@@ -6,13 +6,14 @@ import { useDispatch } from 'react-redux';
 import { handleReuestCity } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handlePostCity } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
-const SelectCityType = ({ image, label, cityOptions }) => {
+const SelectCityType = ({ image, label, cityOptions, formik }) => {
   const [city, setCity] = useState();
   const dispatch = useDispatch();
   const options = cityOptions?.map((opt) => opt?.label);
 
   const handleCityChange = (event) => {
     const val = event.target.innerText;
+    formik.setFieldValue('city', val);
     setCity(val);
   };
 
@@ -72,6 +73,7 @@ const SelectCityType = ({ image, label, cityOptions }) => {
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
+              position: 'relative',
               gap: 1,
               mt: 0.8,
               mb: 3,
@@ -90,13 +92,18 @@ const SelectCityType = ({ image, label, cityOptions }) => {
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
             <Autocomplete
+              name={'city'}
+              value={formik.city}
+              // onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.city && Boolean(formik.errors.city)}
               disablePortal
               id="combo-box-demo"
               options={options}
               sx={{
                 '& .MuiAutocomplete-inputRoot': {
                   borderRadius: '10px',
-                  border: '1px solid #E7E7E7',
+                  border: `1px solid ${formik.errors.city ? 'red' : '#E7E7E7'}`,
                 },
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
@@ -105,6 +112,17 @@ const SelectCityType = ({ image, label, cityOptions }) => {
               )}
               onChange={handleCityChange}
             />
+            {formik.errors['city'] && (
+              <Typography
+                sx={{
+                  position: 'absolute',
+                  bottom: '-25px',
+                  color: 'red',
+                }}
+              >
+                {formik.errors['city']}
+              </Typography>
+            )}
           </Box>
         </Box>
       </Box>
