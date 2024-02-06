@@ -6,7 +6,7 @@ import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
 
-const AgentProfiles = ({ data, spacificAgent, imageValue }) => {
+const AgentProfiles = ({ data, spacificData }) => {
   return (
     <Box
       sx={{
@@ -27,7 +27,7 @@ const AgentProfiles = ({ data, spacificAgent, imageValue }) => {
           },
         }}
       >
-        <AgentImage image={imageValue} />
+        <AgentImage spacificData={spacificData} />
         <Grid
           sx={{
             padding: 2,
@@ -46,7 +46,7 @@ const AgentProfiles = ({ data, spacificAgent, imageValue }) => {
           >
             <AgentProfileDetail
               description={data}
-              spacificAgent={spacificAgent}
+              spacificData={spacificData}
             />
             {data?.userType === `${USER_TYPE.agent}` ? (
               <LetsTalk text={LETS_TALK} />

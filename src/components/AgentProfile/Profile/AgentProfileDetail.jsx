@@ -13,7 +13,7 @@ import {
   LOCATION_ICON,
 } from '@/app/constants/AgentProfile';
 
-const AgentProfileDetail = ({ description, spacificAgent }) => {
+const AgentProfileDetail = ({ description, spacificData }) => {
   return (
     <Grid
       item
@@ -41,12 +41,11 @@ const AgentProfileDetail = ({ description, spacificAgent }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
         >
-          {spacificAgent?.userName}
-          {/* {description?.userName} */}
+          {`${spacificData?.firstName ? spacificData?.firstName : 'user'} ${spacificData?.lastName ? spacificData?.lastName : 'name'}`}
         </Typography>
 
         {description?.userType === `${USER_TYPE.user}` ? (
-          <ProfileInfo title={spacificAgent?.email} />
+          <ProfileInfo title={spacificData?.email} />
         ) : (
           <>
             <ProfileInfo

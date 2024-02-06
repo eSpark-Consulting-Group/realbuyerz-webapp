@@ -21,17 +21,19 @@ import { BIDDINGS } from '@/app/constants/Biddings';
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
 import Location from '@/src/components/PostListing/preview/Location';
+import { usePathname } from 'next/navigation';
 
 const Page = () => {
   const { amenities, amount, location } = BIDDINGS;
 
-  // const pathname = usePathname();
-  // const segments = pathname.split('/');
-  // const id = segments[segments.length - 1];
-  // const biddings = useSelector((state) => state?.biddings?.biddings);
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 1];
+  // const biddings = useSelector((state) => state?.postRequestAds);
   // const bidding = biddings[id - 1];
 
   // const proposals = useSelector((state) => state.proposals.proposals);
+  console.log(id, 'id');
 
   // const selectedProposal = proposals.find(
   //   (proposal) => proposal?.id == bidding?.proposalId

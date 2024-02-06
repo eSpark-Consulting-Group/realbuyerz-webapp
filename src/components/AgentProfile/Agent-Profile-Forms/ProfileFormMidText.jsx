@@ -28,9 +28,7 @@ const ProfileFormMidText = () => {
             paddingLeft: { lg: 7, md: 7, xs: 2 },
           }}
         >
-          <Typography variant="h6" color={'text'}>
-            Change Password
-          </Typography>
+          <Typography variant="h6">Change Password</Typography>
         </Item>
       </Grid>
     </Box>

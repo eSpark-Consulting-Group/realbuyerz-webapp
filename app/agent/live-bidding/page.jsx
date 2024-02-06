@@ -26,7 +26,7 @@ const Page = () => {
               <BiddingDetails
                 liveBiddingData={LIVE_BIDDING_DATA}
                 ads={userAds}
-                height={'100vh'}
+                height={'1098px'}
               />
             </Box>
           </Grid>

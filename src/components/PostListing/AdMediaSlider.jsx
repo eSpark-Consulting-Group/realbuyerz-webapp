@@ -13,7 +13,7 @@ SwiperCore.use([Navigation, Pagination, A11y]);
 
 const AdMediaSlider = ({ media, mediaType }) => {
   const swiperSettings = {
-    // loop: true,
+    loop: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -37,6 +37,9 @@ const AdMediaSlider = ({ media, mediaType }) => {
       700: {
         slidesPerView: 2,
       },
+      500: {
+        slidesPerView: 2,
+      },
       280: {
         slidesPerView: 1,
       },
@@ -55,13 +58,20 @@ const AdMediaSlider = ({ media, mediaType }) => {
                 alt={`Uploaded ${i}`}
                 quality={'100'}
                 sx={{
-                  minWidth: '200px',
-                  minHeight: '160px',
-                  maxWidth: '240px',
+                  minWidth: '300px',
+                  minHeight: '200px',
+                  maxWidth: '300px',
                   maxHeight: '200px',
                   width: 'auto',
                   height: 'auto',
-                  '@media(min-width:280px) and (max-width:400px)': {
+                  '@media(min-width:350px) and (max-width:450px)': {
+                    mx: 'auto',
+                  },
+                  '@media(min-width:280px) and (max-width:349px)': {
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    minHeight: '160px',
+                    maxHeight: '160px',
                     mx: 'auto',
                   },
                 }}
@@ -71,19 +81,32 @@ const AdMediaSlider = ({ media, mediaType }) => {
         {mediaType == 'videos' &&
           media?.videos?.map((video, i) => (
             <SwiperSlide key={i}>
-              <video
-                style={{ width: '300px', height: '200px' }}
-                key={i}
-                controls
+              <Box
+                sx={{
+                  width: '300px',
+                  height: '200px',
+                  '@media(min-width:280px) and (max-width:450px)': {
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    minHeight: '200px',
+                    mx: 'auto',
+                  },
+                }}
               >
-                <track
-                  src="captions.vtt"
-                  kind="captions"
-                  label="English"
-                  default
-                />
-                <source src={URL.createObjectURL(video)} />
-              </video>
+                <video
+                  style={{ width: '100%', height: '100%' }}
+                  key={i}
+                  controls
+                >
+                  <track
+                    src="captions.vtt"
+                    kind="captions"
+                    label="English"
+                    default
+                  />
+                  <source src={URL.createObjectURL(video)} />
+                </video>
+              </Box>
               {/* <Box
               component={'img'}
               src={URL?.createObjectURL(video)}

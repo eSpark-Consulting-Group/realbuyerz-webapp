@@ -25,6 +25,7 @@ import PostRequestSlice from './slices/previewPostRequest/postRequestSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import PostListingSlice from './slices/previewPostListing/postListingSlice';
 import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
+import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 
 export const store = configureStore({
   reducer: {
@@ -56,6 +57,7 @@ export const store = configureStore({
 
     // Sumited Ads States
     loginAgents: loginAgentsSlice,
+    loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
     postRequestAds: userAdsSlice,
   },

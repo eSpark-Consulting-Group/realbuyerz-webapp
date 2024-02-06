@@ -36,7 +36,7 @@ const UserDashboard = () => {
           <BiddingDetails
             liveBiddingData={LIVE_BIDDING_DATA}
             ads={userAds}
-            Height={'1099px'}
+            height={'1098px'}
           />
         </Box>
       </Box>

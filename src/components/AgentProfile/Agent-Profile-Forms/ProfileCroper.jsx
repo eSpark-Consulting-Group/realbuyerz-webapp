@@ -1,4 +1,6 @@
 'use client';
+import { handleImageChange } from '@/src/redux/slices/loginAgents/loginAgentsSlice';
+import { handleUserImageChange } from '@/src/redux/slices/loginUsers/loginUsersSlice';
 import getCroppedImg from '@/utils/cropImage';
 import { Cancel } from '@mui/icons-material';
 import CropIcon from '@mui/icons-material/Crop';
@@ -12,24 +14,34 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
+import { useDispatch } from 'react-redux';
 
 const ProfileCroper = ({
   photoURL,
   setOpenCrop,
   setPhotoURL,
   setFile,
+  spacificData,
   setProfileImage,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const dispatch = useDispatch();
 
   const cropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
   const cropImage = async () => {
+    if (spacificData?.userType == 'agent') {
+      dispatch(handleImageChange(photoURL));
+    }
+    if (spacificData?.userType == 'user') {
+      dispatch(handleUserImageChange(photoURL));
+    }
+
     try {
       const { file, url } = await getCroppedImg(
         photoURL,
@@ -55,8 +67,8 @@ const ProfileCroper = ({
           width: { xs: '100%', sm: 350 },
           height: { xs: '280px', sm: 280 },
           '& .reactEasyCrop_CropAreaRound': {
-            width: '220px !important',
-            height: '220px !important',
+            width: '200px !important',
+            height: '200px !important',
           },
         }}
       >
