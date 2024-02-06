@@ -10,12 +10,7 @@ import { useSelector } from 'react-redux';
 
 const AgentProfile = () => {
   const spacificAgent = useSelector((state) => state?.loginAgents[0]);
-
   const [agentData, setAgentData] = useState(spacificAgent || {});
-
-  useEffect(() => {
-    setAgentData(spacificAgent || {});
-  }, [spacificAgent]);
 
   useEffect(() => {
     setAgentData(spacificAgent || {});
@@ -38,11 +33,7 @@ const AgentProfile = () => {
         },
       }}
     >
-      <ProfileForm
-        agentData={agentData}
-        data={Agent_Profile_Form_Data}
-        spacificAgent={spacificAgent}
-      />
+      <ProfileForm formValues={agentData} data={Agent_Profile_Form_Data} />
       <ProfileFormMidText />
       <ProfilePasswordForm
         data={Agent_Profile_Form_Data}

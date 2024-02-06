@@ -11,8 +11,11 @@ import {
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
 import BiddingProfile from '@/src/components/Biddings/BiddingProfile';
+import { useSelector } from 'react-redux';
 
 const Page = () => {
+  const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
+  console.log(userAds, 'userAds');
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -22,7 +25,8 @@ const Page = () => {
               <LiveBiddingTitle title={MAIN_TITLE} />
               <BiddingDetails
                 liveBiddingData={LIVE_BIDDING_DATA}
-                height={'100vh'}
+                ads={userAds}
+                height={'1098px'}
               />
             </Box>
           </Grid>

@@ -102,6 +102,7 @@ const Page = () => {
     onSubmit: (values) => {
       console.log({ values });
       handleOpenSuccessModal();
+      handleSubmitAd();
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -125,17 +126,14 @@ const Page = () => {
               margin: { xs: 0, md: '0 auto', lg: 0 },
             }}
           >
-            <Link href={'/user/post-request'}>click</Link>
+            <Link href={'/user/post-request'}>user</Link>
             <BuyersPlatform />
             <AdInformation formik={formik} propertyData={propertyData} />
             <PropertyPurpose formik={formik} propertyData={propertyData} />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
             <PropertyGallery formik={formik} />
-            <SubmitButton
-              handleSubmitAd={handleSubmitAd}
-              handleClickOpen={handleClickOpen}
-            />
+            <SubmitButton handleClickOpen={handleClickOpen} />
             <PreviewModal open={open} onClose={handleClose} ads={postListing} />
           </Box>
         </form>

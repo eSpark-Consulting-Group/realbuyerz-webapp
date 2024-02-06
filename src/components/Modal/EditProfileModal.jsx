@@ -5,23 +5,18 @@ import Image from 'next/image';
 import ProfileCroper from '../AgentProfile/Agent-Profile-Forms/ProfileCroper';
 import { Button } from '@mui/material';
 
-// const style = {
-
-// };
-
 export default function EditProfileModal({
   open,
   setOpen,
   photoURL,
   setPhotoURL,
+  spacificData,
   setProfileImage,
 }) {
-  const [file, setFile] = useState(null);
+  const [setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadImageOpen, setUploadImageOpen] = useState(false);
   const fileInputRef = useRef(null);
-
-  console.log(file, 'filexxx');
 
   const handleClose = () => {
     setOpen(false);
@@ -34,7 +29,7 @@ export default function EditProfileModal({
   };
 
   const handleEditImage = () => {
-    if (file) {
+    if (photoURL) {
       setUploadImageOpen(true);
     }
     // else if (!selectedFile) {
@@ -117,23 +112,10 @@ export default function EditProfileModal({
           />
           <Button onClick={handleUploadImage}>Upload Image</Button>
           <Button onClick={handleEditImage}>Edit Image</Button>
-          {file && (
-            <Box
-              component={'img'}
-              sx={{
-                mt: 1,
-                mx: 'auto',
-                width: { xs: '197px' },
-                height: { xs: '197px' },
-                borderRadius: '100%',
-              }}
-              src={photoURL}
-              alt=""
-            />
-          )}
           {uploadImageOpen && (
             <Box sx={{ pt: 2 }}>
               <ProfileCroper
+                spacificData={spacificData}
                 photoURL={
                   selectedFile
                     ? URL?.createObjectURL(selectedFile)

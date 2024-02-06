@@ -1,16 +1,15 @@
-// import { USERS_DATA } from '@/app/constants/user';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
-    users: 'users', //for constants
+    users: 'users',
     id: 1,
-    userName: 'Mohammad Ali',
+    userName: '',
     profileImage: '/images/profile.png',
-    firstName: 'Mohammad',
-    lastName: 'Ali',
-    email: 'ali@esparkconsultants.com',
-    landline: +923192013292,
+    firstName: 'Arman',
+    lastName: 'Khan',
+    email: 'arman@esparkconsultants.com',
+    landline: 4523100000,
     mobile: '+923192013292',
     whatsapp: '+923192013292',
     isVerified: true,
@@ -27,20 +26,20 @@ const initialState = [
     listings: [1, 2, 3, 4],
     proposals: [1, 2, 3, 4],
     biddings: [1, 2, 3, 4],
-    agencyName: 'eSpARK aGENCY', // basic, hot, Super
-    agencylogo: '/images/profile.png', //Open to contract,
-    subsPackage: 'basic', // basic, hot, Super
-    leadPreference: 'Open to contract', //Open to contract,
-    profileVisibility: 'public', // profile or Public
-    profileStatus: 'public', // public or Blocked or Reported or removed
+    agencyName: 'eSpARK aGENCY',
+    agencylogo: '/images/profile.png',
+    subsPackage: 'basic',
+    leadPreference: 'Open to contract',
+    profileVisibility: 'public',
+    profileStatus: 'public',
     profilePercentage: 50,
-    availableConnects: 50, // 0-100%
-    areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-    currencyUnit: 'pkr', // pkr or usd etx
-    autoReport: false, // true or false
-    verificationStatus: true, // true or false
-    emailNotification: false, // true or false
-    newsLetters: false, // true or false
+    availableConnects: 50,
+    areaUnit: 'sq-ft',
+    currencyUnit: 'pkr',
+    autoReport: false,
+    verificationStatus: true,
+    emailNotification: false,
+    newsLetters: false,
     onlineStatus: true,
     counts: {
       totalCount: 150,
@@ -83,8 +82,11 @@ const loginAgentsSlice = createSlice({
         state[agentIndex] = { ...state[agentIndex], ...updatedAgent };
       }
     },
+    handleImageChange: (state, action) => {
+      state[0].profileImage = action.payload;
+    },
   },
 });
 
-export const { handleEdit } = loginAgentsSlice.actions;
+export const { handleEdit, handleImageChange } = loginAgentsSlice.actions;
 export default loginAgentsSlice.reducer;
