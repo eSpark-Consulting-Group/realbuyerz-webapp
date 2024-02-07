@@ -21,15 +21,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const PropertiesFilter = ({ data }) => {
-  const [listingType, setListingType] = useState('proposals');
-  const [selectedData, setSelectedData] = useState(data || []);
-
-  const [purposeOptions, setPurposeOptions] = useState(['Buy', 'Rent', 'Sell']);
-  const [cityOptions, setCityOptions] = useState(['Karachi', 'Islamabad', 'Lahore']);
-  const [locationOptions, setLocationOptions] = useState(['Gulshan-e-iqbal', 'Gulshan-e-johar', 'Liaqatabad']);
-  const [propertyTypeOptions, setPropertyTypeOptions] = useState(['House', 'Plot', 'Commercial']);
-
-
+  const [filteredData, setFilteredData] = useState(data || []);
   const [selectedPurpose, setSelectedPurpose] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
@@ -40,62 +32,30 @@ const PropertiesFilter = ({ data }) => {
     setSelectedCity('');
     setSelectedLocation('');
     setSelectedPropertyType('');
-    setFilteredProposalsData(selectedData);
+    setFilteredData(data || []);
   };
 
-  const [filteredProposalsData, setFilteredProposalsData] = useState(selectedData);
-
-    useEffect(() => {
-    const {
-      purposeOptions,
-      cityOptions,
-      locationOptions,
-      propertyTypeOptions,
-    } = getUniqueFilteredOptions(selectedData);
-    // setPurposeOptions(purposeOptions);
-    // setCityOptions(cityOptions);
-    // setLocationOptions(locationOptions);
-    // setPropertyTypeOptions(propertyTypeOptions);
-  }, [selectedData]);
-
-  const handleDropdownChange = (e, setState) => {
-    const selectedValue = e.target.value;
+  const handleDropdownChange = (e, setState, filterKey) => {
+    const selectedValue = e.target.value.toLowerCase();
     setState(selectedValue);
 
-    const filteredProposalsData = filterData(
-      selectedData,
-      selectedPurpose,
-      selectedCity,
-      selectedLocation,
-      selectedPropertyType
-    );
-    setFilteredProposalsData(filteredProposalsData);
+    const filteredData = data.filter(item => {
+      const postingValue = item.locationAndPurpose[filterKey].toLowerCase();
+      return selectedValue === '' || postingValue === selectedValue;
+    });
+    setFilteredData(filteredData);
   };
+  const purposeOptions = ['Buy', 'Rent', 'Sell'];
+  const cityOptions = ['Karachi', 'Islamabad', 'Lahore'];
+  const locationOptions = ['Gulshan-e-Iqbal', 'Gulshan-e-Johar', 'Liaqatabad'];
+  const propertyTypeOptions = ['House', 'Plot', 'Commercial'];
+
+
   const dropdowns = [
-    {
-      label: 'Purpose',
-      state: selectedPurpose,
-      setState: setSelectedPurpose,
-      options: purposeOptions,
-    },
-    {
-      label: 'City',
-      state: selectedCity,
-      setState: setSelectedCity,
-      options: cityOptions,
-    },
-    {
-      label: 'Location',
-      state: selectedLocation,
-      setState: setSelectedLocation,
-      options: locationOptions,
-    },
-    {
-      label: 'Property Type',
-      state: selectedPropertyType,
-      setState: setSelectedPropertyType,
-      options: propertyTypeOptions,
-    },
+    { label: 'Purpose', state: selectedPurpose, setState: setSelectedPurpose, filterKey: 'adPurpose', options: purposeOptions },
+    { label: 'City', state: selectedCity, setState: setSelectedCity, filterKey: 'city', options: cityOptions },
+    { label: 'Location', state: selectedLocation, setState: setSelectedLocation, filterKey: 'location', options: locationOptions },
+    { label: 'Property Type', state: selectedPropertyType, setState: setSelectedPropertyType, filterKey: 'propertyType', options: propertyTypeOptions },
   ];
 
   return (
@@ -115,9 +75,7 @@ const PropertiesFilter = ({ data }) => {
                   <Select
                     value={dropdown?.state}
                     displayEmpty
-                    onChange={(e) => {
-                      handleDropdownChange(e, dropdown?.setState, index);
-                    }}
+                    onChange={(e) => handleDropdownChange(e, dropdown.setState, dropdown.filterKey)}
                     IconComponent={dropdown?.state ? KeyboardArrowUpIcon : KeyboardArrowDownIcon}
                     sx={{
                       height: '42px',
@@ -169,10 +127,9 @@ const PropertiesFilter = ({ data }) => {
           </Link>
         </Box>
       </Box>
-      <PropertiesTabs filteredProposalsData={filteredProposalsData} />
-            
+      <PropertiesTabs filteredProposalsData={filteredData} />
     </>
   )
 }
 
-export default PropertiesFilter
+export default PropertiesFilter;
