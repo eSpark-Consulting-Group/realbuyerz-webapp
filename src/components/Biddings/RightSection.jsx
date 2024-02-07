@@ -4,10 +4,12 @@ import FlagIcon from '@mui/icons-material/Flag';
 import { BIDDINGS } from '@/app/constants/Biddings';
 import Link from 'next/link';
 import Image from 'next/image';
-// import { ROUTERS } from '@/app/constants/LiveBidding';
+import { useDispatch } from 'react-redux';
+import { handleSaveAds } from '@/src/redux/slices/favouriteAds/favouriteAdsSlice';
 
-const RightSection = ({ postId }) => {
+const RightSection = ({ postId, spacificPost }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -15,6 +17,10 @@ const RightSection = ({ postId }) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleSave = () => {
+    dispatch(handleSaveAds(spacificPost));
   };
 
   return (
@@ -49,6 +55,7 @@ const RightSection = ({ postId }) => {
           <Typography
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleSave}
             sx={{
               display: 'flex',
               alignItems: 'center',

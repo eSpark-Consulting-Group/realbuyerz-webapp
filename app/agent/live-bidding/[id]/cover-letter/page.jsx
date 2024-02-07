@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@mui/material';
 
 import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
@@ -23,27 +23,38 @@ import Link from 'next/link';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
-import { handleSendPorposals } from '@/src/redux/slices/userAds/userAdsSlice';
+import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
 import {
-  handleCoverAgentId,
+  handleCoverAdId,
   handleCoverProposalId,
+  handleCoverUserIndex,
 } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 import { usePathname } from 'next/navigation';
+import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
   const { coverLetter } = useSelector((state) => state);
+  const { postRequestAds } = useSelector((state) => state);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 2];
-  const userPostings = useSelector(
-    (state) => state?.postRequestAds?.userPostings
-  );
-  const userAd = userPostings.filter((item) => id == item?.formId)[0];
 
-  // const proposals = useSelector((state) => state.proposals.proposals);
-  console.log(userAd.proposals, 'userAd');
+  const userIndex = postRequestAds?.userPostings?.findIndex(
+    (post) => post?.formId == id
+  );
+  console.log(userIndex, 'userIndexxx');
+
+  useEffect(() => {
+    const proposalId = Math.floor(Math.random() * 100) + 1;
+    dispatch(handleCoverProposalId(proposalId));
+    dispatch(handleCoverAdId(id));
+    dispatch(handleCoverAdId(id));
+    dispatch(handleCoverUserIndex(userIndex));
+  }, []);
+
+  console.log(id, 'id');
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -80,12 +91,8 @@ const Page = () => {
   const dispatch = useDispatch();
 
   const handleSubmitAd = () => {
-    const formId = Math.floor(Math.random() * 100) + 1;
-    dispatch(handleCoverAgentId(formId));
-    // dispatch(handlePostFormId(formId));
-    dispatch(handleCoverProposalId(coverLetter));
-    // userAd.proposals.push(coverLetter);
-    dispatch(handleSendPorposals(coverLetter));
+    dispatch(addProposal(coverLetter));
+    dispatch(handleSendProposals(coverLetter));
   };
 
   const validationSchema = yup.object({
@@ -157,8 +164,8 @@ const Page = () => {
         </form>
         <ProposalModal
           buttonLabel={'Continue'}
-          description={'Your Proposal is submitted successfully.'}
-          title={'Success'}
+          description={''}
+          title={'Your Proposal is submitted successfully.'}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

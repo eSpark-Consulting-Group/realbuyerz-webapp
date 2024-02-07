@@ -128,6 +128,7 @@ const Page = () => {
                 >
                   <RightSection
                     postId={spacificPost?.formId}
+                    spacificPost={spacificPost}
                     rightSection={''}
                     report={''}
                     apply={''}

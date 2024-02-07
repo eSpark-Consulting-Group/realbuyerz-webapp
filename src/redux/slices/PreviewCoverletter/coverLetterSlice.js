@@ -17,6 +17,12 @@ const coverLetterSlice = createSlice({
     handleCoverProposalId: (state, action) => {
       state.proposalId = action.payload;
     },
+    handleCoverAdId: (state, action) => {
+      state.adId = Number(action.payload);
+    },
+    handleCoverUserIndex: (state, action) => {
+      state.userIndex = action.payload;
+    },
 
     //Ad_Infomation
     handleCoverInformation: (state, action) => {
@@ -78,7 +84,9 @@ const coverLetterSlice = createSlice({
 
 export const {
   handleCoverAgentId,
+  handleCoverAdId,
   handleCoverProposalId,
+  handleCoverUserIndex,
   handleCoverInformation,
   handleCoverLocationAndPuspose,
   handleCoverPropertyType,

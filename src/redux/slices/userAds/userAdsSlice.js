@@ -9,11 +9,14 @@ const userAdsSlice = createSlice({
     handleSumitUserAds: (state, action) => {
       state.userPostings.push(action.payload);
     },
-    handleSendPorposals: (state, action) => {
-      state.userPostings.proposals.push(action.payload);
+    handleSendProposals: (state, action) => {
+      const { userIndex } = action.payload;
+      if (userIndex !== -1) {
+        state.userPostings[userIndex].proposals.push(action.payload);
+      }
     },
   },
 });
 
-export const { handleSumitUserAds, handleSendPorposals } = userAdsSlice.actions;
+export const { handleSumitUserAds, handleSendProposals } = userAdsSlice.actions;
 export default userAdsSlice.reducer;

@@ -27,6 +27,7 @@ import PostListingSlice from './slices/previewPostListing/postListingSlice';
 import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
 import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import coverLetterSlice from './slices/PreviewCoverLetter/coverLetterSlice';
+import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -61,5 +62,8 @@ export const store = configureStore({
     loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
     postRequestAds: userAdsSlice,
+
+    // Favorite Ads State
+    favoriteAds: favouriteAdsSlice,
   },
 });

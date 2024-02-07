@@ -553,8 +553,11 @@ export const postRequestEntities = {
 };
 
 export const coverLetterEntities = {
+  adId: '',
   agentId: '',
   proposalId: '',
+  proposalStatus: 'submit',
+  userIndex: '',
   adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
