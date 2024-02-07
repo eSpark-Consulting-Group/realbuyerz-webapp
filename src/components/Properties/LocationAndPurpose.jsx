@@ -10,16 +10,6 @@ const LocationAndPurpose = ({ location, values }) => {
         pb: 1,
       }}
     >
-      <Typography
-        sx={{
-          color: '#000',
-          fontSize: '20px',
-          fontWeight: 500,
-          mb: 1,
-        }}
-      >
-        {location?.title}
-      </Typography>
       <Box
         sx={{
           display: 'flex',

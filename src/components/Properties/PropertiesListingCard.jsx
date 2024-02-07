@@ -19,7 +19,6 @@ import LocationAndPurpose from '../Properties/LocationAndPurpose';
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     marginTop: '20px',
   },
@@ -27,9 +26,16 @@ const styles = {
     margin: '20px 0',
   },
   image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    // width: '100%',
+    // height: '100%',
+    width: '360px',
+    height: '260px',
+    display:'flex',
+    justifyContent:'center',
+    // border:'1px solid red',
+    // objectFit: 'cover',
+    borderRadius: '10px',
+    boxShadow: '#00000040',
     '@media (min-width: 600px)': {
       width: 360,
       height: 360,
@@ -50,18 +56,20 @@ const PropertiesListingCard = ({ proposalsData }) => {
   return (
     <>
       {currentItems?.map((proposal, index) => {
-        const imagePath = proposal.propertyImagesAndVideos.images[0].path;
-        const imageUrl = `/images/${imagePath}`;
+        console.log(proposal, 'curr')
+        const imagePath = proposal?.propertyImagesAndVideos?.images[0];
         return (
           <Grid
             key={index}
             container
             justifyContent="center"
             sx={{
+              border: '1px solid red',
               my: '30px',
+              // height: '300px',
               display: 'flex',
               flexDirection: 'row',
-              borderRadius: '5px',
+              borderRadius: '20px',
               border: '1px #E4E4E4 solid',
               background: '#F5F6FB',
               '@media (max-width: 768px)': {
@@ -69,26 +77,32 @@ const PropertiesListingCard = ({ proposalsData }) => {
               },
             }}
           >
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={3.5}>
               <Box
                 sx={{
                   m: '20px',
-                  borderRadius: '5px ',
+                  borderRadius: '10px ',
                   height: '85%',
-                  width: '90%',
+                  width: {xs:'auto', md:'90%'},
                   position: 'relative',
+                  boxShadow: '#00000040',
+                  display:'flex',
+                  justifyContent:'center',
+
                 }}
               >
 
                 <Link href={`my-proposals/${proposal?.id}`}>
                   <Image
-                    src={imageUrl}
-                    layout="fill"
-                    objectFit="cover"
+                    src={URL?.createObjectURL(imagePath)}
+                    width={390}
+                    height={250}
+                    // layout="fill"
+                    // objectFit="cover"
                     style={styles.image}
                     alt=""
                     sx={{
-                      borderRadius: '5px ',
+                      borderRadius: '5px'
                     }}
                   />
                 </Link>
@@ -97,7 +111,7 @@ const PropertiesListingCard = ({ proposalsData }) => {
             <Grid
               item
               xs={12}
-              md={8}
+              md={8.5}
               style={styles.section}
               sx={{
                 display: 'flex',
@@ -110,14 +124,17 @@ const PropertiesListingCard = ({ proposalsData }) => {
               <Grid container sx={{}}>
                 <Grid
                   item
-                  xs={9}
-                  sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}
+                  xs={12}
+                  sm={4}
+                  md={9}
+                  sx={{ display: 'flex', gap: '5px', justifyContent:{xs: 'center', sm:'flex-start', md:'center'} }}
                 >
                   <Link href={`my-proposals/${proposal?.id}`}>
                     <Typography
                       sx={{
-                        fontSize: '25px',
-                        fontWeight: '600',
+                        fontSize: '20px',
+                        fontWeight: 700,
+                        lineHeight:'24.2px',
                         textTransform: 'uppercase',
                       }}
                     >
@@ -125,9 +142,12 @@ const PropertiesListingCard = ({ proposalsData }) => {
                     </Typography>
                   </Link>
                 </Grid>
-                <Grid item xs={3} textAlign={'right'}>
-                  <Button variant="primary">
-                    <Typography variant="secondary">
+                <Grid item xs={12} sm={8} md={3}  sx={{
+                  display:'flex',
+                  justifyContent:{xs:'center', sm:'flex-end'}
+                }}>
+                  <Button variant="primary" sx={{width:'120px', height:'35px'}}>
+                    <Typography variant="secondary" sx={{fontSize:'14px'}}>
                       Draft
                     </Typography>
                   </Button>
@@ -135,10 +155,10 @@ const PropertiesListingCard = ({ proposalsData }) => {
               </Grid>
               <Divider sx={{ py: '5px' }} />
               <Grid container>
-                <Grid item xs={10} sx={{ gap: '5px', alignItems: 'center' }}>
+                <Grid item xs={12} sm={8} md={10} sx={{ gap: '5px', alignItems: 'center' }}>
                   <LocationAndPurpose location={BIDDINGS?.location} values={proposal?.locationAndPurpose} />
                 </Grid>
-                <Grid item xs={2} sx={{ justifyContent: 'center' }}>
+                <Grid item xs={12} sm={4} md={2} sx={{ justifyContent: 'center' , mb:{xs:'20px', sm:0} }}>
                   <Box
                     key={index}
                     sx={{
@@ -173,8 +193,7 @@ const PropertiesListingCard = ({ proposalsData }) => {
                   </Box>
                 </Grid>
               </Grid>
-              <Box sx={{ pt: '5px' }}></Box>
-              <Typography sx={{ fontSize: '16px', fontWeight: '400' }}>
+              <Typography sx={{ fontSize: '12px', lineHeight: '14.52px', fontWeight: 400, pr: '30px' }}>
                 {proposal?.adInfomation?.description}
               </Typography>
             </Grid>

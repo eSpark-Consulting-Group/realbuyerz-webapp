@@ -51,6 +51,7 @@ const PropertiesTabs = ({ filteredProposalsData }) => {
         background: '#fff',
         borderRadius: '10px',
         border: '1px solid #E4E4E4',
+        maxWidth:{xs:'1200px', xxl:'1400px'},
         mt: '20px',
       }}
     >
