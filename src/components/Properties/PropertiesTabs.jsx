@@ -51,12 +51,12 @@ const PropertiesTabs = ({ filteredProposalsData }) => {
         background: '#fff',
         borderRadius: '10px',
         border: '1px solid #E4E4E4',
-        maxWidth:{xs:'1200px', xxl:'1400px'},
+        maxWidth: { xs: '1200px', xxl: '1400px' },
         mt: '20px',
       }}
     >
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'center' }}>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -78,7 +78,7 @@ const PropertiesTabs = ({ filteredProposalsData }) => {
                 <Tab
                   key={tab.label}
                   label={`${tab.label} (${filteredCount})`}
-                  sx={{ fontSize: '20px', fontWeight: '700' }}
+                  sx={{ fontSize: '20px', fontWeight: '700'}}
                   {...a11yProps(index)}
                 />
               );
@@ -126,7 +126,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
           }}
         >
           {displayData?.length > 0 ? (
-            <PropertiesListingCard   proposalsData={displayData} />
+            <PropertiesListingCard proposalsData={displayData} />
           ) : (
             <Box
               sx={{

@@ -10,15 +10,11 @@ import {
 import Link from 'next/link';
 import {
   CONSTANTS,
-  LISTING_TYPE,
-  PROPERTIES_LISTING,
-  PROPOSAL_LISTING,
 } from '@/app/constants/Proposals';
-import ProposalTabs from '../Proposals/ProposalTabs';
-import { filterData, getUniqueFilteredOptions } from '@/utils/proposalFilter';
 import PropertiesTabs from './PropertiesTabs';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { DROPDOWN_PROPERTIES_LABEL } from '@/app/constants/Properties';
 
 const PropertiesFilter = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data || []);
@@ -26,6 +22,7 @@ const PropertiesFilter = ({ data }) => {
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedPropertyType, setSelectedPropertyType] = useState('');
+  const { purposeOptions, cityOptions, locationOptions, propertyTypeOptions } = DROPDOWN_PROPERTIES_LABEL;
 
   const handleClearButtonClick = () => {
     setSelectedPurpose('');
@@ -35,27 +32,24 @@ const PropertiesFilter = ({ data }) => {
     setFilteredData(data || []);
   };
 
-  const handleDropdownChange = (e, setState, filterKey) => {
+  const handleDropdownChange = (e, setState, filterKey, dropdown) => {
     const selectedValue = e.target.value.toLowerCase();
-    setState(selectedValue);
-
+  
+    setState(dropdown.options.find(option => option.toLowerCase() === selectedValue));
+  
     const filteredData = data.filter(item => {
       const postingValue = item.locationAndPurpose[filterKey].toLowerCase();
       return selectedValue === '' || postingValue === selectedValue;
     });
     setFilteredData(filteredData);
   };
-  const purposeOptions = ['Buy', 'Rent', 'Sell'];
-  const cityOptions = ['Karachi', 'Islamabad', 'Lahore'];
-  const locationOptions = ['Gulshan-e-Iqbal', 'Gulshan-e-Johar', 'Liaqatabad'];
-  const propertyTypeOptions = ['House', 'Plot', 'Commercial'];
 
 
   const dropdowns = [
     { label: 'Purpose', state: selectedPurpose, setState: setSelectedPurpose, filterKey: 'adPurpose', options: purposeOptions },
     { label: 'City', state: selectedCity, setState: setSelectedCity, filterKey: 'city', options: cityOptions },
     { label: 'Location', state: selectedLocation, setState: setSelectedLocation, filterKey: 'location', options: locationOptions },
-    { label: 'Property Type', state: selectedPropertyType, setState: setSelectedPropertyType, filterKey: 'propertyType', options: propertyTypeOptions },
+    { label: 'Type', state: selectedPropertyType, setState: setSelectedPropertyType, filterKey: 'propertyType', options: propertyTypeOptions },
   ];
 
   return (
@@ -75,7 +69,7 @@ const PropertiesFilter = ({ data }) => {
                   <Select
                     value={dropdown?.state}
                     displayEmpty
-                    onChange={(e) => handleDropdownChange(e, dropdown.setState, dropdown.filterKey)}
+                    onChange={(e) => handleDropdownChange(e, dropdown.setState, dropdown.filterKey, dropdown)}
                     IconComponent={dropdown?.state ? KeyboardArrowUpIcon : KeyboardArrowDownIcon}
                     sx={{
                       height: '42px',

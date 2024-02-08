@@ -637,6 +637,14 @@ export const PROPERTIES_LISTING = [
     ],
   },
 ];
+
+export const DROPDOWN_PROPERTIES_LABEL = {
+  purposeOptions :  ['Buy', 'Rent', 'Sell'],
+  cityOptions : ['Karachi', 'Islamabad', 'Lahore'],
+  locationOptions : ['Gulshan-e-Iqbal', 'Gulshan-e-Johar', 'Liaqatabad'],
+  propertyTypeOptions : ['House', 'Plot', 'Commercial']
+}
+
 export const PROPERTY_PURPOSE = {
   propertyPurpose: {
     locationAndPurpose: 'Location & Purpose',
