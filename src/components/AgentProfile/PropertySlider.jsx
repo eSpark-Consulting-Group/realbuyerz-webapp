@@ -67,7 +67,7 @@ const PropertySlider = ({ propertyData }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -75,7 +75,7 @@ const PropertySlider = ({ propertyData }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: true,
+          dots: false,
         },
       },
     ],
