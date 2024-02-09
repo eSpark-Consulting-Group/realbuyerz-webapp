@@ -29,14 +29,17 @@ const PropertiesFilter = ({ data }) => {
     setSelectedCity('');
     setSelectedLocation('');
     setSelectedPropertyType('');
-    setFilteredData(data || []);
+    setFilteredData([]);
   };
 
   const handleDropdownChange = (e, setState, filterKey, dropdown) => {
     const selectedValue = e.target.value.toLowerCase();
   
-    setState(dropdown.options.find(option => option.toLowerCase() === selectedValue));
-  
+    if (selectedValue === '') {
+      setState('');
+    } else {
+      setState(dropdown.options.find(option => option.toLowerCase() === selectedValue));
+    }
     const filteredData = data.filter(item => {
       const postingValue = item.locationAndPurpose[filterKey].toLowerCase();
       return selectedValue === '' || postingValue === selectedValue;

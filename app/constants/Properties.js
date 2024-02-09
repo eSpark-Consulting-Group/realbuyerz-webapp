@@ -690,3 +690,10 @@ export const PROPERTY_DETAILS = {
   agent: '/project/',
   properties: '/project/',
 };
+
+export const PROPERTIES_LABEL = {
+  amount :'Amount:',
+  draft :'Draft'
+}
+
+

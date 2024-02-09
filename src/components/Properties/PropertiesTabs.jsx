@@ -78,7 +78,7 @@ const PropertiesTabs = ({ filteredProposalsData }) => {
                 <Tab
                   key={tab.label}
                   label={`${tab.label} (${filteredCount})`}
-                  sx={{ fontSize: '20px', fontWeight: '700'}}
+                  sx={{ fontSize: '16px', fontWeight: 500, lineHeight:'19.36px' }}
                   {...a11yProps(index)}
                 />
               );
