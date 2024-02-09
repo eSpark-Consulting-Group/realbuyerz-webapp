@@ -9,7 +9,7 @@ const Heading = ({ heading, paragraph }) => {
           fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
           color: '#333333',
           fontWeight: '700',
-          pb: '25px',
+          pb: paragraph ? '25px' : '0px',
         }}
       >
         {heading ? heading : ''}

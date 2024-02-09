@@ -46,10 +46,7 @@ const PopularLocations = ({ data }) => {
       }}
     >
       <Container sx={{ px: '10%' }}>
-        <Heading
-          heading={FEATURED_HEADINGS.popularLocations}
-          paragraph={FEATURED_HEADINGS.browseProperty}
-        />
+        <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
         <Box sx={{ pt: '14px', pb: '8px' }}>
           <Box sx={{ pt: '14px', pb: '58px' }}>
             <Button

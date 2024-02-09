@@ -10,16 +10,16 @@ const FooterCta = ({ data }) => {
     <Box
       sx={{
         background: '#F5F6FB',
-        px: '15%',
+        px: { xs: '3%', md: '5%', lg: '13%', xl: '15%' },
         py: {
-          xs: '20px', // Adjust padding for xs screen
-          sm: '40px', // Adjust padding for sm screen
+          xs: '20px',
+          sm: '40px',
           md: '40px',
         },
-        margin: 'auto', // Center the container
+        margin: 'auto',
       }}
     >
-      <Grid container>
+      <Grid container sx={{}}>
         <Grid
           item
           xs={12}
@@ -30,17 +30,17 @@ const FooterCta = ({ data }) => {
             alignSelf: 'center',
             py: {
               xs: '20px',
-              sm: '40px', // Adjust padding for sm screen
+              sm: '40px',
               md: '40px',
             },
           }}
         >
           <Typography
-            variant="body1"
             sx={{
               color: '#666',
               fontSize: '16px',
-              fontWeight: '400',
+              fontWeight: 400,
+              lineHeight: '28px',
               pr: {
                 xs: '0',
                 md: '0px',
@@ -55,8 +55,14 @@ const FooterCta = ({ data }) => {
                 key={index}
                 item
                 xs={12}
+                sm={6}
                 md={2.5}
-                sx={{ display: 'flex', gap: '10px', py: '15px' }}
+                sx={{
+                  display: 'flex',
+                  gap: '10px',
+                  py: '15px',
+                  justifyContent: { lg: 'flex-end' },
+                }}
               >
                 <Image src={feature.icon} height={30} width={30} alt={''} />
                 <Box>
@@ -98,14 +104,17 @@ const FooterCta = ({ data }) => {
         <Grid
           item
           xs={12}
+          sm={6}
           md={4}
           lg={4}
           sx={{
             py: {
               xs: '20px',
-              sm: '40px', // Adjust padding for sm screen
+              sm: '40px',
               md: '0px',
             },
+            display: 'flex',
+            justifyContent: { md: 'flex-end' },
           }}
         >
           <Bounce direction="right" triggerOnce duration={300}>
@@ -116,17 +125,26 @@ const FooterCta = ({ data }) => {
         </Grid>
       </Grid>
       <Grid container sx={{ py: '28px' }}>
-        <Grid item xs={12} md={8.5}>
-          <Typography variant="body1">
+        <Grid item xs={12} sm={8} md={8.5}>
+          <Typography
+            sx={{
+              fontSize: '14px',
+              lineHeight: '28px',
+              fontWeight: 400,
+              color: '#666666',
+            }}
+          >
             {data?.paymentMethodsDescription}
           </Typography>
         </Grid>
         <Grid
           item
           xs={12}
+          sm={4}
           md={3.5}
           sx={{
             display: 'flex',
+            justifyContent: { md: 'center' },
             gap: '20px',
             py: {
               xs: '10px',
