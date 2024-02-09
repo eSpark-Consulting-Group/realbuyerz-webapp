@@ -57,7 +57,7 @@ const HeroSection = () => {
         ></Box>
         <Typography
           sx={{
-            px:{xs:'20px', sm:'0px'},
+            px: { xs: '20px', sm: '0px' },
             zIndex: 2,
             position: 'absolute',
             width: {
@@ -123,7 +123,7 @@ const HeroSection = () => {
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
-                    color: '#FB631C '
+                    color: '#FB631C ',
                   },
                 }}
                 variant="primary"
@@ -152,7 +152,7 @@ const HeroSection = () => {
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
-                    color: '#FB631C '
+                    color: '#FB631C ',
                   },
                 }}
                 variant="primary"

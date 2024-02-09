@@ -56,7 +56,7 @@ const PopularLocations = ({ data }) => {
                 width: '116px',
                 height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
                 color: filterType === 'sale' ? '#fff' : 'primary',
-                mb:{xs:'10px'}
+                mb: { xs: '10px' },
               }}
               variant={filterType === 'sale' ? 'primary' : 'outlined'}
               onClick={() => handleFilter('sale')}
