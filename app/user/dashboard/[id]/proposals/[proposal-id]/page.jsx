@@ -1,11 +1,170 @@
 "use client";
+import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import ViewAllPosting from '@/src/components/UserDashboard/ViewAllPosting'
-import { Box, Button, Divider, Grid, Typography } from '@mui/material'
-import React from 'react'
+import { a11yProps } from '@/src/utils/tabs';
+import { Autocomplete, Box, Button, Divider, Grid, Tab, Tabs, TextField, Typography } from '@mui/material'
+import React, { useState } from 'react'
 
 const page = () => {
+    const [value, setValue] = useState(0);
+    const [currentTab, setCurrentTab] = useState('Inbox');
+    const tabs = [
+        {
+            label: 'All',
+            prop: a11yProps(0),
+        },
+        {
+            label: 'Active',
+            prop: a11yProps(1),
+        },
+        {
+            label: 'Draft',
+            prop: a11yProps(2),
+        },
+        {
+            label: 'Trash',
+            prop: a11yProps(3),
+        },
+    ];
+    const handleChangeTab = (event, newValue) => {
+        let tab = event?.target?.innerText.split(' ');
+        if (tab.length > 1) {
+            tab = tab.slice(0, -1).join(' ');
+        } else {
+            tab = tab.join(' ');
+        }
+        setCurrentTab(tab);
+
+        setValue(newValue);
+        console.log({ currentTab });
+    };
     return (
         <>
+            <Box sx={{ maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' }, }}>
+
+                <Grid container sx={{
+                    alignItems:'flex-end'
+                }}>
+                    <Grid item xs={6} md={2.75}>
+                        <Box sx={{width:"90%"}}>
+                            <Typography>
+                                Purpose
+                            </Typography>
+                            <Autocomplete
+                            sx={{
+                                marginTop:'20px',
+                                background:'#fff'
+                            }}
+                                disablePortal
+                                id="combo-box-demo"
+                                options={[
+                                    {
+                                        label: 'Karachi',
+                                        value: '',
+                                    },
+                                    {
+                                        label: 'Lahore',
+                                        value: '',
+                                    },
+                                ]}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Select Purpose" />
+                                )}
+                            />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6} md={2.75}>
+                        <Box sx={{width:"90%"}}>
+                            <Typography>
+                                City
+                            </Typography>
+                            <Autocomplete
+                            sx={{
+                                marginTop:'20px',
+                                background:'#fff'
+                            }}
+                                disablePortal
+                                id="combo-box-demo"
+                                options={[
+                                    {
+                                        label: 'Karachi',
+                                        value: '',
+                                    },
+                                    {
+                                        label: 'Lahore',
+                                        value: '',
+                                    },
+                                ]}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Select City" />
+                                )}
+                            />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6} md={2.75}>
+                        <Box sx={{width:"90%"}}>
+                            <Typography>
+                                Location
+                            </Typography>
+                            <Autocomplete
+                            sx={{
+                                marginTop:'20px',
+                                background:'#fff'
+                            }}
+                                disablePortal
+                                id="combo-box-demo"
+                                options={[
+                                    {
+                                        label: 'Karachi',
+                                        value: '',
+                                    },
+                                    {
+                                        label: 'Lahore',
+                                        value: '',
+                                    },
+                                ]}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Select Location" />
+                                )}
+                            />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6} md={2.75}>
+                        <Box sx={{width:"90%"}}>
+                            <Typography>
+                                Property Type
+                            </Typography>
+                            <Autocomplete
+                            sx={{
+                                marginTop:'20px',
+                                background:'#fff'
+                            }}
+                                disablePortal
+                                id="combo-box-demo"
+                                options={[
+                                    {
+                                        label: 'Karachi',
+                                        value: '',
+                                    },
+                                    {
+                                        label: 'Lahore',
+                                        value: '',
+                                    },
+                                ]}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Select Type" />
+                                )}
+                            />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} md={1}>
+                        <Button variant='text' sx={{
+                            color:'#126FAA',
+                            textDecoration:'underline'
+                        }}>Reset</Button>
+                    </Grid>
+                </Grid>
+            </Box>
             <Box
                 sx={{
                     background: '#fff',
@@ -17,7 +176,31 @@ const page = () => {
                     maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
                 }}
             >
-                {/* <ViewAllPosting /> */}
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingTop: "30px"
+                }}>
+                    <Tabs
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChangeTab}
+                        aria-label="basic tabs example"
+                    >
+                        {tabs?.map(({ label, prop }, i) => (
+                            <Tab
+                                key={i}
+                                label={`${label}`}
+                                {...prop}
+                                disableRipple={true}
+                                sx={{
+                                    textTransform: 'math-auto',
+                                }}
+                            />
+                        ))}
+                    </Tabs>
+                </Box>
                 <Divider />
                 <Box
                     sx={{
@@ -26,169 +209,7 @@ const page = () => {
                 >
                     {
                         [...Array(5)].map((_, index) => (
-                            <Grid container key={index} sx={{
-                                background: '#F5F6FA',
-                                border: 'solid 1px #E4E4E4',
-                                borderRadius: '20px',
-                                padding: '25px 30px',
-                                marginBottom: '30px'
-                            }}>
-                                <Grid item md={3.65}>
-                                    <Box component={"img"} src={'/images/PropertyImg.png'} sx={{
-                                        width: "100%"
-                                    }} />
-                                </Grid>
-                                <Grid item md={8.35} sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    padding: '0 20px'
-                                }}>
-                                    <Box sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: 'center',
-                                        position: "relative",
-                                    }}>
-                                        <Typography sx={{
-                                            fontSize: '20px',
-                                            fontWeight: 700,
-                                            lineHheight: '24px',
-                                            letterSpacing: '0em',
-                                            textAlign: 'left',
-
-                                        }}>NEED 4 BEDROOM APARTMENT</Typography>
-                                        <Button variant='contained' sx={{
-                                            position: "absolute",
-                                            right: 0
-                                        }}> Trash</Button>
-                                    </Box>
-                                    <Divider sx={{
-                                        marginY: "20px"
-                                    }} />
-                                    <Box sx={{
-                                        position: 'relative',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        flex: 1
-                                    }}>
-                                        <Box sx={{
-                                            display: 'flex',
-                                            flexDirection: 'column'
-                                        }}>
-                                            <Box sx={{
-                                                display: 'flex',
-                                                marginBottom: '10px',
-                                                alignItems: 'center'
-                                            }}>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 700,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#126FAA'
-                                                }}>Purpose: </Typography>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 500,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#333333',
-                                                    marginLeft: '5px'
-                                                }}>Selling</Typography>
-                                            </Box>
-                                            <Box sx={{
-                                                marginBottom: '10px',
-                                                display: 'flex',
-                                                alignItems: 'center'
-                                            }}>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 700,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#126FAA'
-                                                }}>Proporty Type: </Typography>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 500,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#333333',
-                                                    marginLeft: '5px'
-                                                }}>House</Typography>
-                                            </Box>
-                                            <Box sx={{
-                                                marginBottom: '10px',
-                                                display: 'flex',
-                                                alignItems: 'center'
-                                            }}>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 700,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#126FAA'
-                                                }}>City: </Typography>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 500,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#333333',
-                                                    marginLeft: '5px'
-                                                }}>Karachi</Typography>
-                                            </Box>
-                                            <Box sx={{
-                                                marginBottom: '10px',
-                                                display: 'flex',
-                                                alignItems: 'center'
-                                            }}>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 700,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#126FAA'
-                                                }}>Location: </Typography>
-                                                <Typography sx={{
-                                                    fontSize: '14px',
-                                                    fontWeight: 500,
-                                                    lineHeight: '17px',
-                                                    letterSpacing: '0em',
-                                                    textAlign: 'left',
-                                                    color: '#333333',
-                                                    marginLeft: '5px'
-                                                }}>Gulshan-e-Iqbal</Typography>
-                                            </Box>
-                                            <Typography sx={{
-                                                fontSize: '12px',
-                                                fontWeight: 400,
-                                                lineHeight: '15px',
-                                                letterSpacing: '0em',
-                                                textAlign: 'left',
-                                                flex: 1
-                                            }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</Typography>
-                                        </Box>
-                                        <Typography sx={{
-                                            position: 'absolute',
-                                            fontSize: '14px',
-                                            fontWeight: '600',
-                                            lineHeight: '17px',
-                                            letterSpacing: '0em',
-                                            textAlign: 'left',
-                                            right:"20px"
-
-                                        }}>Amount: 10M</Typography>
-                                    </Box>
-                                </Grid>
-                            </Grid>
+                            <ProposalCard key={index} index={index} />
                         ))
                     }
                 </Box>
