@@ -1,21 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
-import { useDispatch } from 'react-redux';
-import {
-  handlePostAmount,
-  handlePostArea,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
-import {
-  handleRequestAmount,
-  handleRequestArea,
-} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
-import {
-  handleCoverAmount,
-  handleCoverArea,
-} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -33,7 +20,6 @@ const PropertyAreaSize = ({
     amount: '',
     unit: '',
   });
-  const dispatch = useDispatch();
 
   const [propertyData] = useState(
     createPropertySizeState(
@@ -42,18 +28,6 @@ const PropertyAreaSize = ({
       selectCity
     )
   );
-
-  useEffect(() => {
-    dispatch(handlePostArea(propertyArea));
-    dispatch(handleRequestArea(propertyArea));
-    dispatch(handleCoverArea(propertyArea));
-  }, [propertyArea]);
-
-  useEffect(() => {
-    dispatch(handleRequestAmount(propertyAmount));
-    dispatch(handlePostAmount(propertyAmount));
-    dispatch(handleCoverAmount(propertyAmount));
-  }, [propertyAmount]);
 
   const handleInputChange = (key, val) => {
     if (key == 'area') {
@@ -118,7 +92,7 @@ const PropertyAreaSize = ({
             >
               <Box
                 component={'img'}
-                src={item.image}
+                src={item?.image}
                 sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
                 alt="areasize"
               />
@@ -157,7 +131,7 @@ const PropertyAreaSize = ({
                   display: { xs: 'none', sm: 'flex' },
                 }}
               >
-                {item.text}
+                {item?.text}
                 <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
               </Typography>
               <Box
@@ -189,7 +163,7 @@ const PropertyAreaSize = ({
                       margin: 0,
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label] && `solid 1px red`,
+                      border: formik?.errors[item?.label] && `solid 1px red`,
                     },
                   }}
                   InputProps={{
@@ -200,25 +174,25 @@ const PropertyAreaSize = ({
                   }}
                   name={item?.label}
                   onChange={(e) =>
-                    handleInputChange(item?.label, e.target.value)
+                    handleInputChange(item?.label, e?.target?.value)
                   }
                   value={formik[item?.label]}
-                  onBlur={formik.handleBlur}
+                  onBlur={formik?.handleBlur}
                   error={
-                    formik.touched[item?.label] &&
-                    Boolean(formik.errors[item?.label])
+                    formik?.touched[item?.label] &&
+                    Boolean(formik?.errors[item?.label])
                   }
                 />
                 <Autocomplete
                   name={item?.unit}
                   disablePortal
                   id="combo-box-demo"
-                  options={item.label == 'area' ? aeraSizes : currency}
+                  options={item?.label == 'area' ? aeraSizes : currency}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
                       // border: '1px solid #E7E7E7',
-                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
+                      border: `1px solid ${formik?.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
                       borderRadius: '10px',
                     },
                   }}
@@ -239,7 +213,7 @@ const PropertyAreaSize = ({
                   onChange={(e) => handleCityChange(e, index, item?.unit)}
                 />
               </Box>
-              {(formik.errors[item?.label] || formik.errors[item?.unit]) && (
+              {(formik?.errors[item?.label] || formik.errors[item?.unit]) && (
                 <Typography
                   sx={{
                     position: 'absolute',

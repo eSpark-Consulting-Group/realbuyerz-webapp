@@ -28,6 +28,8 @@ import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
 import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import coverLetterSlice from './slices/PreviewCoverLetter/coverLetterSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
+import userDraftSlice from './slices/userDraft/userDraftSlice';
+import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
 
 export const store = configureStore({
   reducer: {
@@ -62,6 +64,10 @@ export const store = configureStore({
     loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
     postRequestAds: userAdsSlice,
+
+    // Draft Ads State
+    userDraft: userDraftSlice,
+    agentDraft: agentDraftSlice,
 
     // Favorite Ads State
     favoriteAds: favouriteAdsSlice,

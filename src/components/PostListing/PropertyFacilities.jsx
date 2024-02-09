@@ -26,7 +26,6 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
               alignItems: 'center',
               gap: 2,
               width: { xs: 'auto', md: 'auto' },
-              // justifyContent: 'space-around',
             }}
           >
             <Image src={item.image} width={50} height={50} alt="facility" />
@@ -37,7 +36,6 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
                 flexDirection: { xs: 'column', sm: 'row' },
                 alignItems: 'center',
                 textAlign: { xs: 'center', sm: 'start' },
-                // justifyContent: 'space-between',
                 gap: 1,
               }}
             >
@@ -48,10 +46,10 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
               </Box>
               <Box sx={{ width: 'auto' }}>
                 <Counter
-                  name={item?.name}
                   formik={formik}
+                  name={item?.name}
                   title={item?.title}
-                  identifier={`facility_${index}`}
+                  limit={item?.limit}
                 />
               </Box>
             </Box>

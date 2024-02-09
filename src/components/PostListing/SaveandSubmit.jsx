@@ -31,6 +31,8 @@ const SubmitButton = ({ handleClickOpen }) => {
         >
           <HideUnhideButton handleClickOpen={handleClickOpen} />
           <Button
+            id="draft"
+            type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
               '@media(min-width: 280px) and (max-width:400px)': {
@@ -50,9 +52,11 @@ const SubmitButton = ({ handleClickOpen }) => {
               },
             }}
           >
-            {PROPERTY_INFORMATION.saveDraft}
+            {PROPERTY_INFORMATION?.saveDraft}
           </Button>
           <Button
+            id="submit"
+            type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
               '@media(min-width: 280px) and (max-width:400px)': {
@@ -71,9 +75,8 @@ const SubmitButton = ({ handleClickOpen }) => {
                 backgroundColor: '#fff',
               },
             }}
-            type="submit"
           >
-            {PROPERTY_INFORMATION.submitAd}
+            {PROPERTY_INFORMATION?.submitAd}
           </Button>
         </Box>
       </Grid>

@@ -1,21 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 
 import { createInstallmentState } from '@/utils/propertyInstallment';
-import { useDispatch } from 'react-redux';
-import {
-  handlePostInstallment,
-  handlePostPossession,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
-import {
-  handleRequestInstallment,
-  handleRequestPossession,
-} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
-import {
-  handleCoverInstallment,
-  handleCoverPossession,
-} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
@@ -25,34 +12,14 @@ const PropertyInstallment = ({
   const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
-  const [installment, setInstallment] = useState();
-  const [possession, setPossession] = useState();
-  const dispatch = useDispatch();
 
   const handleToggleChange = (key, val) => {
-    if (key == 'instalmentAvailable') {
-      setInstallment(val);
-    } else {
-      setPossession(val);
-    }
     formik.setFieldValue(key, val);
   };
 
-  useEffect(() => {
-    dispatch(handlePostInstallment(installment));
-    dispatch(handleRequestInstallment(installment));
-    dispatch(handleCoverInstallment(installment));
-  }, [installment]);
-
-  useEffect(() => {
-    dispatch(handleRequestPossession(possession));
-    dispatch(handlePostPossession(possession));
-    dispatch(handleCoverPossession(possession));
-  }, [possession]);
-
   return (
     <>
-      {propertyData?.installmentData.toggleData?.map((item, index) => (
+      {propertyData?.installmentData?.toggleData?.map((item, index) => (
         <Box
           sx={{
             width: '100%',
@@ -129,7 +96,7 @@ const PropertyInstallment = ({
               <Switch
                 value={item?.value}
                 onChange={(event) =>
-                  handleToggleChange(item?.label, event.target.checked)
+                  handleToggleChange(item?.label, event?.target?.checked)
                 }
               />
             </Box>

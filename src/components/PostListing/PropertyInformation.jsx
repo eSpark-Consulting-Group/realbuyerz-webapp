@@ -1,15 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
-
-import { handlePostInformation } from '@/src/redux/slices/previewPostListing/postListingSlice';
-import { handleRequestInformation } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
-import { handleCoverInformation } from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
 const PropertyInformation = ({ propertyData, formik }) => {
   const [adInformation, setAdInformation] = useState({});
-  const dispatch = useDispatch();
+
   const handleChange = (key, val) => {
     setAdInformation({
       ...adInformation,
@@ -17,12 +12,6 @@ const PropertyInformation = ({ propertyData, formik }) => {
     });
     formik.setFieldValue(key, val);
   };
-
-  useEffect(() => {
-    dispatch(handlePostInformation(adInformation));
-    dispatch(handleRequestInformation(adInformation));
-    dispatch(handleCoverInformation(adInformation));
-  }, [adInformation]);
 
   const specialIndex = 1;
   return (

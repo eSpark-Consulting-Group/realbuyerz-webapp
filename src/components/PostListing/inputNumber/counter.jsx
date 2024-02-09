@@ -1,80 +1,33 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CustomNumberInput from './customInputNumber';
-import { useDispatch } from 'react-redux';
-import {
-  handlePostBathrooms,
-  handlePostBedrooms,
-  handlePostParking,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
-import {
-  handleRequestBathrooms,
-  handleRequestBedrooms,
-  handleRequestParking,
-} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
-import {
-  handleCoverBathrooms,
-  handleCoverBedrooms,
-  handleCoverParking,
-} from '@/src/redux/slices/PreviewCoverLetter/coverLetterSlice';
 
-const Counter = ({ identifier, formik, name }) => {
-  const [number, setNumber] = useState(0);
-  const [incrementValue, setIncrementValue] = useState(0);
-  const [bedroomValue, setBedroomValue] = useState(0);
-  const [bathroomValue, setBathroomValue] = useState(0);
-  const [parkingValue, setParkingValue] = useState(0);
-  const dispatch = useDispatch();
+const Counter = ({ formik, name, limit }) => {
+  const [value, setValue] = useState(0);
 
-  useEffect(() => {
-    if (identifier == 'facility_0') {
-      setBedroomValue(Number(number));
-    } else if (identifier == 'facility_1') {
-      setBathroomValue(Number(number));
-    } else if (identifier == 'facility_2') {
-      setParkingValue(Number(number));
+  const handleIncrement = () => {
+    if (value < limit) {
+      const newIncrementValue = value + 1;
+      setValue(newIncrementValue);
+      formik.setFieldValue([name], newIncrementValue);
     }
-  });
-
-  useEffect(() => {
-    dispatch(handleRequestBedrooms(bedroomValue));
-    dispatch(handlePostBedrooms(bedroomValue));
-    dispatch(handleCoverBedrooms(bedroomValue));
-  }, [bedroomValue]);
-
-  useEffect(() => {
-    dispatch(handleRequestBathrooms(bathroomValue));
-    dispatch(handlePostBathrooms(bathroomValue));
-    dispatch(handleCoverBathrooms(bathroomValue));
-  }, [bathroomValue]);
-
-  useEffect(() => {
-    dispatch(handleRequestParking(parkingValue));
-    dispatch(handlePostParking(parkingValue));
-    dispatch(handleCoverParking(parkingValue));
-  }, [parkingValue]);
-
-  const handleNumberChange = (newValue) => {
-    console.log({ newValue, name });
-    setNumber(newValue);
-    formik.setFieldValue('featuresAndAmenities', {
-      ...formik.values.featuresAndAmenities,
-      [name]: newValue,
-    });
   };
 
-  const saveIncrement = (value) => {
-    setIncrementValue(value);
+  const handleDecrement = () => {
+    const numericValue = value;
+    if (numericValue > 0) {
+      const newDecrementValue = numericValue - 1;
+      setValue(newDecrementValue);
+    }
   };
 
   return (
     <div>
       <CustomNumberInput
-        value={number}
-        incrementValue={incrementValue}
-        onChange={handleNumberChange}
-        onSaveIncrement={saveIncrement}
-        identifier={identifier}
+        limit={limit}
+        value={value}
+        handleIncrement={handleIncrement}
+        handleDecrement={handleDecrement}
       />
     </div>
   );

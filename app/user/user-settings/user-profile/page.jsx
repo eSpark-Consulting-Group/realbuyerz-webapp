@@ -34,7 +34,6 @@ const UserProfile = () => {
       }}
     >
       <ProfileForm formValues={userData} data={Agent_Profile_Form_Data} />
-
       <ProfileFormMidText />
       <ProfilePasswordForm
         spacificAgent={userData}

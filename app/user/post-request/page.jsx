@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
 
 import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
@@ -17,7 +17,6 @@ import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { handleRequestFormId } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -25,6 +24,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
+import { handleUserDraft } from '@/src/redux/slices/userDraft/userDraftSlice';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -47,24 +47,15 @@ const Page = () => {
     };
   };
 
-  const [propertyData, setPropertyData] = useState(initializePropertyData());
+  const [propertyData] = useState(initializePropertyData());
   const [open, setOpen] = useState(false);
+
   const { postRequest } = useSelector((state) => state);
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log('propertyData', setPropertyData);
-  }, [propertyData]);
-
-  const handleSubmitAd = () => {
-    const formId = Math.floor(Math.random() * 100) + 1;
-    dispatch(handleRequestFormId(formId));
-    // dispatch(handleRequestAgentId(formId));
-    dispatch(handleSumitUserAds(postRequest));
-  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -72,6 +63,13 @@ const Page = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  function generateRandomNumber() {
+    return Math.floor(Math.random() * 1000) + 1;
+  }
+
+  const randomNumber = generateRandomNumber();
+
   const validationSchema = yup.object({
     title: yup.string('Enter title').required('Title is required'),
     description: yup
@@ -93,6 +91,15 @@ const Page = () => {
   });
   const formik = useFormik({
     initialValues: {
+      adId: '',
+      userId: '',
+      proposalId: '',
+      proposals: [],
+      otherAmenities: [],
+      bedrooms: '',
+      connects: '',
+      bathrooms: '',
+      parking: '',
       purpose: 'Sell',
       proportyCategory: 'House',
       propertyType: 'Sell',
@@ -101,10 +108,11 @@ const Page = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log({ values });
+      (values.adId = randomNumber), console.log({ values });
+      dispatch(handleUserDraft(values));
+      dispatch(handleSumitUserAds(values));
       handleOpenSuccessModal();
-      handleSubmitAd();
+      // action.resetForm()
     },
     validateOnChange: false,
     validateOnBlur: false,
