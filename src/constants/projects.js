@@ -3,6 +3,7 @@
 export const PROJECTS_DATA = [
   {
     id: 1,
+    slug: 'syedhasni',
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -10,9 +11,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 2,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -20,9 +22,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 3,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -30,9 +33,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 4,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -40,9 +44,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 5,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -50,9 +55,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 6,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -60,9 +66,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 7,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -70,9 +77,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 8,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -80,9 +88,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 9,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -90,9 +99,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 10,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -100,9 +110,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 11,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -110,9 +121,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 12,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -120,9 +132,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 13,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -130,9 +143,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 14,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -140,9 +154,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 15,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -150,9 +165,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 16,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -160,9 +176,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 17,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -170,9 +187,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 18,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -180,9 +198,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 19,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -190,9 +209,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 20,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -200,9 +220,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 21,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -210,9 +231,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 19,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -220,9 +242,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 20,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -230,9 +253,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 21,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -240,9 +264,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 19,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -250,9 +275,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
   {
-    id: 1,
+    id: 20,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -260,9 +286,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
   },
   {
-    id: 1,
+    id: 21,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -270,9 +297,10 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
   },
   {
-    id: 1,
+    id: 19,
     image: '/images/project/project-image.png',
     price: '1.1 Crore',
     location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
@@ -280,6 +308,50 @@ export const PROJECTS_DATA = [
     orientation: 'East Open',
     description:
       'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
   },
-  // Add more projects as needed
+  {
+    id: 20,
+    image: '/images/project/project-image.png',
+    price: '1.1 Crore',
+    location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    size: '1080 sqft',
+    orientation: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
+  },
+  {
+    id: 21,
+    image: '/images/project/project-image.png',
+    price: '1.1 Crore',
+    location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    size: '1080 sqft',
+    orientation: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'commercials',
+  },
+  {
+    id: 19,
+    image: '/images/project/project-image.png',
+    price: '1.1 Crore',
+    location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    size: '1080 sqft',
+    orientation: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'houses',
+  },
+  {
+    id: 20,
+    image: '/images/project/project-image.png',
+    price: '1.1 Crore',
+    location: 'Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    size: '1080 sqft',
+    orientation: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+    category: 'plots',
+  },
 ];

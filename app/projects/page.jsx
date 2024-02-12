@@ -13,18 +13,26 @@ const Listing = () => {
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
-        <CategoryLink category={`Houses`} link={'/'} linkText={'See All'} />
-        <ProjectsSlider data={PROJECTS_DATA} />
+        <CategoryLink
+          category={`Houses`}
+          link={'/projects/category/houses'}
+          linkText={'See All'}
+        />
+        <ProjectsSlider data={PROJECTS_DATA} category={'houses'} />
 
-        <CategoryLink category={`Plots`} link={'/'} linkText={'See All'} />
-        <ProjectsSlider data={PROJECTS_DATA} />
+        <CategoryLink
+          category={`Plots`}
+          link={'/projects/category/plots'}
+          linkText={'See All'}
+        />
+        <ProjectsSlider data={PROJECTS_DATA} category={'plots'} />
 
         <CategoryLink
           category={`Commercials`}
-          link={'/'}
+          link={'/projects/category/commercials'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={PROJECTS_DATA} />
+        <ProjectsSlider data={PROJECTS_DATA} category={'commercials'} />
       </Box>
     </>
   );
