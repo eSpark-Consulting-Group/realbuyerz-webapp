@@ -6,23 +6,30 @@ const CategoryLink = ({ category, link, linkText }) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'space-between', py: '15px' }}>
       <Typography
-        sx={{ fontSize: '25px', fontWeight: 500, lineHeight: '30px' }}
+        sx={{
+          fontSize: '25px',
+          fontWeight: 500,
+          lineHeight: '30px',
+          textTransform: 'capitalize',
+        }}
       >
         {category}
       </Typography>
-      <Link href={link}>
-        <Typography
-          sx={{
-            fontSize: '20px',
-            fontWeight: 500,
-            lineHeight: '24px',
-            color: '#1176AD',
-            textDecoration: 'underline',
-          }}
-        >
-          {linkText}
-        </Typography>
-      </Link>
+      {link && linkText ? (
+        <Link href={link}>
+          <Typography
+            sx={{
+              fontSize: '20px',
+              fontWeight: 500,
+              lineHeight: '24px',
+              color: '#1176AD',
+              textDecoration: 'underline',
+            }}
+          >
+            {linkText}
+          </Typography>
+        </Link>
+      ) : null}
     </Box>
   );
 };
