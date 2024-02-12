@@ -6,17 +6,19 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Typography, Box, Grid } from '@mui/material';
+import { filterData } from '@/utils/proposalFilter';
+import Link from 'next/link';
 
 const itemsToShow = 10;
 
-const ProjectsSlider = ({ data }) => {
+const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalItems = Math.min(data.length, itemsToShow);
   console.log(currentPage);
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
-
+  const filterData = data?.filter((item) => item?.category === category);
   const sliderSettings = {
     slidesPerView: 3,
     // pagination: { clickable: true },
@@ -48,8 +50,8 @@ const ProjectsSlider = ({ data }) => {
 
   return (
     <Swiper {...sliderSettings}>
-      {data.slice(0, totalItems).map((project) => (
-        <SwiperSlide key={project.id}>
+      {filterData?.slice(0, totalItems).map((project) => (
+        <SwiperSlide key={project?.id}>
           <Grid
             container
             sx={{
@@ -59,7 +61,7 @@ const ProjectsSlider = ({ data }) => {
             }}
           >
             <Grid
-              key={project.id}
+              key={project?.id}
               item
               xs={11}
               my={'20px'}
@@ -68,14 +70,14 @@ const ProjectsSlider = ({ data }) => {
                 border: '1px solid #E4E4E4',
               }}
             >
-              {/* Your existing code for the grid item */}
-              <img
-                src={project.image}
-                height={'auto'}
-                width={'100%'}
-                alt={`Project ${project.id}`}
-              />
-
+              <Link href={`/projects/${project.id}`}>
+                <img
+                  src={project?.image}
+                  height={'auto'}
+                  width={'100%'}
+                  alt={`Project ${project?.id}`}
+                />
+              </Link>
               <Box sx={{ p: '20px' }}>
                 <Box
                   sx={{ display: 'flex', alignItems: 'flex-end', pb: '20px' }}
@@ -97,7 +99,7 @@ const ProjectsSlider = ({ data }) => {
                       lineHeight: '30px',
                     }}
                   >
-                    {project.price}
+                    {project?.price}
                   </Typography>
                 </Box>
 
@@ -110,7 +112,7 @@ const ProjectsSlider = ({ data }) => {
                     textWrap: 'wrap',
                   }}
                 >
-                  {project.location}
+                  {project?.location}
                 </Typography>
                 <Typography
                   sx={{
@@ -120,7 +122,7 @@ const ProjectsSlider = ({ data }) => {
                     pb: '15px',
                   }}
                 >
-                  {project.size}
+                  {project?.size}
                 </Typography>
                 <Typography
                   sx={{
@@ -130,7 +132,7 @@ const ProjectsSlider = ({ data }) => {
                     pb: '15px',
                   }}
                 >
-                  {project.orientation}
+                  {project?.orientation}
                 </Typography>
                 <Typography
                   sx={{
@@ -139,9 +141,9 @@ const ProjectsSlider = ({ data }) => {
                     lineHeight: '25px',
                   }}
                 >
-                  {project.description.length > 200
-                    ? `${project.description.slice(0, 200)}...`
-                    : project.description}
+                  {project?.description.length > 200
+                    ? `${project?.description.slice(0, 200)}...`
+                    : project?.description}
                 </Typography>
               </Box>
             </Grid>
