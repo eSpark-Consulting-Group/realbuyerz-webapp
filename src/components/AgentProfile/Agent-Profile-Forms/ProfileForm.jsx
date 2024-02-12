@@ -7,15 +7,17 @@ import Grid from '@mui/material/Grid';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Button, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import 'react-phone-number-input/style.css';
 
 import RBInput from './RBInput';
-import RBSelect from './RBSelect';
 import AgentProfiles from '../AgentProfiles';
-import { profileValidationSchema } from '@/src/components/Schemas/profileValidationSchema';
-
 import { useFormik } from 'formik';
 import VerificationModal from '../../Modal/VerificationModal';
+import { profileValidationSchema } from '../../Schemas/profileValidationSchema';
+import PhoneInput from 'react-phone-number-input';
+import { handleEdit } from '@/src/redux/slices/loginAgents/loginAgentsSlice';
+import { handleUserEdit } from '@/src/redux/slices/loginUsers/loginUsersSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -28,25 +30,50 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileForm({
-  data,
-
-  buttonText,
-  firstDropdownValue,
-  setFirstDropdownValue,
-  secondDropdownValue,
-  setSecondDropdownValue,
-  profileInitialValues,
-}) {
-  const { image, fields } = data;
+export default function ProfileForm({ data, formValues }) {
+  const { image, fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
-
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
+  const user = useSelector((state) => state?.users?.users?.userdata);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const Profile_Keys = {
+    profileImage: `${formValues?.profileImage}` || '',
+    about: `${formValues?.about}` || '',
+    address: `${formValues?.address}` || '',
+    city: `${formValues?.city}` || '',
+    country: `${formValues?.country}` || '',
+    email: `${formValues?.email}` || '',
+    firstName: `${formValues?.firstName}` || '',
+    landline: `${formValues?.landline}` || '',
+    lastName: `${formValues?.lastName}` || '',
+    mobile: `${formValues?.mobile}` || '',
+    whatsapp: `${formValues?.whatsapp}` || '',
+  };
+
+  const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues: { ...Profile_Keys, ...formValues },
+      validationSchema: profileValidationSchema,
+      onSubmit: (values) => {
+        if (formValues?.userType == 'agent') {
+          dispatch(handleEdit(values));
+        }
+        if (formValues?.userType == 'user') {
+          dispatch(handleUserEdit(values));
+        } else {
+          null;
+        }
+        // action.resetForm();
+      },
+    });
+
   const handleModalToggle = () => {
     setOpen(!open);
   };
+
   const handleVerify = (name) => {
     if (values[name] !== '') {
       setVerifyText('verified');
@@ -55,29 +82,16 @@ export default function ProfileForm({
       setVerifyText('unverified');
     }
   };
-  const flagChange = (e) => {
-    const { value } = e.target;
-    setFirstDropdownValue(value);
+
+  const handlePhoneChange = (event, key) => {
+    if (key == 'Whatsapp') {
+      return setFieldValue((values.whatsapp = event));
+    } else if (key == 'Mobile') {
+      return setFieldValue((values.mobile = event));
+    } else {
+      null;
+    }
   };
-
-  const flagChange2 = (e) => {
-    const { value } = e.target;
-    setSecondDropdownValue(value);
-  };
-
-  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      ...profileInitialValues,
-    },
-
-    validationSchema: profileValidationSchema,
-
-    onSubmit: (values, action) => {
-      console.log(values, 'values');
-      action.resetForm();
-    },
-  });
-  const user = useSelector((state) => state?.users?.users?.userdata);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -103,203 +117,200 @@ export default function ProfileForm({
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={user} />
+              <AgentProfiles data={user} spacificData={formValues} />
             </Box>
           </Item>
         </Grid>
-        {fields?.map((field, index) => {
-          const {
-            id,
-            label,
-            place,
-            type,
-            helperText,
-            dropdowns,
-            rows,
-            name,
-            buttonText,
-            pt,
-            sizes,
-            width,
-            multiline,
-          } = field;
-          const selectedCountryObject1 =
-            dropdowns &&
-            dropdowns.find((item) => item.icon === firstDropdownValue);
-
-          const selectedCountryObject2 =
-            dropdowns &&
-            dropdowns.find((item) => item.icon === secondDropdownValue);
-
-          return (
-            <Grid
-              key={index}
-              item
-              xs={sizes?.xs}
-              sm={sizes?.sm}
-              md={sizes?.md}
-              lg={sizes?.lg}
-            >
-              <Item>
+        {fields?.map((field, index) => (
+          <Grid
+            key={index}
+            item
+            xs={field?.sizes?.xs}
+            sm={field?.sizes?.sm}
+            md={field?.sizes?.md}
+            lg={field?.sizes?.lg}
+          >
+            <Item>
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  mx: 'auto',
+                  pt: field?.pt,
+                  pl: { lg: 5, md: 2 },
+                }}
+              >
                 <Box
                   sx={{
-                    width: '100%',
-                    height: '100%',
-                    mx: 'auto',
-                    pt: pt,
-                    pl: { lg: 5, md: 2 },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    rowGap: '18px',
                   }}
                 >
-                  <Box
+                  <Typography
+                    variant="h6"
                     sx={{
                       display: 'flex',
-                      flexDirection: 'column',
-                      rowGap: '18px',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 1,
                     }}
                   >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 1,
-                      }}
-                    >
-                      {label}
-                      {label === 'Mobile' ? (
-                        <Typography
-                          sx={{
-                            color: `${
-                              verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
-                            }`,
-                            fontStyle: 'normal',
-                            fontWeight: 400,
-                            lineHeight: 'normal',
-                          }}
-                        >
-                          {verifyText === 'verified' ? (
-                            <CheckCircleOutlineIcon sx={{ mr: 0.5 }} />
-                          ) : (
-                            <HighlightOffIcon sx={{ mr: 0.5 }} />
-                          )}
-                          {verifyText}
-                        </Typography>
-                      ) : null}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: {
-                          xs: `${
-                            label === 'Whatsapp' || label === 'Mobile'
-                              ? 'flex'
-                              : 'flex'
-                          }`,
-                        },
-                        columnGap: 2,
-                        flexDirection: { xs: 'column', sm: 'row' },
-                        rowGap: { xs: 3 },
-                      }}
-                    >
-                      {label == 'Whatsapp' ? (
-                        <RBSelect
-                          menuItem={dropdowns}
-                          value={firstDropdownValue}
-                          label={'Select Country'}
-                          onChange={(e) => flagChange(e)}
-                          sx={{
-                            width: {
-                              xs: '80px',
-                              sm: 'auto',
-                              md: '65px',
-                              lg: '90px',
-                            },
-                            height: { xs: '53px', sm: 'auto', lg: '53px' },
-                          }}
-                        />
-                      ) : (
-                        <RBSelect
-                          menuItem={dropdowns}
-                          value={secondDropdownValue}
-                          label={'Select Country'}
-                          onChange={(e) => flagChange2(e)}
-                          sx={{
-                            width: {
-                              xs: '80px',
-                              sm: 'auto',
-                              md: '65px',
-                              lg: '90px',
-                            },
-                            height: { xs: '53px', sm: 'auto', lg: '53px' },
-                          }}
-                        />
-                      )}{' '}
-                      <RBInput
+                    {field?.label}
+                    {field?.label === 'Mobile' ? (
+                      <Typography
                         sx={{
-                          width: width,
-                          gap: 1,
-                          textAlign: 'left',
-                          '& input[type=number]::-webkit-inner-spin-button': {
-                            WebkitAppearance: 'none',
-                            margin: 0,
-                          },
-                          '.MuiFormHelperText-contained': {
-                            marginLeft: 0.5,
-                          },
+                          color: `${
+                            verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
+                          }`,
+                          fontStyle: 'normal',
+                          fontWeight: 400,
+                          lineHeight: 'normal',
                         }}
-                        rows={rows}
-                        name={name}
-                        multiline={multiline}
-                        value={values[name]}
-                        onChange={handleChange}
-                        error={errors[name] && touched[name] ? true : false}
-                        helperText={
-                          (touched[name] && errors[name]) || helperText
-                        }
-                        id={
-                          (errors[name] && touched[name]) || id
-                            ? 'errors[name] && touched[name]'
-                            : null
-                        }
-                        type={type}
-                        place={`${place} ${
-                          label === 'Whatsapp'
-                            ? selectedCountryObject1?.code
-                            : '' ||
-                              (label === 'Mobile'
-                                ? selectedCountryObject2?.code
-                                : '')
-                        }`}
+                      >
+                        {verifyText === 'verified' ? (
+                          <CheckCircleOutlineIcon sx={{ mr: 0.5 }} />
+                        ) : (
+                          <HighlightOffIcon sx={{ mr: 0.5 }} />
+                        )}
+                        {verifyText}
+                      </Typography>
+                    ) : null}
+                  </Typography>
+
+                  {field?.label == 'Whatsapp' ? (
+                    <Box sx={{ width: { xs: '100%', lg: '88%' } }}>
+                      <PhoneInput
+                        placeholder="Enter phone number"
+                        value={values?.whatsapp}
+                        defaultCountry={'PK'}
+                        onChange={(e) => handlePhoneChange(e, field?.label)}
                       />
-                      {buttonText && (
+                      <Typography
+                        sx={{
+                          pt: 1.5,
+                          fontSize: '0.75rem',
+                          color: '#d32f2f',
+                          textAlign: 'left',
+                        }}
+                      >
+                        {touched?.whatsapp && errors?.whatsapp}{' '}
+                      </Typography>
+                    </Box>
+                  ) : null}
+                  {field?.label == 'Mobile' ? (
+                    <Box sx={{ width: '100%' }}>
+                      <Box
+                        sx={{
+                          width: '100%',
+                          display: { xs: 'block', lg: 'flex' },
+                          gap: 1,
+                          alignItems: { xs: 'start', lg: 'center' },
+                        }}
+                      >
+                        <PhoneInput
+                          id="mobile"
+                          placeholder="Enter phone number"
+                          value={values?.mobile}
+                          defaultCountry={'PK'}
+                          onChange={(e) => handlePhoneChange(e, field?.label)}
+                        />
                         <Button
                           variant="primary"
                           type="button"
                           disabled={
-                            verifyText === 'verified' && values[name] !== ''
+                            verifyText === 'verified' &&
+                            values[field?.name] !== ''
                               ? true
                               : false
                           }
                           onClick={() => {
-                            handleVerify(name), handleModalToggle();
+                            handleVerify(field?.name), handleModalToggle();
                           }}
                           sx={{
-                            width: { xs: '100%', sm: 'auto' },
-                            height: { xs: '45px', sm: '53px' },
+                            mt: { xs: 2, lg: 0 },
+                            width: {
+                              xs: '98%',
+                              sm: '130px',
+                              md: '160px',
+                              lg: '100px',
+                            },
+                            height: { xs: '40px', md: '40px', lg: '30px' },
                             borderRadius: '5px',
                             '&:hover': { color: '#fff' },
                           }}
                         >
-                          {buttonText}
+                          {'Verify'}
                         </Button>
-                      )}
+                      </Box>
+                      <Box>
+                        <Typography
+                          sx={{
+                            pt: 1.5,
+                            fontSize: '0.75rem',
+                            color: '#d32f2f',
+                            textAlign: 'left',
+                          }}
+                        >
+                          {touched?.mobile && errors?.mobile}
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
+                  ) : null}
+                  {field?.label == 'Mobile' ||
+                  field?.label == 'Whatsapp' ? null : (
+                    <RBInput
+                      inputProps={{
+                        style: {
+                          height: `${field?.label == 'Bio' ? 'auto' : '45px'}`,
+                          borderRadius: '5px',
+                          border: '1px solid #E7E7E7',
+                          fontSize: '15px',
+                          fontWeight: 400,
+                        },
+                      }}
+                      sx={{
+                        width: field?.width,
+                        '& fieldset': { border: 'none' },
+                        gap: 1,
+                        textAlign: 'left',
+                        '& input[type=number]::-webkit-inner-spin-button': {
+                          WebkitAppearance: 'none',
+                          margin: 0,
+                        },
+                        '.MuiFormHelperText-contained': {
+                          marginLeft: 0.5,
+                        },
+                      }}
+                      rows={field?.rows}
+                      name={field?.name}
+                      multiline={field?.multiline}
+                      value={values[field?.name]}
+                      onChange={handleChange}
+                      error={
+                        errors[field?.name] && touched[field?.name]
+                          ? true
+                          : false
+                      }
+                      helperText={
+                        (touched[field?.name] && errors[field?.name]) ||
+                        field?.helperText
+                      }
+                      id={
+                        (errors[field?.name] && touched[field?.name]) ||
+                        field?.id
+                          ? 'errors[field?.name] && touched[field?.name]'
+                          : null
+                      }
+                      type={field?.type}
+                      place={field?.place}
+                    />
+                  )}
                 </Box>
-              </Item>
-            </Grid>
-          );
-        })}
+              </Box>
+            </Item>
+          </Grid>
+        ))}
         {isVerificationSuccessful && (
           <VerificationModal
             onClose={() => setIsVerificationSuccessful(false)}

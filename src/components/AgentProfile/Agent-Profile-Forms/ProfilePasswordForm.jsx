@@ -1,12 +1,14 @@
 'use client';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import RBInput from './RBInput';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import RBCheckbox from './RBCheckbox';
+import { passwordValidationSchema } from '../../Schemas/passwordValidationSchema';
+import { useFormik } from 'formik';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -19,16 +21,25 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfilePasswordForm({
-  data,
-  values,
-  errors,
-  touched,
-  handleChange,
-  checked,
-  setChecked,
-}) {
-  const { image, passwordfields, checkbox } = data;
+export default function ProfilePasswordForm({ data }) {
+  const { image, passwordfields, checkbox, buttonText } = data;
+  const [checkValue, setCheckValue] = useState(false);
+
+  const Password_Keys = {
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  };
+  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    initialValues: Password_Keys,
+    validationSchema: passwordValidationSchema,
+    onSubmit: (values, action) => {
+      console.log(values, 'values');
+      action.resetForm();
+      setCheckValue(false);
+    },
+  });
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -49,73 +60,84 @@ export default function ProfilePasswordForm({
           pb: { xs: 2, md: 3 },
         }}
       >
-        {passwordfields?.map((field, index) => {
-          const { id, label, place, type, helperText, sizes, width, name } =
-            field;
-          return (
-            <Grid
-              key={index}
-              item
-              xs={sizes?.xs}
-              sm={sizes?.sm}
-              md={sizes?.md}
-              lg={sizes?.lg}
-            >
-              <Item>
+        {passwordfields?.map((field, index) => (
+          <Grid
+            key={index}
+            item
+            xs={field?.sizes?.xs}
+            sm={field?.sizes?.sm}
+            md={field?.sizes?.md}
+            lg={field?.sizes?.lg}
+          >
+            <Item>
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  mx: 'auto',
+                  pt: { xs: 0 },
+                  pl: { lg: 5, md: 2 },
+                }}
+              >
                 <Box
                   sx={{
-                    width: '100%',
-                    height: '100%',
-                    mx: 'auto',
-                    pt: { xs: 0 },
-                    pl: { lg: 5, md: 2 },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    rowGap: '18px',
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      rowGap: '18px',
-                    }}
+                  <Typography
+                    variant="h6"
+                    sx={{ textAlign: 'left !important' }}
                   >
-                    <Typography
-                      variant="h6"
-                      sx={{ textAlign: 'left !important' }}
-                    >
-                      {label}
-                    </Typography>
-                    <RBInput
-                      sx={{
-                        width: width,
-                        gap: 1,
-                        '.MuiFormHelperText-contained': {
-                          marginLeft: 0.5,
-                        },
-                      }}
-                      name={name}
-                      type={type}
-                      place={place}
-                      value={values[name]}
-                      onChange={handleChange}
-                      error={errors[name] && touched[name] ? true : false}
-                      helperText={(touched[name] && errors[name]) || helperText}
-                      id={
-                        (errors[name] && touched[name]) || id
-                          ? 'errors[name] && touched[name]'
-                          : null
-                      }
-                    />
-                  </Box>
+                    {field?.label}
+                  </Typography>
+                  <RBInput
+                    sx={{
+                      width: field?.width,
+                      gap: 1,
+                      '& fieldset': { border: 'none' },
+                      '.MuiFormHelperText-contained': {
+                        marginLeft: 0.5,
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        height: '45px',
+                        borderRadius: '5px',
+                        border: '1px solid #E7E7E7',
+                        fontSize: '15px',
+                        fontWeight: 400,
+                      },
+                    }}
+                    name={field?.name}
+                    type={field?.type}
+                    place={field?.place}
+                    value={values[field?.name]}
+                    onChange={handleChange}
+                    error={
+                      errors[field?.name] && touched[field?.name] ? true : false
+                    }
+                    helperText={
+                      (touched[field?.name] && errors[field?.name]) ||
+                      field?.helperText
+                    }
+                    id={
+                      (errors[field?.name] && touched[field?.name]) || field?.id
+                        ? 'errors[field?.name] && touched[field?.name]'
+                        : null
+                    }
+                  />
                 </Box>
-              </Item>
-            </Grid>
-          );
-        })}
+              </Box>
+            </Item>
+          </Grid>
+        ))}
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'left' }}>
           <RBCheckbox
             label={checkbox?.label}
-            checked={checked}
-            setChecked={setChecked}
+            checked={checkValue}
+            setChecked={setCheckValue}
             sx={{
               ml: { xs: 2, sm: 2, md: 4.2, lg: 7 },
               my: { xs: 1, md: 1 },
@@ -124,6 +146,21 @@ export default function ProfilePasswordForm({
             }}
           />
         </Box>
+        <Button
+          type="submit"
+          sx={{
+            mt: { xs: 2, sm: 2.1, md: 4.1, lg: 4 },
+            ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
+            mb: { xs: 3, md: 3 },
+            width: { xs: '90%', sm: 'auto', md: '160px' },
+            height: { xs: '45px', md: '45px' },
+            '&:hover': { color: '#fff' },
+          }}
+          variant="primary"
+          onClick={checkValue ? handleSubmit : null}
+        >
+          {buttonText}
+        </Button>
       </Grid>
     </Box>
   );

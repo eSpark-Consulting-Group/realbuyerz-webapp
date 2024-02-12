@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
-import Image from 'next/image';
+
 import EditProfileModal from '../../Modal/EditProfileModal';
-const AgentImage = ({ image }) => {
-  const [ProfileImage] = useState(image);
+import ButtonBaseDemo from './EditImage';
+
+const AgentImage = ({ spacificData }) => {
+  const [open, setOpen] = useState(false);
+  const [photoURL, setPhotoURL] = useState(null);
+  const handleOpen = () => setOpen(true);
+  const [setProfileImage] = useState(spacificData?.profileImage);
+
   return (
     <Grid
       sx={{
-        width: '180px',
-        height: '160px',
         margin: { xs: 'auto', md: 'auto' },
         pt: { xs: 1, sm: 0 },
         display: 'flex',
@@ -18,12 +22,9 @@ const AgentImage = ({ image }) => {
         position: 'relative',
       }}
     >
-      <Image
-        src={ProfileImage}
-        alt={'image'}
-        width={400}
-        height={400}
-        style={{ width: '100%', height: '100%', borderRadius: '100%' }}
+      <ButtonBaseDemo
+        url={photoURL ? photoURL : spacificData?.profileImage}
+        handleOpen={handleOpen}
       />
       <Box
         sx={{
@@ -37,6 +38,13 @@ const AgentImage = ({ image }) => {
         }}
       >
         <EditProfileModal
+          open={open}
+          setOpen={setOpen}
+          photoURL={photoURL}
+          setPhotoURL={setPhotoURL}
+          spacificData={spacificData}
+          setProfileImage={setProfileImage}
+          handleOpen={handleOpen}
           sx={{
             backgroundColor: '#fb631c',
             color: '#fff',

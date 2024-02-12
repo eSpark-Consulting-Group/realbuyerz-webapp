@@ -7,9 +7,13 @@ import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
 import { useDispatch } from 'react-redux';
 
 import {
-  addPropertyType,
-  addpropetySubType,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostPropertyType,
+  handlePostPropetySubType,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestPropertyType,
+  handleRequestPropetySubType,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const SelectProperyType = ({
   image,
@@ -17,6 +21,7 @@ const SelectProperyType = ({
   iconTitle,
   plotType,
   commercialType,
+  formik,
 }) => {
   const [activePropertyType, setActivePropertyType] = useState('House');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
@@ -26,21 +31,27 @@ const SelectProperyType = ({
   const dispatch = useDispatch();
 
   const handlePropertyType = (text) => {
+    console.log({ text });
     setActivePropertyType(text);
     setPropertyType(text);
+    formik.setFieldValue('proportyCategory', text);
   };
 
   const handlePropetySubType = (text) => {
+    console.log({ text });
     setActivePropertySubType(text);
     setPropetySubType(text);
+    formik.setFieldValue('propertyType', text);
   };
 
   useEffect(() => {
-    dispatch(addPropertyType(propertyType));
+    dispatch(handleRequestPropertyType(propertyType));
+    dispatch(handlePostPropertyType(propertyType));
   }, [propertyType]);
 
   useEffect(() => {
-    dispatch(addpropetySubType(propetySubType));
+    dispatch(handlePostPropetySubType(propetySubType));
+    dispatch(handleRequestPropetySubType(propetySubType));
   }, [propetySubType]);
 
   return (

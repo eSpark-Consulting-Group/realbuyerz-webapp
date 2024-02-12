@@ -5,13 +5,18 @@ import { Typography, Box, Switch } from '@mui/material';
 import { createInstallmentState } from '@/utils/propertyInstallment';
 import { useDispatch } from 'react-redux';
 import {
-  addInstallment,
-  addPossession,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostInstallment,
+  handlePostPossession,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestInstallment,
+  handleRequestPossession,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
   propertyBuyingDetails,
+  formik,
 }) => {
   const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
@@ -26,14 +31,17 @@ const PropertyInstallment = ({
     } else {
       setPossession(val);
     }
+    formik.setFieldValue(key, val);
   };
 
   useEffect(() => {
-    dispatch(addInstallment(installment));
+    dispatch(handlePostInstallment(installment));
+    dispatch(handleRequestInstallment(installment));
   }, [installment]);
 
   useEffect(() => {
-    dispatch(addPossession(possession));
+    dispatch(handleRequestPossession(possession));
+    dispatch(handlePostPossession(possession));
   }, [possession]);
 
   return (

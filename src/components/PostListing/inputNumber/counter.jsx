@@ -3,12 +3,17 @@ import React, { useEffect, useState } from 'react';
 import CustomNumberInput from './customInputNumber';
 import { useDispatch } from 'react-redux';
 import {
-  addBathrooms,
-  addBedrooms,
-  addParking,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostBathrooms,
+  handlePostBedrooms,
+  handlePostParking,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestBathrooms,
+  handleRequestBedrooms,
+  handleRequestParking,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
-const Counter = ({ identifier }) => {
+const Counter = ({ identifier, formik, name }) => {
   const [number, setNumber] = useState(0);
   const [incrementValue, setIncrementValue] = useState(0);
   const [bedroomValue, setBedroomValue] = useState(0);
@@ -27,19 +32,27 @@ const Counter = ({ identifier }) => {
   });
 
   useEffect(() => {
-    dispatch(addBedrooms(bedroomValue));
+    dispatch(handleRequestBedrooms(bedroomValue));
+    dispatch(handlePostBedrooms(bedroomValue));
   }, [bedroomValue]);
 
   useEffect(() => {
-    dispatch(addBathrooms(bathroomValue));
+    dispatch(handleRequestBathrooms(bathroomValue));
+    dispatch(handlePostBathrooms(bathroomValue));
   }, [bathroomValue]);
 
   useEffect(() => {
-    dispatch(addParking(parkingValue));
+    dispatch(handleRequestParking(parkingValue));
+    dispatch(handlePostParking(parkingValue));
   }, [parkingValue]);
 
   const handleNumberChange = (newValue) => {
+    console.log({ newValue, name });
     setNumber(newValue);
+    formik.setFieldValue('featuresAndAmenities', {
+      ...formik.values.featuresAndAmenities,
+      [name]: newValue,
+    });
   };
 
   const saveIncrement = (value) => {

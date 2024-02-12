@@ -2,21 +2,24 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addLocationAndPuspose } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+import { handleRequestLocationAndPuspose } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
+import { handlePostLocationAndPuspose } from '@/src/redux/slices/previewPostListing/postListingSlice';
 
-const PropertyStatus = ({ propertyInformation, propertyData }) => {
+const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
   const [properStatusData, setProperStatusData] =
     useState(activePropertyStatus);
   const dispatch = useDispatch();
 
   const handleChange = (val) => {
+    formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
     setProperStatusData(val);
   };
 
   useEffect(() => {
-    dispatch(addLocationAndPuspose(properStatusData));
+    dispatch(handleRequestLocationAndPuspose(properStatusData));
+    dispatch(handlePostLocationAndPuspose(properStatusData));
   }, [properStatusData]);
 
   return (

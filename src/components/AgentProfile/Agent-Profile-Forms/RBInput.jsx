@@ -14,6 +14,7 @@ const RBInput = ({
   name,
   rows,
   multiline,
+  inputProps,
   onChange,
   ...props
 }) => {
@@ -22,6 +23,7 @@ const RBInput = ({
       <TextField
         fullWidth
         type={type}
+        InputProps={inputProps}
         sx={sx}
         id={id}
         name={name}

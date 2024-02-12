@@ -6,89 +6,93 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = postListingEntities;
 
-const buyingSellingFormSlice = createSlice({
+const postListingSlice = createSlice({
   name: PROPERTY_INFORMATION.form,
   initialState,
   reducers: {
     //agent Id & Name
-    addId: (state, action) => {
-      state.id = action.payload;
+    handlePostAgentId: (state, action) => {
+      state.agentId = action.payload;
+    },
+    handlePostFormId: (state, action) => {
+      state.formId = action.payload;
     },
 
     //Ad_Infomation
-    addInformation: (state, action) => {
+    handlePostInformation: (state, action) => {
       state.adInfomation = { ...action.payload };
     },
 
     //locationAndPurpose
-    addLocationAndPuspose: (state, action) => {
+    handlePostLocationAndPuspose: (state, action) => {
       state.locationAndPurpose.adPurpose = action.payload;
     },
-    addPropertyType: (state, action) => {
+    handlePostPropertyType: (state, action) => {
       state.locationAndPurpose.propertyType = action.payload;
     },
-    addpropetySubType: (state, action) => {
+    handlePostPropetySubType: (state, action) => {
       state.locationAndPurpose.propetySubType = action.payload;
     },
-    addCity: (state, action) => {
+    handlePostCity: (state, action) => {
       state.locationAndPurpose.city = action.payload;
     },
 
     //PropertySizeAndPricing
-    addArea: (state, action) => {
+    handlePostArea: (state, action) => {
       state.propertySizeAndPricing.areaSize = action.payload;
     },
-    addamount: (state, action) => {
+    handlePostAmount: (state, action) => {
       state.propertySizeAndPricing.amount = action.payload;
     },
-    addInstallment: (state, action) => {
+    handlePostInstallment: (state, action) => {
       state.propertySizeAndPricing.installment = action.payload;
     },
 
-    addPossession: (state, action) => {
+    handlePostPossession: (state, action) => {
       state.propertySizeAndPricing.possession = action.payload;
     },
 
     // FeaturesAndAmenities
-    addBedrooms: (state, action) => {
+    handlePostBedrooms: (state, action) => {
       state.featuresAndAmenities.bedrooms = action.payload;
     },
-    addBathrooms: (state, action) => {
+    handlePostBathrooms: (state, action) => {
       state.featuresAndAmenities.bathrooms = action.payload;
     },
-    addParking: (state, action) => {
+    handlePostParking: (state, action) => {
       state.featuresAndAmenities.parking = action.payload;
     },
-    addAmenities: (state, action) => {
+    handlePostAmenities: (state, action) => {
       state.featuresAndAmenities.selectedAmenities = action.payload;
     },
 
     // PropertyImagesandVideos
-    UploadImages: (state, action) => {
+    handlePostImages: (state, action) => {
       state.propertyImagesAndVideos.images = action.payload;
     },
-    UploadVideos: (state, action) => {
+    handlePostVideos: (state, action) => {
       state.propertyImagesAndVideos.videos = action.payload;
     },
   },
 });
 
 export const {
-  addId,
-  addInformation,
-  addLocationAndPuspose,
-  addPropertyType,
-  addpropetySubType,
-  addCity,
-  addArea,
-  addamount,
-  addInstallment,
-  addPossession,
-  addBedrooms,
-  addBathrooms,
-  addParking,
-  addAmenities,
-  UploadImages,
-  UploadVideos,
-} = buyingSellingFormSlice.actions;
-export default buyingSellingFormSlice.reducer;
+  handlePostAgentId,
+  handlePostFormId,
+  handlePostInformation,
+  handlePostLocationAndPuspose,
+  handlePostPropertyType,
+  handlePostPropetySubType,
+  handlePostCity,
+  handlePostArea,
+  handlePostAmount,
+  handlePostInstallment,
+  handlePostPossession,
+  handlePostBedrooms,
+  handlePostBathrooms,
+  handlePostParking,
+  handlePostAmenities,
+  handlePostImages,
+  handlePostVideos,
+} = postListingSlice.actions;
+export default postListingSlice.reducer;

@@ -5,9 +5,13 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
 import { useDispatch } from 'react-redux';
 import {
-  addArea,
-  addamount,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
+  handlePostAmount,
+  handlePostArea,
+} from '@/src/redux/slices/previewPostListing/postListingSlice';
+import {
+  handleRequestAmount,
+  handleRequestArea,
+} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -15,6 +19,7 @@ const PropertyAreaSize = ({
   selectCity,
   aeraSizes,
   currency,
+  formik,
 }) => {
   const [propertyArea, setPropertyArea] = useState({
     area: '',
@@ -35,11 +40,13 @@ const PropertyAreaSize = ({
   );
 
   useEffect(() => {
-    dispatch(addArea(propertyArea));
+    dispatch(handlePostArea(propertyArea));
+    dispatch(handleRequestArea(propertyArea));
   }, [propertyArea]);
 
   useEffect(() => {
-    dispatch(addamount(propertyAmount));
+    dispatch(handleRequestAmount(propertyAmount));
+    dispatch(handlePostAmount(propertyAmount));
   }, [propertyAmount]);
 
   const handleInputChange = (key, val) => {
@@ -54,9 +61,10 @@ const PropertyAreaSize = ({
         [key]: val,
       });
     }
+    formik.setFieldValue(key, val);
   };
 
-  const handleCityChange = (e, index) => {
+  const handleCityChange = (e, index, name) => {
     const val = e.target.innerText;
     if (index == 0) {
       setPropertyArea({
@@ -69,6 +77,7 @@ const PropertyAreaSize = ({
         unit: val,
       });
     }
+    formik.setFieldValue(name, val);
   };
   return (
     <>
@@ -128,6 +137,7 @@ const PropertyAreaSize = ({
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
+                position: 'relative',
                 gap: 2,
                 mt: 0.8,
                 mb: 3,
@@ -172,6 +182,9 @@ const PropertyAreaSize = ({
                       '-webkit-appearance': 'none',
                       margin: 0,
                     },
+                    '& fieldset': {
+                      border: formik.errors[item?.label] && `solid 1px red`,
+                    },
                   }}
                   InputProps={{
                     style: {
@@ -183,15 +196,23 @@ const PropertyAreaSize = ({
                   onChange={(e) =>
                     handleInputChange(item?.label, e.target.value)
                   }
+                  value={formik[item?.label]}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched[item?.label] &&
+                    Boolean(formik.errors[item?.label])
+                  }
                 />
                 <Autocomplete
+                  name={item?.unit}
                   disablePortal
                   id="combo-box-demo"
                   options={item.label == 'area' ? aeraSizes : currency}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
-                      border: '1px solid #E7E7E7',
+                      // border: '1px solid #E7E7E7',
+                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
                       borderRadius: '10px',
                     },
                   }}
@@ -209,9 +230,20 @@ const PropertyAreaSize = ({
                       }}
                     />
                   )}
-                  onChange={(e) => handleCityChange(e, index)}
+                  onChange={(e) => handleCityChange(e, index, item?.unit)}
                 />
               </Box>
+              {(formik.errors[item?.label] || formik.errors[item?.unit]) && (
+                <Typography
+                  sx={{
+                    position: 'absolute',
+                    bottom: '-25px',
+                    color: 'red',
+                  }}
+                >
+                  {'Please enter and select values'}
+                </Typography>
+              )}
             </Box>
           </Box>
         </Box>

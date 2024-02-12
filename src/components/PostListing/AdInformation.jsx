@@ -9,7 +9,7 @@ import {
 import PostTitle from './PostTitle';
 import PropertyInformation from './PropertyInformation';
 
-const AdInformation = ({ propertyData }) => {
+const AdInformation = ({ propertyData, formik }) => {
   return (
     <Grid container>
       <Grid
@@ -51,6 +51,7 @@ const AdInformation = ({ propertyData }) => {
               propertyDetails={PROPERTY_INFORMATION.addInfo}
               propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
               propertyData={propertyData}
+              formik={formik}
             />
           </Box>
         </Box>
