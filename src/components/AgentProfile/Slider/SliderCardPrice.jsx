@@ -11,7 +11,7 @@ const SliderCardPrice = ({ price }) => {
         sx={{
           color: '#909394',
           fontWeight: '600',
-          fontSize: '16px',
+          fontSize: { xs: '10px', sm: '12px', md: '16px' },
           fontStyle: 'normal',
         }}
       >
@@ -23,7 +23,7 @@ const SliderCardPrice = ({ price }) => {
           color: '#FB631C',
           fontWeight: '500',
           marginLeft: 1,
-          fontSize: '14px',
+          fontSize: { xs: '10px', sm: '12px', md: '14px' },
         }}
       >
         {price}

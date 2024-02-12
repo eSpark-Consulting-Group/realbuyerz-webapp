@@ -19,15 +19,16 @@ const FooterCta = ({ data }) => {
         margin: 'auto',
       }}
     >
-      <Grid container sx={{}}>
+      <Grid container>
         <Grid
           item
           xs={12}
           md={8}
-          lg={8}
+          lg={9}
           sx={{
-            justifyContent: 'center',
-            alignSelf: 'center',
+            justifyContent: 'right',
+            alignSelf: 'right',
+            px: { lg: '170px' },
             py: {
               xs: '20px',
               sm: '40px',
@@ -56,7 +57,8 @@ const FooterCta = ({ data }) => {
                 item
                 xs={12}
                 sm={6}
-                md={2.5}
+                lg={3}
+                md={4}
                 sx={{
                   display: 'flex',
                   gap: '10px',
@@ -106,7 +108,7 @@ const FooterCta = ({ data }) => {
           xs={12}
           sm={6}
           md={4}
-          lg={4}
+          lg={3}
           sx={{
             py: {
               xs: '20px',
@@ -125,7 +127,15 @@ const FooterCta = ({ data }) => {
         </Grid>
       </Grid>
       <Grid container sx={{ py: '28px' }}>
-        <Grid item xs={12} sm={8} md={8.5}>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={8.5}
+          sx={{
+            px: { lg: '170px' },
+          }}
+        >
           <Typography
             sx={{
               fontSize: '14px',

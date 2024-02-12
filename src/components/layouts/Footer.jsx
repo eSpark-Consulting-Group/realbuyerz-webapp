@@ -44,7 +44,6 @@ const styles = {
 const Footer = ({ data }) => {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'xxl'));
-  console.log(isMediumScreen, 'isMediumScreen abideen');
   return (
     <Box sx={styles?.container}>
       <Grid

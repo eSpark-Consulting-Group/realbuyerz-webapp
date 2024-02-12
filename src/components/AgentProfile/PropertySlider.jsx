@@ -48,7 +48,7 @@ const PropertySlider = ({ propertyData }) => {
           slidesToScroll: 1,
           infinite: false,
           adaptiveHeight: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -58,7 +58,7 @@ const PropertySlider = ({ propertyData }) => {
           slidesToScroll: 1,
           infinite: true,
           adaptiveHeight: true,
-          dots: true,
+          dots: false,
         },
       },
       {

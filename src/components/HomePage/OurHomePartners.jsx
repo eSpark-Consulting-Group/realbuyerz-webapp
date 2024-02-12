@@ -47,7 +47,13 @@ const OurHomePartners = ({ data }) => {
   };
   return (
     <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
-      <Heading heading={FEATURED_HEADINGS.homePartners} />
+      <Box
+        sx={{
+          pb: '30px',
+        }}
+      >
+        <Heading heading={FEATURED_HEADINGS.homePartners} />
+      </Box>
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
           {data?.map((partner) => (

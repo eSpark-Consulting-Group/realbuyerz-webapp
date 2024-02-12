@@ -67,7 +67,7 @@ const HeroSection = () => {
               lg: '900px',
               xl: '890px',
             },
-            top: { xs: 170, sm: 250, md: 340, lg: 420, xl: 430 },
+            top: { xs: 165, sm: 250, md: 340, lg: 420, xl: 430 },
             fontSize: {
               xs: '15px',
               sm: '20px',
@@ -109,7 +109,7 @@ const HeroSection = () => {
               <Button
                 sx={{
                   width: {
-                    xs: '120px',
+                    xs: '100px',
                     sm: '120px',
                     md: '120px',
                     lg: '120px',
@@ -118,7 +118,7 @@ const HeroSection = () => {
                   fontStyle: 'normal',
                   fontWeight: 600,
                   lineHeight: 'normal',
-                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   textAlign: 'start',
                   '&:hover': {
                     background: '#fff !important',
@@ -138,7 +138,7 @@ const HeroSection = () => {
               <Button
                 sx={{
                   width: {
-                    xs: '120px',
+                    xs: '100px',
                     sm: '120px',
                     md: '120px',
                     lg: '120px',
@@ -147,7 +147,7 @@ const HeroSection = () => {
                   fontStyle: 'normal',
                   fontWeight: 600,
                   lineHeight: 'normal',
-                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   background: '#FB631C',
                   '&:hover': {
                     background: '#fff !important',
