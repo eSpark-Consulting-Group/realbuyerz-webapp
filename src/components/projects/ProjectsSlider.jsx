@@ -90,7 +90,7 @@ const ProjectsSlider = ({ data, category }) => {
                       pr: '5px',
                     }}
                   >
-                    PKR
+                    {project?.amountCurrency}
                   </Typography>
                   <Typography
                     sx={{
@@ -99,7 +99,7 @@ const ProjectsSlider = ({ data, category }) => {
                       lineHeight: '30px',
                     }}
                   >
-                    {project?.price}
+                    {project?.amount}
                   </Typography>
                 </Box>
 
@@ -112,7 +112,7 @@ const ProjectsSlider = ({ data, category }) => {
                     textWrap: 'wrap',
                   }}
                 >
-                  {project?.location}
+                  {project?.title}
                 </Typography>
                 <Typography
                   sx={{
@@ -122,7 +122,7 @@ const ProjectsSlider = ({ data, category }) => {
                     pb: '15px',
                   }}
                 >
-                  {project?.size}
+                  {project?.areaUnit}
                 </Typography>
                 <Typography
                   sx={{
