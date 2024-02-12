@@ -1,3 +1,4 @@
+'use client';
 import {
   Typography,
   Box,
@@ -5,6 +6,7 @@ import {
   Pagination,
   PaginationItem,
 } from '@mui/material';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const itemsPerPage = 9;
@@ -42,12 +44,14 @@ const ProjectsCard = ({ data }) => {
               border: '1px solid #E4E4E4',
             }}
           >
-            <img
-              src={project.image}
-              height={'auto'}
-              width={'100%'}
-              alt={`Project ${project.id}`}
-            />
+            <Link href={`/projects/${project.id}`}>
+              <img
+                src={project.image}
+                height={'auto'}
+                width={'100%'}
+                alt={`Project ${project.id}`}
+              />
+            </Link>
             <Box sx={{ p: '20px' }}>
               <Box sx={{ display: 'flex', alignItems: 'flex-end', pb: '20px' }}>
                 <Typography
@@ -70,18 +74,19 @@ const ProjectsCard = ({ data }) => {
                   {project.price}
                 </Typography>
               </Box>
-
-              <Typography
-                sx={{
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  lineHeight: '20px',
-                  pb: '15px',
-                  textWrap: 'wrap',
-                }}
-              >
-                {project.location}
-              </Typography>
+              <Link href={`/projects/${project.id}`}>
+                <Typography
+                  sx={{
+                    fontSize: '16px',
+                    fontWeight: 500,
+                    lineHeight: '20px',
+                    pb: '15px',
+                    textWrap: 'wrap',
+                  }}
+                >
+                  {project.location}
+                </Typography>
+              </Link>
               <Typography
                 sx={{
                   fontSize: '16px',
