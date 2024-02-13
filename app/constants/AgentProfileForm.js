@@ -22,8 +22,8 @@ export const Agent_Profile_Form_Data = {
       type: 'text',
       helperText: 'Last Name',
       pt: { xs: 0, lg: '25px' },
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
-      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '93.6%',  },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 5.3 },
     },
     {
       label: 'Email',
@@ -138,8 +138,8 @@ export const Agent_Profile_Form_Data = {
       place: 'Add Address',
       type: 'text',
       helperText: '',
-      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 11.2, lg: 9.6 },
+      width: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xl:'100%' },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
     },
     {
       id: 'outlined-multiline-static',
@@ -152,7 +152,7 @@ export const Agent_Profile_Form_Data = {
       rows: '4',
       multiline: true,
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
-      sizes: { xs: 12, sm: 12, md: 11.2, lg: 9.6 },
+      sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
     },
   ],
   passwordfields: [

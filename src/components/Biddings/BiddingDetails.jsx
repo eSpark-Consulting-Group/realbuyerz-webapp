@@ -119,9 +119,9 @@ const BiddingDetails = ({ height, ads }) => {
                         item
                         xs={12}
                         sm={5}
-                        md={`${path.includes('/user') ? 3 : 4}`}
-                        lg={`${path.includes('/user') ? 4 : 2.5}`}
-                        xl={2}
+                        md={`${path.includes('/user') ? 3.6 : 4}`}
+                        lg={`${path.includes('/user') ? 5 : 3}`}
+                        xl={2.5}
                         sx={{
                           color: '#333',
                           fontSize: '15px',
@@ -136,7 +136,7 @@ const BiddingDetails = ({ height, ads }) => {
                             alignItems: 'center',
                             justifyContent: {
                               xs: 'start',
-                              md: `${path.includes('/user') ? 'end' : 'start'}`,
+                              md: 'end',
                             },
                             '@media(min-width: 280px) and (max-width: 445px)': {
                               justifyContent: 'center',
@@ -145,7 +145,7 @@ const BiddingDetails = ({ height, ads }) => {
                         >
                           <Typography
                             variant="body1"
-                            sx={{ fontSize: '14px', fontWeight: 600 }}
+                            sx={{ fontSize: '14px', fontWeight: 600, ml:{xs:'4px', md:'0px'} }}
                           >
                             {ESTIMATE_RANGE}
                           </Typography>
@@ -163,7 +163,7 @@ const BiddingDetails = ({ height, ads }) => {
                         </Box>
                       </Grid>
                       {path.includes('/agent') ? (
-                        <Grid item xs={12} sm={12} md={12} lg={3}>
+                        <Grid item xs={12} sm={12} md={12} lg={2.5} xl={3}>
                           <Box
                             sx={{
                               display: 'flex',
@@ -177,6 +177,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 },
                               pt: 0.5,
                               pr: 2,
+                              ml:{xs:'4px', lg:'0px'}
                             }}
                           >
                             <Link href={`live-bidding/${item?.formId}/`}>
