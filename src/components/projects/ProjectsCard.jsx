@@ -5,6 +5,7 @@ import {
   Grid,
   Pagination,
   PaginationItem,
+  Skeleton,
 } from '@mui/material';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -35,7 +36,7 @@ const ProjectsCard = ({ data }) => {
       >
         {visibleProjects.map((project) => (
           <Grid
-            key={project.id}
+            key={project?.id}
             item
             xs={3.8}
             my={'20px'}
@@ -45,12 +46,19 @@ const ProjectsCard = ({ data }) => {
             }}
           >
             <Link href={`/projects/${project.id}`}>
-              <img
-                src={project.image}
-                height={'auto'}
-                width={'100%'}
-                alt={`Project ${project.id}`}
-              />
+              {!project?.images?.length == 0 ? (
+                <img
+                  src={
+                    project?.images[0]?.path ||
+                    `/images/default/default_project_image.jpg`
+                  }
+                  height={'auto'}
+                  width={'100%'}
+                  alt={`Project ${project?.id}`}
+                />
+              ) : (
+                <Skeleton variant="rectangular" width={`100%`} height={300} />
+              )}
             </Link>
             <Box sx={{ p: '20px' }}>
               <Box sx={{ display: 'flex', alignItems: 'flex-end', pb: '20px' }}>
@@ -62,7 +70,9 @@ const ProjectsCard = ({ data }) => {
                     pr: '5px',
                   }}
                 >
-                  PKR
+                  {project?.amountCurrency || (
+                    <Skeleton variant="rectangular" width={100} height={20} />
+                  )}
                 </Typography>
                 <Typography
                   sx={{
@@ -71,32 +81,54 @@ const ProjectsCard = ({ data }) => {
                     lineHeight: '30px',
                   }}
                 >
-                  {project.price}
+                  {project?.amount || (
+                    <Skeleton variant="rectangular" width={100} height={30} />
+                  )}
                 </Typography>
               </Box>
-              <Link href={`/projects/${project.id}`}>
-                <Typography
-                  sx={{
-                    fontSize: '16px',
-                    fontWeight: 500,
-                    lineHeight: '20px',
-                    pb: '15px',
-                    textWrap: 'wrap',
-                  }}
-                >
-                  {project.location}
-                </Typography>
-              </Link>
+
               <Typography
                 sx={{
                   fontSize: '16px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   lineHeight: '20px',
                   pb: '15px',
+                  textWrap: 'wrap',
                 }}
               >
-                {project.size}
+                {project?.location || (
+                  <>
+                    <Skeleton />
+                    <Skeleton />
+                  </>
+                )}
               </Typography>
+              <Box display={'flex'} gap={'5px'}>
+                <Typography
+                  sx={{
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    lineHeight: '20px',
+                    pb: '15px',
+                  }}
+                >
+                  {project?.area || (
+                    <Skeleton variant="text" height={'2rem'} width={100} />
+                  )}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    lineHeight: '20px',
+                    pb: '15px',
+                  }}
+                >
+                  {project?.areaUnit || (
+                    <Skeleton variant="text" height={'2rem'} width={100} />
+                  )}
+                </Typography>
+              </Box>
               <Typography
                 sx={{
                   fontSize: '18px',
@@ -105,8 +137,11 @@ const ProjectsCard = ({ data }) => {
                   pb: '15px',
                 }}
               >
-                {project.orientation}
+                {project?.orientation || (
+                  <Skeleton variant="text" height={'2rem'} />
+                )}
               </Typography>
+
               <Typography
                 sx={{
                   fontSize: '16px',
@@ -114,9 +149,14 @@ const ProjectsCard = ({ data }) => {
                   lineHeight: '25px',
                 }}
               >
-                {project.description.length > 200
-                  ? `${project.description.slice(0, 200)}...`
-                  : project.description}
+                {project?.description || (
+                  <>
+                    <Skeleton />
+                    <Skeleton />
+                    <Skeleton />
+                    <Skeleton />
+                  </>
+                )}
               </Typography>
             </Box>
           </Grid>

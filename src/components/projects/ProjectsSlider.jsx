@@ -5,20 +5,23 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
-import { Typography, Box, Grid } from '@mui/material';
-import { filterData } from '@/utils/proposalFilter';
+import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
 
 const itemsToShow = 10;
 
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalItems = Math.min(data.length, itemsToShow);
+  const totalItems = Math.min(data.length, itemsToShow) || 10;
   console.log(currentPage);
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
-  const filterData = data?.filter((item) => item?.category === category);
+  let NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
+  const filterData = data?.filter(
+    (item) => item?.proportyCategory === category
+  );
+  const filteredData = filterData?.length ? filterData : NoData;
   const sliderSettings = {
     slidesPerView: 3,
     // pagination: { clickable: true },
@@ -50,7 +53,7 @@ const ProjectsSlider = ({ data, category }) => {
 
   return (
     <Swiper {...sliderSettings}>
-      {filterData?.slice(0, totalItems).map((project) => (
+      {filteredData?.slice(0, totalItems).map((project) => (
         <SwiperSlide key={project?.id}>
           <Grid
             container
@@ -71,12 +74,19 @@ const ProjectsSlider = ({ data, category }) => {
               }}
             >
               <Link href={`/projects/${project.id}`}>
-                <img
-                  src={project?.image}
-                  height={'auto'}
-                  width={'100%'}
-                  alt={`Project ${project?.id}`}
-                />
+                {!project?.images?.length == 0 ? (
+                  <img
+                    src={
+                      project?.images[0]?.path ||
+                      `/images/default/default_project_image.jpg`
+                    }
+                    height={'auto'}
+                    width={'100%'}
+                    alt={`Project ${project?.id}`}
+                  />
+                ) : (
+                  <Skeleton variant="rectangular" width={`100%`} height={300} />
+                )}
               </Link>
               <Box sx={{ p: '20px' }}>
                 <Box
@@ -90,7 +100,9 @@ const ProjectsSlider = ({ data, category }) => {
                       pr: '5px',
                     }}
                   >
-                    {project?.amountCurrency}
+                    {project?.amountCurrency || (
+                      <Skeleton variant="rectangular" width={100} height={20} />
+                    )}
                   </Typography>
                   <Typography
                     sx={{
@@ -99,7 +111,9 @@ const ProjectsSlider = ({ data, category }) => {
                       lineHeight: '30px',
                     }}
                   >
-                    {project?.amount}
+                    {project?.amount || (
+                      <Skeleton variant="rectangular" width={100} height={30} />
+                    )}
                   </Typography>
                 </Box>
 
@@ -112,18 +126,39 @@ const ProjectsSlider = ({ data, category }) => {
                     textWrap: 'wrap',
                   }}
                 >
-                  {project?.title}
+                  {project?.location || (
+                    <>
+                      <Skeleton />
+                      <Skeleton />
+                    </>
+                  )}
                 </Typography>
-                <Typography
-                  sx={{
-                    fontSize: '16px',
-                    fontWeight: 400,
-                    lineHeight: '20px',
-                    pb: '15px',
-                  }}
-                >
-                  {project?.areaUnit}
-                </Typography>
+                <Box display={'flex'} gap={'5px'}>
+                  <Typography
+                    sx={{
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '20px',
+                      pb: '15px',
+                    }}
+                  >
+                    {project?.area || (
+                      <Skeleton variant="text" height={'2rem'} width={100} />
+                    )}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '20px',
+                      pb: '15px',
+                    }}
+                  >
+                    {project?.areaUnit || (
+                      <Skeleton variant="text" height={'2rem'} width={100} />
+                    )}
+                  </Typography>
+                </Box>
                 <Typography
                   sx={{
                     fontSize: '18px',
@@ -132,8 +167,11 @@ const ProjectsSlider = ({ data, category }) => {
                     pb: '15px',
                   }}
                 >
-                  {project?.orientation}
+                  {project?.orientation || (
+                    <Skeleton variant="text" height={'2rem'} />
+                  )}
                 </Typography>
+
                 <Typography
                   sx={{
                     fontSize: '16px',
@@ -141,9 +179,14 @@ const ProjectsSlider = ({ data, category }) => {
                     lineHeight: '25px',
                   }}
                 >
-                  {project?.description.length > 200
-                    ? `${project?.description.slice(0, 200)}...`
-                    : project?.description}
+                  {project?.description || (
+                    <>
+                      <Skeleton />
+                      <Skeleton />
+                      <Skeleton />
+                      <Skeleton />
+                    </>
+                  )}
                 </Typography>
               </Box>
             </Grid>
