@@ -11,12 +11,14 @@ import { createInformationState } from '@/utils/addInfo';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
+  adSumitModal,
+  draftModal,
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -50,12 +52,22 @@ const Page = () => {
   const [propertyData] = useState(initializePropertyData());
   const [open, setOpen] = useState(false);
 
-  const { postRequest } = useSelector((state) => state);
   const [isOpen, setIsOpen] = useState(false);
+  const [action, setAction] = useState('');
+  const dispatch = useDispatch();
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
-  const dispatch = useDispatch();
+  const handleSubmit = (values) => {
+    if (action === 'draft') {
+      dispatch(handleUserDraft(values));
+      handleOpenSuccessModal();
+    } else if (action === 'submit') {
+      dispatch(handleSumitUserAds(values));
+      handleOpenSuccessModal();
+    }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -89,30 +101,40 @@ const Page = () => {
     readyPossession: yup.boolean(),
     featuresAndAmenities: yup.mixed(),
   });
+
+  const initialFormValues = {
+    adId: '',
+    userId: '',
+    proposals: [],
+    other_features: [],
+    images: [],
+    videos: [],
+    title: '',
+    location: '',
+    description: '',
+    area: '',
+    amount: '',
+    areaUnit: '',
+    amountCurrency: '',
+    city: '',
+    bedrooms: 0,
+    connects: '',
+    bathrooms: 0,
+    parking: 0,
+    purpose: 'Sell',
+    proportyCategory: 'House',
+    propertyType: 'Sell',
+    instalmentAvailable: false,
+    readyPossession: false,
+  };
+
   const formik = useFormik({
-    initialValues: {
-      adId: '',
-      userId: '',
-      proposalId: '',
-      proposals: [],
-      otherAmenities: [],
-      bedrooms: '',
-      connects: '',
-      bathrooms: '',
-      parking: '',
-      purpose: 'Sell',
-      proportyCategory: 'House',
-      propertyType: 'Sell',
-      instalmentAvailable: false,
-      readyPossession: false,
-    },
+    initialValues: initialFormValues,
     validationSchema,
-    onSubmit: (values) => {
-      (values.adId = randomNumber), console.log({ values });
-      dispatch(handleUserDraft(values));
-      dispatch(handleSumitUserAds(values));
-      handleOpenSuccessModal();
-      // action.resetForm()
+    onSubmit: (values, action) => {
+      values.adId = randomNumber;
+      handleSubmit(values);
+      action.resetForm();
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -121,7 +143,7 @@ const Page = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{
               display: 'flex',
@@ -139,14 +161,22 @@ const Page = () => {
             <PropertyPurpose formik={formik} propertyData={propertyData} />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
-            <SubmitButton handleClickOpen={handleClickOpen} />
-            <PreviewModal open={open} onClose={handleClose} ads={postRequest} />
+            <SubmitButton
+              formik={formik}
+              setAction={setAction}
+              handleClickOpen={handleClickOpen}
+            />
+            <PreviewModal
+              open={open}
+              onClose={handleClose}
+              ads={formik?.values}
+            />
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={'Continue'}
-          description={'Your Proposal is submitted successfully.'}
-          title={'Success'}
+          buttonLabel={`${action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
+          description={`${action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
+          title={`${action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

@@ -4,7 +4,17 @@ import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
-const SubmitButton = ({ handleClickOpen }) => {
+const SubmitButton = ({ handleClickOpen, formik, setAction }) => {
+  const handleDraftSubmit = () => {
+    setAction('draft');
+    formik.handleSubmit();
+  };
+
+  const handleSubmitSubmit = () => {
+    setAction('submit');
+    formik.handleSubmit();
+  };
+
   return (
     <Grid container>
       <Grid
@@ -31,7 +41,8 @@ const SubmitButton = ({ handleClickOpen }) => {
         >
           <HideUnhideButton handleClickOpen={handleClickOpen} />
           <Button
-            id="draft"
+            name="submit"
+            value="submit"
             type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
@@ -51,11 +62,13 @@ const SubmitButton = ({ handleClickOpen }) => {
                 backgroundColor: '#FB631C',
               },
             }}
+            onClick={handleDraftSubmit}
           >
             {PROPERTY_INFORMATION?.saveDraft}
           </Button>
           <Button
-            id="submit"
+            name="draft"
+            value="draft"
             type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
@@ -75,6 +88,7 @@ const SubmitButton = ({ handleClickOpen }) => {
                 backgroundColor: '#fff',
               },
             }}
+            onClick={handleSubmitSubmit}
           >
             {PROPERTY_INFORMATION?.submitAd}
           </Button>

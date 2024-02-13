@@ -12,15 +12,6 @@ const PropertyAreaSize = ({
   currency,
   formik,
 }) => {
-  const [propertyArea, setPropertyArea] = useState({
-    area: '',
-    unit: '',
-  });
-  const [propertyAmount, setpropertyAmount] = useState({
-    amount: '',
-    unit: '',
-  });
-
   const [propertyData] = useState(
     createPropertySizeState(
       propertySizeInformation,
@@ -29,36 +20,6 @@ const PropertyAreaSize = ({
     )
   );
 
-  const handleInputChange = (key, val) => {
-    if (key == 'area') {
-      setPropertyArea({
-        ...propertyArea,
-        [key]: val,
-      });
-    } else {
-      setpropertyAmount({
-        ...propertyAmount,
-        [key]: val,
-      });
-    }
-    formik.setFieldValue(key, val);
-  };
-
-  const handleCityChange = (e, index, name) => {
-    const val = e.target.innerText;
-    if (index == 0) {
-      setPropertyArea({
-        ...propertyArea,
-        unit: val,
-      });
-    } else {
-      setpropertyAmount({
-        ...propertyAmount,
-        unit: val,
-      });
-    }
-    formik.setFieldValue(name, val);
-  };
   return (
     <>
       {propertyData?.propertySizeAndAmount?.propertySize?.map((item, index) => (
@@ -173,10 +134,8 @@ const PropertyAreaSize = ({
                     },
                   }}
                   name={item?.label}
-                  onChange={(e) =>
-                    handleInputChange(item?.label, e?.target?.value)
-                  }
-                  value={formik[item?.label]}
+                  onChange={formik?.handleChange}
+                  value={formik?.values[item?.label]}
                   onBlur={formik?.handleBlur}
                   error={
                     formik?.touched[item?.label] &&
@@ -185,13 +144,13 @@ const PropertyAreaSize = ({
                 />
                 <Autocomplete
                   name={item?.unit}
+                  value={formik?.values[item?.unit]}
                   disablePortal
                   id="combo-box-demo"
                   options={item?.label == 'area' ? aeraSizes : currency}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
-                      // border: '1px solid #E7E7E7',
                       border: `1px solid ${formik?.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
                       borderRadius: '10px',
                     },
@@ -210,7 +169,9 @@ const PropertyAreaSize = ({
                       }}
                     />
                   )}
-                  onChange={(e) => handleCityChange(e, index, item?.unit)}
+                  onChange={(e, value) => {
+                    formik?.handleChange(item?.unit)(value || '');
+                  }}
                 />
               </Box>
               {(formik?.errors[item?.label] || formik.errors[item?.unit]) && (

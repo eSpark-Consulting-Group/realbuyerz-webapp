@@ -5,11 +5,6 @@ import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 const SelectCityType = ({ image, label, cityOptions, formik }) => {
   const options = cityOptions?.map((opt) => opt?.label);
 
-  const handleCityChange = (event) => {
-    const val = event.target.innerText;
-    formik.setFieldValue('city', val);
-  };
-
   return (
     <>
       <Box
@@ -81,7 +76,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             </Typography>
             <Autocomplete
               name={'city'}
-              value={formik?.city}
+              value={formik?.values?.city}
               onBlur={formik?.handleBlur}
               error={formik?.touched?.city && Boolean(formik?.errors?.city)}
               disablePortal
@@ -97,7 +92,9 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               renderInput={(params) => (
                 <TextField {...params} label="Select City" />
               )}
-              onChange={handleCityChange}
+              onChange={(e, value) => {
+                formik?.handleChange('city')(value || '');
+              }}
             />
             {formik?.errors['city'] && (
               <Typography

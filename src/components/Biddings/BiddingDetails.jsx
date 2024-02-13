@@ -13,6 +13,7 @@ import {
 } from '@/app/constants/LiveBidding';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { postListingAdCard } from '@/app/constants/postListing';
 
 const BiddingDetails = ({ height, ads }) => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -24,6 +25,7 @@ const BiddingDetails = ({ height, ads }) => {
   const handleShowLessClick = () => {
     setShowAllItems(false);
   };
+  // console.log(ads[0]?.location, 'adsxx');
 
   return (
     <>
@@ -108,8 +110,7 @@ const BiddingDetails = ({ height, ads }) => {
                             fontSize: { xs: '21px' },
                           }}
                         >
-                          {console.log(item, 'adInfomation')}
-                          {item?.adInfomation?.title}
+                          {item?.title}
                         </Typography>
                         <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
                           {'Posted 39 minutes ago'}
@@ -158,7 +159,7 @@ const BiddingDetails = ({ height, ads }) => {
                             }}
                             component={'span'}
                           >
-                            {`${item?.propertySizeAndPricing?.amount?.amount}`}
+                            {`${item?.amount}`}
                           </Typography>
                         </Box>
                       </Grid>
@@ -179,7 +180,7 @@ const BiddingDetails = ({ height, ads }) => {
                               pr: 2,
                             }}
                           >
-                            <Link href={`live-bidding/${item?.formId}/`}>
+                            <Link href={`live-bidding/${item?.adId}/`}>
                               <Typography
                                 sx={{
                                   color: '#FB631C',
@@ -221,12 +222,16 @@ const BiddingDetails = ({ height, ads }) => {
                             mb: 1,
                           }}
                         >
-                          {item?.adInfomation?.description}
+                          {item?.description}
                         </Typography>
                       </Box>
                       <LiveBiddingPropertiesList
-                        locationAndPurpose={item?.locationAndPurpose}
-                        areaSize={item?.propertySizeAndPricing?.areaSize}
+                        city={item?.city}
+                        status={item?.status}
+                        location={item?.location}
+                        proposal={item?.proposal}
+                        connects={item?.connects}
+                        cardKeys={postListingAdCard}
                       />
                       {path?.includes('/user') ? (
                         <Grid item xs={12}>

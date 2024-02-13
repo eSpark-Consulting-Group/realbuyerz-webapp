@@ -50,7 +50,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
     <>
       <Swiper {...swiperSettings}>
         {mediaType == 'images' &&
-          media?.images?.map((image, i) => (
+          media?.map((image, i) => (
             <SwiperSlide key={i}>
               <Box
                 component={'img'}
@@ -79,7 +79,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
             </SwiperSlide>
           ))}
         {mediaType == 'videos' &&
-          media?.videos?.map((video, i) => (
+          media?.map((video, i) => (
             <SwiperSlide key={i}>
               <Box
                 sx={{
@@ -104,16 +104,9 @@ const AdMediaSlider = ({ media, mediaType }) => {
                     label="English"
                     default
                   />
-                  <source src={URL.createObjectURL(video)} />
+                  <source src={URL?.createObjectURL(video)} />
                 </video>
               </Box>
-              {/* <Box
-              component={'img'}
-              src={URL?.createObjectURL(video)}
-              alt={`Uploaded ${i}`}
-              quality={'100'}
-              sx={{ minWidth: '200px', minHeight: '160px', maxWidth: '240px', maxHeight: '200px', width: 'auto', height: 'auto', '@media(min-width:280px) and (max-width:400px)': { mx: 'auto' }, }}
-            /> */}
             </SwiperSlide>
           ))}
       </Swiper>

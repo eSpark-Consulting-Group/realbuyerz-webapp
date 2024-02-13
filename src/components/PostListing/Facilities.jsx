@@ -21,7 +21,7 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
         prevSelected.filter((item) => item !== text)
       );
     }
-    formik.setFieldValue('otherAmenities', selectedAmenities);
+    formik.setFieldValue('other_features', selectedAmenities);
   };
 
   const handleSaveButton = () => {

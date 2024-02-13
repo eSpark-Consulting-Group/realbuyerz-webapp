@@ -2,13 +2,19 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
+const LiveBiddingPropertiesList = ({
+  city,
+  status,
+  location,
+  proposal,
+  connects,
+  cardKeys,
+}) => {
   return (
     <Box
       sx={{
         width: '100%',
         paddingLeft: '17px',
-        // display: 'flex',
         '@media(min-width: 280px) and (max-width: 445px)': {
           justifyContent: 'center',
         },
@@ -26,10 +32,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Status:'}
+          {cardKeys?.status}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {locationAndPurpose?.adPurpose}
+          {status}
         </Typography>
       </Box>
       <Box
@@ -44,10 +50,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'City:'}
+          {cardKeys?.city}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {locationAndPurpose?.city}
+          {city}
         </Typography>
       </Box>
       <Box
@@ -62,10 +68,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Area:'}
+          {cardKeys?.area}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {`${areaSize?.area} ${areaSize?.unit}`}
+          {location}
         </Typography>
       </Box>
       <Box
@@ -80,10 +86,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Proposal:'}
+          {cardKeys?.proposal}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {/* {`${areaSize?.area} ${areaSize?.unit}`} */}
+          {proposal}
         </Typography>
       </Box>
       <Box
@@ -98,10 +104,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Connects:'}
+          {cardKeys?.connects}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {/* {locationAndPurpose?.adPurpose} */}
+          {connects}
         </Typography>
       </Box>
     </Box>

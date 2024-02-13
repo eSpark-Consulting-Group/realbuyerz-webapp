@@ -15,7 +15,7 @@ const SelectProperyType = ({
 }) => {
   const [activePropertyType, setActivePropertyType] = useState('House');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
-  const [setPropertyType] = useState(activePropertyType);
+  const [propertyType, setPropertyType] = useState(activePropertyType);
   const [propetySubType, setPropetySubType] = useState();
 
   const handlePropertyType = (text) => {
@@ -213,6 +213,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Plots' && (
               <PropertyTypes
                 data={plotType}
+                propertyType={propertyType}
                 handlePropetySubType={handlePropetySubType}
                 activePropertySubType={activePropertySubType}
               />
@@ -220,6 +221,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Commercial' && (
               <PropertyTypes
                 data={commercialType}
+                propertyType={propertyType}
                 activePropertySubType={activePropertySubType}
                 propetySubType={propetySubType}
                 handlePropetySubType={handlePropetySubType}

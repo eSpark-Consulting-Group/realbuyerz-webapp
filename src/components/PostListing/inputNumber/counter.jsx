@@ -1,23 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import CustomNumberInput from './customInputNumber';
 
 const Counter = ({ formik, name, limit }) => {
-  const [value, setValue] = useState(0);
-
   const handleIncrement = () => {
-    if (value < limit) {
-      const newIncrementValue = value + 1;
-      setValue(newIncrementValue);
+    if (formik.values[name] < limit) {
+      const newIncrementValue = formik.values[name] + 1;
       formik.setFieldValue([name], newIncrementValue);
     }
   };
 
   const handleDecrement = () => {
-    const numericValue = value;
-    if (numericValue > 0) {
-      const newDecrementValue = numericValue - 1;
-      setValue(newDecrementValue);
+    if (formik.values[name] > 0) {
+      const newDecrementValue = formik.values[name] - 1;
+      formik.setFieldValue([name], newDecrementValue);
     }
   };
 
@@ -25,7 +21,7 @@ const Counter = ({ formik, name, limit }) => {
     <div>
       <CustomNumberInput
         limit={limit}
-        value={value}
+        value={formik?.values[name]}
         handleIncrement={handleIncrement}
         handleDecrement={handleDecrement}
       />

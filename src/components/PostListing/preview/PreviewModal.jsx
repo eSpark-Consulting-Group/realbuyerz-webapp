@@ -1,16 +1,29 @@
 import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
 
-import { BIDDINGS } from '@/app/constants/Biddings';
+// import { BIDDINGS } from '@/app/constants/Biddings';
 import Location from './Location';
 import PreviewAmountAndFeature from './PreviewAmountAndFeature';
 import PropertyDetail from './PropertyDetail';
 import MediaComponent from './MediaComponent';
+import { previewData } from '@/app/constants/postListing';
+import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
+import { usePathname } from 'next/navigation';
 
 const PreviewModal = (props) => {
-  const { amenities, amount, location } = BIDDINGS;
+  const {
+    title,
+    buttonText,
+    propertyDetails,
+    areaAndAmount,
+    location,
+    amenities,
+    images,
+    videos,
+  } = previewData;
   const { onClose, open, ads } = props;
-
+  const pathName = usePathname();
+  const userPath = '/user/post-request';
   return (
     <>
       <Modal
@@ -60,39 +73,52 @@ const PreviewModal = (props) => {
                 textAlign: 'center',
               }}
             >
-              Preview
+              {title}
             </Typography>
-            {ads?.adInfomation?.title && (
-              <PropertyDetail
-                title={'Property Details'}
-                values={ads?.adInfomation}
-              />
-            )}
-            {ads?.locationAndPurpose && (
-              <Location location={location} values={ads?.locationAndPurpose} />
-            )}
-            {ads?.featuresAndAmenities && (
-              <PreviewAmountAndFeature
-                amountData={amount}
-                amenities={amenities}
-                PricingValues={ads?.propertySizeAndPricing}
-                FeatureValues={ads?.featuresAndAmenities}
-              />
-            )}
-            {ads?.propertyImagesAndVideos?.images.length > 0 && (
-              <MediaComponent
-                title={'Project Images'}
-                values={ads?.propertyImagesAndVideos}
-                mediaType={'images'}
-              />
-            )}
-            {ads?.propertyImagesAndVideos?.videos.length > 0 && (
-              <MediaComponent
-                title={'Project Videos'}
-                values={ads?.propertyImagesAndVideos}
-                mediaType={'videos'}
-              />
-            )}
+
+            <PropertyDetail
+              title={propertyDetails}
+              subTitle={ads?.title}
+              description={ads?.description}
+            />
+            <Location
+              city={ads?.city}
+              locationKeys={location}
+              purpose={ads?.purpose}
+              propertyType={ads?.propertyType}
+              proportyCategory={ads?.proportyCategory}
+              location={ads?.location}
+            />
+            <PreviewAmountAndFeature
+              area={ads?.area}
+              amount={ads?.amount}
+              areaUnit={ads?.areaUnit}
+              areaAndAmount={areaAndAmount}
+              amountCurrency={ads?.amountCurrency}
+              instalmentAvailable={ads?.instalmentAvailable}
+              readyPossession={ads?.readyPossession}
+            />
+            <PreviewFeatureAndAmenities
+              amenities={amenities}
+              bedrooms={ads?.bedrooms}
+              bathrooms={ads?.bathrooms}
+              parking={ads?.parking}
+              other_features={ads?.other_features}
+            />
+            {pathName !== userPath ? (
+              <>
+                <MediaComponent
+                  title={images?.title}
+                  images={ads?.images}
+                  mediaType={images?.type}
+                />
+                <MediaComponent
+                  title={videos?.title}
+                  videos={ads?.videos}
+                  mediaType={videos?.type}
+                />
+              </>
+            ) : null}
           </Box>
           <Box
             sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}
@@ -114,7 +140,7 @@ const PreviewModal = (props) => {
                 },
               }}
             >
-              Close
+              {buttonText}
             </Button>
           </Box>
         </Box>

@@ -13,10 +13,6 @@ const PropertyInstallment = ({
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
 
-  const handleToggleChange = (key, val) => {
-    formik.setFieldValue(key, val);
-  };
-
   return (
     <>
       {propertyData?.installmentData?.toggleData?.map((item, index) => (
@@ -94,10 +90,10 @@ const PropertyInstallment = ({
                 {item?.title}
               </Typography>
               <Switch
-                value={item?.value}
-                onChange={(event) =>
-                  handleToggleChange(item?.label, event?.target?.checked)
-                }
+                checked={formik?.values[item?.label]}
+                onChange={(event) => {
+                  formik?.setFieldValue(item?.label, event.target.checked);
+                }}
               />
             </Box>
             <Typography

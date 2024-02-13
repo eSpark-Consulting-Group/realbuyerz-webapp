@@ -583,3 +583,74 @@ export const coverLetterEntities = {
   },
   propertyImagesAndVideos: { images: '', videos: '' },
 };
+
+export const previewData = {
+  title: 'Preview',
+  buttonText: 'Close',
+  propertyDetails: 'Property Details',
+  location: {
+    title: 'Location and Purpose:',
+    purpose: 'purpose:',
+    propertyType: 'propertyType:',
+    city: 'city:',
+    location: 'location:',
+  },
+  areaAndAmount: {
+    title: 'Area and Amount',
+    areaSize: 'Area Size:',
+    range: 'Range:',
+    installment: 'Installment:',
+    readyfor: 'Ready for:',
+  },
+  amenities: {
+    title: 'Features & Amenities',
+    bedrooms: 'Bedrooms:',
+    parking: 'Parking:',
+    bathrooms: 'Bathrooms:',
+    other_features: 'Other Features',
+  },
+  images: {
+    title: 'Project images',
+    type: 'images',
+  },
+  videos: {
+    title: 'Project videos',
+    type: 'videos',
+  },
+};
+
+export const reachBuyerData = {
+  title: 'Reach Millions of Buyers on our Platforms',
+  description: 'In a few simple steps!',
+};
+
+export const reachBuyerCoverLetter = {
+  title: 'Fill out the form with the facilities you have!',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+};
+
+export const adSumitModal = {
+  title: 'Success',
+  description: 'Your Ad is submitted successfully.',
+  buttonLabel: 'Continue',
+};
+
+export const proposalSumitModal = {
+  title: 'Success',
+  description: 'Your Proposal is submitted successfully.',
+  buttonLabel: 'Continue',
+};
+
+export const draftModal = {
+  title: 'Success',
+  description: 'Save as Draft',
+  buttonLabel: 'Continue',
+};
+
+export const postListingAdCard = {
+  status: 'Status',
+  city: 'City',
+  area: 'Area',
+  proposal: 'Proposal',
+  connects: 'connects',
+};
