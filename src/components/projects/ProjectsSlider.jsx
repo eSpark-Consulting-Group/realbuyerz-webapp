@@ -17,7 +17,7 @@ const ProjectsSlider = ({ data, category }) => {
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
-  let NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
+  const NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
   const filterData = data?.filter(
     (item) => item?.proportyCategory === category
   );
