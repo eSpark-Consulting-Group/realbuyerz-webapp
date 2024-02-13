@@ -145,7 +145,11 @@ const BiddingDetails = ({ height, ads }) => {
                         >
                           <Typography
                             variant="body1"
-                            sx={{ fontSize: '14px', fontWeight: 600, ml:{xs:'4px', md:'0px'} }}
+                            sx={{
+                              fontSize: '14px',
+                              fontWeight: 600,
+                              ml: { xs: '4px', md: '0px' },
+                            }}
                           >
                             {ESTIMATE_RANGE}
                           </Typography>
@@ -177,7 +181,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 },
                               pt: 0.5,
                               pr: 2,
-                              ml:{xs:'4px', lg:'0px'}
+                              ml: { xs: '4px', lg: '0px' },
                             }}
                           >
                             <Link href={`live-bidding/${item?.formId}/`}>

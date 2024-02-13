@@ -10,7 +10,7 @@ import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const FeaturedProperties = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  console.log(hoveredIndex, 'hover')
+  console.log(hoveredIndex, 'hover');
   // const [saved, setSaved] = useState(true);
   // const handleToggleSave = () => {
   //   setSaved((prevSaved) => !prevSaved);
@@ -32,7 +32,11 @@ const FeaturedProperties = ({ data }) => {
         paragraph={FEATURED_HEADINGS.latestProject}
       />
       <Box className="full-container-width mx-auto">
-        <Grid container sx={{ display: 'flex', pt: '69px', pb: '68px' }} spacing={2}>
+        <Grid
+          container
+          sx={{ display: 'flex', pt: '69px', pb: '68px' }}
+          spacing={2}
+        >
           {data?.map((item, index) => (
             <Grid
               item
@@ -72,7 +76,6 @@ const FeaturedProperties = ({ data }) => {
                   borderRadius: '5px',
                   border: '1px solid #cbcbcb',
                   overflow: 'hidden',
-                  
                 }}
                 onMouseOver={() => setHoveredIndex(index)}
                 onMouseOut={() => setHoveredIndex(null)}
@@ -85,8 +88,6 @@ const FeaturedProperties = ({ data }) => {
                     height: '100%',
                     zIndex: -1,
                   }}
-                  onMouseOver={() => setHoveredIndex(index)}
-                  onMouseOut={() => setHoveredIndex(null)}
                 />
                 <Box
                   sx={{
@@ -104,15 +105,23 @@ const FeaturedProperties = ({ data }) => {
                 >
                   {item.location}
                 </Box>
-                <Collapse in={hoveredIndex === index} sx={{zIndex:1, position:'absolute', bottom:'60px', width:'289px'}}>
+                <Collapse
+                  in={hoveredIndex === index}
+                  sx={{
+                    zIndex: 1,
+                    position: 'absolute',
+                    bottom: '60px',
+                    width: '289px',
+                  }}
+                >
                   <Box p={2} className={styles.slideInBox}>
                     <Box
                       sx={{
                         justifyContent: 'flex-start',
                         alignItems: 'flex-start',
                         textAlign: 'left',
-                        px:'2%',
-                        zIndex:1
+                        px: '2%',
+                        zIndex: 1,
                       }}
                     >
                       <Typography
@@ -120,8 +129,8 @@ const FeaturedProperties = ({ data }) => {
                           color: '#fb631c',
                           textAlign: 'left',
                           fontWeight: 600,
-                          lineHeight:'21.78px',
-                          fontSize: {xs:'12px',md:'14px',lg:'16px'},
+                          lineHeight: '21.78px',
+                          fontSize: { xs: '12px', md: '14px', lg: '16px' },
                           pb: '15px',
                         }}
                       >
@@ -132,20 +141,26 @@ const FeaturedProperties = ({ data }) => {
                           color: '#1176ad',
                           textAlign: 'left',
                           fontWeight: '700',
-                          fontSize: {xs:'12px',md:'14px',lg:'15px'},
+                          fontSize: { xs: '12px', md: '14px', lg: '15px' },
                           pb: '15px',
                         }}
                       >
                         <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
                         {item.location}
                       </Typography>
-                      <Box sx={{ display: 'flex', gap: '4px', alignItems:'center' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          gap: '4px',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Typography
                           variant="body1"
                           sx={{
                             color: '#1176AD',
-                            lineHeight:'21.78px',
-                            fontSize: {xs:'12px',md:'14px',lg:'16px'},
+                            lineHeight: '21.78px',
+                            fontSize: { xs: '12px', md: '14px', lg: '16px' },
                             fontWeight: 600,
                           }}
                         >
@@ -155,7 +170,7 @@ const FeaturedProperties = ({ data }) => {
                           variant="body2"
                           sx={{
                             color: '#fb631c',
-                            fontSize: {xs:'10px',md:'14px'},
+                            fontSize: { xs: '10px', md: '14px' },
                             fontWeight: 500,
                           }}
                         >
@@ -166,7 +181,7 @@ const FeaturedProperties = ({ data }) => {
                           sx={{
                             textAlign: 'left',
                             color: '#fb631c',
-                            fontSize: {xs:'10px',md:'14px',lg:'16px'},
+                            fontSize: { xs: '10px', md: '14px', lg: '16px' },
                             fontWeight: 600,
                           }}
                         >
@@ -184,7 +199,7 @@ const FeaturedProperties = ({ data }) => {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            paddingTop:'10px'
+                            paddingTop: '10px',
                           }}
                         >
                           <Image
