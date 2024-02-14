@@ -6,19 +6,19 @@ const userAdsSlice = createSlice({
     userPostings: [
       {
         id: 1,
-        usertId: "",
+        usertId: '',
         formId: 1,
         proposals: [],
         adInfomation: {
-          title: "Test",
-          description: "test"
+          title: 'Test',
+          description: 'test',
         },
         locationAndPurpose: {
-          adPurpose: "Rent",
-          propertyType: "House",
-          propetySubType: "House",
-          city: "Karachi",
-          location: "",
+          adPurpose: 'Rent',
+          propertyType: 'House',
+          propetySubType: 'House',
+          city: 'Karachi',
+          location: '',
         },
         propertySizeAndPricing: {
           areaSize: { area: '200', unit: 'sq.yd' },
@@ -30,10 +30,9 @@ const userAdsSlice = createSlice({
           bedrooms: 0,
           bathrooms: 0,
           parking: 0,
-          selectedAmenities: "",
-        }
-
-      }
+          selectedAmenities: '',
+        },
+      },
     ],
   },
   reducers: {

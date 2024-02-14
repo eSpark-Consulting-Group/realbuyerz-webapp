@@ -235,27 +235,30 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   let prevSender = null;
 
-  const conversationRef = useRef(null)
+  const conversationRef = useRef(null);
   const scrollToBottom = () => {
-    console.log({top:conversationRef.current.offsetTop})
+    console.log({ top: conversationRef.current.offsetTop });
     if (conversationRef.current) {
       const lastComponent = conversationRef.current;
       const additionalOffset = 20; // Additional 20px to account for margin-bottom
-  
+
       // Calculate total height including the additional offset
-      const totalHeight = lastComponent.getBoundingClientRect().height + additionalOffset;
-  
+      const totalHeight =
+        lastComponent.getBoundingClientRect().height + additionalOffset;
+
       // Scroll smoothly to the bottom of the last component
       lastComponent.parentElement.scrollTo({
-        top: lastComponent.offsetTop + totalHeight - lastComponent.parentElement.clientHeight,
-        behavior: 'smooth'
+        top:
+          lastComponent.offsetTop +
+          totalHeight -
+          lastComponent.parentElement.clientHeight,
+        behavior: 'smooth',
       });
     }
   };
   useEffect(() => {
-    scrollToBottom()
-  }, [conversation])
-  
+    scrollToBottom();
+  }, [conversation]);
 
   return (
     <Grid
@@ -323,34 +326,37 @@ const ChatRoom = ({ selectedChatRoom }) => {
           }}
         >
           <Box ref={conversationRef}>
-          {conversation?.map((days, daysIndex) => {
-            return (
-              <Box key={daysIndex}>
-                <DashedLineText
-                  text={moment(days?.date).format('dddd, D MMMM YYYY')}
-                />
-                {days?.messages?.map((message, msgIndex) => {
-                  const isSameSenderAsPrevious = prevSender === message.sender;
-                  prevSender = message.sender;
-                  //   return renderMessage(message, isSameSenderAsPrevious);
-                  return (
-                    <RenderMessage
-                      key={msgIndex}
-                      data={message}
-                      selectedChatRoom={selectedChatRoom}
-                      isSameSenderAsPrevious={isSameSenderAsPrevious}
-                      clickedMessageForReactionId={clickedMessageForReactionId}
-                      setClickedMessageForReactionId={
-                        setClickedMessageForReactionId
-                      }
-                      setIsReplying={setIsReplying}
-                      setReplyingMessage={setReplyingMessage}
-                    />
-                  );
-                })}
-              </Box>
-            );
-          })}
+            {conversation?.map((days, daysIndex) => {
+              return (
+                <Box key={daysIndex}>
+                  <DashedLineText
+                    text={moment(days?.date).format('dddd, D MMMM YYYY')}
+                  />
+                  {days?.messages?.map((message, msgIndex) => {
+                    const isSameSenderAsPrevious =
+                      prevSender === message.sender;
+                    prevSender = message.sender;
+                    //   return renderMessage(message, isSameSenderAsPrevious);
+                    return (
+                      <RenderMessage
+                        key={msgIndex}
+                        data={message}
+                        selectedChatRoom={selectedChatRoom}
+                        isSameSenderAsPrevious={isSameSenderAsPrevious}
+                        clickedMessageForReactionId={
+                          clickedMessageForReactionId
+                        }
+                        setClickedMessageForReactionId={
+                          setClickedMessageForReactionId
+                        }
+                        setIsReplying={setIsReplying}
+                        setReplyingMessage={setReplyingMessage}
+                      />
+                    );
+                  })}
+                </Box>
+              );
+            })}
           </Box>
         </Box>
         <Box
