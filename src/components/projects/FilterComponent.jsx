@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Slider,
   Button,
+  Menu,
   MenuItem,
   Select,
   FormControl,
@@ -9,7 +10,17 @@ import {
   Container,
   TextField,
   Grid,
+  Box,
+  Tabs,
+  Tab,
+  Popper,
 } from '@mui/material';
+import SelectProperyType from '../PostListing/SelectPropertyType';
+import {
+  PROPERTY_BUYING_DETAIL,
+  PROPERTY_INFORMATION,
+} from '@/app/constants/postListing';
+import { Formik } from 'formik';
 
 const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
   const [propertyType, setPropertyType] = useState('');
@@ -18,6 +29,12 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
   const [sizeRange, setSizeRange] = useState([0, 100]);
   const [searchText, setSearchText] = useState('');
   const [filteredData, setFilteredData] = useState(data);
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect(() => {
     handleFilter();
@@ -49,12 +66,19 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
     setFilteredData(data);
     onClearFilter();
   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  console.log(filteredData);
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={2}>
           <FormControl fullWidth>
             <InputLabel>Property Type</InputLabel>
             <Select
@@ -72,19 +96,95 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
-          <FormControl fullWidth>
-            <InputLabel>Ad Type</InputLabel>
-            <Select value={adType} onChange={(e) => setAdType(e.target.value)}>
-              {Array.from(new Set(data.map((item) => item.adType))).map(
-                (type, index) => (
-                  <MenuItem key={index} value={type}>
-                    {type}
-                  </MenuItem>
-                )
-              )}
-            </Select>
-          </FormControl>
+        <Grid item xs={2}>
+          <div>
+            <Button aria-describedby={id} type="button" onClick={handleClick}>
+              Toggle Popper
+            </Button>
+            <Popper
+              sx={{ zIndex: 999 }}
+              id={'id'}
+              open={open}
+              anchorEl={anchorEl}
+              placement="bottom-start"
+            >
+              <Box
+                sx={{ zIndex: 999, backgroundColor: '#fff' }}
+                height={'auto'}
+                width={800}
+              >
+                <SelectProperyType
+                  image={PROPERTY_INFORMATION.propertyType.images}
+                  label={PROPERTY_INFORMATION.propertyType.text}
+                  iconTitle={PROPERTY_INFORMATION.IconTitle}
+                  plotType={PROPERTY_INFORMATION.propertyPlot}
+                  commercialType={PROPERTY_INFORMATION.propertyCommercial}
+                  propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                  formik={Formik}
+                />
+                <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: { xs: 'center', sm: 'flex-end' },
+            '@media(min-width: 280px) and (max-width:400px)': {
+              flexDirection: 'column',
+            },
+            alignItems: 'center',
+            gap: '10px',
+            width: '90%',
+          }}
+        >
+          <Button
+            sx={{
+              width: { xs: '40%', sm: '200px' },
+              '@media(min-width: 280px) and (max-width:400px)': {
+                width: '100%',
+              },
+              borderRadius: '5px',
+              border: '1px solid #FB631C',
+              background: '#FFF',
+              color: '#FB631C',
+              height: '45px',
+              flexShrink: 0,
+              fontSize: { xs: '12px', sm: '15px' },
+              fontWeight: 400,
+              '&:hover': {
+                color: '#fff',
+                backgroundColor: '#FB631C',
+              },
+            }}
+          >
+            {PROPERTY_INFORMATION.saveDraft}
+          </Button>
+          <Button
+            sx={{
+              width: { xs: '40%', sm: '200px' },
+              '@media(min-width: 280px) and (max-width:400px)': {
+                width: '100%',
+                      },
+              variant:'secondary',
+              borderRadius: '5px',
+              border: '1px solid #FB631C',
+              color: '#fff',
+              background: '#FB631C',
+              height: '45px',
+              flexShrink: 0,
+              fontSize: { xs: '13px', sm: '15px' },
+              fontWeight: 400,
+              '&:hover': {
+                color: '#FB631C',
+                backgroundColor: '#fff',
+              },
+            }}
+            type="submit"
+          >
+            {'Apply'}
+          </Button>
+        </Box>
+              </Box>
+            </Popper>
+          </div>
         </Grid>
 
         <Grid item xs={12} sm={6} md={3}>
@@ -109,7 +209,7 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={4}>
           <TextField
             fullWidth
             label="Search"
@@ -117,12 +217,6 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Grid>
-
-        {/* <Grid item xs={12} sm={6}>
-            <Button variant="contained" onClick={handleSearch} fullWidth>
-              Search
-            </Button>
-          </Grid> */}
 
         <Grid item xs={12} sm={6}>
           <Button variant="contained" onClick={handleFilter} fullWidth>
