@@ -59,12 +59,12 @@ const Page = () => {
 
   const pathname = usePathname();
   const segments = pathname.split('/');
-  const id = segments[segments.length - 1];
+  const id = segments[segments.length - 2];
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
   const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
-
+  console.log(spacificPost.adId, 'spacificPost?.adIdspacificPost?.adId');
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
@@ -149,7 +149,7 @@ const Page = () => {
     isNaN(id) ||
     id === undefined ||
     id === null ||
-    id !== spacificPost?.adId
+    id === spacificPost?.adId
   ) {
     return (
       <NotFoundSection
