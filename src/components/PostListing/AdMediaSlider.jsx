@@ -1,15 +1,13 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Box } from '@mui/material';
-
-SwiperCore.use([Navigation, Pagination, A11y]);
+import { Box, Pagination } from '@mui/material';
+import { A11y, Navigation } from 'swiper/modules';
 
 const AdMediaSlider = ({ media, mediaType }) => {
   const swiperSettings = {
@@ -25,6 +23,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
     scrollbar: {
       el: '.swiper-scrollbar',
     },
+    module: [Navigation, Pagination, A11y],
     breakpoints: {
       1920: {
         slidesPerView: 2,

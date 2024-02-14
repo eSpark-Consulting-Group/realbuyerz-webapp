@@ -13,8 +13,6 @@ import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import { USER_NOT_FOUND } from '@/app/constants/user';
-import FooterCta from '@/src/components/FooterCta';
-import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
 
 const AgentProfile = () => {
   const pathname = usePathname();
@@ -55,7 +53,6 @@ const AgentProfile = () => {
           </Typography>
         )}
       </Box>
-      <FooterCta data={FOOTER_CTA_DATA} />
     </>
   );
 };
