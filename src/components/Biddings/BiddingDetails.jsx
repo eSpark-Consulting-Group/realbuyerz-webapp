@@ -14,6 +14,7 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { postListingAdCard } from '@/app/constants/postListing';
+import NotFoundSection from '../Global/NotFoundSection';
 
 const BiddingDetails = ({ height, ads }) => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -25,29 +26,14 @@ const BiddingDetails = ({ height, ads }) => {
   const handleShowLessClick = () => {
     setShowAllItems(false);
   };
-  // console.log(ads[0]?.location, 'adsxx');
 
   return (
     <>
       {ads?.length <= 0 ? (
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              color: '#FB631C',
-              textDecoration: 'underLine',
-              fontSize: { xs: '25px', sm: '28px' },
-            }}
-          >
-            {'No Data Found'}
-          </Typography>
-        </Box>
+        <NotFoundSection
+          heading={'Sorry!'}
+          message={'Property id invalid, Please add correct id.'}
+        />
       ) : (
         <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
@@ -227,9 +213,9 @@ const BiddingDetails = ({ height, ads }) => {
                       </Box>
                       <LiveBiddingPropertiesList
                         city={item?.city}
-                        status={item?.status}
+                        status={item?.purpose}
                         location={item?.location}
-                        proposal={item?.proposal}
+                        proposal={item?.proposals?.proposals?.length}
                         connects={item?.connects}
                         cardKeys={postListingAdCard}
                       />

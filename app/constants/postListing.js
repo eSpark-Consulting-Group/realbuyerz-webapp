@@ -7,6 +7,7 @@ export const PROPERTY_INFORMATION = {
   cancel: 'Cancel',
   saveDraft: 'Save as draft',
   submitAd: 'Submit Ad',
+  SubmitProposal: 'Submit Proposal',
   property: [
     {
       image: '/images/listing-page/home.svg',
@@ -648,9 +649,27 @@ export const draftModal = {
 };
 
 export const postListingAdCard = {
-  status: 'Status',
-  city: 'City',
-  area: 'Area',
-  proposal: 'Proposal',
-  connects: 'connects',
+  status: 'Status :',
+  city: 'City :',
+  area: 'Area :',
+  proposal: 'Proposal :',
+  connects: 'connects :',
+};
+
+export const clientRequirment = {
+  title: 'Clients Requirement',
+  send_Proposal: 'Send a proposal for :',
+  available_Connects: 'Available Connects:',
+  flag_Inappropiate: 'Flag as inappropiate',
+  connects: 'Connects',
+  apply_Button: {
+    title: 'Apply Now',
+    link: '/cover-letter',
+  },
+  save_Button: {
+    title: 'Save',
+    defaultImage: '/images/heart.svg',
+    hoverImage: '/images/heart-white.svg',
+    link: '#',
+  },
 };

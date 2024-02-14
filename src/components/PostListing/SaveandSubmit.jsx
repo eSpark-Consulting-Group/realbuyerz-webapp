@@ -3,15 +3,22 @@ import { Box, Button, Grid } from '@mui/material';
 
 import HideUnhideButton from './HideButton';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { usePathname } from 'next/navigation';
 
 const SubmitButton = ({ handleClickOpen, formik, setAction }) => {
+  const pathName = usePathname();
+  const cover = '/cover-letter';
   const handleDraftSubmit = () => {
-    setAction('draft');
+    if (!pathName.includes(cover)) {
+      setAction('draft');
+    }
     formik.handleSubmit();
   };
 
   const handleSubmitSubmit = () => {
-    setAction('submit');
+    if (!pathName.includes(cover)) {
+      setAction('submit');
+    }
     formik.handleSubmit();
   };
 
@@ -40,32 +47,35 @@ const SubmitButton = ({ handleClickOpen, formik, setAction }) => {
           }}
         >
           <HideUnhideButton handleClickOpen={handleClickOpen} />
-          <Button
-            name="submit"
-            value="submit"
-            type="submit"
-            sx={{
-              width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:400px)': {
-                width: '100%',
-              },
-              borderRadius: '5px',
-              border: '1px solid #FB631C',
-              background: '#FFF',
-              color: '#FB631C',
-              height: '45px',
-              flexShrink: 0,
-              fontSize: { xs: '12px', sm: '15px' },
-              fontWeight: 400,
-              '&:hover': {
-                color: '#fff',
-                backgroundColor: '#FB631C',
-              },
-            }}
-            onClick={handleDraftSubmit}
-          >
-            {PROPERTY_INFORMATION?.saveDraft}
-          </Button>
+          {pathName.includes(cover) ? null : (
+            <Button
+              name="submit"
+              value="submit"
+              type="submit"
+              sx={{
+                width: { xs: '40%', sm: '200px' },
+                '@media(min-width: 280px) and (max-width:400px)': {
+                  width: '100%',
+                },
+                borderRadius: '5px',
+                border: '1px solid #FB631C',
+                background: '#FFF',
+                color: '#FB631C',
+                height: '45px',
+                flexShrink: 0,
+                fontSize: { xs: '12px', sm: '15px' },
+                fontWeight: 400,
+                '&:hover': {
+                  color: '#fff',
+                  backgroundColor: '#FB631C',
+                },
+              }}
+              onClick={handleDraftSubmit}
+            >
+              {PROPERTY_INFORMATION?.saveDraft}
+            </Button>
+          )}
+
           <Button
             name="draft"
             value="draft"
@@ -90,7 +100,9 @@ const SubmitButton = ({ handleClickOpen, formik, setAction }) => {
             }}
             onClick={handleSubmitSubmit}
           >
-            {PROPERTY_INFORMATION?.submitAd}
+            {pathName.includes(cover)
+              ? PROPERTY_INFORMATION?.SubmitProposal
+              : PROPERTY_INFORMATION?.submitAd}
           </Button>
         </Box>
       </Grid>

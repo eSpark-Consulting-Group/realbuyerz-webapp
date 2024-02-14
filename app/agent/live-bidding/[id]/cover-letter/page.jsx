@@ -11,14 +11,13 @@ import { createInformationState } from '@/utils/addInfo';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
-  adSumitModal,
-  draftModal,
+  proposalSumitModal,
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -27,8 +26,9 @@ import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
-import { handleAgentDraft } from '@/src/redux/slices/agentDraft/agentDraftSlice';
-import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
+import { usePathname } from 'next/navigation';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -55,20 +55,22 @@ const Page = () => {
   const [open, setOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [action, setAction] = useState('');
   const dispatch = useDispatch();
+
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 1];
+  const userPostings = useSelector(
+    (state) => state?.postRequestAds?.userPostings
+  );
+  const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    if (action === 'draft') {
-      dispatch(handleAgentDraft(values));
-      handleOpenSuccessModal();
-    } else if (action === 'submit') {
-      dispatch(handlePostlistingAd(values));
-      handleOpenSuccessModal();
-    }
+    dispatch(addProposal(values));
+    handleOpenSuccessModal();
   };
 
   const handleClickOpen = () => {
@@ -107,10 +109,7 @@ const Page = () => {
   const initialFormValues = {
     adId: '',
     userId: '',
-    proposals: [],
-    other_features: [],
-    images: [],
-    videos: [],
+    proposalId: '',
     title: '',
     location: '',
     description: '',
@@ -123,11 +122,14 @@ const Page = () => {
     connects: '',
     bathrooms: 0,
     parking: 0,
+    other_features: [],
     purpose: 'Sell',
     proportyCategory: 'House',
     propertyType: 'Sell',
     instalmentAvailable: false,
     readyPossession: false,
+    images: [],
+    videos: [],
   };
 
   const formik = useFormik({
@@ -135,6 +137,7 @@ const Page = () => {
     validationSchema,
     onSubmit: (values, action) => {
       values.adId = randomNumber;
+      values.proposalId = values.adId;
       handleSubmit(values);
       action.resetForm();
     },
@@ -142,49 +145,60 @@ const Page = () => {
     validateOnBlur: false,
   });
 
+  if (
+    isNaN(id) ||
+    id === undefined ||
+    id === null ||
+    id !== spacificPost?.adId
+  ) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'Property id invalid, Please add correct id.'}
+      />
+    );
+  }
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <form onSubmit={formik?.handleSubmit}>
-          <Box
-            sx={{
-              display: 'flex',
-              maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
-              justifyContent: 'center',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '40px',
-              margin: { xs: 0, md: '0 auto', lg: 0 },
-            }}
-          >
-            <Link href={'/agent/live-bidding'}>agent</Link>
-            <BuyersPlatform />
-            <AdInformation formik={formik} propertyData={propertyData} />
-            <PropertyPurpose formik={formik} propertyData={propertyData} />
-            <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
-            <PropertyGallery formik={formik} />
-            <SubmitButton
-              formik={formik}
-              setAction={setAction}
-              handleClickOpen={handleClickOpen}
-            />
-            <PreviewModal
-              open={open}
-              onClose={handleClose}
-              ads={formik?.values}
-            />
-          </Box>
-        </form>
-        <ProposalModal
-          buttonLabel={`${action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
-          description={`${action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
-          title={`${action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
-          open={isOpen}
-          onClose={handleCloseSuccessModal}
-        />
+    <>
+      <Grid container>
+        <Grid item xs={12}>
+          <form onSubmit={formik?.handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '40px',
+                margin: { xs: 0, md: '0 auto', lg: 0 },
+              }}
+            >
+              <Link href={'/agent/live-bidding'}>agent</Link>
+              <BuyersPlatform />
+              <AdInformation formik={formik} propertyData={propertyData} />
+              <PropertyPurpose formik={formik} propertyData={propertyData} />
+              <PropertySize formik={formik} />
+              <PropertyFeatures formik={formik} />
+              <PropertyGallery formik={formik} />
+              <SubmitButton formik={formik} handleClickOpen={handleClickOpen} />
+              <PreviewModal
+                open={open}
+                onClose={handleClose}
+                ads={formik?.values}
+              />
+            </Box>
+          </form>
+          <ProposalModal
+            buttonLabel={proposalSumitModal?.buttonLabel}
+            description={proposalSumitModal?.description}
+            title={proposalSumitModal?.title}
+            open={isOpen}
+            onClose={handleCloseSuccessModal}
+          />
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 export default Page;

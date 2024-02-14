@@ -9,12 +9,6 @@ const userAdsSlice = createSlice({
     handleSumitUserAds: (state, action) => {
       state.userPostings.push(action.payload);
     },
-    handleSendProposals: (state, action) => {
-      const { userIndex } = action.payload;
-      if (userIndex !== -1) {
-        state.userPostings[userIndex].proposals.push(action.payload);
-      }
-    },
   },
 });
 
