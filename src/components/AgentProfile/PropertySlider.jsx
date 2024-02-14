@@ -42,7 +42,7 @@ const PropertySlider = ({ propertyData }) => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1224,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -52,7 +52,7 @@ const PropertySlider = ({ propertyData }) => {
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1040,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -103,7 +103,9 @@ const PropertySlider = ({ propertyData }) => {
                     alt="Paella dish"
                   />
                 </Link>
-                <CardContent>
+                <CardContent
+                  sx={{ padding: { xs: '5px', sm: '10px', md: '16px' } }}
+                >
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>

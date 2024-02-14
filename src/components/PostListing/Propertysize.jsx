@@ -12,7 +12,14 @@ import PropertyInstallment from './PropertyInstallment';
 
 const PropertySize = ({ formik }) => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -31,11 +38,8 @@ const PropertySize = ({ formik }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             width: '100%',
             height: 'auto',
-            backgroundColor: 'white',
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.sizeprice} />

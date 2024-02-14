@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
 import { useDispatch } from 'react-redux';
@@ -208,13 +209,24 @@ const PropertyAreaSize = ({
                   disablePortal
                   id="combo-box-demo"
                   options={item.label == 'area' ? aeraSizes : currency}
+                  popupIcon={
+                    <KeyboardArrowDownIcon sx={{ color: '#777777' }} />
+                  }
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
-                      // border: '1px solid #E7E7E7',
-                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
+                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : 'none'}`,
                       borderRadius: '10px',
                     },
+                    '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
+                      {
+                        color: '#777777',
+                        display: 'inline-flex',
+                        visibility: 'visible',
+                        '&:hover': {
+                          color: '#777777',
+                        },
+                      },
                   }}
                   renderInput={(params) => (
                     <TextField

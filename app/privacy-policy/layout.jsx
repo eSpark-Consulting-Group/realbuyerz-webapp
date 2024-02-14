@@ -6,8 +6,8 @@ import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
 
 const InnerPageLayout = ({ children }) => {
   return (
-    <Box sx={{ background: '#F4F5F7' }}>
-      <Box maxWidth={1322} mx={'auto'}>
+    <Box sx={{ backgroundColor: '#F4F5F7', border: '1px solid #F4F5F7' }}>
+      <Box maxWidth={1200} mx={'auto'}>
         {children}
       </Box>
       <FooterCta data={FOOTER_CTA_DATA} />

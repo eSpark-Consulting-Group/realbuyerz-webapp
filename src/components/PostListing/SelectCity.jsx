@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import { useDispatch } from 'react-redux';
 import { handleReuestCity } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
@@ -97,14 +98,24 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               // onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.city && Boolean(formik.errors.city)}
+              popupIcon={<KeyboardArrowDownIcon sx={{ color: '#777777' }} />}
               disablePortal
               id="combo-box-demo"
               options={options}
               sx={{
                 '& .MuiAutocomplete-inputRoot': {
                   borderRadius: '10px',
-                  border: `1px solid ${formik.errors.city ? 'red' : '#E7E7E7'}`,
+                  border: `1px solid ${formik.errors.city ? 'red' : 'none'}`,
                 },
+                '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
+                  {
+                    color: '#777777',
+                    display: 'inline-flex',
+                    visibility: 'visible',
+                    '&:hover': {
+                      color: '#777777',
+                    },
+                  },
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
               renderInput={(params) => (

@@ -41,7 +41,14 @@ const PropertyGallery = () => {
   };
 
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -63,10 +70,7 @@ const PropertyGallery = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             width: '100%',
-            backgroundColor: 'white',
             '@media (min-width: 960px) and (max-width: 1399px)': {
               height: '780px',
             },

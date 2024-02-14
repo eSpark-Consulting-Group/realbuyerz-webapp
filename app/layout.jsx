@@ -13,6 +13,9 @@ import Seo from '@/src/components/Global/SEO';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 import { SEO_DATA } from './constants/seo';
+import { FOOTER_DATA } from '@/app/constants/Constants';
+import Footer from '@/src/components/layouts/Footer';
+import MainHeader from '@/src/components/layouts/MainHeader';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -32,7 +35,15 @@ const RootLayout = ({ children }) => {
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <Box>
+                {currentPath.includes('/agent') ||
+                currentPath.includes('/user') ? null : (
+                  <MainHeader />
+                )}
                 <Box>{children}</Box>
+                {currentPath.includes('/agent') ||
+                currentPath.includes('/user') ? null : (
+                  <Footer data={FOOTER_DATA} />
+                )}
               </Box>
             </ThemeProvider>
           </Provider>

@@ -10,7 +10,6 @@ import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const FeaturedProperties = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  console.log(hoveredIndex, 'hover');
   // const [saved, setSaved] = useState(true);
   // const handleToggleSave = () => {
   //   setSaved((prevSaved) => !prevSaved);

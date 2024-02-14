@@ -2,6 +2,7 @@ import * as React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function BuyConnectSelect({
   sx,
@@ -22,6 +23,7 @@ export default function BuyConnectSelect({
           value={value}
           onChange={onChange}
           sx={sx}
+          IconComponent={KeyboardArrowDownIcon}
         >
           {menuItem?.map((item) => (
             <MenuItem key={item?.value} value={item?.value}>
