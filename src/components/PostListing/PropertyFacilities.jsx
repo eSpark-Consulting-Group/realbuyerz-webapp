@@ -7,7 +7,7 @@ import Counter from './inputNumber/counter';
 const PropertyFacilities = ({ propertyInformation, formik }) => {
   return (
     <>
-      {propertyInformation.map((item, index) => (
+      {propertyInformation?.map((item, index) => (
         <Box
           sx={{
             display: 'flex',
@@ -26,10 +26,9 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
               alignItems: 'center',
               gap: 2,
               width: { xs: 'auto', md: 'auto' },
-              // justifyContent: 'space-around',
             }}
           >
-            <Image src={item.image} width={50} height={50} alt="facility" />
+            <Image src={item?.image} width={50} height={50} alt="facility" />
             <Box
               sx={{
                 display: 'flex',
@@ -37,21 +36,20 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
                 flexDirection: { xs: 'column', sm: 'row' },
                 alignItems: 'center',
                 textAlign: { xs: 'center', sm: 'start' },
-                // justifyContent: 'space-between',
                 gap: 1,
               }}
             >
               <Box sx={{ width: '130px' }}>
                 <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>
-                  {item.title}
+                  {item?.title}
                 </Typography>
               </Box>
               <Box sx={{ width: 'auto' }}>
                 <Counter
-                  name={item?.name}
                   formik={formik}
+                  name={item?.name}
                   title={item?.title}
-                  identifier={`facility_${index}`}
+                  limit={item?.limit}
                 />
               </Box>
             </Box>

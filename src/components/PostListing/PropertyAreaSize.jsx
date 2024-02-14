@@ -1,17 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 
 import { createPropertySizeState } from '@/utils/propertySizeInfo';
-import { useDispatch } from 'react-redux';
-import {
-  handlePostAmount,
-  handlePostArea,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
-import {
-  handleRequestAmount,
-  handleRequestArea,
-} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -21,16 +12,6 @@ const PropertyAreaSize = ({
   currency,
   formik,
 }) => {
-  const [propertyArea, setPropertyArea] = useState({
-    area: '',
-    unit: '',
-  });
-  const [propertyAmount, setpropertyAmount] = useState({
-    amount: '',
-    unit: '',
-  });
-  const dispatch = useDispatch();
-
   const [propertyData] = useState(
     createPropertySizeState(
       propertySizeInformation,
@@ -39,46 +20,6 @@ const PropertyAreaSize = ({
     )
   );
 
-  useEffect(() => {
-    dispatch(handlePostArea(propertyArea));
-    dispatch(handleRequestArea(propertyArea));
-  }, [propertyArea]);
-
-  useEffect(() => {
-    dispatch(handleRequestAmount(propertyAmount));
-    dispatch(handlePostAmount(propertyAmount));
-  }, [propertyAmount]);
-
-  const handleInputChange = (key, val) => {
-    if (key == 'area') {
-      setPropertyArea({
-        ...propertyArea,
-        [key]: val,
-      });
-    } else {
-      setpropertyAmount({
-        ...propertyAmount,
-        [key]: val,
-      });
-    }
-    formik.setFieldValue(key, val);
-  };
-
-  const handleCityChange = (e, index, name) => {
-    const val = e.target.innerText;
-    if (index == 0) {
-      setPropertyArea({
-        ...propertyArea,
-        unit: val,
-      });
-    } else {
-      setpropertyAmount({
-        ...propertyAmount,
-        unit: val,
-      });
-    }
-    formik.setFieldValue(name, val);
-  };
   return (
     <>
       {propertyData?.propertySizeAndAmount?.propertySize?.map((item, index) => (
@@ -112,7 +53,7 @@ const PropertyAreaSize = ({
             >
               <Box
                 component={'img'}
-                src={item.image}
+                src={item?.image}
                 sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
                 alt="areasize"
               />
@@ -151,7 +92,7 @@ const PropertyAreaSize = ({
                   display: { xs: 'none', sm: 'flex' },
                 }}
               >
-                {item.text}
+                {item?.text}
                 <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
               </Typography>
               <Box
@@ -183,7 +124,7 @@ const PropertyAreaSize = ({
                       margin: 0,
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label] && `solid 1px red`,
+                      border: formik?.errors[item?.label] && `solid 1px red`,
                     },
                   }}
                   InputProps={{
@@ -193,26 +134,24 @@ const PropertyAreaSize = ({
                     },
                   }}
                   name={item?.label}
-                  onChange={(e) =>
-                    handleInputChange(item?.label, e.target.value)
-                  }
-                  value={formik[item?.label]}
-                  onBlur={formik.handleBlur}
+                  onChange={formik?.handleChange}
+                  value={formik?.values[item?.label]}
+                  onBlur={formik?.handleBlur}
                   error={
-                    formik.touched[item?.label] &&
-                    Boolean(formik.errors[item?.label])
+                    formik?.touched[item?.label] &&
+                    Boolean(formik?.errors[item?.label])
                   }
                 />
                 <Autocomplete
                   name={item?.unit}
+                  value={formik?.values[item?.unit]}
                   disablePortal
                   id="combo-box-demo"
-                  options={item.label == 'area' ? aeraSizes : currency}
+                  options={item?.label == 'area' ? aeraSizes : currency}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& .MuiAutocomplete-inputRoot': {
-                      // border: '1px solid #E7E7E7',
-                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
+                      border: `1px solid ${formik?.errors[item?.unit] ? 'red' : '#E7E7E7'}`,
                       borderRadius: '10px',
                     },
                   }}
@@ -230,10 +169,12 @@ const PropertyAreaSize = ({
                       }}
                     />
                   )}
-                  onChange={(e) => handleCityChange(e, index, item?.unit)}
+                  onChange={(e, value) => {
+                    formik?.handleChange(item?.unit)(value || '');
+                  }}
                 />
               </Box>
-              {(formik.errors[item?.label] || formik.errors[item?.unit]) && (
+              {(formik?.errors[item?.label] || formik.errors[item?.unit]) && (
                 <Typography
                   sx={{
                     position: 'absolute',

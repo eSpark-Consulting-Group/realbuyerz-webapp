@@ -5,24 +5,12 @@ const proposals = PROPOSALS_DATA;
 
 const initialState = { proposals };
 
-function generateUniqueId(proposals) {
-  let newId = (proposals.length + 1).toString();
-  while (proposals.some((property) => property.id === newId)) {
-    newId = (parseInt(newId, 10) + 1).toString();
-  }
-  return newId;
-}
-
 const proposalsSlice = createSlice({
   name: 'proposals',
   initialState,
   reducers: {
     addProposal: (state, action) => {
-      const newProposal = {
-        ...action.payload,
-        id: generateUniqueId(state.proposals),
-      };
-      state.proposals.push(newProposal);
+      state.proposals.push(action.payload);
     },
 
     updateProposal: (state, action) => {

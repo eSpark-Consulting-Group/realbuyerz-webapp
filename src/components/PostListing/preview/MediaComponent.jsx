@@ -2,7 +2,8 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import AdMediaSlider from '../AdMediaSlider';
 
-const MediaComponent = ({ title, values, mediaType }) => {
+const MediaComponent = ({ title, images, videos, mediaType }) => {
+  console.log(images, 'imagesimages');
   return (
     <>
       <Box
@@ -32,7 +33,16 @@ const MediaComponent = ({ title, values, mediaType }) => {
             },
           }}
         >
-          <AdMediaSlider media={values} mediaType={mediaType} />
+          <AdMediaSlider
+            media={
+              mediaType == 'images'
+                ? images
+                : '' || mediaType == 'videos'
+                  ? videos
+                  : ''
+            }
+            mediaType={mediaType}
+          />
         </Box>
       </Box>
     </>

@@ -38,7 +38,7 @@ const PropertySize = ({ formik }) => {
             backgroundColor: 'white',
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION.postTitles.sizeprice} />
+          <PostTitle text={PROPERTY_INFORMATION?.postTitles?.sizeprice} />
           <Box
             sx={{
               width: '100%',
@@ -59,16 +59,16 @@ const PropertySize = ({ formik }) => {
               }}
             >
               <PropertyAreaSize
-                propertySizeInformation={PROPERTY_INFORMATION.propertySize}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-                selectCity={PROPERTY_INFORMATION.selectCityOptions}
-                aeraSizes={PROPERTY_INFORMATION.aeraSizes}
-                currency={PROPERTY_INFORMATION.currency}
+                propertySizeInformation={PROPERTY_INFORMATION?.propertySize}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                selectCity={PROPERTY_INFORMATION?.selectCityOptions}
+                aeraSizes={PROPERTY_INFORMATION?.aeraSizes}
+                currency={PROPERTY_INFORMATION?.currency}
                 formik={formik}
               />
               <PropertyInstallment
-                propertyInstallmentInfo={PROPERTY_INFORMATION.installment}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                propertyInstallmentInfo={PROPERTY_INFORMATION?.installment}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
                 formik={formik}
               />
             </Box>

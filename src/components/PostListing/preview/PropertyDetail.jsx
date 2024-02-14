@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const PropertyDetail = ({ title, values }) => {
+const PropertyDetail = ({ title, subTitle, description }) => {
   return (
-    <div>
+    <>
       <Box
         sx={{
           px: 4,
@@ -24,29 +24,33 @@ const PropertyDetail = ({ title, values }) => {
         >
           {title}
         </Typography>
-        <Typography
-          sx={{
-            padding: '5px',
-            color: '#333',
-            fontSize: '15px',
-            fontWeight: '600',
-          }}
-          variant="h3"
-        >
-          {values?.title}
-        </Typography>
-        <Typography
-          sx={{
-            padding: '5px',
-            color: ' #333',
-            fontSize: '12px',
-            fontWeight: '400',
-          }}
-        >
-          {values?.description}
-        </Typography>
+        {subTitle && (
+          <Typography
+            sx={{
+              padding: '5px',
+              color: '#333',
+              fontSize: '15px',
+              fontWeight: '600',
+            }}
+            variant="h3"
+          >
+            {subTitle}
+          </Typography>
+        )}
+        {description && (
+          <Typography
+            sx={{
+              padding: '5px',
+              color: ' #333',
+              fontSize: '12px',
+              fontWeight: '400',
+            }}
+          >
+            {description}
+          </Typography>
+        )}
       </Box>
-    </div>
+    </>
   );
 };
 export default PropertyDetail;

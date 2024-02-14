@@ -55,7 +55,7 @@ const PropertyTypes = ({
             alt="property"
           />
           <Typography sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}>
-            {item.title}
+            {item?.title}
           </Typography>
         </Box>
       ))}
