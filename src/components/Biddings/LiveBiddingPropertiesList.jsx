@@ -1,14 +1,25 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { usePathname } from 'next/navigation';
 
-const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
+const LiveBiddingPropertiesList = ({
+  city,
+  status,
+  location,
+  proposal,
+  connects,
+  cardKeys,
+}) => {
+  const pathName = usePathname();
+  const agent = '/agent';
+  const user = '/user';
+
   return (
     <Box
       sx={{
         width: '100%',
         paddingLeft: '17px',
-        // display: 'flex',
         '@media(min-width: 280px) and (max-width: 445px)': {
           justifyContent: 'center',
         },
@@ -26,10 +37,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Status:'}
+          {cardKeys?.status}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {locationAndPurpose?.adPurpose}
+          {status}
         </Typography>
       </Box>
       <Box
@@ -44,10 +55,10 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'City:'}
+          {cardKeys?.city}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {locationAndPurpose?.city}
+          {city}
         </Typography>
       </Box>
       <Box
@@ -62,48 +73,59 @@ const LiveBiddingPropertiesList = ({ locationAndPurpose, areaSize }) => {
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {'Area:'}
+          {cardKeys?.area}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {`${areaSize?.area} ${areaSize?.unit}`}
+          {location}
         </Typography>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          '@media(min-width: 280px) and (max-width: 445px)': {
-            justifyContent: 'center',
-          },
-        }}
-      >
-        <Typography
-          variant="body1"
-          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+      {pathName.includes(user) ? (
+        <Box
+          sx={{
+            display: 'flex',
+            '@media(min-width: 280px) and (max-width: 445px)': {
+              justifyContent: 'center',
+            },
+          }}
         >
-          {'Proposal:'}
-        </Typography>
-        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {/* {`${areaSize?.area} ${areaSize?.unit}`} */}
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          '@media(min-width: 280px) and (max-width: 445px)': {
-            justifyContent: 'center',
-          },
-        }}
-      >
-        <Typography
-          variant="body1"
-          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+          >
+            {cardKeys?.proposal}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: '#333333', fontWeight: 500 }}
+          >
+            {proposal}
+          </Typography>
+        </Box>
+      ) : null}
+
+      {pathName.includes(agent) ? (
+        <Box
+          sx={{
+            display: 'flex',
+            '@media(min-width: 280px) and (max-width: 445px)': {
+              justifyContent: 'center',
+            },
+          }}
         >
-          {'Connects:'}
-        </Typography>
-        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {/* {locationAndPurpose?.adPurpose} */}
-        </Typography>
-      </Box>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+          >
+            {cardKeys?.connects}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: '#333333', fontWeight: 500 }}
+          >
+            {connects}
+          </Typography>
+        </Box>
+      ) : null}
     </Box>
   );
 };

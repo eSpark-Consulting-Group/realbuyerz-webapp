@@ -45,7 +45,7 @@ const ImageUploader = ({ onUpload, maxImages }) => {
           textTransform: 'capitalize',
         }}
       >
-        Upload Images{' '}
+        Upload Images
       </Typography>
     </Button>
   );

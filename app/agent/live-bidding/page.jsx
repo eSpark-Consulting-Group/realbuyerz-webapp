@@ -2,11 +2,7 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
-import {
-  LIVE_BIDDING_DATA,
-  MAIN_TITLE,
-  PROFILE_INFO,
-} from '@/app/constants/LiveBidding';
+import { MAIN_TITLE, PROFILE_INFO } from '@/app/constants/LiveBidding';
 
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';
@@ -15,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Page = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
-  console.log(userAds, 'userAds');
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -30,11 +26,7 @@ const Page = () => {
               }}
             >
               <LiveBiddingTitle title={MAIN_TITLE} />
-              <BiddingDetails
-                liveBiddingData={LIVE_BIDDING_DATA}
-                ads={userAds}
-                height={'1098px'}
-              />
+              <BiddingDetails ads={userAds} height={'1098px'} />
             </Box>
           </Grid>
           <Grid item xs={12} md={3.5} lg={2.8} xxl={2}>

@@ -1,28 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Typography, Box, TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
-
-import { handlePostInformation } from '@/src/redux/slices/previewPostListing/postListingSlice';
-import { handleRequestInformation } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const PropertyInformation = ({ propertyData, formik }) => {
-  const [adInformation, setAdInformation] = useState({});
-  const dispatch = useDispatch();
-  const handleChange = (key, val) => {
-    setAdInformation({
-      ...adInformation,
-      [key]: val,
-    });
-    formik.setFieldValue(key, val);
-  };
-
-  useEffect(() => {
-    dispatch(handlePostInformation(adInformation));
-    dispatch(handleRequestInformation(adInformation));
-  }, [adInformation]);
-
   const specialIndex = 1;
+
   return (
     <>
       <Box
@@ -118,13 +100,13 @@ const PropertyInformation = ({ propertyData, formik }) => {
                     },
                   }}
                   name={item?.label}
-                  value={formik[item?.label]}
+                  value={formik.values[item?.label]}
                   onBlur={formik.handleBlur}
                   error={
                     formik.touched[item?.label] &&
                     Boolean(formik.errors[item?.label])
                   }
-                  onChange={(e) => handleChange(item?.label, e.target.value)}
+                  onChange={formik?.handleChange}
                   multiline
                 />
                 {formik.errors[item?.label] && (

@@ -1,28 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import InstructionsForUpload from './InstructionsForUpload';
 import ImageUploader from './ImageUploader';
-import { useDispatch } from 'react-redux';
-import {
-  handlePostImages,
-  handlePostVideos,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
 import VideoUploader from './VideoUploader';
 
-const PropertyGallery = () => {
+const PropertyGallery = ({ formik }) => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const maxImages = 5;
   const maxVideos = 5;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(handlePostImages(images));
-    dispatch(handlePostVideos(videos));
-  }, [images, videos]);
 
   const handleImageUpload = (type, file) => {
     if (images.length < maxImages && type.includes('image')) {
@@ -30,6 +19,7 @@ const PropertyGallery = () => {
     } else {
       console.error('Maximum limit of images reached');
     }
+    formik.setFieldValue('images', images);
   };
 
   const handleVideoUpload = (type, file) => {
@@ -38,6 +28,7 @@ const PropertyGallery = () => {
     } else {
       console.error('Maximum limit of videos reached');
     }
+    formik.setFieldValue('videos', videos);
   };
 
   return (
@@ -206,6 +197,7 @@ const PropertyGallery = () => {
                           onUpload={handleImageUpload}
                           maxImages={maxImages}
                         />
+
                         <VideoUploader
                           onUpload={handleVideoUpload}
                           maxVideos={maxVideos}

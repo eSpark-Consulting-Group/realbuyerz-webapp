@@ -42,5 +42,5 @@ const userAdsSlice = createSlice({
   },
 });
 
-export const { handleSumitUserAds } = userAdsSlice.actions;
+export const { handleSumitUserAds, handleSendProposals } = userAdsSlice.actions;
 export default userAdsSlice.reducer;
