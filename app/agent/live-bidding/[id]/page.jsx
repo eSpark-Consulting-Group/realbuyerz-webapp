@@ -32,7 +32,14 @@ const Page = () => {
       <Grid container spacing={2.5}>
         <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
           {spacificPost?.adId !== undefined ? (
-            <Box sx={{ background: '#fff', borderRadius: '10px', mt: '16px', border: '1px solid #E4E4E4', }}>
+            <Box
+              sx={{
+                background: '#fff',
+                borderRadius: '10px',
+                mt: '16px',
+                border: '1px solid #E4E4E4',
+              }}
+            >
               <Grid container>
                 <Grid item xs={12} md={8.5} xl={9.5}>
                   <Box

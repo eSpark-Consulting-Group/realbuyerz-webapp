@@ -127,7 +127,6 @@ const BiddingDetails = ({ height, ads }) => {
                             justifyContent: {
                               xs: 'start',
                               sm: 'end',
-                              
                             },
                             '@media(min-width: 280px) and (max-width: 445px)': {
                               justifyContent: 'center',

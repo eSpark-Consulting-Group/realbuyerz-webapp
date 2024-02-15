@@ -69,7 +69,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => (
                   width: 'auto',
                   height: { xs: '35px', sm: '45px' },
                   textTransform: 'uppercase',
-                  fontSize:{xs:'10.7px', sm:'16px'},
+                  fontSize: { xs: '10.7px', sm: '16px' },
                   borderRadius: '5px',
                   '&:hover': { color: '#fff' },
                 }}

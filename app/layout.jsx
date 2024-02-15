@@ -55,7 +55,7 @@ const RootLayout = ({ children }) => {
             <ThemeProvider theme={theme}>
               <CssBaseline />
               {!isDashboard && <MainHeader />}
-                <Box>{children}</Box>
+              <Box>{children}</Box>
               {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
               {!isDashboard && <Footer data={FOOTER_DATA} />}
             </ThemeProvider>
