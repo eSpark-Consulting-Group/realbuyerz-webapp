@@ -10,10 +10,10 @@ import { NOT_FOUND } from '@/app/constants/Global';
 const NotFoundSection = ({ heading, message, link, goBackTo }) => (
   <Box
     sx={{
-      height: '90vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      my: '16px',
     }}
   >
     <Grid
@@ -25,6 +25,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => (
         alignItems: 'center',
         borderRadius: '20px',
         background: '#FFF',
+        border: '1px solid #E4E4E4',
       }}
     >
       <Grid item xs={12}>
@@ -68,6 +69,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => (
                   width: 'auto',
                   height: { xs: '35px', sm: '45px' },
                   textTransform: 'uppercase',
+                  fontSize:{xs:'10.7px', sm:'16px'},
                   borderRadius: '5px',
                   '&:hover': { color: '#fff' },
                 }}

@@ -81,6 +81,8 @@ const BiddingDetails = ({ height, ads }) => {
                     >
                       <Grid
                         item
+                        xs={12}
+                        sm={7}
                         md={8}
                         lg={6.5}
                         xl={`${path.includes('/user') ? 9 : 6.5}`}
@@ -106,7 +108,7 @@ const BiddingDetails = ({ height, ads }) => {
                         item
                         xs={12}
                         sm={5}
-                        md={`${path.includes('/user') ? 3.6 : 4}`}
+                        md={`${path.includes('/user') ? 4 : 4}`}
                         lg={`${path.includes('/user') ? 5 : 3}`}
                         xl={2.5}
                         sx={{
@@ -115,6 +117,7 @@ const BiddingDetails = ({ height, ads }) => {
                           fontStyle: 'normal',
                           fontWeight: 700,
                           lineHeight: 'normal',
+                          ml: { xs: '4px', sm: '0px' },
                         }}
                       >
                         <Box
@@ -123,7 +126,8 @@ const BiddingDetails = ({ height, ads }) => {
                             alignItems: 'center',
                             justifyContent: {
                               xs: 'start',
-                              md: 'end',
+                              sm: 'end',
+                              
                             },
                             '@media(min-width: 280px) and (max-width: 445px)': {
                               justifyContent: 'center',
@@ -135,7 +139,7 @@ const BiddingDetails = ({ height, ads }) => {
                             sx={{
                               fontSize: '14px',
                               fontWeight: 600,
-                              ml: { xs: '4px', md: '0px' },
+                              // ml: { xs: '4px', md: '0px' },
                             }}
                           >
                             {ESTIMATE_RANGE}
