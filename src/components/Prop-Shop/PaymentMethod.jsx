@@ -107,8 +107,10 @@ const PaymentMethod = ({
     }
   }, [selectedValue]);
 
-  const selectedCard = paymentMedthodDetails?.filter(card => card?.card_number === typeCard);
-  console.log(selectedCard)
+  const selectedCard = paymentMedthodDetails?.filter(
+    (card) => card?.card_number === typeCard
+  );
+  console.log(selectedCard);
   return (
     <Box
       sx={{
