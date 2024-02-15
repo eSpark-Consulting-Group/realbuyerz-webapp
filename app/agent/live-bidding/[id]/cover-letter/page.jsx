@@ -26,9 +26,9 @@ import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
-import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -64,12 +64,15 @@ const Page = () => {
     (state) => state?.postRequestAds?.userPostings
   );
   const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
-  console.log(spacificPost.adId, 'spacificPost?.adIdspacificPost?.adId');
+
+  const porposals = useSelector((state) => state.proposals);
+  console.log(porposals, 'porposalsporposals');
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    dispatch(addProposal(values));
+    dispatch(handleSendProposals(values));
     handleOpenSuccessModal();
   };
 
@@ -81,7 +84,7 @@ const Page = () => {
   };
 
   function generateRandomNumber() {
-    return Math.floor(Math.random() * 1000) + 1;
+    return Math.floor(Math.random() * 100) + 1;
   }
 
   const randomNumber = generateRandomNumber();
@@ -136,8 +139,8 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values.adId = randomNumber;
-      values.proposalId = values.adId;
+      values.adId = Number(id);
+      values.proposalId = randomNumber;
       handleSubmit(values);
       action.resetForm();
     },
@@ -158,6 +161,7 @@ const Page = () => {
       />
     );
   }
+
   return (
     <>
       <Grid container>
@@ -174,7 +178,7 @@ const Page = () => {
                 margin: { xs: 0, md: '0 auto', lg: 0 },
               }}
             >
-              <Link href={'/agent/live-bidding'}>agent</Link>
+              <Link href={'/user/dashboard'}>agent</Link>
               <BuyersPlatform />
               <AdInformation formik={formik} propertyData={propertyData} />
               <PropertyPurpose formik={formik} propertyData={propertyData} />

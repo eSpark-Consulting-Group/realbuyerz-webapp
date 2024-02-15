@@ -2,26 +2,33 @@
 import React from 'react';
 import { Box, Divider } from '@mui/material';
 
-import {
-  PROPOSALS,
-  ALL_PROPOSALS_DATA,
-  PROPOSAL_DETAILS,
-  BACK_TO_DASHBOARD,
-  VIEW_BUTTON,
-} from '@/app/constants/Dashboard';
 import DashboardProfile from '@/src/components/UserDashboard/DashboardProfile';
 import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
 import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
+import { userDetailedPage } from '@/app/constants/postRequest';
+import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
-const page = () => {
+const Page = () => {
+  const { image, back_Button, view_Button, title } = userDetailedPage;
+
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 1];
+  const userPostings = useSelector(
+    (state) => state?.postRequestAds?.userPostings
+  );
+
+  const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
+  console.log(spacificPost.proposals, 'spacificPostspacificPost');
   return (
     <>
       <BackToDashboard
-        buttonLabel={BACK_TO_DASHBOARD}
-        link={'/user/dashboard'}
+        buttonLabel={back_Button?.text}
+        link={back_Button?.link}
       />
-      <DashboardTitle title={PROPOSALS} />
+      <DashboardTitle title={title} />
       <Box
         sx={{
           background: '#fff',
@@ -39,18 +46,28 @@ const page = () => {
           },
         }}
       >
-        <ProposalDetails proposalDetails={PROPOSAL_DETAILS} />
+        <ProposalDetails
+          city={spacificPost?.city}
+          area={spacificPost?.area}
+          location={spacificPost?.location}
+          title={spacificPost?.title}
+          amount={spacificPost?.amount}
+          status={spacificPost?.purpose}
+          proposal={spacificPost?.proposals?.length}
+          postedTime={spacificPost?.posted_Time}
+          description={spacificPost?.description}
+        />
         <Divider />
-
-        {/* <SearchFilterButton /> */}
         <DashboardProfile
-          proposalData={ALL_PROPOSALS_DATA}
+          proposalData={spacificPost?.proposals}
+          image={image}
+          ViewLabel={view_Button?.text}
+          ViewLink={view_Button?.link}
           Height={'67.5vh'}
-          ViewLabel={VIEW_BUTTON}
         />
       </Box>
     </>
   );
 };
 
-export default page;
+export default Page;

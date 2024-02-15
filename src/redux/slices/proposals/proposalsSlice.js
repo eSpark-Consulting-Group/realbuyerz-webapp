@@ -1,16 +1,12 @@
-import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
+// import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
-
-const proposals = PROPOSALS_DATA;
-
-const initialState = { proposals };
 
 const proposalsSlice = createSlice({
   name: 'proposals',
-  initialState,
+  initialState: [],
   reducers: {
     addProposal: (state, action) => {
-      state.proposals.push(action.payload);
+      state.push(action.payload);
     },
 
     updateProposal: (state, action) => {

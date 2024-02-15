@@ -6,7 +6,7 @@ import UserProfileImage from './UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
 
-const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
+const DashboardProfile = ({ proposalData, ViewLabel, Height, image }) => {
   const [showAllItems, setShowAllItems] = useState(false);
 
   const handleShowMoreClick = () => {
@@ -15,6 +15,8 @@ const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
   const handleShowLessClick = () => {
     setShowAllItems(false);
   };
+
+  console.log(proposalData, 'proposalDataxx');
 
   return (
     <Box className="scrollable" sx={{ height: Height }}>
@@ -50,7 +52,7 @@ const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
                       },
                     }}
                   >
-                    <UserProfileImage image={item.image} isActive={false} />
+                    <UserProfileImage image={image} isActive={false} />
                   </Grid>
                   <Grid
                     item
@@ -74,12 +76,12 @@ const DashboardProfile = ({ proposalData, Height, ViewLabel }) => {
                     }}
                   >
                     <UserProfileDetails
-                      Title={item.title}
-                      Location={item.location}
-                      Amount={item.amount}
-                      Description={item.description}
+                      Title={item?.title}
+                      Location={item?.location}
+                      Amount={item?.amount}
+                      Description={item?.description}
                       ViewLabel={ViewLabel}
-                      Href={'/user/dashboard'}
+                      Href={'#'}
                     />
                   </Grid>
                 </Grid>
