@@ -21,6 +21,7 @@ import {
 } from '@/app/constants/postListing';
 import { Formik } from 'formik';
 import SizeFilter from './SizeFilter';
+import DynamicTabs from './TabsFilter';
 
 const FilterComponent = ({ data }) => {
   const [searchText, setSearchText] = useState('');
@@ -84,7 +85,12 @@ const FilterComponent = ({ data }) => {
     setSelectedPriceRange([0, 100]);
     setSubmittedValues(null);
   };
-
+ const handleFilter = () => {
+    setSelectedPriceUnit('');
+  };
+  const handleClearFilter = () => {
+    setSelectedPriceUnit('');
+  };
   // const dispatchSubmitValuesToRedux = (
   //   selectedAreaUnit,
   //   selectedAreaRange
@@ -93,10 +99,53 @@ const FilterComponent = ({ data }) => {
   // };
 
   const areaUnits = [
-    { value: 'sqm', title: 'Square Meter' },
-    { value: 'sqft', title: 'Square Feet' },
+    { value: 'sqft', title: 'Sq.ft' },
+    { value: 'sqm', title: 'Sq.M' },
+    { value: 'sqyd', title: 'Sq.Yd' },
+    { value: 'marla', title: 'Marla' },
+    { value: 'kanal', title: 'Kanal' },
   ];
-  
+  const currencyUnits = [
+    { value: 'pkr', title: 'PKR' },
+    { value: 'usd', title: 'USD' },
+    { value: 'gbp', title: 'GBP' },
+    { value: 'cad', title: 'CAD' },
+    { value: 'eur', title: 'Euro' },
+  ];
+  const propertyType = [
+    { value: ' ', title: 'Any' },
+    { value: 'sell', title: 'Sell' },
+    { value: 'rent', title: 'Rent' },
+  ];
+  const tabs = [
+    {
+      label: 'Houses',
+      content: [
+        { label: 'Face', icon: 'asdna' },
+        { label: 'Location', icon: 'asdna' },
+        { label: 'Face', icon: 'asdna' },
+        { label: 'Location', icon: 'asdna' },
+      ],
+    },
+    {
+      label: 'Plots',
+      content: [
+        { label: 'Work', icon: 'asdna' },
+        { label: 'Face', icon:'asdna' },
+        { label: 'Work', icon: 'asdna' },
+        { label: 'Face', icon:'asdna' },
+      ],
+    },
+    {
+      label: 'Commercials',
+      content: [
+        { label: 'Location', icon: 'asdna' },
+        { label: 'Work', icon: 'asdna' },
+        { label: 'Location', icon: 'asdna' },
+        { label: 'Work', icon: 'asdna' },
+      ],
+    },
+  ];
    useEffect(() => {
     handleFilter();
  }, [selectedPropertyType, selectedAdType, selectedPriceRange, selectedAreaRange, searchText]);
@@ -105,63 +154,75 @@ const FilterComponent = ({ data }) => {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          <FormControl fullWidth>
-            <InputLabel>Property Type</InputLabel>
+          <FormControl fullWidth >
             <Select
-              value={propertyType}
-              onChange={(e) => setPropertyType(e.target.value)}
+              value={selectedPropertyType || propertyType[0]?.value}
+              onChange={(e) => setSelectedPropertyType(e.target.value)}
             >
-              {Array.from(new Set(data.map((item) => item.propertyType))).map(
-                (type, index) => (
-                  <MenuItem key={index} value={type}>
-                    {type}
-                  </MenuItem>
-                )
-              )}
+              {propertyType.map((unit, index) => (
+    <MenuItem key={index} value={unit?.value}>
+      {unit?.title}
+    </MenuItem>
+  ))}
             </Select>
           </FormControl>
         </Grid>
         <Grid item xs={2}>
-          <Button aria-describedby={id1} type="button" onClick={handleClick1}>
-            Toggle Popper 1
-          </Button>
-          <Popper id={id1} open={open1} anchorEl={anchorEl1}>
+           <TextField aria-describedby={id1} variant="outlined" value={selectedPropertyType} onClick={handleClick1}/>
+          <Popper id={id1} open={open1} anchorEl={anchorEl1} placement='bottom-start'>
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-              The content of Popper 1.
+                <DynamicTabs tabs={tabs} />
             </Box>
           </Popper>
         </Grid>
         <Grid item xs={2}>
-          <Button aria-describedby={id2} type="button" onClick={handleClick2}>
-            Toggle Popper 2
-          </Button>
-          <Popper id={id2} open={open2} anchorEl={anchorEl2}>
-            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-              The content of Popper 2.
-            </Box>
-          </Popper>
-        </Grid>
-        <Grid item xs={2}>
-          <Button aria-describedby={id3} type="button" onClick={handleClick3}>
-            Toggle Popper 3
-          </Button>
-          <Popper
-            id={id3}
-            open={open3}
-            anchorEl={anchorEl3}
-            position={'bottom-start'}
+          <TextField aria-describedby={id2} variant="outlined" value={selectedPriceUnit.toUpperCase() || 'Any'} onClick={handleClick2}/>
+          <Popper 
+            id={id2}
+            open={open2}
+            anchorEl={anchorEl2}
+            placement='bottom-start'
             zIndex={999}
           >
             <Box
               sx={{
                 zIndex: 999,
-                p: '20px',
                 bgcolor: 'background.paper',
-                height: 'auto',
+                height: 'auto',mt:'10px'
                 // width: '300px',
               }}
             >
               <SizeFilter
+                title={'Price Range'}
+                selectedUnit={selectedPriceUnit}
+                units={currencyUnits}
+                handleChange={handlePriceChange}
+                selectedRange={selectedPriceRange}
+                handleRangeChange={handlePriceRangeChange}
+                handleApply={handlePriceApply}
+                handleCancel={handlePriceCancel}
+              />
+            </Box>
+          </Popper>
+        </Grid>
+        <Grid item xs={2}>
+           <TextField aria-describedby={id3} variant="outlined" value={selectedAreaUnit || 'Any'}  onClick={handleClick3}/>
+          <Popper
+            id={id3}
+            open={open3}
+            anchorEl={anchorEl3}
+            placement={'bottom-start'}
+            zIndex={999}
+          >
+            <Box
+              sx={{
+                zIndex: 999,
+                bgcolor: 'background.paper',
+                height: 'auto',mt:'10px'
+              }}
+            >
+              <SizeFilter
+                title={'Area'}
                 selectedUnit={selectedAreaUnit}
                 units={areaUnits}
                 handleChange={handleAreaChange}
@@ -172,27 +233,6 @@ const FilterComponent = ({ data }) => {
               />
             </Box>
           </Popper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <FormControl fullWidth>
-            <InputLabel>Price Range</InputLabel>
-            <Slider
-              value={priceRange}
-              onChange={(event, newValue) => setPriceRange(newValue)}
-              valueLabelDisplay="auto"
-            />
-          </FormControl>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <FormControl fullWidth>
-            <InputLabel>Size Range</InputLabel>
-            <Slider
-              value={sizeRange}
-              onChange={(event, newValue) => setSizeRange(newValue)}
-              valueLabelDisplay="auto"
-            />
-          </FormControl>
         </Grid>
 
         <Grid item xs={4}>

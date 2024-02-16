@@ -12,7 +12,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import Slider from '@mui/material/Slider';
 
-const SizeFilter = ({
+const SizeFilter = ({title,
   selectedUnit,
   units,
   handleChange,
@@ -22,9 +22,9 @@ const SizeFilter = ({
   handleCancel,
 }) => {
   console.log(selectedRange, 'selectedRange');
-    console.log(handleRangeChange, 'handleRangeChange');
+  console.log(handleRangeChange, 'handleRangeChange');
     
-      const handleMinAreaChange = (event) => {
+  const handleMinAreaChange = (event) => {
     const minValue = event.target.value;
     const newRange = [parseFloat(minValue), selectedRange[1]]; // Keep the maximum value unchanged
     handleRangeChange(null, newRange); // Call the handleRangeChange function with the new range
@@ -37,19 +37,21 @@ const SizeFilter = ({
     handleRangeChange(null, newRange); // Call the handleRangeChange function with the new range
   };
   return (
-    <Box zIndex={999} sx={{display:'flex', flexDirection:"column", gap:2}}>
+    <Box zIndex={999} sx={{ display: 'flex', flexDirection: "column", gap: 2, p:'20px',  borderRadius:'20px', boxShadow: '0px 0px 10px 0px #00000040'
+}} >
           <Box
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'flex-around',
+          justifyContent: "space-between",
           alignItems: 'center',
           gap: '10px',
         }}>
-              <Typography variant={'h3'}>Area</Typography>
+        <Typography variant={'h3'}>{title}</Typography>
         <Select defaultValue={'any'}
   id="area"
-  value={selectedUnit}
+          value={selectedUnit || units[0]?.value}
+          de
                   onChange={handleChange}
                   
 >
