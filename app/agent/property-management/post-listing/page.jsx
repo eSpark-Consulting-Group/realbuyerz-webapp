@@ -5,41 +5,32 @@ import { Grid, Box } from '@mui/material';
 import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
-import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
-import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 import { createInformationState } from '@/utils/addInfo';
-import { useDispatch, useSelector } from 'react-redux';
+
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
+  adSumitModal,
+  draftModal,
 } from '@/app/constants/postListing';
 import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
-import { handlePostAgentId } from '@/src/redux/slices/previewPostListing/postListingSlice';
+import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
+
+import { useDispatch } from 'react-redux';
 
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
-import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import Link from 'next/link';
+import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
+import Link from 'next/link';
+import PropertyGallery from '@/src/components/PostListing/PropertGallery';
+import { handleAgentDraft } from '@/src/redux/slices/agentDraft/agentDraftSlice';
+import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
-  const [open, setOpen] = useState(false);
-  const { postListing } = useSelector((state) => state);
-  const [isOpen, setIsOpen] = useState(false);
-  const handleOpenSuccessModal = () => setIsOpen(true);
-  const handleCloseSuccessModal = () => setIsOpen(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const initializePropertyData = () => {
     const informationState = createInformationState(
       PROPERTY_INFORMATION.addInfo,
@@ -61,15 +52,38 @@ const Page = () => {
   };
 
   const [propertyData] = useState(initializePropertyData());
+  const [open, setOpen] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [action, setAction] = useState('');
   const dispatch = useDispatch();
 
-  const handleSubmitAd = () => {
-    const formId = Math.floor(Math.random() * 100) + 1;
-    dispatch(handlePostAgentId(formId));
-    // dispatch(handlePostFormId(formId));
-    dispatch(handlePostlistingAd(postListing));
+  const handleOpenSuccessModal = () => setIsOpen(true);
+  const handleCloseSuccessModal = () => setIsOpen(false);
+
+  const handleSubmit = (values) => {
+    if (action === 'draft') {
+      dispatch(handleAgentDraft(values));
+      handleOpenSuccessModal();
+    } else if (action === 'submit') {
+      dispatch(handlePostlistingAd(values));
+      handleOpenSuccessModal();
+    }
   };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  function generateRandomNumber() {
+    return Math.floor(Math.random() * 1000) + 1;
+  }
+
+  const randomNumber = generateRandomNumber();
+
   const validationSchema = yup.object({
     title: yup.string('Enter title').required('Title is required'),
     description: yup
@@ -90,19 +104,39 @@ const Page = () => {
     featuresAndAmenities: yup.mixed(),
   });
 
+  const initialFormValues = {
+    adId: '',
+    userId: '',
+    proposals: [],
+    other_features: [],
+    images: [],
+    videos: [],
+    title: '',
+    location: '',
+    description: '',
+    area: '',
+    amount: '',
+    areaUnit: '',
+    amountCurrency: '',
+    city: '',
+    bedrooms: 0,
+    connects: '',
+    bathrooms: 0,
+    parking: 0,
+    purpose: 'Sell',
+    proportyCategory: 'House',
+    propertyType: 'Sell',
+    instalmentAvailable: false,
+    readyPossession: false,
+  };
+
   const formik = useFormik({
-    initialValues: {
-      purpose: 'Sell',
-      proportyCategory: 'House',
-      propertyType: 'Sell',
-      instalmentAvailable: false,
-      readyPossession: false,
-    },
+    initialValues: initialFormValues,
     validationSchema,
-    onSubmit: (values) => {
-      console.log({ values });
-      handleOpenSuccessModal();
-      handleSubmitAd();
+    onSubmit: (values, action) => {
+      values.adId = randomNumber;
+      handleSubmit(values);
+      action.resetForm();
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -110,15 +144,12 @@ const Page = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12} lg={12}>
-        <form onSubmit={formik.handleSubmit}>
+      <Grid item xs={12}>
+        <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{
-              width: { xs: '100%', lg: '1200px', xxl: '1500px' },
-              '@media (min-width: 1440px) and (max-width: 1568px)': {
-                width: '100%',
-              },
               display: 'flex',
+              maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
               justifyContent: 'center',
               flexDirection: 'column',
               alignItems: 'center',
@@ -126,21 +157,29 @@ const Page = () => {
               margin: { xs: 0, md: '0 auto', lg: 0 },
             }}
           >
-            <Link href={'/user/post-request'}>user</Link>
+            <Link href={'/agent/live-bidding'}>agent</Link>
             <BuyersPlatform />
             <AdInformation formik={formik} propertyData={propertyData} />
             <PropertyPurpose formik={formik} propertyData={propertyData} />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
             <PropertyGallery formik={formik} />
-            <SubmitButton handleClickOpen={handleClickOpen} />
-            <PreviewModal open={open} onClose={handleClose} ads={postListing} />
+            <SubmitButton
+              formik={formik}
+              setAction={setAction}
+              handleClickOpen={handleClickOpen}
+            />
+            <PreviewModal
+              open={open}
+              onClose={handleClose}
+              ads={formik?.values}
+            />
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={'Continue'}
-          description={'Post listing submitted'}
-          title={'Success'}
+          buttonLabel={`${action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
+          description={`${action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
+          title={`${action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

@@ -153,7 +153,7 @@ export const chatMessages = {
       messages: [
         {
           timestamp: '2024-02-01T11:30:00',
-          id: 'msg015',
+          id: 'msg016',
           sender: 'John',
           // content: ['/images/logo.png'],
           content: [
@@ -174,7 +174,7 @@ export const chatMessages = {
         },
         {
           timestamp: '2024-02-01T11:30:00',
-          id: 'msg015',
+          id: 'msg017',
           sender: 'You',
           // content: ['/images/logo.png'],
           content: [

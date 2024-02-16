@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Typography,
   Box,
@@ -9,40 +9,23 @@ import {
 } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
-import { useDispatch } from 'react-redux';
-import { handlePostAmenities } from '@/src/redux/slices/previewPostListing/postListingSlice';
-import { handleRequestAmenities } from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
-const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
+const Facilities = ({ facilitiesData, cancel, formik }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [amenities, setamenities] = useState();
-  const [amenitiesTitle, setAmenitiesTitle] = useState();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(handleRequestAmenities(amenitiesTitle));
-    dispatch(handlePostAmenities(amenitiesTitle));
-  }, [amenitiesTitle]);
-
-  useEffect(() => {
-    setAmenitiesTitle(amenities?.map((item) => item?.title));
-  }, [amenities]);
-
-  const handleCheckboxChange = (index) => {
-    const updatedAmenities = [...selectedAmenities];
-    updatedAmenities[index] = !updatedAmenities[index];
-    setSelectedAmenities(updatedAmenities);
+  const handleCheckboxChange = (e, text) => {
+    if (e.target.checked) {
+      setSelectedAmenities((prevSelected) => [...prevSelected, text]);
+    } else {
+      setSelectedAmenities((prevSelected) =>
+        prevSelected.filter((item) => item !== text)
+      );
+    }
+    formik.setFieldValue('other_features', selectedAmenities);
   };
 
   const handleSaveButton = () => {
-    const selectedItems = facilitiesData.filter(
-      (index) => selectedAmenities[index]
-    );
-    onSelected(selectedItems);
-    {
-      onClose;
-    }
-    setamenities(selectedItems);
+    cancel();
   };
 
   return (
@@ -87,9 +70,8 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
               control={
                 <Checkbox
                   sx={{ color: '#126FAA' }}
-                  checked={selectedAmenities[index]}
-                  onChange={() => {
-                    handleCheckboxChange(index);
+                  onChange={(e) => {
+                    handleCheckboxChange(e, item?.title);
                   }}
                 />
               }
@@ -137,7 +119,7 @@ const Facilities = ({ facilitiesData, cancel, onSelected, onClose }) => {
           onClick={cancel}
         >
           {' '}
-          {PROPERTY_INFORMATION.cancel}
+          {PROPERTY_INFORMATION?.cancel}
         </Button>
         <Button
           style={{

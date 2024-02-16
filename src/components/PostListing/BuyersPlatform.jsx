@@ -3,9 +3,16 @@ import { Grid, Box } from '@mui/material';
 import ListingInfo from './Listinginfo';
 import ReachBuyer from './ReachBuyer';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import {
+  PROPERTY_INFORMATION,
+  reachBuyerCoverLetter,
+  reachBuyerData,
+} from '@/app/constants/postListing';
+import { usePathname } from 'next/navigation';
 
 const BuyersPlatform = () => {
+  const pathName = usePathname();
+  const coverLetterPath = '/cover-letter';
   return (
     <>
       <Grid container>
@@ -31,7 +38,18 @@ const BuyersPlatform = () => {
               padding: { xs: '30px', md: '28px', lg: '30px' },
             }}
           >
-            <ReachBuyer />
+            <ReachBuyer
+              title={
+                pathName.includes(coverLetterPath)
+                  ? reachBuyerCoverLetter?.title
+                  : reachBuyerData?.title
+              }
+              description={
+                pathName.includes(coverLetterPath)
+                  ? reachBuyerCoverLetter?.description
+                  : reachBuyerData?.description
+              }
+            />
             <ListingInfo propertyInfo={PROPERTY_INFORMATION.property} />
           </Box>
         </Grid>

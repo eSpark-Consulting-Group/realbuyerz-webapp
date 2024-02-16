@@ -1,19 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 
 import PropertyTypes from './PropertyPlot';
 import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
-import { useDispatch } from 'react-redux';
-
-import {
-  handlePostPropertyType,
-  handlePostPropetySubType,
-} from '@/src/redux/slices/previewPostListing/postListingSlice';
-import {
-  handleRequestPropertyType,
-  handleRequestPropetySubType,
-} from '@/src/redux/slices/previewPostRequest/postRequestSlice';
 
 const SelectProperyType = ({
   image,
@@ -28,8 +18,6 @@ const SelectProperyType = ({
   const [propertyType, setPropertyType] = useState(activePropertyType);
   const [propetySubType, setPropetySubType] = useState();
 
-  const dispatch = useDispatch();
-
   const handlePropertyType = (text) => {
     console.log({ text });
     setActivePropertyType(text);
@@ -43,16 +31,6 @@ const SelectProperyType = ({
     setPropetySubType(text);
     formik.setFieldValue('propertyType', text);
   };
-
-  useEffect(() => {
-    dispatch(handleRequestPropertyType(propertyType));
-    dispatch(handlePostPropertyType(propertyType));
-  }, [propertyType]);
-
-  useEffect(() => {
-    dispatch(handlePostPropetySubType(propetySubType));
-    dispatch(handleRequestPropetySubType(propetySubType));
-  }, [propetySubType]);
 
   return (
     <>
@@ -235,6 +213,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Plots' && (
               <PropertyTypes
                 data={plotType}
+                propertyType={propertyType}
                 handlePropetySubType={handlePropetySubType}
                 activePropertySubType={activePropertySubType}
               />
@@ -242,6 +221,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Commercial' && (
               <PropertyTypes
                 data={commercialType}
+                propertyType={propertyType}
                 activePropertySubType={activePropertySubType}
                 propetySubType={propetySubType}
                 handlePropetySubType={handlePropetySubType}
