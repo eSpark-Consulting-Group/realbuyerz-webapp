@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
@@ -46,37 +47,28 @@ const MainHeader = () => {
   };
 
   const isUserLoggedIn = useSelector((state) => state?.auth?.loggedInState);
+  const currentPath = usePathname()
 
   return (
-    <AppBar sx={{ position: 'sticky', backgroundColor: 'white' }}>
-      <Container maxWidth="xxl" sx={{ backgroundColor: 'white', p: 1 }}>
+    <AppBar sx={{ position: 'sticky', backgroundColor: 'white', boxShadow: 'none', borderBottom: '0.5px solid #E4E4E4' ,maxHeight:'70px', display:'flex', alignItems:'center', justifyContent:'center'}}>
+      <Container maxWidth="xxl" sx={{ backgroundColor: '', p: 1 }}>
         <Toolbar disableGutters>
           <Box
             sx={{
-              flexGrow: 1,
+              flexGrow: { sm: 1 },
               display: { xs: 'flex' },
               alignItems: 'center',
+              width: { xs: '100%' }
+
             }}
           >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-                p: 0,
-                color: '#000',
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
+
             <Box
               sx={{
                 display: { xs: 'flex' },
-                mx: { xs: 'auto', md: 0 },
-                alignItems: 'center',
+                // mx: { xs: 'auto', md: 0 },
+                alignItems: 'flex-start',
+
               }}
             >
               <Typography
@@ -101,28 +93,61 @@ const MainHeader = () => {
             </Box>
             <Box
               sx={{
-                flexGrow: 1,
+                display: 'flex',
+                justifyContent: 'flex-end',
+                flexGrow: { xs: 2, md: 0 }
+              }}
+            >
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                sx={{
+                  display: { xs: 'block', sm: 'block', md: 'none' },
+                  color: '#000',
+
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            <Box
+              sx={{
+                flexGrow: { md: 1 },
                 justifyContent: 'center',
                 gap: 4,
                 display: { xs: 'none', sm: 'none', md: 'flex' },
               }}
             >
-              {PAGES?.map((page, i) => (
-                <Typography
-                  key={i}
-                  href={page?.path}
-                  variant="a"
-                  component={'a'}
-                  sx={{
-                    color: '#000',
-                    fontSize: '15px',
-                    fontStyle: 'normal',
-                    fontWeight: 600,
-                    lineHeight: 'normal',
-                  }}
-                >
-                  {page?.menu}
-                </Typography>
+              {PAGES.map((page, i) => (
+                <Link key={i} href={page.path}>
+                  <Typography
+                    sx={{
+                      color: currentPath === page.path ? '#FB631C' : '#000',
+                      fontSize: '15px',
+                      fontStyle: 'normal',
+                      fontWeight: 600,
+                      lineHeight: 'normal',
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      marginRight: '10px',
+                      position: 'relative',
+                      '&::after': {
+                        content: "''",
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: -27,
+                        borderBottom: `4px solid ${currentPath === page.path ? '#FB631C' : 'transparent'}`,
+                        borderRadius: '5px'
+                      }
+                    }}
+                  >
+                    {page.menu}
+                  </Typography>
+                </Link>
               ))}
             </Box>
             <Menu
@@ -145,7 +170,10 @@ const MainHeader = () => {
               }}
             >
               {PAGES?.map((item, i) => (
-                <MenuItem key={i} onClick={handleCloseNavMenu}>
+                <MenuItem key={i} onClick={handleCloseNavMenu}
+                sx={{
+              paddingY:2}}
+                >
                   <>
                     <Link
                       style={{
@@ -154,13 +182,27 @@ const MainHeader = () => {
                       }}
                       href={item?.path}
                     >
-                      {item?.menu}
+                      <Typography
+                        sx={{
+                          color: currentPath === item.path ? '#FB631C' : '#000',
+                          fontSize: '12px',
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          lineHeight: 'normal',
+                          cursor: 'pointer',
+                          textAlign:'center',
+                          display:'flex',
+                          justifyContent:'center'
+                        }}
+                      >
+                        {item.menu}
+                      </Typography>
                     </Link>
                   </>
                 </MenuItem>
               ))}
               <MenuItem
-                sx={{ display: { xs: 'block', sm: 'none', md: 'none' } }}
+                sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }}
               >
                 <SignInResponsiveButton
                   isUserLoggedIn={isUserLoggedIn}
@@ -185,7 +227,7 @@ const MainHeader = () => {
           />
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 
