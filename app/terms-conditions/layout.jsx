@@ -1,9 +1,6 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/material';
-import FooterCta from '@/src/components/FooterCta';
-
-import { FOOTER_CTA_DATA } from '@/app/constants/Constants';
 
 const InnerPageLayout = ({ children }) => {
   return (
@@ -11,7 +8,6 @@ const InnerPageLayout = ({ children }) => {
       <Box maxWidth={1322} mx={'auto'}>
         {children}
       </Box>
-      <FooterCta data={FOOTER_CTA_DATA} />
     </Box>
   );
 };

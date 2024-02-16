@@ -1,9 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const ReachBuyer = () => {
-  const simplesteps = 'In a few simple steps!';
-  const MillionsBuyers = 'Reach Millions of Buyers on our Platforms';
+const ReachBuyer = ({ title, description }) => {
   return (
     <Box
       sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1, sm: 0.7 } }}
@@ -17,7 +15,7 @@ const ReachBuyer = () => {
           fontWeight: 500,
         }}
       >
-        {MillionsBuyers}
+        {title}
       </Typography>
       <Typography
         sx={{
@@ -27,7 +25,7 @@ const ReachBuyer = () => {
           fontWeight: 400,
         }}
       >
-        {simplesteps}
+        {description}
       </Typography>
     </Box>
   );

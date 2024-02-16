@@ -1,15 +1,13 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Box } from '@mui/material';
-
-SwiperCore.use([Navigation, Pagination, A11y]);
+import { Box, Pagination } from '@mui/material';
+import { A11y, Navigation } from 'swiper/modules';
 
 const AdMediaSlider = ({ media, mediaType }) => {
   const swiperSettings = {
@@ -25,6 +23,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
     scrollbar: {
       el: '.swiper-scrollbar',
     },
+    module: [Navigation, Pagination, A11y],
     breakpoints: {
       1920: {
         slidesPerView: 2,
@@ -50,7 +49,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
     <>
       <Swiper {...swiperSettings}>
         {mediaType == 'images' &&
-          media?.images?.map((image, i) => (
+          media?.map((image, i) => (
             <SwiperSlide key={i}>
               <Box
                 component={'img'}
@@ -79,7 +78,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
             </SwiperSlide>
           ))}
         {mediaType == 'videos' &&
-          media?.videos?.map((video, i) => (
+          media?.map((video, i) => (
             <SwiperSlide key={i}>
               <Box
                 sx={{
@@ -104,16 +103,9 @@ const AdMediaSlider = ({ media, mediaType }) => {
                     label="English"
                     default
                   />
-                  <source src={URL.createObjectURL(video)} />
+                  <source src={URL?.createObjectURL(video)} />
                 </video>
               </Box>
-              {/* <Box
-              component={'img'}
-              src={URL?.createObjectURL(video)}
-              alt={`Uploaded ${i}`}
-              quality={'100'}
-              sx={{ minWidth: '200px', minHeight: '160px', maxWidth: '240px', maxHeight: '200px', width: 'auto', height: 'auto', '@media(min-width:280px) and (max-width:400px)': { mx: 'auto' }, }}
-            /> */}
             </SwiperSlide>
           ))}
       </Swiper>

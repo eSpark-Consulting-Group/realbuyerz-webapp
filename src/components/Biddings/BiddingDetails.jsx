@@ -13,6 +13,8 @@ import {
 } from '@/app/constants/LiveBidding';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { postListingAdCard } from '@/app/constants/postListing';
+import NotFoundSection from '../Global/NotFoundSection';
 
 const BiddingDetails = ({ height, ads }) => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -28,24 +30,10 @@ const BiddingDetails = ({ height, ads }) => {
   return (
     <>
       {ads?.length <= 0 ? (
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              color: '#FB631C',
-              textDecoration: 'underLine',
-              fontSize: { xs: '25px', sm: '28px' },
-            }}
-          >
-            {'No Data Found'}
-          </Typography>
-        </Box>
+        <NotFoundSection
+          heading={'Sorry!'}
+          message={'Property id invalid, Please add correct id.'}
+        />
       ) : (
         <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
@@ -108,8 +96,7 @@ const BiddingDetails = ({ height, ads }) => {
                             fontSize: { xs: '21px' },
                           }}
                         >
-                          {console.log(item, 'adInfomation')}
-                          {item?.adInfomation?.title}
+                          {item?.title}
                         </Typography>
                         <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
                           {'Posted 39 minutes ago'}
@@ -158,7 +145,7 @@ const BiddingDetails = ({ height, ads }) => {
                             }}
                             component={'span'}
                           >
-                            {`${item?.propertySizeAndPricing?.amount?.amount}`}
+                            {`${item?.amount}`}
                           </Typography>
                         </Box>
                       </Grid>
@@ -179,7 +166,7 @@ const BiddingDetails = ({ height, ads }) => {
                               pr: 2,
                             }}
                           >
-                            <Link href={`live-bidding/${item?.formId}/`}>
+                            <Link href={`live-bidding/${item?.adId}/`}>
                               <Typography
                                 sx={{
                                   color: '#FB631C',
@@ -221,12 +208,16 @@ const BiddingDetails = ({ height, ads }) => {
                             mb: 1,
                           }}
                         >
-                          {item?.adInfomation?.description}
+                          {item?.description}
                         </Typography>
                       </Box>
                       <LiveBiddingPropertiesList
-                        locationAndPurpose={item?.locationAndPurpose}
-                        areaSize={item?.propertySizeAndPricing?.areaSize}
+                        city={item?.city}
+                        status={item?.purpose}
+                        location={item?.location}
+                        proposal={item?.proposals?.proposals?.length}
+                        connects={item?.connects}
+                        cardKeys={postListingAdCard}
                       />
                       {path?.includes('/user') ? (
                         <Grid item xs={12}>
