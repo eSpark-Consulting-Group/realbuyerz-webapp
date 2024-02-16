@@ -12,8 +12,10 @@ const ProjectPage = () => {
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
-        <FilterComponent data={projects} />{' '}
-        <CategoryLink
+        <Box zIndex={99999}>
+          <FilterComponent data={projects} />
+        </Box>
+        {/* <CategoryLink
           category={`Houses`}
           link={'/projects/category/houses'}
           linkText={'See All'}
@@ -30,7 +32,7 @@ const ProjectPage = () => {
           link={'/projects/category/commercials'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'commercials'} />
+        <ProjectsSlider data={projects} category={'commercials'} /> */}
       </Box>
     </>
   );

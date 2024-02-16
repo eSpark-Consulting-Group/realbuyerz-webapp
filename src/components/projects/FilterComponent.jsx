@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Slider,
   Button,
-  Menu,
   MenuItem,
   Select,
   FormControl,
@@ -21,60 +20,87 @@ import {
   PROPERTY_INFORMATION,
 } from '@/app/constants/postListing';
 import { Formik } from 'formik';
+import SizeFilter from './SizeFilter';
 
-const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
-  const [propertyType, setPropertyType] = useState('');
-  const [adType, setAdType] = useState('');
-  const [priceRange, setPriceRange] = useState([0, 100]);
-  const [sizeRange, setSizeRange] = useState([0, 100]);
+const FilterComponent = ({ data }) => {
   const [searchText, setSearchText] = useState('');
-  const [filteredData, setFilteredData] = useState(data);
+  const [selectedPropertyType, setSelectedPropertyType] = useState('');
+  const [selectedAdType, setSelectedAdType] = useState('');
+  const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
+  const [selectedAreaRange, setSelectedAreaRange] = useState([0, 1000]);
+  const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
+  const [selectedPriceRange, setSelectedPriceRange] = useState([0, 1000]);
+  // const [submittedValues, setSubmittedValues] = useState(null);
+  const [anchorEl1, setAnchorEl1] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState(null);
+  const [anchorEl3, setAnchorEl3] = useState(null);
 
-  const [value, setValue] = React.useState('1');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleClick1 = (event) => {
+    setAnchorEl1(anchorEl1 ? null : event.currentTarget);
   };
 
-  useEffect(() => {
+  const handleClick2 = (event) => {
+    setAnchorEl2(anchorEl2 ? null : event.currentTarget);
+  };
+
+  const handleClick3 = (event) => {
+    setAnchorEl3(anchorEl3 ? null : event.currentTarget);
+  };
+  const open1 = Boolean(anchorEl1);
+  const open2 = Boolean(anchorEl2);
+  const open3 = Boolean(anchorEl3);
+  const id1 = open1 ? 'simple-popper1' : undefined;
+  const id2 = open2 ? 'simple-popper2' : undefined;
+  const id3 = open3 ? 'simple-popper3' : undefined;
+  
+  const handleAreaChange = (event) => {
+    setSelectedAreaUnit(event.target.value);
+  };
+  const handleAreaRangeChange = (event, newValue) => {
+    setSelectedAreaRange(newValue);
+  };
+  const handleAreaApply = () => {
+    dispatchSubmitValuesToRedux(selectedAreaUnit, selectedAreaRange);
+    setSubmittedValues({ selectedAreaUnit, selectedAreaRange });
+  };
+  const handleAreaCancel = () => {
+    setSelectedAreaUnit('');
+    setSelectedAreaRange([0, 100]);
+    setSubmittedValues(null);
+  };
+  
+  const handlePriceChange = (event) => {
+    setSelectedPriceUnit(event.target.value);
+  };
+  const handlePriceRangeChange = (event, newValue) => {
+    setSelectedPriceRange(newValue);
+  };
+  const handlePriceApply = () => {
+    dispatchSubmitValuesToRedux(selectedPriceUnit, selectedPriceRange);
+    setSubmittedValues({ selectedPriceUnit, selectedPriceRange });
+  };
+  const handlePriceCancel = () => {
+    setSelectedPriceUnit('');
+    setSelectedPriceRange([0, 100]);
+    setSubmittedValues(null);
+  };
+
+  // const dispatchSubmitValuesToRedux = (
+  //   selectedAreaUnit,
+  //   selectedAreaRange
+  // ) => {
+  //   dispatch(submitFilters(selectedAreaUnit, selectedAreaRange));
+  // };
+
+  const areaUnits = [
+    { value: 'sqm', title: 'Square Meter' },
+    { value: 'sqft', title: 'Square Feet' },
+  ];
+  
+   useEffect(() => {
     handleFilter();
-  }, [propertyType, adType, priceRange, sizeRange, searchText]);
-
-  const handleFilter = () => {
-    const filteredResult = data.filter(
-      (item) =>
-        item.propertyType === propertyType &&
-        item.adType === adType &&
-        item.price >= priceRange[0] &&
-        item.price <= priceRange[1] &&
-        item.size >= sizeRange[0] &&
-        item.size <= sizeRange[1] &&
-        (item.location.toLowerCase().includes(searchText.toLowerCase()) ||
-          item.title.toLowerCase().includes(searchText.toLowerCase()))
-    );
-    console.log(onFilterChange);
-    setFilteredData(filteredResult);
-    // onFilterChange(filteredResult);
-  };
-
-  const handleClearFilter = () => {
-    setPropertyType('');
-    setAdType('');
-    setPriceRange([0, 100]);
-    setSizeRange([0, 100]);
-    setSearchText('');
-    setFilteredData(data);
-    onClearFilter();
-  };
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
-
+ }, [selectedPropertyType, selectedAdType, selectedPriceRange, selectedAreaRange, searchText]);
+  
   return (
     <Container>
       <Grid container spacing={2}>
@@ -95,98 +121,58 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
             </Select>
           </FormControl>
         </Grid>
-
         <Grid item xs={2}>
-          <div>
-            <Button aria-describedby={id} type="button" onClick={handleClick}>
-              Toggle Popper
-            </Button>
-            <Popper
-              sx={{ zIndex: 999 }}
-              id={'id'}
-              open={open}
-              anchorEl={anchorEl}
-              placement="bottom-start"
-            >
-              <Box
-                sx={{ zIndex: 999, backgroundColor: '#fff' }}
-                height={'auto'}
-                width={800}
-              >
-                <SelectProperyType
-                  image={PROPERTY_INFORMATION.propertyType.images}
-                  label={PROPERTY_INFORMATION.propertyType.text}
-                  iconTitle={PROPERTY_INFORMATION.IconTitle}
-                  plotType={PROPERTY_INFORMATION.propertyPlot}
-                  commercialType={PROPERTY_INFORMATION.propertyCommercial}
-                  propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-                  formik={Formik}
-                />
-                <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: { xs: 'center', sm: 'flex-end' },
-            '@media(min-width: 280px) and (max-width:400px)': {
-              flexDirection: 'column',
-            },
-            alignItems: 'center',
-            gap: '10px',
-            width: '90%',
-          }}
-        >
-          <Button
-            sx={{
-              width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:400px)': {
-                width: '100%',
-              },
-              borderRadius: '5px',
-              border: '1px solid #FB631C',
-              background: '#FFF',
-              color: '#FB631C',
-              height: '45px',
-              flexShrink: 0,
-              fontSize: { xs: '12px', sm: '15px' },
-              fontWeight: 400,
-              '&:hover': {
-                color: '#fff',
-                backgroundColor: '#FB631C',
-              },
-            }}
-          >
-            {PROPERTY_INFORMATION.saveDraft}
+          <Button aria-describedby={id1} type="button" onClick={handleClick1}>
+            Toggle Popper 1
           </Button>
-          <Button
-            sx={{
-              width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:400px)': {
-                width: '100%',
-                      },
-              variant:'secondary',
-              borderRadius: '5px',
-              border: '1px solid #FB631C',
-              color: '#fff',
-              background: '#FB631C',
-              height: '45px',
-              flexShrink: 0,
-              fontSize: { xs: '13px', sm: '15px' },
-              fontWeight: 400,
-              '&:hover': {
-                color: '#FB631C',
-                backgroundColor: '#fff',
-              },
-            }}
-            type="submit"
-          >
-            {'Apply'}
-          </Button>
-        </Box>
-              </Box>
-            </Popper>
-          </div>
+          <Popper id={id1} open={open1} anchorEl={anchorEl1}>
+            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+              The content of Popper 1.
+            </Box>
+          </Popper>
         </Grid>
-
+        <Grid item xs={2}>
+          <Button aria-describedby={id2} type="button" onClick={handleClick2}>
+            Toggle Popper 2
+          </Button>
+          <Popper id={id2} open={open2} anchorEl={anchorEl2}>
+            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+              The content of Popper 2.
+            </Box>
+          </Popper>
+        </Grid>
+        <Grid item xs={2}>
+          <Button aria-describedby={id3} type="button" onClick={handleClick3}>
+            Toggle Popper 3
+          </Button>
+          <Popper
+            id={id3}
+            open={open3}
+            anchorEl={anchorEl3}
+            position={'bottom-start'}
+            zIndex={999}
+          >
+            <Box
+              sx={{
+                zIndex: 999,
+                p: '20px',
+                bgcolor: 'background.paper',
+                height: 'auto',
+                // width: '300px',
+              }}
+            >
+              <SizeFilter
+                selectedUnit={selectedAreaUnit}
+                units={areaUnits}
+                handleChange={handleAreaChange}
+                selectedRange={selectedAreaRange}
+                handleRangeChange={handleAreaRangeChange}
+                handleApply={handleAreaApply}
+                handleCancel={handleAreaCancel}
+              />
+            </Box>
+          </Popper>
+        </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <FormControl fullWidth>
             <InputLabel>Price Range</InputLabel>
