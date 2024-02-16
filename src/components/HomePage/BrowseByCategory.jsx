@@ -18,7 +18,12 @@ const BrowseByCategory = ({ data }) => {
     });
   };
   return (
-    <Container sx={{ pt: '90px', textAlign: 'center' }}>
+    <Container
+      sx={{
+        pt: { xs: '40px', sm: '50px', md: '55px', lg: '90px' },
+        textAlign: 'center',
+      }}
+    >
       <Heading
         heading={HERO_SECTION_CONTENT.browseCategory}
         paragraph={HERO_SECTION_CONTENT.propertiesCategory}

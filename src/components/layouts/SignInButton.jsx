@@ -127,7 +127,7 @@ const SignInButton = ({
             display: {
               xs: 'none',
               sm: 'none',
-              md:'block',
+              md: 'block',
               lg: 'block',
               xl: 'block',
             },

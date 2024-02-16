@@ -46,7 +46,13 @@ const OurHomePartners = ({ data }) => {
     ],
   };
   return (
-    <Container sx={{ pt: '90px', pb: '50px', textAlign: 'center' }}>
+    <Container
+      sx={{
+        pt: { xs: '40px', sm: '50px', md: '60px', lg: '70px' },
+        pb: { xs: '40px', md: '50px' },
+        textAlign: 'center',
+      }}
+    >
       <Box
         sx={{
           pb: '30px',

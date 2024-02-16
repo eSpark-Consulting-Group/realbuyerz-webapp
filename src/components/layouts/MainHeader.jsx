@@ -47,10 +47,21 @@ const MainHeader = () => {
   };
 
   const isUserLoggedIn = useSelector((state) => state?.auth?.loggedInState);
-  const currentPath = usePathname()
+  const currentPath = usePathname();
 
   return (
-    <AppBar sx={{ position: 'sticky', backgroundColor: 'white', boxShadow: 'none', borderBottom: '0.5px solid #E4E4E4' ,maxHeight:'70px', display:'flex', alignItems:'center', justifyContent:'center'}}>
+    <AppBar
+      sx={{
+        position: 'sticky',
+        backgroundColor: 'white',
+        boxShadow: 'none',
+        borderBottom: '0.5px solid #E4E4E4',
+        maxHeight: '70px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Container maxWidth="xxl" sx={{ backgroundColor: '', p: 1 }}>
         <Toolbar disableGutters>
           <Box
@@ -58,17 +69,13 @@ const MainHeader = () => {
               flexGrow: { sm: 1 },
               display: { xs: 'flex' },
               alignItems: 'center',
-              width: { xs: '100%' }
-
+              width: { xs: '100%' },
             }}
           >
-
             <Box
               sx={{
                 display: { xs: 'flex' },
-                // mx: { xs: 'auto', md: 0 },
                 alignItems: 'flex-start',
-
               }}
             >
               <Typography
@@ -95,7 +102,7 @@ const MainHeader = () => {
               sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                flexGrow: { xs: 2, md: 0 }
+                flexGrow: { xs: 2, md: 0 },
               }}
             >
               <IconButton
@@ -107,7 +114,6 @@ const MainHeader = () => {
                 sx={{
                   display: { xs: 'block', sm: 'block', md: 'none' },
                   color: '#000',
-
                 }}
               >
                 <MenuIcon />
@@ -139,10 +145,10 @@ const MainHeader = () => {
                         position: 'absolute',
                         left: 0,
                         right: 0,
-                        bottom: -27,
+                        bottom: -26,
                         borderBottom: `4px solid ${currentPath === page.path ? '#FB631C' : 'transparent'}`,
-                        borderRadius: '5px'
-                      }
+                        borderRadius: '5px',
+                      },
                     }}
                   >
                     {page.menu}
@@ -170,9 +176,12 @@ const MainHeader = () => {
               }}
             >
               {PAGES?.map((item, i) => (
-                <MenuItem key={i} onClick={handleCloseNavMenu}
-                sx={{
-              paddingY:2}}
+                <MenuItem
+                  key={i}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    paddingY: 2,
+                  }}
                 >
                   <>
                     <Link
@@ -190,9 +199,9 @@ const MainHeader = () => {
                           fontWeight: 600,
                           lineHeight: 'normal',
                           cursor: 'pointer',
-                          textAlign:'center',
-                          display:'flex',
-                          justifyContent:'center'
+                          textAlign: 'center',
+                          display: 'flex',
+                          justifyContent: 'center',
                         }}
                       >
                         {item.menu}
@@ -227,7 +236,7 @@ const MainHeader = () => {
           />
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
 };
 

@@ -24,7 +24,7 @@ const HeroSection = () => {
           textAlign: 'center',
           alignItems: 'center',
           height: {
-            xs: '230px',
+            xs: '250px',
             sm: '350px',
             md: '500px',
             lg: '600px',
@@ -58,6 +58,10 @@ const HeroSection = () => {
         <Typography
           sx={{
             px: { xs: '20px', sm: '0px' },
+            '@media (min-width: 400px) and (max-width: 599px)': {
+              px: '15%',
+            },
+            pt: '10px',
             zIndex: 2,
             position: 'absolute',
             width: {

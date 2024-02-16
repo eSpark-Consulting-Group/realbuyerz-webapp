@@ -11,6 +11,9 @@ const FooterCta = ({ data }) => {
       sx={{
         background: '#F5F6FB',
         px: { xs: '3%', md: '5%', lg: '13%', xl: '15%' },
+        '@media (min-width: 270px) and (max-width: 500px)': {
+          px: '12%',
+        },
         py: {
           xs: '20px',
           sm: '40px',
@@ -50,7 +53,13 @@ const FooterCta = ({ data }) => {
           >
             {data?.description}
           </Typography>
-          <Grid container sx={{ display: 'flex', gap: '30px' }}>
+          <Grid
+            container
+            sx={{
+              display: 'flex',
+              gap: { xs: '10px', sm: '20px', md: '25px', lg: '30px' },
+            }}
+          >
             {data?.features?.map((feature, index) => (
               <Grid
                 key={index}
@@ -62,7 +71,7 @@ const FooterCta = ({ data }) => {
                 sx={{
                   display: 'flex',
                   gap: '10px',
-                  py: '15px',
+                  py: { xs: '7px', md: '10px' },
                   justifyContent: { lg: 'flex-end' },
                 }}
               >

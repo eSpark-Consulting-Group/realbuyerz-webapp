@@ -36,7 +36,7 @@ const PopularLocations = ({ data }) => {
   return (
     <Box
       sx={{
-        pt: { xs: '0px', lg: '90px' },
+        pt: { xs: '0px', lg: '60px' },
         pb: '30px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
@@ -56,7 +56,7 @@ const PopularLocations = ({ data }) => {
           <Box
             sx={{
               pt: '14px',
-              pb: '58px',
+              pb: { xs: '0px', sm: '30px', md: '30px', lg: '58px' },
             }}
           >
             <Button
