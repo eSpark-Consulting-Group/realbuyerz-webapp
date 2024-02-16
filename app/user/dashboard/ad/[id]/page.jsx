@@ -6,12 +6,12 @@ import DashboardProfile from '@/src/components/UserDashboard/DashboardProfile';
 import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
 import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
-import { userDetailedPage } from '@/app/constants/postRequest';
+import { ProposalsPage } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 const Page = () => {
-  const { image, back_Button, view_Button, title } = userDetailedPage;
+  const { image, back_Button, view_Button, title } = ProposalsPage;
 
   const pathname = usePathname();
   const segments = pathname.split('/');
@@ -21,7 +21,7 @@ const Page = () => {
   );
 
   const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
-  console.log(spacificPost.proposals, 'spacificPostspacificPost');
+
   return (
     <>
       <BackToDashboard
@@ -61,7 +61,7 @@ const Page = () => {
         <DashboardProfile
           proposalData={spacificPost?.proposals}
           image={image}
-          ViewLabel={view_Button?.text}
+          ViewText={view_Button?.text}
           ViewLink={view_Button?.link}
           Height={'67.5vh'}
         />

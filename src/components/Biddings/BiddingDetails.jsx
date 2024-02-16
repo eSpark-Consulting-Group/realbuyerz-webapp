@@ -166,7 +166,7 @@ const BiddingDetails = ({ height, ads }) => {
                               pr: 2,
                             }}
                           >
-                            <Link href={`live-bidding/${item?.adId}/`}>
+                            <Link href={`live-bidding/${item?.adId}`}>
                               <Typography
                                 sx={{
                                   color: '#FB631C',
@@ -237,7 +237,8 @@ const BiddingDetails = ({ height, ads }) => {
                               pt: { xs: 2, sm: 0 },
                             }}
                           >
-                            <Link href={`dashboard/${item?.adId}`}>
+                            <Link href={`dashboard/ad/${item?.adId}`}>
+                              {console.log(`dashboard/ad/${item?.adId}`)}
                               <Typography
                                 sx={{
                                   width: '200px',

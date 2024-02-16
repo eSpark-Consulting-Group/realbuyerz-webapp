@@ -35,8 +35,8 @@ const userAdsSlice = createSlice({
         proposals: [
           {
             adId: 135,
-            userId: '',
-            proposalId: 135,
+            agentId: '15',
+            proposalId: 125,
             title: 'done ',
             location: '',
             description: 'hai',
@@ -60,8 +60,8 @@ const userAdsSlice = createSlice({
           },
           {
             adId: 135,
-            userId: '',
-            proposalId: 135,
+            agentId: '15',
+            proposalId: 200,
             title: 'done ',
             location: '',
             description:

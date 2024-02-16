@@ -7,8 +7,10 @@ const UserProfileDetails = ({
   Location,
   Amount,
   Description,
-  ViewLabel,
-  Href,
+  text,
+  link,
+  adId,
+  proposalId,
 }) => {
   return (
     <Grid container>
@@ -88,7 +90,7 @@ const UserProfileDetails = ({
           },
         }}
       >
-        <Link href={Href}>
+        <Link href={`${adId}/${link}/${proposalId}`}>
           <Typography
             sx={{
               display: 'flex',
@@ -103,7 +105,7 @@ const UserProfileDetails = ({
               cursor: 'pointer',
             }}
           >
-            {ViewLabel}
+            {text}
           </Typography>
         </Link>
       </Grid>

@@ -112,9 +112,10 @@ const Page = () => {
   const initialFormValues = {
     adId: '',
     userId: '',
-    proposalId: '',
+    status: '',
     title: '',
     location: '',
+    proposalId: '',
     description: '',
     area: '',
     amount: '',

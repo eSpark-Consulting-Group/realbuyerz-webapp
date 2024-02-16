@@ -3,35 +3,46 @@ import { Box } from '@mui/system';
 import Image from 'next/image';
 import React from 'react';
 
-const UserProfileImage = ({ image, isActive }) => {
+const UserProfileImage = ({
+  image,
+  isActive,
+  width,
+  height,
+  badgeWidth,
+  badgeHeigth,
+  right,
+  padding,
+}) => {
   return (
     <Badge>
       <Box
         sx={{
           position: 'relative',
-          width: '156px',
-          height: '156px',
+          width: width,
+          height: height,
         }}
       >
-        <Image src={image} width={165} height={156} alt="profile" />
+        <Image src={image} width={width} height={height} alt="profile" />
         <Box
           sx={{
-            width: '20px',
-            height: '20px',
+            width: 'auto',
+            height: 'auto',
             borderRadius: '50%',
             backgroundColor: 'white',
             position: 'absolute',
-            left: '75%',
-            bottom: 9,
-            p: 0.5,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            right: right,
+            p: padding,
+            bottom: 0,
           }}
         >
           <Box
             sx={{
-              width: '10px',
-              height: '10px',
+              width: badgeWidth,
+              height: badgeHeigth,
               borderRadius: '50%',
-              // backgroundColor: '#18DD00',
               backgroundColor: isActive ? '#18DD00' : 'gray',
               alignContent: 'center',
               alignItems: 'center',

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/system';
 
-import { SEE_ALL_POSTING, YOUR_POSTING } from '@/app/constants/Dashboard';
-
 import DashboardTitle from './DashboardTitle';
 import SeeAllPosting from './SeeAllPosting';
+import { UserDashboardPage } from '@/app/constants/postRequest';
 
 const ViewAllPosting = () => {
   return (
@@ -23,10 +22,14 @@ const ViewAllPosting = () => {
       }}
     >
       <Box>
-        <DashboardTitle title={YOUR_POSTING} />
+        <DashboardTitle title={UserDashboardPage?.title} />
       </Box>
       <Box>
-        <SeeAllPosting title={SEE_ALL_POSTING} />
+        <SeeAllPosting
+          title={UserDashboardPage?.see_All_Posting?.title}
+          link={UserDashboardPage?.see_All_Posting?.link}
+          subTitle={UserDashboardPage?.sub_Title}
+        />
       </Box>
     </Box>
   );

@@ -6,7 +6,13 @@ import UserProfileImage from './UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
 
-const DashboardProfile = ({ proposalData, ViewLabel, Height, image }) => {
+const DashboardProfile = ({
+  proposalData,
+  ViewText,
+  ViewLink,
+  Height,
+  image,
+}) => {
   const [showAllItems, setShowAllItems] = useState(false);
 
   const handleShowMoreClick = () => {
@@ -52,7 +58,16 @@ const DashboardProfile = ({ proposalData, ViewLabel, Height, image }) => {
                       },
                     }}
                   >
-                    <UserProfileImage image={image} isActive={false} />
+                    <UserProfileImage
+                      badgeWidth={'13px'}
+                      badgeHeigth={'13px'}
+                      right={20}
+                      image={image}
+                      padding={0.5}
+                      width={165}
+                      height={156}
+                      isActive={false}
+                    />
                   </Grid>
                   <Grid
                     item
@@ -76,12 +91,14 @@ const DashboardProfile = ({ proposalData, ViewLabel, Height, image }) => {
                     }}
                   >
                     <UserProfileDetails
+                      adId={item?.adId}
+                      text={ViewText}
+                      link={ViewLink}
                       Title={item?.title}
-                      Location={item?.location}
                       Amount={item?.amount}
+                      Location={item?.location}
                       Description={item?.description}
-                      ViewLabel={ViewLabel}
-                      Href={'#'}
+                      proposalId={item?.proposalId}
                     />
                   </Grid>
                 </Grid>
