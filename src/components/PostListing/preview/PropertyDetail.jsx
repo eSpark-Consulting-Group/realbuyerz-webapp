@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const PropertyDetail = ({ title, subTitle, description }) => {
+const PropertyDetail = ({ title, subTitle, description, heading }) => {
   return (
     <>
       <Box
@@ -13,6 +13,17 @@ const PropertyDetail = ({ title, subTitle, description }) => {
           '@media(min-width:280px) and (max-width:400px)': { px: 3 },
         }}
       >
+        <Typography
+          variant="h2"
+          sx={{
+            pb: '20px',
+            color: '#000',
+            fontSize: '20px',
+            fontWeight: '500',
+          }}
+        >
+          {heading}
+        </Typography>
         <Typography
           variant="h2"
           sx={{

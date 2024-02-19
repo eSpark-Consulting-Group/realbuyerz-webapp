@@ -17,14 +17,14 @@ import PropertyDetails from '@/src/components/Properties/PropertyDescription/Pro
 import { previewData } from '@/app/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
-import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
+import { PROPOSAL } from '@/app/constants/Proposals';
 
 const Page = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
     ProposalsPage;
-  const { areaAndAmount, location, amenities, images } = previewData;
+  const { areaAndAmount, location, images, videos } = previewData;
 
   const dispatch = useDispatch();
   const pathname = usePathname();
@@ -175,6 +175,7 @@ const Page = () => {
               <Box sx={{ width: '100%' }}>
                 <PropertyDetail
                   title={PropertyDetails}
+                  heading={PROPOSAL?.propertyDetails}
                   subTitle={spacificPostProposal?.title}
                   description={spacificPostProposal?.description}
                 />
@@ -197,17 +198,22 @@ const Page = () => {
                   }
                   readyPossession={spacificPostProposal?.readyPossession}
                 />
-                <PreviewFeatureAndAmenities
+                {/* <PreviewFeatureAndAmenities
                   amenities={amenities}
                   bedrooms={spacificPostProposal?.bedrooms}
                   bathrooms={spacificPostProposal?.bathrooms}
                   parking={spacificPostProposal?.parking}
                   other_features={spacificPostProposal?.other_features}
-                />
+                /> */}
                 <BidMedia
                   title={images?.title}
                   media={spacificPostProposal?.images}
                   mediaType={images?.type}
+                />
+                <BidMedia
+                  title={videos?.title}
+                  media={spacificPostProposal?.videos}
+                  mediaType={videos?.type}
                 />
               </Box>
             </Box>
