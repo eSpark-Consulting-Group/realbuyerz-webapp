@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
   return (
     <Box
       sx={{
-        background: '#FFF',
+        background: '#FFFFFF',
         border: '2px solid #E4E4E4',
         px: '40px',
         py: '60px',
@@ -31,7 +31,10 @@ const PrivacyPolicy = () => {
       >
         {PAGES_INFO?.policyPageTitle}
       </Typography>
-      <Grid container sx={{ display: 'flex', gap: '30px' }}>
+      <Grid
+        container
+        sx={{ display: 'flex', gap: '30px', maxWidth: '1050px', mx: 'auto' }}
+      >
         {CARDS.map((card, index) => (
           <PolicyCard
             key={index}

@@ -81,6 +81,8 @@ const BiddingDetails = ({ height, ads }) => {
                     >
                       <Grid
                         item
+                        xs={12}
+                        sm={7}
                         md={8}
                         lg={6.5}
                         xl={`${path?.includes('/user') ? 9 : 6.5}`}
@@ -106,8 +108,8 @@ const BiddingDetails = ({ height, ads }) => {
                         item
                         xs={12}
                         sm={5}
-                        md={`${path?.includes('/user') ? 3 : 4}`}
-                        lg={`${path?.includes('/user') ? 4 : 2.5}`}
+                        md={`${path.includes('/user') ? 3 : 4}`}
+                        lg={`${path.includes('/user') ? 4 : 2.5}`}
                         xl={2}
                         sx={{
                           color: '#333',
@@ -115,6 +117,7 @@ const BiddingDetails = ({ height, ads }) => {
                           fontStyle: 'normal',
                           fontWeight: 700,
                           lineHeight: 'normal',
+                          ml: { xs: '4px', sm: '0px' },
                         }}
                       >
                         <Box
@@ -123,7 +126,7 @@ const BiddingDetails = ({ height, ads }) => {
                             alignItems: 'center',
                             justifyContent: {
                               xs: 'start',
-                              md: `${path.includes('/user') ? 'end' : 'start'}`,
+                              sm: 'end',
                             },
                             '@media(min-width: 280px) and (max-width: 445px)': {
                               justifyContent: 'center',
@@ -132,7 +135,11 @@ const BiddingDetails = ({ height, ads }) => {
                         >
                           <Typography
                             variant="body1"
-                            sx={{ fontSize: '14px', fontWeight: 600 }}
+                            sx={{
+                              fontSize: '14px',
+                              fontWeight: 600,
+                              // ml: { xs: '4px', md: '0px' },
+                            }}
                           >
                             {ESTIMATE_RANGE}
                           </Typography>
@@ -149,7 +156,7 @@ const BiddingDetails = ({ height, ads }) => {
                           </Typography>
                         </Box>
                       </Grid>
-                      {path?.includes('/agent') ? (
+                      {path.includes('/agent') ? (
                         <Grid item xs={12} sm={12} md={12} lg={3}>
                           <Box
                             sx={{
@@ -164,6 +171,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 },
                               pt: 0.5,
                               pr: 2,
+                              ml: { xs: '4px', lg: '0px' },
                             }}
                           >
                             <Link href={`live-bidding/${item?.adId}`}>

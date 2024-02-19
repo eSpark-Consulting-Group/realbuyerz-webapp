@@ -18,7 +18,12 @@ const BrowseByCategory = ({ data }) => {
     });
   };
   return (
-    <Container sx={{ pt: '90px', textAlign: 'center' }}>
+    <Container
+      sx={{
+        pt: { xs: '40px', sm: '50px', md: '55px', lg: '90px' },
+        textAlign: 'center',
+      }}
+    >
       <Heading
         heading={HERO_SECTION_CONTENT.browseCategory}
         paragraph={HERO_SECTION_CONTENT.propertiesCategory}
@@ -31,26 +36,31 @@ const BrowseByCategory = ({ data }) => {
       >
         <Grid
           container
+          gap={1}
           sx={{
             display: 'flex',
             justifyContent: 'space-around',
             flexWrap: 'wrap',
+            px: '40px',
+            py: '7px',
           }}
         >
           {data?.map((category, index) => (
             <Grid
               item
-              xs={6}
-              sm={3}
-              md={3}
-              lg={1}
               key={category?.id}
               sx={{
-                p: '20px',
+                width: '131px',
+                height: '130px',
+                maxWidth: '150px',
                 my: '15px',
                 background: '#FFF',
                 border: '2px solid #fff',
                 position: 'relative',
+                display: 'flex',
+                '@media (min-width: 1340px) and (max-width: 1920px)': {
+                  p: '15px',
+                },
               }}
               onMouseEnter={() => handleItemHover(index, true)}
               onMouseLeave={() => handleItemHover(index, false)}
@@ -66,7 +76,7 @@ const BrowseByCategory = ({ data }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  maxWidth: '100px',
+                  maxWidth: '150px',
                   margin: 'auto',
                 }}
               >
@@ -81,8 +91,9 @@ const BrowseByCategory = ({ data }) => {
                 <Typography
                   variant="body1"
                   sx={{
-                    py: '8px',
-                    px: '15px',
+                    color: '#838383',
+                    fontSize: '14px',
+                    fontWeight: 400,
                   }}
                 >
                   {category?.name}

@@ -24,7 +24,13 @@ const NewlyListedProperties = ({ data }) => {
             heading={FEATURED_HEADINGS.listedProperty}
             paragraph={FEATURED_HEADINGS.latestProject}
           />
-          <Box sx={{ pt: '67px', pb: '75px', px: '15%' }}>
+          <Box
+            sx={{
+              pt: { xs: '50px', md: '67px' },
+              pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
+              px: '15%',
+            }}
+          >
             <PropertySlider data={data} />
           </Box>
         </Box>

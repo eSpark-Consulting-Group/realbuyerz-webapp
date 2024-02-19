@@ -126,7 +126,7 @@ const SignInResponsiveButton = ({
             height: '40px',
             display: {
               xs: 'block',
-              sm: 'none',
+              sm: 'block',
               lg: 'none',
               xl: 'none',
             },

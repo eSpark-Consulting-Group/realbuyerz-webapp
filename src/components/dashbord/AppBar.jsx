@@ -28,6 +28,7 @@ import {
   Menu,
   TextField,
   Tooltip,
+  Typography,
 } from '@mui/material';
 import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotificationDesktopButton ';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
@@ -125,65 +126,6 @@ export default function ResponsiveNavbar({ openSidebar }) {
             </Box>
             <Box sx={{ width: 'auto', display: { xs: 'flex' } }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
-                <Box
-                  sx={{
-                    display: { xs: 'none', md: 'flex' },
-                    alignItems: 'center',
-                    gap: 1.5,
-                  }}
-                >
-                  <Image
-                    src={GotoPageIcon}
-                    width={20}
-                    height={20}
-                    alt={'icon'}
-                  />
-                  <Link
-                    href="/"
-                    style={{
-                      display: 'inline-block',
-                      color: '#666666',
-                      textDecoration: 'none',
-                      borderRadius: '4px',
-                      marginRight: '14px',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {LINK_NAME}
-                  </Link>
-                </Box>
-                <Box>
-                  <IconButton
-                    sx={{
-                      p: 0,
-                      mr: { xs: 0.5, sm: 1.5, md: 2.5 },
-                      color: '#FF631C',
-                    }}
-                  >
-                    <Badge
-                      badgeContent={4}
-                      color={CUSTOM_COLOR}
-                      sx={{
-                        '& .MuiBadge-badge': {
-                          color: 'white',
-                          backgroundColor: '#1176AD',
-                          maxWidth: { xs: 5, sm: 10 },
-                          fontSize: { xs: '8px', sm: '10px' },
-                          height: { xs: 13, sm: 16 },
-                          minWidth: { xs: 13, sm: 16 },
-                        },
-                      }}
-                    >
-                      <NotificationsIcon
-                        sx={{
-                          fontSize: { xs: 23, sm: 30 },
-                          color: { CUSTOM_COLOR },
-                        }}
-                      />
-                    </Badge>
-                  </IconButton>
-                </Box>
-
                 <Tooltip title="Search">
                   <Box
                     component={'img'}
@@ -194,12 +136,84 @@ export default function ResponsiveNavbar({ openSidebar }) {
                       width: { xs: '30px', sm: '41px' },
                       height: { xs: '30px', sm: '43px' },
                       display: { xs: 'flex', md: 'flex' },
+                      mr: { xs: 0.5, sm: 1.5, md: 2.5 },
                       cursor: 'pointer',
                     }}
                   />
                 </Tooltip>
+                <Box
+                  sx={{
+                    display: { xs: 'none', md: 'flex' },
+                    alignItems: 'center',
+                    gap: 1.5,
+                  }}
+                >
+                  <Link
+                    href="/"
+                    style={{
+                      display: 'flex',
+                    }}
+                  >
+                    <Image
+                      src={GotoPageIcon}
+                      width={20}
+                      height={20}
+                      alt={'icon'}
+                      style={{
+                        mr: { xs: 0.5, sm: 1.5, md: 2.5 },
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: '#666666',
+                        textDecoration: 'none',
+                        borderRadius: '4px',
+                        mx: '14px',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {LINK_NAME}
+                    </Typography>
+                  </Link>
+                </Box>
+                <Box>
+                  <IconButton
+                    sx={{
+                      p: 0,
+                      mr: { xs: 0.5, sm: 1.5, md: 2.5 },
+                      color: '#FF631C',
+                      position: 'relative',
+                    }}
+                  >
+                    <Badge
+                      badgeContent={1}
+                      color={CUSTOM_COLOR}
+                      sx={{
+                        '& .MuiBadge-badge': {
+                          position: 'absolute',
+                          top: '10px',
+                          right: '10px',
+                          color: 'white',
+                          backgroundColor: '#1176AD',
+                          maxWidth: { xs: 7, sm: 7 },
+                          fontSize: { xs: '8px', sm: '10px' },
+                          height: { xs: 12, sm: 13 },
+                          minWidth: { xs: 8, sm: 13 },
+                        },
+                      }}
+                    >
+                      <NotificationsIcon
+                        sx={{
+                          fontSize: { xs: 28, sm: 35 },
+                          color: { CUSTOM_COLOR },
+                        }}
+                      />
+                    </Badge>
+                  </IconButton>
+                </Box>
+
                 <Menu
-                  sx={{ mt: '65px' }}
+                  sx={{ mt: '52px' }}
                   id="menu-appbar"
                   anchorEl={anchorElSearch}
                   anchorOrigin={{

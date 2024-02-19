@@ -216,7 +216,7 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      dropPlaceholder: 'Select Unit',
+      dropPlaceholder: 'Unit',
       label: 'area',
       value: '',
       unit: 'areaUnit',

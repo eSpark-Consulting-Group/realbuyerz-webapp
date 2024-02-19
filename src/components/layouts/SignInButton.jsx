@@ -126,7 +126,8 @@ const SignInButton = ({
             height: '40px',
             display: {
               xs: 'none',
-              sm: 'block',
+              sm: 'none',
+              md: 'block',
               lg: 'block',
               xl: 'block',
             },

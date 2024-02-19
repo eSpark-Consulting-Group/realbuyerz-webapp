@@ -40,7 +40,9 @@ const TermsConditions = () => {
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         <Grid
           item
-          xs={3}
+          xs={12}
+          sm={12}
+          md={3}
           sx={{
             borderRadius: '20px',
             border: '1px solid #E4E4E4',
@@ -95,7 +97,9 @@ const TermsConditions = () => {
 
         <Grid
           item
-          xs={8.2}
+          xs={12}
+          sm={12}
+          md={8.2}
           sx={{
             borderRadius: '20px',
             border: '1px solid #E4E4E4',

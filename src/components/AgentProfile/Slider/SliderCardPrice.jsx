@@ -10,8 +10,8 @@ const SliderCardPrice = ({ price }) => {
         variant="body1"
         sx={{
           color: '#909394',
-          fontWeight: '600',
-          fontSize: '16px',
+          fontWeight: 600,
+          fontSize: { xs: '10px', sm: '12px', md: '16px' },
           fontStyle: 'normal',
         }}
       >
@@ -21,12 +21,12 @@ const SliderCardPrice = ({ price }) => {
         variant="body1"
         sx={{
           color: '#FB631C',
-          fontWeight: '500',
+          fontWeight: 500,
           marginLeft: 1,
-          fontSize: '14px',
+          fontSize: { xs: '10px', sm: '12px', md: '14px' },
         }}
       >
-        {price}
+        {`PKR ${price}`}
       </Typography>
     </Box>
   );

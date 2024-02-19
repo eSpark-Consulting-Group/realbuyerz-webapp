@@ -62,7 +62,11 @@ const PreviewModal = (props) => {
               height: { xs: '700px', xl: '100%' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
-              overflowY: 'auto',
+              overflowY: 'scroll',
+              '&::-webkit-scrollbar': {
+                width: '0px',
+                background: 'transparent',
+              },
             }}
           >
             <Typography
