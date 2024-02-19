@@ -22,6 +22,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
           pb: { xs: 2, sm: 2 },
+          cursor: 'pointer',
         }}
       >
         <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>

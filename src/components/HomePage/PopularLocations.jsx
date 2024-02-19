@@ -36,7 +36,7 @@ const PopularLocations = ({ data }) => {
   return (
     <Box
       sx={{
-        pt: '90px',
+        pt: { xs: '0px', lg: '60px' },
         pb: '30px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
@@ -45,20 +45,28 @@ const PopularLocations = ({ data }) => {
         backgroundPosition: 'center',
       }}
     >
-      <Container sx={{ px: '10%' }}>
-        <Heading
-          heading={FEATURED_HEADINGS.popularLocations}
-          paragraph={FEATURED_HEADINGS.browseProperty}
-        />
-        <Box sx={{ pt: '14px', pb: '8px' }}>
-          <Box sx={{ pt: '14px', pb: '58px' }}>
+      <Container sx={{ px: '10%', maxWidth: '1213px !important' }}>
+        <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
+        <Box
+          sx={{
+            pt: '14px',
+            pb: '8px',
+          }}
+        >
+          <Box
+            sx={{
+              pt: '14px',
+              pb: { xs: '0px', sm: '30px', md: '30px', lg: '58px' },
+            }}
+          >
             <Button
               sx={{
                 mx: '15px',
                 fontWeight: 600,
                 width: '116px',
-                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                height: '40px',
                 color: filterType === 'sale' ? '#fff' : 'primary',
+                mb: { xs: '10px' },
               }}
               variant={filterType === 'sale' ? 'primary' : 'outlined'}
               onClick={() => handleFilter('sale')}
@@ -74,9 +82,10 @@ const PopularLocations = ({ data }) => {
                 mx: '15px',
                 fontWeight: 600,
                 width: '116px',
-                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                height: '40px',
                 textAlign: 'start',
                 color: filterType === 'rent' ? '#fff' : 'primary',
+                mb: { xs: '10px' },
               }}
               variant={filterType === 'rent' ? 'primary' : 'outlined'}
               onClick={() => handleFilter('rent')}
@@ -89,7 +98,7 @@ const PopularLocations = ({ data }) => {
               </Typography>
             </Button>
           </Box>
-          <Grid container sx={{ display: 'flex' }}>
+          <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
             {filteredProposalsData?.map((item, index) => (
               <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
                 <Box
@@ -97,7 +106,9 @@ const PopularLocations = ({ data }) => {
                     backgroundColor: '#fff',
                     borderRadius: '5px',
                     border: '1px solid #cbcbcb',
-                    mx: '15px',
+                    maxWidth: '350px',
+                    maxHeight: { lg: '350px' },
+                    mx: 'auto',
                     my: '15px',
                     '&:hover': {
                       boxShadow: '0px 0px 5px 0px rgba(18, 111, 170, 0.70)',
@@ -109,7 +120,7 @@ const PopularLocations = ({ data }) => {
                       py: '10px',
                       backgroundColor: '#f5f6fb',
                       color: '#333',
-                      fontWeight: '600',
+                      fontWeight: 600,
                       fontSize: '16px',
                     }}
                   >
@@ -119,18 +130,26 @@ const PopularLocations = ({ data }) => {
                     sx={{
                       pt: '10px',
                       pb: '16px',
-                      px: '50px',
+                      px: { xs: '10px', sm: '15px', md: '50px' },
                       textAlign: 'left',
-                      fontWeight: '500',
-                      fontSize: '14px',
                     }}
                   >
                     {item?.locations?.map((location, index) => (
                       <Box key={index}>
                         <Link href="/">
-                          <Typography variant="body1">{location}</Typography>
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              fontSize: '14px',
+                              py: { xs: '5px', sm: '6px' },
+                              lineHeight: '16.94px',
+                              fontWeight: 500,
+                              color: '#666666',
+                            }}
+                          >
+                            {location}
+                          </Typography>
                         </Link>
-                        <br />
                       </Box>
                     ))}
                   </Box>

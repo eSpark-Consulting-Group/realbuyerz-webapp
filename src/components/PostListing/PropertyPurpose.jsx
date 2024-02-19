@@ -14,7 +14,14 @@ import PropertyStatus from './PropertyStatus';
 
 const PropertyPurpose = ({ propertyData, formik }) => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -33,11 +40,8 @@ const PropertyPurpose = ({ propertyData, formik }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             height: 'auto',
             width: '100%',
-            backgroundColor: 'white',
           }}
         >
           <PostTitle

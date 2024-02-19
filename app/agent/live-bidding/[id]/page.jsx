@@ -30,9 +30,16 @@ const Page = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
-        <Grid item xs={12} md={12} lg={9.2} xl={10}>
+        <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
           {spacificPost?.adId !== undefined ? (
-            <Box sx={{ background: '#fff', borderRadius: '10px' }}>
+            <Box
+              sx={{
+                background: '#fff',
+                borderRadius: '10px',
+                mt: '16px',
+                border: '1px solid #E4E4E4',
+              }}
+            >
               <Grid container>
                 <Grid item xs={12} md={8.5} xl={9.5}>
                   <Box
@@ -110,7 +117,7 @@ const Page = () => {
             />
           )}
         </Grid>
-        <Grid item xs={12} md={12} lg={2.8} xl={2}>
+        <Grid item xs={12} md={12} lg={2.8} xl={2.8}>
           <BiddingProfile profileInfo={PROFILE_INFO} />
         </Grid>
       </Grid>

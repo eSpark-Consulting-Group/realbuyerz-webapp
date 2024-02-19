@@ -43,7 +43,7 @@ const SearchAndNotificationDesktopButton = ({
         onClick={handleOpenLoginMenu}
       />
       <Menu
-        sx={{ mt: '65px' }}
+        sx={{ mt: '52px' }}
         id="menu-appbar"
         anchorEl={isloggedIn}
         anchorOrigin={{

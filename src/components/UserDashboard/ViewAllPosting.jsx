@@ -18,7 +18,7 @@ const ViewAllPosting = () => {
           flexDirection: 'column',
           gap: 1,
         },
-        px: { xs: 4, sm: 6, md: 7 },
+        px: { xs: 4, sm: 6 },
         py: 3,
       }}
     >
