@@ -5,9 +5,18 @@ import { Box } from '@mui/system';
 import Image from 'next/image';
 import FilterApplicatonButtons from './FilterApplicatonButtons';
 
-function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selectedPropertyTab,selectedProperty,setSelectedProperty, handleCancel,handleApply}) {
+function PropertyTabs({
+  data,
+  handlePropertyTabChange,
+  handlePropertyChange,
+  selectedPropertyTab,
+  selectedProperty,
+  setSelectedProperty,
+  handleCancel,
+  handleApply,
+}) {
   return (
-       <Box
+    <Box
       zIndex={999}
       sx={{
         display: 'flex',
@@ -18,7 +27,6 @@ function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selec
         boxShadow: '0px 0px 10px 0px #00000040',
       }}
     >
-      
       <Tabs value={selectedPropertyTab} onChange={handlePropertyTabChange}>
         {data?.map((tab, index) => (
           <Tab key={index} label={tab?.label} />
@@ -43,7 +51,9 @@ function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selec
                 onClick={() => setSelectedProperty(chip)}
               >
                 <Image
-                  src={selectedProperty === chip ? chip?.activeImage : chip?.image}
+                  src={
+                    selectedProperty === chip ? chip?.activeImage : chip?.image
+                  }
                   width={30}
                   height={30}
                 />
@@ -52,7 +62,8 @@ function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selec
                     fontSize: '20px',
                     fontWeight: 400,
                     lineHeight: '24px',
-                    color:'#fb631c'
+                    color: '#fb631c',
+                    pl: '10px',
                   }}
                 >
                   {chip?.title}
@@ -81,7 +92,7 @@ function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selec
         </TabPanel>
       ))}
 
-     <FilterApplicatonButtons apply={handleApply} cancel={handleCancel}/>
+      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
     </Box>
   );
 }

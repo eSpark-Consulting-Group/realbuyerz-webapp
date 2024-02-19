@@ -144,6 +144,7 @@ body header {
   padding-top: 4px;
   color: black;
 }
+
 .PhoneInputCountry {
   width: 90px;
   height: 45px;
@@ -253,13 +254,16 @@ body header {
   .slick-list {
     margin-left: 20px !important;
   }
+
   .PhoneInput {
     flex-direction: column;
     height: 115px !important;
   }
+
   .PhoneInputCountry {
     margin-bottom: 15px;
   }
+
   .PhoneInputInput {
     width: 100%;
   }
@@ -518,4 +522,8 @@ body header {
   pointer-events: none;
   user-select: none;
   font-style: italic;
+}
+
+.test-slider {
+  z-index: -1 !important;
 }

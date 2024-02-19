@@ -158,6 +158,9 @@ const ProjectsFilters = ({ data }) => {
             variant="contained"
             color="secondary"
             onClick={handleClearFilter}
+            sx={{
+              height: '52px',
+            }}
           >
             Clear Filter
           </Button>

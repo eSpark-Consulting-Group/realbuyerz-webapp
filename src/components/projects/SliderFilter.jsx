@@ -23,7 +23,6 @@ const SliderFilter = ({
   handleApply,
   handleCancel,
 }) => {
- 
   const handleMinAreaChange = (event) => {
     const minValue = event.target.value;
     const newRange = [parseFloat(minValue), selectedRange[1]]; // Keep the maximum value unchanged
@@ -108,7 +107,7 @@ const SliderFilter = ({
           />
         </FormControl>
       </Box>
-      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel}/>
+      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
     </Box>
   );
 };

@@ -22,15 +22,20 @@ import {
 import { Formik } from 'formik';
 import SliderFilter from './SliderFilter';
 import PropertyTabs from './TabsFilter';
-import { AREA_UNITS, CURRENCY_UNITS, PROPERTY_TABS_DATA, PROPETY_TYPES } from '@/app/constants/Projects/projectsFilter';
+import {
+  AREA_UNITS,
+  CURRENCY_UNITS,
+  PROPERTY_TABS_DATA,
+  PROPETY_TYPES,
+} from '@/app/constants/Projects/projectsFilter';
 
-const FilterComponent = ({ data,  }) => {
+const FilterComponent = ({ data }) => {
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('sqft');
-  const [selectedAreaRange, setSelectedAreaRange] = useState(['','' ]);
+  const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
   const [selectedPriceUnit, setSelectedPriceUnit] = useState('pkr');
-  const [selectedPriceRange, setSelectedPriceRange] = useState(['','' ]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(['', '']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
@@ -83,56 +88,47 @@ const FilterComponent = ({ data,  }) => {
     setSelectedProperty(tab?.content[chipIndex]);
   };
 
-    const handlePriceApply = () => {
-  };
+  const handlePriceApply = () => {};
 
-  const handlePriceCancel = () => {
-  };
-    const handleAreaApply = () => {
-  };
- const handleAreaCancel = () => {
-  };  
- const handlePropertyApply = () => {
-  };
- const handlePropertyCancel = () => {
-  };
+  const handlePriceCancel = () => {};
+  const handleAreaApply = () => {};
+  const handleAreaCancel = () => {};
+  const handlePropertyApply = () => {};
+  const handlePropertyCancel = () => {};
   const handleFilter = () => {
-    const filteredData = data?.filter(projects => {
-      return
+    const filteredData = data?.filter((projects) => {
+      return;
       // projects?.title?.include(searchText) &&
       //   projects?.description?.include(searchText) &&
-        projects?.areaUnit === selectedAreaUnit &&
-      projects?.AdType >= selectedPriceRange[0] &&
-         projects?.propertyPrice <= selectedAreaRange[1] &&
+      projects?.areaUnit === selectedAreaUnit &&
+        projects?.AdType >= selectedPriceRange[0] &&
+        projects?.propertyPrice <= selectedAreaRange[1] &&
         projects?.priceUnit === selectedPriceUnit &&
         projects?.propertysubType === selectedProperty &&
         projects?.propertyAdType === selectedPropertyAdType &&
         projects?.propertyType === selectedPropertyTab;
     });
-
   };
-  
+
   const handleClearFilter = () => {
-setSelectedPropertyAdType('');
- setSelectedPropertyTab(0);
+    setSelectedPropertyAdType('');
+    setSelectedPropertyTab(0);
     setSelectedProperty('');
- setSelectedPriceUnit('');
-setSelectedPriceRange(['','']);
-setSelectedAreaUnit('');
-setSelectedAreaRange(['','']);
+    setSelectedPriceUnit('');
+    setSelectedPriceRange(['', '']);
+    setSelectedAreaUnit('');
+    setSelectedAreaRange(['', '']);
     setSearchText('');
   };
 
   useEffect(() => {
     handleFilter();
-  }, [
-    selectedPropertyAdType,
-    searchText,
-  ]);
+  }, [selectedPropertyAdType, searchText]);
 
   return (
-    <Container>
-      <Grid container spacing={2}>
+    <>
+      <Container>
+        <Grid container spacing={2}>
         <Grid item xs={2}>
           <FormControl fullWidth>
             <Select
@@ -153,7 +149,6 @@ setSelectedAreaRange(['','']);
             variant="outlined"
             value={selectedProperty?.title || 'Any'}
             onClick={handleClick1}
-            
           />
           <Popper
             id={id1}
@@ -186,9 +181,8 @@ setSelectedAreaRange(['','']);
           <TextField
             aria-describedby={id2}
             variant="outlined"
-            value= {`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
+            value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
             onClick={handleClick2}
-            
           />
           <Popper
             id={id2}
@@ -225,7 +219,6 @@ setSelectedAreaRange(['','']);
             variant="outlined"
             value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
             onClick={handleClick3}
-            
           />
           <Popper
             id={id3}
@@ -256,7 +249,7 @@ setSelectedAreaRange(['','']);
           </Popper>
         </Grid>
 
-        <Grid item xs={2.5}>
+        <Grid item xs={2.8}>
           <TextField
             fullWidth
             placeholder="Search Projects"
@@ -264,13 +257,19 @@ setSelectedAreaRange(['','']);
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Grid>
-<Grid item xs={1.5}>
-          <Box  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button variant={'outlined'} onClick={handleClearFilter}>Clear Filter</Button></Box>
+        <Grid item xs={1.2}>
+          <Button
+            sx={{ height: '52px' }}
+            variant={'outlined'}
+              onClick={handleClearFilter}
+              fullWidth
+          >
+            Clear Filter
+          </Button>
         </Grid>
       </Grid>
-      
-    </Container>
+      </Container>
+    </>
   );
 };
 

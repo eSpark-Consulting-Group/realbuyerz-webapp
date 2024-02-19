@@ -24,7 +24,6 @@ const ProjectsSlider = ({ data, category }) => {
   const filteredData = filterData?.length ? filterData : NoData;
   const sliderSettings = {
     slidesPerView: 3,
-    // pagination: { clickable: true },
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
     autoplay: {
       delay: 3000,
@@ -52,9 +51,9 @@ const ProjectsSlider = ({ data, category }) => {
   };
 
   return (
-    <Swiper {...sliderSettings}>
+    <Swiper {...sliderSettings} className="test-slider">
       {filteredData?.slice(0, totalItems).map((project) => (
-        <SwiperSlide key={project?.id}>
+        <SwiperSlide key={project?.id} className="test-slider">
           <Grid
             container
             sx={{
@@ -66,8 +65,9 @@ const ProjectsSlider = ({ data, category }) => {
             <Grid
               key={project?.id}
               item
-              xs={11}
+              xs={12}
               my={'20px'}
+              mx={'20px'}
               sx={{
                 backgroundColor: '#fff',
                 border: '1px solid #E4E4E4',
