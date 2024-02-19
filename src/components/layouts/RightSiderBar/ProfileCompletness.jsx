@@ -49,6 +49,7 @@ const ProfileCompletness = ({ profileInfo }) => {
             sx={{
               fontSize: { xs: '14px', lg: '16px' },
               fontWeight: 500,
+              color: '#000000',
             }}
           >
             {PROFILE_COMPLETNESS}
@@ -69,7 +70,7 @@ const ProfileCompletness = ({ profileInfo }) => {
               sx={{
                 fontSize: { xs: '14px', lg: '16px' },
                 fontWeight: 500,
-                ml: 1.2,
+                ml: 1,
               }}
             >
               {profileInfo.profileCompleteness}%

@@ -43,7 +43,6 @@ const Page = () => {
       tab = tab.join(' ');
     }
     setCurrentTab(tab);
-
     setValue(newValue);
     console.log({ currentTab });
   };

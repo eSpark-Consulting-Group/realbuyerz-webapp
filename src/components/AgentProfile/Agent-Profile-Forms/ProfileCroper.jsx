@@ -29,7 +29,7 @@ const ProfileCroper = ({
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const dispatch = useDispatch();
-
+  console.log(photoURL, 'cropxx');
   const cropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };

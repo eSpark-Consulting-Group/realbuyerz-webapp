@@ -81,9 +81,11 @@ const BiddingDetails = ({ height, ads }) => {
                     >
                       <Grid
                         item
+                        xs={12}
+                        sm={7}
                         md={8}
                         lg={6.5}
-                        xl={`${path.includes('/user') ? 9 : 6.5}`}
+                        xl={`${path?.includes('/user') ? 9 : 6.5}`}
                         sx={{
                           color: '#333',
                           textWrap: 'wrap',
@@ -115,6 +117,7 @@ const BiddingDetails = ({ height, ads }) => {
                           fontStyle: 'normal',
                           fontWeight: 700,
                           lineHeight: 'normal',
+                          ml: { xs: '4px', sm: '0px' },
                         }}
                       >
                         <Box
@@ -123,7 +126,7 @@ const BiddingDetails = ({ height, ads }) => {
                             alignItems: 'center',
                             justifyContent: {
                               xs: 'start',
-                              md: `${path.includes('/user') ? 'end' : 'start'}`,
+                              sm: 'end',
                             },
                             '@media(min-width: 280px) and (max-width: 445px)': {
                               justifyContent: 'center',
@@ -132,7 +135,11 @@ const BiddingDetails = ({ height, ads }) => {
                         >
                           <Typography
                             variant="body1"
-                            sx={{ fontSize: '14px', fontWeight: 600 }}
+                            sx={{
+                              fontSize: '14px',
+                              fontWeight: 600,
+                              // ml: { xs: '4px', md: '0px' },
+                            }}
                           >
                             {ESTIMATE_RANGE}
                           </Typography>
@@ -164,9 +171,10 @@ const BiddingDetails = ({ height, ads }) => {
                                 },
                               pt: 0.5,
                               pr: 2,
+                              ml: { xs: '4px', lg: '0px' },
                             }}
                           >
-                            <Link href={`live-bidding/${item?.adId}/`}>
+                            <Link href={`live-bidding/${item?.adId}`}>
                               <Typography
                                 sx={{
                                   color: '#FB631C',
@@ -215,11 +223,12 @@ const BiddingDetails = ({ height, ads }) => {
                         city={item?.city}
                         status={item?.purpose}
                         location={item?.location}
-                        proposal={item?.proposals?.proposals?.length}
+                        proposal={item?.proposals?.length}
                         connects={item?.connects}
                         cardKeys={postListingAdCard}
                       />
-                      {path?.includes('/user') ? (
+                      {path?.includes('/user') &&
+                      item?.proposals?.length > 0 ? (
                         <Grid item xs={12}>
                           <Box
                             sx={{
@@ -237,7 +246,8 @@ const BiddingDetails = ({ height, ads }) => {
                               pt: { xs: 2, sm: 0 },
                             }}
                           >
-                            <Link href={`dashboard/${item?.id}`}>
+                            <Link href={`dashboard/ad/${item?.adId}`}>
+                              {console.log(`dashboard/ad/${item?.adId}`)}
                               <Typography
                                 sx={{
                                   width: '200px',
@@ -284,7 +294,7 @@ const BiddingDetails = ({ height, ads }) => {
                   </Box>
                 </Grid>
               ))}
-            {ads.length > 3 ? (
+            {ads?.length > 3 ? (
               <>
                 {!showAllItems ? (
                   <Box sx={{ textAlign: 'center', marginTop: 1 }}>

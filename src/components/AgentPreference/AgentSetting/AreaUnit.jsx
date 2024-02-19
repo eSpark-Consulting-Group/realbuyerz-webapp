@@ -37,6 +37,9 @@ const AreaUnit = ({ measure, handleInputChange }) => {
                 '-webkit-appearance': 'none',
                 margin: 0,
               },
+              '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                color: '#4A4A4A',
+              },
             }}
           />
         </Box>

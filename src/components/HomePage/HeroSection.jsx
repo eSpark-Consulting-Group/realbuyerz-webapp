@@ -24,7 +24,7 @@ const HeroSection = () => {
           textAlign: 'center',
           alignItems: 'center',
           height: {
-            xs: '230px',
+            xs: '250px',
             sm: '350px',
             md: '500px',
             lg: '600px',
@@ -37,7 +37,7 @@ const HeroSection = () => {
             position: 'absolute',
             zIndex: 2,
             width: {
-              xs: '100px',
+              xs: 'auto',
               sm: '150px',
               md: '200px',
               lg: '239px',
@@ -57,16 +57,21 @@ const HeroSection = () => {
         ></Box>
         <Typography
           sx={{
+            px: { xs: '20px', sm: '0px' },
+            '@media (min-width: 400px) and (max-width: 599px)': {
+              px: '15%',
+            },
+            pt: '10px',
             zIndex: 2,
             position: 'absolute',
             width: {
-              xs: '320px',
+              xs: 'auto',
               sm: '440px',
               md: '610px',
               lg: '900px',
               xl: '890px',
             },
-            top: { xs: 170, sm: 250, md: 340, lg: 420, xl: 430 },
+            top: { xs: 165, sm: 250, md: 340, lg: 420, xl: 430 },
             fontSize: {
               xs: '15px',
               sm: '20px',
@@ -77,7 +82,6 @@ const HeroSection = () => {
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
-            wordSpacing: '-4px',
           }}
           variant="h2"
           component={'h2'}
@@ -109,8 +113,8 @@ const HeroSection = () => {
               <Button
                 sx={{
                   width: {
-                    xs: '40px',
-                    sm: '60px',
+                    xs: '100px',
+                    sm: '120px',
                     md: '120px',
                     lg: '120px',
                     xl: '120px',
@@ -118,22 +122,17 @@ const HeroSection = () => {
                   fontStyle: 'normal',
                   fontWeight: 600,
                   lineHeight: 'normal',
-                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   textAlign: 'start',
+                  '&:hover': {
+                    background: '#fff !important',
+                    border: '1px solid #FB631C',
+                    color: '#FB631C ',
+                  },
                 }}
                 variant="primary"
               >
-                <Typography
-                  sx={{
-                    color: '#fff',
-                    '&:hover': {
-                      color: '#FB631C',
-                    },
-                  }}
-                >
-                  {' '}
-                  {HERO_SECTION_CONTENT.buyer}
-                </Typography>
+                {HERO_SECTION_CONTENT.buyer}
               </Button>
             </Link>
           </Bounce>
@@ -143,7 +142,7 @@ const HeroSection = () => {
               <Button
                 sx={{
                   width: {
-                    xs: '120px',
+                    xs: '100px',
                     sm: '120px',
                     md: '120px',
                     lg: '120px',
@@ -152,22 +151,17 @@ const HeroSection = () => {
                   fontStyle: 'normal',
                   fontWeight: 600,
                   lineHeight: 'normal',
-                  height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   background: '#FB631C',
                   '&:hover': {
-                    background: '#fff',
+                    background: '#fff !important',
                     border: '1px solid #FB631C',
+                    color: '#FB631C ',
                   },
                 }}
                 variant="primary"
               >
-                <Typography
-                  sx={{
-                    color: '#fff',
-                  }}
-                >
-                  {HERO_SECTION_CONTENT.seller}
-                </Typography>
+                {HERO_SECTION_CONTENT.seller}
               </Button>
             </Link>
           </Bounce>

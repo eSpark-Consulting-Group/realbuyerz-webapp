@@ -10,7 +10,7 @@ const SliderCardIcons = () => {
           src="/images/agent-profile-icons/aminites2.svg"
           width={20}
           height={20}
-          style={{ display: 'inline' }}
+          style={{ display: 'flex' }}
           alt="amenities"
         />
       </Grid>
@@ -19,7 +19,7 @@ const SliderCardIcons = () => {
           src="/images/agent-profile-icons/aminites3.svg"
           width={20}
           height={20}
-          style={{ display: 'inline' }}
+          style={{ display: 'flex' }}
           alt="amenities"
         />
       </Grid>
@@ -28,7 +28,7 @@ const SliderCardIcons = () => {
           src="/images/agent-profile-icons/aminites1.svg"
           width={20}
           height={20}
-          style={{ display: 'inline' }}
+          style={{ display: 'flex' }}
           alt="amenities"
         />
       </Grid>

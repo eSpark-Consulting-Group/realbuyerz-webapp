@@ -8,4 +8,4 @@ export const SIGN_OUT = 'Sign Out';
 export const CUSTOM_COLOR = 'customColor';
 export const ProfileIcon = '/images/Live-bidding-icons/headerProfileIcon.svg';
 export const SearchIcon = '/images/Live-bidding-icons/headerSearchIcon.svg';
-export const GotoPageIcon = '/images/Live-bidding-icons/headerSearchIcon.svg';
+export const GotoPageIcon = '/images/Live-bidding-icons/headerGotopageIcon.svg';

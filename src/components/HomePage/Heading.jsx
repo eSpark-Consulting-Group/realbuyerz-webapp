@@ -8,8 +8,8 @@ const Heading = ({ heading, paragraph }) => {
         sx={{
           fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
           color: '#333333',
-          fontWeight: '700',
-          pb: '25px',
+          fontWeight: 700,
+          pb: paragraph ? '25px' : '0px',
         }}
       >
         {heading ? heading : ''}
@@ -18,7 +18,7 @@ const Heading = ({ heading, paragraph }) => {
         variant="primary"
         sx={{
           color: '#fb631c',
-          fontWeight: '600',
+          fontWeight: 600,
           fontSize: { xs: '14px', sm: '14px', md: '16px', lg: '18px' },
           pb: '20px',
         }}

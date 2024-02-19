@@ -18,7 +18,7 @@ import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -54,7 +54,6 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
-  const porposals = useSelector((state) => state.proposals);
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -131,7 +130,6 @@ const Page = () => {
     validationSchema,
     onSubmit: (values, action) => {
       values.adId = randomNumber;
-      values.proposals = porposals;
       handleSubmit(values);
       action.resetForm();
     },

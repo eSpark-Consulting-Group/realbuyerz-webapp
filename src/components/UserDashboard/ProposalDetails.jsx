@@ -1,11 +1,20 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import { ESTIMATE_RANGE } from '@/app/constants/Dashboard';
-
 import LiveBiddingPropertiesList from '../Biddings/LiveBiddingPropertiesList';
+import { postListingAdCard } from '@/app/constants/postListing';
 
-const ProposalDetails = ({ proposalDetails }) => {
-  const { title, description, postedTime, estRange, list } = proposalDetails;
+const ProposalDetails = ({
+  city,
+  area,
+  title,
+  amount,
+  status,
+  location,
+  proposal,
+  description,
+  postedTime,
+}) => {
   return (
     <>
       <Grid container xs={12}>
@@ -86,7 +95,7 @@ const ProposalDetails = ({ proposalDetails }) => {
                   }}
                   component={'span'}
                 >
-                  {estRange}
+                  {amount}
                 </Typography>
               </Box>
             </Grid>
@@ -114,7 +123,14 @@ const ProposalDetails = ({ proposalDetails }) => {
                 {description}
               </Typography>
             </Box>
-            <LiveBiddingPropertiesList list={list} />
+            <LiveBiddingPropertiesList
+              area={area}
+              city={city}
+              status={status}
+              proposal={proposal}
+              location={location}
+              cardKeys={postListingAdCard}
+            />
           </Grid>
         </Box>
       </Grid>
