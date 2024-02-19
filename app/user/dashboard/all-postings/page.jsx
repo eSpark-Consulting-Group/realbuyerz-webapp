@@ -13,10 +13,15 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Page = () => {
   const [value, setValue] = useState(0);
-  const [currentTab, setCurrentTab] = useState('Inbox');
+  const [currentTab, setCurrentTab] = useState('All');
+  const { userPostings, connectedProposals, draft, trash } = useSelector(
+    (state) => state?.postRequestAds
+  );
+
   const tabs = [
     {
       label: 'All',
@@ -35,6 +40,49 @@ const Page = () => {
       prop: a11yProps(3),
     },
   ];
+  const [filterObject, setfilterObject] = useState({
+    purpose: '',
+    city: '',
+    location: '',
+    property_Type: '',
+  });
+
+  const getFilteredOutput = (check_Data, filterObject) => {
+    const filterPurpose = check_Data?.filter(
+      (item) => item?.purpose === filterObject?.purpose
+    );
+    const filterCity = check_Data?.filter(
+      (item) => item?.city === filterObject?.city
+    );
+    const filterLocation = check_Data?.filter(
+      (item) => item?.city === filterObject?.city
+    );
+    const filterPropertyType = check_Data?.filter(
+      (item) => item?.propertyType === filterObject?.property_Type
+    );
+    const FilterOutput = [
+      ...new Map(
+        [
+          ...filterPurpose,
+          ...filterCity,
+          ...filterLocation,
+          ...filterPropertyType,
+        ].map((item) => [item?.adId, item])
+      ).values(),
+    ];
+    if (
+      (filterObject?.purpose !== '' && filterObject?.purpose !== undefined) ||
+      (filterObject?.city !== '' && filterObject?.city !== undefined) ||
+      (filterObject?.location !== '' && filterObject?.location !== undefined) ||
+      (filterObject?.property_Type !== '' &&
+        filterObject?.property_Type !== undefined)
+    ) {
+      return FilterOutput;
+    } else {
+      return check_Data;
+    }
+  };
+
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
     if (tab.length > 1) {
@@ -44,8 +92,25 @@ const Page = () => {
     }
     setCurrentTab(tab);
     setValue(newValue);
-    console.log({ currentTab });
   };
+  const handleChangeSelect = (key, val) => {
+    setfilterObject({
+      ...filterObject,
+      [key]: val,
+    });
+  };
+
+  const handleReset = () => {
+    setfilterObject({
+      ...filterObject,
+      purpose: '',
+      city: '',
+      location: '',
+      property_Type: '',
+    });
+  };
+
+  console.log(filterObject, 'filterObject');
   return (
     <>
       <Box sx={{ maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' } }}>
@@ -65,14 +130,18 @@ const Page = () => {
                 }}
                 disablePortal
                 id="combo-box-demo"
+                value={filterObject?.purpose}
+                onChange={(e) =>
+                  handleChangeSelect('purpose', e.target.innerText)
+                }
                 options={[
                   {
-                    label: 'Karachi',
-                    value: '',
+                    label: 'Sell',
+                    value: 'Sell',
                   },
                   {
-                    label: 'Lahore',
-                    value: '',
+                    label: 'Rent',
+                    value: 'Rent',
                   },
                 ]}
                 renderInput={(params) => (
@@ -91,14 +160,16 @@ const Page = () => {
                 }}
                 disablePortal
                 id="combo-box-demo"
+                value={filterObject?.city}
+                onChange={(e) => handleChangeSelect('city', e.target.innerText)}
                 options={[
                   {
                     label: 'Karachi',
-                    value: '',
+                    value: 'Karachi',
                   },
                   {
                     label: 'Lahore',
-                    value: '',
+                    value: 'Lahore',
                   },
                 ]}
                 renderInput={(params) => (
@@ -117,14 +188,18 @@ const Page = () => {
                 }}
                 disablePortal
                 id="combo-box-demo"
+                value={filterObject?.location}
+                onChange={(e) =>
+                  handleChangeSelect('location', e.target.innerText)
+                }
                 options={[
                   {
-                    label: 'Karachi',
-                    value: '',
+                    label: 'GULSHAN-E-IQBAL',
+                    value: 'GULSHAN-E-IQBAL',
                   },
                   {
-                    label: 'Lahore',
-                    value: '',
+                    label: 'Liaquatabad',
+                    value: 'Liaquatabad',
                   },
                 ]}
                 renderInput={(params) => (
@@ -143,14 +218,78 @@ const Page = () => {
                 }}
                 disablePortal
                 id="combo-box-demo"
+                value={filterObject?.property_Type}
+                onChange={(e) =>
+                  handleChangeSelect('property_Type', e.target.innerText)
+                }
                 options={[
                   {
-                    label: 'Karachi',
-                    value: '',
+                    label: 'House',
+                    value: 'House',
                   },
                   {
-                    label: 'Lahore',
-                    value: '',
+                    label: 'Flat',
+                    value: 'Flat',
+                  },
+                  {
+                    label: 'Upper Portion',
+                    value: 'Upper Portion',
+                  },
+                  {
+                    label: 'Lower Portion',
+                    value: 'Lower Portion',
+                  },
+                  {
+                    label: 'Farm House',
+                    value: 'Farm House',
+                  },
+                  {
+                    label: 'Room',
+                    value: 'Room',
+                  },
+                  {
+                    label: 'Pent House',
+                    value: 'Pent House',
+                  },
+                  {
+                    label: 'Residential Plots',
+                    value: 'Residential Plots',
+                  },
+                  {
+                    label: 'Commercial Plots',
+                    value: 'Commercial Plots',
+                  },
+                  {
+                    label: 'Agricultural Land',
+                    value: 'Agricultural Land',
+                  },
+                  {
+                    label: 'Industrial Land',
+                    value: 'Industrial Land',
+                  },
+                  {
+                    label: 'Plot File',
+                    value: 'Plot File',
+                  },
+                  {
+                    label: 'Plot Form',
+                    value: 'Plot Form',
+                  },
+                  {
+                    label: 'Office',
+                    value: 'Office',
+                  },
+                  {
+                    label: 'Shop',
+                    value: 'Shop',
+                  },
+                  {
+                    label: 'Ware House',
+                    value: 'Ware House',
+                  },
+                  {
+                    label: 'Building',
+                    value: 'Building',
                   },
                 ]}
                 renderInput={(params) => (
@@ -161,6 +300,7 @@ const Page = () => {
           </Grid>
           <Grid item xs={12} md={1}>
             <Button
+              onClick={() => handleReset()}
               variant="text"
               sx={{
                 color: '#126FAA',
@@ -216,9 +356,23 @@ const Page = () => {
             p: { xs: 2, sm: 3 },
           }}
         >
-          {[...Array(5)].map((_, index) => (
-            <ProposalCard key={index} index={index} />
-          ))}
+          {currentTab === 'All'
+            ? getFilteredOutput(userPostings, filterObject)?.map((_, index) => (
+                <ProposalCard key={index} index={index} />
+              ))
+            : currentTab === 'Active'
+              ? getFilteredOutput(connectedProposals, filterObject)?.map(
+                  (_, index) => <ProposalCard key={index} index={index} />
+                )
+              : currentTab === 'Draft'
+                ? getFilteredOutput(draft, filterObject)?.map((_, index) => (
+                    <ProposalCard key={index} index={index} />
+                  ))
+                : currentTab === 'Trash'
+                  ? getFilteredOutput(trash, filterObject)?.map((_, index) => (
+                      <ProposalCard key={index} index={index} />
+                    ))
+                  : null}
         </Box>
       </Box>
     </>
