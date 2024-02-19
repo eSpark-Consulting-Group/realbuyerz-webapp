@@ -33,7 +33,6 @@ const FilterComponent = ({ data }) => {
   const [selectedAreaRange, setSelectedAreaRange] = useState([0, 1000]);
   const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, 1000]);
-console.log(selectedAreaRange, 'selectedAreaRange');
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
@@ -76,7 +75,6 @@ console.log(selectedAreaRange, 'selectedAreaRange');
     setSelectedAreaRange([0, 1000]);
     setSubmittedValues(null);
   };
-
   const handlePriceChange = (event) => {
     setSelectedPriceUnit(event.target.value);
   };
@@ -93,28 +91,18 @@ console.log(selectedAreaRange, 'selectedAreaRange');
     setSubmittedValues(null);
   };
   const handleFilter = () => {
-    setSelectedPriceUnit('');
   };
   const handleClearFilter = () => {
     setSelectedPriceUnit('');
   };
-
   const handlePropertyTabChange = (event, newValue) => {
     setSelectedPropertyTab(newValue);
-    setSelectedProperty(null); // Reset selected chip when changing data
+    setSelectedProperty(null);
   };
-
   const handlePropertyChange = (event) => {
     const chipIndex = event.target.value;
     setSelectedProperty(tab.content[chipIndex]);
   };
-  // const dispatchSubmitValuesToRedux = (
-  //   selectedAreaUnit,
-  //   selectedAreaRange
-  // ) => {
-  //   dispatch(submitFilters(selectedAreaUnit, selectedAreaRange));
-  // };
-
   useEffect(() => {
     handleFilter();
   }, [
@@ -251,13 +239,8 @@ console.log(selectedAreaRange, 'selectedAreaRange');
           />
         </Grid>
 <Grid item xs={1.5}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button onClick={handleClearFilter}>Clear Filter</Button></Box>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-            <Button variant="contained" onClick={handleFilter} fullWidth>
-            Apply Filter
-          </Button>
+          <Box  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button variant={'outlined'} onClick={handleClearFilter}>Clear Filter</Button></Box>
         </Grid>
       </Grid>
     </Container>

@@ -23,7 +23,6 @@ const SizeFilter = ({
   handleCancel,
 }) => {
   console.log(selectedRange, 'selectedRange');
-  console.log(handleRangeChange, 'handleRangeChange');
 
   const handleMinAreaChange = (event) => {
     const minValue = event.target.value;

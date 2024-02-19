@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selectedPropertyTab,selectedProperty,setSelectedProperty,setSelectedPropertyTab}) {
   return (
-    <div>
+    <Box>
       <Tabs value={selectedPropertyTab} onChange={handlePropertyTabChange}>
         {data.map((tab, index) => (
           <Tab key={index} label={tab.label} />
@@ -68,12 +68,7 @@ function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selec
           </Box>
         </TabPanel>
       ))}
-<div>
-        Selected Tab: {data[selectedPropertyTab].label}
-        <br />
-        Selected Chip: {selectedProperty ? selectedProperty.value : ""}
-      </div>
-    </div>
+    </Box>
   );
 }
 
