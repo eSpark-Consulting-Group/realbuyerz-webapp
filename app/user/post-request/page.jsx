@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Grid, Box, Button } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
 import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
@@ -19,10 +19,7 @@ import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch } from 'react-redux';
-import {
-  handleSumitDelete,
-  handleSumitUserAds,
-} from '@/src/redux/slices/userAds/userAdsSlice';
+import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
@@ -140,10 +137,6 @@ const Page = () => {
     validateOnBlur: false,
   });
 
-  const handleDelete = () => {
-    dispatch(handleSumitDelete('135'));
-  };
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -170,7 +163,6 @@ const Page = () => {
               setAction={setAction}
               handleClickOpen={handleClickOpen}
             />
-            <Button onClick={() => handleDelete()}>Delete</Button>
             <PreviewModal
               open={open}
               onClose={handleClose}

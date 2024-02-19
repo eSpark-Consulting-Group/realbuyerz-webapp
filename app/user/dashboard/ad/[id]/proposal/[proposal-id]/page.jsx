@@ -22,7 +22,8 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
 
 const Page = () => {
-  const { image, back_Button } = ProposalsPage;
+  const { image, back_Button, applicant_Titlt, applicant_Message } =
+    ProposalsPage;
   const { areaAndAmount, location, amenities, images } = previewData;
 
   const dispatch = useDispatch();
@@ -42,8 +43,6 @@ const Page = () => {
   const findAgent = loginAgents?.find(
     (agent) => agent?.id == spacificPostProposal?.agentId
   );
-
-  console.log(findAgent, 'findAgent');
 
   const handleConnect = () => {
     dispatch(handleConnectProposal(spacificPostProposal));
@@ -170,12 +169,8 @@ const Page = () => {
               <Box
                 sx={{ width: '330px', borderRight: '1px solid #E4E4E4', p: 3 }}
               >
-                <Typography>Applicant</Typography>
-                <Typography>
-                  Kashif has applied to or been invited to your or your
-                  company’s job need experience custom template designers for
-                  custom posts archive creation
-                </Typography>
+                <Typography>{applicant_Titlt || ''}</Typography>
+                <Typography>{`${findAgent?.firstName || ''} ${findAgent?.lastName || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
               <Box sx={{ width: '100%' }}>
                 <PropertyDetail
