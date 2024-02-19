@@ -7,7 +7,62 @@ const userAdsSlice = createSlice({
       {
         adId: 237,
         userId: '',
-        proposals: [],
+        proposals: [
+          {
+            adId: 237,
+            agentId: 10,
+            proposalId: 340,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+          {
+            adId: 237,
+            agentId: 20,
+            proposalId: 540,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+        ],
         posted_Time: '5:52 PM',
         other_features: [],
         title: 'NEED 4 BEDROOM APARTMENT',
@@ -35,11 +90,13 @@ const userAdsSlice = createSlice({
         proposals: [
           {
             adId: 135,
-            agentId: '15',
+            agentId: 15,
             proposalId: 125,
+            status: '',
             title: 'done ',
             location: '',
-            description: 'hai',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
             area: 120,
             amount: 120,
             areaUnit: 'sq.ft',
@@ -60,8 +117,9 @@ const userAdsSlice = createSlice({
           },
           {
             adId: 135,
-            agentId: '15',
+            agentId: 20,
             proposalId: 200,
+            status: '',
             title: 'done ',
             location: '',
             description:
@@ -107,6 +165,8 @@ const userAdsSlice = createSlice({
         readyPossession: true,
       },
     ],
+    rejectedProposals: [],
+    connectedProposals: [],
   },
   reducers: {
     handleSumitUserAds: (state, action) => {
@@ -119,8 +179,53 @@ const userAdsSlice = createSlice({
         state.userPostings[adIndex].proposals.push(action.payload);
       }
     },
+    handleRejectProposal: (state, action) => {
+      const { adId, proposalId } = action.payload;
+      const adIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.adId === adId && adId
+      );
+      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
+        (proposal) => proposal?.proposalId === proposalId
+      );
+      if (adIndex !== -1) {
+        if (proposalIndex !== -1) {
+          const rejectedProposal =
+            state?.userPostings[adIndex]?.proposals[proposalIndex];
+          rejectedProposal.status = 'rejected';
+          state?.rejectedProposals?.push(rejectedProposal);
+          state?.userPostings[adIndex]?.proposals?.splice(proposalIndex, 1);
+        }
+      }
+    },
+    handleConnectProposal: (state, action) => {
+      const { adId, proposalId } = action.payload;
+      const adIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.adId === adId && adId
+      );
+      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
+        (proposal) => proposal?.proposalId === proposalId
+      );
+      if (adIndex !== -1) {
+        if (proposalIndex !== -1) {
+          const connectedProposals =
+            state?.userPostings[adIndex]?.proposals[proposalIndex];
+          const alreadyConnected = state?.connectedProposals?.some(
+            (proposal) => proposal?.proposalId === proposalId
+          );
+          if (!alreadyConnected) {
+            connectedProposals.status = 'active';
+            state?.connectedProposals?.push(connectedProposals);
+          }
+        }
+      }
+    },
   },
 });
 
-export const { handleSumitUserAds, handleSendProposals } = userAdsSlice.actions;
+export const {
+  handleSumitUserAds,
+  handleSendProposals,
+  handleRejectProposal,
+  handleConnectProposal,
+} = userAdsSlice.actions;
 export default userAdsSlice.reducer;

@@ -219,7 +219,8 @@ const BiddingDetails = ({ height, ads }) => {
                         connects={item?.connects}
                         cardKeys={postListingAdCard}
                       />
-                      {path?.includes('/user') ? (
+                      {path?.includes('/user') &&
+                      item?.proposals?.length > 0 ? (
                         <Grid item xs={12}>
                           <Box
                             sx={{

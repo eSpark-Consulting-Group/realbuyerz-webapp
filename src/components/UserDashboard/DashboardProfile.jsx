@@ -22,8 +22,6 @@ const DashboardProfile = ({
     setShowAllItems(false);
   };
 
-  console.log(proposalData, 'proposalDataxx');
-
   return (
     <Box className="scrollable" sx={{ height: Height }}>
       <>

@@ -1,19 +1,56 @@
 import React from 'react';
 import Link from 'next/link';
 import { Box, Grid, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import UserProfileImage from './UserProfileImage';
 
 const UserProfileDetails = ({
-  Title,
-  Location,
   Amount,
-  Description,
   text,
   link,
   adId,
+  image,
+  agentId,
   proposalId,
+  Description,
+  amountCurrency,
 }) => {
+  const loginAgents = useSelector((state) => state?.loginAgents);
+  const findAgent = loginAgents?.find(
+    (agent) => agent?.id == agentId && agentId
+  );
+  console.log(findAgent, 'loginAgents');
+
   return (
     <Grid container>
+      <Grid
+        item
+        xl={2}
+        lg={2}
+        md={2}
+        sm={3.5}
+        xs={12}
+        sx={{
+          position: 'relative',
+          width: '156px',
+          height: '156px',
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: 'center',
+          },
+        }}
+      >
+        <UserProfileImage
+          badgeWidth={'13px'}
+          badgeHeigth={'13px'}
+          right={20}
+          image={findAgent?.profileImage || image}
+          padding={0.5}
+          width={165}
+          height={156}
+          isActive={findAgent?.status == 'Active' ? true : false}
+        />
+      </Grid>
       <Grid
         item
         sm={4}
@@ -45,7 +82,7 @@ const UserProfileDetails = ({
               py: 0.3,
             }}
           >
-            {Title}
+            {findAgent?.firstName + findAgent?.lastName || ''}
           </Typography>
           <Typography
             sx={{
@@ -56,7 +93,7 @@ const UserProfileDetails = ({
               lineHeight: 'normal',
             }}
           >
-            {Location}
+            {findAgent?.country || ''}
           </Typography>
           <Typography
             sx={{
@@ -68,7 +105,7 @@ const UserProfileDetails = ({
               py: 0.3,
             }}
           >
-            {Amount}
+            {`${Amount || ''} ${amountCurrency || ''}`}
           </Typography>
         </Box>
       </Grid>

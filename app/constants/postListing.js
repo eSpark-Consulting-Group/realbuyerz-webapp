@@ -590,7 +590,7 @@ export const previewData = {
   buttonText: 'Close',
   propertyDetails: 'Property Details',
   location: {
-    title: 'Location and Purpose:',
+    title: 'Location and Purpose',
     purpose: 'purpose:',
     propertyType: 'propertyType:',
     city: 'city:',
