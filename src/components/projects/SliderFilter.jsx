@@ -11,8 +11,9 @@ import {
 import { Box } from '@mui/system';
 import React from 'react';
 import Slider from '@mui/material/Slider';
+import FilterApplicatonButtons from './FilterApplicatonButtons';
 
-const SizeFilter = ({
+const SliderFilter = ({
   title,
   selectedUnit,
   units,
@@ -22,8 +23,7 @@ const SizeFilter = ({
   handleApply,
   handleCancel,
 }) => {
-  console.log(selectedRange, 'selectedRange');
-
+ 
   const handleMinAreaChange = (event) => {
     const minValue = event.target.value;
     const newRange = [parseFloat(minValue), selectedRange[1]]; // Keep the maximum value unchanged
@@ -36,6 +36,7 @@ const SizeFilter = ({
     const newRange = [selectedRange[0], parseFloat(maxValue)]; // Keep the minimum value unchanged
     handleRangeChange(null, newRange); // Call the handleRangeChange function with the new range
   };
+
   return (
     <Box
       zIndex={999}
@@ -107,66 +108,9 @@ const SizeFilter = ({
           />
         </FormControl>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          gap: '10px',
-        }}
-      >
-        <Button
-          onClick={handleCancel}
-          sx={{
-            width: { xs: '40%', sm: '200px' },
-            '@media(min-width: 280px) and (max-width:400px)': {
-              width: '100%',
-            },
-            borderRadius: '5px',
-            border: '1px solid #FB631C',
-            background: '#FFF',
-            color: '#FB631C',
-            height: '45px',
-            flexShrink: 0,
-            fontSize: { xs: '12px', sm: '15px' },
-            fontWeight: 400,
-            '&:hover': {
-              color: '#fff',
-              backgroundColor: '#FB631C',
-            },
-          }}
-        >
-          {'Cancel'}
-        </Button>
-        <Button
-          onClick={handleApply}
-          sx={{
-            width: { xs: '40%', sm: '200px' },
-            '@media(min-width: 280px) and (max-width:400px)': {
-              width: '100%',
-            },
-            variant: 'secondary',
-            borderRadius: '5px',
-            border: '1px solid #FB631C',
-            color: '#fff',
-            background: '#FB631C',
-            height: '45px',
-            flexShrink: 0,
-            fontSize: { xs: '13px', sm: '15px' },
-            fontWeight: 400,
-            '&:hover': {
-              color: '#FB631C',
-              backgroundColor: '#fff',
-            },
-          }}
-          type="submit"
-        >
-          {'Apply'}
-        </Button>
-      </Box>
+      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel}/>
     </Box>
   );
 };
 
-export default SizeFilter;
+export default SliderFilter;
