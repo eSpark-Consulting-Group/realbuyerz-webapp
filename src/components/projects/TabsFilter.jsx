@@ -1,44 +1,77 @@
-import React from 'react';
-import { Chip, Tab, Tabs } from '@mui/material';
+'use client';
+import React, { useState } from 'react';
+import { Button, Tab, Tabs, Typography, MenuItem, Select } from '@mui/material';
+import { Box } from '@mui/system';
+import Image from 'next/image';
 
-function DynamicTabs({ tabs }) {
-  const [selectedTab, setSelectedTab] = React.useState(0);
-  const [selectedChip, setSelectedChip] = React.useState(null);
-
-  const handleTabChange = (event, newValue) => {
-    setSelectedTab(newValue);
-    setSelectedChip(null); // Reset selected chip when changing tabs
-  };
-
-  const handleChipClick = (chip) => {
-    setSelectedChip(chip);
-  };
-
+function PropertyTabs({ data,handlePropertyTabChange, handlePropertyChange,selectedPropertyTab,selectedProperty,setSelectedProperty,setSelectedPropertyTab}) {
   return (
     <div>
-      <Tabs value={selectedTab} onChange={handleTabChange}>
-        {tabs.map((tab, index) => (
+      <Tabs value={selectedPropertyTab} onChange={handlePropertyTabChange}>
+        {data.map((tab, index) => (
           <Tab key={index} label={tab.label} />
         ))}
       </Tabs>
-      {tabs.map((tab, tabIndex) => (
-        <TabPanel key={tabIndex} value={selectedTab} index={tabIndex}>
-          {tab.content.map((chip, chipIndex) => (
-            <Chip
-              key={chipIndex}
-              icon={chip.icon}
-              label={chip.label}
-              variant={selectedChip === chip ? "filled" : "outlined"}
-              style={{ margin: '4px', cursor: 'pointer' }}
-              onClick={() => handleChipClick(chip)}
-            />
-          ))}
+      {data.map((tab, tabIndex) => (
+        <TabPanel key={tabIndex} value={selectedPropertyTab} index={tabIndex}>
+          <Box width={'600px'} py={'20px'}>
+            {tab.content.map((chip, chipIndex) => (
+              <Button
+                key={chipIndex}
+                variant={'outlined'}
+                px={'10px'}
+                my={'20px'}
+                style={{
+                  margin: '4px',
+                  borderRadius: '20px',
+                  height: '55px',
+                  borderColor: `${selectedProperty === chip ? '#1877f2' : '#E7E7E7'}`,
+                  backgroundColor: `${selectedProperty === chip ? '##F4F5F7' : '#fff'}`,
+                }}
+                onClick={() => setSelectedProperty(chip)}
+              >
+                <Image
+                  src={selectedProperty === chip ? chip.activeImage : chip.image}
+                  width={30}
+                  height={30}
+                />
+                <Typography
+                  sx={{
+                    fontSize: '20px',
+                    fontWeight: 400,
+                    lineHeight: '24px',
+                    color:'#fb631c'
+                  }}
+                >
+                  {chip.title}
+                </Typography>
+              </Button>
+            ))}
+            <Select
+              value={
+                selectedProperty
+                  ? tab.content.findIndex((chip) => chip === selectedProperty)
+                  : ''
+              }
+              onChange={handlePropertyChange}
+              displayEmpty
+              fullWidth
+              variant="outlined"
+              style={{ display: 'none' }} // Hide the select, it's just for accessibility purposes
+            >
+              {tab.content.map((chip, chipIndex) => (
+                <MenuItem key={chipIndex} value={chipIndex}>
+                  {chip.title}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
         </TabPanel>
       ))}
-      <div>
-        Selected Tab: {tabs[selectedTab].label}
+<div>
+        Selected Tab: {data[selectedPropertyTab].label}
         <br />
-        Selected Chip: {selectedChip ? selectedChip.label : "None"}
+        Selected Chip: {selectedProperty ? selectedProperty.value : ""}
       </div>
     </div>
   );
@@ -54,4 +87,4 @@ function TabPanel(props) {
   );
 }
 
-export default DynamicTabs;
+export default PropertyTabs;

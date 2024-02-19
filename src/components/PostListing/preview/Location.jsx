@@ -1,167 +1,86 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Button, Tab, Tabs, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import Image from 'next/image';
 
-const Location = ({ city, purpose, propertyType, location, locationKeys }) => {
+function DynamicTabs({ tabs }) {
+  const [selectedTab, setSelectedTab] = React.useState(0);
+  const [selectedChip, setSelectedChip] = React.useState(null);
+
+  const handleTabChange = (event, newValue) => {
+    setSelectedTab(newValue);
+    setSelectedChip(null); // Reset selected chip when changing tabs
+  };
+
+  const handleChipClick = (chip) => {
+    setSelectedChip(selectedChip === chip ? null : chip); // Toggle chip selection
+  };
+
   return (
-    locationKeys?.title && (
-      <Box
-        sx={{
-          p: 4,
-          pb: 5,
-          borderBottom: '1px solid #E4E4E4',
-          '@media(min-width:280px) and (max-width:400px)': { px: 3 },
-        }}
-      >
-        <Typography
-          sx={{
-            color: '#000',
-            fontSize: '20px',
-            fontWeight: 500,
-            mb: 1,
-          }}
-        >
-          {locationKeys?.title}
-        </Typography>
-        {purpose && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.purpose}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: '14px',
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {purpose}
-            </Typography>
-          </Box>
-        )}
-        {propertyType && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.propertyType}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: '14px',
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {propertyType}
-            </Typography>
-          </Box>
-        )}
-        {city && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.city}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: '14px',
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {city}
-            </Typography>
-          </Box>
-        )}
-        {location && (
-          <>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 0.8,
-                pb: 0.4,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: '#333',
-                  fontSize: '14px',
-                  fontWeight: 600,
+    <div>
+      <Tabs value={selectedTab} onChange={handleTabChange}>
+        {tabs.map((tab, index) => (
+          <Tab key={index} label={tab.label} />
+        ))}
+      </Tabs>
+      {tabs.map((tab, tabIndex) => (
+        <TabPanel key={tabIndex} value={selectedTab} index={tabIndex}>
+          <Box width={'450px'} py={'20px'}>
+            {tab.content.map((chip, chipIndex) => (
+              <Button
+                key={chipIndex}
+                variant={'outlined'}
+                px={'10px'}
+                my={'20px'}
+                style={{
+                  margin: '4px',
+                  borderRadius: '20px',
+                  height: '55px',
+                  borderColor:
+                    selectedChip === chip ? '#1877f2' : 'transparent',
+                  '&:hover': {
+                    backgroundColor: '#f00',
+                  },
                 }}
-                variant="body1"
+                onClick={() => handleChipClick(chip)}
               >
-                {locationKeys?.location}
-              </Typography>
-              <Typography
-                sx={{
-                  color: '#126FAA',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                }}
-                variant="body1"
-              >
-                {location}
-              </Typography>
-            </Box>
-            {location && (
-              <Box sx={{ mt: 2 }}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.013300667556!2d67.11563618312421!3d24.929177436335465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3366ddcdc4253%3A0x6c0e3a1a85e57629!2sNED%20University%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sus!4v1549819379349&z=15"
-                  title="Property locationKeys"
-                  width="100%"
-                  height="150"
-                  allowfullscreen=""
-                  frameBorder="0"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </Box>
-            )}
-          </>
-        )}
-      </Box>
-    )
+                <Image
+                  src={selectedChip === chip ? chip.image : chip.activeImage}
+                  width={30}
+                  height={30}
+                />
+                <Typography
+                  sx={{
+                    fontSize: '20px',
+                    fontWeight: 400,
+                    lineHeight: '24px',
+                  }}
+                >
+                  {' '}
+                  {chip.title}
+                </Typography>
+              </Button>
+            ))}
+          </Box>
+        </TabPanel>
+      ))}
+      <div>
+        Selected Tab: {tabs[selectedTab].value}
+        <br />
+        Selected Chip: {selectedChip ? selectedChip.value : 'None'}
+      </div>
+    </div>
   );
-};
+}
 
-export default Location;
+function TabPanel(props) {
+  const { children, value, index } = props;
+
+  return (
+    <div role="tabpanel" hidden={value !== index}>
+      {value === index && <div>{children}</div>}
+    </div>
+  );
+}
+
+export default DynamicTabs;

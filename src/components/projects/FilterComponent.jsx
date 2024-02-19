@@ -22,6 +22,8 @@ import {
 import { Formik } from 'formik';
 import SizeFilter from './SizeFilter';
 import DynamicTabs from './TabsFilter';
+import PropertyTabs from './TabsFilter';
+import { AREA_UNITS, CURRENCY_UNITS, PROPERTY_TABS_DATA,PROPETY_TYPES } from '@/app/constants/Projects/projectsFilter';
 
 const FilterComponent = ({ data }) => {
   const [searchText, setSearchText] = useState('');
@@ -31,6 +33,11 @@ const FilterComponent = ({ data }) => {
   const [selectedAreaRange, setSelectedAreaRange] = useState([0, 1000]);
   const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, 1000]);
+console.log(selectedAreaRange, 'selectedAreaRange');
+  const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
+  const [selectedProperty, setSelectedProperty] = useState('');
+
+
   // const [submittedValues, setSubmittedValues] = useState(null);
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -53,7 +60,7 @@ const FilterComponent = ({ data }) => {
   const id1 = open1 ? 'simple-popper1' : undefined;
   const id2 = open2 ? 'simple-popper2' : undefined;
   const id3 = open3 ? 'simple-popper3' : undefined;
-  
+
   const handleAreaChange = (event) => {
     setSelectedAreaUnit(event.target.value);
   };
@@ -66,10 +73,10 @@ const FilterComponent = ({ data }) => {
   };
   const handleAreaCancel = () => {
     setSelectedAreaUnit('');
-    setSelectedAreaRange([0, 100]);
+    setSelectedAreaRange([0, 1000]);
     setSubmittedValues(null);
   };
-  
+
   const handlePriceChange = (event) => {
     setSelectedPriceUnit(event.target.value);
   };
@@ -82,14 +89,24 @@ const FilterComponent = ({ data }) => {
   };
   const handlePriceCancel = () => {
     setSelectedPriceUnit('');
-    setSelectedPriceRange([0, 100]);
+    setSelectedPriceRange([0, 1000]);
     setSubmittedValues(null);
   };
- const handleFilter = () => {
+  const handleFilter = () => {
     setSelectedPriceUnit('');
   };
   const handleClearFilter = () => {
     setSelectedPriceUnit('');
+  };
+
+  const handlePropertyTabChange = (event, newValue) => {
+    setSelectedPropertyTab(newValue);
+    setSelectedProperty(null); // Reset selected chip when changing data
+  };
+
+  const handlePropertyChange = (event) => {
+    const chipIndex = event.target.value;
+    setSelectedProperty(tab.content[chipIndex]);
   };
   // const dispatchSubmitValuesToRedux = (
   //   selectedAreaUnit,
@@ -98,104 +115,87 @@ const FilterComponent = ({ data }) => {
   //   dispatch(submitFilters(selectedAreaUnit, selectedAreaRange));
   // };
 
-  const areaUnits = [
-    { value: 'sqft', title: 'Sq.ft' },
-    { value: 'sqm', title: 'Sq.M' },
-    { value: 'sqyd', title: 'Sq.Yd' },
-    { value: 'marla', title: 'Marla' },
-    { value: 'kanal', title: 'Kanal' },
-  ];
-  const currencyUnits = [
-    { value: 'pkr', title: 'PKR' },
-    { value: 'usd', title: 'USD' },
-    { value: 'gbp', title: 'GBP' },
-    { value: 'cad', title: 'CAD' },
-    { value: 'eur', title: 'Euro' },
-  ];
-  const propertyType = [
-    { value: ' ', title: 'Any' },
-    { value: 'sell', title: 'Sell' },
-    { value: 'rent', title: 'Rent' },
-  ];
-  const tabs = [
-    {
-      label: 'Houses',
-      content: [
-        { label: 'Face', icon: 'asdna' },
-        { label: 'Location', icon: 'asdna' },
-        { label: 'Face', icon: 'asdna' },
-        { label: 'Location', icon: 'asdna' },
-      ],
-    },
-    {
-      label: 'Plots',
-      content: [
-        { label: 'Work', icon: 'asdna' },
-        { label: 'Face', icon:'asdna' },
-        { label: 'Work', icon: 'asdna' },
-        { label: 'Face', icon:'asdna' },
-      ],
-    },
-    {
-      label: 'Commercials',
-      content: [
-        { label: 'Location', icon: 'asdna' },
-        { label: 'Work', icon: 'asdna' },
-        { label: 'Location', icon: 'asdna' },
-        { label: 'Work', icon: 'asdna' },
-      ],
-    },
-  ];
-   useEffect(() => {
+  useEffect(() => {
     handleFilter();
- }, [selectedPropertyType, selectedAdType, selectedPriceRange, selectedAreaRange, searchText]);
-  
+  }, [
+    selectedPropertyType,
+    selectedAdType,
+    selectedPriceRange,
+    selectedAreaRange,
+    searchText,
+  ]);
+
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          <FormControl fullWidth >
+          <FormControl fullWidth>
             <Select
-              value={selectedPropertyType || propertyType[0]?.value}
+              value={selectedPropertyType || PROPETY_TYPES[0]?.value}
               onChange={(e) => setSelectedPropertyType(e.target.value)}
             >
-              {propertyType.map((unit, index) => (
-    <MenuItem key={index} value={unit?.value}>
-      {unit?.title}
-    </MenuItem>
-  ))}
+              {PROPETY_TYPES.map((unit, index) => (
+                <MenuItem key={index} value={unit?.value}>
+                  {unit?.title}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
         <Grid item xs={2}>
-           <TextField aria-describedby={id1} variant="outlined" value={selectedPropertyType} onClick={handleClick1}/>
-          <Popper id={id1} open={open1} anchorEl={anchorEl1} placement='bottom-start'>
+          <TextField
+            aria-describedby={id1}
+            variant="outlined"
+            value={selectedProperty.title || 'Any'}
+            onClick={handleClick1}
+            onChange={handleFilter}
+          />
+          <Popper
+            id={id1}
+            open={open1}
+            anchorEl={anchorEl1}
+            placement="bottom-start"
+          >
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-                <DynamicTabs tabs={tabs} />
+              <PropertyTabs
+                data={PROPERTY_TABS_DATA}
+                handlePropertyTabChange={handlePropertyTabChange}
+                handlePropertyChange={handlePropertyChange}
+                selectedPropertyTab={selectedPropertyTab}
+                selectedProperty={selectedProperty}
+                setSelectedProperty={setSelectedProperty}
+                setSelectedPropertyTab={setSelectedPropertyTab} />
             </Box>
           </Popper>
         </Grid>
         <Grid item xs={2}>
-          <TextField aria-describedby={id2} variant="outlined" value={selectedPriceUnit.toUpperCase() || 'Any'} onClick={handleClick2}/>
-          <Popper 
+          <TextField
+            aria-describedby={id2}
+            variant="outlined"
+            value={selectedPriceUnit.toUpperCase() || 'Any'}
+            onClick={handleClick2}
+            onChange={handleFilter}
+          />
+          <Popper
             id={id2}
             open={open2}
             anchorEl={anchorEl2}
-            placement='bottom-start'
+            placement="bottom-start"
             zIndex={999}
           >
             <Box
               sx={{
                 zIndex: 999,
                 bgcolor: 'background.paper',
-                height: 'auto',mt:'10px'
+                height: 'auto',
+                mt: '10px',
                 // width: '300px',
               }}
             >
               <SizeFilter
                 title={'Price Range'}
                 selectedUnit={selectedPriceUnit}
-                units={currencyUnits}
+                units={CURRENCY_UNITS}
                 handleChange={handlePriceChange}
                 selectedRange={selectedPriceRange}
                 handleRangeChange={handlePriceRangeChange}
@@ -206,7 +206,13 @@ const FilterComponent = ({ data }) => {
           </Popper>
         </Grid>
         <Grid item xs={2}>
-           <TextField aria-describedby={id3} variant="outlined" value={selectedAreaUnit || 'Any'}  onClick={handleClick3}/>
+          <TextField
+            aria-describedby={id3}
+            variant="outlined"
+            value={selectedAreaUnit || 'Any'}
+            onClick={handleClick3}
+            onChange={handleFilter}
+          />
           <Popper
             id={id3}
             open={open3}
@@ -218,13 +224,14 @@ const FilterComponent = ({ data }) => {
               sx={{
                 zIndex: 999,
                 bgcolor: 'background.paper',
-                height: 'auto',mt:'10px'
+                height: 'auto',
+                mt: '10px',
               }}
             >
               <SizeFilter
                 title={'Area'}
                 selectedUnit={selectedAreaUnit}
-                units={areaUnits}
+                units={AREA_UNITS}
                 handleChange={handleAreaChange}
                 selectedRange={selectedAreaRange}
                 handleRangeChange={handleAreaRangeChange}
@@ -235,24 +242,21 @@ const FilterComponent = ({ data }) => {
           </Popper>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={2.5}>
           <TextField
             fullWidth
-            label="Search"
+            placeholder="Search Projects"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <Button variant="contained" onClick={handleFilter} fullWidth>
-            Apply Filter
-          </Button>
+<Grid item xs={1.5}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button onClick={handleClearFilter}>Clear Filter</Button></Box>
         </Grid>
-
         <Grid item xs={12} sm={6}>
-          <Button variant="contained" onClick={handleClearFilter} fullWidth>
-            Clear Filter
+            <Button variant="contained" onClick={handleFilter} fullWidth>
+            Apply Filter
           </Button>
         </Grid>
       </Grid>
