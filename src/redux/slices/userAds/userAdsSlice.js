@@ -5,42 +5,227 @@ const userAdsSlice = createSlice({
   initialState: {
     userPostings: [
       {
-        id: 1,
-        usertId: '',
-        formId: 1,
-        proposals: [],
-        adInfomation: {
-          title: 'Test',
-          description: 'test',
-        },
-        locationAndPurpose: {
-          adPurpose: 'Rent',
-          propertyType: 'House',
-          propetySubType: 'House',
-          city: 'Karachi',
-          location: '',
-        },
-        propertySizeAndPricing: {
-          areaSize: { area: '200', unit: 'sq.yd' },
-          amount: { amount: '15000000', unit: 'PKR' },
-          installment: true,
-          possession: true,
-        },
-        featureAndAmenities: {
-          bedrooms: 0,
-          bathrooms: 0,
-          parking: 0,
-          selectedAmenities: '',
-        },
+        adId: 237,
+        userId: '',
+        proposals: [
+          {
+            adId: 237,
+            agentId: 10,
+            proposalId: 340,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+          {
+            adId: 237,
+            agentId: 20,
+            proposalId: 540,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+        ],
+        posted_Time: '5:52 PM',
+        other_features: [],
+        title: 'NEED 4 BEDROOM APARTMENT',
+        location: '',
+        description:
+          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
+        area: 10,
+        amount: 10,
+        areaUnit: 'sq.ft',
+        amountCurrency: 'GBP',
+        city: 'Karachi',
+        bedrooms: 1,
+        connects: '',
+        bathrooms: 1,
+        parking: 1,
+        purpose: 'Rent',
+        proportyCategory: 'House',
+        propertyType: 'Rent House',
+        instalmentAvailable: true,
+        readyPossession: true,
+      },
+      {
+        adId: 135,
+        userId: '',
+        proposals: [
+          {
+            adId: 135,
+            agentId: 15,
+            proposalId: 125,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+          {
+            adId: 135,
+            agentId: 20,
+            proposalId: 200,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'We are planning to buy a new home in the month of dec, is someone knows about it please let me know but make sure its in the society with parking area and security like something',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Rent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
+        ],
+        posted_Time: '5:52 PM',
+        other_features: [],
+        title: 'NEED 4 BEDROOM APARTMENT',
+        location: '',
+        description:
+          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
+        area: 10,
+        amount: 10,
+        areaUnit: 'sq.ft',
+        amountCurrency: 'GBP',
+        city: 'Karachi',
+        bedrooms: 1,
+        connects: '',
+        bathrooms: 1,
+        parking: 1,
+        purpose: 'Rent',
+        proportyCategory: 'House',
+        propertyType: 'Rent House',
+        instalmentAvailable: true,
+        readyPossession: true,
       },
     ],
+    rejectedProposals: [],
+    connectedProposals: [],
   },
   reducers: {
     handleSumitUserAds: (state, action) => {
       state.userPostings.push(action.payload);
     },
+    handleSendProposals: (state, action) => {
+      const { adId } = action.payload;
+      const adIndex = state.userPostings.findIndex((ad) => ad.adId === adId);
+      if (adIndex !== -1) {
+        state.userPostings[adIndex].proposals.push(action.payload);
+      }
+    },
+    handleRejectProposal: (state, action) => {
+      const { adId, proposalId } = action.payload;
+      const adIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.adId === adId && adId
+      );
+      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
+        (proposal) => proposal?.proposalId === proposalId
+      );
+      if (adIndex !== -1) {
+        if (proposalIndex !== -1) {
+          const rejectedProposal =
+            state?.userPostings[adIndex]?.proposals[proposalIndex];
+          rejectedProposal.status = 'rejected';
+          state?.rejectedProposals?.push(rejectedProposal);
+          state?.userPostings[adIndex]?.proposals?.splice(proposalIndex, 1);
+        }
+      }
+    },
+    handleConnectProposal: (state, action) => {
+      const { adId, proposalId } = action.payload;
+      const adIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.adId === adId && adId
+      );
+      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
+        (proposal) => proposal?.proposalId === proposalId
+      );
+      if (adIndex !== -1) {
+        if (proposalIndex !== -1) {
+          const connectedProposals =
+            state?.userPostings[adIndex]?.proposals[proposalIndex];
+          const alreadyConnected = state?.connectedProposals?.some(
+            (proposal) => proposal?.proposalId === proposalId
+          );
+          if (!alreadyConnected) {
+            connectedProposals.status = 'active';
+            state?.connectedProposals?.push(connectedProposals);
+          }
+        }
+      }
+    },
   },
 });
 
-export const { handleSumitUserAds, handleSendProposals } = userAdsSlice.actions;
+export const {
+  handleSumitUserAds,
+  handleSendProposals,
+  handleRejectProposal,
+  handleConnectProposal,
+} = userAdsSlice.actions;
 export default userAdsSlice.reducer;
