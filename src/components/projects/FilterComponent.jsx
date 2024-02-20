@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Slider,
   Button,
   MenuItem,
   Select,
   FormControl,
-  InputLabel,
   Container,
   TextField,
   Grid,
   Box,
-  Tabs,
-  Tab,
   Popper,
 } from '@mui/material';
-import SelectProperyType from '../PostListing/SelectPropertyType';
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-} from '@/app/constants/postListing';
-import { Formik } from 'formik';
 import SliderFilter from './SliderFilter';
 import PropertyTabs from './TabsFilter';
 import {
@@ -85,7 +75,7 @@ const FilterComponent = ({ data }) => {
 
   const handlePropertyChange = (event) => {
     const chipIndex = event.target.value;
-    setSelectedProperty(tab?.content[chipIndex]);
+    setSelectedProperty(PROPERTY_TABS_DATA?.content[chipIndex]);
   };
 
   const handlePriceApply = () => {};
@@ -97,19 +87,20 @@ const FilterComponent = ({ data }) => {
   const handlePropertyCancel = () => {};
   const handleFilter = () => {
     const filteredData = data?.filter((projects) => {
-      return;
-      // projects?.title?.include(searchText) &&
-      //   projects?.description?.include(searchText) &&
-      projects?.areaUnit === selectedAreaUnit &&
+      return (
+        projects?.areaUnit === selectedAreaUnit &&
         projects?.AdType >= selectedPriceRange[0] &&
         projects?.propertyPrice <= selectedAreaRange[1] &&
         projects?.priceUnit === selectedPriceUnit &&
         projects?.propertysubType === selectedProperty &&
         projects?.propertyAdType === selectedPropertyAdType &&
-        projects?.propertyType === selectedPropertyTab;
+        projects?.propertyType === selectedPropertyTab
+      );
+      // projects?.title?.include(searchText) &&
+      //   projects?.description?.include(searchText) &&
     });
+    console.log(filteredData);
   };
-
   const handleClearFilter = () => {
     setSelectedPropertyAdType('');
     setSelectedPropertyTab(0);
@@ -129,145 +120,145 @@ const FilterComponent = ({ data }) => {
     <>
       <Container>
         <Grid container spacing={2}>
-        <Grid item xs={2}>
-          <FormControl fullWidth>
-            <Select
-              value={selectedPropertyAdType || PROPETY_TYPES[0]?.value}
-              onChange={(e) => setSelectedPropertyAdType(e.target.value)}
+          <Grid item xs={2}>
+            <FormControl fullWidth>
+              <Select
+                value={selectedPropertyAdType || PROPETY_TYPES[0]?.value}
+                onChange={(e) => setSelectedPropertyAdType(e.target.value)}
+              >
+                {PROPETY_TYPES?.map((unit, index) => (
+                  <MenuItem key={index} value={unit?.value}>
+                    {unit?.title}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              aria-describedby={id1}
+              variant="outlined"
+              value={selectedProperty?.title || 'Any'}
+              onClick={handleClick1}
+            />
+            <Popper
+              id={id1}
+              open={open1}
+              anchorEl={anchorEl1}
+              placement="bottom-start"
             >
-              {PROPETY_TYPES?.map((unit, index) => (
-                <MenuItem key={index} value={unit?.value}>
-                  {unit?.title}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={2}>
-          <TextField
-            aria-describedby={id1}
-            variant="outlined"
-            value={selectedProperty?.title || 'Any'}
-            onClick={handleClick1}
-          />
-          <Popper
-            id={id1}
-            open={open1}
-            anchorEl={anchorEl1}
-            placement="bottom-start"
-          >
-            <Box
-              sx={{
-                zIndex: 999,
-                bgcolor: 'background.paper',
-                height: 'auto',
-                mt: '10px',
-              }}
+              <Box
+                sx={{
+                  zIndex: 999,
+                  bgcolor: 'background.paper',
+                  height: 'auto',
+                  mt: '10px',
+                }}
+              >
+                <PropertyTabs
+                  data={PROPERTY_TABS_DATA}
+                  selectedPropertyTab={selectedPropertyTab}
+                  selectedProperty={selectedProperty}
+                  handlePropertyTabChange={handlePropertyTabChange}
+                  handlePropertyChange={handlePropertyChange}
+                  setSelectedProperty={setSelectedProperty}
+                  handleApply={handlePropertyApply}
+                  handleCancel={handlePropertyCancel}
+                />
+              </Box>
+            </Popper>
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              aria-describedby={id2}
+              variant="outlined"
+              value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
+              onClick={handleClick2}
+            />
+            <Popper
+              id={id2}
+              open={open2}
+              anchorEl={anchorEl2}
+              placement="bottom-start"
+              zIndex={999}
             >
-              <PropertyTabs
-                data={PROPERTY_TABS_DATA}
-                selectedPropertyTab={selectedPropertyTab}
-                selectedProperty={selectedProperty}
-                handlePropertyTabChange={handlePropertyTabChange}
-                handlePropertyChange={handlePropertyChange}
-                setSelectedProperty={setSelectedProperty}
-                handleApply={handlePropertyApply}
-                handleCancel={handlePropertyCancel}
-              />
-            </Box>
-          </Popper>
-        </Grid>
-        <Grid item xs={2}>
-          <TextField
-            aria-describedby={id2}
-            variant="outlined"
-            value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
-            onClick={handleClick2}
-          />
-          <Popper
-            id={id2}
-            open={open2}
-            anchorEl={anchorEl2}
-            placement="bottom-start"
-            zIndex={999}
-          >
-            <Box
-              sx={{
-                zIndex: 999,
-                bgcolor: 'background.paper',
-                height: 'auto',
-                mt: '10px',
-                // width: '300px',
-              }}
+              <Box
+                sx={{
+                  zIndex: 999,
+                  bgcolor: 'background.paper',
+                  height: 'auto',
+                  mt: '10px',
+                  // width: '300px',
+                }}
+              >
+                <SliderFilter
+                  title={'Price Range'}
+                  selectedUnit={selectedPriceUnit}
+                  units={CURRENCY_UNITS}
+                  selectedRange={selectedPriceRange}
+                  handleChange={handlePriceChange}
+                  handleRangeChange={handlePriceRangeChange}
+                  handleApply={handlePriceApply}
+                  handleCancel={handlePriceCancel}
+                />
+              </Box>
+            </Popper>
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              aria-describedby={id3}
+              variant="outlined"
+              value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
+              onClick={handleClick3}
+            />
+            <Popper
+              id={id3}
+              open={open3}
+              anchorEl={anchorEl3}
+              placement={'bottom-start'}
+              zIndex={999}
             >
-              <SliderFilter
-                title={'Price Range'}
-                selectedUnit={selectedPriceUnit}
-                units={CURRENCY_UNITS}
-                selectedRange={selectedPriceRange}
-                handleChange={handlePriceChange}
-                handleRangeChange={handlePriceRangeChange}
-                handleApply={handlePriceApply}
-                handleCancel={handlePriceCancel}
-              />
-            </Box>
-          </Popper>
-        </Grid>
-        <Grid item xs={2}>
-          <TextField
-            aria-describedby={id3}
-            variant="outlined"
-            value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
-            onClick={handleClick3}
-          />
-          <Popper
-            id={id3}
-            open={open3}
-            anchorEl={anchorEl3}
-            placement={'bottom-start'}
-            zIndex={999}
-          >
-            <Box
-              sx={{
-                zIndex: 999,
-                bgcolor: 'background.paper',
-                height: 'auto',
-                mt: '10px',
-              }}
-            >
-              <SliderFilter
-                title={'Area'}
-                selectedUnit={selectedAreaUnit}
-                units={AREA_UNITS}
-                selectedRange={selectedAreaRange}
-                handleChange={handleAreaChange}
-                handleRangeChange={handleAreaRangeChange}
-                handleApply={handleAreaApply}
-                handleCancel={handleAreaCancel}
-              />
-            </Box>
-          </Popper>
-        </Grid>
+              <Box
+                sx={{
+                  zIndex: 999,
+                  bgcolor: 'background.paper',
+                  height: 'auto',
+                  mt: '10px',
+                }}
+              >
+                <SliderFilter
+                  title={'Area'}
+                  selectedUnit={selectedAreaUnit}
+                  units={AREA_UNITS}
+                  selectedRange={selectedAreaRange}
+                  handleChange={handleAreaChange}
+                  handleRangeChange={handleAreaRangeChange}
+                  handleApply={handleAreaApply}
+                  handleCancel={handleAreaCancel}
+                />
+              </Box>
+            </Popper>
+          </Grid>
 
-        <Grid item xs={2.8}>
-          <TextField
-            fullWidth
-            placeholder="Search Projects"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={1.2}>
-          <Button
-            sx={{ height: '52px' }}
-            variant={'outlined'}
+          <Grid item xs={2.8}>
+            <TextField
+              fullWidth
+              placeholder="Search Projects"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={1.2}>
+            <Button
+              sx={{ height: '52px' }}
+              variant={'outlined'}
               onClick={handleClearFilter}
               fullWidth
-          >
-            Clear Filter
-          </Button>
+            >
+              Clear Filter
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
       </Container>
     </>
   );

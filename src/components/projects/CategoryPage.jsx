@@ -40,7 +40,7 @@ const CategoryPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
-       <FilterComponent data={data} />
+      <FilterComponent data={filteredData} />
       <CategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>

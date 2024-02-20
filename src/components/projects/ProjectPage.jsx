@@ -4,7 +4,6 @@ import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
-import ProjectsFilters from './ProjectsFilters';
 import FilterComponent from './FilterComponent';
 
 const data = [
@@ -52,6 +51,7 @@ const data = [
 
 const ProjectPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
+  console.log(projects, "projects");
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
