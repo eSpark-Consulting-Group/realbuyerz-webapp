@@ -19,14 +19,16 @@ import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch } from 'react-redux';
-import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
+import {
+  handleSubmitDraft,
+  handleSumitUserAds,
+} from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
-import { handleUserDraft } from '@/src/redux/slices/userDraft/userDraftSlice';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -60,7 +62,7 @@ const Page = () => {
 
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleUserDraft(values));
+      dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handleSumitUserAds(values));

@@ -1,7 +1,15 @@
+import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const ProposalCard = ({ index }) => {
+const ProposalCard = ({ key, data, currentTab }) => {
+  const dispatch = useDispatch();
+
+  const handleTrash = (adId) => {
+    dispatch(handleSubmitTrash({ adId: adId, currentTab: currentTab }));
+  };
+
   return (
     <Grid
       container
@@ -11,14 +19,14 @@ const ProposalCard = ({ index }) => {
         borderRadius: '20px',
         padding: { xs: '10px', md: '25px 30px' },
         marginBottom: '30px',
-        marginTop: index === 0 && '30px',
+        marginTop: key === 0 && '30px',
         cursor: 'pointer',
       }}
     >
       <Grid item xs={0} sm={4} md={3.65}>
         <Box
           component={'img'}
-          src={'/images/PropertyImg.png'}
+          src={`${data?.images || ''}`}
           sx={{
             width: '100%',
           }}
@@ -53,18 +61,20 @@ const ProposalCard = ({ index }) => {
               textAlign: 'left',
             }}
           >
-            NEED 4 BEDROOM APARTMENT
+            {data?.title || ''}
           </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              position: { xs: 'relative', md: 'absolute' },
-              right: 0,
-            }}
-          >
-            {' '}
-            Trash
-          </Button>
+          {currentTab !== 'Trash' && (
+            <Button
+              variant="contained"
+              sx={{
+                position: { xs: 'relative', md: 'absolute' },
+                right: 0,
+              }}
+              onClick={() => handleTrash(data?.adId)}
+            >
+              Trash
+            </Button>
+          )}
         </Box>
         <Divider
           sx={{
@@ -102,7 +112,7 @@ const ProposalCard = ({ index }) => {
                   color: '#126FAA',
                 }}
               >
-                Purpose:{' '}
+                Purpose:
               </Typography>
               <Typography
                 sx={{
@@ -115,7 +125,7 @@ const ProposalCard = ({ index }) => {
                   marginLeft: '5px',
                 }}
               >
-                Selling
+                {data?.purpose || ''}
               </Typography>
             </Box>
             <Box
@@ -135,7 +145,7 @@ const ProposalCard = ({ index }) => {
                   color: '#126FAA',
                 }}
               >
-                Proporty Type:{' '}
+                Proporty Type:
               </Typography>
               <Typography
                 sx={{
@@ -148,7 +158,7 @@ const ProposalCard = ({ index }) => {
                   marginLeft: '5px',
                 }}
               >
-                House
+                {data?.properType || ''}
               </Typography>
             </Box>
             <Box
@@ -168,7 +178,7 @@ const ProposalCard = ({ index }) => {
                   color: '#126FAA',
                 }}
               >
-                City:{' '}
+                City:
               </Typography>
               <Typography
                 sx={{
@@ -181,7 +191,7 @@ const ProposalCard = ({ index }) => {
                   marginLeft: '5px',
                 }}
               >
-                Karachi
+                {data?.city || ''}
               </Typography>
             </Box>
             <Box
@@ -201,7 +211,7 @@ const ProposalCard = ({ index }) => {
                   color: '#126FAA',
                 }}
               >
-                Location:{' '}
+                Location:
               </Typography>
               <Typography
                 sx={{
@@ -214,7 +224,7 @@ const ProposalCard = ({ index }) => {
                   marginLeft: '5px',
                 }}
               >
-                Gulshan-e-Iqbal
+                {data?.location || ''}
               </Typography>
             </Box>
             <Typography
@@ -227,17 +237,7 @@ const ProposalCard = ({ index }) => {
                 flex: 1,
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum. dolore eu fugiat nulla pariatur. Excepteur sint
-              occaecat cupidatat
+              {data?.description || ''}
             </Typography>
           </Box>
           <Typography
@@ -252,7 +252,7 @@ const ProposalCard = ({ index }) => {
               padding: { xs: '10px', md: '25px 30px' },
             }}
           >
-            Amount: 10M
+            {`Amount: ${data?.amount || ''}${data?.amountCurrency || ''}`}
           </Typography>
         </Box>
       </Grid>

@@ -26,18 +26,22 @@ const Page = () => {
     {
       label: 'All',
       prop: a11yProps(0),
+      items: userPostings?.length || 0,
     },
     {
       label: 'Active',
       prop: a11yProps(1),
+      items: connectedProposals?.length || 0,
     },
     {
       label: 'Draft',
       prop: a11yProps(2),
+      items: draft?.length || 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
+      items: trash?.length || 0,
     },
   ];
   const [filterObject, setfilterObject] = useState({
@@ -110,7 +114,6 @@ const Page = () => {
     });
   };
 
-  console.log(filterObject, 'filterObject');
   return (
     <>
       <Box sx={{ maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' } }}>
@@ -132,7 +135,7 @@ const Page = () => {
                 id="combo-box-demo"
                 value={filterObject?.purpose}
                 onChange={(e) =>
-                  handleChangeSelect('purpose', e.target.innerText)
+                  handleChangeSelect('purpose', e?.target?.innerText)
                 }
                 options={[
                   {
@@ -161,7 +164,9 @@ const Page = () => {
                 disablePortal
                 id="combo-box-demo"
                 value={filterObject?.city}
-                onChange={(e) => handleChangeSelect('city', e.target.innerText)}
+                onChange={(e) =>
+                  handleChangeSelect('city', e?.target?.innerText)
+                }
                 options={[
                   {
                     label: 'Karachi',
@@ -190,7 +195,7 @@ const Page = () => {
                 id="combo-box-demo"
                 value={filterObject?.location}
                 onChange={(e) =>
-                  handleChangeSelect('location', e.target.innerText)
+                  handleChangeSelect('location', e?.target?.innerText)
                 }
                 options={[
                   {
@@ -220,7 +225,7 @@ const Page = () => {
                 id="combo-box-demo"
                 value={filterObject?.property_Type}
                 onChange={(e) =>
-                  handleChangeSelect('property_Type', e.target.innerText)
+                  handleChangeSelect('property_Type', e?.target?.innerText)
                 }
                 options={[
                   {
@@ -337,10 +342,10 @@ const Page = () => {
             onChange={handleChangeTab}
             aria-label="basic tabs example"
           >
-            {tabs?.map(({ label, prop }, i) => (
+            {tabs?.map(({ label, prop, items }, i) => (
               <Tab
                 key={i}
-                label={`${label}`}
+                label={`${label} (${items})`}
                 {...prop}
                 disableRipple={true}
                 sx={{
@@ -357,21 +362,43 @@ const Page = () => {
           }}
         >
           {currentTab === 'All'
-            ? getFilteredOutput(userPostings, filterObject)?.map((_, index) => (
-                <ProposalCard key={index} index={index} />
-              ))
+            ? getFilteredOutput(userPostings, filterObject)?.map(
+                (item, index) => (
+                  <ProposalCard
+                    key={index}
+                    data={item}
+                    currentTab={currentTab}
+                  />
+                )
+              )
             : currentTab === 'Active'
               ? getFilteredOutput(connectedProposals, filterObject)?.map(
-                  (_, index) => <ProposalCard key={index} index={index} />
+                  (item, index) => (
+                    <ProposalCard
+                      key={index}
+                      data={item}
+                      currentTab={currentTab}
+                    />
+                  )
                 )
               : currentTab === 'Draft'
-                ? getFilteredOutput(draft, filterObject)?.map((_, index) => (
-                    <ProposalCard key={index} index={index} />
+                ? getFilteredOutput(draft, filterObject)?.map((item, index) => (
+                    <ProposalCard
+                      key={index}
+                      data={item}
+                      currentTab={currentTab}
+                    />
                   ))
                 : currentTab === 'Trash'
-                  ? getFilteredOutput(trash, filterObject)?.map((_, index) => (
-                      <ProposalCard key={index} index={index} />
-                    ))
+                  ? getFilteredOutput(trash, filterObject)?.map(
+                      (item, index) => (
+                        <ProposalCard
+                          key={index}
+                          data={item}
+                          currentTab={currentTab}
+                        />
+                      )
+                    )
                   : null}
         </Box>
       </Box>
