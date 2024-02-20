@@ -408,6 +408,7 @@ const userAdsSlice = createSlice({
       },
     ],
     trash: [],
+    active: [],
     rejectedProposals: [],
     connectedProposals: [],
   },

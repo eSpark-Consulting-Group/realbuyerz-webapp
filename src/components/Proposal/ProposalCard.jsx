@@ -1,13 +1,28 @@
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
+import { handlePropertiesSubmitTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { usePathname } from 'next/navigation';
 
 const ProposalCard = ({ key, data, currentTab }) => {
   const dispatch = useDispatch();
+  const pathName = usePathname();
+  const properties = 'my-properties';
+  const proposals = 'my-proposals';
+  const user = 'user';
 
   const handleTrash = (adId) => {
-    dispatch(handleSubmitTrash({ adId: adId, currentTab: currentTab }));
+    if (pathName?.includes(user)) {
+      dispatch(handleSubmitTrash({ adId: adId, currentTab: currentTab }));
+    } else if (pathName?.includes(properties)) {
+      dispatch(
+        handlePropertiesSubmitTrash({ adId: adId, currentTab: currentTab })
+      );
+    } else if (pathName?.includes(proposals)) {
+      // dispatch(handleAgentSubmitTrash({ adId: adId, currentTab: currentTab }));
+    }
   };
 
   return (

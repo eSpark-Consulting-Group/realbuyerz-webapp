@@ -21,7 +21,7 @@ const Page = () => {
   const { userPostings, connectedProposals, draft, trash } = useSelector(
     (state) => state?.postRequestAds
   );
-
+  console.log(connectedProposals, 'connectedProposals');
   const tabs = [
     {
       label: 'All',

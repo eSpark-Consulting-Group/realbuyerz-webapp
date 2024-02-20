@@ -27,8 +27,10 @@ import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
-import { handleAgentDraft } from '@/src/redux/slices/agentDraft/agentDraftSlice';
-import { handlePostlistingAd } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import {
+  handlePostlistingAd,
+  handleSubmitDraft,
+} from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
   const initializePropertyData = () => {
@@ -63,7 +65,7 @@ const Page = () => {
 
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleAgentDraft(values));
+      dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handlePostlistingAd(values));
