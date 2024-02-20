@@ -12,14 +12,11 @@ import {
 } from '@mui/material';
 import SliderFilter from './SliderFilter';
 import PropertyTabs from './TabsFilter';
-import {
-  AREA_UNITS,
-  CURRENCY_UNITS,
-  PROPERTY_TABS_DATA,
-  PROPETY_TYPES,
-} from '@/app/constants/Projects/projectsFilter';
+import { useSelector } from 'react-redux';
 
 const FilterComponent = ({ data }) => {
+  const globalUnits = useSelector((state) => state.globalUnits);
+  console.log(globalUnits);
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('sqft');
@@ -75,7 +72,7 @@ const FilterComponent = ({ data }) => {
 
   const handlePropertyChange = (event) => {
     const chipIndex = event.target.value;
-    setSelectedProperty(PROPERTY_TABS_DATA?.content[chipIndex]);
+    setSelectedProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
   };
 
   const handlePriceApply = () => {};
@@ -88,16 +85,18 @@ const FilterComponent = ({ data }) => {
   const handleFilter = () => {
     const filteredData = data?.filter((projects) => {
       return (
+        projects?.title === searchText &&
+        projects?.description === searchText &&
         projects?.areaUnit === selectedAreaUnit &&
-        projects?.AdType >= selectedPriceRange[0] &&
-        projects?.propertyPrice <= selectedAreaRange[1] &&
-        projects?.priceUnit === selectedPriceUnit &&
-        projects?.propertysubType === selectedProperty &&
-        projects?.propertyAdType === selectedPropertyAdType &&
-        projects?.propertyType === selectedPropertyTab
+        projects?.purpose === selectedPropertyAdType &&
+        projects?.amount <= selectedPriceRange[0] &&
+        projects?.amount >= selectedPriceRange[1] &&
+        projects?.amount <= selectedAreaRange[0] &&
+        projects?.amount >= selectedAreaRange[1] &&
+        projects?.amountCurrency === selectedPriceUnit &&
+        projects?.propertyType === selectedProperty &&
+        projects?.proportyCategory === selectedPropertyTab
       );
-      // projects?.title?.include(searchText) &&
-      //   projects?.description?.include(searchText) &&
     });
     console.log(filteredData);
   };
@@ -123,10 +122,10 @@ const FilterComponent = ({ data }) => {
           <Grid item xs={2}>
             <FormControl fullWidth>
               <Select
-                value={selectedPropertyAdType || PROPETY_TYPES[0]?.value}
+                value={selectedPropertyAdType || globalUnits?.PROPERTY_TYPES[0]?.value}
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
               >
-                {PROPETY_TYPES?.map((unit, index) => (
+                {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
                   <MenuItem key={index} value={unit?.value}>
                     {unit?.title}
                   </MenuItem>
@@ -156,7 +155,7 @@ const FilterComponent = ({ data }) => {
                 }}
               >
                 <PropertyTabs
-                  data={PROPERTY_TABS_DATA}
+                  data={globalUnits?.PROPERTY_TABS_DATA}
                   selectedPropertyTab={selectedPropertyTab}
                   selectedProperty={selectedProperty}
                   handlePropertyTabChange={handlePropertyTabChange}
@@ -194,7 +193,7 @@ const FilterComponent = ({ data }) => {
                 <SliderFilter
                   title={'Price Range'}
                   selectedUnit={selectedPriceUnit}
-                  units={CURRENCY_UNITS}
+                  units={globalUnits?.CURRENCY_UNITS}
                   selectedRange={selectedPriceRange}
                   handleChange={handlePriceChange}
                   handleRangeChange={handlePriceRangeChange}
@@ -229,7 +228,7 @@ const FilterComponent = ({ data }) => {
                 <SliderFilter
                   title={'Area'}
                   selectedUnit={selectedAreaUnit}
-                  units={AREA_UNITS}
+                  units={globalUnits?.AREA_UNITS}
                   selectedRange={selectedAreaRange}
                   handleChange={handleAreaChange}
                   handleRangeChange={handleAreaRangeChange}

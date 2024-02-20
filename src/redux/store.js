@@ -27,6 +27,7 @@ import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
+import globalUnitsSlice from './slices/global/globalUnitsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -63,5 +64,8 @@ export const store = configureStore({
 
     // Favorite Ads State
     favoriteAds: favouriteAdsSlice,
+
+    // global units States
+    globalUnits: globalUnitsSlice,
   },
 });

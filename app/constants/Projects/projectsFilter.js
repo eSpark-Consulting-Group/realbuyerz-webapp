@@ -12,7 +12,7 @@ export const CURRENCY_UNITS = [
   { value: 'cad', title: 'CAD' },
   { value: 'eur', title: 'Euro' },
 ];
-export const PROPETY_TYPES = [
+export const PROPERTY_TYPES = [
   { value: ' ', title: 'Any' },
   { value: 'sell', title: 'Sell' },
   { value: 'rent', title: 'Rent' },
