@@ -122,7 +122,10 @@ const FilterComponent = ({ data }) => {
           <Grid item xs={2}>
             <FormControl fullWidth>
               <Select
-                value={selectedPropertyAdType || globalUnits?.PROPERTY_TYPES[0]?.value}
+                value={
+                  selectedPropertyAdType ||
+                  globalUnits?.PROPERTY_TYPES[0]?.value
+                }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
               >
                 {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
