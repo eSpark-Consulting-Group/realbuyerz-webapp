@@ -10,7 +10,7 @@ import MobleScreenSlider from './MobleScreenSlider';
 import VideoSlider from './VideoSlider';
 import DesktopScreenSlider from './DesktopScreenSlider';
 
-const BidMedia = ({ title, media, mediaType }) => {
+const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -102,12 +102,21 @@ const BidMedia = ({ title, media, mediaType }) => {
           </Box>
         )}
       </Modal>
-
-      <Grid container>
-        <Grid
-          item
-          xs={6}
-          sx={{ py: '40px', display: 'flex', justifyContent: 'flex-start' }}
+      <Box
+        sx={{
+          px: px ? px : 4,
+          pt: pt ? pt : 3,
+          pb: pb ? pb : 8,
+          width: '100%',
+          borderBottom: '1px solid #E4E4E4',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
         >
           <Typography
             variant="h2"
@@ -119,19 +128,15 @@ const BidMedia = ({ title, media, mediaType }) => {
           >
             {title}
           </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          sx={{ py: '40px', display: 'flex', justifyContent: 'flex-end' }}
-        >
           <Button
             sx={{
               mx: '4px',
               fontWeight: 600,
-              width: '150px',
+              width: { xs: '150px', md: '150px' },
               height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
               color: '#FB631C',
+              marginBottom: '15px',
+              marginTop: { xs: '20px', md: '0px' },
               '&:hover': {
                 color: '#fff',
               },
@@ -142,11 +147,9 @@ const BidMedia = ({ title, media, mediaType }) => {
           >
             {BIDDINGS.ViewAllbutton.title}
           </Button>
-        </Grid>
-      </Grid>
-      <Grid container sx={{ display: 'flex', gap: 'auto' }}>
+        </Box>
         <BidSlider media={media} mediaType={mediaType} />
-      </Grid>
+      </Box>
     </>
   );
 };

@@ -81,9 +81,17 @@ const Page = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  flexDirection: { xs: 'column', md: 'row' },
                 }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 2.5,
+                    flexDirection: { xs: 'column', md: 'row' },
+                  }}
+                >
                   <UserProfileImage
                     width={60}
                     height={60}
@@ -94,7 +102,11 @@ const Page = () => {
                     image={findAgent?.profileImage || image}
                     isActive={findAgent?.status == 'Active' ? true : false}
                   />
-                  <Box>
+                  <Box
+                    sx={{
+                      textAlign: { xs: 'center', md: 'left' },
+                    }}
+                  >
                     <Typography
                       sx={{
                         fontSize: '15px',
@@ -111,7 +123,16 @@ const Page = () => {
                     </Typography>
                   </Box>
                 </Box>
-                <Box sx={{ display: 'flex', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: 1.5,
+                    flexDirection: { xs: 'column', md: 'row' },
+                    '@media (min-width: 700px) and (max-width: 950px)': {
+                      flexDirection: 'row',
+                    },
+                  }}
+                >
                   <Link href={`/user/dashboard`}>
                     <Typography
                       sx={{
@@ -165,19 +186,42 @@ const Page = () => {
               </Box>
             </Box>
 
-            <Box sx={{ display: 'flex' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+              }}
+            >
               <Box
-                sx={{ width: '330px', borderRight: '1px solid #E4E4E4', p: 3 }}
+                sx={{
+                  width: { xs: '100%', md: '330px' },
+                  borderRight: { xs: '0px', md: '1px solid #E4E4E4' },
+                  borderBottom: { xs: '1px solid #E4E4E4', md: '0px' },
+                  p: { xs: 5, md: 3 },
+                }}
               >
-                <Typography>{applicant_Titlt || ''}</Typography>
+                <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
+                  {applicant_Titlt || ''}
+                </Typography>
                 <Typography>{`${findAgent?.firstName || ''} ${findAgent?.lastName || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
-              <Box sx={{ width: '100%' }}>
+              <Box
+                sx={{
+                  width: { xs: '100%', md: '80%' },
+                  padding: { xs: '40px', md: '40px' },
+                }}
+              >
                 <PropertyDetail
                   title={PropertyDetails}
                   heading={PROPOSAL?.propertyDetails}
                   subTitle={spacificPostProposal?.title}
                   description={spacificPostProposal?.description}
+                  width={'100%'}
+                  pb={'5px'}
+                  pt={'0px'}
+                  px={'0px'}
+                  paddingHeading={'10px'}
+                  subPadding={'0px'}
                 />
                 <Location
                   city={spacificPostProposal?.city}
@@ -186,6 +230,12 @@ const Page = () => {
                   propertyType={spacificPostProposal?.propertyType}
                   proportyCategory={spacificPostProposal?.proportyCategory}
                   location={spacificPostProposal?.location}
+                  width={'100%'}
+                  widthBox={'100%'}
+                  className={'locationWidth'}
+                  pb={'20px'}
+                  pt={'30px'}
+                  px={'0px'}
                 />
                 <PreviewAmountAndFeature
                   area={spacificPostProposal?.area}
@@ -197,6 +247,11 @@ const Page = () => {
                     spacificPostProposal?.instalmentAvailable
                   }
                   readyPossession={spacificPostProposal?.readyPossession}
+                  width={'100%'}
+                  pb={'10px'}
+                  pt={'30px'}
+                  px={'0px'}
+                  subPadding={'0px'}
                 />
                 {/* <PreviewFeatureAndAmenities
                   amenities={amenities}
@@ -209,11 +264,17 @@ const Page = () => {
                   title={images?.title}
                   media={spacificPostProposal?.images}
                   mediaType={images?.type}
+                  pb={'20px'}
+                  pt={'30px'}
+                  px={'0px'}
                 />
                 <BidMedia
                   title={videos?.title}
                   media={spacificPostProposal?.videos}
                   mediaType={videos?.type}
+                  pb={'20px'}
+                  pt={'30px'}
+                  px={'0px'}
                 />
               </Box>
             </Box>
