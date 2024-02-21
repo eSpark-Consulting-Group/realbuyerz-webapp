@@ -10,9 +10,9 @@ import {
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForRent = ({ rentCount }) => {
+const PropertyForRent = ({ rentCount, link }) => {
   return (
-    <div>
+    <>
       <Grid container justifyContent="space-between">
         <Grid item>
           <Box
@@ -51,7 +51,7 @@ const PropertyForRent = ({ rentCount }) => {
               display: 'flex',
             }}
           >
-            <Link href={PROPERTIES}>
+            <Link href={link}>
               <Button
                 variant="body2"
                 sx={{
@@ -74,7 +74,7 @@ const PropertyForRent = ({ rentCount }) => {
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 

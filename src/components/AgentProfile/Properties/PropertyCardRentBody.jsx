@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 
-const PropertyCardRentBody = ({ rentData }) => {
+const PropertyCardRentBody = ({ rentData, link }) => {
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
@@ -21,7 +22,8 @@ const PropertyCardRentBody = ({ rentData }) => {
             }}
           >
             <Box>
-              <Typography
+              <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                 <Typography
                 sx={{
                   color: '#126FAA',
                   fontSize: '18px',
@@ -33,6 +35,8 @@ const PropertyCardRentBody = ({ rentData }) => {
               >
                 {rentData[propertyType]}
               </Typography>
+              </Link>
+               <Link href={`${link}/${propertyType.toLowerCase()}`}>
               <Typography
                 sx={{
                   color: '#777',
@@ -43,7 +47,7 @@ const PropertyCardRentBody = ({ rentData }) => {
                 }}
               >
                 {propertyType}
-              </Typography>
+              </Typography></Link>
             </Box>
           </Box>
         </Grid>

@@ -2,10 +2,12 @@ import React from 'react';
 import { Typography } from '@mui/material';
 
 import { PROPERTIES_BY } from '@/app/constants/AgentProfile';
+import Link from 'next/link';
 
-const AgentTitle = ({ title }) => {
+const AgentTitle = ({ title, link }) => {
   return (
-    <Typography
+    <Link href={link}>
+      <Typography
       variant="h4"
       sx={{
         color: '#000',
@@ -17,6 +19,7 @@ const AgentTitle = ({ title }) => {
     >
       {`${PROPERTIES_BY} ${title}`}
     </Typography>
+    </Link>
   );
 };
 export default AgentTitle;

@@ -11,7 +11,7 @@ import {
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ sellCount }) => {
+const PropertyForSale = ({ sellCount, link }) => {
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -54,7 +54,7 @@ const PropertyForSale = ({ sellCount }) => {
               verticalAlign: 'baseline',
             }}
           >
-            <Link href={PROPERTIES}>
+            <Link href={link}>
               <Button
                 variant="body2"
                 sx={{
