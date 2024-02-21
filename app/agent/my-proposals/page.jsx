@@ -19,7 +19,8 @@ const Page = () => {
           },
         }}
       >
-        <ProposalFilter data={proposals} />
+        hhhh
+        {/* <ProposalFilter data={proposals} /> */}
       </Box>
     </>
   );
