@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   handleConnectProposal,
   handleRejectProposal,
+  handleSetActive,
 } from '@/src/redux/slices/userAds/userAdsSlice';
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
@@ -20,6 +21,10 @@ import PreviewAmountAndFeature from '@/src/components/PostListing/preview/Previe
 import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
+import {
+  handleAgentRejectProposal,
+  handlePropertiesSetActive,
+} from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -31,12 +36,13 @@ const Page = () => {
   const segments = pathname.split('/');
   const getadid = segments[segments.length - 3];
   const getproposalId = segments[segments.length - 1];
+  // const { connectedProposals } = useSelector((state) => state?.postRequestAds);
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
   const spacificPost = userPostings?.find((item) => getadid == item?.adId);
   const spacificPostProposal = spacificPost?.proposals?.find(
-    (prop) => prop?.proposalId == getproposalId
+    (prop) => prop?.proposalId == getproposalId || []
   );
 
   const loginAgents = useSelector((state) => state?.loginAgents);
@@ -46,10 +52,14 @@ const Page = () => {
 
   const handleConnect = () => {
     dispatch(handleConnectProposal(spacificPostProposal));
+    // dispatch(handleAgentConnectProposal(connectedProposals));
+    dispatch(handleSetActive({ adId: spacificPostProposal?.adId }));
+    dispatch(handlePropertiesSetActive(spacificPost));
   };
 
   const handleReject = () => {
     dispatch(handleRejectProposal(spacificPostProposal));
+    dispatch(handleAgentRejectProposal(spacificPostProposal));
   };
 
   console.log(spacificPostProposal, 'spacificPostProposal');

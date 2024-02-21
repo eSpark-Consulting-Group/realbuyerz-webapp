@@ -1,28 +1,12 @@
-'use client';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import ProposalFilter from '@/src/components/Proposals/ProposalFilter';
-import { Box } from '@mui/material';
+import AgentProposals from '@/src/components/AgentProposals';
 
-const Page = () => {
-  const proposals = useSelector((state) => state.proposals.proposals);
-  console.log('proposals', proposals);
+const page = () => {
   return (
     <>
-      <Box
-        sx={{
-          width: {
-            lg: '1200px',
-            '@media (min-width: 1440px) and (max-width: 1568px)': {
-              width: '100%',
-            },
-          },
-        }}
-      >
-        <ProposalFilter data={proposals} />
-      </Box>
+      <AgentProposals />
     </>
   );
 };
 
-export default Page;
+export default page;

@@ -18,10 +18,10 @@ import { useSelector } from 'react-redux';
 const Page = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
-  const { userPostings, connectedProposals, draft, trash } = useSelector(
+  const { userPostings, draft, trash, active } = useSelector(
     (state) => state?.postRequestAds
   );
-  console.log(connectedProposals, 'connectedProposals');
+
   const tabs = [
     {
       label: 'All',
@@ -31,7 +31,7 @@ const Page = () => {
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: connectedProposals?.length || 0,
+      items: active?.length || 0,
     },
     {
       label: 'Draft',
@@ -372,15 +372,13 @@ const Page = () => {
                 )
               )
             : currentTab === 'Active'
-              ? getFilteredOutput(connectedProposals, filterObject)?.map(
-                  (item, index) => (
-                    <ProposalCard
-                      key={index}
-                      data={item}
-                      currentTab={currentTab}
-                    />
-                  )
-                )
+              ? getFilteredOutput(active, filterObject)?.map((item, index) => (
+                  <ProposalCard
+                    key={index}
+                    data={item}
+                    currentTab={currentTab}
+                  />
+                ))
               : currentTab === 'Draft'
                 ? getFilteredOutput(draft, filterObject)?.map((item, index) => (
                     <ProposalCard

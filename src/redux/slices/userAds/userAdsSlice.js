@@ -62,6 +62,33 @@ const userAdsSlice = createSlice({
             images: [],
             videos: [],
           },
+          {
+            adId: 237,
+            agentId: 20,
+            proposalId: 102,
+            status: '',
+            title: 'done ',
+            location: '',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            area: 120,
+            amount: 120,
+            areaUnit: 'sq.ft',
+            amountCurrency: 'GBP',
+            city: 'Karachi',
+            bedrooms: 0,
+            connects: '',
+            bathrooms: 0,
+            parking: 0,
+            other_features: [],
+            purpose: 'Rent',
+            proportyCategory: 'House',
+            propertyType: 'Pent House',
+            instalmentAvailable: true,
+            readyPossession: true,
+            images: [],
+            videos: [],
+          },
         ],
         posted_Time: '5:52 PM',
         other_features: [],
@@ -89,8 +116,8 @@ const userAdsSlice = createSlice({
         userId: '',
         proposals: [
           {
-            adId: 135,
-            agentId: 15,
+            adId: 445,
+            agentId: 16,
             proposalId: 125,
             status: '',
             title: 'done ',
@@ -116,8 +143,8 @@ const userAdsSlice = createSlice({
             videos: [],
           },
           {
-            adId: 135,
-            agentId: 20,
+            adId: 445,
+            agentId: 32,
             proposalId: 200,
             status: '',
             title: 'done ',
@@ -171,7 +198,7 @@ const userAdsSlice = createSlice({
           {
             adId: 135,
             agentId: 15,
-            proposalId: 125,
+            proposalId: 302,
             status: '',
             title: 'done ',
             location: '',
@@ -198,7 +225,7 @@ const userAdsSlice = createSlice({
           {
             adId: 135,
             agentId: 20,
-            proposalId: 200,
+            proposalId: 962,
             status: '',
             title: 'done ',
             location: '',
@@ -416,6 +443,13 @@ const userAdsSlice = createSlice({
     handleSumitUserAds: (state, action) => {
       state?.userPostings?.push(action.payload);
     },
+    handleSetActive: (state, action) => {
+      const { adId } = action.payload;
+      const activeAds = state?.userPostings?.find(
+        (item) => item?.adId === adId
+      );
+      state?.active?.push(activeAds);
+    },
     handleSendProposals: (state, action) => {
       const { adId } = action.payload;
       const adIndex = state?.userPostings?.findIndex((ad) => ad?.adId === adId);
@@ -459,6 +493,13 @@ const userAdsSlice = createSlice({
           if (!alreadyConnected) {
             connectedProposals.status = 'active';
             state?.connectedProposals?.push(connectedProposals);
+            state?.userPostings[adIndex]?.proposals?.splice(proposalIndex, 1);
+            state.rejectedProposals.push(
+              state?.userPostings[adIndex]?.proposals?.filter(
+                (item) => item?.status !== 'Active'
+              )
+            );
+            state.userPostings[adIndex].proposals = []; // how i set empty array
           }
         }
       }
@@ -477,15 +518,21 @@ const userAdsSlice = createSlice({
         state.trash.push(postings_trash);
       }
       // Active
-      const activeIndex = state?.connectedProposals?.findIndex(
+      const activeIndex = state?.active?.findIndex((ad) => ad?.adId === adId);
+      if (activeIndex !== -1 && currentTab == 'Active') {
+        const active_trash = state?.active?.splice(activeIndex, 1)[0];
+        state?.trash?.push(active_trash);
+      }
+      // Connected proposals
+      const connectedProposalIndex = state?.connectedProposals?.findIndex(
         (ad) => ad?.adId === adId
       );
-      if (activeIndex !== -1 && currentTab == 'Active') {
-        const active_trash = state?.connectedProposals?.splice(
-          activeIndex,
+      if (connectedProposalIndex !== -1 && currentTab == 'ActiveProposal') {
+        const connectedProposal_trash = state?.connectedProposals?.splice(
+          connectedProposalIndex,
           1
         )[0];
-        state?.trash?.push(active_trash);
+        state?.trash?.push(connectedProposal_trash);
       }
       // draft
       const draftIndex = state?.draft?.findIndex((ad) => ad?.adId === adId);
@@ -498,6 +545,7 @@ const userAdsSlice = createSlice({
 });
 
 export const {
+  handleSetActive,
   handleSumitUserAds,
   handleSendProposals,
   handleRejectProposal,

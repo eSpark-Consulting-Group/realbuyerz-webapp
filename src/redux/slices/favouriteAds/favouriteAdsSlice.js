@@ -6,12 +6,12 @@ const favoriteAdsSlice = createSlice({
   reducers: {
     //save ads
     handleSaveAds: (state, action) => {
-      const { formId } = action.payload;
-      const foundObject = state.find((obj) => obj.formId === formId);
+      const { adId } = action.payload;
+      const foundObject = state?.find((obj) => obj?.adId === adId);
       if (foundObject) {
         null;
       } else {
-        state.push(action.payload);
+        state?.push(action.payload);
       }
     },
   },

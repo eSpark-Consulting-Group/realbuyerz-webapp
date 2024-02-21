@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 
-import { handleSaveAds } from '@/src/redux/slices/favouriteAds/favouriteAdsSlice';
+import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const RightSection = ({
   postId,
@@ -28,7 +28,7 @@ const RightSection = ({
   };
 
   const handleSave = () => {
-    dispatch(handleSaveAds(spacificPost));
+    dispatch(handleSaveRequest(spacificPost));
   };
 
   return (

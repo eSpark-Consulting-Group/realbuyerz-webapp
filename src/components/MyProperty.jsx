@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux';
 const MyProperty = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
-  const { agentPostings, connectedProposals, draft, trash } = useSelector(
+  const { agentPostings, active, draft, trash } = useSelector(
     (state) => state?.postListingAds
   );
 
@@ -31,7 +31,7 @@ const MyProperty = () => {
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: connectedProposals?.length || 0,
+      items: active?.length || 0,
     },
     {
       label: 'Draft',
@@ -372,15 +372,13 @@ const MyProperty = () => {
                 )
               )
             : currentTab === 'Active'
-              ? getFilteredOutput(connectedProposals, filterObject)?.map(
-                  (item, index) => (
-                    <ProposalCard
-                      key={index}
-                      data={item}
-                      currentTab={currentTab}
-                    />
-                  )
-                )
+              ? getFilteredOutput(active, filterObject)?.map((item, index) => (
+                  <ProposalCard
+                    key={index}
+                    data={item}
+                    currentTab={currentTab}
+                  />
+                ))
               : currentTab === 'Draft'
                 ? getFilteredOutput(draft, filterObject)?.map((item, index) => (
                     <ProposalCard

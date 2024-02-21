@@ -168,6 +168,8 @@ const postlistingAdSlice = createSlice({
     ],
     trash: [],
     active: [],
+    archive: [],
+    saveRequest: [],
     rejectedProposals: [],
     connectedProposals: [],
   },
@@ -175,8 +177,20 @@ const postlistingAdSlice = createSlice({
     handlePostlistingAd: (state, action) => {
       state.agentPostings.push(action.payload);
     },
+    handlePropertiesSetActive: (state, action) => {
+      state?.active?.push(action.payload);
+    },
     handleSubmitDraft: (state, action) => {
       state?.draft?.push(action.payload);
+    },
+    handleSaveRequest: (state, action) => {
+      const { adId } = action.payload;
+      const foundObject = state?.saveRequest?.find((obj) => obj?.adId === adId);
+      if (foundObject) {
+        null;
+      } else {
+        state?.saveRequest?.push(action.payload);
+      }
     },
     handlePropertiesSubmitTrash: (state, action) => {
       const { adId, currentTab } = action.payload;
@@ -189,15 +203,21 @@ const postlistingAdSlice = createSlice({
         state.trash.push(postings_trash);
       }
       // Active
-      const activeIndex = state?.connectedProposals?.findIndex(
+      const activeIndex = state?.active?.findIndex((ad) => ad?.adId === adId);
+      if (activeIndex !== -1 && currentTab == 'Active') {
+        const active_trash = state?.active?.splice(activeIndex, 1)[0];
+        state?.trash?.push(active_trash);
+      }
+      // Connected proposals
+      const connectedProposalIndex = state?.connectedProposals?.findIndex(
         (ad) => ad?.adId === adId
       );
-      if (activeIndex !== -1 && currentTab == 'Active') {
-        const active_trash = state?.connectedProposals?.splice(
-          activeIndex,
+      if (connectedProposalIndex !== -1 && currentTab == 'ActiveProposal') {
+        const connectedProposal_trash = state?.connectedProposals?.splice(
+          connectedProposalIndex,
           1
         )[0];
-        state?.trash?.push(active_trash);
+        state?.trash?.push(connectedProposal_trash);
       }
       // draft
       const draftIndex = state?.draft?.findIndex((ad) => ad?.adId === adId);
@@ -206,52 +226,23 @@ const postlistingAdSlice = createSlice({
         state?.trash?.push(draft_trash);
       }
     },
-    handleRejectProposal: (state, action) => {
-      const { adId, proposalId } = action.payload;
-      const adIndex = state?.userPostings?.findIndex(
-        (ad) => ad?.adId === adId && adId
-      );
-      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
-        (proposal) => proposal?.proposalId === proposalId
-      );
-      if (adIndex !== -1) {
-        if (proposalIndex !== -1) {
-          const rejectedProposal =
-            state?.userPostings[adIndex]?.proposals[proposalIndex];
-          rejectedProposal.status = 'rejected';
-          state?.rejectedProposals?.push(rejectedProposal);
-          state?.userPostings[adIndex]?.proposals?.splice(proposalIndex, 1);
-        }
-      }
+
+    handleAgentRejectProposal: (state, action) => {
+      state?.rejectedProposals?.push(action.payload);
     },
-    handleConnectProposal: (state, action) => {
-      const { adId, proposalId } = action.payload;
-      const adIndex = state?.userPostings?.findIndex(
-        (ad) => ad?.adId === adId && adId
-      );
-      const proposalIndex = state?.userPostings[adIndex]?.proposals?.findIndex(
-        (proposal) => proposal?.proposalId === proposalId
-      );
-      if (adIndex !== -1) {
-        if (proposalIndex !== -1) {
-          const connectedProposals =
-            state?.userPostings[adIndex]?.proposals[proposalIndex];
-          const alreadyConnected = state?.connectedProposals?.some(
-            (proposal) => proposal?.proposalId === proposalId
-          );
-          if (!alreadyConnected) {
-            connectedProposals.status = 'active';
-            state?.connectedProposals?.push(connectedProposals);
-          }
-        }
-      }
+    handleAgentConnectProposal: (state, action) => {
+      state?.connectedProposals?.push(action.payload);
     },
   },
 });
 
 export const {
   handlePostlistingAd,
+  handlePropertiesSetActive,
   handleSubmitDraft,
+  handleSaveRequest,
+  handleAgentConnectProposal,
+  handleAgentRejectProposal,
   handlePropertiesSubmitTrash,
 } = postlistingAdSlice.actions;
 export default postlistingAdSlice.reducer;
