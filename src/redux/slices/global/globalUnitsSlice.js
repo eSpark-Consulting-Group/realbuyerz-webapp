@@ -4,6 +4,8 @@ import {
   CURRENCY_UNITS,
   PROPERTY_TABS_DATA,
   PROPERTY_TYPES,
+  CITIES_NAME,
+  AMENITIES_NAME,
 } from '@/app/constants/Projects/projectsFilter';
 
 const initialState = {
@@ -11,6 +13,8 @@ const initialState = {
   CURRENCY_UNITS,
   PROPERTY_TYPES,
   PROPERTY_TABS_DATA,
+  CITIES_NAME,
+  AMENITIES_NAME,
 };
 
 const globalUnitsSlice = createSlice({
