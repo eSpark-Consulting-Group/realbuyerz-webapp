@@ -34,7 +34,14 @@ const AgentProfile = () => {
         {user ? (
           <>
             <AgentProfiles data={user} />
-            <AgentProperties data={user} />
+            <AgentProperties
+              data={user}
+              allLink={'/profile/${id}/projects'}
+              saleLink={`/profile/${id}/projects/sale/`}
+              rentLink={`/profile/${id}/projects/rent/`}
+              rentData={``}
+              saleData={``}
+            />
             <AgentAbout data={user} />
             <RecentPropertyTitle data={user} />
             <AgentSlider data={AGENT_PROFILE_DATA} />

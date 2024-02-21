@@ -7,9 +7,9 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
+import { PROJECTS_DATA } from '@/src/constants/projects';
 
 const itemsToShow = 10;
-
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalItems = Math.min(data.length, itemsToShow) || 10;
@@ -17,11 +17,10 @@ const ProjectsSlider = ({ data, category }) => {
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
-  const NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
   const filterData = data?.filter(
     (item) => item?.proportyCategory === category
   );
-  const filteredData = filterData?.length ? filterData : NoData;
+  const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
   const sliderSettings = {
     slidesPerView: 3,
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
