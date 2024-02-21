@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Grid, Typography, Button, Modal } from '@mui/material';
+import { Typography, Button, Modal } from '@mui/material';
 import Image from 'next/image';
 
 import BidSlider from './BidSlider';
