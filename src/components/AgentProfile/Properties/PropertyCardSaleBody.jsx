@@ -23,32 +23,34 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
             }}
           >
             <Box>
-              
-               <Link href={`${link}/${propertyType.toLowerCase()}`}>
-              <Typography
-                sx={{
-                  color: '#126FAA',
-                  fontSize: '18px',
-                  fontStyle: 'normal',
-                  fontWeight: 700,
-                  lineHeight: 'normal',
-                  textAlign: 'center',
-                }}
-              >
-                {sellData[propertyType]}
-              </Typography></Link>
-              
-               <Link href={`${link}/${propertyType.toLowerCase()}`}><Typography
-                sx={{
-                  color: '#777',
-                  fontSize: '12px',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
-                  lineHeight: 'normal',
-                }}
-              >
-                {propertyType}
-              </Typography></Link>
+              <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                <Typography
+                  sx={{
+                    color: '#126FAA',
+                    fontSize: '18px',
+                    fontStyle: 'normal',
+                    fontWeight: 700,
+                    lineHeight: 'normal',
+                    textAlign: 'center',
+                  }}
+                >
+                  {sellData[propertyType]}
+                </Typography>
+              </Link>
+
+              <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                <Typography
+                  sx={{
+                    color: '#777',
+                    fontSize: '12px',
+                    fontStyle: 'normal',
+                    fontWeight: 400,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  {propertyType}
+                </Typography>
+              </Link>
             </Box>
           </Box>
         </Grid>
