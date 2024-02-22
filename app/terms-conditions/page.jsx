@@ -4,12 +4,14 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import { TERM_CONDITIONS } from '../constants/TermCondition';
 import { PAGES_INFO } from '../constants/Constants';
+import { useSelector } from 'react-redux';
 
 const TermsConditions = () => {
-  const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
+   const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
+  const [selectedTab, setSelectedTab] = useState(terms.content[0]);
 
   const handleTabClick = (tabId) => {
-    const selectedTab = TERM_CONDITIONS.find((tab) => tab.id === tabId);
+    const selectedTab = terms.content.find((tab) => tab.id === tabId);
     if (selectedTab) {
       setSelectedTab(selectedTab);
     }
@@ -35,7 +37,7 @@ const TermsConditions = () => {
           pb: '60px',
         }}
       >
-        {PAGES_INFO?.tncPageTitle}
+        {terms?.title}
       </Typography>
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         <Grid
@@ -57,7 +59,7 @@ const TermsConditions = () => {
               flexDirection: 'column',
             }}
           >
-            {TERM_CONDITIONS?.map((item) => (
+            {terms.content?.map((item) => (
               <Box
                 key={item.id}
                 variant={'outland'}
