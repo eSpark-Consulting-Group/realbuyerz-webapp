@@ -27,29 +27,6 @@ const user = {
   proposals: [],
 };
 
-const agent = {
-  id: 301,
-  first_name: 'Arman',
-  last_name: 'Khan',
-  email: 'arman@esparkconsultants.com',
-  mobile_number: '+923192013292',
-  landline_number: 4523100000,
-  whatsapp: '+923192013292',
-  country: 'Pakistan',
-  address: '301/A, Blossom Trade Center',
-  password: '123456',
-  isVerified: false,
-  social_id: '',
-  role: 'agent',
-  profile_image: '/images/profile.png',
-  status: true,
-  visibility: true,
-  created_at: new Date(),
-  updated_at: null,
-  available_connects: 0,
-  property_id: '',
-};
-
 const currentUserSlice = createSlice({
   name: 'currentUserSlice',
   initialState: {

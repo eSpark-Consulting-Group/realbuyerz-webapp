@@ -1,4 +1,3 @@
-import { PRIVACY_POLICY } from '@/app/constants/PrivacyPolicy';
 import { Grid, Typography, Box } from '@mui/material';
 
 const PolicyCard = ({ data, id, xs, md, sm, textAlign, backgroundColor }) => {

@@ -20,11 +20,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     savePreferenceData: (state, action) => {
-      const {
-        emailNotification,
-        areaUnit,
-        currencyUnit,
-      } = action.payload;
+      const { emailNotification, areaUnit, currencyUnit } = action.payload;
       state.users.userdata.areaUnit = areaUnit;
       state.users.userdata.currencyUnit = currencyUnit;
       state.users.userdata.emailNotification = emailNotification;

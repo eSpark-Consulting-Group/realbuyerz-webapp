@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 import {
   ALT,
-  PROPERTIES,
   PROPERTIES_FOR_RENT,
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';

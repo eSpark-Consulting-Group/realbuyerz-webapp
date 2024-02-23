@@ -68,6 +68,6 @@ export const store = configureStore({
 
     // global units States
     globalUnits: globalUnitsSlice,
-    currentUser: currentUserSlice
+    currentUser: currentUserSlice,
   },
 });

@@ -25,7 +25,7 @@ const PreferenceSettings = () => {
   };
   const handleInputChangeToggle = (name, checked) => {
     setFormData((prevData) => {
-      console.log(prevData,'prevData');
+      console.log(prevData, 'prevData');
       return {
         ...prevData,
         toggleData: prevData.toggleData.map((item) =>

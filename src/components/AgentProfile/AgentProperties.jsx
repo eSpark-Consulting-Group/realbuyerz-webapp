@@ -7,14 +7,7 @@ import AgentTitle from './AgentTitle';
 import PropertyForSale from './Properties/PropertyForSale';
 import PropertyForRent from './Properties/PropertyForRent';
 
-const AgentProperties = ({
-  data,
-  allLink,
-  sellLink,
-  rentLink,
-  sellData,
-  rentData,
-}) => {
+const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
   const theme = useTheme();
   return (
     <Box

@@ -1,13 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-
-import { TERM_CONDITIONS } from '../constants/TermCondition';
-import { PAGES_INFO } from '../constants/Constants';
 import { useSelector } from 'react-redux';
 
 const TermsConditions = () => {
-   const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
+  const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
   const [selectedTab, setSelectedTab] = useState(terms.content[0]);
 
   const handleTabClick = (tabId) => {

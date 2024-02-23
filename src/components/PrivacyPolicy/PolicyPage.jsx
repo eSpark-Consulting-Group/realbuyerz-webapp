@@ -3,13 +3,12 @@ import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import PolicyCard from '@/src/components/PrivacyPolicy/PolicyCard';
-import { PAGES_INFO } from '@/app/constants/Constants';
 import { CARDS } from '@/app/constants/PrivacyPolicy';
 import { useSelector } from 'react-redux';
 
 const PolicyPage = () => {
-     const policies = useSelector((state) => state.policies.PRIVACY_POLICY);
-    console.log(policies);
+  const policies = useSelector((state) => state.policies.PRIVACY_POLICY);
+  console.log(policies);
   return (
     <Box
       sx={{

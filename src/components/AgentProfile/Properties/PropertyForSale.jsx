@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import {
   ALT,
-  PROPERTIES,
   PROPERTIES_FOR_SALE,
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';

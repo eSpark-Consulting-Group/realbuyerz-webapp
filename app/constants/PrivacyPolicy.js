@@ -60,4 +60,4 @@ export const CARDS = [
   { id: 5, xs: 12, sm: 12, md: 5.8, textAlign: 'center' },
   { id: 6, xs: 12, sm: 12, md: 5.8, textAlign: 'center' },
   { id: 7, xs: 12, sm: 12, md: 12, textAlign: 'left' },
-]
+];

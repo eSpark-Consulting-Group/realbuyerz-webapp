@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import { redirect } from 'next/navigation';
-import { Box, Chip, Typography, Container } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const ChiperBack = ({ backText, backLink, chipperText, chipperLink }) => {
+const ChiperBack = ({ backText, backLink, chipperText }) => {
   return (
     <>
       <Container sx={{ py: '15px' }}>
