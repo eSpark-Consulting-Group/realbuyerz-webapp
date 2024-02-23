@@ -36,15 +36,15 @@ const Notification = ({ notificationData, handleInputChange }) => {
                     fontWeight: 400,
                   }}
                 >
-                  {item.title}
+                  {item?.title}
                 </Typography>
                 <Switch
                   sx={{
                     marginRight: { lg: '-12px' },
                   }}
-                  value={item.value}
+                  value={item?.value}
                   onChange={(event) =>
-                    handleInputChange(item.label, event.target.checked)
+                    handleInputChange(item?.label, event.target.checked)
                   }
                 />
               </Box>
@@ -56,7 +56,7 @@ const Notification = ({ notificationData, handleInputChange }) => {
                     fontWeight: 400,
                   }}
                 >
-                  {item.description}
+                  {item?.description}
                 </Typography>
               </Box>
             </Box>
