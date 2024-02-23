@@ -18,6 +18,10 @@ export const ProposalsPage = {
     text: 'Back to dashboard',
     link: '/user/dashboard',
   },
+  back_Proposal_Button: {
+    text: 'Back to Proposals',
+    link: '/agent/my-proposals/',
+  },
   view_Button: {
     text: 'View',
     link: 'proposal/',

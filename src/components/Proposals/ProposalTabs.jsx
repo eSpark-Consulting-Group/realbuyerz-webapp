@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import ProposalListingCard from './ProposalListingCard';
-import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
 import {
   countFilteredData,
   filterDataBySearch,
