@@ -37,7 +37,7 @@ const AccountType = ({
               ? '#EDF7FF'
               : 'transparent',
           alignItems: 'center',
-          mx: { lg: '38px', xl: '40px' },
+          mx: { lg: '32px', xl: '40px' },
           my: '10px',
           cursor: 'pointer',
         }}
@@ -50,7 +50,7 @@ const AccountType = ({
           xl={1}
           sx={{
             display: 'flex',
-            justifyContent: { xs: 'center', sm: 'center !important' },
+            justifyContent: { xs: 'center' },
           }}
         >
           <Radio
@@ -87,12 +87,19 @@ const AccountType = ({
           sx={{
             display: 'flex',
             justifyContent: { xs: 'flex-end' },
+            pr: { sm: '20px', lg: '0px' },
           }}
         >
           {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? (
-            <KeyboardArrowDownIcon fontSize="large" sx={{ color: '#666' }} />
+            <KeyboardArrowDownIcon
+              fontSize="large"
+              sx={{ color: '#666', fontSize: { xs: '26px', sm: '38px' } }}
+            />
           ) : (
-            <KeyboardArrowRightIcon fontSize="large" sx={{ color: '#666' }} />
+            <KeyboardArrowRightIcon
+              fontSize="large"
+              sx={{ color: '#666', fontSize: { xs: '26px', sm: '38px' } }}
+            />
           )}
         </Grid>
       </Grid>

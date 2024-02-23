@@ -32,7 +32,7 @@ const CreditCardType = ({
         container
         onClick={handleClick}
         sx={{
-          mx: { lg: '38px', xl: '40px' },
+          mx: { lg: '32px', xl: '40px' },
           my: '30px',
           width: '100%',
           height: '70px',
@@ -66,17 +66,21 @@ const CreditCardType = ({
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={6}
           sm={5}
+          md={4}
           lg={4}
           xl={3.5}
           sx={{
             color: '#333',
             fontSize: { xs: '11px', sm: '20px' },
+            '@media (max-width: 295px)': {
+              fontSize: '10.5px',
+            },
             fontStyle: 'normal',
             fontWeight: 600,
             display: 'flex',
-            justifyContent: { xs: 'center', sm: 'center', xl: 'flex-start' },
+            justifyContent: { xs: 'flex-start' },
             pl: { xl: '35px' },
           }}
         >
@@ -84,8 +88,9 @@ const CreditCardType = ({
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={1}
           sm={2}
+          md={2}
           lg={1}
           xl={1.4}
           sx={{
@@ -98,7 +103,7 @@ const CreditCardType = ({
               <Image
                 key={index}
                 src={item?.icon}
-                width={isSmallScreen ? 25 : 44}
+                width={isSmallScreen ? 35 : 44}
                 height={28}
                 alt={item?.alt}
               />
@@ -107,23 +112,27 @@ const CreditCardType = ({
         </Grid>
         <Grid
           item
-          xs={2}
+          xs={3}
           sm={4}
+          md={5}
           lg={6}
           xl={6}
           sx={{
             display: 'flex',
             justifyContent: { xs: 'flex-end !important' },
-            '@media (max-width: 400px)': {
-              justifyContent: 'flex-start !important',
-            },
-            pr: { lg: '15px' },
+            pr: { sm: '20px', lg: '15px' },
           }}
         >
           {selectedValue === NAME_ON_CARD ? (
-            <KeyboardArrowDownIcon fontSize="large" sx={{ color: '#666' }} />
+            <KeyboardArrowDownIcon
+              fontSize="large"
+              sx={{ color: '#666', fontSize: { xs: '26px', sm: '35px' } }}
+            />
           ) : (
-            <KeyboardArrowRightIcon fontSize="large" sx={{ color: '#666' }} />
+            <KeyboardArrowRightIcon
+              fontSize="large"
+              sx={{ color: '#666', fontSize: { xs: '26px', sm: '35px' } }}
+            />
           )}
         </Grid>
       </Grid>

@@ -33,7 +33,7 @@ const OrderSummary = ({
         flexDirection: 'column',
         justifyContent: 'center',
         textAlign: 'center',
-        px: { xs: 4.5, sm: 4.5, md: 3.5, lg: 3 },
+        px: { xs: 3, sm: 4.5, md: 3.5, lg: 3 },
       }}
     >
       <Box sx={{ borderBottom: '2px solid #E4E4E4', p: 3 }}>
@@ -175,6 +175,7 @@ const OrderSummary = ({
                 justifyContent: 'center',
                 alignItems: 'center',
                 mx: 'auto !important',
+                pb: { xs: '20px', sm: '50px' },
               }}
             >
               <Image
