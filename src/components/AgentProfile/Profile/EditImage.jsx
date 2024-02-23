@@ -2,12 +2,17 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import EditIcon from '@mui/icons-material/Edit';
-export default function ButtonBaseDemo({ url, handleOpen }) {
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+export default function ButtonBaseDemo({ url, handleOpen, data }) {
   const image = {
     url: url,
   };
-
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 2];
   const imageRef = React.useRef(null);
+  
 
   const handleMouseEnter = () => {
     if (imageRef.current) {
@@ -39,7 +44,7 @@ export default function ButtonBaseDemo({ url, handleOpen }) {
         borderRadius: { xs: '100%', sm: '0 100% 100% 0' },
       }}
     >
-      <ButtonBase
+      { id != 'profile' ? (<ButtonBase
         focusRipple
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -82,7 +87,7 @@ export default function ButtonBaseDemo({ url, handleOpen }) {
             transition: 'opacity 0.9s ease-in-out',
           }}
         />
-      </ButtonBase>
+      </ButtonBase>) : <Image src={data.profileImage} height={179} width={197} /> }
     </Box>
   );
 }
