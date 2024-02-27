@@ -550,5 +550,6 @@ body header {
   color: #999;
   pointer-events: none;
   user-select: none;
-  font-style: italic;
+  margin-top: 3px;
+  /* font-style: italic; */
 }

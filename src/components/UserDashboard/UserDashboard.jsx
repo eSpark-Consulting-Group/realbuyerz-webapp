@@ -30,7 +30,7 @@ const UserDashboard = () => {
         <Divider />
         <Box
           sx={{
-            p: { xs: 2, sm: 3 },
+            p: { xs: 2, sm: 6 },
           }}
         >
           <BiddingDetails

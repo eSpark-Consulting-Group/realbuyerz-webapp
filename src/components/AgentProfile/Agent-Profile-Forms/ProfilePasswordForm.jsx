@@ -152,6 +152,7 @@ export default function ProfilePasswordForm({ data }) {
             mt: { xs: 2, sm: 2.1, md: 4.1, lg: 4 },
             ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
             mb: { xs: 3, md: 3 },
+            fontSize: '15px',
             width: { xs: '90%', sm: 'auto', md: '160px' },
             height: { xs: '45px', md: '45px' },
             '&:hover': { color: '#fff' },

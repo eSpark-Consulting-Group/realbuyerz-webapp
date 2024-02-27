@@ -15,6 +15,7 @@ const Location = ({
   pb,
   pt,
   px,
+  fontSize,
 }) => {
   return (
     locationKeys?.title && (
@@ -31,7 +32,7 @@ const Location = ({
         <Typography
           sx={{
             color: '#000',
-            fontSize: '20px',
+            fontSize: fontSize ? fontSize : '20px',
             fontWeight: 500,
             mb: 1,
           }}

@@ -70,6 +70,7 @@ const Page = () => {
                       propertyType={spacificPost?.propertyType}
                       proportyCategory={spacificPost?.proportyCategory}
                       location={spacificPost?.location}
+                      width={'70%'}
                     />
                     <PreviewAmountAndFeature
                       area={spacificPost?.area}

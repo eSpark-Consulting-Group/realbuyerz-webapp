@@ -57,7 +57,9 @@ const Page = () => {
         >
           <Grid item xs={6} md={2.75}>
             <Box sx={{ width: '90%' }}>
-              <Typography>Purpose</Typography>
+              <Typography sx={{ fontSize: '15px', fontWeight: 400 }}>
+                Purpose
+              </Typography>
               <Autocomplete
                 sx={{
                   marginTop: '20px',
@@ -87,12 +89,6 @@ const Page = () => {
                         },
                       },
                     }}
-                    // InputProps={{
-                    //   sx: {
-                    //     // overflow: 'hidden',
-                    //     textOverflow: 'ellipsis',
-                    //   },
-                    // }}
                   />
                 )}
               />
@@ -100,7 +96,9 @@ const Page = () => {
           </Grid>
           <Grid item xs={6} md={2.75}>
             <Box sx={{ width: '90%' }}>
-              <Typography>City</Typography>
+              <Typography sx={{ fontSize: '15px', fontWeight: 400 }}>
+                City
+              </Typography>
               <Autocomplete
                 sx={{
                   marginTop: '20px',
@@ -137,7 +135,9 @@ const Page = () => {
           </Grid>
           <Grid item xs={6} md={2.75}>
             <Box sx={{ width: '90%' }}>
-              <Typography>Location</Typography>
+              <Typography sx={{ fontSize: '15px', fontWeight: 400 }}>
+                Location
+              </Typography>
               <Autocomplete
                 sx={{
                   marginTop: '20px',
@@ -174,7 +174,9 @@ const Page = () => {
           </Grid>
           <Grid item xs={6} md={2.75}>
             <Box sx={{ width: '90%' }}>
-              <Typography>Property Type</Typography>
+              <Typography sx={{ fontSize: '15px', fontWeight: 400 }}>
+                Property Type
+              </Typography>
               <Autocomplete
                 sx={{
                   marginTop: '20px',
@@ -255,6 +257,8 @@ const Page = () => {
                 disableRipple={true}
                 sx={{
                   textTransform: 'math-auto',
+                  fontSize: '18px',
+                  fontWeight: 400,
                 }}
               />
             ))}
@@ -264,7 +268,7 @@ const Page = () => {
         <Box
           className="scrollbar-container"
           sx={{
-            p: { xs: 2, sm: 3 },
+            p: { xs: 2, sm: 5 },
             height: '800px',
           }}
         >

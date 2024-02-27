@@ -99,6 +99,13 @@ const PropertyInformation = ({ propertyData, formik }) => {
                       border: formik.errors[item?.label] && `solid 1px red`,
                     },
                   }}
+                  inputProps={{
+                    sx: {
+                      '&::placeholder': {
+                        fontSize: { xs: '15px', md: '18px' },
+                      },
+                    },
+                  }}
                   name={item?.label}
                   value={formik.values[item?.label]}
                   onBlur={formik.handleBlur}

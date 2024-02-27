@@ -95,12 +95,15 @@ const BiddingDetails = ({ height, ads }) => {
                           variant="h4"
                           sx={{
                             ml: 0.4,
-                            fontSize: { xs: '21px' },
+                            fontSize: '20px',
                           }}
                         >
                           {item?.title}
                         </Typography>
-                        <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
+                        <Typography
+                          variant="body1"
+                          sx={{ ml: 0.5, mt: 1, fontSize: '12px' }}
+                        >
                           {'Posted 39 minutes ago'}
                         </Typography>
                       </Grid>
@@ -136,7 +139,7 @@ const BiddingDetails = ({ height, ads }) => {
                           <Typography
                             variant="body1"
                             sx={{
-                              fontSize: '14px',
+                              fontSize: '15px',
                               fontWeight: 600,
                               // ml: { xs: '4px', md: '0px' },
                             }}
@@ -211,7 +214,7 @@ const BiddingDetails = ({ height, ads }) => {
                           variant="body2"
                           sx={{
                             fontWeight: '500',
-                            fontSize: '13.8px',
+                            fontSize: '12px',
                             lineHeight: '20.52px',
                             mb: 1,
                           }}

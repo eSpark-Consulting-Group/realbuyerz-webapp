@@ -12,6 +12,7 @@ const PropertyDetail = ({
   pb,
   paddingHeading,
   subPadding,
+  fontSize,
 }) => {
   return (
     <>
@@ -43,7 +44,7 @@ const PropertyDetail = ({
           sx={{
             pb: '20px',
             color: '#000',
-            fontSize: '20px',
+            fontSize: fontSize ? fontSize : '20px',
             fontWeight: '500',
           }}
         >

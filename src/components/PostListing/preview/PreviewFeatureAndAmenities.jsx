@@ -7,6 +7,7 @@ const PreviewFeatureAndAmenities = ({
   parking,
   other_features,
   amenities,
+  fontSize,
 }) => {
   return (
     <>
@@ -18,7 +19,13 @@ const PreviewFeatureAndAmenities = ({
             '@media(min-width:280px) and (max-width:400px)': { px: 3 },
           }}
         >
-          <Typography sx={{ fontSize: { xs: '20px' }, fontWeight: 500, mb: 1 }}>
+          <Typography
+            sx={{
+              fontSize: { xs: fontSize ? fontSize : '20px' },
+              fontWeight: 500,
+              mb: 1,
+            }}
+          >
             {amenities?.title}
           </Typography>
           {bedrooms > 0 && (

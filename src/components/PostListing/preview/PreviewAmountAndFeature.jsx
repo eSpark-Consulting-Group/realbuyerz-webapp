@@ -12,6 +12,7 @@ const PreviewAmountAndFeature = ({
   pt,
   pb,
   subPadding,
+  fontSize,
 }) => {
   return (
     <>
@@ -29,7 +30,13 @@ const PreviewAmountAndFeature = ({
             },
           }}
         >
-          <Typography sx={{ fontSize: { xs: '20px' }, fontWeight: 500, mb: 1 }}>
+          <Typography
+            sx={{
+              fontSize: { xs: fontSize ? fontSize : '20px' },
+              fontWeight: 500,
+              mb: 1,
+            }}
+          >
             {areaAndAmount?.title}
           </Typography>
           <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>

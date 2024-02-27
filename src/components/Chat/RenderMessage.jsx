@@ -205,7 +205,7 @@ const RenderMessage = ({
             }}
           >
             {data?.contentType === 'text' ? (
-              <Typography sx={{ whiteSpace: 'pre-line' }}>
+              <Typography sx={{ whiteSpace: 'pre-line', fontSize: '16px' }}>
                 {data?.content}
               </Typography>
             ) : data?.contentType === 'image' ? (
@@ -291,7 +291,7 @@ const RenderMessage = ({
           }}
         >
           {data?.contentType === 'text' ? (
-            <Typography sx={{ whiteSpace: 'pre-line' }}>
+            <Typography sx={{ whiteSpace: 'pre-line', fontSize: '16px' }}>
               {data?.content}
             </Typography>
           ) : data?.contentType === 'image' ? (

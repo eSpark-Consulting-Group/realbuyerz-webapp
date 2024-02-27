@@ -84,6 +84,7 @@ const PreviewModal = (props) => {
               title={propertyDetails}
               subTitle={ads?.title}
               description={ads?.description}
+              fontSize={'18px'}
             />
             <Location
               city={ads?.city}
@@ -92,6 +93,7 @@ const PreviewModal = (props) => {
               propertyType={ads?.propertyType}
               proportyCategory={ads?.proportyCategory}
               location={ads?.location}
+              fontSize={'18px'}
             />
             <PreviewAmountAndFeature
               area={ads?.area}
@@ -101,6 +103,7 @@ const PreviewModal = (props) => {
               amountCurrency={ads?.amountCurrency}
               instalmentAvailable={ads?.instalmentAvailable}
               readyPossession={ads?.readyPossession}
+              fontSize={'18px'}
             />
             <PreviewFeatureAndAmenities
               amenities={amenities}
@@ -108,6 +111,7 @@ const PreviewModal = (props) => {
               bathrooms={ads?.bathrooms}
               parking={ads?.parking}
               other_features={ads?.other_features}
+              fontSize={'18px'}
             />
             {pathName !== userPath ? (
               <>
