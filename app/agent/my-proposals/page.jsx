@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ProposalFilter from '@/src/components/Proposals/ProposalFilter';
 import { Box } from '@mui/material';
 
 const Page = () => {
@@ -19,7 +18,7 @@ const Page = () => {
           },
         }}
       >
-        <ProposalFilter data={proposals} />
+        hhhh
       </Box>
     </>
   );
