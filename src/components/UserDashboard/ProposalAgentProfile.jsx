@@ -32,31 +32,19 @@ const ProposalAgentProfile = ({
                 key={index}
                 sx={{
                   padding: '44px 54px 44px 54px',
-                  '@media(min-width: 280px) and (max-width: 445px)': {
-                    justifyContent: 'center',
-                  },
                 }}
               >
                 <Grid container>
                   <Grid
                     item
-                    xl={10}
-                    lg={10}
-                    md={10}
-                    sm={8.5}
+                    xl={12}
+                    lg={12}
+                    md={12}
+                    sm={12}
                     xs={12}
                     sx={{
-                      pl: { sm: 0, md: 2 },
-                      '@media(min-width: 280px) and (max-width: 445px)': {
-                        display: 'flex',
-                        justifyContent: 'center',
-                      },
-                      '@media(min-width: 600px) and (max-width: 730px)': {
-                        pl: '10%',
-                      },
-                      '@media(min-width: 960px) and (max-width: 1260px)': {
-                        pl: '8%',
-                      },
+                      height: { xs: '550px', md: '200px' },
+                      marginTop: '15px',
                     }}
                   >
                     <UserProfileDetails

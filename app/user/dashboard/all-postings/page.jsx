@@ -148,7 +148,18 @@ const Page = () => {
                   },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Select Purpose" />
+                  <TextField
+                    {...params}
+                    label="Select Purpose"
+                    InputLabelProps={{
+                      sx: {
+                        fontSize: '14px',
+                        '@media (min-width: 280px) and (max-width: 375px)': {
+                          fontSize: '10px',
+                        },
+                      },
+                    }}
+                  />
                 )}
               />
             </Box>
@@ -178,7 +189,18 @@ const Page = () => {
                   },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Select City" />
+                  <TextField
+                    {...params}
+                    label="Select City"
+                    InputLabelProps={{
+                      sx: {
+                        fontSize: '14px',
+                        '@media (min-width: 280px) and (max-width: 375px)': {
+                          fontSize: '10px',
+                        },
+                      },
+                    }}
+                  />
                 )}
               />
             </Box>
@@ -208,7 +230,18 @@ const Page = () => {
                   },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Select Location" />
+                  <TextField
+                    {...params}
+                    label="Select Location"
+                    InputLabelProps={{
+                      sx: {
+                        fontSize: '14px',
+                        '@media (min-width: 280px) and (max-width: 375px)': {
+                          fontSize: '10px',
+                        },
+                      },
+                    }}
+                  />
                 )}
               />
             </Box>
@@ -298,7 +331,18 @@ const Page = () => {
                   },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Select Type" />
+                  <TextField
+                    {...params}
+                    label="Select Type"
+                    InputLabelProps={{
+                      sx: {
+                        fontSize: '14px',
+                        '@media (min-width: 280px) and (max-width: 375px)': {
+                          fontSize: '10px',
+                        },
+                      },
+                    }}
+                  />
                 )}
               />
             </Box>
@@ -357,8 +401,10 @@ const Page = () => {
         </Box>
         <Divider />
         <Box
+          className="scrollbar-container"
           sx={{
             p: { xs: 2, sm: 3 },
+            height: '800px',
           }}
         >
           {currentTab === 'All'

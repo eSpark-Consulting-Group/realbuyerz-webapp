@@ -10,6 +10,9 @@ const LiveBiddingPropertiesList = ({
   proposal,
   connects,
   cardKeys,
+  noConnects,
+  pl,
+  justifyContent,
 }) => {
   const pathName = usePathname();
   const agent = '/agent';
@@ -19,7 +22,7 @@ const LiveBiddingPropertiesList = ({
     <Box
       sx={{
         width: '100%',
-        paddingLeft: '17px',
+        paddingLeft: pl ? pl : '17px',
         '@media(min-width: 280px) and (max-width: 445px)': {
           justifyContent: 'center',
         },
@@ -29,7 +32,7 @@ const LiveBiddingPropertiesList = ({
         sx={{
           display: 'flex',
           '@media(min-width: 280px) and (max-width: 445px)': {
-            justifyContent: 'center',
+            justifyContent: justifyContent ? justifyContent : 'center',
           },
         }}
       >
@@ -47,7 +50,7 @@ const LiveBiddingPropertiesList = ({
         sx={{
           display: 'flex',
           '@media(min-width: 280px) and (max-width: 445px)': {
-            justifyContent: 'center',
+            justifyContent: justifyContent ? justifyContent : 'center',
           },
         }}
       >
@@ -65,7 +68,7 @@ const LiveBiddingPropertiesList = ({
         sx={{
           display: 'flex',
           '@media(min-width: 280px) and (max-width: 445px)': {
-            justifyContent: 'center',
+            justifyContent: justifyContent ? justifyContent : 'center',
           },
         }}
       >
@@ -104,27 +107,31 @@ const LiveBiddingPropertiesList = ({
       ) : null}
 
       {pathName.includes(agent) ? (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: 'center',
-            },
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.connects}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {connects}
-          </Typography>
-        </Box>
+        <>
+          {noConnects && (
+            <Box
+              sx={{
+                display: 'flex',
+                '@media(min-width: 280px) and (max-width: 445px)': {
+                  justifyContent: 'center',
+                },
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+              >
+                {cardKeys?.connects}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ color: '#333333', fontWeight: 500 }}
+              >
+                {connects}
+              </Typography>
+            </Box>
+          )}
+        </>
       ) : null}
     </Box>
   );

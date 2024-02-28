@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import ProposalListingCard from './ProposalListingCard';
-import { NO_RESULTS_FOUND } from '@/app/constants/Proposals';
 import {
   countFilteredData,
   filterDataBySearch,
   filterPropertiesByStatus,
 } from '@/utils/SearchFilter';
 import { getUniqueProposalStatus } from '@/utils/proposalFilter';
+import ProposalCard from '../Proposal/ProposalCard';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
@@ -126,23 +125,34 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
           {displayData?.length > 0 ? (
             <ProposalListingCard proposalsData={displayData} />
           ) : (
+            // <Box
+            //   sx={{
+            //     width: '100%',
+            //     height: '100%',
+            //     display: 'flex',
+            //     justifyContent: 'center',
+            //     alignItems: 'center',
+            //   }}
+            // >
+            //   <Typography
+            //     sx={{
+            //       fontSize: '40px',
+            //       color: '#333',
+            //     }}
+            //   >
+            //     {/* {NO_RESULTS_FOUND} */}
+            //   </Typography>
+            // </Box>
             <Box
+              className="scrollbar-container"
               sx={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                p: { xs: 2, sm: 3 },
+                height: '800px',
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: '40px',
-                  color: '#333',
-                }}
-              >
-                {NO_RESULTS_FOUND}
-              </Typography>
+              {[...Array(5)].map((_, index) => (
+                <ProposalCard key={index} index={index} userView={false} />
+              ))}
             </Box>
           )}
         </Box>
