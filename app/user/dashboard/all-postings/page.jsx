@@ -22,26 +22,32 @@ const Page = () => {
     (state) => state?.postRequestAds
   );
 
+  const user_id = useSelector((state) => state?.currentUser?.user?.id);
+  const find_posting = userPostings?.filter((item) => item.user_id == user_id);
+  const find_draft = draft?.filter((item) => item.user_id == user_id);
+  const find_active = active?.filter((item) => item.user_id == user_id);
+  const find_trash = trash?.filter((item) => item.user_id == user_id);
+
   const tabs = [
     {
       label: 'All',
       prop: a11yProps(0),
-      items: userPostings?.length || 0,
+      items: find_posting?.length || 0,
     },
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: active?.length || 0,
+      items: find_active?.length || 0,
     },
     {
       label: 'Draft',
       prop: a11yProps(2),
-      items: draft?.length || 0,
+      items: find_draft?.length || 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
-      items: trash?.length || 0,
+      items: find_trash?.length || 0,
     },
   ];
   const [filterObject, setfilterObject] = useState({
@@ -408,7 +414,7 @@ const Page = () => {
           }}
         >
           {currentTab === 'All'
-            ? getFilteredOutput(userPostings, filterObject)?.map(
+            ? getFilteredOutput(find_posting, filterObject)?.map(
                 (item, index) => (
                   <ProposalCard
                     key={index}
@@ -418,23 +424,27 @@ const Page = () => {
                 )
               )
             : currentTab === 'Active'
-              ? getFilteredOutput(active, filterObject)?.map((item, index) => (
-                  <ProposalCard
-                    key={index}
-                    data={item}
-                    currentTab={currentTab}
-                  />
-                ))
-              : currentTab === 'Draft'
-                ? getFilteredOutput(draft, filterObject)?.map((item, index) => (
+              ? getFilteredOutput(find_active, filterObject)?.map(
+                  (item, index) => (
                     <ProposalCard
                       key={index}
                       data={item}
                       currentTab={currentTab}
                     />
-                  ))
+                  )
+                )
+              : currentTab === 'Draft'
+                ? getFilteredOutput(find_draft, filterObject)?.map(
+                    (item, index) => (
+                      <ProposalCard
+                        key={index}
+                        data={item}
+                        currentTab={currentTab}
+                      />
+                    )
+                  )
                 : currentTab === 'Trash'
-                  ? getFilteredOutput(trash, filterObject)?.map(
+                  ? getFilteredOutput(find_trash, filterObject)?.map(
                       (item, index) => (
                         <ProposalCard
                           key={index}

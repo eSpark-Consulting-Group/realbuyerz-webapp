@@ -17,7 +17,7 @@ const LiveBiddingPropertiesList = ({
   const pathName = usePathname();
   const agent = '/agent';
   const user = '/user';
-
+  console.log(proposal, 'proposalff');
   return (
     <Box
       sx={{
@@ -40,10 +40,10 @@ const LiveBiddingPropertiesList = ({
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {cardKeys?.status}
+          {cardKeys?.status || ''}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {status}
+          {status || ''}
         </Typography>
       </Box>
       <Box
@@ -58,10 +58,10 @@ const LiveBiddingPropertiesList = ({
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {cardKeys?.city}
+          {cardKeys?.city || ''}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {city}
+          {city || ''}
         </Typography>
       </Box>
       <Box
@@ -76,13 +76,13 @@ const LiveBiddingPropertiesList = ({
           variant="body1"
           sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          {cardKeys?.area}
+          {cardKeys?.area || ''}
         </Typography>
         <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
-          {location}
+          {location || ''}
         </Typography>
       </Box>
-      {pathName.includes(user) ? (
+      {pathName?.includes(user) && proposal?.length > 0 ? (
         <Box
           sx={{
             display: 'flex',
@@ -95,13 +95,13 @@ const LiveBiddingPropertiesList = ({
             variant="body1"
             sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
           >
-            {cardKeys?.proposal}
+            {cardKeys?.proposal || ''}
           </Typography>
           <Typography
             variant="body1"
             sx={{ color: '#333333', fontWeight: 500 }}
           >
-            {proposal}
+            {proposal?.length || ''}
           </Typography>
         </Box>
       ) : null}

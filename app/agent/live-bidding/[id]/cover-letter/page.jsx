@@ -28,6 +28,8 @@ import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
+import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
 
 const Page = () => {
@@ -63,17 +65,27 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
+  const proposals = useSelector((state) => state?.proposals);
+  const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
-  const porposals = useSelector((state) => state.proposals);
-  console.log(porposals, 'porposalsporposals');
-
+  const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+  const newProposal = proposals.find(
+    (item) => item?.agent_id == current_user_id
+  );
+  console.log(newProposal, 'findAgent');
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    dispatch(handleSendProposals(values));
+    dispatch(addProposal(values));
     handleOpenSuccessModal();
+    dispatch(
+      currentProposal({
+        property_id: values?.property_id,
+        agent_id: values?.agent_id,
+      })
+    );
+    dispatch(handleSendProposals(values));
   };
 
   const handleClickOpen = () => {
@@ -110,12 +122,12 @@ const Page = () => {
   });
 
   const initialFormValues = {
-    adId: '',
-    userId: '',
+    property_id: '',
+    agent_id: '',
     status: '',
     title: '',
     location: '',
-    proposalId: '',
+    proposal_id: '',
     description: '',
     area: '',
     amount: '',
@@ -140,8 +152,9 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values.adId = Number(id);
-      values.proposalId = randomNumber;
+      values.property_id = Number(id);
+      values.proposal_id = randomNumber;
+      values.agent_id = current_user_id;
       handleSubmit(values);
       action.resetForm();
     },
@@ -153,7 +166,7 @@ const Page = () => {
     isNaN(id) ||
     id === undefined ||
     id === null ||
-    id === spacificPost?.adId
+    id === spacificPost?.property_id
   ) {
     return (
       <NotFoundSection

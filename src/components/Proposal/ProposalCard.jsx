@@ -1,10 +1,11 @@
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
-import { handlePropertiesSubmitTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+// import { handlePropertiesSubmitTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
+import { handleAgentTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const ProposalCard = ({ key, data, currentTab }) => {
   const dispatch = useDispatch();
@@ -13,12 +14,17 @@ const ProposalCard = ({ key, data, currentTab }) => {
   const proposals = 'my-proposals';
   const user = 'user';
 
-  const handleTrash = (adId) => {
+  const handleTrash = (property_id, currentTab) => {
     if (pathName?.includes(user)) {
-      dispatch(handleSubmitTrash({ adId: adId, currentTab: currentTab }));
+      dispatch(
+        handleSubmitTrash({ property_id: property_id, currentTab: currentTab })
+      );
     } else if (pathName?.includes(properties)) {
       dispatch(
-        handlePropertiesSubmitTrash({ adId: adId, currentTab: currentTab })
+        handleAgentTrash({
+          property_id: property_id,
+          currentTab: currentTab,
+        })
       );
     } else if (pathName?.includes(proposals)) {
       // dispatch(handleAgentSubmitTrash({ adId: adId, currentTab: currentTab }));
@@ -85,7 +91,7 @@ const ProposalCard = ({ key, data, currentTab }) => {
                 position: { xs: 'relative', md: 'absolute' },
                 right: 0,
               }}
-              onClick={() => handleTrash(data?.adId)}
+              onClick={() => handleTrash(data?.property_id, currentTab)}
             >
               Trash
             </Button>

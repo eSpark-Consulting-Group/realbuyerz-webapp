@@ -18,7 +18,7 @@ import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   handleSubmitDraft,
   handleSumitUserAds,
@@ -33,16 +33,16 @@ import Link from 'next/link';
 const Page = () => {
   const initializePropertyData = () => {
     const informationState = createInformationState(
-      PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
+      PROPERTY_INFORMATION?.addInfo,
+      PROPERTY_BUYING_DETAIL?.sellingDetails
     );
     const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+      propertySell: PROPERTY_INFORMATION?.sell,
+      propertyBuyingDetails: PROPERTY_BUYING_DETAIL?.sellingDetails,
     });
     const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
+      propertyInformation: PROPERTY_INFORMATION?.uploadButton,
+      propertyBuyingDetails: PROPERTY_BUYING_DETAIL?.sellingDetails,
     });
     return {
       ...informationState,
@@ -56,6 +56,8 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state?.currentUser?.user);
+  console.log(currentUser, 'currentUser');
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -104,9 +106,9 @@ const Page = () => {
   });
 
   const initialFormValues = {
-    adId: '',
-    userId: '',
-    proposals: [],
+    property_id: '',
+    user_id: '',
+    status: '',
     other_features: [],
     title: '',
     location: '',
@@ -132,6 +134,7 @@ const Page = () => {
     validationSchema,
     onSubmit: (values, action) => {
       values.adId = randomNumber;
+      values.userId = currentUser?.id;
       handleSubmit(values);
       action.resetForm();
     },

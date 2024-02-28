@@ -4,7 +4,6 @@ import FlagIcon from '@mui/icons-material/Flag';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
-
 import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const RightSection = ({
@@ -15,6 +14,7 @@ const RightSection = ({
 }) => {
   const { apply_Button, save_Button, send_Proposal, flag_Inappropiate } =
     rightSectionKeys;
+  const { property_id, user_id } = spacificPost;
 
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const RightSection = ({
   };
 
   const handleSave = () => {
-    dispatch(handleSaveRequest(spacificPost));
+    dispatch(handleSaveRequest({ property_id: property_id, user_id: user_id }));
   };
 
   return (

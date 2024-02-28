@@ -18,7 +18,7 @@ import { createPropertyStatusState } from '@/utils/propertyStatus';
 import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
@@ -59,7 +59,8 @@ const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
-
+  const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+  console.log(current_user_id, 'currentUser');
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
@@ -107,9 +108,9 @@ const Page = () => {
   });
 
   const initialFormValues = {
-    adId: '',
-    userId: '',
-    proposals: [],
+    property_id: '',
+    user_id: '',
+    status: '',
     other_features: [],
     images: [],
     videos: [],
@@ -136,7 +137,9 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values.adId = randomNumber;
+      values.property_id = randomNumber;
+      values.user_id = current_user_id;
+      values.status = 'submited';
       handleSubmit(values);
       action.resetForm();
     },
