@@ -1,7 +1,7 @@
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React from 'react';
 
-const ProposalCard = ({ index }) => {
+const ProposalCard = ({ index, userView }) => {
   return (
     <Grid
       container
@@ -9,26 +9,30 @@ const ProposalCard = ({ index }) => {
         background: '#F5F6FA',
         border: 'solid 1px #E4E4E4',
         borderRadius: '20px',
-        padding: { xs: '10px', md: '25px 30px' },
+        padding: { xs: '10px', md: '10px 30px 40px' },
         marginBottom: '30px',
         marginTop: index === 0 && '30px',
         cursor: 'pointer',
       }}
     >
-      <Grid item xs={0} sm={4} md={3.65}>
-        <Box
-          component={'img'}
-          src={'/images/PropertyImg.png'}
-          sx={{
-            width: '100%',
-          }}
-        />
-      </Grid>
+      {userView && (
+        <>
+          <Grid item xs={0} sm={4} md={3.65}>
+            <Box
+              component={'img'}
+              src={'/images/PropertyImg.png'}
+              sx={{
+                width: '100%',
+              }}
+            />
+          </Grid>
+        </>
+      )}
       <Grid
         item
         xs={12}
-        sm={8}
-        md={8.35}
+        sm={12}
+        md={12}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -39,18 +43,25 @@ const ProposalCard = ({ index }) => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: { xss: 'flex-start', md: 'center' },
+            alignItems: { xs: 'flex-start', md: 'center' },
             position: 'relative',
             flexDirection: { xs: 'column', sm: 'row' },
+            '@media (min-width: 600px) and (max-width: 1000px)': {
+              justifyContent: 'space-between',
+            },
           }}
         >
           <Typography
             sx={{
-              fontSize: '20px',
+              fontSize: { xs: '15px', md: '20px' },
               fontWeight: 700,
               lineHheight: '24px',
               letterSpacing: '0em',
               textAlign: 'left',
+              mt: '10px',
+              '@media (min-width: 600px) and (max-width: 1000px)': {
+                fontSize: '20px',
+              },
             }}
           >
             NEED 4 BEDROOM APARTMENT
@@ -58,11 +69,14 @@ const ProposalCard = ({ index }) => {
           <Button
             variant="contained"
             sx={{
-              position: { xs: 'relative', md: 'absolute' },
+              position: { xs: 'none', md: 'absolute' },
               right: 0,
+              width: '110px',
+              '@media (min-width: 280px) and (max-width: 600px)': {
+                mt: '20px',
+              },
             }}
           >
-            {' '}
             Trash
           </Button>
         </Box>
@@ -146,6 +160,9 @@ const ProposalCard = ({ index }) => {
                   textAlign: 'left',
                   color: '#333333',
                   marginLeft: '5px',
+                  '@media (min-width: 280px) and (max-width: 350px)': {
+                    marginLeft: '3px',
+                  },
                 }}
               >
                 House
@@ -189,6 +206,11 @@ const ProposalCard = ({ index }) => {
                 marginBottom: '10px',
                 display: 'flex',
                 alignItems: 'center',
+
+                '@media (min-width: 280px) and (max-width: 350px)': {
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                },
               }}
             >
               <Typography
@@ -250,6 +272,7 @@ const ProposalCard = ({ index }) => {
               textAlign: 'left',
               right: '20px',
               padding: { xs: '10px', md: '25px 30px' },
+              marginLeft: { xs: '10px', md: '0px' },
             }}
           >
             Amount: 10M

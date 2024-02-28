@@ -208,6 +208,45 @@ body header {
   width: 34px;
 }
 
+.reponsiveimage {
+  height: 200px;
+  width: 250px;
+
+  @media (min-width: 280px) and (max-width: 480px) {
+    height: 180px;
+    width: 280px;
+  }
+}
+
+.scrollbar-container {
+  overflow-y: auto;
+}
+
+.scrollbar-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-container::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  /* margin-top: -30px;
+  margin-bottom: -10px; */
+}
+
+.scrollbar-container::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 10px;
+  background-clip: content-box;
+  border: 1px solid #d9d9d9;
+}
+
+.locationWidth {
+  @media (min-width: 280px) and (max-width: 900px) {
+    width: 100%;
+    background: 'pink';
+  }
+}
+
 @media (min-width: 1440px) and (max-width: 2560px) {
   #mobile {
     width: 320px !important;
@@ -430,7 +469,7 @@ body header {
   left: 0;
   width: 5px;
   height: 100%;
-  background-color: #FF631C;
+  background-color: #ff631c;
   /* Set the color for the outline */
 }
 
