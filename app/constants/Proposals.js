@@ -370,3 +370,7 @@ export const AMOUNT = 'Amount:';
 export const RESTORE_PROPERTY = 'Restore Property';
 export const ZERO = 0;
 export const ALL = 'All';
+
+export const PROPOSAL = {
+  propertyDetails: 'Property Details',
+};

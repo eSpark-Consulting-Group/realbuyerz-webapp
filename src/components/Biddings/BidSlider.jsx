@@ -12,7 +12,7 @@ import { A11y, Navigation } from 'swiper/modules';
 
 const BidSlider = ({ media, mediaType }) => {
   const swiperSettings = {
-    spaceBetween: 20,
+    // spaceBetween: 20,
     slidesPerView: 3,
     loop: true,
     navigation: {
@@ -35,12 +35,15 @@ const BidSlider = ({ media, mediaType }) => {
         slidesPerView: 3,
       },
       1024: {
-        slidesPerView: 1,
+        slidesPerView: 3,
       },
       600: {
-        slidesPerView: 1,
+        slidesPerView: 2,
       },
       480: {
+        slidesPerView: 1,
+      },
+      280: {
         slidesPerView: 1,
       },
     },
@@ -52,13 +55,25 @@ const BidSlider = ({ media, mediaType }) => {
         {media?.map((item, index) => (
           <SwiperSlide key={index}>
             {mediaType === 'images' ? (
-              <Box sx={{ pr: '50px' }}>
-                <Image height={200} width={250} src={item} alt="" />
+              <Box sx={{ px: '10px' }}>
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt=""
+                  className="reponsiveimage"
+                />
               </Box>
             ) : mediaType === 'videos' ? (
-              <Box sx={{ pr: '50px' }}>
+              <Box sx={{ px: '10px' }}>
                 {' '}
-                <Image height={200} width={250} src={item} alt="" />
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt=""
+                  className="reponsiveimage"
+                />
               </Box>
             ) : null}
           </SwiperSlide>

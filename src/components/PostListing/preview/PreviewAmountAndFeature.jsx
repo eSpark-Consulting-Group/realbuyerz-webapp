@@ -7,6 +7,11 @@ const PreviewAmountAndFeature = ({
   areaAndAmount,
   instalmentAvailable,
   readyPossession,
+  width,
+  px,
+  pt,
+  pb,
+  subPadding,
 }) => {
   return (
     <>
@@ -14,8 +19,14 @@ const PreviewAmountAndFeature = ({
         <Box
           sx={{
             p: 5,
+            px: px ? px : 'none',
+            pt: pt ? pt : 'none',
+            pb: pb ? pb : 'none',
             borderBottom: '1px solid #E4E4E4',
-            '@media(min-width:280px) and (max-width:400px)': { px: 3 },
+            width: width ? width : '100%',
+            '@media(min-width:280px) and (max-width:400px)': {
+              px: subPadding ? subPadding : 3,
+            },
           }}
         >
           <Typography sx={{ fontSize: { xs: '20px' }, fontWeight: 500, mb: 1 }}>
@@ -51,12 +62,18 @@ const PreviewAmountAndFeature = ({
               {instalmentAvailable == true ? 'Available' : null}
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-            <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
+          <Box sx={{ display: 'flex', gap: { xs: 0.3, md: 0.5 }, pb: 0.4 }}>
+            <Typography
+              sx={{ fontSize: { xs: '14px', md: '14px' }, fontWeight: 500 }}
+            >
               {areaAndAmount?.readyfor}
             </Typography>
             <Typography
-              sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
+              sx={{
+                fontSize: { xs: '14px', md: '14px' },
+                fontWeight: 500,
+                color: '#126FAA',
+              }}
             >
               {readyPossession == true ? 'Possession' : null}
             </Typography>
