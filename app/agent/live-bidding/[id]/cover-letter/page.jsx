@@ -65,14 +65,14 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const proposals = useSelector((state) => state?.proposals);
+  // const proposals = useSelector((state) => state?.proposals);
   const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
-  const newProposal = proposals.find(
-    (item) => item?.agent_id == current_user_id
-  );
-  console.log(newProposal, 'findAgent');
+  // const newProposal = proposals.find(
+  //   (item) => item?.agent_id == current_user_id
+  // );
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
@@ -157,6 +157,7 @@ const Page = () => {
       values.agent_id = current_user_id;
       handleSubmit(values);
       action.resetForm();
+      console.log(values, 'cover');
     },
     validateOnChange: false,
     validateOnBlur: false,

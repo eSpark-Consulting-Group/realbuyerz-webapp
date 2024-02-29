@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const RightSection = ({
@@ -14,7 +14,7 @@ const RightSection = ({
 }) => {
   const { apply_Button, save_Button, send_Proposal, flag_Inappropiate } =
     rightSectionKeys;
-  const { property_id, user_id } = spacificPost;
+  const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
 
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const RightSection = ({
   };
 
   const handleSave = () => {
-    dispatch(handleSaveRequest({ property_id: property_id, user_id: user_id }));
+    dispatch(
+      handleSaveRequest({ post: spacificPost, userId: current_user_id })
+    );
   };
 
   return (

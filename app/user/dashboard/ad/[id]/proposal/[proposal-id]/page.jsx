@@ -40,7 +40,6 @@ const Page = () => {
   const find_agent = agents?.find(
     (agent) => agent?.id == find_proposal?.agent_id
   );
-  console.log(find_proposal, 'newww');
 
   const handleConnect = () => {
     dispatch(

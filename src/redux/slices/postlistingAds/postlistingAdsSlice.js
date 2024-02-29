@@ -159,8 +159,10 @@ const postlistingAdSlice = createSlice({
         readyPossession: false,
       },
     ],
+    poposalIdentify: [],
     trash: [],
     save: [],
+    proposalsTrash: [],
   },
   reducers: {
     handlePostlistingAd: (state, action) => {
@@ -211,15 +213,43 @@ const postlistingAdSlice = createSlice({
         state?.trash?.push(draft_trash);
       }
     },
+
     handleSaveRequest: (state, action) => {
-      const { property_id } = action.payload;
-      const postingsIndex = state?.agentPostings?.findIndex(
+      const { post, userId } = action.payload;
+      const foundObject = state?.save?.find(
+        (obj) =>
+          obj?.user_id === userId && obj?.property_id === post.property_id
+      );
+      if (!foundObject) {
+        state?.save?.push({ user_id: userId, property_id: post.property_id });
+      }
+    },
+
+    handleTrashProposal: (state, action) => {
+      const { property_id, currentTab } = action.payload;
+      // save
+      const saveIndex = state?.save?.findIndex(
         (ad) => ad?.property_id === property_id
       );
-      // const foundObject = state?.save?.find((obj) => obj?.user_id === user_id);
-      if (postingsIndex !== -1) {
-        state?.save?.push('ALi');
+      if (saveIndex !== -1 && currentTab == 'Save Request') {
+        const postings_trash = state?.save?.splice(saveIndex, 1)[0];
+        state.proposalsTrash.push(postings_trash);
       }
+      // active
+      const active_proposal = state?.activeProposals?.findIndex(
+        (ad) => ad?.property_id === property_id
+      );
+      if (active_proposal !== -1 && currentTab == 'Active') {
+        console.log(active_proposal, 'active_proposal');
+        const postings_trash = state?.activeProposals?.splice(
+          active_proposal,
+          2
+        )[0];
+        state.proposalsTrash.push(postings_trash);
+      }
+    },
+    handleIndentifier: (state, action) => {
+      state?.poposalIdentify?.push(action.payload);
     },
   },
 });
@@ -227,7 +257,8 @@ const postlistingAdSlice = createSlice({
 export const {
   handlePostlistingAd,
   handleSubmitDraft,
-  handleAgentTrash,
+  handleIndentifier,
+  handleTrashProposal,
   handleSaveRequest,
 } = postlistingAdSlice.actions;
 export default postlistingAdSlice.reducer;
