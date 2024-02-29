@@ -141,11 +141,11 @@ const Page = () => {
                         justifyContent: 'center',
                         gap: 1,
                         width: { xs: '200px', lg: '200px' },
-                        height: '43.545px',
+                        height: '42px',
                         backgroundColor: '#fff',
                         border: '1px solid #FB631C',
                         borderRadius: '50px',
-                        fontSize: '14px',
+                        fontSize: '15px',
                         fontWeight: 500,
                         color: '#FB631C',
                         '&:hover': {
@@ -165,10 +165,10 @@ const Page = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         width: { xs: '200px', lg: '200px' },
-                        height: '43.545px',
+                        height: '42px',
                         backgroundColor: '#FB631C',
                         borderRadius: '50px',
-                        fontSize: '14px',
+                        fontSize: '15px',
                         fontWeight: 500,
                         color: '#FFF',
                         '&:hover': {
@@ -203,7 +203,9 @@ const Page = () => {
                 <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
                   {applicant_Titlt || ''}
                 </Typography>
-                <Typography>{`${findAgent?.firstName || ''} ${findAgent?.lastName || ''} ${applicant_Message || ''}`}</Typography>
+                <Typography
+                  sx={{ fontSize: '12px', mt: '10px' }}
+                >{`${findAgent?.firstName || ''} ${findAgent?.lastName || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
               <Box
                 sx={{
@@ -230,7 +232,7 @@ const Page = () => {
                   propertyType={spacificPostProposal?.propertyType}
                   proportyCategory={spacificPostProposal?.proportyCategory}
                   location={spacificPostProposal?.location}
-                  width={'100%'}
+                  width={'70%'}
                   widthBox={'100%'}
                   className={'locationWidth'}
                   pb={'20px'}

@@ -35,7 +35,7 @@ const Page = () => {
       PROPERTY_BUYING_DETAIL.sellingDetails
     );
     const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
+      propertySell: PROPERTY_INFORMATION.buy,
       propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
     });
     const uploadMediaData = createMediaDataState({

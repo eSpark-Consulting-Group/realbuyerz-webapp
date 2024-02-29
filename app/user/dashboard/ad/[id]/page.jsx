@@ -29,7 +29,7 @@ const Page = () => {
             buttonLabel={back_Button?.text}
             link={back_Button?.link}
           />
-          <DashboardTitle title={title} />
+          <DashboardTitle title={title} mt={'20px'} fontSize={'30px'} />
           <Box
             sx={{
               background: '#fff',

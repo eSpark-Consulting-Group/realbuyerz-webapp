@@ -93,7 +93,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
                       justifyContent: 'center',
                       borderRadius: '20px',
                       gap: 1.5,
-                      width: { xs: '80%', sm: '45%', md: '230px', lg: '250px' },
+                      width: { xs: '80%', sm: '45%', md: '152px', lg: '152px' },
                       height: { xs: '50px', md: '55px' },
                       '@media (min-width: 600px) and (max-width: 751px )': {
                         width: '45%',

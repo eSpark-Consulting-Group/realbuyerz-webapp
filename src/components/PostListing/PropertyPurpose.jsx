@@ -69,7 +69,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
             >
               <PropertyStatus
                 propertyInformation={PROPERTY_INFORMATION?.purpose}
-                propertySell={PROPERTY_INFORMATION?.sell}
+                propertySell={PROPERTY_INFORMATION?.buy}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
                 propertyData={propertyData}
                 formik={formik}

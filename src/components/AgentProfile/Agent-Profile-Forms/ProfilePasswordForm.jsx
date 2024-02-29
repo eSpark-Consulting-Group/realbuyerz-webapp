@@ -87,8 +87,11 @@ export default function ProfilePasswordForm({ data }) {
                   }}
                 >
                   <Typography
-                    variant="h6"
-                    sx={{ textAlign: 'left !important' }}
+                    sx={{
+                      textAlign: 'left !important',
+                      fontSize: '18px',
+                      fontWeight: 500,
+                    }}
                   >
                     {field?.label}
                   </Typography>

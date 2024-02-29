@@ -20,8 +20,8 @@ const PriceBox = ({ price, buttonText, id, data }) => {
       }}
     >
       <Box sx={{ width: { xs: '100%', sm: 'auto' }, py: { xs: 1.5, sm: 0 } }}>
-        <Typography variant="h6" sx={{ color: '#949494' }}>
-          {price}
+        <Typography variant="body1" sx={{ color: '#949494', fontWeight: 700 }}>
+          Rs.{price}
         </Typography>
       </Box>
       <Box>
@@ -29,6 +29,7 @@ const PriceBox = ({ price, buttonText, id, data }) => {
           variant="outlined"
           sx={{
             width: { xs: '100%', sm: '161px' },
+            fontSize: '12px',
             height: '41px',
             borderRadius: { xs: '7px', sm: '10px' },
           }}

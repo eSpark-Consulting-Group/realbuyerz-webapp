@@ -178,6 +178,22 @@ export const PROPERTY_INFORMATION = {
     },
   ],
 
+  buy: [
+    {
+      image: '/images/listing-page/house.svg',
+      activeImage: '/images/listing-page/housesell.svg',
+      text: 'Buy',
+      label: 'sellBtn',
+      value: '',
+    },
+    {
+      image: '/images/listing-page/house.svg',
+      activeImage: '/images/listing-page/housesell.svg',
+      text: 'Rent',
+      label: 'rentBtn',
+      value: '',
+    },
+  ],
   sell: [
     {
       image: '/images/listing-page/house.svg',
