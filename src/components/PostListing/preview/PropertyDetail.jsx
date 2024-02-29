@@ -13,6 +13,7 @@ const PropertyDetail = ({
   paddingHeading,
   subPadding,
   fontSize,
+  mb,
 }) => {
   return (
     <>
@@ -35,6 +36,7 @@ const PropertyDetail = ({
             color: '#000',
             fontSize: '20px',
             fontWeight: '500',
+            mb: mb,
           }}
         >
           {heading}

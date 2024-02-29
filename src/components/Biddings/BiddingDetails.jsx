@@ -229,6 +229,7 @@ const BiddingDetails = ({ height, ads }) => {
                         proposal={item?.proposals?.length}
                         connects={item?.connects}
                         cardKeys={postListingAdCard}
+                        noConnects={true}
                       />
                       {path?.includes('/user') &&
                       item?.proposals?.length > 0 ? (

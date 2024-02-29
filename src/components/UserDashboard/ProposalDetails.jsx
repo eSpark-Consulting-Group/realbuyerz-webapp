@@ -130,6 +130,7 @@ const ProposalDetails = ({
               proposal={proposal}
               location={location}
               cardKeys={postListingAdCard}
+              noConnects={false}
             />
           </Grid>
         </Box>
