@@ -19,7 +19,6 @@ const UserProfileDetails = ({
   const findAgent = loginAgents?.find(
     (agent) => agent?.id == agentId && agentId
   );
-  console.log(findAgent, 'loginAgents');
 
   return (
     <Grid container>

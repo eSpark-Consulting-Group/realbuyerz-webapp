@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 
 const FilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
-  console.log(globalUnits);
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('sqft');

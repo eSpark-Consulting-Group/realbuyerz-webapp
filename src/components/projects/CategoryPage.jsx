@@ -14,9 +14,7 @@ const CategoryPage = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  console.log(projects, 'projects');
   const filterData = projects?.filter((item) => item?.proportyCategory === id);
-  console.log(filterData, 'filterData');
   const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
 
   // Validate id

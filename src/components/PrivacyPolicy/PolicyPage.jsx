@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 
 const PolicyPage = () => {
   const policies = useSelector((state) => state.policies.PRIVACY_POLICY);
-  console.log(policies);
   return (
     <Box
       sx={{

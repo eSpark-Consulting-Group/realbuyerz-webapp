@@ -57,7 +57,6 @@ const ProjectsFilters = ({ data }) => {
           item?.title?.includes(filterValues?.searchInput))
       );
     });
-
     console.log(filteredData);
   };
 

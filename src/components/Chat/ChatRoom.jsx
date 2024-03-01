@@ -237,7 +237,6 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   const conversationRef = useRef(null);
   const scrollToBottom = () => {
-    console.log({ top: conversationRef.current.offsetTop });
     if (conversationRef.current) {
       const lastComponent = conversationRef.current;
       const additionalOffset = 20; // Additional 20px to account for margin-bottom

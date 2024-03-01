@@ -52,8 +52,6 @@ const Page = () => {
     dispatch(handleRejectProposal(spacificPostProposal));
   };
 
-  console.log(spacificPostProposal, 'spacificPostProposal');
-
   return (
     <>
       {spacificPostProposal !== undefined ? (

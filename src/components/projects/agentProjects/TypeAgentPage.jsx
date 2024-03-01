@@ -21,7 +21,6 @@ const TypeAgentPage = () => {
     (item) => item?.agentid === agentid && item?.adsType === adsType
   );
   const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
-  console.log(pathname, 'pathname');
   // Validate id
   if (!agentid) {
     return (

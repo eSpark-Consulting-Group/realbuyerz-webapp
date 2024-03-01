@@ -248,7 +248,6 @@ const BiddingDetails = ({ height, ads }) => {
                             }}
                           >
                             <Link href={`dashboard/ad/${item?.adId}`}>
-                              {console.log(`dashboard/ad/${item?.adId}`)}
                               <Typography
                                 sx={{
                                   width: '200px',

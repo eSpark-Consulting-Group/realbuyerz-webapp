@@ -37,7 +37,7 @@ const Page = () => {
 
     // Generate a random index to select a color from the array
     const randomIndex = Math.floor(Math.random() * darkColors.length);
-
+    console.log(currentTab);
     // Return the randomly selected color
     return darkColors[randomIndex];
   }
@@ -46,7 +46,6 @@ const Page = () => {
       ...room,
       background: !room?.avatar && paintBackground(),
     }));
-    console.log({ tempData, back: paintBackground() });
     setSelectedChatRoom(tempData[0]);
     setChatRoomState(tempData);
   }, []);
@@ -61,7 +60,6 @@ const Page = () => {
     setCurrentTab(tab);
 
     setValue(newValue);
-    console.log({ currentTab });
   };
   const tabs = [
     {

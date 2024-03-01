@@ -12,8 +12,8 @@ import { PROJECTS_DATA } from '@/src/constants/projects';
 const itemsToShow = 10;
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalItems = Math.min(data.length, itemsToShow) || 10;
   console.log(currentPage);
+  const totalItems = Math.min(data.length, itemsToShow) || 10;
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
