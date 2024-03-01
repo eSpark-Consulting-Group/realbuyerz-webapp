@@ -55,7 +55,7 @@ const PropertyList = ({ profileInfo }) => {
             paddingBottom: '2px',
           }}
         >
-          {`${profileInfo.propertyListed} property listed`}
+          {`${profileInfo?.propertyListed} property listed`}
         </Typography>
         <Title title={'Profile Visibilty'} />
         <Typography
@@ -70,7 +70,7 @@ const PropertyList = ({ profileInfo }) => {
             paddingBottom: '2px',
           }}
         >
-          {profileInfo.ProfileVisibilty}
+          {profileInfo?.ProfileVisibilty}
         </Typography>
         <Title title={'Lead Preferences'} />
         <Typography
@@ -85,7 +85,7 @@ const PropertyList = ({ profileInfo }) => {
             paddingBottom: '2px',
           }}
         >
-          {profileInfo.LeadPreferences}
+          {profileInfo?.LeadPreferences}
         </Typography>
       </Grid>
     </Box>

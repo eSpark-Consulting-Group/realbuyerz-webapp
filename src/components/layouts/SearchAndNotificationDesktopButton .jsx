@@ -1,174 +1,211 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box } from '@mui/system';
-import { Menu, MenuItem, Typography } from '@mui/material';
+import { Fade, Popover, Typography } from '@mui/material';
 import Link from 'next/link';
 
 const SearchAndNotificationDesktopButton = ({
-  handleCloseLoginMenu,
-  handleOpenLoginMenu,
+  handleCloseProfileMenu,
+  handleOpenProfileMenu,
+  profileMenu,
   userName,
+  userImage,
+  userEmail,
   handleLogout,
   profileIcon,
   isloggedIn,
   signOut,
-  email,
 }) => {
+  const open = Boolean(profileMenu);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        border: '1px solid #E7E7E7',
-        borderRadius: '390px',
-        alignItems: 'center',
-        mx: 1,
-        cursor: 'pointer',
-      }}
-    >
-      <Typography
+    <>
+      <Box
+        onClick={handleOpenProfileMenu}
         sx={{
           display: 'flex',
-          color: 'black',
           alignItems: 'center',
-          mx: 2,
+          justifyContent: 'flex-end',
+          border: '1px solid #E7E7E7',
+          borderRadius: '30px',
+          minWidth: '100px',
+          minHeight: '43px',
+          width: 'auto',
+          cursor: 'pointer',
+          mx: 1,
         }}
       >
-        {userName}
-      </Typography>
-      <Image
-        src={profileIcon}
-        width={41}
-        height={41}
-        alt={'icon'}
-        onClick={handleOpenLoginMenu}
-      />
-      <Menu
-        sx={{ mt: '52px' }}
-        id="menu-appbar"
+        <Box sx={{ px: 1.8 }}>
+          <Typography
+            sx={{
+              color: '#000',
+              fontSize: '15px',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: 'normal',
+              maxWidth: '100px',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {userName || ''}
+          </Typography>
+        </Box>
+        <Box>
+          <Image
+            src={userImage || profileIcon}
+            width={41}
+            height={41}
+            alt={'icon'}
+          />
+        </Box>
+      </Box>
+      <Popover
+        id={id}
+        open={open}
         anchorEl={isloggedIn}
+        onClose={handleCloseProfileMenu}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}
-        keepMounted
+        sx={{
+          mt: '53px',
+        }}
+        transition
         transformOrigin={{
-          vertical: 'top',
           horizontal: 'right',
         }}
-        open={Boolean(isloggedIn)}
-        onClose={handleCloseLoginMenu}
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 600 }}
       >
-        <Box sx={{ padding: 1, gap: 1 }}>
-          <MenuItem
-            sx={{
-              background: '#F5F5F5',
-              borderRadius: '10px',
-              gap: 1,
-              marginBottom: 1,
-            }}
-          >
+        <Fade in={open} timeout={600}>
+          <Box sx={{ p: 1.5 }}>
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                alignContent: 'center',
-                '&:hover': {
-                  color: '#FFF5F0 !important',
-                },
-                borderRadius: '10px',
                 background: '#F5F5F5',
+                borderRadius: '10px',
+                gap: 1,
+                marginBottom: 1,
               }}
             >
-              <Image
-                src={'/images/profileIcon.png'}
-                width={50}
-                height={50}
-                alt={'icon'}
-              />
               <Box
                 sx={{
                   display: 'flex',
-                  flexDirection: 'column',
                   justifyContent: 'center',
-                  gap: 1,
+                  alignContent: 'center',
+                  gap: 1.2,
+                  p: 1,
+                  '&:hover': {
+                    color: '#FFF5F0 !important',
+                  },
+                  borderRadius: '10px',
+                  background: '#F5F5F5',
                 }}
               >
-                <Typography
+                <Image
+                  src={userImage || '/images/profileIcon.png'}
+                  width={43}
+                  height={43}
+                  alt={'icon'}
+                />
+                <Box
                   sx={{
-                    mx: 1,
-                    color: '#000',
-                    fontSize: '15px',
-                    fontStyle: 'normal',
-                    fontWeight: 500,
-                    lineHeight: 'normal',
+                    width: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    textWrap: 'wrap',
+                    gap: 0.6,
                   }}
                 >
-                  {userName}
-                </Typography>
+                  <Typography
+                    sx={{
+                      color: '#000',
+                      fontSize: '15px',
+                      fontStyle: 'normal',
+                      fontWeight: 500,
+                      lineHeight: 'normal',
+                      width: '140px',
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {userName || ''}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      width: '140px',
+                      color: '#808080',
+                      fontSize: '12px',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      lineHeight: 'normal',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {userEmail || ''}
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+            <Box
+              onClick={handleLogout}
+              sx={{
+                background: '#FFF5F0',
+                borderRadius: '10px',
+                padding: '13px 67px 13px 68px',
+                '&:hover': {
+                  color: '#FFF5F0 !important',
+                  backgroundColor: '#FFF5F0',
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  textAlign: 'center',
+                  borderRadius: '10px',
+                  background: '#FFF5F0',
+                }}
+              >
+                <Image
+                  src={'/images/Signout.png'}
+                  width={15}
+                  height={5}
+                  alt="Signout"
+                />
+
                 <Typography
                   sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     mx: 1,
-                    color: '#808080',
-                    fontSize: '12px',
+                    color: '#F00',
+                    fontSize: '15px',
                     fontStyle: 'normal',
                     fontWeight: 400,
                     lineHeight: 'normal',
                   }}
                 >
-                  {email}
+                  <Link href={'/'}>{signOut}</Link>
                 </Typography>
               </Box>
             </Box>
-          </MenuItem>
-          <MenuItem
-            onClick={handleLogout}
-            sx={{
-              background: '#FFF5F0',
-              borderRadius: '10px',
-              padding: '13px 67px 13px 68px',
-              '&:hover': {
-                color: '#FFF5F0 !important',
-                backgroundColor: '#FFF5F0',
-              },
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignContent: 'center',
-                textAlign: 'center',
-                borderRadius: '10px',
-                background: '#FFF5F0',
-              }}
-            >
-              <Image
-                src={'/images/Signout.png'}
-                width={15}
-                height={5}
-                alt="Signout"
-              />
-
-              <Typography
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  mx: 1,
-                  color: '#F00',
-                  fontSize: '15px',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
-                  lineHeight: 'normal',
-                }}
-              >
-                <Link href={'/'}>{signOut}</Link>
-              </Typography>
-            </Box>
-          </MenuItem>
-        </Box>
-      </Menu>
-    </Box>
+          </Box>
+        </Fade>
+      </Popover>
+      {/* </Box> */}
+    </>
   );
 };
 

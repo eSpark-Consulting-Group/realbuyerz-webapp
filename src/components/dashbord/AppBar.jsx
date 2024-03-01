@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,9 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import {
-  EMAIL,
   LINK_NAME,
-  USER_NAME,
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
@@ -37,11 +35,19 @@ export default function ResponsiveNavbar({ openSidebar }) {
   const router = useRouter();
   const [search, setSearch] = useState();
   const [anchorElSearch, setAnchorElSearch] = useState(null);
-  const [isloggedIn, setisloggedIn] = useState(null);
+  const [profileMenu, setProfileMenu] = useState(null);
   const dispatch = useDispatch();
+  const current_user = useSelector((state) => state?.currentUser?.user);
 
+  const handleOpenProfileMenu = (event) => {
+    setProfileMenu(event?.currentTarget);
+  };
+
+  const handleCloseProfileMenu = () => {
+    setProfileMenu(null);
+  };
   const handleOpenSearchMenu = (event) => {
-    setAnchorElSearch(event.currentTarget);
+    setAnchorElSearch(event?.currentTarget);
   };
 
   const handleCloseSearchMenu = () => {
@@ -49,22 +55,15 @@ export default function ResponsiveNavbar({ openSidebar }) {
   };
 
   const searchInput = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleOpenLoginMenu = (event) => {
-    setisloggedIn(event.currentTarget);
-  };
-  const handleCloseLoginMenu = () => {
-    setisloggedIn(null);
+    setSearch(e?.target?.value);
   };
 
   const handleLogout = () => {
-    Cookie.remove('token');
-    Cookie.remove('userType');
+    Cookie?.remove('token');
+    Cookie?.remove('userType');
     dispatch(setLoggedOut());
-    router.push('/signin');
-    handleCloseLoginMenu();
+    router?.push('/signin');
+    handleCloseProfileMenu();
   };
 
   return (
@@ -211,7 +210,6 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     </Badge>
                   </IconButton>
                 </Box>
-
                 <Menu
                   sx={{ mt: '52px' }}
                   id="menu-appbar"
@@ -251,30 +249,28 @@ export default function ResponsiveNavbar({ openSidebar }) {
                 </Menu>
 
                 <Box
+                  onClick={handleOpenProfileMenu}
                   component={'img'}
                   sx={{
-                    width: { xs: '32px', sm: '42px' },
-                    height: { xs: '32px', sm: '42px' },
+                    width: { xs: '30px', sm: '40px' },
+                    height: { xs: '30px', sm: '40px' },
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={ProfileIcon}
-                  width={38}
-                  height={38}
+                  src={current_user?.profile_image || ProfileIcon}
                   alt={'icon'}
-                  onClick={handleOpenLoginMenu}
                 />
-
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                   <SearchAndNotificationDesktopButton
-                    handleCloseLoginMenu={handleCloseLoginMenu}
-                    handleOpenLoginMenu={handleOpenLoginMenu}
-                    userName={USER_NAME}
+                    handleCloseProfileMenu={handleCloseProfileMenu}
+                    handleOpenProfileMenu={handleOpenProfileMenu}
+                    profileMenu={profileMenu}
+                    userName={current_user?.first_name || 'User Name'}
+                    userImage={current_user?.profile_image || 'User Image'}
+                    userEmail={current_user?.email || ProfileIcon}
                     profileIcon={ProfileIcon}
                     handleLogout={handleLogout}
-                    isloggedIn={isloggedIn}
                     signOut={SIGN_OUT}
-                    email={EMAIL}
                   />
                 </Box>
               </Box>
