@@ -22,7 +22,7 @@ const ProjectsFilters = ({ data }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [filterValues]);
+  }, [filterValues, handleFilter()]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

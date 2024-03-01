@@ -56,6 +56,7 @@ function PropertyTabs({
                   }
                   width={30}
                   height={30}
+                  alt={tab?.label}
                 />
                 <Typography
                   sx={{

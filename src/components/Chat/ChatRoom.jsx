@@ -595,8 +595,8 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
-                    aria-label="Type your message..."
-                    aria-placeholder="Type your message..."
+                    ariaLabel="Type your message..."
+                    ariaPlaceholder="Type your message..."
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
