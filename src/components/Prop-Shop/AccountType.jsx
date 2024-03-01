@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Grid, Radio, Typography } from '@mui/material';
+import { Box, Radio, Typography } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -9,6 +9,7 @@ const AccountType = ({
   AccountName,
   textField,
   handleChange,
+  setTypeCard,
   formik,
   selectedValue,
   handleChangeRadioButton,
@@ -19,11 +20,12 @@ const AccountType = ({
     handleChangeRadioButton({
       target: { value: AccountName.toLowerCase().replace(/\s/g, '') },
     });
+    setTypeCard();
   };
 
   return (
     <>
-      <Grid
+      <Box
         ref={gridRef}
         container
         onClick={handleClick}
@@ -40,17 +42,13 @@ const AccountType = ({
           mx: { lg: '32px', xl: '40px' },
           my: '10px',
           cursor: 'pointer',
+          position: 'relative',
         }}
       >
-        <Grid
-          item
-          xs={2}
-          sm={1}
-          lg={1}
-          xl={1}
+        <Box
           sx={{
-            display: 'flex',
-            justifyContent: { xs: 'center' },
+            position: 'absolute',
+            left: { xs: '0%', sm: '2%' },
           }}
         >
           <Radio
@@ -64,30 +62,34 @@ const AccountType = ({
               color: '#126FAA !important',
             }}
           />
-        </Grid>
-        <Grid item xs={5} sm={3} lg={8} xl={8}>
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            left: { xs: '70px', sm: '80px', md: '100px' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              left: '50px',
+            },
+          }}
+        >
           <Typography
             sx={{
               color: '#333',
               fontSize: { xs: '12.1px', sm: '20px' },
               fontStyle: 'normal',
               fontWeight: 600,
-              pl: { xl: '35px' },
             }}
           >
             {AccountName}
           </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={5}
-          sm={8}
-          lg={2.7}
-          xl={2.7}
+        </Box>
+        <Box
           sx={{
-            display: 'flex',
-            justifyContent: { xs: 'flex-end' },
-            pr: { sm: '20px', lg: '0px' },
+            position: 'absolute',
+            right: { xs: '0%', sm: '2%' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              right: '0px',
+            },
           }}
         >
           {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? (
@@ -101,8 +103,8 @@ const AccountType = ({
               sx={{ color: '#666', fontSize: { xs: '26px', sm: '38px' } }}
             />
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
       {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') && (
         <InputTextField
           textField={textField}

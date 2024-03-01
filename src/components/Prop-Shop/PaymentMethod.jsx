@@ -58,7 +58,13 @@ const PaymentMethod = ({
   const dispatch = useDispatch();
   const handleChangeRadioButton = (e) => {
     setSelectedValue(e.target.value);
-    setState(false);
+    if (
+      e.target.value === VISA ||
+      e.target.value === MASTER_CARD ||
+      e.target.value === GENERAL_CARD
+    ) {
+      setState(false);
+    }
   };
 
   useEffect(() => {
@@ -211,6 +217,7 @@ const PaymentMethod = ({
           handleChange={handleChange}
           textField={easyPaisa}
           formik={formik}
+          setTypeCard={setTypeCard}
         />
         <AccountType
           AccountName={ACCOUNT_NAME_JAZZCASH}
@@ -219,6 +226,7 @@ const PaymentMethod = ({
           handleChange={handleChange}
           textField={jazzCash}
           formik={formik}
+          setTypeCard={setTypeCard}
         />
       </Grid>
     </Box>

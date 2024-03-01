@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Grid, Radio, useMediaQuery } from '@mui/material';
+import { Box, Radio, Typography, useMediaQuery } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -27,9 +27,8 @@ const CreditCardType = ({
 
   return (
     <>
-      <Grid
+      <Box
         ref={gridRef}
-        container
         onClick={handleClick}
         sx={{
           mx: { lg: '32px', xl: '40px' },
@@ -42,17 +41,13 @@ const CreditCardType = ({
           display: 'flex',
           alignItems: 'center',
           cursor: 'pointer',
+          position: 'relative',
         }}
       >
-        <Grid
-          item
-          xs={2}
-          sm={1}
-          lg={1}
-          xl={1}
+        <Box
           sx={{
-            display: 'flex',
-            justifyContent: { xs: 'center', sm: 'center' },
+            position: 'absolute',
+            left: { xs: '0%', sm: '2%' },
           }}
         >
           <Radio
@@ -63,64 +58,63 @@ const CreditCardType = ({
             inputProps={{ 'aria-label': 'A' }}
             sx={{ color: '#126FAA !important' }}
           />
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          sm={5}
-          md={4}
-          lg={4}
-          xl={3.5}
+        </Box>
+        <Box
           sx={{
-            color: '#333',
-            fontSize: { xs: '11px', sm: '20px' },
-            '@media (max-width: 295px)': {
-              fontSize: '10.5px',
+            position: 'absolute',
+            left: { xs: '70px', sm: '80px', md: '100px' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              left: '35px',
             },
-            fontStyle: 'normal',
-            fontWeight: 600,
-            display: 'flex',
-            justifyContent: { xs: 'flex-start' },
-            pl: { xl: '35px' },
           }}
         >
-          {creditCardLable}
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          sm={2}
-          md={2}
-          lg={1}
-          xl={1.4}
+          <Typography
+            sx={{
+              color: '#333',
+              fontSize: { xs: '11px', sm: '20px' },
+              '@media (max-width: 295px)': {
+                fontSize: '10.5px',
+              },
+              fontStyle: 'normal',
+              fontWeight: 600,
+            }}
+          >
+            {creditCardLable}
+          </Typography>
+        </Box>
+
+        <Box
           sx={{
+            position: 'absolute',
+            left: { xs: '200px', sm: '300px', md: '360px', lg: '360px' },
+            '@media (min-width: 280px) and (max-width: 299px)': {
+              left: '148px',
+            },
+            '@media (min-width: 300px) and (max-width: 400px)': {
+              left: '160px',
+            },
             display: 'flex',
-            justifyContent: { xs: 'center', md: 'flex-start' },
+            gap: { xs: 0.5, sm: 1 },
           }}
         >
-          <Box sx={{ display: 'flex', gap: '5px' }}>
-            {cardTypeImage?.map((item, index) => (
-              <Image
-                key={index}
-                src={item?.icon}
-                width={isSmallScreen ? 35 : 44}
-                height={28}
-                alt={item?.alt}
-              />
-            ))}
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={3}
-          sm={4}
-          md={5}
-          lg={6}
-          xl={6}
+          {cardTypeImage?.map((item, index) => (
+            <Image
+              key={index}
+              src={item?.icon}
+              width={isSmallScreen ? 20 : 44}
+              height={28}
+              alt={item?.alt}
+            />
+          ))}
+        </Box>
+
+        <Box
           sx={{
-            display: 'flex',
-            justifyContent: { xs: 'flex-end !important' },
-            pr: { sm: '20px', lg: '15px' },
+            position: 'absolute',
+            right: { xs: '0%', sm: '2%' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              right: '0px',
+            },
           }}
         >
           {selectedValue === NAME_ON_CARD ? (
@@ -134,8 +128,8 @@ const CreditCardType = ({
               sx={{ color: '#666', fontSize: { xs: '26px', sm: '35px' } }}
             />
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
       {selectedValue === NAME_ON_CARD && (
         <InputTextField
           textField={textField}

@@ -1,13 +1,12 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Grid, Radio, Typography } from '@mui/material';
+import { Box, Radio, Typography } from '@mui/material';
 
 const VisaCard = ({
   image,
   cardName,
   setSelectedValue,
   accountNumber,
-  selectedValue,
   handleChangeRadioButton,
   setCardTypeNumber,
   setTypeCard,
@@ -34,94 +33,87 @@ const VisaCard = ({
     return masked;
   };
   return (
-    <Grid
-      ref={gridRef}
-      container
-      onClick={handleClick}
-      sx={{
-        border: '1px solid #E9E9E9',
-        height: '70px',
-        display: 'flex',
-        alignItems: 'center',
-        mx: { md: '30px', lg: '38px', xl: '40px' },
-        my: '10px',
-        cursor: 'pointer',
-        backgroundColor:
-          selectedValue === finalValue ? '#EDF7FF' : 'transparent',
-      }}
-    >
-      <Grid
-        item
-        xl={1}
-        lg={1}
-        xs={2}
-        sm={1}
+    <>
+      <Box
+        ref={gridRef}
+        onClick={handleClick}
         sx={{
+          border: '1px solid #E9E9E9',
+          height: '70px',
+          width: '100%',
+          mx: { lg: '32px', xl: '40px' },
           display: 'flex',
-          justifyContent: { xs: 'center', xl: 'center' },
-        }}
-      >
-        <Radio
-          checked={cardNo === typeCard}
-          onChange={handleChangeRadioButton}
-          onClick={viweDetails}
-          value={finalValue}
-          name="radio-buttons"
-          inputProps={{ 'aria-label': 'A' }}
-          sx={{
-            color: '#126FAA !important',
-          }}
-        />
-      </Grid>
-      <Grid
-        item
-        xl={8}
-        lg={8}
-        sx={{
-          display: 'flex',
-          justifyContent: {
-            xs: 'center',
-            sm: 'flex-start',
-            lg: 'flex-start',
-            xl: 'flex-start',
-          },
-          pl: { xl: '20px' },
+          alignItems: 'center',
+          my: '10px',
+          cursor: 'pointer',
+          backgroundColor: cardNo === typeCard ? '#EDF7FF' : 'transparent',
+          position: 'relative',
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mx: 2,
+            position: 'absolute',
+            left: { xs: '0%', sm: '2%' },
           }}
         >
-          <Image src={image} width={40} height={20} alt="card" />
-        </Box>
-        <Box>
-          <Typography
+          <Radio
+            checked={cardNo === typeCard}
+            onChange={handleChangeRadioButton}
+            onClick={viweDetails}
+            value={finalValue}
+            name="radio-buttons"
+            inputProps={{ 'aria-label': 'A' }}
             sx={{
-              color: '#333',
-              fontSize: { xs: '12.1px', sm: '20px' },
-              fontStyle: 'normal',
-              fontWeight: 600,
+              color: '#126FAA !important',
+            }}
+          />
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            left: { xs: '70px', sm: '80px', md: '100px' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              left: '50px',
+            },
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              mr: 2,
             }}
           >
-            {cardName}
-          </Typography>
-          <Typography
-            sx={{
-              color: '#969696',
-              fontSize: { xs: '12.1px', sm: '18px' },
-              fontStyle: 'normal',
-              fontWeight: 400,
-              lineHeight: 'normal',
-            }}
-          >
-            {maskAccountNumber(accountNumber)}
-          </Typography>
+            <Image src={image} width={40} height={20} alt="card" />
+          </Box>
+          <Box>
+            <Typography
+              sx={{
+                color: '#333',
+                fontSize: { xs: '12.1px', sm: '20px' },
+                fontStyle: 'normal',
+                fontWeight: 600,
+              }}
+            >
+              {cardName}
+            </Typography>
+            <Typography
+              sx={{
+                color: '#969696',
+                fontSize: { xs: '12.1px', sm: '18px' },
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
+              }}
+            >
+              {maskAccountNumber(accountNumber)}
+            </Typography>
+          </Box>
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </>
   );
 };
 
