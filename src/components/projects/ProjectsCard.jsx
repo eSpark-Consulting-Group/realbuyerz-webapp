@@ -1,4 +1,5 @@
 'use client';
+import { PROJECTS_DATA } from '@/src/constants/projects';
 import {
   Typography,
   Box,
@@ -26,7 +27,8 @@ const ProjectsCard = ({ data }) => {
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const visibleProjects = data.slice(startIndex, startIndex + itemsPerPage);
+  const visibleProjects =
+    data.slice(startIndex, startIndex + itemsPerPage) || PROJECTS_DATA;
 
   return (
     <>

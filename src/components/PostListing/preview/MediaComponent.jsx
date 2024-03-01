@@ -3,7 +3,6 @@ import React from 'react';
 import AdMediaSlider from '../AdMediaSlider';
 
 const MediaComponent = ({ title, images, videos, mediaType }) => {
-  console.log(images, 'imagesimages');
   return (
     <>
       <Box
