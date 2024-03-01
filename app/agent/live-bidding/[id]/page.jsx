@@ -25,13 +25,13 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings.filter((item) => id == item?.adId)[0];
+  const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
         <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
-          {spacificPost?.adId !== undefined ? (
+          {spacificPost?.property_id !== undefined ? (
             <Box
               sx={{
                 background: '#fff',
@@ -103,7 +103,7 @@ const Page = () => {
                     <RightSection
                       // proposals={sendProposals}
                       spacificPost={spacificPost}
-                      postId={spacificPost?.adId}
+                      postId={spacificPost?.property_id}
                       rightSectionKeys={clientRequirment}
                     />
                   </Box>

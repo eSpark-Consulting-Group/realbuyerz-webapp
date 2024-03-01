@@ -8,10 +8,6 @@ import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
 import { ProposalsPage } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  handleConnectProposal,
-  handleRejectProposal,
-} from '@/src/redux/slices/userAds/userAdsSlice';
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import { previewData } from '@/app/constants/postListing';
@@ -19,7 +15,10 @@ import Location from '@/src/components/PostListing/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
-import { PROPOSAL } from '@/app/constants/Proposals';
+import {
+  handleConnectProposal,
+  handleRejectedProposal,
+} from '@/src/redux/slices/proposals/proposalsSlice';
 
 const Page = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -28,35 +27,41 @@ const Page = () => {
 
   const dispatch = useDispatch();
   const pathname = usePathname();
-  const segments = pathname.split('/');
-  const getadid = segments[segments.length - 3];
-  const getproposalId = segments[segments.length - 1];
-  const userPostings = useSelector(
-    (state) => state?.postRequestAds?.userPostings
-  );
-  const spacificPost = userPostings?.find((item) => getadid == item?.adId);
-  const spacificPostProposal = spacificPost?.proposals?.find(
-    (prop) => prop?.proposalId == getproposalId
+  const segments = pathname?.split('/');
+  const getproposalId = segments[segments?.length - 1];
+  const proposals = useSelector((state) => state?.proposals);
+
+  const find_proposal = proposals?.find(
+    (item) => item?.proposal_id == getproposalId
   );
 
-  const loginAgents = useSelector((state) => state?.loginAgents);
-  const findAgent = loginAgents?.find(
-    (agent) => agent?.id == spacificPostProposal?.agentId
+  const agents = useSelector((state) => state?.agents);
+
+  const find_agent = agents?.find(
+    (agent) => agent?.id == find_proposal?.agent_id
   );
 
   const handleConnect = () => {
-    dispatch(handleConnectProposal(spacificPostProposal));
+    dispatch(
+      handleConnectProposal({
+        proposal_id: find_proposal?.proposal_id,
+        property_id: find_proposal?.property_id,
+      })
+    );
   };
 
   const handleReject = () => {
-    dispatch(handleRejectProposal(spacificPostProposal));
+    dispatch(
+      handleRejectedProposal({ proposal_id: find_proposal?.proposal_id })
+    );
   };
-
-  console.log(spacificPostProposal, 'spacificPostProposal');
 
   return (
     <>
-      {spacificPostProposal !== undefined ? (
+      {find_proposal !== undefined &&
+      find_proposal !== null &&
+      find_proposal?.status !== 'Rejected' &&
+      find_proposal?.status !== 'Connected' ? (
         <>
           <Box sx={{ pb: 3 }}>
             <BackToDashboard
@@ -99,8 +104,8 @@ const Page = () => {
                     badgeHeigth={'7px'}
                     padding={0.3}
                     right={2}
-                    image={findAgent?.profileImage || image}
-                    isActive={findAgent?.status == 'Active' ? true : false}
+                    image={find_agent?.profile_image || image}
+                    isActive={find_agent?.status || false}
                   />
                   <Box
                     sx={{
@@ -114,12 +119,12 @@ const Page = () => {
                         color: '#126FAA',
                       }}
                     >
-                      {`${findAgent?.firstName || ''} ${findAgent?.lastName || ''}`}
+                      {`${find_agent?.first_name || ''} ${find_agent?.first_name || ''}`}
                     </Typography>
                     <Typography>
                       <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
-                      {`${findAgent?.city || ''} ${findAgent?.country || ''}`} -
-                      3:16pm local time
+                      {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
+                      - 3:16pm local time
                     </Typography>
                   </Box>
                 </Box>
@@ -203,7 +208,7 @@ const Page = () => {
                 <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
                   {applicant_Titlt || ''}
                 </Typography>
-                <Typography>{`${findAgent?.firstName || ''} ${findAgent?.lastName || ''} ${applicant_Message || ''}`}</Typography>
+                <Typography>{`${find_agent?.first_name || ''} ${find_agent?.last_name || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
               <Box
                 sx={{
@@ -213,9 +218,9 @@ const Page = () => {
               >
                 <PropertyDetail
                   title={PropertyDetails}
-                  heading={PROPOSAL?.propertyDetails}
-                  subTitle={spacificPostProposal?.title}
-                  description={spacificPostProposal?.description}
+                  // heading={PROPOSAL?.propertyDetails}
+                  subTitle={find_proposal?.title}
+                  description={find_proposal?.description}
                   width={'100%'}
                   pb={'5px'}
                   pt={'0px'}
@@ -224,12 +229,12 @@ const Page = () => {
                   subPadding={'0px'}
                 />
                 <Location
-                  city={spacificPostProposal?.city}
+                  city={find_proposal?.city}
                   locationKeys={location}
-                  purpose={spacificPostProposal?.purpose}
-                  propertyType={spacificPostProposal?.propertyType}
-                  proportyCategory={spacificPostProposal?.proportyCategory}
-                  location={spacificPostProposal?.location}
+                  purpose={find_proposal?.purpose}
+                  propertyType={find_proposal?.propertyType}
+                  proportyCategory={find_proposal?.proportyCategory}
+                  location={find_proposal?.location}
                   width={'100%'}
                   widthBox={'100%'}
                   className={'locationWidth'}
@@ -238,15 +243,13 @@ const Page = () => {
                   px={'0px'}
                 />
                 <PreviewAmountAndFeature
-                  area={spacificPostProposal?.area}
-                  amount={spacificPostProposal?.amount}
-                  areaUnit={spacificPostProposal?.areaUnit}
+                  area={find_proposal?.area}
+                  amount={find_proposal?.amount}
+                  areaUnit={find_proposal?.areaUnit}
                   areaAndAmount={areaAndAmount}
-                  amountCurrency={spacificPostProposal?.amountCurrency}
-                  instalmentAvailable={
-                    spacificPostProposal?.instalmentAvailable
-                  }
-                  readyPossession={spacificPostProposal?.readyPossession}
+                  amountCurrency={find_proposal?.amountCurrency}
+                  instalmentAvailable={find_proposal?.instalmentAvailable}
+                  readyPossession={find_proposal?.readyPossession}
                   width={'100%'}
                   pb={'10px'}
                   pt={'30px'}
@@ -255,14 +258,14 @@ const Page = () => {
                 />
                 {/* <PreviewFeatureAndAmenities
                   amenities={amenities}
-                  bedrooms={spacificPostProposal?.bedrooms}
-                  bathrooms={spacificPostProposal?.bathrooms}
-                  parking={spacificPostProposal?.parking}
-                  other_features={spacificPostProposal?.other_features}
+                  bedrooms={find_proposal?.bedrooms}
+                  bathrooms={find_proposal?.bathrooms}
+                  parking={find_proposal?.parking}
+                  other_features={find_proposal?.other_features}
                 /> */}
                 <BidMedia
                   title={images?.title}
-                  media={spacificPostProposal?.images}
+                  media={find_proposal?.images}
                   mediaType={images?.type}
                   pb={'20px'}
                   pt={'30px'}
@@ -270,7 +273,7 @@ const Page = () => {
                 />
                 <BidMedia
                   title={videos?.title}
-                  media={spacificPostProposal?.videos}
+                  media={find_proposal?.videos}
                   mediaType={videos?.type}
                   pb={'20px'}
                   pt={'30px'}

@@ -12,7 +12,6 @@ const UserProfileImage = ({
   badgeHeigth,
   right,
   padding,
-  notActive,
 }) => {
   return (
     <Badge>
@@ -24,35 +23,33 @@ const UserProfileImage = ({
         }}
       >
         <Image src={image} width={width} height={height} alt="profile" />
-        {notActive && (
+        <Box
+          sx={{
+            width: 'auto',
+            height: 'auto',
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            position: 'absolute',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            right: right,
+            p: padding,
+            bottom: 0,
+          }}
+        >
           <Box
             sx={{
-              width: 'auto',
-              height: 'auto',
+              width: badgeWidth,
+              height: badgeHeigth,
               borderRadius: '50%',
-              backgroundColor: 'white',
-              position: 'absolute',
-              display: 'flex',
-              justifyContent: 'center',
+              backgroundColor: isActive ? '#18DD00' : 'gray',
+              alignContent: 'center',
               alignItems: 'center',
-              right: right,
-              p: padding,
-              bottom: 0,
+              textAlign: 'center',
             }}
-          >
-            <Box
-              sx={{
-                width: badgeWidth,
-                height: badgeHeigth,
-                borderRadius: '50%',
-                backgroundColor: isActive ? '#18DD00' : 'gray',
-                alignContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-              }}
-            ></Box>
-          </Box>
-        )}
+          ></Box>
+        </Box>
       </Box>
     </Badge>
   );
