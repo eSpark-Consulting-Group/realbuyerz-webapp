@@ -15,10 +15,8 @@ const UserProfileDetails = ({
   Description,
   amountCurrency,
 }) => {
-  const loginAgents = useSelector((state) => state?.loginAgents);
-  const findAgent = loginAgents?.find(
-    (agent) => agent?.id == agentId && agentId
-  );
+  const agents = useSelector((state) => state?.agents);
+  const find_agent = agents?.find((agent) => agent?.id == agentId);
 
   return (
     <Grid container>
@@ -50,11 +48,11 @@ const UserProfileDetails = ({
             badgeWidth={'13px'}
             badgeHeigth={'13px'}
             right={20}
-            image={findAgent?.profileImage || image}
+            image={find_agent?.profile_image || image}
             padding={0.5}
             width={165}
             height={156}
-            isActive={findAgent?.status == 'Active' ? true : false}
+            isActive={find_agent?.status}
           />
         </Grid>
         <Box
@@ -81,7 +79,7 @@ const UserProfileDetails = ({
               py: 0.3,
             }}
           >
-            {findAgent?.firstName + findAgent?.lastName || ''}
+            {`${find_agent?.first_name || ''} ${find_agent?.last_name || ''}`}
           </Typography>
           <Typography
             sx={{
@@ -92,7 +90,7 @@ const UserProfileDetails = ({
               lineHeight: 'normal',
             }}
           >
-            {findAgent?.country || ''}
+            {find_agent?.country || ''}
           </Typography>
           <Typography
             sx={{
@@ -116,7 +114,7 @@ const UserProfileDetails = ({
               textAlign: { xs: 'center', md: 'left' },
             }}
           >
-            {Description}
+            {Description || ''}
           </Typography>
         </Box>
         <Grid
@@ -138,7 +136,7 @@ const UserProfileDetails = ({
             },
           }}
         >
-          <Link href={`${adId}/${link}/${proposalId}`}>
+          <Link href={`${adId || ''}/${link || ''}/${proposalId || ''}`}>
             <Typography
               sx={{
                 display: 'flex',
@@ -153,7 +151,7 @@ const UserProfileDetails = ({
                 cursor: 'pointer',
               }}
             >
-              {text}
+              {text || ''}
             </Typography>
           </Link>
         </Grid>

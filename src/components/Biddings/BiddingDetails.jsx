@@ -15,8 +15,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { postListingAdCard } from '@/app/constants/postListing';
 import NotFoundSection from '../Global/NotFoundSection';
-
+import { useSelector } from 'react-redux';
 const BiddingDetails = ({ height, ads }) => {
+  const all_proposals = useSelector((state) => state?.proposals);
   const [showAllItems, setShowAllItems] = useState(false);
   const path = usePathname();
 
@@ -25,6 +26,17 @@ const BiddingDetails = ({ height, ads }) => {
   };
   const handleShowLessClick = () => {
     setShowAllItems(false);
+  };
+
+  const finding_proposals = (property_id, proposals) => {
+    const find_proposals = proposals?.filter(
+      (proposal) =>
+        proposal.property_id == property_id &&
+        proposal?.status !== 'Rejected' &&
+        proposal?.status !== 'Connected' &&
+        proposal?.status !== 'Archive'
+    );
+    return find_proposals;
   };
 
   return (
@@ -38,7 +50,7 @@ const BiddingDetails = ({ height, ads }) => {
         <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
             {ads
-              ?.slice(0, showAllItems ? ads.length : 3)
+              ?.slice(0, showAllItems ? ads?.length : 3)
               ?.map((item, index) => (
                 <Grid container xs={12} key={index}>
                   <Box
@@ -138,7 +150,6 @@ const BiddingDetails = ({ height, ads }) => {
                             sx={{
                               fontSize: '14px',
                               fontWeight: 600,
-                              // ml: { xs: '4px', md: '0px' },
                             }}
                           >
                             {ESTIMATE_RANGE}
@@ -174,7 +185,7 @@ const BiddingDetails = ({ height, ads }) => {
                               ml: { xs: '4px', lg: '0px' },
                             }}
                           >
-                            <Link href={`live-bidding/${item?.adId}`}>
+                            <Link href={`live-bidding/${item?.property_id}`}>
                               <Typography
                                 sx={{
                                   color: '#FB631C',
@@ -223,13 +234,17 @@ const BiddingDetails = ({ height, ads }) => {
                         city={item?.city}
                         status={item?.purpose}
                         location={item?.location}
-                        proposal={item?.proposals?.length}
+                        proposal={finding_proposals(
+                          item?.property_id,
+                          all_proposals
+                        )}
                         connects={item?.connects}
                         cardKeys={postListingAdCard}
                         noConnects={true}
                       />
                       {path?.includes('/user') &&
-                      item?.proposals?.length > 0 ? (
+                      finding_proposals(item?.property_id, all_proposals)
+                        ?.length > 0 ? (
                         <Grid item xs={12}>
                           <Box
                             sx={{
@@ -247,7 +262,7 @@ const BiddingDetails = ({ height, ads }) => {
                               pt: { xs: 2, sm: 0 },
                             }}
                           >
-                            <Link href={`dashboard/ad/${item?.adId}`}>
+                            <Link href={`dashboard/ad/${item?.property_id}`}>
                               <Typography
                                 sx={{
                                   width: '200px',
