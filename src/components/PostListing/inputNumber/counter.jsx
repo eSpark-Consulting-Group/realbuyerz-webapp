@@ -1,59 +1,29 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CustomNumberInput from './customInputNumber';
-import { useDispatch } from 'react-redux';
-import {
-  addBathrooms,
-  addBedrooms,
-  addParking,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
-const Counter = ({ identifier }) => {
-  const [number, setNumber] = useState(0);
-  const [incrementValue, setIncrementValue] = useState(0);
-  const [bedroomValue, setBedroomValue] = useState(0);
-  const [bathroomValue, setBathroomValue] = useState(0);
-  const [parkingValue, setParkingValue] = useState(0);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (identifier == 'facility_0') {
-      setBedroomValue(Number(number));
-    } else if (identifier == 'facility_1') {
-      setBathroomValue(Number(number));
-    } else if (identifier == 'facility_2') {
-      setParkingValue(Number(number));
+const Counter = ({ formik, name, limit }) => {
+  const handleIncrement = () => {
+    if (formik.values[name] < limit) {
+      const newIncrementValue = formik.values[name] + 1;
+      formik.setFieldValue([name], newIncrementValue);
     }
-  });
-
-  useEffect(() => {
-    dispatch(addBedrooms(bedroomValue));
-  }, [bedroomValue]);
-
-  useEffect(() => {
-    dispatch(addBathrooms(bathroomValue));
-  }, [bathroomValue]);
-
-  useEffect(() => {
-    dispatch(addParking(parkingValue));
-  }, [parkingValue]);
-
-  const handleNumberChange = (newValue) => {
-    setNumber(newValue);
   };
 
-  const saveIncrement = (value) => {
-    setIncrementValue(value);
+  const handleDecrement = () => {
+    if (formik.values[name] > 0) {
+      const newDecrementValue = formik.values[name] - 1;
+      formik.setFieldValue([name], newDecrementValue);
+    }
   };
 
   return (
     <div>
       <CustomNumberInput
-        value={number}
-        incrementValue={incrementValue}
-        onChange={handleNumberChange}
-        onSaveIncrement={saveIncrement}
-        identifier={identifier}
+        limit={limit}
+        value={formik?.values[name]}
+        handleIncrement={handleIncrement}
+        handleDecrement={handleDecrement}
       />
     </div>
   );

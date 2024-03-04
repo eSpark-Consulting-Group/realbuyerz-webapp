@@ -4,11 +4,10 @@ import { Box, Grid } from '@mui/material';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyFacilities from './PropertyFacilities';
-// import SelectedAmenitiesItems from './SelectedAmenitiesItem';
 
 import AddAmenities from './AddAmenities';
 
-const PropertyFeatures = () => {
+const PropertyFeatures = ({ formik }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (items) => {
@@ -56,34 +55,22 @@ const PropertyFeatures = () => {
                 height: '100%',
                 gap: 4.5,
                 p: 6,
-                // pl: { xs: 6, sm: 12, md: 17, lg: 25 },
                 alignItems: { xs: 'center', sm: 'start' },
                 justifyContent: { xs: 'center' },
                 flexDirection: 'column',
               }}
             >
               <PropertyFacilities
-                propertyInformation={PROPERTY_INFORMATION.feature}
+                propertyInformation={PROPERTY_INFORMATION?.feature}
+                formik={formik}
               />
               <AddAmenities
+                formik={formik}
                 onSelected={handleSelectedItems}
                 selectedItems={selectedItems}
               />
             </Box>
           </Box>
-          {/* {selectedItems?.length > 0 && (
-            <Grid
-              sx={{
-                marginTop: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Typography variant="h6">Selected Amenities:</Typography>
-              <SelectedAmenitiesItems selectedItems={selectedItems} />
-            </Grid>
-          )}{' '} */}
         </Box>
       </Grid>
     </Grid>

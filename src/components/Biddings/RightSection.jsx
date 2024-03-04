@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
-import { BIDDINGS } from '@/app/constants/Biddings';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ROUTERS } from '@/app/constants/LiveBidding';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
-const RightSection = ({ rightSection }) => {
+const RightSection = ({
+  postId,
+  spacificPost,
+  proposals,
+  rightSectionKeys,
+}) => {
+  const { apply_Button, save_Button, send_Proposal, flag_Inappropiate } =
+    rightSectionKeys;
+  const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+
   const [isHovered, setIsHovered] = useState(false);
+  const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -15,6 +25,12 @@ const RightSection = ({ rightSection }) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleSave = () => {
+    dispatch(
+      handleSaveRequest({ post: spacificPost, userId: current_user_id })
+    );
   };
 
   return (
@@ -27,7 +43,7 @@ const RightSection = ({ rightSection }) => {
           gap: 2.5,
         }}
       >
-        <Link href={ROUTERS?.postListing}>
+        <Link href={`${postId}${apply_Button?.link}`}>
           <Typography
             sx={{
               display: 'flex',
@@ -42,14 +58,14 @@ const RightSection = ({ rightSection }) => {
               color: '#FFF',
             }}
           >
-            {BIDDINGS?.applybutton?.title}
+            {apply_Button?.title}
           </Typography>
         </Link>
-
-        <Link href={'#'}>
+        <Link href={save_Button?.link}>
           <Typography
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleSave}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -68,14 +84,13 @@ const RightSection = ({ rightSection }) => {
           >
             <Image
               src={
-                isHovered
-                  ? BIDDINGS?.savebutton?.hoverImage
-                  : BIDDINGS?.savebutton?.defaultImage
+                isHovered ? save_Button?.hoverImage : save_Button?.defaultImage
               }
               width={10}
               height={8}
+              alt={'image'}
             />
-            {BIDDINGS?.savebutton?.title}
+            {save_Button?.title}
           </Typography>
         </Link>
       </Box>
@@ -89,7 +104,7 @@ const RightSection = ({ rightSection }) => {
             fontWeight: 500,
           }}
         >
-          <FlagIcon fontSize={'12px'} /> {BIDDINGS?.flagInappropiate}
+          <FlagIcon fontSize={'12px'} /> {flag_Inappropiate}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', gap: '5px', pb: 1 }}>
@@ -103,8 +118,7 @@ const RightSection = ({ rightSection }) => {
             textWrap: 'wrap',
           }}
         >
-          {' '}
-          {BIDDINGS?.sendProposal}
+          {send_Proposal}
         </Typography>
         <Typography
           variant="body1"
@@ -116,34 +130,7 @@ const RightSection = ({ rightSection }) => {
             textWrap: 'wrap',
           }}
         >
-          {rightSection.connects} {BIDDINGS?.connects}
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'flex', gap: '5px' }}>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#333',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            pb: '10px',
-          }}
-        >
-          {' '}
-          {BIDDINGS?.availableConnects}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            pb: '10px',
-          }}
-        >
-          0
+          {proposals}
         </Typography>
       </Box>
     </Box>

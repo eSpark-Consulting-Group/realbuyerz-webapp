@@ -11,7 +11,7 @@ import {
   Container,
 } from '@mui/material';
 
-const ProjectsFilters = ({ data, onFilter }) => {
+const ProjectsFilters = ({ data }) => {
   const [filterValues, setFilterValues] = useState({
     postType: '',
     propertyType: '',
@@ -22,7 +22,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [filterValues]);
+  }, [filterValues, handleFilter()]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -57,8 +57,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
           item?.title?.includes(filterValues?.searchInput))
       );
     });
-
-    onFilter(filteredData);
+    console.log(filteredData);
   };
 
   return (
@@ -71,6 +70,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
               value={filterValues?.postType}
               onChange={handleChange}
               name="postType"
+              autoWidth
             >
               <MenuItem key="" value="">
                 All
@@ -88,6 +88,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
               value={filterValues?.propertyType}
               onChange={handleChange}
               name="propertyType"
+              autoWidth
             >
               <MenuItem key="" value="">
                 All
@@ -106,6 +107,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
               value={filterValues?.propertyPrice}
               onChange={handleChange}
               name="propertyPrice"
+              autoWidth
             >
               <MenuItem key="" value="">
                 Any Prize
@@ -125,6 +127,7 @@ const ProjectsFilters = ({ data, onFilter }) => {
               value={filterValues?.propertySize}
               onChange={handleChange}
               name="propertySize"
+              autoWidth
             >
               <MenuItem key="" value="">
                 Any Size
@@ -154,6 +157,9 @@ const ProjectsFilters = ({ data, onFilter }) => {
             variant="contained"
             color="secondary"
             onClick={handleClearFilter}
+            sx={{
+              height: '52px',
+            }}
           >
             Clear Filter
           </Button>

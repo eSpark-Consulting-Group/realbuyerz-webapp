@@ -1,32 +1,31 @@
 import React from 'react';
-import { Button } from '@mui/material';
-import { useRouter } from 'next/navigation';
-import { ROUTERS_POSTING } from '@/app/constants/Dashboard';
+import { Typography } from '@mui/material';
+import Link from 'next/link';
 
-const SeeAllPosting = ({ title }) => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(ROUTERS_POSTING.dashboardProposal);
-  };
+const SeeAllPosting = ({ title, link }) => {
   return (
-    <Button
-      sx={{
-        Weight: 500,
-        fontSize: { xs: '17px', sm: '20px' },
-        lineHeight: '24.2px',
-        color: '#126FAA',
-        textDecoration: 'underline',
-        textUnderlineOffset: '4px',
-        background: 'none',
-        '&:hover': {
-          background: 'none',
-          textDecoration: 'underline',
-        },
-      }}
-      onClick={handleClick}
-    >
-      {title}
-    </Button>
+    <>
+      <Link href={`${link}`}>
+        <Typography
+          sx={{
+            Weight: 500,
+            fontSize: { xs: '17px', sm: '20px' },
+            lineHeight: '24.2px',
+            color: '#126FAA',
+            textDecoration: 'underline',
+            textTransform: 'lowercase',
+            textUnderlineOffset: '4px',
+            background: 'none',
+            '&:hover': {
+              background: 'none',
+              textDecoration: 'underline',
+            },
+          }}
+        >
+          {title}
+        </Typography>
+      </Link>
+    </>
   );
 };
 

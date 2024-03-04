@@ -1,13 +1,14 @@
 import React from 'react';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 
 const DashboardTitle = ({ title }) => {
   return (
     <Box
       sx={{
-        Weight: 500,
-        fontSize: { xs: '22px', sm: '25px' },
-        lineHeight: '30.26px',
+        fontWeight: 500,
+        fontSize: { xs: '25px', sm: '27px', md: '30px' },
+        lineHeight: '36.31px',
+        color: '#000000',
       }}
     >
       {title}

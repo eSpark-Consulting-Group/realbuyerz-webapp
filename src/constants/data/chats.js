@@ -9,6 +9,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             "Hi John, I hope you're doing well. Any thoughts on the property in L.A?",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-17T10:15:00',
@@ -16,6 +17,7 @@ export const chatMessages = {
           sender: 'John',
           content:
             "Hello! I've been reviewing the details. Could you provide more information about the neighborhood?",
+          contentType: 'text',
         },
         // ... additional messages for the day
       ],
@@ -30,6 +32,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             "Good day, John! The property is in Westwood, a vibrant and safe neighborhood. It's a spacious 3-story house.",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-18T10:00:00',
@@ -37,6 +40,7 @@ export const chatMessages = {
           sender: 'John',
           content:
             "Great! Could you share the total area of the property and whether it's west-facing?",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-18T10:30:00',
@@ -44,6 +48,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             "Certainly! The property covers 2,500 sq. ft. and yes, it's west-facing for beautiful sunsets. How many rooms are you looking for?",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-18T11:00:00',
@@ -51,6 +56,7 @@ export const chatMessages = {
           sender: 'John',
           content:
             "I'd like at least 4 bedrooms. Can you also tell me about the kitchen and living room spaces?",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-18T11:30:00',
@@ -58,6 +64,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             'Absolutely! The kitchen is fully equipped with modern appliances. The living room is spacious with large windows, offering a lot of natural light.',
+          contentType: 'text',
         },
         // ... additional messages for the day
       ],
@@ -72,6 +79,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             'The property also features a backyard garden, perfect for relaxation. Each story has a bathroom, and the top floor has a terrace.',
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-19T10:15:00',
@@ -79,6 +87,7 @@ export const chatMessages = {
           sender: 'John',
           content:
             'That sounds great! What about the number of stories and any unique features of the property?',
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-19T10:45:00',
@@ -86,6 +95,7 @@ export const chatMessages = {
           sender: 'You',
           content:
             "It's a 3-story house with a basement. The basement can be used as a recreational space. Additionally, there's a two-car garage.",
+          contentType: 'text',
         },
         // ... additional messages for the day
       ],
@@ -101,12 +111,14 @@ export const chatMessages = {
           sender: 'You',
           content:
             "Hi John, I wanted to share details about another property we have available. It's in Beverly Hills, a luxurious 5-bedroom mansion.",
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-26T10:00:00',
           id: 'msg012',
           sender: 'John',
           content: 'Interesting! Tell me more about this property.',
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-26T10:30:00',
@@ -115,6 +127,7 @@ export const chatMessages = {
           content:
             'The mansion covers 6,000 sq. ft., features a pool, and has stunning views. Are you interested in scheduling a visit?',
           read: true,
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-26T11:00:00',
@@ -122,6 +135,7 @@ export const chatMessages = {
           sender: 'John',
           content: "Certainly! Here's my phone number: +923211234567.",
           read: false,
+          contentType: 'text',
         },
         {
           timestamp: '2024-01-26T11:30:00',
@@ -129,6 +143,55 @@ export const chatMessages = {
           sender: 'John',
           content: 'By the way, will you be available tomorrow for a meeting?',
           read: false,
+          contentType: 'text',
+        },
+      ],
+      read: true,
+    },
+    {
+      date: '2024-02-01',
+      messages: [
+        {
+          timestamp: '2024-02-01T11:30:00',
+          id: 'msg016',
+          sender: 'John',
+          // content: ['/images/logo.png'],
+          content: [
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+          ],
+          read: false,
+          contentType: 'image',
+        },
+        {
+          timestamp: '2024-02-01T11:30:00',
+          id: 'msg017',
+          sender: 'You',
+          // content: ['/images/logo.png'],
+          content: [
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+            '/images/logo.png',
+            'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
+          ],
+          read: false,
+          contentType: 'image',
         },
       ],
       read: true,

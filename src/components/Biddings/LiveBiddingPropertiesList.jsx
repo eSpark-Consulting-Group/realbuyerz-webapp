@@ -1,24 +1,115 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { usePathname } from 'next/navigation';
 
-const LiveBiddingPropertiesList = ({ list }) => {
+const LiveBiddingPropertiesList = ({
+  city,
+  status,
+  location,
+  proposal,
+  connects,
+  cardKeys,
+  noConnects,
+  pl,
+  justifyContent,
+}) => {
+  const pathName = usePathname();
+  const agent = '/agent';
+  const user = '/user';
+  console.log(proposal, 'proposalff');
   return (
     <Box
       sx={{
         width: '100%',
-        paddingLeft: '17px',
-        display: 'flex',
+        paddingLeft: pl ? pl : '17px',
         '@media(min-width: 280px) and (max-width: 445px)': {
           justifyContent: 'center',
         },
       }}
     >
-      {list?.map((item, index) => (
-        <div key={index}>
-          {Object.keys(item).map((key) => (
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+        >
+          {cardKeys?.status || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {status || ''}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+        >
+          {cardKeys?.city || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {city || ''}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+        >
+          {cardKeys?.area || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {location || ''}
+        </Typography>
+      </Box>
+      {pathName?.includes(user) && proposal?.length > 0 ? (
+        <Box
+          sx={{
+            display: 'flex',
+            '@media(min-width: 280px) and (max-width: 445px)': {
+              justifyContent: 'center',
+            },
+          }}
+        >
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+          >
+            {cardKeys?.proposal || ''}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: '#333333', fontWeight: 500 }}
+          >
+            {proposal?.length || ''}
+          </Typography>
+        </Box>
+      ) : null}
+
+      {pathName.includes(agent) ? (
+        <>
+          {noConnects && (
             <Box
-              key={key}
               sx={{
                 display: 'flex',
                 '@media(min-width: 280px) and (max-width: 445px)': {
@@ -30,18 +121,18 @@ const LiveBiddingPropertiesList = ({ list }) => {
                 variant="body1"
                 sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
               >
-                {key}:
+                {cardKeys?.connects}
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ color: '#333333', fontWeight: 500 }}
               >
-                {item[key]}
+                {connects}
               </Typography>
             </Box>
-          ))}
-        </div>
-      ))}
+          )}
+        </>
+      ) : null}
     </Box>
   );
 };

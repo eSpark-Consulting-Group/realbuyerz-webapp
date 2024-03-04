@@ -1,9 +1,10 @@
+import MyProperty from '@/src/components/MyProperty';
 import React from 'react';
 
 const page = () => {
   return (
     <>
-      <h1>my-properties</h1>
+      <MyProperty />
     </>
   );
 };

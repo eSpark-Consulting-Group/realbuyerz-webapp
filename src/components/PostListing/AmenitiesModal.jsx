@@ -4,7 +4,7 @@ import { Modal, Box } from '@mui/material';
 import Facilities from './Facilities';
 
 const AmenitiesModal = (props) => {
-  const { onClose, open, data, onSelected } = props;
+  const { onClose, open, data, onSelected, formik } = props;
   const handleClose = () => {
     onClose();
   };
@@ -37,6 +37,7 @@ const AmenitiesModal = (props) => {
         >
           <Box sx={{ width: '100%' }}>
             <Facilities
+              formik={formik}
               cancel={handleCancelButton}
               facilitiesData={data}
               onSelected={onSelected}

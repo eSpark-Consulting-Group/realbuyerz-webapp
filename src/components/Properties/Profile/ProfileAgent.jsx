@@ -9,9 +9,7 @@ import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const ProfileAgent = ({ data }) => {
   const agents = useSelector((state) => state?.agents?.agents?.agentData);
-
   const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
-  console.log('selectedAgent', selectedAgent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${data} not found`);

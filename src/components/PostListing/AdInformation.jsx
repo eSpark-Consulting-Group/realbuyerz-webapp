@@ -9,9 +9,16 @@ import {
 import PostTitle from './PostTitle';
 import PropertyInformation from './PropertyInformation';
 
-const AdInformation = ({ propertyData }) => {
+const AdInformation = ({ propertyData, formik }) => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -30,11 +37,8 @@ const AdInformation = ({ propertyData }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             height: 'auto',
             width: '100%',
-            backgroundColor: 'white',
           }}
         >
           <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />
@@ -51,6 +55,7 @@ const AdInformation = ({ propertyData }) => {
               propertyDetails={PROPERTY_INFORMATION.addInfo}
               propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
               propertyData={propertyData}
+              formik={formik}
             />
           </Box>
         </Box>

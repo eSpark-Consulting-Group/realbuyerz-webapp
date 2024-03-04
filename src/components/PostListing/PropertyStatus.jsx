@@ -1,23 +1,14 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { addLocationAndPuspose } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
-const PropertyStatus = ({ propertyInformation, propertyData }) => {
+const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
-  const [properStatusData, setProperStatusData] =
-    useState(activePropertyStatus);
-  const dispatch = useDispatch();
 
   const handleChange = (val) => {
+    formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
-    setProperStatusData(val);
   };
-
-  useEffect(() => {
-    dispatch(addLocationAndPuspose(properStatusData));
-  }, [properStatusData]);
 
   return (
     <>
@@ -31,6 +22,7 @@ const PropertyStatus = ({ propertyInformation, propertyData }) => {
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
           pb: { xs: 2, sm: 2 },
+          cursor: 'pointer',
         }}
       >
         <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>

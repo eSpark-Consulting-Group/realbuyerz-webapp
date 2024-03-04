@@ -1,23 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import { useDispatch } from 'react-redux';
-import { addCity } from '@/src/redux/slices/buyingForm/buyingSellingSlice';
-
-const SelectCityType = ({ image, label, cityOptions }) => {
-  const [city, setCity] = useState();
-  const dispatch = useDispatch();
+const SelectCityType = ({ image, label, cityOptions, formik }) => {
   const options = cityOptions?.map((opt) => opt?.label);
-
-  const handleCityChange = (event) => {
-    const val = event.target.innerText;
-    setCity(val);
-  };
-
-  useEffect(() => {
-    dispatch(addCity(city));
-  }, [city]);
 
   return (
     <>
@@ -70,6 +57,7 @@ const SelectCityType = ({ image, label, cityOptions }) => {
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
+              position: 'relative',
               gap: 1,
               mt: 0.8,
               mb: 3,
@@ -88,21 +76,48 @@ const SelectCityType = ({ image, label, cityOptions }) => {
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
             <Autocomplete
+              name={'city'}
+              popupIcon={<KeyboardArrowDownIcon sx={{ color: '#777777' }} />}
+              value={formik?.values?.city}
+              onBlur={formik?.handleBlur}
+              error={formik?.touched?.city && Boolean(formik?.errors?.city)}
               disablePortal
               id="combo-box-demo"
               options={options}
               sx={{
                 '& .MuiAutocomplete-inputRoot': {
                   borderRadius: '10px',
-                  border: '1px solid #E7E7E7',
+                  border: `1px solid ${formik.errors.city ? 'red' : 'none'}`,
                 },
+                '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
+                  {
+                    color: '#777777',
+                    display: 'inline-flex',
+                    visibility: 'visible',
+                    '&:hover': {
+                      color: '#777777',
+                    },
+                  },
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
               renderInput={(params) => (
                 <TextField {...params} label="Select City" />
               )}
-              onChange={handleCityChange}
+              onChange={(e, value) => {
+                formik?.handleChange('city')(value || '');
+              }}
             />
+            {formik?.errors['city'] && (
+              <Typography
+                sx={{
+                  position: 'absolute',
+                  bottom: '-25px',
+                  color: 'red',
+                }}
+              >
+                {formik?.errors['city']}
+              </Typography>
+            )}
           </Box>
         </Box>
       </Box>

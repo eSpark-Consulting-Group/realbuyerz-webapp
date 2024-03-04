@@ -12,9 +12,16 @@ import SelectCityType from './SelectCity';
 import SelectLocationType from './SelectLocationType';
 import PropertyStatus from './PropertyStatus';
 
-const PropertyPurpose = ({ propertyData }) => {
+const PropertyPurpose = ({ propertyData, formik }) => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -33,15 +40,12 @@ const PropertyPurpose = ({ propertyData }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             height: 'auto',
             width: '100%',
-            backgroundColor: 'white',
           }}
         >
           <PostTitle
-            text={PROPERTY_INFORMATION.postTitles.locationandpurpose}
+            text={PROPERTY_INFORMATION?.postTitles?.locationandpurpose}
           />
           <Box
             sx={{
@@ -64,24 +68,27 @@ const PropertyPurpose = ({ propertyData }) => {
               }}
             >
               <PropertyStatus
-                propertyInformation={PROPERTY_INFORMATION.purpose}
-                propertySell={PROPERTY_INFORMATION.sell}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                propertyInformation={PROPERTY_INFORMATION?.purpose}
+                propertySell={PROPERTY_INFORMATION?.sell}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
                 propertyData={propertyData}
+                formik={formik}
               />
               <SelectProperyType
-                image={PROPERTY_INFORMATION.propertyType.images}
-                label={PROPERTY_INFORMATION.propertyType.text}
-                iconTitle={PROPERTY_INFORMATION.IconTitle}
-                plotType={PROPERTY_INFORMATION.propertyPlot}
-                commercialType={PROPERTY_INFORMATION.propertyCommercial}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                image={PROPERTY_INFORMATION?.propertyType?.images}
+                label={PROPERTY_INFORMATION?.propertyType?.text}
+                iconTitle={PROPERTY_INFORMATION?.IconTitle}
+                plotType={PROPERTY_INFORMATION?.propertyPlot}
+                commercialType={PROPERTY_INFORMATION?.propertyCommercial}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                formik={formik}
               />
               <SelectCityType
-                image={PROPERTY_INFORMATION.city.images}
-                label={PROPERTY_INFORMATION.city.text}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-                cityOptions={PROPERTY_INFORMATION.selectCityOptions}
+                image={PROPERTY_INFORMATION?.city?.images}
+                label={PROPERTY_INFORMATION?.city?.text}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                cityOptions={PROPERTY_INFORMATION?.selectCityOptions}
+                formik={formik}
               />
               <SelectLocationType />
             </Box>

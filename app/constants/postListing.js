@@ -7,6 +7,7 @@ export const PROPERTY_INFORMATION = {
   cancel: 'Cancel',
   saveDraft: 'Save as draft',
   submitAd: 'Submit Ad',
+  SubmitProposal: 'Submit Proposal',
   property: [
     {
       image: '/images/listing-page/home.svg',
@@ -67,7 +68,7 @@ export const PROPERTY_INFORMATION = {
     {
       image: '/images/listing-page/house.svg',
       activeImage: '/images/listing-page/housesell.svg',
-      title: 'Rent House',
+      title: 'Pent House',
       label: 'rentHouseBtn',
       value: '',
     },
@@ -215,9 +216,10 @@ export const PROPERTY_INFORMATION = {
       image: '/images/listing-page/areasize.svg',
       text: 'Area Size',
       placeholder: 'Enter Unit',
-      dropPlaceholder: 'Select Unit',
+      dropPlaceholder: 'Unit',
       label: 'area',
       value: '',
+      unit: 'areaUnit',
     },
     {
       image: '/images/listing-page/amount.svg',
@@ -226,6 +228,7 @@ export const PROPERTY_INFORMATION = {
       dropPlaceholder: 'PKR',
       label: 'amount',
       value: '',
+      unit: 'amountCurrency',
     },
   ],
 
@@ -264,14 +267,20 @@ export const PROPERTY_INFORMATION = {
     {
       image: '/images/listing-page/bed.svg',
       title: 'Bedrooms',
+      name: 'bedrooms',
+      limit: 5,
     },
     {
       image: '/images/listing-page/room.svg',
       title: 'Bathrooms',
+      name: 'bathrooms',
+      limit: 5,
     },
     {
       image: '/images/listing-page/parking.svg',
       title: 'Parking',
+      name: 'parking',
+      limit: 1,
     },
   ],
   upload: {
@@ -496,7 +505,8 @@ export const PROPERTY_BUYING_DETAIL = {
 };
 
 export const postListingEntities = {
-  id: 1,
+  agentId: '',
+  formId: '',
   adInfomation: '',
   locationAndPurpose: {
     adPurpose: '',
@@ -518,4 +528,148 @@ export const postListingEntities = {
     selectedAmenities: '',
   },
   propertyImagesAndVideos: { images: '', videos: '' },
+};
+
+export const postRequestEntities = {
+  usertId: '',
+  formId: 1,
+  proposals: [],
+  adInfomation: '',
+  locationAndPurpose: {
+    adPurpose: '',
+    propertyType: '',
+    propetySubType: '',
+    city: '',
+    location: '',
+  },
+  propertySizeAndPricing: {
+    areaSize: '',
+    amount: '',
+    installment: '',
+    possession: '',
+  },
+  featuresAndAmenities: {
+    bedrooms: '',
+    bathrooms: '',
+    parking: '',
+    selectedAmenities: '',
+  },
+};
+
+export const coverLetterEntities = {
+  adId: '',
+  agentId: '',
+  proposalId: '',
+  proposalStatus: 'submit',
+  userIndex: '',
+  adInfomation: '',
+  locationAndPurpose: {
+    adPurpose: '',
+    propertyType: '',
+    propetySubType: '',
+    city: '',
+    location: '',
+  },
+  propertySizeAndPricing: {
+    areaSize: '',
+    amount: '',
+    installment: '',
+    possession: '',
+  },
+  featuresAndAmenities: {
+    bedrooms: '',
+    bathrooms: '',
+    parking: '',
+    selectedAmenities: '',
+  },
+  propertyImagesAndVideos: { images: '', videos: '' },
+};
+
+export const previewData = {
+  title: 'Preview',
+  buttonText: 'Close',
+  propertyDetails: 'Property Details',
+  location: {
+    title: 'Location and Purpose',
+    purpose: 'purpose:',
+    propertyType: 'propertyType:',
+    city: 'city:',
+    location: 'location:',
+  },
+  areaAndAmount: {
+    title: 'Area and Amount',
+    areaSize: 'Area Size:',
+    range: 'Range:',
+    installment: 'Installment:',
+    readyfor: 'Ready for:',
+  },
+  amenities: {
+    title: 'Features & Amenities',
+    bedrooms: 'Bedrooms:',
+    parking: 'Parking:',
+    bathrooms: 'Bathrooms:',
+    other_features: 'Other Features',
+  },
+  images: {
+    title: 'Project images',
+    type: 'images',
+  },
+  videos: {
+    title: 'Project videos',
+    type: 'videos',
+  },
+};
+
+export const reachBuyerData = {
+  title: 'Reach Millions of Buyers on our Platforms',
+  description: 'In a few simple steps!',
+};
+
+export const reachBuyerCoverLetter = {
+  title: 'Fill out the form with the facilities you have!',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+};
+
+export const adSumitModal = {
+  title: 'Success',
+  description: 'Your Ad is submitted successfully.',
+  buttonLabel: 'Continue',
+};
+
+export const proposalSumitModal = {
+  title: 'Success',
+  description: 'Your Proposal is submitted successfully.',
+  buttonLabel: 'Continue',
+};
+
+export const draftModal = {
+  title: 'Success',
+  description: 'Save as Draft',
+  buttonLabel: 'Continue',
+};
+
+export const postListingAdCard = {
+  status: 'Status :',
+  city: 'City :',
+  area: 'Area :',
+  proposal: 'Proposal :',
+  connects: 'connects :',
+};
+
+export const clientRequirment = {
+  title: 'Clients Requirement',
+  send_Proposal: 'Send a proposal for :',
+  available_Connects: 'Available Connects:',
+  flag_Inappropiate: 'Flag as inappropiate',
+  connects: 'Connects',
+  apply_Button: {
+    title: 'Apply Now',
+    link: '/cover-letter',
+  },
+  save_Button: {
+    title: 'Save',
+    defaultImage: '/images/heart.svg',
+    hoverImage: '/images/heart-white.svg',
+    link: '#',
+  },
 };

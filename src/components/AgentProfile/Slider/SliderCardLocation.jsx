@@ -22,7 +22,7 @@ const SliderCardLocation = ({ location }) => {
             variant="body2"
             sx={{
               color: '#909394',
-              fontSize: '15px',
+              fontSize: { xs: '12px', md: '15px' },
               fontStyle: 'normal',
               fontWeight: 300,
               lineHeight: 'normal',

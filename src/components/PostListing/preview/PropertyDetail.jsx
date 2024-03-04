@@ -1,18 +1,45 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const PropertyDetail = ({ title, values }) => {
+const PropertyDetail = ({
+  title,
+  subTitle,
+  description,
+  heading,
+  width,
+  px,
+  pt,
+  pb,
+  paddingHeading,
+  subPadding,
+  mb,
+}) => {
   return (
-    <div>
+    <>
       <Box
         sx={{
-          px: 4,
-          pt: 3,
-          pb: 5,
+          px: px ? px : 4,
+          pt: pt ? pt : 3,
+          pb: pb ? pb : 5,
           borderBottom: '1px solid #E4E4E4',
-          '@media(min-width:280px) and (max-width:400px)': { px: 3 },
+          width: width ? width : '100%',
+          '@media(min-width:280px) and (max-width:400px)': {
+            px: subPadding ? subPadding : 3,
+          },
         }}
       >
+        <Typography
+          variant="h2"
+          sx={{
+            pb: paddingHeading ? paddingHeading : '20px',
+            color: '#000',
+            fontSize: '20px',
+            fontWeight: '500',
+            mb: mb,
+          }}
+        >
+          {heading}
+        </Typography>
         <Typography
           variant="h2"
           sx={{
@@ -24,29 +51,34 @@ const PropertyDetail = ({ title, values }) => {
         >
           {title}
         </Typography>
-        <Typography
-          sx={{
-            padding: '5px',
-            color: '#333',
-            fontSize: '15px',
-            fontWeight: '600',
-          }}
-          variant="h3"
-        >
-          {values?.title}
-        </Typography>
-        <Typography
-          sx={{
-            padding: '5px',
-            color: ' #333',
-            fontSize: '12px',
-            fontWeight: '400',
-          }}
-        >
-          {values?.description}
-        </Typography>
+        {subTitle && (
+          <Typography
+            sx={{
+              padding: '5px',
+              color: '#333',
+              fontSize: '15px',
+              fontWeight: '600',
+            }}
+            variant="h3"
+          >
+            {subTitle}
+          </Typography>
+        )}
+        {description && (
+          <Typography
+            sx={{
+              width: width ? width : '100%',
+              padding: '5px',
+              color: ' #333',
+              fontSize: '12px',
+              fontWeight: '400',
+            }}
+          >
+            {description}
+          </Typography>
+        )}
       </Box>
-    </div>
+    </>
   );
 };
 export default PropertyDetail;

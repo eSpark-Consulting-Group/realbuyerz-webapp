@@ -16,8 +16,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -71,8 +71,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -126,8 +126,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -181,8 +181,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -236,8 +236,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -291,8 +291,8 @@ export const PROPOSAL_LISTING = [
     header: {
       id: '1',
       agentName: 'John Doe',
-      city: 'Karchi',
-      countery: 'Pakistan',
+      city: 'karachi',
+      country: 'Pakistan',
       time: '02:13 pm',
       timeZone: 'local time',
       avatar: '/images/agentProfile.svg',
@@ -370,3 +370,7 @@ export const AMOUNT = 'Amount:';
 export const RESTORE_PROPERTY = 'Restore Property';
 export const ZERO = 0;
 export const ALL = 'All';
+
+export const PROPOSAL = {
+  propertyDetails: 'Property Details',
+};

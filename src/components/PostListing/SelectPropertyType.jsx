@@ -1,15 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 
 import PropertyTypes from './PropertyPlot';
 import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
-import { useDispatch } from 'react-redux';
-
-import {
-  addPropertyType,
-  addpropetySubType,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const SelectProperyType = ({
   image,
@@ -17,31 +11,24 @@ const SelectProperyType = ({
   iconTitle,
   plotType,
   commercialType,
+  formik,
 }) => {
   const [activePropertyType, setActivePropertyType] = useState('House');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
   const [propertyType, setPropertyType] = useState(activePropertyType);
   const [propetySubType, setPropetySubType] = useState();
 
-  const dispatch = useDispatch();
-
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
     setPropertyType(text);
+    formik.setFieldValue('proportyCategory', text);
   };
 
   const handlePropetySubType = (text) => {
     setActivePropertySubType(text);
     setPropetySubType(text);
+    formik.setFieldValue('propertyType', text);
   };
-
-  useEffect(() => {
-    dispatch(addPropertyType(propertyType));
-  }, [propertyType]);
-
-  useEffect(() => {
-    dispatch(addpropetySubType(propetySubType));
-  }, [propetySubType]);
 
   return (
     <>
@@ -55,6 +42,7 @@ const SelectProperyType = ({
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
           pb: { xs: 2, sm: 2 },
+          cursor: 'pointer',
         }}
       >
         <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
@@ -224,6 +212,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Plots' && (
               <PropertyTypes
                 data={plotType}
+                propertyType={propertyType}
                 handlePropetySubType={handlePropetySubType}
                 activePropertySubType={activePropertySubType}
               />
@@ -231,6 +220,7 @@ const SelectProperyType = ({
             {activePropertyType === 'Commercial' && (
               <PropertyTypes
                 data={commercialType}
+                propertyType={propertyType}
                 activePropertySubType={activePropertySubType}
                 propetySubType={propetySubType}
                 handlePropetySubType={handlePropetySubType}

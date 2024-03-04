@@ -13,15 +13,22 @@ import chatsSlice from './slices/chat/chatsSlice';
 import blogsSlice from './slices/blogs/blogsSlice';
 import partnersSlice from './slices/global/partnersSlice';
 import agentsSlice from './slices/agents/agentsSlice';
-import biddingsSlice from './slices/bidding/biddingsSlice';
 import proposalsSlice from './slices/proposals/proposalsSlice';
 import PakageCartSlice from './slices/settings/PakageCartSlice';
 import verificationSlice from './slices/verification/verificationSlice';
 import resendEmailSlice from './slices/resendEmail/resendEmailSlice';
 import signinSlice from './slices/signin/signinSlice';
 import authSlice from './slices/auth/authSlice';
-import buyingSellingSlice from './slices/buyingForm/buyingSellingSlice';
-import postlistingAdSlice from './slices/postlistingAd/postlistingAdSlice';
+import postlistingAdSlice from './slices/postlistingAds/postlistingAdsSlice';
+import userAdsSlice from './slices/userAds/userAdsSlice';
+import biddingsSlice from './slices/bidding/biddingsSlice';
+import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
+import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
+import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
+import userDraftSlice from './slices/userDraft/userDraftSlice';
+import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
+import globalUnitsSlice from './slices/global/globalUnitsSlice';
+import currentUserSlice from './slices/currentUser/currentUserSlice';
 
 export const store = configureStore({
   reducer: {
@@ -32,7 +39,7 @@ export const store = configureStore({
     newProperties: newPropertiesSlice,
     proposals: proposalsSlice,
     biddings: biddingsSlice,
-    agents: agentsSlice,
+
     users: usersSlice,
     terms: termsConditionsSlice,
     policies: policiesSlice,
@@ -41,11 +48,30 @@ export const store = configureStore({
     blogs: blogsSlice,
     partners: partnersSlice,
     PakageCart: PakageCartSlice,
-    buyingSellingForm: buyingSellingSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,
+    // current user
+    currentUser: currentUserSlice,
+
+    // agents for proposals
+    agents: agentsSlice,
+
+    // Sumited Ads States
+    loginAgents: loginAgentsSlice,
+    loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
+    postRequestAds: userAdsSlice,
+
+    // Draft Ads State
+    userDraft: userDraftSlice,
+    agentDraft: agentDraftSlice,
+
+    // Favorite Ads State
+    favoriteAds: favouriteAdsSlice,
+
+    // global units States
+    globalUnits: globalUnitsSlice,
   },
 });

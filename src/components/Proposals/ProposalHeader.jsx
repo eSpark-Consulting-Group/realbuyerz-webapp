@@ -11,7 +11,6 @@ const ProposalHeader = ({ proposal }) => {
   const agents = useSelector((state) => state?.agents?.agents?.agentData);
 
   const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
-  console.log('selectedAgent', selectedAgent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);

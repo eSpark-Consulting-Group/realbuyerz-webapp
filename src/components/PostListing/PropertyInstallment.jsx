@@ -1,44 +1,21 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 
 import { createInstallmentState } from '@/utils/propertyInstallment';
-import { useDispatch } from 'react-redux';
-import {
-  addInstallment,
-  addPossession,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
   propertyBuyingDetails,
+  formik,
 }) => {
   const [propertyData] = useState(
     createInstallmentState(propertyInstallmentInfo, propertyBuyingDetails)
   );
-  const [installment, setInstallment] = useState();
-  const [possession, setPossession] = useState();
-  const dispatch = useDispatch();
-
-  const handleToggleChange = (key, val) => {
-    if (key == 'instalmentAvailable') {
-      setInstallment(val);
-    } else {
-      setPossession(val);
-    }
-  };
-
-  useEffect(() => {
-    dispatch(addInstallment(installment));
-  }, [installment]);
-
-  useEffect(() => {
-    dispatch(addPossession(possession));
-  }, [possession]);
 
   return (
     <>
-      {propertyData?.installmentData.toggleData?.map((item, index) => (
+      {propertyData?.installmentData?.toggleData?.map((item, index) => (
         <Box
           sx={{
             width: '100%',
@@ -113,10 +90,10 @@ const PropertyInstallment = ({
                 {item?.title}
               </Typography>
               <Switch
-                value={item?.value}
-                onChange={(event) =>
-                  handleToggleChange(item?.label, event.target.checked)
-                }
+                checked={formik?.values[item?.label]}
+                onChange={(event) => {
+                  formik?.setFieldValue(item?.label, event.target.checked);
+                }}
               />
             </Box>
             <Typography

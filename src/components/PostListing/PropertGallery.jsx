@@ -1,28 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import InstructionsForUpload from './InstructionsForUpload';
 import ImageUploader from './ImageUploader';
-import { useDispatch } from 'react-redux';
-import {
-  UploadImages,
-  UploadVideos,
-} from '@/src/redux/slices/buyingForm/buyingSellingSlice';
 import VideoUploader from './VideoUploader';
 
-const PropertyGallery = () => {
+const PropertyGallery = ({ formik }) => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const maxImages = 5;
   const maxVideos = 5;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(UploadImages(images));
-    dispatch(UploadVideos(videos));
-  }, [images, videos]);
 
   const handleImageUpload = (type, file) => {
     if (images.length < maxImages && type.includes('image')) {
@@ -30,6 +19,7 @@ const PropertyGallery = () => {
     } else {
       console.error('Maximum limit of images reached');
     }
+    formik.setFieldValue('images', images);
   };
 
   const handleVideoUpload = (type, file) => {
@@ -38,10 +28,18 @@ const PropertyGallery = () => {
     } else {
       console.error('Maximum limit of videos reached');
     }
+    formik.setFieldValue('videos', videos);
   };
 
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -63,10 +61,7 @@ const PropertyGallery = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             width: '100%',
-            backgroundColor: 'white',
             '@media (min-width: 960px) and (max-width: 1399px)': {
               height: '780px',
             },
@@ -202,6 +197,7 @@ const PropertyGallery = () => {
                           onUpload={handleImageUpload}
                           maxImages={maxImages}
                         />
+
                         <VideoUploader
                           onUpload={handleVideoUpload}
                           maxVideos={maxVideos}

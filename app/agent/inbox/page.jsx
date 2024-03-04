@@ -46,7 +46,6 @@ const Page = () => {
       ...room,
       background: !room?.avatar && paintBackground(),
     }));
-    console.log({ tempData, back: paintBackground() });
     setSelectedChatRoom(tempData[0]);
     setChatRoomState(tempData);
   }, []);

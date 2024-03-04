@@ -22,15 +22,11 @@ import { useSelector } from 'react-redux';
 
 const PropertySlider = ({ propertyData }) => {
   const properties = useSelector((state) => state?.properties?.properties);
-  console.log(properties, 'properties');
-
   const filteredProperties = properties.filter(
     (property) =>
       property.propertyType === propertyData?.propertyType &&
       property?.subPropertyType === propertyData?.subPropertyType
   );
-
-  console.log(filteredProperties, 'filtered properties');
 
   var settings = {
     dots: false,
@@ -42,23 +38,23 @@ const PropertySlider = ({ propertyData }) => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1224,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: false,
           adaptiveHeight: true,
-          dots: true,
+          dots: false,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1040,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
           adaptiveHeight: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -67,7 +63,7 @@ const PropertySlider = ({ propertyData }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -75,7 +71,7 @@ const PropertySlider = ({ propertyData }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: true,
+          dots: false,
         },
       },
     ],
@@ -103,7 +99,9 @@ const PropertySlider = ({ propertyData }) => {
                     alt="Paella dish"
                   />
                 </Link>
-                <CardContent>
+                <CardContent
+                  sx={{ padding: { xs: '5px', sm: '10px', md: '16px' } }}
+                >
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>

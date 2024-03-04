@@ -10,9 +10,16 @@ import PostTitle from './PostTitle';
 import PropertyAreaSize from './PropertyAreaSize';
 import PropertyInstallment from './PropertyInstallment';
 
-const PropertySize = () => {
+const PropertySize = ({ formik }) => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px #E4E4E4 solid',
+        borderRadius: '10px',
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -31,14 +38,11 @@ const PropertySize = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            border: '1px #E4E4E4 solid',
-            borderRadius: '10px',
             width: '100%',
             height: 'auto',
-            backgroundColor: 'white',
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION.postTitles.sizeprice} />
+          <PostTitle text={PROPERTY_INFORMATION?.postTitles?.sizeprice} />
           <Box
             sx={{
               width: '100%',
@@ -59,15 +63,17 @@ const PropertySize = () => {
               }}
             >
               <PropertyAreaSize
-                propertySizeInformation={PROPERTY_INFORMATION.propertySize}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-                selectCity={PROPERTY_INFORMATION.selectCityOptions}
-                aeraSizes={PROPERTY_INFORMATION.aeraSizes}
-                currency={PROPERTY_INFORMATION.currency}
+                propertySizeInformation={PROPERTY_INFORMATION?.propertySize}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                selectCity={PROPERTY_INFORMATION?.selectCityOptions}
+                aeraSizes={PROPERTY_INFORMATION?.aeraSizes}
+                currency={PROPERTY_INFORMATION?.currency}
+                formik={formik}
               />
               <PropertyInstallment
-                propertyInstallmentInfo={PROPERTY_INFORMATION.installment}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+                propertyInstallmentInfo={PROPERTY_INFORMATION?.installment}
+                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                formik={formik}
               />
             </Box>
           </Box>

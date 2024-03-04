@@ -1,56 +1,329 @@
-import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
+// import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
-
-const proposals = PROPOSALS_DATA;
-
-const initialState = { proposals };
-
-function generateUniqueId(proposals) {
-  let newId = (proposals.length + 1).toString();
-  while (proposals.some((property) => property.id === newId)) {
-    newId = (parseInt(newId, 10) + 1).toString();
-  }
-  return newId;
-}
 
 const proposalsSlice = createSlice({
   name: 'proposals',
-  initialState,
+  initialState: [
+    {
+      property_id: 650,
+      agent_id: 12,
+      proposal_id: 1,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 650,
+      agent_id: 31,
+      proposal_id: 2,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 670,
+      agent_id: 21,
+      proposal_id: 3,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 670,
+      agent_id: 23,
+      proposal_id: 6,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 670,
+      agent_id: 30,
+      proposal_id: 8,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 670,
+      agent_id: 20,
+      proposal_id: 10,
+      status: '',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 670,
+      agent_id: 21,
+      proposal_id: 11,
+      status: 'Connected',
+      title: 'What is Lorem Ipsum?',
+      location: '',
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+      area: 120,
+      amount: 120,
+      areaUnit: 'sq.ft',
+      amountCurrency: 'GBP',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: [],
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Pent House',
+      instalmentAvailable: true,
+      readyPossession: true,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 937,
+      agent_id: 21,
+      status: 'Rejected',
+      title: 'sadfsadf',
+      location: '',
+      proposal_id: 82,
+      description: 'asdfsadf',
+      area: 456,
+      amount: 546,
+      areaUnit: 'sq.m',
+      amountCurrency: 'PKR',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: '',
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Sell',
+      instalmentAvailable: false,
+      readyPossession: false,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 980,
+      agent_id: 21,
+      status: 'Connected',
+      title: 'sadfsadf',
+      location: '',
+      proposal_id: 82,
+      description: 'asdfsadf',
+      area: 456,
+      amount: 546,
+      areaUnit: 'sq.m',
+      amountCurrency: 'PKR',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: '',
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Sell',
+      instalmentAvailable: false,
+      readyPossession: false,
+      images: [],
+      videos: [],
+    },
+    {
+      property_id: 960,
+      agent_id: 21,
+      status: 'Archive',
+      title: 'sadfsadf',
+      location: '',
+      proposal_id: 83,
+      description: 'asdfsadf',
+      area: 456,
+      amount: 546,
+      areaUnit: 'sq.m',
+      amountCurrency: 'PKR',
+      city: 'Karachi',
+      bedrooms: 0,
+      connects: '',
+      bathrooms: 0,
+      parking: 0,
+      other_features: '',
+      purpose: 'Rent',
+      proportyCategory: 'House',
+      propertyType: 'Sell',
+      instalmentAvailable: false,
+      readyPossession: false,
+      images: [],
+      videos: [],
+    },
+  ],
   reducers: {
     addProposal: (state, action) => {
-      const newProposal = {
-        ...action.payload,
-        id: generateUniqueId(state.proposals),
-      };
-      state.proposals.push(newProposal);
-    },
-
-    updateProposal: (state, action) => {
-      const { id, updatedProposal } = action.payload;
-      const index = state.proposals.findIndex((property) => property.id === id);
-      if (index !== -1) {
-        state.proposals[index] = {
-          ...state.proposals[index],
-          ...updatedProposal,
-        };
+      const { property_id } = action.payload;
+      const foundObject = state?.find(
+        (obj) => obj?.property_id === property_id
+      );
+      if (foundObject) {
+        null;
+      } else {
+        state?.push(action.payload);
       }
     },
 
-    deleteProposal: (state, action) => {
-      const id = action.payload;
-      state.proposals = state.proposals.filter(
-        (property) => property.id !== id
+    handleConnectProposal: (state, action) => {
+      const { proposal_id, property_id } = action.payload;
+      const proposalIndex = state.findIndex(
+        (proposal) => proposal?.proposal_id === proposal_id
       );
+      const propertyIndex = state?.findIndex(
+        (property) => property?.property_id === property_id
+      );
+      if (proposalIndex !== -1 && propertyIndex !== -1) {
+        state[proposalIndex].status = 'Connected';
+        state?.forEach((proposal) => {
+          if (
+            proposal?.property_id === property_id &&
+            proposal?.proposal_id !== proposal_id
+          ) {
+            proposal.status = 'Archive';
+          }
+        });
+      }
     },
 
-    selectProposal: (state, action) => {
-      const { id } = action.payload;
-      state.selectedProposal =
-        state.proposals.find((property) => property.id === id) || null;
+    handleRejectedProposal: (state, action) => {
+      const { proposal_id } = action.payload;
+      const proposal_index = state?.findIndex(
+        (proposal) => proposal?.proposal_id === proposal_id
+      );
+      if (proposal_index !== -1) {
+        state[proposal_index].status = 'Rejected';
+      }
     },
   },
 });
 
-export const { addProposal, updateProposal, deleteProposal, selectProposal } =
-  proposalsSlice.actions;
+export const {
+  addProposal,
+  handleConnectProposal,
+  handleRejectedProposal,
+  updateProposal,
+  deleteProposal,
+  selectProposal,
+} = proposalsSlice.actions;
 export default proposalsSlice.reducer;

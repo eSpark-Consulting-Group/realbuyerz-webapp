@@ -1,17 +1,12 @@
-'use client';
 import React from 'react';
-import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
+import ProjectPage from '@/src/components/projects/ProjectPage';
 
-import PropertyTabs from '@/src/components/Properties/PropertyTabs';
-
-const Listing = () => {
-  const properties = useSelector((state) => state.properties.properties);
+const Page = () => {
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <PropertyTabs data={properties} />
-    </Box>
+    <>
+      <ProjectPage />
+    </>
   );
 };
 
-export default Listing;
+export default Page;

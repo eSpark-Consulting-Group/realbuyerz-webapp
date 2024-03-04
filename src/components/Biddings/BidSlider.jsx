@@ -1,20 +1,18 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Box } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
 import Image from 'next/image';
-
-SwiperCore.use([Navigation, Pagination, A11y]);
+import { A11y, Navigation } from 'swiper/modules';
 
 const BidSlider = ({ media, mediaType }) => {
   const swiperSettings = {
-    spaceBetween: 20,
+    // spaceBetween: 20,
     slidesPerView: 3,
     loop: true,
     navigation: {
@@ -28,6 +26,7 @@ const BidSlider = ({ media, mediaType }) => {
     scrollbar: {
       el: '.swiper-scrollbar',
     },
+    module: [Navigation, Pagination, A11y],
     breakpoints: {
       1440: {
         slidesPerView: 3,
@@ -36,30 +35,44 @@ const BidSlider = ({ media, mediaType }) => {
         slidesPerView: 3,
       },
       1024: {
-        slidesPerView: 1,
+        slidesPerView: 3,
       },
       600: {
-        slidesPerView: 1,
+        slidesPerView: 2,
       },
       480: {
         slidesPerView: 1,
       },
+      280: {
+        slidesPerView: 1,
+      },
     },
   };
-  console.log('mediaType', mediaType);
   return (
     <>
       <Swiper {...swiperSettings}>
         {media?.map((item, index) => (
           <SwiperSlide key={index}>
             {mediaType === 'images' ? (
-              <Box sx={{ pr: '50px' }}>
-                <Image height={200} width={250} src={item} alt="" />
+              <Box sx={{ px: '10px' }}>
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt=""
+                  className="reponsiveimage"
+                />
               </Box>
             ) : mediaType === 'videos' ? (
-              <Box sx={{ pr: '50px' }}>
+              <Box sx={{ px: '10px' }}>
                 {' '}
-                <Image height={200} width={250} src={item} alt="" />
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt=""
+                  className="reponsiveimage"
+                />
               </Box>
             ) : null}
           </SwiperSlide>
