@@ -105,6 +105,8 @@ const Page = () => {
     installmentAvailable: yup.boolean(),
     readyPossession: yup.boolean(),
     featuresAndAmenities: yup.mixed(),
+    images: yup.array().min(1, 'Image is required'),
+    videos: yup.array().min(1, 'Video is required'),
   });
 
   const initialFormValues = {
