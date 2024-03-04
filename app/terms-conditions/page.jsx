@@ -86,6 +86,9 @@ const TermsConditions = () => {
                     color: '#333',
                     fontSize: '16px',
                     fontWeight: '600',
+                    '@media (min-width": 280px) and (max-width: 480px)': {
+                      marginBottom: '20px',
+                    },
                   }}
                 >
                   {item.tabName}
@@ -111,7 +114,7 @@ const TermsConditions = () => {
               variant="body1"
               sx={{
                 color: '#333',
-                fontSize: '16px',
+                fontSize: '14px',
                 fontWeight: '600',
                 textTransform: 'uppercase',
                 pb: '40px',

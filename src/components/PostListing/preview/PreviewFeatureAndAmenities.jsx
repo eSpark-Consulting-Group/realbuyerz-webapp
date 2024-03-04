@@ -8,6 +8,8 @@ const PreviewFeatureAndAmenities = ({
   other_features,
   amenities,
   fontSize,
+  fontStyle,
+  fontWeight,
 }) => {
   return (
     <>
@@ -30,11 +32,20 @@ const PreviewFeatureAndAmenities = ({
           </Typography>
           {bedrooms > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
+              <Typography
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: fontWeight ? fontWeight : 500,
+                }}
+              >
                 {amenities?.bedrooms}
               </Typography>
               <Typography
-                sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: 500,
+                  color: '#126FAA',
+                }}
               >
                 {bedrooms && bedrooms}
               </Typography>
@@ -42,11 +53,20 @@ const PreviewFeatureAndAmenities = ({
           )}
           {bathrooms > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
+              <Typography
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: fontWeight ? fontWeight : 500,
+                }}
+              >
                 {amenities?.bathrooms}
               </Typography>
               <Typography
-                sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: 500,
+                  color: '#126FAA',
+                }}
               >
                 {bathrooms && bathrooms}
               </Typography>
@@ -54,11 +74,20 @@ const PreviewFeatureAndAmenities = ({
           )}
           {parking > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
+              <Typography
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: fontWeight ? fontWeight : 500,
+                }}
+              >
                 {amenities?.parking}
               </Typography>
               <Typography
-                sx={{ fontSize: '14px', fontWeight: 500, color: '#126FAA' }}
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: 500,
+                  color: '#126FAA',
+                }}
               >
                 {parking && parking}
               </Typography>

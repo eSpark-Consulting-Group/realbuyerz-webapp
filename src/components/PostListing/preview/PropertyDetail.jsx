@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { fontStyle } from '@mui/system';
 
 const PropertyDetail = ({
   title,
@@ -14,6 +15,8 @@ const PropertyDetail = ({
   subPadding,
   fontSize,
   mb,
+  fontStyle,
+  fontSizeDescription,
 }) => {
   return (
     <>
@@ -57,7 +60,7 @@ const PropertyDetail = ({
             sx={{
               padding: '5px',
               color: '#333',
-              fontSize: '15px',
+              fontSize: fontStyle ? fontStyle : '15px',
               fontWeight: '600',
             }}
             variant="h3"
@@ -71,7 +74,7 @@ const PropertyDetail = ({
               width: width ? width : '100%',
               padding: '5px',
               color: ' #333',
-              fontSize: '12px',
+              fontSize: fontSizeDescription ? fontSizeDescription : '12px',
               fontWeight: '400',
             }}
           >

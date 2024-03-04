@@ -62,7 +62,7 @@ const PreviewModal = (props) => {
               height: { xs: '700px', xl: '100%' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
-              overflowY: 'scroll',
+              overflowY: 'auto',
               '&::-webkit-scrollbar': {
                 width: '0px',
                 background: 'transparent',
@@ -85,6 +85,8 @@ const PreviewModal = (props) => {
               subTitle={ads?.title}
               description={ads?.description}
               fontSize={'18px'}
+              fontStyle={'12px'}
+              fontSizeDescription={'10px'}
             />
             <Location
               city={ads?.city}
@@ -94,6 +96,8 @@ const PreviewModal = (props) => {
               proportyCategory={ads?.proportyCategory}
               location={ads?.location}
               fontSize={'18px'}
+              fontStyle={'12px'}
+              fontWeight={'700'}
             />
             <PreviewAmountAndFeature
               area={ads?.area}
@@ -104,6 +108,8 @@ const PreviewModal = (props) => {
               instalmentAvailable={ads?.instalmentAvailable}
               readyPossession={ads?.readyPossession}
               fontSize={'18px'}
+              fontStyle={'12px'}
+              fontWeight={'700'}
             />
             <PreviewFeatureAndAmenities
               amenities={amenities}
@@ -112,6 +118,8 @@ const PreviewModal = (props) => {
               parking={ads?.parking}
               other_features={ads?.other_features}
               fontSize={'18px'}
+              fontStyle={'12px'}
+              fontWeight={'700'}
             />
             {pathName !== userPath ? (
               <>

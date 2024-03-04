@@ -19,6 +19,7 @@ const Continue = ({
           width: '100px',
           borderRadius: '5px',
           color: 'white',
+          marginTop: '30px',
           '&:hover': {
             background: '#FF631C',
           },
@@ -34,11 +35,11 @@ const Continue = ({
       <Button
         sx={{
           fontWeight: '400px',
-          fontSize: '12px',
+          fontSize: '14px',
           color: '#126FAA',
           padding: 0,
           textTransform: 'math-auto',
-          marginTop: '50px',
+          marginTop: '20px',
           textDecoration: 'underline',
           display: 'flex',
           alignSelf: 'baseline',

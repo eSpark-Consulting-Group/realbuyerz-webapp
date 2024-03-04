@@ -65,6 +65,7 @@ const FeaturedProperties = ({ data }) => {
               <Box
                 sx={{
                   position: 'relative',
+
                   mx: { xs: '5%', lg: 'auto' },
                   width: {
                     lg: '390px',
@@ -133,7 +134,7 @@ const FeaturedProperties = ({ data }) => {
                           textAlign: 'left',
                           fontWeight: 600,
                           lineHeight: '21.78px',
-                          fontSize: { xs: '12px', md: '14px', lg: '16px' },
+                          fontSize: { xs: '12px', md: '14px', lg: '18px' },
                           pb: '15px',
                         }}
                       >
@@ -207,7 +208,7 @@ const FeaturedProperties = ({ data }) => {
                         >
                           <Image
                             width={20}
-                            height={20}
+                            height={14.2}
                             src={amenity}
                             alt={`Amenity ${index}`}
                           />
