@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     handlePathnameChange();
-  }, [pathname]);
+  }, [pathname, handlePathnameChange]);
 
   useEffect(() => {
     setChild(!child);

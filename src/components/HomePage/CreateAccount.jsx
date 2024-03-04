@@ -20,7 +20,7 @@ const Typewriter = ({ text }) => {
       setDisplayedText('');
     }
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, text]);
 
   return (
     <Typography
