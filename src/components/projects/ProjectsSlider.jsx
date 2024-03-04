@@ -7,22 +7,24 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
-import { PROJECTS_DATA } from '@/src/constants/projects';
 
 const itemsToShow = 10;
+
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
   const totalItems = Math.min(data.length, itemsToShow) || 10;
+  console.log(currentPage);
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
+  const NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
   const filterData = data?.filter(
     (item) => item?.proportyCategory === category
   );
-  const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
+  const filteredData = filterData?.length ? filterData : NoData;
   const sliderSettings = {
     slidesPerView: 3,
+    // pagination: { clickable: true },
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
     autoplay: {
       delay: 3000,
@@ -50,9 +52,9 @@ const ProjectsSlider = ({ data, category }) => {
   };
 
   return (
-    <Swiper {...sliderSettings} className="test-slider">
+    <Swiper {...sliderSettings}>
       {filteredData?.slice(0, totalItems).map((project) => (
-        <SwiperSlide key={project?.id} className="test-slider">
+        <SwiperSlide key={project?.id}>
           <Grid
             container
             sx={{
@@ -64,9 +66,8 @@ const ProjectsSlider = ({ data, category }) => {
             <Grid
               key={project?.id}
               item
-              xs={12}
+              xs={11}
               my={'20px'}
-              mx={'20px'}
               sx={{
                 backgroundColor: '#fff',
                 border: '1px solid #E4E4E4',

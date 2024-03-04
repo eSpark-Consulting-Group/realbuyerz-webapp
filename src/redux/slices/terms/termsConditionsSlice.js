@@ -1,11 +1,12 @@
-import { TERM_CONDITIONS } from '@/app/constants/TermCondition';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { TERM_CONDITIONS };
-const termsConditionsSlice = createSlice({
+const terms = {};
+
+const initialState = { terms };
+const termsSlice = createSlice({
   name: 'terms',
   initialState,
   reducers: {},
 });
 
-export default termsConditionsSlice.reducer;
+export default termsSlice.reducer;

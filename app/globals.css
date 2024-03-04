@@ -144,7 +144,6 @@ body header {
   padding-top: 4px;
   color: black;
 }
-
 .PhoneInputCountry {
   width: 90px;
   height: 45px;
@@ -207,17 +206,14 @@ body header {
 .PhoneInputCountryIconImg {
   width: 34px;
 }
-
 .reponsiveimage {
   height: 200px;
   width: 250px;
-
   @media (min-width: 280px) and (max-width: 480px) {
     height: 180px;
     width: 280px;
   }
 }
-
 .scrollbar-container {
   overflow-y: auto;
 }
@@ -225,14 +221,12 @@ body header {
 .scrollbar-container::-webkit-scrollbar {
   width: 12px;
 }
-
 .scrollbar-container::-webkit-scrollbar-track {
   background-color: #f6f6f6;
   border-radius: 10px;
   /* margin-top: -30px;
   margin-bottom: -10px; */
 }
-
 .scrollbar-container::-webkit-scrollbar-thumb {
   background: #d9d9d9;
   border-radius: 10px;
@@ -246,7 +240,6 @@ body header {
     background: 'pink';
   }
 }
-
 @media (min-width: 1440px) and (max-width: 2560px) {
   #mobile {
     width: 320px !important;
@@ -293,16 +286,13 @@ body header {
   .slick-list {
     margin-left: 20px !important;
   }
-
   .PhoneInput {
     flex-direction: column;
     height: 115px !important;
   }
-
   .PhoneInputCountry {
     margin-bottom: 15px;
   }
-
   .PhoneInputInput {
     width: 100%;
   }
@@ -561,8 +551,4 @@ body header {
   pointer-events: none;
   user-select: none;
   font-style: italic;
-}
-
-.test-slider {
-  z-index: -1 !important;
 }
