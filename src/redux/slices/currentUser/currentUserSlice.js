@@ -46,7 +46,7 @@ const agent = {
   available_connects: 0,
   property_id: '',
   listingLimit: 0,
-  packageId: 0
+  packageId: 0,
 };
 
 const currentUserSlice = createSlice({
