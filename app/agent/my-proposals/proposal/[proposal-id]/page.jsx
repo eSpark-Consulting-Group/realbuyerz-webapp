@@ -155,11 +155,18 @@ const Page = () => {
                         <Typography
                           sx={{
                             fontSize: { xs: '15px', md: '20px' },
+                            color: '#333333',
                             fontWeight: 700,
-                            marginLeft: '40px',
-                            '@media (min-width: 280px) and (max-width: 800px)':
+                            marginLeft: { xs: '0px', md: '65px' },
+                            marginRight: { xs: '10px', md: '0px' },
+
+                            '@media (min-width: 400px) and (max-width: 900px)':
                               {
                                 mt: '12px',
+                              },
+                            '@media (min-width: 280px) and (max-width: 800px)':
+                              {
+                                marginLeft: '65px',
                               },
                             '@media (min-width: 280px) and (max-width: 350px)':
                               {
@@ -296,7 +303,7 @@ const Page = () => {
                     )}
                     <Typography
                       sx={{
-                        fontSize: '20px',
+                        fontSize: '30px',
                         fontWeight: 600,
                         textAlign: 'center',
                         mt: '55px',

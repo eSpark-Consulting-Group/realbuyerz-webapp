@@ -106,14 +106,19 @@ body header {
 
 .slick-prev:before {
   content: url('/images/agent-profile-icons/Left.svg') !important;
+  margin-right: 10px;
 }
 
 .slick-next:before {
   content: url('/images/agent-profile-icons/Right.svg') !important;
+    margin-left: 2px;
 }
 
 .slick-slide {
   padding: 0 10px;
+}
+.slick-slider{
+  margin-left: 10px;
 }
 
 .slick-list {

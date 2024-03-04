@@ -44,9 +44,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
             width: '100%',
           }}
         >
-          <PostTitle
-            text={PROPERTY_INFORMATION?.postTitles?.locationandpurpose}
-          />
+          <PostTitle text={propertyData?.postTitles?.locationandpurpose} />
           <Box
             sx={{
               width: '100%',

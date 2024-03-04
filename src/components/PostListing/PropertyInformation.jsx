@@ -2,8 +2,9 @@
 import React from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 
-const PropertyInformation = ({ propertyData, formik }) => {
+const PropertyInformation = ({ postData, formik }) => {
   const specialIndex = 1;
+  console.log('test', postData);
 
   return (
     <>
@@ -18,7 +19,7 @@ const PropertyInformation = ({ propertyData, formik }) => {
           gap: { xs: 1, sm: 2 },
         }}
       >
-        {propertyData?.adInfoData?.addInfo.map((item, index) => (
+        {postData?.addInfo.map((item, index) => (
           <Box
             sx={{
               width: '100%',

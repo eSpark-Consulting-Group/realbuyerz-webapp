@@ -67,7 +67,7 @@ const UserProfileDetails = ({
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: { xs: 'center', md: 'flex-start' },
-            '@media (min-width: 900px) and (max-width: 1250px)': {
+            '@media (min-width: 960px) and (max-width: 1250px)': {
               paddingLeft: '80px',
             },
           }}

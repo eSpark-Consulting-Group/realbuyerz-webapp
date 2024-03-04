@@ -71,7 +71,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           border: 'none',
                           fontSize: '15px',
                           // padding: '20px',
-                          paddingRight: '30px',
+                          // paddingRight: '30px',
                         }}
                       >
                         {propertytype?.label}
@@ -107,7 +107,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           background: '#F8F8F8',
                           border: '1px solid #B8B8B8',
                           marginBottom: '20px',
-                          padding: '25px',
+                          padding: '20px',
                         }}
                       >
                         {propertyData?.propertyOverview[key]}
