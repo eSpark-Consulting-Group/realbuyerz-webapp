@@ -22,11 +22,11 @@ const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userType, setUserType] = useState('agent');
+  console.log(setUserType);
   const menuItem = userType === 'agent' ? AGENT_MENU_ITEM : USER_MENU_ITEM;
   const [anchorElSearch, setAnchorElSearch] = useState(null);
   const [isloggedIn, setisloggedIn] = useState(null);
   const [isloggedInMobile, setisloggedInMobile] = useState(null);
-  console.log(setUserType);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };

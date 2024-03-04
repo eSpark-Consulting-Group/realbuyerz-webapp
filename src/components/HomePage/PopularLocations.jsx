@@ -171,7 +171,7 @@ const PopularLocations = ({ data }) => {
               src="/images/bgs/GototheTop.svg"
               width={80}
               height={80}
-              alt={''}
+              alt={'Images'}
             />
           </Button>
         </Box>

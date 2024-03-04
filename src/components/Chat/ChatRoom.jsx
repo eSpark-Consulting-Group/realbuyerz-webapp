@@ -237,7 +237,6 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   const conversationRef = useRef(null);
   const scrollToBottom = () => {
-    console.log({ top: conversationRef.current.offsetTop });
     if (conversationRef.current) {
       const lastComponent = conversationRef.current;
       const additionalOffset = 20; // Additional 20px to account for margin-bottom
@@ -314,7 +313,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               height: '15px',
               width: '3px',
             }}
-            alt="Options"
+            alt={'Options'}
           />
         </Box>
         <Box
@@ -401,7 +400,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     component={'img'}
                     src="/icons/ReplyIcon.svg"
                     sx={{ width: '30px', height: '20px' }}
-                    alt="Reply"
+                    alt={'Reply'}
                   />
                   <Box
                     component={'img'}
@@ -412,7 +411,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                       borderRadius: '50%',
                       cursor: 'pointer',
                     }}
-                    alt="Reply"
+                    alt={'Reply'}
                     onClick={handleCancelReply}
                   />
                 </Box>
@@ -481,7 +480,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                         width: { xs: '12px', sm: '18px' },
                         height: { xs: '12px', sm: '18px' },
                       }}
-                      alt="Send File"
+                      alt={'Send File'}
                     />
                     <input
                       type={'file'}
@@ -524,7 +523,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                               height: '20px',
                               marginRight: '5px',
                             }}
-                            alt="Image"
+                            alt={'Image'}
                             component={'img'}
                             src={'/icons/ImageIcon.svg'}
                           />
@@ -547,7 +546,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                               height: '20px',
                               marginRight: '5px',
                             }}
-                            alt="File"
+                            alt={'File'}
                             component={'img'}
                             src={'/icons/FileIcon.svg'}
                           />
@@ -574,7 +573,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                             height: '20px',
                             marginRight: '5px',
                           }}
-                          alt="Mic"
+                          alt={'Mic'}
                           component={'img'}
                           src={'/icons/MicIcon.svg'}
                         />
@@ -596,8 +595,8 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
-                    aria-label="Type your message..."
-                    aria-placeholder="Type your message..."
+                    ariaLabel="Type your message..."
+                    ariaPlaceholder="Type your message..."
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
@@ -616,7 +615,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
           <Box
             src="/icons/SendMessageIcon.svg"
             component={'img'}
-            alt="Send Message"
+            alt={'Send Message'}
             sx={{
               marginLeft: { xs: '5px', sm: '10px' },
               marginRight: { xs: '5px', sm: '10px' },

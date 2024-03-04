@@ -39,7 +39,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
               component={'img'}
               src={propertyInformation?.images}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-              alt="purpose"
+              alt={'purpose'}
             />
             <Typography
               sx={{
@@ -129,7 +129,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
                       }
                       width={31}
                       height={31}
-                      alt="sell-rent"
+                      alt={'sell-rent'}
                     />
                     <Box
                       component={'input'}

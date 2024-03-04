@@ -40,7 +40,7 @@ const SelectedAmenitiesItems = ({ selectedItems }) => {
             }}
             key={index}
           >
-            <Image src={item.image} width={25} height={25} alt="amenities" />
+            <Image src={item.image} width={25} height={25} alt={'amenities'} />
             <Typography>{item.title}</Typography>
           </Box>
         ))}

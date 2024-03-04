@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 const Subscription = ({ title }) => {
   const packages = useSelector((state) => state.packages);
-  const { BuyProductColumns, BuyProductRows } = Buy_Product_Data;
+  const { BuyProductColumns } = Buy_Product_Data;
   return (
     <Box
       sx={{

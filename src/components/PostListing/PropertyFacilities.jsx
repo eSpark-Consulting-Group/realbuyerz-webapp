@@ -28,7 +28,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
               width: { xs: 'auto', md: 'auto' },
             }}
           >
-            <Image src={item?.image} width={50} height={50} alt="facility" />
+            <Image src={item?.image} width={50} height={50} alt={'facility'} />
             <Box
               sx={{
                 display: 'flex',

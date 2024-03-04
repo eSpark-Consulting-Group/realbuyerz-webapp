@@ -93,7 +93,7 @@ export default function EditProfileModal({
               src={'/images/modal/close.svg'}
               width={25}
               height={25}
-              alt="close"
+              alt={'close'}
               onClick={handleClose}
               style={{
                 right: 1,

@@ -16,7 +16,7 @@ const SliderCardLocation = ({ location }) => {
             src="/images/agent-profile-icons/hub.svg"
             width={10}
             height={10}
-            alt="hub rever"
+            alt={'hub rever'}
           />
           <Typography
             variant="body2"

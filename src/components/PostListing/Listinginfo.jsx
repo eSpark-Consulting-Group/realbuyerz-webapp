@@ -28,7 +28,7 @@ const ListingInfo = ({ propertyInfo }) => {
             component={'img'}
             src={item.image}
             sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
-            alt="propertyimages"
+            alt={'propertyimages'}
           />
           <Typography
             sx={{

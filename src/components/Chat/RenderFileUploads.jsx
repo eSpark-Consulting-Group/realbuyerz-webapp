@@ -38,7 +38,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                 <Box
                   component={'img'}
                   src={'/icons/JPEGFileIcon.svg'}
-                  alt="Selected"
+                  alt={'Selected'}
                   sx={{
                     width: { xs: '40px', sm: '100px' },
                     height: { xs: '40px', sm: '100px' },
@@ -46,7 +46,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                 />
               ) : (
                 <Box
-                  alt="Selected"
+                  alt={'Selected'}
                   sx={{
                     width: { xs: '50px', sm: '100px' },
                     height: { xs: '50px', sm: '100px' },
@@ -68,7 +68,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                   right: '5px',
                   top: '5px',
                 }}
-                alt="Reply"
+                alt={'Reply'}
                 onClick={() => handleRemoveFile(file?.id)}
               />
             </Box>
@@ -96,7 +96,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                 width: '20px',
                 height: '20px',
               }}
-              alt="Upload More"
+              alt={'Upload More'}
             />
           </Box>
         </label>

@@ -99,7 +99,7 @@ const MobileResponsiveDashboardHeader = ({
                       src={item?.linkIcon}
                       width={20}
                       height={20}
-                      alt="icon"
+                      alt={'icon'}
                       style={{ marginRight: 10 }}
                     />
                   </Link>

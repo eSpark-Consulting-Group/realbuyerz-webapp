@@ -34,7 +34,6 @@ export default function ProfilePasswordForm({ data }) {
     initialValues: Password_Keys,
     validationSchema: passwordValidationSchema,
     onSubmit: (values, action) => {
-      console.log(values, 'values');
       action.resetForm();
       setCheckValue(false);
     },
