@@ -6,11 +6,12 @@ import Link from 'next/link';
 
 import {
   ALT,
+  PROPERTIES,
   PROPERTIES_FOR_SALE,
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ sellCount, link }) => {
+const PropertyForSale = ({ sellCount }) => {
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -53,7 +54,7 @@ const PropertyForSale = ({ sellCount, link }) => {
               verticalAlign: 'baseline',
             }}
           >
-            <Link href={link}>
+            <Link href={PROPERTIES}>
               <Button
                 variant="body2"
                 sx={{

@@ -28,7 +28,7 @@ const PreferenceSettings = () => {
       return {
         ...prevData,
         toggleData: prevData.toggleData.map((item) =>
-          item?.label === name ? { ...item, value: checked } : item
+          item.label === name ? { ...item, value: checked } : item
         ),
         emailData: { ...prevData.emailData, [name]: checked },
       };

@@ -48,6 +48,7 @@ const BidSlider = ({ media, mediaType }) => {
       },
     },
   };
+  console.log('mediaType', mediaType);
   return (
     <>
       <Swiper {...swiperSettings}>

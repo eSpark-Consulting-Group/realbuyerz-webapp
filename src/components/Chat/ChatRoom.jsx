@@ -237,6 +237,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   const conversationRef = useRef(null);
   const scrollToBottom = () => {
+    console.log({ top: conversationRef.current.offsetTop });
     if (conversationRef.current) {
       const lastComponent = conversationRef.current;
       const additionalOffset = 20; // Additional 20px to account for margin-bottom
@@ -595,8 +596,8 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
-                    ariaLabel="Type your message..."
-                    ariaPlaceholder="Type your message..."
+                    aria-label="Type your message..."
+                    aria-placeholder="Type your message..."
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}

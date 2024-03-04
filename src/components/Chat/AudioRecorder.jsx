@@ -52,7 +52,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
 
   useEffect(() => {
     if (waveform) handleStartRecording();
-  }, [waveform]); // Removed the function call
+  }, [waveform]);
 
   const handleStartRecording = () => {
     setRecordingDuration(0);
@@ -62,6 +62,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
     navigator?.mediaDevices
       ?.getUserMedia({ audio: true })
       .then((stream) => {
+        console.log({ stream });
         const mediaRecorder = new MediaRecorder(stream);
         mediaRecorderRef.current = mediaRecorder;
         audioRef.current.srcObject = stream;
@@ -83,6 +84,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
   };
   const handleStopRecording = () => {
     setIsRecording(false);
+    console.log({ ref: mediaRecorderRef?.current, isRecording });
     if (mediaRecorderRef?.current && isRecording) {
       mediaRecorderRef?.current?.stop();
       setIsRecording(false);
@@ -94,7 +96,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
       mediaRecorderRef?.current?.addEventListener('stop', () => {
         const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
         const audioFile = new File([audioBlob], { type: 'recording.mp3' });
-        console.log(audioFile);
+        console.log({ audioFile });
       });
     }
   };
@@ -237,3 +239,5 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
 };
 
 export default AudioRecorder;
+
+//06:34:25
