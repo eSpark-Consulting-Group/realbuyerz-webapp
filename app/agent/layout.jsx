@@ -39,11 +39,11 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     handlePathnameChange();
-  }, [pathname, handlePathnameChange]);
+  }, [pathname]);
 
   useEffect(() => {
     setChild(!child);
-  }, [child]);
+  }, []);
 
   return (
     <>

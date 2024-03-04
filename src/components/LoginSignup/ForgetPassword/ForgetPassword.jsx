@@ -53,11 +53,13 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
 
   const handleContinue = () => {
     if (handleValidation()) {
+      console.log('email', email);
       getResetPasswordLink({ to: email });
     }
   };
 
   const resendEmail = () => {
+    console.log('resend email');
     getResetPasswordLink({ to: email });
   };
 
