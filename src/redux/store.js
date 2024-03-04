@@ -28,6 +28,7 @@ import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
+import searchSlice from './slices/search/searchSlice';
 
 export const store = configureStore({
   reducer: {
@@ -49,6 +50,7 @@ export const store = configureStore({
     PakageCart: PakageCartSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
+    search: searchSlice,
     signin: signinSlice,
     auth: authSlice,
     // current user

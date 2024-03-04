@@ -13,7 +13,6 @@ const SearchAndNotificationDesktopButton = ({
   userEmail,
   handleLogout,
   profileIcon,
-  isloggedIn,
   signOut,
 }) => {
   const open = Boolean(profileMenu);
@@ -65,19 +64,18 @@ const SearchAndNotificationDesktopButton = ({
       <Popover
         id={id}
         open={open}
-        anchorEl={isloggedIn}
+        anchorEl={profileMenu}
         onClose={handleCloseProfileMenu}
+        sx={{ mt: 2.1 }}
         anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}
-        sx={{
-          mt: '53px',
-        }}
         transition
-        transformOrigin={{
-          horizontal: 'right',
-        }}
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 600 }}
       >
@@ -204,7 +202,6 @@ const SearchAndNotificationDesktopButton = ({
           </Box>
         </Fade>
       </Popover>
-      {/* </Box> */}
     </>
   );
 };

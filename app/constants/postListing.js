@@ -673,3 +673,5 @@ export const clientRequirment = {
     link: '#',
   },
 };
+
+// export const ALL_POSTLISTING = {};

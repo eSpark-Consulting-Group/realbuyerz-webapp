@@ -6,7 +6,7 @@ const postlistingAdSlice = createSlice({
     agentPostings: [
       {
         property_id: 602,
-        user_id: 301,
+        user_id: 21,
         status: 'submited',
         other_features: [],
         images: [],
@@ -31,7 +31,7 @@ const postlistingAdSlice = createSlice({
       },
       {
         property_id: 405,
-        user_id: 301,
+        user_id: 21,
         status: 'submited',
         other_features: [],
         images: [],

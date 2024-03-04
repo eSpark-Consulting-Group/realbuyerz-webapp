@@ -259,6 +259,32 @@ const Page = () => {
                 sx={{
                   marginTop: '20px',
                   background: '#fff',
+                  '& .MuiAutocomplete-input.MuiAutocomplete-input:focus': {
+                    outline: 'none',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '5px',
+                    height: '40px',
+                    '& fieldset': {
+                      border: '1px solid #E7E7E7',
+                    },
+                  },
+                  '& .MuiAutocomplete-inputRoot': {
+                    margin: '0 !important',
+                    padding: '0 !important',
+                    paddingLeft: '12px !important',
+                  },
+                  '& .MuiInputLabel-root': {
+                    fontSize: '14px',
+                    marginTop: -0.7,
+                    '@media (min-width: 280px) and (max-width: 375px)': {
+                      fontSize: '10px',
+                    },
+                  },
+                  '& .MuiAutocomplete-root': {
+                    margin: '0 !important',
+                    padding: '0 !important',
+                  },
                 }}
                 disablePortal
                 id="combo-box-demo"
@@ -339,9 +365,12 @@ const Page = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    // placeholder="Select Type"
                     label="Select Type"
                     InputLabelProps={{
                       sx: {
+                        margin: 0,
+                        padding: 0,
                         fontSize: '14px',
                         '@media (min-width: 280px) and (max-width: 375px)': {
                           fontSize: '10px',
