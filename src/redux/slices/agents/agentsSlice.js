@@ -2,6 +2,52 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
+    id: 1,
+    first_name: 'Arman',
+    last_name: 'Khan',
+    email: 'arman@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: true,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
     id: 12,
     first_name: 'Arman',
     last_name: 'Khan',
@@ -21,7 +67,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 31,
@@ -43,7 +113,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 21,
@@ -65,7 +159,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 23,
@@ -87,7 +205,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 20,
@@ -109,7 +251,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 26,
@@ -131,7 +297,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 30,
@@ -153,7 +343,31 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '',
+    property_id: '', counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
 ];
 
