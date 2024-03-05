@@ -1,11 +1,6 @@
 'use client';
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-
-import {
-  PROPERTY_INFORMATION,
-  PROPERTY_BUYING_DETAIL,
-} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyInformation from './PropertyInformation';
 
@@ -41,7 +36,7 @@ const AdInformation = ({ propertyData, formik }) => {
             width: '100%',
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION.postTitles.adInfo} />
+          <PostTitle text={propertyData.postTitles.adInfo} />
           <Box
             sx={{
               width: '100%',
@@ -52,9 +47,9 @@ const AdInformation = ({ propertyData, formik }) => {
             }}
           >
             <PropertyInformation
-              propertyDetails={PROPERTY_INFORMATION.addInfo}
-              propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
-              propertyData={propertyData}
+              // propertyDetails={PROPERTY_INFORMATION.addInfo}
+              // propertyBuyingDetails={PROPERTY_BUYING_DETAIL.sellingDetails}
+              postData={propertyData}
               formik={formik}
             />
           </Box>

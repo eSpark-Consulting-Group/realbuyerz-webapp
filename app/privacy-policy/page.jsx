@@ -45,6 +45,7 @@ const PrivacyPolicy = () => {
             md={card?.md}
             textAlign={card?.textAlign}
             backgroundColor={card?.backgroundColor}
+            isFirst={index === 0}
           />
         ))}
       </Grid>

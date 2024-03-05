@@ -41,6 +41,13 @@ const AreaUnit = ({ measure, handleInputChange }) => {
                 color: '#4A4A4A',
               },
             }}
+            inputProps={{
+              sx: {
+                '&::placeholder': {
+                  fontSize: { xs: '15px', md: '18px' },
+                },
+              },
+            }}
           />
         </Box>
       ))}

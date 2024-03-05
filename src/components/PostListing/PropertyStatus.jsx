@@ -9,7 +9,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
     formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
   };
-
+  console.log('test2', propertyData);
   return (
     <>
       <Box
@@ -85,65 +85,61 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
                 gap: 2,
               }}
             >
-              {propertyData?.propertyStatusData?.purposeData?.map(
-                (item, index) => (
+              {propertyData?.sell?.map((item, index) => (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    borderRadius: '20px',
+                    gap: 1.5,
+                    width: { xs: '80%', sm: '45%', md: '152px', lg: '152px' },
+                    height: { xs: '50px', md: '55px' },
+                    '@media (min-width: 600px) and (max-width: 751px )': {
+                      width: '45%',
+                    },
+                    alignItems: 'center',
+                    border: `1px solid ${
+                      activePropertyStatus === item?.text
+                        ? '#126FAA'
+                        : '#E7E7E7'
+                    }`,
+                    color:
+                      activePropertyStatus === item?.text ? '#FB631C' : '#666',
+                    backgroundColor:
+                      activePropertyStatus === item?.text
+                        ? '#F4F5F7 !important'
+                        : '#fff',
+                  }}
+                  key={index}
+                  onClick={() => handleChange(item?.text)}
+                >
                   <Box
+                    component={'img'}
                     sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      borderRadius: '20px',
-                      gap: 1.5,
-                      width: { xs: '80%', sm: '45%', md: '230px', lg: '250px' },
-                      height: { xs: '50px', md: '55px' },
-                      '@media (min-width: 600px) and (max-width: 751px )': {
-                        width: '45%',
-                      },
-                      alignItems: 'center',
-                      border: `1px solid ${
-                        activePropertyStatus === item?.text
-                          ? '#126FAA'
-                          : '#E7E7E7'
-                      }`,
-                      color:
-                        activePropertyStatus === item?.text
-                          ? '#FB631C'
-                          : '#666',
-                      backgroundColor:
-                        activePropertyStatus === item?.text
-                          ? '#F4F5F7 !important'
-                          : '#fff',
+                      width: { xs: 25, sm: 33 },
+                      height: { xs: 25, sm: 33 },
                     }}
-                    key={index}
+                    src={
+                      activePropertyStatus == item?.text
+                        ? item?.activeImage
+                        : item?.image
+                    }
+                    width={31}
+                    height={31}
+                    alt="sell-rent"
+                  />
+                  <Box
+                    component={'input'}
+                    value={item?.text}
                     onClick={() => handleChange(item?.text)}
-                  >
-                    <Box
-                      component={'img'}
-                      sx={{
-                        width: { xs: 25, sm: 33 },
-                        height: { xs: 25, sm: 33 },
-                      }}
-                      src={
-                        activePropertyStatus == item?.text
-                          ? item?.activeImage
-                          : item?.image
-                      }
-                      width={31}
-                      height={31}
-                      alt={'sell-rent'}
-                    />
-                    <Box
-                      component={'input'}
-                      value={item?.text}
-                      onClick={() => handleChange(item?.text)}
-                      type="button"
-                      sx={{
-                        fontSize: { xs: '15px', md: '18px', lg: '20px' },
-                        fontWeight: 400,
-                      }}
-                    />
-                  </Box>
-                )
-              )}
+                    type="button"
+                    sx={{
+                      fontSize: { xs: '15px', md: '18px', lg: '20px' },
+                      fontWeight: 400,
+                    }}
+                  />
+                </Box>
+              ))}
             </Box>
           </Box>
         </Box>

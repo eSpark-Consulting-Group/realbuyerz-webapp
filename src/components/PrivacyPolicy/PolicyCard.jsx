@@ -1,7 +1,15 @@
 import { PRIVACY_POLICY } from '@/app/constants/PrivacyPolicy';
 import { Grid, Typography, Box } from '@mui/material';
 
-const PolicyCard = ({ id, xs, md, sm, textAlign, backgroundColor }) => {
+const PolicyCard = ({
+  id,
+  xs,
+  md,
+  sm,
+  textAlign,
+  backgroundColor,
+  isFirst,
+}) => {
   return (
     <Grid
       item
@@ -20,7 +28,7 @@ const PolicyCard = ({ id, xs, md, sm, textAlign, backgroundColor }) => {
           variant="body1"
           sx={{
             color: '#333',
-            fontSize: '16px',
+            fontSize: isFirst ? '16px' : '20px',
             fontWeight: '600',
             pb: '30px',
             textAlign: { textAlign },

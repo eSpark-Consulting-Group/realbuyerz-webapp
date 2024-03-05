@@ -116,6 +116,8 @@ const Page = () => {
               disableRipple={true}
               sx={{
                 textTransform: 'math-auto',
+                fontSize: '18px',
+                fontWeight: 400,
               }}
             />
           ))}
