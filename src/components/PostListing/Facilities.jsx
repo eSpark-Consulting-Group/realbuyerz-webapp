@@ -10,17 +10,27 @@ import {
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
-import { handleAdaminities, } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { handleAdaminities } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Facilities = ({ facilitiesData, cancel, formik }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
 
   const handleCheckboxChange = (e, image, text, name) => {
-    const limit= 20
+    const limit = 20;
     if (e.target.checked) {
-      setSelectedAmenities((prevSelected) => [...prevSelected,{ text : text, image:image, limit: limit, name:name}]);
-      dispatch(handleAdaminities({ text : text, image:image, limit: limit, name:name}))
+      setSelectedAmenities((prevSelected) => [
+        ...prevSelected,
+        { text: text, image: image, limit: limit, name: name },
+      ]);
+      dispatch(
+        handleAdaminities({
+          text: text,
+          image: image,
+          limit: limit,
+          name: name,
+        })
+      );
     } else {
       setSelectedAmenities((prevSelected) =>
         prevSelected.filter((item) => item !== text)
@@ -76,7 +86,12 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
                 <Checkbox
                   sx={{ color: '#126FAA' }}
                   onChange={(e) => {
-                    handleCheckboxChange(e, item.image, item?.title, item?.name);
+                    handleCheckboxChange(
+                      e,
+                      item.image,
+                      item?.title,
+                      item?.name
+                    );
                   }}
                 />
               }

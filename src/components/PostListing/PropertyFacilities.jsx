@@ -6,7 +6,9 @@ import Counter from './inputNumber/counter';
 import { useSelector } from 'react-redux';
 
 const PropertyFacilities = ({ propertyInformation, formik }) => {
-  const amenitiesSelected = useSelector((state) => state?.postListingAds?.adAmenities);
+  const amenitiesSelected = useSelector(
+    (state) => state?.postListingAds?.adAmenities
+  );
   return (
     <>
       {propertyInformation?.map((item, index) => (
@@ -106,8 +108,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
             </Box>
           </Box>
         </Box>
-      ))
-      }
+      ))}
     </>
   );
 };

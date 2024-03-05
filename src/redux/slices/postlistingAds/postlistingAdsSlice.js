@@ -163,11 +163,11 @@ const postlistingAdSlice = createSlice({
     trash: [],
     save: [],
     proposalsTrash: [],
-    adAmenities:[],
+    adAmenities: [],
   },
   reducers: {
-    handleAdaminities: (state, action) =>{
-      state.adAmenities.push(action.payload)
+    handleAdaminities: (state, action) => {
+      state.adAmenities.push(action.payload);
     },
     handlePostlistingAd: (state, action) => {
       state.agentPostings.push(action.payload);
@@ -264,6 +264,6 @@ export const {
   handleIndentifier,
   handleTrashProposal,
   handleSaveRequest,
-  handleAdaminities
+  handleAdaminities,
 } = postlistingAdSlice.actions;
 export default postlistingAdSlice.reducer;
