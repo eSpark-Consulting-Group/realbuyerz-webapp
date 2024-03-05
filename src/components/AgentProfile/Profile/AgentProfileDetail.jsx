@@ -39,7 +39,7 @@ const AgentProfileDetail = ({ description, spacificData }) => {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2 }}
+          sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2, fontSize: '30px' }}
         >
           {`${spacificData?.firstName ? spacificData?.firstName : 'user'} ${spacificData?.lastName ? spacificData?.lastName : 'name'}`}
         </Typography>

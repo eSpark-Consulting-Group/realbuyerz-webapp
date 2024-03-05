@@ -37,7 +37,11 @@ const AddAmenities = ({ onSelected, formik }) => {
         {PROPERTY_INFORMATION?.addiotionalFeature}
       </Typography>
       <Button
-        sx={{ width: '160px', height: '45px' }}
+        sx={{
+          width: '160px',
+          height: '45px',
+          fontSize: '14px',
+        }}
         onClick={handleClickOpen}
         variant="outlined"
         startIcon={<AddCircleIcon />}

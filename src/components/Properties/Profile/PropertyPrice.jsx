@@ -9,7 +9,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
       <Typography
         color="primaryy"
         sx={{
-          fontSize: { xs: '20px', md: '27px' },
+          fontSize: { xs: '20px', md: '25px' },
           fontWeight: 700,
           wordBreak: 'break-word',
           paddingBottom: '10px',

@@ -26,6 +26,7 @@ const LoginWithGoogle = ({
             width: '100px',
             borderRadius: '5px',
             color: 'white',
+            fontSize: '14px',
             '&:hover': {
               background: '#FF631C',
             },
@@ -101,9 +102,8 @@ const LoginWithGoogle = ({
           justifyContent: 'center',
           flexDirection: { xs: 'column', md: 'row' },
           textAlign: 'center',
-          fontSize: '16px',
-          fontWeight: 400,
           gap: '5px',
+          marginTop: '25px',
         }}
       >
         <Typography

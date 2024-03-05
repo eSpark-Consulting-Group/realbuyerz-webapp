@@ -23,6 +23,7 @@ const ProfileInfo = ({ title, icon, alt }) => {
           color: '#777777',
           fontWeight: 'medium',
           marginTop: 1,
+          fontSize: '16px',
         }}
       >
         {title}
