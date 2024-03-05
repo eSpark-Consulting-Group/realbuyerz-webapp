@@ -133,25 +133,10 @@ const Page = () => {
                       >
                         <Typography
                           sx={{
-                            fontSize: { xs: '15px', md: '20px' },
-                            color: '#333333',
-                            fontWeight: 700,
-                            marginLeft: { xs: '0px', md: '65px' },
-                            marginRight: { xs: '10px', md: '0px' },
-
-                            '@media (min-width: 400px) and (max-width: 900px)':
-                              {
-                                mt: '12px',
-                              },
-                            '@media (min-width: 280px) and (max-width: 800px)':
-                              {
-                                marginLeft: '65px',
-                              },
-                            '@media (min-width: 280px) and (max-width: 350px)':
-                              {
-                                textAlign: 'center',
-                                fontSize: '10px',
-                              },
+                            fontSize: '15px',
+                            fontWeight: 500,
+                            color: '#126FAA',
+                            ml: 0.5,
                           }}
                         >
                           {`${find_agent?.first_name || ''} ${find_agent?.last_name || ''}`}
@@ -269,10 +254,10 @@ const Page = () => {
                   <Box>
                     <Button
                       sx={{
-                        fontSize: '30px',
-                        fontWeight: 600,
-                        textAlign: 'center',
-                        mt: '55px',
+                        fontSize: '12px',
+                        fontWeight: 500,
+                        color: '#FB631C',
+                        textTransform: 'math-auto',
                       }}
                       onClick={handleClick}
                     >
