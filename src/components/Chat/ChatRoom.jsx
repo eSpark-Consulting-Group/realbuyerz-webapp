@@ -333,6 +333,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               src={'/icons/OptionsIcon.svg'}
               style={{ cursor: 'pointer' }}
               onClick={handleClick}
+              alt={'dots'}
             />
             <Menu
               id="demo-positioned-menu"
