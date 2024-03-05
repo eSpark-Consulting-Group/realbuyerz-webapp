@@ -17,7 +17,6 @@ import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_CTA_DATA, FOOTER_DATA } from './constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/FooterCta';
-import { AOSInit } from '@/src/components/aosint';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -49,7 +48,6 @@ const RootLayout = ({ children }) => {
       <Head>
         <Seo data={filterMeta} alter={SEO_DATA[0]} />
       </Head>
-      <AOSInit />
 
       <body>
         <QueryClientProvider client={queryClient}>
