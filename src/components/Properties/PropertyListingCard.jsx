@@ -73,7 +73,7 @@ const PropertyListingCard = ({ propertyData }) => {
                   height={360}
                   objectFit="cover"
                   style={styles?.image}
-                  alt={''}
+                  alt={'Images'}
                   sx={{
                     borderRadius: '5px',
                   }}

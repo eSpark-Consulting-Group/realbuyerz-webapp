@@ -3,9 +3,11 @@ import { Box, Typography } from '@mui/material';
 
 import { Buy_Product_Data } from '@/app/constants/BuyProduct';
 import BuyProductTable from './BuyProductTable';
+import { useSelector } from 'react-redux';
 
 const Subscription = ({ title }) => {
-  const { BuyProductColumns, BuyProductRows } = Buy_Product_Data;
+  const packages = useSelector((state) => state.packages);
+  const { BuyProductColumns } = Buy_Product_Data;
   return (
     <Box
       sx={{
@@ -19,7 +21,7 @@ const Subscription = ({ title }) => {
       <Typography variant="h4" sx={{ px: { xs: 3, md: 3 }, pb: { xs: 2 } }}>
         {title}
       </Typography>
-      <BuyProductTable columns={BuyProductColumns} rows={BuyProductRows} />
+      <BuyProductTable columns={BuyProductColumns} rows={packages} />
     </Box>
   );
 };

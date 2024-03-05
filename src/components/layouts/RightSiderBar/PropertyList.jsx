@@ -38,7 +38,7 @@ const PropertyList = ({ profileInfo }) => {
                 src="/images/Live-bidding-icons/category.svg"
                 width={30}
                 height={30}
-                alt="icons"
+                alt={'icons'}
               />
             </Link>
           </Box>

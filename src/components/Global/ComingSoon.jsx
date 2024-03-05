@@ -33,7 +33,7 @@ const ComingSoon = () => (
               src={'/images/404/4042.gif'}
               height={500}
               width={500}
-              alt=""
+              alt={'Images'}
             />
             {/* //jasy hi koi achi ismage mialy gi to repace Krdoonga for coming soon */}
           </Box>

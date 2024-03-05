@@ -17,7 +17,6 @@ const AgentProfiles = ({ data, spacificData }) => {
       }}
     >
       <Box
-        item
         sx={{
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',

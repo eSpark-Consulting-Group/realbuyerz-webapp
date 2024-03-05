@@ -28,6 +28,7 @@ import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
+import packagesSlice from './slices/Packages/packagesSlice';
 
 export const store = configureStore({
   reducer: {
@@ -69,5 +70,6 @@ export const store = configureStore({
 
     // Favorite Ads State
     favoriteAds: favouriteAdsSlice,
+    packages: packagesSlice,
   },
 });

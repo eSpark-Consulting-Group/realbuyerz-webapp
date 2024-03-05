@@ -53,7 +53,7 @@ const Continue = ({
           src="/images/modal/lessthan.svg"
           width={18}
           height={18}
-          alt="lessthan"
+          alt={'lessthan'}
         />
         {LOGIN_FORM.loginCard.backSignin}
       </Button>

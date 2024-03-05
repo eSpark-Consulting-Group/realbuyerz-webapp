@@ -44,7 +44,7 @@ const SignInButton = ({
               src={'/images/login.png'}
               width={80}
               height={40}
-              alt="dashboardIcon"
+              alt={'dashboardIcon'}
             />
           </Button>
           <Menu

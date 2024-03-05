@@ -34,7 +34,6 @@ const Page = () => {
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
-  console.log(current_user_id, 'currentUser');
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {

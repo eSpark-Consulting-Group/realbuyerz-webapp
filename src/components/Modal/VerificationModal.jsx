@@ -98,7 +98,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
               src={'/images/modal/close.svg'}
               width={28}
               height={28}
-              alt="close"
+              alt={'close'}
               onClick={onCloseModal}
             />
           </Box>

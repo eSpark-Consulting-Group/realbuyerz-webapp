@@ -128,7 +128,6 @@ const Page = () => {
       values.agent_id = current_user_id;
       handleSubmit(values);
       action.resetForm();
-      console.log(values, 'cover');
     },
     validateOnChange: false,
     validateOnBlur: false,

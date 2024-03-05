@@ -49,7 +49,7 @@ const Cateogries = ({ categories }) => {
             src="/images/Live-bidding-icons/category.svg"
             width={30}
             height={30}
-            alt="icons"
+            alt={"icons"}
           />
         </Box> */}
       </Box>

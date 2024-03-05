@@ -162,7 +162,6 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => {
-              console.log('signin');
               router.push(LOGIN_ROUTERS.signin);
             }}
             loginClick={signupClick}

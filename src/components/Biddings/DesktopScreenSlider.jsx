@@ -25,7 +25,7 @@ const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
           src={'/images/biddings/images/close.png'}
           width={30}
           height={30}
-          alt="close"
+          alt={'close'}
         />
       </Button>
 
@@ -56,7 +56,7 @@ const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
                 src={image}
                 width={1000}
                 height={1000}
-                alt="slide_image"
+                alt={'slide_image'}
                 layout="responsive"
               />
             </SwiperSlide>
@@ -78,7 +78,7 @@ const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
           src={'/images/modalNextArrow.svg'}
           width={40}
           height={0}
-          alt="icon"
+          alt={'icon'}
         />
       </Box>
       <Box
@@ -96,7 +96,7 @@ const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
           src={'/images/modalPrevArrow.svg'}
           width={40}
           height={40}
-          alt="icon"
+          alt={'icon'}
           sx={{
             zIndex: '1000 !important',
           }}

@@ -17,7 +17,6 @@ const LiveBiddingPropertiesList = ({
   const pathName = usePathname();
   const agent = '/agent';
   const user = '/user';
-  console.log(proposal, 'proposalff');
   return (
     <Box
       sx={{

@@ -53,7 +53,7 @@ const UsefulLink = ({ data, isMediumScreen, styles }) => {
                 {data?.appDownload?.description}
               </Typography>
             </Box>
-            <Box container spacing={2} sx={{ pb: '10px' }}>
+            <Box spacing={2} sx={{ pb: '10px' }}>
               {data?.appDownload?.options?.map((option, index) => (
                 <Grid key={index} item xs={6}>
                   <Box sx={{ py: '10px' }}>

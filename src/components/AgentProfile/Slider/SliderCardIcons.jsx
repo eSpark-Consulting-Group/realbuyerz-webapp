@@ -11,7 +11,7 @@ const SliderCardIcons = () => {
           width={20}
           height={20}
           style={{ display: 'flex' }}
-          alt="amenities"
+          alt={'amenities'}
         />
       </Grid>
       <Grid item xs={4}>
@@ -20,7 +20,7 @@ const SliderCardIcons = () => {
           width={20}
           height={20}
           style={{ display: 'flex' }}
-          alt="amenities"
+          alt={'amenities'}
         />
       </Grid>
       <Grid item xs={4}>
@@ -29,7 +29,7 @@ const SliderCardIcons = () => {
           width={20}
           height={20}
           style={{ display: 'flex' }}
-          alt="amenities"
+          alt={'amenities'}
         />
       </Grid>
     </>
