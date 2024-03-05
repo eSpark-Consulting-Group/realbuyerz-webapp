@@ -22,7 +22,7 @@ const UserProfileImage = ({
           height: height,
         }}
       >
-        <Image src={image} width={width} height={height} alt="profile" />
+        <Image src={image} width={width} height={height} alt={'profile'} />
         <Box
           sx={{
             width: 'auto',

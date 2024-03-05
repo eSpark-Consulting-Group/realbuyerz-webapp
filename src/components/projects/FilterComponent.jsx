@@ -18,6 +18,7 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
   const [sizeRange, setSizeRange] = useState([0, 100]);
   const [searchText, setSearchText] = useState('');
   const [filteredData, setFilteredData] = useState(data);
+  console.log(onFilterChange, filteredData);
 
   useEffect(() => {
     handleFilter();
@@ -35,7 +36,6 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
         (item.location.toLowerCase().includes(searchText.toLowerCase()) ||
           item.title.toLowerCase().includes(searchText.toLowerCase()))
     );
-    console.log(onFilterChange);
     setFilteredData(filteredResult);
     // onFilterChange(filteredResult);
   };
@@ -50,7 +50,6 @@ const FilterComponent = ({ data, onFilterChange, onClearFilter }) => {
     onClearFilter();
   };
 
-  console.log(filteredData);
   return (
     <Container>
       <Grid container spacing={2}>

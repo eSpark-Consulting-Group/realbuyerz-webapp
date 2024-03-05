@@ -57,7 +57,6 @@ const Page = () => {
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state?.currentUser?.user);
-  console.log(currentUser, 'currentUser');
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);

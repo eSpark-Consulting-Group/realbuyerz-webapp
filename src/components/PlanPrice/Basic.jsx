@@ -39,7 +39,7 @@ const Basic = ({ BasicData }) => {
           layout="responsive"
           width={2000}
           height={100}
-          alt="image"
+          alt={'image'}
         />
         <Typography
           sx={{

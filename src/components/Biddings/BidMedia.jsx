@@ -85,7 +85,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
                 src={'/images/biddings/images/close.png'}
                 width={30}
                 height={30}
-                alt="close"
+                alt={'close'}
               />
             </Button>
             <Box

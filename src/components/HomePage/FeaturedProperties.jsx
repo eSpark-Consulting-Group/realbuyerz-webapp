@@ -85,7 +85,7 @@ const FeaturedProperties = ({ data }) => {
               >
                 <img
                   src={item.bgImage}
-                  alt="background"
+                  alt={'background'}
                   style={{
                     width: '100%',
                     height: '100%',

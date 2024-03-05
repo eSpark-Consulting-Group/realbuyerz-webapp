@@ -46,7 +46,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
           >
             <Image
               src="/images/congrats/congrats.gif"
-              alt="congrats"
+              alt={'congrats'}
               height={150}
               width={150}
             />

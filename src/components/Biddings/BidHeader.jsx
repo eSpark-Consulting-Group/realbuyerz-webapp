@@ -6,7 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const BidHeader = ({ header }) => {
   return (
-    <Box container borderBottom={'1px solid #E4E4E4'}>
+    <Box borderBottom={'1px solid #E4E4E4'}>
       <Typography
         variant="h1"
         sx={{ color: '#000', fontSize: '20px', fontWeight: '500', pb: '40px' }}

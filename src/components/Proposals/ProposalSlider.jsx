@@ -53,9 +53,19 @@ const ProposalSlider = ({ media, mediaType }) => {
           <SwiperSlide key={index}>
             <Box sx={{ pr: '50px' }}>
               {mediaType === 'images' ? (
-                <Image height={200} width={250} src={item} alt="" />
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt={'Proposal Slider Image'}
+                />
               ) : mediaType === 'videos' ? (
-                <Image height={200} width={250} src={item} alt="" />
+                <Image
+                  height={200}
+                  width={250}
+                  src={item}
+                  alt={'Proposal Slider Image'}
+                />
               ) : null}
             </Box>
           </SwiperSlide>

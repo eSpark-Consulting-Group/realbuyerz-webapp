@@ -46,7 +46,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
             src="/images/agent-profile/msgicon.svg"
             width={30}
             height={26}
-            alt={''}
+            alt={'Images'}
           />
           <Typography
             sx={{

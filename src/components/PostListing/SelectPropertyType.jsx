@@ -19,14 +19,12 @@ const SelectProperyType = ({
   const [propetySubType, setPropetySubType] = useState();
 
   const handlePropertyType = (text) => {
-    console.log({ text });
     setActivePropertyType(text);
     setPropertyType(text);
     formik.setFieldValue('proportyCategory', text);
   };
 
   const handlePropetySubType = (text) => {
-    console.log({ text });
     setActivePropertySubType(text);
     setPropetySubType(text);
     formik.setFieldValue('propertyType', text);
@@ -61,7 +59,7 @@ const SelectProperyType = ({
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
               src={image}
-              alt="properttype"
+              alt={'properttype'}
             />
             <Typography
               sx={{
@@ -200,7 +198,7 @@ const SelectProperyType = ({
                           ? item?.activeImage
                           : item?.image
                       }
-                      alt="property"
+                      alt={'property'}
                     />
                     <Typography
                       sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}
