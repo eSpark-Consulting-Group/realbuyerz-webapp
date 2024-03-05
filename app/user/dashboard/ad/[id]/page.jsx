@@ -19,11 +19,21 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings.find((item) => id == item?.adId);
+  const proposals = useSelector((state) => state?.proposals);
+  const spacificPost = userPostings?.find((item) => item?.property_id == id);
+  const find_proposals = proposals?.filter(
+    (proposal) =>
+      proposal?.property_id == spacificPost?.property_id &&
+      proposal?.status !== 'Rejected' &&
+      proposal?.status !== 'Connected' &&
+      proposal?.status !== 'Archive'
+  );
 
   return (
     <>
-      {spacificPost?.proposals?.length > 0 ? (
+      {spacificPost !== undefined &&
+      spacificPost !== null &&
+      find_proposals?.length > 0 ? (
         <>
           <BackToDashboard
             buttonLabel={back_Button?.text}
@@ -66,11 +76,11 @@ const Page = () => {
             />
             <Divider />
             <ProposalAgentProfile
-              proposalData={spacificPost?.proposals}
+              proposalData={find_proposals || ''}
               image={image}
               ViewText={view_Button?.text}
               ViewLink={view_Button?.link}
-              Height={'67.5vh'}
+              Height={'1420px'}
             />
           </Box>
         </>

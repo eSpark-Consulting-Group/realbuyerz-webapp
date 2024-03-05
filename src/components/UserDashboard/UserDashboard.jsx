@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 
 const UserDashboard = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
+  const userId = useSelector((state) => state?.currentUser?.user?.id);
+  const find_user = userAds?.filter((ad) => ad?.user_id === userId);
 
   return (
     <>
@@ -35,7 +37,7 @@ const UserDashboard = () => {
         >
           <BiddingDetails
             liveBiddingData={LIVE_BIDDING_DATA}
-            ads={userAds}
+            ads={find_user}
             height={'1098px'}
           />
         </Box>

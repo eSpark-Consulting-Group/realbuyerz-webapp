@@ -68,7 +68,7 @@ export const PROPERTY_INFORMATION = {
     {
       image: '/images/listing-page/house.svg',
       activeImage: '/images/listing-page/housesell.svg',
-      title: 'Rent House',
+      title: 'Pent House',
       label: 'rentHouseBtn',
       value: '',
     },

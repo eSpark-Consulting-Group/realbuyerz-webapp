@@ -11,15 +11,17 @@ import { adSumitModal, draftModal } from '@/app/constants/postListing';
 
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
-import { useDispatch } from 'react-redux';
-import { handleSumitUserAds } from '@/src/redux/slices/userAds/userAdsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  handleSubmitDraft,
+  handleSumitUserAds,
+} from '@/src/redux/slices/userAds/userAdsSlice';
 import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
-import { handleUserDraft } from '@/src/redux/slices/userDraft/userDraftSlice';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 
 const Page = () => {
@@ -27,13 +29,15 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state?.currentUser?.user);
+  console.log(currentUser, 'currentUser');
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleUserDraft(values));
+      dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handleSumitUserAds(values));
@@ -75,9 +79,9 @@ const Page = () => {
   });
 
   const initialFormValues = {
-    adId: '',
-    userId: '',
-    proposals: [],
+    property_id: '',
+    user_id: '',
+    status: '',
     other_features: [],
     title: '',
     location: '',
@@ -102,7 +106,8 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values.adId = randomNumber;
+      values.property_id = randomNumber;
+      values.user_id = currentUser?.id;
       handleSubmit(values);
       action.resetForm();
     },

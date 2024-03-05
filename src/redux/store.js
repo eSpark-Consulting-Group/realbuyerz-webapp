@@ -27,6 +27,7 @@ import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
+import currentUserSlice from './slices/currentUser/currentUserSlice';
 
 export const store = configureStore({
   reducer: {
@@ -37,7 +38,7 @@ export const store = configureStore({
     newProperties: newPropertiesSlice,
     proposals: proposalsSlice,
     biddings: biddingsSlice,
-    agents: agentsSlice,
+
     users: usersSlice,
     terms: termsConditionsSlice,
     policies: policiesSlice,
@@ -50,6 +51,11 @@ export const store = configureStore({
     resendEmail: resendEmailSlice,
     signin: signinSlice,
     auth: authSlice,
+    // current user
+    currentUser: currentUserSlice,
+
+    // agents for proposals
+    agents: agentsSlice,
 
     // Sumited Ads States
     loginAgents: loginAgentsSlice,
