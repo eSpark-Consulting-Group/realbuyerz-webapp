@@ -1,15 +1,6 @@
-import { PRIVACY_POLICY } from '@/app/constants/PrivacyPolicy';
 import { Grid, Typography, Box } from '@mui/material';
 
-const PolicyCard = ({
-  id,
-  xs,
-  md,
-  sm,
-  textAlign,
-  backgroundColor,
-  isFirst,
-}) => {
+const PolicyCard = ({ data, id, xs, md, sm, textAlign, backgroundColor }) => {
   return (
     <Grid
       item
@@ -34,7 +25,7 @@ const PolicyCard = ({
             textAlign: { textAlign },
           }}
         >
-          {PRIVACY_POLICY[id].title}
+          {data[id].title}
         </Typography>
 
         <Typography
@@ -46,7 +37,7 @@ const PolicyCard = ({
             lineHeight: '25px',
           }}
         >
-          {PRIVACY_POLICY[id].content}
+          {data[id].content}
         </Typography>
       </Box>
     </Grid>
