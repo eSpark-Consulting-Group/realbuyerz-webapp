@@ -60,7 +60,9 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
           </Box>
         </Box>
       ))}
-      {amenitiesSelected?.map((item, index) => (
+      {amenitiesSelected?.map((item, index) => {
+        console.log(item, 'itemddd')
+        return(
         <Box
           sx={{
             display: 'flex',
@@ -108,7 +110,12 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
             </Box>
           </Box>
         </Box>
-      ))}
+
+        )
+      }
+      )
+      
+      }
     </>
   );
 };
