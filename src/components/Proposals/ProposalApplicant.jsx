@@ -3,7 +3,7 @@ import { Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const ProposalApplicant = ({ proposal }) => {
-  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+  const agents = useSelector((state) => state?.agents);
 
   const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
 

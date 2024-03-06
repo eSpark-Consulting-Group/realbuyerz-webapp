@@ -8,7 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Proposals } from '@/app/constants/Proposals';
 
 const ProposalHeader = ({ proposal }) => {
-  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+  const agents = useSelector((state) => state?.agents);
 
   const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
 

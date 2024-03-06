@@ -30,7 +30,7 @@ const Page = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const proposals = useSelector((state) => state?.proposals);
-  const agents = useSelector((state) => state?.agents);
+  const agents = useSelector((state) => state?.agents)
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
