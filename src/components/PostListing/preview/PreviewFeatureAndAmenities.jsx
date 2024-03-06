@@ -113,7 +113,7 @@ const PreviewFeatureAndAmenities = ({
                         color: '#126FAA',
                       }}
                     >
-                      {feature}
+                      {feature.text}
                     </Typography>
                   ))}
               </Typography>
