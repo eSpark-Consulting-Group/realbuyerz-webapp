@@ -164,11 +164,24 @@ const postlistingAdSlice = createSlice({
     save: [],
     proposalsTrash: [],
     adAmenities: [],
+    checkedAmenities: [],
   },
   reducers: {
     handleAdaminities: (state, action) => {
+      console.log(action.payload, 'new payload')
+
       state.adAmenities.push(action.payload);
     },
+    toggleCheckedAmenity: (state, action) => {
+      const { amenity } = action.payload; // Assuming payload contains the entire object
+      const index = state.checkedAmenities.findIndex(item => item.text === amenity.text); // Check if object with same text already exists
+      if (index === -1) {
+        state.checkedAmenities.push(amenity); // Push the entire object
+      } else {
+        state.checkedAmenities.splice(index, 1); // Remove the object if it already exists
+      }
+    },
+    
     handlePostlistingAd: (state, action) => {
       state.agentPostings.push(action.payload);
     },
@@ -265,5 +278,6 @@ export const {
   handleTrashProposal,
   handleSaveRequest,
   handleAdaminities,
+  toggleCheckedAmenity
 } = postlistingAdSlice.actions;
 export default postlistingAdSlice.reducer;

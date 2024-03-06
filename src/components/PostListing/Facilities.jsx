@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Typography,
   Box,
@@ -9,37 +9,53 @@ import {
 } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
-import { useDispatch } from 'react-redux';
-import { handleAdaminities } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleAdaminities, toggleCheckedAmenity } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Facilities = ({ facilitiesData, cancel, formik }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [checkedAmenities, setCheckedAmenities] = useState([]);
+  const reduxCheckedAmenities = useSelector(state => state?.postListingAds?.checkedAmenities);
+
+  useEffect(() => {
+    setCheckedAmenities(reduxCheckedAmenities);
+  }, [reduxCheckedAmenities]);
   const dispatch = useDispatch();
 
-  const handleCheckboxChange = (e, image, text, name) => {
+  console.log(selectedAmenities, 'selected')
+
+  const handleCheckboxChange = (e, id, image, text, name) => {
     const limit = 20;
+    const amenityObject = { text: text, image: image, limit: limit, name: name };
+    dispatch(toggleCheckedAmenity({ amenity: amenityObject }));
+
     if (e.target.checked) {
       setSelectedAmenities((prevSelected) => [
         ...prevSelected,
-        { text: text, image: image, limit: limit, name: name },
+        amenityObject,
       ]);
-      dispatch(
-        handleAdaminities({
-          text: text,
-          image: image,
-          limit: limit,
-          name: name,
-        })
-      );
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected.filter((item) => item !== text)
+        prevSelected.filter((item) => item.text !== text)
       );
     }
+
     formik.setFieldValue('other_features', selectedAmenities);
   };
 
   const handleSaveButton = () => {
+    dispatch(handleAdaminities(selectedAmenities));
+
+    // selectedAmenities.forEach((amenity) => {
+    //   dispatch(handleAdaminities(amenity));
+    // });
+    // if(checkedAmenities.length === 0){
+    //   dispatch(handleAdaminities(checkedAmenities))
+    // }else{
+    //   checkedAmenities?.forEach((amenity) => {
+    //     dispatch(handleAdaminities(amenity));
+    //   });
+    // }
     cancel();
   };
 
@@ -80,22 +96,20 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
             }}
             key={index}
           >
-            <FormControlLabel
-              sx={{ width: '23px' }}
-              control={
-                <Checkbox
-                  sx={{ color: '#126FAA' }}
-                  onChange={(e) => {
-                    handleCheckboxChange(
-                      e,
-                      item.image,
-                      item?.title,
-                      item?.name
-                    );
-                  }}
-                />
-              }
+            <Checkbox
+              sx={{ color: '#126FAA' }}
+              checked={checkedAmenities.some((amenity) => amenity.text === item.title)} // Check if object with same text exists
+              onChange={(e) => {
+                handleCheckboxChange(
+                  e,
+                  item.id,
+                  item.image,
+                  item.title,
+                  item.name
+                );
+              }}
             />
+
             <Box
               component={'img'}
               src={item?.image}

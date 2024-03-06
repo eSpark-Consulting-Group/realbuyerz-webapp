@@ -3,7 +3,6 @@ import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
 const ListingInfo = ({ propertyInfo }) => {
-  console.log('test3', propertyInfo);
   return (
     <Box
       sx={{

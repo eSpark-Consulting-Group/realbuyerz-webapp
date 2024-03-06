@@ -4,8 +4,6 @@ import { Typography, Box, TextField } from '@mui/material';
 
 const PropertyInformation = ({ postData, formik }) => {
   const specialIndex = 1;
-  console.log('test', postData);
-
   return (
     <>
       <Box
