@@ -152,7 +152,6 @@ const Page = () => {
       values.agent_id = current_user_id;
       handleSubmit(values);
       action.resetForm();
-      console.log(values, 'cover later');
     },
     validateOnChange: false,
     validateOnBlur: false,
