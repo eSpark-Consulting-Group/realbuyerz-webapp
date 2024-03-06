@@ -7,7 +7,6 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
-import { PROJECTS_DATA } from '@/src/constants/projects';
 
 const itemsToShow = 10;
 const ProjectsSlider = ({ data, category }) => {
@@ -20,6 +19,7 @@ const ProjectsSlider = ({ data, category }) => {
   const filterData = data?.filter(
     (item) => item?.proportyCategory === category
   );
+  const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;
   const sliderSettings = {
     slidesPerView: 3,

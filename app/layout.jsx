@@ -3,13 +3,11 @@ import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
-import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import './globals.css';
 import { redirect, usePathname } from 'next/navigation';
 
-import Seo from '@/src/components/Global/SEO';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
 import Footer from '@/src/components/layouts/Footer';
