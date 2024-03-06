@@ -12,7 +12,6 @@ import { redirect, usePathname } from 'next/navigation';
 import Seo from '@/src/components/Global/SEO';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
-import { SEO_DATA } from './constants/seo';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_CTA_DATA, FOOTER_DATA } from './constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
@@ -23,7 +22,6 @@ const queryClient = new QueryClient();
 
 const RootLayout = ({ children }) => {
   const currentPath = usePathname();
-  const filterMeta = SEO_DATA?.filter((item) => item?.link == currentPath);
   const isDashboard =
     currentPath.includes('/agent/') || currentPath.includes('/user/');
 
@@ -45,10 +43,6 @@ const RootLayout = ({ children }) => {
 
   return (
     <html lang="en">
-      <Head>
-        <Seo data={filterMeta} alter={SEO_DATA[0]} />
-      </Head>
-
       <body>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
