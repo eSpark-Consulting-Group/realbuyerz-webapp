@@ -23,7 +23,7 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
-// import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
+import { COVER_LETTER } from '@/app/constants/coverLetter';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,6 @@ const Page = () => {
         agent_id: values?.agent_id,
       })
     );
-    // dispatch(handleSendProposals(values));
   };
 
   const handleClickOpen = () => {

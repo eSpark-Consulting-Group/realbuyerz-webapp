@@ -6,15 +6,8 @@ import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import { createInformationState } from '@/utils/addInfo';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-  proposalSumitModal,
-} from '@/app/constants/postListing';
-import { createPropertyStatusState } from '@/utils/propertyStatus';
-import { createMediaDataState } from '@/utils/mediaData';
+import { proposalSumitModal } from '@/app/constants/postListing';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,30 +23,9 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
-// import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
+import { COVER_LETTER } from '@/app/constants/coverLetter';
 
 const Page = () => {
-  const initializePropertyData = () => {
-    const informationState = createInformationState(
-      PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
-    );
-    const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    return {
-      ...informationState,
-      ...propertyStatusState,
-      ...uploadMediaData,
-    };
-  };
-
-  const [propertyData] = useState(initializePropertyData());
   const [open, setOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +57,6 @@ const Page = () => {
         agent_id: values?.agent_id,
       })
     );
-    // dispatch(handleSendProposals(values));
   };
 
   const handleClickOpen = () => {
@@ -219,8 +190,8 @@ const Page = () => {
             >
               <Link href={'/user/dashboard'}>agent</Link>
               <BuyersPlatform />
-              <AdInformation formik={formik} propertyData={propertyData} />
-              <PropertyPurpose formik={formik} propertyData={propertyData} />
+              <AdInformation formik={formik} propertyData={COVER_LETTER} />
+              <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />
               <PropertyFeatures formik={formik} />
               <PropertyGallery formik={formik} />
