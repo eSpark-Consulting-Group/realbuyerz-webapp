@@ -59,7 +59,7 @@ const SelectProperyType = ({
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
               src={image}
-              alt="properttype"
+              alt={'properttype'}
             />
             <Typography
               sx={{
@@ -107,7 +107,7 @@ const SelectProperyType = ({
             >
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'House' ? '#FB631C' : '#666',
                 }}
@@ -119,7 +119,7 @@ const SelectProperyType = ({
               </Button>
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'Plots' ? '#FB631C' : '#666',
                 }}
@@ -131,7 +131,7 @@ const SelectProperyType = ({
               </Button>
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color:
                     activePropertyType === 'Commercial' ? '#FB631C' : '#666',
@@ -198,7 +198,7 @@ const SelectProperyType = ({
                           ? item?.activeImage
                           : item?.image
                       }
-                      alt="property"
+                      alt={'property'}
                     />
                     <Typography
                       sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}

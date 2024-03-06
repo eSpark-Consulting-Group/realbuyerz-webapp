@@ -5,13 +5,14 @@ import Link from 'next/link';
 
 import {
   ALT,
+  PROPERTIES,
   PROPERTIES_FOR_RENT,
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForRent = ({ rentCount, link }) => {
+const PropertyForRent = ({ rentCount }) => {
   return (
-    <>
+    <div>
       <Grid container justifyContent="space-between">
         <Grid item>
           <Box
@@ -50,7 +51,7 @@ const PropertyForRent = ({ rentCount, link }) => {
               display: 'flex',
             }}
           >
-            <Link href={link}>
+            <Link href={PROPERTIES}>
               <Button
                 variant="body2"
                 sx={{
@@ -73,7 +74,7 @@ const PropertyForRent = ({ rentCount, link }) => {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 

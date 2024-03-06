@@ -58,7 +58,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                 {item?.icon && (
                   <Box
                     component={'img'}
-                    alt="icon"
+                    alt={'icon'}
                     sx={{
                       width: '25px',
                       height: '25px',

@@ -29,7 +29,7 @@ const InstructionsForUpload = ({ propertyInformation }) => {
                     height: { xs: 12, sm: 13 },
                     mt: 1,
                   }}
-                  alt="'tick"
+                  alt={'tick'}
                 />
                 <Typography
                   sx={{

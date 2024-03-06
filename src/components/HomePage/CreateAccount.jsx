@@ -20,7 +20,7 @@ const Typewriter = ({ text }) => {
       setDisplayedText('');
     }
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, text]);
 
   return (
     <Typography
@@ -60,7 +60,7 @@ const CreateAccount = () => {
         }}
         variant="primary"
       >
-        <Typography sx={{ color: '#fff' }}>
+        <Typography sx={{ color: '#fff', fontSize: '12px' }}>
           {FEATURED_HEADINGS.createAccount}
         </Typography>
       </Button>

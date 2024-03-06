@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Box, Grid, Typography } from '@mui/material';
-import Link from 'next/link';
 
-const PropertyCardSaleBody = ({ sellData, link }) => {
+const PropertyCardSaleBody = ({ sellData }) => {
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
@@ -23,34 +22,29 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
             }}
           >
             <Box>
-              <Link href={`${link}/${propertyType.toLowerCase()}`}>
-                <Typography
-                  sx={{
-                    color: '#126FAA',
-                    fontSize: '18px',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    lineHeight: 'normal',
-                    textAlign: 'center',
-                  }}
-                >
-                  {sellData[propertyType]}
-                </Typography>
-              </Link>
-
-              <Link href={`${link}/${propertyType.toLowerCase()}`}>
-                <Typography
-                  sx={{
-                    color: '#777',
-                    fontSize: '12px',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
-                    lineHeight: 'normal',
-                  }}
-                >
-                  {propertyType}
-                </Typography>
-              </Link>
+              <Typography
+                sx={{
+                  color: '#126FAA',
+                  fontSize: '18px',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  lineHeight: 'normal',
+                  textAlign: 'center',
+                }}
+              >
+                {sellData[propertyType]}
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#777',
+                  fontSize: '12px',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  lineHeight: 'normal',
+                }}
+              >
+                {propertyType}
+              </Typography>
             </Box>
           </Box>
         </Grid>

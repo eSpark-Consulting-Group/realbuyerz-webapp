@@ -1,14 +1,15 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+
+import { TERM_CONDITIONS } from '../constants/TermCondition';
+import { PAGES_INFO } from '../constants/Constants';
 
 const TermsConditions = () => {
-  const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
-  const [selectedTab, setSelectedTab] = useState(terms.content[0]);
+  const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
 
   const handleTabClick = (tabId) => {
-    const selectedTab = terms.content.find((tab) => tab.id === tabId);
+    const selectedTab = TERM_CONDITIONS.find((tab) => tab.id === tabId);
     if (selectedTab) {
       setSelectedTab(selectedTab);
     }
@@ -34,7 +35,7 @@ const TermsConditions = () => {
           pb: '60px',
         }}
       >
-        {terms?.title}
+        {PAGES_INFO?.tncPageTitle}
       </Typography>
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         <Grid
@@ -56,7 +57,7 @@ const TermsConditions = () => {
               flexDirection: 'column',
             }}
           >
-            {terms.content?.map((item) => (
+            {TERM_CONDITIONS?.map((item) => (
               <Box
                 key={item.id}
                 variant={'outland'}
@@ -85,6 +86,9 @@ const TermsConditions = () => {
                     color: '#333',
                     fontSize: '16px',
                     fontWeight: '600',
+                    '@media (min-width": 280px) and (max-width: 480px)': {
+                      marginBottom: '20px',
+                    },
                   }}
                 >
                   {item.tabName}
@@ -110,7 +114,7 @@ const TermsConditions = () => {
               variant="body1"
               sx={{
                 color: '#333',
-                fontSize: '16px',
+                fontSize: '14px',
                 fontWeight: '600',
                 textTransform: 'uppercase',
                 pb: '40px',

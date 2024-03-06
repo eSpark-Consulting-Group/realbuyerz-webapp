@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
 const ListingInfo = ({ propertyInfo }) => {
+  console.log('test3', propertyInfo);
   return (
     <Box
       sx={{
@@ -14,7 +15,7 @@ const ListingInfo = ({ propertyInfo }) => {
         gap: { xs: 4, md: 8 },
       }}
     >
-      {propertyInfo.map((item, index) => (
+      {propertyInfo?.map((item, index) => (
         <Box
           sx={{
             width: { xs: 'auto', sm: '500px', md: 'auto' },
@@ -28,7 +29,7 @@ const ListingInfo = ({ propertyInfo }) => {
             component={'img'}
             src={item.image}
             sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
-            alt="propertyimages"
+            alt={'propertyimages'}
           />
           <Typography
             sx={{

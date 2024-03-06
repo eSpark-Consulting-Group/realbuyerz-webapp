@@ -39,7 +39,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
               src={'/images/listing-page/increment.svg'}
               width={25}
               height={22}
-              alt="increment"
+              alt={'increment'}
               onClick={handleIncrement}
             />
           </IconButton>
@@ -66,7 +66,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
               src={'/images/listing-page/minus.svg'}
               width={25}
               height={22}
-              alt="decrement"
+              alt={'decrement'}
               onClick={handleDecrement}
             />
           </IconButton>

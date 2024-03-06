@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 
 const PropertySlider = ({ propertyData }) => {
   const properties = useSelector((state) => state?.properties?.properties);
+
   const filteredProperties = properties.filter(
     (property) =>
       property.propertyType === propertyData?.propertyType &&
@@ -96,7 +97,7 @@ const PropertySlider = ({ propertyData }) => {
                     component="img"
                     height="194"
                     image={item?.coverImage}
-                    alt="Paella dish"
+                    alt={'Paella dish'}
                   />
                 </Link>
                 <CardContent

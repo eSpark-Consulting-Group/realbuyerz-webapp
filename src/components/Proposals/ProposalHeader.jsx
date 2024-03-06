@@ -14,7 +14,6 @@ const ProposalHeader = ({ proposal }) => {
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);
-    // Remove 'return null;' to allow the execution of the JSX block below
   }
 
   return (
@@ -26,7 +25,7 @@ const ProposalHeader = ({ proposal }) => {
             width={60}
             height={60}
             sx={{ borderRadius: '50%' }}
-            alt=""
+            alt={'Images'}
           />
         </Box>
         <Box>

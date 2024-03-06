@@ -59,7 +59,7 @@ const BidSlider = ({ media, mediaType }) => {
                   height={200}
                   width={250}
                   src={item}
-                  alt=""
+                  alt={'Images'}
                   className="reponsiveimage"
                 />
               </Box>
@@ -70,7 +70,7 @@ const BidSlider = ({ media, mediaType }) => {
                   height={200}
                   width={250}
                   src={item}
-                  alt=""
+                  alt={'Images'}
                   className="reponsiveimage"
                 />
               </Box>

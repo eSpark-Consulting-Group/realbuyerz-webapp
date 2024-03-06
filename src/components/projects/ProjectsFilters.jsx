@@ -22,7 +22,7 @@ const ProjectsFilters = ({ data }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [filterValues ]);
+  }, [filterValues]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -57,6 +57,7 @@ const ProjectsFilters = ({ data }) => {
           item?.title?.includes(filterValues?.searchInput))
       );
     });
+
     console.log(filteredData);
   };
 
@@ -157,9 +158,6 @@ const ProjectsFilters = ({ data }) => {
             variant="contained"
             color="secondary"
             onClick={handleClearFilter}
-            sx={{
-              height: '52px',
-            }}
           >
             Clear Filter
           </Button>

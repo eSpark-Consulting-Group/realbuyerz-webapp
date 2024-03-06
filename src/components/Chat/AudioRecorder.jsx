@@ -146,7 +146,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
           }}
           src="/icons/TrashIcon.svg"
           onClick={handleCancelSendingAudio}
-          alt="Remove"
+          alt={'Remove'}
           className="text-panel-header-icon"
         />
       </Box>
@@ -163,7 +163,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
                   <Box
                     component={'img'}
                     src="/icons/PlayIcon.svg"
-                    alt="Play"
+                    alt={'Play'}
                     onClick={handlePlayRecording}
                     sx={{
                       minWidth: '20px',
@@ -174,7 +174,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
                   <Box
                     component={'img'}
                     src="/icons/PauseIcon.svg"
-                    alt="Pause"
+                    alt={'Pause'}
                     onClick={handlePauseRecording}
                     sx={{
                       minWidth: '20px',
@@ -213,7 +213,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
               minWidth: '20px',
               minHeight: '20px',
             }}
-            alt="Mic"
+            alt={'Mic'}
             onClick={handleStartRecording}
           />
         ) : (
@@ -224,7 +224,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
               minWidth: '10px',
               minHeight: '10px',
             }}
-            alt="Stop"
+            alt={'Stop'}
             onClick={handleStopRecording}
           />
         )}
@@ -237,3 +237,5 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
 };
 
 export default AudioRecorder;
+
+//06:34:25

@@ -17,7 +17,6 @@ const AgentProfiles = ({ data, spacificData }) => {
       }}
     >
       <Box
-        item
         sx={{
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',
@@ -27,7 +26,7 @@ const AgentProfiles = ({ data, spacificData }) => {
           },
         }}
       >
-        <AgentImage data={data} spacificData={spacificData} />
+        <AgentImage spacificData={spacificData} />
         <Grid
           sx={{
             padding: 2,

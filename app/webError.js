@@ -54,7 +54,7 @@ class WebError extends React.Component {
               src="/images/error/error.png"
               width={45}
               height={30}
-              alt="error"
+              alt={'error'}
             />
             <Typography
               sx={{
@@ -83,7 +83,7 @@ class WebError extends React.Component {
               src="/images/error/reset.png"
               width={25}
               height={30}
-              alt="reset"
+              alt={'reset'}
             />
 
             <Button

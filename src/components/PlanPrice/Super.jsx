@@ -37,7 +37,7 @@ const Super = ({ SuperData }) => {
           src={'/images/plan-price/blue.png'}
           width={1000}
           height={100}
-          alt="image"
+          alt={'image'}
         />
         <Typography
           sx={{

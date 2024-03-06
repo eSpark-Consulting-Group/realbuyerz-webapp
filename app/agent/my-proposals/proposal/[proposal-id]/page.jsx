@@ -122,7 +122,7 @@ const Page = () => {
                         badgeHeigth={'7px'}
                         padding={0.3}
                         right={2}
-                        image={find_agent?.profileImage || image}
+                        image={find_agent?.profile_image || image}
                         isActive={find_agent?.status || false}
                         notActive={false}
                       />

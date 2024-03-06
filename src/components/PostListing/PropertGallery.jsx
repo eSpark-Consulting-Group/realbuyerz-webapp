@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
@@ -8,27 +8,28 @@ import ImageUploader from './ImageUploader';
 import VideoUploader from './VideoUploader';
 
 const PropertyGallery = ({ formik }) => {
-  const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const { errors } = formik;
   const maxImages = 5;
   const maxVideos = 5;
 
   const handleImageUpload = (type, file) => {
-    if (images.length < maxImages && type.includes('image')) {
-      setImages([...images, file]);
+    const currentImages = formik.values.images || [];
+    if (currentImages.length < maxImages && type.includes('image')) {
+      const updatedImages = [...currentImages, file];
+      formik.setFieldValue('images', updatedImages);
     } else {
       console.error('Maximum limit of images reached');
     }
-    formik.setFieldValue('images', images);
   };
 
   const handleVideoUpload = (type, file) => {
-    if (videos.length < maxVideos && type.includes('video')) {
-      setVideos([...videos, file]);
+    const currentVideos = formik.values.videos || [];
+    if (currentVideos.length < maxVideos && type.includes('video')) {
+      const updatedVideos = [...currentVideos, file];
+      formik.setFieldValue('videos', updatedVideos);
     } else {
       console.error('Maximum limit of videos reached');
     }
-    formik.setFieldValue('videos', videos);
   };
 
   return (
@@ -121,7 +122,7 @@ const PropertyGallery = ({ formik }) => {
                         width: { xs: 37, sm: 47 },
                         height: { xs: 35, sm: 45 },
                       }}
-                      alt="areasize"
+                      alt={'areasize'}
                     />
                     <Typography
                       sx={{
@@ -197,11 +198,16 @@ const PropertyGallery = ({ formik }) => {
                           onUpload={handleImageUpload}
                           maxImages={maxImages}
                         />
-
+                        {errors.images && (
+                          <Typography color="red">{errors.images}</Typography>
+                        )}
                         <VideoUploader
                           onUpload={handleVideoUpload}
                           maxVideos={maxVideos}
                         />
+                        {errors.videos && (
+                          <Typography color="red">{errors.videos}</Typography>
+                        )}
                       </Box>
                       <Box>
                         <InstructionsForUpload

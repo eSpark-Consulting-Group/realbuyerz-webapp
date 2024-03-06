@@ -9,6 +9,7 @@ import ChatRoom from '@/src/components/Chat/ChatRoom';
 const Page = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
+  console.log(currentTab);
   const [chatRoomState, setChatRoomState] = useState([]);
   const [selectedChatRoom, setSelectedChatRoom] = useState({
     title: 'John Doe',
@@ -60,7 +61,6 @@ const Page = () => {
     setCurrentTab(tab);
 
     setValue(newValue);
-    console.log({ currentTab });
   };
   const tabs = [
     {
@@ -94,7 +94,7 @@ const Page = () => {
           <Box
             component="img"
             src="/icons/RefreshIcon.svg"
-            alt="Refresh"
+            alt={'Refresh'}
             sx={{
               width: '20px',
               height: '18px',
@@ -116,6 +116,8 @@ const Page = () => {
               disableRipple={true}
               sx={{
                 textTransform: 'math-auto',
+                fontSize: '18px',
+                fontWeight: 400,
               }}
             />
           ))}
