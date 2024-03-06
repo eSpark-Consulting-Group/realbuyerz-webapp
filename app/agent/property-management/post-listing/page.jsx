@@ -6,16 +6,12 @@ import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import { createInformationState } from '@/utils/addInfo';
 
 import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
+  POST_LISTING,
   adSumitModal,
   draftModal,
 } from '@/app/constants/postListing';
-import { createPropertyStatusState } from '@/utils/propertyStatus';
-import { createMediaDataState } from '@/utils/mediaData';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,36 +29,13 @@ import {
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
-  const initializePropertyData = () => {
-    const informationState = createInformationState(
-      PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
-    );
-    const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    return {
-      ...informationState,
-      ...propertyStatusState,
-      ...uploadMediaData,
-    };
-  };
-
-  const [propertyData] = useState(initializePropertyData());
   const [open, setOpen] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
-
   const handleSubmit = (values) => {
     if (action === 'draft') {
       dispatch(handleSubmitDraft(values));
@@ -104,6 +77,8 @@ const Page = () => {
     installmentAvailable: yup.boolean(),
     readyPossession: yup.boolean(),
     featuresAndAmenities: yup.mixed(),
+    images: yup.array().min(1, 'Image is required'),
+    videos: yup.array().min(1, 'Video is required'),
   });
 
   const initialFormValues = {
@@ -162,9 +137,9 @@ const Page = () => {
             }}
           >
             <Link href={'/agent/live-bidding'}>agent</Link>
-            <BuyersPlatform />
-            <AdInformation formik={formik} propertyData={propertyData} />
-            <PropertyPurpose formik={formik} propertyData={propertyData} />
+            <BuyersPlatform propertyData={POST_LISTING} />
+            <AdInformation formik={formik} propertyData={POST_LISTING} />
+            <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
             <PropertyGallery formik={formik} />

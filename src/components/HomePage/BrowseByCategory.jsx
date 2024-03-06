@@ -78,6 +78,7 @@ const BrowseByCategory = ({ data }) => {
                   alignItems: 'center',
                   maxWidth: '150px',
                   margin: 'auto',
+                  gap: '10px',
                 }}
               >
                 <Link href={`/category/${category?.id}`}>
@@ -92,7 +93,7 @@ const BrowseByCategory = ({ data }) => {
                   variant="body1"
                   sx={{
                     color: '#838383',
-                    fontSize: '14px',
+                    fontSize: '12px',
                     fontWeight: 400,
                   }}
                 >

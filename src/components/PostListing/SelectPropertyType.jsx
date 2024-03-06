@@ -107,7 +107,7 @@ const SelectProperyType = ({
             >
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'House' ? '#FB631C' : '#666',
                 }}
@@ -119,7 +119,7 @@ const SelectProperyType = ({
               </Button>
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'Plots' ? '#FB631C' : '#666',
                 }}
@@ -131,7 +131,7 @@ const SelectProperyType = ({
               </Button>
               <Button
                 sx={{
-                  fontSize: { xs: '15px', sm: '19px' },
+                  fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color:
                     activePropertyType === 'Commercial' ? '#FB631C' : '#666',

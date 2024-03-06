@@ -1,11 +1,12 @@
 import Avatar from '@/src/components/UIElements/Avatar';
 import { chatMessages } from '@/src/constants/data/chats';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Menu, MenuItem, Typography } from '@mui/material';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import RenderFileUploads from './RenderFileUploads';
 import RenderMessage from './RenderMessage';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const AudioRecorder = dynamic(() => import('./AudioRecorder'), {
   ssrc: false,
@@ -19,6 +20,16 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const [replyingMessage, setReplyingMessage] = useState({});
   const [isSendingVoiceNote, setIsSendingVoiceNote] = useState(false);
   const messageFieldRef = useRef(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    event.stopPropagation();
+  };
+  const handleClose = (event) => {
+    event.stopPropagation();
+    setAnchorEl(null);
+  };
   const handleCancelReply = () => {
     setIsReplying(false);
     setReplyingMessage({});
@@ -306,15 +317,33 @@ const ChatRoom = ({ selectedChatRoom }) => {
               {selectedChatRoom?.title}
             </Typography>
           </Box>
-          <Box
-            component={'img'}
-            src={'/icons/OptionsIcon.svg'}
-            sx={{
-              height: '15px',
-              width: '3px',
-            }}
-            alt={'Options'}
-          />
+          <Box sx={{ width: '10%' }}>
+            <Image
+              width={3}
+              height={15}
+              src={'/icons/OptionsIcon.svg'}
+              style={{ cursor: 'pointer' }}
+              onClick={handleClick}
+              alt={'dots'}
+            />
+            <Menu
+              id="demo-positioned-menu"
+              aria-labelledby="demo-positioned-button"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              sx={{ marginTop: '20px' }}
+            >
+              <MenuItem>Mark as unread</MenuItem>
+              <MenuItem>Delete</MenuItem>
+              <hr />
+              <MenuItem>Block</MenuItem>
+              <hr />
+              <MenuItem>Archive</MenuItem>
+            </Menu>
+          </Box>
         </Box>
         <Box
           sx={{
@@ -603,9 +632,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   >
                     {message.trim() === '' &&
                       document?.activeElement !== messageFieldRef.current && (
-                        <div className={'placeholder'}>
-                          Type your message...
-                        </div>
+                        <div className={'placeholder'}>Write message</div>
                       )}
                   </div>
                 )}
