@@ -17,7 +17,7 @@ const ProjectPage = () => {
           link={'/projects/category/houses'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'houses'} />
+        <ProjectsSlider data={projects} category={1} />
         <CategoryLink
           category={`Plots`}
           link={'/projects/category/plots'}

@@ -7,7 +7,6 @@ import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import FilterComponent from './FilterComponent';
-import { PROJECTS_DATA } from '@/src/constants/projects';
 
 const CategoryPage = () => {
   const pathname = usePathname();

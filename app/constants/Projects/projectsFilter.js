@@ -45,7 +45,7 @@ export const PROPERTY_TABS_DATA = [
         value: 'flat',
       },
       {
-        id:4,
+        id: 4,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Upper Portion',

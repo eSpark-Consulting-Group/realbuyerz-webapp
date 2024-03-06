@@ -10,7 +10,6 @@ import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 const ProfileAgent = ({ data }) => {
   const agents = useSelector((state) => state?.agents);
   const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
-
   if (!selectedAgent) {
     console.error(`Agent with id ${data} not found`);
     // Remove 'return null;' to allow the execution of the JSX block below
@@ -56,7 +55,7 @@ const ProfileAgent = ({ data }) => {
           />
           <ViewAgentProfile
             image={selectedAgent?.profileImage}
-            name={`${selectedAgent?.firstName} ${selectedAgent?.lastName} `}
+            name={`${selectedAgent?.first_name} ${selectedAgent?.last_name} `}
             link={`agents/${selectedAgent?.id}`}
           />
           <AgentDescription description={selectedAgent?.about} />

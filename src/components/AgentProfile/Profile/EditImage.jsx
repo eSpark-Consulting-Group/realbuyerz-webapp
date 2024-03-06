@@ -90,7 +90,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         </ButtonBase>
       ) : (
         <Image
-          src={data.profileImage}
+          src={data.profile_image}
           height={179}
           width={197}
           alt={data?.title}

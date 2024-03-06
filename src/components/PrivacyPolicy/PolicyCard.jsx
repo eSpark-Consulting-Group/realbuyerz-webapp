@@ -1,6 +1,15 @@
 import { Grid, Typography, Box } from '@mui/material';
 
-const PolicyCard = ({ data, id, xs, md, sm, textAlign, backgroundColor }) => {
+const PolicyCard = ({
+  data,
+  id,
+  xs,
+  md,
+  sm,
+  textAlign,
+  backgroundColor,
+  isFirst,
+}) => {
   return (
     <Grid
       item

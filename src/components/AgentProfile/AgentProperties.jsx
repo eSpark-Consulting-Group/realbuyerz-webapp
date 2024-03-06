@@ -19,7 +19,10 @@ const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
       }}
     >
       <Box sx={{ pt: 8 }}>
-        <AgentTitle title={data?.userName} link={allLink} />
+        <AgentTitle
+          title={`${data?.first_name} ${data?.last_name}`}
+          link={allLink}
+        />
         <Box sx={{ pt: 2 }}>
           <PropertyForSale
             sellCount={data?.counts?.sellCount}

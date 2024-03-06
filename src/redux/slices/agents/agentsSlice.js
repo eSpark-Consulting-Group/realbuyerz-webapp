@@ -2,55 +2,29 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
-    id: 1,
-    userName: 'Arman Khan',
-    profileImage: '/images/profile.png',
-    firstName: 'Arman',
-    lastName: 'Khan',
-    email: 'armanespark@gmail.com',
-    landline: +424564879798,
-    mobile: +424564879798,
-    whatsapp: +914564879798,
-    userType: 'agent', // user or agent
-    // phone: {
-    //   countryCode: '92', 
-    //   number: '3162265948',
-    // },
-    // whatsapp: {
-    //   countryCode: '92',
-    //   number: '3162265948',
-    // },
-    // country: {
-    //   countryCode: '92',
-    //   number: '3162265948',
-    // },
-    city: 'Karachi',
-    area: 'Gulistn e Johar',
-    address: '301/A, Blossom Trade Center  ',
+    id: 12,
+    first_name: 'Arman',
+    last_name: 'Khan',
+    email: 'arman@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
     country: 'Pakistan',
-    timeZone: '(GST +5:00)',
-    time: '3:16pm',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: true,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
     about:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', //string
-    properties: [1, 2, 3, 4],
-    listings: [1, 2, 3, 4],
-    proposals: [1, 2, 3, 4],
-    biddings: [1, 2, 3, 4],
-    agencyName: 'eSpARK aGENCY', // basic, hot, Super
-    agencylogo: '/images/profile.png', //Open to contract,
-    subsPackage: 'basic', // basic, hot, Super
-    leadPreference: 'Open to contract', //Open to contract,
-    profileVisibility: 'public', // profile or Public
-    profileStatus: 'public', // public or Blocked or Reported or removed
-    profilePercentage: 50,
-    availableConnects: 50, // 0-100%
-    areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-    currencyUnit: 'pkr', // pkr or usd etx
-    autoReport: true, // true or false
-    verificationStatus: true, // true or false
-    emailNotification: true, // true or false
-    newsLetters: true, // true or false
-    onlineStatus: true,
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
     counts: {
       totalCount: 150,
       rentCount: {
@@ -78,53 +52,279 @@ const initialState = [
     },
   },
   {
-    id: 2,
-    userName: 'Arman Khan',
-    profileImage: '/images/profile.png',
-    firstName: 'Arman',
-    lastName: 'Khan',
-    email: 'armanespark@gmail.com',
-    landline: +424564879798,
-    mobile: +424564879798,
-    whatsapp: +914564879798,
-    userType: 'agent',
-    // phone: {
-    //   countryCode: '92',
-    //   number: '3162265948',
-    // },
-    // whatsapp: {
-    //   countryCode: '92',
-    //   number: '3162265948',
-    // },
-    // country: {
-    //   countryCode: '92',
-    //   number: '3162265948',
-    // },
-    city: 'Karachi',
-    area: 'Gulistn e Johar',
-    address: '301/A, Blossom Trade Center  ',
+    id: 31,
+    first_name: 'Muzamil',
+    last_name: 'Ali',
+    email: 'muzamil@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
     country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: true,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
     about:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', //string
-    properties: [1, 2, 3, 4],
-    listings: [1, 2, 3, 4],
-    proposals: [1, 2, 3, 4],
-    biddings: [1, 2, 3, 4],
-    agencyName: 'eSpARK aGENCY', // basic, hot, Super
-    agencylogo: '/images/profile.png', //Open to contract,
-    subsPackage: 'basic', // basic, hot, Super
-    leadPreference: 'Open to contract', //Open to contract,
-    profileVisibility: 'public', // profile or Public
-    profileStatus: 'public', // public or Blocked or Reported or removed
-    profilePercentage: 50,
-    availableConnects: 50, // 0-100%
-    areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-    currencyUnit: 'pkr', // pkr or usd etx
-    autoReport: true, // true or false
-    verificationStatus: true, // true or false
-    emailNotification: true, // true or false
-    newsLetters: true, // true or false
-    onlineStatus: true,
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
+    id: 21,
+    first_name: 'Muhammad Ali',
+    last_name: 'Mukhtar',
+    email: 'ali@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: true,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
+    about:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
+    id: 23,
+    first_name: 'Bilal Ahmed',
+    last_name: 'Khan',
+    email: 'bilal@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: false,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
+    about:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
+    id: 20,
+    first_name: 'Saad',
+    last_name: 'Zafar',
+    email: 'saad@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: false,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
+    about:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
+    id: 26,
+    first_name: 'Abdul',
+    last_name: 'Rehman',
+    email: 'abdul@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: false,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
+    about:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
+  },
+  {
+    id: 30,
+    first_name: 'Faisal',
+    last_name: 'Hanif',
+    email: 'faisal@esparkconsultants.com',
+    mobile_number: '+923192013292',
+    landline_number: 4523100000,
+    whatsapp: '+923192013292',
+    country: 'Pakistan',
+    city: 'Karachi',
+    address: '301/A, Blossom Trade Center',
+    password: '123456',
+    isVerified: false,
+    social_id: '',
+    role: 'agent',
+    profile_image: '/images/profile.png',
+    status: false,
+    visibility: true,
+    created_at: new Date(),
+    updated_at: null,
+    available_connects: 0,
+    property_id: '',
+    about:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat', //string
     counts: {
       totalCount: 150,
       rentCount: {
