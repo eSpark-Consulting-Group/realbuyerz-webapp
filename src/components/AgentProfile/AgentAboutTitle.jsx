@@ -16,7 +16,7 @@ const AgentAboutTitle = ({ title }) => {
         mb: 2,
       }}
     >
-      {`${ABOUT} ${title}`}
+      {`${ABOUT} ${title}`} 
     </Typography>
   );
 };
