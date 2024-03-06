@@ -21,7 +21,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -67,7 +68,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -113,7 +115,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -159,7 +162,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -205,7 +209,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -251,7 +256,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -297,7 +303,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,
@@ -343,7 +350,8 @@ const initialState = [
     created_at: new Date(),
     updated_at: null,
     available_connects: 0,
-    property_id: '', counts: {
+    property_id: '',
+    counts: {
       totalCount: 150,
       rentCount: {
         total: 75,

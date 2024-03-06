@@ -99,6 +99,7 @@ const Page = () => {
               width: '20px',
               height: '18px',
               marginRight: '20px',
+              marginBottom: '10px',
             }}
           />
         </Box>
@@ -118,6 +119,7 @@ const Page = () => {
                 textTransform: 'math-auto',
                 fontSize: '18px',
                 fontWeight: 400,
+                marginBottom: '10px',
               }}
             />
           ))}

@@ -61,6 +61,7 @@ const Page = () => {
                     </Typography>
                     <PropertyDetail
                       subTitle={spacificPost?.title}
+                      fontStyle={'16px'}
                       description={spacificPost?.description}
                     />
                     <Location

@@ -317,7 +317,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               {selectedChatRoom?.title}
             </Typography>
           </Box>
-          <Box sx={{ width: '10%' }}>
+          <Box sx={{ background: 'pink', marginRight: '10px' }}>
             <Image
               width={3}
               height={15}

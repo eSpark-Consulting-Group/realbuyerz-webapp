@@ -193,7 +193,7 @@ const Page = () => {
               }}
             >
               <Link href={'/user/dashboard'}>agent</Link>
-              <BuyersPlatform />
+              <BuyersPlatform fontSize={'20px'} />
               <AdInformation formik={formik} propertyData={propertyData} />
               <PropertyPurpose formik={formik} propertyData={propertyData} />
               <PropertySize formik={formik} />
