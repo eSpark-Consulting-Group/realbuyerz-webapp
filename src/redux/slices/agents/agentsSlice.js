@@ -22,6 +22,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 31,
@@ -44,6 +69,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 21,
@@ -66,6 +116,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 23,
@@ -88,6 +163,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 20,
@@ -110,6 +210,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 26,
@@ -132,6 +257,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
   {
     id: 30,
@@ -154,6 +304,31 @@ const initialState = [
     updated_at: null,
     available_connects: 0,
     property_id: '',
+    counts: {
+      totalCount: 150,
+      rentCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+      sellCount: {
+        total: 75,
+        Houses: 20,
+        Flats: 20,
+        Plots: 20,
+        FarmHouses: 20,
+        Shops: 20,
+        Offices: 20,
+        Commercials: 20,
+        // more Categories
+      },
+    },
   },
 ];
 

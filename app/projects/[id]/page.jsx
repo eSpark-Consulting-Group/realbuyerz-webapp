@@ -33,7 +33,7 @@ function SingleProperty() {
       />
     );
   }
-
+  
   return (
     <>
       <Grid

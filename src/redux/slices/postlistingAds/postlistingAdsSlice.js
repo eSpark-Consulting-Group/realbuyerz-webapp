@@ -12,7 +12,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -39,7 +39,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -66,7 +66,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -93,7 +93,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -120,7 +120,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -147,7 +147,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -174,7 +174,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -201,7 +201,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -228,7 +228,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -255,7 +255,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -282,7 +282,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -309,7 +309,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -336,7 +336,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -363,7 +363,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -390,7 +390,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -417,7 +417,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -444,7 +444,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -471,7 +471,7 @@ const postlistingAdSlice = createSlice({
         images: [`/images/properties/PropertyCardImageHouse.png`],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -500,7 +500,7 @@ const postlistingAdSlice = createSlice({
         images: [],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -527,7 +527,7 @@ const postlistingAdSlice = createSlice({
         images: [],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -556,7 +556,7 @@ const postlistingAdSlice = createSlice({
         images: [],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,
@@ -583,7 +583,7 @@ const postlistingAdSlice = createSlice({
         images: [],
         videos: [],
         title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33,`,
+        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
         description:
           'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
         area: 455,

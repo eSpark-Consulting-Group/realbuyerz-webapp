@@ -4,7 +4,6 @@ const policies = {};
 
 const initialState = { policies };
 
-
 const policiesSlice = createSlice({
   name: 'policies',
   initialState,

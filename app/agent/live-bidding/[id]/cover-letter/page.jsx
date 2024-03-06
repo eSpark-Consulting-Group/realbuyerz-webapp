@@ -40,7 +40,6 @@ const Page = () => {
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
 
-
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 

@@ -955,7 +955,6 @@ export const PROPERTY_BUYING_DETAIL = {
   },
 };
 
-
 export const previewData = {
   title: 'Preview',
   buttonText: 'Close',
