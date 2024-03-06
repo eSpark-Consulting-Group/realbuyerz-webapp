@@ -22,6 +22,7 @@ const ProjectsSlider = ({ data, category }) => {
     (item) => item?.proportyCategory === category
   );
   const filteredData = filterData?.length ? filterData : NoData;
+  // console.log(filterData,'filteredData');
   const sliderSettings = {
     slidesPerView: 3,
     // pagination: { clickable: true },
@@ -77,7 +78,7 @@ const ProjectsSlider = ({ data, category }) => {
                 {!project?.images?.length == 0 ? (
                   <img
                     src={
-                      project?.images[0]?.path ||
+                      project?.images[0] ||
                       `/images/default/default_project_image.jpg`
                     }
                     height={'auto'}
@@ -179,14 +180,16 @@ const ProjectsSlider = ({ data, category }) => {
                     lineHeight: '25px',
                   }}
                 >
-                  {project?.description || (
-                    <>
-                      <Skeleton />
-                      <Skeleton />
-                      <Skeleton />
-                      <Skeleton />
-                    </>
-                  )}
+                  {project?.description?.length > 150
+                    ? `${project.description.slice(0, 147)}...`
+                    : project?.description || (
+                        <>
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                        </>
+                      )}
                 </Typography>
               </Box>
             </Grid>

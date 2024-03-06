@@ -15,21 +15,21 @@ const ProjectPage = () => {
           link={'/projects/category/houses'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'houses'} />
+        <ProjectsSlider data={projects} category={'Houses'} />
 
         <CategoryLink
           category={`Plots`}
           link={'/projects/category/plots'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'plots'} />
+        <ProjectsSlider data={projects} category={'Plots'} />
 
         <CategoryLink
           category={`Commercials`}
           link={'/projects/category/commercials'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'commercials'} />
+        <ProjectsSlider data={projects} category={'Commercials'} />
       </Box>
     </>
   );
