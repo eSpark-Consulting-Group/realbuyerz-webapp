@@ -100,7 +100,7 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
               component={'img'}
               src={item?.image}
               sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
-              alt="amenities"
+              alt={'amenities'}
             />
             <Typography
               sx={{

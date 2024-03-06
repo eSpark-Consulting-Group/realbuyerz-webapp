@@ -48,7 +48,7 @@ const PropertyInstallment = ({
                 component={'img'}
                 src={item?.image}
                 sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-                alt="installment"
+                alt={'installment'}
               />
               <Typography
                 sx={{

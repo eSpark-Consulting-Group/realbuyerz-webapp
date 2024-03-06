@@ -12,7 +12,10 @@ const PropertyDetail = ({
   pb,
   paddingHeading,
   subPadding,
+  fontSize,
   mb,
+  fontStyle,
+  fontSizeDescription,
 }) => {
   return (
     <>
@@ -45,7 +48,7 @@ const PropertyDetail = ({
           sx={{
             pb: '20px',
             color: '#000',
-            fontSize: '20px',
+            fontSize: fontSize ? fontSize : '20px',
             fontWeight: '500',
           }}
         >
@@ -56,7 +59,7 @@ const PropertyDetail = ({
             sx={{
               padding: '5px',
               color: '#333',
-              fontSize: '15px',
+              fontSize: fontStyle ? fontStyle : '15px',
               fontWeight: '600',
             }}
             variant="h3"
@@ -70,7 +73,7 @@ const PropertyDetail = ({
               width: width ? width : '100%',
               padding: '5px',
               color: ' #333',
-              fontSize: '12px',
+              fontSize: fontSizeDescription ? fontSizeDescription : '12px',
               fontWeight: '400',
             }}
           >

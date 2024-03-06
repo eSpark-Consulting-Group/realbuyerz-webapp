@@ -56,7 +56,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   src={path == item?.link ? item?.iconActive : item?.icon}
                   width={30}
                   height={30}
-                  alt="icons"
+                  alt={'icons'}
                 />
                 <Typography
                   sx={{

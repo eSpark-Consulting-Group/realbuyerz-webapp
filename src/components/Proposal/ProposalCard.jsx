@@ -42,7 +42,6 @@ const ProposalCard = ({ key, data, currentTab, link }) => {
       );
     }
   };
-  console.log(data, 'data');
   const handleClickOpen = () => {
     if (currentTab === 'Save Request' || currentTab === 'Trash') {
       return null;

@@ -122,7 +122,7 @@ const PropertyGallery = ({ formik }) => {
                         width: { xs: 37, sm: 47 },
                         height: { xs: 35, sm: 45 },
                       }}
-                      alt="areasize"
+                      alt={'areasize'}
                     />
                     <Typography
                       sx={{

@@ -31,7 +31,7 @@ export const Agent_Routes = [
   },
   {
     icon: '/images/icons/agent-icons/inbox.svg',
-    active: '/images/icons/agent-icons/inbox-active.svg',
+    active: '/images/icons/user-icons/inbox-active.svg',
     text: 'Inbox',
     link: '/agent/inbox',
     sublinks: null,

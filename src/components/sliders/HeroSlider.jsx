@@ -35,7 +35,12 @@ const HeroSlider = ({
       >
         {SlidesData?.map((slide, index) => (
           <SwiperSlide key={index}>
-            <Image layout="fill" objectFit="cover" src={slide.image} alt={''} />
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src={slide.image}
+              alt={'Slider Image'}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

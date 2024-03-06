@@ -53,13 +53,11 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
 
   const handleContinue = () => {
     if (handleValidation()) {
-      console.log('email', email);
       getResetPasswordLink({ to: email });
     }
   };
 
   const resendEmail = () => {
-    console.log('resend email');
     getResetPasswordLink({ to: email });
   };
 
@@ -88,12 +86,15 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
     >
       <Box
         sx={{
-          width: { xs: '90%', md: '320px' },
+          width: { xs: '90%', md: '360px' },
           display: 'flex',
           flexDirection: 'column',
           height: 'auto',
           gap: { xs: '7px', md: '15px' },
           paddingTop: '10px',
+          '@media (min-width: 280px) and (max-width: 1290px)': {
+            padding: '20px',
+          },
         }}
       >
         <Typography

@@ -75,7 +75,12 @@ const FooterCta = ({ data }) => {
                   justifyContent: { lg: 'flex-end' },
                 }}
               >
-                <Image src={feature.icon} height={30} width={30} alt={''} />
+                <Image
+                  src={feature.icon}
+                  height={30}
+                  width={30}
+                  alt={'Images'}
+                />
                 <Box>
                   <Typography
                     sx={{
@@ -92,12 +97,11 @@ const FooterCta = ({ data }) => {
             ))}
           </Grid>
           <Bounce direction="left" triggerOnce duration={200}>
-            <Box container sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
+            <Box sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
               {data?.appIcons?.map((appicon, index) => (
                 <Link
                   href={appicon.link}
                   key={index}
-                  item
                   xs={3}
                   sx={{ display: 'flex', gap: '20px' }}
                 >
@@ -130,7 +134,7 @@ const FooterCta = ({ data }) => {
         >
           <Bounce direction="right" triggerOnce duration={300}>
             <Box>
-              <Image src={data.appImage} alt="App" width={350} height={400} />
+              <Image src={data.appImage} alt={'App'} width={350} height={400} />
             </Box>
           </Bounce>
         </Grid>

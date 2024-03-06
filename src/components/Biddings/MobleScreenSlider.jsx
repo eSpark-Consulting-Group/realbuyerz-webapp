@@ -51,7 +51,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
                   src={image}
                   width={1000}
                   height={1000}
-                  alt="slide_image"
+                  alt={'slide_image'}
                   layout="responsive"
                 />
               </Box>
@@ -73,7 +73,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
             src={'/images/modalNextArrow.svg'}
             width={30}
             height={30}
-            alt="nextArrow"
+            alt={'nextArrow'}
           />
         </Box>
         <Box
@@ -91,7 +91,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
             src={'/images/modalPrevArrow.svg'}
             width={30}
             height={30}
-            alt="PrevArrow"
+            alt={'PrevArrow'}
           />
         </Box>
         <Box
@@ -113,7 +113,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
               src={'/images/biddings/images/close.png'}
               width={30}
               height={30}
-              alt="close"
+              alt={'close'}
             />
           </Button>
         </Box>

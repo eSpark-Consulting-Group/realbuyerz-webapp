@@ -34,7 +34,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
               src={image}
-              alt="city"
+              alt={'city'}
             />
             <Typography
               sx={{

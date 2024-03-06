@@ -38,7 +38,7 @@ const Avatar = ({ data, minWidth = '40px', height = '40px', mobile }) => {
             borderRadius: '50%',
             display: { xs: mobile || 'flex', sm: 'flex' },
           }}
-          alt="Avatar"
+          alt={'Avatar'}
         />
       );
     } else {

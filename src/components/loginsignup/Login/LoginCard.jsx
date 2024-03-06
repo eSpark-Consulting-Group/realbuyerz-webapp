@@ -101,7 +101,7 @@ const LoginCard = ({ handleClose }) => {
             <Typography
               sx={{
                 color: '#FF631C',
-                fontSize: { xs: '15px', md: '20px' },
+                fontSize: { xs: '15px', md: '30px' },
               }}
             >
               {LOGIN_FORM.loginCard.welcome}
@@ -143,6 +143,7 @@ const LoginCard = ({ handleClose }) => {
                   flexDirection: 'row-reverse',
                   color: '#777777',
                   fontSize: { xs: '5px', md: '10px' },
+                  marginRight: { xs: '0px', md: '-8px' },
                 }}
                 onChange={(e) =>
                   setFormData((prevData) => ({

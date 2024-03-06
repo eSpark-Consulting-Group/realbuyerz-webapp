@@ -47,7 +47,6 @@ const ProfileCroper = ({
         croppedAreaPixels,
         rotation
       );
-      console.log('cropcheck', file, url);
       setPhotoURL(url);
       setProfileImage(url);
       setFile(file);
