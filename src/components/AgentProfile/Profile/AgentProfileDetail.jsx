@@ -41,7 +41,7 @@ const AgentProfileDetail = ({ description, spacificData }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2, fontSize: '30px' }}
         >
-          {`${spacificData?.firstName ? spacificData?.firstName : 'user'} ${spacificData?.lastName ? spacificData?.lastName : 'name'}`}
+          {`${spacificData?.first_name ? spacificData?.first_name : description?.first_name} ${spacificData?.last_name ? spacificData?.last_name : description?.last_name}`}
         </Typography>
 
         {description?.userType === `${USER_TYPE.user}` ? (
@@ -49,7 +49,7 @@ const AgentProfileDetail = ({ description, spacificData }) => {
         ) : (
           <>
             <ProfileInfo
-              title={`${description?.country} ${description?.city}`}
+              title={`${description?.city}, ${description?.country} `}
               icon={LOCATION_ICON}
               alt={ALT}
             />

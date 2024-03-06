@@ -6,6 +6,7 @@ import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
+import FilterComponent from './FilterComponent';
 
 const CategoryPage = () => {
   const pathname = usePathname();
@@ -45,6 +46,7 @@ const CategoryPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
+      <FilterComponent data={filteredData} />
       <CategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>

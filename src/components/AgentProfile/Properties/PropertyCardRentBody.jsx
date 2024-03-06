@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 
-const PropertyCardRentBody = ({ rentData }) => {
+const PropertyCardRentBody = ({ rentData, link }) => {
   return (
     <Grid container spacing={1} pb={4}>
       {['Houses', 'Commercials', 'Plots'].map((propertyType, index) => (
@@ -21,29 +22,33 @@ const PropertyCardRentBody = ({ rentData }) => {
             }}
           >
             <Box>
-              <Typography
-                sx={{
-                  color: '#126FAA',
-                  fontSize: '18px',
-                  fontStyle: 'normal',
-                  fontWeight: 700,
-                  lineHeight: 'normal',
-                  textAlign: 'center',
-                }}
-              >
-                {rentData[propertyType]}
-              </Typography>
-              <Typography
-                sx={{
-                  color: '#777',
-                  fontSize: '12px',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
-                  lineHeight: 'normal',
-                }}
-              >
-                {propertyType}
-              </Typography>
+              <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                <Typography
+                  sx={{
+                    color: '#126FAA',
+                    fontSize: '18px',
+                    fontStyle: 'normal',
+                    fontWeight: 700,
+                    lineHeight: 'normal',
+                    textAlign: 'center',
+                  }}
+                >
+                  {rentData[propertyType]}
+                </Typography>
+              </Link>
+              <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                <Typography
+                  sx={{
+                    color: '#777',
+                    fontSize: '12px',
+                    fontStyle: 'normal',
+                    fontWeight: 400,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  {propertyType}
+                </Typography>
+              </Link>
             </Box>
           </Box>
         </Grid>

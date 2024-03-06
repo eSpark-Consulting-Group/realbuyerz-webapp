@@ -26,7 +26,7 @@ const AgentProfiles = ({ data, spacificData }) => {
           },
         }}
       >
-        <AgentImage spacificData={spacificData} />
+        <AgentImage data={data} spacificData={spacificData} />
         <Grid
           sx={{
             padding: 2,

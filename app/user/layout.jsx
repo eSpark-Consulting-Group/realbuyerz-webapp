@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setChild(!child);
-  }, []);
+  }, [child]);
 
   return (
     <>
