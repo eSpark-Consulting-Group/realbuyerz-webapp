@@ -19,52 +19,61 @@ export const PROPERTY_TYPES = [
 ];
 export const PROPERTY_TABS_DATA = [
   {
+    id: 1,
     label: 'Houses',
     value: 'houses',
     content: [
       {
+        id: 1,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'All ',
         value: '',
       },
       {
+        id: 2,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'House',
         value: 'house',
       },
       {
+        id: 3,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Flat',
         value: 'flat',
       },
       {
+        id:4,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Upper Portion',
         value: 'upper-portion',
       },
       {
+        id: 5,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Lower Portion',
         value: 'lower-portion',
       },
       {
+        id: 6,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Farm House',
         value: 'farm-house',
       },
       {
+        id: 7,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Room',
         value: 'room',
       },
       {
+        id: 8,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Penthouse',
@@ -73,40 +82,47 @@ export const PROPERTY_TABS_DATA = [
     ],
   },
   {
+    id: 2,
     label: 'Plots',
     value: 'plots',
     content: [
       {
+        id: 1,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Residential Plots',
         value: 'residential-plots',
       },
       {
+        id: 2,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Commercial Plots',
         value: 'commercial-plots',
       },
       {
+        id: 3,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Agriculture Land',
         value: 'agriculture-land',
       },
       {
+        id: 4,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Industrail Land',
         value: 'industrail-land',
       },
       {
+        id: 5,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Plot File',
         value: 'plot-file',
       },
       {
+        id: 6,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Plot Form',
@@ -115,34 +131,40 @@ export const PROPERTY_TABS_DATA = [
     ],
   },
   {
+    id: 3,
     label: 'Commercials',
     value: 'commercials',
     content: [
       {
+        id: 1,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Office',
         value: 'office',
       },
       {
+        id: 2,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Shop',
         value: 'shop',
       },
       {
+        id: 3,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Ware house',
         value: 'ware-house',
       },
       {
+        id: 4,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Building',
         value: 'building',
       },
       {
+        id: 5,
         image: '/images/listing-page/house.svg',
         activeImage: '/images/listing-page/housesell.svg',
         title: 'Other...',
