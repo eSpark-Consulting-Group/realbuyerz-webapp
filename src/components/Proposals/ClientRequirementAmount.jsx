@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 const ClientRequirementAmount = ({ amountData, amenities }) => {
   const buyingSellingForm = useSelector((state) => state.buyingSellingForm);
   const { PropertySizeAndPricing, FeaturesAndAmenities } = buyingSellingForm;
-  // const { amount } = PropertySizeAndPricing;
-  // const { bathrooms, bedrooms, parking } = FeaturesAndAmenities;
 
   return (
     <>

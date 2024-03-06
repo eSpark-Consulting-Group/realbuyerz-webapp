@@ -9,7 +9,6 @@ const ProposalApplicant = ({ proposal }) => {
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);
-    // Remove 'return null;' to allow the execution of the JSX block below
   }
   return (
     <Grid

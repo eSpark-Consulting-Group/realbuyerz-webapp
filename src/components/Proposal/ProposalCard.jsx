@@ -1,6 +1,5 @@
 'use client';
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
-// import { handlePropertiesSubmitTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React, { useState } from 'react';

@@ -68,7 +68,6 @@ const PropertyListingCard = ({ propertyData }) => {
               <Link href={`/project/${property?.id}`}>
                 <Image
                   src={property?.coverImage}
-                  // layout="fill"
                   width={360}
                   height={360}
                   objectFit="cover"
@@ -167,8 +166,6 @@ const PropertyListingCard = ({ propertyData }) => {
           shape="rounded"
           siblingCount={1}
           boundaryCount={1}
-          // showFirstButton
-          // showLastButton
           color="primary"
         />
       </Box>

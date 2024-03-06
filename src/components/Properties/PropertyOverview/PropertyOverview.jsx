@@ -70,8 +70,6 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           overflow: 'hidden',
                           border: 'none',
                           fontSize: '15px',
-                          // padding: '20px',
-                          // paddingRight: '30px',
                         }}
                       >
                         {propertytype?.label}
