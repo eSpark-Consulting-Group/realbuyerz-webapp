@@ -19,7 +19,7 @@ const AgentProfile = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
 
-  const users = useSelector((state) => state?.agents?.agents?.agentData);
+  const users = useSelector((state) => state?.agents);
   const user = users[id - 1];
   return (
     <>

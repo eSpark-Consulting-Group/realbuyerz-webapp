@@ -11,9 +11,10 @@ const postlistingAdSlice = createSlice({
         other_features: [],
         images: [],
         videos: [],
-        title: '456456',
+        title: 'NEED 4 BEDROOM APARTMENT',
         location: '',
-        description: '456456456',
+        description:
+          'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         area: 455,
         amount: 456,
         areaUnit: 'sq.ft',
@@ -257,6 +258,7 @@ const postlistingAdSlice = createSlice({
 export const {
   handlePostlistingAd,
   handleSubmitDraft,
+  handleAgentTrash,
   handleIndentifier,
   handleTrashProposal,
   handleSaveRequest,
