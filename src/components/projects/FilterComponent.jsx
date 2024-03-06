@@ -112,7 +112,7 @@ const FilterComponent = ({ data }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [selectedPropertyAdType, searchText, handleFilter]);
+  }, [selectedPropertyAdType, searchText]);
 
   return (
     <>
