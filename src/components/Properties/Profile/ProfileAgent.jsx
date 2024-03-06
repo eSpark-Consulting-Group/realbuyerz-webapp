@@ -8,7 +8,7 @@ import ViewAgentProfile from './ViewAgentProfile';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const ProfileAgent = ({ data }) => {
-  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+  const agents = useSelector((state) => state?.agents);
   const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
 
   if (!selectedAgent) {
