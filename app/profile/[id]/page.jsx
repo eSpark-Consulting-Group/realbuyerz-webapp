@@ -19,8 +19,10 @@ const AgentProfile = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
 
-  const users = useSelector((state) => state?.agents?.agents?.agentData);
+  const users = useSelector((state) => state?.agents);
+  console.log(users);
   const user = users[id - 1];
+  console.log(users);
   return (
     <>
       <Box
@@ -34,7 +36,12 @@ const AgentProfile = () => {
         {user ? (
           <>
             <AgentProfiles data={user} />
-            <AgentProperties data={user} />
+            <AgentProperties
+              data={user}
+              allLink={`/profile/${id}/projects`}
+              sellLink={`/profile/${id}/projects/sale`}
+              rentLink={`/profile/${id}/projects/rent`}
+            />
             <AgentAbout data={user} />
             <RecentPropertyTitle data={user} />
             <AgentSlider data={AGENT_PROFILE_DATA} />

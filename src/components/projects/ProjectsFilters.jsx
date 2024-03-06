@@ -57,7 +57,6 @@ const ProjectsFilters = ({ data }) => {
           item?.title?.includes(filterValues?.searchInput))
       );
     });
-
     console.log(filteredData);
   };
 
@@ -158,6 +157,9 @@ const ProjectsFilters = ({ data }) => {
             variant="contained"
             color="secondary"
             onClick={handleClearFilter}
+            sx={{
+              height: '52px',
+            }}
           >
             Clear Filter
           </Button>
