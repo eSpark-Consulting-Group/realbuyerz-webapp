@@ -131,7 +131,8 @@ const ProfilesPage = ({ agents }) => {
                         href={`/profile/${agent?.id}/projects/rent/commercials`}
                       >
                         <Typography variant="body2" color="text.secondary">
-                          Commercials: {agent?.counts?.rentCount.Commercials || 0}
+                          Commercials:{' '}
+                          {agent?.counts?.rentCount.Commercials || 0}
                         </Typography>
                       </Link>
                     </Grid>
@@ -156,7 +157,8 @@ const ProfilesPage = ({ agents }) => {
                         href={`/profile/${agent?.id}/projects/sell/commercials`}
                       >
                         <Typography variant="body2" color="text.secondary">
-                          Commercials: {agent?.counts?.sellCount.Commercials || 0}
+                          Commercials:{' '}
+                          {agent?.counts?.sellCount.Commercials || 0}
                         </Typography>
                       </Link>
                     </Grid>

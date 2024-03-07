@@ -8,7 +8,6 @@ import FilterComponent from './FilterComponent';
 
 const ProjectPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  console.log(projects, 'projects');
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>

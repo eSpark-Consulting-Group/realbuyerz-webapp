@@ -71,7 +71,7 @@ const FeaturedProperties = ({ data }) => {
         paragraph={FEATURED_HEADINGS.latestProject}
       />
       {isSmallScreen ? (
-        <Swiper >
+        <Swiper {...sliderSettings}>
           <Box className="full-container-width mx-auto">
             <Grid
               container
@@ -86,7 +86,7 @@ const FeaturedProperties = ({ data }) => {
                 <SwiperSlide key={index}>
                   <Grid
                     item
-                    xs= {6}
+                    xs={6}
                     key={index}
                     sx={{
                       my: '30px',

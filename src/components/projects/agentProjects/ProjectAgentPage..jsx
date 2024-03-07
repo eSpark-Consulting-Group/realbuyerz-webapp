@@ -7,7 +7,6 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import { Typography } from '@mui/material';
 // Other imports...
 
 const ProjectAgentPage = () => {
