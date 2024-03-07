@@ -13,6 +13,7 @@ import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import { USER_NOT_FOUND } from '@/app/constants/user';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 const AgentProfile = () => {
   const pathname = usePathname();
@@ -45,17 +46,12 @@ const AgentProfile = () => {
             <AgentSlider data={AGENT_PROFILE_DATA} />
           </>
         ) : (
-          <Typography
-            variant="h1"
-            sx={{
-              height: '100vh',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center  ',
-            }}
-          >
-            {USER_NOT_FOUND}
-          </Typography>
+          <NotFoundSection
+            heading={'Sorry!'}
+            message={
+              'No Agent found, Please make sure to add  a valid agent ID.'
+            }
+          />
         )}
       </Box>
     </>

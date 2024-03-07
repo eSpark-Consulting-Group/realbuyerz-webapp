@@ -22,7 +22,6 @@ const ProjectsSlider = ({ data, category }) => {
   );
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;
-  console.log(filteredData, 'filteredData', category);
   const sliderSettings = {
     slidesPerView: 3,
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
