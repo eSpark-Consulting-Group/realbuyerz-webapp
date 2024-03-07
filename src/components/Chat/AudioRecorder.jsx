@@ -229,9 +229,6 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
           />
         )}
       </Box>
-      {/* <Button onClick={sendRecording} variant="contained">
-        Send
-      </Button> */}
     </Box>
   );
 };

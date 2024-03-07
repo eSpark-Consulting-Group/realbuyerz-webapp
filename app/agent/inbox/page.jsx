@@ -32,8 +32,6 @@ const Page = () => {
       '#7C9E0B',
       '#03A69E',
       '#3091DB',
-      // "#363636", "#434343", "#1C1C1C", "#2B2B2B", "#333333",
-      // "#222222", "#1A1A1A", "#282828", "#191919", "#1B1B1B"
     ];
 
     // Generate a random index to select a color from the array

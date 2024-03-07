@@ -12,7 +12,6 @@ const ProfileAgent = ({ data }) => {
   const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
   if (!selectedAgent) {
     console.error(`Agent with id ${data} not found`);
-    // Remove 'return null;' to allow the execution of the JSX block below
   }
 
   return (
