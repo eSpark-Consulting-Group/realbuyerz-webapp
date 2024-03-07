@@ -6,7 +6,7 @@ export const Agent_Profile_Form_Data = {
   fields: [
     {
       label: 'Full Name',
-      name: 'firstName',
+      name: 'first_name',
       value: 'ok',
       place: 'Enter First Name',
       type: 'text',
@@ -16,7 +16,7 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: '',
-      name: 'lastName',
+      name: 'last_name',
       value: '',
       place: 'Enter Last Name',
       type: 'text',
@@ -37,7 +37,7 @@ export const Agent_Profile_Form_Data = {
     },
     {
       label: 'Landline',
-      name: 'landline',
+      name: 'landline_number',
       value: '',
       place: 'Enter Landline',
       type: 'number',
@@ -82,7 +82,7 @@ export const Agent_Profile_Form_Data = {
       label: 'Mobile',
       place: '',
       type: 'number',
-      name: 'mobile',
+      name: 'mobile_number',
       value: '',
       helperText: '',
       width: { xs: '100%', sm: '85%', md: '76%', lg: '56.2%' },

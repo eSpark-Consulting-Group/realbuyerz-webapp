@@ -2,10 +2,11 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 
 import * as Yup from 'yup';
 export const profileValidationSchema = Yup.object({
-  firstName: Yup.string().min(2).max(25).required('Enter First Name'),
-  lastName: Yup.string().min(2).max(25).required('Enter Last Name'),
+  first_name: Yup.string().min(2).max(25).required('Enter First Name'),
+  last_name: Yup.string().min(2).max(25).required('Enter Last Name'),
   email: Yup.string().email().required('Enter email'),
-  landline: Yup.number().min(4).required('Enter Landline'),
+  landline_number: Yup.number().min(4).required('Enter Landline'),
+  profile_image: Yup.string(),
   country: Yup.string().min(3).max(25).required('Enter Country'),
   city: Yup.string().min(3).max(25).required('Enter City'),
   address: Yup.string().min(3).max(40).required('Enter Address'),
@@ -15,7 +16,7 @@ export const profileValidationSchema = Yup.object({
       value ? isValidPhoneNumber(value) : true
     )
     .required('Whatsapp is required'),
-  mobile: Yup.string()
+  mobile_number: Yup.string()
     .test('phone', 'Invalid Phone Number', (value) =>
       value ? isValidPhoneNumber(value) : true
     )

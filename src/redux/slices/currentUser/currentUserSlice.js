@@ -55,6 +55,13 @@ const currentUserSlice = createSlice({
     user: agent,
   },
   reducers: {
+    handleUserEdit: (state, action) => {
+      const updatedUser = action.payload;
+      state.user = { ...state.user, ...updatedUser };
+    },
+    // handleUserImageChange: (state, action) => {
+    //   state[0].profileImage = action.payload;
+    // },
     currentProposal: (state, action) => {
       const { agent_id } = action.payload;
       const foundObject = state?.proposals?.find(
@@ -111,6 +118,8 @@ const currentUserSlice = createSlice({
 });
 
 export const {
+  handleUserEdit,
+  handleUserImageChange,
   handleSaveRequest,
   currentProposal,
   handleAgentDraft,

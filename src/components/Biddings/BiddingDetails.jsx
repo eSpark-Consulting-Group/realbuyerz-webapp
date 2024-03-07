@@ -60,6 +60,7 @@ const BiddingDetails = ({ height, ads }) => {
                       <Box
                         sx={{
                           width: '100%',
+                          minHeight: '403px',
                           height: 'auto',
                           backgroundColor: '#EDF7FF',
                           border: '1px solid #AAD9FF',
@@ -110,6 +111,10 @@ const BiddingDetails = ({ height, ads }) => {
                             <Typography
                               variant="h4"
                               sx={{
+                                maxWidth: { xs: '400px', sm: '650px' },
+                                textOverflow: 'ellipsis',
+                                overflow: 'hidden',
+                                whiteSpace: 'nowrap',
                                 ml: 0.4,
                                 fontSize: { xs: '21px' },
                               }}
@@ -164,7 +169,11 @@ const BiddingDetails = ({ height, ads }) => {
                                   ml: 1,
                                   fontWeight: 700,
                                   color: '#333333',
-                                  fontSize: '20px',
+                                  fontSize: { xs: '18px', sm: '20px' },
+                                  maxWidth: { xs: '50px', sm: '50px' },
+                                  textOverflow: 'ellipsis',
+                                  overflow: 'hidden',
+                                  whiteSpace: 'nowrap',
                                 }}
                                 component={'span'}
                               >
@@ -232,6 +241,13 @@ const BiddingDetails = ({ height, ads }) => {
                                 fontWeight: '500',
                                 fontSize: '13.8px',
                                 lineHeight: '20.52px',
+                                maxWidth: 'auto',
+                                letterSpacing: '0em',
+                                textAlign: 'left',
+                                display: '-webkit-box',
+                                overflow: 'hidden',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 4,
                                 mb: 1,
                               }}
                             >
@@ -413,8 +429,12 @@ const BiddingDetails = ({ height, ads }) => {
                             <Typography
                               variant="h4"
                               sx={{
+                                maxWidth: { xs: '400px', sm: '700px' },
+                                textOverflow: 'ellipsis',
+                                overflow: 'hidden',
+                                whiteSpace: 'nowrap',
                                 ml: 0.4,
-                                fontSize: { xs: '21px' },
+                                fontSize: { xs: '19px', sm: '21px' },
                               }}
                             >
                               {item?.title}
@@ -535,6 +555,13 @@ const BiddingDetails = ({ height, ads }) => {
                                 fontWeight: '500',
                                 fontSize: '13.8px',
                                 lineHeight: '20.52px',
+                                maxWidth: 'auto',
+                                letterSpacing: '0em',
+                                textAlign: 'left',
+                                display: '-webkit-box',
+                                overflow: 'hidden',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 4,
                                 mb: 1,
                               }}
                             >

@@ -125,7 +125,7 @@ const Page = () => {
       property_Type: '',
     });
   };
-  console.log(getFilteredOutput(find_posting, filterObject), 'cje');
+
   return (
     <>
       <Box
