@@ -1,39 +1,34 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import {
-  Typography,
-  Box,
-  Checkbox,
-  Button,
-  FormControlLabel,
-} from '@mui/material';
+import React from 'react';
+import { Typography, Box, Checkbox, Button } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleAdaminities, toggleCheckedAmenity } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { useDispatch } from 'react-redux';
+import {
+  handleAdaminities,
+  toggleCheckAmenityClear,
+} from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
-const Facilities = ({ facilitiesData, cancel, formik }) => {
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [checkedAmenities, setCheckedAmenities] = useState([]);
-  const reduxCheckedAmenities = useSelector(state => state?.postListingAds?.checkedAmenities);
-
-  useEffect(() => {
-    setCheckedAmenities(reduxCheckedAmenities);
-  }, [reduxCheckedAmenities]);
+const Facilities = ({
+  facilitiesData,
+  cancel,
+  formik,
+  setOpen,
+  selectedAmenities,
+  setSelectedAmenities,
+}) => {
   const dispatch = useDispatch();
-
-  console.log(selectedAmenities, 'selected')
-
   const handleCheckboxChange = (e, id, image, text, name) => {
     const limit = 20;
-    const amenityObject = { text: text, image: image, limit: limit, name: name };
-    dispatch(toggleCheckedAmenity({ amenity: amenityObject }));
+    const amenityObject = {
+      text: text,
+      image: image,
+      limit: limit,
+      name: name,
+    };
 
     if (e.target.checked) {
-      setSelectedAmenities((prevSelected) => [
-        ...prevSelected,
-        amenityObject,
-      ]);
+      setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
         prevSelected.filter((item) => item.text !== text)
@@ -44,19 +39,12 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
   };
 
   const handleSaveButton = () => {
-    dispatch(handleAdaminities(selectedAmenities));
-
-    // selectedAmenities.forEach((amenity) => {
-    //   dispatch(handleAdaminities(amenity));
-    // });
-    // if(checkedAmenities.length === 0){
-    //   dispatch(handleAdaminities(checkedAmenities))
-    // }else{
-    //   checkedAmenities?.forEach((amenity) => {
-    //     dispatch(handleAdaminities(amenity));
-    //   });
-    // }
-    cancel();
+    if (selectedAmenities.length === 0) {
+      dispatch(toggleCheckAmenityClear());
+    } else {
+      dispatch(handleAdaminities(selectedAmenities));
+    }
+    setOpen(false);
   };
 
   return (
@@ -98,7 +86,9 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
           >
             <Checkbox
               sx={{ color: '#126FAA' }}
-              checked={checkedAmenities.some((amenity) => amenity.text === item.title)} // Check if object with same text exists
+              checked={selectedAmenities?.some(
+                (amenity) => amenity?.text === item?.title
+              )}
               onChange={(e) => {
                 handleCheckboxChange(
                   e,

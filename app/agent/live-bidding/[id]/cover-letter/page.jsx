@@ -24,6 +24,7 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { COVER_LETTER } from '@/app/constants/coverLetter';
+import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -55,6 +56,7 @@ const Page = () => {
         agent_id: values?.agent_id,
       })
     );
+    dispatch(toggleCheckAmenityClear());
   };
 
   const handleClickOpen = () => {

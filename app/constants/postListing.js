@@ -337,146 +337,140 @@ export const PROPERTY_INFORMATION = {
       text: 'The video upload feature is optional; you can choose to upload photos without including a video.',
     },
   ],
-    addAmenities: [
-      {
-        id: 1,
-        image: "/images/add-amenities/swimmingPool.svg",
-        title: "Swimming pool",
-        name: "swimming_pool"
-      },
-      {
-        id: 2,
-        image: "/images/add-amenities/washingArea.svg",
-        title: "Washing area",
-        name: "washing_area"
-      },
-      {
-        id: 3,
-        image: "/images/add-amenities/mosque.svg",
-        title: "Masjid",
-        name: "masjid"
-      },
-      {
-        id: 4,
-        image: "/images/add-amenities/fitnessCenter.svg",
-        title: "Fitness center",
-        name: "fitness_center"
-      },
-      {
-        id: 5,
-        image: "/images/add-amenities/electricity.svg",
-        title: "Hour Electricity",
-        name: "hour_electricity"
-      },
-      {
-        id: 6,
-        image: "/images/add-amenities/corridor.svg",
-        title: "Corridor",
-        name: "corridor"
-      },
-      {
-        id: 7,
-        image: "/images/add-amenities/clubHouse.svg",
-        title: "Clubhouse",
-        name: "clubhouse"
-      },
-      {
-        id: 8,
-        image: "/images/add-amenities/autoGenerator.svg",
-        title: "Auto Generator",
-        name: "auto_generator"
-      },
-      {
-        id: 9,
-        image: "/images/add-amenities/roPlant.svg",
-        title: "R.O Plant",
-        name: "r_o_plant"
-      },
-      {
-        id: 10,
-        image: "/images/add-amenities/playground.svg",
-        title: "Playground",
-        name: "playground"
-      },
-      {
-        id: 11,
-        image: "/images/add-amenities/boundaryWall.svg",
-        title: "Complete Boundary Wall",
-        name: "complete_boundary_wall"
-      },
-      {
-        id: 12,
-        image: "/images/add-amenities/basketballCourts.svg",
-        title: "Basketball courts",
-        name: "basketball_courts"
-      },
-      {
-        id: 13,
-        image: "/images/add-amenities/servantArea.svg",
-        title: "Servant Area",
-        name: "servant_area"
-      },
-      {
-        id: 14,
-        image: "/images/add-amenities/basketballCourts.svg",
-        title: "Basketball courts",
-        name: "basketball_ourts"
-      },
-      {
-        id: 15,
-        image: "/images/add-amenities/hugePark.svg",
-        title: "Huge Park",
-        name: "huge_park"
-      },
-      {
-        id: 16,
-        image: "/images/add-amenities/utilityStore.svg",
-        title: "Utility Store",
-        name: "utility_store"
-      },
-      {
-        id: 17,
-        image: "/images/add-amenities/walkingTrails.svg",
-        title: "Walking trails",
-        name: "walking_trails"
-      },
-      {
-        id: 18,
-        image: "/images/add-amenities/services.svg",
-        title: "Concierge services",
-        name: "concierge_services"
-      },
-      {
-        id: 19,
-        image: "/images/add-amenities/rooftopTerrace.svg",
-        title: "Rooftop terrace",
-        name: "rooftop_terrace"
-      },
-      {
-        id: 20,
-        image: "/images/add-amenities/petfriendlyFacilities.svg",
-        title: "Pet-friendly facilities",
-        name: "pet_friendly_facilities"
-      },
-      {
-        id: 21,
-        image: "/images/add-amenities/businessCenter.svg",
-        title: "Business centre",
-        name: "business_centre"
-      },
-      {
-        id: 22,
-        image: "/images/add-amenities/maintenance.svg",
-        title: "On-site maintenance",
-        name: "on_site_maintenance"
-      },
-      {
-        id: 23,
-        image: "/images/add-amenities/securityCamera.svg",
-        title: "24/7 security",
-        name: "security"
-      }
-    ]
+  addAmenities: [
+    {
+      id: 1,
+      image: '/images/add-amenities/swimmingPool.svg',
+      title: 'Swimming pool',
+      name: 'swimming_pool',
+    },
+    {
+      id: 2,
+      image: '/images/add-amenities/washingArea.svg',
+      title: 'Washing area',
+      name: 'washing_area',
+    },
+    {
+      id: 3,
+      image: '/images/add-amenities/mosque.svg',
+      title: 'Masjid',
+      name: 'masjid',
+    },
+    {
+      id: 4,
+      image: '/images/add-amenities/fitnessCenter.svg',
+      title: 'Fitness center',
+      name: 'fitness_center',
+    },
+    {
+      id: 5,
+      image: '/images/add-amenities/electricity.svg',
+      title: 'Hour Electricity',
+      name: 'hour_electricity',
+    },
+    {
+      id: 6,
+      image: '/images/add-amenities/corridor.svg',
+      title: 'Corridor',
+      name: 'corridor',
+    },
+    {
+      id: 7,
+      image: '/images/add-amenities/clubHouse.svg',
+      title: 'Clubhouse',
+      name: 'clubhouse',
+    },
+    {
+      id: 8,
+      image: '/images/add-amenities/autoGenerator.svg',
+      title: 'Auto Generator',
+      name: 'auto_generator',
+    },
+    {
+      id: 9,
+      image: '/images/add-amenities/roPlant.svg',
+      title: 'R.O Plant',
+      name: 'r_o_plant',
+    },
+    {
+      id: 10,
+      image: '/images/add-amenities/playground.svg',
+      title: 'Playground',
+      name: 'playground',
+    },
+    {
+      id: 11,
+      image: '/images/add-amenities/boundaryWall.svg',
+      title: 'Complete Boundary Wall',
+      name: 'complete_boundary_wall',
+    },
+    {
+      id: 12,
+      image: '/images/add-amenities/basketballCourts.svg',
+      title: 'Basketball courts',
+      name: 'basketball_courts',
+    },
+    {
+      id: 13,
+      image: '/images/add-amenities/servantArea.svg',
+      title: 'Servant Area',
+      name: 'servant_area',
+    },
+    {
+      id: 15,
+      image: '/images/add-amenities/hugePark.svg',
+      title: 'Huge Park',
+      name: 'huge_park',
+    },
+    {
+      id: 16,
+      image: '/images/add-amenities/utilityStore.svg',
+      title: 'Utility Store',
+      name: 'utility_store',
+    },
+    {
+      id: 17,
+      image: '/images/add-amenities/walkingTrails.svg',
+      title: 'Walking trails',
+      name: 'walking_trails',
+    },
+    {
+      id: 18,
+      image: '/images/add-amenities/services.svg',
+      title: 'Concierge services',
+      name: 'concierge_services',
+    },
+    {
+      id: 19,
+      image: '/images/add-amenities/rooftopTerrace.svg',
+      title: 'Rooftop terrace',
+      name: 'rooftop_terrace',
+    },
+    {
+      id: 20,
+      image: '/images/add-amenities/petfriendlyFacilities.svg',
+      title: 'Pet-friendly facilities',
+      name: 'pet_friendly_facilities',
+    },
+    {
+      id: 21,
+      image: '/images/add-amenities/businessCenter.svg',
+      title: 'Business centre',
+      name: 'business_centre',
+    },
+    {
+      id: 22,
+      image: '/images/add-amenities/maintenance.svg',
+      title: 'On-site maintenance',
+      name: 'on_site_maintenance',
+    },
+    {
+      id: 23,
+      image: '/images/add-amenities/securityCamera.svg',
+      title: '24/7 security',
+      name: 'security',
+    },
+  ],
 };
 export const POST_LISTING = {
   form: 'buyingSellingForm',
@@ -820,143 +814,137 @@ export const POST_LISTING = {
   addAmenities: [
     {
       id: 1,
-      image: "/images/add-amenities/swimmingPool.svg",
-      title: "Swimming pool",
-      name: "swimming_pool"
+      image: '/images/add-amenities/swimmingPool.svg',
+      title: 'Swimming pool',
+      name: 'swimming_pool',
     },
     {
       id: 2,
-      image: "/images/add-amenities/washingArea.svg",
-      title: "Washing area",
-      name: "washing_area"
+      image: '/images/add-amenities/washingArea.svg',
+      title: 'Washing area',
+      name: 'washing_area',
     },
     {
       id: 3,
-      image: "/images/add-amenities/mosque.svg",
-      title: "Masjid",
-      name: "masjid"
+      image: '/images/add-amenities/mosque.svg',
+      title: 'Masjid',
+      name: 'masjid',
     },
     {
       id: 4,
-      image: "/images/add-amenities/fitnessCenter.svg",
-      title: "Fitness center",
-      name: "fitness_center"
+      image: '/images/add-amenities/fitnessCenter.svg',
+      title: 'Fitness center',
+      name: 'fitness_center',
     },
     {
       id: 5,
-      image: "/images/add-amenities/electricity.svg",
-      title: "Hour Electricity",
-      name: "hour_electricity"
+      image: '/images/add-amenities/electricity.svg',
+      title: 'Hour Electricity',
+      name: 'hour_electricity',
     },
     {
       id: 6,
-      image: "/images/add-amenities/corridor.svg",
-      title: "Corridor",
-      name: "corridor"
+      image: '/images/add-amenities/corridor.svg',
+      title: 'Corridor',
+      name: 'corridor',
     },
     {
       id: 7,
-      image: "/images/add-amenities/clubHouse.svg",
-      title: "Clubhouse",
-      name: "clubhouse"
+      image: '/images/add-amenities/clubHouse.svg',
+      title: 'Clubhouse',
+      name: 'clubhouse',
     },
     {
       id: 8,
-      image: "/images/add-amenities/autoGenerator.svg",
-      title: "Auto Generator",
-      name: "auto_generator"
+      image: '/images/add-amenities/autoGenerator.svg',
+      title: 'Auto Generator',
+      name: 'auto_generator',
     },
     {
       id: 9,
-      image: "/images/add-amenities/roPlant.svg",
-      title: "R.O Plant",
-      name: "r_o_plant"
+      image: '/images/add-amenities/roPlant.svg',
+      title: 'R.O Plant',
+      name: 'r_o_plant',
     },
     {
       id: 10,
-      image: "/images/add-amenities/playground.svg",
-      title: "Playground",
-      name: "playground"
+      image: '/images/add-amenities/playground.svg',
+      title: 'Playground',
+      name: 'playground',
     },
     {
       id: 11,
-      image: "/images/add-amenities/boundaryWall.svg",
-      title: "Complete Boundary Wall",
-      name: "complete_boundary_wall"
+      image: '/images/add-amenities/boundaryWall.svg',
+      title: 'Complete Boundary Wall',
+      name: 'complete_boundary_wall',
     },
     {
       id: 12,
-      image: "/images/add-amenities/basketballCourts.svg",
-      title: "Basketball courts",
-      name: "basketball_courts"
+      image: '/images/add-amenities/basketballCourts.svg',
+      title: 'Basketball courts',
+      name: 'basketball_courts',
     },
     {
       id: 13,
-      image: "/images/add-amenities/servantArea.svg",
-      title: "Servant Area",
-      name: "servant_area"
-    },
-    {
-      id: 14,
-      image: "/images/add-amenities/basketballCourts.svg",
-      title: "Basketball courts",
-      name: "basketball_ourts"
+      image: '/images/add-amenities/servantArea.svg',
+      title: 'Servant Area',
+      name: 'servant_area',
     },
     {
       id: 15,
-      image: "/images/add-amenities/hugePark.svg",
-      title: "Huge Park",
-      name: "huge_park"
+      image: '/images/add-amenities/hugePark.svg',
+      title: 'Huge Park',
+      name: 'huge_park',
     },
     {
       id: 16,
-      image: "/images/add-amenities/utilityStore.svg",
-      title: "Utility Store",
-      name: "utility_store"
+      image: '/images/add-amenities/utilityStore.svg',
+      title: 'Utility Store',
+      name: 'utility_store',
     },
     {
       id: 17,
-      image: "/images/add-amenities/walkingTrails.svg",
-      title: "Walking trails",
-      name: "walking_trails"
+      image: '/images/add-amenities/walkingTrails.svg',
+      title: 'Walking trails',
+      name: 'walking_trails',
     },
     {
       id: 18,
-      image: "/images/add-amenities/services.svg",
-      title: "Concierge services",
-      name: "concierge_services"
+      image: '/images/add-amenities/services.svg',
+      title: 'Concierge services',
+      name: 'concierge_services',
     },
     {
       id: 19,
-      image: "/images/add-amenities/rooftopTerrace.svg",
-      title: "Rooftop terrace",
-      name: "rooftop_terrace"
+      image: '/images/add-amenities/rooftopTerrace.svg',
+      title: 'Rooftop terrace',
+      name: 'rooftop_terrace',
     },
     {
       id: 20,
-      image: "/images/add-amenities/petfriendlyFacilities.svg",
-      title: "Pet-friendly facilities",
-      name: "pet_friendly_facilities"
+      image: '/images/add-amenities/petfriendlyFacilities.svg',
+      title: 'Pet-friendly facilities',
+      name: 'pet_friendly_facilities',
     },
     {
       id: 21,
-      image: "/images/add-amenities/businessCenter.svg",
-      title: "Business centre",
-      name: "business_centre"
+      image: '/images/add-amenities/businessCenter.svg',
+      title: 'Business centre',
+      name: 'business_centre',
     },
     {
       id: 22,
-      image: "/images/add-amenities/maintenance.svg",
-      title: "On-site maintenance",
-      name: "on_site_maintenance"
+      image: '/images/add-amenities/maintenance.svg',
+      title: 'On-site maintenance',
+      name: 'on_site_maintenance',
     },
     {
       id: 23,
-      image: "/images/add-amenities/securityCamera.svg",
-      title: "24/7 security",
-      name: "security"
-    }
-  ]
+      image: '/images/add-amenities/securityCamera.svg',
+      title: '24/7 security',
+      name: 'security',
+    },
+  ],
 };
 
 export const PROPERTY_BUYING_NEW = [

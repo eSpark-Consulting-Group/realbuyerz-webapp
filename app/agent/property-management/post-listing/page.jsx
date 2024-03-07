@@ -26,6 +26,7 @@ import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import {
   handlePostlistingAd,
   handleSubmitDraft,
+  toggleCheckAmenityClear,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
@@ -44,6 +45,7 @@ const Page = () => {
       dispatch(handlePostlistingAd(values));
       handleOpenSuccessModal();
     }
+    dispatch(toggleCheckAmenityClear());
   };
 
   const handleClickOpen = () => {

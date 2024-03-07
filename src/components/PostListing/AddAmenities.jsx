@@ -50,6 +50,7 @@ const AddAmenities = ({ onSelected, formik }) => {
       </Button>
       <AmenitiesModal
         open={open}
+        setOpen={setOpen}
         formik={formik}
         onClose={() => handleClose()}
         data={PROPERTY_INFORMATION?.addAmenities}
