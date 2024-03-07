@@ -9,36 +9,51 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
 import { PROJECTS_DATA } from '@/src/constants/projects';
 
+// Other imports...
+
 const TypeAgentPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
-  const agentid = segments[segments.length - 3];
+  const agentId = segments[segments.length - 3];
   const adsType = segments[segments.length - 1];
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const agents = useSelector((state) => state.loginAgents);
-  const currentAgent = agents?.filter(({ id }) => `${id}` === agentid)[0] || {};
+  const agents = useSelector((state) => state.agents);
+  const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
   const filterData = projects?.filter(
-    (item) => item?.agentid === agentid && item?.adsType === adsType
+    (item) => item?.agentid === agentId && item?.adsType === adsType
   );
   const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
-  // Validate id
-  if (!agentid) {
+
+  // Validate agentId
+  if (!agentId || !currentAgent) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'Proposal category invalid, Please add correct id.'}
+        message={'Invalid agent ID. Please provide a valid ID.'}
       />
     );
   }
+
   // Check if filterData is empty
   if (!filteredData || filteredData.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'Proposal category invalid, Please add correct id.'}
+        message={'No projects found for this agent and type.'}
       />
     );
   }
+
+  const renderProjects = (category) => (
+    <>
+      <CategoryLink
+        category={category}
+        link={`/profile/${currentAgent?.id}/projects/${adsType}/${category.toLowerCase()}`}
+        linkText={'See All'}
+      />
+      <ProjectsSlider data={filteredData} category={category.toLowerCase()} />
+    </>
+  );
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
@@ -48,24 +63,9 @@ const TypeAgentPage = () => {
         chipperText={`${currentAgent?.firstName} ${currentAgent?.lastName}'s Properties for ${adsType}`}
         chipperLink={`/projects`}
       />
-      <CategoryLink
-        category={`Houses`}
-        link={`/profile/${currentAgent?.id}/projects/${adsType}/houses`}
-        linkText={'See All'}
-      />
-      <ProjectsSlider data={projects} category={'houses'} />
-      <CategoryLink
-        category={`Plots`}
-        link={`/profile/${currentAgent?.id}/projects/${adsType}/plots`}
-        linkText={'See All'}
-      />
-      <ProjectsSlider data={projects} category={'plots'} />
-      <CategoryLink
-        category={`Commercials`}
-        link={`/profile/${currentAgent?.id}/projects/${adsType}/commercials`}
-        linkText={'See All'}
-      />
-      <ProjectsSlider data={projects} category={'commercials'} />
+      {renderProjects('Houses')}
+      {renderProjects('Plots')}
+      {renderProjects('Commercials')}
     </Box>
   );
 };
