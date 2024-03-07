@@ -7,20 +7,25 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import { PROJECTS_DATA } from '@/src/constants/projects';
 
 const TypeAgentPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
   const agentId = segments[segments.length - 3];
   const adsType = segments[segments.length - 1];
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const capAdsType = adsType.charAt(0).toUpperCase() + adsType.slice(1);
   const agents = useSelector((state) => state.agents);
-  const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
-  const filterData = projects?.filter(
-    (item) => item?.agentid === agentId && item?.adsType === adsType
+  const currentAgent = agents?.filter(item => item?.id === parseInt(agentId))[0];
+  
+  const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const filterData = projects?.filter(item =>
+  item?.agent_id == agentId &&
+  item?.purpose === capAdsType
   );
-  const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
+  
+   function capitalizeFirstLetter(text) {
+    return text.replace(/\b\w/g, (match) => match.toUpperCase());
+  }
 
   // Validate agentId
   if (!agentId || !currentAgent) {
@@ -33,7 +38,7 @@ const TypeAgentPage = () => {
   }
 
   // Check if filterData is empty
-  if (!filteredData || filteredData.length === 0) {
+  if (!filterData || filterData.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
@@ -49,7 +54,7 @@ const TypeAgentPage = () => {
         link={`/profile/${currentAgent?.id}/projects/${adsType}/${category.toLowerCase()}`}
         linkText={'See All'}
       />
-      <ProjectsSlider data={filteredData} category={category.toLowerCase()} />
+      <ProjectsSlider data={filterData} category={category.toLowerCase()} />
     </>
   );
 
@@ -58,7 +63,7 @@ const TypeAgentPage = () => {
       <ChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}/projects`}
-        chipperText={`${currentAgent?.firstName} ${currentAgent?.lastName}'s Properties for ${adsType}`}
+        chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s Properties for ${capitalizeFirstLetter(adsType)}`}
         chipperLink={`/projects`}
       />
       {renderProjects('Houses')}

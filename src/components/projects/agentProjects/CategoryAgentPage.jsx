@@ -12,24 +12,32 @@ import { PROJECTS_DATA } from '@/src/constants/projects';
 const CategoryAgentPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
-  const id = segments[segments.length - 1];
-  const agentid = segments[segments.length - 4];
+  const agentId = segments[segments.length - 4];
+  const id = agentId;
   const category = segments[segments.length - 1];
+  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
   const adsType = segments[segments.length - 2];
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const capAdsType = adsType.charAt(0).toUpperCase() + adsType.slice(1);
   const agents = useSelector((state) => state.agents);
-  const currentAgent = agents?.filter(({ id }) => `${id}` === agentid)[0] || {};
-  const filterData = projects?.filter(
-    (item) => item?.propertyCategory === id && item?.agentid === agentid
-  );
-  const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
+  const currentAgent = agents?.filter(item => item?.id === parseInt(agentId))[0];
+  const projects = useSelector((state) => state.postListingAds.agentPostings);
+  
+  const filterData = projects?.filter(item =>
+  item?.agent_id == agentId &&
+  item?.propertyCategory === capCategory && 
+  item?.purpose === capAdsType
+);
+ 
 
   function capitalizeFirstLetter(text) {
     return text.replace(/\b\w/g, (match) => match.toUpperCase());
   }
 
+  // const filterData = projects?.filter((item) => item?.agent_id === parseInt(agentId));
+
+
   // Validate id
-  if (!id) {
+  if (!agentId) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
@@ -38,11 +46,11 @@ const CategoryAgentPage = () => {
     );
   }
   // Check if filterData is empty
-  if (!filteredData || filteredData.length === 0) {
+  if (!filterData || filterData.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'Proposal category invalid, Please add correct id.'}
+        message={'No projects found for this category and agent.'}
       />
     );
   }
@@ -52,11 +60,11 @@ const CategoryAgentPage = () => {
       <ChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}/projects/${adsType}`}
-        chipperText={`${currentAgent?.firstName} ${currentAgent?.lastName}'s ${capitalizeFirstLetter(category)} for ${capitalizeFirstLetter(adsType)}`}
+        chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s ${capitalizeFirstLetter(category)} for ${capitalizeFirstLetter(adsType)}`}
         chipperLink={`/projects`}
       />
-      <CategoryLink category={id} />
-      <ProjectsCard data={filteredData} />
+      <CategoryLink category={category} />
+      <ProjectsCard data={filterData} />
     </Box>
   );
 };

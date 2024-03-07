@@ -6,7 +6,7 @@ import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
 
-const AgentProfiles = ({ data, spacificData,
+const AgentProfiles = ({ data, spacificData, 
             forRentCount,
             forSellCount }) => {
   return (
