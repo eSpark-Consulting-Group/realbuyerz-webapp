@@ -104,7 +104,7 @@ const Page = () => {
           <AgentProperties
             data={user}
             allLink={`/profile/${id}/projects`}
-            sellLink={`/profile/${id}/projects/sale`}
+            sellLink={`/profile/${id}/projects/sell`}
             rentLink={`/profile/${id}/projects/rent`}
             allProperties={allProperties}
             forRentCount={forRentCount}

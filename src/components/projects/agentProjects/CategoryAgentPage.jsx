@@ -13,7 +13,6 @@ const CategoryAgentPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
   const agentId = segments[segments.length - 4];
-  const id = agentId;
   const category = segments[segments.length - 1];
   const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
   const adsType = segments[segments.length - 2];
@@ -23,7 +22,6 @@ const CategoryAgentPage = () => {
     (item) => item?.id === parseInt(agentId)
   )[0];
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-
   const filterData = projects?.filter(
     (item) =>
       item?.agent_id == agentId &&
