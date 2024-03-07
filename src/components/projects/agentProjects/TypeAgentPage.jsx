@@ -9,8 +9,6 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
 import { PROJECTS_DATA } from '@/src/constants/projects';
 
-// Other imports...
-
 const TypeAgentPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);

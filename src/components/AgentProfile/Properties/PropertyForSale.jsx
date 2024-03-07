@@ -10,7 +10,7 @@ import {
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForSale = ({ sellCount, link }) => {
+const PropertyForSale = ({ link, data }) => {
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -42,7 +42,7 @@ const PropertyForSale = ({ sellCount, link }) => {
                 ml: 1,
               }}
             >
-              {`${sellCount?.total} ${PROPERTIES_FOR_SALE}`}
+              {`${data} ${PROPERTIES_FOR_SALE}`}
             </Typography>
           </Box>
         </Grid>

@@ -8,7 +8,6 @@ import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
 import { Typography } from '@mui/material';
-// Other imports...
 
 const ProjectAgentPage = () => {
   const pathname = usePathname();
