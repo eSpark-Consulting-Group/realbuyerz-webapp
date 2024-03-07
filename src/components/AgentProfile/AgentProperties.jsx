@@ -11,51 +11,55 @@ import { useSelector } from 'react-redux';
 const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
   const theme = useTheme();
   const projects = useSelector((state) => state.postListingAds.agentPostings);
+
+  function filterProjects(projects, agentId, purpose, propertyCategory) {
+    return projects.filter(
+      (item) =>
+        item.agent_id === agentId &&
+        item.purpose === purpose &&
+        item.status === 'submited'
+    ).length;
+  }
+  function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
+    return projects.filter(
+      (item) =>
+        item.agent_id === agentId &&
+        item.purpose === purpose &&
+        item.propertyCategory === propertyCategory &&
+        item.status === 'submited'
+    ).length;
+  }
   const allProperties = projects.filter(
     (item) => item.agent_id === data?.id
   ).length;
-  const forSellCount = projects.filter(
-    (item) => item.agent_id === data?.id && item.purpose === 'Sell'
-  ).length;
-  const forSellHouses = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Sell' &&
-      item.propertyCategory === 'Houses'
-  ).length;
-  const forSellPlots = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Sell' &&
-      item.propertyCategory === 'Plots'
-  ).length;
-  const forSellCommercials = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Sell' &&
-      item.propertyCategory === 'Commercials'
-  ).length;
-  const forRentCount = projects.filter(
-    (item) => item.agent_id === data?.id && item.purpose === 'Rent'
-  ).length;
-  const forRentHouses = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Rent' &&
-      item.propertyCategory === 'Houses'
-  ).length;
-  const forRentPlots = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Rent' &&
-      item.propertyCategory === 'Plots'
-  ).length;
-  const forRentCommercials = projects.filter(
-    (item) =>
-      item.agent_id === data?.id &&
-      item.purpose === 'Rent' &&
-      item.propertyCategory === 'Commercials'
-  ).length;
+  const forSellCount = filterProjects(projects, data?.id, 'Sell');
+  const forSellHouses = filterProjectsWith(
+    projects,
+    data?.id,
+    'Sell',
+    'Houses'
+  );
+  const forSellPlots = filterProjectsWith(projects, data?.id, 'Sell', 'Plots');
+  const forSellCommercials = filterProjectsWith(
+    projects,
+    data?.id,
+    'Sell',
+    'Commercials'
+  );
+  const forRentCount = filterProjects(projects, data?.id, 'Rent');
+  const forRentHouses = filterProjectsWith(
+    projects,
+    data?.id,
+    'Rent',
+    'Houses'
+  );
+  const forRentPlots = filterProjectsWith(projects, data?.id, 'Rent', 'Plots');
+  const forRentCommercials = filterProjectsWith(
+    projects,
+    data?.id,
+    'Rent',
+    'Commercials'
+  );
 
   const sellData = [forSellHouses, forSellPlots, forSellCommercials];
   const rentData = [forRentHouses, forRentPlots, forRentCommercials];
@@ -70,13 +74,13 @@ const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
     >
       <Box sx={{ pt: 8 }}>
         <AgentTitle
-          count={allProperties}
+          count={allProperties || ''}
           title={`${data?.first_name} ${data?.last_name}`}
           link={allLink}
         />
         <Box sx={{ pt: 2 }}>
           <PropertyForSale
-            data={forSellCount}
+            data={forSellCount || 'No'}
             sellCount={data?.counts?.sellCount}
             link={sellLink}
           />
@@ -84,7 +88,7 @@ const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
         </Box>
         <Box sx={{ pt: 2 }}>
           <PropertyForRent
-            data={forRentCount}
+            data={forRentCount || 'No'}
             rentCount={data?.counts?.rentCount}
             link={rentLink}
           />
