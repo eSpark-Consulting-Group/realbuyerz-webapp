@@ -33,7 +33,7 @@ const PropertyCardRentBody = ({ rentData, link }) => {
                     textAlign: 'center',
                   }}
                 >
-                  {rentData[propertyType]}
+                  {rentData[index]}
                 </Typography>
               </Link>
               <Link href={`${link}/${propertyType.toLowerCase()}`}>

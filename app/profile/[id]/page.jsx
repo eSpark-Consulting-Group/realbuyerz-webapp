@@ -13,13 +13,25 @@ import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
-const AgentProfile = () => {
+const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const users = useSelector((state) => state?.agents);
-  const user = users[id - 1];
-  console.log(users);
+  const user = users.find((item) => parseInt(item.id) === parseInt(id)) || {};
+
+  // Validate user
+  if (!user || Object.keys(user).length === 0) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={
+          'No agent found. Please make sure to provide a valid agent ID.'
+        }
+      />
+    );
+  }
+
   return (
     <>
       <Box
@@ -30,30 +42,21 @@ const AgentProfile = () => {
           width: '70vw',
         }}
       >
-        {user ? (
-          <>
-            <AgentProfiles data={user} />
-            <AgentProperties
-              data={user}
-              allLink={`/profile/${id}/projects`}
-              sellLink={`/profile/${id}/projects/sale`}
-              rentLink={`/profile/${id}/projects/rent`}
-            />
-            <AgentAbout data={user} />
-            <RecentPropertyTitle data={user} />
-            <AgentSlider data={AGENT_PROFILE_DATA} />
-          </>
-        ) : (
-          <NotFoundSection
-            heading={'Sorry!'}
-            message={
-              'No Agent found, Please make sure to add a valid agent ID.'
-            }
+        <>
+          <AgentProfiles data={user} />
+          <AgentProperties
+            data={user}
+            allLink={`/profile/${id}/projects`}
+            sellLink={`/profile/${id}/projects/sale`}
+            rentLink={`/profile/${id}/projects/rent`}
           />
-        )}
+          <AgentAbout data={user} />
+          <RecentPropertyTitle data={user} />
+          <AgentSlider data={AGENT_PROFILE_DATA} />
+        </>
       </Box>
     </>
   );
 };
 
-export default AgentProfile;
+export default Page;
