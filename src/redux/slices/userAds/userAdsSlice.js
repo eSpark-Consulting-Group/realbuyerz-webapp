@@ -6,7 +6,7 @@ const userAdsSlice = createSlice({
     userPostings: [
       {
         property_id: 650,
-        user_id: 301,
+        user_id: 21,
         status: 'submited',
         created_at: new Date(),
         other_features: [],
@@ -31,7 +31,7 @@ const userAdsSlice = createSlice({
       },
       {
         property_id: 670,
-        user_id: 301,
+        user_id: 21,
         status: 'submited',
         created_at: new Date(),
         other_features: [],
@@ -260,7 +260,6 @@ const userAdsSlice = createSlice({
 
 export const {
   handleSumitUserAds,
-  handleSendProposals,
   handleRejectProposal,
   handleConnectProposal,
   handleSubmitDraft,

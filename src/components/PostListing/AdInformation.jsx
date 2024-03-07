@@ -36,7 +36,7 @@ const AdInformation = ({ propertyData, formik }) => {
             width: '100%',
           }}
         >
-          <PostTitle text={propertyData.postTitles.adInfo} />
+          <PostTitle text={propertyData?.postTitles?.adInfo} />
           <Box
             sx={{
               width: '100%',

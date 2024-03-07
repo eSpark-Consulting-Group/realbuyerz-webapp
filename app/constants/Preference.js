@@ -5,6 +5,7 @@ export const AGENT_PREFERENCES = {
   updates: [
     {
       title: 'Email Notification',
+      lable: 'emailNotification',
       description: 'Allow to receive email notification',
       value: false,
     },
