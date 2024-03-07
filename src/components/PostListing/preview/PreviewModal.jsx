@@ -92,7 +92,7 @@ const PreviewModal = (props) => {
               locationKeys={location}
               purpose={ads?.purpose}
               propertyType={ads?.propertyType}
-              proportyCategory={ads?.proportyCategory}
+              propertyCategory={ads?.propertyCategory}
               location={ads?.location}
               fontSize={'18px'}
               fontStyle={'12px'}
