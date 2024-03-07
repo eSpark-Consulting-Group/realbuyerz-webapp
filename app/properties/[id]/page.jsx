@@ -58,7 +58,15 @@ function SingleProperty() {
         <Grid item xs={12} md={4}>
           <ProfileAgent data={property} />
         </Grid>
-        <Grid item xs={12} sx={{ pb: '30px' }}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            pt: { xs: '50px', md: '67px' },
+            pb: { xs: '45px', md: '30px' },
+            px: { xs: '15%', md: '0px' },
+          }}
+        >
           <PropertySlider propertyData={property} />
         </Grid>
       </Grid>
