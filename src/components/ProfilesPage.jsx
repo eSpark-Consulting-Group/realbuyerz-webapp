@@ -102,13 +102,7 @@ const ProfilesPage = ({ agents }) => {
                   <Box display={'flex'} justifyContent={'space-between'}>
                     <Link href={`/profile/${agent?.id}/projects`}>
                       <Typography variant="h6" color="text.secondary">
-                        Properties Details:
-                      </Typography>
-                    </Link>
-
-                    <Link href={`/profile/${agent?.id}/projects`}>
-                      <Typography variant="h6" color="text.secondary">
-                        {agent?.counts.totalCount}
+                        {`Properties Details: ${agent?.counts?.totalCount || 0}`}
                       </Typography>
                     </Link>
                     <IconButton aria-label="add to favorites">
@@ -120,24 +114,24 @@ const ProfilesPage = ({ agents }) => {
                     <Grid item xs={6}>
                       <Link href={`/profile/${agent?.id}/projects/rent`}>
                         <Typography variant="h6" color="text.secondary">
-                          For Rent: {agent?.counts.rentCount.total}
+                          For Rent: {agent?.counts?.rentCount.total || 0}
                         </Typography>
                       </Link>
                       <Link href={`/profile/${agent?.id}/projects/rent/houses`}>
                         <Typography variant="body2" color="text.secondary">
-                          Houses: {agent?.counts.rentCount.Houses}
+                          Houses: {agent?.counts?.rentCount.Houses || 0}
                         </Typography>
                       </Link>
                       <Link href={`/profile/${agent?.id}/projects/rent/plots`}>
                         <Typography variant="body2" color="text.secondary">
-                          Plots: {agent?.counts.rentCount.Plots}
+                          Plots: {agent?.counts?.rentCount.Plots || 0}
                         </Typography>
                       </Link>
                       <Link
                         href={`/profile/${agent?.id}/projects/rent/commercials`}
                       >
                         <Typography variant="body2" color="text.secondary">
-                          Commercials: {agent?.counts.rentCount.Commercials}
+                          Commercials: {agent?.counts?.rentCount.Commercials || 0}
                         </Typography>
                       </Link>
                     </Grid>
@@ -145,24 +139,24 @@ const ProfilesPage = ({ agents }) => {
                     <Grid item xs={6}>
                       <Link href={`/profile/${agent?.id}/projects/sell`}>
                         <Typography variant="h6" color="text.secondary">
-                          For Sell: {agent?.counts.sellCount.total}
+                          For Sell: {agent?.counts?.sellCount.total || 0}
                         </Typography>
                       </Link>
                       <Link href={`/profile/${agent?.id}/projects/sell/houses`}>
                         <Typography variant="body2" color="text.secondary">
-                          Houses: {agent?.counts.sellCount.Houses}
+                          Houses: {agent?.counts?.sellCount.Houses || 0}
                         </Typography>
                       </Link>
                       <Link href={`/profile/${agent?.id}/projects/sell/plots`}>
                         <Typography variant="body2" color="text.secondary">
-                          Plots: {agent?.counts.sellCount.Plots}
+                          Plots: {agent?.counts?.sellCount.Plots || 0}
                         </Typography>
                       </Link>
                       <Link
                         href={`/profile/${agent?.id}/projects/sell/commercials`}
                       >
                         <Typography variant="body2" color="text.secondary">
-                          Commercials: {agent?.counts.sellCount.Commercials}
+                          Commercials: {agent?.counts?.sellCount.Commercials || 0}
                         </Typography>
                       </Link>
                     </Grid>

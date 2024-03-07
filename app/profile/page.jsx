@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Page = () => {
   const agents = useSelector((state) => state?.agents);
+  
   console.log(agents);
   return <ProfilesPage agents={agents} />;
 };
