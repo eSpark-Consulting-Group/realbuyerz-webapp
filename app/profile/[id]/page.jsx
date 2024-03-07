@@ -96,9 +96,11 @@ const Page = () => {
         }}
       >
         <>
-          <AgentProfiles data={user} 
+          <AgentProfiles
+            data={user}
             forRentCount={forRentCount}
-            forSellCount={forSellCount} />
+            forSellCount={forSellCount}
+          />
           <AgentProperties
             data={user}
             allLink={`/profile/${id}/projects`}

@@ -15,15 +15,16 @@ const TypeAgentPage = () => {
   const adsType = segments[segments.length - 1];
   const capAdsType = adsType.charAt(0).toUpperCase() + adsType.slice(1);
   const agents = useSelector((state) => state.agents);
-  const currentAgent = agents?.filter(item => item?.id === parseInt(agentId))[0];
-  
+  const currentAgent = agents?.filter(
+    (item) => item?.id === parseInt(agentId)
+  )[0];
+
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const filterData = projects?.filter(item =>
-  item?.agent_id == agentId &&
-  item?.purpose === capAdsType
+  const filterData = projects?.filter(
+    (item) => item?.agent_id == agentId && item?.purpose === capAdsType
   );
-  
-   function capitalizeFirstLetter(text) {
+
+  function capitalizeFirstLetter(text) {
     return text.replace(/\b\w/g, (match) => match.toUpperCase());
   }
 

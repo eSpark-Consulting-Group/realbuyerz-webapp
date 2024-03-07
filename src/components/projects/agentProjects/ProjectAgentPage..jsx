@@ -16,7 +16,7 @@ const ProjectAgentPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
-  
+
   if (!agentId || !currentAgent || !Array.isArray(projects)) {
     return (
       <NotFoundSection
@@ -26,7 +26,9 @@ const ProjectAgentPage = () => {
     );
   }
 
-  const filterData = projects.filter((item) => item.agent_id === parseInt(agentId));
+  const filterData = projects.filter(
+    (item) => item.agent_id === parseInt(agentId)
+  );
 
   if (filterData.length === 0) {
     return (
