@@ -170,7 +170,7 @@ const postlistingAdSlice = createSlice({
     handleAdaminities: (state, action) => {
       state.addAmenities = action.payload;
     },
-    toggleCheckAmenityClear: (state, action) => {
+    toggleCheckAmenityClear: (state) => {
       state.addAmenities = [];
     },
     handlePostlistingAd: (state, action) => {
