@@ -13,7 +13,9 @@ import {
   LOCATION_ICON,
 } from '@/app/constants/AgentProfile';
 
-const AgentProfileDetail = ({ description, spacificData }) => {
+const AgentProfileDetail = ({ description, spacificData,
+            forRentCount,
+            forSellCount  }) => {
   return (
     <Grid
       item
@@ -54,12 +56,12 @@ const AgentProfileDetail = ({ description, spacificData }) => {
               alt={ALT}
             />
             <ProfileInfo
-              title={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
+              title={`${forSellCount} ${FOR_SALE}`}
               icon={FOR_SALE_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
+              title={`${forRentCount} ${FOR_RENT}`}
               icon={FOR_RENT_ICON}
               alt={ALT}
             />

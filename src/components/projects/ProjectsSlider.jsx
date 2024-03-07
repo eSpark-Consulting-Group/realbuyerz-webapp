@@ -18,10 +18,11 @@ const ProjectsSlider = ({ data, category }) => {
     setCurrentPage(newPage);
   };
   const filterData = data?.filter(
-    (item) => item?.proportyCategory === capCategory
+    (item) => item?.propertyCategory === capCategory
   );
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;
+  console.log(filteredData);
   const sliderSettings = {
     slidesPerView: 3,
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
@@ -51,9 +52,9 @@ const ProjectsSlider = ({ data, category }) => {
   };
 
   return (
-    <Swiper {...sliderSettings} className="test-slider">
+    <Swiper {...sliderSettings}>
       {filteredData?.slice(0, totalItems).map((project) => (
-        <SwiperSlide key={project?.id} className="test-slider">
+        <SwiperSlide key={project?.property_id}>
           <Grid
             container
             sx={{
@@ -63,7 +64,7 @@ const ProjectsSlider = ({ data, category }) => {
             }}
           >
             <Grid
-              key={project?.id}
+              key={project?.property_id}
               item
               xs={11}
               my={'20px'}
@@ -72,7 +73,7 @@ const ProjectsSlider = ({ data, category }) => {
                 border: '1px solid #E4E4E4',
               }}
             >
-              <Link href={`/projects/${project.id}`}>
+              <Link href={`/projects/${project.property_id}`}>
                 {!project?.images?.length == 0 ? (
                   <img
                     src={
@@ -81,7 +82,7 @@ const ProjectsSlider = ({ data, category }) => {
                     }
                     height={'auto'}
                     width={'100%'}
-                    alt={`Project ${project?.id}`}
+                    alt={`Project ${project?.property_id}`}
                   />
                 ) : (
                   <Skeleton variant="rectangular" width={`100%`} height={300} />

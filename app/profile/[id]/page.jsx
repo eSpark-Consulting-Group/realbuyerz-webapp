@@ -19,6 +19,59 @@ const Page = () => {
   const id = segments[segments.length - 1];
   const users = useSelector((state) => state?.agents);
   const user = users.find((item) => parseInt(item.id) === parseInt(id)) || {};
+  const projects = useSelector((state) => state.postListingAds.agentPostings);
+
+  function filterProjects(projects, agentId, purpose) {
+    return projects.filter(
+      (item) =>
+        item.agent_id === agentId &&
+        item.purpose === purpose &&
+        item.status === 'submited'
+    ).length;
+  }
+  function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
+    return projects.filter(
+      (item) =>
+        item.agent_id === agentId &&
+        item.purpose === purpose &&
+        item.propertyCategory === propertyCategory &&
+        item.status === 'submited'
+    ).length;
+  }
+  const allProperties = projects.filter(
+    (item) => item.agent_id === user?.id
+  ).length;
+  const forSellCount = filterProjects(projects, user?.id, 'Sell');
+  const forSellHouses = filterProjectsWith(
+    projects,
+    user?.id,
+    'Sell',
+    'Houses'
+  );
+  const forSellPlots = filterProjectsWith(projects, user?.id, 'Sell', 'Plots');
+  const forSellCommercials = filterProjectsWith(
+    projects,
+    user?.id,
+    'Sell',
+    'Commercials'
+  );
+  const forRentCount = filterProjects(projects, user?.id, 'Rent');
+  const forRentHouses = filterProjectsWith(
+    projects,
+    user?.id,
+    'Rent',
+    'Houses'
+  );
+  const forRentPlots = filterProjectsWith(projects, user?.id, 'Rent', 'Plots');
+  const forRentCommercials = filterProjectsWith(
+    projects,
+    user?.id,
+    'Rent',
+    'Commercials'
+  );
+
+  const sellData = [forSellHouses, forSellPlots, forSellCommercials];
+  const rentData = [forRentHouses, forRentPlots, forRentCommercials];
 
   // Validate user
   if (!user || Object.keys(user).length === 0) {
@@ -43,12 +96,19 @@ const Page = () => {
         }}
       >
         <>
-          <AgentProfiles data={user} />
+          <AgentProfiles data={user} 
+            forRentCount={forRentCount}
+            forSellCount={forSellCount} />
           <AgentProperties
             data={user}
             allLink={`/profile/${id}/projects`}
             sellLink={`/profile/${id}/projects/sale`}
             rentLink={`/profile/${id}/projects/rent`}
+            allProperties={allProperties}
+            forRentCount={forRentCount}
+            forSellCount={forSellCount}
+            sellData={sellData}
+            rentData={rentData}
           />
           <AgentAbout data={user} />
           <RecentPropertyTitle data={user} />

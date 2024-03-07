@@ -20,7 +20,7 @@ const CategoryAgentPage = () => {
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.filter(({ id }) => `${id}` === agentid)[0] || {};
   const filterData = projects?.filter(
-    (item) => item?.proportyCategory === id && item?.agentid === agentid
+    (item) => item?.propertyCategory === id && item?.agentid === agentid
   );
   const filteredData = filterData?.length ? filterData : PROJECTS_DATA;
 

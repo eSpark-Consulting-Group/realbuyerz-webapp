@@ -19,7 +19,7 @@ const CategoryPage = () => {
   console.log(projects, 'projects');
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const filterData = projects?.filter(
-    (item) => item?.proportyCategory === capID
+    (item) => item?.propertyCategory === capID
   );
   console.log(capID, 'id');
   console.log(filterData, 'filterData');

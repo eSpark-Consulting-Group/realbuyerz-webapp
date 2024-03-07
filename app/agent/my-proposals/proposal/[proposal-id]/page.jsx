@@ -274,7 +274,7 @@ const Page = () => {
                       locationKeys={location}
                       purpose={find_ad?.purpose}
                       propertyType={find_ad?.propertyType}
-                      proportyCategory={find_ad?.proportyCategory}
+                      propertyCategory={find_ad?.propertyCategory}
                       location={find_ad?.location}
                       width={'70%'}
                     />
@@ -316,7 +316,7 @@ const Page = () => {
                   locationKeys={location}
                   purpose={find_proposal?.purpose}
                   propertyType={find_proposal?.propertyType}
-                  proportyCategory={find_proposal?.proportyCategory}
+                  propertyCategory={find_proposal?.propertyCategory}
                   location={find_proposal?.location}
                   width={'70%'}
                 />
