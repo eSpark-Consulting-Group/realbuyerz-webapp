@@ -39,7 +39,7 @@ const PopularLocations = ({ data }) => {
         pt: { xs: '0px', lg: '60px' },
         pb: '30px',
         textAlign: 'center',
-        backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
+        backgroundImage: `url('/images/bgs/popular-location.svg')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -171,7 +171,7 @@ const PopularLocations = ({ data }) => {
               src="/images/bgs/GototheTop.svg"
               width={80}
               height={80}
-              alt={''}
+              alt={'Images'}
             />
           </Button>
         </Box>

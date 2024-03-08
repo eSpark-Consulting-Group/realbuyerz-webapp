@@ -88,6 +88,7 @@ const RightSection = ({
               }
               width={10}
               height={8}
+              alt={save_Button?.title}
             />
             {save_Button?.title}
           </Typography>

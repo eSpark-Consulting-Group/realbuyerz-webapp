@@ -6,7 +6,7 @@ import LoginSignupLayout from '@/src/components/LoginSignup/Login/LoginSignupLay
 const InnerPagesLayout = ({ children }) => {
   return (
     <>
-      <Grid container>
+      <Grid container bgcolor={'#FAFAFA'}>
         <Grid item xs={12} md={1} />
         <Grid
           item

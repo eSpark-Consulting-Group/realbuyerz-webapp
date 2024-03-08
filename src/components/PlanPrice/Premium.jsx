@@ -52,14 +52,14 @@ const Premium = ({ PremiumData }) => {
             src={'/images/plan-price/mobailImage.png'}
             width={1000}
             height={100}
-            alt="image"
+            alt={'image'}
           />
         ) : (
           <Image
             src={'/images/plan-price/Yellow.png'}
             width={1000}
             height={100}
-            alt="image"
+            alt={'image'}
           />
         )}
 

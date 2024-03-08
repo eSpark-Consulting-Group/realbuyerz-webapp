@@ -2,8 +2,9 @@
 import React from 'react';
 import { Typography, Box, TextField } from '@mui/material';
 
-const PropertyInformation = ({ propertyData, formik }) => {
+const PropertyInformation = ({ postData, formik }) => {
   const specialIndex = 1;
+  console.log('test', postData);
 
   return (
     <>
@@ -18,7 +19,7 @@ const PropertyInformation = ({ propertyData, formik }) => {
           gap: { xs: 1, sm: 2 },
         }}
       >
-        {propertyData?.adInfoData?.addInfo.map((item, index) => (
+        {postData?.addInfo.map((item, index) => (
           <Box
             sx={{
               width: '100%',
@@ -46,7 +47,7 @@ const PropertyInformation = ({ propertyData, formik }) => {
                   component={'img'}
                   src={item?.image}
                   sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-                  alt="purpose"
+                  alt={'purpose'}
                 />
                 <Typography
                   sx={{
@@ -97,6 +98,13 @@ const PropertyInformation = ({ propertyData, formik }) => {
                     },
                     '& fieldset': {
                       border: formik.errors[item?.label] && `solid 1px red`,
+                    },
+                  }}
+                  inputProps={{
+                    sx: {
+                      '&::placeholder': {
+                        fontSize: { xs: '15px', md: '18px' },
+                      },
                     },
                   }}
                   name={item?.label}

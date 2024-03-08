@@ -3,7 +3,7 @@
   background: #fff !important;
   width: '100%  ';
   border-left: 10px #1176ad solid;
-  animation: slideInAnimation 0.3s ease-in-out;
+  /* animation: slideInAnimation 0.3s ease-in-out; */
 }
 
 @keyframes slideInAnimation {

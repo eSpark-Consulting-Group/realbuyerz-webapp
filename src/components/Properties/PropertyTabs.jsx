@@ -33,7 +33,10 @@ const CustomTabPanel = ({ data, value, index, propertyType }) => {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography variant="h2" py={2}>
+          <Typography
+            sx={{ fontSize: '20px', fontWeight: 600, px: '70px' }}
+            py={2}
+          >
             {`Location of ${propertyType} For sale in Karachi`}
           </Typography>
           <Grid container spacing={2}>
@@ -98,21 +101,8 @@ const PropertyTabs = ({ data }) => {
       : data.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
-  // const isAgent = 'flase';
-  // const agenttab = value;
   return (
     <>
-      {/* {isAgent == 'true' && (
-        <AgentChip
-          data={filteredProperties}
-          chips={agenttab}
-          label="Agent"
-          variant="outlined"
-          color="primary"
-          sx={{ mb: 2 }}
-        />
-      )} */}
-
       <Box
         sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
       >
@@ -151,6 +141,9 @@ const PropertyTabs = ({ data }) => {
           border: '1px solid #E4E4E4',
           my: '50px',
           padding: '56px 30px',
+          '@media (min-width: 280px) and (max-width: 375px)': {
+            padding: '10px',
+          },
         }}
       >
         <PropertyListingCard propertyData={filteredProperties} />

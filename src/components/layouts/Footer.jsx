@@ -61,7 +61,7 @@ const Footer = ({ data }) => {
         <Grid item xs={12} md={4.5}>
           <Box sx={{ pr: '10.4%' }}>
             <Link href={data?.link}>
-              <Image src={data?.logo} alt="Logo" width={155} height={37} />
+              <Image src={data?.logo} alt={'Logo'} width={155} height={37} />
             </Link>
             <Typography
               sx={{
@@ -153,7 +153,7 @@ const Footer = ({ data }) => {
                   {data?.appDownload?.description}
                 </Typography>
               </Box>
-              <Box container spacing={2} sx={{ pb: '10px' }}>
+              <Box spacing={2} sx={{ pb: '10px' }}>
                 {data?.appDownload?.options?.map((option, index) => (
                   <Grid key={index} item xs={6}>
                     <Box sx={{ pt: '20px' }}>

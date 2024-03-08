@@ -21,7 +21,6 @@ const AgentProfiles = ({ data, setFieldValue }) => {
       }}
     >
       <Box
-        item
         sx={{
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',

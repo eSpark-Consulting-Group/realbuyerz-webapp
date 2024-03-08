@@ -92,7 +92,7 @@ const MainHeader = () => {
               >
                 <Image
                   src="/images/RealBuyersLogo.svg"
-                  alt={''}
+                  alt={'Images'}
                   height={37}
                   width={155}
                 />

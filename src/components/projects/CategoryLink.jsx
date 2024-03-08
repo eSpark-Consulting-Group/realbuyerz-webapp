@@ -1,10 +1,12 @@
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 
 const CategoryLink = ({ category, link, linkText }) => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', py: '15px' }}>
+    <Container
+      sx={{ display: 'flex', justifyContent: 'space-between', py: '15px' }}
+    >
       <Typography
         sx={{
           fontSize: '25px',
@@ -30,7 +32,7 @@ const CategoryLink = ({ category, link, linkText }) => {
           </Typography>
         </Link>
       ) : null}
-    </Box>
+    </Container>
   );
 };
 

@@ -1,6 +1,5 @@
 'use client';
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
-// import { handlePropertiesSubmitTrash } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 import { Box, Button, Divider, IconButton, Typography } from '@mui/material';
 import React, { useState } from 'react';
@@ -43,7 +42,6 @@ const ProposalCard = ({ key, data, currentTab, link }) => {
       );
     }
   };
-
   const handleClickOpen = () => {
     if (currentTab === 'Save Request' || currentTab === 'Trash') {
       return null;

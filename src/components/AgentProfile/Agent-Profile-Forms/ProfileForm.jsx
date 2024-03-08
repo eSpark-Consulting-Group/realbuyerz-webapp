@@ -147,6 +147,7 @@ export default function ProfileForm({ data, formValues }) {
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 1,
+                      fontSize: '18px',
                     }}
                   >
                     {field?.label}
@@ -228,6 +229,7 @@ export default function ProfileForm({ data, formValues }) {
                               md: '160px',
                               lg: '100px',
                             },
+                            fontSize: '15px',
                             height: { xs: '40px', md: '40px', lg: '30px' },
                             borderRadius: '5px',
                             '&:hover': { color: '#fff' },
@@ -315,6 +317,7 @@ export default function ProfileForm({ data, formValues }) {
       <Button
         type="submit"
         sx={{
+          fontSize: '15px',
           ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
           mb: { xs: 3, md: 5 },
           width: { xs: '90%', sm: 'auto', md: '160px' },

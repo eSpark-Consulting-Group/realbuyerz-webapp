@@ -7,7 +7,7 @@ import { Proposals } from '@/app/constants/Proposals';
 const ProposalStats = ({ proposal }) => {
   const renderLocationInfo = () => {
     return Object.keys(Proposals.stats)
-      .slice(1) // Skip the first item
+      .slice(1)
       .map((key) => (
         <Box key={key} sx={{ display: 'flex', gap: '5px' }}>
           <Typography

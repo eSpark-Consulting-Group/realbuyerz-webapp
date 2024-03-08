@@ -21,6 +21,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
             alignItems: 'flex-end',
             flexWrap: 'nowrap',
             marginTop: '210px',
+            paddingBottom: '10px',
           }}
         >
           <Box
@@ -46,7 +47,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
           >
             <Image
               src="/images/congrats/congrats.gif"
-              alt="congrats"
+              alt={'congrats'}
               height={150}
               width={150}
             />
@@ -64,7 +65,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
           >
             <Typography
               sx={{
-                fontWeight: '500px',
+                fontWeight: '600px',
                 fontSize: '25px',
               }}
             >

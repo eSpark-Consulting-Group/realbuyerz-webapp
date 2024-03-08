@@ -28,13 +28,13 @@ const VideoUploader = ({ onUpload, maxVideos }) => {
       sx={{
         width: { xs: '100%', sm: '190px', md: '200px' },
         height: '50px',
-        color: '#fff',
-        background: '#FB631C',
+        color: '#FB631C',
+        background: 'white',
         borderRadius: '10px',
         border: '1px #FB631C solid',
         '&:hover': {
-          backgroundColor: 'white',
-          color: '#FB631C',
+          backgroundColor: '#FB631C',
+          color: '#fff',
         },
       }}
     >

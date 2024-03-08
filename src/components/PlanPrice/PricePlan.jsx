@@ -46,7 +46,7 @@ const PricePlan = () => {
               src={'/images/plan-price/close.png'}
               width={30}
               height={30}
-              alt="close"
+              alt={'close'}
             />
           </Button>
 

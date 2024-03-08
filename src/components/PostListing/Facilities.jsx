@@ -9,13 +9,28 @@ import {
 } from '@mui/material';
 
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { useDispatch } from 'react-redux';
+import { handleAdaminities } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Facilities = ({ facilitiesData, cancel, formik }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const dispatch = useDispatch();
 
-  const handleCheckboxChange = (e, text) => {
+  const handleCheckboxChange = (e, image, text, name) => {
+    const limit = 20;
     if (e.target.checked) {
-      setSelectedAmenities((prevSelected) => [...prevSelected, text]);
+      setSelectedAmenities((prevSelected) => [
+        ...prevSelected,
+        { text: text, image: image, limit: limit, name: name },
+      ]);
+      dispatch(
+        handleAdaminities({
+          text: text,
+          image: image,
+          limit: limit,
+          name: name,
+        })
+      );
     } else {
       setSelectedAmenities((prevSelected) =>
         prevSelected.filter((item) => item !== text)
@@ -71,7 +86,12 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
                 <Checkbox
                   sx={{ color: '#126FAA' }}
                   onChange={(e) => {
-                    handleCheckboxChange(e, item?.title);
+                    handleCheckboxChange(
+                      e,
+                      item.image,
+                      item?.title,
+                      item?.name
+                    );
                   }}
                 />
               }
@@ -80,7 +100,7 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
               component={'img'}
               src={item?.image}
               sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
-              alt="amenities"
+              alt={'amenities'}
             />
             <Typography
               sx={{

@@ -1,4 +1,5 @@
 'use client';
+import { PROJECTS_DATA } from '@/src/constants/projects';
 import {
   Typography,
   Box,
@@ -26,7 +27,8 @@ const ProjectsCard = ({ data }) => {
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const visibleProjects = data.slice(startIndex, startIndex + itemsPerPage);
+  const visibleProjects =
+    data.slice(startIndex, startIndex + itemsPerPage) || PROJECTS_DATA;
 
   return (
     <>
@@ -49,7 +51,7 @@ const ProjectsCard = ({ data }) => {
               {!project?.images?.length == 0 ? (
                 <img
                   src={
-                    project?.images[0]?.path ||
+                    project?.images[0] ||
                     `/images/default/default_project_image.jpg`
                   }
                   height={'auto'}
@@ -96,7 +98,7 @@ const ProjectsCard = ({ data }) => {
                   textWrap: 'wrap',
                 }}
               >
-                {project?.location || (
+                {`${project?.location}, ${project?.city}` || (
                   <>
                     <Skeleton />
                     <Skeleton />
@@ -149,14 +151,16 @@ const ProjectsCard = ({ data }) => {
                   lineHeight: '25px',
                 }}
               >
-                {project?.description || (
-                  <>
-                    <Skeleton />
-                    <Skeleton />
-                    <Skeleton />
-                    <Skeleton />
-                  </>
-                )}
+                {project?.description?.length > 150
+                  ? `${project.description.slice(0, 147)}...`
+                  : project?.description || (
+                      <>
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                      </>
+                    )}
               </Typography>
             </Box>
           </Grid>

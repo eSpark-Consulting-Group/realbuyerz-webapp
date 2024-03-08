@@ -239,7 +239,6 @@ const userAdsSlice = createSlice({
 
 export const {
   handleSumitUserAds,
-  handleSendProposals,
   handleRejectProposal,
   handleConnectProposal,
   handleSubmitDraft,

@@ -20,7 +20,7 @@ export default function RBSelect({ onChange, value, name, menuItem, sx }) {
           >
             {menuItem?.map((items, i) => (
               <MenuItem key={i} value={items?.icon}>
-                <Image src={items?.icon} width={30} height={30} alt="image" />
+                <Image src={items?.icon} width={30} height={30} alt={'image'} />
               </MenuItem>
             ))}
           </Select>

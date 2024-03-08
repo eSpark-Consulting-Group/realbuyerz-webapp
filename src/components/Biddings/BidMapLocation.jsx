@@ -5,7 +5,6 @@ import { Box } from '@mui/system';
 import { Proposals } from '@/app/constants/Proposals';
 
 const BidMapLocation = ({ location }) => {
-  console.log(location, 'location');
   const renderLocationInfo = () => {
     return Object.keys(Proposals.location)
       .slice(1) // Skip the first item

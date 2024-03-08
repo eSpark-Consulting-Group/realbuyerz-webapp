@@ -1,6 +1,3 @@
-//renamed form COVERLETTERS_COVERLETTER to COVERLETTERS_DATA and links Added
-//Reason: name is Not UNique and Promenent name
-// FEATURED_COVERLETTERS & NEWLY_LSITED_COVERLETTERS Merged Propeties
 export const COVERLETTERS_DATA = [
   {
     id: 1,

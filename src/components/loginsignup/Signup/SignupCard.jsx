@@ -125,6 +125,9 @@ const SignupCard = () => {
             height: '562px',
             gap: { xs: '5px', md: '8px' },
             paddingTop: '40px',
+            '@media (min-width: 900px) and (max-width: 1290px)': {
+              padding: '20px',
+            },
           }}
         >
           <Typography
@@ -159,7 +162,6 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => {
-              console.log('signin');
               router.push(LOGIN_ROUTERS.signin);
             }}
             loginClick={signupClick}

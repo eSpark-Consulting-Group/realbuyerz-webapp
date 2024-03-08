@@ -6,16 +6,9 @@ import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import { createInformationState } from '@/utils/addInfo';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-  adSumitModal,
-  draftModal,
-} from '@/app/constants/postListing';
-import { createPropertyStatusState } from '@/utils/propertyStatus';
-import { createMediaDataState } from '@/utils/mediaData';
+import { adSumitModal, draftModal } from '@/app/constants/postListing';
+
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,35 +22,14 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
+import { POST_REQUEST } from '@/app/constants/postRequest';
 
 const Page = () => {
-  const initializePropertyData = () => {
-    const informationState = createInformationState(
-      PROPERTY_INFORMATION?.addInfo,
-      PROPERTY_BUYING_DETAIL?.sellingDetails
-    );
-    const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION?.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL?.sellingDetails,
-    });
-    const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION?.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL?.sellingDetails,
-    });
-    return {
-      ...informationState,
-      ...propertyStatusState,
-      ...uploadMediaData,
-    };
-  };
-
-  const [propertyData] = useState(initializePropertyData());
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [action, setAction] = useState('');
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state?.currentUser?.user);
-  console.log(currentUser, 'currentUser');
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -122,7 +94,7 @@ const Page = () => {
     connects: '',
     bathrooms: 0,
     parking: 0,
-    purpose: 'Sell',
+    purpose: 'Buy',
     proportyCategory: 'House',
     propertyType: 'Sell',
     instalmentAvailable: false,
@@ -158,9 +130,13 @@ const Page = () => {
             }}
           >
             <Link href={'/agent/live-bidding'}>agent</Link>
-            <BuyersPlatform />
-            <AdInformation formik={formik} propertyData={propertyData} />
-            <PropertyPurpose formik={formik} propertyData={propertyData} />
+            <BuyersPlatform propertyData={POST_REQUEST} />
+            <AdInformation formik={formik} propertyData={POST_REQUEST} />
+            <PropertyPurpose
+              formik={formik}
+              propertyData={POST_REQUEST}
+              buyData={POST_REQUEST?.buy}
+            />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
             <SubmitButton

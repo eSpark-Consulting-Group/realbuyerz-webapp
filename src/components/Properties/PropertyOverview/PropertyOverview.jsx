@@ -51,7 +51,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
               maxHeight: '300px',
               borderSpacing: '10px',
               borderRadius: '50px',
-              px: '20px',
+              px: '50px',
               backgroundColor: '#000',
               marginBottom: '10px',
             }}
@@ -69,6 +69,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           backgroundColor: 'black',
                           overflow: 'hidden',
                           border: 'none',
+                          fontSize: '15px',
                         }}
                       >
                         {propertytype?.label}

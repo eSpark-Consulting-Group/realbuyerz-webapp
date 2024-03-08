@@ -6,15 +6,8 @@ import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
 import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
-import { createInformationState } from '@/utils/addInfo';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-  proposalSumitModal,
-} from '@/app/constants/postListing';
-import { createPropertyStatusState } from '@/utils/propertyStatus';
-import { createMediaDataState } from '@/utils/mediaData';
+import { proposalSumitModal } from '@/app/constants/postListing';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,30 +23,9 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
-import { handleSendProposals } from '@/src/redux/slices/userAds/userAdsSlice';
+import { COVER_LETTER } from '@/app/constants/coverLetter';
 
 const Page = () => {
-  const initializePropertyData = () => {
-    const informationState = createInformationState(
-      PROPERTY_INFORMATION.addInfo,
-      PROPERTY_BUYING_DETAIL.sellingDetails
-    );
-    const propertyStatusState = createPropertyStatusState({
-      propertySell: PROPERTY_INFORMATION.sell,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    const uploadMediaData = createMediaDataState({
-      propertyInformation: PROPERTY_INFORMATION.uploadButton,
-      propertyBuyingDetails: PROPERTY_BUYING_DETAIL.sellingDetails,
-    });
-    return {
-      ...informationState,
-      ...propertyStatusState,
-      ...uploadMediaData,
-    };
-  };
-
-  const [propertyData] = useState(initializePropertyData());
   const [open, setOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -65,13 +37,9 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  // const proposals = useSelector((state) => state?.proposals);
   const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
-  // const newProposal = proposals.find(
-  //   (item) => item?.agent_id == current_user_id
-  // );
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -85,7 +53,6 @@ const Page = () => {
         agent_id: values?.agent_id,
       })
     );
-    dispatch(handleSendProposals(values));
   };
 
   const handleClickOpen = () => {
@@ -119,6 +86,8 @@ const Page = () => {
     installmentAvailable: yup.boolean(),
     readyPossession: yup.boolean(),
     featuresAndAmenities: yup.mixed(),
+    images: yup.array().min(1, 'Image is required'),
+    videos: yup.array().min(1, 'Video is required'),
   });
 
   const initialFormValues = {
@@ -138,6 +107,28 @@ const Page = () => {
     connects: '',
     bathrooms: 0,
     parking: 0,
+    clubhouse: 0,
+    swimming_pool: 0,
+    fitness_center: 0,
+    playground: 0,
+    servant_area: 0,
+    utility_store: 0,
+    rooftop_terrace: 0,
+    on_site_maintenance: 0,
+    washing_area: 0,
+    hour_electricity: 0,
+    auto_generator: 0,
+    complete_boundary_wall: 0,
+    walking_trails: 0,
+    pet_friendly_facilities: 0,
+    security: 0,
+    masjid: 0,
+    corridor: 0,
+    r_o_plant: 0,
+    basketball_courts: 0,
+    huge_park: 0,
+    concierge_services: 0,
+    business_centre: 0,
     other_features: [],
     purpose: 'Sell',
     proportyCategory: 'House',
@@ -157,7 +148,6 @@ const Page = () => {
       values.agent_id = current_user_id;
       handleSubmit(values);
       action.resetForm();
-      console.log(values, 'cover');
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -195,8 +185,8 @@ const Page = () => {
             >
               <Link href={'/user/dashboard'}>agent</Link>
               <BuyersPlatform />
-              <AdInformation formik={formik} propertyData={propertyData} />
-              <PropertyPurpose formik={formik} propertyData={propertyData} />
+              <AdInformation formik={formik} propertyData={COVER_LETTER} />
+              <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />
               <PropertyFeatures formik={formik} />
               <PropertyGallery formik={formik} />
