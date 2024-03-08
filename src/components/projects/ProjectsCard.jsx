@@ -48,7 +48,7 @@ const ProjectsCard = ({ data }) => {
             }}
           >
             <Link href={`/projects/${project.property_id}`}>
-              {!project?.images.length == 0 ? (
+              {!project?.images?.length == 0 ? (
                 <img
                   src={
                     project?.images[0] ||

@@ -76,7 +76,7 @@ const loginUsersSlice = createSlice({
   reducers: {
     handleUserEdit: (state, action) => {
       const updatedUser = action.payload;
-      const userIndex = state.findIndex((user) => user.id === updatedUser.id);
+      const userIndex = state.findIndex((user) => user?.id === updatedUser.id);
       if (userIndex !== -1) {
         state[userIndex] = { ...state[userIndex], ...updatedUser };
       }

@@ -18,7 +18,7 @@ const Page = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const users = useSelector((state) => state?.agents);
-  const user = users.find((item) => parseInt(item?.id) === parseInt(id)) || {};
+  const user = users?.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   function filterProjects(projects, agentId, purpose) {

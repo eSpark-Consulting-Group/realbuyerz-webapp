@@ -108,6 +108,7 @@ const ProfilesPage = ({ agents }) => {
                       <FavoriteIcon />
                     </IconButton>
                   </Box>
+                  {/* For Rent */}
                   <Grid container display={'flex'}>
                     <Grid item xs={6}>
                       <Link href={`/profile/${agent?.id}/projects/rent`}>
@@ -134,6 +135,7 @@ const ProfilesPage = ({ agents }) => {
                         </Typography>
                       </Link>
                     </Grid>
+                    {/* For Sell */}
                     <Grid item xs={6}>
                       <Link href={`/profile/${agent?.id}/projects/sell`}>
                         <Typography variant="h6" color="text.secondary">

@@ -21,7 +21,7 @@ const ProjectsSlider = ({ data, category }) => {
     (item) => item?.propertyCategory === capCategory
   );
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const filteredData = filterData.length ? filterData : NoData;
+  const filteredData = filterData?.length ? filterData : NoData;
 
   const sliderSettings = {
     slidesPerView: 3,
