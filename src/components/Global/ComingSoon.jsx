@@ -17,7 +17,6 @@ const ComingSoon = () => (
   >
     <Grid
       container
-      xs={12}
       sx={{
         display: 'flex',
         flexDirection: 'column',

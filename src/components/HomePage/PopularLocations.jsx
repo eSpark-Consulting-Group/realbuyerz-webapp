@@ -19,16 +19,16 @@ const scrollToTop = () => {
 
 const PopularLocations = ({ data }) => {
   const [filteredProposalsData, setFilteredProposalsData] = useState(
-    data?.filter((item) => item.type === 'sale')
+    data?.filter((item) => item?.type === 'sale')
   );
   const [filterType, setFilterType] = useState('sale');
 
   const handleFilter = (type) => {
     setFilterType(type);
     if (type === 'sale') {
-      setFilteredProposalsData(data?.filter((item) => item.type === 'sale'));
+      setFilteredProposalsData(data?.filter((item) => item?.type === 'sale'));
     } else if (type === 'rent') {
-      setFilteredProposalsData(data?.filter((item) => item.type === 'rent'));
+      setFilteredProposalsData(data?.filter((item) => item?.type === 'rent'));
     } else {
       setFilteredProposalsData(data);
     }

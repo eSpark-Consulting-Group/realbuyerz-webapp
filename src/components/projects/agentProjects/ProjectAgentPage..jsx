@@ -27,10 +27,10 @@ const ProjectAgentPage = () => {
   }
 
   const filterData = projects.filter(
-    (item) => item.agent_id === parseInt(agentId)
+    (item) => item?.agent_id === parseInt(agentId)
   );
 
-  if (filterData.length === 0) {
+  if (filterData?.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
@@ -43,10 +43,10 @@ const ProjectAgentPage = () => {
     <>
       <CategoryLink
         category={`${category} for ${type}`}
-        link={`/profile/${agentId}/projects/${type}/${category.toLowerCase()}`}
+        link={`/profile/${agentId}/projects/${type}/${category?.toLowerCase()}`}
         linkText={'See All'}
       />
-      <ProjectsSlider data={filterData} category={category.toLowerCase()} />
+      <ProjectsSlider data={filterData} category={category?.toLowerCase()} />
     </>
   );
 

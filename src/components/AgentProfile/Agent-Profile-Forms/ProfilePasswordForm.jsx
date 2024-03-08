@@ -44,9 +44,6 @@ export default function ProfilePasswordForm({ data }) {
       <Grid
         container
         spacing={1}
-        xs={12}
-        md={12}
-        item
         sx={{
           mx: 'auto',
           display: 'block',

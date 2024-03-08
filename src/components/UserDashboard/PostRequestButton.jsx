@@ -13,7 +13,7 @@ const PostRequestButton = () => {
       }}
     >
       <Grid container>
-        <Grid items xs={12} sm={6} md={6} lg={6}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <Typography
             sx={{
               fontWeight: '500',

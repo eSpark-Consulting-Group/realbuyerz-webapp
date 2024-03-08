@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Grid, Box } from '@mui/material';
 
 import Price from './PropertyPrice';
@@ -8,12 +7,6 @@ import ViewAgentProfile from './ViewAgentProfile';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const ProfileAgent = ({ data, agentData }) => {
-  const agents = useSelector((state) => state?.agents);
-  const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
-  if (!selectedAgent) {
-    console.error(`Agent with id ${data} not found`);
-  }
-
   return (
     <Grid container spacing={2}>
       <Grid

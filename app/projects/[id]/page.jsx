@@ -18,12 +18,12 @@ function SingleProperty() {
   const id = segments[segments.length - 1];
   console.log(id, 'id');
   const properties = useSelector((state) => state.postListingAds.agentPostings);
-  const selectedProject = properties.filter(
-    (property) => String(property.property_id) === String(id)
+  const selectedProject = properties?.filter(
+    (property) => String(property?.property_id) === String(id)
   )[0];
   console.log(selectedProject, 'selectedProject');
   const agents = useSelector((state) => state.agents);
-  const selectedAgent = agents.filter(
+  const selectedAgent = agents?.filter(
     (agent) => agent.id === selectedProject.agent_id
   )[0];
   console.log(selectedAgent, 'selectedAgent');

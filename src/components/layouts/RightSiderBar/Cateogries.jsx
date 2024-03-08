@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import { MY_CATEGORIES } from '@/app/constants/LiveBidding';
+import Image from 'next/image';
 
 const Cateogries = ({ categories }) => {
   return (
@@ -40,7 +41,7 @@ const Cateogries = ({ categories }) => {
             {MY_CATEGORIES}
           </Typography>
         </Box>
-         <Box
+        <Box
           sx={{
             padding: '0px 0px 0px 20px',
           }}
@@ -49,9 +50,9 @@ const Cateogries = ({ categories }) => {
             src="/images/Live-bidding-icons/category.svg"
             width={30}
             height={30}
-            alt={"icons"}
+            alt={'icons'}
           />
-        </Box> */}
+        </Box>
       </Box>
       {categories.map((items, index) => {
         return (
@@ -69,7 +70,7 @@ const Cateogries = ({ categories }) => {
                 letterSpacing: '0.56px',
               }}
             >
-              {items.categoryName}
+              {items?.categoryName}
             </Typography>
           </Grid>
         );

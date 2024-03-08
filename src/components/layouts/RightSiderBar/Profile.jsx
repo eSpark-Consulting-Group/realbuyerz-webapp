@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 const Profile = ({ profileInfo }) => {
   return (
     <>
-      <Grid container
+      <Grid
+        container
         spacing={2}
         sx={{
           width: '100%',

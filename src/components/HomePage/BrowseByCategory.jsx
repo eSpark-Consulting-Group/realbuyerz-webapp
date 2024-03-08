@@ -81,9 +81,7 @@ const BrowseByCategory = ({ data }) => {
               <SwiperSlide key={index}>
                 <Grid
                   container
-                  justifyContent="center" // Center the grid content horizontally
-                  item
-                  xs={12}
+                  justifyContent="center"
                   sx={{
                     width: '131px',
                     height: '130px',

@@ -39,13 +39,13 @@ const LoginCard = ({ handleClose }) => {
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem('token', data.token);
-      Cookie.set('token', data.token);
-      Cookie.set('userType', data.userType);
+      localStorage.setItem('token', data?.token);
+      Cookie.set('token', data?.token);
+      Cookie.set('userType', data?.userType);
       dispatch(setLoggedIn(data));
-      if (data.userType === 'user') {
+      if (data?.userType === 'user') {
         router.push('/user/dashboard');
-      } else if (data.userType === 'agent') {
+      } else if (data?.userType === 'agent') {
         router.push('/agent/live-bidding');
       }
     },

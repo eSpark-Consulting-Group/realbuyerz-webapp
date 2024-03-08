@@ -393,7 +393,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
           }}
           display={'flex'}
           alignItems={
-            isReplying || fileInput?.length !== 0 ? 'flex-end' : 'center'
+            isReplying || fileInput.length !== 0 ? 'flex-end' : 'center'
           }
         >
           <Box
@@ -618,14 +618,14 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     handleCancelSendingAudio={handleCancelSendingAudio}
                   />
                 ) : (
-                  <div
+                  <Box
                     role={'none'}
                     className={'contentEditable'}
                     contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
-                    ariaLabel="Type your message..."
-                    ariaPlaceholder="Type your message..."
+                    aria-label="Type your message..."
+                    aria-placeholder="Type your message..."
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
@@ -634,7 +634,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                       document?.activeElement !== messageFieldRef.current && (
                         <div className={'placeholder'}>Write message</div>
                       )}
-                  </div>
+                  </Box>
                 )}
               </Box>
             </Box>

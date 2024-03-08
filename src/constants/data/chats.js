@@ -275,11 +275,9 @@ export const chatMessages = {
           content:
             "It's a 3-story house with a basement. The basement can be used as a recreational space. Additionally, there's a two-car garage.",
         },
-        // ... additional messages for the day
       ],
       read: true,
     },
-    // ... messages for the remaining days with similar details
     {
       date: '2024-01-26',
       messages: [

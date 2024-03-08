@@ -122,7 +122,7 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
             height: '100vh',
           }}
         >
-          {displayData?.length > 0 ? (
+          {displayData.length > 0 ? (
             <ProposalListingCard proposalsData={displayData} />
           ) : (
             <Box

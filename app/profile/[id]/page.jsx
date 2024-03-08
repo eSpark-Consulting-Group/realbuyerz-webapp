@@ -18,28 +18,28 @@ const Page = () => {
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const users = useSelector((state) => state?.agents);
-  const user = users.find((item) => parseInt(item.id) === parseInt(id)) || {};
+  const user = users.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   function filterProjects(projects, agentId, purpose) {
     return projects.filter(
       (item) =>
-        item.agent_id === agentId &&
-        item.purpose === purpose &&
-        item.status === 'submited'
+        item?.agent_id === agentId &&
+        item?.purpose === purpose &&
+        item?.status === 'submited'
     ).length;
   }
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
     return projects.filter(
       (item) =>
-        item.agent_id === agentId &&
-        item.purpose === purpose &&
-        item.propertyCategory === propertyCategory &&
-        item.status === 'submited'
+        item?.agent_id === agentId &&
+        item?.purpose === purpose &&
+        item?.propertyCategory === propertyCategory &&
+        item?.status === 'submited'
     ).length;
   }
   const allProperties = projects.filter(
-    (item) => item.agent_id === user?.id
+    (item) => item?.agent_id === user?.id
   ).length;
   const forSellCount = filterProjects(projects, user?.id, 'Sell');
   const forSellHouses = filterProjectsWith(

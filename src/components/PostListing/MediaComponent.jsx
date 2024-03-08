@@ -10,8 +10,7 @@ const MediaComponent = ({ title }) => {
         >
           {title}
         </Typography>
-        <Box>
-        </Box>
+        <Box></Box>
       </Box>
     </>
   );

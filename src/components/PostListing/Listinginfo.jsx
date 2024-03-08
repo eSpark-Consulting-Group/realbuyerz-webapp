@@ -26,7 +26,7 @@ const ListingInfo = ({ propertyInfo }) => {
         >
           <Box
             component={'img'}
-            src={item.image}
+            src={item?.image}
             sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
             alt={'propertyimages'}
           />
@@ -37,7 +37,7 @@ const ListingInfo = ({ propertyInfo }) => {
               color: '#909394',
             }}
           >
-            {item.title}
+            {item?.title}
           </Typography>
         </Box>
       ))}

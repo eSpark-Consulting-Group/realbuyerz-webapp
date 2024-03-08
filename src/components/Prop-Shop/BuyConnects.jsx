@@ -28,7 +28,7 @@ const BuyConnects = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'select_the_amount_to_buy') {
-      const find = items.find((item) => item.value === value);
+      const find = items?.find((item) => item?.value === value);
       setBuyConnectData({
         ...buyConnectData,
         [name]: value,
@@ -54,7 +54,7 @@ const BuyConnects = ({
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container xs={12} item>
+      <Grid container>
         <Box
           sx={{
             width: '100%',

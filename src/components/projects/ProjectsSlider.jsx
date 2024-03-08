@@ -11,7 +11,7 @@ import Link from 'next/link';
 const itemsToShow = 10;
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  const capCategory = category?.charAt(0).toUpperCase() + category?.slice(1);
   console.log(currentPage);
   const totalItems = Math.min(data.length, itemsToShow) || 10;
   const handleChangePage = (newPage) => {
@@ -21,7 +21,7 @@ const ProjectsSlider = ({ data, category }) => {
     (item) => item?.propertyCategory === capCategory
   );
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const filteredData = filterData?.length ? filterData : NoData;
+  const filteredData = filterData.length ? filterData : NoData;
 
   const sliderSettings = {
     slidesPerView: 3,

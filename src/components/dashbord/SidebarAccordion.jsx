@@ -23,7 +23,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
           <Box>
             <Accordion
               expanded={
-                item.sublinks == null ? null : expanded === `panel${index + 1}`
+                item?.sublinks == null ? null : expanded === `panel${index + 1}`
               }
               onChange={handleChange(`panel${index + 1}`)}
               sx={{

@@ -52,7 +52,7 @@ const PropertyMapLocation = ({
         src={geoLocation}
         width="100%"
         height="300"
-        frameborder="0"
+        frameBorder="0"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>

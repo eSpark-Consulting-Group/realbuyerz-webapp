@@ -6,8 +6,8 @@ const properties = PROPERTIES_DATA;
 const initialState = { properties };
 
 function generateUniqueId(properties) {
-  let newId = (properties.length + 1).toString();
-  while (properties.some((property) => property.id === newId)) {
+  let newId = (properties?.length + 1).toString();
+  while (properties?.some((property) => property?.id === newId)) {
     newId = (parseInt(newId, 10) + 1).toString();
   }
   return newId;
@@ -22,13 +22,13 @@ const propertiesSlice = createSlice({
         ...action.payload,
         id: generateUniqueId(state.properties),
       };
-      state.properties.push(newProperty);
+      state.properties?.push(newProperty);
     },
 
     updateProperty: (state, action) => {
       const { id, updatedProperty } = action.payload;
-      const index = state.properties.findIndex(
-        (property) => property.id === id
+      const index = state.properties?.findIndex(
+        (property) => property?.id === id
       );
       if (index !== -1) {
         state.properties[index] = {
@@ -40,15 +40,15 @@ const propertiesSlice = createSlice({
 
     deleteProperty: (state, action) => {
       const id = action.payload;
-      state.properties = state.properties.filter(
-        (property) => property.id !== id
+      state.properties = state.properties?.filter(
+        (property) => property?.id !== id
       );
     },
 
     selectProperty: (state, action) => {
       const { id } = action.payload;
       state.selectedProperty =
-        state.properties.find((property) => property.id === id) || null;
+        state.properties?.find((property) => property?.id === id) || null;
     },
   },
 });

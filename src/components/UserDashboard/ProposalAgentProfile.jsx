@@ -51,7 +51,7 @@ const ProposalAgentProfile = ({
                 </Grid>
               </Grid>
             </Box>
-            {index == proposalData?.length - 1 ? null : <Divider />}
+            {index == proposalData.length - 1 ? null : <Divider />}
           </>
         ))}
       </>
