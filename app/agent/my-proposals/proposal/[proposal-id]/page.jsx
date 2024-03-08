@@ -45,6 +45,9 @@ const Page = () => {
   const handleClick = () => {
     setShowMoreContent(!showMoreContent);
   };
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -283,6 +286,7 @@ const Page = () => {
                       amenities={amenities}
                       bedrooms={find_ad?.bedrooms}
                       bathrooms={find_ad?.bathrooms}
+                      getSelectedAmenities={getSelectedAmenities}
                     />
                   </>
                 )}

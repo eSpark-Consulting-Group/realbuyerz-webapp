@@ -21,7 +21,7 @@ const PreviewModal = (props) => {
     images,
     videos,
   } = previewData;
-  const { onClose, open, ads } = props;
+  const { onClose, open, ads, getSelectedAmenities, formik } = props;
   const pathName = usePathname();
   const userPath = '/user/post-request';
   return (
@@ -120,6 +120,8 @@ const PreviewModal = (props) => {
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
+              getSelectedAmenities={getSelectedAmenities}
+              formik={formik}
             />
             {pathName !== userPath ? (
               <>

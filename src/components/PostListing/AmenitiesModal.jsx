@@ -5,21 +5,21 @@ import Facilities from './Facilities';
 import { useSelector } from 'react-redux';
 
 const AmenitiesModal = (props) => {
-  const { onClose, open, data, onSelected, formik, setOpen } = props;
+  const { onClose, open, data, onSelected, formik, setOpen, setSelectedAmenities , selectedAmenities, handleSeletedAmenites} = props;
 
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  // const [selectedAmenities, setSelectedAmenities] = useState([]);
 
-  const getAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
+  // const getAmenities = useSelector(
+  //   (state) => state?.postListingAds?.addAmenities
+  // );
 
-  const handleSeletedAmenites = () => {
-    if (getAmenities.length === 0) {
-      setSelectedAmenities([]);
-    } else {
-      setSelectedAmenities(getAmenities);
-    }
-  };
+  // const handleSeletedAmenites = () => {
+  //   if (getAmenities.length === 0) {
+  //     setSelectedAmenities([]);
+  //   } else {
+  //     setSelectedAmenities(getAmenities);
+  //   }
+  // };
 
   const handleClose = () => {
     handleSeletedAmenites();

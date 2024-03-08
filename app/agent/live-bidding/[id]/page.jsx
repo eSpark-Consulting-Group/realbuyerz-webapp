@@ -26,7 +26,9 @@ const Page = () => {
     (state) => state?.postRequestAds?.userPostings
   );
   const spacificPost = userPostings?.find((item) => id == item?.property_id);
-
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
@@ -87,6 +89,7 @@ const Page = () => {
                       bathrooms={spacificPost?.bathrooms}
                       parking={spacificPost?.parking}
                       other_features={spacificPost?.other_features}
+                      getSelectedAmenities={getSelectedAmenities}
                     />
                   </Box>
                 </Grid>

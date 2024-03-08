@@ -30,6 +30,7 @@ const Page = () => {
   const [open, setOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
 
   const pathname = usePathname();
@@ -46,6 +47,18 @@ const Page = () => {
   //   (item) => item?.agent_id == current_user_id
   // );
 
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+  
+  const handleSeletedAmenites = () => {
+      if (getAmenities.length === 0) {
+        setSelectedAmenities([]);
+      } else {
+        setSelectedAmenities(getAmenities);
+      }
+    };
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
@@ -59,6 +72,7 @@ const Page = () => {
       })
     );
     dispatch(toggleCheckAmenityClear());
+    setSelectedAmenities([]);
   };
 
   const handleClickOpen = () => {
@@ -172,7 +186,9 @@ const Page = () => {
       />
     );
   }
-
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
   return (
     <>
       <Grid container>
@@ -194,13 +210,18 @@ const Page = () => {
               <AdInformation formik={formik} propertyData={COVER_LETTER} />
               <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />
-              <PropertyFeatures formik={formik} />
+              <PropertyFeatures formik={formik} 
+               setSelectedAmenities={setSelectedAmenities}
+               selectedAmenities={selectedAmenities}
+               handleSeletedAmenites={handleSeletedAmenites}
+              />
               <PropertyGallery formik={formik} />
               <SubmitButton formik={formik} handleClickOpen={handleClickOpen} />
               <PreviewModal
                 open={open}
                 onClose={handleClose}
                 ads={formik?.values}
+                getSelectedAmenities={getSelectedAmenities}
               />
             </Box>
           </form>

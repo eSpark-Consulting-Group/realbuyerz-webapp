@@ -25,7 +25,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
             gridTemplateColumns: 'repeat(2, 1fr)',
           },
           width: '100%',
-          maxHeight: '550px',
+          maxHeight: '1550px',
           overflowY: 'auto',
         }}
       >
@@ -35,7 +35,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
-                justifyContent: { xs: 'center', md: 'left' },
+                justifyContent: {xs:'center', sm: 'left', md: 'left' },
                 alignItems: 'center',
                 width: { xs: 'auto', md: 'auto' },
                 py: 2,
@@ -79,7 +79,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
           <Box
             sx={{
               display: 'flex',
-              justifyContent: { xs: 'center', md: 'space-between' },
+              justifyContent: {xs:'center', sm: 'left', md: 'space-between' },
               alignItems: 'center',
               fontSize: { xs: '18px', md: '20px' },
               fontWeight: 400,

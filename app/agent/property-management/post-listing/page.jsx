@@ -33,8 +33,20 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+  
+  const handleSeletedAmenites = () => {
+      if (getAmenities.length === 0) {
+        setSelectedAmenities([]);
+      } else {
+        setSelectedAmenities(getAmenities);
+      }
+    };
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
@@ -46,6 +58,7 @@ const Page = () => {
       handleOpenSuccessModal();
     }
     dispatch(toggleCheckAmenityClear());
+    setSelectedAmenities([]);
   };
 
   const handleClickOpen = () => {
@@ -144,6 +157,9 @@ const Page = () => {
     validateOnChange: false,
     validateOnBlur: false,
   });
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
 
   return (
     <Grid container>
@@ -165,7 +181,11 @@ const Page = () => {
             <AdInformation formik={formik} propertyData={POST_LISTING} />
             <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertyFeatures formik={formik}
+             setSelectedAmenities={setSelectedAmenities}
+             selectedAmenities={selectedAmenities}
+             handleSeletedAmenites={handleSeletedAmenites}
+             />
             <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}
@@ -176,6 +196,8 @@ const Page = () => {
               open={open}
               onClose={handleClose}
               ads={formik?.values}
+              getSelectedAmenities={getSelectedAmenities}
+              formik={formik}
             />
           </Box>
         </form>

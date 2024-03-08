@@ -172,6 +172,7 @@ const postlistingAdSlice = createSlice({
     },
     toggleCheckAmenityClear: (state) => {
       state.addAmenities = [];
+      state.checkedAmenities = [];
     },
     handlePostlistingAd: (state, action) => {
       state.agentPostings.push(action.payload);
