@@ -40,7 +40,7 @@ const Cateogries = ({ categories }) => {
             {MY_CATEGORIES}
           </Typography>
         </Box>
-        {/* <Box
+         <Box
           sx={{
             padding: '0px 0px 0px 20px',
           }}

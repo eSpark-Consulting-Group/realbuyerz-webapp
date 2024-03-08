@@ -11,10 +11,6 @@ const MediaComponent = ({ title }) => {
           {title}
         </Typography>
         <Box>
-          {/* <ProposalSlider
-            media={proposals?.propertyData?.propertyImages}
-            mediaType={'images'}
-          /> */}
         </Box>
       </Box>
     </>

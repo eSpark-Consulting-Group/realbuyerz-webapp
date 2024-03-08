@@ -118,12 +118,11 @@ const BrowseByCategory = ({ data }) => {
                       flexDirection: 'column',
                       alignItems: 'center',
                       maxWidth: '150px',
-                      margin: 'auto', // Center the content vertically and horizontally
+                      margin: 'auto',
                       gap: '10px',
                     }}
                   >
                     <Link href={`/category/${category?.id}`}>
-                      {/* Example alternative if Image component is not available */}
                       <img
                         src={category?.image}
                         alt={category?.name}
@@ -195,7 +194,6 @@ const BrowseByCategory = ({ data }) => {
                   }}
                 >
                   <Link href={`/category/${category?.id}`}>
-                    {/* Example alternative if Image component is not available */}
                     <img
                       src={category?.image}
                       alt={category?.name}
