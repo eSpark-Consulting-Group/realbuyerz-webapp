@@ -16,39 +16,41 @@ const PropertyDetails = ({ propertyDetailsData }) => {
     <Grid container spacing={2}>
       <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
         <Box sx={{ padding: '15px' }}>
-          <PropertyOverview
+          {/* <PropertyOverview
             propertyData={propertyDetailsData}
             overview={PROPERTY_ESTATE?.propertyDetails?.overview}
-          />
+          /> */}
           <PropertyTitle
-            title={propertyDetailsData?.propertyTitle}
+            title={propertyDetailsData?.title}
             heading={PROPERTY_ESTATE?.propertyDetails?.title}
           />
           <PropertyDescription
-            description={propertyDetailsData?.propertyDescription}
+            description={propertyDetailsData?.description}
             heading={PROPERTY_ESTATE?.propertyDetails?.decription}
           />
           <PropertyMapLocation
-            locationpurpose={propertyDetailsData?.propertyOverview?.purpose}
-            propertyType={propertyDetailsData?.propertyData?.propertyType}
-            city={propertyDetailsData?.propertyData?.propertyLocation?.city}
-            location={propertyDetailsData?.propertyData?.propertyLocation?.area}
+            locationpurpose={propertyDetailsData?.purpose}
+            propertyType={propertyDetailsData?.propertyType}
+            city={propertyDetailsData?.city}
+            location={propertyDetailsData?.locality}
           />
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
-              propertyData={propertyDetailsData}
+              propertyData={propertyDetailsData.other_features}
               heading={PROPERTY_ESTATE?.propertyDetails?.amenities}
             />
           </Box>
           <Box sx={{ pt: '15px' }}>
             <PropertyArea
-              area={propertyDetailsData?.propertyData?.propertyArea}
+              area={propertyDetailsData?.area}
+              areaUnits={propertyDetailsData?.areaUnit}
               heading={PROPERTY_ESTATE?.propertyDetails?.area}
             />
           </Box>
           <Box sx={{ pt: '15px' }}>
             <PropertyDemand
-              demand={propertyDetailsData?.propertyData?.propertyDemand}
+              demand={propertyDetailsData?.amount}
+              demandUnits={propertyDetailsData?.amountCurrency}
               heading={PROPERTY_ESTATE?.propertyDetails?.demand}
             />
           </Box>

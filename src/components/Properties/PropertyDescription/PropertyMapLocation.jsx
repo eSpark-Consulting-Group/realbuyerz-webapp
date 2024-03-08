@@ -13,18 +13,38 @@ const PropertyMapLocation = ({
       <Typography sx={{ fontSize: '18px', fontWeight: 500 }}>
         Location & Purpose
       </Typography>
-      <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
-        Purpose: {locationpurpose}
-      </Typography>
-      <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
-        Property Type: {propertyType}
-      </Typography>
-      <Typography sx={{ fontSize: '16px', fontWeight: 400 }} variant="body1">
-        Location:{location}
-      </Typography>
-      <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
-        City: {city}
-      </Typography>
+      <Box display={'flex'} gap={'5px'}>
+        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+          Purpose:
+        </Typography>
+        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+          {locationpurpose}
+        </Typography>
+      </Box>
+      <Box display={'flex'} gap={'5px'}>
+        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+          Property Type:
+        </Typography>
+        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+          {propertyType}
+        </Typography>
+      </Box>
+      <Box display={'flex'} gap={'5px'}>
+        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+          Location:
+        </Typography>
+        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+          {location}
+        </Typography>
+      </Box>
+      <Box display={'flex'} gap={'5px'}>
+        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+          City:
+        </Typography>
+        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+          {city}
+        </Typography>
+      </Box>
       <br></br>
       <iframe
         title="Property Location"
