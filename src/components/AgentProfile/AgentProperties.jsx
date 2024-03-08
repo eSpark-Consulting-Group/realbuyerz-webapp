@@ -7,8 +7,19 @@ import AgentTitle from './AgentTitle';
 import PropertyForSale from './Properties/PropertyForSale';
 import PropertyForRent from './Properties/PropertyForRent';
 
-const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
+const AgentProperties = ({
+  data,
+  allLink,
+  sellLink,
+  rentLink,
+  allProperties,
+  forRentCount,
+  forSellCount,
+  rentData,
+  sellData,
+}) => {
   const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -20,28 +31,25 @@ const AgentProperties = ({ data, allLink, sellLink, rentLink }) => {
     >
       <Box sx={{ pt: 8 }}>
         <AgentTitle
+          count={allProperties || ''}
           title={`${data?.first_name} ${data?.last_name}`}
           link={allLink}
         />
         <Box sx={{ pt: 2 }}>
           <PropertyForSale
+            data={forSellCount || 'No'}
             sellCount={data?.counts?.sellCount}
             link={sellLink}
           />
-          <PropertyCardRentBody
-            rentData={data?.counts?.rentCount}
-            link={sellLink}
-          />
+          <PropertyCardSaleBody sellData={sellData} link={sellLink} />
         </Box>
         <Box sx={{ pt: 2 }}>
           <PropertyForRent
+            data={forRentCount || 'No'}
             rentCount={data?.counts?.rentCount}
             link={rentLink}
           />
-          <PropertyCardSaleBody
-            sellData={data?.counts?.sellCount}
-            link={rentLink}
-          />
+          <PropertyCardRentBody rentData={rentData} link={rentLink} />
         </Box>
       </Box>
     </Box>

@@ -24,7 +24,7 @@ const agentDraftSlice = createSlice({
         bathrooms: 0,
         parking: 0,
         purpose: 'Sell',
-        proportyCategory: 'House',
+        propertyCategory: 'House',
         propertyType: 'House',
         instalmentAvailable: false,
         readyPossession: false,

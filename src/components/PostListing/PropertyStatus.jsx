@@ -9,7 +9,6 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
     formik.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
   };
-  console.log('test2', propertyData);
   return (
     <>
       <Box

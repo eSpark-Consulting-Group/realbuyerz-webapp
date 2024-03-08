@@ -11,6 +11,8 @@ import {
   Pagination,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Link from 'next/link';
+import NotFoundSection from './Global/NotFoundSection';
 
 const ProfilesPage = ({ agents }) => {
   const [page, setPage] = useState(1);
@@ -23,6 +25,16 @@ const ProfilesPage = ({ agents }) => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = page * itemsPerPage;
 
+  // Validate agents array
+  if (!Array.isArray(agents) || agents.length === 0) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'No agents found. Please retry later.'}
+      />
+    );
+  }
+
   return (
     <Box py={'50px'}>
       <Typography
@@ -31,11 +43,12 @@ const ProfilesPage = ({ agents }) => {
           color: '#333333',
           fontWeight: 700,
           textAlign: 'center',
+          padding: 6,
         }}
       >
-        {'Top Perfomring Agents'}
+        {'Top Performing Agents'}
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={6}>
         {agents.slice(startIndex, endIndex).map((agent) => (
           <Grid key={agent.id} item xs={12} sm={6} md={3}>
             <Card
@@ -54,70 +67,100 @@ const ProfilesPage = ({ agents }) => {
                   backgroundPosition: 'center',
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="100px"
-                  image={agent?.profile_image}
-                  alt={`${agent?.first_name} ${agent?.last_name}`}
-                  sx={{ marginBottom: '-25px' }} // Adjust the negative margin value as needed
-                />
+                <Link href={`/profile/${agent?.id}`}>
+                  <CardMedia
+                    component="img"
+                    height="100px"
+                    image={agent?.profile_image}
+                    alt={`${agent?.first_name} ${agent?.last_name}`}
+                    sx={{ marginBottom: '-25px' }} // Adjust the negative margin value as needed
+                  />
+                </Link>
               </Box>
               <Box p={2}>
                 <Box sx={{ flex: '1 0 auto', py: 2 }}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    align="center"
-                  >
-                    {agent?.first_name} {agent?.last_name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    align="center"
-                  >
-                    {agent?.business_name || `${agent?.first_name}'s Agency`}
-                  </Typography>
+                  <Link href={`/profile/${agent?.id}`}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      align="center"
+                    >
+                      {agent?.first_name} {agent?.last_name}
+                    </Typography>
+                  </Link>
+                  <Link href={`/profile/${agent?.id}`}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      align="center"
+                    >
+                      {agent?.business_name || `${agent?.first_name}'s Agency`}
+                    </Typography>
+                  </Link>
+                  {/* Properties Details */}
                   <Box display={'flex'} justifyContent={'space-between'}>
-                    <Typography variant="h6" color="text.secondary">
-                      Properties Details:
-                    </Typography>
-                    <Typography variant="h6" color="text.secondary">
-                      {agent?.counts.totalCount}
-                    </Typography>
+                    <Link href={`/profile/${agent?.id}/projects`}>
+                      <Typography variant="h6" color="text.secondary">
+                        {`Properties Details: ${agent?.counts?.totalCount || 0}`}
+                      </Typography>
+                    </Link>
                     <IconButton aria-label="add to favorites">
                       <FavoriteIcon />
                     </IconButton>
                   </Box>
+                  {/* For Rent */}
                   <Grid container display={'flex'}>
                     <Grid item xs={6}>
-                      <Typography variant="h6" color="text.secondary">
-                        for Sell: {agent?.counts.rentCount.total}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Houses: {agent?.counts.rentCount.Houses}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Plots:{agent?.counts.rentCount.Plots}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Commercials:{agent?.counts.rentCount.Commercials}
-                      </Typography>
+                      <Link href={`/profile/${agent?.id}/projects/rent`}>
+                        <Typography variant="h6" color="text.secondary">
+                          For Rent: {agent?.counts?.rentCount.total || 0}
+                        </Typography>
+                      </Link>
+                      <Link href={`/profile/${agent?.id}/projects/rent/houses`}>
+                        <Typography variant="body2" color="text.secondary">
+                          Houses: {agent?.counts?.rentCount.Houses || 0}
+                        </Typography>
+                      </Link>
+                      <Link href={`/profile/${agent?.id}/projects/rent/plots`}>
+                        <Typography variant="body2" color="text.secondary">
+                          Plots: {agent?.counts?.rentCount.Plots || 0}
+                        </Typography>
+                      </Link>
+                      <Link
+                        href={`/profile/${agent?.id}/projects/rent/commercials`}
+                      >
+                        <Typography variant="body2" color="text.secondary">
+                          Commercials:{' '}
+                          {agent?.counts?.rentCount.Commercials || 0}
+                        </Typography>
+                      </Link>
                     </Grid>
+                    {/* For Sell */}
                     <Grid item xs={6}>
-                      <Typography variant="h6" color="text.secondary">
-                        for Sell: {agent?.counts.sellCount.total}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Houses: {agent?.counts.sellCount.Houses}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Plots:{agent?.counts.sellCount.Plots}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Commercials:{agent?.counts.sellCount.Commercials}
-                      </Typography>
+                      <Link href={`/profile/${agent?.id}/projects/sell`}>
+                        <Typography variant="h6" color="text.secondary">
+                          For Sell: {agent?.counts?.sellCount.total || 0}
+                        </Typography>
+                      </Link>
+                      <Link href={`/profile/${agent?.id}/projects/sell/houses`}>
+                        <Typography variant="body2" color="text.secondary">
+                          Houses: {agent?.counts?.sellCount.Houses || 0}
+                        </Typography>
+                      </Link>
+                      <Link href={`/profile/${agent?.id}/projects/sell/plots`}>
+                        <Typography variant="body2" color="text.secondary">
+                          Plots: {agent?.counts?.sellCount.Plots || 0}
+                        </Typography>
+                      </Link>
+                      <Link
+                        href={`/profile/${agent?.id}/projects/sell/commercials`}
+                      >
+                        <Typography variant="body2" color="text.secondary">
+                          Commercials:{' '}
+                          {agent?.counts?.sellCount.Commercials || 0}
+                        </Typography>
+                      </Link>
                     </Grid>
                   </Grid>
                 </Box>
@@ -127,11 +170,21 @@ const ProfilesPage = ({ agents }) => {
                   display={'flex'}
                   gap={'10px'}
                 >
-                  <Button variant="primary" color="primary" fullWidth>
-                    Chat
-                  </Button>
-                  <Button variant="outlined" color="primary" fullWidth>
+                  <Button
+                    variant="primary"
+                    color="primary"
+                    fullWidth
+                    href={`/profile/${agent?.id}`}
+                  >
                     Profile Link
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    href={`/chat/${agent?.id}`}
+                  >
+                    Chat Now
                   </Button>
                 </Grid>
               </Box>

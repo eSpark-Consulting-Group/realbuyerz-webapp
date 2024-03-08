@@ -68,7 +68,7 @@ const Page = () => {
                       locationKeys={location}
                       purpose={spacificPost?.purpose}
                       propertyType={spacificPost?.propertyType}
-                      proportyCategory={spacificPost?.proportyCategory}
+                      propertyCategory={spacificPost?.propertyCategory}
                       location={spacificPost?.location}
                       width={'70%'}
                     />

@@ -7,7 +7,6 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import { Typography } from '@mui/material';
 // Other imports...
 
 const ProjectAgentPage = () => {
@@ -17,18 +16,21 @@ const ProjectAgentPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
-  const filterData = projects?.filter((item) => item?.user_id === agentId);
 
-  if (!agentId || !currentAgent) {
+  if (!agentId || !currentAgent || !Array.isArray(projects)) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'Invalid agent ID. Please provide a valid ID.'}
+        message={'Invalid agent ID or no projects found.'}
       />
     );
   }
 
-  if (!filterData || filterData.length === 0) {
+  const filterData = projects.filter(
+    (item) => item.agent_id === parseInt(agentId)
+  );
+
+  if (filterData.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
@@ -39,13 +41,8 @@ const ProjectAgentPage = () => {
 
   const renderProjects = (category, type) => (
     <>
-      <Box>
-        <Typography variant="h3" px={'24px'}>
-          {`Properties for ${type}`}
-        </Typography>
-      </Box>
       <CategoryLink
-        category={category}
+        category={`${category} for ${type}`}
         link={`/profile/${agentId}/projects/${type}/${category.toLowerCase()}`}
         linkText={'See All'}
       />
@@ -58,7 +55,7 @@ const ProjectAgentPage = () => {
       <ChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}`}
-        chipperText={`${currentAgent?.firstName} ${currentAgent?.lastName}'s Properties`}
+        chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s Properties`}
         chipperLink={`/projects`}
       />
       {renderProjects('Houses', 'Sale')}

@@ -47,7 +47,7 @@ const ProjectsCard = ({ data }) => {
               border: '1px solid #E4E4E4',
             }}
           >
-            <Link href={`/projects/${project.id}`}>
+            <Link href={`/projects/${project.property_id}`}>
               {!project?.images?.length == 0 ? (
                 <img
                   src={
