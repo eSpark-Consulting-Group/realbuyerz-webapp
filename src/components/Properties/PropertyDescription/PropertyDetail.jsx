@@ -15,10 +15,6 @@ const PropertyDetails = ({ propertyDetailsData }) => {
     <Grid container spacing={2}>
       <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
         <Box sx={{ padding: '15px' }}>
-          {/* <PropertyOverview
-            propertyData={propertyDetailsData}
-            overview={PROPERTY_ESTATE?.propertyDetails?.overview}
-          /> */}
           <PropertyTitle
             title={propertyDetailsData?.title}
             heading={PROPERTY_ESTATE?.propertyDetails?.title}
@@ -32,6 +28,7 @@ const PropertyDetails = ({ propertyDetailsData }) => {
             propertyType={propertyDetailsData?.propertyType}
             city={propertyDetailsData?.city}
             location={propertyDetailsData?.locality}
+            geoLocation={propertyDetailsData?.geo_location}
           />
           <Box sx={{ pt: '15px' }}>
             <PropertyAmenities
