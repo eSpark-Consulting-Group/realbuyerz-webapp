@@ -5,7 +5,6 @@ import PropertyTitle from './PropertyTitle';
 import PropertyDemand from './PropertyDemand';
 import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
-import PropertyOverview from '../PropertyOverview/PropertyOverview';
 import PropertyDescription from './PropertyDescription';
 import PropertyMapLocation from './PropertyMapLocation';
 

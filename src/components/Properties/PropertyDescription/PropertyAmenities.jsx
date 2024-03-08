@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
 
 const PropertyAmenities = ({ propertyData, heading }) => {
   return (

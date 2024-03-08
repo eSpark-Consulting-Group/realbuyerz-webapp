@@ -16,7 +16,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -55,7 +56,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -94,7 +96,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -133,7 +136,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -172,7 +176,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -211,7 +216,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -250,7 +256,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -289,7 +296,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -328,7 +336,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -367,7 +376,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -406,7 +416,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -445,7 +456,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -484,7 +496,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -523,7 +536,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -562,7 +576,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -601,7 +616,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -640,7 +656,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -679,7 +696,8 @@ const postlistingAdSlice = createSlice({
           '24 Hours CCTV Security System',
           '24 Hours Water Supply',
         ],
-        images: [`/images/properties/PropertyCardImageHouse.png`,
+        images: [
+          `/images/properties/PropertyCardImageHouse.png`,
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',

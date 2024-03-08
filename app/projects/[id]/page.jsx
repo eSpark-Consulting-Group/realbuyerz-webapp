@@ -11,7 +11,6 @@ import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import Heading from '@/src/components/HomePage/Heading';
-import { textAlign } from '@mui/system';
 
 function SingleProperty() {
   const pathname = usePathname();
