@@ -2,6 +2,7 @@ export const orderHistory = {
   tableHead: ['Ordered by', 'Description', 'Time', 'Date', 'Total'],
   tableData: [
     {
+      id: 1,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects  ',
       time: '09:22 PM',
@@ -9,6 +10,7 @@ export const orderHistory = {
       total: 'Rs. 3500',
     },
     {
+      id: 2,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects',
       time: '09:22 PM',
@@ -16,6 +18,7 @@ export const orderHistory = {
       total: 'Rs. 3500',
     },
     {
+      id: 3,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects',
       time: '09:22 PM',
@@ -23,6 +26,7 @@ export const orderHistory = {
       total: 'Rs. 3500',
     },
     {
+      id: 4,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects',
       time: '09:22 PM',
@@ -30,6 +34,7 @@ export const orderHistory = {
       total: 'Rs. 3500',
     },
     {
+      id: 5,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects',
       time: '09:22 PM',
@@ -37,6 +42,7 @@ export const orderHistory = {
       total: 'Rs. 3500',
     },
     {
+      id: 6,
       name: 'Arman Khan',
       description: 'Basic Package + 90 connects',
       time: '09:22 PM',

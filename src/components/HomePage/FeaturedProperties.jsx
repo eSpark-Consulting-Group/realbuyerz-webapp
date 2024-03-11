@@ -127,7 +127,7 @@ const FeaturedProperties = ({ data }) => {
                       onMouseOut={() => setHoveredIndex(null)}
                     >
                       <img
-                        src={item.bgImage}
+                        src={item?.bgImage}
                         alt={'background'}
                         style={{
                           width: '100%',
@@ -149,7 +149,7 @@ const FeaturedProperties = ({ data }) => {
                           fontSize: 10,
                         }}
                       >
-                        {item.location}
+                        {item?.location}
                       </Box>
                       <Collapse
                         in={hoveredIndex === index}
@@ -184,7 +184,7 @@ const FeaturedProperties = ({ data }) => {
                                 pb: '15px',
                               }}
                             >
-                              {item.propertyName}
+                              {item?.propertyName}
                             </Typography>
                             <Typography
                               sx={{
@@ -200,7 +200,7 @@ const FeaturedProperties = ({ data }) => {
                               }}
                             >
                               <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                              {item.location}
+                              {item?.location}
                             </Typography>
                             <Box
                               sx={{
@@ -232,7 +232,7 @@ const FeaturedProperties = ({ data }) => {
                                   fontWeight: 500,
                                 }}
                               >
-                                {item.currency}
+                                {item?.currency}
                               </Typography>
                               <Typography
                                 variant="body1"
@@ -247,7 +247,7 @@ const FeaturedProperties = ({ data }) => {
                                   fontWeight: 600,
                                 }}
                               >
-                                {item.price}
+                                {item?.price}
                               </Typography>
                             </Box>
                           </Box>
@@ -338,7 +338,7 @@ const FeaturedProperties = ({ data }) => {
                   onMouseOut={() => setHoveredIndex(null)}
                 >
                   <img
-                    src={item.bgImage}
+                    src={item?.bgImage}
                     alt={'background'}
                     style={{
                       width: '100%',
@@ -360,7 +360,7 @@ const FeaturedProperties = ({ data }) => {
                       fontSize: 10,
                     }}
                   >
-                    {item.location}
+                    {item?.location}
                   </Box>
                   <Collapse
                     in={hoveredIndex === index}
@@ -391,7 +391,7 @@ const FeaturedProperties = ({ data }) => {
                             pb: '15px',
                           }}
                         >
-                          {item.propertyName}
+                          {item?.propertyName}
                         </Typography>
                         <Typography
                           sx={{
@@ -403,7 +403,7 @@ const FeaturedProperties = ({ data }) => {
                           }}
                         >
                           <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                          {item.location}
+                          {item?.location}
                         </Typography>
                         <Box
                           sx={{
@@ -431,7 +431,7 @@ const FeaturedProperties = ({ data }) => {
                               fontWeight: 500,
                             }}
                           >
-                            {item.currency}
+                            {item?.currency}
                           </Typography>
                           <Typography
                             variant="body1"
@@ -442,7 +442,7 @@ const FeaturedProperties = ({ data }) => {
                               fontWeight: 600,
                             }}
                           >
-                            {item.price}
+                            {item?.price}
                           </Typography>
                         </Box>
                       </Box>

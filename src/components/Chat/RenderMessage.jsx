@@ -140,16 +140,13 @@ const RenderMessage = ({
           <Box
             component={'img'}
             src="/icons/SmileyIcon.svg"
-            // src="/icons/LikeEmojiColor.svg"
             sx={{
               width: '15px',
               height: '15px',
               marginRight: '10px',
-              // cursor:'pointer'
             }}
             onClick={() => handleClickEmoji(data?.id)}
           />
-          {/* <Avatar data={selectedChatRoom} /> */}
           {clickedMessageForReactionId === data?.id && (
             <Box
               sx={{

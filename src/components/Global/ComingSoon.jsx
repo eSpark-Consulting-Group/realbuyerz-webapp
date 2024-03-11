@@ -17,7 +17,6 @@ const ComingSoon = () => (
   >
     <Grid
       container
-      xs={12}
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -35,7 +34,6 @@ const ComingSoon = () => (
               width={500}
               alt={'Images'}
             />
-            {/* //jasy hi koi achi ismage mialy gi to repace Krdoonga for coming soon */}
           </Box>
           <Box pt={'20px'}>
             <Typography

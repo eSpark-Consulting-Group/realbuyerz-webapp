@@ -26,7 +26,7 @@ const ProfilesPage = ({ agents }) => {
   const endIndex = page * itemsPerPage;
 
   // Validate agents array
-  if (!Array.isArray(agents) || agents.length === 0) {
+  if (!Array.isArray(agents) || agents?.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
@@ -49,7 +49,7 @@ const ProfilesPage = ({ agents }) => {
         {'Top Performing Agents'}
       </Typography>
       <Grid container spacing={6}>
-        {agents.slice(startIndex, endIndex).map((agent) => (
+        {agents?.slice(startIndex, endIndex).map((agent) => (
           <Grid key={agent.id} item xs={12} sm={6} md={3}>
             <Card
               sx={{
@@ -73,7 +73,7 @@ const ProfilesPage = ({ agents }) => {
                     height="100px"
                     image={agent?.profile_image}
                     alt={`${agent?.first_name} ${agent?.last_name}`}
-                    sx={{ marginBottom: '-25px' }} // Adjust the negative margin value as needed
+                    sx={{ marginBottom: '-25px' }}
                   />
                 </Link>
               </Box>
@@ -98,7 +98,6 @@ const ProfilesPage = ({ agents }) => {
                       {agent?.business_name || `${agent?.first_name}'s Agency`}
                     </Typography>
                   </Link>
-                  {/* Properties Details */}
                   <Box display={'flex'} justifyContent={'space-between'}>
                     <Link href={`/profile/${agent?.id}/projects`}>
                       <Typography variant="h6" color="text.secondary">
@@ -194,7 +193,7 @@ const ProfilesPage = ({ agents }) => {
       </Grid>
       <Box mt={3} display="flex" justifyContent="center">
         <Pagination
-          count={Math.ceil(agents.length / itemsPerPage)}
+          count={Math.ceil(agents?.length / itemsPerPage)}
           page={page}
           onChange={handlePageChange}
         />

@@ -13,7 +13,7 @@ const CategoryAgentPage = () => {
   const segments = pathname.split(`/`);
   const agentId = segments[segments.length - 4];
   const category = segments[segments.length - 1];
-  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  const capCategory = category?.charAt(0).toUpperCase() + category?.slice(1);
   const adsType = segments[segments.length - 2];
   const capAdsType = adsType.charAt(0).toUpperCase() + adsType.slice(1);
   const agents = useSelector((state) => state.agents);

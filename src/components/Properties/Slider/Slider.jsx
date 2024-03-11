@@ -24,7 +24,7 @@ const Slider = ({ propertySlider }) => {
               borderRadius: '15px',
             }}
           >
-            {propertySlider?.sliderImages?.map((item, index) => (
+            {propertySlider?.images.slice(1).map((item, index) => (
               <SwiperSlide key={index}>
                 <Image
                   src={item}

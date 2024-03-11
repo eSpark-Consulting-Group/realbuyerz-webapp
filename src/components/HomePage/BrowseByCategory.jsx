@@ -81,9 +81,7 @@ const BrowseByCategory = ({ data }) => {
               <SwiperSlide key={index}>
                 <Grid
                   container
-                  justifyContent="center" // Center the grid content horizontally
-                  item
-                  xs={12}
+                  justifyContent="center"
                   sx={{
                     width: '131px',
                     height: '130px',
@@ -118,12 +116,11 @@ const BrowseByCategory = ({ data }) => {
                       flexDirection: 'column',
                       alignItems: 'center',
                       maxWidth: '150px',
-                      margin: 'auto', // Center the content vertically and horizontally
+                      margin: 'auto',
                       gap: '10px',
                     }}
                   >
                     <Link href={`/category/${category?.id}`}>
-                      {/* Example alternative if Image component is not available */}
                       <img
                         src={category?.image}
                         alt={category?.name}
@@ -195,7 +192,6 @@ const BrowseByCategory = ({ data }) => {
                   }}
                 >
                   <Link href={`/category/${category?.id}`}>
-                    {/* Example alternative if Image component is not available */}
                     <img
                       src={category?.image}
                       alt={category?.name}

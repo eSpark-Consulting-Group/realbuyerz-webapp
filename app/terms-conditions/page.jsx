@@ -58,7 +58,7 @@ const TermsConditions = () => {
           >
             {terms.content?.map((item) => (
               <Box
-                key={item.id}
+                key={item?.id}
                 variant={'outland'}
                 sx={{
                   mx: 'auto',
@@ -77,7 +77,7 @@ const TermsConditions = () => {
                   display: 'flex',
                   alignItems: 'center',
                 }}
-                onClick={() => handleTabClick(item.id)}
+                onClick={() => handleTabClick(item?.id)}
               >
                 <Typography
                   variant="body1"
@@ -90,7 +90,7 @@ const TermsConditions = () => {
                     },
                   }}
                 >
-                  {item.tabName}
+                  {item?.tabName}
                 </Typography>
               </Box>
             ))}

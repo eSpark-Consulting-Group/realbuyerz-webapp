@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Grid, Box } from '@mui/material';
 
 import Price from './PropertyPrice';
@@ -7,13 +6,7 @@ import AgentDescription from './AgentDescription';
 import ViewAgentProfile from './ViewAgentProfile';
 import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
-const ProfileAgent = ({ data }) => {
-  const agents = useSelector((state) => state?.agents);
-  const selectedAgent = agents.find((agent) => agent?.id === data?.agent);
-  if (!selectedAgent) {
-    console.error(`Agent with id ${data} not found`);
-  }
-
+const ProfileAgent = ({ data, agentData }) => {
   return (
     <Grid container spacing={2}>
       <Grid
@@ -46,18 +39,18 @@ const ProfileAgent = ({ data }) => {
           }}
         >
           <Price
-            price={data?.propertyData?.agentPrice}
-            link={`/agents/inbox/${selectedAgent?.id}`}
-            pkr={PROPERTY_ESTATE?.propertyDetails?.unit}
+            price={data?.amount}
+            link={`/inbox/${agentData?.id}`}
+            pkr={data?.amountCurrency}
             reach={PROPERTY_ESTATE?.propertyDetails?.reach}
             message={PROPERTY_ESTATE?.propertyDetails?.message}
           />
           <ViewAgentProfile
-            image={selectedAgent?.profileImage}
-            name={`${selectedAgent?.first_name} ${selectedAgent?.last_name} `}
-            link={`agents/${selectedAgent?.id}`}
+            image={agentData?.profile_image}
+            name={`${agentData?.first_name} ${agentData?.last_name} `}
+            link={`agents/${agentData?.id}`}
           />
-          <AgentDescription description={selectedAgent?.about} />
+          <AgentDescription description={agentData?.shortintro} />
         </Box>
       </Grid>
     </Grid>

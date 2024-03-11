@@ -52,10 +52,10 @@ const TypeAgentPage = () => {
     <>
       <CategoryLink
         category={category}
-        link={`/profile/${currentAgent?.id}/projects/${adsType}/${category.toLowerCase()}`}
+        link={`/profile/${currentAgent?.id}/projects/${adsType}/${category?.toLowerCase()}`}
         linkText={'See All'}
       />
-      <ProjectsSlider data={filterData} category={category.toLowerCase()} />
+      <ProjectsSlider data={filterData} category={category?.toLowerCase()} />
     </>
   );
 

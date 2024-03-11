@@ -27,7 +27,7 @@ const Avatar = ({ data, minWidth = '40px', height = '40px', mobile }) => {
   }
 
   const renderAvatar = (data) => {
-    if (data.avatar) {
+    if (data?.avatar) {
       return (
         <Box
           component="img"

@@ -52,7 +52,7 @@ const BiddingDetails = ({ height, ads }) => {
             {ads
               ?.slice(0, showAllItems ? ads?.length : 3)
               ?.map((item, index) => (
-                <Grid container xs={12} key={index}>
+                <Grid container key={index}>
                   <Box
                     sx={{
                       width: '100%',
