@@ -1,5 +1,5 @@
 'use client';
-import { a11yProps } from '@/src/utils/tabs';
+import { a11yProps } from '@/utils/tabs';
 import { Box, Grid, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { chatRooms } from '../../../src/constants/data/chats';

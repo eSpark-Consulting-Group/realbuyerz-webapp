@@ -1,6 +1,6 @@
 'use client';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
-import { a11yProps } from '@/src/utils/tabs';
+import { a11yProps } from '@/utils/tabs';
 import { Box, Divider, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
