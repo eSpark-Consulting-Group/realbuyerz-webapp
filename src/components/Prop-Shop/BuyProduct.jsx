@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 
 import Subscription from './Subscription';
 import BuyConnects from './BuyConnects';
-import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
+import { Buy_Connects, Buy_Product_Data } from '@/src/constants/BuyProduct';
 import ProductCart from './ProductCart';
 
 const Item = styled(Paper)(({ theme }) => ({

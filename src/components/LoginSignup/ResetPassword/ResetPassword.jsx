@@ -8,7 +8,7 @@ import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
-} from '@/app/constants/Login';
+} from '@/src/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
 import { resetPassword } from '@/utils/apis/auth/resetPassword';

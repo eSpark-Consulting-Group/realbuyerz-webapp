@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
-import { FEATURED_HEADINGS } from '@/app/constants/Home';
+import { FEATURED_HEADINGS } from '@/src/constants/Home';
 import Link from 'next/link';
 
 const OurHomePartners = ({ data }) => {

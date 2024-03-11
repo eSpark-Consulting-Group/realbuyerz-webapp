@@ -1,4 +1,4 @@
-import { ALL, ZERO } from '@/app/constants/Proposals';
+import { ALL, ZERO } from '@/src/constants/Proposals';
 
 export const filterProposals = (item, search) => {
   return (

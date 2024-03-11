@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from 'next/link';
-import { ROUTERS } from '@/app/constants/LiveBidding';
+import { ROUTERS } from '@/src/constants/LiveBidding';
 
 const AvailableConnects = ({ profileInfo }) => {
   return (

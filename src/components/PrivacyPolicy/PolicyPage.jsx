@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import PolicyCard from '@/src/components/PrivacyPolicy/PolicyCard';
-import { CARDS } from '@/app/constants/PrivacyPolicy';
+import { CARDS } from '@/src/constants/PrivacyPolicy';
 import { useSelector } from 'react-redux';
 
 const PolicyPage = () => {

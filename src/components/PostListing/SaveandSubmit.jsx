@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Grid } from '@mui/material';
 
 import HideUnhideButton from './HideButton';
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
 import { usePathname } from 'next/navigation';
 
 const SubmitButton = ({ handleClickOpen, formik, setAction }) => {

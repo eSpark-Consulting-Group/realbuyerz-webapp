@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery } from '@mui/material';
-import { HERO_SECTION_CONTENT } from '@/app/constants/Constants';
+import { HERO_SECTION_CONTENT } from '@/src/constants/Constants';
 import Heading from './Heading';
 import LinearProgressBar from './LinearProgress';
 import Link from 'next/link';

@@ -11,7 +11,7 @@ import {
   POST_LISTING,
   adSumitModal,
   draftModal,
-} from '@/app/constants/postListing';
+} from '@/src/constants/postListing';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';

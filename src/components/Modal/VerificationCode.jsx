@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 
 import { verificationState } from '@/utils/verification';
-import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import { VERIFICATION_OTP } from '@/src/constants/Modal';
 import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/utils/codeValidation';
 import { isInputValid } from '@/utils/inputValid';

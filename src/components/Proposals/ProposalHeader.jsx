@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-import { Proposals } from '@/app/constants/Proposals';
+import { Proposals } from '@/src/constants/Proposals';
 
 const ProposalHeader = ({ proposal }) => {
   const agents = useSelector((state) => state?.agents);

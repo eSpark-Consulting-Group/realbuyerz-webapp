@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import OrderSummary from './OrderSummary';
 import EmptyCart from './EmptyCart';
-import { Empty_Cart_data, Order_Summary } from '@/app/constants/BuyProduct';
+import { Empty_Cart_data, Order_Summary } from '@/src/constants/BuyProduct';
 
 const ProductCart = () => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(

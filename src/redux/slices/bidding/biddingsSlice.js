@@ -1,4 +1,4 @@
-import { BIDDINGS_DATA } from '@/app/constants/finalConstants/Biddings';
+import { BIDDINGS_DATA } from '@/src/constants/finalConstants/Biddings';
 import { createSlice } from '@reduxjs/toolkit';
 
 const biddings = BIDDINGS_DATA;

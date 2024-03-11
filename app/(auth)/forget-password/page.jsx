@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
 
 const ForgetPasswordForm = () => {
   return (

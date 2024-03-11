@@ -11,7 +11,7 @@ import {
   FOR_SALE,
   FOR_SALE_ICON,
   LOCATION_ICON,
-} from '@/app/constants/AgentProfile';
+} from '@/src/constants/AgentProfile';
 
 const AgentProfileDetail = ({
   description,

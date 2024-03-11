@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 
 import PropertyTypes from './PropertyPlot';
-import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
+import { PROPERTY_PURPOSE } from '@/src/constants/Properties';
 
 const SelectProperyType = ({
   image,

@@ -8,7 +8,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
 import { useDispatch } from 'react-redux';
 import { handleAdaminities } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
