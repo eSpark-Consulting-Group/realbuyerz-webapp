@@ -377,44 +377,51 @@ const MyProperty = () => {
         >
           {currentTab === 'All'
             ? getFilteredOutput(find_posting, filterObject)?.map(
+              (item, index) => (
+                <ProposalCard
+                  key={index}
+                  data={item}
+                  currentTab={currentTab}
+                  
+                />
+              )
+            )
+            : currentTab === 'Active'
+              ? getFilteredOutput(find_active, filterObject)?.map(
                 (item, index) => (
                   <ProposalCard
                     key={index}
                     data={item}
                     currentTab={currentTab}
+                    
+
                   />
                 )
               )
-            : currentTab === 'Active'
-              ? getFilteredOutput(find_active, filterObject)?.map(
+              : currentTab === 'Draft'
+                ? getFilteredOutput(find_draft, filterObject)?.map(
                   (item, index) => (
                     <ProposalCard
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      
+
                     />
                   )
                 )
-              : currentTab === 'Draft'
-                ? getFilteredOutput(find_draft, filterObject)?.map(
+                : currentTab === 'Trash'
+                  ? getFilteredOutput(find_trash, filterObject)?.map(
                     (item, index) => (
                       <ProposalCard
                         key={index}
                         data={item}
                         currentTab={currentTab}
+                        
+
                       />
                     )
                   )
-                : currentTab === 'Trash'
-                  ? getFilteredOutput(find_trash, filterObject)?.map(
-                      (item, index) => (
-                        <ProposalCard
-                          key={index}
-                          data={item}
-                          currentTab={currentTab}
-                        />
-                      )
-                    )
                   : null}
         </Box>
       </Box>

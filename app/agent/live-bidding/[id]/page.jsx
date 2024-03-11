@@ -83,14 +83,16 @@ const Page = () => {
                       instalmentAvailable={spacificPost?.instalmentAvailable}
                       readyPossession={spacificPost?.readyPossession}
                     />
-                    <PreviewFeatureAndAmenities
-                      amenities={amenities}
-                      bedrooms={spacificPost?.bedrooms}
-                      bathrooms={spacificPost?.bathrooms}
-                      parking={spacificPost?.parking}
-                      other_features={spacificPost?.other_features}
-                      getSelectedAmenities={getSelectedAmenities}
-                    />
+                      <PreviewFeatureAndAmenities
+                        amenities={amenities}
+                        bedrooms={spacificPost?.bedrooms}
+                        bathrooms={spacificPost?.bathrooms}
+                        parking={spacificPost?.parking}
+                        other_features={spacificPost?.other_features}
+                        // getSelectedAmenities={getSelectedAmenities}
+                        spacificPost={spacificPost}
+                        // formik={formik}
+                      />
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={3.5} xl={2.5}>

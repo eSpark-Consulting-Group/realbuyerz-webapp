@@ -86,6 +86,7 @@ const Page = () => {
                       bathrooms={spacificPost?.bathrooms}
                       parking={spacificPost?.parking}
                       other_features={spacificPost?.other_features}
+                      spacificPost={spacificPost}
                     />
                   </Box>
                 </Grid>

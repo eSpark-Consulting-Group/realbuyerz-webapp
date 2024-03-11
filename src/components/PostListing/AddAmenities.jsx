@@ -7,7 +7,6 @@ import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const AddAmenities = ({ onSelected, formik, setSelectedAmenities, selectedAmenities, handleSeletedAmenites }) => {
   const [open, setOpen] = useState(false);
-  // const [selectedAmenities, setSelectedAmenities] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
