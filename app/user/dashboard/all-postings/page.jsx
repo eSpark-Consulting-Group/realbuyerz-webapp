@@ -1,6 +1,6 @@
 'use client';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
-import { a11yProps } from '@/src/utils/tabs';
+import { a11yProps } from '@/utils/tabs';
 import {
   Autocomplete,
   Box,
