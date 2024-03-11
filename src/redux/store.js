@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import propertiesSlice from './slices/properties/propertiesSlice';
 import propertiesCategoriesSlice from './slices/properties/propertiesCategoriesSlice';
 import propertiesAmenitiesSlice from './slices/properties/propertiesAmenitiesSlice';

@@ -1,19 +1,17 @@
 import React from 'react';
-import { Grid } from '@mui/material';
-
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { Grid } from '@mui/material';
 import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
-
-const Signup = () => {
+const Page = () => {
   return (
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.signup}
-          height={LOGIN_FORM.rectangleHeight.signupFormHeight}
+          showComponent={AUTH_COMPONENTS?.Page}
+          height={LOGIN_FORM?.rectangleHeight?.PageFormHeight}
         />
       </Grid>
     </>
   );
 };
-export default Signup;
+export default Page;

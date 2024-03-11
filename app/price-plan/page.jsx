@@ -1,7 +1,7 @@
 import React from 'react';
 import PricePlan from '@/src/components/PlanPrice/PricePlan';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <PricePlan />
@@ -9,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

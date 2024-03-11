@@ -4,16 +4,16 @@ import { Grid } from '@mui/material';
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
 import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
 
-const Signin = () => {
+const Page = () => {
   return (
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.signin}
-          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+          showComponent={AUTH_COMPONENTS?.Page}
+          height={LOGIN_FORM?.rectangleHeight?.loginFormHeight}
         />
       </Grid>
     </>
   );
 };
-export default Signin;
+export default Page;
