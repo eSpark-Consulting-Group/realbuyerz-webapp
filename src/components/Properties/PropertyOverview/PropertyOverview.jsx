@@ -47,13 +47,19 @@ const PropertyOverview = ({ propertyData, overview }) => {
             component={Paper}
             sx={{
               justifyContent: { xs: 'center', md: 'none' },
-              overflow: 'auto',
               maxHeight: '300px',
               borderSpacing: '10px',
               borderRadius: '50px',
-              px: '50px',
+              px: '60px',
               backgroundColor: '#000',
               marginBottom: '10px',
+              overflowX: { xs: 'auto', md: 'hidden' },
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              '@media (min-width: 900px) and (max-width: 1400px)': {
+                overflowX: 'auto',
+              },
             }}
           >
             <Table>
@@ -67,9 +73,11 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           borderCollapse: 'collapse',
                           color: 'white',
                           backgroundColor: 'black',
-                          overflow: 'hidden',
+                          // overflow: 'scroll',
                           border: 'none',
                           fontSize: '15px',
+                          padding: '15px',
+                          px: '26px',
                         }}
                       >
                         {propertytype?.label}
@@ -80,14 +88,20 @@ const PropertyOverview = ({ propertyData, overview }) => {
               </TableBody>
             </Table>
           </TableContainer>
-
           <TableContainer
             component={Paper}
             sx={{
-              justifyContent: { xs: 'center', md: 'none' },
-              overflow: 'auto',
+              // justifyContent: { xs: 'center', md: 'center' },
+              overflowX: { xs: 'auto', md: 'hidden' },
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
               maxHeight: '300px',
               borderSpacing: '10px',
+              width: '90%',
+              mx: 'auto',
+              // marginLeft: { xs: '10px', md: '28px' },
+              marginBottom: '20px',
             }}
           >
             <Table
@@ -104,8 +118,10 @@ const PropertyOverview = ({ propertyData, overview }) => {
                         sx={{
                           background: '#F8F8F8',
                           border: '1px solid #B8B8B8',
-                          marginBottom: '20px',
-                          padding: '20px',
+                          // padding: '20px',
+                          fontSize: '16px',
+                          width: '121px',
+                          height: '70px',
                         }}
                       >
                         {propertyData?.propertyOverview[key]}
