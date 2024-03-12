@@ -9,7 +9,7 @@ import {
   VIEW_BUTTON,
 } from '@/app/constants/AgentProfile';
 
-const PropertyForRent = ({ rentCount, link }) => {
+const PropertyForRent = ({ data, link }) => {
   return (
     <>
       <Grid container justifyContent="space-between">
@@ -40,7 +40,7 @@ const PropertyForRent = ({ rentCount, link }) => {
                 ml: 1,
               }}
             >
-              {`${rentCount?.total} ${PROPERTIES_FOR_RENT}`}
+              {`${data} ${PROPERTIES_FOR_RENT}`}
             </Typography>
           </Box>
         </Grid>

@@ -27,7 +27,7 @@ export default function BuyProduct() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container xs={12} md={12} lg={12} item spacing={2.2}>
+      <Grid container>
         <Grid xs={12} sm={12} md={12} lg={8.5} item>
           <Item>
             <Subscription title={Buy_Product_Data?.title} />

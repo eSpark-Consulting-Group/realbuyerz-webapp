@@ -115,7 +115,7 @@ const FormContainer = ({
               onChange={handleInputContactNumber}
               sx={{
                 '& input[type=number]::-webkit-inner-spin-button': {
-                  '-webkit-appearance': 'none',
+                  WebkitAppearance: 'none',
                   margin: 0,
                 },
               }}

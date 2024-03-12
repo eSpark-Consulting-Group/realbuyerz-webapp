@@ -132,51 +132,6 @@ const DesktopDashboardHeader = ({
               >
                 {LINK_NAME}
               </Link>
-
-              {/* <Button
-                sx={{
-                  color: '#000',
-                  border: '1px solid #E7E7E7',
-                  mx: 2,
-                }}
-              >
-                <Box
-                  sx={{
-                    display: 'flex',
-                    marginRight: '8px',
-                    marginLeft: '8px',
-                    p: 0.5,
-                  }}
-                >
-                  <Image
-                    src={item?.myListingIcon}
-                    width={20}
-                    height={20}
-                    alt={'icon'}
-                  />
-                  <Typography mx={1}>{MY_LISTING}</Typography>
-                </Box>
-              </Button>
-              <Button variant={'primary'}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    marginRight: '8px',
-                    marginLeft: '8px',
-                    p: 0.6,
-                    color: '#fff',
-                  }}
-                >
-                  <Image
-                    src={item?.PostListingIcon}
-                    width={20}
-                    height={20}
-                    alt={'icon'}
-                  />
-                  <Typography mx={1}>{POST_LISTING}</Typography>
-                </Box>
-              </Button> */}
-
               <IconButton
                 sx={{
                   p: 0,

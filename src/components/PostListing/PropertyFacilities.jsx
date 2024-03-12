@@ -94,7 +94,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
             >
               <Box sx={{ width: '130px' }}>
                 <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>
-                  {item.text}
+                  {item?.text}
                 </Typography>
               </Box>
               <Box sx={{ width: 'auto' }}>

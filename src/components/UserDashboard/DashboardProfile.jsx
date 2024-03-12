@@ -26,7 +26,7 @@ const DashboardProfile = ({
     <Box className="scrollable" sx={{ height: Height }}>
       <>
         {proposalData
-          ?.slice(0, showAllItems ? proposalData?.length : 2)
+          ?.slice(0, showAllItems ? proposalData.length : 2)
           .map((item, index) => (
             <>
               <Box

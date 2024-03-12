@@ -88,7 +88,7 @@ const Facilities = ({ facilitiesData, cancel, formik }) => {
                   onChange={(e) => {
                     handleCheckboxChange(
                       e,
-                      item.image,
+                      item?.image,
                       item?.title,
                       item?.name
                     );

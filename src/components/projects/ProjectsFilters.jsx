@@ -120,7 +120,6 @@ const ProjectsFilters = ({ data }) => {
             </Select>
           </FormControl>
 
-          {/* Dropdown propertySize */}
           <FormControl>
             <InputLabel>propertySize</InputLabel>
             <Select
@@ -139,8 +138,6 @@ const ProjectsFilters = ({ data }) => {
               ))}
             </Select>
           </FormControl>
-
-          {/* Search Input */}
           <Input
             placeholder="Search..."
             value={filterValues?.searchInput}

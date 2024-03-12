@@ -25,7 +25,6 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => {
     >
       <Grid
         container
-        xs={12}
         sx={{
           display: 'flex',
           flexDirection: 'column',

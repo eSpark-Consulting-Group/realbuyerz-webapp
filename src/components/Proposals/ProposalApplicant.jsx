@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const ProposalApplicant = ({ proposal }) => {
   const agents = useSelector((state) => state?.agents);
 
-  const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
+  const selectedAgent = agents?.find((agent) => agent?.id === proposal?.agent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);

@@ -65,7 +65,7 @@ const Page = () => {
       .string('Enter description')
       .required('Description is required'),
     purpose: yup.string(''),
-    proportyCategory: yup.string(''),
+    propertyCategory: yup.string(''),
     propertyType: yup.string(''),
     city: yup.string('Enter city').required('City is required'),
     area: yup.string('Enter area').required('Area is required'),
@@ -123,7 +123,7 @@ const Page = () => {
     concierge_services: 0,
     business_centre: 0,
     purpose: 'Sell',
-    proportyCategory: 'House',
+    propertyCategory: 'House',
     propertyType: 'Sell',
     instalmentAvailable: false,
     readyPossession: false,

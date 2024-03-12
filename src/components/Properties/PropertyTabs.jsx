@@ -13,7 +13,7 @@ const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter(
+      : data?.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
 
@@ -98,7 +98,7 @@ const PropertyTabs = ({ data }) => {
   const filteredProperties =
     propertyType === ''
       ? data
-      : data.filter(
+      : data?.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
   return (

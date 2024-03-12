@@ -100,7 +100,7 @@ const LiveBiddingPropertiesList = ({
             variant="body1"
             sx={{ color: '#333333', fontWeight: 500 }}
           >
-            {proposal?.length || ''}
+            {proposal.length || ''}
           </Typography>
         </Box>
       ) : null}

@@ -40,7 +40,6 @@ const Page = () => {
 
       // Generate a random index to select a color from the array
       const randomIndex = Math.floor(Math.random() * darkColors.length);
-      console.log(currentTab);
       // Return the randomly selected color
       return darkColors[randomIndex];
     }

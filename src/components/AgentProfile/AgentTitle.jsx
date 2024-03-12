@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { PROPERTIES_BY } from '@/app/constants/AgentProfile';
 import Link from 'next/link';
 
-const AgentTitle = ({ title, link }) => {
+const AgentTitle = ({ count, title, link }) => {
   return (
     <Link href={link}>
       <Typography
@@ -17,7 +17,7 @@ const AgentTitle = ({ title, link }) => {
           lineHeight: 'normal',
         }}
       >
-        {`${PROPERTIES_BY} ${title}`}
+        {`${count} ${PROPERTIES_BY} ${title}`}
       </Typography>
     </Link>
   );

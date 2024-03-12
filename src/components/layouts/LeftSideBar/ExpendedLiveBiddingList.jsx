@@ -22,9 +22,9 @@ const ExpendedLiveBiddingList = ({ list }) => {
   return (
     <Box>
       {list?.map((item) => {
-        const isItemOpen = item.id === openItemId;
+        const isItemOpen = item?.id === openItemId;
         return (
-          <Box key={item.id}>
+          <Box key={item?.id}>
             <Box
               sx={{
                 width: { lg: '96%', xs: '100%' },
@@ -44,7 +44,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   backgroundColor: 'transparent !important',
                 },
               }}
-              onClick={() => toggleCollapse(item.id)}
+              onClick={() => toggleCollapse(item?.id)}
             >
               <Box
                 sx={{
@@ -75,9 +75,9 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   </Link>
                 </Typography>
               </Box>
-              {item.subItem && (
+              {item?.subItem && (
                 <IconButton
-                  onClick={() => toggleCollapse(item.id)}
+                  onClick={() => toggleCollapse(item?.id)}
                   sx={{
                     marginRight: { xs: '0px', lg: '-20px' },
                     '&:hover': { backgroundColor: '#fff !important' },
@@ -92,7 +92,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
               )}
             </Box>
             <Collapse in={isItemOpen}>
-              {item.subItem && item.subItem.length > 0 && (
+              {item?.subItem && item?.subItem.length > 0 && (
                 <Box
                   sx={{
                     paddingLeft: '45px',
@@ -100,7 +100,7 @@ const ExpendedLiveBiddingList = ({ list }) => {
                   }}
                 >
                   <Typography variant="ul">
-                    {item.subItem.map((item, index) => (
+                    {item?.subItem.map((item, index) => (
                       <Typography
                         variant="li"
                         sx={{

@@ -13,7 +13,7 @@ import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const ProposalCard = ({ key, data, currentTab, link }) => {
+const ProposalCard = ({ data, currentTab, link, key }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
