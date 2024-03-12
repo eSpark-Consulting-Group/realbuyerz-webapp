@@ -317,7 +317,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               {selectedChatRoom?.title}
             </Typography>
           </Box>
-          <Box sx={{ width: '10%' }}>
+          <Box sx={{ marginRight: '10px' }}>
             <Image
               width={3}
               height={15}
@@ -637,6 +637,22 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   </Box>
                 )}
               </Box>
+              <Box
+                src="/icons/SendMessageIcon.svg"
+                component={'img'}
+                alt={'Send Message'}
+                sx={{
+                  marginLeft: { xs: '5px', sm: '10px' },
+                  marginRight: { xs: '5px', sm: '10px' },
+                  width: { xs: '20px', sm: '36px' },
+                  height: { xs: '20px', sm: '36px' },
+                  display: 'none',
+                  '@media (min-width: 280px) and (max-width: 1526px)': {
+                    display: 'flex',
+                  },
+                }}
+                onClick={sendMessage}
+              />
             </Box>
           </Box>
           <Box
@@ -648,6 +664,9 @@ const ChatRoom = ({ selectedChatRoom }) => {
               marginRight: { xs: '5px', sm: '10px' },
               width: { xs: '20px', sm: '36px' },
               height: { xs: '20px', sm: '36px' },
+              '@media (min-width: 280px) and (max-width: 1526px)': {
+                display: 'none',
+              },
             }}
             onClick={sendMessage}
           />

@@ -30,7 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProfileForm({ data, formValues }) {
-  const { image, fields, buttonText } = data;
+  const { fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
@@ -93,7 +93,6 @@ export default function ProfileForm({ data, formValues }) {
         spacing={1}
         sx={{
           mx: 'auto',
-          backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '60%' },
