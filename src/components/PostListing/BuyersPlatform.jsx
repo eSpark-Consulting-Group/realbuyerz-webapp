@@ -9,7 +9,7 @@ import {
 } from '@/src/constants/postListing';
 import { usePathname } from 'next/navigation';
 
-const BuyersPlatform = ({ propertyData }) => {
+const BuyersPlatform = ({ propertyData, fontSize }) => {
   const pathName = usePathname();
   const coverLetterPath = '/cover-letter';
   return (
@@ -38,6 +38,7 @@ const BuyersPlatform = ({ propertyData }) => {
             }}
           >
             <ReachBuyer
+              fontSize={fontSize}
               title={
                 pathName.includes(coverLetterPath)
                   ? reachBuyerCoverLetter?.title
