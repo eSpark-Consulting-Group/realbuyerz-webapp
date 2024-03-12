@@ -280,11 +280,8 @@ const Page = () => {
                     />
                     <Amount />
                     <PreviewFeatureAndAmenities
+                      spacificPost={find_proposal}
                       amenities={amenities}
-                      bedrooms={find_ad?.bedrooms}
-                      bathrooms={find_ad?.bathrooms}
-                      parking={find_ad?.parking}
-                      spacificPost={find_ad}
                     />
                   </>
                 )}

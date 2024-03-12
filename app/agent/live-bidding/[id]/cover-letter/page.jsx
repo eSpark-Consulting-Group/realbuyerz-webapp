@@ -70,9 +70,6 @@ const Page = () => {
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
   };
-  const getSelectedAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -217,7 +214,6 @@ const Page = () => {
                 open={open}
                 onClose={handleClose}
                 ads={formik?.values}
-                getSelectedAmenities={getSelectedAmenities}
                 formik={formik}
               />
             </Box>

@@ -127,6 +127,9 @@ const MyProperty = () => {
       property_Type: '',
     });
   };
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
 
   return (
     <>
@@ -382,6 +385,7 @@ const MyProperty = () => {
                     key={index}
                     data={item}
                     currentTab={currentTab}
+                    getSelectedAmenities={getSelectedAmenities}
                   />
                 )
               )
@@ -392,6 +396,8 @@ const MyProperty = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                     getSelectedAmenities={getSelectedAmenities}
+
                     />
                   )
                 )
@@ -402,6 +408,8 @@ const MyProperty = () => {
                         key={index}
                         data={item}
                         currentTab={currentTab}
+                       getSelectedAmenities={getSelectedAmenities}
+
                       />
                     )
                   )
@@ -412,6 +420,8 @@ const MyProperty = () => {
                           key={index}
                           data={item}
                           currentTab={currentTab}
+                          getSelectedAmenities={getSelectedAmenities}
+
                         />
                       )
                     )

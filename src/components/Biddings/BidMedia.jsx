@@ -116,6 +116,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
             display: 'flex',
             justifyContent: 'space-between',
             flexDirection: { xs: 'column', md: 'row' },
+            mb: media && media.length <= 3 ? '20px' : '0px'
           }}
         >
           <Typography
@@ -128,25 +129,28 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
           >
             {title}
           </Typography>
-          <Button
-            sx={{
-              mx: '4px',
-              fontWeight: 600,
-              width: { xs: '150px', md: '150px' },
-              height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-              color: '#FB631C',
-              marginBottom: '15px',
-              marginTop: { xs: '20px', md: '0px' },
-              '&:hover': {
-                color: '#fff',
-              },
-              borderRadius: '50px',
-            }}
-            variant="outlined"
-            onClick={handleOpen}
-          >
-            {BIDDINGS.ViewAllbutton.title}
-          </Button>
+
+          {media && media.length > 3 && (
+            <Button
+              sx={{
+                mx: '4px',
+                fontWeight: 600,
+                width: { xs: '150px', md: '150px' },
+                height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+                color: '#FB631C',
+                marginBottom: '15px',
+                marginTop: { xs: '20px', md: '0px' },
+                '&:hover': {
+                  color: '#fff',
+                },
+                borderRadius: '50px',
+              }}
+              variant="outlined"
+              onClick={handleOpen}
+            >
+              {BIDDINGS.ViewAllbutton.title}
+            </Button>)
+          }
         </Box>
         <BidSlider media={media} mediaType={mediaType} />
       </Box>

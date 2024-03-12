@@ -157,10 +157,6 @@ const Page = () => {
     validateOnChange: false,
     validateOnBlur: false,
   });
-  const getSelectedAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -197,7 +193,6 @@ const Page = () => {
               open={open}
               onClose={handleClose}
               ads={formik?.values}
-              getSelectedAmenities={getSelectedAmenities}
               formik={formik}
             />
           </Box>

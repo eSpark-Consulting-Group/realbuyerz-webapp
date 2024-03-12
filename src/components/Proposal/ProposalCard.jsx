@@ -13,7 +13,7 @@ import {
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
 
-const ProposalCard = ({ key, data, currentTab, link }) => {
+const ProposalCard = ({ key, data, currentTab, link , getSelectedAmenities}) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -326,7 +326,9 @@ const ProposalCard = ({ key, data, currentTab, link }) => {
           </Button>
         )}
       </Box>
-      <PreviewModal open={open} onClose={handleClose} ads={data} />
+      <PreviewModal open={open} onClose={handleClose} ads={data} 
+                    getSelectedAmenities={getSelectedAmenities}
+      />
     </Box>
   );
 };

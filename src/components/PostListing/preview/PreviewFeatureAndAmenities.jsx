@@ -1,71 +1,42 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { propertyNames } from '@/app/constants/postListing';
 
+const renderDetail = (title, value, amenities, fontStyle, fontWeight) => {
+  if (value > 0) {
+    return (
+      <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
+        <Typography
+          sx={{
+            fontSize: fontStyle ? fontStyle : '14px',
+            fontWeight: fontWeight ? fontWeight : 500,
+          }}
+        >
+          {amenities?.[title]}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: fontStyle ? fontStyle : '14px',
+            fontWeight: 500,
+            color: '#126FAA',
+          }}
+        >
+          {value && value}
+        </Typography>
+      </Box>
+    );
+  }
+  return null;
+};
 const PreviewFeatureAndAmenities = ({
-  bedrooms,
-  bathrooms,
-  parking,
   amenities,
   fontSize,
   fontStyle,
   fontWeight,
-  getSelectedAmenities,
   formik,
+  getSelectedAmenities,
   spacificPost,
 }) => {
-  let filteredProperties = [];
-
-  if (spacificPost) {
-    const {
-      clubhouse,
-      swimming_pool,
-      fitness_center,
-      playground,
-      servant_area,
-      utility_store,
-      rooftop_terrace,
-      on_site_maintenance,
-      washing_area,
-      hour_electricity,
-      auto_generator,
-      complete_boundary_wall,
-      walking_trails,
-      pet_friendly_facilities,
-      security,
-      masjid,
-      corridor,
-      r_o_plant,
-      basketball_courts,
-      huge_park,
-      concierge_services,
-      business_centre,
-    } = spacificPost;
-
-    filteredProperties = Object.entries({
-      clubhouse,
-      swimming_pool,
-      fitness_center,
-      playground,
-      servant_area,
-      utility_store,
-      rooftop_terrace,
-      on_site_maintenance,
-      washing_area,
-      hour_electricity,
-      auto_generator,
-      complete_boundary_wall,
-      walking_trails,
-      pet_friendly_facilities,
-      security,
-      masjid,
-      corridor,
-      r_o_plant,
-      basketball_courts,
-      huge_park,
-      concierge_services,
-      business_centre,
-    }).filter(([value]) => typeof value === 'number' && value > 0);
-  }
   return (
     <>
       {amenities?.title && (
@@ -85,116 +56,32 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {bedrooms > 0 && (
-            <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {amenities?.bedrooms}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {bedrooms && bedrooms}
-              </Typography>
-            </Box>
-          )}
-          {parking > 0 && (
-            <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {amenities?.parking}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {parking && parking}
-              </Typography>
-            </Box>
-          )}
-          {bathrooms > 0 && (
-            <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {amenities?.bathrooms}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {bathrooms && bathrooms}
-              </Typography>
-            </Box>
-          )}
+          {
+            propertyNames.map((propertyName, index) => (
+              renderDetail(propertyName, spacificPost?.[propertyName], amenities, fontSize, fontStyle, fontWeight, getSelectedAmenities)
+            ))
+          }
           {getSelectedAmenities?.map((item, index) => (
-            <>
-              <Box key={index} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-                <Typography
-                  sx={{
-                    fontSize: fontStyle ? fontStyle : '14px',
-                    fontWeight: fontWeight ? fontWeight : 500,
-                  }}
-                >
-                  {item?.name}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: fontStyle ? fontStyle : '14px',
-                    fontWeight: 500,
-                    color: '#126FAA',
-                  }}
-                >
-                  {formik?.values[item?.name]}
-                </Typography>
-              </Box>
-            </>
+            <Box key={index} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
+              <Typography
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: fontWeight ? fontWeight : 500,
+                }}
+              >
+                {item?.text}:
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: 500,
+                  color: '#126FAA',
+                }}
+              >
+                {formik?.values[item?.name]}
+              </Typography>
+            </Box>
           ))}
-
-          {filteredProperties.map(([key, value], index) => {
-            return (
-              <Box key={index} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-                <Typography
-                  sx={{
-                    fontSize: fontStyle ? fontStyle : '14px',
-                    fontWeight: fontWeight ? fontWeight : 500,
-                  }}
-                >
-                  {key}:
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: fontStyle ? fontStyle : '14px',
-                    fontWeight: 500,
-                    color: '#126FAA',
-                  }}
-                >
-                  {value}
-                </Typography>
-              </Box>
-            );
-          })}
         </Box>
       )}
     </>

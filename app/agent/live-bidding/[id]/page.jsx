@@ -83,10 +83,6 @@ const Page = () => {
                     />
                     <PreviewFeatureAndAmenities
                       amenities={amenities}
-                      bedrooms={spacificPost?.bedrooms}
-                      bathrooms={spacificPost?.bathrooms}
-                      parking={spacificPost?.parking}
-                      other_features={spacificPost?.other_features}
                       spacificPost={spacificPost}
                     />
                   </Box>
