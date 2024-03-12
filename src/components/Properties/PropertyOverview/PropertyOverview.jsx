@@ -9,6 +9,7 @@ import {
   Typography,
   Paper,
   TableContainer,
+  TableHead,
 } from '@mui/material';
 
 import { PROPERTY_ESTATE } from '@/src/constants/Properties';
@@ -39,7 +40,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             borderTop: 'none',
             display: 'flex',
             flexDirection: 'column',
-            gap: '20px',
+            gap: '15px',
             height: '170px',
           }}
         >
@@ -57,7 +58,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             }}
           >
             <Table>
-              <TableBody>
+              <TableHead>
                 <TableRow sx={{}}>
                   {PROPERTY_ESTATE?.propertyAttributes?.map(
                     (propertytype, index) => (
@@ -69,6 +70,8 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           backgroundColor: 'black',
                           overflow: 'hidden',
                           border: 'none',
+                          width: `${100 / 7}%`,
+                          textAlign: 'center',
                           fontSize: '15px',
                         }}
                       >
@@ -77,7 +80,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                     )
                   )}
                 </TableRow>
-              </TableBody>
+              </TableHead>
             </Table>
           </TableContainer>
 
@@ -86,7 +89,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             sx={{
               justifyContent: { xs: 'center', md: 'none' },
               overflow: 'auto',
-              maxHeight: '300px',
+              // maxHeight: '300px',
               borderSpacing: '10px',
             }}
           >
@@ -96,22 +99,29 @@ const PropertyOverview = ({ propertyData, overview }) => {
               }}
             >
               <TableBody>
-                <TableRow>
-                  {Object.keys(propertyData?.propertyOverview).map(
-                    (key, index) => (
-                      <TableCell
-                        key={index}
-                        sx={{
-                          background: '#F8F8F8',
-                          border: '1px solid #B8B8B8',
-                          marginBottom: '20px',
-                          padding: '20px',
-                        }}
-                      >
-                        {propertyData?.propertyOverview[key]}
-                      </TableCell>
-                    )
-                  )}
+                <TableRow sx={{margin:'20px'}}>
+                  {[
+                    'propertyType',
+                    'locality',
+                    'amount',
+                    'purpose',
+                    'bedrooms',
+                    'bathrooms',
+                    'parking',
+                  ].map((key, index) => (
+                    <TableCell
+                      key={index}
+                      sx={{
+                        background: '#F8F8F8',
+                        border: '1px solid #B8B8B8',
+                        padding: '10px',
+                        width: `${100 / 7}%`,
+                        textAlign: 'center',
+                      }}
+                    >
+                      {propertyData?.[key]}
+                    </TableCell>
+                  ))}
                 </TableRow>
               </TableBody>
             </Table>

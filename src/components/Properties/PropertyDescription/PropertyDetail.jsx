@@ -7,13 +7,17 @@ import PropertyAmenities from './PropertyAmenities';
 import PropertyArea from './PropertyArea';
 import PropertyDescription from './PropertyDescription';
 import PropertyMapLocation from './PropertyMapLocation';
-
-import { PROPERTY_ESTATE } from '@/src/constants/Properties';
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+import PropertyOverview from '../PropertyOverview/PropertyOverview';
 
 const PropertyDetails = ({ propertyDetailsData }) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
+        <PropertyOverview
+          propertyData={propertyDetailsData}
+          overview={PROPERTY_ESTATE?.propertyDetails?.overview}
+        />
         <Box sx={{ padding: '15px' }}>
           <PropertyTitle
             title={propertyDetailsData?.title}
