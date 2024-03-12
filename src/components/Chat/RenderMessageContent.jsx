@@ -62,7 +62,7 @@ const RenderMessageContent = ({ data }) => {
                         fontWeight: 500,
                       }}
                     >
-                      + {data?.content?.length - 4}
+                      + {data?.content.length - 4}
                     </Typography>
                   </Box>
                 }

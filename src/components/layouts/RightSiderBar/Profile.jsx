@@ -7,6 +7,7 @@ const Profile = ({ profileInfo }) => {
   return (
     <>
       <Grid
+        container
         spacing={2}
         sx={{
           width: '100%',

@@ -94,7 +94,7 @@ const FilterComponent = ({ data }) => {
         projects?.amount >= selectedAreaRange[1] &&
         projects?.amountCurrency === selectedPriceUnit &&
         projects?.propertyType === selectedProperty &&
-        projects?.proportyCategory === selectedPropertyTab
+        projects?.propertyCategory === selectedPropertyTab
       );
     });
     console.log(filteredData);

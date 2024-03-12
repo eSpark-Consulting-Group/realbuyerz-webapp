@@ -134,7 +134,12 @@ const FooterCta = ({ data }) => {
         >
           <Bounce direction="right" triggerOnce duration={300}>
             <Box>
-              <Image src={data.appImage} alt={'App'} width={350} height={400} />
+              <Image
+                src={data?.appImage}
+                alt={'App'}
+                width={350}
+                height={400}
+              />
             </Box>
           </Bounce>
         </Grid>
@@ -177,7 +182,12 @@ const FooterCta = ({ data }) => {
         >
           {data?.paymentMethods?.map((method, index) => (
             <Box key={index}>
-              <Image src={method.icon} alt={method.alt} width={35} height={7} />
+              <Image
+                src={method?.icon}
+                alt={method?.alt}
+                width={35}
+                height={7}
+              />
             </Box>
           ))}
         </Grid>

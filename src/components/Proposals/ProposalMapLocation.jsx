@@ -134,10 +134,10 @@ const ProposalMapLocation = ({ location }) => {
           title="Property Location"
           width="100%"
           height="150"
-          allowfullscreen=""
+          allowFullScreen=""
           frameBorder="0"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </Box>
     </Box>

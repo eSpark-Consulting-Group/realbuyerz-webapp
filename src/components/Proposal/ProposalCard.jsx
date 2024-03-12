@@ -12,7 +12,7 @@ import {
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
 
-const ProposalCard = ({ key, data, currentTab, link }) => {
+const ProposalCard = ({ data, currentTab, link }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -80,26 +80,15 @@ const ProposalCard = ({ key, data, currentTab, link }) => {
               borderRadius: '20px',
               padding: { xs: '10px', md: '25px 30px' },
               marginBottom: '30px',
-              marginTop: key === 0 && '30px',
+              marginTop: '30px',
               cursor: 'pointer',
               position: 'relative',
               zIndex: 2,
             }}
           >
-            <Grid item xs={0} sm={4} md={3.65}>
-              <Box
-                component={'img'}
-                src={`${data?.images || ''}`}
-                sx={{
-                  width: '100%',
-                }}
-              />
-            </Grid>
             <Grid
               item
               xs={12}
-              sm={8}
-              md={8.35}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',

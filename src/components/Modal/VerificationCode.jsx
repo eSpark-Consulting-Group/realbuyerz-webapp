@@ -86,7 +86,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
                 type="number"
                 sx={{
                   '& input[type=number]::-webkit-inner-spin-button': {
-                    '-webkit-appearance': 'none',
+                    WebkitAppearance: 'none',
                     margin: 0,
                   },
                   '& fieldset': { border: 'none' },

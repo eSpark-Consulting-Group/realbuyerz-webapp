@@ -13,7 +13,7 @@ const AgentDescription = ({ description }) => {
         paddingBottom: '12px',
       }}
     >
-      {description}
+      {`${description.trim().slice(0, 150)}...`}
     </Typography>
   );
 };

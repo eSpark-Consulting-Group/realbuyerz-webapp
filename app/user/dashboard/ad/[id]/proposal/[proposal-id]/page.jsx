@@ -166,7 +166,7 @@ const Page = () => {
                     find_ad
                       ?.filter((item, index) => index === 0)
                       ?.map((item, index) => (
-                        <Grid container xs={12} key={index}>
+                        <Grid container key={index}>
                           <Grid container spacing={2}>
                             <Box
                               sx={{

@@ -1,7 +1,7 @@
 export const PROJECTS_DATA = [
   {
     id: 1,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 10000,
@@ -13,7 +13,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 2,
-    proportyCategory: 'category_2',
+    propertyCategory: 'category_2',
     images: [],
     amountCurrency: 'EUR',
     amount: 15000,
@@ -25,7 +25,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 3,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 12000,
@@ -37,7 +37,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 4,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 10000,
@@ -49,7 +49,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 5,
-    proportyCategory: 'category_2',
+    propertyCategory: 'category_2',
     images: [],
     amountCurrency: 'EUR',
     amount: 15000,
@@ -61,7 +61,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 6,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 12000,
@@ -73,7 +73,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 7,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 10000,
@@ -85,7 +85,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 8,
-    proportyCategory: 'category_2',
+    propertyCategory: 'category_2',
     images: [],
     amountCurrency: 'EUR',
     amount: 15000,
@@ -97,7 +97,7 @@ export const PROJECTS_DATA = [
   },
   {
     id: 9,
-    proportyCategory: 'category_1',
+    propertyCategory: 'category_1',
     images: [],
     amountCurrency: 'USD',
     amount: 12000,

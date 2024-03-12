@@ -34,7 +34,7 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
                     textAlign: 'center',
                   }}
                 >
-                  {sellData[propertyType]}
+                  {sellData[index]}
                 </Typography>
               </Link>
 

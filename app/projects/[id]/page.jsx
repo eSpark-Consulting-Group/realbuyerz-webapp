@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
@@ -10,13 +10,23 @@ import PropertyDetails from '@/src/components/Properties/PropertyDescription/Pro
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import Heading from '@/src/components/HomePage/Heading';
 
 function SingleProperty() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const properties = useSelector((state) => state.properties.properties);
-  const property = properties[id - 1];
+  console.log(id, 'id');
+  const properties = useSelector((state) => state.postListingAds.agentPostings);
+  const selectedProject = properties?.filter(
+    (property) => String(property?.property_id) === String(id)
+  )[0];
+  console.log(selectedProject, 'selectedProject');
+  const agents = useSelector((state) => state.agents);
+  const selectedAgent = agents?.filter(
+    (agent) => agent.id === selectedProject.agent_id
+  )[0];
+  console.log(selectedAgent, 'selectedAgent');
   if (isNaN(id) || id === undefined || id === null) {
     return (
       <NotFoundSection
@@ -25,7 +35,7 @@ function SingleProperty() {
       />
     );
   }
-  if (!property) {
+  if (!selectedProject) {
     return (
       <NotFoundSection
         heading={'Sorry'}
@@ -52,22 +62,20 @@ function SingleProperty() {
             gap: '50px',
           }}
         >
-          <Sliders propertySlider={property} />
-          <PropertyDetails propertyDetailsData={property} />
+          <Sliders propertySlider={selectedProject} />
+          <PropertyDetails propertyDetailsData={selectedProject} />
         </Grid>
         <Grid item xs={12} md={4}>
-          <ProfileAgent data={property} />
+          <ProfileAgent data={selectedProject} agentData={selectedAgent} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sx={{
-            pt: { xs: '50px', md: '67px' },
-            pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
-            px: { xs: '15%', md: '0px' },
-          }}
-        >
-          <PropertySlider propertyData={property} />
+        <Grid item xs={12} sx={{ pb: '30px' }}>
+          <Box py={3}>
+            <Heading
+              heading={`Similar Properties around  ${selectedProject?.locality}`}
+              textAlign={'center'}
+            />
+          </Box>
+          <PropertySlider propertyData={properties} />
         </Grid>
       </Grid>
     </>
