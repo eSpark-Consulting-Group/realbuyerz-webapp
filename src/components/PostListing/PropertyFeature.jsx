@@ -7,7 +7,12 @@ import PropertyFacilities from './PropertyFacilities';
 
 import AddAmenities from './AddAmenities';
 
-const PropertyFeatures = ({ formik, setSelectedAmenities, selectedAmenities, handleSeletedAmenites }) => {
+const PropertyFeatures = ({
+  formik,
+  setSelectedAmenities,
+  selectedAmenities,
+  handleSeletedAmenites,
+}) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (items) => {

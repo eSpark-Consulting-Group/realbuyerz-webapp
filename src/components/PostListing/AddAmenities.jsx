@@ -5,7 +5,13 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AmenitiesModal from './AmenitiesModal';
 import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
-const AddAmenities = ({ onSelected, formik, setSelectedAmenities, selectedAmenities, handleSeletedAmenites }) => {
+const AddAmenities = ({
+  onSelected,
+  formik,
+  setSelectedAmenities,
+  selectedAmenities,
+  handleSeletedAmenites,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

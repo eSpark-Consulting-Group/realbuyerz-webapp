@@ -4,7 +4,17 @@ import { Modal, Box } from '@mui/material';
 import Facilities from './Facilities';
 
 const AmenitiesModal = (props) => {
-  const { onClose, open, data, onSelected, formik, setOpen, setSelectedAmenities , selectedAmenities, handleSeletedAmenites} = props;
+  const {
+    onClose,
+    open,
+    data,
+    onSelected,
+    formik,
+    setOpen,
+    setSelectedAmenities,
+    selectedAmenities,
+    handleSeletedAmenites,
+  } = props;
 
   const handleClose = () => {
     handleSeletedAmenites();

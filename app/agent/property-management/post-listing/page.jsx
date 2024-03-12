@@ -39,14 +39,14 @@ const Page = () => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
-  
+
   const handleSeletedAmenites = () => {
-      if (getAmenities.length === 0) {
-        setSelectedAmenities([]);
-      } else {
-        setSelectedAmenities(getAmenities);
-      }
-    };
+    if (getAmenities.length === 0) {
+      setSelectedAmenities([]);
+    } else {
+      setSelectedAmenities(getAmenities);
+    }
+  };
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
@@ -181,11 +181,12 @@ const Page = () => {
             <AdInformation formik={formik} propertyData={POST_LISTING} />
             <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik}
-             setSelectedAmenities={setSelectedAmenities}
-             selectedAmenities={selectedAmenities}
-             handleSeletedAmenites={handleSeletedAmenites}
-             />
+            <PropertyFeatures
+              formik={formik}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}

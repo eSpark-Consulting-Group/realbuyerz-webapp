@@ -50,14 +50,14 @@ const Page = () => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
-  
+
   const handleSeletedAmenites = () => {
-      if (getAmenities.length === 0) {
-        setSelectedAmenities([]);
-      } else {
-        setSelectedAmenities(getAmenities);
-      }
-    };
+    if (getAmenities.length === 0) {
+      setSelectedAmenities([]);
+    } else {
+      setSelectedAmenities(getAmenities);
+    }
+  };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -74,7 +74,9 @@ const Page = () => {
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
   };
-
+  const getSelectedAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -186,9 +188,7 @@ const Page = () => {
       />
     );
   }
-  const getSelectedAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
+
   return (
     <>
       <Grid container>
@@ -210,10 +210,11 @@ const Page = () => {
               <AdInformation formik={formik} propertyData={COVER_LETTER} />
               <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />
-              <PropertyFeatures formik={formik} 
-               setSelectedAmenities={setSelectedAmenities}
-               selectedAmenities={selectedAmenities}
-               handleSeletedAmenites={handleSeletedAmenites}
+              <PropertyFeatures
+                formik={formik}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+                handleSeletedAmenites={handleSeletedAmenites}
               />
               <PropertyGallery formik={formik} />
               <SubmitButton formik={formik} handleClickOpen={handleClickOpen} />
