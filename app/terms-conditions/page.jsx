@@ -1,141 +1,56 @@
-'use client';
-import React, { useState } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import TermsPage from '@/src/pages/TermsPage';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 
-const TermsConditions = () => {
-  const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
-  const [selectedTab, setSelectedTab] = useState(terms.content[0]);
+const pathname = '/terms-conditions';
+const filteredData =
+  GLOBAL_SEO?.find((item) => item?.path === pathname) || GLOBAL_SEO[0];
 
-  const handleTabClick = (tabId) => {
-    const selectedTab = terms.content.find((tab) => tab.id === tabId);
-    if (selectedTab) {
-      setSelectedTab(selectedTab);
-    }
-  };
-  return (
-    <Box
-      sx={{
-        background: '#FFF',
-        border: '2px solid #E4E4E4',
-        px: '40px',
-        py: '60px',
-        my: '40px',
-        borderRadius: '20px',
-      }}
-    >
-      <Typography
-        variant="h1"
-        sx={{
-          color: ' #FB631C',
-          fontSize: '30px',
-          fontWeight: '600',
-          textAlign: 'center',
-          pb: '60px',
-        }}
-      >
-        {terms?.title}
-      </Typography>
-      <Grid container sx={{ display: 'flex', gap: '30px' }}>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={3}
-          sx={{
-            borderRadius: '20px',
-            border: '1px solid #E4E4E4',
-            background: '#FFF',
-          }}
-        >
-          <Box
-            sx={{
-              px: '30px',
-              py: '60px',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            {terms.content?.map((item) => (
-              <Box
-                key={item?.id}
-                variant={'outland'}
-                sx={{
-                  mx: 'auto',
-                  width: '100%',
-                  height: '50px',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  '&:hover': {
-                    backgroundColor: '#FFEEE7',
-                    borderRadius: '50px',
-                  },
-                  borderRadius: '50px',
-                  backgroundColor: selectedTab === item ? '#FFEEE7' : 'inherit',
-                  padding: '10px',
-                  px: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-                onClick={() => handleTabClick(item?.id)}
-              >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: '#333',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    '@media (min-width": 280px) and (max-width: 480px)': {
-                      marginBottom: '20px',
-                    },
-                  }}
-                >
-                  {item?.tabName}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={8.2}
-          sx={{
-            borderRadius: '20px',
-            border: '1px solid #E4E4E4',
-            background: '#FFF',
-          }}
-        >
-          <Box sx={{ px: '50px', py: '30px' }}>
-            <Typography
-              variant="body1"
-              sx={{
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: '600',
-                textTransform: 'uppercase',
-                pb: '40px',
-              }}
-            >
-              {selectedTab?.title}
-            </Typography>
-
-            <p
-              variant="body1"
-              sx={{
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: '400',
-              }}
-              dangerouslySetInnerHTML={{ __html: selectedTab?.content }}
-            ></p>
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
-  );
+export const metadata = {
+  metadataBase: new URL('https://www.realbuyerz.com/'),
+  title: filteredData?.title,
+  description: filteredData?.description,
+  keywords: [`Real Buyers`, `Property Real Estate`, `Sell Buy Rent Property`],
+  author: `Real Buyers`,
+  alternates: {
+    canonical: `https://www.realbuyerz.com${filteredData?.path}`,
+    languages: {
+      'en-US': '/en-US',
+      'en-UK': '/en-UK',
+    },
+  },
+  robots: `index, follow`,
+  openGraph: {
+    metadataBase: new URL('https://www.realbuyerz.com/'),
+    title: filteredData?.title,
+    description: filteredData?.description,
+    type: 'article',
+    publishedTime: '2023-01-01T00:00:00.000Z',
+    authors: ['Real Buyers', 'Mehdi Raza'],
+    siteName: `Real Buyers: Descriptions`,
+    locale: `en_US`,
+    images: [
+      {
+        url: filteredData?.image,
+        alt: filteredData?.title,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: `summary_large_image`,
+    metadataBase: new URL('https://www.realbuyerz.com/'),
+    title: filteredData?.title,
+    description: filteredData?.description,
+    siteId: `@realbuyerz`,
+    creator: `@realbuyerz`,
+    images: [`${filteredData?.image}`],
+  },
 };
 
-export default TermsConditions;
+const Page = () => {
+  return <TermsPage />;
+};
+
+export default Page;
