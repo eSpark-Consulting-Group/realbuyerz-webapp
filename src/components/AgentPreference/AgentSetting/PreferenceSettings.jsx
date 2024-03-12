@@ -58,9 +58,9 @@ const PreferenceSettings = () => {
           justifyContent: 'center',
           margin: 0,
           backgroundImage: 'url("/images/RealBuyers.svg")',
-          backgroundPosition: 'center 55%',
+          backgroundPosition: 'center 40%',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: { xs: '70% 70%', md: '50% 50%' },
+          backgroundSize: '68% 68%',
         }}
       >
         <Box

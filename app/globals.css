@@ -106,20 +106,10 @@ body header {
 
 .slick-prev:before {
   content: url('/images/agent-profile-icons/Left.svg') !important;
-  /* margin-left: 10px; */
-    @media (min-width: 280px) and (max-width: 400px) {
-        width: 10px ;
-    height: 20px;
-      }
 }
 
 .slick-next:before {
   content: url('/images/agent-profile-icons/Right.svg') !important;
-  margin-right: 10px;
-  @media (min-width: 280px) and (max-width: 400px) {
-        width: 10px !important;
-      
-    }
 }
 
 .slick-slide {

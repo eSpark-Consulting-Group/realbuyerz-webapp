@@ -35,13 +35,15 @@ const PreviewModal = (props) => {
         <Box
           sx={{
             position: 'absolute',
-            transform: 'translate(-50%, 0%)',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
             left: '50%',
             width: { xs: '92%', sm: '800px', xxl: '1200px' },
             bgcolor: 'background.paper',
-            height: { xs: 'auto', md: '840px' },
+            height: { xs: 'auto', sm: '800px', xxl: '1400px' },
             '@media (min-width: 280px) and (max-width:833px)': {
               width: '92%',
+              height: '800px',
             },
             borderRadius: '20px',
             p: { xs: 2, sm: 3.5, md: 5 },
@@ -57,14 +59,13 @@ const PreviewModal = (props) => {
           <Box
             sx={{
               width: '100%',
-              height: { xs: '600px', md: '700px' },
+              height: { xs: '700px', xl: '100%' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
               overflowY: 'auto',
-              scrollbarWidth: 'thin',
-              scrollbarColor: 'transparent transparent',
               '&::-webkit-scrollbar': {
-                display: 'none',
+                width: '0px',
+                background: 'transparent',
               },
             }}
           >

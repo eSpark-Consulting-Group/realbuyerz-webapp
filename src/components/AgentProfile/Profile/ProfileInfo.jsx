@@ -23,9 +23,7 @@ const ProfileInfo = ({ title, icon, alt }) => {
           color: '#777777',
           fontWeight: 'medium',
           marginTop: 1,
-          fontSize: { xs: '13px', md: '16px' },
-          display: 'flex',
-          flexWrap: { xs: 'wrap', md: 'nowrap' },
+          fontSize: '16px',
         }}
       >
         {title}
