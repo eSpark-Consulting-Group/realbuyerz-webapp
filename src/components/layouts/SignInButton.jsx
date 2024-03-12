@@ -134,7 +134,9 @@ const SignInButton = ({
           }}
           onClick={handleOpen}
         >
-          <Typography sx={{ color: '#fff' }}>{SIGN_IN}</Typography>
+          <Typography sx={{ color: '#fff', fontSize: '12px' }}>
+            {SIGN_IN}
+          </Typography>
         </Button>
       )}
       <ModalSignin handleClose={handleClose} open={open} />

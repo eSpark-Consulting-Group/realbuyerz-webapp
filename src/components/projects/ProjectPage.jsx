@@ -17,19 +17,44 @@ const ProjectPage = () => {
           link={'/projects/category/houses'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'houses'} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '15px',
+          }}
+        >
+          <ProjectsSlider data={projects} category={'houses'} />
+        </Box>
+
         <CategoryLink
           category={`Plots`}
           link={'/projects/category/plots'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'plots'} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '15px',
+          }}
+        >
+          <ProjectsSlider data={projects} category={'plots'} />
+        </Box>
         <CategoryLink
           category={`Commercials`}
           link={'/projects/category/commercials'}
           linkText={'See All'}
         />
-        <ProjectsSlider data={projects} category={'commercials'} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '15px',
+          }}
+        >
+          <ProjectsSlider data={projects} category={'commercials'} />
+        </Box>
       </Box>
     </>
   );

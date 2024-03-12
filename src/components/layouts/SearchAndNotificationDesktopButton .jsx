@@ -31,6 +31,8 @@ const SearchAndNotificationDesktopButton = ({
           color: 'black',
           alignItems: 'center',
           mx: 2,
+          fontWeight: '500',
+          fontSize: '15px',
         }}
       >
         {userName}
