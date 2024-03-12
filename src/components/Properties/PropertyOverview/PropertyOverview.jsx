@@ -99,7 +99,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
               }}
             >
               <TableBody>
-                <TableRow sx={{margin:'20px'}}>
+                <TableRow sx={{ margin: '20px' }}>
                   {[
                     'propertyType',
                     'locality',
