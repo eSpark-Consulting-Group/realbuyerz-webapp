@@ -147,6 +147,7 @@ const FilterComponent = ({ data }) => {
               open={open1}
               anchorEl={anchorEl1}
               placement="bottom-start"
+              sx={{ zIndex: '1' }}
             >
               <Box
                 sx={{
