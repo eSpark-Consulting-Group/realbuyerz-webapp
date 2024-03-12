@@ -82,11 +82,8 @@ const Page = () => {
                   variant="body1"
                   sx={{
                     color: '#333',
-                    fontSize: '16px',
+                    fontSize: { xs: '12px', md: '16px' },
                     fontWeight: '600',
-                    '@media (min-width": 280px) and (max-width: 480px)': {
-                      marginBottom: '20px',
-                    },
                   }}
                 >
                   {item?.tabName}

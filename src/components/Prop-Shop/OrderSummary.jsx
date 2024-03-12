@@ -125,6 +125,7 @@ const OrderSummary = ({
             width: '100%',
             height: '60px',
             borderRadius: '10px',
+            fontSize: '16px',
           }}
           variant="primary"
         >
