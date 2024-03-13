@@ -16,6 +16,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => {
   return (
     <Box
       sx={{
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
