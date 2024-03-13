@@ -59,7 +59,14 @@ export default function BuyProduct() {
   const formik = useFormikForPayment({ selectedValue, checked });
 
   useEffect(() => {
-    setState(calculateFormState({ selectedValue, formik, paymentMedthodDetails, typeCard }));
+    setState(
+      calculateFormState({
+        selectedValue,
+        formik,
+        paymentMedthodDetails,
+        typeCard,
+      })
+    );
   }, [formik.values, selectedValue, paymentMedthodDetails, typeCard]);
 
   const handleChange = () => {

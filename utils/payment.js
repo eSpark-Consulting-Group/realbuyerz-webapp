@@ -7,14 +7,15 @@ import {
 
 import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
 import { generateId } from '@/utils/genrateId';
-import { easyPaisaSchema, jazzCashSchema, paymentSchema } from '@/src/components/Schemas/paymentValidation';
+import {
+  easyPaisaSchema,
+  jazzCashSchema,
+  paymentSchema,
+} from '@/src/components/Schemas/paymentValidation';
 const { JAZZ_CASH, EASY_PAISA, NAME_ON_CARD } =
-    PAYMENT_METHODE_DATA.constantLabel;
+  PAYMENT_METHODE_DATA.constantLabel;
 
-export const useFormikForPayment = ({
-  selectedValue,
-  checked,
-}) => {
+export const useFormikForPayment = ({ selectedValue, checked }) => {
   const dispatch = useDispatch();
   const paymentMedthodDetails = useSelector(
     (state) => state.PakageCart.paymentMedthodDetails
@@ -73,30 +74,30 @@ export const useFormikForPayment = ({
 };
 
 export const calculateFormState = ({
-    selectedValue,
-    formik,
-    paymentMedthodDetails,
-    typeCard
-  }) => {
-    if (selectedValue === NAME_ON_CARD) {
-      if (
-        formik.values.name_on_card.length >= 3 &&
-        formik.values.card_number.toString().length === 16 &&
-        formik.values.expiry_date.toString().length === 5 &&
-        formik.values.cvv_no.toString().length === 3
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    } else if (selectedValue === JAZZ_CASH) {
-      return formik.values.jazzcash_number.toString().length !== 10;
-    } else if (selectedValue === EASY_PAISA) {
-      return formik.values.easypaisa_number.toString().length !== 10;
-    } else if (selectedValue === '') {
-      const findIndex = paymentMedthodDetails.filter((item) => {
-        return item.card_number === typeCard;
-      });
-      return findIndex.length !== 1;
+  selectedValue,
+  formik,
+  paymentMedthodDetails,
+  typeCard,
+}) => {
+  if (selectedValue === NAME_ON_CARD) {
+    if (
+      formik.values.name_on_card.length >= 3 &&
+      formik.values.card_number.toString().length === 16 &&
+      formik.values.expiry_date.toString().length === 5 &&
+      formik.values.cvv_no.toString().length === 3
+    ) {
+      return false;
+    } else {
+      return true;
     }
-  };
+  } else if (selectedValue === JAZZ_CASH) {
+    return formik.values.jazzcash_number.toString().length !== 10;
+  } else if (selectedValue === EASY_PAISA) {
+    return formik.values.easypaisa_number.toString().length !== 10;
+  } else if (selectedValue === '') {
+    const findIndex = paymentMedthodDetails.filter((item) => {
+      return item.card_number === typeCard;
+    });
+    return findIndex.length !== 1;
+  }
+};
