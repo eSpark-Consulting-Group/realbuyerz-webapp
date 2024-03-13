@@ -58,7 +58,7 @@ const ProposalCard = ({ data, currentTab, link }) => {
     <Box
       sx={{
         position: 'relative',
-        width: 'auto',
+        width: '100%',
         height: 'auto',
         zIndex: 1,
       }}
