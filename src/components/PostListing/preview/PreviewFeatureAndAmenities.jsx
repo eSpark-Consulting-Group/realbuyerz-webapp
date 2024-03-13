@@ -2,7 +2,14 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { propertyNames } from '@/app/constants/postListing';
 
-const renderDetail = (title, value, amenities, fontSize, fontStyle, fontWeight) => {
+const renderDetail = (
+  title,
+  value,
+  amenities,
+  fontSize,
+  fontStyle,
+  fontWeight
+) => {
   if (value > 0) {
     return (
       <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
