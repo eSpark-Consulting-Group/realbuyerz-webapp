@@ -390,7 +390,6 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
         open={open}
         onClose={handleClose}
         ads={data}
-        getSelectedAmenities={getSelectedAmenities}
       />
     </Box>
   );

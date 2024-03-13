@@ -41,7 +41,6 @@ const PreviewFeatureAndAmenities = ({
   fontStyle,
   fontWeight,
   formik,
-  getSelectedAmenities,
   spacificPost,
 }) => {
   return (
@@ -71,30 +70,8 @@ const PreviewFeatureAndAmenities = ({
               fontSize,
               fontStyle,
               fontWeight,
-              getSelectedAmenities
             )
           )}
-          {getSelectedAmenities?.map((item, index) => (
-            <Box key={index} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {item?.text}:
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {formik?.values[item?.name]}
-              </Typography>
-            </Box>
-          ))}
         </Box>
       )}
     </>
