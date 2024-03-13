@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Box, Radio, Typography } from '@mui/material';
+import { maskAccountNumber } from '@/utils/maskAccountNo';
 
 const MasterCard = ({
   image,
@@ -23,13 +24,6 @@ const MasterCard = ({
   const viweDetails = () => {
     setCardTypeNumber(accountNumber);
     setTypeCard(cardNo);
-  };
-  const maskAccountNumber = (number) => {
-    if (!number) return '';
-    const strNumber = String(number);
-    const masked =
-      '*'.repeat(Math.max(0, strNumber.length - 4)) + strNumber.slice(-4);
-    return masked;
   };
   return (
     <Box
