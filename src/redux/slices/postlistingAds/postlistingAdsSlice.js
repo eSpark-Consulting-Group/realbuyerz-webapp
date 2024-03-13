@@ -5,9 +5,8 @@ const postlistingAdSlice = createSlice({
   initialState: {
     agentPostings: [
       {
-        property_id: 601,
-        user_id: 301,
-        agent_id: 12,
+        property_id: 602,
+        user_id: 21,
         status: 'submited',
         other_features: [
           'Park',
@@ -23,13 +22,10 @@ const postlistingAdSlice = createSlice({
           '/images/slider/commercial.svg',
         ],
         videos: [],
-        title: '456456',
-        location: `Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33`,
-        locality: 'Gulistan-e-Johr',
-        geo_location:
-          'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14472.341891430968!2d67.115604!3d24.929158!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33feab1c28595%3A0xa3b2a5dc2f97a82e!2seSpark%20Consulting%20Group!5e0!3m2!1sen!2s!4v1709901100906!5m2!1sen!2s',
+        title: 'NEED 4 BEDROOM APARTMENT',
+        location: '',
         description:
-          'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaHouse for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
+          'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         area: 455,
         amount: 456,
         areaUnit: 'sq.ft',
@@ -47,9 +43,8 @@ const postlistingAdSlice = createSlice({
         readyPossession: false,
       },
       {
-        property_id: 602,
-        user_id: 301,
-        agent_id: 12,
+        property_id: 405,
+        user_id: 21,
         status: 'submited',
         other_features: [
           'Park',
@@ -1015,6 +1010,7 @@ const postlistingAdSlice = createSlice({
 export const {
   handlePostlistingAd,
   handleSubmitDraft,
+  handleAgentTrash,
   handleIndentifier,
   handleTrashProposal,
   handleSaveRequest,

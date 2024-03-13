@@ -1,4 +1,6 @@
 'use client';
+import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
 import { Box, Divider, Tab, Tabs } from '@mui/material';
@@ -95,18 +97,19 @@ const AgentProposals = () => {
           background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
-          mt: 0,
-          mb: 6,
+          mb: 4,
           mx: { xs: 'auto', lg: 0 },
-          maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+          width: 'auto',
+          maxWidth: { md: '1200px', xl: '1200px', xxl: '1500px' },
         }}
       >
         <Box
           sx={{
             display: 'flex',
+            mx: { xs: 1, md: 0 },
             justifyContent: 'center',
             alignItems: 'center',
-            paddingTop: '30px',
+            paddingTop: '20px',
           }}
         >
           <Tabs
@@ -130,53 +133,101 @@ const AgentProposals = () => {
         </Box>
         <Divider />
         <Box
+          className="scrollbar-container"
           sx={{
-            p: { xs: 2, sm: 3 },
+            mr: { xs: 0.8, sm: 2, md: 'auto' },
+            ml: { xs: 0.8, sm: 2, md: 'auto' },
+            pt: { xs: 2.5, sm: 3, md: 5 },
+            pb: { xs: 2, sm: 2, md: 3 },
+            px: { xs: 0, sm: 0, md: 3 },
+            maxHeight: '950px',
+            width: 'auto',
           }}
         >
-          {currentTab === 'Save Request'
-            ? find_save?.map((item, index) => (
-                <ProposalCard
-                  key={index}
-                  data={item}
-                  currentTab={currentTab}
-                  link={`my-proposals/property/${item?.property_id || '#'}`}
-                />
-              ))
-            : currentTab === 'Active'
-              ? find_proposals_active?.map((item, index) => (
-                  <ProposalCard
-                    key={index}
-                    data={item}
-                    currentTab={currentTab}
-                    link={`my-proposals/proposal/${item?.proposal_id || '#'}`}
-                  />
-                ))
-              : currentTab === 'Archive'
-                ? find_proposals_archive?.map((item, index) => (
+          <Box
+            sx={{
+              display: 'flex',
+              mx: 'auto',
+              '@media (max-width: 755px)': {
+                justifyContent:
+                  (currentTab === 'Save Request' && find_save?.length <= 1) ||
+                  (currentTab === 'Active' &&
+                    find_proposals_active?.length <= 1) ||
+                  (currentTab === 'Archive' &&
+                    find_proposals_archive?.length <= 1) ||
+                  (currentTab === 'Rejected' &&
+                    find_proposals_rejected?.length <= 1) ||
+                  (currentTab === 'Trash' && trashed_ad?.length <= 1)
+                    ? 'center'
+                    : 'start',
+              },
+              justifyContent: {
+                sm:
+                  (currentTab === 'Save Request' && find_save?.length <= 2) ||
+                  (currentTab === 'Active' &&
+                    find_proposals_active?.length <= 2) ||
+                  (currentTab === 'Archive' &&
+                    find_proposals_archive?.length <= 2) ||
+                  (currentTab === 'Rejected' &&
+                    find_proposals_rejected?.length <= 2) ||
+                  (currentTab === 'Trash' && trashed_ad?.length <= 2)
+                    ? 'center'
+                    : 'start',
+              },
+              alignItems: 'center',
+              flexDirection: { sm: 'row', md: 'column' },
+              gap: { xs: 1.5, sm: 2.5, md: 3.5 },
+            }}
+          >
+            {(currentTab === 'Save Request' && find_save?.length === 0) ||
+            (currentTab === 'Active' && find_proposals_active?.length === 0) ||
+            (currentTab === 'Archive' &&
+              find_proposals_archive?.length === 0) ||
+            (currentTab === 'Rejected' &&
+              find_proposals_rejected?.length === 0) ||
+            (currentTab === 'Trash' && trashed_ad?.length === 0) ? (
+              <NotFoundSection heading={'Sorry!'} message={'No Data Found.'} />
+            ) : (
+              <>
+                {currentTab === 'Save Request' ? (
+                  <BiddingDetails ads={find_save} height={'1098px'} />
+                ) : currentTab === 'Active' ? (
+                  find_proposals_active?.map((item, index) => (
+                    <ProposalCard
+                      key={index}
+                      data={item}
+                      currentTab={currentTab}
+                      link={`my-proposals/proposal/${item?.proposal_id || '#'}`}
+                    />
+                  ))
+                ) : currentTab === 'Archive' ? (
+                  find_proposals_archive?.map((item, index) => (
                     <ProposalCard
                       key={index}
                       data={item}
                       currentTab={currentTab}
                     />
                   ))
-                : currentTab === 'Rejected'
-                  ? find_proposals_rejected?.map((item, index) => (
-                      <ProposalCard
-                        key={index}
-                        data={item}
-                        currentTab={currentTab}
-                      />
-                    ))
-                  : currentTab === 'Trash'
-                    ? trashed_ad?.map((item, index) => (
-                        <ProposalCard
-                          key={index}
-                          data={item}
-                          currentTab={currentTab}
-                        />
-                      ))
-                    : null}
+                ) : currentTab === 'Rejected' ? (
+                  find_proposals_rejected?.map((item, index) => (
+                    <ProposalCard
+                      key={index}
+                      data={item}
+                      currentTab={currentTab}
+                    />
+                  ))
+                ) : currentTab === 'Trash' ? (
+                  trashed_ad?.map((item, index) => (
+                    <ProposalCard
+                      key={index}
+                      data={item}
+                      currentTab={currentTab}
+                    />
+                  ))
+                ) : null}
+              </>
+            )}
+          </Box>
         </Box>
       </Box>
     </>

@@ -4,7 +4,6 @@ import { Box } from '@mui/system';
 
 import ProfileInfo from './ProfileInfo';
 import {
-  USER_TYPE,
   ALT,
   FOR_RENT,
   FOR_RENT_ICON,
@@ -13,12 +12,7 @@ import {
   LOCATION_ICON,
 } from '@/app/constants/AgentProfile';
 
-const AgentProfileDetail = ({
-  description,
-  spacificData,
-  forRentCount,
-  forSellCount,
-}) => {
+const AgentProfileDetail = ({ data, path, user, agent }) => {
   return (
     <Grid
       item
@@ -42,29 +36,26 @@ const AgentProfileDetail = ({
           alignItems: { xs: 'center', sm: 'start' },
         }}
       >
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2, fontSize: '30px' }}
-        >
-          {`${spacificData?.first_name ? spacificData?.first_name : description?.first_name} ${spacificData?.last_name ? spacificData?.last_name : description?.last_name}`}
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1176AD' }}>
+          {`${data?.first_name || 'user'} ${data?.last_name || 'name'}`}
         </Typography>
 
-        {description?.userType === `${USER_TYPE.user}` ? (
-          <ProfileInfo title={spacificData?.email} />
+        {path?.includes(user) || path?.includes(agent) ? (
+          <ProfileInfo title={data?.email || ''} />
         ) : (
           <>
             <ProfileInfo
-              title={`${description?.city}, ${description?.country} `}
+              title={`${data?.country || ''} ${data?.city || ''}`}
               icon={LOCATION_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${forSellCount} ${FOR_SALE}`}
+              title={`${data?.counts?.sellCount?.total || ''} ${FOR_SALE || ''}`}
               icon={FOR_SALE_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${forRentCount} ${FOR_RENT}`}
+              title={`${data?.counts?.rentCount?.total || ''} ${FOR_RENT || ''}`}
               icon={FOR_RENT_ICON}
               alt={ALT}
             />

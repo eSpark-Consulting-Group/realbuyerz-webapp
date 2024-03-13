@@ -110,6 +110,7 @@ const ProposalCard = ({ data, currentTab, link }) => {
                     lineHheight: '24px',
                     letterSpacing: '0em',
                     textAlign: 'center',
+                    marginLeft: { xs: '0', md: '165px' },
                   }}
                 >
                   {data?.title || ''}
@@ -309,7 +310,7 @@ const ProposalCard = ({ data, currentTab, link }) => {
                   lineHeight: '17px',
                   letterSpacing: '0em',
                   textAlign: 'left',
-                  right: '20px',
+                  right: { xs: '10px', md: '20px' },
                   padding: { xs: '10px', md: '25px 30px' },
                 }}
               >
