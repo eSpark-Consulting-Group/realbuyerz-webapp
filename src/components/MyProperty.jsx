@@ -396,8 +396,7 @@ const MyProperty = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
-                     getSelectedAmenities={getSelectedAmenities}
-
+                      getSelectedAmenities={getSelectedAmenities}
                     />
                   )
                 )
@@ -408,8 +407,7 @@ const MyProperty = () => {
                         key={index}
                         data={item}
                         currentTab={currentTab}
-                       getSelectedAmenities={getSelectedAmenities}
-
+                        getSelectedAmenities={getSelectedAmenities}
                       />
                     )
                   )
@@ -421,7 +419,6 @@ const MyProperty = () => {
                           data={item}
                           currentTab={currentTab}
                           getSelectedAmenities={getSelectedAmenities}
-
                         />
                       )
                     )

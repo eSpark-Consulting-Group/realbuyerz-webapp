@@ -53,7 +53,7 @@ const DesktopScreenSlider = ({ imageSlider, handleClose }) => {
           <Box key={index}>
             <SwiperSlide>
               <Image
-               src={URL?.createObjectURL(image)}
+                src={URL?.createObjectURL(image)}
                 width={1000}
                 height={1000}
                 alt={'slide_image'}

@@ -45,9 +45,6 @@ const Page = () => {
   const handleClick = () => {
     setShowMoreContent(!showMoreContent);
   };
-  const getSelectedAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>

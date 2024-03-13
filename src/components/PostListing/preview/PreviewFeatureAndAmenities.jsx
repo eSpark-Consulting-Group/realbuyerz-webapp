@@ -56,11 +56,17 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {
-            propertyNames.map((propertyName, index) => (
-              renderDetail(propertyName, spacificPost?.[propertyName], amenities, fontSize, fontStyle, fontWeight, getSelectedAmenities)
-            ))
-          }
+          {propertyNames.map((propertyName) =>
+            renderDetail(
+              propertyName,
+              spacificPost?.[propertyName],
+              amenities,
+              fontSize,
+              fontStyle,
+              fontWeight,
+              getSelectedAmenities
+            )
+          )}
           {getSelectedAmenities?.map((item, index) => (
             <Box key={index} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
               <Typography

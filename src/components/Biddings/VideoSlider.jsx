@@ -46,18 +46,15 @@ const VideoSlider = ({ videosSlider, modalWidth }) => {
                   borderRadius: '30px',
                 }}
               >
-                 <video
-                    style={{ width: '100%', height: '100%' }}
-                    controls
-                  >
-                    <track
-                      src="captions.vtt"
-                      kind="captions"
-                      label="English"
-                      default
-                    />
-                    <source src={URL?.createObjectURL(video)} />
-                  </video>
+                <video style={{ width: '100%', height: '100%' }} controls>
+                  <track
+                    src="captions.vtt"
+                    kind="captions"
+                    label="English"
+                    default
+                  />
+                  <source src={URL?.createObjectURL(video)} />
+                </video>
               </Box>
             </SwiperSlide>
           </Box>

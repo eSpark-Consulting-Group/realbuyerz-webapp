@@ -1162,7 +1162,7 @@ export const previewData = {
     business_centre: 'Business centre :',
     on_site_maintenance: 'On-site maintenance :',
     security: '24/7 security :',
-},
+  },
 
   images: {
     title: 'Project images',

@@ -116,7 +116,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
             display: 'flex',
             justifyContent: 'space-between',
             flexDirection: { xs: 'column', md: 'row' },
-            mb: media && media.length <= 3 ? '20px' : '0px'
+            mb: media && media.length <= 3 ? '20px' : '0px',
           }}
         >
           <Typography
@@ -149,8 +149,8 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
               onClick={handleOpen}
             >
               {BIDDINGS.ViewAllbutton.title}
-            </Button>)
-          }
+            </Button>
+          )}
         </Box>
         <BidSlider media={media} mediaType={mediaType} />
       </Box>
