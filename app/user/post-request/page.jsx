@@ -27,7 +27,7 @@ import { POST_REQUEST } from '@/app/constants/postRequest';
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [action, setAction] = useState('');
+  const [Action, setAction] = useState('');
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state?.currentUser?.user);
 
@@ -35,10 +35,10 @@ const Page = () => {
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    if (action === 'draft') {
+    if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
-    } else if (action === 'submit') {
+    } else if (Action === 'submit') {
       dispatch(handleSumitUserAds(values));
       handleOpenSuccessModal();
     }
@@ -107,6 +107,7 @@ const Page = () => {
     onSubmit: (values, action) => {
       values.property_id = randomNumber;
       values.user_id = currentUser?.id;
+      values.status = Action;
       handleSubmit(values);
       action.resetForm();
     },
@@ -143,6 +144,7 @@ const Page = () => {
               formik={formik}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
+              handleOpenSuccessModal={handleOpenSuccessModal}
             />
             <PreviewModal
               open={open}
@@ -152,9 +154,9 @@ const Page = () => {
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={`${action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
-          description={`${action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
-          title={`${action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
+          buttonLabel={`${Action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
+          description={`${Action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
+          title={`${Action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

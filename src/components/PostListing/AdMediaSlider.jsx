@@ -53,7 +53,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
             <SwiperSlide key={i}>
               <Box
                 component={'img'}
-                src={URL?.createObjectURL(image)}
+                src={(image && URL?.createObjectURL(new Blob([image]))) || ''}
                 alt={`Uploaded ${i}`}
                 quality={'100'}
                 sx={{
@@ -103,7 +103,11 @@ const AdMediaSlider = ({ media, mediaType }) => {
                     label="English"
                     default
                   />
-                  <source src={URL?.createObjectURL(video)} />
+                  <source
+                    src={
+                      (video && URL?.createObjectURL(new Blob([video]))) || ''
+                    }
+                  />
                 </video>
               </Box>
             </SwiperSlide>

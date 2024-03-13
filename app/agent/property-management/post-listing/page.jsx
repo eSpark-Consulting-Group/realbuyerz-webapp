@@ -25,7 +25,7 @@ import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import {
   handlePostlistingAd,
-  handleSubmitDraft,
+  handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 const Page = () => {
@@ -38,7 +38,7 @@ const Page = () => {
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleSubmitDraft(values));
+      dispatch(handleSubmitDraftForAgent(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handlePostlistingAd(values));
@@ -137,6 +137,7 @@ const Page = () => {
       values.user_id = current_user_id;
       values.status = 'submited';
       handleSubmit(values);
+      console.log(values, 'values');
       action.resetForm();
     },
     validateOnChange: false,

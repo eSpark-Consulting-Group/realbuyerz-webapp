@@ -12,6 +12,7 @@ import {
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const ProposalCard = ({ data, currentTab, link, key }) => {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   const pathName = usePathname();
   const properties = 'my-properties';
   const proposals = 'my-proposals';
+  const all_posting = 'all-postings';
   const user = 'user';
 
   const handleTrash = (property_id, currentTab) => {
@@ -54,6 +56,10 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   const handleClose = () => {
     setOpen(!open);
   };
+
+  // const handleEdit = (id) => {
+  //   dispatch(handleEditDraft({ property_id: id, status: 'edit' }));
+  // };
   return (
     <Box
       sx={{
@@ -80,9 +86,9 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
             onClick={handleClickOpen}
             sx={{
               minHeight: {
-                xs: `${!pathName?.includes(user) ? '310px' : '520px'}`,
-                sm: `${!pathName?.includes(user) ? '330px' : '580px'}`,
-                md: 'auto',
+                xs: `${!pathName?.includes(user) ? '310px' : '535px'}`,
+                sm: `${!pathName?.includes(user) ? '330px' : '600px'}`,
+                md: '305px',
               },
               display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
@@ -99,20 +105,20 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
             {pathName?.includes(user) && (
               <Box
                 sx={{
-                  width: { xs: '270px', sm: '300px' },
-                  height: { xs: '220px', sm: '250px' },
-                  '@media (min-width:280px) and (max-width:319px)': {
-                    width: '230px',
-                    height: '210px',
-                  },
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
               >
                 <Box
                   component={'img'}
                   src={`${data?.images || '/images/PropertyImg.png'}`}
                   sx={{
-                    width: { xs: '100%' },
-                    height: { xs: '100%' },
+                    width: { xs: '270px', sm: '300px' },
+                    height: { xs: '220px', sm: '250px' },
+                    '@media (min-width:280px) and (max-width:319px)': {
+                      width: '230px',
+                      height: '210px',
+                    },
                   }}
                 />
               </Box>
@@ -366,6 +372,33 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
             >
               <DeleteIcon />
             </IconButton>
+            <Link
+              href={`${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.property_id || ''}`}
+            >
+              <Typography
+                // onClick={() => handleEdit(data?.property_id)}
+                color={'primary'}
+                sx={{
+                  display: 'flex',
+                  cursor: 'pointer',
+                  position: { xs: 'absolute' },
+                  zIndex: 10,
+                  right: { xs: 60, sm: 60, md: 150 },
+                  top: {
+                    xs: !pathName?.includes(user) ? 62 : 300,
+                    sm: !pathName?.includes(user) ? 85 : 362,
+                    md: !pathName?.includes(user) ? 85 : 25,
+                  },
+                  bottom: {
+                    xs: !pathName?.includes(user) ? 'auto' : 'auto',
+                    sm: !pathName?.includes(user) ? 'auto' : 'auto',
+                  },
+                  left: { xs: 'auto', sm: 'auto', md: 'auto' },
+                }}
+              >
+                <EditIcon />
+              </Typography>
+            </Link>
             <Button
               variant="contained"
               sx={{
