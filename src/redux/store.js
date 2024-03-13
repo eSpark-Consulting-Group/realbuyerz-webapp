@@ -28,6 +28,7 @@ import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
 import globalUnitsSlice from './slices/global/globalUnitsSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
+import searchSlice from './slices/search/searchSlice';
 import packagesSlice from './slices/Packages/packagesSlice';
 
 export const store = configureStore({
@@ -50,6 +51,7 @@ export const store = configureStore({
     PakageCart: PakageCartSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
+    search: searchSlice,
     signin: signinSlice,
     auth: authSlice,
     // current user

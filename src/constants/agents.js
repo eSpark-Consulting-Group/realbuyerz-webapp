@@ -49,31 +49,6 @@ export const USERS_DATA = [
     emailNotification: true, // true or false
     newsLetters: true, // true or false
     onlineStatus: true,
-    counts: {
-      totalCount: 150,
-      rentCount: {
-        total: 75,
-        Houses: 20,
-        Flats: 20,
-        Plots: 20,
-        FarmHouses: 20,
-        Shops: 20,
-        Offices: 20,
-        Commercials: 20,
-        // more Categories
-      },
-      sellCount: {
-        total: 75,
-        Houses: 20,
-        Flats: 20,
-        Plots: 20,
-        FarmHouses: 20,
-        Shops: 20,
-        Offices: 20,
-        Commercials: 20,
-        // more Categories
-      },
-    },
   },
   {
     id: 2,

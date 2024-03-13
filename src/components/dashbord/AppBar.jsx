@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { usePathname, useRouter } from 'next/navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import {
-  EMAIL,
   LINK_NAME,
-  USER_NAME,
-  SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
   GotoPageIcon,
@@ -21,50 +18,56 @@ import {
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Badge,
-  Button,
-  IconButton,
-  Menu,
-  TextField,
-  Tooltip,
-  Typography,
-} from '@mui/material';
+import { Badge, IconButton, Tooltip, Typography } from '@mui/material';
 import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotificationDesktopButton ';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
+import NotificationPopover from '../layouts/NotificationPopover';
+import SearchPopover from '../layouts/searchPopover';
+// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function ResponsiveNavbar({ openSidebar }) {
   const router = useRouter();
-  const [search, setSearch] = useState();
-  const [anchorElSearch, setAnchorElSearch] = useState(null);
-  const [isloggedIn, setisloggedIn] = useState(null);
+  const [searchMenu, setSearchMenu] = useState(null);
+  const [profileMenu, setProfileMenu] = useState(null);
+  const [notificationMenu, setNotificationMenu] = useState(null);
   const dispatch = useDispatch();
+  const pathName = usePathname();
+  const current_user = useSelector((state) => state?.currentUser?.user);
+  const postRequestAds = useSelector(
+    (state) => state?.postRequestAds?.userPostings
+  );
+  const postListingAds = useSelector(
+    (state) => state?.postListingAds?.agentPostings
+  );
+  const dashboard = '/user/dashboard';
+  const liveBidding = '/agent/live-bidding';
 
+  const handleOpenProfileMenu = (event) => {
+    setProfileMenu(event?.currentTarget);
+  };
+  const handleOpenNotificationMenu = (event) => {
+    setNotificationMenu(event?.currentTarget);
+  };
+  const handleCloseNotificationMenu = () => {
+    setNotificationMenu(null);
+  };
+  const handleCloseProfileMenu = () => {
+    setProfileMenu(null);
+  };
   const handleOpenSearchMenu = (event) => {
-    setAnchorElSearch(event.currentTarget);
+    setSearchMenu(event?.currentTarget);
   };
 
   const handleCloseSearchMenu = () => {
-    setAnchorElSearch(null);
-  };
-
-  const searchInput = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleOpenLoginMenu = (event) => {
-    setisloggedIn(event.currentTarget);
-  };
-  const handleCloseLoginMenu = () => {
-    setisloggedIn(null);
+    setSearchMenu(null);
   };
 
   const handleLogout = () => {
-    Cookie.remove('token');
-    Cookie.remove('userType');
+    Cookie?.remove('token');
+    Cookie?.remove('userType');
     dispatch(setLoggedOut());
-    router.push('/signin');
-    handleCloseLoginMenu();
+    router?.push('/signin');
+    handleCloseProfileMenu();
   };
 
   return (
@@ -126,21 +129,23 @@ export default function ResponsiveNavbar({ openSidebar }) {
             </Box>
             <Box sx={{ width: 'auto', display: { xs: 'flex' } }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
-                <Tooltip title="Search">
-                  <Box
-                    component={'img'}
-                    onClick={handleOpenSearchMenu}
-                    src={SearchIcon}
-                    alt={'icon'}
-                    sx={{
-                      width: { xs: '30px', sm: '41px' },
-                      height: { xs: '30px', sm: '43px' },
-                      display: { xs: 'flex', md: 'flex' },
-                      mr: { xs: 0.5, sm: 1.5, md: 2.5 },
-                      cursor: 'pointer',
-                    }}
-                  />
-                </Tooltip>
+                {pathName == dashboard || pathName == liveBidding ? (
+                  <Tooltip title="Search">
+                    <Box
+                      component={'img'}
+                      onClick={handleOpenSearchMenu}
+                      src={SearchIcon}
+                      alt={'icon'}
+                      sx={{
+                        width: { xs: '30px', sm: '41px' },
+                        height: { xs: '30px', sm: '43px' },
+                        display: { xs: 'flex', md: 'flex' },
+                        mr: { xs: 0.5, sm: 1.5, md: 2.5 },
+                        cursor: 'pointer',
+                      }}
+                    />
+                  </Tooltip>
+                ) : null}
                 <Box
                   sx={{
                     display: { xs: 'none', md: 'flex' },
@@ -178,6 +183,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                 </Box>
                 <Box>
                   <IconButton
+                    onClick={handleOpenNotificationMenu}
                     sx={{
                       p: 0,
                       mr: { xs: 0.5, sm: 1.5, md: 2.5 },
@@ -186,7 +192,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     }}
                   >
                     <Badge
-                      badgeContent={1}
+                      badgeContent={2}
                       color={CUSTOM_COLOR}
                       sx={{
                         '& .MuiBadge-badge': {
@@ -210,71 +216,44 @@ export default function ResponsiveNavbar({ openSidebar }) {
                       />
                     </Badge>
                   </IconButton>
+                  <NotificationPopover
+                    handleCloseNotificationMenu={handleCloseNotificationMenu}
+                    notificationMenu={notificationMenu}
+                  />
                 </Box>
-
-                <Menu
-                  sx={{ mt: '52px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElSearch}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElSearch)}
-                  onMouseLeave={handleCloseSearchMenu}
-                  onClose={handleCloseSearchMenu}
-                >
-                  <Box
-                    sx={{
-                      padding: 2,
-                      display: 'flex',
-                    }}
-                  >
-                    <TextField
-                      id="outlined-search"
-                      label="Search"
-                      type="search"
-                      size="small"
-                      onChange={(e) => searchInput(e)}
-                    />
-                    <Link href={`/agent/my-proposals?search=${search}`}>
-                      <Button variant="primary" sx={{ mx: 1 }}>
-                        {SEARCH}
-                      </Button>
-                    </Link>
-                  </Box>
-                </Menu>
-
+                <SearchPopover
+                  searchMenu={searchMenu}
+                  currentUser={current_user}
+                  findData={
+                    pathName?.includes(dashboard)
+                      ? postRequestAds
+                      : postListingAds
+                  }
+                  handleCloseSearchMenu={handleCloseSearchMenu}
+                />
                 <Box
+                  onClick={handleOpenProfileMenu}
                   component={'img'}
                   sx={{
-                    width: { xs: '32px', sm: '42px' },
-                    height: { xs: '32px', sm: '42px' },
+                    width: { xs: '30px', sm: '40px' },
+                    height: { xs: '30px', sm: '40px' },
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={ProfileIcon}
-                  width={38}
-                  height={38}
+                  src={current_user?.profile_image || ProfileIcon}
                   alt={'icon'}
-                  onClick={handleOpenLoginMenu}
                 />
-
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                   <SearchAndNotificationDesktopButton
-                    handleCloseLoginMenu={handleCloseLoginMenu}
-                    handleOpenLoginMenu={handleOpenLoginMenu}
-                    userName={USER_NAME}
+                    handleCloseProfileMenu={handleCloseProfileMenu}
+                    handleOpenProfileMenu={handleOpenProfileMenu}
+                    profileMenu={profileMenu}
+                    userName={current_user?.first_name || 'User Name'}
+                    userImage={current_user?.profile_image || 'User Image'}
+                    userEmail={current_user?.email || ProfileIcon}
                     profileIcon={ProfileIcon}
                     handleLogout={handleLogout}
-                    isloggedIn={isloggedIn}
                     signOut={SIGN_OUT}
-                    email={EMAIL}
                   />
                 </Box>
               </Box>

@@ -28,7 +28,8 @@ const agent = {
   id: 21,
   first_name: 'Muhammad Ali',
   last_name: 'Mukhtar',
-  email: 'li@esparkconsultants.com',
+  agency_name: 'KZ Real Estate',
+  email: 'ali@esparkconsultants.com',
   mobile_number: '+923192013292',
   landline_number: 4523100000,
   whatsapp: '+923192013292',
@@ -56,6 +57,13 @@ const currentUserSlice = createSlice({
     user: agent,
   },
   reducers: {
+    handleUserEdit: (state, action) => {
+      const updatedUser = action.payload;
+      state.user = { ...state.user, ...updatedUser };
+    },
+    // handleUserImageChange: (state, action) => {
+    //   state[0].profileImage = action.payload;
+    // },
     currentProposal: (state, action) => {
       const { agent_id } = action.payload;
       const foundObject = state?.proposals?.find(
@@ -112,6 +120,8 @@ const currentUserSlice = createSlice({
 });
 
 export const {
+  handleUserEdit,
+  handleUserImageChange,
   handleSaveRequest,
   currentProposal,
   handleAgentDraft,
