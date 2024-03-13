@@ -166,13 +166,13 @@ const MyProperty = () => {
                           border: 'none',
                         },
                         '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                        {
-                          color: '#66666666',
-                          display: 'inline-flex',
-                          '&:hover': {
+                          {
                             color: '#66666666',
+                            display: 'inline-flex',
+                            '&:hover': {
+                              color: '#66666666',
+                            },
                           },
-                        },
                         '& .MuiOutlinedInput-root': {
                           borderRadius: '5px',
                           height: '40px',
@@ -226,9 +226,9 @@ const MyProperty = () => {
                               padding: 0,
                               fontSize: '14px',
                               '@media (min-width: 280px) and (max-width: 375px)':
-                              {
-                                fontSize: '10px',
-                              },
+                                {
+                                  fontSize: '10px',
+                                },
                             },
                           }}
                         />
@@ -341,14 +341,14 @@ const MyProperty = () => {
                 justifyContent:
                   (currentTab === 'All' &&
                     getFilteredOutput(find_posting, filterObject)?.length <=
-                    1) ||
-                    (currentTab === 'Active' &&
-                      getFilteredOutput(find_active, filterObject)?.length <=
                       1) ||
-                    (currentTab === 'Draft' &&
-                      getFilteredOutput(find_draft, filterObject)?.length <= 1) ||
-                    (currentTab === 'Trash' &&
-                      getFilteredOutput(find_trash, filterObject)?.length <= 1)
+                  (currentTab === 'Active' &&
+                    getFilteredOutput(find_active, filterObject)?.length <=
+                      1) ||
+                  (currentTab === 'Draft' &&
+                    getFilteredOutput(find_draft, filterObject)?.length <= 1) ||
+                  (currentTab === 'Trash' &&
+                    getFilteredOutput(find_trash, filterObject)?.length <= 1)
                     ? 'center'
                     : 'start',
               },
@@ -356,14 +356,14 @@ const MyProperty = () => {
                 sm:
                   (currentTab === 'All' &&
                     getFilteredOutput(find_posting, filterObject)?.length <=
-                    2) ||
-                    (currentTab === 'Active' &&
-                      getFilteredOutput(find_active, filterObject)?.length <=
                       2) ||
-                    (currentTab === 'Draft' &&
-                      getFilteredOutput(find_draft, filterObject)?.length <= 2) ||
-                    (currentTab === 'Trash' &&
-                      getFilteredOutput(find_trash, filterObject)?.length <= 2)
+                  (currentTab === 'Active' &&
+                    getFilteredOutput(find_active, filterObject)?.length <=
+                      2) ||
+                  (currentTab === 'Draft' &&
+                    getFilteredOutput(find_draft, filterObject)?.length <= 2) ||
+                  (currentTab === 'Trash' &&
+                    getFilteredOutput(find_trash, filterObject)?.length <= 2)
                     ? 'center'
                     : 'start',
               },
@@ -374,27 +374,17 @@ const MyProperty = () => {
           >
             {(currentTab === 'All' &&
               getFilteredOutput(find_posting, filterObject)?.length === 0) ||
-              (currentTab === 'Active' &&
-                getFilteredOutput(find_active, filterObject)?.length === 0) ||
-              (currentTab === 'Draft' &&
-                getFilteredOutput(find_draft, filterObject)?.length === 0) ||
-              (currentTab === 'Trash' &&
-                getFilteredOutput(find_trash, filterObject)?.length === 0) ? (
+            (currentTab === 'Active' &&
+              getFilteredOutput(find_active, filterObject)?.length === 0) ||
+            (currentTab === 'Draft' &&
+              getFilteredOutput(find_draft, filterObject)?.length === 0) ||
+            (currentTab === 'Trash' &&
+              getFilteredOutput(find_trash, filterObject)?.length === 0) ? (
               <NotFoundSection heading={'Sorry!'} message={'No Data Found.'} />
             ) : (
               <>
                 {currentTab === 'All'
                   ? getFilteredOutput(find_posting, filterObject)?.map(
-                    (item, index) => (
-                      <ProposalCard
-                        key={index}
-                        data={item}
-                        currentTab={currentTab}
-                      />
-                    )
-                  )
-                  : currentTab === 'Active'
-                    ? getFilteredOutput(find_active, filterObject)?.map(
                       (item, index) => (
                         <ProposalCard
                           key={index}
@@ -403,8 +393,8 @@ const MyProperty = () => {
                         />
                       )
                     )
-                    : currentTab === 'Draft'
-                      ? getFilteredOutput(find_draft, filterObject)?.map(
+                  : currentTab === 'Active'
+                    ? getFilteredOutput(find_active, filterObject)?.map(
                         (item, index) => (
                           <ProposalCard
                             key={index}
@@ -413,8 +403,8 @@ const MyProperty = () => {
                           />
                         )
                       )
-                      : currentTab === 'Trash'
-                        ? getFilteredOutput(find_trash, filterObject)?.map(
+                    : currentTab === 'Draft'
+                      ? getFilteredOutput(find_draft, filterObject)?.map(
                           (item, index) => (
                             <ProposalCard
                               key={index}
@@ -423,6 +413,16 @@ const MyProperty = () => {
                             />
                           )
                         )
+                      : currentTab === 'Trash'
+                        ? getFilteredOutput(find_trash, filterObject)?.map(
+                            (item, index) => (
+                              <ProposalCard
+                                key={index}
+                                data={item}
+                                currentTab={currentTab}
+                              />
+                            )
+                          )
                         : null}
               </>
             )}

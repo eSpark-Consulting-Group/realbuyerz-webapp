@@ -40,7 +40,6 @@ const PreviewFeatureAndAmenities = ({
   fontSize,
   fontStyle,
   fontWeight,
-  formik,
   spacificPost,
 }) => {
   return (
@@ -69,7 +68,7 @@ const PreviewFeatureAndAmenities = ({
               amenities,
               fontSize,
               fontStyle,
-              fontWeight,
+              fontWeight
             )
           )}
         </Box>

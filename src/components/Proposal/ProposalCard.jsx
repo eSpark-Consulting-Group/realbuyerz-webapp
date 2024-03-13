@@ -386,11 +386,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
           </>
         )}
       </Box>
-      <PreviewModal
-        open={open}
-        onClose={handleClose}
-        ads={data}
-      />
+      <PreviewModal open={open} onClose={handleClose} ads={data} />
     </Box>
   );
 };
