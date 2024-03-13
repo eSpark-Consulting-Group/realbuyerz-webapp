@@ -1,5 +1,5 @@
 'use client';
-import { ALL_POSTLISTING_FILTRATION } from '@/app/constants/postListing';
+import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/postListing';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/utils/tabs';
