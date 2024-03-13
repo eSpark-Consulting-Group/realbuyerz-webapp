@@ -13,7 +13,12 @@ import {
   LOCATION_ICON,
 } from '@/app/constants/AgentProfile';
 
-const AgentProfileDetail = ({ description, spacificData }) => {
+const AgentProfileDetail = ({
+  description,
+  spacificData,
+  forRentCount,
+  forSellCount,
+}) => {
   return (
     <Grid
       item
@@ -41,7 +46,7 @@ const AgentProfileDetail = ({ description, spacificData }) => {
           variant="h4"
           sx={{ fontWeight: 'bold', color: '#1176AD', mt: 2, fontSize: '30px' }}
         >
-          {`${spacificData?.firstName ? spacificData?.firstName : 'user'} ${spacificData?.lastName ? spacificData?.lastName : 'name'}`}
+          {`${spacificData?.first_name ? spacificData?.first_name : description?.first_name} ${spacificData?.last_name ? spacificData?.last_name : description?.last_name}`}
         </Typography>
 
         {description?.userType === `${USER_TYPE.user}` ? (
@@ -49,17 +54,17 @@ const AgentProfileDetail = ({ description, spacificData }) => {
         ) : (
           <>
             <ProfileInfo
-              title={`${description?.country} ${description?.city}`}
+              title={`${description?.city}, ${description?.country} `}
               icon={LOCATION_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${description?.counts?.sellCount?.total} ${FOR_SALE}`}
+              title={`${forSellCount} ${FOR_SALE}`}
               icon={FOR_SALE_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${description?.counts?.rentCount?.total} ${FOR_RENT}`}
+              title={`${forRentCount} ${FOR_RENT}`}
               icon={FOR_RENT_ICON}
               alt={ALT}
             />

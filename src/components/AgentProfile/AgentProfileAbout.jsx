@@ -11,7 +11,7 @@ const AgentAbout = ({ data }) => {
         marginTop: '12px',
       }}
     >
-      <AgentAboutTitle title={data?.userName} />
+      <AgentAboutTitle title={`${data?.first_name} ${data?.last_name}`} />
       <Typography
         variant="body1"
         sx={{

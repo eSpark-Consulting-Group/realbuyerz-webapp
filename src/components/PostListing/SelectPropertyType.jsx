@@ -21,7 +21,7 @@ const SelectProperyType = ({
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
     setPropertyType(text);
-    formik.setFieldValue('proportyCategory', text);
+    formik.setFieldValue('propertyCategory', text);
   };
 
   const handlePropetySubType = (text) => {

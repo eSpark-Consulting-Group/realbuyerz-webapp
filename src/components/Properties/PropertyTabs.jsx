@@ -13,7 +13,7 @@ const CustomTabPanel = ({ data, value, index, propertyType }) => {
   const filteredProperties =
     value === 0
       ? data
-      : data.filter(
+      : data?.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
 
@@ -98,24 +98,11 @@ const PropertyTabs = ({ data }) => {
   const filteredProperties =
     propertyType === ''
       ? data
-      : data.filter(
+      : data?.filter(
           (property) => property?.propertyData?.propertyType === propertyType
         );
-  // const isAgent = 'flase';
-  // const agenttab = value;
   return (
     <>
-      {/* {isAgent == 'true' && (
-        <AgentChip
-          data={filteredProperties}
-          chips={agenttab}
-          label="Agent"
-          variant="outlined"
-          color="primary"
-          sx={{ mb: 2 }}
-        />
-      )} */}
-
       <Box
         sx={{ borderRadius: '10px', border: '1px solid #E4E4E4', mt: '20px' }}
       >

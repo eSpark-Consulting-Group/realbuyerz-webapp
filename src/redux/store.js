@@ -27,6 +27,7 @@ import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
+import globalUnitsSlice from './slices/global/globalUnitsSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
 import packagesSlice from './slices/Packages/packagesSlice';
 
@@ -71,5 +72,8 @@ export const store = configureStore({
     // Favorite Ads State
     favoriteAds: favouriteAdsSlice,
     packages: packagesSlice,
+
+    // global units States
+    globalUnits: globalUnitsSlice,
   },
 });

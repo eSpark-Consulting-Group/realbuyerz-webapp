@@ -37,7 +37,6 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  // const proposals = useSelector((state) => state?.proposals);
   const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
@@ -89,7 +88,7 @@ const Page = () => {
       .string('Enter description')
       .required('Description is required'),
     purpose: yup.string(''),
-    proportyCategory: yup.string(''),
+    propertyCategory: yup.string(''),
     propertyType: yup.string(''),
     city: yup.string('Enter city').required('City is required'),
     area: yup.string('Enter area').required('Area is required'),
@@ -146,7 +145,7 @@ const Page = () => {
     business_centre: 0,
     other_features: [],
     purpose: 'Sell',
-    proportyCategory: 'House',
+    propertyCategory: 'House',
     propertyType: 'Sell',
     images: [],
     videos: [],
@@ -198,7 +197,7 @@ const Page = () => {
               }}
             >
               <Link href={'/user/dashboard'}>agent</Link>
-              <BuyersPlatform propertyData={COVER_LETTER} />
+              <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
               <AdInformation formik={formik} propertyData={COVER_LETTER} />
               <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />

@@ -9,7 +9,7 @@ const CollapsedLiveBiddingList = ({ list }) => {
   return (
     <Box>
       {list?.map((item) => (
-        <Box key={item.id}>
+        <Box key={item?.id}>
           <Box
             sx={{
               width: '100%',

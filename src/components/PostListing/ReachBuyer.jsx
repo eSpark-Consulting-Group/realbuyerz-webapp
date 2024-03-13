@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const ReachBuyer = ({ title, description }) => {
+const ReachBuyer = ({ title, description, fontSize }) => {
   return (
     <Box
       sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1, sm: 0.7 } }}
@@ -21,7 +21,9 @@ const ReachBuyer = ({ title, description }) => {
         sx={{
           textAlign: 'center',
           color: '#126FAA',
-          fontSize: { xs: '20px', md: '23px', lg: '25px' },
+          fontSize: fontSize
+            ? fontSize
+            : { xs: '20px', md: '23px', lg: '25px' },
           fontWeight: 400,
         }}
       >

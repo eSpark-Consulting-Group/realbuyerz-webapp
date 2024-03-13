@@ -39,13 +39,9 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  // const proposals = useSelector((state) => state?.proposals);
   const spacificPost = userPostings?.find((item) => id == item?.property_id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
-  // const newProposal = proposals.find(
-  //   (item) => item?.agent_id == current_user_id
-  // );
 
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
@@ -96,7 +92,7 @@ const Page = () => {
       .string('Enter description')
       .required('Description is required'),
     purpose: yup.string(''),
-    proportyCategory: yup.string(''),
+    propertyCategory: yup.string(''),
     propertyType: yup.string(''),
     city: yup.string('Enter city').required('City is required'),
     area: yup.string('Enter area').required('Area is required'),
@@ -153,7 +149,7 @@ const Page = () => {
     business_centre: 0,
     other_features: [],
     purpose: 'Sell',
-    proportyCategory: 'House',
+    propertyCategory: 'House',
     propertyType: 'Sell',
     instalmentAvailable: false,
     readyPossession: false,

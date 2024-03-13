@@ -6,14 +6,19 @@ import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
+import FilterComponent from './FilterComponent';
 
 const CategoryPage = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
+  const capID = id.charAt(0).toUpperCase() + id.slice(1);
+
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const filterData = projects?.filter((item) => item?.proportyCategory === id);
+  const filterData = projects?.filter(
+    (item) => item?.propertyCategory === capID
+  );
   const filteredData = filterData?.length ? filterData : NoData;
 
   // Validate id
@@ -37,6 +42,7 @@ const CategoryPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
+      <FilterComponent data={filteredData} />
       <CategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>

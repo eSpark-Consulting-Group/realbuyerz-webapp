@@ -28,9 +28,7 @@ function HideUnhideButton({ handleClickOpen }) {
         },
       }}
     >
-      {/* <IconButton> */}
       <VisibilityIcon color="#FB631C" />
-      {/* </IconButton> */}
     </Box>
   );
 }

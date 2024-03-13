@@ -3,13 +3,12 @@ import { Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const ProposalApplicant = ({ proposal }) => {
-  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+  const agents = useSelector((state) => state?.agents);
 
-  const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
+  const selectedAgent = agents?.find((agent) => agent?.id === proposal?.agent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);
-    // Remove 'return null;' to allow the execution of the JSX block below
   }
   return (
     <Grid

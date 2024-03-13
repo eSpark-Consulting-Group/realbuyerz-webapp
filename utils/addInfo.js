@@ -11,7 +11,7 @@ export const createInformationState = (
     sellingData: propertyBuyingDetails,
     addInfo: propertyInformation.map((item) => ({
       ...item,
-      value: PROPERTY_BUYING_DETAIL.sellingDetails[item.label],
+      value: PROPERTY_BUYING_DETAIL.sellingDetails[item?.label],
     })),
   };
   return { adInfoData };

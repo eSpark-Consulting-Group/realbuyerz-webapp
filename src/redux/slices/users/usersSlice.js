@@ -7,31 +7,15 @@ const users = {
 
 const initialState = { users };
 
-// function generateUniqueId(users) {
-//   let newId = (users.length + 1).toString();
-//   while (users.some((user) => user.id === newId)) {
-//     newId = (parseInt(newId, 10) + 1).toString();
-//   }
-//   return newId;
-// }
-
 const usersSlice = createSlice({
   name: USERS_DATA.users,
   initialState,
   reducers: {
     savePreferenceData: (state, action) => {
-      const {
-        emailNotification,
-        newsLetters,
-        autoReport,
-        areaUnit,
-        currencyUnit,
-      } = action.payload;
-      state.users.userdata.emailNotification = emailNotification;
-      state.users.userdata.newsLetters = newsLetters;
-      state.users.userdata.autoReport = autoReport;
+      const { emailNotification, areaUnit, currencyUnit } = action.payload;
       state.users.userdata.areaUnit = areaUnit;
       state.users.userdata.currencyUnit = currencyUnit;
+      state.users.userdata.emailNotification = emailNotification;
     },
   },
 });

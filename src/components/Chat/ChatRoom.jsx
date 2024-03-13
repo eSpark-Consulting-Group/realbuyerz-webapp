@@ -317,7 +317,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               {selectedChatRoom?.title}
             </Typography>
           </Box>
-          <Box sx={{ width: '10%' }}>
+          <Box sx={{ marginRight: '10px' }}>
             <Image
               width={3}
               height={15}
@@ -393,7 +393,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
           }}
           display={'flex'}
           alignItems={
-            isReplying || fileInput?.length !== 0 ? 'flex-end' : 'center'
+            isReplying || fileInput.length !== 0 ? 'flex-end' : 'center'
           }
         >
           <Box
@@ -618,14 +618,14 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     handleCancelSendingAudio={handleCancelSendingAudio}
                   />
                 ) : (
-                  <div
+                  <Box
                     role={'none'}
                     className={'contentEditable'}
                     contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
-                    ariaLabel="Type your message..."
-                    ariaPlaceholder="Type your message..."
+                    aria-label="Type your message..."
+                    aria-placeholder="Type your message..."
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
@@ -634,9 +634,25 @@ const ChatRoom = ({ selectedChatRoom }) => {
                       document?.activeElement !== messageFieldRef.current && (
                         <div className={'placeholder'}>Write message</div>
                       )}
-                  </div>
+                  </Box>
                 )}
               </Box>
+              <Box
+                src="/icons/SendMessageIcon.svg"
+                component={'img'}
+                alt={'Send Message'}
+                sx={{
+                  marginLeft: { xs: '5px', sm: '10px' },
+                  marginRight: { xs: '5px', sm: '10px' },
+                  width: { xs: '20px', sm: '36px' },
+                  height: { xs: '20px', sm: '36px' },
+                  display: 'none',
+                  '@media (min-width: 280px) and (max-width: 1526px)': {
+                    display: 'flex',
+                  },
+                }}
+                onClick={sendMessage}
+              />
             </Box>
           </Box>
           <Box
@@ -648,6 +664,9 @@ const ChatRoom = ({ selectedChatRoom }) => {
               marginRight: { xs: '5px', sm: '10px' },
               width: { xs: '20px', sm: '36px' },
               height: { xs: '20px', sm: '36px' },
+              '@media (min-width: 280px) and (max-width: 1526px)': {
+                display: 'none',
+              },
             }}
             onClick={sendMessage}
           />

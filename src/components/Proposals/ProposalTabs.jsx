@@ -122,27 +122,9 @@ const CustomTabPanel = ({ data, value, index, tabProposalStatus, search }) => {
             height: '100vh',
           }}
         >
-          {displayData?.length > 0 ? (
+          {displayData.length > 0 ? (
             <ProposalListingCard proposalsData={displayData} />
           ) : (
-            // <Box
-            //   sx={{
-            //     width: '100%',
-            //     height: '100%',
-            //     display: 'flex',
-            //     justifyContent: 'center',
-            //     alignItems: 'center',
-            //   }}
-            // >
-            //   <Typography
-            //     sx={{
-            //       fontSize: '40px',
-            //       color: '#333',
-            //     }}
-            //   >
-            //     {/* {NO_RESULTS_FOUND} */}
-            //   </Typography>
-            // </Box>
             <Box
               className="scrollbar-container"
               sx={{

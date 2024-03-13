@@ -57,7 +57,6 @@ const ProjectsFilters = ({ data }) => {
           item?.title?.includes(filterValues?.searchInput))
       );
     });
-
     console.log(filteredData);
   };
 
@@ -121,7 +120,6 @@ const ProjectsFilters = ({ data }) => {
             </Select>
           </FormControl>
 
-          {/* Dropdown propertySize */}
           <FormControl>
             <InputLabel>propertySize</InputLabel>
             <Select
@@ -140,8 +138,6 @@ const ProjectsFilters = ({ data }) => {
               ))}
             </Select>
           </FormControl>
-
-          {/* Search Input */}
           <Input
             placeholder="Search..."
             value={filterValues?.searchInput}
@@ -158,6 +154,9 @@ const ProjectsFilters = ({ data }) => {
             variant="contained"
             color="secondary"
             onClick={handleClearFilter}
+            sx={{
+              height: '52px',
+            }}
           >
             Clear Filter
           </Button>

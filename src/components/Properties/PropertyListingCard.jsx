@@ -68,7 +68,6 @@ const PropertyListingCard = ({ propertyData }) => {
               <Link href={`/project/${property?.id}`}>
                 <Image
                   src={property?.coverImage}
-                  // layout="fill"
                   width={360}
                   height={360}
                   objectFit="cover"
@@ -137,7 +136,7 @@ const PropertyListingCard = ({ propertyData }) => {
               sx={{ display: 'flex' }}
             >
               <Box>
-                <Link href={`${PROPERTY_DETAILS.properties}${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.properties}${property?.id}`}>
                   <Button variant="primary">
                     <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
                       {PROPERTY_DETAILS.viewMore}
@@ -146,7 +145,7 @@ const PropertyListingCard = ({ propertyData }) => {
                 </Link>
               </Box>
               <Box>
-                <Link href={`${PROPERTY_DETAILS.agent}${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.agent}${property?.id}`}>
                   <Button variant="primary">
                     <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
                       {PROPERTY_DETAILS.agentProfile}
@@ -160,15 +159,13 @@ const PropertyListingCard = ({ propertyData }) => {
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(propertyData?.length / itemsPerPage)}
+          count={Math.ceil(propertyData.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"
           shape="rounded"
           siblingCount={1}
           boundaryCount={1}
-          // showFirstButton
-          // showLastButton
           color="primary"
         />
       </Box>

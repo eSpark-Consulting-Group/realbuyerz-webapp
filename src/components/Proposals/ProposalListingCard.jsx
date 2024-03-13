@@ -100,7 +100,7 @@ const ProposalListingCard = ({ proposalsData }) => {
               pl: '20px',
             }}
           >
-            <Grid container sx={{}}>
+            <Grid container>
               <Grid
                 item
                 xs={9}
@@ -222,7 +222,7 @@ const ProposalListingCard = ({ proposalsData }) => {
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(proposalsData?.length / itemsPerPage)}
+          count={Math.ceil(proposalsData.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"

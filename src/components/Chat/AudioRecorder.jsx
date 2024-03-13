@@ -52,7 +52,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
 
   useEffect(() => {
     if (waveform) handleStartRecording();
-  }, [waveform]);
+  }, [waveform]); // Removed the function call
 
   const handleStartRecording = () => {
     setRecordingDuration(0);
@@ -229,13 +229,8 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
           />
         )}
       </Box>
-      {/* <Button onClick={sendRecording} variant="contained">
-        Send
-      </Button> */}
     </Box>
   );
 };
 
 export default AudioRecorder;
-
-//06:34:25
