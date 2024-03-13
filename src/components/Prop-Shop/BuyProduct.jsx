@@ -182,7 +182,7 @@ export default function BuyProduct() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container>
-      {!paymentMedthod && (
+        {!paymentMedthod && (
           <Grid xs={12} sm={12} md={12} lg={8.5} item>
             <Item>
               <Subscription title={Buy_Product_Data?.title} />
