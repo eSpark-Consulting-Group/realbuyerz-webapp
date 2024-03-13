@@ -61,6 +61,7 @@ const Page = () => {
                     </Typography>
                     <PropertyDetail
                       subTitle={spacificPost?.title}
+                      fontStyle={'16px'}
                       description={spacificPost?.description}
                     />
                     <Location
@@ -68,8 +69,9 @@ const Page = () => {
                       locationKeys={location}
                       purpose={spacificPost?.purpose}
                       propertyType={spacificPost?.propertyType}
-                      proportyCategory={spacificPost?.proportyCategory}
+                      propertyCategory={spacificPost?.propertyCategory}
                       location={spacificPost?.location}
+                      width={'70%'}
                     />
                     <PreviewAmountAndFeature
                       area={spacificPost?.area}

@@ -19,16 +19,16 @@ const scrollToTop = () => {
 
 const PopularLocations = ({ data }) => {
   const [filteredProposalsData, setFilteredProposalsData] = useState(
-    data?.filter((item) => item.type === 'sale')
+    data?.filter((item) => item?.type === 'sale')
   );
   const [filterType, setFilterType] = useState('sale');
 
   const handleFilter = (type) => {
     setFilterType(type);
     if (type === 'sale') {
-      setFilteredProposalsData(data?.filter((item) => item.type === 'sale'));
+      setFilteredProposalsData(data?.filter((item) => item?.type === 'sale'));
     } else if (type === 'rent') {
-      setFilteredProposalsData(data?.filter((item) => item.type === 'rent'));
+      setFilteredProposalsData(data?.filter((item) => item?.type === 'rent'));
     } else {
       setFilteredProposalsData(data);
     }
@@ -39,7 +39,7 @@ const PopularLocations = ({ data }) => {
         pt: { xs: '0px', lg: '60px' },
         pb: '30px',
         textAlign: 'center',
-        backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
+        backgroundImage: `url('/images/bgs/popular-location.svg')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -171,7 +171,7 @@ const PopularLocations = ({ data }) => {
               src="/images/bgs/GototheTop.svg"
               width={80}
               height={80}
-              alt={''}
+              alt={'Images'}
             />
           </Button>
         </Box>

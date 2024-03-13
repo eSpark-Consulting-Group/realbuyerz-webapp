@@ -181,6 +181,7 @@ export default function BuyProduct() {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
+<<<<<<< HEAD
       <Grid container xs={12} md={12} lg={12} item spacing={2.2}>
         {!paymentMedthod && (
           <Grid xs={12} sm={12} md={12} lg={8.5} item>
@@ -212,6 +213,14 @@ export default function BuyProduct() {
             </Item>
           </Grid>
         )}
+=======
+      <Grid container>
+        <Grid xs={12} sm={12} md={12} lg={8.5} item>
+          <Item>
+            <Subscription title={Buy_Product_Data?.title} />
+          </Item>
+        </Grid>
+>>>>>>> epic/issue/1
         <Grid xs={12} sm={12} md={12} lg={3.5} item>
           <Item>
             <ProductCart

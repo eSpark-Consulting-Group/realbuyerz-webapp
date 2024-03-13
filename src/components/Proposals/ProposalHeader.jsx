@@ -8,14 +8,12 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Proposals } from '@/app/constants/Proposals';
 
 const ProposalHeader = ({ proposal }) => {
-  const agents = useSelector((state) => state?.agents?.agents?.agentData);
+  const agents = useSelector((state) => state?.agents);
 
-  const selectedAgent = agents.find((agent) => agent?.id === proposal?.agent);
-  console.log('selectedAgent', selectedAgent);
+  const selectedAgent = agents?.find((agent) => agent?.id === proposal?.agent);
 
   if (!selectedAgent) {
     console.error(`Agent with id ${proposal} not found`);
-    // Remove 'return null;' to allow the execution of the JSX block below
   }
 
   return (
@@ -27,7 +25,7 @@ const ProposalHeader = ({ proposal }) => {
             width={60}
             height={60}
             sx={{ borderRadius: '50%' }}
-            alt=""
+            alt={'Images'}
           />
         </Box>
         <Box>

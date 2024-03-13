@@ -34,7 +34,6 @@ export default function ProfilePasswordForm({ data }) {
     initialValues: Password_Keys,
     validationSchema: passwordValidationSchema,
     onSubmit: (values, action) => {
-      console.log(values, 'values');
       action.resetForm();
       setCheckValue(false);
     },
@@ -45,9 +44,6 @@ export default function ProfilePasswordForm({ data }) {
       <Grid
         container
         spacing={1}
-        xs={12}
-        md={12}
-        item
         sx={{
           mx: 'auto',
           display: 'block',
@@ -87,8 +83,11 @@ export default function ProfilePasswordForm({ data }) {
                   }}
                 >
                   <Typography
-                    variant="h6"
-                    sx={{ textAlign: 'left !important' }}
+                    sx={{
+                      textAlign: 'left !important',
+                      fontSize: '18px',
+                      fontWeight: 500,
+                    }}
                   >
                     {field?.label}
                   </Typography>
@@ -152,6 +151,7 @@ export default function ProfilePasswordForm({ data }) {
             mt: { xs: 2, sm: 2.1, md: 4.1, lg: 4 },
             ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
             mb: { xs: 3, md: 3 },
+            fontSize: '15px',
             width: { xs: '90%', sm: 'auto', md: '160px' },
             height: { xs: '45px', md: '45px' },
             '&:hover': { color: '#fff' },

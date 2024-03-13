@@ -19,7 +19,7 @@ export default function BuyConnectSelect({
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           name={name}
-          placeHolder={placeHolder}
+          placeholder={placeHolder}
           value={value}
           onChange={onChange}
           sx={sx}

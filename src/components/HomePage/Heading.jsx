@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const Heading = ({ heading, paragraph }) => {
+const Heading = ({ heading, paragraph, textAlign }) => {
   return (
     <>
       <Typography
@@ -10,6 +10,7 @@ const Heading = ({ heading, paragraph }) => {
           color: '#333333',
           fontWeight: 700,
           pb: paragraph ? '25px' : '0px',
+          textAlign: textAlign,
         }}
       >
         {heading ? heading : ''}

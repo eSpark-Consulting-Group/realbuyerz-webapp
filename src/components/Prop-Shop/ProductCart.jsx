@@ -38,7 +38,6 @@ const ProductCart = ({
     >
       <Grid
         container
-        xs={12}
         item
         sx={{
           mx: { xs: 'auto', md: 0 },

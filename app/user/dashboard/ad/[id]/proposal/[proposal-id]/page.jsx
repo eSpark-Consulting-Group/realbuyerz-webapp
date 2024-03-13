@@ -1,246 +1,324 @@
 'use client';
-import { Box, Typography } from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
+import { Box, Typography, Grid, Button } from '@mui/material';
+import React, { useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import UserProfileImage from '@/src/components/UserDashboard/UserProfileImage';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
 import { ProposalsPage } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
-import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import { previewData } from '@/app/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
+import UserProfileImage from '@/src/components/UserDashboard/UserProfileImage';
+import { postListingAdCard } from '@/app/constants/postListing';
+
+// import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
-import {
-  handleConnectProposal,
-  handleRejectedProposal,
-} from '@/src/redux/slices/proposals/proposalsSlice';
+import { PROPOSAL } from '@/app/constants/Proposals';
+import Amount from '@/src/components/PostListing/preview/Amount';
+import LiveBiddingPropertiesList from '@/src/components/Biddings/LiveBiddingPropertiesList';
+import { ESTIMATE_RANGE } from '@/app/constants/LiveBidding';
+import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
 
 const Page = () => {
-  const { image, back_Button, applicant_Titlt, applicant_Message } =
-    ProposalsPage;
-  const { areaAndAmount, location, images, videos } = previewData;
-
-  const dispatch = useDispatch();
+  const [showMoreContent, setShowMoreContent] = useState(false);
+  const { image, back_Proposal_Button } = ProposalsPage;
+  const { areaAndAmount, location, amenities, images, videos } = previewData;
   const pathname = usePathname();
-  const segments = pathname?.split('/');
-  const getproposalId = segments[segments?.length - 1];
+  const segments = pathname.split('/');
+  const id = segments[segments.length - 1];
   const proposals = useSelector((state) => state?.proposals);
-
-  const find_proposal = proposals?.find(
-    (item) => item?.proposal_id == getproposalId
-  );
-
   const agents = useSelector((state) => state?.agents);
-
+  const userPostings = useSelector(
+    (state) => state?.postRequestAds?.userPostings
+  );
+  const find_proposal = proposals?.find((item) => item?.proposal_id == id);
   const find_agent = agents?.find(
     (agent) => agent?.id == find_proposal?.agent_id
   );
+  const find_ad = userPostings?.filter(
+    (ad) => ad?.property_id == find_proposal?.property_id
+  );
 
-  const handleConnect = () => {
-    dispatch(
-      handleConnectProposal({
-        proposal_id: find_proposal?.proposal_id,
-        property_id: find_proposal?.property_id,
-      })
-    );
-  };
-
-  const handleReject = () => {
-    dispatch(
-      handleRejectedProposal({ proposal_id: find_proposal?.proposal_id })
-    );
+  const handleClick = () => {
+    setShowMoreContent(!showMoreContent);
   };
 
   return (
-    <>
-      {find_proposal !== undefined &&
-      find_proposal !== null &&
-      find_proposal?.status !== 'Rejected' &&
-      find_proposal?.status !== 'Connected' ? (
-        <>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2.5}>
+        <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
           <Box sx={{ pb: 3 }}>
             <BackToDashboard
-              buttonLabel={back_Button?.text}
-              link={back_Button?.link}
+              buttonLabel={back_Proposal_Button?.text}
+              link={back_Proposal_Button?.link}
             />
           </Box>
           <Box
             sx={{
-              backgroundColor: '#fff',
+              background: '#fff',
+              borderRadius: '10px',
+              mt: '16px',
               border: '1px solid #E4E4E4',
-              maxWidth: { lg: '1200px' },
-              height: 'auto',
             }}
           >
-            <Box
-              sx={{ width: '100%', borderBottom: '1px solid #E4E4E4', p: 4 }}
-            >
+            <Grid item xs={12} md={12} lg={12} xl={12}>
+              <Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: 2,
+                    flexDirection: { xs: 'column', md: 'column' },
+                    p: 4,
+                    pb: 5,
+                    borderBottom: '1px solid #E4E4E4',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '30px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                    }}
+                  >
+                    {VIEWPROPOSAL?.userRequest || ''}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: '15px', md: '20px' },
+                      fontWeight: 700,
+                      textAlign: 'center',
+                      mt: 3,
+                      color: '#333333',
+                      '@media (min-width: 280px) and (max-width: 350px)': {
+                        textAlign: 'center',
+                        fontSize: '10px',
+                      },
+                    }}
+                  >
+                    {find_ad[0]?.title || ''}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'flex-start',
+                      '@media (min-width: 280px) and (max-width: 800px)': {
+                        flexDirection: 'column',
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: 'flex',
+                      }}
+                    >
+                      <UserProfileImage
+                        width={60}
+                        height={60}
+                        badgeWidth={'7px'}
+                        badgeHeigth={'7px'}
+                        padding={0.3}
+                        right={2}
+                        image={find_agent?.profileImage || image}
+                        isActive={find_agent?.status || false}
+                        notActive={false}
+                      />
+                      <Box
+                        sx={{
+                          marginLeft: '10px',
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontSize: '15px',
+                            fontWeight: 500,
+                            color: '#126FAA',
+                            ml: 0.5,
+                          }}
+                        >
+                          {`${find_agent?.first_name || ''} ${find_agent?.last_name || ''}`}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: '#757474',
+                            fontSize: '15px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          <LocationOnIcon
+                            sx={{ fontSize: 28, color: '#757474' }}
+                          />
+                          {`${find_agent?.city || ''} ${find_agent?.country || ''}`}
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{ ml: { xs: 0, md: 0.5 } }}
+                        >
+                          {'Posted 39 minutes ago'}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                  {find_ad &&
+                    find_ad
+                      ?.filter((item, index) => index === 0)
+                      ?.map((item, index) => (
+                        <Grid container key={index}>
+                          <Grid container spacing={2}>
+                            <Box
+                              sx={{
+                                color: '#333',
+                                px: { xs: '20px', md: '20px' },
+                                paddingTop: '40px',
+                                paddingBottom: '20px',
+                                '@media(min-width: 280px) and (max-width: 445px)':
+                                  {
+                                    pr: '10px',
+                                  },
+                              }}
+                            >
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  fontWeight: '500',
+                                  fontSize: '13.8px',
+                                  lineHeight: '20.52px',
+                                  mb: 1,
+                                }}
+                              >
+                                {item?.description}
+                              </Typography>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                width: '100%',
+                                '@media (min-width: 280px) and (max-width: 500px)':
+                                  {
+                                    flexDirection: 'column',
+                                  },
+                              }}
+                            >
+                              <LiveBiddingPropertiesList
+                                city={item?.city}
+                                status={item?.purpose}
+                                location={item?.location}
+                                noConnects={false}
+                                cardKeys={postListingAdCard}
+                                justifyContent={'flex-start'}
+                              />
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  width: '20%',
+                                  '@media (min-width: 280px) and (max-width: 760px)':
+                                    {
+                                      width: '80%',
+                                    },
+                                  '@media (min-width: 280px) and (max-width: 500px)':
+                                    {
+                                      pl: '20px',
+                                    },
+                                }}
+                              >
+                                <Typography
+                                  variant="body1"
+                                  sx={{
+                                    fontSize: '14px',
+                                    fontWeight: 600,
+                                    mt: '3px',
+                                  }}
+                                >
+                                  {ESTIMATE_RANGE}
+                                </Typography>
+                                <Typography
+                                  sx={{
+                                    ml: 1,
+                                    fontWeight: 700,
+                                    color: '#333333',
+                                    fontSize: '20px',
+                                  }}
+                                  component={'span'}
+                                >
+                                  {`${item?.amount}`}
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      ))}
+                  <Box>
+                    <Button
+                      sx={{
+                        fontSize: '12px',
+                        fontWeight: 500,
+                        color: '#FB631C',
+                        textTransform: 'math-auto',
+                      }}
+                      onClick={handleClick}
+                    >
+                      {showMoreContent
+                        ? VIEWPROPOSAL?.viewLessDetails
+                        : VIEWPROPOSAL?.viewMoreDetails}
+                    </Button>
+                  </Box>
+                </Box>
+                {showMoreContent && (
+                  <>
+                    <Location
+                      city={find_ad?.city}
+                      locationKeys={location}
+                      purpose={find_ad?.purpose}
+                      propertyType={find_ad?.propertyType}
+                      propertyCategory={find_ad?.propertyCategory}
+                      location={find_ad?.location}
+                      width={'70%'}
+                    />
+                    <Amount />
+                    <PreviewFeatureAndAmenities
+                      amenities={amenities}
+                      bedrooms={find_ad?.bedrooms}
+                      bathrooms={find_ad?.bathrooms}
+                    />
+                  </>
+                )}
+              </Box>
               <Box
                 sx={{
                   width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  flexDirection: { xs: 'column', md: 'row' },
+                  height: '100%',
+                  borderRight: '1px solid #E4E4E4',
+                  pt: 2,
                 }}
               >
-                <Box
+                <Typography
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 2.5,
-                    flexDirection: { xs: 'column', md: 'row' },
+                    fontSize: '30px',
+                    fontWeight: 600,
+                    textAlign: 'center',
+                    mt: 4,
                   }}
                 >
-                  <UserProfileImage
-                    width={60}
-                    height={60}
-                    badgeWidth={'7px'}
-                    badgeHeigth={'7px'}
-                    padding={0.3}
-                    right={2}
-                    image={find_agent?.profile_image || image}
-                    isActive={find_agent?.status || false}
-                  />
-                  <Box
-                    sx={{
-                      textAlign: { xs: 'center', md: 'left' },
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '15px',
-                        fontWeight: 500,
-                        color: '#126FAA',
-                      }}
-                    >
-                      {`${find_agent?.first_name || ''} ${find_agent?.first_name || ''}`}
-                    </Typography>
-                    <Typography>
-                      <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
-                      {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
-                      - 3:16pm local time
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    gap: 1.5,
-                    flexDirection: { xs: 'column', md: 'row' },
-                    '@media (min-width: 700px) and (max-width: 950px)': {
-                      flexDirection: 'row',
-                    },
-                  }}
-                >
-                  <Link href={`/user/dashboard`}>
-                    <Typography
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: 1,
-                        width: { xs: '200px', lg: '200px' },
-                        height: '43.545px',
-                        backgroundColor: '#fff',
-                        border: '1px solid #FB631C',
-                        borderRadius: '50px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        color: '#FB631C',
-                        '&:hover': {
-                          backgroundColor: '#FB631C',
-                          color: 'white',
-                        },
-                      }}
-                      onClick={() => handleReject()}
-                    >
-                      {'Reject'}
-                    </Typography>
-                  </Link>
-                  <Link href={`/user/inbox`}>
-                    <Typography
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: { xs: '200px', lg: '200px' },
-                        height: '43.545px',
-                        backgroundColor: '#FB631C',
-                        borderRadius: '50px',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        color: '#FFF',
-                        '&:hover': {
-                          backgroundColor: 'white',
-                          color: '#FB631C',
-                          border: '1px solid #FB631C',
-                        },
-                      }}
-                      onClick={() => handleConnect()}
-                    >
-                      {'Connect'}
-                    </Typography>
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-              }}
-            >
-              <Box
-                sx={{
-                  width: { xs: '100%', md: '330px' },
-                  borderRight: { xs: '0px', md: '1px solid #E4E4E4' },
-                  borderBottom: { xs: '1px solid #E4E4E4', md: '0px' },
-                  p: { xs: 5, md: 3 },
-                }}
-              >
-                <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
-                  {applicant_Titlt || ''}
+                  {VIEWPROPOSAL?.proposalDetails}
                 </Typography>
-                <Typography>{`${find_agent?.first_name || ''} ${find_agent?.last_name || ''} ${applicant_Message || ''}`}</Typography>
-              </Box>
-              <Box
-                sx={{
-                  width: { xs: '100%', md: '80%' },
-                  padding: { xs: '40px', md: '40px' },
-                }}
-              >
                 <PropertyDetail
-                  title={PropertyDetails}
-                  // heading={PROPOSAL?.propertyDetails}
+                  heading={PROPOSAL?.propertyDetails}
                   subTitle={find_proposal?.title}
                   description={find_proposal?.description}
-                  width={'100%'}
-                  pb={'5px'}
-                  pt={'0px'}
-                  px={'0px'}
-                  paddingHeading={'10px'}
-                  subPadding={'0px'}
+                  mb={'-15px'}
                 />
                 <Location
                   city={find_proposal?.city}
                   locationKeys={location}
                   purpose={find_proposal?.purpose}
                   propertyType={find_proposal?.propertyType}
-                  proportyCategory={find_proposal?.proportyCategory}
+                  propertyCategory={find_proposal?.propertyCategory}
                   location={find_proposal?.location}
-                  width={'100%'}
-                  widthBox={'100%'}
-                  className={'locationWidth'}
-                  pb={'20px'}
-                  pt={'30px'}
-                  px={'0px'}
+                  width={'70%'}
                 />
                 <PreviewAmountAndFeature
                   area={find_proposal?.area}
@@ -250,46 +328,24 @@ const Page = () => {
                   amountCurrency={find_proposal?.amountCurrency}
                   instalmentAvailable={find_proposal?.instalmentAvailable}
                   readyPossession={find_proposal?.readyPossession}
-                  width={'100%'}
-                  pb={'10px'}
-                  pt={'30px'}
-                  px={'0px'}
-                  subPadding={'0px'}
                 />
-                {/* <PreviewFeatureAndAmenities
-                  amenities={amenities}
-                  bedrooms={find_proposal?.bedrooms}
-                  bathrooms={find_proposal?.bathrooms}
-                  parking={find_proposal?.parking}
-                  other_features={find_proposal?.other_features}
-                /> */}
+
                 <BidMedia
                   title={images?.title}
                   media={find_proposal?.images}
                   mediaType={images?.type}
-                  pb={'20px'}
-                  pt={'30px'}
-                  px={'0px'}
                 />
                 <BidMedia
                   title={videos?.title}
                   media={find_proposal?.videos}
                   mediaType={videos?.type}
-                  pb={'20px'}
-                  pt={'30px'}
-                  px={'0px'}
                 />
               </Box>
-            </Box>
+            </Grid>
           </Box>
-        </>
-      ) : (
-        <NotFoundSection
-          heading={'Sorry!'}
-          message={'Property id invalid, Please add correct id.'}
-        />
-      )}
-    </>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

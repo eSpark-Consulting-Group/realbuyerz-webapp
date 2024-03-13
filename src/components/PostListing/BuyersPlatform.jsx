@@ -4,13 +4,12 @@ import ListingInfo from './Listinginfo';
 import ReachBuyer from './ReachBuyer';
 
 import {
-  PROPERTY_INFORMATION,
   reachBuyerCoverLetter,
   reachBuyerData,
 } from '@/app/constants/postListing';
 import { usePathname } from 'next/navigation';
 
-const BuyersPlatform = () => {
+const BuyersPlatform = ({ propertyData, fontSize }) => {
   const pathName = usePathname();
   const coverLetterPath = '/cover-letter';
   return (
@@ -39,6 +38,7 @@ const BuyersPlatform = () => {
             }}
           >
             <ReachBuyer
+              fontSize={fontSize}
               title={
                 pathName.includes(coverLetterPath)
                   ? reachBuyerCoverLetter?.title
@@ -50,7 +50,7 @@ const BuyersPlatform = () => {
                   : reachBuyerData?.description
               }
             />
-            <ListingInfo propertyInfo={PROPERTY_INFORMATION.property} />
+            <ListingInfo propertyInfo={propertyData?.property} />
           </Box>
         </Grid>
       </Grid>

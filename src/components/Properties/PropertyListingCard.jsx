@@ -16,12 +16,10 @@ const styles = {
     margin: '20px 0',
   },
   image: {
-    width: '100%',
-    height: '100%',
     objectFit: 'cover',
-    '@media (min-width: 600px)': {
-      width: 360,
-      height: 360,
+    '@media (min-width: 280px)and (max-width: 600px)': {
+      width: '250px',
+      height: '300px',
     },
   },
 };
@@ -70,10 +68,11 @@ const PropertyListingCard = ({ propertyData }) => {
               <Link href={`/project/${property?.id}`}>
                 <Image
                   src={property?.coverImage}
-                  layout="fill"
+                  width={360}
+                  height={360}
                   objectFit="cover"
                   style={styles?.image}
-                  alt={''}
+                  alt={'Images'}
                   sx={{
                     borderRadius: '5px',
                   }}
@@ -98,7 +97,9 @@ const PropertyListingCard = ({ propertyData }) => {
               <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
                 {property?.propertyOverview?.unit}
               </Typography>
-              <Typography sx={{ fontSize: '25px', fontWeight: '600' }}>
+              <Typography
+                sx={{ fontSize: { xs: '18px', md: '25px' }, fontWeight: '600' }}
+              >
                 {property?.propertyOverview?.price}
               </Typography>
             </Box>
@@ -135,18 +136,18 @@ const PropertyListingCard = ({ propertyData }) => {
               sx={{ display: 'flex' }}
             >
               <Box>
-                <Link href={`${PROPERTY_DETAILS.properties}${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.properties}${property?.id}`}>
                   <Button variant="primary">
-                    <Typography variant="secondary">
+                    <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
                       {PROPERTY_DETAILS.viewMore}
                     </Typography>
                   </Button>
                 </Link>
               </Box>
               <Box>
-                <Link href={`${PROPERTY_DETAILS.agent}${property.id}`}>
+                <Link href={`${PROPERTY_DETAILS.agent}${property?.id}`}>
                   <Button variant="primary">
-                    <Typography variant="secondary">
+                    <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
                       {PROPERTY_DETAILS.agentProfile}
                     </Typography>
                   </Button>
@@ -158,15 +159,13 @@ const PropertyListingCard = ({ propertyData }) => {
       ))}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Pagination
-          count={Math.ceil(propertyData?.length / itemsPerPage)}
+          count={Math.ceil(propertyData.length / itemsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
           variant="outlined"
           shape="rounded"
           siblingCount={1}
           boundaryCount={1}
-          // showFirstButton
-          // showLastButton
           color="primary"
         />
       </Box>

@@ -27,6 +27,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
           }}
         >
           <IconButton
+            onClick={handleIncrement}
             sx={{
               width: 'auto',
               pl: 0,
@@ -39,8 +40,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
               src={'/images/listing-page/increment.svg'}
               width={25}
               height={22}
-              alt="increment"
-              onClick={handleIncrement}
+              alt={'increment'}
             />
           </IconButton>
           <Typography
@@ -54,6 +54,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
             {value}
           </Typography>
           <IconButton
+            onClick={handleDecrement}
             sx={{
               width: 'auto',
               pr: 0,
@@ -66,8 +67,7 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
               src={'/images/listing-page/minus.svg'}
               width={25}
               height={22}
-              alt="decrement"
-              onClick={handleDecrement}
+              alt={'decrement'}
             />
           </IconButton>
         </Box>

@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Button, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import 'react-phone-number-input/style.css';
 
 import RBInput from './RBInput';
@@ -16,8 +16,7 @@ import { useFormik } from 'formik';
 import VerificationModal from '../../Modal/VerificationModal';
 import { profileValidationSchema } from '../../Schemas/profileValidationSchema';
 import PhoneInput from 'react-phone-number-input';
-import { handleEdit } from '@/src/redux/slices/loginAgents/loginAgentsSlice';
-import { handleUserEdit } from '@/src/redux/slices/loginUsers/loginUsersSlice';
+import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -31,26 +30,26 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProfileForm({ data, formValues }) {
-  const { image, fields, buttonText } = data;
+  const { fields, buttonText } = data;
   const [verifyText, setVerifyText] = useState('unverified');
   const [isVerificationSuccessful, setIsVerificationSuccessful] =
     useState(false);
-  const user = useSelector((state) => state?.users?.users?.userdata);
+
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const Profile_Keys = {
-    profileImage: `${formValues?.profileImage}` || '',
-    about: `${formValues?.about}` || '',
-    address: `${formValues?.address}` || '',
-    city: `${formValues?.city}` || '',
-    country: `${formValues?.country}` || '',
-    email: `${formValues?.email}` || '',
-    firstName: `${formValues?.firstName}` || '',
-    landline: `${formValues?.landline}` || '',
-    lastName: `${formValues?.lastName}` || '',
-    mobile: `${formValues?.mobile}` || '',
-    whatsapp: `${formValues?.whatsapp}` || '',
+    profile_image: `${formValues?.profile_image || ''}`,
+    about: `${formValues?.about || ''}`,
+    address: `${formValues?.address || ''}`,
+    city: `${formValues?.city || ''}`,
+    country: `${formValues?.country || ''}`,
+    email: `${formValues?.email || ''}`,
+    first_name: `${formValues?.first_name || ''}`,
+    landline_number: `${formValues?.landline_number || ''}`,
+    last_name: `${formValues?.last_name || ''}`,
+    mobile_number: `${formValues?.mobile_number || ''}`,
+    whatsapp: `${formValues?.whatsapp || ''}`,
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
@@ -58,17 +57,11 @@ export default function ProfileForm({ data, formValues }) {
       initialValues: { ...Profile_Keys, ...formValues },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
-        if (formValues?.userType == 'agent') {
-          dispatch(handleEdit(values));
-        }
-        if (formValues?.userType == 'user') {
-          dispatch(handleUserEdit(values));
-        } else {
-          null;
-        }
-        // action.resetForm();
+        dispatch(handleUserEdit(values));
+        console.log(values, 'chkk');
       },
     });
+  console.log(values, 'haha');
 
   const handleModalToggle = () => {
     setOpen(!open);
@@ -87,7 +80,7 @@ export default function ProfileForm({ data, formValues }) {
     if (key == 'Whatsapp') {
       return setFieldValue((values.whatsapp = event));
     } else if (key == 'Mobile') {
-      return setFieldValue((values.mobile = event));
+      return setFieldValue((values.mobile_number = event));
     } else {
       null;
     }
@@ -98,12 +91,8 @@ export default function ProfileForm({ data, formValues }) {
       <Grid
         container
         spacing={1}
-        xs={12}
-        md={12}
-        item
         sx={{
           mx: 'auto',
-          backgroundImage: `url('${image}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '60%' },
@@ -117,7 +106,7 @@ export default function ProfileForm({ data, formValues }) {
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={user} spacificData={formValues} />
+              <AgentProfiles data={formValues} setFieldValue={setFieldValue} />
             </Box>
           </Item>
         </Grid>
@@ -154,6 +143,7 @@ export default function ProfileForm({ data, formValues }) {
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 1,
+                      fontSize: '18px',
                     }}
                   >
                     {field?.label}
@@ -211,7 +201,7 @@ export default function ProfileForm({ data, formValues }) {
                         <PhoneInput
                           id="mobile"
                           placeholder="Enter phone number"
-                          value={values?.mobile}
+                          value={values?.mobile_number}
                           defaultCountry={'PK'}
                           onChange={(e) => handlePhoneChange(e, field?.label)}
                         />
@@ -235,6 +225,7 @@ export default function ProfileForm({ data, formValues }) {
                               md: '160px',
                               lg: '100px',
                             },
+                            fontSize: '15px',
                             height: { xs: '40px', md: '40px', lg: '30px' },
                             borderRadius: '5px',
                             '&:hover': { color: '#fff' },
@@ -322,6 +313,7 @@ export default function ProfileForm({ data, formValues }) {
       <Button
         type="submit"
         sx={{
+          fontSize: '15px',
           ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
           mb: { xs: 3, md: 5 },
           width: { xs: '90%', sm: 'auto', md: '160px' },

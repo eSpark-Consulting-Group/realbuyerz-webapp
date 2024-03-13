@@ -34,7 +34,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
               src={image}
-              alt="city"
+              alt={'city'}
             />
             <Typography
               sx={{
@@ -89,11 +89,14 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                   borderRadius: '10px',
                   border: `1px solid ${formik.errors.city ? 'red' : 'none'}`,
                 },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  border: '0px !important',
+                },
                 '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
                   {
                     color: '#777777',
                     display: 'inline-flex',
-                    visibility: 'visible',
+                    // visibility: 'visible',
                     '&:hover': {
                       color: '#777777',
                     },

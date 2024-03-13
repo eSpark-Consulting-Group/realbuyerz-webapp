@@ -9,7 +9,7 @@ const CollapsedLiveBiddingList = ({ list }) => {
   return (
     <Box>
       {list?.map((item) => (
-        <Box key={item.id}>
+        <Box key={item?.id}>
           <Box
             sx={{
               width: '100%',
@@ -32,7 +32,7 @@ const CollapsedLiveBiddingList = ({ list }) => {
                 src={path == item?.link ? item?.iconActive : item?.icon}
                 width={30}
                 height={30}
-                alt="icons"
+                alt={'icons'}
               />
             </Box>
           </Box>

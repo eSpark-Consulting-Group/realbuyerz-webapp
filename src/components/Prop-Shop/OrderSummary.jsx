@@ -61,7 +61,9 @@ const OrderSummary = ({
             </Typography>
           </Box>
           <Box>
-            <Typography variant="h6" sx={{ color: '#333', fontWeight: 400 }}>
+            <Typography
+              sx={{ color: '#333', fontWeight: 400, fontSize: '18px' }}
+            >
               Rs: {cart?.price}
             </Typography>
           </Box>
@@ -118,7 +120,7 @@ const OrderSummary = ({
         </Box>
         <Box>
           <Typography variant="h5" sx={{ color: '#126FAA' }}>
-            {totalPrice}
+            Rs.{totalPrice}
           </Typography>
         </Box>
       </Box>
@@ -136,6 +138,7 @@ const OrderSummary = ({
               backgroundColor: '#fb631c',
               color: '#EDF7FF',
             },
+            fontSize: '16px',
           }}
           variant={!paymentMedthod && 'primary'}
           disabled={paymentMedthod && state}

@@ -99,20 +99,12 @@ const MobileResponsiveDashboardHeader = ({
                       src={item?.linkIcon}
                       width={20}
                       height={20}
-                      alt="icon"
+                      alt={'icon'}
                       style={{ marginRight: 10 }}
                     />
                   </Link>
                   <Link href="/">{LINK_NAME}</Link>
                 </Box>
-                {/* <MyListingResponsiveButton
-                  icon={item?.myListingIcon}
-                  buttonName={MY_LISTING}
-                />
-                <PostListingResponsiveButton
-                  icon={item?.PostListingIcon}
-                  buttonName={POST_LISTING}
-                /> */}
               </Box>
               <ProfileResponsiveButton
                 handleCloseMobileLoginMenu={handleCloseMobileLoginMenu}

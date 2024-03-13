@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const PropertyArea = ({ area, heading }) => {
+const PropertyArea = ({ area, areaUnits, heading }) => {
   return (
     <div>
       <Typography
@@ -16,7 +16,7 @@ const PropertyArea = ({ area, heading }) => {
           fontWeight: 400,
         }}
       >
-        {area}
+        {`${area}  ${areaUnits}`}
       </Typography>
     </div>
   );

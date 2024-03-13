@@ -17,7 +17,7 @@ const ProposalDetails = ({
 }) => {
   return (
     <>
-      <Grid container xs={12}>
+      <Grid container>
         <Box
           sx={{
             width: '100%',

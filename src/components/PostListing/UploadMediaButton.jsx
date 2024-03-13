@@ -51,7 +51,7 @@ const UploadMediaButton = ({ propertyInformation, handleFileChange }) => {
               }}
               component="span"
             >
-              {item.label}
+              {item?.label}
             </Button>
             <Input
               accept={index === 0 ? 'image/*' : 'video/*'}

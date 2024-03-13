@@ -3,7 +3,6 @@ import React from 'react';
 
 const RenderMessageContent = ({ data }) => {
   const images = data?.content?.slice(0, 4);
-  //   console.log({ data });
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
@@ -63,7 +62,7 @@ const RenderMessageContent = ({ data }) => {
                         fontWeight: 500,
                       }}
                     >
-                      + {data?.content?.length - 4}
+                      + {data?.content.length - 4}
                     </Typography>
                   </Box>
                 }

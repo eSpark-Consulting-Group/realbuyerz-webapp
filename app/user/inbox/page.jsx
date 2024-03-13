@@ -9,6 +9,7 @@ import ChatRoom from '@/src/components/Chat/ChatRoom';
 const Page = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
+  console.log(currentTab);
   const [chatRoomState, setChatRoomState] = useState([]);
   const [selectedChatRoom, setSelectedChatRoom] = useState({
     title: 'John Doe',
@@ -18,38 +19,38 @@ const Page = () => {
     lastMessageTimestamp: '2024-01-17T22:14:05',
     unReadMessages: 2,
   });
-  function paintBackground() {
-    // List of random dark color hex codes
-    const darkColors = [
-      '#2C3E50',
-      '#D13E2E',
-      '#800000',
-      '#067511',
-      '#6E025C',
-      '#325BB3',
-      '#144516',
-      '#7C9E0B',
-      '#03A69E',
-      '#3091DB',
-      // "#363636", "#434343", "#1C1C1C", "#2B2B2B", "#333333",
-      // "#222222", "#1A1A1A", "#282828", "#191919", "#1B1B1B"
-    ];
 
-    // Generate a random index to select a color from the array
-    const randomIndex = Math.floor(Math.random() * darkColors.length);
-
-    // Return the randomly selected color
-    return darkColors[randomIndex];
-  }
   useEffect(() => {
+    function paintBackground() {
+      // List of random dark color hex codes
+      const darkColors = [
+        '#2C3E50',
+        '#D13E2E',
+        '#800000',
+        '#067511',
+        '#6E025C',
+        '#325BB3',
+        '#144516',
+        '#7C9E0B',
+        '#03A69E',
+        '#3091DB',
+        // "#363636", "#434343", "#1C1C1C", "#2B2B2B", "#333333",
+        // "#222222", "#1A1A1A", "#282828", "#191919", "#1B1B1B"
+      ];
+
+      // Generate a random index to select a color from the array
+      const randomIndex = Math.floor(Math.random() * darkColors.length);
+      // Return the randomly selected color
+      return darkColors[randomIndex];
+    }
+
     const tempData = [...chatRooms].map((room) => ({
       ...room,
       background: !room?.avatar && paintBackground(),
     }));
-    console.log({ tempData, back: paintBackground() });
     setSelectedChatRoom(tempData[0]);
     setChatRoomState(tempData);
-  }, []);
+  }, [currentTab]);
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -61,7 +62,6 @@ const Page = () => {
     setCurrentTab(tab);
 
     setValue(newValue);
-    console.log({ currentTab });
   };
   const tabs = [
     {
@@ -95,7 +95,7 @@ const Page = () => {
           <Box
             component="img"
             src="/icons/RefreshIcon.svg"
-            alt="Refresh"
+            alt={'Refresh'}
             sx={{
               width: '20px',
               height: '18px',
@@ -117,6 +117,8 @@ const Page = () => {
               disableRipple={true}
               sx={{
                 textTransform: 'math-auto',
+                fontSize: '18px',
+                fontWeight: 400,
               }}
             />
           ))}

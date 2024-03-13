@@ -1,15 +1,14 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-
-import { TERM_CONDITIONS } from '../constants/TermCondition';
-import { PAGES_INFO } from '../constants/Constants';
+import { useSelector } from 'react-redux';
 
 const TermsConditions = () => {
-  const [selectedTab, setSelectedTab] = useState(TERM_CONDITIONS[0]);
+  const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
+  const [selectedTab, setSelectedTab] = useState(terms.content[0]);
 
   const handleTabClick = (tabId) => {
-    const selectedTab = TERM_CONDITIONS.find((tab) => tab.id === tabId);
+    const selectedTab = terms.content.find((tab) => tab.id === tabId);
     if (selectedTab) {
       setSelectedTab(selectedTab);
     }
@@ -35,7 +34,7 @@ const TermsConditions = () => {
           pb: '60px',
         }}
       >
-        {PAGES_INFO?.tncPageTitle}
+        {terms?.title}
       </Typography>
       <Grid container sx={{ display: 'flex', gap: '30px' }}>
         <Grid
@@ -57,9 +56,9 @@ const TermsConditions = () => {
               flexDirection: 'column',
             }}
           >
-            {TERM_CONDITIONS?.map((item) => (
+            {terms.content?.map((item) => (
               <Box
-                key={item.id}
+                key={item?.id}
                 variant={'outland'}
                 sx={{
                   mx: 'auto',
@@ -78,17 +77,17 @@ const TermsConditions = () => {
                   display: 'flex',
                   alignItems: 'center',
                 }}
-                onClick={() => handleTabClick(item.id)}
+                onClick={() => handleTabClick(item?.id)}
               >
                 <Typography
                   variant="body1"
                   sx={{
                     color: '#333',
-                    fontSize: '16px',
+                    fontSize: { xs: '12px', md: '16px' },
                     fontWeight: '600',
                   }}
                 >
-                  {item.tabName}
+                  {item?.tabName}
                 </Typography>
               </Box>
             ))}
@@ -111,7 +110,7 @@ const TermsConditions = () => {
               variant="body1"
               sx={{
                 color: '#333',
-                fontSize: '16px',
+                fontSize: '14px',
                 fontWeight: '600',
                 textTransform: 'uppercase',
                 pb: '40px',

@@ -7,6 +7,7 @@ const Profile = ({ profileInfo }) => {
   return (
     <>
       <Grid
+        container
         spacing={2}
         sx={{
           width: '100%',
@@ -17,7 +18,7 @@ const Profile = ({ profileInfo }) => {
       >
         <Grid item xs={12}>
           <Avatar
-            src={profileInfo.image}
+            src={profileInfo?.profile_image || ''}
             sx={{
               width: '52px',
               height: '52px',
@@ -36,7 +37,7 @@ const Profile = ({ profileInfo }) => {
               textDecoration: 'underline',
             }}
           >
-            {profileInfo.name}
+            {profileInfo?.first_name || ''}
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -46,7 +47,7 @@ const Profile = ({ profileInfo }) => {
               fontWeight: 700,
             }}
           >
-            {profileInfo.agencyName}
+            {profileInfo?.agency_name || ''}
           </Typography>
         </Grid>
       </Grid>

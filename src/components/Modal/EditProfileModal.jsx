@@ -8,10 +8,10 @@ import { Button } from '@mui/material';
 export default function EditProfileModal({
   open,
   setOpen,
-  photoURL,
   setPhotoURL,
   spacificData,
-  setProfileImage,
+  setFieldValue,
+  currentUserImage,
 }) {
   const [setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -25,23 +25,19 @@ export default function EditProfileModal({
   };
 
   const handleUploadImage = () => {
-    fileInputRef.current.click();
+    fileInputRef?.current?.click();
   };
 
   const handleEditImage = () => {
-    if (photoURL) {
+    if (selectedFile) {
       setUploadImageOpen(true);
-    }
-    // else if (!selectedFile) {
-    //   setUploadImageOpen(true);
-    // }
-    else {
+    } else {
       null;
     }
   };
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
+    const file = event?.target?.files[0];
     if (!file) {
       setUploadImageOpen(false);
     } else {
@@ -93,13 +89,14 @@ export default function EditProfileModal({
               src={'/images/modal/close.svg'}
               width={25}
               height={25}
-              alt="close"
+              alt={'close'}
               onClick={handleClose}
               style={{
                 right: 1,
                 top: 5,
                 left: 'auto',
                 position: 'absolute',
+                cursor: 'pointer',
               }}
             />
           </Box>
@@ -110,22 +107,33 @@ export default function EditProfileModal({
             style={{ display: 'none' }}
             onChange={handleFileChange}
           />
-          <Button onClick={handleUploadImage}>Upload Image</Button>
-          <Button onClick={handleEditImage}>Edit Image</Button>
+          <Button
+            disableRipple
+            onClick={handleUploadImage}
+            sx={{ '&: hover': { background: 'transparent' } }}
+          >
+            Upload Image
+          </Button>
+          {selectedFile && (
+            <Button
+              disableRipple
+              onClick={handleEditImage}
+              sx={{ '&: hover': { background: 'transparent' } }}
+            >
+              Edit Image
+            </Button>
+          )}
+
           {uploadImageOpen && (
             <Box sx={{ pt: 2 }}>
               <ProfileCroper
+                handleClose={handleClose}
                 spacificData={spacificData}
-                photoURL={
-                  selectedFile
-                    ? URL?.createObjectURL(selectedFile)
-                    : null || !selectedFile
-                      ? photoURL
-                      : URL?.createObjectURL(selectedFile)
-                }
+                currentUserImage={currentUserImage}
+                setFieldValue={setFieldValue}
+                photoURL={URL?.createObjectURL(selectedFile) || ''}
                 setOpenCrop={setUploadImageOpen}
                 setPhotoURL={setPhotoURL}
-                setProfileImage={setProfileImage}
                 setFile={setFile}
               />
             </Box>

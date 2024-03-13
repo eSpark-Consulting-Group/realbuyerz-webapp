@@ -15,6 +15,9 @@ const Location = ({
   pb,
   pt,
   px,
+  fontSize,
+  fontStyle,
+  fontWeight,
 }) => {
   return (
     locationKeys?.title && (
@@ -31,7 +34,7 @@ const Location = ({
         <Typography
           sx={{
             color: '#000',
-            fontSize: '20px',
+            fontSize: fontSize ? fontSize : '20px',
             fontWeight: 500,
             mb: 1,
           }}
@@ -49,8 +52,8 @@ const Location = ({
             <Typography
               sx={{
                 color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
+                fontSize: fontStyle ? fontStyle : '14px',
+                fontWeight: fontWeight ? fontWeight : 600,
               }}
               variant="body1"
             >
@@ -59,7 +62,7 @@ const Location = ({
             <Typography
               sx={{
                 color: '#126FAA',
-                fontSize: '14px',
+                fontSize: fontStyle ? fontStyle : '14px',
                 fontWeight: 500,
               }}
               variant="body1"
@@ -79,8 +82,8 @@ const Location = ({
             <Typography
               sx={{
                 color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
+                fontSize: fontStyle ? fontStyle : '14px',
+                fontWeight: fontWeight ? fontWeight : 600,
               }}
               variant="body1"
             >
@@ -89,7 +92,7 @@ const Location = ({
             <Typography
               sx={{
                 color: '#126FAA',
-                fontSize: { xs: '12px', md: '14px' },
+                fontSize: fontStyle ? fontStyle : { xs: '12px', md: '14px' },
                 mt: { xs: '4px', md: '0px' },
                 fontWeight: 500,
               }}
@@ -110,8 +113,8 @@ const Location = ({
             <Typography
               sx={{
                 color: '#333',
-                fontSize: '14px',
-                fontWeight: 600,
+                fontSize: fontStyle ? fontStyle : '14px',
+                fontWeight: fontWeight ? fontWeight : 600,
               }}
               variant="body1"
             >
@@ -120,7 +123,7 @@ const Location = ({
             <Typography
               sx={{
                 color: '#126FAA',
-                fontSize: '14px',
+                fontSize: fontStyle ? fontStyle : '14px',
                 fontWeight: 500,
               }}
               variant="body1"
@@ -141,8 +144,8 @@ const Location = ({
               <Typography
                 sx={{
                   color: '#333',
-                  fontSize: '14px',
-                  fontWeight: 600,
+                  fontSize: fontStyle ? fontStyle : '14px',
+                  fontWeight: fontWeight ? fontWeight : 600,
                 }}
                 variant="body1"
               >
@@ -151,7 +154,7 @@ const Location = ({
               <Typography
                 sx={{
                   color: '#126FAA',
-                  fontSize: '14px',
+                  fontSize: fontStyle ? fontStyle : '14px',
                   fontWeight: 500,
                 }}
                 variant="body1"
@@ -166,10 +169,10 @@ const Location = ({
                   title="Property locationKeys"
                   width={width ? width : '100%'}
                   height="150"
-                  allowfullscreen=""
+                  allowFullScreen=""
                   frameBorder="0"
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer-when-downgrade"
                   className={className}
                 ></iframe>
               </Box>

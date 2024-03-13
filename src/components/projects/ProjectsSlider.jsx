@@ -9,22 +9,22 @@ import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
 
 const itemsToShow = 10;
-
 const ProjectsSlider = ({ data, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalItems = Math.min(data.length, itemsToShow) || 10;
+  const capCategory = category?.charAt(0).toUpperCase() + category?.slice(1);
   console.log(currentPage);
+  const totalItems = Math.min(data.length, itemsToShow) || 10;
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
   };
-  const NoData = [1, 2, 3, 1, 2, 3, 1, 2, 3, 5];
   const filterData = data?.filter(
-    (item) => item?.proportyCategory === category
+    (item) => item?.propertyCategory === capCategory
   );
+  const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;
+
   const sliderSettings = {
     slidesPerView: 3,
-    // pagination: { clickable: true },
     onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
     autoplay: {
       delay: 3000,
@@ -54,7 +54,7 @@ const ProjectsSlider = ({ data, category }) => {
   return (
     <Swiper {...sliderSettings}>
       {filteredData?.slice(0, totalItems).map((project) => (
-        <SwiperSlide key={project?.id}>
+        <SwiperSlide key={project?.property_id}>
           <Grid
             container
             sx={{
@@ -64,7 +64,7 @@ const ProjectsSlider = ({ data, category }) => {
             }}
           >
             <Grid
-              key={project?.id}
+              key={project?.property_id}
               item
               xs={11}
               my={'20px'}
@@ -73,16 +73,16 @@ const ProjectsSlider = ({ data, category }) => {
                 border: '1px solid #E4E4E4',
               }}
             >
-              <Link href={`/projects/${project.id}`}>
+              <Link href={`/projects/${project.property_id}`}>
                 {!project?.images?.length == 0 ? (
                   <img
                     src={
-                      project?.images[0]?.path ||
+                      project?.images[0] ||
                       `/images/default/default_project_image.jpg`
                     }
                     height={'auto'}
                     width={'100%'}
-                    alt={`Project ${project?.id}`}
+                    alt={`Project ${project?.property_id}`}
                   />
                 ) : (
                   <Skeleton variant="rectangular" width={`100%`} height={300} />
@@ -126,7 +126,7 @@ const ProjectsSlider = ({ data, category }) => {
                     textWrap: 'wrap',
                   }}
                 >
-                  {project?.location || (
+                  {`${project?.location}, ${project?.city}` || (
                     <>
                       <Skeleton />
                       <Skeleton />
@@ -179,14 +179,16 @@ const ProjectsSlider = ({ data, category }) => {
                     lineHeight: '25px',
                   }}
                 >
-                  {project?.description || (
-                    <>
-                      <Skeleton />
-                      <Skeleton />
-                      <Skeleton />
-                      <Skeleton />
-                    </>
-                  )}
+                  {project?.description?.length > 150
+                    ? `${project.description.slice(0, 147)}...`
+                    : project?.description || (
+                        <>
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                        </>
+                      )}
                 </Typography>
               </Box>
             </Grid>

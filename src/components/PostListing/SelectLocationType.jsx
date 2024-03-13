@@ -33,7 +33,7 @@ const SelectLocationType = () => {
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
               src={PROPERTY_INFORMATION?.location?.images}
-              alt="location"
+              alt={'location'}
             />
             <Typography
               sx={{

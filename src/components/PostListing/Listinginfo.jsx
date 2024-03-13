@@ -14,7 +14,7 @@ const ListingInfo = ({ propertyInfo }) => {
         gap: { xs: 4, md: 8 },
       }}
     >
-      {propertyInfo.map((item, index) => (
+      {propertyInfo?.map((item, index) => (
         <Box
           sx={{
             width: { xs: 'auto', sm: '500px', md: 'auto' },
@@ -26,9 +26,9 @@ const ListingInfo = ({ propertyInfo }) => {
         >
           <Box
             component={'img'}
-            src={item.image}
+            src={item?.image}
             sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
-            alt="propertyimages"
+            alt={'propertyimages'}
           />
           <Typography
             sx={{
@@ -37,7 +37,7 @@ const ListingInfo = ({ propertyInfo }) => {
               color: '#909394',
             }}
           >
-            {item.title}
+            {item?.title}
           </Typography>
         </Box>
       ))}

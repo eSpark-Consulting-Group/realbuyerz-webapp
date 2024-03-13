@@ -16,6 +16,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => {
   return (
     <Box
       sx={{
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,7 +25,6 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => {
     >
       <Grid
         container
-        xs={12}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -41,7 +41,7 @@ const NotFoundSection = ({ heading, message, link, goBackTo }) => {
                 src={'/images/404/4042.gif'}
                 height={500}
                 width={500}
-                alt=""
+                alt={'Images'}
               />
             </Box>
             <Box pt={'20px'}>

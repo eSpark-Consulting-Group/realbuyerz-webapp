@@ -13,7 +13,7 @@ const PostRequestButton = () => {
       }}
     >
       <Grid container>
-        <Grid items xs={12} sm={6} md={6} lg={6}>
+        <Grid item xs={12} sm={6} md={6} lg={6}>
           <Typography
             sx={{
               fontWeight: '500',
@@ -28,30 +28,6 @@ const PostRequestButton = () => {
             {DASHBOARD}
           </Typography>
         </Grid>
-        {/* <Grid
-          items
-          xs={12}
-          sm={6}
-          md={6}
-          lg={6}
-          sx={{
-            textAlign: { sx: 'none', sm: 'end', md: 'end', lg: 'end' },
-          }}
-        >
-          <Button
-            variant="primary"
-            sx={{
-              width: '200px',
-              height: '42px',
-              borderRadius: '50px',
-              border: '1px solid #FB631C',
-              mt: { xs: 4, sm: 0 },
-              ml: { xs: 4 },
-            }}
-          >
-            {POST_A_REQUEST}
-          </Button>
-        </Grid> */}
       </Grid>
     </Box>
   );

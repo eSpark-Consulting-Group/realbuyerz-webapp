@@ -66,7 +66,7 @@ const SearchFilterButton = () => {
               src={'/images/dashboard/search.svg'}
               width={25}
               height={25}
-              alt="icon"
+              alt={'icon'}
             />
           </Button>
         </FormGroup>

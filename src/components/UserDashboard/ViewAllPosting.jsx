@@ -22,7 +22,7 @@ const ViewAllPosting = () => {
       }}
     >
       <Box>
-        <DashboardTitle title={UserDashboardPage?.title} />
+        <DashboardTitle title={UserDashboardPage?.sub_Title} />
       </Box>
       <Box>
         <SeeAllPosting

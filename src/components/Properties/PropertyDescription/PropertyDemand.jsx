@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const PropertyDemand = ({ demand, heading }) => {
+const PropertyDemand = ({ demand, demandUnits, heading }) => {
   return (
     <div>
       <Typography
@@ -16,7 +16,7 @@ const PropertyDemand = ({ demand, heading }) => {
           fontWeight: 400,
         }}
       >
-        {demand}
+        {`${demandUnits} ${demand}`}
       </Typography>
     </div>
   );

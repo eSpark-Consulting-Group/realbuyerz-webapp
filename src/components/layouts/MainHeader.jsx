@@ -92,7 +92,7 @@ const MainHeader = () => {
               >
                 <Image
                   src="/images/RealBuyersLogo.svg"
-                  alt={''}
+                  alt={'Images'}
                   height={37}
                   width={155}
                 />
@@ -193,7 +193,8 @@ const MainHeader = () => {
                     >
                       <Typography
                         sx={{
-                          color: currentPath === item.path ? '#FB631C' : '#000',
+                          color:
+                            currentPath === item?.path ? '#FB631C' : '#000',
                           fontSize: '12px',
                           fontStyle: 'normal',
                           fontWeight: 600,
@@ -204,7 +205,7 @@ const MainHeader = () => {
                           justifyContent: 'center',
                         }}
                       >
-                        {item.menu}
+                        {item?.menu}
                       </Typography>
                     </Link>
                   </>

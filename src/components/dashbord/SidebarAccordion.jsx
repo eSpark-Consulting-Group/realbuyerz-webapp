@@ -23,7 +23,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
           <Box>
             <Accordion
               expanded={
-                item.sublinks == null ? null : expanded === `panel${index + 1}`
+                item?.sublinks == null ? null : expanded === `panel${index + 1}`
               }
               onChange={handleChange(`panel${index + 1}`)}
               sx={{
@@ -51,14 +51,14 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                   height: '43px',
                   borderRadius: '10px',
                   backgroundColor: `${
-                    item?.link == pathname ? '#FF631C33' : null
+                    pathname?.includes(item?.link) ? '#FF631C33' : null
                   }`,
                 }}
               >
                 {item?.icon && (
                   <Box
                     component={'img'}
-                    alt="icon"
+                    alt={'icon'}
                     sx={{
                       width: '25px',
                       height: '25px',
@@ -67,7 +67,9 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                         height: '20px',
                       },
                     }}
-                    src={item?.link == pathname ? item?.active : item?.icon}
+                    src={
+                      pathname?.includes(item?.link) ? item?.active : item?.icon
+                    }
                   />
                 )}
                 {item?.link ? (
@@ -83,7 +85,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                         fontWeight: 400,
                         pt: 0.3,
                         ml: 2,
-                        color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
+                        color: `${pathname?.includes(item?.link) ? '#FB631C' : '#000'}`,
                         '@media (min-width: 280px ) and (max-width: 319px)': {
                           fontSize: '13px',
                         },
@@ -102,7 +104,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                       fontWeight: 400,
                       pt: 0.4,
                       ml: 2,
-                      color: `${item?.link == pathname ? '#FB631C' : '#000'}`,
+                      color: `${pathname?.includes(item?.link) ? '#FB631C' : '#000'}`,
                       '@media (min-width: 280px ) and (max-width: 319px)': {
                         fontSize: '13px',
                       },
@@ -128,7 +130,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                         alignItems: 'center',
                         borderRadius: '10px',
                         backgroundColor: `${
-                          eachItem?.link == pathname
+                          pathname?.includes(eachItem?.link)
                             ? '#FF631C33 !important'
                             : null
                         }`,
@@ -144,7 +146,7 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                             fontWeight: 400,
                             width: '100%',
                             height: '100%',
-                            color: `${eachItem.link == pathname ? '#FB631C' : '#000'}`,
+                            color: `${pathname?.includes(eachItem?.link) ? '#FB631C' : '#000'}`,
                           }}
                         >
                           {eachItem?.text}

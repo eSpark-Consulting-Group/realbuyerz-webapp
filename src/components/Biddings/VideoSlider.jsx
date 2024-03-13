@@ -50,7 +50,7 @@ const VideoSlider = ({ videosSlider, modalWidth }) => {
                   src={video}
                   width={1000}
                   height={1000}
-                  alt="slide_image"
+                  alt={'slide_image'}
                   style={{
                     borderRadius: '30px',
                   }}
@@ -74,7 +74,7 @@ const VideoSlider = ({ videosSlider, modalWidth }) => {
             src={'/images/modalNextArrow.svg'}
             width={40}
             height={60}
-            alt="icon"
+            alt={'icon'}
           />
         </Box>
         <Box
@@ -92,7 +92,7 @@ const VideoSlider = ({ videosSlider, modalWidth }) => {
             src={'/images/modalPrevArrow.svg'}
             width={40}
             height={60}
-            alt="icon"
+            alt={'icon'}
           />
         </Box>
       </Swiper>

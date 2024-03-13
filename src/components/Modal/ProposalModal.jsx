@@ -31,7 +31,7 @@ const ProposalModal = ({ title, description, buttonLabel, open, onClose }) => {
         >
           <Image
             src="/images/modal/checkmark-sucess-animation.gif"
-            alt="congrats"
+            alt={'congrats'}
             width={120}
             height={100}
           />

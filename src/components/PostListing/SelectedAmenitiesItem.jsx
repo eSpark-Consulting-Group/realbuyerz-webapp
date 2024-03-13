@@ -17,7 +17,7 @@ const SelectedAmenitiesItems = ({ selectedItems }) => {
             xs: 'repeat(1, 1fr)',
             sm: 'repeat(2, 1fr)',
             md: 'repeat(3, 1fr)',
-            lg: `repeat(${selectedItems?.length < 4 ? selectedItems?.length : 4}, 1fr)`,
+            lg: `repeat(${selectedItems.length < 4 ? selectedItems.length : 4}, 1fr)`,
           },
           '@media (min-width: 1200px) and (max-width: 1439px)': {
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -40,8 +40,8 @@ const SelectedAmenitiesItems = ({ selectedItems }) => {
             }}
             key={index}
           >
-            <Image src={item.image} width={25} height={25} alt="amenities" />
-            <Typography>{item.title}</Typography>
+            <Image src={item?.image} width={25} height={25} alt={'amenities'} />
+            <Typography>{item?.title}</Typography>
           </Box>
         ))}
       </Box>
