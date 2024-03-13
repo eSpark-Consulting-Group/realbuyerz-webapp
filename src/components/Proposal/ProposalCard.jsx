@@ -1,7 +1,7 @@
 'use client';
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
 
-import { Box, Button, Divider, Grid, Typography } from '@mui/material';
+import { Box, Button, Divider, IconButton, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
@@ -11,14 +11,9 @@ import {
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const ProposalCard = ({
-  key,
-  data,
-  currentTab,
-  link,
-  getSelectedAmenities,
-}) => {
+const ProposalCard = ({ data, currentTab, link, key }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -63,49 +58,84 @@ const ProposalCard = ({
   return (
     <Box
       sx={{
-        position: 'relative',
-        width: 'auto',
+        width: { xs: '280px', sm: '320px', md: '100%' },
         height: 'auto',
-        zIndex: 1,
+        '@media (min-width:280px) and (max-width:319px)': {
+          width: '240px',
+        },
       }}
     >
       <Box
         sx={{
           position: 'relative',
-          width: 'auto',
+          width: { xs: '280px', sm: '320px', md: '100%' },
+          '@media (min-width:280px) and (max-width:319px)': {
+            width: '240px',
+          },
           height: 'auto',
           zIndex: 1,
         }}
       >
         <Link href={link || '#'}>
-          <Grid
-            container
+          <Box
             onClick={handleClickOpen}
             sx={{
+              minHeight: {
+                xs: `${!pathName?.includes(user) ? '310px' : '520px'}`,
+                sm: `${!pathName?.includes(user) ? '330px' : '580px'}`,
+                md: 'auto',
+              },
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
               background: '#F5F6FA',
               border: 'solid 1px #E4E4E4',
               borderRadius: '20px',
-              padding: { xs: '10px', md: '25px 30px' },
-              marginBottom: '30px',
-              marginTop: '30px',
+              padding: { xs: 0.5, sm: '10px', md: 1.8 },
+              marginTop: key === 0 && '30px',
               cursor: 'pointer',
               position: 'relative',
               zIndex: 2,
             }}
           >
-            <Grid
-              item
-              xs={12}
+            {pathName?.includes(user) && (
+              <Box
+                sx={{
+                  width: { xs: '270px', sm: '300px' },
+                  height: { xs: '220px', sm: '250px' },
+                  '@media (min-width:280px) and (max-width:319px)': {
+                    width: '230px',
+                    height: '210px',
+                  },
+                }}
+              >
+                <Box
+                  component={'img'}
+                  src={`${data?.images || '/images/PropertyImg.png'}`}
+                  sx={{
+                    width: { xs: '100%' },
+                    height: { xs: '100%' },
+                  }}
+                />
+              </Box>
+            )}
+            <Box
               sx={{
+                width: {
+                  xs: '100%',
+                  md: `${pathName?.includes(user) ? 'calc(100% - 300px)' : '100%'}`,
+                },
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '0 20px',
+                padding: '10px',
               }}
             >
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
+                  '@media (min-width: 600px) and (max-width:1150px)': {
+                    justifyContent: `${!pathName?.includes(user) ? 'center' : 'start'}`,
+                  },
                   alignItems: { xs: 'flex-start', md: 'center' },
                   position: 'relative',
                   zIndex: 3,
@@ -114,11 +144,14 @@ const ProposalCard = ({
               >
                 <Typography
                   sx={{
-                    fontSize: '20px',
+                    fontSize: { xs: '15px', sm: '20px' },
                     fontWeight: 700,
                     lineHheight: '24px',
                     letterSpacing: '0em',
-                    textAlign: 'left',
+                    maxWidth: { xs: '220px', sm: '330px' },
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {data?.title || ''}
@@ -126,11 +159,12 @@ const ProposalCard = ({
               </Box>
               <Divider
                 sx={{
-                  marginY: '20px',
+                  marginY: { xs: '10px', sm: '20px' },
                 }}
               />
               <Box
                 sx={{
+                  mt: 2,
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
@@ -280,9 +314,13 @@ const ProposalCard = ({
                       fontSize: '12px',
                       fontWeight: 400,
                       lineHeight: '15px',
+                      maxWidth: pathName?.includes(user) ? 700 : 'auto',
                       letterSpacing: '0em',
                       textAlign: 'left',
-                      flex: 1,
+                      display: '-webkit-box',
+                      overflow: 'hidden',
+                      WebkitBoxOrient: 'vertical',
+                      WebkitLineClamp: 4,
                     }}
                   >
                     {data?.description || ''}
@@ -297,28 +335,55 @@ const ProposalCard = ({
                     letterSpacing: '0em',
                     textAlign: 'left',
                     right: '20px',
-                    padding: { xs: '10px', md: '25px 30px' },
+                    padding: { xs: '20px', sm: '17px', md: '25px 30px' },
                   }}
                 >
                   {`Amount: ${data?.amount || ''}${data?.amountCurrency || ''}`}
                 </Typography>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Link>
         {currentTab !== 'Trash' && (
-          <Button
-            variant="contained"
-            sx={{
-              position: { xs: 'relative', md: 'absolute' },
-              zIndex: 10,
-              right: 25,
-              top: 20,
-            }}
-            onClick={() => handleTrash(data?.property_id, currentTab)}
-          >
-            Trash
-          </Button>
+          <>
+            <IconButton
+              aria-label="delete"
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                position: { xs: 'absolute' },
+                zIndex: 10,
+                right: { xs: 15, sm: 15 },
+                top: {
+                  xs: !pathName?.includes(user) ? 62 : 'auto',
+                  sm: !pathName?.includes(user) ? 85 : 'auto',
+                },
+                bottom: {
+                  xs: !pathName?.includes(user) ? 'auto' : 203,
+                  sm: !pathName?.includes(user) ? 'auto' : 206,
+                },
+                left: { xs: 'auto', sm: 'auto' },
+              }}
+              onClick={() => handleTrash(data?.property_id, currentTab)}
+            >
+              <DeleteIcon />
+            </IconButton>
+            <Button
+              variant="contained"
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                position: { xs: 'absolute' },
+                zIndex: 10,
+                width: '110px',
+                height: '33px',
+                right: { xs: 25, sm: 25, md: 25 },
+                top: { xs: 20, sm: 20, md: 20 },
+                left: { xs: 'auto', sm: 'auto', md: 'auto' },
+              }}
+              onClick={() => handleTrash(data?.property_id, currentTab)}
+            >
+              Trash
+            </Button>
+          </>
         )}
       </Box>
       <PreviewModal
