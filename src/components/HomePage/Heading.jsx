@@ -6,7 +6,7 @@ const Heading = ({ heading, paragraph, textAlign }) => {
     <>
       <Typography
         sx={{
-          fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
+          fontSize: { xs: '25px', md: '40px' },
           color: '#333333',
           fontWeight: 700,
           pb: paragraph ? '25px' : '0px',
@@ -20,7 +20,7 @@ const Heading = ({ heading, paragraph, textAlign }) => {
         sx={{
           color: '#fb631c',
           fontWeight: 600,
-          fontSize: { xs: '14px', sm: '14px', md: '16px', lg: '18px' },
+          fontSize: { xs: '14px', md: '18px' },
           pb: '20px',
         }}
       >

@@ -1,7 +1,7 @@
 'use client';
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
 
-import { Box, Button, Divider, IconButton, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
@@ -11,9 +11,9 @@ import {
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { PROPOSAL } from '@/app/constants/Proposals';
 
-const ProposalCard = ({ data, currentTab, link, key }) => {
+const ProposalCard = ({ data, currentTab, link }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -57,334 +57,270 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   return (
     <Box
       sx={{
-        width: { xs: '280px', sm: '320px', md: '100%' },
+        position: 'relative',
+        width: '100%',
         height: 'auto',
-        '@media (min-width:280px) and (max-width:319px)': {
-          width: '240px',
-        },
+        zIndex: 1,
       }}
     >
-      <Box
-        sx={{
-          position: 'relative',
-          width: { xs: '280px', sm: '320px', md: '100%' },
-          '@media (min-width:280px) and (max-width:319px)': {
-            width: '240px',
-          },
-          height: 'auto',
-          zIndex: 1,
-        }}
-      >
-        <Link href={link || '#'}>
-          <Box
-            onClick={handleClickOpen}
+      <Link href={link || '#'}>
+        <Grid
+          container
+          onClick={handleClickOpen}
+          sx={{
+            background: '#F5F6FA',
+            border: 'solid 1px #E4E4E4',
+            borderRadius: '20px',
+            padding: { xs: '10px', md: '25px 30px' },
+            marginBottom: '30px',
+            marginTop: '30px',
+            cursor: 'pointer',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          <Grid
+            item
+            xs={12}
             sx={{
-              minHeight: {
-                xs: `${!pathName?.includes(user) ? '310px' : '520px'}`,
-                sm: `${!pathName?.includes(user) ? '330px' : '580px'}`,
-                md: 'auto',
-              },
               display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              background: '#F5F6FA',
-              border: 'solid 1px #E4E4E4',
-              borderRadius: '20px',
-              padding: { xs: 0.5, sm: '10px', md: 1.8 },
-              marginTop: key === 0 && '30px',
-              cursor: 'pointer',
-              position: 'relative',
-              zIndex: 2,
+              flexDirection: 'column',
+              padding: '0 20px',
             }}
           >
-            {pathName?.includes(user) && (
-              <Box
-                sx={{
-                  width: { xs: '270px', sm: '300px' },
-                  height: { xs: '220px', sm: '250px' },
-                  '@media (min-width:280px) and (max-width:319px)': {
-                    width: '230px',
-                    height: '210px',
-                  },
-                }}
-              >
-                <Box
-                  component={'img'}
-                  src={`${data?.images || '/images/PropertyImg.png'}`}
-                  sx={{
-                    width: { xs: '100%' },
-                    height: { xs: '100%' },
-                  }}
-                />
-              </Box>
-            )}
             <Box
               sx={{
-                width: {
-                  xs: '100%',
-                  md: `${pathName?.includes(user) ? 'calc(100% - 300px)' : '100%'}`,
-                },
                 display: 'flex',
-                flexDirection: 'column',
-                padding: '10px',
+                alignItems: 'center',
+                flexDirection: { xs: 'column', sm: 'row' },
               }}
             >
               <Box
                 sx={{
                   display: 'flex',
-                  justifyContent: 'center',
-                  '@media (min-width: 600px) and (max-width:1150px)': {
-                    justifyContent: `${!pathName?.includes(user) ? 'center' : 'start'}`,
-                  },
-                  alignItems: { xs: 'flex-start', md: 'center' },
-                  position: 'relative',
+                  mx: 'auto',
                   zIndex: 3,
                   flexDirection: { xs: 'column', sm: 'row' },
                 }}
               >
                 <Typography
                   sx={{
-                    fontSize: { xs: '15px', sm: '20px' },
+                    fontSize: '20px',
                     fontWeight: 700,
                     lineHheight: '24px',
                     letterSpacing: '0em',
-                    maxWidth: { xs: '220px', sm: '330px' },
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
+                    textAlign: 'center',
+                    marginLeft: { xs: '0', md: '165px' },
                   }}
                 >
                   {data?.title || ''}
                 </Typography>
               </Box>
-              <Divider
-                sx={{
-                  marginY: { xs: '10px', sm: '20px' },
-                }}
-              />
               <Box
                 sx={{
-                  mt: 2,
-                  position: 'relative',
+                  display: 'flex',
+                  alignSelf: { xs: 'center', md: 'flex-end' },
+                  marginLeft: { xs: 'none', md: 'auto' },
+                  marginTop: { xs: '10px', md: '0' },
+                }}
+              >
+                {currentTab !== PROPOSAL?.trash && (
+                  <Button
+                    variant="contained"
+                    sx={{
+                      width: '110px',
+                      height: '33px',
+                    }}
+                    onClick={() => handleTrash(data?.property_id, currentTab)}
+                  >
+                    {PROPOSAL?.trash}
+                  </Button>
+                )}
+              </Box>
+            </Box>
+            <Divider
+              sx={{
+                marginY: '20px',
+              }}
+            />
+            <Box
+              sx={{
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                flex: 1,
+              }}
+            >
+              <Box
+                sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  flex: 1,
                 }}
               >
                 <Box
                   sx={{
                     display: 'flex',
-                    flexDirection: 'column',
+                    marginBottom: '10px',
+                    alignItems: 'center',
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      marginBottom: '10px',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#126FAA',
-                      }}
-                    >
-                      Purpose:
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#333333',
-                        marginLeft: '5px',
-                      }}
-                    >
-                      {data?.purpose || ''}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      marginBottom: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#126FAA',
-                      }}
-                    >
-                      Proporty Type:
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#333333',
-                        marginLeft: '5px',
-                      }}
-                    >
-                      {data?.properType || ''}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      marginBottom: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#126FAA',
-                      }}
-                    >
-                      City:
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#333333',
-                        marginLeft: '5px',
-                      }}
-                    >
-                      {data?.city || ''}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      marginBottom: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#126FAA',
-                      }}
-                    >
-                      Location:
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        lineHeight: '17px',
-                        letterSpacing: '0em',
-                        textAlign: 'left',
-                        color: '#333333',
-                        marginLeft: '5px',
-                      }}
-                    >
-                      {data?.location || ''}
-                    </Typography>
-                  </Box>
                   <Typography
                     sx={{
-                      fontSize: '12px',
-                      fontWeight: 400,
-                      lineHeight: '15px',
-                      maxWidth: pathName?.includes(user) ? 700 : 'auto',
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      lineHeight: '17px',
                       letterSpacing: '0em',
                       textAlign: 'left',
-                      display: '-webkit-box',
-                      overflow: 'hidden',
-                      WebkitBoxOrient: 'vertical',
-                      WebkitLineClamp: 4,
+                      color: '#126FAA',
                     }}
                   >
-                    {data?.description || ''}
+                    Purpose:
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#333333',
+                      marginLeft: '5px',
+                    }}
+                  >
+                    {data?.purpose || ''}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    marginBottom: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#126FAA',
+                    }}
+                  >
+                    Proporty Type:
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#333333',
+                      marginLeft: '5px',
+                    }}
+                  >
+                    {data?.properType || ''}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    marginBottom: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#126FAA',
+                    }}
+                  >
+                    City:
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#333333',
+                      marginLeft: '5px',
+                    }}
+                  >
+                    {data?.city || ''}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    marginBottom: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#126FAA',
+                    }}
+                  >
+                    Location:
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '17px',
+                      letterSpacing: '0em',
+                      textAlign: 'left',
+                      color: '#333333',
+                      marginLeft: '5px',
+                    }}
+                  >
+                    {data?.location || ''}
                   </Typography>
                 </Box>
                 <Typography
                   sx={{
-                    position: { xs: 'relative', md: 'absolute' },
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    lineHeight: '17px',
+                    fontSize: '12px',
+                    fontWeight: 400,
+                    lineHeight: '15px',
                     letterSpacing: '0em',
                     textAlign: 'left',
-                    right: '20px',
-                    padding: { xs: '20px', sm: '17px', md: '25px 30px' },
+                    flex: 1,
                   }}
                 >
-                  {`Amount: ${data?.amount || ''}${data?.amountCurrency || ''}`}
+                  {data?.description || ''}
                 </Typography>
               </Box>
+              <Typography
+                sx={{
+                  position: { xs: 'relative', md: 'absolute' },
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  lineHeight: '17px',
+                  letterSpacing: '0em',
+                  textAlign: 'left',
+                  right: { xs: '10px', md: '20px' },
+                  padding: { xs: '10px', md: '25px 30px' },
+                }}
+              >
+                {`Amount: ${data?.amount || ''}${data?.amountCurrency || ''}`}
+              </Typography>
             </Box>
-          </Box>
-        </Link>
-        {currentTab !== 'Trash' && (
-          <>
-            <IconButton
-              aria-label="delete"
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                position: { xs: 'absolute' },
-                zIndex: 10,
-                right: { xs: 15, sm: 15 },
-                top: {
-                  xs: !pathName?.includes(user) ? 62 : 'auto',
-                  sm: !pathName?.includes(user) ? 85 : 'auto',
-                },
-                bottom: {
-                  xs: !pathName?.includes(user) ? 'auto' : 203,
-                  sm: !pathName?.includes(user) ? 'auto' : 206,
-                },
-                left: { xs: 'auto', sm: 'auto' },
-              }}
-              onClick={() => handleTrash(data?.property_id, currentTab)}
-            >
-              <DeleteIcon />
-            </IconButton>
-            <Button
-              variant="contained"
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                position: { xs: 'absolute' },
-                zIndex: 10,
-                width: '110px',
-                height: '33px',
-                right: { xs: 25, sm: 25, md: 25 },
-                top: { xs: 20, sm: 20, md: 20 },
-                left: { xs: 'auto', sm: 'auto', md: 'auto' },
-              }}
-              onClick={() => handleTrash(data?.property_id, currentTab)}
-            >
-              Trash
-            </Button>
-          </>
-        )}
-      </Box>
+          </Grid>
+        </Grid>
+      </Link>
+
       <PreviewModal open={open} onClose={handleClose} ads={data} />
     </Box>
   );

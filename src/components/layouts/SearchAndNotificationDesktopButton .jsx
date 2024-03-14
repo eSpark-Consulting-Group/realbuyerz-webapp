@@ -25,6 +25,8 @@ const SearchAndNotificationDesktopButton = ({
         sx={{
           display: 'flex',
           alignItems: 'center',
+          fontWeight: '500',
+          fontSize: '15px',
           justifyContent: 'flex-end',
           border: '1px solid #E7E7E7',
           borderRadius: '30px',
