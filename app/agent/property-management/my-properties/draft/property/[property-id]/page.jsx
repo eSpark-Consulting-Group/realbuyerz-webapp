@@ -20,6 +20,7 @@ import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
+import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 
 const Page = () => {
   const pathname = usePathname();
@@ -66,6 +67,8 @@ const Page = () => {
     installmentAvailable: yup.boolean(),
     readyPossession: yup.boolean(),
     featuresAndAmenities: yup.mixed(),
+    images: yup.array().min(1, 'Image is required'),
+    videos: yup.array().min(1, 'Video is required'),
   });
 
   const initialFormValues = {
@@ -89,8 +92,10 @@ const Page = () => {
     propertyType: `${updated?.propertyType || ''}`,
     instalmentAvailable: `${updated?.instalmentAvailable || ''}`,
     readyPossession: `${updated?.readyPossession || ''}`,
+    images: updated?.images || [],
+    videos: updated?.videos || [],
   };
-
+  console.log(updated, 'updated');
   const formik = useFormik({
     initialValues: initialFormValues,
     validationSchema,
@@ -125,6 +130,7 @@ const Page = () => {
             />
             <PropertySize formik={formik} />
             <PropertyFeatures formik={formik} />
+            <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}
               Action={Action}

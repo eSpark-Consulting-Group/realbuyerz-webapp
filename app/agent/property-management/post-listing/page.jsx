@@ -85,7 +85,6 @@ const Page = () => {
     property_id: '',
     user_id: '',
     status: '',
-    other_features: [],
     images: [],
     videos: [],
     title: '',
