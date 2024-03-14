@@ -11,7 +11,7 @@ const CreditCardType = ({
   setTypeCard,
   cardTypeImage,
   handleChange,
-  creditCardLable,
+  creditCardLabel,
   selectedValue,
   handleChangeRadioButton,
   formik,
@@ -79,7 +79,7 @@ const CreditCardType = ({
               fontWeight: 600,
             }}
           >
-            {creditCardLable}
+            {creditCardLabel}
           </Typography>
         </Box>
 

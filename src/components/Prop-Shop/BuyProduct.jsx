@@ -12,12 +12,17 @@ import {
 } from '@/src/redux/slices/settings/PakageCartSlice';
 import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
 import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
+import {
+  calculateFormState,
+  handleCheckBoxChange,
+  handlePaymentChange,
+  useFormikForPayment,
+} from '@/utils/payment';
 
 import Subscription from './Subscription';
 import BuyConnects from './BuyConnects';
 import ProductCart from './ProductCart';
 import PaymentMethod from './PaymentMethod';
-import { calculateFormState, useFormikForPayment } from '@/utils/payment';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -70,33 +75,30 @@ export default function BuyProduct() {
   }, [formik.values, selectedValue, paymentMedthodDetails, typeCard]);
 
   const handleChange = () => {
-    dispatch(ProceedPayment(OrderSummaryPayLoad));
-    if (paymentMedthod && !state) {
-      setIsModalOpen(true);
-      formik.handleSubmit();
-      dispatch(isResetForm(true));
-      setTimeout(() => {
-        formik.resetForm();
-        setChecked(false);
-      }, 1000);
-    }
-  };
-  const handleChangeCheckBox = (event) => {
-    const isChecked = event.target.checked;
-    setChecked(isChecked);
-    const findIndexOfCard = paymentMedthodDetails.findIndex((item) => {
-      return item.card_number === formik.values.card_number;
+    handlePaymentChange({
+      dispatch,
+      ProceedPayment,
+      OrderSummaryPayLoad,
+      setIsModalOpen,
+      formik,
+      isResetForm,
+      state,
+      setChecked,
+      paymentMedthod,
     });
-    if (findIndexOfCard !== -1) {
-      dispatch(
-        updatePaymentMethodSelection({
-          isSelected: false,
-          cardNumber: formik.values.card_number,
-          isCheckBox: isChecked,
-        })
-      );
-    }
   };
+
+  const handleChangeCheckBox = (event) => {
+    handleCheckBoxChange({
+      event,
+      setChecked,
+      paymentMedthodDetails,
+      formik,
+      dispatch,
+      updatePaymentMethodSelection,
+    });
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container>

@@ -36,10 +36,10 @@ const PaymentMethod = ({
     image,
     title,
     textField,
-    checkBoxLable,
+    checkBoxLabel,
     cardTypeImage,
-    creditCardLable,
-    addButtonLable,
+    creditCardLabel,
+    addButtonLabel,
     easyPaisa,
     jazzCash,
   } = data;
@@ -194,8 +194,8 @@ const PaymentMethod = ({
         )}
         <CreditCardType
           cardTypeImage={cardTypeImage}
-          creditCardLable={creditCardLable}
-          addButtonLable={addButtonLable}
+          creditCardLabel={creditCardLabel}
+          addButtonLabel={addButtonLabel}
           selectedValue={selectedValue}
           handleChangeRadioButton={handleChangeRadioButton}
           handleChange={handleChange}
@@ -208,7 +208,7 @@ const PaymentMethod = ({
           checked={checked}
           setChecked={setChecked}
           handleChangeCheckBox={handleChangeCheckBox}
-          checkBoxLable={checkBoxLable}
+          checkBoxLabel={checkBoxLabel}
         />
         <AccountType
           AccountName={ACCOUNT_NAME_EASYPAISA}

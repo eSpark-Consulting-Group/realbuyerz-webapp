@@ -1,8 +1,8 @@
 export const PAYMENT_METHODE_DATA = {
   title: 'Payment Method',
   image: '/images/agent_form/agent_form_background.png',
-  checkBoxLable: 'Save my payment details for further payments',
-  creditCardLable: 'Credit Card Payment',
+  checkBoxLabel: 'Save my payment details for further payments',
+  creditCardLabel: 'Credit Card Payment',
   cardTypeImage: [
     {
       icon: '/images/agent_form/visaCard.svg',

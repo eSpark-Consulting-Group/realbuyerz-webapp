@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Box, Radio, Typography } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { isSelectedAccount } from '@/utils/payment';
 
 import InputTextField from './InputTextField';
 
@@ -23,6 +24,8 @@ const AccountType = ({
     setTypeCard();
   };
 
+  const isSelected = isSelectedAccount(selectedValue, AccountName);
+
   return (
     <>
       <Box
@@ -34,10 +37,7 @@ const AccountType = ({
           height: '70px',
           width: '100%',
           display: 'flex',
-          backgroundColor:
-            selectedValue === AccountName.toLowerCase().replace(/\s/g, '')
-              ? '#EDF7FF'
-              : 'transparent',
+          backgroundColor: isSelected ? '#EDF7FF' : 'transparent',
           alignItems: 'center',
           mx: { lg: '32px', xl: '40px' },
           my: '10px',
@@ -52,9 +52,7 @@ const AccountType = ({
           }}
         >
           <Radio
-            checked={
-              selectedValue === AccountName.toLowerCase().replace(/\s/g, '')
-            }
+            checked={isSelected}
             value={AccountName.toLowerCase().replace(/\s/g, '')}
             name="radio-buttons"
             inputProps={{ 'aria-label': 'A' }}
@@ -92,7 +90,7 @@ const AccountType = ({
             },
           }}
         >
-          {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') ? (
+          {isSelected ? (
             <KeyboardArrowDownIcon
               fontSize="large"
               sx={{ color: '#666', fontSize: { xs: '26px', sm: '38px' } }}
@@ -105,7 +103,7 @@ const AccountType = ({
           )}
         </Box>
       </Box>
-      {selectedValue === AccountName.toLowerCase().replace(/\s/g, '') && (
+      {isSelected && (
         <InputTextField
           textField={textField}
           handleChange={handleChange}

@@ -7,7 +7,7 @@ const CheckBoxDescription = ({
   checked,
   setChecked,
   handleChangeCheckBox,
-  checkBoxLable,
+  checkBoxLabel,
 }) => {
   return (
     <Box
@@ -32,7 +32,7 @@ const CheckBoxDescription = ({
           lineHeight: 'normal',
         }}
       >
-        {checkBoxLable}
+        {checkBoxLabel}
       </Typography>
     </Box>
   );

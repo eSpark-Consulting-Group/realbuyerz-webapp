@@ -101,3 +101,62 @@ export const calculateFormState = ({
     return findIndex.length !== 1;
   }
 };
+
+export const isSelectedAccount = (selectedValue, accountName) => {
+  return selectedValue === accountName.toLowerCase().replace(/\s/g, '');
+};
+
+export const maskAccountNumber = (number) => {
+  if (!number) return '';
+  const strNumber = String(number);
+  const masked =
+    '*'.repeat(Math.max(0, strNumber.length - 4)) + strNumber.slice(-4);
+  return masked;
+};
+
+export const handlePaymentChange = ({
+  dispatch,
+  ProceedPayment,
+  OrderSummaryPayLoad,
+  setIsModalOpen,
+  formik,
+  isResetForm,
+  state,
+  setChecked,
+  paymentMedthod,
+}) => {
+  dispatch(ProceedPayment(OrderSummaryPayLoad));
+  if (paymentMedthod && !state) {
+    setIsModalOpen(true);
+    formik.handleSubmit();
+    dispatch(isResetForm(true));
+    setTimeout(() => {
+      formik.resetForm();
+      setChecked(false);
+    }, 1000);
+  }
+};
+
+export const handleCheckBoxChange = ({
+  event,
+  setChecked,
+  paymentMedthodDetails,
+  formik,
+  dispatch,
+  updatePaymentMethodSelection,
+}) => {
+  const isChecked = event.target.checked;
+  setChecked(isChecked);
+  const findIndexOfCard = paymentMedthodDetails.findIndex((item) => {
+    return item.card_number === formik.values.card_number;
+  });
+  if (findIndexOfCard !== -1) {
+    dispatch(
+      updatePaymentMethodSelection({
+        isSelected: false,
+        cardNumber: formik.values.card_number,
+        isCheckBox: isChecked,
+      })
+    );
+  }
+};

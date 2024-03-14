@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Box, Radio, Typography } from '@mui/material';
-import { maskAccountNumber } from '@/utils/maskAccountNo';
+
+import { maskAccountNumber } from '@/utils/payment';
 
 const VisaCard = ({
   image,
