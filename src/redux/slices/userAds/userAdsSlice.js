@@ -83,33 +83,8 @@ const userAdsSlice = createSlice({
     draft: [
       {
         property_id: 650,
-        user_id: 301,
-        status: 'submited',
-        created_at: new Date(),
-        other_features: [],
-        title: 'One',
-        location: '',
-        description:
-          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
-        area: 10,
-        amount: 10,
-        areaUnit: 'sq.ft',
-        amountCurrency: 'GBP',
-        city: 'Karachi',
-        bedrooms: 1,
-        connects: '',
-        bathrooms: 1,
-        parking: 1,
-        purpose: 'Rent',
-        propertyCategory: 'House',
-        propertyType: 'Pent House',
-        instalmentAvailable: true,
-        readyPossession: true,
-      },
-      {
-        property_id: 670,
-        user_id: 301,
-        status: 'submited',
+        user_id: 21,
+        status: 'draft',
         created_at: new Date(),
         other_features: [],
         title: 'One',
@@ -191,10 +166,27 @@ const userAdsSlice = createSlice({
   },
   reducers: {
     handleSumitUserAds: (state, action) => {
-      state?.userPostings?.push(action.payload);
+      const newAd = action.payload;
+      const existingAdIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.property_id === newAd?.property_id
+      );
+      if (existingAdIndex !== -1) {
+        state.userPostings[existingAdIndex] = newAd;
+      } else {
+        state?.userPostings?.push(newAd);
+      }
     },
+
     handleSubmitDraft: (state, action) => {
-      state?.draft?.push(action.payload);
+      const newDraft = action.payload;
+      const existingDraftIndex = state?.draft?.findIndex(
+        (draft) => draft?.property_id === newDraft?.property_id
+      );
+      if (existingDraftIndex !== -1) {
+        state.draft[existingDraftIndex] = newDraft;
+      } else {
+        state?.draft?.push(newDraft);
+      }
     },
     handleSubmitTrash: (state, action) => {
       const { property_id, currentTab } = action.payload;

@@ -25,8 +25,8 @@ import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import {
   handlePostlistingAd,
-  handleSubmitDraft,
   toggleCheckAmenityClear,
+  handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
@@ -49,7 +49,7 @@ const Page = () => {
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleSubmitDraft(values));
+      dispatch(handleSubmitDraftForAgent(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handlePostlistingAd(values));
@@ -98,7 +98,6 @@ const Page = () => {
     property_id: '',
     user_id: '',
     status: '',
-    other_features: [],
     images: [],
     videos: [],
     title: '',
@@ -150,6 +149,7 @@ const Page = () => {
       values.user_id = current_user_id;
       values.status = 'submited';
       handleSubmit(values);
+      console.log(values, 'values');
       action.resetForm();
     },
     validateOnChange: false,

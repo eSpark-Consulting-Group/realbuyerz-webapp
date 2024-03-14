@@ -12,6 +12,7 @@ import {
 import Link from 'next/link';
 import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const ProposalCard = ({ data, currentTab, link, key }) => {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   const pathName = usePathname();
   const properties = 'my-properties';
   const proposals = 'my-proposals';
+  const all_posting = 'all-postings';
   const user = 'user';
 
   const handleTrash = (property_id, currentTab) => {
@@ -54,6 +56,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   const handleClose = () => {
     setOpen(!open);
   };
+
   return (
     <Box
       sx={{
@@ -80,11 +83,12 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
             onClick={handleClickOpen}
             sx={{
               minHeight: {
-                xs: `${!pathName?.includes(user) ? '310px' : '520px'}`,
-                sm: `${!pathName?.includes(user) ? '330px' : '580px'}`,
-                md: 'auto',
+                xs: `${pathName?.includes(user) ? '310px' : '535px'}`,
+                sm: `${pathName?.includes(user) ? '350px' : '600px'}`,
+                md: '300px',
               },
               display: 'flex',
+              gap: 3,
               flexDirection: { xs: 'column', md: 'row' },
               background: '#F5F6FA',
               border: 'solid 1px #E4E4E4',
@@ -96,23 +100,28 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
               zIndex: 2,
             }}
           >
-            {pathName?.includes(user) && (
+            {!pathName?.includes(user) && (
               <Box
                 sx={{
-                  width: { xs: '270px', sm: '300px' },
-                  height: { xs: '220px', sm: '250px' },
-                  '@media (min-width:280px) and (max-width:319px)': {
-                    width: '230px',
-                    height: '210px',
-                  },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mt: { xs: 0.8, sm: 0 },
                 }}
               >
                 <Box
                   component={'img'}
-                  src={`${data?.images || '/images/PropertyImg.png'}`}
+                  src={`${(data?.images?.length > 0 && URL?.createObjectURL(new Blob([data?.images[0]]))) || '/images/PropertyImg.png'}`}
                   sx={{
-                    width: { xs: '100%' },
-                    height: { xs: '100%' },
+                    minWidth: { xs: '250px', sm: '300px' },
+                    maxWidth: { xs: '250px', sm: '300px' },
+                    width: 'auto',
+                    height: { xs: '220px', sm: '250px' },
+                    borderRadius: '5px',
+                    '@media (min-width:280px) and (max-width:319px)': {
+                      width: '230px',
+                      height: '210px',
+                    },
                   }}
                 />
               </Box>
@@ -121,11 +130,11 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
               sx={{
                 width: {
                   xs: '100%',
-                  md: `${pathName?.includes(user) ? 'calc(100% - 300px)' : '100%'}`,
+                  md: `${!pathName?.includes(user) ? 'calc(100% - 300px)' : '100%'}`,
                 },
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '10px',
+                padding: { xs: '10px', md: 0 },
               }}
             >
               <Box
@@ -133,7 +142,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                   display: 'flex',
                   justifyContent: 'center',
                   '@media (min-width: 600px) and (max-width:1150px)': {
-                    justifyContent: `${!pathName?.includes(user) ? 'center' : 'start'}`,
+                    justifyContent: `${pathName?.includes(user) ? 'center' : 'start'}`,
                   },
                   alignItems: { xs: 'flex-start', md: 'center' },
                   position: 'relative',
@@ -239,7 +248,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.properType || ''}
+                      {data?.propertyCategory || ''}
                     </Typography>
                   </Box>
                   <Box
@@ -313,7 +322,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                       fontSize: '12px',
                       fontWeight: 400,
                       lineHeight: '15px',
-                      maxWidth: pathName?.includes(user) ? 700 : 'auto',
+                      maxWidth: !pathName?.includes(user) ? 700 : 1050,
                       letterSpacing: '0em',
                       textAlign: 'left',
                       display: '-webkit-box',
@@ -353,12 +362,12 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                 zIndex: 10,
                 right: { xs: 15, sm: 15 },
                 top: {
-                  xs: !pathName?.includes(user) ? 62 : 'auto',
-                  sm: !pathName?.includes(user) ? 85 : 'auto',
+                  xs: !pathName?.includes(user) ? 'auto' : 'auto',
+                  sm: !pathName?.includes(user) ? 'auto' : 'auto',
                 },
                 bottom: {
-                  xs: !pathName?.includes(user) ? 'auto' : 203,
-                  sm: !pathName?.includes(user) ? 'auto' : 206,
+                  xs: !pathName?.includes(user) ? 203 : 203,
+                  sm: !pathName?.includes(user) ? 206 : 206,
                 },
                 left: { xs: 'auto', sm: 'auto' },
               }}
@@ -366,6 +375,35 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
             >
               <DeleteIcon />
             </IconButton>
+            {currentTab === 'Draft' && (
+              <Link
+                href={`${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.property_id || ''}`}
+              >
+                <Typography
+                  color={'primary'}
+                  sx={{
+                    display: 'flex',
+                    cursor: 'pointer',
+                    position: { xs: 'absolute' },
+                    zIndex: 10,
+                    right: { xs: 60, sm: 60, md: 150 },
+                    top: {
+                      xs: !pathName?.includes(user) ? 300 : 81,
+                      sm: !pathName?.includes(user) ? 362 : 112,
+                      md: !pathName?.includes(user) ? 25 : 25,
+                    },
+                    bottom: {
+                      xs: !pathName?.includes(user) ? 'auto' : 'auto',
+                      sm: !pathName?.includes(user) ? 'auto' : 'auto',
+                    },
+                    left: { xs: 'auto', sm: 'auto', md: 'auto' },
+                  }}
+                >
+                  <EditIcon />
+                </Typography>
+              </Link>
+            )}
+
             <Button
               variant="contained"
               sx={{

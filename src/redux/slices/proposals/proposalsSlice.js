@@ -9,7 +9,7 @@ const proposalsSlice = createSlice({
       agent_id: 21,
       proposal_id: 1,
       status: 'Connected',
-      title: 'What is Lorem Ipsum?What is Lorem Ipsum?What is Lorem Ipsum?',
+      title: 'What is Lorem Ipsum?',
       location: '',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
@@ -36,7 +36,7 @@ const proposalsSlice = createSlice({
       agent_id: 21,
       proposal_id: 1,
       status: 'Connected',
-      title: 'What is Lorem Ipsum?What is Lorem Ipsum?What is Lorem Ipsum?',
+      title: 'What is Lorem Ipsum?',
       location: '',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy',
