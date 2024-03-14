@@ -31,7 +31,7 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [Action, setAction] = useState('');
-  
+
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state?.currentUser?.user);
   const getAmenities = useSelector(
