@@ -25,6 +25,8 @@ import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { COVER_LETTER } from '@/app/constants/coverLetter';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { findSpecificPost } from '@/utils/specificPost';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -39,7 +41,7 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings?.find((item) => id == item?.property_id);
+  const specificPost = findSpecificPost(userPostings, id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
 
@@ -48,11 +50,7 @@ const Page = () => {
   );
 
   const handleSeletedAmenites = () => {
-    if (getAmenities.length === 0) {
-      setSelectedAmenities([]);
-    } else {
-      setSelectedAmenities(getAmenities);
-    }
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -172,7 +170,7 @@ const Page = () => {
     isNaN(id) ||
     id === undefined ||
     id === null ||
-    id === spacificPost?.property_id
+    id === specificPost?.property_id
   ) {
     return (
       <NotFoundSection

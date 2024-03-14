@@ -20,7 +20,6 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
   const properties = 'my-properties';
   const proposals = 'my-proposals';
   const user = 'user';
-  console.warn(key);
 
   const handleTrash = (property_id, currentTab) => {
     if (pathName?.includes(user)) {

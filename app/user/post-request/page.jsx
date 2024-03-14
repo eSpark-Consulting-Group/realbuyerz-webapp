@@ -24,6 +24,7 @@ import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,11 +39,7 @@ const Page = () => {
   );
 
   const handleSeletedAmenites = () => {
-    if (getAmenities.length === 0) {
-      setSelectedAmenities([]);
-    } else {
-      setSelectedAmenities(getAmenities);
-    }
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);

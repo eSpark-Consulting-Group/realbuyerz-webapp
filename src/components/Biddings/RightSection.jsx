@@ -8,7 +8,7 @@ import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlisting
 
 const RightSection = ({
   postId,
-  spacificPost,
+  specificPost,
   proposals,
   rightSectionKeys,
 }) => {
@@ -29,7 +29,7 @@ const RightSection = ({
 
   const handleSave = () => {
     dispatch(
-      handleSaveRequest({ post: spacificPost, userId: current_user_id })
+      handleSaveRequest({ post: specificPost, userId: current_user_id })
     );
   };
 

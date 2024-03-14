@@ -40,7 +40,7 @@ const PreviewFeatureAndAmenities = ({
   fontSize,
   fontStyle,
   fontWeight,
-  spacificPost,
+  specificPost,
 }) => {
   return (
     <>
@@ -61,10 +61,10 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {propertyNames.map((propertyName) =>
+          {propertyNames?.map((propertyName) =>
             renderDetail(
               propertyName,
-              spacificPost?.[propertyName],
+              specificPost?.[propertyName],
               amenities,
               fontSize,
               fontStyle,

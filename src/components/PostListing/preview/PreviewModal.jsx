@@ -112,7 +112,7 @@ const PreviewModal = (props) => {
             />
             <PreviewFeatureAndAmenities
               amenities={amenities}
-              spacificPost={ads}
+              specificPost={ads}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}

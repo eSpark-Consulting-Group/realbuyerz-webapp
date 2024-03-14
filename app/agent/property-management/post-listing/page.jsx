@@ -28,6 +28,7 @@ import {
   handleSubmitDraft,
   toggleCheckAmenityClear,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -41,12 +42,9 @@ const Page = () => {
   );
 
   const handleSeletedAmenites = () => {
-    if (getAmenities.length === 0) {
-      setSelectedAmenities([]);
-    } else {
-      setSelectedAmenities(getAmenities);
-    }
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
