@@ -280,9 +280,8 @@ const Page = () => {
                     />
                     <Amount />
                     <PreviewFeatureAndAmenities
+                      specificPost={find_proposal}
                       amenities={amenities}
-                      bedrooms={find_ad?.bedrooms}
-                      bathrooms={find_ad?.bathrooms}
                     />
                   </>
                 )}

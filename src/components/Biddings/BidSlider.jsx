@@ -58,21 +58,22 @@ const BidSlider = ({ media, mediaType }) => {
                 <Image
                   height={200}
                   width={250}
-                  src={item}
+                  src={URL?.createObjectURL(item)}
                   alt={'Images'}
                   className="reponsiveimage"
                 />
               </Box>
             ) : mediaType === 'videos' ? (
               <Box sx={{ px: '10px' }}>
-                {' '}
-                <Image
-                  height={200}
-                  width={250}
-                  src={item}
-                  alt={'Images'}
-                  className="reponsiveimage"
-                />
+                <video style={{ width: '100%', height: '100%' }} controls>
+                  <track
+                    src="captions.vtt"
+                    kind="captions"
+                    label="English"
+                    default
+                  />
+                  <source src={URL?.createObjectURL(item)} />
+                </video>
               </Box>
             ) : null}
           </SwiperSlide>

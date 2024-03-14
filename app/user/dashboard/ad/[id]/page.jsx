@@ -20,10 +20,10 @@ const Page = () => {
     (state) => state?.postRequestAds?.userPostings
   );
   const proposals = useSelector((state) => state?.proposals);
-  const spacificPost = userPostings?.find((item) => item?.property_id == id);
+  const specificPost = userPostings?.find((item) => item?.property_id == id);
   const find_proposals = proposals?.filter(
     (proposal) =>
-      proposal?.property_id == spacificPost?.property_id &&
+      proposal?.property_id == specificPost?.property_id &&
       proposal?.status !== 'Rejected' &&
       proposal?.status !== 'Connected' &&
       proposal?.status !== 'Archive'
@@ -31,8 +31,8 @@ const Page = () => {
 
   return (
     <>
-      {spacificPost !== undefined &&
-      spacificPost !== null &&
+      {specificPost !== undefined &&
+      specificPost !== null &&
       find_proposals?.length > 0 ? (
         <>
           <BackToDashboard
@@ -64,15 +64,15 @@ const Page = () => {
             }}
           >
             <ProposalDetails
-              city={spacificPost?.city}
-              area={spacificPost?.area}
-              location={spacificPost?.location}
-              title={spacificPost?.title}
-              amount={spacificPost?.amount}
-              status={spacificPost?.purpose}
-              proposal={spacificPost?.proposals?.length}
-              postedTime={spacificPost?.posted_Time}
-              description={spacificPost?.description}
+              city={specificPost?.city}
+              area={specificPost?.area}
+              location={specificPost?.location}
+              title={specificPost?.title}
+              amount={specificPost?.amount}
+              status={specificPost?.purpose}
+              proposal={specificPost?.proposals?.length}
+              postedTime={specificPost?.posted_Time}
+              description={specificPost?.description}
             />
             <Divider />
             <ProposalAgentProfile

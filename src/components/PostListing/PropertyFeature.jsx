@@ -7,7 +7,12 @@ import PropertyFacilities from './PropertyFacilities';
 
 import AddAmenities from './AddAmenities';
 
-const PropertyFeatures = ({ formik }) => {
+const PropertyFeatures = ({
+  formik,
+  setSelectedAmenities,
+  selectedAmenities,
+  handleSeletedAmenites,
+}) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (items) => {
@@ -68,6 +73,9 @@ const PropertyFeatures = ({ formik }) => {
                 formik={formik}
                 onSelected={handleSelectedItems}
                 selectedItems={selectedItems}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+                handleSeletedAmenites={handleSeletedAmenites}
               />
             </Box>
           </Box>

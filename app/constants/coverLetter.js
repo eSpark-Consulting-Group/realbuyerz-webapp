@@ -284,19 +284,19 @@ export const COVER_LETTER = {
       image: '/images/listing-page/bed.svg',
       title: 'Bedrooms',
       name: 'bedrooms',
-      limit: 5,
+      limit: 20,
     },
     {
       image: '/images/listing-page/room.svg',
       title: 'Bathrooms',
       name: 'bathrooms',
-      limit: 5,
+      limit: 20,
     },
     {
       image: '/images/listing-page/parking.svg',
       title: 'Parking',
       name: 'parking',
-      limit: 1,
+      limit: 20,
     },
   ],
   upload: {
