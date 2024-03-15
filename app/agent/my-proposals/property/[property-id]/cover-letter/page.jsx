@@ -25,8 +25,8 @@ import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { COVER_LETTER } from '@/src/constants/coverLetter';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { findSpecificPost } from '@/utils/specificPost';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { findSpecificPost } from '@/src/utils/specificPost';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);

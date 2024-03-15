@@ -50,12 +50,12 @@ const AgentProfileDetail = ({ data, path, user, agent }) => {
               alt={ALT}
             />
             <ProfileInfo
-              title={`${data?.counts?.sellCount?.total || ''} ${FOR_SALE || ''}`}
+              title={`${data?.counts?.sellCount?.total || 'No Property'} ${FOR_SALE || ''}`}
               icon={FOR_SALE_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${data?.counts?.rentCount?.total || ''} ${FOR_RENT || ''}`}
+              title={`${data?.counts?.rentCount?.total || 'No Property'} ${FOR_RENT || ''}`}
               icon={FOR_RENT_ICON}
               alt={ALT}
             />

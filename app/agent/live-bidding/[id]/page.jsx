@@ -15,7 +15,7 @@ import { PROFILE_INFO } from '@/src/constants/LiveBidding';
 import { clientRequirment, previewData } from '@/src/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { findSpecificPost } from '@/utils/specificPost';
+import { findSpecificPost } from '@/src/utils/specificPost';
 
 const Page = () => {
   const { location, areaAndAmount, amenities } = previewData;

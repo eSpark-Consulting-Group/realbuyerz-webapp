@@ -28,7 +28,7 @@ import {
   toggleCheckAmenityClear,
   handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);

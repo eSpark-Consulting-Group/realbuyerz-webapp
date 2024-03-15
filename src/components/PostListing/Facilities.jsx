@@ -31,7 +31,7 @@ const Facilities = ({
       setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected.filter((item) => item.text !== text)
+        prevSelected.filter((item) => item?.text !== text)
       );
     }
 
@@ -92,10 +92,10 @@ const Facilities = ({
               onChange={(e) => {
                 handleCheckboxChange(
                   e,
-                  item.id,
-                  item.image,
-                  item.title,
-                  item.name
+                  item?.id,
+                  item?.image,
+                  item?.title,
+                  item?.name
                 );
               }}
             />

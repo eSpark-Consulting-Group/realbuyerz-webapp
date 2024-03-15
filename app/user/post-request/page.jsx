@@ -24,7 +24,7 @@ import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import { POST_REQUEST } from '@/src/constants/postRequest';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -140,9 +140,9 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values.property_id = randomNumber;
-      values.user_id = currentUser?.id;
-      values.status = Action;
+      values?.property_id = randomNumber;
+      values?.user_id = currentUser?.id;
+      values?.status = Action;
       handleSubmit(values);
       action.resetForm();
     },
