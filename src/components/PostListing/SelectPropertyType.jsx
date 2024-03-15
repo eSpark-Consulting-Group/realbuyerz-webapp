@@ -110,6 +110,15 @@ const SelectProperyType = ({
                   fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'House' ? '#FB631C' : '#666',
+                  position: 'relative',
+                  '&::after': {
+                    content: "''",
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: -8,
+                    borderBottom: `3px solid ${activePropertyType === 'House' ? '#FB631C' : 'transparent'}`,
+                  },
                 }}
                 onClick={() =>
                   handlePropertyType(PROPERTY_PURPOSE?.propertyType?.house)
@@ -122,6 +131,15 @@ const SelectProperyType = ({
                   fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
                   color: activePropertyType === 'Plots' ? '#FB631C' : '#666',
+                  position: 'relative',
+                  '&::after': {
+                    content: "''",
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: -8,
+                    borderBottom: `3px solid ${activePropertyType === 'Plots' ? '#FB631C' : 'transparent'}`,
+                  },
                 }}
                 onClick={() =>
                   handlePropertyType(PROPERTY_PURPOSE?.propertyType?.plots)
@@ -135,6 +153,15 @@ const SelectProperyType = ({
                   fontWeight: 400,
                   color:
                     activePropertyType === 'Commercial' ? '#FB631C' : '#666',
+                  position: 'relative',
+                  '&::after': {
+                    content: "''",
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: -8,
+                    borderBottom: `3px solid ${activePropertyType === 'Commercial' ? '#FB631C' : 'transparent'}`,
+                  },
                 }}
                 onClick={() =>
                   handlePropertyType(PROPERTY_PURPOSE?.propertyType?.commercial)

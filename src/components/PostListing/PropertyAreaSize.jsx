@@ -163,7 +163,6 @@ const PropertyAreaSize = ({
                       {
                         color: '#777777',
                         display: 'inline-flex',
-                        visibility: 'visible',
                         '&:hover': {
                           color: '#777777',
                         },
