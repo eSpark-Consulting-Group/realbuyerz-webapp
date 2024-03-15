@@ -28,7 +28,7 @@ const AvailableConnects = ({ profileInfo }) => {
             lineHeight: 'normal',
           }}
         >
-          {profileInfo.availableConnects} Available Connects
+          {`${profileInfo?.available_connects || 0} Available Connects`}
         </Typography>
         <Link href={ROUTERS?.buyProducts}>
           <Typography

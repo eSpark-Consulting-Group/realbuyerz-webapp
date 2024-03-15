@@ -5,8 +5,11 @@ import { Grid } from '@mui/material';
 import ProfileCompletness from '@/src/components/layouts/RightSiderBar/ProfileCompletness';
 import AvailableConnects from '@/src/components/layouts/RightSiderBar/AvailableConnects';
 import Profile from '@/src/components/layouts/RightSiderBar/Profile';
+import { useSelector } from 'react-redux';
 
 const BiddingProfile = ({ profileInfo }) => {
+  const current_user = useSelector((state) => state?.currentUser?.user);
+  console.log(current_user, 'current_user');
   return (
     <Box sx={{ marginTop: '15px' }}>
       <Grid container>
@@ -21,9 +24,9 @@ const BiddingProfile = ({ profileInfo }) => {
             height: '100%',
           }}
         >
-          <Profile profileInfo={profileInfo} />
+          <Profile profileInfo={current_user} />
           <ProfileCompletness profileInfo={profileInfo} />
-          <AvailableConnects profileInfo={profileInfo} />
+          <AvailableConnects profileInfo={current_user} />
         </Grid>
       </Grid>
     </Box>

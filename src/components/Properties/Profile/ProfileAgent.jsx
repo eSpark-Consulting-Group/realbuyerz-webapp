@@ -50,7 +50,7 @@ const ProfileAgent = ({ data, agentData }) => {
             name={`${agentData?.first_name} ${agentData?.last_name} `}
             link={`agents/${agentData?.id}`}
           />
-          <AgentDescription description={agentData?.shortintro} />
+          <AgentDescription data={agentData?.shortintro} />
         </Box>
       </Grid>
     </Grid>

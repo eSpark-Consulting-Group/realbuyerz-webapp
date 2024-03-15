@@ -93,7 +93,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                   {
                     color: '#777777',
                     display: 'inline-flex',
-                    visibility: 'visible',
+                    // visibility: 'visible',
                     '&:hover': {
                       color: '#777777',
                     },

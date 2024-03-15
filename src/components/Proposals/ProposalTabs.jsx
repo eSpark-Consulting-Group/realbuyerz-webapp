@@ -9,8 +9,8 @@ import {
   countFilteredData,
   filterDataBySearch,
   filterPropertiesByStatus,
-} from '@/utils/SearchFilter';
-import { getUniqueProposalStatus } from '@/utils/proposalFilter';
+} from '@/src/utils/SearchFilter';
+import { getUniqueProposalStatus } from '@/src/utils/proposalFilter';
 import ProposalCard from '../Proposal/ProposalCard';
 
 const ProposalTabs = ({ filteredProposalsData }) => {

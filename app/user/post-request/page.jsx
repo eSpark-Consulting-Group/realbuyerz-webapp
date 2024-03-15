@@ -23,25 +23,38 @@ import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import { POST_REQUEST } from '@/src/constants/postRequest';
+import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [action, setAction] = useState('');
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [Action, setAction] = useState('');
+
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state?.currentUser?.user);
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    if (action === 'draft') {
+    if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
-    } else if (action === 'submit') {
+    } else if (Action === 'submit') {
       dispatch(handleSumitUserAds(values));
       handleOpenSuccessModal();
     }
+    dispatch(toggleCheckAmenityClear());
+    setSelectedAmenities([]);
   };
 
   const handleClickOpen = () => {
@@ -94,6 +107,28 @@ const Page = () => {
     connects: '',
     bathrooms: 0,
     parking: 0,
+    clubhouse: 0,
+    swimming_pool: 0,
+    fitness_center: 0,
+    playground: 0,
+    servant_area: 0,
+    utility_store: 0,
+    rooftop_terrace: 0,
+    on_site_maintenance: 0,
+    washing_area: 0,
+    hour_electricity: 0,
+    auto_generator: 0,
+    complete_boundary_wall: 0,
+    walking_trails: 0,
+    pet_friendly_facilities: 0,
+    security: 0,
+    masjid: 0,
+    corridor: 0,
+    r_o_plant: 0,
+    basketball_courts: 0,
+    huge_park: 0,
+    concierge_services: 0,
+    business_centre: 0,
     purpose: 'Buy',
     propertyCategory: 'House',
     propertyType: 'Sell',
@@ -107,6 +142,7 @@ const Page = () => {
     onSubmit: (values, action) => {
       values.property_id = randomNumber;
       values.user_id = currentUser?.id;
+      values.status = Action;
       handleSubmit(values);
       action.resetForm();
     },
@@ -138,23 +174,30 @@ const Page = () => {
               buyData={POST_REQUEST?.buy}
             />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertyFeatures
+              formik={formik}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <SubmitButton
               formik={formik}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
+              handleOpenSuccessModal={handleOpenSuccessModal}
             />
             <PreviewModal
               open={open}
               onClose={handleClose}
               ads={formik?.values}
+              formik={formik}
             />
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={`${action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
-          description={`${action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
-          title={`${action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
+          buttonLabel={`${Action == 'draft' ? draftModal?.buttonLabel : adSumitModal?.buttonLabel}`}
+          description={`${Action == 'draft' ? draftModal?.description : adSumitModal?.description}`}
+          title={`${Action == 'draft' ? draftModal?.title : adSumitModal?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

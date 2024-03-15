@@ -31,7 +31,7 @@ const PropertyDetails = ({ propertyDetailsData }) => {
             locationpurpose={propertyDetailsData?.purpose}
             propertyType={propertyDetailsData?.propertyType}
             city={propertyDetailsData?.city}
-            location={propertyDetailsData?.locality}
+            location={propertyDetailsData?.location}
             geoLocation={propertyDetailsData?.geo_location}
           />
           <Box sx={{ pt: '15px' }}>

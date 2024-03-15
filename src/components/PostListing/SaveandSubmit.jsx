@@ -4,22 +4,69 @@ import { Box, Button, Grid } from '@mui/material';
 import HideUnhideButton from './HideButton';
 import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
 import { usePathname } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import {
+  handleSubmitDraft,
+  handleSumitUserAds,
+} from '@/src/redux/slices/userAds/userAdsSlice';
+import {
+  handlePostlistingAd,
+  handleSubmitDraftForAgent,
+} from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
-const SubmitButton = ({ handleClickOpen, formik, setAction }) => {
+const SubmitButton = ({
+  handleClickOpen,
+  formik,
+  setAction,
+  handleOpenSuccessModal,
+}) => {
   const pathName = usePathname();
   const cover = '/cover-letter';
+  const all_posting = '/all-postings';
+  const my_properties = '/my-properties';
+
+  const dispatch = useDispatch();
+
   const handleDraftSubmit = () => {
-    if (!pathName.includes(cover)) {
+    if (!pathName?.includes(cover)) {
       setAction('draft');
     }
-    formik.handleSubmit();
+    if (pathName?.includes(all_posting)) {
+      const values = formik?.values;
+      dispatch(handleSubmitDraft(values));
+      handleOpenSuccessModal();
+    } else {
+      null;
+    }
+    if (pathName?.includes(my_properties)) {
+      const values = formik?.values;
+      dispatch(handleSubmitDraftForAgent(values));
+      handleOpenSuccessModal();
+    } else {
+      null;
+    }
+    formik?.handleSubmit();
   };
 
   const handleSubmitSubmit = () => {
-    if (!pathName.includes(cover)) {
+    if (!pathName?.includes(cover)) {
       setAction('submit');
     }
-    formik.handleSubmit();
+    if (pathName?.includes(all_posting)) {
+      const values = formik?.values;
+      dispatch(handleSumitUserAds(values));
+      handleOpenSuccessModal();
+    } else {
+      null;
+    }
+    if (pathName?.includes(my_properties)) {
+      const values = formik?.values;
+      dispatch(handlePostlistingAd(values));
+      handleOpenSuccessModal();
+    } else {
+      null;
+    }
+    formik?.handleSubmit();
   };
 
   return (

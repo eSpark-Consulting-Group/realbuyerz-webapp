@@ -681,4 +681,5 @@ export const PROPERTY_DETAILS = {
   pkr: 'PKR',
   agent: '/project/',
   properties: '/project/',
+  propertyDetals: 'Property Details',
 };

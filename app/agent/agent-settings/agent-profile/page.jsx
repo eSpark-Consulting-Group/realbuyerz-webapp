@@ -9,12 +9,12 @@ import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
 
 const AgentProfile = () => {
-  const spacificAgent = useSelector((state) => state?.loginAgents[0]);
-  const [agentData, setAgentData] = useState(spacificAgent || {});
+  const user_profile = useSelector((state) => state?.currentUser?.user);
+  const [agentData, setAgentData] = useState(user_profile || {});
 
   useEffect(() => {
-    setAgentData(spacificAgent || {});
-  }, [spacificAgent]);
+    setAgentData(user_profile || {});
+  }, [user_profile]);
 
   return (
     <Box
@@ -37,7 +37,7 @@ const AgentProfile = () => {
       <ProfileFormMidText />
       <ProfilePasswordForm
         data={Agent_Profile_Form_Data}
-        spacificAgent={spacificAgent}
+        spacificAgent={agentData}
       />
     </Box>
   );

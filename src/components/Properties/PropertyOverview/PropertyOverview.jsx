@@ -113,7 +113,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
                 <TableRow sx={{ margin: '20px' }}>
                   {[
                     'propertyType',
-                    'locality',
+                    'location',
                     'amount',
                     'purpose',
                     'bedrooms',

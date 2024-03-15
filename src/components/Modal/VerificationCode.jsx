@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 
-import { verificationState } from '@/utils/verification';
+import { verificationState } from '@/src/utils/verification';
 import { VERIFICATION_OTP } from '@/src/constants/Modal';
 import CongratsModal from './CongratulationModal';
-import { handleVerificationChange } from '@/utils/codeValidation';
-import { isInputValid } from '@/utils/inputValid';
-import { checkLength } from '@/utils/lengthValid';
+import { handleVerificationChange } from '@/src/utils/codeValidation';
+import { isInputValid } from '@/src/utils/inputValid';
+import { checkLength } from '@/src/utils/lengthValid';
 import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
 import { useDispatch } from 'react-redux';
 

@@ -17,7 +17,10 @@ import {
   PROPOSAL_LISTING,
 } from '@/src/constants/Proposals';
 
-import { filterData, getUniqueFilteredOptions } from '@/utils/proposalFilter';
+import {
+  filterData,
+  getUniqueFilteredOptions,
+} from '@/src/utils/proposalFilter';
 
 const ProposalFilter = ({ data }) => {
   const [listingType, setListingType] = useState('proposals');

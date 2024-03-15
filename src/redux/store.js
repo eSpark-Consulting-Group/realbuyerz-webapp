@@ -22,12 +22,12 @@ import postlistingAdSlice from './slices/postlistingAds/postlistingAdsSlice';
 import userAdsSlice from './slices/userAds/userAdsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
-import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
 import globalUnitsSlice from './slices/global/globalUnitsSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
+import searchSlice from './slices/search/searchSlice';
 import packagesSlice from './slices/Packages/packagesSlice';
 
 export const store = configureStore({
@@ -50,6 +50,7 @@ export const store = configureStore({
     PakageCart: PakageCartSlice,
     verification: verificationSlice,
     resendEmail: resendEmailSlice,
+    search: searchSlice,
     signin: signinSlice,
     auth: authSlice,
     // current user
@@ -60,7 +61,6 @@ export const store = configureStore({
 
     // Sumited Ads States
     loginAgents: loginAgentsSlice,
-    loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
     postRequestAds: userAdsSlice,
 

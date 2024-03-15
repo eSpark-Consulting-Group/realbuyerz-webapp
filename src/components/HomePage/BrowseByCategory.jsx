@@ -36,8 +36,14 @@ const BrowseByCategory = ({ data }) => {
       0: {
         slidesPerView: 1,
       },
+      300: {
+        // slidesPerView: 2,
+      },
       425: {
         slidesPerView: 2,
+      },
+      600: {
+        slidesPerView: 3,
       },
       768: {
         slidesPerView: 4,

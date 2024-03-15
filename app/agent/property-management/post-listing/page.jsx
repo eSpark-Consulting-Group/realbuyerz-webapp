@@ -25,25 +25,38 @@ import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import {
   handlePostlistingAd,
-  handleSubmitDraft,
+  toggleCheckAmenityClear,
+  handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
+
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
   const handleSubmit = (values) => {
     if (action === 'draft') {
-      dispatch(handleSubmitDraft(values));
+      dispatch(handleSubmitDraftForAgent(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
       dispatch(handlePostlistingAd(values));
       handleOpenSuccessModal();
     }
+    dispatch(toggleCheckAmenityClear());
+    setSelectedAmenities([]);
   };
 
   const handleClickOpen = () => {
@@ -85,7 +98,6 @@ const Page = () => {
     property_id: '',
     user_id: '',
     status: '',
-    other_features: [],
     images: [],
     videos: [],
     title: '',
@@ -137,12 +149,12 @@ const Page = () => {
       values.user_id = current_user_id;
       values.status = 'submited';
       handleSubmit(values);
+      console.log(values, 'values');
       action.resetForm();
     },
     validateOnChange: false,
     validateOnBlur: false,
   });
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -163,7 +175,12 @@ const Page = () => {
             <AdInformation formik={formik} propertyData={POST_LISTING} />
             <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertyFeatures
+              formik={formik}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}
@@ -174,6 +191,7 @@ const Page = () => {
               open={open}
               onClose={handleClose}
               ads={formik?.values}
+              formik={formik}
             />
           </Box>
         </form>

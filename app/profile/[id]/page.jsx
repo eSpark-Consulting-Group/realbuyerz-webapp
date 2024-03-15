@@ -24,22 +24,22 @@ const Page = () => {
   function filterProjects(projects, agentId, purpose) {
     return projects.filter(
       (item) =>
-        item?.agent_id === agentId &&
+        item?.user_id === agentId &&
         item?.purpose === purpose &&
-        item?.status === 'submited'
+        item?.status === 'submit'
     ).length;
   }
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
     return projects.filter(
       (item) =>
-        item?.agent_id === agentId &&
+        item?.user_id === agentId &&
         item?.purpose === purpose &&
         item?.propertyCategory === propertyCategory &&
-        item?.status === 'submited'
+        item?.status === 'submit'
     ).length;
   }
   const allProperties = projects.filter(
-    (item) => item?.agent_id === user?.id
+    (item) => item?.user_id === user?.id && item?.status === 'submit'
   ).length;
   const forSellCount = filterProjects(projects, user?.id, 'Sell');
   const forSellHouses = filterProjectsWith(

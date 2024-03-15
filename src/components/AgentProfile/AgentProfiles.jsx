@@ -1,12 +1,16 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { LETS_TALK, USER_TYPE } from '@/src/constants/AgentProfile';
+import { LETS_TALK } from '@/src/constants/AgentProfile';
 import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
+import { usePathname } from 'next/navigation';
 
-const AgentProfiles = ({ data, spacificData, forRentCount, forSellCount }) => {
+const AgentProfiles = ({ data, setFieldValue }) => {
+  const path = usePathname();
+  const user_profile = 'user-profile';
+  const agent_profile = 'agent-profile';
   return (
     <Box
       sx={{
@@ -26,7 +30,7 @@ const AgentProfiles = ({ data, spacificData, forRentCount, forSellCount }) => {
           },
         }}
       >
-        <AgentImage data={data} spacificData={spacificData} />
+        <AgentImage data={data} setFieldValue={setFieldValue} />
         <Grid
           sx={{
             padding: 2,
@@ -44,14 +48,15 @@ const AgentProfiles = ({ data, spacificData, forRentCount, forSellCount }) => {
             }}
           >
             <AgentProfileDetail
-              description={data}
-              spacificData={spacificData}
-              forRentCount={forRentCount}
-              forSellCount={forSellCount}
+              data={data}
+              path={path}
+              user={user_profile}
+              agent={agent_profile}
             />
-            {data?.userType === `${USER_TYPE.agent}` ? (
+            {path?.includes(user_profile) ||
+            path?.includes(agent_profile) ? null : (
               <LetsTalk text={LETS_TALK} />
-            ) : null}
+            )}
           </Grid>
         </Grid>
       </Box>

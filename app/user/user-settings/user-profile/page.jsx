@@ -9,12 +9,12 @@ import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
-  const spacificUser = useSelector((state) => state?.loginUsers[0]);
-  const [userData, setUserData] = useState(spacificUser || {});
-
+  const user_profile = useSelector((state) => state?.currentUser?.user);
+  const [userData, setUserData] = useState(user_profile || {});
+  console.log(user_profile, 'user_profile');
   useEffect(() => {
-    setUserData(spacificUser || {});
-  }, [spacificUser]);
+    setUserData(user_profile || {});
+  }, [user_profile]);
 
   return (
     <Box

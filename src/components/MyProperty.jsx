@@ -1,6 +1,8 @@
 'use client';
+import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/postListing';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
-import { a11yProps } from '@/utils/tabs';
+import { a11yProps } from '@/src/utils/tabs';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {
   Autocomplete,
   Box,
@@ -14,10 +16,12 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import NotFoundSection from './Global/NotFoundSection';
 
 const MyProperty = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
+  const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { agentPostings, active, draft, trash } = useSelector(
     (state) => state?.postListingAds
   );
@@ -85,7 +89,7 @@ const MyProperty = () => {
           ...filterCity,
           ...filterLocation,
           ...filterPropertyType,
-        ].map((item) => [item?.adId, item])
+        ].map((item) => [item?.property_id, item])
       ).values(),
     ];
     if (
@@ -130,203 +134,147 @@ const MyProperty = () => {
 
   return (
     <>
-      <Box sx={{ maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' } }}>
+      <Box
+        sx={{
+          mx: { md: 'auto', lg: 0 },
+          maxWidth: { sm: 'auto', md: '1200px', xl: '1200px', xxl: '1500px' },
+        }}
+      >
         <Grid
           container
+          columnGap={2}
+          rowGap={2}
           sx={{
             alignItems: 'flex-end',
           }}
         >
-          <Grid item xs={6} md={2.75}>
-            <Box sx={{ width: '90%' }}>
-              <Typography>Purpose</Typography>
-              <Autocomplete
-                sx={{
-                  marginTop: '20px',
-                  background: '#fff',
-                }}
-                disablePortal
-                id="combo-box-demo"
-                value={filterObject?.purpose}
-                onChange={(e) =>
-                  handleChangeSelect('purpose', e?.target?.innerText)
-                }
-                options={[
-                  {
-                    label: 'Sell',
-                    value: 'Sell',
-                  },
-                  {
-                    label: 'Rent',
-                    value: 'Rent',
-                  },
-                ]}
-                renderInput={(params) => (
-                  <TextField {...params} label="Select Purpose" />
-                )}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={6} md={2.75}>
-            <Box sx={{ width: '90%' }}>
-              <Typography>City</Typography>
-              <Autocomplete
-                sx={{
-                  marginTop: '20px',
-                  background: '#fff',
-                }}
-                disablePortal
-                id="combo-box-demo"
-                value={filterObject?.city}
-                onChange={(e) =>
-                  handleChangeSelect('city', e?.target?.innerText)
-                }
-                options={[
-                  {
-                    label: 'Karachi',
-                    value: 'Karachi',
-                  },
-                  {
-                    label: 'Lahore',
-                    value: 'Lahore',
-                  },
-                ]}
-                renderInput={(params) => (
-                  <TextField {...params} label="Select City" />
-                )}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={6} md={2.75}>
-            <Box sx={{ width: '90%' }}>
-              <Typography>Location</Typography>
-              <Autocomplete
-                sx={{
-                  marginTop: '20px',
-                  background: '#fff',
-                }}
-                disablePortal
-                id="combo-box-demo"
-                value={filterObject?.location}
-                onChange={(e) =>
-                  handleChangeSelect('location', e?.target?.innerText)
-                }
-                options={[
-                  {
-                    label: 'GULSHAN-E-IQBAL',
-                    value: 'GULSHAN-E-IQBAL',
-                  },
-                  {
-                    label: 'Liaquatabad',
-                    value: 'Liaquatabad',
-                  },
-                ]}
-                renderInput={(params) => (
-                  <TextField {...params} label="Select Location" />
-                )}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={6} md={2.75}>
-            <Box sx={{ width: '90%' }}>
-              <Typography>Property Type</Typography>
-              <Autocomplete
-                sx={{
-                  marginTop: '20px',
-                  background: '#fff',
-                }}
-                disablePortal
-                id="combo-box-demo"
-                value={filterObject?.property_Type}
-                onChange={(e) =>
-                  handleChangeSelect('property_Type', e?.target?.innerText)
-                }
-                options={[
-                  {
-                    label: 'House',
-                    value: 'House',
-                  },
-                  {
-                    label: 'Flat',
-                    value: 'Flat',
-                  },
-                  {
-                    label: 'Upper Portion',
-                    value: 'Upper Portion',
-                  },
-                  {
-                    label: 'Lower Portion',
-                    value: 'Lower Portion',
-                  },
-                  {
-                    label: 'Farm House',
-                    value: 'Farm House',
-                  },
-                  {
-                    label: 'Room',
-                    value: 'Room',
-                  },
-                  {
-                    label: 'Pent House',
-                    value: 'Pent House',
-                  },
-                  {
-                    label: 'Residential Plots',
-                    value: 'Residential Plots',
-                  },
-                  {
-                    label: 'Commercial Plots',
-                    value: 'Commercial Plots',
-                  },
-                  {
-                    label: 'Agricultural Land',
-                    value: 'Agricultural Land',
-                  },
-                  {
-                    label: 'Industrial Land',
-                    value: 'Industrial Land',
-                  },
-                  {
-                    label: 'Plot File',
-                    value: 'Plot File',
-                  },
-                  {
-                    label: 'Plot Form',
-                    value: 'Plot Form',
-                  },
-                  {
-                    label: 'Office',
-                    value: 'Office',
-                  },
-                  {
-                    label: 'Shop',
-                    value: 'Shop',
-                  },
-                  {
-                    label: 'Ware House',
-                    value: 'Ware House',
-                  },
-                  {
-                    label: 'Building',
-                    value: 'Building',
-                  },
-                ]}
-                renderInput={(params) => (
-                  <TextField {...params} label="Select Type" />
-                )}
-              />
-            </Box>
-          </Grid>
+          {fields &&
+            fields?.map((field, index) => (
+              <>
+                <Grid item xs={12} sm={5.5} md={3.8} lg={2.3} key={index}>
+                  <Box sx={{ width: '100%' }}>
+                    <Typography>{field?.title || ''}</Typography>
+                    <Autocomplete
+                      sx={{
+                        marginTop: '12px',
+                        background: '#fff',
+
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                          border: 'none',
+                        },
+                        '&:hover fieldset': {
+                          border: 'none',
+                        },
+                        '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
+                          {
+                            color: '#66666666',
+                            display: 'inline-flex',
+                            '&:hover': {
+                              color: '#66666666',
+                            },
+                          },
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '5px',
+                          height: '40px',
+                          '& fieldset': {
+                            border: '1px solid #E7E7E7',
+                          },
+                        },
+                        '& .MuiAutocomplete-inputRoot': {
+                          margin: '0 !important',
+                          padding: '0 !important',
+                          paddingLeft: '12px !important',
+                        },
+                        '& .MuiInputLabel-root': {
+                          fontSize: '14px',
+                          marginTop: -0.9,
+                          marginLeft: -0.5,
+                          '@media (min-width: 280px) and (max-width: 375px)': {
+                            fontSize: '10px',
+                          },
+                        },
+                        '& .MuiAutocomplete-root': {
+                          margin: '0 !important',
+                          padding: '0 !important',
+                        },
+                        '& .MuiAutocomplete-option': {
+                          borderBottom: '1px solid #E7E7E7',
+                        },
+                        '&:hover': {
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            border: 'none',
+                          },
+                        },
+                      }}
+                      popupIcon={
+                        <KeyboardArrowDownIcon sx={{ color: '#66666666' }} />
+                      }
+                      disablePortal
+                      id="combo-box-demo"
+                      value={filterObject?.[field?.key]}
+                      onChange={(e) =>
+                        handleChangeSelect(field?.key, e?.target?.innerText)
+                      }
+                      options={field?.options?.map((opt) => opt)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          placeholder="Select Type"
+                          InputLabelProps={{
+                            sx: {
+                              margin: 0,
+                              padding: 0,
+                              fontSize: '14px',
+                              '@media (min-width: 280px) and (max-width: 375px)':
+                                {
+                                  fontSize: '10px',
+                                },
+                            },
+                          }}
+                        />
+                      )}
+                      renderOption={(props, option, { index }) => (
+                        <Box
+                          {...props}
+                          sx={{
+                            my: 0,
+                            py: 0,
+                            borderTop: `${index !== 0 ? '1px solid #E7E7E7' : null}`,
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              letterSpacing: '0em',
+                              maxWidth: { xs: '200px' },
+                              textOverflow: 'ellipsis',
+                              overflow: 'hidden',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {option?.label || ''}
+                          </Typography>
+                        </Box>
+                      )}
+                    />
+                  </Box>
+                </Grid>
+              </>
+            ))}
           <Grid item xs={12} md={1}>
             <Button
               onClick={() => handleReset()}
               variant="text"
+              disableRipple
               sx={{
                 color: '#126FAA',
                 textDecoration: 'underline',
+                '&:hover, &:focus': {
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                },
               }}
             >
-              Reset
+              {reset_button || ''}
             </Button>
           </Grid>
         </Grid>
@@ -336,18 +284,20 @@ const MyProperty = () => {
           background: '#fff',
           borderRadius: '10px',
           border: '1px solid #E4E4E4',
-          mt: 6,
+          mt: 4,
           mb: 6,
           mx: { xs: 'auto', lg: 0 },
-          maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+          width: 'auto',
+          maxWidth: { md: '1200px', xl: '1200px', xxl: '1500px' },
         }}
       >
         <Box
           sx={{
             display: 'flex',
+            mx: { xs: 1, md: 0 },
             justifyContent: 'center',
             alignItems: 'center',
-            paddingTop: '30px',
+            paddingTop: '20px',
           }}
         >
           <Tabs
@@ -371,42 +321,70 @@ const MyProperty = () => {
         </Box>
         <Divider />
         <Box
+          className="scrollbar-container"
           sx={{
-            p: { xs: 2, sm: 3 },
+            mr: { xs: 0.8, sm: 2, md: 'auto' },
+            ml: { xs: 0.8, sm: 2, md: 'auto' },
+            pt: { xs: 2.5, sm: 3, md: 5 },
+            pb: { xs: 2, sm: 2, md: 3 },
+            px: { xs: 0, sm: 0, md: 3 },
+            maxHeight: '950px',
+            width: 'auto',
           }}
         >
-          {currentTab === 'All'
-            ? getFilteredOutput(find_posting, filterObject)?.map(
-                (item, index) => (
-                  <ProposalCard
-                    key={index}
-                    data={item}
-                    currentTab={currentTab}
-                  />
-                )
-              )
-            : currentTab === 'Active'
-              ? getFilteredOutput(find_active, filterObject)?.map(
-                  (item, index) => (
-                    <ProposalCard
-                      key={index}
-                      data={item}
-                      currentTab={currentTab}
-                    />
-                  )
-                )
-              : currentTab === 'Draft'
-                ? getFilteredOutput(find_draft, filterObject)?.map(
-                    (item, index) => (
-                      <ProposalCard
-                        key={index}
-                        data={item}
-                        currentTab={currentTab}
-                      />
-                    )
-                  )
-                : currentTab === 'Trash'
-                  ? getFilteredOutput(find_trash, filterObject)?.map(
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              mx: 'auto',
+              '@media (max-width: 755px)': {
+                justifyContent:
+                  (currentTab === 'All' &&
+                    getFilteredOutput(find_posting, filterObject)?.length <=
+                      1) ||
+                  (currentTab === 'Active' &&
+                    getFilteredOutput(find_active, filterObject)?.length <=
+                      1) ||
+                  (currentTab === 'Draft' &&
+                    getFilteredOutput(find_draft, filterObject)?.length <= 1) ||
+                  (currentTab === 'Trash' &&
+                    getFilteredOutput(find_trash, filterObject)?.length <= 1)
+                    ? 'center'
+                    : 'start',
+              },
+              justifyContent: {
+                sm:
+                  (currentTab === 'All' &&
+                    getFilteredOutput(find_posting, filterObject)?.length <=
+                      2) ||
+                  (currentTab === 'Active' &&
+                    getFilteredOutput(find_active, filterObject)?.length <=
+                      2) ||
+                  (currentTab === 'Draft' &&
+                    getFilteredOutput(find_draft, filterObject)?.length <= 2) ||
+                  (currentTab === 'Trash' &&
+                    getFilteredOutput(find_trash, filterObject)?.length <= 2)
+                    ? 'center'
+                    : 'start',
+              },
+              alignItems: 'center',
+              flexDirection: { sm: 'row', md: 'column' },
+              gap: { xs: 1.5, sm: 2.5, md: 3.5 },
+            }}
+          >
+            {(currentTab === 'All' &&
+              getFilteredOutput(find_posting, filterObject)?.length === 0) ||
+            (currentTab === 'Active' &&
+              getFilteredOutput(find_active, filterObject)?.length === 0) ||
+            (currentTab === 'Draft' &&
+              getFilteredOutput(find_draft, filterObject)?.length === 0) ||
+            (currentTab === 'Trash' &&
+              getFilteredOutput(find_trash, filterObject)?.length === 0) ? (
+              <NotFoundSection heading={'Sorry!'} message={'No Data Found.'} />
+            ) : (
+              <>
+                {currentTab === 'All'
+                  ? getFilteredOutput(find_posting, filterObject)?.map(
                       (item, index) => (
                         <ProposalCard
                           key={index}
@@ -415,7 +393,40 @@ const MyProperty = () => {
                         />
                       )
                     )
-                  : null}
+                  : currentTab === 'Active'
+                    ? getFilteredOutput(find_active, filterObject)?.map(
+                        (item, index) => (
+                          <ProposalCard
+                            key={index}
+                            data={item}
+                            currentTab={currentTab}
+                          />
+                        )
+                      )
+                    : currentTab === 'Draft'
+                      ? getFilteredOutput(find_draft, filterObject)?.map(
+                          (item, index) => (
+                            <ProposalCard
+                              key={index}
+                              data={item}
+                              currentTab={currentTab}
+                            />
+                          )
+                        )
+                      : currentTab === 'Trash'
+                        ? getFilteredOutput(find_trash, filterObject)?.map(
+                            (item, index) => (
+                              <ProposalCard
+                                key={index}
+                                data={item}
+                                currentTab={currentTab}
+                              />
+                            )
+                          )
+                        : null}
+              </>
+            )}
+          </Box>
         </Box>
       </Box>
     </>

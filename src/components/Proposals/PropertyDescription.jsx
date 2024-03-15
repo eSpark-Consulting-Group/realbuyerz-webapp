@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import { PROPERTY_DETAILS } from '@/src/constants/Properties';
 
 const PropertyDescription = ({ proposal }) => {
   return (
@@ -13,7 +14,7 @@ const PropertyDescription = ({ proposal }) => {
           fontWeight: '500',
         }}
       >
-        Property Details
+        {PROPERTY_DETAILS?.propertyDetals}
       </Typography>
       <Typography
         sx={{
