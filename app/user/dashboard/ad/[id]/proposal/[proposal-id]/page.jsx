@@ -121,7 +121,13 @@ const Page = () => {
                     >
                       {`${find_agent?.first_name || ''} ${find_agent?.first_name || ''}`}
                     </Typography>
-                    <Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '15px',
+                        fontWeight: 500,
+                        color: '#757474',
+                      }}
+                    >
                       <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
                       {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
                       - 3:16pm local time
@@ -133,6 +139,7 @@ const Page = () => {
                     display: 'flex',
                     gap: 1.5,
                     flexDirection: { xs: 'column', md: 'row' },
+                    paddingTop: '10px',
                     '@media (min-width: 700px) and (max-width: 950px)': {
                       flexDirection: 'row',
                     },
@@ -148,7 +155,7 @@ const Page = () => {
                         width: { xs: '200px', lg: '200px' },
                         height: '43.545px',
                         backgroundColor: '#fff',
-                        border: '1px solid #FB631C',
+                        border: '1px solid #D5E1D5',
                         borderRadius: '50px',
                         fontSize: '14px',
                         fontWeight: 500,
@@ -177,8 +184,8 @@ const Page = () => {
                         fontWeight: 500,
                         color: '#FFF',
                         '&:hover': {
-                          backgroundColor: 'white',
-                          color: '#FB631C',
+                          backgroundColor: '#FB631C',
+                          color: '#fff',
                           border: '1px solid #FB631C',
                         },
                       }}
@@ -208,7 +215,9 @@ const Page = () => {
                 <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
                   {applicant_Titlt || ''}
                 </Typography>
-                <Typography>{`${find_agent?.first_name || ''} ${find_agent?.last_name || ''} ${applicant_Message || ''}`}</Typography>
+                <Typography
+                  sx={{ fontSize: '12px', fontWeight: 400 }}
+                >{`${find_agent?.first_name || ''} ${find_agent?.last_name || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
               <Box
                 sx={{

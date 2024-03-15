@@ -5,7 +5,7 @@ export const Agent_Profile_Form_Data = {
   Profile: { name: 'Arman khan', email: 'armankhan@gmail.com' },
   fields: [
     {
-      label: 'Full Name',
+      label: 'Name',
       name: 'first_name',
       value: 'ok',
       place: 'Enter First Name',

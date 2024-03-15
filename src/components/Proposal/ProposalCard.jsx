@@ -14,7 +14,14 @@ import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const ProposalCard = ({ data, currentTab, link, key }) => {
+const ProposalCard = ({
+  data,
+  currentTab,
+  link,
+  key,
+  propertyColor,
+  keyColor,
+}) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -93,7 +100,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
               background: '#F5F6FA',
               border: 'solid 1px #E4E4E4',
               borderRadius: '20px',
-              padding: { xs: 0.5, sm: '10px', md: 1.8 },
+              padding: { xs: 0.5, sm: '10px', md: 3 },
               marginTop: key === 0 && '30px',
               cursor: 'pointer',
               position: 'relative',
@@ -199,7 +206,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Purpose:
@@ -211,7 +218,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -232,7 +239,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Proporty Type:
@@ -244,7 +251,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -265,7 +272,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       City:
@@ -277,7 +284,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -298,7 +305,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Location:
@@ -310,7 +317,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#333333',
                         marginLeft: '5px',
                       }}
                     >
