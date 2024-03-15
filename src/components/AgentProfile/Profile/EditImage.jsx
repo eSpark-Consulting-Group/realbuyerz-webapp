@@ -4,7 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import EditIcon from '@mui/icons-material/Edit';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-export default function ButtonBaseDemo({ url, handleOpen, data }) {
+export default function ButtonBaseDemo({ url, handleOpen }) {
   const image = {
     url: url,
   };

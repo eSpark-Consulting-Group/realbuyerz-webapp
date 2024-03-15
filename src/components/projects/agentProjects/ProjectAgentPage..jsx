@@ -3,12 +3,10 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
 import ProjectsTypeSlider from '../ProjectsTypeSlider';
-// Other imports...
 
 const ProjectAgentPage = () => {
   const pathname = usePathname();

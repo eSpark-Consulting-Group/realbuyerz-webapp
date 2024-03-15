@@ -14,6 +14,7 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
   console.log(currentPage);
   const capCategory = category?.charAt(0).toUpperCase() + category?.slice(1);
   const capType = type?.charAt(0).toUpperCase() + type?.slice(1);
+  console.log(capCategory, capType);
   const totalItems = Math.min(data.length, itemsToShow) || 10;
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);

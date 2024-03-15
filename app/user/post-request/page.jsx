@@ -140,9 +140,9 @@ const Page = () => {
     initialValues: initialFormValues,
     validationSchema,
     onSubmit: (values, action) => {
-      values?.property_id = randomNumber;
-      values?.user_id = currentUser?.id;
-      values?.status = Action;
+      values.property_id = randomNumber;
+      values.user_id = currentUser?.id;
+      values.status = Action;
       handleSubmit(values);
       action.resetForm();
     },
