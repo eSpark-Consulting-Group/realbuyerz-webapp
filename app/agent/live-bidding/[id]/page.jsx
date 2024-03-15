@@ -15,6 +15,7 @@ import { PROFILE_INFO } from '@/src/constants/LiveBidding';
 import { clientRequirment, previewData } from '@/src/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import { findSpecificPost } from '@/utils/specificPost';
 
 const Page = () => {
   const { location, areaAndAmount, amenities } = previewData;
@@ -25,13 +26,13 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings?.find((item) => id == item?.property_id);
+  const specificPost = findSpecificPost(userPostings, id);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
         <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
-          {spacificPost?.property_id !== undefined ? (
+          {specificPost?.property_id !== undefined ? (
             <Box
               sx={{
                 background: '#fff',
@@ -60,34 +61,31 @@ const Page = () => {
                       {clientRequirment?.title}
                     </Typography>
                     <PropertyDetail
-                      subTitle={spacificPost?.title}
+                      subTitle={specificPost?.title}
                       fontStyle={'16px'}
-                      description={spacificPost?.description}
+                      description={specificPost?.description}
                     />
                     <Location
-                      city={spacificPost?.city}
+                      city={specificPost?.city}
                       locationKeys={location}
-                      purpose={spacificPost?.purpose}
-                      propertyType={spacificPost?.propertyType}
-                      propertyCategory={spacificPost?.propertyCategory}
-                      location={spacificPost?.location}
+                      purpose={specificPost?.purpose}
+                      propertyType={specificPost?.propertyType}
+                      propertyCategory={specificPost?.propertyCategory}
+                      location={specificPost?.location}
                       width={'70%'}
                     />
                     <PreviewAmountAndFeature
-                      area={spacificPost?.area}
-                      amount={spacificPost?.amount}
-                      areaUnit={spacificPost?.areaUnit}
+                      area={specificPost?.area}
+                      amount={specificPost?.amount}
+                      areaUnit={specificPost?.areaUnit}
                       areaAndAmount={areaAndAmount}
-                      amountCurrency={spacificPost?.amountCurrency}
-                      instalmentAvailable={spacificPost?.instalmentAvailable}
-                      readyPossession={spacificPost?.readyPossession}
+                      amountCurrency={specificPost?.amountCurrency}
+                      instalmentAvailable={specificPost?.instalmentAvailable}
+                      readyPossession={specificPost?.readyPossession}
                     />
                     <PreviewFeatureAndAmenities
                       amenities={amenities}
-                      bedrooms={spacificPost?.bedrooms}
-                      bathrooms={spacificPost?.bathrooms}
-                      parking={spacificPost?.parking}
-                      other_features={spacificPost?.other_features}
+                      specificPost={specificPost}
                     />
                   </Box>
                 </Grid>
@@ -104,8 +102,8 @@ const Page = () => {
                   >
                     <RightSection
                       // proposals={sendProposals}
-                      spacificPost={spacificPost}
-                      postId={spacificPost?.property_id}
+                      specificPost={specificPost}
+                      postId={specificPost?.property_id}
                       rightSectionKeys={clientRequirment}
                     />
                   </Box>

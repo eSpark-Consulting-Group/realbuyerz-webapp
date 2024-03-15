@@ -51,9 +51,14 @@ const AdMediaSlider = ({ media, mediaType }) => {
         {mediaType == 'images' &&
           media?.map((image, i) => (
             <SwiperSlide key={i}>
+              {console.log(image, 'image')}
               <Box
                 component={'img'}
-                src={URL?.createObjectURL(image)}
+                src={
+                  image
+                    ? URL?.createObjectURL(new Blob([image]))
+                    : '/images/PropertyImg.png'
+                }
                 alt={`Uploaded ${i}`}
                 quality={'100'}
                 sx={{
@@ -103,7 +108,9 @@ const AdMediaSlider = ({ media, mediaType }) => {
                     label="English"
                     default
                   />
-                  <source src={URL?.createObjectURL(video)} />
+                  <source
+                    src={video && URL?.createObjectURL(new Blob([video]))}
+                  />
                 </video>
               </Box>
             </SwiperSlide>

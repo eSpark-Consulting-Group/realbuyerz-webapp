@@ -48,7 +48,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
                 }}
               >
                 <Image
-                  src={image}
+                  src={URL?.createObjectURL(image)}
                   width={1000}
                   height={1000}
                   alt={'slide_image'}

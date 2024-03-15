@@ -10,15 +10,15 @@ const userAdsSlice = createSlice({
         status: 'submited',
         created_at: new Date(),
         other_features: [],
-        title: 'One',
+        title: 'NEED 4 BEDROOM APARTMENT',
         location: '',
         description:
-          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
+          'We are planning to buy a new home in the month of dec, if someone knows about',
         area: 10,
         amount: 10,
         areaUnit: 'sq.ft',
         amountCurrency: 'GBP',
-        city: 'Karachi',
+        city: 'Lahore',
         bedrooms: 1,
         connects: '',
         bathrooms: 1,
@@ -35,15 +35,15 @@ const userAdsSlice = createSlice({
         status: 'submited',
         created_at: new Date(),
         other_features: [],
-        title: 'One',
+        title: 'NEED 10 BEDROOM APARTMENT NEED 10 BEDROOM APARTMENT',
         location: '',
         description:
-          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
+          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,, ',
         area: 10,
         amount: 10,
         areaUnit: 'sq.ft',
         amountCurrency: 'GBP',
-        city: 'Karachi',
+        city: 'Lahore',
         bedrooms: 1,
         connects: '',
         bathrooms: 1,
@@ -55,48 +55,27 @@ const userAdsSlice = createSlice({
         readyPossession: true,
       },
       {
-        property_id: 937,
+        property_id: 670,
         user_id: 21,
-        status: '',
+        status: 'submited',
+        created_at: new Date(),
         other_features: [],
-        title: 'MY First Ad',
+        title: 'NEED 10 BEDROOM APARTMENT NEED 10 BEDROOM APARTMENT',
         location: '',
-        description: 'sadfsdafsd',
-        area: 456,
-        amount: 456,
+        description:
+          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,, ',
+        area: 10,
+        amount: 100000,
         areaUnit: 'sq.ft',
         amountCurrency: 'GBP',
         city: 'Karachi',
-        bedrooms: 0,
+        bedrooms: 1,
         connects: '',
-        bathrooms: 0,
-        parking: 0,
-        purpose: 'Sell',
-        propertyCategory: 'Plots',
-        propertyType: 'Industrail Land',
-        instalmentAvailable: true,
-        readyPossession: true,
-      },
-      {
-        property_id: 980,
-        user_id: 21,
-        status: '',
-        other_features: [],
-        title: 'MY Second Ad',
-        location: '',
-        description: 'sadfsdafsd',
-        area: 456,
-        amount: 456,
-        areaUnit: 'sq.ft',
-        amountCurrency: 'GBP',
-        city: 'Karachi',
-        bedrooms: 0,
-        connects: '',
-        bathrooms: 0,
-        parking: 0,
-        purpose: 'Sell',
-        propertyCategory: 'Plots',
-        propertyType: 'Industrail Land',
+        bathrooms: 1,
+        parking: 1,
+        purpose: 'Rent',
+        proportyCategory: 'House',
+        propertyType: 'Pent House',
         instalmentAvailable: true,
         readyPossession: true,
       },
@@ -104,33 +83,8 @@ const userAdsSlice = createSlice({
     draft: [
       {
         property_id: 650,
-        user_id: 301,
-        status: 'submited',
-        created_at: new Date(),
-        other_features: [],
-        title: 'One',
-        location: '',
-        description:
-          'We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something. Planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure its in the society with parking area  and security like something,,,',
-        area: 10,
-        amount: 10,
-        areaUnit: 'sq.ft',
-        amountCurrency: 'GBP',
-        city: 'Karachi',
-        bedrooms: 1,
-        connects: '',
-        bathrooms: 1,
-        parking: 1,
-        purpose: 'Rent',
-        propertyCategory: 'House',
-        propertyType: 'Pent House',
-        instalmentAvailable: true,
-        readyPossession: true,
-      },
-      {
-        property_id: 670,
-        user_id: 301,
-        status: 'submited',
+        user_id: 21,
+        status: 'draft',
         created_at: new Date(),
         other_features: [],
         title: 'One',
@@ -212,10 +166,27 @@ const userAdsSlice = createSlice({
   },
   reducers: {
     handleSumitUserAds: (state, action) => {
-      state?.userPostings?.push(action.payload);
+      const newAd = action.payload;
+      const existingAdIndex = state?.userPostings?.findIndex(
+        (ad) => ad?.property_id === newAd?.property_id
+      );
+      if (existingAdIndex !== -1) {
+        state.userPostings[existingAdIndex] = newAd;
+      } else {
+        state?.userPostings?.push(newAd);
+      }
     },
+
     handleSubmitDraft: (state, action) => {
-      state?.draft?.push(action.payload);
+      const newDraft = action.payload;
+      const existingDraftIndex = state?.draft?.findIndex(
+        (draft) => draft?.property_id === newDraft?.property_id
+      );
+      if (existingDraftIndex !== -1) {
+        state.draft[existingDraftIndex] = newDraft;
+      } else {
+        state?.draft?.push(newDraft);
+      }
     },
     handleSubmitTrash: (state, action) => {
       const { property_id, currentTab } = action.payload;

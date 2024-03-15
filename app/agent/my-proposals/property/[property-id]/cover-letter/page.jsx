@@ -24,11 +24,15 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { COVER_LETTER } from '@/src/constants/coverLetter';
+import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { findSpecificPost } from '@/utils/specificPost';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
 
   const pathname = usePathname();
@@ -37,9 +41,17 @@ const Page = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const spacificPost = userPostings?.find((item) => id == item?.property_id);
+  const specificPost = findSpecificPost(userPostings, id);
 
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
@@ -53,8 +65,9 @@ const Page = () => {
         agent_id: values?.agent_id,
       })
     );
+    dispatch(toggleCheckAmenityClear());
+    setSelectedAmenities([]);
   };
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -157,7 +170,7 @@ const Page = () => {
     isNaN(id) ||
     id === undefined ||
     id === null ||
-    id === spacificPost?.property_id
+    id === specificPost?.property_id
   ) {
     return (
       <NotFoundSection
@@ -188,7 +201,12 @@ const Page = () => {
               <AdInformation formik={formik} propertyData={COVER_LETTER} />
               <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
               <PropertySize formik={formik} />
-              <PropertyFeatures formik={formik} />
+              <PropertyFeatures
+                formik={formik}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+                handleSeletedAmenites={handleSeletedAmenites}
+              />
               <PropertyGallery formik={formik} />
               <SubmitButton formik={formik} handleClickOpen={handleClickOpen} />
               <PreviewModal

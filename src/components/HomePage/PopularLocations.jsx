@@ -72,7 +72,10 @@ const PopularLocations = ({ data }) => {
               onClick={() => handleFilter('sale')}
             >
               <Typography
-                sx={{ color: filterType === 'sale' ? '#fff' : 'primary' }}
+                sx={{
+                  color: filterType === 'sale' ? '#fff' : 'primary',
+                  fontSize: '15px',
+                }}
               >
                 {FEATURE_BUTTONS.forSale}
               </Typography>
@@ -91,7 +94,10 @@ const PopularLocations = ({ data }) => {
               onClick={() => handleFilter('rent')}
             >
               <Typography
-                sx={{ color: filterType === 'rent' ? '#fff' : 'primary' }}
+                sx={{
+                  color: filterType === 'rent' ? '#fff' : 'primary',
+                  fontSize: '15px',
+                }}
               >
                 {' '}
                 {FEATURE_BUTTONS.byRent}

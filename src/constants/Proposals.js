@@ -373,4 +373,5 @@ export const ALL = 'All';
 
 export const PROPOSAL = {
   propertyDetails: 'Property Details',
+  trash: 'Trash',
 };
