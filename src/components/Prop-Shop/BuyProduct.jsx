@@ -101,7 +101,7 @@ export default function BuyProduct() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-       <Grid container rowSpacing={1.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container rowSpacing={1.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {!paymentMedthod && (
           <Grid xs={12} sm={12} md={12} lg={8.5} item>
             <Item>
