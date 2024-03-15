@@ -18,7 +18,7 @@ const Subscription = ({ title }) => {
         backgroundColor: '#fff',
       }}
     >
-      <Typography variant="h4" sx={{ px: { xs: 3, md: 3 }, pb: { xs: 2 } }}>
+      <Typography variant="h4" sx={{ px: { xs: 4 }, pb: { xs: 2 } }}>
         {title}
       </Typography>
       <BuyProductTable columns={BuyProductColumns} rows={packages} />
