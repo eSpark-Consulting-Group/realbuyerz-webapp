@@ -28,11 +28,36 @@ export default function BuyProduct() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container rowSpacing={1.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid xs={12} sm={12} md={12} lg={8.5} item>
-          <Item>
-            <Subscription title={Buy_Product_Data?.title} />
-          </Item>
-        </Grid>
+        {!paymentMedthod && (
+          <Grid xs={12} sm={12} md={12} lg={8.5} item>
+            <Item>
+              <Subscription title={Buy_Product_Data?.title} />
+            </Item>
+          </Grid>
+        )}
+        {paymentMedthod && (
+          <Grid xs={12} sm={12} md={12} lg={8.5} item>
+            <Item>
+              <PaymentMethod
+                data={PAYMENT_METHODE_DATA}
+                selectedValue={selectedValue}
+                setSelectedValue={setSelectedValue}
+                formik={formik}
+                checked={checked}
+                setChecked={setChecked}
+                dispatch={dispatch}
+                paymentMedthodDetails={paymentMedthodDetails}
+                handleChange={handleChange}
+                handleChangeCheckBox={handleChangeCheckBox}
+                typeCard={typeCard}
+                setTypeCard={setTypeCard}
+                setSelectCardId={setSelectCardId}
+                selectCardId={selectCardId}
+                setState={setState}
+              />
+            </Item>
+          </Grid>
+        )}
         <Grid xs={12} sm={12} md={12} lg={3.5} item>
           <Item>
             <ProductCart />
