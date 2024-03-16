@@ -7,7 +7,7 @@ import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
 import { usePathname } from 'next/navigation';
 
-const AgentProfiles = ({ data, setFieldValue }) => {
+const AgentProfiles = ({ data, setFieldValue,forRentCount, forSellCount }) => {
   const path = usePathname();
   const user_profile = 'user-profile';
   const agent_profile = 'agent-profile';
@@ -52,6 +52,8 @@ const AgentProfiles = ({ data, setFieldValue }) => {
               path={path}
               user={user_profile}
               agent={agent_profile}
+              forRentCount={forRentCount}
+              forSellCount= {forSellCount}
             />
             {path?.includes(user_profile) ||
             path?.includes(agent_profile) ? null : (
