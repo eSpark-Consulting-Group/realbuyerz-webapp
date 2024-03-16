@@ -3,11 +3,10 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-// Other imports...
+import ProjectsTypeSlider from '../ProjectsTypeSlider';
 
 const ProjectAgentPage = () => {
   const pathname = usePathname();
@@ -16,7 +15,6 @@ const ProjectAgentPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
-
   if (!agentId || !currentAgent || !Array.isArray(projects)) {
     return (
       <NotFoundSection
@@ -27,14 +25,14 @@ const ProjectAgentPage = () => {
   }
 
   const filterData = projects.filter(
-    (item) => item?.agent_id === parseInt(agentId)
+    (item) => item?.user_id === parseInt(agentId)
   );
 
   if (filterData?.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'No projects found for this agent.'}
+        message={'No projects found for this agent?.'}
       />
     );
   }
@@ -46,7 +44,11 @@ const ProjectAgentPage = () => {
         link={`/profile/${agentId}/projects/${type}/${category?.toLowerCase()}`}
         linkText={'See All'}
       />
-      <ProjectsSlider data={filterData} category={category?.toLowerCase()} />
+      <ProjectsTypeSlider
+        data={filterData}
+        category={category?.toLowerCase()}
+        type={type?.toLowerCase()}
+      />
     </>
   );
 

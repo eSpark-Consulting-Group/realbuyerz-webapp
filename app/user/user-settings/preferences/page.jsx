@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 
 import PreferenceSettings from '@/src/components/AgentPreference/AgentSetting/PreferenceSettings';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Box
@@ -24,4 +24,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default Page;

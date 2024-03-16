@@ -7,7 +7,7 @@ import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 
-import { adSumitModal, draftModal } from '@/app/constants/postListing';
+import { adSumitModal, draftModal } from '@/src/constants/postListing';
 
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
@@ -22,9 +22,9 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
-import { POST_REQUEST } from '@/app/constants/postRequest';
+import { POST_REQUEST } from '@/src/constants/postRequest';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);

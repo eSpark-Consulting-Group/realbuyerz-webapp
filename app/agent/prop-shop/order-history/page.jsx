@@ -1,8 +1,8 @@
 import React from 'react';
 import OrderHistory from '@/src/components/OrderHistory/OrderHistory';
-import { orderHistory } from '@/app/constants/OrderHistory';
+import { orderHistory } from '@/src/constants/OrderHistory';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <OrderHistory history={orderHistory} />
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

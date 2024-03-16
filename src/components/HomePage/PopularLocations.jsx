@@ -8,7 +8,7 @@ import Heading from './Heading';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
-import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/app/constants/Home';
+import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/src/constants/Home';
 
 const scrollToTop = () => {
   window.scrollTo({

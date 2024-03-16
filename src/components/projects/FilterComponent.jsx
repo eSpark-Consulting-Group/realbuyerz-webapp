@@ -28,7 +28,6 @@ const FilterComponent = ({ data }) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
-
   const handleClick1 = (event) => {
     setAnchorEl1(anchorEl1 ? null : event.currentTarget);
   };
@@ -86,19 +85,33 @@ const FilterComponent = ({ data }) => {
       return (
         projects?.title === searchText &&
         projects?.description === searchText &&
-        projects?.areaUnit === selectedAreaUnit &&
         projects?.purpose === selectedPropertyAdType &&
+        projects?.propertyType === selectedProperty?.title &&
+        projects?.propertyCategory === selectedPropertyTab &&
+        projects?.areaUnit === selectedAreaUnit.toLowerCase() &&
+        projects?.amountCurrency === selectedPriceUnit.toUpperCase() &&
         projects?.amount <= selectedPriceRange[0] &&
         projects?.amount >= selectedPriceRange[1] &&
         projects?.amount <= selectedAreaRange[0] &&
-        projects?.amount >= selectedAreaRange[1] &&
-        projects?.amountCurrency === selectedPriceUnit &&
-        projects?.propertyType === selectedProperty &&
-        projects?.propertyCategory === selectedPropertyTab
+        projects?.amount >= selectedAreaRange[1]
       );
     });
-    console.log(filteredData);
+    console.log(filteredData, 'filtered');
   };
+
+  // console.log(searchText, 'searchText');
+  // console.log(selectedAreaUnit.toLowerCase(), 'selectedAreaUnit');
+  // console.log( selectedPropertyAdType.charAt(0).toUpperCase() + selectedPropertyAdType?.slice(1),
+  //   'selectedPropertyAdType'
+  // );
+  // console.log(selectedProperty?.title,  'selectedProperty');
+  // console.log(selectedPropertyTab, 'selectedPropertyTab');
+  // console.log(selectedPriceUnit.toUpperCase(),'selectedPriceUnit');
+  // console.log(selectedPriceRange[0], 'selectedPriceRange[0]');
+  // console.log(selectedPriceRange[1], 'selectedPriceRange[1]');
+  // console.log(selectedAreaRange[0], 'selectedAreaRange[0]');
+  // console.log(selectedAreaRange[1], 'selectedAreaRange[1]');
+
   const handleClearFilter = () => {
     setSelectedPropertyAdType('');
     setSelectedPropertyTab(0);
@@ -147,6 +160,7 @@ const FilterComponent = ({ data }) => {
               open={open1}
               anchorEl={anchorEl1}
               placement="bottom-start"
+              sx={{ zIndex: '1' }}
             >
               <Box
                 sx={{
@@ -181,7 +195,7 @@ const FilterComponent = ({ data }) => {
               open={open2}
               anchorEl={anchorEl2}
               placement="bottom-start"
-              zIndex={999}
+              sx={{ zIndex: '1' }}
             >
               <Box
                 sx={{
@@ -217,7 +231,7 @@ const FilterComponent = ({ data }) => {
               open={open3}
               anchorEl={anchorEl3}
               placement={'bottom-start'}
-              zIndex={999}
+              sx={{ zIndex: '1' }}
             >
               <Box
                 sx={{

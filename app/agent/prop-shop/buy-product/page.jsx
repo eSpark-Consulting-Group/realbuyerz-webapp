@@ -2,7 +2,7 @@ import BuyProduct from '@/src/components/Prop-Shop/BuyProduct';
 import { Box } from '@mui/material';
 import React from 'react';
 
-const page = () => {
+const Page = () => {
   return (
     <Box>
       <BuyProduct />
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

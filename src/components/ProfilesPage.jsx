@@ -50,7 +50,7 @@ const ProfilesPage = ({ agents }) => {
       </Typography>
       <Grid container spacing={6}>
         {agents?.slice(startIndex, endIndex).map((agent) => (
-          <Grid key={agent.id} item xs={12} sm={6} md={3}>
+          <Grid key={agent?.id} item xs={12} sm={6} md={3}>
             <Card
               sx={{
                 display: 'flex',

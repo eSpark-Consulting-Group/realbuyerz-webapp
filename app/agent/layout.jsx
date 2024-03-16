@@ -7,8 +7,8 @@ import { styled } from '@mui/material/styles';
 import { TopNav } from '@/src/components/dashbord/TopNav';
 import { SideNav } from '@/src/components/dashbord/SideNav';
 import Footer from '@/src/components/layouts/Footer';
-import { FOOTER_DATA } from '../constants/Constants';
-import { SIDE_NAV_WIDTH } from '../constants/sidebar';
+import { FOOTER_DATA } from '@/src/constants/Constants';
+import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 
 const LayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

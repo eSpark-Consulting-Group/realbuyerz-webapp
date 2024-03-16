@@ -10,10 +10,10 @@ import {
   SHOW_LESS,
   VIEW,
   VIEW_PROPSALS,
-} from '@/app/constants/LiveBidding';
+} from '@/src/constants/LiveBidding';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { postListingAdCard } from '@/app/constants/postListing';
+import { postListingAdCard } from '@/src/constants/postListing';
 import NotFoundSection from '../Global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import { searching } from '@/src/utils/search';

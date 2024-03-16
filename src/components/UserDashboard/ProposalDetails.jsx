@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { ESTIMATE_RANGE } from '@/app/constants/Dashboard';
+import { ESTIMATE_RANGE } from '@/src/constants/Dashboard';
 import LiveBiddingPropertiesList from '../Biddings/LiveBiddingPropertiesList';
-import { postListingAdCard } from '@/app/constants/postListing';
+import { postListingAdCard } from '@/src/constants/postListing';
 
 const ProposalDetails = ({
   city,

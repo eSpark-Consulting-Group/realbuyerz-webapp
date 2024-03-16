@@ -1,5 +1,5 @@
 import DynamicAPI from '../dynamicAPI';
-import { ENDPOINTS } from '@/app/constants/apiConstants';
+import { ENDPOINTS } from '@/src/constants/apiConstants';
 
 export const loginWithGoogle = async () => {
   const endpoint = ENDPOINTS.loginWithGoogle;

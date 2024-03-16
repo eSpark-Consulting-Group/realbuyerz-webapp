@@ -10,7 +10,7 @@ import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
 import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
-import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
+import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
 const Page = () => {
@@ -24,22 +24,22 @@ const Page = () => {
   function filterProjects(projects, agentId, purpose) {
     return projects.filter(
       (item) =>
-        item?.agent_id === agentId &&
+        item?.user_id === agentId &&
         item?.purpose === purpose &&
-        item?.status === 'submited'
+        item?.status === 'submit'
     ).length;
   }
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
     return projects.filter(
       (item) =>
-        item?.agent_id === agentId &&
+        item?.user_id === agentId &&
         item?.purpose === purpose &&
         item?.propertyCategory === propertyCategory &&
-        item?.status === 'submited'
+        item?.status === 'submit'
     ).length;
   }
   const allProperties = projects.filter(
-    (item) => item?.agent_id === user?.id
+    (item) => item?.user_id === user?.id && item?.status === 'submit'
   ).length;
   const forSellCount = filterProjects(projects, user?.id, 'Sell');
   const forSellHouses = filterProjectsWith(
