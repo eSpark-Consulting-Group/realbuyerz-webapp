@@ -12,7 +12,14 @@ import {
   LOCATION_ICON,
 } from '@/src/constants/AgentProfile';
 
-const AgentProfileDetail = ({ data, path, user, agent,forRentCount, forSellCount }) => {
+const AgentProfileDetail = ({
+  data,
+  path,
+  user,
+  agent,
+  forRentCount,
+  forSellCount,
+}) => {
   return (
     <Grid
       item

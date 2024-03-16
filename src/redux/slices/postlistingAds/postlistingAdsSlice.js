@@ -561,7 +561,8 @@ const postlistingAdSlice = createSlice({
         propertyType: 'Commercials',
         instalmentAvailable: false,
         readyPossession: false,
-      }, {
+      },
+      {
         property_id: 10,
         user_id: 21,
         status: 'submit',
