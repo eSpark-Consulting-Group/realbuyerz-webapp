@@ -4,7 +4,7 @@ import { Box, Typography, Container } from '@mui/material';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const AgentProjectsChiperBack = ({ backText, backLink, chipperText }) => {
+const AgentProjectsChiperBack = ({ backText, backLink, chipperText,chipperLink }) => {
   return (
     <>
       <Container sx={{ py: '15px' }}>
@@ -23,7 +23,7 @@ const AgentProjectsChiperBack = ({ backText, backLink, chipperText }) => {
             </Typography>
           </Link>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {chipperText ?  (<Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             sx={{
               display: 'flex',
@@ -55,7 +55,8 @@ const AgentProjectsChiperBack = ({ backText, backLink, chipperText }) => {
               />
             </Link>
           </Box>
-        </Box>
+        </Box>):null}
+       
       </Container>
     </>
   );

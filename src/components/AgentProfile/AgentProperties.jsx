@@ -24,9 +24,6 @@ const AgentProperties = ({
     <Box
       sx={{
         width: '100%',
-        [theme.breakpoints.up('lg')]: {
-          width: '450px',
-        },
       }}
     >
       <Box sx={{ pt: 8 }}>
@@ -35,7 +32,9 @@ const AgentProperties = ({
           title={`${data?.first_name} ${data?.last_name}`}
           link={allLink}
         />
-        <Box sx={{ pt: 2 }}>
+        <Box sx={{ pt: 2 ,[theme.breakpoints.up('lg')]: {
+          width: '438px',
+        },}}>
           <PropertyForSale
             data={forSellCount || 'No'}
             sellCount={data?.counts?.sellCount}
@@ -43,7 +42,9 @@ const AgentProperties = ({
           />
           <PropertyCardSaleBody sellData={sellData} link={sellLink} />
         </Box>
-        <Box sx={{ pt: 2 }}>
+        <Box sx={{ pt: 2,[theme.breakpoints.up('lg')]: {
+          width: '438px',
+        }, }}>
           <PropertyForRent
             data={forRentCount || 'No'}
             rentCount={data?.counts?.rentCount}

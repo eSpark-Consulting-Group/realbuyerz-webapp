@@ -7,6 +7,7 @@ import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
+import AgentProjectsChiperBack from '../profile/agent-projects/AgentProjectsChiperBack';
 
 const ProjectsCategoryPage = () => {
   const pathname = usePathname();
@@ -41,8 +42,13 @@ const ProjectsCategoryPage = () => {
   }
 
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <ProjectsFilterComponent data={filteredData} />
+    <Box className="min-h-screen" sx={{ py: '20px' }}>
+      <Box sx={{ pb: '80px' }}>
+        <AgentProjectsChiperBack
+        backText={'Back'}
+        backLink={`/projects/`}
+      />
+      <ProjectsFilterComponent data={filteredData} /></Box>
       <ProjectsCategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>

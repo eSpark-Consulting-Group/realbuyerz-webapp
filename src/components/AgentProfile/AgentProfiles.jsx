@@ -57,7 +57,7 @@ const AgentProfiles = ({ data, setFieldValue, forRentCount, forSellCount }) => {
             />
             {path?.includes(user_profile) ||
             path?.includes(agent_profile) ? null : (
-              <LetsTalk text={LETS_TALK} />
+              <LetsTalk text={LETS_TALK} link={`/inbox/${data?.id}`} />
             )}
           </Grid>
         </Grid>

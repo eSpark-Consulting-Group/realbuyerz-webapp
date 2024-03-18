@@ -185,8 +185,8 @@ const FooterCta = ({ data }) => {
               <Image
                 src={method?.icon}
                 alt={method?.alt}
-                width={35}
-                height={7}
+                width={37}
+                height={23}
               />
             </Box>
           ))}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Paper, Typography } from '@mui/material';
+import Link from 'next/link';
 
-const LetsTalk = ({ text }) => {
+const LetsTalk = ({ text, link }) => {
   return (
     text && (
       <Grid
@@ -16,7 +17,7 @@ const LetsTalk = ({ text }) => {
           paddingRight: '10px',
           justifyContent: 'center',
         }}
-      >
+      ><Link href={link}>
         <Paper
           sx={{
             background: 'white',
@@ -42,7 +43,7 @@ const LetsTalk = ({ text }) => {
           >
             {text}
           </Typography>
-        </Paper>
+        </Paper></Link>
       </Grid>
     )
   );

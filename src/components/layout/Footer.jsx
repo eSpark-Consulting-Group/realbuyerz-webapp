@@ -11,7 +11,6 @@ import UsefulLink from '../layouts/FooterResponsivness';
 const styles = {
   container: {
     backgroundColor: '#F5F5F5',
-    padding: '20px',
     color: '#fff',
     background:
       'linear-gradient(180deg, rgba(0, 15, 34, 1.00) 0%, rgba(14, 30, 46, 0.97) 60.69004535675049%, rgba(0, 21, 44, 1.00) 100%)',
@@ -107,6 +106,7 @@ const Footer = ({ data }) => {
               variant="h6"
               color={'primary'}
               sx={{
+                fontSize:{xs:'15px',md:'18px',lg:'20px'},
                 pb: { xs: '10px', md: '20px' },
                 pt: { xs: '20px', md: '0px' },
               }}
@@ -139,7 +139,11 @@ const Footer = ({ data }) => {
           <Box>
             <Box>
               <Box>
-                <Typography variant="h6" color={'primary'} sx={{ pb: '20px' }}>
+                <Typography variant="h6" color={'primary'} sx={{
+                fontSize:{xs:'15px',md:'18px',lg:'20px'},
+                pb: { xs: '10px', md: '20px' },
+                pt: { xs: '20px', md: '0px' },
+              }}>
                   {data?.downloadApp}
                 </Typography>
                 <Typography
@@ -161,8 +165,8 @@ const Footer = ({ data }) => {
                         <Image
                           src={option?.logo}
                           alt={option?.title}
-                          width={150}
-                          height={40}
+                          width={145}
+                          height={39}
                           style={styles.icon}
                         />
                       </Link>
@@ -177,7 +181,7 @@ const Footer = ({ data }) => {
                       key={index}
                       src={socialIcon?.logo}
                       alt={socialIcon?.title}
-                      width={25}
+                      width={24}
                       height={25}
                     />
                   </Link>

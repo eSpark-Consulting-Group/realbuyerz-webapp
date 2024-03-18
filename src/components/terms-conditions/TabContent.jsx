@@ -28,7 +28,7 @@ const TabContent = ({ selectedTab }) => {
         variant="body1"
         sx={{
           color: '#333',
-          fontSize: '14px',
+          fontSize: '12px',
           fontWeight: '400',
         }}
         dangerouslySetInnerHTML={{ __html: selectedTab?.content }}

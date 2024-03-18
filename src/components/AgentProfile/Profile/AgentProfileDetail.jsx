@@ -43,7 +43,7 @@ const AgentProfileDetail = ({
           alignItems: { xs: 'center', sm: 'start' },
         }}
       >
-        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1176AD' }}>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1176AD', fontSize:{xs:'18px', sm:'20px',md:'25px',lg:'30px'}, fontWeight:'600' }}>
           {`${data?.first_name || 'user'} ${data?.last_name || 'name'}`}
         </Typography>
 

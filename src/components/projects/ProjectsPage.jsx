@@ -20,7 +20,9 @@ const ProjectsPage = () => {
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
-        <ProjectsFilterComponent data={projects} />
+        <Box sx={{pb:'100px'}}>
+          <ProjectsFilterComponent data={projects} />
+        </Box>
         <Box>
           <ProjectsCategoryLink
             category={`Houses`}
