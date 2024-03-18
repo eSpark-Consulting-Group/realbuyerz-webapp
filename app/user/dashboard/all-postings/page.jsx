@@ -140,6 +140,8 @@ const Page = () => {
           rowGap={2}
           sx={{
             alignItems: 'flex-end',
+            display: 'flex',
+            gap: '45px',
           }}
         >
           {fields &&
@@ -152,7 +154,7 @@ const Page = () => {
                       sx={{
                         marginTop: '12px',
                         background: '#fff',
-
+                        width: { xs: '100%', md: '250px' },
                         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                           border: 'none',
                         },
@@ -262,6 +264,7 @@ const Page = () => {
               sx={{
                 color: '#126FAA',
                 textDecoration: 'underline',
+                marginLeft: '35px',
                 '&:hover, &:focus': {
                   backgroundColor: 'transparent',
                   boxShadow: 'none',
@@ -385,6 +388,8 @@ const Page = () => {
                           key={index}
                           data={item}
                           currentTab={currentTab}
+                          propertyColor={'#333333'}
+                          keyColor={'#126FAA'}
                         />
                       )
                     )
@@ -395,6 +400,8 @@ const Page = () => {
                             key={index}
                             data={item}
                             currentTab={currentTab}
+                            propertyColor={'#333333'}
+                            keyColor={'#126FAA'}
                           />
                         )
                       )
@@ -405,6 +412,8 @@ const Page = () => {
                               key={index}
                               data={item}
                               currentTab={currentTab}
+                              propertyColor={'#333333'}
+                              keyColor={'#126FAA'}
                             />
                           )
                         )
@@ -415,6 +424,8 @@ const Page = () => {
                                 key={index}
                                 data={item}
                                 currentTab={currentTab}
+                                propertyColor={'#333333'}
+                                keyColor={'#126FAA'}
                               />
                             )
                           )

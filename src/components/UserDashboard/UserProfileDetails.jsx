@@ -28,6 +28,7 @@ const UserProfileDetails = ({
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: { xs: 'center', md: 'none' },
           padding: { xs: '-70px', md: '0px' },
+          marginTop: '-30px',
         }}
       >
         <Grid
@@ -133,6 +134,7 @@ const UserProfileDetails = ({
             mb: { xs: 0, md: 17 },
             '@media(min-width: 280px) and (max-width: 445px)': {
               justifyContent: 'center',
+              marginBottom: '10px',
             },
           }}
         >
@@ -149,6 +151,9 @@ const UserProfileDetails = ({
                 border: '1px solid #FB631C',
                 color: '#fff',
                 cursor: 'pointer',
+                '@media (min-width: 960px) and (max-width: 1100px)': {
+                  width: '150px',
+                },
               }}
             >
               {text || ''}
