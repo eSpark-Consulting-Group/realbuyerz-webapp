@@ -25,9 +25,9 @@ const Seo = ({ data, alter }) => {
       <meta name="twitter:title" content={metaData?.twitterTitle} />
       <meta name="twitter:description" content={metaData?.twitterDescription} />
       <meta name="twitter:site" content={metaData?.ogSiteName} />
-      <meta name="twitter:creator" content="@twitter:eSparkTalent" />
+      <meta name="twitter:creator" content="@twitter:RealBuyerz" />
       <meta name="twitter:image" content={metaData?.ogImage} />
-      <meta name="twitter:label1" content="Written by eSparkTalent" />
+      <meta name="twitter:label1" content="Written by RealBuyerz" />
       <meta
         name="twitter:label2"
         content="Powered by @twitter:eSparkConsGroup"

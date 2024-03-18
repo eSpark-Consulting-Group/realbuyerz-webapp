@@ -2,7 +2,7 @@
 import React from 'react';
 import UserDashboard from '@/src/components/UserDashboard/UserDashboard';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <UserDashboard />
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

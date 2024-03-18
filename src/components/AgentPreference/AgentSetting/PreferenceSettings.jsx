@@ -4,10 +4,10 @@ import { Typography, Box, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 import Notification from './Notification';
-import { AGENT_PREFERENCES } from '@/app/constants/Preference';
+import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
-import { createInitialState } from '@/utils/agentPreferenceState';
+import { createInitialState } from '@/src/utils/agentPreferenceState';
 import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
 
 const PreferenceSettings = () => {

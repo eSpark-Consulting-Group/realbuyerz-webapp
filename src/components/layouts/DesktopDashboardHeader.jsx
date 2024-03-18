@@ -23,7 +23,7 @@ import {
   SEARCH,
   SIGN_OUT,
   CUSTOM_COLOR,
-} from '@/app/constants/DashboardHeader';
+} from '@/src/constants/DashboardHeader';
 import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 

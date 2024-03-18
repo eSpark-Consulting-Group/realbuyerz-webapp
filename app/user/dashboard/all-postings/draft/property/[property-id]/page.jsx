@@ -7,7 +7,7 @@ import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 
-import { adSumitModal, draftModal } from '@/app/constants/postListing';
+import { adSumitModal, draftModal } from '@/src/constants/postListing';
 
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
@@ -16,7 +16,7 @@ import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ProposalModal from '@/src/components/Modal/ProposalModal';
-import { POST_REQUEST } from '@/app/constants/postRequest';
+import { POST_REQUEST } from '@/src/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 

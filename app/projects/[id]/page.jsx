@@ -24,7 +24,7 @@ function SingleProperty() {
   console.log(selectedProject, 'selectedProject');
   const agents = useSelector((state) => state.agents);
   const selectedAgent = agents?.filter(
-    (agent) => agent.id === selectedProject.agent_id
+    (agent) => agent?.id === selectedProject?.user_id
   )[0];
   console.log(selectedAgent, 'selectedAgent');
   if (isNaN(id) || id === undefined || id === null) {
@@ -71,7 +71,7 @@ function SingleProperty() {
         <Grid item xs={12} sx={{ pb: '30px' }}>
           <Box py={3}>
             <Heading
-              heading={`Similar Properties around  ${selectedProject?.locality}`}
+              heading={`Similar Properties around  ${selectedProject?.location}`}
               textAlign={'center'}
             />
           </Box>

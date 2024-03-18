@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
+import { Agent_Profile_Form_Data } from '@/src/constants/AgentProfileForm';
 import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
 import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
 import ProfilePasswordForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfilePasswordForm';

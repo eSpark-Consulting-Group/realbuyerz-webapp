@@ -8,9 +8,11 @@ export default function RBCheckbox({
   sx,
   checked,
   setChecked,
-  onChange,
 }) {
-  console.warn(setChecked);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
   return (
     <FormControlLabel
       control={
@@ -18,7 +20,7 @@ export default function RBCheckbox({
           sx={sx}
           defaultChecked={defaultChecked}
           checked={checked}
-          onChange={onChange}
+          onChange={handleChange}
         />
       }
       label={label}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { VERIFICATION_CODE, VERIFICATION_OTP } from '@/app/constants/Modal';
+import { VERIFICATION_CODE, VERIFICATION_OTP } from '@/src/constants/Modal';
 import VerificationCode from './VerificationCode';
 
 const VerificationModal = ({ open, onCloseModal }) => {
