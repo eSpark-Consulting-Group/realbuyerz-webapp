@@ -1,6 +1,5 @@
 import React from 'react';
-
-import ComingSoon from '@/src/components/Global/ComingSoon';
+import CareersSingle from '@/src/app/careers/CareersSingle';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/careers';
@@ -51,7 +50,7 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <ComingSoon />;
+  return <CareersSingle />;
 };
 
 export default Page;

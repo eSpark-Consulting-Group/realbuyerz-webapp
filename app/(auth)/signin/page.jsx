@@ -1,8 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
-
-import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import SigninPage from '@/src/app/auth/signin/SigninPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/signin';
@@ -55,12 +52,7 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <Grid container>
-        <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS?.Page}
-          height={LOGIN_FORM?.rectangleHeight?.loginFormHeight}
-        />
-      </Grid>
+      <SigninPage />
     </>
   );
 };

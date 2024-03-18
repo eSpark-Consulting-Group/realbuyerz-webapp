@@ -1,8 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
-
-import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import ForgetPasswordPage from '@/src/app/auth/forget-password/ForgetPasswordPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/forget-password';
@@ -55,13 +52,7 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <Grid container>
-        <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS?.forgetPassword}
-          height={LOGIN_FORM?.rectangleHeight?.loginFormHeight}
-          paddingTop={LOGIN_FORM?.paddingTop}
-        />
-      </Grid>
+      <ForgetPasswordPage />
     </>
   );
 };

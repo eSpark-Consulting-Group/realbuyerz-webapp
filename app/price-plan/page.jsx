@@ -1,6 +1,6 @@
 import React from 'react';
-import PricePlan from '@/src/components/PlanPrice/PricePlan';
 import { GLOBAL_SEO } from '@/src/constants/seo';
+import PricePlanPage from '@/src/app/price-plan/PricePlanPage';
 
 const pathname = '/price-plan';
 const filteredData =
@@ -52,7 +52,7 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <PricePlan />
+      <PricePlanPage />
     </>
   );
 };

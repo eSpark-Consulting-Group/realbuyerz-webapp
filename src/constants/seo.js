@@ -385,6 +385,15 @@ export const BLOGS_SEO = [
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },
 ];
+export const CAREERS_SEO = [
+  {
+    path: '',
+    title: 'Career Name | Real Buyerz',
+    description: 'Career Name - Description',
+    url: 'http://localhost:3000/Careers/id',
+    image: 'http://localhost:3000/images/RealBuyersLogo.svg',
+  },
+];
 export const AGENTS_SEO = [
   {
     path: '/profile/1',

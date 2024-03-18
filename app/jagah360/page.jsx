@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '@/src/components/Global/ComingSoon';
+import Jagah360Page from '@/src/app/jagah360/Jagah360Page';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/jagah360';
@@ -50,6 +50,6 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <ComingSoon />;
+  return <Jagah360Page />;
 };
 export default Page;

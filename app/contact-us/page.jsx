@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '@/src/components/Global/ComingSoon';
+import ContactUsPage from '@/src/app/contact-us/ContactUsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/contact-us';
@@ -50,7 +50,7 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <ComingSoon />;
+  return <ContactUsPage />;
 };
 
 export default Page;
