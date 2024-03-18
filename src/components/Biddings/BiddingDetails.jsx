@@ -60,7 +60,7 @@ const BiddingDetails = ({ height, ads }) => {
                       <Box
                         sx={{
                           width: '100%',
-                          minHeight: '403px',
+                          minHeight: '365px',
                           height: 'auto',
                           backgroundColor: '#EDF7FF',
                           border: '1px solid #AAD9FF',
@@ -215,6 +215,10 @@ const BiddingDetails = ({ height, ads }) => {
                                       alignItems: 'center',
                                       fontSize: '12px',
                                       fontWeight: 500,
+                                      '&:hover': {
+                                        backgroundColor: '#fb631c',
+                                        color: '#fff',
+                                      },
                                     }}
                                   >
                                     {VIEW}
@@ -347,6 +351,11 @@ const BiddingDetails = ({ height, ads }) => {
                             fontWeight: 500,
                             fontSize: '20px',
                             lineHeight: '24.2px',
+                            '&:hover': {
+                              color: '#1176AD',
+                              textDecoration: 'underline',
+                              textUnderlineOffset: '5px',
+                            },
                           }}
                         >
                           {LOAD_MORE}
@@ -362,6 +371,11 @@ const BiddingDetails = ({ height, ads }) => {
                             fontWeight: 500,
                             fontSize: '20px',
                             lineHeight: '24.2px',
+                            '&:hover': {
+                              color: '#1176AD',
+                              textDecoration: 'underline',
+                              textUnderlineOffset: '5px',
+                            },
                           }}
                         >
                           {SHOW_LESS}

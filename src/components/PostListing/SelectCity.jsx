@@ -17,7 +17,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
           alignItems: { xs: 'center', sm: 'start' },
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
-          pb: { xs: 2, sm: 2 },
+          pb: { xs: 2, sm: 2, xl: 0 },
         }}
       >
         <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
@@ -60,7 +60,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               position: 'relative',
               gap: 1,
               mt: 0.8,
-              mb: 3,
+              mb: { xs: 3, xl: 0 },
             }}
           >
             <Typography
