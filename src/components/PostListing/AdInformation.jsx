@@ -12,7 +12,7 @@ const AdInformation = ({ propertyData, formik }) => {
         backgroundColor: '#fff',
         border: '1px #E4E4E4 solid',
         borderRadius: '10px',
-        height: {xl:'681px'},
+        height: { xl: '681px' },
       }}
     >
       <Grid
