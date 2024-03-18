@@ -1,4 +1,4 @@
-import { VERIFICATION_OTP } from '@/app/constants/Modal';
+import { VERIFICATION_OTP } from '@/src/constants/VerficationModal';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

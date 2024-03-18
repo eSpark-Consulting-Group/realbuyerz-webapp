@@ -2,20 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@mui/material';
 
-import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
-import AdInformation from '@/src/components/PostListing/AdInformation';
-import PropertySize from '@/src/components/PostListing/Propertysize';
-import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
+import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
+import AdInformation from '@/src/components/dashboard/AdInformation';
+import PropertySize from '@/src/components/dashboard/Propertysize';
+import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
 
 import { adSumitModal, draftModal } from '@/app/constants/postListing';
 
-import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
+import SubmitButton from '@/src/components/dashboard/SubmitButton';
 
-import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
+import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
+import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import ProposalModal from '@/src/components/Modal/ProposalModal';
+import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';

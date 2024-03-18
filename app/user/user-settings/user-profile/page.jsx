@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Agent_Profile_Form_Data } from '@/app/constants/AgentProfileForm';
-import ProfileForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileForm';
-import ProfileFormMidText from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfileFormMidText';
-import ProfilePasswordForm from '@/src/components/AgentProfile/Agent-Profile-Forms/ProfilePasswordForm';
+import ProfileForm from '@/src/components/dashboard/ProfileForm';
+import ProfileFormMidText from '@/src/components/dashboard/ProfileFormMidText';
+import ProfilePasswordForm from '@/src/components/dashboard/ProfilePasswordForm';
 
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';

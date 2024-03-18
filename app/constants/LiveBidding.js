@@ -7,12 +7,7 @@ export const HEADER_MENU = [
     profileIcon: '/images/Live-bidding-icons/headerProfileIcon.svg',
   },
 ];
-export const VIEW = 'View';
-export const VIEW_PROPSALS = 'View Proposals';
-export const MAIN_TITLE = 'LIVE BIDDING IN PROPERTIES';
-export const PROFILE_COMPLETNESS = 'Profile Completeness:';
-export const PROFILE_COMPLETNESS_DESCRIPTION =
-  ' Ways to stand out to clients right now...';
+
 export const MY_CATEGORIES = 'My Categories';
 export const PROPOSALS = 'Proposals:';
 export const ESTIMATE_RANGE = 'Est. Range:';
@@ -198,34 +193,4 @@ export const LIVE_BIDDING_DATA = {
       ],
     },
   ],
-};
-export const PROFILE_INFO = {
-  image: '/images/Live-bidding-icons/Profile.png',
-  name: 'Kashif Z',
-  agencyName: 'KZ Real Estate',
-  profileCompleteness: '95',
-  availableConnects: '50',
-  propertyListed: '50',
-  ProfileVisibilty: 'Public',
-  LeadPreferences: 'Open to contract',
-  path: 'Open to contract',
-
-  categories: [
-    {
-      categoryName: 'House',
-    },
-    {
-      categoryName: 'Plots',
-    },
-    {
-      categoryName: 'Commercials',
-    },
-  ],
-};
-
-export const ROUTERS = {
-  buyProducts: '/agent/prop-shop/buy-product',
-  postListing: '/agent/property-management/post-listing',
-  bidding: '/biddings',
-  dashboardLiveBidding: '/dashboard/live-bidding',
 };

@@ -3,18 +3,18 @@ import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import UserProfileImage from '@/src/components/UserDashboard/UserProfileImage';
+import UserProfileImage from '@/src/components/dashboard/UserProfileImage';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
 import { ProposalsPage } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
+import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import { previewData } from '@/app/constants/postListing';
-import Location from '@/src/components/PostListing/preview/Location';
-import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
+import Location from '@/src/components/dashboard/preview/Location';
+import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import BidMedia from '@/src/components/Biddings/BidMedia';
+import BidMedia from '@/src/components/dashboard/BidMedia';
 import {
   handleConnectProposal,
   handleRejectedProposal,

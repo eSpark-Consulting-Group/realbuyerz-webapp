@@ -2,30 +2,30 @@
 import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
 
-import BuyersPlatform from '@/src/components/PostListing/BuyersPlatform';
-import AdInformation from '@/src/components/PostListing/AdInformation';
-import PropertySize from '@/src/components/PostListing/Propertysize';
-import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
+import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
+import AdInformation from '@/src/components/dashboard/AdInformation';
+import PropertySize from '@/src/components/dashboard/Propertysize';
+import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
 
 import { proposalSumitModal } from '@/app/constants/postListing';
-import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
+import SubmitButton from '@/src/components/dashboard/SubmitButton';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import PreviewModal from '@/src/components/PostListing/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/PostListing/PropertyFeature';
+import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
+import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import ProposalModal from '@/src/components/Modal/ProposalModal';
+import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import Link from 'next/link';
-import PropertyGallery from '@/src/components/PostListing/PropertGallery';
+import PropertyGallery from '@/src/components/dashboard/PropertGallery';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
-import { COVER_LETTER } from '@/app/constants/coverLetter';
+import { COVER_LETTER } from '@/src/constants/agent/Cover_Letter';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { findSpecificPost } from '@/utils/specificPost';
+import { findSpecificPost } from '@/utils/dashboardUtils';
 import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {

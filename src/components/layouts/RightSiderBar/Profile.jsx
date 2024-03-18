@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
-const Profile = ({ profileInfo }) => {
+const Profile = ({ profileInfo, defaultImage }) => {
   return (
     <>
       <Grid
@@ -18,7 +18,7 @@ const Profile = ({ profileInfo }) => {
       >
         <Grid item xs={12}>
           <Avatar
-            src={profileInfo?.profile_image || ''}
+            src={profileInfo?.profile_image || defaultImage}
             sx={{
               width: '52px',
               height: '52px',

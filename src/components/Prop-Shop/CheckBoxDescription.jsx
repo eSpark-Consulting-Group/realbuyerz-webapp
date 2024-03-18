@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-import RBCheckbox from '../AgentProfile/Agent-Profile-Forms/RBCheckbox';
+import RBCheckbox from '../dashboard/RBCheckbox';
 
 const CheckBoxDescription = ({
   checked,

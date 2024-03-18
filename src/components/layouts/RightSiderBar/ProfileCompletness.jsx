@@ -5,12 +5,8 @@ import { Grid, Typography } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
-import {
-  PROFILE_COMPLETNESS,
-  PROFILE_COMPLETNESS_DESCRIPTION,
-} from '@/app/constants/LiveBidding';
 
-const ProfileCompletness = ({ profileInfo }) => {
+const ProfileCompletness = ({ title, description, percentage }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -52,7 +48,7 @@ const ProfileCompletness = ({ profileInfo }) => {
               color: '#000000',
             }}
           >
-            {PROFILE_COMPLETNESS}
+            {title || ''}
           </Typography>
           <Box
             sx={{
@@ -73,7 +69,7 @@ const ProfileCompletness = ({ profileInfo }) => {
                 ml: 1,
               }}
             >
-              {profileInfo.profileCompleteness}%
+              {percentage || ''}
             </Typography>
           </Box>
         </Box>
@@ -88,7 +84,7 @@ const ProfileCompletness = ({ profileInfo }) => {
               lineHeight: 'normal',
             }}
           >
-            {PROFILE_COMPLETNESS_DESCRIPTION}
+            {description || ''}
           </Typography>
         </Box>
       </Grid>

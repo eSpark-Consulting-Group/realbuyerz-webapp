@@ -1,5 +1,5 @@
 'use client';
-import ProposalCard from '@/src/components/Proposal/ProposalCard';
+import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
 import { Box, Divider, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';

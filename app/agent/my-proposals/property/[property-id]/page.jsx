@@ -6,16 +6,16 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 import RightSection from '@/src/components/Biddings/RightSection';
-import BiddingProfile from '@/src/components/Biddings/BiddingProfile';
-import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
-import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
+import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
+import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
+import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/PreviewFeatureAndAmenities';
 
-import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
+import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import { PROFILE_INFO } from '@/app/constants/LiveBidding';
 import { clientRequirment, previewData } from '@/app/constants/postListing';
-import Location from '@/src/components/PostListing/preview/Location';
+import Location from '@/src/components/dashboard/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { findSpecificPost } from '@/utils/specificPost';
+import { findSpecificPost } from '@/utils/dashboardUtils';
 
 const Page = () => {
   const { location, areaAndAmount, amenities } = previewData;

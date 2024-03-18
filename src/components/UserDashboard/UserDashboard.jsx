@@ -6,8 +6,9 @@ import { Divider } from '@mui/material';
 import { LIVE_BIDDING_DATA } from '@/app/constants/LiveBidding';
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-import BiddingDetails from '../Biddings/BiddingDetails';
+
 import { useSelector } from 'react-redux';
+import BiddingDetails from '../dashboard/BiddingDetails';
 
 const UserDashboard = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);

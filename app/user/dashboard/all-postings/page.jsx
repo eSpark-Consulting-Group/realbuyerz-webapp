@@ -1,7 +1,7 @@
 'use client';
 import { ALL_POSTLISTING_FILTRATION } from '@/app/constants/postListing';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import ProposalCard from '@/src/components/Proposal/ProposalCard';
+import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 

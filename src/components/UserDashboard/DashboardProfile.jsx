@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { Button, Divider, Grid } from '@mui/material';
 
-import UserProfileImage from './UserProfileImage';
+import UserProfileImage from '../dashboard/UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
 

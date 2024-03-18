@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
-import EditProfileModal from '../../Modal/EditProfileModal';
+import EditProfileModal from '../../dashboard/modals/EditProfileModal';
 import ButtonBaseDemo from './EditImage';
 
 const AgentImage = ({ data, setFieldValue }) => {

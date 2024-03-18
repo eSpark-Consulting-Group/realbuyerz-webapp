@@ -11,7 +11,7 @@ import { NOT_FOUND } from '@/app/constants/Global';
 const NotFoundSection = ({ heading, message, link, goBackTo }) => {
   const currentPath = usePathname();
   const path =
-    currentPath.includes('/agent/') || currentPath.includes('/user/');
+    currentPath?.includes('/agent/') || currentPath?.includes('/user/');
 
   return (
     <Box

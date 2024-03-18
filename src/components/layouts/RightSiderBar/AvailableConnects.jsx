@@ -1,9 +1,8 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from 'next/link';
-import { ROUTERS } from '@/app/constants/LiveBidding';
 
-const AvailableConnects = ({ profileInfo }) => {
+const AvailableConnects = ({ profileInfo, connectsText, buyNow }) => {
   return (
     <>
       <Grid
@@ -28,9 +27,9 @@ const AvailableConnects = ({ profileInfo }) => {
             lineHeight: 'normal',
           }}
         >
-          {`${profileInfo?.available_connects || 0} Available Connects`}
+          {`${profileInfo?.available_connects || 0} ${connectsText || ''}`}
         </Typography>
-        <Link href={ROUTERS?.buyProducts}>
+        <Link href={`${buyNow?.link || '#'}`}>
           <Typography
             sx={{
               mx: 'auto',
@@ -48,7 +47,7 @@ const AvailableConnects = ({ profileInfo }) => {
               background: '#FB631C',
             }}
           >
-            Buy now
+            {buyNow?.text || ''}
           </Typography>
         </Link>
       </Grid>

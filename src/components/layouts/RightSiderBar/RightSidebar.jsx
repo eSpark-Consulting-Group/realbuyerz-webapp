@@ -2,7 +2,7 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 
-import BiddingProfile from '../../Biddings/BiddingProfile';
+import BiddingProfile from '../../dashboard/agent/live-bidding/BiddingProfile';
 import ShopCart from '../ShopCart/ShopCart';
 import ProductCart from '../../Prop-Shop/ProductCart';
 import { ROUTERS } from '@/app/constants/LiveBidding';

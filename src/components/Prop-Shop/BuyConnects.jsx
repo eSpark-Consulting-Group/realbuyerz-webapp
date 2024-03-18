@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Button, Typography, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-import RBInput from '../AgentProfile/Agent-Profile-Forms/RBInput';
+import RBInput from '../dashboard/RBInput';
 import BuyConnectSelect from './BuyConnectSelect';
 import { buy } from '@/src/redux/slices/settings/PakageCartSlice';
 
