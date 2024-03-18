@@ -2,8 +2,8 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
-import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
+import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
+import ProjectsSlider from '@/src/components/app/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
@@ -49,7 +49,7 @@ const TypeAgentPage = () => {
 
   const renderProjects = (category) => (
     <>
-      <CategoryLink
+      <ProjectsCategoryLink
         category={category}
         link={`/profile/${currentAgent?.id}/projects/${adsType}/${category?.toLowerCase()}`}
         linkText={'See All'}

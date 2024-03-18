@@ -2,8 +2,8 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
-import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsCard from '@/src/components/projects/ProjectsCard';
+import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
+import ProjectsCard from '@/src/components/app/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import ChiperBack from './ChiperBack';
@@ -61,7 +61,7 @@ const CategoryAgentPage = () => {
         chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s ${capitalizeFirstLetter(category)} for ${capitalizeFirstLetter(adsType)}`}
         chipperLink={`/projects`}
       />
-      <CategoryLink category={category} />
+      <ProjectsCategoryLink category={category} />
       <ProjectsCard data={filterData} />
     </Box>
   );

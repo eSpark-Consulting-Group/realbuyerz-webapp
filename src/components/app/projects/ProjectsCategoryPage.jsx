@@ -2,13 +2,13 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
-import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsCard from '@/src/components/projects/ProjectsCard';
+import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
+import ProjectsCard from '@/src/components/app/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
-import FilterComponent from './FilterComponent';
+import ProjectsFilterComponent from './ProjectsFilterComponent';
 
-const CategoryPage = () => {
+const ProjectsCategoryPage = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
@@ -42,11 +42,11 @@ const CategoryPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <FilterComponent data={filteredData} />
-      <CategoryLink category={id} />
+      <ProjectsFilterComponent data={filteredData} />
+      <ProjectsCategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>
   );
 };
 
-export default CategoryPage;
+export default ProjectsCategoryPage;

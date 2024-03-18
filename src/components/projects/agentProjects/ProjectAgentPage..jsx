@@ -2,11 +2,11 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
-import CategoryLink from '@/src/components/projects/CategoryLink';
+import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import ProjectsTypeSlider from '../ProjectsTypeSlider';
+import ProjectsTypeSlider from '../../app/projects/ProjectsTypeSlider';
 
 const ProjectAgentPage = () => {
   const pathname = usePathname();
@@ -39,7 +39,7 @@ const ProjectAgentPage = () => {
 
   const renderProjects = (category, type) => (
     <>
-      <CategoryLink
+      <ProjectsCategoryLink
         category={`${category} for ${type}`}
         link={`/profile/${agentId}/projects/${type}/${category?.toLowerCase()}`}
         linkText={'See All'}

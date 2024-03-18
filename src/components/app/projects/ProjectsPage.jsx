@@ -2,12 +2,12 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
-import CategoryLink from '@/src/components/projects/CategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
-import FilterComponent from './FilterComponent';
-import NotFoundSection from '../Global/NotFoundSection';
+import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
+import ProjectsSlider from '@/src/components/app/projects/ProjectsSlider';
+import ProjectsFilterComponent from './ProjectsFilterComponent';
+import NotFoundSection from '../../Global/NotFoundSection';
 
-const ProjectPage = () => {
+const ProjectsPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   // Check if projects exist
@@ -20,9 +20,9 @@ const ProjectPage = () => {
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
-        <FilterComponent data={projects} />
+        <ProjectsFilterComponent data={projects} />
         <Box>
-          <CategoryLink
+          <ProjectsCategoryLink
             category={`Houses`}
             link={'/projects/category/houses'}
             linkText={'See All'}
@@ -38,7 +38,7 @@ const ProjectPage = () => {
           </Box>
         </Box>
         <Box>
-          <CategoryLink
+          <ProjectsCategoryLink
             category={`Plots`}
             link={'/projects/category/plots'}
             linkText={'See All'}
@@ -54,7 +54,7 @@ const ProjectPage = () => {
           </Box>
         </Box>
         <Box>
-          <CategoryLink
+          <ProjectsCategoryLink
             category={`Commercials`}
             link={'/projects/category/commercials'}
             linkText={'See All'}
@@ -74,4 +74,4 @@ const ProjectPage = () => {
   );
 };
 
-export default ProjectPage;
+export default ProjectsPage;

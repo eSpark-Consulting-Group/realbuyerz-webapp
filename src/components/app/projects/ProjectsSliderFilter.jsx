@@ -8,9 +8,9 @@ import {
 import { Box } from '@mui/system';
 import React from 'react';
 import Slider from '@mui/material/Slider';
-import FilterApplicatonButtons from './FilterApplicatonButtons';
+import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 
-const SliderFilter = ({
+const ProjectsSliderFilter = ({
   title,
   selectedUnit,
   units,
@@ -104,9 +104,9 @@ const SliderFilter = ({
           />
         </FormControl>
       </Box>
-      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
+      <ProjectsFilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
     </Box>
   );
 };
 
-export default SliderFilter;
+export default ProjectsSliderFilter;

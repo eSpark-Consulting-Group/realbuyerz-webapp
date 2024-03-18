@@ -3,9 +3,9 @@ import React from 'react';
 import { Button, Tab, Tabs, Typography, MenuItem, Select } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import FilterApplicatonButtons from './FilterApplicatonButtons';
+import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 
-function PropertyTabs({
+function ProjectsTabsFilter({
   data,
   handlePropertyTabChange,
   handlePropertyChange,
@@ -93,7 +93,7 @@ function PropertyTabs({
         </TabPanel>
       ))}
 
-      <FilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
+      <ProjectsFilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
     </Box>
   );
 }
@@ -108,4 +108,4 @@ function TabPanel(props) {
   );
 }
 
-export default PropertyTabs;
+export default ProjectsTabsFilter;

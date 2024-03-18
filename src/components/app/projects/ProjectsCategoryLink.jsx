@@ -2,7 +2,7 @@ import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 
-const CategoryLink = ({ category, link, linkText }) => {
+const ProjectsCategoryLink = ({ category, link, linkText }) => {
   return (
     <Container
       sx={{ display: 'flex', justifyContent: 'space-between', py: '15px' }}
@@ -36,4 +36,4 @@ const CategoryLink = ({ category, link, linkText }) => {
   );
 };
 
-export default CategoryLink;
+export default ProjectsCategoryLink;

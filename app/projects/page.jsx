@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectPage from '@/src/components/projects/ProjectPage';
+import ProjectsPage from '@/src/components/app/projects/ProjectsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/projects';
@@ -52,7 +52,7 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <ProjectPage />
+      <ProjectsPage />
     </>
   );
 };

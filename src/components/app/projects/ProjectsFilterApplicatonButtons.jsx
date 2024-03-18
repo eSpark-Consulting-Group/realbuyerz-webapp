@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React from 'react';
 
-const FilterApplicatonButtons = ({ apply, cancel }) => {
+const ProjectsFilterApplicatonButtons = ({ apply, cancel }) => {
   return (
     <Box
       sx={{
@@ -49,4 +49,4 @@ const FilterApplicatonButtons = ({ apply, cancel }) => {
   );
 };
 
-export default FilterApplicatonButtons;
+export default ProjectsFilterApplicatonButtons;

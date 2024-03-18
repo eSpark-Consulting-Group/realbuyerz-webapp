@@ -10,11 +10,11 @@ import {
   Box,
   Popper,
 } from '@mui/material';
-import SliderFilter from './SliderFilter';
-import PropertyTabs from './TabsFilter';
+import ProjectsSliderFilter from './ProjectsSliderFilter';
+import PropertyTabs from './ProjectsTabsFilter';
 import { useSelector } from 'react-redux';
 
-const FilterComponent = ({ data }) => {
+const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
@@ -170,8 +170,7 @@ const FilterComponent = ({ data }) => {
                   mt: '10px',
                 }}
               >
-                <PropertyTabs
-                  data={globalUnits?.PROPERTY_TABS_DATA}
+                <ProjectsTabsFilter                  data={globalUnits?.PROPERTY_TABS_DATA}
                   selectedPropertyTab={selectedPropertyTab}
                   selectedProperty={selectedProperty}
                   handlePropertyTabChange={handlePropertyTabChange}
@@ -206,7 +205,7 @@ const FilterComponent = ({ data }) => {
                   // width: '300px',
                 }}
               >
-                <SliderFilter
+                <ProjectsSliderFilter
                   title={'Price Range'}
                   selectedUnit={selectedPriceUnit}
                   units={globalUnits?.CURRENCY_UNITS}
@@ -241,7 +240,7 @@ const FilterComponent = ({ data }) => {
                   mt: '10px',
                 }}
               >
-                <SliderFilter
+                <ProjectsSliderFilter
                   title={'Area'}
                   selectedUnit={selectedAreaUnit}
                   units={globalUnits?.AREA_UNITS}
@@ -279,4 +278,4 @@ const FilterComponent = ({ data }) => {
   );
 };
 
-export default FilterComponent;
+export default ProjectsFilterComponent;
