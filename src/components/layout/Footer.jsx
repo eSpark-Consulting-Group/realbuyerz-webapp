@@ -106,7 +106,7 @@ const Footer = ({ data }) => {
               variant="h6"
               color={'primary'}
               sx={{
-                fontSize:{xs:'15px',md:'18px',lg:'20px'},
+                fontSize: { xs: '15px', md: '18px', lg: '20px' },
                 pb: { xs: '10px', md: '20px' },
                 pt: { xs: '20px', md: '0px' },
               }}
@@ -139,11 +139,15 @@ const Footer = ({ data }) => {
           <Box>
             <Box>
               <Box>
-                <Typography variant="h6" color={'primary'} sx={{
-                fontSize:{xs:'15px',md:'18px',lg:'20px'},
-                pb: { xs: '10px', md: '20px' },
-                pt: { xs: '20px', md: '0px' },
-              }}>
+                <Typography
+                  variant="h6"
+                  color={'primary'}
+                  sx={{
+                    fontSize: { xs: '15px', md: '18px', lg: '20px' },
+                    pb: { xs: '10px', md: '20px' },
+                    pt: { xs: '20px', md: '0px' },
+                  }}
+                >
                   {data?.downloadApp}
                 </Typography>
                 <Typography

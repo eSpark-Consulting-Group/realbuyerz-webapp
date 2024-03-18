@@ -20,7 +20,7 @@ const ProjectsPage = () => {
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
-        <Box sx={{pb:'100px'}}>
+        <Box sx={{ pb: '100px' }}>
           <ProjectsFilterComponent data={projects} />
         </Box>
         <Box>

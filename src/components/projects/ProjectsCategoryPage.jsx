@@ -44,11 +44,9 @@ const ProjectsCategoryPage = () => {
   return (
     <Box className="min-h-screen" sx={{ py: '20px' }}>
       <Box sx={{ pb: '80px' }}>
-        <AgentProjectsChiperBack
-        backText={'Back'}
-        backLink={`/projects/`}
-      />
-      <ProjectsFilterComponent data={filteredData} /></Box>
+        <AgentProjectsChiperBack backText={'Back'} backLink={`/projects/`} />
+        <ProjectsFilterComponent data={filteredData} />
+      </Box>
       <ProjectsCategoryLink category={id} />
       <ProjectsCard data={filteredData} />
     </Box>

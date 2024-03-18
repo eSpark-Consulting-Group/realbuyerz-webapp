@@ -4,7 +4,12 @@ import { Box, Typography, Container } from '@mui/material';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const AgentProjectsChiperBack = ({ backText, backLink, chipperText,chipperLink }) => {
+const AgentProjectsChiperBack = ({
+  backText,
+  backLink,
+  chipperText,
+  chipperLink,
+}) => {
   return (
     <>
       <Container sx={{ py: '15px' }}>
@@ -23,40 +28,41 @@ const AgentProjectsChiperBack = ({ backText, backLink, chipperText,chipperLink }
             </Typography>
           </Link>
         </Box>
-        {chipperText ?  (<Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              borderRadius: '4px',
-              px: '10px',
-              border: '1px solid #E4E4E4',
-              color: '#666666',
-              backgroundColor: '#fff',
-            }}
-          >
-            <Typography
+        {chipperText ? (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box
               sx={{
-                lineHeight: '40px',
-                fontSize: { xs: '12px', sm: '12px', md: '15px', lg: '18px' },
-                fontWeight: 500,
-                pr: '2px',
+                display: 'flex',
+                alignItems: 'center',
+                borderRadius: '4px',
+                px: '10px',
+                border: '1px solid #E4E4E4',
+                color: '#666666',
+                backgroundColor: '#fff',
               }}
             >
-              {chipperText}
-            </Typography>
-            <Link href={'/projects'} sx={{ marginLeft: 'auto' }}>
-              <CloseSharpIcon
+              <Typography
                 sx={{
-                  color: '#666666',
-                  width: { xs: '12px', sm: '15px', md: '20px', lg: '24px' },
-                  height: { xs: '18px', sm: '20px', md: '22px', lg: '24px' },
+                  lineHeight: '40px',
+                  fontSize: { xs: '12px', sm: '12px', md: '15px', lg: '18px' },
+                  fontWeight: 500,
+                  pr: '2px',
                 }}
-              />
-            </Link>
+              >
+                {chipperText}
+              </Typography>
+              <Link href={chipperLink} sx={{ marginLeft: 'auto' }}>
+                <CloseSharpIcon
+                  sx={{
+                    color: '#666666',
+                    width: { xs: '12px', sm: '15px', md: '20px', lg: '24px' },
+                    height: { xs: '18px', sm: '20px', md: '22px', lg: '24px' },
+                  }}
+                />
+              </Link>
+            </Box>
           </Box>
-        </Box>):null}
-       
+        ) : null}
       </Container>
     </>
   );

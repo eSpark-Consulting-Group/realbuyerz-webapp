@@ -266,11 +266,15 @@ const ProjectsFilterComponent = ({ data }) => {
           </Grid>
           <Grid item xs={1.4}>
             <Button
-              sx={{ height: '52px', color:'#126FAA',textDecoration:'underline' }}
+              sx={{
+                height: '52px',
+                color: '#126FAA',
+                textDecoration: 'underline',
+              }}
               onClick={handleClearFilter}
               fullWidth
             >
-              <Typography sx={{fontSize:'16px', fontWeight:500}}>
+              <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
                 {'Clear Filter'}
               </Typography>
             </Button>

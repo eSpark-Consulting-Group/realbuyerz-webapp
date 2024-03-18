@@ -28,7 +28,7 @@ const PolicyCard = ({
           variant="body1"
           sx={{
             color: '#333',
-            fontSize: '16px' ,
+            fontSize: isFirst ? '16px' : '20px',
             fontWeight: '600',
             pb: '30px',
             textAlign: { textAlign },

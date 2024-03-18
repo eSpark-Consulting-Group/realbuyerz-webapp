@@ -19,31 +19,30 @@ const SliderCardPrice = ({ price }) => {
       </Typography>
       <Box display={'flex'}>
         <Typography
-        variant="body1"
-        sx={{
-          color: '#FB631C',
-          fontWeight: 500,
-          marginLeft: 1,
-          verticalAlign: 'baseline',
-          fontSize: { xs: '10px', sm: '12px', md: '14px' },
-        }}
-      >
-        {`PKR `}
+          variant="body1"
+          sx={{
+            color: '#FB631C',
+            fontWeight: 500,
+            marginLeft: 1,
+            verticalAlign: 'baseline',
+            fontSize: { xs: '10px', sm: '12px', md: '14px' },
+          }}
+        >
+          {`PKR `}
         </Typography>
         <Typography
-        variant="body1"
-        sx={{
-          color: '#FB631C',
-          fontWeight: 500,
-          marginLeft:'5px',
-          verticalAlign: 'baseline',
-          fontSize: { xs: '12px', sm: '14px', md: '16px' },
-        }}
-      >
-        {price}
-      </Typography>
+          variant="body1"
+          sx={{
+            color: '#FB631C',
+            fontWeight: 500,
+            marginLeft: '5px',
+            verticalAlign: 'baseline',
+            fontSize: { xs: '12px', sm: '14px', md: '16px' },
+          }}
+        >
+          {price}
+        </Typography>
       </Box>
-      
     </Box>
   );
 };
