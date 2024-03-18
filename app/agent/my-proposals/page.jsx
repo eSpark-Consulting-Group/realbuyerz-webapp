@@ -1,6 +1,6 @@
 'use client';
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
 import { Box, Divider, Tab, Tabs } from '@mui/material';

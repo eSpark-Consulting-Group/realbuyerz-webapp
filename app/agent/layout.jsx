@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 
 import { TopNav } from '@/src/components/dashbord/TopNav';
 import { SideNav } from '@/src/components/dashbord/SideNav';
-import Footer from '@/src/components/layouts/Footer';
+import Footer from '@/src/components/layout/Footer';
 import { FOOTER_DATA } from '@/src/constants/Constants';
 import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 

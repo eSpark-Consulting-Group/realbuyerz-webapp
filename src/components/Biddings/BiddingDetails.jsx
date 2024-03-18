@@ -14,9 +14,9 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { postListingAdCard } from '@/src/constants/postListing';
-import NotFoundSection from '../Global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import { searching } from '@/src/utils/search';
+import NotFoundSection from '../global/NotFoundSection';
 const BiddingDetails = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);
   const searchValue = useSelector((state) => state?.search?.searchValue);

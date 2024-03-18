@@ -1,5 +1,5 @@
 import React from 'react';
-import CareersPage from '@/src/components/app/careers/CareersPage';
+import CareersPage from '@/src/components/careers/CareersPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/careers';

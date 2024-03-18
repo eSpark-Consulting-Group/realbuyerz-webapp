@@ -1,5 +1,5 @@
 import React from 'react';
-import Jagah360Page from '@/src/components/app/jagah360/Jagah360Page';
+import Jagah360Page from '@/src/components/jagah360/Jagah360Page';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/jagah360';

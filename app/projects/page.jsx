@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectsPage from '@/src/components/app/projects/ProjectsPage';
+import ProjectsPage from '@/src/components/projects/ProjectsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/projects';

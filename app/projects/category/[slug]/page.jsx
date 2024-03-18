@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectsCategoryPage from '@/src/components/app/projects/ProjectsCategoryPage';
+import ProjectsCategoryPage from '@/src/components/projects/ProjectsCategoryPage';
 import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {

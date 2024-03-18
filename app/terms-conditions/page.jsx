@@ -2,7 +2,7 @@ import { GLOBAL_SEO } from '@/src/constants/seo';
 import dynamic from 'next/dynamic';
 import React from 'react';
 const TermsPage = dynamic(
-  () => import('@/src/components/app/terms-conditions/TermsPage'),
+  () => import('@/src/components/terms-conditions/TermsPage'),
   {
     ssr: false,
   }

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';
 import DashboardTitle from '@/src/components/UserDashboard/DashboardTitle';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalAgentProfile from '@/src/components/UserDashboard/ProposalAgentProfile';
 
 const Page = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import AgentProjectPage from '@/src/components/app/profile/agent-projects/AgentProjectsPage';
+import AgentProjectPage from '@/src/components/profile/agent-projects/AgentProjectsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/profile';

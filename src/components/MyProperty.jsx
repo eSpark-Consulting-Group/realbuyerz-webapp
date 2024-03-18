@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import NotFoundSection from './Global/NotFoundSection';
+import NotFoundSection from './global/NotFoundSection';
 
 const MyProperty = () => {
   const [value, setValue] = useState(0);

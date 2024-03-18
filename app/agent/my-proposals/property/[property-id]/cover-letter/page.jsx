@@ -20,7 +20,7 @@ import ProposalModal from '@/src/components/Modal/ProposalModal';
 import Link from 'next/link';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { COVER_LETTER } from '@/src/constants/coverLetter';

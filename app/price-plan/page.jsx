@@ -1,5 +1,5 @@
 import React from 'react';
-import PricePlanPage from '@/src/components/app/price-plan/PricePlanPage';
+import PricePlanPage from '@/src/components/price-plan/PricePlanPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/price-plan';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import LoginSignupLayout from '@/src/components/app/auth/signin/LoginSignupLayout';
+import LoginSignupLayout from '@/src/components/auth/signin/LoginSignupLayout';
 
 const InnerPagesLayout = ({ children }) => {
   return (

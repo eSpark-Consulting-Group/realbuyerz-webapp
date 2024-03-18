@@ -10,10 +10,10 @@ import { redirect, usePathname } from 'next/navigation';
 
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux/store';
-import Footer from '@/src/components/layouts/Footer';
+import Footer from '@/src/components/layout/Footer';
 import { FOOTER_CTA_DATA, FOOTER_DATA } from '@/src/constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
-import FooterCta from '@/src/components/FooterCta';
+import FooterCta from '@/src/components/layout/FooterCta';
 
 // Create a client
 const queryClient = new QueryClient();

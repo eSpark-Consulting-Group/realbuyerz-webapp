@@ -3,7 +3,7 @@ import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
 
 import { useSelector } from 'react-redux';
-import LoginCard from '../app/auth/signin/LoginCard';
+import LoginCard from '../auth/signin/LoginCard';
 
 const ModalSignin = ({ handleClose }) => {
   const isModalOpen = useSelector((state) => state.signin.open);

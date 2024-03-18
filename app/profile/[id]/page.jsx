@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileSinglePage from '@/src/components/app/profile/ProfileSinglePage';
+import ProfileSinglePage from '@/src/components/profile/ProfileSinglePage';
 import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
