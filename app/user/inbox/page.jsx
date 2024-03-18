@@ -79,7 +79,7 @@ const Page = () => {
       sx={{
         background: '#FFFFFF',
         border: 'solid 1px #E4E4E4',
-        padding: '29px 0 0 0',
+        padding: '40px 0 0 0',
         borderRadius: '10px',
       }}
     >
@@ -99,7 +99,8 @@ const Page = () => {
             sx={{
               width: '20px',
               height: '18px',
-              marginRight: '20px',
+              marginLeft: '15px',
+              marginBottom: '10px',
             }}
           />
         </Box>
@@ -119,6 +120,8 @@ const Page = () => {
                 textTransform: 'math-auto',
                 fontSize: '18px',
                 fontWeight: 400,
+                marginLeft: { xs: '0px', md: '15px' },
+                paddingBottom: '20px',
               }}
             />
           ))}

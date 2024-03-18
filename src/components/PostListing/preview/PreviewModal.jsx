@@ -58,15 +58,18 @@ const PreviewModal = (props) => {
             sx={{
               width: '100%',
               height: { xs: '600px', md: '700px' },
+              // maxHeight: '500px',
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
-              overflowY: 'auto',
-              scrollbarWidth: 'thin',
-              scrollbarColor: 'transparent transparent',
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
+              // overflowY: 'auto',
+              // scrollbarWidth: 'thin',
+              // scrollbarColor: 'transparent #d9d9d9',
+              // '&::-webkit-scrollbar': {
+              //   borderRadius: '10PX',
+              //   display: 'NONE',
+              // },
             }}
+            className="scrollbar-container"
           >
             <Typography
               sx={{
@@ -78,7 +81,6 @@ const PreviewModal = (props) => {
             >
               {title}
             </Typography>
-
             <PropertyDetail
               title={propertyDetails}
               subTitle={ads?.title}

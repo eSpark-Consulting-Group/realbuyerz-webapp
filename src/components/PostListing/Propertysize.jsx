@@ -29,9 +29,9 @@ const PropertySize = ({ formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '60% 60%',
+          backgroundSize: '65% 65%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center top 40%',
+          backgroundPosition: 'center top 55%',
         }}
       >
         <Box

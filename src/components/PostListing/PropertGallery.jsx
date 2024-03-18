@@ -50,11 +50,11 @@ const PropertyGallery = ({ formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '60% 60%',
+          backgroundSize: '65% 65%',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           '@media (min-width: 280px)and (max-width: 959px)': {
-            backgroundPosition: 'center top 20%',
+            backgroundPosition: 'center top 30%',
           },
         }}
       >
@@ -75,7 +75,7 @@ const PropertyGallery = ({ formik }) => {
               height: { xs: 'auto', md: '100%' },
               display: 'flex',
               justifyContent: 'space-evenly',
-              py: 5,
+              py: 10,
             }}
           >
             <Box
