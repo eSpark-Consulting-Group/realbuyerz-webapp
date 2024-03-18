@@ -3,7 +3,7 @@ import ProjectsCategoryPage from '@/src/components/app/projects/ProjectsCategory
 import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
-  const slug = params.slug;
+  const slug = params?.slug;
   const filteredData =
     BLOGS_SEO.find((item) => item?.path === slug) || BLOGS_SEO[0];
   const metadata = {

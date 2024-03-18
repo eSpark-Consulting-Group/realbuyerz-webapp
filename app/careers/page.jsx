@@ -1,5 +1,5 @@
 import React from 'react';
-import CareersSingle from '@/src/app/careers/CareersSingle';
+import CareersPage from '@/src/components/app/careers/CareersPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/careers';
@@ -50,7 +50,7 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <CareersSingle />;
+  return <CareersPage />;
 };
 
 export default Page;

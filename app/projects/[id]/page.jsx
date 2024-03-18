@@ -1,9 +1,9 @@
-import React from 'react'
-import ProjectsSinglePage from '@/src/components/app/projects/ProjectsSinglePage'
+import React from 'react';
+import ProjectsSinglePage from '@/src/components/app/projects/ProjectsSinglePage';
 import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
-  const slug = params.id;
+  const slug = params?.id;
   const filteredData =
     BLOGS_SEO.find((item) => item?.path === slug) || BLOGS_SEO[0];
   const metadata = {
@@ -55,9 +55,9 @@ export async function generateMetadata({ params }) {
 const Page = () => {
   return (
     <>
-    <ProjectsSinglePage/>
+      <ProjectsSinglePage />
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

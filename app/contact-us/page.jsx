@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactUsPage from '@/src/app/contact-us/ContactUsPage';
+import ContactUsPage from '@/src/components/app/contact-us/ContactUsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/contact-us';

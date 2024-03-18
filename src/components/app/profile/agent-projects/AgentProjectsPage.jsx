@@ -3,12 +3,12 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategoryLink';
-import ChiperBack from './ChiperBack';
+import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '../../Global/NotFoundSection';
-import ProjectsTypeSlider from '../../app/projects/ProjectsTypeSlider';
+import NotFoundSection from '../../../Global/NotFoundSection';
+import ProjectsTypeSlider from '../../projects/ProjectsTypeSlider';
 
-const ProjectAgentPage = () => {
+const AgentProjectPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
   const agentId = segments[segments.length - 2];
@@ -54,7 +54,7 @@ const ProjectAgentPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <ChiperBack
+      <AgentProjectsChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}`}
         chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s Properties`}
@@ -70,4 +70,4 @@ const ProjectAgentPage = () => {
   );
 };
 
-export default ProjectAgentPage;
+export default AgentProjectPage;

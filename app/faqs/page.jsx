@@ -1,5 +1,5 @@
 import React from 'react';
-import FaqsPage from '@/src/app/faqs/FaqsPage';
+import FaqsPage from '@/src/components/app/faqs/FaqsPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/faqs';

@@ -6,9 +6,9 @@ import ProjectsCategoryLink from '@/src/components/app/projects/ProjectsCategory
 import ProjectsCard from '@/src/components/app/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { useSelector } from 'react-redux';
-import ChiperBack from './ChiperBack';
+import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 
-const CategoryAgentPage = () => {
+const AgentProjectsCategoryPage = () => {
   const pathname = usePathname();
   const segments = pathname.split(`/`);
   const agentId = segments[segments.length - 4];
@@ -55,7 +55,7 @@ const CategoryAgentPage = () => {
 
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <ChiperBack
+      <AgentProjectsChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}/projects/${adsType}`}
         chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s ${capitalizeFirstLetter(category)} for ${capitalizeFirstLetter(adsType)}`}
@@ -67,4 +67,4 @@ const CategoryAgentPage = () => {
   );
 };
 
-export default CategoryAgentPage;
+export default AgentProjectsCategoryPage;

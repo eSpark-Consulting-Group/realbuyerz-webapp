@@ -11,8 +11,8 @@ import {
   Popper,
 } from '@mui/material';
 import ProjectsSliderFilter from './ProjectsSliderFilter';
-import PropertyTabs from './ProjectsTabsFilter';
 import { useSelector } from 'react-redux';
+import ProjectsTabsFilter from './ProjectsTabsFilter';
 
 const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
@@ -170,7 +170,8 @@ const ProjectsFilterComponent = ({ data }) => {
                   mt: '10px',
                 }}
               >
-                <ProjectsTabsFilter                  data={globalUnits?.PROPERTY_TABS_DATA}
+                <ProjectsTabsFilter
+                  data={globalUnits?.PROPERTY_TABS_DATA}
                   selectedPropertyTab={selectedPropertyTab}
                   selectedProperty={selectedProperty}
                   handlePropertyTabChange={handlePropertyTabChange}

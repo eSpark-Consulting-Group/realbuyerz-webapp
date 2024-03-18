@@ -1,5 +1,5 @@
 import React from 'react';
-import SellRentPage from '@/src/app/sell-rent-for-me/SellRentPage';
+import SellRentPage from '@/src/components/app/sell-rent-for-me/SellRentPage';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/sell-rent-for-me';

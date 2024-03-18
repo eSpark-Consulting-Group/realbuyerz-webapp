@@ -3,7 +3,7 @@ import ComingSoon from '@/src/components/Global/ComingSoon';
 import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
-  const slug = params.blog;
+  const slug = params?.blog;
   const filteredData =
     BLOGS_SEO.find((item) => item?.path === slug) || BLOGS_SEO[0];
   const metadata = {

@@ -4,7 +4,7 @@ import { Box, Typography, Container } from '@mui/material';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const ChiperBack = ({ backText, backLink, chipperText }) => {
+const AgentProjectsChiperBack = ({ backText, backLink, chipperText }) => {
   return (
     <>
       <Container sx={{ py: '15px' }}>
@@ -61,4 +61,4 @@ const ChiperBack = ({ backText, backLink, chipperText }) => {
   );
 };
 
-export default ChiperBack;
+export default AgentProjectsChiperBack;

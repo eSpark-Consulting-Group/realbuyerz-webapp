@@ -12,9 +12,11 @@ import {
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Link from 'next/link';
-import NotFoundSection from './Global/NotFoundSection';
+import NotFoundSection from '../../Global/NotFoundSection';
+import { useSelector } from 'react-redux';
 
-const ProfilesPage = ({ agents }) => {
+const ProfilesPage = () => {
+  const agents = useSelector((state) => state?.agents);
   const [page, setPage] = useState(1);
   const itemsPerPage = 16;
 

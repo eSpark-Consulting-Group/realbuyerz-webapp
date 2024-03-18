@@ -104,7 +104,10 @@ const ProjectsSliderFilter = ({
           />
         </FormControl>
       </Box>
-      <ProjectsFilterApplicatonButtons apply={handleApply} cancel={handleCancel} />
+      <ProjectsFilterApplicatonButtons
+        apply={handleApply}
+        cancel={handleCancel}
+      />
     </Box>
   );
 };

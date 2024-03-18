@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-
-import PolicyCard from '@/src/app/privacy-policy/PolicyCard';
-import { CARDS } from '@/src/constants/PrivacyPolicy';
 import { useSelector } from 'react-redux';
+import { CARDS } from '@/src/constants/PrivacyPolicy';
+import PolicyCard from './PolicyCard';
 
 const PolicyPage = () => {
   const policies = useSelector((state) => state.policies.PRIVACY_POLICY);
