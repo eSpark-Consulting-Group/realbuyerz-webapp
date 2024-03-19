@@ -9,7 +9,7 @@ import { isInputValid } from '@/utils/inputValid';
 import { verificationState } from '@/utils/verification';
 import { checkLength } from '@/utils/lengthValid';
 import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
-import { VERIFICATION_OTP } from '@/src/constants/VerficationModal';
+import { VERIFICATION_OTP } from '@/src/constants/Verfication_Modal';
 
 const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =

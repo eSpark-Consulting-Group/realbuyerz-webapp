@@ -14,9 +14,9 @@ import {
   AGENT_MENU_ITEM,
   HEADER_MENU,
   USER_MENU_ITEM,
-} from '@/app/constants/LiveBidding';
+} from '@/src/constants/Nav_Data';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
-import LeftSideBar from './LeftSideBar/LeftSideBar';
+import LeftSideBar from '../../layouts/LeftSideBar/LeftSideBar';
 
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

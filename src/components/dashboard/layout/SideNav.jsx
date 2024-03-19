@@ -1,6 +1,6 @@
-import { SIDE_NAV_WIDTH } from '@/app/constants/sidebar';
 import Sidebar from './Sidebar';
 import { Backdrop, Drawer, useMediaQuery } from '@mui/material';
+import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 
 export const SideNav = (props) => {
   const { open, onClose } = props;

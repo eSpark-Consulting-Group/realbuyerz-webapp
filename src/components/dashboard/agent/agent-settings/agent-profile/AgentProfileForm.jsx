@@ -8,7 +8,7 @@ import ProfileFormMidText from '@/src/components/dashboard/ProfileFormMidText';
 import ProfilePasswordForm from '@/src/components/dashboard/ProfilePasswordForm';
 
 import { AGENT_PROFILE_FORM_DATA } from '@/src/constants/agent/Agent_Profile_Form_Data';
-import { MID_TEXT } from '@/src/constants/MidText';
+import { MID_TEXT } from '@/src/constants/Mid_Text';
 
 const AgentProfileForm = () => {
   const user_profile = useSelector((state) => state?.currentUser?.user);

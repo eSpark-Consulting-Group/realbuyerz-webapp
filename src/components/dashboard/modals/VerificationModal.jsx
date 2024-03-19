@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {
   VERIFICATION_CODE,
   VERIFICATION_OTP,
-} from '@/src/constants/VerficationModal';
+} from '@/src/constants/Verfication_Modal';
 import VerificationCode from './VerificationCode';
 
 const VerificationModal = ({ open, onCloseModal }) => {

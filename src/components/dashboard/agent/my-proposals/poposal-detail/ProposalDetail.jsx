@@ -16,7 +16,7 @@ import Amount from '@/src/components/dashboard/preview/Amount';
 import LiveBiddingPropertiesList from '@/src/components/dashboard/LiveBiddingPropertiesList';
 
 import { postListingAdCard } from '@/app/constants/postListing';
-import { ESTIMATE_RANGE } from '@/app/constants/LiveBidding';
+import { ESTIMATE_RANGE } from '@/src/constants/Nav_Data';
 import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
 import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 import {

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import BiddingProfile from '../../dashboard/agent/live-bidding/BiddingProfile';
 import ShopCart from '../ShopCart/ShopCart';
 import ProductCart from '../../dashboard/agent/prop-shop/buy-product/ProductCart';
-import { ROUTERS } from '@/app/constants/LiveBidding';
+import { ROUTERS } from '@/src/constants/Nav_Data';
 
 const LIVEBIDDING = ROUTERS.dasboardLiveBidding;
 const BIDDING = ROUTERS.bidding;

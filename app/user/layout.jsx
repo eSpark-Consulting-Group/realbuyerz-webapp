@@ -4,11 +4,11 @@ import { Suspense, useCallback, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { styled } from '@mui/material/styles';
 
-import { TopNav } from '@/src/components/dashbord/TopNav';
-import { SideNav } from '@/src/components/dashbord/SideNav';
+import { TopNav } from '@/src/components/dashboard/layout/TopNav';
+import { SideNav } from '@/src/components/dashboard/layout/SideNav';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_DATA } from '../constants/Constants';
-import { SIDE_NAV_WIDTH } from '../constants/sidebar';
+import { SIDE_NAV_WIDTH } from '../../src/constants/sidebar';
 
 const LayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

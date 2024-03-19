@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, Box, Typography } from '@mui/material';
 
-import { VERIFICATION_OTP } from '@/src/constants/VerficationModal';
+import { VERIFICATION_OTP } from '@/src/constants/Verfication_Modal';
 import Image from 'next/image';
 
 const CongratsModal = ({ open, onCloseModal }) => {

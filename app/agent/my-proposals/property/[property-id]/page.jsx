@@ -11,7 +11,7 @@ import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewA
 import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/PreviewFeatureAndAmenities';
 
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
-import { PROFILE_INFO } from '@/app/constants/LiveBidding';
+import { PROFILE_INFO } from '@/src/constants/Nav_Data';
 import { clientRequirment, previewData } from '@/app/constants/postListing';
 import Location from '@/src/components/dashboard/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';

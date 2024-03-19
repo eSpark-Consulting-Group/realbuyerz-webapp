@@ -14,15 +14,15 @@ import {
   GotoPageIcon,
   ProfileIcon,
   SearchIcon,
-} from '@/app/constants/DashboardHeader';
+} from '@/src/constants/Dashboard_Header';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge, IconButton, Tooltip, Typography } from '@mui/material';
-import SearchAndNotificationDesktopButton from '../layouts/SearchAndNotificationDesktopButton ';
+import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
-import NotificationPopover from '../layouts/NotificationPopover';
-import SearchPopover from '../layouts/searchPopover';
+import NotificationPopover from './NotificationPopover';
+import SearchPopover from './searchPopover';
 // import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function ResponsiveNavbar({ openSidebar }) {

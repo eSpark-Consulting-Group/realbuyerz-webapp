@@ -4,7 +4,7 @@ import { Button, Divider, Grid } from '@mui/material';
 
 import UserProfileImage from '../dashboard/UserProfileImage';
 import UserProfileDetails from './UserProfileDetails';
-import { LOAD_MORE, SHOW_LESS } from '@/app/constants/LiveBidding';
+import { LOAD_MORE, SHOW_LESS } from '@/src/constants/Nav_Data';
 
 const DashboardProfile = ({
   proposalData,
