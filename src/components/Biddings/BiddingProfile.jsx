@@ -20,8 +20,9 @@ const BiddingProfile = ({ profileInfo }) => {
             border: '1px solid #E4E4E4',
             borderRadius: '10px',
             background: '#FFF',
-            width: '100%',
+            width: { xs: '100%' },
             height: '100%',
+            py: { xl: '1.25px' },
           }}
         >
           <Profile profileInfo={current_user} />

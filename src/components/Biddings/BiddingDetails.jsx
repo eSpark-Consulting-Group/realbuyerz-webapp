@@ -60,7 +60,7 @@ const BiddingDetails = ({ height, ads }) => {
                       <Box
                         sx={{
                           width: '100%',
-                          minHeight: '365px',
+                          minHeight: '350px',
                           height: 'auto',
                           backgroundColor: '#EDF7FF',
                           border: '1px solid #AAD9FF',
