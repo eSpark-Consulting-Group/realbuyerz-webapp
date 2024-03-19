@@ -1,4 +1,5 @@
 'use client';
+import React, { useState } from 'react';
 import getCroppedImg from '@/src/utils/cropImage';
 import { Cancel } from '@mui/icons-material';
 import CropIcon from '@mui/icons-material/Crop';
@@ -10,8 +11,9 @@ import {
   Slider,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
 import Cropper from 'react-easy-crop';
+import { useDispatch } from 'react-redux';
 
 const ProfileCroper = ({
   photoURL,
@@ -20,6 +22,7 @@ const ProfileCroper = ({
   setFile,
   setFieldValue,
   handleClose,
+  currData,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -29,6 +32,7 @@ const ProfileCroper = ({
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
+  const dispatch = useDispatch();
   const cropImage = async () => {
     try {
       const { file, url } = await getCroppedImg(
@@ -36,6 +40,8 @@ const ProfileCroper = ({
         croppedAreaPixels,
         rotation
       );
+      const updatedData = { ...currData, profile_image: url };
+      dispatch(handleUserEdit(updatedData));
       setFieldValue('profile_image', url);
       setPhotoURL(url);
       setFile(file);

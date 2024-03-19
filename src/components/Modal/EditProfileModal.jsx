@@ -12,6 +12,7 @@ export default function EditProfileModal({
   spacificData,
   setFieldValue,
   currentUserImage,
+  currData,
 }) {
   const [setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -135,6 +136,7 @@ export default function EditProfileModal({
                 setOpenCrop={setUploadImageOpen}
                 setPhotoURL={setPhotoURL}
                 setFile={setFile}
+                currData={currData}
               />
             </Box>
           )}
