@@ -21,7 +21,7 @@ import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
 import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 import {
   findAgent,
-  findProposal,
+  findSingleProposal,
   findSpecificPost,
 } from '@/utils/dashboardUtils';
 import { PROPOSAL } from '@/src/constants/agent/Proposal';
@@ -38,8 +38,8 @@ const ProposalDetail = () => {
   const userPostings = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
-  const find_proposal = findProposal(id, proposals);
-  const find_agent = findAgent(proposals?.agent_id, agents);
+  const find_proposal = findSingleProposal(id, proposals, 'Connected');
+  const find_agent = findAgent(find_proposal?.agent_id, agents);
   const find_ad = findSpecificPost(userPostings, find_proposal?.property_id);
 
   const handleClick = () => {
@@ -98,7 +98,7 @@ const ProposalDetail = () => {
                       },
                     }}
                   >
-                    {find_ad[0]?.title || ''}
+                    {find_ad?.title || ''}
                   </Typography>
                   <Box
                     sx={{
@@ -162,95 +162,91 @@ const ProposalDetail = () => {
                       </Box>
                     </Box>
                   </Box>
-                  {find_ad &&
-                    find_ad
-                      ?.filter((item, index) => index === 0)
-                      ?.map((item, index) => (
-                        <Grid container key={index}>
-                          <Grid container spacing={2}>
-                            <Box
+                  {find_ad && (
+                    <Grid container>
+                      <Grid container spacing={2}>
+                        <Box
+                          sx={{
+                            color: '#333',
+                            px: { xs: '20px', md: '20px' },
+                            paddingTop: '40px',
+                            paddingBottom: '20px',
+                            '@media(min-width: 280px) and (max-width: 445px)': {
+                              pr: '10px',
+                            },
+                          }}
+                        >
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              fontWeight: '500',
+                              fontSize: '13.8px',
+                              lineHeight: '20.52px',
+                              mb: 1,
+                            }}
+                          >
+                            {find_ad?.description}
+                          </Typography>
+                        </Box>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '100%',
+                            '@media (min-width: 280px) and (max-width: 500px)':
+                              {
+                                flexDirection: 'column',
+                              },
+                          }}
+                        >
+                          <LiveBiddingPropertiesList
+                            city={find_ad?.city}
+                            status={find_ad?.purpose}
+                            location={find_ad?.location}
+                            noConnects={false}
+                            cardKeys={postListingAdCard}
+                            justifyContent={'flex-start'}
+                          />
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              width: '20%',
+                              '@media (min-width: 280px) and (max-width: 760px)':
+                                {
+                                  width: '80%',
+                                },
+                              '@media (min-width: 280px) and (max-width: 500px)':
+                                {
+                                  pl: '20px',
+                                },
+                            }}
+                          >
+                            <Typography
+                              variant="body1"
                               sx={{
-                                color: '#333',
-                                px: { xs: '20px', md: '20px' },
-                                paddingTop: '40px',
-                                paddingBottom: '20px',
-                                '@media(min-width: 280px) and (max-width: 445px)':
-                                  {
-                                    pr: '10px',
-                                  },
+                                fontSize: '14px',
+                                fontWeight: 600,
+                                mt: '3px',
                               }}
                             >
-                              <Typography
-                                variant="body2"
-                                sx={{
-                                  fontWeight: '500',
-                                  fontSize: '13.8px',
-                                  lineHeight: '20.52px',
-                                  mb: 1,
-                                }}
-                              >
-                                {item?.description}
-                              </Typography>
-                            </Box>
-                            <Box
+                              {ESTIMATE_RANGE}
+                            </Typography>
+                            <Typography
                               sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                width: '100%',
-                                '@media (min-width: 280px) and (max-width: 500px)':
-                                  {
-                                    flexDirection: 'column',
-                                  },
+                                ml: 1,
+                                fontWeight: 700,
+                                color: '#333333',
+                                fontSize: '20px',
                               }}
+                              component={'span'}
                             >
-                              <LiveBiddingPropertiesList
-                                city={item?.city}
-                                status={item?.purpose}
-                                location={item?.location}
-                                noConnects={false}
-                                cardKeys={postListingAdCard}
-                                justifyContent={'flex-start'}
-                              />
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  width: '20%',
-                                  '@media (min-width: 280px) and (max-width: 760px)':
-                                    {
-                                      width: '80%',
-                                    },
-                                  '@media (min-width: 280px) and (max-width: 500px)':
-                                    {
-                                      pl: '20px',
-                                    },
-                                }}
-                              >
-                                <Typography
-                                  variant="body1"
-                                  sx={{
-                                    fontSize: '14px',
-                                    fontWeight: 600,
-                                    mt: '3px',
-                                  }}
-                                >
-                                  {ESTIMATE_RANGE}
-                                </Typography>
-                                <Typography
-                                  sx={{
-                                    ml: 1,
-                                    fontWeight: 700,
-                                    color: '#333333',
-                                    fontSize: '20px',
-                                  }}
-                                  component={'span'}
-                                >
-                                  {`${item?.amount}`}
-                                </Typography>
-                              </Box>
-                            </Box>
-                          </Grid>
-                        </Grid>
-                      ))}
+                              {`${find_ad?.amount}`}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  )}
                   <Box>
                     <Button
                       sx={{

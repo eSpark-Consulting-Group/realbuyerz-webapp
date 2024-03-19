@@ -10,8 +10,11 @@ import {
   isResetForm,
   updatePaymentMethodSelection,
 } from '@/src/redux/slices/settings/PakageCartSlice';
-import { Buy_Connects, Buy_Product_Data } from '@/app/constants/BuyProduct';
-import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
+import {
+  Buy_Connects,
+  Buy_Product_Data,
+} from '@/src/constants/agent/Buy_Product';
+import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 import {
   calculateFormState,
   handleCheckBoxChange,
@@ -72,7 +75,7 @@ export default function BuyProduct() {
         typeCard,
       })
     );
-  }, [formik.values, selectedValue, paymentMedthodDetails, typeCard]);
+  }, [formik?.values, selectedValue, paymentMedthodDetails, typeCard]);
 
   const handleChange = () => {
     handlePaymentChange({

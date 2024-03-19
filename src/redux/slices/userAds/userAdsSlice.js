@@ -7,7 +7,7 @@ const userAdsSlice = createSlice({
       {
         property_id: 650,
         user_id: 21,
-        status: 'submited',
+        status: 'Connected',
         created_at: '',
         other_features: [],
         title: 'NEED 4 BEDROOM APARTMENT',

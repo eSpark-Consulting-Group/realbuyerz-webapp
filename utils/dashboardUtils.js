@@ -168,3 +168,9 @@ export const renderAdCardForProposal = (
 export const findAgent = (id, data) => {
   return data?.find((agent) => agent?.id == id);
 };
+
+export const findSingleProposal = (id, data, status) => {
+  return data?.find(
+    (proposal) => proposal?.proposal_id == id && proposal?.status === status
+  );
+};

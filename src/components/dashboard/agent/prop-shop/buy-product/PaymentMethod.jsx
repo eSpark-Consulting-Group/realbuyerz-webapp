@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
+import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 import {
   updatePaymentMethodSelection,
   setFormError,

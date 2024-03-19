@@ -1,4 +1,4 @@
-export const orderHistory = {
+export const ORDER_HISTORY = {
   tableHead: ['Ordered by', 'Description', 'Time', 'Date', 'Total'],
   tableData: [
     {

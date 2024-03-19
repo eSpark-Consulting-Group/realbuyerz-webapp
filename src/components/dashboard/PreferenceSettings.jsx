@@ -4,11 +4,12 @@ import { Typography, Box, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 import Notification from './Notification';
-import { AGENT_PREFERENCES } from '@/app/constants/Preference';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
+
 import { createInitialState } from '@/utils/agentPreferenceState';
 import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
+import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
@@ -18,7 +19,7 @@ const PreferenceSettings = () => {
     setFormData((prevData) => ({
       ...prevData,
       emailData: {
-        ...prevData.emailData,
+        ...prevData?.emailData,
         [name]: value,
       },
     }));
@@ -27,15 +28,15 @@ const PreferenceSettings = () => {
     setFormData((prevData) => {
       return {
         ...prevData,
-        toggleData: prevData.toggleData.map((item) =>
-          item?.label === name ? { ...item, value: checked } : item
+        toggleData: prevData?.toggleData?.map((item) =>
+          item?.lable === name ? { ...item, value: checked } : item
         ),
-        emailData: { ...prevData.emailData, [name]: checked },
+        emailData: { ...prevData?.emailData, [name]: checked },
       };
     });
   };
   const handleClick = () => {
-    dispatch(savePreferenceData(formData.emailData));
+    dispatch(savePreferenceData(formData?.emailData));
   };
 
   return (
@@ -81,19 +82,19 @@ const PreferenceSettings = () => {
               padding: '8px',
             }}
           >
-            {AGENT_PREFERENCES.heading}
+            {AGENT_PREFERENCES?.heading}
           </Typography>
           <Notification
-            notificationData={AGENT_PREFERENCES.updates}
+            notificationData={AGENT_PREFERENCES?.updates}
             handleInputChange={handleInputChangeToggle}
           />
           <AreaUnit
-            measure={AGENT_PREFERENCES.propertySize}
+            measure={AGENT_PREFERENCES?.propertySize}
             handleInputChange={handleInputChange}
           />
           <SaveChanges
             handleClickButton={handleClick}
-            saveChangeButton={AGENT_PREFERENCES.saveChanges}
+            saveChangeButton={AGENT_PREFERENCES?.saveChanges}
           />
         </Box>
       </Grid>

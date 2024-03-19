@@ -1,4 +1,4 @@
-import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
+import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 const { VISA, MASTER_CARD, GENERAL_CARD } = PAYMENT_METHODE_DATA.constantLabel;
 
 export const getCardType = (cardNumber) => {

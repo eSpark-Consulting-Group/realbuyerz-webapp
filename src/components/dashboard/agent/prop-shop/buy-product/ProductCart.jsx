@@ -5,7 +5,10 @@ import { useSelector } from 'react-redux';
 
 import OrderSummary from './OrderSummary';
 import EmptyCart from './EmptyCart';
-import { Empty_Cart_data, Order_Summary } from '@/app/constants/BuyProduct';
+import {
+  Empty_Cart_data,
+  Order_Summary,
+} from '@/src/constants/agent/Buy_Product';
 
 const ProductCart = ({
   setIsModalOpen,

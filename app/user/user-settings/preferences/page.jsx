@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 
-import PreferenceSettings from '@/src/components/AgentPreference/AgentSetting/PreferenceSettings';
+import PreferenceSettings from '@/src/components/dashboard/PreferenceSettings';
 
 const page = () => {
   return (

@@ -5,7 +5,7 @@ import {
   updatePaymentMethodSelection,
 } from '@/src/redux/slices/settings/PakageCartSlice';
 
-import { PAYMENT_METHODE_DATA } from '@/app/constants/PaymentMethod';
+import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 import { generateId } from '@/utils/genrateId';
 import {
   easyPaisaSchema,

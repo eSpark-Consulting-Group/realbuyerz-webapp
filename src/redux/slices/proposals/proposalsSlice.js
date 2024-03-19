@@ -7,7 +7,7 @@ const proposalsSlice = createSlice({
     {
       property_id: 650,
       agent_id: 21,
-      proposal_id: 1,
+      proposal_id: 2,
       status: 'Connected',
       title: 'What is Lorem Ipsum?',
       location: '',
@@ -32,9 +32,9 @@ const proposalsSlice = createSlice({
       videos: [],
     },
     {
-      property_id: 650,
+      property_id: 623,
       agent_id: 21,
-      proposal_id: 1,
+      proposal_id: 5,
       status: 'Archived',
       title: 'What is Lorem Ipsum?',
       location: '',
@@ -61,7 +61,7 @@ const proposalsSlice = createSlice({
     {
       property_id: 690,
       agent_id: 21,
-      proposal_id: 1,
+      proposal_id: 3,
       status: 'Rejected',
       title: 'What is Lorem Ipsum?',
       location: '',

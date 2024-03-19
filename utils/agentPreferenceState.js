@@ -1,4 +1,4 @@
-import { AGENT_PREFERENCES } from '@/app/constants/Preference';
+import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 import { USERS_DATA } from '@/app/constants/user';
 
 export const createInitialState = () => ({

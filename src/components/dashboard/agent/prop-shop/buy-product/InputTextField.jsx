@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
-import RBInput from '../dashboard/RBInput';
+import RBInput from '../../../RBInput';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
