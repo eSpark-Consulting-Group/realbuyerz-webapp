@@ -91,6 +91,7 @@ const PreviewModal = (props) => {
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
+              width={'90%'}
             />
             <PreviewAmountAndFeature
               area={ads?.area}

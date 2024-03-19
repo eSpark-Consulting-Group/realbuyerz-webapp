@@ -146,6 +146,8 @@ const MyProperty = () => {
           rowGap={2}
           sx={{
             alignItems: 'flex-end',
+            display: 'flex',
+            gap: '45px',
           }}
         >
           {fields &&
@@ -153,7 +155,9 @@ const MyProperty = () => {
               <>
                 <Grid item xs={12} sm={5.5} md={3.8} lg={2.3} key={index}>
                   <Box sx={{ width: '100%' }}>
-                    <Typography>{field?.title || ''}</Typography>
+                    <Typography sx={{ fontSize: '15px', fontWeight: 400 }}>
+                      {field?.title || ''}
+                    </Typography>
                     <Autocomplete
                       sx={{
                         marginTop: '12px',
@@ -220,11 +224,20 @@ const MyProperty = () => {
                         <TextField
                           {...params}
                           placeholder="Select Type"
+                          InputProps={{
+                            sx: {
+                              '& input::placeholder': {
+                                fontSize: '15px',
+                                fontWeight: 400,
+                              },
+                            },
+                          }}
                           InputLabelProps={{
                             sx: {
                               margin: 0,
                               padding: 0,
-                              fontSize: '14px',
+                              fontSize: '15px',
+
                               '@media (min-width: 280px) and (max-width: 375px)':
                                 {
                                   fontSize: '10px',
@@ -268,6 +281,7 @@ const MyProperty = () => {
               sx={{
                 color: '#126FAA',
                 textDecoration: 'underline',
+                marginLeft: '35px',
                 '&:hover, &:focus': {
                   backgroundColor: 'transparent',
                   boxShadow: 'none',
@@ -390,6 +404,9 @@ const MyProperty = () => {
                           key={index}
                           data={item}
                           currentTab={currentTab}
+                          cardPadding={2}
+                          propertyColor={'#333333'}
+                          keyColor={'#126FAA'}
                         />
                       )
                     )
@@ -400,6 +417,9 @@ const MyProperty = () => {
                             key={index}
                             data={item}
                             currentTab={currentTab}
+                            cardPadding={2}
+                            propertyColor={'#333333'}
+                            keyColor={'#126FAA'}
                           />
                         )
                       )
@@ -410,6 +430,9 @@ const MyProperty = () => {
                               key={index}
                               data={item}
                               currentTab={currentTab}
+                              cardPadding={2}
+                              propertyColor={'#333333'}
+                              keyColor={'#126FAA'}
                             />
                           )
                         )
@@ -420,6 +443,9 @@ const MyProperty = () => {
                                 key={index}
                                 data={item}
                                 currentTab={currentTab}
+                                cardPadding={2}
+                                propertyColor={'#333333'}
+                                keyColor={'#126FAA'}
                               />
                             )
                           )

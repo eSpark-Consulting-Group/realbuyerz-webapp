@@ -24,9 +24,7 @@ const Page = () => {
   const find_proposals = proposals?.filter(
     (proposal) =>
       proposal?.property_id == specificPost?.property_id &&
-      proposal?.status !== 'Rejected' &&
-      proposal?.status !== 'Connected' &&
-      proposal?.status !== 'Archive'
+      proposal?.status === 'Connected'
   );
 
   return (

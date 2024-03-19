@@ -192,7 +192,7 @@ const Page = () => {
                 justifyContent: 'center',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '40px',
+                gap: '60px',
                 margin: { xs: 0, md: '0 auto', lg: 0 },
               }}
             >

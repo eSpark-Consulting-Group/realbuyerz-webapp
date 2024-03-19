@@ -51,7 +51,7 @@ export const POST_REQUEST = {
       title: 'Listings Information',
     },
     {
-      image: '/images/listing-page/Property.svg',
+      image: '/images/listing-page/property-price.svg',
       title: 'Property Price',
     },
     {

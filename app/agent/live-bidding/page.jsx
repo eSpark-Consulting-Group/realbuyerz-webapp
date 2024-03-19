@@ -21,7 +21,7 @@ const Page = () => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 2.5,
+                gap: 5,
                 mt: { lg: '10px' },
               }}
             >

@@ -3,7 +3,7 @@ import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, Divider, Tab, Tabs, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -144,6 +144,28 @@ const AgentProposals = () => {
             width: 'auto',
           }}
         >
+          <Box sx={{ marginLeft: '10PX' }}>
+            {currentTab === 'Active' && (
+              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
+                Active proposals
+              </Typography>
+            )}
+            {currentTab === 'Archive' && (
+              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
+                Archive proposals
+              </Typography>
+            )}
+            {currentTab === 'Rejected' && (
+              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
+                Rejected proposals
+              </Typography>
+            )}
+            {currentTab === 'Trash' && (
+              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
+                Rejected proposals
+              </Typography>
+            )}
+          </Box>
           <Box
             sx={{
               display: 'flex',
@@ -198,6 +220,8 @@ const AgentProposals = () => {
                       data={item}
                       currentTab={currentTab}
                       link={`my-proposals/proposal/${item?.proposal_id || '#'}`}
+                      propertyColor={'#333333'}
+                      keyColor={'#126FAA'}
                     />
                   ))
                 ) : currentTab === 'Archive' ? (
@@ -206,6 +230,8 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      propertyColor={'#333333'}
+                      keyColor={'#126FAA'}
                     />
                   ))
                 ) : currentTab === 'Rejected' ? (
@@ -214,6 +240,8 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      propertyColor={'#333333'}
+                      keyColor={'#126FAA'}
                     />
                   ))
                 ) : currentTab === 'Trash' ? (
@@ -222,6 +250,8 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      propertyColor={'#333333'}
+                      keyColor={'#126FAA'}
                     />
                   ))
                 ) : null}

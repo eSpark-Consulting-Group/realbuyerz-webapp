@@ -33,10 +33,7 @@ const BiddingDetails = ({ height, ads }) => {
   const finding_proposals = (property_id, proposals) => {
     const find_proposals = proposals?.filter(
       (proposal) =>
-        proposal.property_id == property_id &&
-        proposal?.status !== 'Rejected' &&
-        proposal?.status !== 'Connected' &&
-        proposal?.status !== 'Archive'
+        proposal.property_id == property_id && proposal?.status === 'Connected'
     );
     return find_proposals;
   };
@@ -211,23 +208,24 @@ const BiddingDetails = ({ height, ads }) => {
                                 <Link
                                   href={`live-bidding/${item?.property_id}`}
                                 >
-                                  <Typography
+                                  <Button
                                     sx={{
                                       color: '#FB631C',
                                       width: '86px',
                                       height: '25px',
-                                      display: 'flex',
-                                      justifyContent: 'center',
                                       border: '1px solid #FB631C',
                                       backgroundColor: '#fff',
                                       borderRadius: '15px',
-                                      alignItems: 'center',
-                                      fontSize: '12px',
+                                      fontSize: '11px',
                                       fontWeight: 500,
+                                      '&:hover': {
+                                        background: '#FB631C',
+                                        color: '#fff',
+                                      },
                                     }}
                                   >
                                     {VIEW}
-                                  </Typography>
+                                  </Button>
                                 </Link>
                               </Box>
                             </Grid>

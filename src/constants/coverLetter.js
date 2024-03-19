@@ -14,7 +14,7 @@ export const COVER_LETTER = {
       title: 'Listings Information',
     },
     {
-      image: '/images/listing-page/Property.svg',
+      image: '/images/listing-page/property-price.svg',
       title: 'Property Price',
     },
     {

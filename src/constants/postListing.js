@@ -14,7 +14,7 @@ export const PROPERTY_INFORMATION = {
       title: 'Listings Information',
     },
     {
-      image: '/images/listing-page/Property.svg',
+      image: '/images/listing-page/property-price.svg',
       title: 'Property Price',
     },
     {
@@ -488,7 +488,7 @@ export const POST_LISTING = {
       title: 'Listings Information',
     },
     {
-      image: '/images/listing-page/Property.svg',
+      image: '/images/listing-page/property-price.svg',
       title: 'Property Price',
     },
     {
@@ -1041,10 +1041,10 @@ export const previewData = {
   propertyDetails: 'Property Details',
   location: {
     title: 'Location and Purpose',
-    purpose: 'purpose:',
-    propertyType: 'propertyType:',
-    city: 'city:',
-    location: 'location:',
+    purpose: 'Purpose:',
+    propertyType: 'Property Type:',
+    city: 'City:',
+    location: 'Location:',
   },
   areaAndAmount: {
     title: 'Area and Amount',

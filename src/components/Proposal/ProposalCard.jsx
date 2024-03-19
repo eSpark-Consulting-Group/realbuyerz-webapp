@@ -21,6 +21,7 @@ const ProposalCard = ({
   key,
   propertyColor,
   keyColor,
+  cardPadding,
 }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -100,7 +101,11 @@ const ProposalCard = ({
               background: '#F5F6FA',
               border: 'solid 1px #E4E4E4',
               borderRadius: '20px',
-              padding: { xs: 0.5, sm: '10px', md: 3 },
+              padding: {
+                xs: 0.5,
+                sm: '10px',
+                md: cardPadding ? cardPadding : 3,
+              },
               marginTop: key === 0 && '30px',
               cursor: 'pointer',
               position: 'relative',
@@ -350,6 +355,7 @@ const ProposalCard = ({
                     letterSpacing: '0em',
                     textAlign: 'left',
                     right: '20px',
+                    top: { xs: '0px', md: '-35px' },
                     padding: { xs: '20px', sm: '17px', md: '25px 30px' },
                   }}
                 >

@@ -24,6 +24,7 @@ import { VIEWPROPOSAL } from '@/src/constants/ViewProposal';
 
 const Page = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   const { image, back_Proposal_Button } = ProposalsPage;
   const { areaAndAmount, location, amenities, images, videos } = previewData;
   const pathname = usePathname();
@@ -49,7 +50,7 @@ const Page = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
-        <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
+        <Grid item xs={12} md={12} lg={9.2} xl={9.2} paddingBottom={6}>
           <Box sx={{ pb: 3 }}>
             <BackToDashboard
               buttonLabel={back_Proposal_Button?.text}
@@ -60,8 +61,8 @@ const Page = () => {
             sx={{
               background: '#fff',
               borderRadius: '10px',
-              mt: '16px',
               border: '1px solid #E4E4E4',
+              mb: '20px',
             }}
           >
             <Grid item xs={12} md={12} lg={12} xl={12}>
@@ -125,6 +126,7 @@ const Page = () => {
                         image={find_agent?.profile_image || image}
                         isActive={find_agent?.status || false}
                         notActive={false}
+                        hideActive={false}
                       />
                       <Box
                         sx={{
@@ -256,7 +258,7 @@ const Page = () => {
                       sx={{
                         fontSize: '12px',
                         fontWeight: 500,
-                        color: '#FB631C',
+                        color: showMoreContent ? '#ccc' : '#FB631C',
                         textTransform: 'math-auto',
                       }}
                       onClick={handleClick}
@@ -276,7 +278,7 @@ const Page = () => {
                       propertyType={find_ad?.propertyType}
                       propertyCategory={find_ad?.propertyCategory}
                       location={find_ad?.location}
-                      width={'70%'}
+                      width={'50%'}
                     />
                     <Amount />
                     <PreviewFeatureAndAmenities
@@ -317,7 +319,7 @@ const Page = () => {
                   propertyType={find_proposal?.propertyType}
                   propertyCategory={find_proposal?.propertyCategory}
                   location={find_proposal?.location}
-                  width={'70%'}
+                  width={'50%'}
                 />
                 <PreviewAmountAndFeature
                   area={find_proposal?.area}
