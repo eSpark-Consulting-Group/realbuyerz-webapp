@@ -1,5 +1,5 @@
 import DynamicAPI from '../dynamicAPI';
-import { ENDPOINTS } from '@/src/constants/apiConstants';
+import { ENDPOINTS } from '@/src/constants/api/apiConstants';
 
 export const signup = async (signupData) => {
   const endpoint = ENDPOINTS.signup;

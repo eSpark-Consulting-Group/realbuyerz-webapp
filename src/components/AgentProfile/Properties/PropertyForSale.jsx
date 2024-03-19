@@ -8,7 +8,7 @@ import {
   ALT,
   PROPERTIES_FOR_SALE,
   VIEW_BUTTON,
-} from '@/src/constants/AgentProfile';
+} from '@/src/constants/profile/agent-projects/AgentProfile';
 
 const PropertyForSale = ({ link, data }) => {
   return (

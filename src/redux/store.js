@@ -29,6 +29,11 @@ import globalUnitsSlice from './slices/global/globalUnitsSlice';
 import currentUserSlice from './slices/currentUser/currentUserSlice';
 import searchSlice from './slices/search/searchSlice';
 import packagesSlice from './slices/Packages/packagesSlice';
+import careersSlice from './slices/careers/careersSlice';
+import faqsSlice from './slices/faqs/faqsSlice';
+import jagah360Slice from './slices/jagah360/jagah360Slice';
+import pricePlanSlice from './slices/pricePlan/pricePlanSlice';
+import sellRent4MeSlice from './slices/sellRent4Me/sellRent4MeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -74,5 +79,10 @@ export const store = configureStore({
 
     // global units States
     globalUnits: globalUnitsSlice,
+    faqs: faqsSlice,
+    careers: careersSlice,
+    jagah360: jagah360Slice,
+    pricePlan: pricePlanSlice,
+    sellRent4Me: sellRent4MeSlice,
   },
 });

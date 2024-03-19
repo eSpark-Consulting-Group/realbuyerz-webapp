@@ -6,7 +6,7 @@ import { Box, Typography, TextField } from '@mui/material';
 
 import CheckEmailModal from './EmailModal';
 import { validateEmail } from '@/src/utils/validationEmail';
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/auth/Login';
 import Continue from '@/src/components/auth/forget-password/Continue';
 import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
 

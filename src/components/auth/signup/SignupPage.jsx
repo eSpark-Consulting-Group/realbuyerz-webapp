@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import RectangleBorderImage from '../RectangleBorderImage';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/auth/Login';
 
 const SignupPage = () => {
   return (

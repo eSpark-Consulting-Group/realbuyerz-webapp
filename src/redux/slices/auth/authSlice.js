@@ -1,4 +1,4 @@
-import { LOGIN_FORM } from '@/src/constants/Login';
+import { LOGIN_FORM } from '@/src/constants/auth/Login';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

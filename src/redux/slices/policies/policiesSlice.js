@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PRIVACY_POLICY } from '@/src/constants/PrivacyPolicy';
+import { PRIVACY_POLICY } from '@/src/constants/privacy-policy/PrivacyPolicy';
 
 const initialState = { PRIVACY_POLICY };
 

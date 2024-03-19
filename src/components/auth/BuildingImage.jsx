@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { ALT } from '@/src/constants/Login';
+import { ALT } from '@/src/constants/auth/Login';
 
 const PropertyBuilding = () => {
   return (

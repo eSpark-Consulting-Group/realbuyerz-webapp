@@ -10,7 +10,7 @@ import {
   FOR_SALE,
   FOR_SALE_ICON,
   LOCATION_ICON,
-} from '@/src/constants/AgentProfile';
+} from '@/src/constants/profile/agent-projects/AgentProfile';
 
 const AgentProfileDetail = ({
   data,

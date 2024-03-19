@@ -11,9 +11,9 @@ import {
   FEATURED_PROPERTIES,
   PARTNERS,
   POPULAR_LOCATIONS_DATA,
-} from '@/src/constants/Home';
-import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+} from '@/src/constants/home/Home';
+import { AGENT_PROFILE_DATA } from '@/src/constants/profile/agent-projects/AgentProfile';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/';
 const filteredData =

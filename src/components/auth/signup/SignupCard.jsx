@@ -12,7 +12,7 @@ import {
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
   PASSWORD_ALERT,
-} from '@/src/constants/Login';
+} from '@/src/constants/auth/Login';
 import LoginWithGoogle from '../signin/LoginWithGoogle';
 import FormContainer from '../signin/LoginForm';
 import { signup } from '@/src/utils/apis/auth/signup';

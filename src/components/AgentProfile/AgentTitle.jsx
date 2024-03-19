@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-import { PROPERTIES_BY } from '@/src/constants/AgentProfile';
+import { PROPERTIES_BY } from '@/src/constants/profile/agent-projects/AgentProfile';
 import Link from 'next/link';
 
 const AgentTitle = ({ count, title, link }) => {

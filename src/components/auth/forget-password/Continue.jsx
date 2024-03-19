@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import Image from 'next/image';
 
-import { LOGIN_FORM } from '@/src/constants/Login';
+import { LOGIN_FORM } from '@/src/constants/auth/Login';
 
 const Continue = ({
   handleBackToLogin,

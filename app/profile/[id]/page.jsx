@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileSinglePage from '@/src/components/profile/ProfileSinglePage';
-import { BLOGS_SEO } from '@/src/constants/seo';
+import { BLOGS_SEO } from '@/src/constants/global/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.slug;

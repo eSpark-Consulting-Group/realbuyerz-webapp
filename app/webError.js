@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { PAGES_INFO } from '@/src/constants/Constants';
+import { PAGES_INFO } from '@/src/constants/global/Constants';
 
 class WebError extends React.Component {
   constructor(props) {

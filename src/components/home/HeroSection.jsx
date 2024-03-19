@@ -6,7 +6,7 @@ import { Bounce } from 'react-awesome-reveal';
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
-} from '@/src/constants/Constants';
+} from '@/src/constants/global/Constants';
 import Link from 'next/link';
 import HeroSlider from '../sliders/HeroSlider';
 

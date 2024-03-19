@@ -1,4 +1,4 @@
-import { TERM_CONDITIONS } from '@/src/constants/TermCondition';
+import { TERM_CONDITIONS } from '@/src/constants/terms-conditions/TermCondition';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { TERM_CONDITIONS };

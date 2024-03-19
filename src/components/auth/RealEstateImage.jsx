@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-import { ALT } from '@/src/constants/Login';
+import { ALT } from '@/src/constants/auth/Login';
 
 const RealEstateImage = () => {
   return (

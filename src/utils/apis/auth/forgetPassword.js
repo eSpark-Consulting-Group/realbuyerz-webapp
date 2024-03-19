@@ -1,5 +1,5 @@
 import DynamicAPI from '../dynamicAPI';
-import { ENDPOINTS } from '@/src/constants/apiConstants';
+import { ENDPOINTS } from '@/src/constants/api/apiConstants';
 
 export const forgetPassword = async (forgetPasswordData) => {
   const endpoint = ENDPOINTS.forgetPassword;

@@ -1,5 +1,5 @@
 'use client';
-import { PROJECTS_DATA } from '@/src/constants/projects';
+import { PROJECTS_DATA } from '@/src/constants/Projects/projects';
 import {
   Typography,
   Box,

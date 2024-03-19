@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, Container, Grid, Typography, useMediaQuery } from '@mui/material';
-import { HERO_SECTION_CONTENT } from '@/src/constants/Constants';
+import { HERO_SECTION_CONTENT } from '@/src/constants/global/Constants';
 import Heading from '../global/Heading';
 import LinearProgressBar from './LinearProgress';
 import Link from 'next/link';
@@ -134,16 +134,18 @@ const BrowseByCategory = ({ data }) => {
                         width={30}
                       />
                     </Link>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#838383',
-                        fontSize: '12px',
-                        fontWeight: 400,
-                      }}
-                    >
-                      {category?.name}
-                    </Typography>
+                    <Link href={`/category/${category?.id}`}>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: '#838383',
+                          fontSize: '12px',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {category?.name}
+                      </Typography>
+                    </Link>
                   </Box>
                 </Grid>
               </SwiperSlide>

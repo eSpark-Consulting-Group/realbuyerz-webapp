@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { LETS_TALK } from '@/src/constants/AgentProfile';
+import { LETS_TALK } from '@/src/constants/profile/agent-projects/AgentProfile';
 import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';

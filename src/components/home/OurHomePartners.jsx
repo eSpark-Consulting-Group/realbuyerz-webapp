@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from '../global/Heading';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS } from '@/src/constants/home/Home';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {

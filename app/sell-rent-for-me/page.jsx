@@ -1,6 +1,6 @@
 import React from 'react';
 import SellRentPage from '@/src/components/sell-rent-for-me/SellRentPage';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/sell-rent-for-me';
 const filteredData =

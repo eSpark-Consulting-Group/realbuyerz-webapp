@@ -5,7 +5,7 @@ import ResetPassword from '@/src/components/auth/reset-password/ResetPassword';
 import ForgetPassword from '@/src/components/auth/forget-password/ForgetPassword';
 import SignupCard from '@/src/components/auth/signup/SignupCard';
 import LoginCard from '@/src/components/auth/signin/LoginCard';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/auth/Login';
 
 const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
   let cardComponent;

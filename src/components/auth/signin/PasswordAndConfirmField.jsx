@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/auth/Login';
 
 const PasswordAndConfirmFields = ({
   handleInputChange,

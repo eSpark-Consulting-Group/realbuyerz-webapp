@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 
 import Heading from '../global/Heading';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS } from '@/src/constants/home/Home';
 import PropertySlider from '../AgentProfile/PropertySlider';
 
 const NewlyListedProperties = ({ data }) => {

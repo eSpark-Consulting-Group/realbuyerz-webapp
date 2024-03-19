@@ -6,7 +6,12 @@ import { useDispatch } from 'react-redux';
 
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import ModalSignin from '../Modal/ModalSignin';
-import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/src/constants/Login';
+import {
+  LOGOUT,
+  SETTINGS,
+  SIGN_IN,
+  USER_NAME,
+} from '@/src/constants/auth/Login';
 
 const SignInResponsiveButton = ({
   isUserLoggedIn,

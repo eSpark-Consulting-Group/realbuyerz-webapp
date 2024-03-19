@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS } from '@/src/constants/home/Home';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');

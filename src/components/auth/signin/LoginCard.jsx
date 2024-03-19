@@ -15,7 +15,11 @@ import { useDispatch } from 'react-redux';
 import ForgetPassword from '../forget-password/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+import {
+  LOGIN_DATA,
+  LOGIN_FORM,
+  LOGIN_ROUTERS,
+} from '@/src/constants/auth/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { login } from '@/src/utils/apis/auth/login';
