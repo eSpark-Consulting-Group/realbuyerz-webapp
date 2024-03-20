@@ -151,7 +151,7 @@ const ProjectsCard = ({ data }) => {
                   lineHeight: '25px',
                 }}
               >
-                {project?.description.length > 150
+                {project?.description?.length > 150
                   ? `${project.description.slice(0, 147)}...`
                   : project?.description || (
                       <>

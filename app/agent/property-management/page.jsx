@@ -1,6 +1,6 @@
 import React from 'react';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <h1>property management</h1>
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

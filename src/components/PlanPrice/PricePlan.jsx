@@ -4,7 +4,7 @@ import { Button, Grid, Modal } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 
-import { OPEN, PLAN_PRICE } from '@/app/constants/PricePlane';
+import { OPEN, PLAN_PRICE } from '@/src/constants/PricePlane';
 import Super from './Super';
 import Basic from './Basic';
 import Premium from './Premium';

@@ -3,7 +3,7 @@ import { Typography, Box, Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import AmenitiesModal from './AmenitiesModal';
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
 
 const AddAmenities = ({
   onSelected,
@@ -43,13 +43,14 @@ const AddAmenities = ({
       </Typography>
       <Button
         sx={{
-          width: '160px',
+          width: '165px',
           height: '45px',
-          fontSize: '14px',
+          fontSize: '15px',
+          lineHeight: '18.15px',
         }}
         onClick={handleClickOpen}
         variant="outlined"
-        startIcon={<AddCircleIcon />}
+        startIcon={<AddCircleIcon sx={{ fontSize: '24px !important' }} />}
       >
         {PROPERTY_INFORMATION?.addAmentiesLabel}
       </Button>

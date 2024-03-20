@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 
 import PropertyTypes from './PropertyPlot';
-import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
+import { PROPERTY_PURPOSE } from '@/src/constants/Properties';
 
 const SelectProperyType = ({
   image,
@@ -41,7 +41,7 @@ const SelectProperyType = ({
           alignItems: { xs: 'center', sm: 'start' },
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
-          pb: { xs: 2, sm: 2 },
+          pb: { xs: 2, sm: 2, xl: 0 },
           cursor: 'pointer',
         }}
       >
@@ -83,7 +83,7 @@ const SelectProperyType = ({
               flexDirection: 'column',
               gap: 1,
               mt: 0.8,
-              mb: 3,
+              mb: { xs: 3, xl: 0 },
             }}
           >
             <Typography

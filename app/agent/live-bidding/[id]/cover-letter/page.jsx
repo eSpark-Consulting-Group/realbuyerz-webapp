@@ -7,7 +7,7 @@ import AdInformation from '@/src/components/PostListing/AdInformation';
 import PropertySize from '@/src/components/PostListing/Propertysize';
 import PropertyPurpose from '@/src/components/PostListing/PropertyPurpose';
 
-import { proposalSumitModal } from '@/app/constants/postListing';
+import { proposalSumitModal } from '@/src/constants/postListing';
 import SubmitButton from '@/src/components/PostListing/SaveandSubmit';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,10 +23,10 @@ import { usePathname } from 'next/navigation';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
-import { COVER_LETTER } from '@/app/constants/coverLetter';
+import { COVER_LETTER } from '@/src/constants/coverLetter';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { findSpecificPost } from '@/utils/specificPost';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { findSpecificPost } from '@/src/utils/specificPost';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const Page = () => {
   const [open, setOpen] = useState(false);

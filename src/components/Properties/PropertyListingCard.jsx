@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Grid, Button, Pagination } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PROPERTY_DETAILS } from '@/app/constants/Properties';
+import { PROPERTY_DETAILS } from '@/src/constants/Properties';
 
 const styles = {
   container: {

@@ -1,4 +1,4 @@
-import { SIDE_NAV_WIDTH } from '@/app/constants/sidebar';
+import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 import Sidebar from './Sidebar';
 import { Backdrop, Drawer, useMediaQuery } from '@mui/material';
 

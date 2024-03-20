@@ -4,7 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import EditIcon from '@mui/icons-material/Edit';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-export default function ButtonBaseDemo({ url, handleOpen, data }) {
+export default function ButtonBaseDemo({ url, handleOpen }) {
   const image = {
     url: url,
   };
@@ -92,10 +92,11 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         </ButtonBase>
       ) : (
         <Image
-          src={data?.profile_image}
-          height={179}
-          width={197}
-          alt={data?.title}
+          src={url}
+          alt={'Agnet Profile'}
+          width={400}
+          height={400}
+          style={{ width: '100%', height: '100%', borderRadius: '100%' }}
         />
       )}
     </Box>

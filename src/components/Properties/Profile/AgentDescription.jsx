@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const AgentDescription = ({ description }) => {
+const AgentDescription = ({ data }) => {
   return (
     <Typography
       variant="primary"
@@ -13,7 +13,7 @@ const AgentDescription = ({ description }) => {
         paddingBottom: '12px',
       }}
     >
-      {`${description.trim().slice(0, 150)}...`}
+      {`${data?.trim().slice(0, 150)}...`}
     </Typography>
   );
 };
