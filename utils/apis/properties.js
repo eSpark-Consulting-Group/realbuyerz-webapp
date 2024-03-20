@@ -1,5 +1,5 @@
 import DynamicAPI from './dynamicAPI';
-import { ENDPOINTS } from '@/src/constants/apiConstants';
+import { ENDPOINTS } from '@/app/constants/apiConstants';
 
 export const addProperties = async (profileData, jwtToken) => {
   const endpoint = ENDPOINTS.addProperties;

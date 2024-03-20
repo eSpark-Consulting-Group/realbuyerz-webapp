@@ -6,7 +6,7 @@ import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { usePathname } from 'next/navigation';
 
-import { NOT_FOUND } from '@/src/constants/Global';
+import { NOT_FOUND } from '@/app/constants/Global';
 
 const NotFoundSection = ({ heading, message, link, goBackTo }) => {
   const currentPath = usePathname();

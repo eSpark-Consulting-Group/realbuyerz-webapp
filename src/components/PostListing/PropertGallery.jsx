@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import InstructionsForUpload from './InstructionsForUpload';
 import ImageUploader from './ImageUploader';

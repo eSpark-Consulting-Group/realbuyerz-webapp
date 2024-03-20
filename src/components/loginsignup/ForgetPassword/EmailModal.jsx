@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Modal, Button, Box, Typography, Alert } from '@mui/material';
 import Image from 'next/image';
 
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
 
 const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
   const router = useRouter();

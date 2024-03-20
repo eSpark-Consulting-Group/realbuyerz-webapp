@@ -12,11 +12,11 @@ import {
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
   PASSWORD_ALERT,
-} from '@/src/constants/Login';
+} from '@/app/constants/Login';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
 import FormContainer from '../Login/LoginForm';
-import { signup } from '@/src/utils/apis/auth/signup';
-import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
+import { signup } from '@/utils/apis/auth/signup';
+import { loginWithGoogle } from '@/utils/apis/auth/loginWithGoogle';
 
 const SignupCard = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.initialFormData);

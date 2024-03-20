@@ -14,7 +14,7 @@ import {
   GotoPageIcon,
   ProfileIcon,
   SearchIcon,
-} from '@/src/constants/DashboardHeader';
+} from '@/app/constants/DashboardHeader';
 
 import Image from 'next/image';
 import Link from 'next/link';

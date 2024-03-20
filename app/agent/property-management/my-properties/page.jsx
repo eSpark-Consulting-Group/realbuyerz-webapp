@@ -1,7 +1,7 @@
 import MyProperty from '@/src/components/MyProperty';
 import React from 'react';
 
-const Page = () => {
+const page = () => {
   return (
     <>
       <MyProperty />
@@ -9,4 +9,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;

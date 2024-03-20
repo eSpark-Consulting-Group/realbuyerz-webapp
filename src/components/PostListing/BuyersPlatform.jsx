@@ -6,7 +6,7 @@ import ReachBuyer from './ReachBuyer';
 import {
   reachBuyerCoverLetter,
   reachBuyerData,
-} from '@/src/constants/postListing';
+} from '@/app/constants/postListing';
 import { usePathname } from 'next/navigation';
 
 const BuyersPlatform = ({ propertyData, fontSize }) => {

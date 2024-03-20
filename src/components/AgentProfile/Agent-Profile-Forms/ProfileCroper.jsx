@@ -1,5 +1,5 @@
 'use client';
-import getCroppedImg from '@/src/utils/cropImage';
+import getCroppedImg from '@/utils/cropImage';
 import { Cancel } from '@mui/icons-material';
 import CropIcon from '@mui/icons-material/Crop';
 import {
