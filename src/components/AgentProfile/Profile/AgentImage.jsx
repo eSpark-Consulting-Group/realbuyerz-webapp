@@ -37,6 +37,7 @@ const AgentImage = ({ data, setFieldValue }) => {
           open={open}
           setOpen={setOpen}
           currentUserImage={data?.profile_image}
+          currData={data}
           setFieldValue={setFieldValue}
           photoURL={photoURL}
           setPhotoURL={setPhotoURL}
