@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { AMOUNT, RESTORE_PROPERTY } from '@/src/constants/Proposals';
+import { AMOUNT, RESTORE_PROPERTY } from '@/app/constants/Proposals';
 
 const styles = {
   container: {

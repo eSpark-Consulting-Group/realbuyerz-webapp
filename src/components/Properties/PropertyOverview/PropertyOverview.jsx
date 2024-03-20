@@ -9,10 +9,9 @@ import {
   Typography,
   Paper,
   TableContainer,
-  TableHead,
 } from '@mui/material';
 
-import { PROPERTY_ESTATE } from '@/src/constants/Properties';
+import { PROPERTY_ESTATE } from '@/app/constants/Properties';
 
 const PropertyOverview = ({ propertyData, overview }) => {
   return (
@@ -40,7 +39,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             borderTop: 'none',
             display: 'flex',
             flexDirection: 'column',
-            gap: '15px',
+            gap: '20px',
             height: '170px',
           }}
         >
@@ -64,7 +63,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
             }}
           >
             <Table>
-              <TableHead>
+              <TableBody>
                 <TableRow sx={{}}>
                   {PROPERTY_ESTATE?.propertyAttributes?.map(
                     (propertytype, index) => (
@@ -76,8 +75,6 @@ const PropertyOverview = ({ propertyData, overview }) => {
                           backgroundColor: 'black',
                           // overflow: 'scroll',
                           border: 'none',
-                          width: `${100 / 7}%`,
-                          textAlign: 'center',
                           fontSize: '15px',
                           padding: '15px',
                           px: '26px',
@@ -88,17 +85,20 @@ const PropertyOverview = ({ propertyData, overview }) => {
                     )
                   )}
                 </TableRow>
-              </TableHead>
+              </TableBody>
             </Table>
           </TableContainer>
           <TableContainer
             component={Paper}
             sx={{
-              justifyContent: { xs: 'center', md: 'none' },
-              overflow: 'auto',
-              // maxHeight: '300px',
+              // justifyContent: { xs: 'center', md: 'center' },
+              overflowX: { xs: 'auto', md: 'hidden' },
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              maxHeight: '300px',
               borderSpacing: '10px',
-              width: '95%',
+              width: '90%',
               mx: 'auto',
               // marginLeft: { xs: '10px', md: '28px' },
               marginBottom: '20px',
@@ -110,29 +110,24 @@ const PropertyOverview = ({ propertyData, overview }) => {
               }}
             >
               <TableBody>
-                <TableRow sx={{ margin: '20px' }}>
-                  {[
-                    'propertyType',
-                    'location',
-                    'amount',
-                    'purpose',
-                    'bedrooms',
-                    'bathrooms',
-                    'parking',
-                  ].map((key, index) => (
-                    <TableCell
-                      key={index}
-                      sx={{
-                        background: '#F8F8F8',
-                        border: '1px solid #B8B8B8',
-                        padding: '10px',
-                        width: `${100 / 7}%`,
-                        textAlign: 'center',
-                      }}
-                    >
-                      {propertyData?.[key]}
-                    </TableCell>
-                  ))}
+                <TableRow>
+                  {Object.keys(propertyData?.propertyOverview).map(
+                    (key, index) => (
+                      <TableCell
+                        key={index}
+                        sx={{
+                          background: '#F8F8F8',
+                          border: '1px solid #B8B8B8',
+                          // padding: '20px',
+                          fontSize: '16px',
+                          width: '121px',
+                          height: '70px',
+                        }}
+                      >
+                        {propertyData?.propertyOverview[key]}
+                      </TableCell>
+                    )
+                  )}
                 </TableRow>
               </TableBody>
             </Table>

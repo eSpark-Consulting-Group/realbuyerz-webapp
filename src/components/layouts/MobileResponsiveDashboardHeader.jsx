@@ -13,7 +13,7 @@ import {
   EMAIL,
   SEARCH,
   SIGN_OUT,
-} from '@/src/constants/DashboardHeader';
+} from '@/app/constants/DashboardHeader';
 
 import SearchAndNotificationResponsiveButton from './SearchAndNotificationResponsiveButton';
 import ProfileResponsiveButton from './ProfileResponsiveButton';

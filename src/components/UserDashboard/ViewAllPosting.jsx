@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 
 import DashboardTitle from './DashboardTitle';
 import SeeAllPosting from './SeeAllPosting';
-import { UserDashboardPage } from '@/src/constants/postRequest';
+import { UserDashboardPage } from '@/app/constants/postRequest';
 
 const ViewAllPosting = () => {
   return (

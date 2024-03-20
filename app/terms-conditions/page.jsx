@@ -1,13 +1,14 @@
 'use client';
-import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-const Page = () => {
-  const terms = useSelector((state) => state?.terms?.TERM_CONDITIONS);
+const TermsConditions = () => {
+  const terms = useSelector((state) => state.terms.TERM_CONDITIONS);
   const [selectedTab, setSelectedTab] = useState(terms.content[0]);
+
   const handleTabClick = (tabId) => {
-    const selectedTab = terms?.content?.find((tab) => tab?.id === tabId);
+    const selectedTab = terms.content.find((tab) => tab.id === tabId);
     if (selectedTab) {
       setSelectedTab(selectedTab);
     }
@@ -134,4 +135,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default TermsConditions;

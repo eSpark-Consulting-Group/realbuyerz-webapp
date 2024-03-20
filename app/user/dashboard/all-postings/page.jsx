@@ -1,5 +1,5 @@
 'use client';
-import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/postListing';
+import { ALL_POSTLISTING_FILTRATION } from '@/app/constants/postListing';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
@@ -28,10 +28,10 @@ const Page = () => {
   );
 
   const user_id = useSelector((state) => state?.currentUser?.user?.id);
-  const find_posting = userPostings?.filter((item) => item?.user_id == user_id);
-  const find_draft = draft?.filter((item) => item?.user_id == user_id);
-  const find_active = active?.filter((item) => item?.user_id == user_id);
-  const find_trash = trash?.filter((item) => item?.user_id == user_id);
+  const find_posting = userPostings?.filter((item) => item.user_id == user_id);
+  const find_draft = draft?.filter((item) => item.user_id == user_id);
+  const find_active = active?.filter((item) => item.user_id == user_id);
+  const find_trash = trash?.filter((item) => item.user_id == user_id);
 
   const tabs = [
     {

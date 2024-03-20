@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import { MY_CATEGORIES } from '@/src/constants/LiveBidding';
+import { MY_CATEGORIES } from '@/app/constants/LiveBidding';
 import Image from 'next/image';
 
 const Cateogries = ({ categories }) => {

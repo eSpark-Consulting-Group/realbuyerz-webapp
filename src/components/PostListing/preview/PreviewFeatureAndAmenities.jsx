@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { propertyNames } from '@/src/constants/postListing';
+import { propertyNames } from '@/app/constants/postListing';
 
 const renderDetail = (
   title,

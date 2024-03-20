@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { PAGES } from '@/src/constants/Constants';
+import { PAGES } from '@/app/constants/Constants';
 import SignInButton from './SignInButton';
 import SignInResponsiveButton from './SignInResponsiveButton';
 

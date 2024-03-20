@@ -1,4 +1,4 @@
-import { PROPERTY_BUYING_DETAIL } from '@/src/constants/postListing';
+import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
 
 export const createPropertyTypeState = (
   iconTitle,
