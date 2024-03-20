@@ -10,7 +10,7 @@ const Notification = ({ notificationData, handleInputChange }) => {
           <Box
             key={index}
             sx={{
-              padding: '0px 10px 0px 10px',
+              padding: '0px 10px 10px 10px',
             }}
           >
             <Box

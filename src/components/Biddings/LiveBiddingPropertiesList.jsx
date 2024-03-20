@@ -27,75 +27,60 @@ const LiveBiddingPropertiesList = ({
         },
       }}
     >
-      {status && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.status || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {status || ''}
-          </Typography>
-        </Box>
-      )}
-      {city && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
+          {cardKeys?.status || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {status || ''}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.city || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {city || ''}
-          </Typography>
-        </Box>
-      )}
-      {location && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
+          {cardKeys?.city || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {city || ''}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          '@media(min-width: 280px) and (max-width: 445px)': {
+            justifyContent: justifyContent ? justifyContent : 'center',
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
         >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.area || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {location || ''}
-          </Typography>
-        </Box>
-      )}
+          {cardKeys?.area || ''}
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+          {location || ''}
+        </Typography>
+      </Box>
       {pathName?.includes(user) && proposal?.length > 0 ? (
         <Box
           sx={{
@@ -120,7 +105,7 @@ const LiveBiddingPropertiesList = ({
         </Box>
       ) : null}
 
-      {pathName.includes(agent) && connects ? (
+      {pathName.includes(agent) ? (
         <>
           {noConnects && (
             <Box

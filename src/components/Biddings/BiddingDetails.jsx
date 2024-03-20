@@ -49,13 +49,7 @@ const BiddingDetails = ({ height, ads }) => {
           message={'Property id invalid, Please add correct id.'}
         />
       ) : (
-        <Box
-          className="scrollable"
-          sx={{
-            maxHeight: height,
-            marginTop: { xs: '0', md: '-25px' },
-          }}
-        >
+        <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
             {searchValue == null ? (
               <>
@@ -66,7 +60,7 @@ const BiddingDetails = ({ height, ads }) => {
                       <Box
                         sx={{
                           width: '100%',
-                          minHeight: '350px',
+                          minHeight: '403px',
                           height: 'auto',
                           backgroundColor: '#EDF7FF',
                           border: '1px solid #AAD9FF',
@@ -122,15 +116,12 @@ const BiddingDetails = ({ height, ads }) => {
                                 overflow: 'hidden',
                                 whiteSpace: 'nowrap',
                                 ml: 0.4,
-                                fontSize: { xs: '20px' },
+                                fontSize: { xs: '21px' },
                               }}
                             >
                               {item?.title}
                             </Typography>
-                            <Typography
-                              variant="body1"
-                              sx={{ ml: 0.5, mt: 1, fontSize: '12px' }}
-                            >
+                            <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
                               {'Posted 39 minutes ago'}
                             </Typography>
                           </Grid>
@@ -186,7 +177,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 }}
                                 component={'span'}
                               >
-                                {`${item?.amount}`}M
+                                {`${item?.amount}`}
                               </Typography>
                             </Box>
                           </Grid>
@@ -224,10 +215,6 @@ const BiddingDetails = ({ height, ads }) => {
                                       alignItems: 'center',
                                       fontSize: '12px',
                                       fontWeight: 500,
-                                      '&:hover': {
-                                        backgroundColor: '#fb631c',
-                                        color: '#fff',
-                                      },
                                     }}
                                   >
                                     {VIEW}
@@ -252,7 +239,7 @@ const BiddingDetails = ({ height, ads }) => {
                               variant="body2"
                               sx={{
                                 fontWeight: '500',
-                                fontSize: '14px',
+                                fontSize: '13.8px',
                                 lineHeight: '20.52px',
                                 maxWidth: 'auto',
                                 letterSpacing: '0em',
@@ -360,11 +347,6 @@ const BiddingDetails = ({ height, ads }) => {
                             fontWeight: 500,
                             fontSize: '20px',
                             lineHeight: '24.2px',
-                            '&:hover': {
-                              color: '#1176AD',
-                              textDecoration: 'underline',
-                              textUnderlineOffset: '5px',
-                            },
                           }}
                         >
                           {LOAD_MORE}
@@ -380,11 +362,6 @@ const BiddingDetails = ({ height, ads }) => {
                             fontWeight: 500,
                             fontSize: '20px',
                             lineHeight: '24.2px',
-                            '&:hover': {
-                              color: '#1176AD',
-                              textDecoration: 'underline',
-                              textUnderlineOffset: '5px',
-                            },
                           }}
                         >
                           {SHOW_LESS}

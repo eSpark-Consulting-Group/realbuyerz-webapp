@@ -43,7 +43,7 @@ const ProposalDetails = ({
             >
               <Typography
                 variant="h4"
-                sx={{ ml: 0.4, fontSize: { xs: '20px' } }}
+                sx={{ ml: 0.4, fontSize: { xs: '21px' } }}
               >
                 {title}
               </Typography>
@@ -95,7 +95,7 @@ const ProposalDetails = ({
                   }}
                   component={'span'}
                 >
-                  {amount}M
+                  {amount}
                 </Typography>
               </Box>
             </Grid>

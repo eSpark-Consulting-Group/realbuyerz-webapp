@@ -28,7 +28,6 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
         >
           <IconButton
             onClick={handleIncrement}
-            disableRipple
             sx={{
               width: 'auto',
               pl: 0,
@@ -56,7 +55,6 @@ const CustomNumberInput = ({ value, handleIncrement, handleDecrement }) => {
           </Typography>
           <IconButton
             onClick={handleDecrement}
-            disableRipple
             sx={{
               width: 'auto',
               pr: 0,

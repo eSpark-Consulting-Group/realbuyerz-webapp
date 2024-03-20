@@ -125,14 +125,13 @@ const PropertyAreaSize = ({
                       margin: 0,
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label]
-                        ? 'solid 1px red'
-                        : '1px solid #E7E7E7',
-                      borderRadius: '10px',
+                      border: formik?.errors[item?.label] && `solid 1px red`,
                     },
                   }}
                   InputProps={{
                     style: {
+                      border: '1px solid #E7E7E7',
+                      borderRadius: '10px',
                       fontSize: { xs: '15px', md: '18px' },
                     },
                   }}
@@ -156,10 +155,8 @@ const PropertyAreaSize = ({
                   }
                   sx={{
                     width: { xs: '100%', sm: '160px' },
-                    '& fieldset': {
-                      border: formik.errors[item?.label]
-                        ? 'solid 1px red'
-                        : '1px solid #E7E7E7',
+                    '& .MuiAutocomplete-inputRoot': {
+                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : 'none'}`,
                       borderRadius: '10px',
                     },
                     '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':

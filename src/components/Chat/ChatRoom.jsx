@@ -647,7 +647,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   width: { xs: '20px', sm: '36px' },
                   height: { xs: '20px', sm: '36px' },
                   display: 'none',
-                  '@media (min-width: 280px) and (max-width: 1643px)': {
+                  '@media (min-width: 280px) and (max-width: 1526px)': {
                     display: 'flex',
                   },
                 }}
@@ -664,7 +664,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               marginRight: { xs: '5px', sm: '10px' },
               width: { xs: '20px', sm: '36px' },
               height: { xs: '20px', sm: '36px' },
-              '@media (min-width: 280px) and (max-width: 1643px)': {
+              '@media (min-width: 280px) and (max-width: 1526px)': {
                 display: 'none',
               },
             }}

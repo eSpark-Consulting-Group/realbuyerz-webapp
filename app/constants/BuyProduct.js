@@ -51,7 +51,7 @@ export const Order_Summary = {
 
 export const Buy_Connects = {
   title: 'Buy Connects',
-  discription: '(Only applicable if you buy a subscription)',
+  description: '(Only applicable if you buy a subscription)',
   buttonText: 'Buy',
   image: '/images/agent_form/agent_form_background.png',
   dropdown: {
