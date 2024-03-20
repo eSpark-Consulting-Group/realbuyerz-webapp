@@ -2,18 +2,17 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { Divider } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-import { LIVE_BIDDING_DATA } from '@/src/constants/Nav_Data';
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-
-import { useSelector } from 'react-redux';
-import BiddingDetails from '../dashboard/BiddingDetails';
+import BiddingDetails from '../../BiddingDetails';
+import { findData } from '@/utils/dashboardUtils';
 
 const UserDashboard = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
   const userId = useSelector((state) => state?.currentUser?.user?.id);
-  const find_user = userAds?.filter((ad) => ad?.user_id === userId);
+  const find_user = findData(userId, userAds);
 
   return (
     <>
@@ -36,11 +35,7 @@ const UserDashboard = () => {
             p: { xs: 2, sm: 6 },
           }}
         >
-          <BiddingDetails
-            liveBiddingData={LIVE_BIDDING_DATA}
-            ads={find_user}
-            height={'1098px'}
-          />
+          <BiddingDetails ads={find_user} height={'1098px'} />
         </Box>
       </Box>
     </>

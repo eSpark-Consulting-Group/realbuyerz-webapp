@@ -6,7 +6,7 @@ const proposalsSlice = createSlice({
   initialState: [
     {
       property_id: 650,
-      agent_id: 21,
+      agent_id: 20,
       proposal_id: 2,
       status: 'Connected',
       title: 'What is Lorem Ipsum?',

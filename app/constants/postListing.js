@@ -571,14 +571,6 @@ export const reachBuyerCoverLetter = {
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
 };
 
-export const postListingAdCard = {
-  status: 'Status :',
-  city: 'City :',
-  area: 'Area :',
-  proposal: 'Proposal :',
-  connects: 'connects :',
-};
-
 export const propertyNames = [
   'bedrooms',
   'bathrooms',

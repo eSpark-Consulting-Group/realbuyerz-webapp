@@ -1,8 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { Grid, Typography } from '@mui/material';
-
-import { DASHBOARD } from '@/app/constants/Dashboard';
+import { DASHBOARD } from '@/src/constants/user/Dashboard';
 
 const PostRequestButton = () => {
   return (

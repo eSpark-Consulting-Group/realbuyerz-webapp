@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Box, Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import UserProfileImage from '../dashboard/UserProfileImage';
+import UserProfileImage from './UserProfileImage';
 
 const UserProfileDetails = ({
   Amount,

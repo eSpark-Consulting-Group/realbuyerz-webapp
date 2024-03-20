@@ -5,7 +5,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
-import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
+import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import Location from '@/src/components/dashboard/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';

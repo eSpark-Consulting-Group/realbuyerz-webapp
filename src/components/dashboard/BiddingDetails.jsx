@@ -19,6 +19,7 @@ import {
   VIEW_BUTTON,
 } from '@/src/constants/agent/Live_Bidding';
 import { VIEW_PROPSALS } from '@/src/constants/user/Dashboard';
+import { checkProposal, finding_proposals } from '@/utils/dashboardUtils';
 
 const BiddingDetails = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);
@@ -32,18 +33,7 @@ const BiddingDetails = ({ height, ads }) => {
   const handleShowLessClick = () => {
     setShowAllItems(false);
   };
-
-  const finding_proposals = (property_id, proposals) => {
-    const find_proposals = proposals?.filter(
-      (proposal) =>
-        proposal.property_id == property_id &&
-        proposal?.status !== 'Rejected' &&
-        proposal?.status !== 'Connected' &&
-        proposal?.status !== 'Archive'
-    );
-    return find_proposals;
-  };
-
+  console.log(checkProposal(650, all_proposals));
   return (
     <>
       {ads?.length <= 0 ? (
@@ -584,7 +574,7 @@ const BiddingDetails = ({ height, ads }) => {
                             noConnects={true}
                           />
                           {path?.includes('/user') &&
-                          finding_proposals(item?.property_id, all_proposals)
+                          checkProposal(item?.property_id, all_proposals)
                             ?.length > 0 ? (
                             <Grid item xs={12}>
                               <Box

@@ -174,3 +174,33 @@ export const findSingleProposal = (id, data, status) => {
     (proposal) => proposal?.proposal_id == id && proposal?.status === status
   );
 };
+
+export const finding_proposals = (property_id, proposals) => {
+  const find_proposals = proposals?.filter(
+    (proposal) =>
+      proposal.property_id == property_id && proposal?.status === 'Connected'
+  );
+  return find_proposals;
+};
+
+// for user dashboard page
+
+export const findProposalWithOutStatus = (id, data) => {
+  return data?.find((proposal) => proposal?.proposal_id == id);
+};
+
+export const checkData = (data, dataStatus, conected, rejected) => {
+  return (
+    data !== undefined &&
+    data !== null &&
+    dataStatus !== conected &&
+    dataStatus !== rejected
+  );
+};
+
+export const checkProposal = (property_id, proposals) => {
+  const find_proposals = proposals?.filter(
+    (proposal) => proposal.property_id == property_id
+  );
+  return find_proposals;
+};

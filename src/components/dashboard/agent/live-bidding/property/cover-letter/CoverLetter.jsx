@@ -32,6 +32,7 @@ import {
 import { coverLetterValidation } from '@/src/components/Schemas/coverLetterValidation';
 import { PROPOSAL_SUBMIT_MODAL_DATA } from '@/src/constants/Preview_Data';
 import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
+import Link from 'next/link';
 
 const CoverLetter = () => {
   const [open, setOpen] = useState(false);
@@ -102,6 +103,7 @@ const CoverLetter = () => {
       ) : (
         <Grid container>
           <Grid item xs={12}>
+            <Link href={'/user/dashboard'}>dashboard</Link>
             <form onSubmit={formik?.handleSubmit}>
               <Box
                 sx={{

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { ESTIMATE_RANGE } from '@/app/constants/Dashboard';
-import LiveBiddingPropertiesList from '../dashboard/LiveBiddingPropertiesList';
-import { postListingAdCard } from '@/app/constants/postListing';
+
+import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
+import {
+  ESTIMATE_RANGE,
+  postListingAdCard,
+} from '@/src/constants/user/Dashboard';
 
 const ProposalDetails = ({
   city,
@@ -45,10 +48,10 @@ const ProposalDetails = ({
                 variant="h4"
                 sx={{ ml: 0.4, fontSize: { xs: '21px' } }}
               >
-                {title}
+                {title || ''}
               </Typography>
               <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                {postedTime}
+                {postedTime || ''}
               </Typography>
             </Grid>
             <Grid
@@ -95,7 +98,7 @@ const ProposalDetails = ({
                   }}
                   component={'span'}
                 >
-                  {amount}
+                  {amount || ''}
                 </Typography>
               </Box>
             </Grid>
@@ -120,15 +123,15 @@ const ProposalDetails = ({
                   color: '#333333',
                 }}
               >
-                {description}
+                {description || ''}
               </Typography>
             </Box>
             <LiveBiddingPropertiesList
-              area={area}
-              city={city}
-              status={status}
-              proposal={proposal}
-              location={location}
+              area={area || ''}
+              city={city || ''}
+              status={status || ''}
+              proposal={proposal || ''}
+              location={location || ''}
               cardKeys={postListingAdCard}
               noConnects={false}
             />
