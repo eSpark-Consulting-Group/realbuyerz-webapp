@@ -1,12 +1,12 @@
 import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
 
-// import { BIDDINGS } from '@/src/constants/Biddings';
+// import { BIDDINGS } from '@/app/constants/Biddings';
 import Location from './Location';
 import PreviewAmountAndFeature from './PreviewAmountAndFeature';
 import PropertyDetail from './PropertyDetail';
 import MediaComponent from './MediaComponent';
-import { previewData } from '@/src/constants/postListing';
+import { previewData } from '@/app/constants/postListing';
 import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
 import { usePathname } from 'next/navigation';
 
@@ -60,8 +60,13 @@ const PreviewModal = (props) => {
               height: { xs: '600px', md: '700px' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
+              overflowY: 'auto',
+              scrollbarWidth: 'thin',
+              scrollbarColor: 'transparent transparent',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
             }}
-            className="scrollbar-container"
           >
             <Typography
               sx={{
@@ -73,6 +78,7 @@ const PreviewModal = (props) => {
             >
               {title}
             </Typography>
+
             <PropertyDetail
               title={propertyDetails}
               subTitle={ads?.title}

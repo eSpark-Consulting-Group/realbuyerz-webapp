@@ -8,7 +8,7 @@ import LinearProgress, {
 import {
   PROFILE_COMPLETNESS,
   PROFILE_COMPLETNESS_DESCRIPTION,
-} from '@/src/constants/LiveBidding';
+} from '@/app/constants/LiveBidding';
 
 const ProfileCompletness = ({ profileInfo }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({

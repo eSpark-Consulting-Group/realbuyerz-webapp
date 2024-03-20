@@ -1,4 +1,4 @@
-import { PROPERTIES_AMENITIES } from '@/src/constants/finalConstants/Properties';
+import { PROPERTIES_AMENITIES } from '@/app/constants/finalConstants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
 const propertyAmenities = PROPERTIES_AMENITIES;

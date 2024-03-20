@@ -5,7 +5,7 @@ import { Box, Grid } from '@mui/material';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
-} from '@/src/constants/postListing';
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import SelectProperyType from './SelectPropertyType';
 import SelectCityType from './SelectCity';
@@ -20,7 +20,6 @@ const PropertyPurpose = ({ propertyData, formik }) => {
         backgroundColor: '#fff',
         border: '1px #E4E4E4 solid',
         borderRadius: '10px',
-        height: { xs: 'auto', xl: '1010px' },
       }}
     >
       <Grid
@@ -32,9 +31,9 @@ const PropertyPurpose = ({ propertyData, formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '60% 60%',
+          backgroundSize: '50% 50%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center top 38%',
+          backgroundPosition: 'center top 35%',
         }}
       >
         <Box
@@ -52,7 +51,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
               height: { xs: 'auto', md: '100%' },
               display: 'flex',
               justifyContent: 'space-evenly',
-              py: { xs: 5, sm: 6 },
+              py: { xs: 5, sm: 7 },
             }}
           >
             <Box

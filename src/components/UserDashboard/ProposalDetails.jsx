@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { ESTIMATE_RANGE } from '@/src/constants/Dashboard';
+import { ESTIMATE_RANGE } from '@/app/constants/Dashboard';
 import LiveBiddingPropertiesList from '../Biddings/LiveBiddingPropertiesList';
-import { postListingAdCard } from '@/src/constants/postListing';
+import { postListingAdCard } from '@/app/constants/postListing';
 
 const ProposalDetails = ({
   city,
@@ -43,7 +43,7 @@ const ProposalDetails = ({
             >
               <Typography
                 variant="h4"
-                sx={{ ml: 0.4, fontSize: { xs: '20px' } }}
+                sx={{ ml: 0.4, fontSize: { xs: '21px' } }}
               >
                 {title}
               </Typography>
@@ -95,7 +95,7 @@ const ProposalDetails = ({
                   }}
                   component={'span'}
                 >
-                  {amount}M
+                  {amount}
                 </Typography>
               </Box>
             </Grid>

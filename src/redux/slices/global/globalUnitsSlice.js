@@ -6,7 +6,7 @@ import {
   PROPERTY_TYPES,
   CITIES_NAME,
   AMENITIES_NAME,
-} from '@/src/constants/Projects/projectsFilter';
+} from '@/app/constants/Projects/projectsFilter';
 
 const initialState = {
   AREA_UNITS,

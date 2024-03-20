@@ -17,7 +17,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
           alignItems: { xs: 'center', sm: 'start' },
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
-          pb: { xs: 2, sm: 2, xl: 0 },
+          pb: { xs: 2, sm: 2 },
         }}
       >
         <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
@@ -60,7 +60,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               position: 'relative',
               gap: 1,
               mt: 0.8,
-              mb: { xs: 3, xl: 0 },
+              mb: 3,
             }}
           >
             <Typography
@@ -85,9 +85,9 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               id="combo-box-demo"
               options={options}
               sx={{
-                '& fieldset': {
+                '& .MuiAutocomplete-inputRoot': {
                   borderRadius: '10px',
-                  border: `1px solid ${formik.errors.city ? 'red' : '1px solid #E7E7E7'}`,
+                  border: `1px solid ${formik.errors.city ? 'red' : 'none'}`,
                 },
                 '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
                   {

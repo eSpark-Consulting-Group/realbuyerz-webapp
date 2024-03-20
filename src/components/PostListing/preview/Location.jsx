@@ -57,8 +57,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {locationKeys?.purpose.charAt(0).toUpperCase() +
-                locationKeys?.purpose.slice(1)}
+              {locationKeys?.purpose}
             </Typography>
             <Typography
               sx={{
@@ -68,7 +67,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {purpose.charAt(0).toUpperCase() + purpose?.slice(1)}
+              {purpose}
             </Typography>
           </Box>
         )}
@@ -88,8 +87,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {locationKeys?.propertyType.charAt(0).toUpperCase() +
-                locationKeys?.propertyType.slice(1)}
+              {locationKeys?.propertyType}
             </Typography>
             <Typography
               sx={{
@@ -100,7 +98,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {propertyType.charAt(0).toUpperCase() + propertyType?.slice(1)}
+              {propertyType}
             </Typography>
           </Box>
         )}
@@ -120,8 +118,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {locationKeys?.city.charAt(0).toUpperCase() +
-                locationKeys?.city?.slice(1)}
+              {locationKeys?.city}
             </Typography>
             <Typography
               sx={{
@@ -131,7 +128,7 @@ const Location = ({
               }}
               variant="body1"
             >
-              {city.charAt(0).toUpperCase() + city?.slice(1)}
+              {city}
             </Typography>
           </Box>
         )}
@@ -152,8 +149,7 @@ const Location = ({
                 }}
                 variant="body1"
               >
-                {locationKeys?.location?.charAt(0).toUpperCase() +
-                  locationKeys?.location.slice(1)}
+                {locationKeys?.location}
               </Typography>
               <Typography
                 sx={{
@@ -167,17 +163,12 @@ const Location = ({
               </Typography>
             </Box>
             {locationKeys && (
-              <Box
-                sx={{
-                  mt: 2,
-                  width: { xs: width ? width : '100%', xl: '522px' },
-                }}
-              >
+              <Box sx={{ mt: 2 }}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.013300667556!2d67.11563618312421!3d24.929177436335465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3366ddcdc4253%3A0x6c0e3a1a85e57629!2sNED%20University%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sus!4v1549819379349&z=15"
                   title="Property locationKeys"
-                  width={'100%'}
-                  height="103"
+                  width={width ? width : '100%'}
+                  height="150"
                   allowFullScreen=""
                   frameBorder="0"
                   loading="lazy"

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
 import {
   handleAdaminities,
@@ -31,7 +31,7 @@ const Facilities = ({
       setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected.filter((item) => item?.text !== text)
+        prevSelected.filter((item) => item.text !== text)
       );
       formik.setFieldValue(name, 0);
     }
@@ -93,10 +93,10 @@ const Facilities = ({
               onChange={(e) => {
                 handleCheckboxChange(
                   e,
-                  item?.id,
-                  item?.image,
-                  item?.title,
-                  item?.name
+                  item.id,
+                  item.image,
+                  item.title,
+                  item.name
                 );
               }}
             />

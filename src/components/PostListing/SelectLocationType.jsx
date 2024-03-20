@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import MapFrame from './MapFrame';
 
 const SelectLocationType = () => {
@@ -73,7 +73,7 @@ const SelectLocationType = () => {
               {PROPERTY_INFORMATION?.location?.text}
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
-            <MapFrame width="100%" height="103px" />
+            <MapFrame width="100%" height="150px" />
           </Box>
         </Box>
       </Box>

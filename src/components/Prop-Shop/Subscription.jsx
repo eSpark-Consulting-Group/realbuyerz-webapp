@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-import { Buy_Product_Data } from '@/src/constants/BuyProduct';
+import { Buy_Product_Data } from '@/app/constants/BuyProduct';
 import BuyProductTable from './BuyProductTable';
 import { useSelector } from 'react-redux';
 

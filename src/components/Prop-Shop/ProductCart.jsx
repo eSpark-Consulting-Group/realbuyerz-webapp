@@ -5,14 +5,27 @@ import { useSelector } from 'react-redux';
 
 import OrderSummary from './OrderSummary';
 import EmptyCart from './EmptyCart';
-import { Empty_Cart_data, Order_Summary } from '@/src/constants/BuyProduct';
+import { Empty_Cart_data, Order_Summary } from '@/app/constants/BuyProduct';
 
-const ProductCart = () => {
+const ProductCart = ({
+  setIsModalOpen,
+  isModalOpen,
+  handleChange,
+  state,
+  resetForm,
+}) => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(
     (state) => state.PakageCart
   );
 
-  const { titile, Total, buttonText } = Order_Summary;
+  const {
+    titile,
+    Total,
+    buttonText,
+    successMessage,
+    modalButtonText,
+    confirmOrderLable,
+  } = Order_Summary;
   const { title, item } = Empty_Cart_data;
 
   return (
@@ -45,6 +58,14 @@ const ProductCart = () => {
             dollarRate={dollarRate}
             connects={connects}
             totalPrice={totalPrice}
+            successMessage={successMessage}
+            modalButtonText={modalButtonText}
+            confirmOrderLable={confirmOrderLable}
+            setIsModalOpen={setIsModalOpen}
+            isModalOpen={isModalOpen}
+            handleChange={handleChange}
+            state={state}
+            resetForm={resetForm}
           />
         )}
       </Grid>

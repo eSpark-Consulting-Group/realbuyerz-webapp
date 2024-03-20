@@ -10,16 +10,9 @@ import {
   FOR_SALE,
   FOR_SALE_ICON,
   LOCATION_ICON,
-} from '@/src/constants/AgentProfile';
+} from '@/app/constants/AgentProfile';
 
-const AgentProfileDetail = ({
-  data,
-  path,
-  user,
-  agent,
-  forRentCount,
-  forSellCount,
-}) => {
+const AgentProfileDetail = ({ data, path, user, agent }) => {
   return (
     <Grid
       item
@@ -57,12 +50,12 @@ const AgentProfileDetail = ({
               alt={ALT}
             />
             <ProfileInfo
-              title={`${forSellCount || 'No Property'} ${FOR_SALE || ''}`}
+              title={`${data?.counts?.sellCount?.total || ''} ${FOR_SALE || ''}`}
               icon={FOR_SALE_ICON}
               alt={ALT}
             />
             <ProfileInfo
-              title={`${forRentCount || 'No Property'} ${FOR_RENT || ''}`}
+              title={`${data?.counts?.rentCount?.total || ''} ${FOR_RENT || ''}`}
               icon={FOR_RENT_ICON}
               alt={ALT}
             />
