@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import InstructionsForUpload from './InstructionsForUpload';
 import ImageUploader from './ImageUploader';
@@ -50,11 +50,11 @@ const PropertyGallery = ({ formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '65% 65%',
+          backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           '@media (min-width: 280px)and (max-width: 959px)': {
-            backgroundPosition: 'center top 30%',
+            backgroundPosition: 'center top 20%',
           },
         }}
       >
@@ -75,7 +75,7 @@ const PropertyGallery = ({ formik }) => {
               height: { xs: 'auto', md: '100%' },
               display: 'flex',
               justifyContent: 'space-evenly',
-              py: 10,
+              py: 5,
             }}
           >
             <Box

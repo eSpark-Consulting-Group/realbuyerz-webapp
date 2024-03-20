@@ -5,7 +5,7 @@ import { Box, Grid } from '@mui/material';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
-} from '@/src/constants/postListing';
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import PropertyAreaSize from './PropertyAreaSize';
 import PropertyInstallment from './PropertyInstallment';
@@ -29,9 +29,9 @@ const PropertySize = ({ formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '65% 65%',
+          backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center top 55%',
+          backgroundPosition: 'center top 40%',
         }}
       >
         <Box

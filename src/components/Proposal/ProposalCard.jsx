@@ -14,14 +14,7 @@ import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const ProposalCard = ({
-  data,
-  currentTab,
-  link,
-  key,
-  propertyColor,
-  keyColor,
-}) => {
+const ProposalCard = ({ data, currentTab, link, key }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -100,7 +93,7 @@ const ProposalCard = ({
               background: '#F5F6FA',
               border: 'solid 1px #E4E4E4',
               borderRadius: '20px',
-              padding: { xs: 0.5, sm: '10px', md: 3 },
+              padding: { xs: 0.5, sm: '10px', md: 1.8 },
               marginTop: key === 0 && '30px',
               cursor: 'pointer',
               position: 'relative',
@@ -206,7 +199,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: propertyColor ? propertyColor : '#126FAA',
+                        color: '#126FAA',
                       }}
                     >
                       Purpose:
@@ -218,7 +211,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: keyColor ? keyColor : '#333333',
+                        color: '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -239,7 +232,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: propertyColor ? propertyColor : '#126FAA',
+                        color: '#126FAA',
                       }}
                     >
                       Proporty Type:
@@ -251,7 +244,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: keyColor ? keyColor : '#333333',
+                        color: '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -272,7 +265,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: propertyColor ? propertyColor : '#126FAA',
+                        color: '#126FAA',
                       }}
                     >
                       City:
@@ -284,7 +277,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: keyColor ? keyColor : '#333333',
+                        color: '#333333',
                         marginLeft: '5px',
                       }}
                     >
@@ -305,7 +298,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: propertyColor ? propertyColor : '#126FAA',
+                        color: '#126FAA',
                       }}
                     >
                       Location:
@@ -317,7 +310,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: keyColor ? keyColor : '#333333',
+                        color: '#333333',
                         marginLeft: '5px',
                       }}
                     >

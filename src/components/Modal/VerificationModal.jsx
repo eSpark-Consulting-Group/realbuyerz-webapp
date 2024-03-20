@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { VERIFICATION_CODE, VERIFICATION_OTP } from '@/src/constants/Modal';
+import { VERIFICATION_CODE, VERIFICATION_OTP } from '@/app/constants/Modal';
 import VerificationCode from './VerificationCode';
 
 const VerificationModal = ({ open, onCloseModal }) => {
@@ -15,7 +15,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
             background: '#E8F6FF',
             borderRadius: '27px',
             margin: 'auto',
-            height: { xs: '600px', md: 'auto' },
+            height: { xs: '600px', md: '422px' },
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'flex-end',
@@ -38,7 +38,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
           >
             <Typography
               sx={{
-                fontWeight: '600',
+                fontWeight: '600px',
                 fontSize: '25px',
               }}
             >
@@ -46,7 +46,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
             </Typography>
             <Typography
               sx={{
-                fontWeight: '400',
+                fontWeight: '400px',
                 fontSize: '20px',
                 color: '#666',
               }}
@@ -60,28 +60,19 @@ const VerificationModal = ({ open, onCloseModal }) => {
             <Box sx={{ display: 'flex', alignSelf: 'flex-start' }}>
               <Typography
                 sx={{
-                  fontWeight: '500',
+                  fontWeight: '500px',
                   fontSize: '16px',
                 }}
               >
                 {VERIFICATION_OTP.attempts}
-                <span
-                  style={{
-                    color: '#666666',
-                    fontSize: '16px',
-                    fontWeight: 400,
-                  }}
-                >
-                  {VERIFICATION_OTP.secondRemaining}
-                </span>
               </Typography>
             </Box>
             <hr style={{ width: '100%', background: '#979797' }} />
             <Box sx={{ display: 'flex', alignSelf: 'flex-start' }}>
               <Typography
                 sx={{
-                  fontWeight: '400',
-                  fontSize: '14px',
+                  fontWeight: '500px',
+                  fontSize: '16px',
                 }}
               >
                 {VERIFICATION_OTP.codeOtp}

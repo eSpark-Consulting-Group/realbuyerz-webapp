@@ -7,7 +7,7 @@ import {
   ALT,
   PROPERTIES_FOR_RENT,
   VIEW_BUTTON,
-} from '@/src/constants/AgentProfile';
+} from '@/app/constants/AgentProfile';
 
 const PropertyForRent = ({ data, link }) => {
   return (

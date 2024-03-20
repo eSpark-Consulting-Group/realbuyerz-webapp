@@ -1,4 +1,4 @@
-// import { PROPOSALS_DATA } from '@/src/constants/finalConstants/Proposals';
+// import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
 
 const proposalsSlice = createSlice({
@@ -8,7 +8,7 @@ const proposalsSlice = createSlice({
       property_id: 650,
       agent_id: 21,
       proposal_id: 1,
-      status: 'connected',
+      status: 'Connected',
       title: 'What is Lorem Ipsum?',
       location: '',
       description:
@@ -32,10 +32,10 @@ const proposalsSlice = createSlice({
       videos: [],
     },
     {
-      property_id: 750,
+      property_id: 650,
       agent_id: 21,
       proposal_id: 1,
-      status: 'connected',
+      status: 'Connected',
       title: 'What is Lorem Ipsum?',
       location: '',
       description:

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import propertiesSlice from './slices/properties/propertiesSlice';
 import propertiesCategoriesSlice from './slices/properties/propertiesCategoriesSlice';
 import propertiesAmenitiesSlice from './slices/properties/propertiesAmenitiesSlice';
@@ -22,6 +23,7 @@ import postlistingAdSlice from './slices/postlistingAds/postlistingAdsSlice';
 import userAdsSlice from './slices/userAds/userAdsSlice';
 import biddingsSlice from './slices/bidding/biddingsSlice';
 import loginAgentsSlice from './slices/loginAgents/loginAgentsSlice';
+import loginUsersSlice from './slices/loginUsers/loginUsersSlice';
 import favouriteAdsSlice from './slices/favouriteAds/favouriteAdsSlice';
 import userDraftSlice from './slices/userDraft/userDraftSlice';
 import agentDraftSlice from './slices/agentDraft/agentDraftSlice';
@@ -61,6 +63,7 @@ export const store = configureStore({
 
     // Sumited Ads States
     loginAgents: loginAgentsSlice,
+    loginUsers: loginUsersSlice,
     postListingAds: postlistingAdSlice,
     postRequestAds: userAdsSlice,
 

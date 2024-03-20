@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Button, Avatar, Box } from '@mui/material';
 import Link from 'next/link';
 
-import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
+import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
 
 const ViewAgentProfile = ({ image, name, link }) => {
   return (

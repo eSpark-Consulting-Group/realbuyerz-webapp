@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-import { PROPERTY_PURPOSE } from '@/src/constants/Properties';
+import { PROPERTY_PURPOSE } from '@/app/constants/Properties';
 
 const PropertyLocationDetails = ({ locationPurpose, propertyType, city }) => {
   return (

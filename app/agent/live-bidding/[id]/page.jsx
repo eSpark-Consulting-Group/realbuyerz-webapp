@@ -11,11 +11,11 @@ import PreviewAmountAndFeature from '@/src/components/PostListing/preview/Previe
 import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
 
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
-import { PROFILE_INFO } from '@/src/constants/LiveBidding';
-import { clientRequirment, previewData } from '@/src/constants/postListing';
+import { PROFILE_INFO } from '@/app/constants/LiveBidding';
+import { clientRequirment, previewData } from '@/app/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { findSpecificPost } from '@/src/utils/specificPost';
+import { findSpecificPost } from '@/utils/specificPost';
 
 const Page = () => {
   const { location, areaAndAmount, amenities } = previewData;

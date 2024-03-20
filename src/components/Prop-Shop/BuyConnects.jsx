@@ -58,7 +58,7 @@ const BuyConnects = ({
         <Box
           sx={{
             width: '100%',
-            height: { xs: 'auto', lg: '946px' },
+            height: { xs: 'auto', lg: '780px' },
             py: 2,
             border: '2px solid #E4E4E4',
             borderRadius: '10px',

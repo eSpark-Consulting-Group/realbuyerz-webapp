@@ -10,10 +10,10 @@ import {
   SHOW_LESS,
   VIEW,
   VIEW_PROPSALS,
-} from '@/src/constants/LiveBidding';
+} from '@/app/constants/LiveBidding';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { postListingAdCard } from '@/src/constants/postListing';
+import { postListingAdCard } from '@/app/constants/postListing';
 import NotFoundSection from '../Global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import { searching } from '@/src/utils/search';
@@ -49,13 +49,7 @@ const BiddingDetails = ({ height, ads }) => {
           message={'Property id invalid, Please add correct id.'}
         />
       ) : (
-        <Box
-          className="scrollable"
-          sx={{
-            maxHeight: height,
-            marginTop: { xs: '0', md: '-25px' },
-          }}
-        >
+        <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
             {searchValue == null ? (
               <>
@@ -122,15 +116,12 @@ const BiddingDetails = ({ height, ads }) => {
                                 overflow: 'hidden',
                                 whiteSpace: 'nowrap',
                                 ml: 0.4,
-                                fontSize: { xs: '20px' },
+                                fontSize: { xs: '21px' },
                               }}
                             >
                               {item?.title}
                             </Typography>
-                            <Typography
-                              variant="body1"
-                              sx={{ ml: 0.5, mt: 1, fontSize: '12px' }}
-                            >
+                            <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
                               {'Posted 39 minutes ago'}
                             </Typography>
                           </Grid>
@@ -186,7 +177,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 }}
                                 component={'span'}
                               >
-                                {`${item?.amount}`}M
+                                {`${item?.amount}`}
                               </Typography>
                             </Box>
                           </Grid>
@@ -248,7 +239,7 @@ const BiddingDetails = ({ height, ads }) => {
                               variant="body2"
                               sx={{
                                 fontWeight: '500',
-                                fontSize: '14px',
+                                fontSize: '13.8px',
                                 lineHeight: '20.52px',
                                 maxWidth: 'auto',
                                 letterSpacing: '0em',

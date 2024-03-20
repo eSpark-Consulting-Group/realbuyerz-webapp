@@ -78,7 +78,7 @@ const loginAgentsSlice = createSlice({
     handleEdit: (state, action) => {
       const updatedAgent = action.payload;
       const agentIndex = state.findIndex(
-        (agent) => agent?.id === updatedAgent.id
+        (agent) => agent.id === updatedAgent.id
       );
       if (agentIndex !== -1) {
         state[agentIndex] = { ...state[agentIndex], ...updatedAgent };

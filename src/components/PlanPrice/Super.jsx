@@ -9,7 +9,7 @@ import {
   CONNECTIONS,
   LISTING,
   PER_MONTH,
-} from '@/src/constants/PricePlane';
+} from '@/app/constants/PricePlane';
 import BuyButton from './BuyButton';
 
 const Super = ({ SuperData }) => {
