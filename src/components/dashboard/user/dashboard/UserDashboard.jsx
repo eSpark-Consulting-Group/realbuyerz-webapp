@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-import BiddingDetails from '../../BiddingDetails';
 import { findData } from '@/utils/dashboardUtils';
+import PostRequestCard from './PostRequestCard';
 
 const UserDashboard = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
@@ -35,7 +35,7 @@ const UserDashboard = () => {
             p: { xs: 2, sm: 6 },
           }}
         >
-          <BiddingDetails ads={find_user} height={'1098px'} />
+          <PostRequestCard ads={find_user} height={'1098px'} />
         </Box>
       </Box>
     </>

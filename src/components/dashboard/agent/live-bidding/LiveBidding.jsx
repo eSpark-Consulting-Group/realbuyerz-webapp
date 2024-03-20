@@ -4,9 +4,9 @@ import { Grid, Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
-
 import LiveBiddingTitle from './LiveBiddingTitle';
-import BiddingDetails from '../../BiddingDetails';
+import PostListingCard from './PostListingCard';
+
 import { MAIN_TITLE } from '@/src/constants/agent/Live_Bidding';
 
 const LiveBidding = () => {
@@ -26,7 +26,8 @@ const LiveBidding = () => {
               }}
             >
               <LiveBiddingTitle title={MAIN_TITLE} />
-              <BiddingDetails ads={user_ads} height={'1098px'} />
+              <PostListingCard ads={user_ads} height={'1098px'} />
+              {/* <BiddingDetails ads={user_ads} height={'1098px'} /> */}
             </Box>
           </Grid>
           <Grid item xs={12} md={3.5} lg={2.8} xxl={2}>

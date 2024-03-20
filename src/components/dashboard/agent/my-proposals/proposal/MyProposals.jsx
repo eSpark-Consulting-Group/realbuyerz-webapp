@@ -1,19 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { a11yProps } from '@/src/utils/tabs';
+
 import { Box, Divider, Tab, Tabs } from '@mui/material';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import BiddingDetails from '@/src/components/dashboard/BiddingDetails';
+
 import {
   JustifyForFindProposal,
+  a11yProps,
   findData,
   findProposal,
   findSome,
   renderAdCardForProposal,
 } from '@/utils/dashboardUtils';
+import PostListingCard from '../../live-bidding/PostListingCard';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
@@ -173,7 +175,7 @@ const MyProposals = () => {
             ) : (
               <>
                 {currentTab === 'Save Request' ? (
-                  <BiddingDetails ads={find_save} height={'1098px'} />
+                  <PostListingCard ads={find_save} height={'1098px'} />
                 ) : (
                   <>
                     {renderAdCardForProposal(

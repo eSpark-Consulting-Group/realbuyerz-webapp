@@ -15,10 +15,15 @@ import {
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { a11yProps } from '@/src/utils/tabs';
+
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
-import { findData, justifyContent, renderAdCard } from '@/utils/dashboardUtils';
+import {
+  a11yProps,
+  findData,
+  justifyContent,
+  renderAdCard,
+} from '@/utils/dashboardUtils';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);

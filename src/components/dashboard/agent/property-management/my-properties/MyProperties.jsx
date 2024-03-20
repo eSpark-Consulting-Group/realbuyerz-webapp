@@ -14,10 +14,14 @@ import {
   Typography,
 } from '@mui/material';
 
-import { a11yProps } from '@/src/utils/tabs';
 import NotFoundSection from '../../../../Global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
-import { findData, justifyContent, renderAdCard } from '@/utils/dashboardUtils';
+import {
+  a11yProps,
+  findData,
+  justifyContent,
+  renderAdCard,
+} from '@/utils/dashboardUtils';
 import { ALL_POSTLISTING_FILTRATION } from '../../../../../constants/agent/My_Properties';
 
 const MyProperties = () => {

@@ -55,7 +55,7 @@ const userAdsSlice = createSlice({
         readyPossession: true,
       },
       {
-        property_id: 670,
+        property_id: 640,
         user_id: 21,
         status: 'submited',
         created_at: '',

@@ -10,7 +10,7 @@ import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalAgentProfile from '@/src/components/dashboard/ProposalAgentProfile';
 import { PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
-import { findSpecificPost, finding_proposals } from '@/utils/dashboardUtils';
+import { checkProposal, findSpecificPost } from '@/utils/dashboardUtils';
 
 const PropertyProposal = () => {
   const { image, back_Button, view_Button, title } = PROPOSAL_PAGE;
@@ -22,9 +22,10 @@ const PropertyProposal = () => {
   );
   const proposals = useSelector((state) => state?.proposals);
   const specificPost = findSpecificPost(userPostings, id);
-  const find_proposals = finding_proposals(
+  const find_proposals = checkProposal(
     specificPost?.property_id,
-    proposals
+    proposals,
+    'Submited'
   );
 
   return (

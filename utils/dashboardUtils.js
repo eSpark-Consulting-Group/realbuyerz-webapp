@@ -1,7 +1,6 @@
 export const findSpecificPost = (userPostings, id) => {
   return userPostings?.find((item) => id == item?.property_id);
 };
-
 export function generateRandomNumber() {
   return Math.floor(Math.random() * 100) + 1;
 }
@@ -94,6 +93,26 @@ export const renderAdCard = (
   } else {
     return null;
   }
+};
+
+export const a11yProps = (index) => {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+};
+
+export const searching = (data, searchValue) => {
+  const result = data?.filter(
+    (ads) =>
+      ads?.location.toLowerCase()?.includes(searchValue) ||
+      ads?.city?.toLowerCase()?.includes(searchValue) ||
+      ads?.area?.toString()?.includes(searchValue) ||
+      ads?.title.toLowerCase()?.includes(searchValue) ||
+      ads?.amount?.toString()?.includes(searchValue) ||
+      ads?.purpose.toLowerCase()?.includes(searchValue)
+  );
+  return result;
 };
 
 // for proposal page
@@ -198,9 +217,22 @@ export const checkData = (data, dataStatus, conected, rejected) => {
   );
 };
 
-export const checkProposal = (property_id, proposals) => {
+export const checkProposal = (property_id, proposals, status) => {
   const find_proposals = proposals?.filter(
-    (proposal) => proposal.property_id == property_id
+    (proposal) =>
+      proposal?.property_id == property_id && proposal?.status == status
   );
   return find_proposals;
+};
+
+export const filteredAds = (searchValue, ads, proposals) => {
+  return searchValue
+    ? searching(ads, searchValue)?.filter(
+        (item) =>
+          checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
+      )
+    : ads?.filter(
+        (item) =>
+          checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
+      );
 };

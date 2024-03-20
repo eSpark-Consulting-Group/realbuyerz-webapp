@@ -29,6 +29,7 @@ import {
 } from '@/src/constants/user/Dashboard';
 import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
 import { generateRandomNumber } from '@/utils/dashboardUtils';
+import Link from 'next/link';
 
 const PostRequest = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,6 +88,7 @@ const PostRequest = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
+        <Link href="/agent/live-bidding">agent</Link>
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{

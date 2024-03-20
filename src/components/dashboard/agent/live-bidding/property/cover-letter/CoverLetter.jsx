@@ -87,6 +87,7 @@ const CoverLetter = () => {
       values.property_id = Number(id);
       values.proposal_id = randomNumber;
       values.agent_id = current_user_id;
+      values.status = 'Submited';
       handleSubmit(values);
       action.resetForm();
     },
