@@ -69,7 +69,7 @@ const PropertyInformation = ({ postData, formik }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
-                  gap: 2,
+                  gap: 1,
                   mt: 0.8,
                   mb: 1,
                 }}
@@ -89,13 +89,16 @@ const PropertyInformation = ({ postData, formik }) => {
                 <TextField
                   placeholder={item?.placeholder}
                   sx={{
-                    mb: 3,
-                    width: { xs: '100%', lg: '745px' },
+                    mb: 1,
+                    width: { xs: '100%', lg: '741px' },
                     '& textarea': {
                       minHeight: index === specialIndex ? '192px' : '0',
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label] && `solid 1px red`,
+                      border: formik.errors[item?.label]
+                        ? 'solid 1px red'
+                        : '1px solid #E7E7E7',
+                      borderRadius: '10px',
                     },
                   }}
                   inputProps={{

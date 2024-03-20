@@ -104,7 +104,7 @@ const SubmitButton = ({
                 '@media(min-width: 280px) and (max-width:400px)': {
                   width: '100%',
                 },
-                borderRadius: '5px',
+                borderRadius: '10px',
                 border: '1px solid #FB631C',
                 background: '#FFF',
                 color: '#FB631C',
@@ -116,10 +116,11 @@ const SubmitButton = ({
                   color: '#fff',
                   backgroundColor: '#FB631C',
                 },
+                textTransform: 'capitalize',
               }}
               onClick={handleDraftSubmit}
             >
-              {PROPERTY_INFORMATION?.saveDraft}
+              {PROPERTY_INFORMATION?.saveDraft.toLowerCase()}
             </Button>
           )}
 
@@ -132,7 +133,7 @@ const SubmitButton = ({
               '@media(min-width: 280px) and (max-width:400px)': {
                 width: '100%',
               },
-              borderRadius: '5px',
+              borderRadius: '10px',
               border: '1px solid #FB631C',
               color: '#fff',
               background: '#FB631C',

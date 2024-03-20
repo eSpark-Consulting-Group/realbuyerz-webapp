@@ -43,13 +43,14 @@ const AddAmenities = ({
       </Typography>
       <Button
         sx={{
-          width: '149px',
+          width: '165px',
           height: '45px',
           fontSize: '15px',
-          border: '1px solid #FB631C',
+          lineHeight: '18.15px',
         }}
         onClick={handleClickOpen}
-        startIcon={<AddCircleIcon />}
+        variant="outlined"
+        startIcon={<AddCircleIcon sx={{ fontSize: '24px !important' }} />}
       >
         {PROPERTY_INFORMATION?.addAmentiesLabel}
       </Button>
