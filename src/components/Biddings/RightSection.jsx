@@ -12,8 +12,13 @@ const RightSection = ({
   proposals,
   rightSectionKeys,
 }) => {
-  const { apply_Button, save_Button, send_Proposal, flag_Inappropiate } =
-    rightSectionKeys;
+  const {
+    apply_Button,
+    save_Button,
+    send_Proposal,
+    flag_Inappropiate,
+    // available_Connects,
+  } = rightSectionKeys;
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +39,12 @@ const RightSection = ({
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: { xs: '50%', md: '80%' },
+        mx: 'auto',
+      }}
+    >
       <Box
         sx={{
           width: '100%',
@@ -119,6 +129,32 @@ const RightSection = ({
           }}
         >
           {send_Proposal}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            color: '#126FAA',
+            fontSize: '12px',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            textWrap: 'wrap',
+          }}
+        >
+          {proposals}
+        </Typography>
+      </Box>
+      <Box sx={{ display: 'flex', gap: '5px' }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: '#333',
+            fontSize: '12px',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            textWrap: 'wrap',
+          }}
+        >
+          {/* {available_Connects} */}
         </Typography>
         <Typography
           variant="body1"

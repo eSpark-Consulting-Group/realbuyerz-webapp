@@ -30,7 +30,7 @@ const Page = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2.5}>
+      <Grid container spacing={2}>
         <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
           {specificPost?.property_id !== undefined ? (
             <Box
@@ -42,7 +42,7 @@ const Page = () => {
               }}
             >
               <Grid container>
-                <Grid item xs={12} md={8.5} xl={9.5}>
+                <Grid item xs={12} md={8.5} xl={9}>
                   <Box
                     sx={{
                       width: '100%',
@@ -73,6 +73,7 @@ const Page = () => {
                       propertyCategory={specificPost?.propertyCategory}
                       location={specificPost?.location}
                       width={'70%'}
+                      fontWeight={700}
                     />
                     <PreviewAmountAndFeature
                       area={specificPost?.area}
@@ -82,22 +83,24 @@ const Page = () => {
                       amountCurrency={specificPost?.amountCurrency}
                       instalmentAvailable={specificPost?.instalmentAvailable}
                       readyPossession={specificPost?.readyPossession}
+                      fontWeight={700}
                     />
                     <PreviewFeatureAndAmenities
                       amenities={amenities}
                       specificPost={specificPost}
+                      fontWeight={700}
                     />
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={3.5} xl={2.5}>
+                <Grid item xs={12} md={3.5} xl={3}>
                   <Box
                     sx={{
                       width: '100%',
                       height: 'auto',
                       borderBottom: '1px solid #E4E4E4',
-                      px: { xs: 4, md: 3 },
-                      pb: 0.8,
-                      pt: 7,
+                      // px: { xs: 4, md: 2 },
+                      // pb: 0.8,
+                      pt: 4,
                     }}
                   >
                     <RightSection

@@ -24,7 +24,6 @@ import { VIEWPROPOSAL } from '@/src/constants/ViewProposal';
 
 const Page = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
-  const [isButtonClicked, setIsButtonClicked] = useState(false);
   const { image, back_Proposal_Button } = ProposalsPage;
   const { areaAndAmount, location, amenities, images, videos } = previewData;
   const pathname = usePathname();
