@@ -15,8 +15,6 @@ import BidMedia from '@/src/components/dashboard/BidMedia';
 import Amount from '@/src/components/dashboard/preview/Amount';
 import LiveBiddingPropertiesList from '@/src/components/dashboard/LiveBiddingPropertiesList';
 
-import { postListingAdCard } from '@/app/constants/postListing';
-import { ESTIMATE_RANGE } from '@/src/constants/Nav_Data';
 import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
 import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 import {
@@ -25,6 +23,10 @@ import {
   findSpecificPost,
 } from '@/utils/dashboardUtils';
 import { PROPOSAL } from '@/src/constants/agent/Proposal';
+import {
+  ESTIMATE_RANGE,
+  postListingAdCard,
+} from '@/src/constants/user/Dashboard';
 
 const ProposalDetail = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);
