@@ -1,8 +1,8 @@
 import React from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 
-import { FEATURE_STYLES } from '@/src/constants/Home';
-import { POSITIONS } from '@/src/constants/Home';
+import { FEATURE_STYLES } from '@/app/constants/Home';
+import { POSITIONS } from '@/app/constants/Home';
 
 const LinearProgressBar = ({ position, hovered }) => {
   return (

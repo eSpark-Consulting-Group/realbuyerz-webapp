@@ -19,7 +19,6 @@ const ProjectsSlider = ({ data, category }) => {
   };
   const filterData = data?.filter(
     (item) => item?.propertyCategory === capCategory
-    // && item?.status === 'submit'
   );
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;

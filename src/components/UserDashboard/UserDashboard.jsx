@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { Divider } from '@mui/material';
 
-import { LIVE_BIDDING_DATA } from '@/src/constants/LiveBidding';
+import { LIVE_BIDDING_DATA } from '@/app/constants/LiveBidding';
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
 import BiddingDetails from '../Biddings/BiddingDetails';

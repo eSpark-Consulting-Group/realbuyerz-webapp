@@ -14,7 +14,7 @@ import {
   AGENT_MENU_ITEM,
   HEADER_MENU,
   USER_MENU_ITEM,
-} from '@/src/constants/LiveBidding';
+} from '@/app/constants/LiveBidding';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 

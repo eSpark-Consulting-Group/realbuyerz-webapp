@@ -5,7 +5,7 @@ import { Box, Grid } from '@mui/material';
 import {
   PROPERTY_BUYING_DETAIL,
   PROPERTY_INFORMATION,
-} from '@/src/constants/postListing';
+} from '@/app/constants/postListing';
 import PostTitle from './PostTitle';
 import SelectProperyType from './SelectPropertyType';
 import SelectCityType from './SelectCity';

@@ -4,7 +4,7 @@ import { Box, Grid, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import { COMING_SOON } from '@/src/constants/Global';
+import { COMING_SOON } from '@/app/constants/Global';
 
 const ComingSoon = () => (
   <Box

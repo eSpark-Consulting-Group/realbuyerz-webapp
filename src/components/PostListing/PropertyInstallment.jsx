@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { createInstallmentState } from '@/src/utils/propertyInstallment';
+import { createInstallmentState } from '@/utils/propertyInstallment';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,

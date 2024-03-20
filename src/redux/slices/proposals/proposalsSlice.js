@@ -1,4 +1,4 @@
-// import { PROPOSALS_DATA } from '@/src/constants/finalConstants/Proposals';
+// import { PROPOSALS_DATA } from '@/app/constants/finalConstants/Proposals';
 import { createSlice } from '@reduxjs/toolkit';
 
 const proposalsSlice = createSlice({

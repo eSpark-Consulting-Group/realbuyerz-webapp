@@ -3,7 +3,7 @@ import { Typography, Box, Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import AmenitiesModal from './AmenitiesModal';
-import { PROPERTY_INFORMATION } from '@/src/constants/postListing';
+import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const AddAmenities = ({
   onSelected,
