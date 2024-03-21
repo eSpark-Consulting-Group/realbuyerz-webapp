@@ -117,58 +117,34 @@ const RightSection = ({
           <FlagIcon fontSize={'12px'} /> {flag_Inappropiate}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', gap: '5px', pb: 1 }}>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#333',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {send_Proposal}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {proposals}
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'flex', gap: '5px' }}>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#333',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {/* {available_Connects} */}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {proposals}
-        </Typography>
-      </Box>
+      {proposals && (
+        <Box sx={{ display: 'flex', gap: '5px', pb: 1 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: '#333',
+              fontSize: '12px',
+              fontStyle: 'normal',
+              fontWeight: '400',
+              textWrap: 'wrap',
+            }}
+          >
+            {send_Proposal}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: '#126FAA',
+              fontSize: '12px',
+              fontStyle: 'normal',
+              fontWeight: '400',
+              textWrap: 'wrap',
+            }}
+          >
+            {proposals}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
