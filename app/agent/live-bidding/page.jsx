@@ -2,7 +2,7 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
 
-import { MAIN_TITLE, PROFILE_INFO } from '@/src/constants/LiveBidding';
+import { MAIN_TITLE, PROFILE_INFO } from '@/app/constants/LiveBidding';
 
 import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import LiveBiddingTitle from '@/src/components/Biddings/LiveBiddingTitle';

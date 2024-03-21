@@ -7,7 +7,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
+import Link from 'next/link';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
@@ -57,7 +58,7 @@ const OurHomePartners = ({ data }) => {
           pb: '30px',
         }}
       >
-        <Heading heading={FEATURED_HEADINGS?.homePartners} />
+        <Heading heading={FEATURED_HEADINGS.homePartners} />
       </Box>
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>
@@ -72,13 +73,15 @@ const OurHomePartners = ({ data }) => {
                   alignItems: 'center',
                 }}
               >
-                <Image
-                  src={partner?.image}
-                  alt={partner?.name}
-                  title={partner?.name}
-                  width={400}
-                  height={100}
-                />
+                <Link href={`/partners/${partner?.id}`}>
+                  <Image
+                    src={partner?.image}
+                    alt={partner?.name}
+                    title={partner?.name}
+                    width={400}
+                    height={100}
+                  />
+                </Link>
               </Box>
             </Box>
           ))}

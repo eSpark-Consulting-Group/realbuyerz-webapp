@@ -3,24 +3,24 @@ import { Box, Typography, Grid, Button } from '@mui/material';
 import React, { useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import BackToDashboard from '@/src/components/UserDashboard/BackToDashboard';
-import { ProposalsPage } from '@/src/constants/postRequest';
+import { ProposalsPage } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import PropertyDetail from '@/src/components/PostListing/preview/PropertyDetail';
-import { previewData } from '@/src/constants/postListing';
+import { previewData } from '@/app/constants/postListing';
 import Location from '@/src/components/PostListing/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/PostListing/preview/PreviewAmountAndFeature';
 import PreviewFeatureAndAmenities from '@/src/components/PostListing/preview/PreviewFeatureAndAmenities';
 import UserProfileImage from '@/src/components/UserDashboard/UserProfileImage';
-import { postListingAdCard } from '@/src/constants/postListing';
+import { postListingAdCard } from '@/app/constants/postListing';
 
 // import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import BidMedia from '@/src/components/Biddings/BidMedia';
-import { PROPOSAL } from '@/src/constants/Proposals';
+import { PROPOSAL } from '@/app/constants/Proposals';
 import Amount from '@/src/components/PostListing/preview/Amount';
 import LiveBiddingPropertiesList from '@/src/components/Biddings/LiveBiddingPropertiesList';
-import { ESTIMATE_RANGE } from '@/src/constants/LiveBidding';
-import { VIEWPROPOSAL } from '@/src/constants/ViewProposal';
+import { ESTIMATE_RANGE } from '@/app/constants/LiveBidding';
+import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
 
 const Page = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);

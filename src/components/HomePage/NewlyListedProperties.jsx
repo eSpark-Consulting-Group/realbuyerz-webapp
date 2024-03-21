@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS } from '@/app/constants/Home';
 
 const NewlyListedProperties = ({ data }) => {
   return (

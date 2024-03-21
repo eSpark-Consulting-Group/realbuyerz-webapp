@@ -1,8 +1,8 @@
 'use client';
-import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/postListing';
+import { ALL_POSTLISTING_FILTRATION } from '@/app/constants/postListing';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
-import { a11yProps } from '@/src/utils/tabs';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { a11yProps } from '@/src/utils/tabs';
 import {
   Autocomplete,
   Box,

@@ -5,7 +5,7 @@ import { Box } from '@mui/system';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Button, IconButton, Menu, TextField } from '@mui/material';
 
-import { CUSTOM_COLOR } from '@/src/constants/DashboardHeader';
+import { CUSTOM_COLOR } from '@/app/constants/DashboardHeader';
 
 const SearchAndNotificationResponsiveButton = ({
   handleOpenUserMenu,

@@ -23,9 +23,9 @@ const AdInformation = ({ propertyData, formik }) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundImage: 'url("/images/listing-page/realbuyer.svg")',
-          backgroundSize: '80% 80%',
+          backgroundSize: '60% 60%',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center top 65%',
+          backgroundPosition: 'center top 38%',
         }}
       >
         <Box

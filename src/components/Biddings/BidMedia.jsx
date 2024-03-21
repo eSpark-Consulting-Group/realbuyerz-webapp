@@ -4,7 +4,7 @@ import { Typography, Button, Modal } from '@mui/material';
 import Image from 'next/image';
 
 import BidSlider from './BidSlider';
-import { BIDDINGS } from '@/src/constants/Biddings';
+import { BIDDINGS } from '@/app/constants/Biddings';
 import { Box } from '@mui/system';
 import MobleScreenSlider from './MobleScreenSlider';
 import VideoSlider from './VideoSlider';

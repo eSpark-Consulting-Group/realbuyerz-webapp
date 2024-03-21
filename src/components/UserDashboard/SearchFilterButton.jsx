@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button, FormGroup, Grid, TextField } from '@mui/material';
 
-import { FILTER_BUTTON } from '@/src/constants/Dashboard';
+import { FILTER_BUTTON } from '@/app/constants/Dashboard';
 import TuneIcon from '@mui/icons-material/Tune';
 
 const SearchFilterButton = () => {

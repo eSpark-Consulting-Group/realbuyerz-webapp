@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Typography, Box, TextField, Autocomplete } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import { createPropertySizeState } from '@/src/utils/propertySizeInfo';
+import { createPropertySizeState } from '@/utils/propertySizeInfo';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -163,7 +163,6 @@ const PropertyAreaSize = ({
                       {
                         color: '#777777',
                         display: 'inline-flex',
-                        visibility: 'visible',
                         '&:hover': {
                           color: '#777777',
                         },

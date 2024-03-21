@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Divider } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { ProposalsPage } from '@/src/constants/postRequest';
+import { ProposalsPage } from '@/app/constants/postRequest';
 import { useSelector } from 'react-redux';
 
 import ProposalDetails from '@/src/components/UserDashboard/ProposalDetails';

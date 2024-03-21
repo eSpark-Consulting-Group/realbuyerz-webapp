@@ -4,7 +4,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import EditIcon from '@mui/icons-material/Edit';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-export default function ButtonBaseDemo({ url, handleOpen }) {
+export default function ButtonBaseDemo({ url, handleOpen, data }) {
   const image = {
     url: url,
   };
@@ -58,6 +58,7 @@ export default function ButtonBaseDemo({ url, handleOpen }) {
             '&:hover, &.Mui-focusVisible': {
               '& .editIcon': {
                 display: 'block',
+                color: '#FB631C',
               },
             },
           }}
@@ -85,16 +86,16 @@ export default function ButtonBaseDemo({ url, handleOpen }) {
               display: 'none',
               zIndex: 2,
               transition: 'opacity 0.9s ease-in-out',
+              '&:hover': { color: '#FB631C' },
             }}
           />
         </ButtonBase>
       ) : (
         <Image
-          src={url}
-          alt={'Agnet Profile'}
-          width={400}
-          height={400}
-          style={{ width: '100%', height: '100%', borderRadius: '100%' }}
+          src={data?.profile_image}
+          height={179}
+          width={197}
+          alt={data?.title}
         />
       )}
     </Box>

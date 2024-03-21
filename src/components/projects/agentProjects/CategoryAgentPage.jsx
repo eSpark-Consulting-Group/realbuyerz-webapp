@@ -23,7 +23,7 @@ const CategoryAgentPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const filterData = projects?.filter(
     (item) =>
-      item?.user_id == agentId &&
+      item?.agent_id == agentId &&
       item?.propertyCategory === capCategory &&
       item?.purpose === capAdsType
   );

@@ -1,4 +1,4 @@
-import { USERS_DATA } from '@/src/constants/user';
+import { USERS_DATA } from '@/app/constants/user';
 import { createSlice } from '@reduxjs/toolkit';
 const userdata = USERS_DATA;
 const users = {

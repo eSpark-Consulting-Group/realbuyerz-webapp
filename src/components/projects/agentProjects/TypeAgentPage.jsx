@@ -21,8 +21,9 @@ const TypeAgentPage = () => {
 
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const filterData = projects?.filter(
-    (item) => item?.user_id == agentId && item?.purpose === capAdsType
+    (item) => item?.agent_id == agentId && item?.purpose === capAdsType
   );
+
   function capitalizeFirstLetter(text) {
     return text.replace(/\b\w/g, (match) => match.toUpperCase());
   }

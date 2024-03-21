@@ -33,9 +33,6 @@ const ProposalAgentProfile = ({
                   sx={{
                     height: { xs: '550px', md: '180px' },
                     marginTop: '15px',
-                    '@media (min-width: 960px) and (max-width: 1100px)': {
-                      marginBottom: '40px',
-                    },
                   }}
                 >
                   <UserProfileDetails

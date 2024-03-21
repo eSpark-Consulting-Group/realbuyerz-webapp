@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-import { Buy_Product_Data } from '@/src/constants/BuyProduct';
+import { Buy_Product_Data } from '@/app/constants/BuyProduct';
 import BuyProductTable from './BuyProductTable';
 import { useSelector } from 'react-redux';
 
@@ -18,7 +18,7 @@ const Subscription = ({ title }) => {
         backgroundColor: '#fff',
       }}
     >
-      <Typography variant="h4" sx={{ px: { xs: 3, md: 3 }, pb: { xs: 2 } }}>
+      <Typography variant="h4" sx={{ px: { xs: 4 }, pb: { xs: 2 } }}>
         {title}
       </Typography>
       <BuyProductTable columns={BuyProductColumns} rows={packages} />

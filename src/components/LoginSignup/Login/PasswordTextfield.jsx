@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/src/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
 
 const PasswordFields = ({ handleInputChange }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);

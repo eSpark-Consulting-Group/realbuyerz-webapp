@@ -18,8 +18,8 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
           gridTemplateColumns: {
             xs: 'repeat(1, 1fr)',
             sm: 'repeat(1, 1fr)',
-            md: 'repeat(1, 1fr)',
-            lg: 'repeat(1, 1fr)',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(2, 1fr)',
           },
           '@media (min-width: 1200px) and (max-width: 1439px)': {
             gridTemplateColumns: 'repeat(2, 1fr)',

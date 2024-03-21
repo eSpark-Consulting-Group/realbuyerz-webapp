@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import SidebarAccordion from './SidebarAccordion';
 import { usePathname } from 'next/navigation';
-import { Agent_Routes, User_Routes } from '@/src/constants/sidebar';
+import { Agent_Routes, User_Routes } from '@/app/constants/sidebar';
 
 const Sidebar = () => {
   const pathName = usePathname();
