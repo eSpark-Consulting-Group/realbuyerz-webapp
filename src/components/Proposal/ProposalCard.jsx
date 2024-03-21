@@ -211,7 +211,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Purpose:
@@ -223,7 +223,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#33333',
                         marginLeft: '5px',
                       }}
                     >
@@ -244,7 +244,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Proporty Type:
@@ -256,7 +256,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#33333',
                         marginLeft: '5px',
                       }}
                     >
@@ -277,7 +277,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       City:
@@ -289,7 +289,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#33333',
                         marginLeft: '5px',
                       }}
                     >
@@ -310,7 +310,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: propertyColor ? propertyColor : '#126FAA',
                       }}
                     >
                       Location:
@@ -322,7 +322,7 @@ const ProposalCard = ({
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: keyColor ? keyColor : '#126FAA',
                         marginLeft: '5px',
                       }}
                     >

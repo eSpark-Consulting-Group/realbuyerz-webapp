@@ -17,8 +17,8 @@ import {
   handleConnectProposal,
   handleRejectedProposal,
 } from '@/src/redux/slices/proposals/proposalsSlice';
-import { ProposalsPage } from '@/src/constants/postRequest';
-import { previewData } from '@/src/constants/postListing';
+import { ProposalsPage } from '@/app/constants/postRequest';
+import { previewData } from '@/app/constants/postListing';
 
 const Page = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -135,6 +135,9 @@ const Page = () => {
                     flexDirection: { xs: 'column', md: 'row' },
                     '@media (min-width: 700px) and (max-width: 950px)': {
                       flexDirection: 'row',
+                    },
+                    '@media (min-width: 280px) and (max-width: 960px)': {
+                      marginTop: '10px',
                     },
                   }}
                 >
