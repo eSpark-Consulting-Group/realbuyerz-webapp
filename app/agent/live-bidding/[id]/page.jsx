@@ -99,8 +99,8 @@ const Page = () => {
                       height: 'auto',
                       borderBottom: '1px solid #E4E4E4',
                       // px: { xs: 4, md: 2 },
-                      // pb: 0.8,
-                      pt: 4,
+                      pb: 3,
+                      pt: 4.2,
                     }}
                   >
                     <RightSection
