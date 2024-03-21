@@ -144,7 +144,7 @@ const AgentProposals = () => {
             width: 'auto',
           }}
         >
-          <Box sx={{ marginLeft: '10PX' }}>
+          <Box sx={{ marginLeft: '10px', marginBottom: '10px' }}>
             {currentTab === 'Active' && (
               <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
                 Active proposals
