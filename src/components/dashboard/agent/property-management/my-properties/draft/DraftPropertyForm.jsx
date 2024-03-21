@@ -107,13 +107,14 @@ const DraftPropertyForm = () => {
               propertyData={POST_LISTING}
               buyData={POST_LISTING?.buy}
             />
-            <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
-            <PropertyGallery formik={formik} />
+            <PropertySize formik={formik} propertyData={POST_LISTING} />
+            <PropertyFeatures formik={formik} propertyData={POST_LISTING} />
+            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
             <SubmitButton
               formik={formik}
               Action={Action}
               updated={updated}
+              propertyData={POST_LISTING}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}

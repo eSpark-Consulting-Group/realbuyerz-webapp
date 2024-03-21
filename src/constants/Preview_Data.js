@@ -103,3 +103,132 @@ export const PROPOSAL_PAGE = {
     // link: '#',
   },
 };
+
+export const BIDDINGS = {
+  amenities: {
+    title: 'Features & Amenities',
+    bedrooms: 'Bedrooms:',
+    bathrooms: 'Bathrooms:',
+    parking: 'Parking:',
+  },
+  addedAmennities: { title: 'AddedAmennities' },
+  amount: {
+    title: 'Amount',
+    range: 'Range',
+  },
+  location: {
+    title: 'Location & Purpose',
+    purpose: 'Purpose:',
+    propertyType: 'Property Type:',
+    city: 'City:',
+    area: 'Location:',
+  },
+  stats: {
+    title: 'Area & Amount',
+    areaSize: 'Area Size',
+    range: 'Range',
+    installment: 'Installment',
+    readyFor: 'Ready for',
+  },
+  applybutton: {
+    title: 'Apply Now',
+    link: '/',
+  },
+  savebutton: {
+    title: 'Save',
+    defaultImage: '/images/heart.svg',
+    hoverImage: '/images/heart-white.svg',
+    link: '/',
+  },
+  ViewAllbutton: {
+    title: 'View All',
+    link: '/',
+  },
+  sendProposal: 'Send a proposal for :',
+  availableConnects: 'Available Connects:',
+  flagInappropiate: 'Flag as inappropiate',
+  connects: 'Connects',
+};
+
+export const PROPERTY_BUYING_DETAIL = {
+  sellingDetails: {
+    title: '',
+    description: '',
+    enterUnit: '',
+    enterAmount: '',
+    installmentAvailable: false,
+    readyForProcession: false,
+    addAmenities: '',
+    uploadImage: '',
+    uploadVideo: '',
+    selectCityOptions: {},
+    selectedPurpose: '',
+    SelectPropertyType: {
+      House: {
+        houseBtn: '',
+        flatBtn: '',
+        upperPortionBtn: '',
+        lowerPortionBtn: '',
+        farmHouseBtn: '',
+        roomBtn: '',
+        rentHouseBtn: '',
+      },
+      Plot: {
+        residentialPlotsBtn: '',
+        commercialPlotsBtn: '',
+        agricultureLandBtn: '',
+        industrailLandBtn: '',
+        plotFileBtn: '',
+        plotFormBtn: '',
+      },
+      Commercial: {
+        officeBtn: '',
+        shopBtn: '',
+        wareHouseBtn: '',
+        buildingBtn: '',
+        otherBtn: '',
+      },
+    },
+    selectedAmenities: {},
+    incrementBtn: {},
+  },
+};
+
+export const reachBuyerData = {
+  title: 'Reach Millions of Buyers on our Platforms',
+  description: 'In a few simple steps!',
+};
+
+export const reachBuyerCoverLetter = {
+  title: 'Fill out the form with the facilities you have!',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+};
+
+export const propertyNames = [
+  'bedrooms',
+  'bathrooms',
+  'parking',
+  'masjid',
+  'on_site_maintenance',
+  'swimming_pool',
+  'washing_area',
+  'fitness_center',
+  'hour_electricity',
+  'corridor',
+  'clubhouse',
+  'auto_generator',
+  'r_o_plant',
+  'playground',
+  'complete_boundary_wall',
+  'basketball_courts',
+  'servant_area',
+  'huge_park',
+  'utility_store',
+  'walking_trails',
+  'concierge_services',
+  'rooftop_terrace',
+  'pet_friendly_facilities',
+  'business_centre',
+  'maintenance',
+  'security',
+];

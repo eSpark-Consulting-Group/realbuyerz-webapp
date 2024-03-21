@@ -1,14 +1,14 @@
 import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
+// import { propertyData } from '@/app/constants/postListing';
 
 import PostTitle from '../PostListing/PostTitle';
 import InstructionsForUpload from '../PostListing/InstructionsForUpload';
 import ImageUploader from '../PostListing/ImageUploader';
 import VideoUploader from '../PostListing/VideoUploader';
 
-const PropertyGallery = ({ formik }) => {
+const PropertyGallery = ({ formik, propertyData }) => {
   const { errors } = formik;
   const maxImages = 5;
   const maxVideos = 5;
@@ -69,7 +69,7 @@ const PropertyGallery = ({ formik }) => {
             },
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION?.postTitles?.imagesvidoes} />
+          <PostTitle text={propertyData?.postTitles?.imagesvidoes} />
           <Box
             sx={{
               width: '100%',
@@ -118,7 +118,7 @@ const PropertyGallery = ({ formik }) => {
                   >
                     <Box
                       component={'img'}
-                      src={PROPERTY_INFORMATION?.upload?.images}
+                      src={propertyData?.upload?.images}
                       sx={{
                         width: { xs: 37, sm: 47 },
                         height: { xs: 35, sm: 45 },
@@ -135,7 +135,7 @@ const PropertyGallery = ({ formik }) => {
                       }}
                     >
                       <span>
-                        {PROPERTY_INFORMATION?.upload?.text}
+                        {propertyData?.upload?.text}
                         <span style={{ marginLeft: '5px', color: '#FF0000' }}>
                           *
                         </span>
@@ -166,7 +166,7 @@ const PropertyGallery = ({ formik }) => {
                         display: { xs: 'none', sm: 'flex' },
                       }}
                     >
-                      {PROPERTY_INFORMATION?.upload?.text}
+                      {propertyData?.upload?.text}
                       <span style={{ marginLeft: '5px', color: '#FF0000' }}>
                         *
                       </span>
@@ -212,9 +212,7 @@ const PropertyGallery = ({ formik }) => {
                       </Box>
                       <Box>
                         <InstructionsForUpload
-                          propertyInformation={
-                            PROPERTY_INFORMATION?.uploadInstruction
-                          }
+                          propertyInformation={propertyData?.uploadInstruction}
                         />
                       </Box>
                     </Box>

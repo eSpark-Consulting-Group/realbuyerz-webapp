@@ -3,7 +3,6 @@ import { Box, Button, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import HideUnhideButton from '../PostListing/HideButton';
 import {
   handleSubmitDraft,
@@ -18,6 +17,7 @@ const SubmitButton = ({
   handleClickOpen,
   formik,
   setAction,
+  propertyData,
   handleOpenSuccessModal,
 }) => {
   const pathName = usePathname();
@@ -119,7 +119,7 @@ const SubmitButton = ({
               }}
               onClick={handleDraftSubmit}
             >
-              {PROPERTY_INFORMATION?.saveDraft}
+              {propertyData?.saveDraft}
             </Button>
           )}
 
@@ -148,8 +148,8 @@ const SubmitButton = ({
             onClick={handleSubmitSubmit}
           >
             {pathName?.includes(cover)
-              ? PROPERTY_INFORMATION?.SubmitProposal
-              : PROPERTY_INFORMATION?.submitAd}
+              ? propertyData?.SubmitProposal
+              : propertyData?.submitAd}
           </Button>
         </Box>
       </Grid>

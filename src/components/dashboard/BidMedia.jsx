@@ -1,14 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import { Typography, Button, Modal } from '@mui/material';
+import { Typography, Button, Modal, Box } from '@mui/material';
 import Image from 'next/image';
 
 import BidSlider from './BidSlider';
-import { BIDDINGS } from '@/app/constants/Biddings';
-import { Box } from '@mui/system';
+
 import MobleScreenSlider from './MobleScreenSlider';
 import VideoSlider from './VideoSlider';
 import DesktopScreenSlider from './DesktopScreenSlider';
+import { BIDDINGS } from '@/src/constants/Preview_Data';
 
 const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
   const [open, setOpen] = useState(false);

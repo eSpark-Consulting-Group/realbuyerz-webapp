@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid, Box } from '@mui/material';
+import { usePathname } from 'next/navigation';
+
 import ListingInfo from '../PostListing/Listinginfo';
 import ReachBuyer from '../PostListing/ReachBuyer';
-
 import {
   reachBuyerCoverLetter,
   reachBuyerData,
-} from '@/app/constants/postListing';
-import { usePathname } from 'next/navigation';
+} from '@/src/constants/Preview_Data';
 
 const BuyersPlatform = ({ propertyData, fontSize }) => {
   const pathName = usePathname();

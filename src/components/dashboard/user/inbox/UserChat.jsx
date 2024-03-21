@@ -1,5 +1,4 @@
 'use client';
-import { a11yProps } from '@/src/utils/tabs';
 import { Box, Grid, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
@@ -66,11 +65,9 @@ const UserChat = () => {
   const tabs = [
     {
       label: 'Inbox',
-      prop: a11yProps(0),
     },
     {
       label: 'Archive',
-      prop: a11yProps(1),
     },
   ];
 

@@ -120,16 +120,18 @@ const CoverLetter = () => {
                 <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
                 <AdInformation formik={formik} propertyData={COVER_LETTER} />
                 <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
-                <PropertySize formik={formik} />
+                <PropertySize formik={formik} propertyData={COVER_LETTER} />
                 <PropertyFeatures
                   formik={formik}
+                  propertyData={COVER_LETTER}
                   setSelectedAmenities={setSelectedAmenities}
                   selectedAmenities={selectedAmenities}
                   handleSeletedAmenites={handleSeletedAmenites}
                 />
-                <PropertyGallery formik={formik} />
+                <PropertyGallery formik={formik} propertyData={COVER_LETTER} />
                 <SubmitButton
                   formik={formik}
+                  propertyData={COVER_LETTER}
                   handleClickOpen={handleClickOpen}
                 />
                 <PreviewModal

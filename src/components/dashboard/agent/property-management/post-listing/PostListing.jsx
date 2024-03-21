@@ -102,16 +102,18 @@ const PostListing = () => {
             <BuyersPlatform propertyData={POST_LISTING} />
             <AdInformation formik={formik} propertyData={POST_LISTING} />
             <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
-            <PropertySize formik={formik} />
+            <PropertySize formik={formik} propertyData={POST_LISTING} />
             <PropertyFeatures
               formik={formik}
+              propertyData={POST_LISTING}
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
             />
-            <PropertyGallery formik={formik} />
+            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
             <SubmitButton
               formik={formik}
+              propertyData={POST_LISTING}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
             />

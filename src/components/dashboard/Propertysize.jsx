@@ -2,15 +2,12 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-} from '@/app/constants/postListing';
 import PostTitle from '../PostListing/PostTitle';
 import PropertyAreaSize from '../PostListing/PropertyAreaSize';
 import PropertyInstallment from '../PostListing/PropertyInstallment';
+import { PROPERTY_BUYING_DETAIL } from '@/src/constants/Preview_Data';
 
-const PropertySize = ({ formik }) => {
+const PropertySize = ({ formik, propertyData }) => {
   return (
     <Grid
       container
@@ -42,7 +39,7 @@ const PropertySize = ({ formik }) => {
             height: 'auto',
           }}
         >
-          <PostTitle text={PROPERTY_INFORMATION?.postTitles?.sizeprice} />
+          <PostTitle text={propertyData?.postTitles?.sizeprice} />
           <Box
             sx={{
               width: '100%',
@@ -63,15 +60,15 @@ const PropertySize = ({ formik }) => {
               }}
             >
               <PropertyAreaSize
-                propertySizeInformation={PROPERTY_INFORMATION?.propertySize}
+                propertySizeInformation={propertyData?.propertySize}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
-                selectCity={PROPERTY_INFORMATION?.selectCityOptions}
-                aeraSizes={PROPERTY_INFORMATION?.aeraSizes}
-                currency={PROPERTY_INFORMATION?.currency}
+                selectCity={propertyData?.selectCityOptions}
+                aeraSizes={propertyData?.aeraSizes}
+                currency={propertyData?.currency}
                 formik={formik}
               />
               <PropertyInstallment
-                propertyInstallmentInfo={PROPERTY_INFORMATION?.installment}
+                propertyInstallmentInfo={propertyData?.installment}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
                 formik={formik}
               />

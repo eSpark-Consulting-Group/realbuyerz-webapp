@@ -11,6 +11,7 @@ const AmenitiesModal = (props) => {
     onSelected,
     formik,
     setOpen,
+    propertyInformation,
     setSelectedAmenities,
     selectedAmenities,
     handleSeletedAmenites,
@@ -54,6 +55,7 @@ const AmenitiesModal = (props) => {
               formik={formik}
               cancel={handleCancelButton}
               facilitiesData={data}
+              propertyInformation={propertyInformation}
               onSelected={onSelected}
               setOpen={setOpen}
               setSelectedAmenities={setSelectedAmenities}

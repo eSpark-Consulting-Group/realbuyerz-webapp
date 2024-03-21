@@ -1,10 +1,9 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import MapFrame from './MapFrame';
 
-const SelectLocationType = () => {
+const SelectLocationType = ({ propertyInformation }) => {
   return (
     <>
       <Box
@@ -32,7 +31,7 @@ const SelectLocationType = () => {
             <Box
               component={'img'}
               sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-              src={PROPERTY_INFORMATION?.location?.images}
+              src={propertyInformation?.location?.images}
               alt={'location'}
             />
             <Typography
@@ -43,7 +42,7 @@ const SelectLocationType = () => {
                 display: { xs: 'flex', sm: 'none' },
               }}
             >
-              {PROPERTY_INFORMATION?.location?.text}
+              {propertyInformation?.location?.text}
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
           </Box>
@@ -70,7 +69,7 @@ const SelectLocationType = () => {
                 display: { xs: 'none', sm: 'flex' },
               }}
             >
-              {PROPERTY_INFORMATION?.location?.text}
+              {propertyInformation?.location?.text}
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
             <MapFrame width="100%" height="150px" />

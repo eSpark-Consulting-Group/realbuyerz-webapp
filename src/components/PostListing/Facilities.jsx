@@ -2,7 +2,6 @@
 import React from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import { useDispatch } from 'react-redux';
 import {
   handleAdaminities,
@@ -15,6 +14,7 @@ const Facilities = ({
   formik,
   setOpen,
   selectedAmenities,
+  propertyInformation,
   setSelectedAmenities,
 }) => {
   const dispatch = useDispatch();
@@ -143,7 +143,7 @@ const Facilities = ({
           onClick={cancel}
         >
           {' '}
-          {PROPERTY_INFORMATION?.cancel}
+          {propertyInformation?.cancel}
         </Button>
         <Button
           style={{
@@ -155,7 +155,7 @@ const Facilities = ({
           }}
           onClick={handleSaveButton}
         >
-          {PROPERTY_INFORMATION?.save}
+          {propertyInformation?.save}
         </Button>
       </Box>
     </>

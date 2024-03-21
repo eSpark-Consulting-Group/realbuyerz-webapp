@@ -4,7 +4,6 @@ import { Box, Grid, Tab, Tabs } from '@mui/material';
 
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
-import { a11yProps } from '@/src/utils/tabs';
 import { chatRooms } from '@/src/constants/Chats';
 
 const AgentChat = () => {
@@ -64,11 +63,9 @@ const AgentChat = () => {
   const tabs = [
     {
       label: 'Inbox',
-      prop: a11yProps(0),
     },
     {
       label: 'Archive',
-      prop: a11yProps(1),
     },
   ];
 

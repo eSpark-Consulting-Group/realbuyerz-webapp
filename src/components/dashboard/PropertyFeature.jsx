@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 import PostTitle from '../PostListing/PostTitle';
 import PropertyFacilities from '../PostListing/PropertyFacilities';
-
 import AddAmenities from '../PostListing/AddAmenities';
 
 const PropertyFeatures = ({
@@ -12,6 +10,7 @@ const PropertyFeatures = ({
   setSelectedAmenities,
   selectedAmenities,
   handleSeletedAmenites,
+  propertyData,
 }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -42,9 +41,7 @@ const PropertyFeatures = ({
             backgroundColor: 'white',
           }}
         >
-          <PostTitle
-            text={PROPERTY_INFORMATION?.postTitles?.featureamenities}
-          />
+          <PostTitle text={propertyData?.postTitles?.featureamenities} />
           <Box
             sx={{
               display: 'flex',
@@ -66,13 +63,14 @@ const PropertyFeatures = ({
               }}
             >
               <PropertyFacilities
-                propertyInformation={PROPERTY_INFORMATION?.feature}
+                propertyInformation={propertyData?.feature}
                 formik={formik}
               />
               <AddAmenities
                 formik={formik}
                 onSelected={handleSelectedItems}
                 selectedItems={selectedItems}
+                propertyInformation={propertyData}
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}

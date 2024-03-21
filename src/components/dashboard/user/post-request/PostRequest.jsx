@@ -108,9 +108,10 @@ const PostRequest = () => {
               propertyData={POST_REQUEST}
               buyData={POST_REQUEST?.buy}
             />
-            <PropertySize formik={formik} />
+            <PropertySize formik={formik} propertyData={POST_REQUEST} />
             <PropertyFeatures
               formik={formik}
+              propertyData={POST_REQUEST}
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
@@ -118,6 +119,7 @@ const PostRequest = () => {
             <SubmitButton
               formik={formik}
               setAction={setAction}
+              propertyData={POST_REQUEST}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}
             />

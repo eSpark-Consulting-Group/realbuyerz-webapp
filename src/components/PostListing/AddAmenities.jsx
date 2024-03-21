@@ -3,13 +3,13 @@ import { Typography, Box, Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import AmenitiesModal from './AmenitiesModal';
-import { PROPERTY_INFORMATION } from '@/app/constants/postListing';
 
 const AddAmenities = ({
   onSelected,
   formik,
   setSelectedAmenities,
   selectedAmenities,
+  propertyInformation,
   handleSeletedAmenites,
 }) => {
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ const AddAmenities = ({
           mb: 1,
         }}
       >
-        {PROPERTY_INFORMATION?.addiotionalFeature}
+        {propertyInformation?.addiotionalFeature}
       </Typography>
       <Button
         sx={{
@@ -51,14 +51,15 @@ const AddAmenities = ({
         variant="outlined"
         startIcon={<AddCircleIcon />}
       >
-        {PROPERTY_INFORMATION?.addAmentiesLabel}
+        {propertyInformation?.addAmentiesLabel}
       </Button>
       <AmenitiesModal
         open={open}
         setOpen={setOpen}
         formik={formik}
         onClose={() => handleClose()}
-        data={PROPERTY_INFORMATION?.addAmenities}
+        data={propertyInformation?.addAmenities}
+        propertyInformation={propertyInformation}
         onSelected={setSelectedAmenities}
         setSelectedAmenities={setSelectedAmenities}
         selectedAmenities={selectedAmenities}

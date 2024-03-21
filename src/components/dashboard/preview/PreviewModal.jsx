@@ -1,14 +1,13 @@
 import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
+import { usePathname } from 'next/navigation';
 
-// import { BIDDINGS } from '@/app/constants/Biddings';
 import Location from './Location';
 import PreviewAmountAndFeature from './PreviewAmountAndFeature';
 import PropertyDetail from './PropertyDetail';
 import MediaComponent from './MediaComponent';
-// import { previewData } from '@/app/constants/postListing';
 import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
-import { usePathname } from 'next/navigation';
+
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 
 const PreviewModal = (props) => {

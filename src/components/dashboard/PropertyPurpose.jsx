@@ -2,10 +2,6 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import {
-  PROPERTY_BUYING_DETAIL,
-  PROPERTY_INFORMATION,
-} from '@/app/constants/postListing';
 import PostTitle from '../PostListing/PostTitle';
 import SelectProperyType from '../PostListing/SelectPropertyType';
 import SelectCityType from '../PostListing/SelectCity';
@@ -66,29 +62,26 @@ const PropertyPurpose = ({ propertyData, formik }) => {
               }}
             >
               <PropertyStatus
-                propertyInformation={PROPERTY_INFORMATION?.purpose}
-                propertySell={PROPERTY_INFORMATION?.buy}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                propertyInformation={propertyData?.purpose}
+                propertySell={propertyData?.buy}
                 propertyData={propertyData}
                 formik={formik}
               />
               <SelectProperyType
-                image={PROPERTY_INFORMATION?.propertyType?.images}
-                label={PROPERTY_INFORMATION?.propertyType?.text}
-                iconTitle={PROPERTY_INFORMATION?.IconTitle}
-                plotType={PROPERTY_INFORMATION?.propertyPlot}
-                commercialType={PROPERTY_INFORMATION?.propertyCommercial}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
+                image={propertyData?.propertyType?.images}
+                label={propertyData?.propertyType?.text}
+                iconTitle={propertyData?.IconTitle}
+                plotType={propertyData?.propertyPlot}
+                commercialType={propertyData?.propertyCommercial}
                 formik={formik}
               />
               <SelectCityType
-                image={PROPERTY_INFORMATION?.city?.images}
-                label={PROPERTY_INFORMATION?.city?.text}
-                propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}
-                cityOptions={PROPERTY_INFORMATION?.selectCityOptions}
+                image={propertyData?.city?.images}
+                label={propertyData?.city?.text}
+                cityOptions={propertyData?.selectCityOptions}
                 formik={formik}
               />
-              <SelectLocationType />
+              <SelectLocationType propertyInformation={propertyData} />
             </Box>
           </Box>
         </Box>

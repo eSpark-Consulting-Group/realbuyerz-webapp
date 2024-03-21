@@ -1,4 +1,5 @@
-import { PROPERTY_BUYING_DETAIL } from '@/app/constants/postListing';
+import { PROPERTY_BUYING_DETAIL } from '@/src/constants/Preview_Data';
+
 export const createPropertySizeState = (
   propertySizeInformation,
   propertyBuyingDetails,

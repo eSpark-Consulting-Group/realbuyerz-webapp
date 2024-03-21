@@ -104,12 +104,13 @@ const UserDraftForm = () => {
               propertyData={POST_REQUEST}
               buyData={POST_REQUEST?.buy}
             />
-            <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertySize formik={formik} propertyData={POST_REQUEST} />
+            <PropertyFeatures formik={formik} propertyData={POST_REQUEST} />
             <SubmitButton
               formik={formik}
               Action={Action}
               updated={updated}
+              propertyData={POST_REQUEST}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}
