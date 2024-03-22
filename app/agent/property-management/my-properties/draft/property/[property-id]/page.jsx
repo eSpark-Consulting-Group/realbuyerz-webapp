@@ -21,12 +21,14 @@ import ProposalModal from '@/src/components/Modal/ProposalModal';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
 
 const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [open, setOpen] = useState(false);
   const [Action, setAction] = useState('');
   const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
@@ -37,6 +39,13 @@ const Page = () => {
   useEffect(() => {
     serUpdated(find_ad || {});
   }, [find_ad]);
+
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
 
   const currentUser = useSelector((state) => state?.currentUser?.user);
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -87,6 +96,28 @@ const Page = () => {
     connects: `${updated?.connects || ''}`,
     bathrooms: `${updated?.bathrooms || ''}`,
     parking: `${updated?.parking || ''}`,
+    clubhouse: `${updated?.clubhouse || ''}`,
+    swimming_pool: `${updated?.swimming_pool || ''}`,
+    fitness_center: `${updated?.fitness_center || ''}`,
+    playground: `${updated?.playground || ''}`,
+    servant_area: `${updated?.servant_area || ''}`,
+    utility_store: `${updated?.utility_store || ''}`,
+    rooftop_terrace: `${updated?.rooftop_terrace || ''}`,
+    on_site_maintenance: `${updated?.on_site_maintenance || ''}`,
+    washing_area: `${updated?.washing_area || ''}`,
+    hour_electricity: `${updated?.hour_electricity || ''}`,
+    auto_generator: `${updated?.auto_generator || ''}`,
+    complete_boundary_wall: `${updated?.complete_boundary_wall || ''}`,
+    walking_trails: `${updated?.walking_trails || ''}`,
+    pet_friendly_facilities: `${updated?.pet_friendly_facilities || ''}`,
+    security: `${updated?.security || ''}`,
+    masjid: `${updated?.masjid || ''}`,
+    corridor: `${updated?.corridor || ''}`,
+    r_o_plant: `${updated?.r_o_plant || ''}`,
+    basketball_courts: `${updated?.basketball_courts || ''}`,
+    huge_park: `${updated?.huge_park || ''}`,
+    concierge_services: `${updated?.concierge_services || ''}`,
+    business_centre: `${updated?.business_centre || ''}`,
     purpose: `${updated?.purpose || ''}`,
     propertyCategory: `${updated?.propertyCategory || ''}`,
     propertyType: `${updated?.propertyType || ''}`,
@@ -129,7 +160,12 @@ const Page = () => {
               buyData={POST_REQUEST?.buy}
             />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertyFeatures
+              formik={formik}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}
