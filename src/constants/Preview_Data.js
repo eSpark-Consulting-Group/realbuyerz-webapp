@@ -242,3 +242,5 @@ export const VIEWPROPOSAL = {
   viewLessDetails: 'View less details',
   viewMoreDetails: 'View more details',
 };
+
+// ('check');
