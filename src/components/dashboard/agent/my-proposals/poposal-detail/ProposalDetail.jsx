@@ -15,8 +15,11 @@ import BidMedia from '@/src/components/dashboard/BidMedia';
 import Amount from '@/src/components/dashboard/preview/Amount';
 import LiveBiddingPropertiesList from '@/src/components/dashboard/LiveBiddingPropertiesList';
 
-import { VIEWPROPOSAL } from '@/app/constants/ViewProposal';
-import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
+import {
+  PREVIEW_DATA,
+  PROPOSAL_PAGE,
+  VIEWPROPOSAL,
+} from '@/src/constants/Preview_Data';
 import {
   findAgent,
   findSingleProposal,
