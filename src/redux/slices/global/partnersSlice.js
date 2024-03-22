@@ -1,4 +1,4 @@
-import { PARTNERS } from '@/app/constants/Home';
+import { PARTNERS } from '@/src/constants/Home';
 import { createSlice } from '@reduxjs/toolkit';
 
 const partners = { PARTNERS };

@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import PostTitle from '../PostListing/PostTitle';
-import PropertyInformation from '../PostListing/PropertyInformation';
+import PostTitle from './ads-form-components/PostTitle';
+import PropertyInformation from './ads-form-components/PropertyInformation';
 
 const AdInformation = ({ propertyData, formik }) => {
   return (

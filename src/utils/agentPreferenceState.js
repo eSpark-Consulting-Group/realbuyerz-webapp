@@ -1,5 +1,5 @@
 import { AGENT_PREFERENCES } from '@/src/constants/Preference';
-import { USERS_DATA } from '@/app/constants/user';
+import { USERS_DATA } from '@/src/constants/user';
 
 export const createInitialState = () => ({
   emailData: {

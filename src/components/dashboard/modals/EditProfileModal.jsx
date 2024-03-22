@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Image from 'next/image';
-import ProfileCroper from '../ProfileCroper';
+
 import { Button } from '@mui/material';
+import ProfileCroper from '../ProfileCroper';
 
 export default function EditProfileModal({
   open,

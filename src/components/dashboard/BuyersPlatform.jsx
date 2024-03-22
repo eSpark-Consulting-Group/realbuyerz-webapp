@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid, Box } from '@mui/material';
 import { usePathname } from 'next/navigation';
 
-import ListingInfo from '../PostListing/Listinginfo';
-import ReachBuyer from '../PostListing/ReachBuyer';
+import ListingInfo from './ads-form-components/Listinginfo';
+import ReachBuyer from './ads-form-components/ReachBuyer';
 import {
   reachBuyerCoverLetter,
   reachBuyerData,

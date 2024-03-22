@@ -6,12 +6,13 @@ import {
 } from '@/src/redux/slices/settings/PakageCartSlice';
 
 import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
-import { generateId } from '@/utils/genrateId';
+
 import {
   easyPaisaSchema,
   jazzCashSchema,
   paymentSchema,
 } from '@/src/components/Schemas/paymentValidation';
+import { generateId } from './genrateId';
 const { JAZZ_CASH, EASY_PAISA, NAME_ON_CARD } =
   PAYMENT_METHODE_DATA.constantLabel;
 

@@ -20,12 +20,13 @@ import {
 } from '@/src/redux/slices/proposals/proposalsSlice';
 
 import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
+
+import { PROPOSAL } from '@/src/constants/agent/Proposal';
 import {
   checkData,
   findAgent,
   findProposalWithOutStatus,
-} from '@/utils/dashboardUtils';
-import { PROPOSAL } from '@/src/constants/agent/Proposal';
+} from '@/src/utils/dashboardUtils';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =

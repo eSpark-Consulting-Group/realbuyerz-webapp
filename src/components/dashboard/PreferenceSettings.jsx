@@ -7,7 +7,7 @@ import Notification from './Notification';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 
-import { createInitialState } from '@/utils/agentPreferenceState';
+import { createInitialState } from '@/src/utils/agentPreferenceState';
 import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
 import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 

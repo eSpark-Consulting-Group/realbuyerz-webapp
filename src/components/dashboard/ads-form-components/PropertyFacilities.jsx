@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-import Counter from './inputNumber/counter';
+import Counter from '../inputNumber/counter';
 import { useSelector } from 'react-redux';
 
 const PropertyFacilities = ({ propertyInformation, formik }) => {

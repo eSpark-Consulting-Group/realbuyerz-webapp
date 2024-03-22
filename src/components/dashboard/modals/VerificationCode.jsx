@@ -4,12 +4,13 @@ import { Box, Typography, TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 import CongratsModal from './CongratulationModal';
-import { handleVerificationChange } from '@/utils/codeValidation';
-import { isInputValid } from '@/utils/inputValid';
-import { verificationState } from '@/utils/verification';
-import { checkLength } from '@/utils/lengthValid';
+import { handleVerificationChange } from '@/src/utils/codeValidation';
+
 import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
 import { VERIFICATION_OTP } from '@/src/constants/Verfication_Modal';
+import { verificationState } from '@/src/utils/verification';
+import { isInputValid } from '@/src/utils/inputValid';
+import { checkLength } from '@/src/utils/lengthValid';
 
 const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const [isVerificationSuccessful, setIsVerificationSuccessful] =

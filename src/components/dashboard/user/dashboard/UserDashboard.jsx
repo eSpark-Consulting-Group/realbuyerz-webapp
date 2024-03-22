@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-import { findData } from '@/utils/dashboardUtils';
+
 import PostRequestCard from './PostRequestCard';
+import { findData } from '@/src/utils/dashboardUtils';
 
 const UserDashboard = () => {
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);

@@ -16,7 +16,7 @@ import {
   USER_MENU_ITEM,
 } from '@/src/constants/Nav_Data';
 import MobileResponsiveDashboardHeader from './MobileResponsiveDashboardHeader';
-import LeftSideBar from '../../layouts/LeftSideBar/LeftSideBar';
+import LeftSideBar from './LeftSideBar';
 
 const DashboardHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

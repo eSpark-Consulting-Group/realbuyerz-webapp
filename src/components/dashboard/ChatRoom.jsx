@@ -1,4 +1,4 @@
-import Avatar from '@/src/components/UIElements/Avatar';
+import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 import { chatMessages } from '@/src/constants/Chats';
 import { Box, Grid, Menu, MenuItem, Typography } from '@mui/material';
 import moment from 'moment';

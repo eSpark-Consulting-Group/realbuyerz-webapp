@@ -2,11 +2,11 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import PostTitle from '../PostListing/PostTitle';
-import SelectProperyType from '../PostListing/SelectPropertyType';
-import SelectCityType from '../PostListing/SelectCity';
-import SelectLocationType from '../PostListing/SelectLocationType';
-import PropertyStatus from '../PostListing/PropertyStatus';
+import PostTitle from './ads-form-components/PostTitle';
+import SelectProperyType from './ads-form-components/SelectPropertyType';
+import SelectCityType from './ads-form-components/SelectCity';
+import SelectLocationType from './ads-form-components/SelectLocationType';
+import PropertyStatus from './ads-form-components/PropertyStatus';
 
 const PropertyPurpose = ({ propertyData, formik }) => {
   return (

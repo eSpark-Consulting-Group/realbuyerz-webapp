@@ -23,7 +23,7 @@ import {
   findData,
   justifyContent,
   renderAdCard,
-} from '@/utils/dashboardUtils';
+} from '@/src/utils/dashboardUtils';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);

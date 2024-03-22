@@ -2,9 +2,9 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import PostTitle from '../PostListing/PostTitle';
-import PropertyAreaSize from '../PostListing/PropertyAreaSize';
-import PropertyInstallment from '../PostListing/PropertyInstallment';
+import PostTitle from './ads-form-components/PostTitle';
+import PropertyAreaSize from './ads-form-components/PropertyAreaSize';
+import PropertyInstallment from './ads-form-components/PropertyInstallment';
 import { PROPERTY_BUYING_DETAIL } from '@/src/constants/Preview_Data';
 
 const PropertySize = ({ formik, propertyData }) => {

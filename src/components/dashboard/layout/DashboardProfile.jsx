@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { Button, Divider, Grid } from '@mui/material';
 
-import UserProfileImage from '../dashboard/UserProfileImage';
-import UserProfileDetails from '../dashboard/UserProfileDetails';
+import UserProfileImage from '../UserProfileImage';
+import UserProfileDetails from '../UserProfileDetails';
 import { LOAD_MORE, SHOW_LESS } from '@/src/constants/Nav_Data';
 
 const DashboardProfile = ({

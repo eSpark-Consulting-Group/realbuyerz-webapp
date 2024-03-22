@@ -8,10 +8,10 @@ import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
-} from '@/app/constants/Login';
+} from '@/src/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
-import { resetPassword } from '@/utils/apis/auth/resetPassword';
+import { resetPassword } from '@/src/utils/apis/auth/resetPassword';
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);

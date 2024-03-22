@@ -18,7 +18,7 @@ import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+
 import {
   DRAFT_SUBMIT_MODAL_DATA,
   SUBMIT_MODAL_DATA,
@@ -28,8 +28,10 @@ import {
   POST_REQUEST_VALUES,
 } from '@/src/constants/user/Dashboard';
 import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
-import { generateRandomNumber } from '@/utils/dashboardUtils';
+
 import Link from 'next/link';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import { generateRandomNumber } from '@/src/utils/dashboardUtils';
 
 const PostRequest = () => {
   const [isOpen, setIsOpen] = useState(false);

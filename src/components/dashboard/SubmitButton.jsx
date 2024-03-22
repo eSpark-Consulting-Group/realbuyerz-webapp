@@ -3,7 +3,7 @@ import { Box, Button, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 
-import HideUnhideButton from '../PostListing/HideButton';
+import HideUnhideButton from './ads-form-components/HideButton';
 import {
   handleSubmitDraft,
   handleSumitUserAds,

@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import AdMediaSlider from '../../PostListing/AdMediaSlider';
+import AdMediaSlider from '../ads-form-components/AdMediaSlider';
 
 const MediaComponent = ({ title, images, videos, mediaType }) => {
   return (

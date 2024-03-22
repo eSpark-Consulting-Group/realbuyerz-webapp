@@ -7,15 +7,15 @@ import {
   updatePaymentMethodSelection,
   setFormError,
 } from '@/src/redux/slices/settings/PakageCartSlice';
-import { getCardType } from '@/utils/getCardType';
 
-import CheckBoxDescription from './CheckBoxDescription';
-import CreditCardType from './CreditCardType';
-import GeneralCard from './GeneralCard';
-import AccountType from './AccountType';
+import { getCardType } from '@/src/utils/getCardType';
+import Title from './Title';
 import MasterCard from './MasterCard';
 import VisaCard from './VisaCard';
-import Title from './Title';
+import GeneralCard from './GeneralCard';
+import CreditCardType from './CreditCardType';
+import CheckBoxDescription from './CheckBoxDescription';
+import AccountType from './AccountType';
 
 const PaymentMethod = ({
   data,

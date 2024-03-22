@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import Avatar from '@/src/components/UIElements/Avatar';
+import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 import moment from 'moment';
 
 const ChatRooms = ({ chatRoomState, setSelectedChatRoom }) => {

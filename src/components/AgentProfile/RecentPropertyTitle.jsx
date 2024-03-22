@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { RECENT_PROPERTIES } from '@/app/constants/AgentProfile';
+import { RECENT_PROPERTIES } from '@/src/constants/AgentProfile';
 
 const RecentPropertyTitle = ({ data }) => {
   const isMediumScreen = useMediaQuery('(max-width:750px)');

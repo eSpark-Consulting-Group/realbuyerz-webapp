@@ -3,10 +3,10 @@ import { Typography, Box, Grid } from '@mui/material';
 
 // import { propertyData } from '@/app/constants/postListing';
 
-import PostTitle from '../PostListing/PostTitle';
-import InstructionsForUpload from '../PostListing/InstructionsForUpload';
-import ImageUploader from '../PostListing/ImageUploader';
-import VideoUploader from '../PostListing/VideoUploader';
+import PostTitle from './ads-form-components/PostTitle';
+import InstructionsForUpload from './ads-form-components/InstructionsForUpload';
+import ImageUploader from './ads-form-components/ImageUploader';
+import VideoUploader from './ads-form-components/VideoUploader';
 
 const PropertyGallery = ({ formik, propertyData }) => {
   const { errors } = formik;

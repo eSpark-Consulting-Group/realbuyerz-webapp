@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { TopNav } from '@/src/components/dashboard/layout/TopNav';
 import { SideNav } from '@/src/components/dashboard/layout/SideNav';
 import Footer from '@/src/components/layouts/Footer';
-import { FOOTER_DATA } from '../constants/Constants';
+import { FOOTER_DATA } from '../../src/constants/Constants';
 import { SIDE_NAV_WIDTH } from '../../src/constants/sidebar';
 
 const LayoutRoot = styled('div')(({ theme }) => ({

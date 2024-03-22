@@ -20,8 +20,6 @@ import {
   handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
-import { generateRandomNumber } from '@/utils/dashboardUtils';
 import { postListingValidation } from '@/src/components/Schemas/postListingValidation';
 import {
   POST_LISTING,
@@ -31,6 +29,8 @@ import {
   DRAFT_SUBMIT_MODAL_DATA,
   SUBMIT_MODAL_DATA,
 } from '@/src/constants/Preview_Data';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import { generateRandomNumber } from '@/src/utils/dashboardUtils';
 
 const PostListing = () => {
   const [open, setOpen] = useState(false);

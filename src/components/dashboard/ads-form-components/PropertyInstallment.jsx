@@ -1,8 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Typography, Box, Switch } from '@mui/material';
-
-import { createInstallmentState } from '@/utils/propertyInstallment';
+import { createInstallmentState } from '@/src/utils/propertyInstallment';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,

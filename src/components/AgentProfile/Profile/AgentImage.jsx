@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
-
-import EditProfileModal from '../../dashboard/modals/EditProfileModal';
 import ButtonBaseDemo from './EditImage';
+import EditProfileModal from '../../dashboard/modals/EditProfileModal';
 
 const AgentImage = ({ data, setFieldValue }) => {
   const [open, setOpen] = useState(false);

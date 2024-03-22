@@ -16,13 +16,14 @@ import {
 
 import NotFoundSection from '../../../../Global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
+
+import { ALL_POSTLISTING_FILTRATION } from '../../../../../constants/agent/My_Properties';
 import {
   a11yProps,
   findData,
   justifyContent,
   renderAdCard,
-} from '@/utils/dashboardUtils';
-import { ALL_POSTLISTING_FILTRATION } from '../../../../../constants/agent/My_Properties';
+} from '@/src/utils/dashboardUtils';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);

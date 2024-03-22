@@ -19,12 +19,7 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
 import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
-import {
-  checkIdValidity,
-  findSpecificPost,
-  generateRandomNumber,
-} from '@/utils/dashboardUtils';
+
 import {
   COVER_LETTER,
   COVER_LETTER_VALUES,
@@ -33,6 +28,12 @@ import { coverLetterValidation } from '@/src/components/Schemas/coverLetterValid
 import { PROPOSAL_SUBMIT_MODAL_DATA } from '@/src/constants/Preview_Data';
 import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
 import Link from 'next/link';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import {
+  checkIdValidity,
+  findSpecificPost,
+  generateRandomNumber,
+} from '@/src/utils/dashboardUtils';
 
 const CoverLetter = () => {
   const [open, setOpen] = useState(false);

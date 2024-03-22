@@ -2,9 +2,9 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 
-import BiddingProfile from '../../dashboard/agent/live-bidding/BiddingProfile';
-import ShopCart from '../ShopCart/ShopCart';
-import ProductCart from '../../dashboard/agent/prop-shop/buy-product/ProductCart';
+import BiddingProfile from '../agent/live-bidding/BiddingProfile';
+import ShopCart from '../../layouts/ShopCart/ShopCart';
+import ProductCart from '../agent/prop-shop/buy-product/ProductCart';
 import { ROUTERS } from '@/src/constants/Nav_Data';
 
 const LIVEBIDDING = ROUTERS.dasboardLiveBidding;

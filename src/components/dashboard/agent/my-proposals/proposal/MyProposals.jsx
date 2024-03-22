@@ -7,15 +7,15 @@ import { Box, Divider, Tab, Tabs } from '@mui/material';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 
+import PostListingCard from '../../live-bidding/PostListingCard';
 import {
-  JustifyForFindProposal,
   a11yProps,
   findData,
   findProposal,
   findSome,
+  JustifyForFindProposal,
   renderAdCardForProposal,
-} from '@/utils/dashboardUtils';
-import PostListingCard from '../../live-bidding/PostListingCard';
+} from '@/src/utils/dashboardUtils';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);

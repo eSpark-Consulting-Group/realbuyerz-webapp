@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Avatar from '@/src/components/UIElements/Avatar';
+import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 import { Box, Typography } from '@mui/material';
 import RenderMessageContent from './RenderMessageContent';
 

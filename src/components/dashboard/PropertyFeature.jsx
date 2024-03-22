@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
-import PostTitle from '../PostListing/PostTitle';
-import PropertyFacilities from '../PostListing/PropertyFacilities';
-import AddAmenities from '../PostListing/AddAmenities';
+import PostTitle from './ads-form-components/PostTitle';
+import PropertyFacilities from './ads-form-components/PropertyFacilities';
+import AddAmenities from './ads-form-components/AddAmenities';
 
 const PropertyFeatures = ({
   formik,

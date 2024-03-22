@@ -5,13 +5,12 @@ import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
-import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
+// import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
 import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
-import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
-import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
-import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import RecentPropertyTitle from '@/src/components/AgentProfile/RecentPropertyTitle';
 
 const Page = () => {
   const pathname = usePathname();
@@ -114,7 +113,7 @@ const Page = () => {
           />
           <AgentAbout data={user} />
           <RecentPropertyTitle data={user} />
-          <AgentSlider data={AGENT_PROFILE_DATA} />
+          {/* <AgentSlider data={AGENT_PROFILE_DATA} /> */}
         </>
       </Box>
     </>

@@ -18,7 +18,7 @@ import {
   VIEW_PROPSALS,
   postListingAdCard,
 } from '@/src/constants/user/Dashboard';
-import { checkProposal, filteredAds } from '@/utils/dashboardUtils';
+import { checkProposal, filteredAds } from '@/src/utils/dashboardUtils';
 
 const PostRequestCard = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);

@@ -5,7 +5,7 @@ import { Grid, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
-import RightSection from '@/src/components/Biddings/RightSection';
+import RightSection from '@/src/components/dashboard/user/dashboard/RightSection';
 import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
 import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
 import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/PreviewFeatureAndAmenities';
@@ -13,9 +13,10 @@ import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/Previ
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import Location from '@/src/components/dashboard/preview/Location';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { findSpecificPost } from '@/utils/dashboardUtils';
+
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 import { clientRequirment } from '@/src/constants/agent/Live_Bidding';
+import { findSpecificPost } from '@/src/utils/dashboardUtils';
 
 const AdDetail = () => {
   const { location, areaAndAmount, amenities } = PREVIEW_DATA;

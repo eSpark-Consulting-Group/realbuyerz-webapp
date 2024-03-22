@@ -20,16 +20,17 @@ import {
   PROPOSAL_PAGE,
   VIEWPROPOSAL,
 } from '@/src/constants/Preview_Data';
-import {
-  findAgent,
-  findSingleProposal,
-  findSpecificPost,
-} from '@/utils/dashboardUtils';
+
 import { PROPOSAL } from '@/src/constants/agent/Proposal';
 import {
   ESTIMATE_RANGE,
   postListingAdCard,
 } from '@/src/constants/user/Dashboard';
+import {
+  findAgent,
+  findSingleProposal,
+  findSpecificPost,
+} from '@/src/utils/dashboardUtils';
 
 const ProposalDetail = () => {
   const [showMoreContent, setShowMoreContent] = useState(false);

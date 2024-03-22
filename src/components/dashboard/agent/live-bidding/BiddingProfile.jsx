@@ -2,9 +2,9 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 
-import ProfileCompletness from '@/src/components/layouts/RightSiderBar/ProfileCompletness';
-import AvailableConnects from '@/src/components/layouts/RightSiderBar/AvailableConnects';
-import Profile from '@/src/components/layouts/RightSiderBar/Profile';
+import ProfileCompletness from '@/src/components/dashboard/layout/ProfileCompletness';
+import AvailableConnects from '@/src/components/dashboard/layout/AvailableConnects';
+import Profile from '@/src/components/dashboard/layout/Profile';
 import { useSelector } from 'react-redux';
 import {
   AVAIALABLE_CONNECTS,

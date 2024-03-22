@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Grid, Typography } from '@mui/material';
-import { SEE_DETAILS } from '@/app/constants/AgentProfile';
+import { SEE_DETAILS } from '@/src/constants/AgentProfile';
 
 const SliderCardSeeDetails = ({ link }) => {
   return (

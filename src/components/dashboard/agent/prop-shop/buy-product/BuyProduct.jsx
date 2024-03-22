@@ -15,17 +15,17 @@ import {
   Buy_Product_Data,
 } from '@/src/constants/agent/Buy_Product';
 import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
+
+import Subscription from './Subscription';
+import PaymentMethod from './PaymentMethod';
+import ProductCart from './ProductCart';
+import BuyConnects from './BuyConnects';
 import {
   calculateFormState,
   handleCheckBoxChange,
   handlePaymentChange,
   useFormikForPayment,
-} from '@/utils/payment';
-
-import Subscription from './Subscription';
-import BuyConnects from './BuyConnects';
-import ProductCart from './ProductCart';
-import PaymentMethod from './PaymentMethod';
+} from '@/src/utils/payment';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',

@@ -16,7 +16,7 @@ import {
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 import { postListingAdCard } from '@/src/constants/user/Dashboard';
-import { checkProposal, searching } from '@/utils/dashboardUtils';
+import { checkProposal, searching } from '@/src/utils/dashboardUtils';
 
 const PostListingCard = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);
