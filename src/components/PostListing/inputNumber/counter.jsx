@@ -9,7 +9,7 @@ const Counter = ({ formik, name, limit }) => {
       ? parseInt(formik.values[name])
       : 0;
   const handleIncrement = () => {
-    let value = initialValue;
+    const value = initialValue;
 
     if (typeof value === 'number') {
       if (value < limit) {
