@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '@/src/components/global/ComingSoon';
+import ComingSoon from '@/src/components/Global/ComingSoon';
 import { BLOGS_SEO } from '@/app/constants/seo';
 
 export async function generateMetadata({ params }) {

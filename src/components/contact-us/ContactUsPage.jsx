@@ -1,4 +1,4 @@
-import ComingSoon from '@/src/components/global/ComingSoon';
+import ComingSoon from '@/src/components/Global/ComingSoon';
 import React from 'react';
 
 const ContactUsPage = () => {

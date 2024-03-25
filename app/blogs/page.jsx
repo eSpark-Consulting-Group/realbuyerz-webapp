@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '@/src/components/global/ComingSoon';
+import ComingSoon from '@/src/components/Global/ComingSoon';
 import { GLOBAL_SEO } from '@/app/constants/seo';
 
 const pathname = '/blogs';

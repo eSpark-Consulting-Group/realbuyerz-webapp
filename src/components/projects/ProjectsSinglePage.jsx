@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 import Sliders from '@/src/components/Properties/Slider/Slider';
-import PropertyDetails from '@/src/components/global/PropertyDetail';
+import PropertyDetails from '@/src/components/Global/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import Heading from '@/src/components/global/Heading';
+import Heading from '@/src/components/Global/Heading';
 
 function ProjectsSinglePage() {
   const pathname = usePathname();
