@@ -6,11 +6,27 @@ import AgentProfileDetail from './Profile/AgentProfileDetail';
 import AgentImage from './Profile/AgentImage';
 import LetsTalk from './Profile/LetsTalk';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 const AgentProfiles = ({ data, setFieldValue }) => {
   const path = usePathname();
+  console.log(data.id, 'dataid');
   const user_profile = 'user-profile';
   const agent_profile = 'agent-profile';
+  const projects = useSelector((state) => state.postListingAds.agentPostings);
+
+  function filterProjects(projects, agentId, purpose) {
+    return projects.filter(
+      (item) =>
+        item?.user_id === agentId &&
+        item?.purpose === purpose &&
+        item?.status === 'submit'
+    ).length;
+  }
+  const forSellCount = filterProjects(projects, data.id, 'Sell');
+  const forRentCount = filterProjects(projects, data.id, 'Rent');
+
+
   return (
     <Box
       sx={{
@@ -52,10 +68,12 @@ const AgentProfiles = ({ data, setFieldValue }) => {
               path={path}
               user={user_profile}
               agent={agent_profile}
+              forSellCount={forSellCount}
+              forRentCount={forRentCount}
             />
             {path?.includes(user_profile) ||
             path?.includes(agent_profile) ? null : (
-              <LetsTalk text={LETS_TALK} />
+              <LetsTalk text={LETS_TALK} data={data}/>
             )}
           </Grid>
         </Grid>

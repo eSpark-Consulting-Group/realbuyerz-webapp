@@ -43,7 +43,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         borderRadius: { xs: '100%', sm: '0 100% 100% 0' },
       }}
     >
-      {id != 'profile' ? (
+      {pathname =='/user/user-settings/user-profile' ||  pathname == '/agent/agent-settings/agent-profile' ? (
         <ButtonBase
           focusRipple
           onMouseEnter={handleMouseEnter}
