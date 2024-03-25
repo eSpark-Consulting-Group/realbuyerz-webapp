@@ -132,7 +132,7 @@ const ProjectsFilterComponent = ({ data }) => {
     <>
       <Container>
         <Grid container spacing={'50px'}>
-          <Grid item xs={1.8}>
+          <Grid item lg={1.8}>
             <FormControl fullWidth>
               <Select
                 value={
@@ -149,7 +149,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={1.8}>
+          <Grid item lg={1.8}>
             <TextField
               aria-describedby={id1}
               variant="outlined"
@@ -184,7 +184,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item xs={1.8}>
+          <Grid item lg={1.8}>
             <TextField
               aria-describedby={id2}
               variant="outlined"
@@ -220,7 +220,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item xs={1.8}>
+          <Grid item lg={1.8}>
             <TextField
               aria-describedby={id3}
               variant="outlined"
@@ -256,7 +256,7 @@ const ProjectsFilterComponent = ({ data }) => {
             </Popper>
           </Grid>
 
-          <Grid item xs={3.4}>
+          <Grid item lg={3.4}>
             <TextField
               fullWidth
               placeholder="Search Projects"
@@ -264,7 +264,7 @@ const ProjectsFilterComponent = ({ data }) => {
               onChange={(e) => setSearchText(e.target.value)}
             />
           </Grid>
-          <Grid item xs={1.4}>
+          <Grid item lg={1.4}>
             <Button
               sx={{
                 height: '52px',
