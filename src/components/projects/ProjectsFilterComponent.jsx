@@ -129,15 +129,15 @@ const ProjectsFilterComponent = ({ data }) => {
   useEffect(() => {
     handleFilter();
   }, [selectedPropertyAdType, searchText]);
-const isSmallScreen = useMediaQuery('(max-width:742px)');
+  const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
       <Container>
-        <Grid container spacing={{xs:'10px',md:'10px',lg:'50px'}}>
+        <Grid container spacing={{ xs: '10px', md: '10px', lg: '50px' }}>
           <Grid item lg={1.8} md={3} sm={6} xs={12}>
             <FormControl fullWidth>
-            <Select
-              fullWidth
+              <Select
+                fullWidth
                 value={
                   selectedPropertyAdType ||
                   globalUnits?.PROPERTY_TYPES[0]?.value
@@ -193,7 +193,8 @@ const isSmallScreen = useMediaQuery('(max-width:742px)');
               aria-describedby={id2}
               variant="outlined"
               value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
-              onClick={handleClick2}fullWidth
+              onClick={handleClick2}
+              fullWidth
             />
             <Popper
               id={id2}
@@ -229,7 +230,8 @@ const isSmallScreen = useMediaQuery('(max-width:742px)');
               aria-describedby={id3}
               variant="outlined"
               value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
-              onClick={handleClick3}fullWidth
+              onClick={handleClick3}
+              fullWidth
             />
             <Popper
               id={id3}
@@ -274,14 +276,19 @@ const isSmallScreen = useMediaQuery('(max-width:742px)');
                 height: '52px',
                 color: '#126FAA',
                 textDecoration: 'underline',
-                p:0,
+                p: 0,
               }}
               onClick={handleClearFilter}
               fullWidth
             >
               <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
-              {isSmallScreen ? <FilterAltOffRoundedIcon sx={{height:'40px', width:'40px'}}/>: `Clear Filter` }
-                
+                {isSmallScreen ? (
+                  <FilterAltOffRoundedIcon
+                    sx={{ height: '40px', width: '40px' }}
+                  />
+                ) : (
+                  `Clear Filter`
+                )}
               </Typography>
             </Button>
           </Grid>
