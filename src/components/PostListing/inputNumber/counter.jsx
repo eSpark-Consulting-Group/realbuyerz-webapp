@@ -1,13 +1,10 @@
 import React from 'react';
 import CustomNumberInput from './customInputNumber';
+import getInitialCounterValue from '@/utils/draftProperty';
 
 const Counter = ({ formik, name, limit }) => {
-  const initialValue =
-    formik.values[name] !== null &&
-    formik.values[name] !== undefined &&
-    formik.values[name] !== ''
-      ? parseInt(formik.values[name])
-      : 0;
+  const initialValue = getInitialCounterValue(formik, name);
+
   const handleIncrement = () => {
     const value = initialValue;
 
