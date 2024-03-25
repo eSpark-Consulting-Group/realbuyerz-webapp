@@ -10,19 +10,21 @@ import {
   Box,
   Popper,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import ProjectsSliderFilter from './ProjectsSliderFilter';
 import { useSelector } from 'react-redux';
 import ProjectsTabsFilter from './ProjectsTabsFilter';
+import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 
 const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('sqft');
-  const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
+  const [selectedAreaRange, setSelectedAreaRange] = useState(['0', '5000']);
   const [selectedPriceUnit, setSelectedPriceUnit] = useState('pkr');
-  const [selectedPriceRange, setSelectedPriceRange] = useState(['', '']);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(['0', '5000']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
@@ -118,29 +120,29 @@ const ProjectsFilterComponent = ({ data }) => {
     setSelectedPropertyTab(0);
     setSelectedProperty('');
     setSelectedPriceUnit('');
-    setSelectedPriceRange(['', '']);
+    setSelectedPriceRange(['0', '5000']);
     setSelectedAreaUnit('');
-    setSelectedAreaRange(['', '']);
+    setSelectedAreaRange(['0', '5000']);
     setSearchText('');
   };
 
   useEffect(() => {
     handleFilter();
   }, [selectedPropertyAdType, searchText]);
-
+const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
       <Container>
         <Grid container spacing={{xs:'10px',md:'10px',lg:'50px'}}>
-          <Grid item lg={1.8} md={3} sm={6} XS={6}>
+          <Grid item lg={1.8} md={3} sm={6} xs={12}>
             <FormControl fullWidth>
-              <Select
+            <Select
+              fullWidth
                 value={
                   selectedPropertyAdType ||
                   globalUnits?.PROPERTY_TYPES[0]?.value
                 }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
-                fullWidth
               >
                 {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
                   <MenuItem key={index} value={unit?.value}>
@@ -150,7 +152,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item lg={1.8} md={3} sm={6} XS={6}>
+          <Grid item lg={1.8} md={3} sm={6} xs={12}>
             <TextField
               aria-describedby={id1}
               variant="outlined"
@@ -186,7 +188,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item lg={1.8} md={3} sm={6} XS={6}>
+          <Grid item lg={1.8} md={3} sm={6} xs={12}>
             <TextField
               aria-describedby={id2}
               variant="outlined"
@@ -222,7 +224,7 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item lg={1.8} md={3} sm={6} XS={6}>
+          <Grid item lg={1.8} md={3} sm={6} xs={12}>
             <TextField
               aria-describedby={id3}
               variant="outlined"
@@ -258,7 +260,7 @@ const ProjectsFilterComponent = ({ data }) => {
             </Popper>
           </Grid>
 
-          <Grid item lg={3.4} md={9} sm={9} xs={9}>
+          <Grid item lg={3.5} md={9} sm={10} xs={10}>
             <TextField
               fullWidth
               placeholder="Search Projects"
@@ -266,18 +268,20 @@ const ProjectsFilterComponent = ({ data }) => {
               onChange={(e) => setSearchText(e.target.value)}
             />
           </Grid>
-          <Grid item lg={1.4} md={3} sm={3} xs={3}>
+          <Grid item lg={1.3} md={3} sm={2} xs={2}>
             <Button
               sx={{
                 height: '52px',
                 color: '#126FAA',
                 textDecoration: 'underline',
+                p:0,
               }}
               onClick={handleClearFilter}
               fullWidth
             >
               <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
-                {'Clear Filter'}
+              {isSmallScreen ? <FilterAltOffRoundedIcon sx={{height:'40px', width:'40px'}}/>: `Clear Filter` }
+                
               </Typography>
             </Button>
           </Grid>
