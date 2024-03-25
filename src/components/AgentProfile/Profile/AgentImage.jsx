@@ -21,7 +21,11 @@ const AgentImage = ({ data, setFieldValue }) => {
         position: 'relative',
       }}
     >
-      <ButtonBaseDemo url={data?.profile_image} handleOpen={handleOpen} data={data} />
+      <ButtonBaseDemo
+        url={data?.profile_image}
+        handleOpen={handleOpen}
+        data={data}
+      />
       <Box
         sx={{
           zIndex: '1',

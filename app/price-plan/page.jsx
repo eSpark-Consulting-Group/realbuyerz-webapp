@@ -1,6 +1,6 @@
 import React from 'react';
-import PricePlanPage from '@/src/components/price-plan/PricePlanPage';
 import { GLOBAL_SEO } from '@/app/constants/seo';
+import PricePlanPage from '@/src/components/price-plan/PricePlanPage';
 
 const pathname = '/price-plan';
 const filteredData =

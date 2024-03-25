@@ -9,8 +9,6 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
     url: url,
   };
   const pathname = usePathname();
-  const segments = pathname.split('/');
-  const id = segments[segments.length - 2];
   const imageRef = React.useRef(null);
 
   const handleMouseEnter = () => {
@@ -43,7 +41,8 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         borderRadius: { xs: '100%', sm: '0 100% 100% 0' },
       }}
     >
-      {pathname =='/user/user-settings/user-profile' ||  pathname == '/agent/agent-settings/agent-profile' ? (
+      {pathname == '/user/user-settings/user-profile' ||
+      pathname == '/agent/agent-settings/agent-profile' ? (
         <ButtonBase
           focusRipple
           onMouseEnter={handleMouseEnter}

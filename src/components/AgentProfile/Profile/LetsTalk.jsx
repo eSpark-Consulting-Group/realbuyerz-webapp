@@ -17,33 +17,35 @@ const LetsTalk = ({ text, data }) => {
           paddingRight: '10px',
           justifyContent: 'center',
         }}
-      ><Link href={`/user/inbox/${data.id}`}>
-        <Paper
-          sx={{
-            background: 'white',
-            borderRadius: '47px',
-            alignItems: 'center',
-            alignContent: 'center',
-            width: '91.93px',
-            height: '35px',
-            boxShadow: 2,
-            padding: 2,
-            marginLeft: { xs: 0, sm: 'auto' },
-            paddingBottom: '10px',
-          }}
-        >
-          <Typography
-            variant="body2"
+      >
+        <Link href={`/user/inbox/${data.id}`}>
+          <Paper
             sx={{
-              fontWeight: 'bold',
-              color: '#126FAA',
-              pb: '10px',
-              marginTop: '-8px',
+              background: 'white',
+              borderRadius: '47px',
+              alignItems: 'center',
+              alignContent: 'center',
+              width: '91.93px',
+              height: '35px',
+              boxShadow: 2,
+              padding: 2,
+              marginLeft: { xs: 0, sm: 'auto' },
+              paddingBottom: '10px',
             }}
           >
-            {text}
-          </Typography>
-        </Paper></Link>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 'bold',
+                color: '#126FAA',
+                pb: '10px',
+                marginTop: '-8px',
+              }}
+            >
+              {text}
+            </Typography>
+          </Paper>
+        </Link>
       </Grid>
     )
   );

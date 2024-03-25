@@ -26,7 +26,6 @@ const AgentProfiles = ({ data, setFieldValue }) => {
   const forSellCount = filterProjects(projects, data.id, 'Sell');
   const forRentCount = filterProjects(projects, data.id, 'Rent');
 
-
   return (
     <Box
       sx={{
@@ -73,7 +72,7 @@ const AgentProfiles = ({ data, setFieldValue }) => {
             />
             {path?.includes(user_profile) ||
             path?.includes(agent_profile) ? null : (
-              <LetsTalk text={LETS_TALK} data={data}/>
+              <LetsTalk text={LETS_TALK} data={data} />
             )}
           </Grid>
         </Grid>
