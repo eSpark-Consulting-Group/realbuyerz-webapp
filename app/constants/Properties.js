@@ -35,7 +35,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -88,7 +88,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -141,7 +141,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -194,7 +194,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -247,7 +247,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -300,7 +300,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -353,7 +353,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -406,7 +406,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -459,7 +459,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -512,7 +512,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -565,7 +565,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {
@@ -618,7 +618,7 @@ export const PROPERTIES_LISTING = [
       name: 'Arman Khan',
       agentDescription:
         'It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
-      profileLink: '/agents/1',
+      profileLink: '/profile/1',
       chatLink: '/chat/agent/1',
     },
     propertyDetails: {

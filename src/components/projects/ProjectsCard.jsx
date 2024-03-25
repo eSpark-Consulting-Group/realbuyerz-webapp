@@ -1,5 +1,5 @@
 'use client';
-import { PROJECTS_DATA } from '@/src/constants/projects';
+import { PROJECTS_DATA } from '@/src/constants/Projects/projects';
 import {
   Typography,
   Box,
@@ -151,7 +151,7 @@ const ProjectsCard = ({ data }) => {
                   lineHeight: '25px',
                 }}
               >
-                {project?.description.length > 150
+                {project?.description?.length > 150
                   ? `${project.description.slice(0, 147)}...`
                   : project?.description || (
                       <>

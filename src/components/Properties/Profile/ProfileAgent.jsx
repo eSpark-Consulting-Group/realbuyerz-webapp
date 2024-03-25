@@ -48,7 +48,7 @@ const ProfileAgent = ({ data, agentData }) => {
           <ViewAgentProfile
             image={agentData?.profile_image}
             name={`${agentData?.first_name} ${agentData?.last_name} `}
-            link={`agents/${agentData?.id}`}
+            link={`/profile/${agentData?.id}`}
           />
           <AgentDescription description={agentData?.shortintro} />
         </Box>
