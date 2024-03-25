@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Typography, Box, Switch } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+import { AntSwitch } from '@/src/utils/propertyInstallment';
 
 const Notification = ({ notificationData, handleInputChange }) => {
   return (
@@ -38,7 +39,7 @@ const Notification = ({ notificationData, handleInputChange }) => {
                 >
                   {item?.title}
                 </Typography>
-                <Switch
+                <AntSwitch
                   sx={{
                     marginRight: { lg: '-12px' },
                   }}
@@ -46,6 +47,7 @@ const Notification = ({ notificationData, handleInputChange }) => {
                   onChange={(event) =>
                     handleInputChange(item?.label, event.target.checked)
                   }
+                  inputProps={{ 'aria-label': 'ant design' }}
                 />
               </Box>
               <Box>

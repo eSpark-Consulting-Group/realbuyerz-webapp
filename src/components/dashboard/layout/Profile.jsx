@@ -35,6 +35,8 @@ const Profile = ({ profileInfo, defaultImage }) => {
               fontSize: '16px',
               fontWeight: 500,
               textDecoration: 'underline',
+              textUnderlineOffset: '5px',
+              color: '#444444',
             }}
           >
             {profileInfo?.first_name || ''}
@@ -45,6 +47,7 @@ const Profile = ({ profileInfo, defaultImage }) => {
             sx={{
               fontSize: '16px',
               fontWeight: 700,
+              marginTop: '-9px',
             }}
           >
             {profileInfo?.agency_name || ''}

@@ -1,7 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import { Typography, Box, Switch } from '@mui/material';
-import { createInstallmentState } from '@/src/utils/propertyInstallment';
+import { Typography, Box } from '@mui/material';
+import {
+  AntSwitch,
+  createInstallmentState,
+} from '@/src/utils/propertyInstallment';
 
 const PropertyInstallment = ({
   propertyInstallmentInfo,
@@ -88,11 +91,12 @@ const PropertyInstallment = ({
               >
                 {item?.title}
               </Typography>
-              <Switch
+              <AntSwitch
                 checked={formik?.values[item?.label]}
                 onChange={(event) => {
                   formik?.setFieldValue(item?.label, event.target.checked);
                 }}
+                inputProps={{ 'aria-label': 'ant design' }}
               />
             </Box>
             <Typography

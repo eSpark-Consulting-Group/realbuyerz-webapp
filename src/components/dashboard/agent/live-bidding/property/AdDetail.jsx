@@ -32,7 +32,7 @@ const AdDetail = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
-        <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
+        <Grid item xs={12} md={12} lg={12} xl={9.34}>
           {specificPost?.property_id !== undefined ? (
             <Box
               sx={{
@@ -118,7 +118,7 @@ const AdDetail = () => {
             />
           )}
         </Grid>
-        <Grid item xs={12} md={12} lg={2.8} xl={2.8}>
+        <Grid item xs={12} md={12} lg={12} xl={2.64}>
           <BiddingProfile />
         </Grid>
       </Grid>

@@ -137,13 +137,13 @@ export default function ProfileForm({ data, formValues }) {
                   }}
                 >
                   <Typography
-                    variant="h6"
                     sx={{
                       display: 'flex',
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 1,
                       fontSize: '18px',
+                      fontWeight: 600,
                     }}
                   >
                     {field?.label}
@@ -315,7 +315,7 @@ export default function ProfileForm({ data, formValues }) {
         sx={{
           fontSize: '15px',
           ml: { xs: 0, sm: 2.1, md: 4.1, lg: 7 },
-          mb: { xs: 3, md: 5 },
+          mb: { xs: 3, md: 6 },
           width: { xs: '90%', sm: 'auto', md: '160px' },
           height: { xs: '45px', md: '45px' },
           '&:hover': { color: '#fff' },

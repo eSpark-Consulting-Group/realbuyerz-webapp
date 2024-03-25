@@ -58,6 +58,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
             '&:hover, &.Mui-focusVisible': {
               '& .editIcon': {
                 display: 'block',
+                color: '#FB631C',
               },
             },
           }}
@@ -85,6 +86,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
               display: 'none',
               zIndex: 2,
               transition: 'opacity 0.9s ease-in-out',
+              '&:hover': { color: '#FB631C' },
             }}
           />
         </ButtonBase>

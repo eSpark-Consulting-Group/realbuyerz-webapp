@@ -16,6 +16,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
         backgroundColor: '#fff',
         border: '1px #E4E4E4 solid',
         borderRadius: '10px',
+        height: { xs: 'auto', xl: '1010px' },
       }}
     >
       <Grid
@@ -47,7 +48,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
               height: { xs: 'auto', md: '100%' },
               display: 'flex',
               justifyContent: 'space-evenly',
-              py: { xs: 5, sm: 7 },
+              py: { xs: 5, sm: 6 },
             }}
           >
             <Box

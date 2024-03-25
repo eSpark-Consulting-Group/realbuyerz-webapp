@@ -33,6 +33,7 @@ const Facilities = ({
       setSelectedAmenities((prevSelected) =>
         prevSelected.filter((item) => item.text !== text)
       );
+      formik.setFieldValue(name, 0);
     }
 
     formik.setFieldValue('other_features', selectedAmenities);

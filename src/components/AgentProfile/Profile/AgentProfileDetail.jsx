@@ -31,7 +31,7 @@ const AgentProfileDetail = ({ data, path, user, agent }) => {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          marginLeft: { xs: 0, sm: '30px' },
+          marginLeft: { xs: 0, sm: '20px' },
           my: { xs: 2 },
           alignItems: { xs: 'center', sm: 'start' },
         }}

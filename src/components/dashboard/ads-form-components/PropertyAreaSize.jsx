@@ -124,13 +124,14 @@ const PropertyAreaSize = ({
                       margin: 0,
                     },
                     '& fieldset': {
-                      border: formik?.errors[item?.label] && `solid 1px red`,
+                      border: formik.errors[item?.label]
+                        ? 'solid 1px red'
+                        : '1px solid #E7E7E7',
+                      borderRadius: '10px',
                     },
                   }}
                   InputProps={{
                     style: {
-                      border: '1px solid #E7E7E7',
-                      borderRadius: '10px',
                       fontSize: { xs: '15px', md: '18px' },
                     },
                   }}
@@ -154,15 +155,16 @@ const PropertyAreaSize = ({
                   }
                   sx={{
                     width: { xs: '100%', sm: '160px' },
-                    '& .MuiAutocomplete-inputRoot': {
-                      border: `1px solid ${formik.errors[item?.unit] ? 'red' : 'none'}`,
+                    '& fieldset': {
+                      border: formik.errors[item?.label]
+                        ? 'solid 1px red'
+                        : '1px solid #E7E7E7',
                       borderRadius: '10px',
                     },
                     '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
                       {
                         color: '#777777',
                         display: 'inline-flex',
-                        visibility: 'visible',
                         '&:hover': {
                           color: '#777777',
                         },

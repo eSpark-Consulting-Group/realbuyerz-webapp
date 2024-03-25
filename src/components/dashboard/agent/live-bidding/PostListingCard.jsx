@@ -17,6 +17,7 @@ import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 import { postListingAdCard } from '@/src/constants/user/Dashboard';
 import { checkProposal, searching } from '@/src/utils/dashboardUtils';
+import { formatDistanceToNow } from 'date-fns';
 
 const PostListingCard = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);
@@ -50,7 +51,7 @@ const PostListingCard = ({ height, ads }) => {
                     <Box
                       sx={{
                         width: '100%',
-                        minHeight: '403px',
+                        minHeight: '350px',
                         height: 'auto',
                         backgroundColor: '#EDF7FF',
                         border: '1px solid #AAD9FF',
@@ -116,7 +117,9 @@ const PostListingCard = ({ height, ads }) => {
                             {item?.title}
                           </Typography>
                           <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                            {'Posted 39 minutes ago'}
+                            {formatDistanceToNow(new Date(item?.created_at), {
+                              addSuffix: true,
+                            })}
                           </Typography>
                         </Grid>
                         <Grid
@@ -208,6 +211,10 @@ const PostListingCard = ({ height, ads }) => {
                                   alignItems: 'center',
                                   fontSize: '12px',
                                   fontWeight: 500,
+                                  '&:hover': {
+                                    backgroundColor: '#fb631c',
+                                    color: '#fff',
+                                  },
                                 }}
                               >
                                 {VIEW_BUTTON?.text || ''}
@@ -303,6 +310,11 @@ const PostListingCard = ({ height, ads }) => {
                     fontWeight: 500,
                     fontSize: '20px',
                     lineHeight: '24.2px',
+                    '&:hover': {
+                      color: '#1176AD',
+                      textDecoration: 'underline',
+                      textUnderlineOffset: '5px',
+                    },
                   }}
                 >
                   {showAllItems ? SHOW_LESS : LOAD_MORE}

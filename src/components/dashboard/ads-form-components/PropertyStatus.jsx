@@ -20,7 +20,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
           alignItems: { xs: 'center', sm: 'start' },
           justifyContent: { xs: 'center', md: 'center' },
           gap: 2,
-          pb: { xs: 2, sm: 2 },
+          pb: { xs: 2, sm: 2, xl: 0 },
           cursor: 'pointer',
         }}
       >
