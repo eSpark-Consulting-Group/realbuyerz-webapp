@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Typography, Box, Switch } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { AntSwitch } from '@/utils/propertyInstallment';
 
 const Notification = ({ notificationData, handleInputChange }) => {
