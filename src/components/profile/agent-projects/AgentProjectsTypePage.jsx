@@ -6,7 +6,7 @@ import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '../../global/NotFoundSection';
+import NotFoundSection from '../../Global/NotFoundSection';
 
 const AgentProjectsTypePage = () => {
   const pathname = usePathname();

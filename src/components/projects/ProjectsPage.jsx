@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
-import NotFoundSection from '../global/NotFoundSection';
+import NotFoundSection from '../Global/NotFoundSection';
 
 const ProjectsPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);

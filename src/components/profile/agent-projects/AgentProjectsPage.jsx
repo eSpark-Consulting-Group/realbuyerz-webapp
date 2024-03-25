@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
 import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '../../global/NotFoundSection';
+import NotFoundSection from '../../Global/NotFoundSection';
 import ProjectsTypeSlider from '../../projects/ProjectsTypeSlider';
 
 const AgentProjectPage = () => {

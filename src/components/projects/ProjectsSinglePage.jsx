@@ -9,7 +9,7 @@ import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyDetails from '@/src/components/global/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
+import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import Heading from '@/src/components/global/Heading';
 
 function ProjectsSinglePage() {
