@@ -86,7 +86,7 @@ const CreditCardType = ({
         <Box
           sx={{
             position: 'absolute',
-            left: { xs: '200px', sm: '300px', md: '360px', lg: '360px' },
+            left: { xs: '200px', sm: '300px', md: '360px' },
             '@media (min-width: 280px) and (max-width: 299px)': {
               left: '148px',
             },
