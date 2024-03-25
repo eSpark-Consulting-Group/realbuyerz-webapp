@@ -102,19 +102,6 @@ const ProjectsFilterComponent = ({ data }) => {
     console.log(filteredData, 'filtered');
   };
 
-  // console.log(searchText, 'searchText');
-  // console.log(selectedAreaUnit.toLowerCase(), 'selectedAreaUnit');
-  // console.log( selectedPropertyAdType.charAt(0).toUpperCase() + selectedPropertyAdType?.slice(1),
-  //   'selectedPropertyAdType'
-  // );
-  // console.log(selectedProperty?.title,  'selectedProperty');
-  // console.log(selectedPropertyTab, 'selectedPropertyTab');
-  // console.log(selectedPriceUnit.toUpperCase(),'selectedPriceUnit');
-  // console.log(selectedPriceRange[0], 'selectedPriceRange[0]');
-  // console.log(selectedPriceRange[1], 'selectedPriceRange[1]');
-  // console.log(selectedAreaRange[0], 'selectedAreaRange[0]');
-  // console.log(selectedAreaRange[1], 'selectedAreaRange[1]');
-
   const handleClearFilter = () => {
     setSelectedPropertyAdType('');
     setSelectedPropertyTab(0);
