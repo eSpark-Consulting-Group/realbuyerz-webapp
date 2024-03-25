@@ -131,8 +131,8 @@ const ProjectsFilterComponent = ({ data }) => {
   return (
     <>
       <Container>
-        <Grid container spacing={'50px'}>
-          <Grid item lg={1.8}>
+        <Grid container spacing={{xs:'10px',md:'10px',lg:'50px'}}>
+          <Grid item lg={1.8} md={3} sm={6} XS={6}>
             <FormControl fullWidth>
               <Select
                 value={
@@ -140,6 +140,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   globalUnits?.PROPERTY_TYPES[0]?.value
                 }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
+                fullWidth
               >
                 {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
                   <MenuItem key={index} value={unit?.value}>
@@ -149,12 +150,13 @@ const ProjectsFilterComponent = ({ data }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item lg={1.8}>
+          <Grid item lg={1.8} md={3} sm={6} XS={6}>
             <TextField
               aria-describedby={id1}
               variant="outlined"
               value={selectedProperty?.title || 'Any'}
               onClick={handleClick1}
+              fullWidth
             />
             <Popper
               id={id1}
@@ -184,12 +186,12 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item lg={1.8}>
+          <Grid item lg={1.8} md={3} sm={6} XS={6}>
             <TextField
               aria-describedby={id2}
               variant="outlined"
               value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
-              onClick={handleClick2}
+              onClick={handleClick2}fullWidth
             />
             <Popper
               id={id2}
@@ -220,12 +222,12 @@ const ProjectsFilterComponent = ({ data }) => {
               </Box>
             </Popper>
           </Grid>
-          <Grid item lg={1.8}>
+          <Grid item lg={1.8} md={3} sm={6} XS={6}>
             <TextField
               aria-describedby={id3}
               variant="outlined"
               value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
-              onClick={handleClick3}
+              onClick={handleClick3}fullWidth
             />
             <Popper
               id={id3}
@@ -256,7 +258,7 @@ const ProjectsFilterComponent = ({ data }) => {
             </Popper>
           </Grid>
 
-          <Grid item lg={3.4}>
+          <Grid item lg={3.4} md={9} sm={9} xs={9}>
             <TextField
               fullWidth
               placeholder="Search Projects"
@@ -264,7 +266,7 @@ const ProjectsFilterComponent = ({ data }) => {
               onChange={(e) => setSearchText(e.target.value)}
             />
           </Grid>
-          <Grid item lg={1.4}>
+          <Grid item lg={1.4} md={3} sm={3} xs={3}>
             <Button
               sx={{
                 height: '52px',
