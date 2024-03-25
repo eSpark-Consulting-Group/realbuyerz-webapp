@@ -103,6 +103,7 @@ const Page = () => {
     areaUnit: '',
     amountCurrency: '',
     city: '',
+    created_at: new Date().toISOString(),
     bedrooms: 0,
     connects: '',
     bathrooms: 0,

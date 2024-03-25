@@ -21,22 +21,32 @@ import ProposalModal from '@/src/components/Modal/ProposalModal';
 import { POST_REQUEST } from '@/app/constants/postRequest';
 import { usePathname } from 'next/navigation';
 import PropertyGallery from '@/src/components/PostListing/PropertGallery';
+import { updateSelectedAmenities } from '@/utils/updateSelectedAmenities';
+import { generateInitialFormValues } from '@/utils/draftProperty';
 
 const Page = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [open, setOpen] = useState(false);
   const [Action, setAction] = useState('');
   const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
   const find_ad = agentDrafts?.find((ad) => ad?.property_id == id);
 
-  const [updated, serUpdated] = useState(find_ad || {});
+  const [updatedData, setUpdatedData] = useState(find_ad || {});
 
   useEffect(() => {
-    serUpdated(find_ad || {});
+    setUpdatedData(find_ad || {});
   }, [find_ad]);
+
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
 
   const currentUser = useSelector((state) => state?.currentUser?.user);
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -70,32 +80,8 @@ const Page = () => {
     images: yup.array().min(1, 'Image is required'),
     videos: yup.array().min(1, 'Video is required'),
   });
-
-  const initialFormValues = {
-    property_id: updated?.property_id || '',
-    user_id: currentUser?.id || '',
-    status: `${updated?.status || ''}`,
-    title: `${updated?.title || ''}`,
-    location: `${updated?.location || ''}`,
-    description: `${updated?.description || ''}`,
-    area: `${updated?.area || ''}`,
-    amount: `${updated?.amount || ''}`,
-    areaUnit: `${updated?.areaUnit || ''}`,
-    amountCurrency: `${updated?.amountCurrency || ''}`,
-    city: `${updated?.city || ''}`,
-    bedrooms: `${updated?.bedrooms || ''}`,
-    connects: `${updated?.connects || ''}`,
-    bathrooms: `${updated?.bathrooms || ''}`,
-    parking: `${updated?.parking || ''}`,
-    purpose: `${updated?.purpose || ''}`,
-    propertyCategory: `${updated?.propertyCategory || ''}`,
-    propertyType: `${updated?.propertyType || ''}`,
-    instalmentAvailable: `${updated?.instalmentAvailable || ''}`,
-    readyPossession: `${updated?.readyPossession || ''}`,
-    images: updated?.images || [],
-    videos: updated?.videos || [],
-  };
-  console.log(updated, 'updated');
+  const initialFormValues = generateInitialFormValues(updatedData, currentUser);
+  console.log(updatedData, 'updatedData');
   const formik = useFormik({
     initialValues: initialFormValues,
     validationSchema,
@@ -129,12 +115,17 @@ const Page = () => {
               buyData={POST_REQUEST?.buy}
             />
             <PropertySize formik={formik} />
-            <PropertyFeatures formik={formik} />
+            <PropertyFeatures
+              formik={formik}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <PropertyGallery formik={formik} />
             <SubmitButton
               formik={formik}
               Action={Action}
-              updated={updated}
+              updated={updatedData}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}
