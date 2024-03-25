@@ -35,10 +35,10 @@ const Page = () => {
   const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
   const find_ad = agentDrafts?.find((ad) => ad?.property_id == id);
 
-  const [updated, serUpdated] = useState(find_ad || {});
+  const [updatedData, setUpdatedData] = useState(find_ad || {});
 
   useEffect(() => {
-    serUpdated(find_ad || {});
+    setUpdatedData(find_ad || {});
   }, [find_ad]);
 
   const getAmenities = useSelector(
@@ -80,8 +80,8 @@ const Page = () => {
     images: yup.array().min(1, 'Image is required'),
     videos: yup.array().min(1, 'Video is required'),
   });
-  const initialFormValues = generateInitialFormValues(updated, currentUser);
-  console.log(updated, 'updated');
+  const initialFormValues = generateInitialFormValues(updatedData, currentUser);
+  console.log(updatedData, 'updatedData');
   const formik = useFormik({
     initialValues: initialFormValues,
     validationSchema,
@@ -125,7 +125,7 @@ const Page = () => {
             <SubmitButton
               formik={formik}
               Action={Action}
-              updated={updated}
+              updated={updatedData}
               setAction={setAction}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}
