@@ -11,7 +11,7 @@ import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
+import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
 
 const ProfileSinglePage = () => {
   const pathname = usePathname();

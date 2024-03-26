@@ -12,10 +12,10 @@ import {
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
   PASSWORD_ALERT,
-} from '@/app/constants/Login';
+} from '@/src/constants/Login';
 import FormContainer from '../signin/LoginForm';
-import { signup } from '@/utils/apis/auth/signup';
-import { loginWithGoogle } from '@/utils/apis/auth/loginWithGoogle';
+import { signup } from '@/src/utils/apis/auth/signup';
+import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import LoginWithGoogle from '../signin/LoginWithGoogle';
 
 const SignupCard = () => {

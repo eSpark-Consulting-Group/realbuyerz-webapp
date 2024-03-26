@@ -1,6 +1,6 @@
 import React from 'react';
 import CareersSinglePage from '@/src/components/careers/CareersSinglePage';
-import { CAREERS_SEO } from '@/app/constants/seo';
+import { CAREERS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.id;

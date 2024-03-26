@@ -21,12 +21,10 @@ function ProjectsSinglePage() {
   const selectedProject = properties?.filter(
     (property) => String(property?.property_id) === String(id)
   )[0];
-  console.log(selectedProject, 'selectedProject');
   const agents = useSelector((state) => state.agents);
   const selectedAgent = agents?.filter(
     (agent) => agent?.id === selectedProject?.user_id
   )[0];
-  console.log(selectedAgent, 'selectedAgent');
   if (isNaN(id) || id === undefined || id === null) {
     return (
       <NotFoundSection

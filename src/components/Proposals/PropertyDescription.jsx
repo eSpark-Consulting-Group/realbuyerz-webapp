@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { PROPERTY_DETAILS } from '@/app/constants/Properties';
+import { PROPERTY_DETAILS } from '@/src/constants/Properties';
 
 const PropertyDescription = ({ proposal }) => {
   return (

@@ -2,11 +2,11 @@
 import React from 'react';
 import { Box } from '@mui/system';
 
-import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
+import LoginCard from './LoginCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
 
 const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
   let cardComponent;

@@ -1,4 +1,4 @@
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 import dynamic from 'next/dynamic';
 import React from 'react';
 const TermsPage = dynamic(

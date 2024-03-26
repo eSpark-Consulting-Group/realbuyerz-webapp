@@ -1,6 +1,6 @@
 import React from 'react';
 import PolicyPage from '@/src/components/privacy-policy/PolicyPage';
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/privacy-policy';
 const filteredData =

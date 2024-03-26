@@ -1,6 +1,6 @@
 import React from 'react';
 import Jagah360Page from '@/src/components/jagah360/Jagah360Page';
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/jagah360';
 const filteredData =

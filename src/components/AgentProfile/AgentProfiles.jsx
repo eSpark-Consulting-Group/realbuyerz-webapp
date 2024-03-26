@@ -1,16 +1,14 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-
-import { LETS_TALK } from '@/app/constants/AgentProfile';
-import AgentProfileDetail from './Profile/AgentProfileDetail';
-import AgentImage from './Profile/AgentImage';
-import LetsTalk from './Profile/LetsTalk';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
+import AgentImage from './Profile/AgentImage';
+import AgentProfileDetail from './Profile/AgentProfileDetail';
+import LetsTalk from './Profile/LetsTalk';
+import { LETS_TALK } from '@/src/constants/profile/agent-projects/AgentProfile';
 
 const AgentProfiles = ({ data, setFieldValue }) => {
   const path = usePathname();
-  console.log(data.id, 'dataid');
   const user_profile = 'user-profile';
   const agent_profile = 'agent-profile';
   const projects = useSelector((state) => state.postListingAds.agentPostings);

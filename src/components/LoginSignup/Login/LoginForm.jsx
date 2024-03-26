@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Box, TextField } from '@mui/material';
 
-import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/app/constants/Login';
+import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/src/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 

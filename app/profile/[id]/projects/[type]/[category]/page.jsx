@@ -1,6 +1,6 @@
 import React from 'react';
 import AgentProjectsCategoryPage from '@/src/components/profile/agent-projects/AgentProjectsCategoryPage';
-import { BLOGS_SEO } from '@/app/constants/seo';
+import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.category;

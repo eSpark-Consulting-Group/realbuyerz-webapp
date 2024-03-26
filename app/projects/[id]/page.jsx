@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectsSinglePage from '@/src/components/projects/ProjectsSinglePage';
-import { BLOGS_SEO } from '@/app/constants/seo';
+import { BLOGS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.id;

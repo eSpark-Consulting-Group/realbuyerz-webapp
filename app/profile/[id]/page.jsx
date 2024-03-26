@@ -1,11 +1,11 @@
 import React from 'react';
 import ProfileSinglePage from '@/src/components/profile/ProfileSinglePage';
-import { BLOGS_SEO } from '@/app/constants/seo';
+import { AGENTS_SEO } from '@/src/constants/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.slug;
   const filteredData =
-    BLOGS_SEO.find((item) => item?.path === slug) || BLOGS_SEO[0];
+    AGENTS_SEO.find((item) => item?.path === slug) || AGENTS_SEO[0];
   const metadata = {
     metadataBase: new URL('https://www.realbuyerz.com/'),
     title: filteredData?.title,
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     keywords: [`Real Buyerz`, `Property Real Estate`, `Sell Buy Rent Property`],
     author: `Real Buyerz`,
     alternates: {
-      canonical: `https://www.realbuyerz.com/blogs/${filteredData?.path}`,
+      canonical: `https://www.realbuyerz.com/profile/${filteredData?.path}`,
       languages: {
         'en-US': '/en-US',
         'en-UK': '/en-UK',

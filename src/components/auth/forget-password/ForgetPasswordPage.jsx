@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import RectangleBorderImage from '../RectangleBorderImage';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/app/constants/Login';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
 
 const ForgetPasswordPage = () => {
   return (

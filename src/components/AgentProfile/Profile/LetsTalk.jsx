@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Button, Grid, Paper, Typography } from '@mui/material';
 import Link from 'next/link';
 
 const LetsTalk = ({ text, data }) => {
@@ -18,34 +18,30 @@ const LetsTalk = ({ text, data }) => {
           justifyContent: 'center',
         }}
       >
-        <Link href={`/user/inbox/${data.id}`}>
-          <Paper
+        <Button
+          href={`/user/inbox/${data.id}`}
+          sx={{
+            boxShadow: 2,
+            padding: 2,
+            height: '35px',
+            backgroundColor: '#fff',
+            borderRadius: '50px',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#fff',
+            },
+          }}
+        >
+          <Typography
+            variant="body2"
             sx={{
-              background: 'white',
-              borderRadius: '47px',
-              alignItems: 'center',
-              alignContent: 'center',
-              width: '91.93px',
-              height: '35px',
-              boxShadow: 2,
-              padding: 2,
-              marginLeft: { xs: 0, sm: 'auto' },
-              paddingBottom: '10px',
+              fontWeight: 'bold',
+              color: '#126FAA',
             }}
           >
-            <Typography
-              variant="body2"
-              sx={{
-                fontWeight: 'bold',
-                color: '#126FAA',
-                pb: '10px',
-                marginTop: '-8px',
-              }}
-            >
-              {text}
-            </Typography>
-          </Paper>
-        </Link>
+            {text}
+          </Typography>
+        </Button>
       </Grid>
     )
   );
