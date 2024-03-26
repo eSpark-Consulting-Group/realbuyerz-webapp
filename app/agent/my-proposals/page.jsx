@@ -198,6 +198,7 @@ const AgentProposals = () => {
                       data={item}
                       currentTab={currentTab}
                       link={`my-proposals/proposal/${item?.proposal_id || '#'}`}
+                      customKey={index}
                     />
                   ))
                 ) : currentTab === 'Archive' ? (
@@ -206,6 +207,7 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      customKey={index}
                     />
                   ))
                 ) : currentTab === 'Rejected' ? (
@@ -214,6 +216,7 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      customKey={index}
                     />
                   ))
                 ) : currentTab === 'Trash' ? (
@@ -222,6 +225,7 @@ const AgentProposals = () => {
                       key={index}
                       data={item}
                       currentTab={currentTab}
+                      customKey={index}
                     />
                   ))
                 ) : null}

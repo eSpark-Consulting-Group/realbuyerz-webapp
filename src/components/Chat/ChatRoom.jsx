@@ -621,7 +621,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   <Box
                     role={'none'}
                     className={'contentEditable'}
-                    contentEditable
+                    // contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
                     aria-label="Type your message..."

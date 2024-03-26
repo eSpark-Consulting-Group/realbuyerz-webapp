@@ -14,7 +14,7 @@ import PreviewModal from '../PostListing/preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const ProposalCard = ({ data, currentTab, link, key }) => {
+const ProposalCard = ({ data, currentTab, link, customKey }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -94,7 +94,7 @@ const ProposalCard = ({ data, currentTab, link, key }) => {
               border: 'solid 1px #E4E4E4',
               borderRadius: '20px',
               padding: { xs: 0.5, sm: '10px', md: 1.8 },
-              marginTop: key === 0 && '30px',
+              marginTop: customKey === 0 && '30px',
               cursor: 'pointer',
               position: 'relative',
               zIndex: 2,

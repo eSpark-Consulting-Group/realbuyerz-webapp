@@ -19,8 +19,9 @@ const Counter = ({ formik, name, limit }) => {
 
   const handleDecrement = () => {
     const zero = 0;
+    const one = 1;
     if (initialValue > zero) {
-      const newDecrementValue = initialValue - zero;
+      const newDecrementValue = initialValue - one;
       formik.setFieldValue(name, newDecrementValue.toString());
     }
   };

@@ -133,7 +133,7 @@ const PaymentMethod = ({
         backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' },
       }}
     >
-      <Grid container xs={12} item>
+      <Grid container xs={12}>
         <Grid item xs={12}>
           <Title title={title} />
         </Grid>

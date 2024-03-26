@@ -57,7 +57,7 @@ const BiddingDetails = ({ height, ads }) => {
                 {ads
                   ?.slice(0, showAllItems ? ads?.length : 3)
                   ?.map((item, index) => (
-                    <Grid container xs={12} key={index}>
+                    <Grid item container xs={12} key={index}>
                       <Box
                         sx={{
                           width: '100%',
@@ -88,6 +88,7 @@ const BiddingDetails = ({ height, ads }) => {
                           }}
                         ></Box>
                         <Grid
+                          item
                           container
                           spacing={2}
                           sx={{
@@ -103,7 +104,7 @@ const BiddingDetails = ({ height, ads }) => {
                             sm={7}
                             md={8}
                             lg={6.5}
-                            xl={`${path?.includes('/user') ? 9 : 6.5}`}
+                            xl={path?.includes('/user') ? 9 : 6.5}
                             sx={{
                               color: '#333',
                               textWrap: 'wrap',
@@ -132,8 +133,8 @@ const BiddingDetails = ({ height, ads }) => {
                             item
                             xs={12}
                             sm={5}
-                            md={`${path.includes('/user') ? 3 : 4}`}
-                            lg={`${path.includes('/user') ? 4 : 2.5}`}
+                            md={path.includes('/user') ? 3 : 4}
+                            lg={path.includes('/user') ? 4 : 2.5}
                             xl={2}
                             sx={{
                               color: '#333',
