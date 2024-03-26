@@ -1,36 +1,57 @@
+'use client';
+import React, { useState } from 'react';
 import {
+  Box,
   FormControl,
   MenuItem,
   Select,
+  Slider,
   TextField,
   Typography,
 } from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
-import Slider from '@mui/material/Slider';
 import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 
 const ProjectsSliderFilter = ({
   title,
-  selectedUnit,
   units,
   handleChange,
-  selectedRange,
-  handleRangeChange,
-  handleApply,
-  handleCancel,
 }) => {
-  const handleMinAreaChange = (event) => {
-    const minValue = event.target.value;
-    const newRange = [parseFloat(minValue), selectedRange[1]]; // Keep the maximum value unchanged
-    handleRangeChange(null, newRange); // Call the handleRangeChange function with the new range
+  // Initialize state for selected unit and range
+  const [selectedUnit, setSelectedUnit] = useState(units[0]?.value);
+  const [selectedRange, setSelectedRange] = useState([0, 5000]);
+
+  // Event handlers for changing selected unit and range
+  const handleUnitChange = (event) => {
+    setSelectedUnit(event.target.value);
+    handleChange(event);
   };
 
-  // Function to handle changes in the maximum area field
+  const handleMinAreaChange = (event) => {
+    const minValue = event.target.value;
+    const newRange = [parseFloat(minValue), selectedRange[1]];
+    setSelectedRange(newRange);
+  };
+
   const handleMaxAreaChange = (event) => {
     const maxValue = event.target.value;
-    const newRange = [selectedRange[0], parseFloat(maxValue)]; // Keep the minimum value unchanged
-    handleRangeChange(null, newRange); // Call the handleRangeChange function with the new range
+    const newRange = [selectedRange[0], parseFloat(maxValue)];
+    setSelectedRange(newRange);
+  };
+
+  const handleRangeChange = (_, newRange) => {
+    setSelectedRange(newRange);
+  };
+
+  // Internal function for applying filter
+  const handleApply = () => {
+    console.log('Applying filter with range:', selectedRange);
+    // Add logic to apply filter
+  };
+
+  // Internal function for canceling filter
+  const handleCancel = () => {
+    console.log('Canceling filter');
+    // Add logic to cancel filter
   };
 
   return (
@@ -58,13 +79,12 @@ const ProjectsSliderFilter = ({
         <Select
           defaultValue={'any'}
           id="area"
-          value={selectedUnit || units[0]?.value}
-          de
-          onChange={handleChange}
+          value={selectedUnit}
+          onChange={handleUnitChange}
         >
           {units.map((unit, index) => (
-            <MenuItem key={index} value={unit?.value}>
-              {unit?.title}
+            <MenuItem key={index} value={unit.value}>
+              {unit.title}
             </MenuItem>
           ))}
         </Select>

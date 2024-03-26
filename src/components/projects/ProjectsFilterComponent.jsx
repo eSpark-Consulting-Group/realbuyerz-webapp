@@ -75,14 +75,12 @@ const ProjectsFilterComponent = ({ data }) => {
     const chipIndex = event.target.value;
     setSelectedProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
   };
-
-  const handlePriceApply = () => {};
-
-  const handlePriceCancel = () => {};
-  const handleAreaApply = () => {};
-  const handleAreaCancel = () => {};
-  const handlePropertyApply = () => {};
-  const handlePropertyCancel = () => {};
+  // const handlePriceApply = () => {};
+  // const handlePriceCancel = () => {};
+  // const handleAreaApply = () => {};
+  // const handleAreaCancel = () => {};
+  // const handlePropertyApply = () => {};
+  // const handlePropertyCancel = () => {};
   const handleFilter = () => {
     const filteredData = data?.filter((projects) => {
       return (
@@ -160,6 +158,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
+        borderRadius: '20px',
                 }}
               >
                 <ProjectsTabsFilter
@@ -169,8 +168,8 @@ const ProjectsFilterComponent = ({ data }) => {
                   handlePropertyTabChange={handlePropertyTabChange}
                   handlePropertyChange={handlePropertyChange}
                   setSelectedProperty={setSelectedProperty}
-                  handleApply={handlePropertyApply}
-                  handleCancel={handlePropertyCancel}
+                  // handleApply={handlePropertyApply}
+                  // handleCancel={handlePropertyCancel}
                 />
               </Box>
             </Popper>
@@ -196,6 +195,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
+        borderRadius: '20px',
                   // width: '300px',
                 }}
               >
@@ -206,8 +206,8 @@ const ProjectsFilterComponent = ({ data }) => {
                   selectedRange={selectedPriceRange}
                   handleChange={handlePriceChange}
                   handleRangeChange={handlePriceRangeChange}
-                  handleApply={handlePriceApply}
-                  handleCancel={handlePriceCancel}
+                  // handleApply={handlePriceApply}
+                  // handleCancel={handlePriceCancel}
                 />
               </Box>
             </Popper>
@@ -233,6 +233,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
+        borderRadius: '20px',
                 }}
               >
                 <ProjectsSliderFilter
@@ -242,8 +243,8 @@ const ProjectsFilterComponent = ({ data }) => {
                   selectedRange={selectedAreaRange}
                   handleChange={handleAreaChange}
                   handleRangeChange={handleAreaRangeChange}
-                  handleApply={handleAreaApply}
-                  handleCancel={handleAreaCancel}
+                  // handleApply={handleAreaApply}
+                  // handleCancel={handleAreaCancel}
                 />
               </Box>
             </Popper>
