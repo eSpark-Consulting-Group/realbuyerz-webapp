@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Grid, Paper, Typography } from '@mui/material';
-import Link from 'next/link';
+import { Button, Grid, Typography } from '@mui/material';
 
 const LetsTalk = ({ text, data }) => {
   return (
