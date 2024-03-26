@@ -12,13 +12,8 @@ const RightSection = ({
   proposals,
   rightSectionKeys,
 }) => {
-  const {
-    apply_Button,
-    save_Button,
-    send_Proposal,
-    flag_Inappropiate,
-    // available_Connects,
-  } = rightSectionKeys;
+  const { apply_Button, save_Button, send_Proposal, flag_Inappropiate } =
+    rightSectionKeys;
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
 
   const [isHovered, setIsHovered] = useState(false);

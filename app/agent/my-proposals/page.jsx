@@ -3,9 +3,10 @@ import BiddingDetails from '@/src/components/Biddings/BiddingDetails';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import ProposalCard from '@/src/components/Proposal/ProposalCard';
 import { a11yProps } from '@/src/utils/tabs';
-import { Box, Divider, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Divider, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import TabHeading from './tabHeading';
 
 const AgentProposals = () => {
   const [value, setValue] = useState(0);
@@ -144,28 +145,7 @@ const AgentProposals = () => {
             width: 'auto',
           }}
         >
-          <Box sx={{ marginLeft: '10px', marginBottom: '10px' }}>
-            {currentTab === 'Active' && (
-              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
-                Active proposals
-              </Typography>
-            )}
-            {currentTab === 'Archive' && (
-              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
-                Archive proposals
-              </Typography>
-            )}
-            {currentTab === 'Rejected' && (
-              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
-                Rejected proposals
-              </Typography>
-            )}
-            {currentTab === 'Trash' && (
-              <Typography sx={{ fontSize: '25px', fontWeight: 500 }}>
-                Rejected proposals
-              </Typography>
-            )}
-          </Box>
+          <TabHeading currentTab={currentTab} />
           <Box
             sx={{
               display: 'flex',

@@ -98,13 +98,11 @@ const Page = () => {
                       width: '100%',
                       height: 'auto',
                       borderBottom: '1px solid #E4E4E4',
-                      // px: { xs: 4, md: 2 },
                       pb: 3,
                       pt: 4.2,
                     }}
                   >
                     <RightSection
-                      // proposals={sendProposals}
                       specificPost={specificPost}
                       postId={specificPost?.property_id}
                       rightSectionKeys={clientRequirment}
