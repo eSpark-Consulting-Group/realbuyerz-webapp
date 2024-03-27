@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectsPage from '@/src/components/projects/ProjectsPage';
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/projects';
 const filteredData =

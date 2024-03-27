@@ -1,5 +1,5 @@
 import React from 'react';
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 import SignupPage from '@/src/components/auth/signup/SignupPage';
 
 const pathname = '/signup';

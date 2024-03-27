@@ -4,7 +4,7 @@ import { Grid, Box } from '@mui/material';
 import Price from './PropertyPrice';
 import AgentDescription from './AgentDescription';
 import ViewAgentProfile from './ViewAgentProfile';
-import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+import { PROPERTY_ESTATE } from '@/src/constants/Properties';
 
 const ProfileAgent = ({ data, agentData }) => {
   return (

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import { LOGIN_FORM } from '@/app/constants/Login';
+import { LOGIN_FORM } from '@/src/constants/Login';
 
 const LoginPageText = () => {
   return (

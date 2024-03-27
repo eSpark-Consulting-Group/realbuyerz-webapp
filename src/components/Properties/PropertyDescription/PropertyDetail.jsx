@@ -8,7 +8,7 @@ import PropertyArea from './PropertyArea';
 import PropertyDescription from './PropertyDescription';
 import PropertyMapLocation from './PropertyMapLocation';
 
-import { PROPERTY_ESTATE } from '@/app/constants/Properties';
+import { PROPERTY_ESTATE } from '@/src/constants/Properties';
 
 const PropertyDetails = ({ propertyDetailsData }) => {
   return (

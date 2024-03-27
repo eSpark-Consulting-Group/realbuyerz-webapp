@@ -1,4 +1,4 @@
-import { PROPERTIES_DATA } from '@/app/constants/finalConstants/Properties';
+import { PROPERTIES_DATA } from '@/src/constants/finalConstants/Properties';
 import { createSlice } from '@reduxjs/toolkit';
 
 const properties = PROPERTIES_DATA;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfilesPage from '@/src/components/profile/ProfilesPage';
-import { GLOBAL_SEO } from '@/app/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/seo';
 
 const pathname = '/profile';
 const filteredData =

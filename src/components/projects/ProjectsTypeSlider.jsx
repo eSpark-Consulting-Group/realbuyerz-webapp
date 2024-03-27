@@ -14,7 +14,7 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
   console.log(currentPage);
   const capCategory = category?.charAt(0).toUpperCase() + category?.slice(1);
   const capType = type?.charAt(0).toUpperCase() + type?.slice(1);
-  console.log(capCategory, capType);
+  console.log(capType);
   const totalItems = Math.min(data.length, itemsToShow) || 10;
   const handleChangePage = (newPage) => {
     setCurrentPage(newPage);
@@ -26,7 +26,6 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
       item?.status === 'submit'
     );
   });
-  console.log(filterData, 'filterData');
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const filteredData = filterData?.length ? filterData : NoData;
 

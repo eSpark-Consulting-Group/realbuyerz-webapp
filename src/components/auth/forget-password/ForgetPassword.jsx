@@ -5,10 +5,10 @@ import { useMutation } from '@tanstack/react-query';
 import { Box, Typography, TextField } from '@mui/material';
 
 import CheckEmailModal from './EmailModal';
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/app/constants/Login';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import Continue from '@/src/components/auth/forget-password/Continue';
-import { forgetPassword } from '@/utils/apis/auth/forgetPassword';
-import { validateEmail } from '@/utils/validationEmail';
+import { validateEmail } from '@/src/utils/validationEmail';
+import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
 
 const ForgetPassword = ({ setshowForgetPassword }) => {
   const [email, setEmail] = useState('');

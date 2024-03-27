@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-import { ABOUT } from '@/app/constants/AgentProfile';
+import { ABOUT } from '@/src/constants/AgentProfile';
 
 const AgentAboutTitle = ({ title }) => {
   return (

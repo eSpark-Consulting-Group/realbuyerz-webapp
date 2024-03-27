@@ -8,7 +8,7 @@ import HeroSlider from '../sliders/HeroSlider';
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
-} from '@/app/constants/Constants';
+} from '@/src/constants/Constants';
 import Link from 'next/link';
 
 const HeroSection = () => {

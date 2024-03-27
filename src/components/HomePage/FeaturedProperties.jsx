@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styles from '@/src/components/HomePage/slider.module.css';
 import Heading from './Heading';
-import { FEATURED_HEADINGS } from '@/app/constants/Home';
+import { FEATURED_HEADINGS } from '@/src/constants/Home';
 
 const FeaturedProperties = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
