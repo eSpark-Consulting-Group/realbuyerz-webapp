@@ -1,12 +1,11 @@
-import BuyProduct from '@/src/components/Prop-Shop/BuyProduct';
-import { Box } from '@mui/material';
 import React from 'react';
+import BuyProduct from '@/src/components/dashboard/agent/prop-shop/buy-product/BuyProduct';
 
 const page = () => {
   return (
-    <Box>
+    <>
       <BuyProduct />
-    </Box>
+    </>
   );
 };
 
