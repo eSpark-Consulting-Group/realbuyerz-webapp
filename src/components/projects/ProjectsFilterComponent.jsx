@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 import ProjectsSliderFilter from './ProjectsSliderFilter';
@@ -36,6 +36,19 @@ const ProjectsFilterComponent = ({ data }) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
+  const notificationPopupRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (
+      notificationPopupRef?.current &&
+      !notificationPopupRef?.current?.contains(event.target)
+    ) {
+      setAnchorEl1(null);
+      setAnchorEl2(null);
+      setAnchorEl3(null);
+    }
+  };
+
   const handleClick1 = (event) => {
     setAnchorEl1(anchorEl1 ? null : event.currentTarget);
     // Close other poppers if open
@@ -114,6 +127,10 @@ const ProjectsFilterComponent = ({ data }) => {
   };
 
   useEffect(() => {
+    document.addEventListener('mouseleave', handleClickOutside);
+    return () => {
+      document.removeEventListener('mouseleave', handleClickOutside);
+    };
     handleFilter();
   }, [
     searchText,
@@ -161,6 +178,7 @@ const ProjectsFilterComponent = ({ data }) => {
               open={open1}
               anchorEl={anchorEl1}
               placement="bottom-start"
+              ref={notificationPopupRef}
               sx={{ zIndex: '1' }}
             >
               <Box
@@ -197,6 +215,7 @@ const ProjectsFilterComponent = ({ data }) => {
               open={open2}
               anchorEl={anchorEl2}
               placement="bottom-start"
+              ref={notificationPopupRef}
               sx={{ zIndex: '1' }}
             >
               <Box
@@ -232,6 +251,7 @@ const ProjectsFilterComponent = ({ data }) => {
               open={open3}
               anchorEl={anchorEl3}
               placement={'bottom-start'}
+              ref={notificationPopupRef}
               sx={{ zIndex: '1' }}
             >
               <Box
