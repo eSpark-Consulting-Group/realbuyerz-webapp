@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
@@ -81,8 +82,8 @@ const ProjectsFilterComponent = ({ data }) => {
         projects?.purpose === selectedPropertyAdType &&
         projects?.propertyType === selectedProperty?.title &&
         projects?.propertyCategory === selectedPropertyTab &&
-        projects?.areaUnit === selectedAreaUnit?.toLowerCase() &&
-        projects?.amountCurrency === selectedPriceUnit?.toUpperCase() &&
+        projects?.areaUnit === selectedAreaUnit &&
+        projects?.amountCurrency === selectedPriceUnit &&
         projects?.amount <= selectedPriceRange[0] &&
         projects?.amount >= selectedPriceRange[1] &&
         projects?.amount <= selectedAreaRange[0] &&
@@ -103,18 +104,18 @@ const ProjectsFilterComponent = ({ data }) => {
     setSearchText('');
   };
 
-  useEffect(() => {
-    handleFilter();
-  }, [
-    searchText,
-    selectedAreaRange,
-    selectedAreaUnit,
-    selectedPriceRange,
-    selectedPriceUnit,
-    selectedProperty,
-    selectedPropertyAdType,
-    selectedPropertyTab,
-  ]);
+useEffect(() => {
+  handleFilter();
+}, [
+  searchText,
+  selectedAreaRange,
+  selectedAreaUnit,
+  selectedPriceRange,
+  selectedPriceUnit,
+  selectedProperty,
+  selectedPropertyAdType,
+  selectedPropertyTab,
+]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
