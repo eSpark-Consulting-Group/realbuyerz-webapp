@@ -35,6 +35,7 @@ const PreviewFeatureAndAmenities = ({
   fontWeight,
   specificPost,
 }) => {
+  console.log(propertyNames, 'propertyNames');
   return (
     <>
       {amenities?.title && (
