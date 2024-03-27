@@ -66,7 +66,7 @@ const ProjectsFilterComponent = ({ data }) => {
   const handlePriceRangeChange = (event, newValue) => {
     setSelectedPriceRange(newValue);
   };
- const handlePropertyTabChange = (event, newValue) => {
+  const handlePropertyTabChange = (event, newValue) => {
     setSelectedPropertyTab(newValue);
   };
   const handlePropertyChange = (event, newValue) => {
@@ -170,7 +170,6 @@ const ProjectsFilterComponent = ({ data }) => {
                   handlePropertyChange={handlePropertyChange}
                   setSelectedProperty={setSelectedProperty}
                   setSelectedPropertyTab={setSelectedPropertyTab}
-
                 />
               </Box>
             </Popper>

@@ -13,35 +13,35 @@ function ProjectsTabsFilter({
   selectedProperty,
   setSelectedProperty,
   setSelectedPropertyTab,
-
 }) {
   const [selectPropertyTab, setSelectPropertyTab] = useState(0);
   const [selectProperty, setSelectProperty] = useState('');
-
+  console.log(selectedPropertyTab, selectedProperty);
   const handleTabChange = (event, newValue) => {
     setSelectPropertyTab(newValue);
     setSelectProperty(data?.[newValue]?.content[0]); // Set default selectProperty on tab change
-
   };
 
   const handleChange = (event) => {
     const chipIndex = event.target.value;
     setSelectProperty(data?.[selectPropertyTab]?.content[chipIndex]);
-    console.log("Property changed to:", data?.[selectPropertyTab]?.content[chipIndex]);
+    console.log(
+      'Property changed to:',
+      data?.[selectPropertyTab]?.content[chipIndex]
+    );
   };
 
   const handleSelectApply = () => {
-    handlePropertyTabChange( selectPropertyTab); 
+    handlePropertyTabChange(selectPropertyTab);
     handlePropertyChange(selectProperty);
     setSelectedProperty(selectProperty);
     setSelectedPropertyTab(selectPropertyTab);
     selectedPropertyTab = selectPropertyTab;
     selectedProperty = selectProperty;
-
   };
 
   const handleSelectCancel = () => {
-    setSelectPropertyTab(0); 
+    setSelectPropertyTab(0);
     setSelectProperty('');
     setSelectedProperty(0);
     setSelectedPropertyTab('');
@@ -106,7 +106,11 @@ function ProjectsTabsFilter({
               </Button>
             ))}
             <Select
-              value={selectProperty ? tab?.content?.findIndex((chip) => chip === selectProperty) : ''}
+              value={
+                selectProperty
+                  ? tab?.content?.findIndex((chip) => chip === selectProperty)
+                  : ''
+              }
               onChange={handleChange}
               displayEmpty
               fullWidth
