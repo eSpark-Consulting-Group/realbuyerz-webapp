@@ -128,10 +128,10 @@ const ProjectsFilterComponent = ({ data }) => {
 
   useEffect(() => {
     document.addEventListener('mouseleave', handleClickOutside);
+    handleFilter();
     return () => {
       document.removeEventListener('mouseleave', handleClickOutside);
     };
-    handleFilter();
   }, [
     searchText,
     selectedAreaRange,
