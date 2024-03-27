@@ -7,28 +7,48 @@ import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 
 function ProjectsTabsFilter({
   data,
-  handleTabChange,
-  handleChange,
+  handlePropertyTabChange,
+  handlePropertyChange,
   selectedPropertyTab,
   selectedProperty,
   setSelectedProperty,
-  handleCancel,
-  handleApply,
+  setSelectedPropertyTab,
+
 }) {
   const [selectPropertyTab, setSelectPropertyTab] = useState(0);
   const [selectProperty, setSelectProperty] = useState('');
 
-  const handlePropertyTabChange = (event, newValue) => {
+  const handleTabChange = (event, newValue) => {
     setSelectPropertyTab(newValue);
-    setSelectProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
-    console.log(selectPropertyTab, 'selectPropertyTab');
-    console.log(selectProperty, 'selectProperty');
+    setSelectProperty(data?.[newValue]?.content[0]); // Set default selectProperty on tab change
+
   };
 
-  const handlePropertyChange = (event) => {
+  const handleChange = (event) => {
     const chipIndex = event.target.value;
-    setSelectProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
+    setSelectProperty(data?.[selectPropertyTab]?.content[chipIndex]);
+    console.log("Property changed to:", data?.[selectPropertyTab]?.content[chipIndex]);
   };
+
+  const handleSelectApply = () => {
+    handlePropertyTabChange( selectPropertyTab); 
+    handlePropertyChange(selectProperty);
+    setSelectedProperty(selectProperty);
+    setSelectedPropertyTab(selectPropertyTab);
+    selectedPropertyTab = selectPropertyTab;
+    selectedProperty = selectProperty;
+
+  };
+
+  const handleSelectCancel = () => {
+    setSelectPropertyTab(0); 
+    setSelectProperty('');
+    setSelectedProperty(0);
+    setSelectedPropertyTab('');
+    selectedPropertyTab = 0;
+    selectedProperty = selectProperty;
+  };
+
   return (
     <Box
       zIndex={999}
@@ -41,7 +61,7 @@ function ProjectsTabsFilter({
         boxShadow: '0px 0px 10px 0px #00000040',
       }}
     >
-      <Tabs value={selectPropertyTab} onChange={handlePropertyTabChange}>
+      <Tabs value={selectPropertyTab} onChange={handleTabChange}>
         {data?.map((tab, index) => (
           <Tab key={index} label={tab?.label} />
         ))}
@@ -86,12 +106,8 @@ function ProjectsTabsFilter({
               </Button>
             ))}
             <Select
-              value={
-                selectProperty
-                  ? tab?.content?.findIndex((chip) => chip === selectProperty)
-                  : ''
-              }
-              onChange={handlePropertyChange}
+              value={selectProperty ? tab?.content?.findIndex((chip) => chip === selectProperty) : ''}
+              onChange={handleChange}
               displayEmpty
               fullWidth
               variant="outlined"
@@ -108,8 +124,8 @@ function ProjectsTabsFilter({
       ))}
 
       <ProjectsFilterApplicatonButtons
-        apply={handleApply}
-        cancel={handleCancel}
+        apply={handleSelectApply}
+        cancel={handleSelectCancel}
       />
     </Box>
   );

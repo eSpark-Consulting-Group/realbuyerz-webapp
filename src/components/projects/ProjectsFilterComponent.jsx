@@ -66,28 +66,11 @@ const ProjectsFilterComponent = ({ data }) => {
   const handlePriceRangeChange = (event, newValue) => {
     setSelectedPriceRange(newValue);
   };
-
-  const handlePropertyTabChange = (event, newValue) => {
+ const handlePropertyTabChange = (event, newValue) => {
     setSelectedPropertyTab(newValue);
-    setSelectedProperty(null);
   };
-
-  const handlePropertyChange = (event) => {
-    const chipIndex = event.target.value;
-    setSelectedProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
-  };
-
-  const handleApply = () => {
-    handleFilter();
-    handleRange('area', selectedAreaRange);
-    handleUnit('unit', selectedAreaUnit);
-  };
-
-  const handleCancel = () => {
-    setSelectedAreaUnit(selectedAreaUnit);
-    setSelectedAreaRange(selectedAreaRange);
-    handleRange('area', ['0', '5000']);
-    handleUnit('unit', 'pkr');
+  const handlePropertyChange = (event, newValue) => {
+    setSelectedProperty(newValue);
   };
 
   const handleFilter = () => {
@@ -133,6 +116,11 @@ const ProjectsFilterComponent = ({ data }) => {
     selectedPropertyTab,
   ]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
+
+  
+    console.log(selectedPropertyTab, 'selectedPropertyTab');
+    console.log(selectedProperty, 'selectedProperty');
+
   return (
     <>
       <Container>
@@ -187,6 +175,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   handlePropertyChange={handlePropertyChange}
                   setSelectedProperty={setSelectedProperty}
                   setSelectedPropertyTab={setSelectedPropertyTab}
+
                 />
               </Box>
             </Popper>

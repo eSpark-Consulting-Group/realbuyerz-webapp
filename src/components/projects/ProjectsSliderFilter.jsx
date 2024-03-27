@@ -43,21 +43,17 @@ const ProjectsSliderFilter = ({
   };
 
   const handleApply = () => {
-    selectedUnit = selectedUnit;
+    selectedUnit = selectUnit;
     selectedRange = selectRange;
     handleRange('area', selectRange);
     handleUnit('unit', selectUnit);
-    console.log(selectedUnit, 'selectedUnit');
-    console.log(selectedRange, 'selectedRange');
   };
 
   const handleCancel = () => {
-    setSelectUnit(selectedUnit);
+    setSelectUnit(selectUnit);
     setSelectRange(selectedRange);
     handleRange('area', ['0', '5000']);
     handleUnit('unit', units[0].value);
-    console.log(selectedUnit, 'selectedUnit');
-    console.log(selectedRange, 'selectedRange');
   };
 
   return (
