@@ -54,8 +54,8 @@ const ProjectsSliderFilter = ({
   const handleCancel = () => {
     setSelectUnit(selectedUnit);
     setSelectRange(selectedRange);
-    handleRange('area', ['45','67890']);
-    handleUnit('unit', 'pkr');
+    handleRange('area', ['0','5000']);
+    handleUnit('unit', units[0]);
     console.log(selectedUnit,'selectedUnit');
     console.log(selectedRange,'selectedRange');
   };
@@ -81,19 +81,22 @@ const ProjectsSliderFilter = ({
           gap: '10px',
         }}
       >
+        
         <Typography variant={'h3'}>{title}</Typography>
-        <Select
-          defaultValue={'any'}
-          id="area"
-          value={selectUnit}
+        <Box sx={{width:'100px'}}>
+          <Select
+          id="units"
+          value={selectUnit }
           onChange={handleUnitChange}
+          fullWidth
         >
           {units.map((unit, index) => (
             <MenuItem key={index} value={unit.value}>
               {unit.title}
             </MenuItem>
           ))}
-        </Select>
+          </Select>
+        </Box>
       </Box>
       <Box
         sx={{

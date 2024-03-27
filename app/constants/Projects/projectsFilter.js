@@ -6,11 +6,11 @@ export const AREA_UNITS = [
   { value: 'kanal', title: 'Kanal' },
 ];
 export const CURRENCY_UNITS = [
-  { value: 'PKR', title: 'PKR' },
-  { value: 'USD', title: 'USD' },
-  { value: 'GBP', title: 'GBP' },
-  { value: 'CAD', title: 'CAD' },
-  { value: 'EUR', title: 'Euro' },
+  { value: 'pkr', title: 'PKR' },
+  { value: 'usd', title: 'USD' },
+  { value: 'gbp', title: 'GBP' },
+  { value: 'cad', title: 'CAD' },
+  { value: 'eur', title: 'Euro' },
 ];
 export const PROPERTY_TYPES = [
   { value: ' ', title: 'Any' },

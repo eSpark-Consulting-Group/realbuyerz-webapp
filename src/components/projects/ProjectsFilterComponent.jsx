@@ -50,12 +50,12 @@ const ProjectsFilterComponent = ({ data }) => {
   const id2 = open2 ? 'simple-popper2' : undefined;
   const id3 = open3 ? 'simple-popper3' : undefined;
 
-    const handleAreaChange = (event) => {
-      setSelectedAreaUnit(event.target.value);
-    };
-   const handlePriceChange = (event) => {
-      setSelectedPriceUnit(event.target.value);
-    };
+  const handleAreaChange = (event, newValue) => {
+    setSelectedAreaUnit(newValue);
+  };
+  const handlePriceChange = (event, newValue) => {
+    setSelectedPriceUnit(newValue);
+  };
   const handleAreaRangeChange = (event, newValue) => {
     setSelectedAreaRange(newValue);
   };
@@ -72,6 +72,20 @@ const ProjectsFilterComponent = ({ data }) => {
     const chipIndex = event.target.value;
     setSelectedProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
   };
+
+  const handleApply = () => {
+    handleFilter();
+    handleRange('area', selectedAreaRange);
+    handleUnit('unit', selectedAreaUnit);
+  };
+
+  const handleCancel = () => {
+    setSelectedAreaUnit(selectedAreaUnit);
+    setSelectedAreaRange(selectedAreaRange);
+    handleRange('area', ['45', '67890']);
+    handleUnit('unit', 'pkr');
+  };
+
   const handleFilter = () => {
     const filteredData = data?.filter((projects) => {
       return (
@@ -80,8 +94,8 @@ const ProjectsFilterComponent = ({ data }) => {
         projects?.purpose === selectedPropertyAdType &&
         projects?.propertyType === selectedProperty?.title &&
         projects?.propertyCategory === selectedPropertyTab &&
-        projects?.areaUnit === selectedAreaUnit.toLowerCase() &&
-        projects?.amountCurrency === selectedPriceUnit.toUpperCase() &&
+        projects?.areaUnit === selectedAreaUnit?.toLowerCase() &&
+        projects?.amountCurrency === selectedPriceUnit?.toUpperCase() &&
         projects?.amount <= selectedPriceRange[0] &&
         projects?.amount >= selectedPriceRange[1] &&
         projects?.amount <= selectedAreaRange[0] &&
@@ -104,14 +118,16 @@ const ProjectsFilterComponent = ({ data }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [searchText,
-selectedAreaRange,
-selectedAreaUnit,
-selectedPriceRange,
-selectedPriceUnit,
-selectedProperty,
-selectedPropertyAdType,
-selectedPropertyTab]);
+  }, [
+    searchText,
+    selectedAreaRange,
+    selectedAreaUnit,
+    selectedPriceRange,
+    selectedPriceUnit,
+    selectedProperty,
+    selectedPropertyAdType,
+    selectedPropertyTab,
+  ]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
