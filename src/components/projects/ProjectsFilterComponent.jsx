@@ -104,18 +104,18 @@ const ProjectsFilterComponent = ({ data }) => {
     setSearchText('');
   };
 
-useEffect(() => {
-  handleFilter();
-}, [
-  searchText,
-  selectedAreaRange,
-  selectedAreaUnit,
-  selectedPriceRange,
-  selectedPriceUnit,
-  selectedProperty,
-  selectedPropertyAdType,
-  selectedPropertyTab,
-]);
+  useEffect(() => {
+    handleFilter();
+  }, [
+    searchText,
+    selectedAreaRange,
+    selectedAreaUnit,
+    selectedPriceRange,
+    selectedPriceUnit,
+    selectedProperty,
+    selectedPropertyAdType,
+    selectedPropertyTab,
+  ]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
