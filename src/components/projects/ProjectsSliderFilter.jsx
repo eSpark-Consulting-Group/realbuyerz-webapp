@@ -14,44 +14,50 @@ import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 const ProjectsSliderFilter = ({
   title,
   units,
-  handleChange,
+  selectedUnit,
+  selectedRange,
+  handleRange,
+  handleUnit
 }) => {
-  // Initialize state for selected unit and range
-  const [selectedUnit, setSelectedUnit] = useState(units[0]?.value);
-  const [selectedRange, setSelectedRange] = useState([0, 5000]);
+  const [selectUnit, setSelectUnit] = useState(selectedUnit);
+  const [selectRange, setSelectRange] = useState(selectedRange);
 
-  // Event handlers for changing selected unit and range
   const handleUnitChange = (event) => {
-    setSelectedUnit(event.target.value);
-    handleChange(event);
+    setSelectUnit(event.target.value);
   };
 
   const handleMinAreaChange = (event) => {
     const minValue = event.target.value;
-    const newRange = [parseFloat(minValue), selectedRange[1]];
-    setSelectedRange(newRange);
+    const newRange = [parseFloat(minValue), selectRange[1]];
+    setSelectRange(newRange);
   };
 
   const handleMaxAreaChange = (event) => {
     const maxValue = event.target.value;
-    const newRange = [selectedRange[0], parseFloat(maxValue)];
-    setSelectedRange(newRange);
+    const newRange = [selectRange[0], parseFloat(maxValue)];
+    setSelectRange(newRange);
   };
 
   const handleRangeChange = (_, newRange) => {
-    setSelectedRange(newRange);
+    setSelectRange(newRange);
   };
 
-  // Internal function for applying filter
   const handleApply = () => {
-    console.log('Applying filter with range:', selectedRange);
-    // Add logic to apply filter
+    selectedUnit = selectedUnit;
+    selectedRange = selectRange;
+    handleRange('area', selectRange);
+    handleUnit('unit', selectUnit);
+    console.log(selectedUnit,'selectedUnit');
+    console.log(selectedRange,'selectedRange');
   };
 
-  // Internal function for canceling filter
   const handleCancel = () => {
-    console.log('Canceling filter');
-    // Add logic to cancel filter
+    setSelectUnit(selectedUnit);
+    setSelectRange(selectedRange);
+    handleRange('area', ['45','67890']);
+    handleUnit('unit', 'pkr');
+    console.log(selectedUnit,'selectedUnit');
+    console.log(selectedRange,'selectedRange');
   };
 
   return (
@@ -79,7 +85,7 @@ const ProjectsSliderFilter = ({
         <Select
           defaultValue={'any'}
           id="area"
-          value={selectedUnit}
+          value={selectUnit}
           onChange={handleUnitChange}
         >
           {units.map((unit, index) => (
@@ -101,14 +107,14 @@ const ProjectsSliderFilter = ({
         <TextField
           id="minArea"
           variant="outlined"
-          value={selectedRange[0]}
+          value={selectRange[0]}
           onChange={handleMinAreaChange}
         />
         <Typography variant={'h3'}>to</Typography>
         <TextField
           id="maxArea"
           variant="outlined"
-          value={selectedRange[1]}
+          value={selectRange[1]}
           onChange={handleMaxAreaChange}
         />
       </Box>
@@ -116,7 +122,7 @@ const ProjectsSliderFilter = ({
       <Box>
         <FormControl fullWidth>
           <Slider
-            value={selectedRange}
+            value={selectRange}
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             min={0}

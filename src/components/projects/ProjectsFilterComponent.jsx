@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
+import ProjectsSliderFilter from './ProjectsSliderFilter';
+import ProjectsTabsFilter from './ProjectsTabsFilter';
 import {
   Button,
   MenuItem,
@@ -12,10 +16,6 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import ProjectsSliderFilter from './ProjectsSliderFilter';
-import { useSelector } from 'react-redux';
-import ProjectsTabsFilter from './ProjectsTabsFilter';
-import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 
 const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
@@ -50,18 +50,15 @@ const ProjectsFilterComponent = ({ data }) => {
   const id2 = open2 ? 'simple-popper2' : undefined;
   const id3 = open3 ? 'simple-popper3' : undefined;
 
-  const handleAreaChange = (event) => {
-    setSelectedAreaUnit(event.target.value);
-  };
-
+    const handleAreaChange = (event) => {
+      setSelectedAreaUnit(event.target.value);
+    };
+   const handlePriceChange = (event) => {
+      setSelectedPriceUnit(event.target.value);
+    };
   const handleAreaRangeChange = (event, newValue) => {
     setSelectedAreaRange(newValue);
   };
-
-  const handlePriceChange = (event) => {
-    setSelectedPriceUnit(event.target.value);
-  };
-
   const handlePriceRangeChange = (event, newValue) => {
     setSelectedPriceRange(newValue);
   };
@@ -75,12 +72,6 @@ const ProjectsFilterComponent = ({ data }) => {
     const chipIndex = event.target.value;
     setSelectedProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
   };
-  // const handlePriceApply = () => {};
-  // const handlePriceCancel = () => {};
-  // const handleAreaApply = () => {};
-  // const handleAreaCancel = () => {};
-  // const handlePropertyApply = () => {};
-  // const handlePropertyCancel = () => {};
   const handleFilter = () => {
     const filteredData = data?.filter((projects) => {
       return (
@@ -113,7 +104,14 @@ const ProjectsFilterComponent = ({ data }) => {
 
   useEffect(() => {
     handleFilter();
-  }, [selectedPropertyAdType, searchText]);
+  }, [searchText,
+selectedAreaRange,
+selectedAreaUnit,
+selectedPriceRange,
+selectedPriceUnit,
+selectedProperty,
+selectedPropertyAdType,
+selectedPropertyTab]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
@@ -158,7 +156,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
-        borderRadius: '20px',
+                  borderRadius: '20px',
                 }}
               >
                 <ProjectsTabsFilter
@@ -168,8 +166,6 @@ const ProjectsFilterComponent = ({ data }) => {
                   handlePropertyTabChange={handlePropertyTabChange}
                   handlePropertyChange={handlePropertyChange}
                   setSelectedProperty={setSelectedProperty}
-                  // handleApply={handlePropertyApply}
-                  // handleCancel={handlePropertyCancel}
                 />
               </Box>
             </Popper>
@@ -195,19 +191,16 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
-        borderRadius: '20px',
-                  // width: '300px',
+                  borderRadius: '20px',
                 }}
               >
                 <ProjectsSliderFilter
                   title={'Price Range'}
                   selectedUnit={selectedPriceUnit}
-                  units={globalUnits?.CURRENCY_UNITS}
                   selectedRange={selectedPriceRange}
-                  handleChange={handlePriceChange}
-                  handleRangeChange={handlePriceRangeChange}
-                  // handleApply={handlePriceApply}
-                  // handleCancel={handlePriceCancel}
+                  units={globalUnits?.CURRENCY_UNITS}
+                  handleRange={handlePriceRangeChange}
+                  handleUnit={handlePriceChange}
                 />
               </Box>
             </Popper>
@@ -233,18 +226,16 @@ const ProjectsFilterComponent = ({ data }) => {
                   bgcolor: 'background.paper',
                   height: 'auto',
                   mt: '10px',
-        borderRadius: '20px',
+                  borderRadius: '20px',
                 }}
               >
                 <ProjectsSliderFilter
                   title={'Area'}
                   selectedUnit={selectedAreaUnit}
-                  units={globalUnits?.AREA_UNITS}
                   selectedRange={selectedAreaRange}
-                  handleChange={handleAreaChange}
-                  handleRangeChange={handleAreaRangeChange}
-                  // handleApply={handleAreaApply}
-                  // handleCancel={handleAreaCancel}
+                  units={globalUnits?.AREA_UNITS}
+                  handleRange={handleAreaRangeChange}
+                  handleUnit={handleAreaChange}
                 />
               </Box>
             </Popper>
