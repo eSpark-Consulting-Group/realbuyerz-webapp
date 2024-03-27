@@ -116,11 +116,6 @@ const ProjectsFilterComponent = ({ data }) => {
     selectedPropertyTab,
   ]);
   const isSmallScreen = useMediaQuery('(max-width:742px)');
-
-  
-    console.log(selectedPropertyTab, 'selectedPropertyTab');
-    console.log(selectedProperty, 'selectedProperty');
-
   return (
     <>
       <Container>
