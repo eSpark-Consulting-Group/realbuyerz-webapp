@@ -22,6 +22,7 @@ import {
   SUBMIT_MODAL_DATA,
 } from '@/src/constants/Preview_Data';
 import { findSpecificPost } from '@/src/utils/dashboardUtils';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const DraftPropertyForm = () => {
   const pathname = usePathname();
@@ -30,6 +31,7 @@ const DraftPropertyForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [Action, setAction] = useState('');
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
   const find_ad = findSpecificPost(agentDrafts, id);
 
@@ -38,6 +40,13 @@ const DraftPropertyForm = () => {
   useEffect(() => {
     serUpdated(find_ad || {});
   }, [find_ad]);
+
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+  const handleSeletedAmenites = () => {
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+  };
 
   const currentUser = useSelector((state) => state?.currentUser?.user);
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -66,6 +75,28 @@ const DraftPropertyForm = () => {
     connects: `${updated?.connects || ''}`,
     bathrooms: `${updated?.bathrooms || ''}`,
     parking: `${updated?.parking || ''}`,
+    clubhouse: `${updated?.clubhouse || ''}`,
+    swimming_pool: `${updated?.swimming_pool || ''}`,
+    fitness_center: `${updated?.fitness_center || ''}`,
+    playground: `${updated?.playground || ''}`,
+    servant_area: `${updated?.servant_area || ''}`,
+    utility_store: `${updated?.utility_store || ''}`,
+    rooftop_terrace: `${updated?.rooftop_terrace || ''}`,
+    on_site_maintenance: `${updated?.on_site_maintenance || ''}`,
+    washing_area: `${updated?.washing_area || ''}`,
+    hour_electricity: `${updated?.hour_electricity || ''}`,
+    auto_generator: `${updated?.auto_generator || ''}`,
+    complete_boundary_wall: `${updated?.complete_boundary_wall || ''}`,
+    walking_trails: `${updated?.walking_trails || ''}`,
+    pet_friendly_facilities: `${updated?.pet_friendly_facilities || ''}`,
+    security: `${updated?.security || ''}`,
+    masjid: `${updated?.masjid || ''}`,
+    corridor: `${updated?.corridor || ''}`,
+    r_o_plant: `${updated?.r_o_plant || ''}`,
+    basketball_courts: `${updated?.basketball_courts || ''}`,
+    huge_park: `${updated?.huge_park || ''}`,
+    concierge_services: `${updated?.concierge_services || ''}`,
+    business_centre: `${updated?.business_centre || ''}`,
     purpose: `${updated?.purpose || ''}`,
     propertyCategory: `${updated?.propertyCategory || ''}`,
     propertyType: `${updated?.propertyType || ''}`,
@@ -109,7 +140,13 @@ const DraftPropertyForm = () => {
               buyData={POST_LISTING?.buy}
             />
             <PropertySize formik={formik} propertyData={POST_LISTING} />
-            <PropertyFeatures formik={formik} propertyData={POST_LISTING} />
+            <PropertyFeatures
+              formik={formik}
+              propertyData={POST_LISTING}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+            />
             <PropertyGallery formik={formik} propertyData={POST_LISTING} />
             <SubmitButton
               formik={formik}
