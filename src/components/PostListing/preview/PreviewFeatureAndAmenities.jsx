@@ -8,11 +8,12 @@ const renderDetail = (
   amenities,
   fontSize,
   fontStyle,
-  fontWeight
+  fontWeight,
+  key
 ) => {
   if (value > 0) {
     return (
-      <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
+      <Box key={key} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
         <Typography
           sx={{
             fontSize: fontStyle ? fontStyle : '14px',
@@ -61,14 +62,15 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {propertyNames?.map((propertyName) =>
+          {propertyNames?.map((propertyName, index) =>
             renderDetail(
               propertyName,
               specificPost?.[propertyName],
               amenities,
               fontSize,
               fontStyle,
-              fontWeight
+              fontWeight,
+              index
             )
           )}
         </Box>

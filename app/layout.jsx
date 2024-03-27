@@ -40,8 +40,8 @@ const RootLayout = ({ children }) => {
   }, [currentPath]);
 
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" cz-shortcut-listen="true">
+      <body cz-shortcut-listen="true">
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider theme={theme}>
