@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { GLOBAL_SEO } from '@/src/constants/seo';
 import ForgetPasswordPage from '@/src/components/auth/forget-password/ForgetPasswordPage';
