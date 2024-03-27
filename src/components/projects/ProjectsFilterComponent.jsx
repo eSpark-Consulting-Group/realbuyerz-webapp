@@ -38,14 +38,23 @@ const ProjectsFilterComponent = ({ data }) => {
   const [anchorEl3, setAnchorEl3] = useState(null);
   const handleClick1 = (event) => {
     setAnchorEl1(anchorEl1 ? null : event.currentTarget);
+    // Close other poppers if open
+    setAnchorEl2(null);
+    setAnchorEl3(null);
   };
 
   const handleClick2 = (event) => {
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
+    // Close other poppers if open
+    setAnchorEl1(null);
+    setAnchorEl3(null);
   };
 
   const handleClick3 = (event) => {
     setAnchorEl3(anchorEl3 ? null : event.currentTarget);
+    // Close other poppers if open
+    setAnchorEl1(null);
+    setAnchorEl2(null);
   };
 
   const open1 = Boolean(anchorEl1);
