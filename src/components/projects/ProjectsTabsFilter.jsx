@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Tab, Tabs, Typography, MenuItem, Select } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
@@ -7,14 +7,28 @@ import ProjectsFilterApplicatonButtons from './ProjectsFilterApplicatonButtons';
 
 function ProjectsTabsFilter({
   data,
-  handlePropertyTabChange,
-  handlePropertyChange,
+  handleTabChange,
+  handleChange,
   selectedPropertyTab,
   selectedProperty,
   setSelectedProperty,
   handleCancel,
   handleApply,
 }) {
+  const [selectPropertyTab, setSelectPropertyTab] = useState(0);
+  const [selectProperty, setSelectProperty] = useState('');
+
+  const handlePropertyTabChange = (event, newValue) => {
+    setSelectPropertyTab(newValue);
+    setSelectProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
+    console.log(selectPropertyTab, 'selectPropertyTab');
+    console.log(selectProperty, 'selectProperty');
+  };
+
+  const handlePropertyChange = (event) => {
+    const chipIndex = event.target.value;
+    setSelectProperty(globalUnits?.PROPERTY_TABS_DATA?.content[chipIndex]);
+  };
   return (
     <Box
       zIndex={999}
@@ -27,13 +41,13 @@ function ProjectsTabsFilter({
         boxShadow: '0px 0px 10px 0px #00000040',
       }}
     >
-      <Tabs value={selectedPropertyTab} onChange={handlePropertyTabChange}>
+      <Tabs value={selectPropertyTab} onChange={handlePropertyTabChange}>
         {data?.map((tab, index) => (
           <Tab key={index} label={tab?.label} />
         ))}
       </Tabs>
       {data?.map((tab, tabIndex) => (
-        <TabPanel key={tabIndex} value={selectedPropertyTab} index={tabIndex}>
+        <TabPanel key={tabIndex} value={selectPropertyTab} index={tabIndex}>
           <Box width={'600px'} py={'20px'}>
             {tab?.content?.map((chip, chipIndex) => (
               <Button
@@ -45,14 +59,14 @@ function ProjectsTabsFilter({
                   margin: '4px',
                   borderRadius: '20px',
                   height: '55px',
-                  borderColor: `${selectedProperty === chip ? '#1877f2' : '#E7E7E7'}`,
-                  backgroundColor: `${selectedProperty === chip ? '##F4F5F7' : '#fff'}`,
+                  borderColor: `${selectProperty === chip ? '#1877f2' : '#E7E7E7'}`,
+                  backgroundColor: `${selectProperty === chip ? '##F4F5F7' : '#fff'}`,
                 }}
-                onClick={() => setSelectedProperty(chip)}
+                onClick={() => setSelectProperty(chip)}
               >
                 <Image
                   src={
-                    selectedProperty === chip ? chip?.activeImage : chip?.image
+                    selectProperty === chip ? chip?.activeImage : chip?.image
                   }
                   width={30}
                   height={30}
@@ -73,15 +87,15 @@ function ProjectsTabsFilter({
             ))}
             <Select
               value={
-                selectedProperty
-                  ? tab?.content?.findIndex((chip) => chip === selectedProperty)
+                selectProperty
+                  ? tab?.content?.findIndex((chip) => chip === selectProperty)
                   : ''
               }
               onChange={handlePropertyChange}
               displayEmpty
               fullWidth
               variant="outlined"
-              style={{ display: 'none' }} // Hide the select, it's just for accessibility purposes
+              style={{ display: 'none' }}
             >
               {tab?.content?.map((chip, chipIndex) => (
                 <MenuItem key={chipIndex} value={chipIndex}>

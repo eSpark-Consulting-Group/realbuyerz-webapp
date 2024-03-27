@@ -1,16 +1,16 @@
 export const AREA_UNITS = [
-  { value: 'sqft', title: 'Sq.ft' },
-  { value: 'sqm', title: 'Sq.M' },
-  { value: 'sqyd', title: 'Sq.Yd' },
-  { value: 'marla', title: 'Marla' },
-  { value: 'kanal', title: 'Kanal' },
+  { value: 'SQFT', title: 'Sq.ft' },
+  { value: 'SQM', title: 'Sq.M' },
+  { value: 'SQYD', title: 'Sq.Yd' },
+  { value: 'Marla', title: 'Marla' },
+  { value: 'Kanal', title: 'Kanal' },
 ];
 export const CURRENCY_UNITS = [
-  { value: 'pkr', title: 'PKR' },
-  { value: 'usd', title: 'USD' },
-  { value: 'gbp', title: 'GBP' },
-  { value: 'cad', title: 'CAD' },
-  { value: 'eur', title: 'Euro' },
+  { value: 'PKR', title: 'PKR' },
+  { value: 'USD', title: 'USD' },
+  { value: 'GBP', title: 'GBP' },
+  { value: 'GBP', title: 'GBP' },
+  { value: 'Euro', title: 'Euro' },
 ];
 export const PROPERTY_TYPES = [
   { value: ' ', title: 'Any' },

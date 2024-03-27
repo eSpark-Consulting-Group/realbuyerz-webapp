@@ -17,7 +17,7 @@ const ProjectsSliderFilter = ({
   selectedUnit,
   selectedRange,
   handleRange,
-  handleUnit
+  handleUnit,
 }) => {
   const [selectUnit, setSelectUnit] = useState(selectedUnit);
   const [selectRange, setSelectRange] = useState(selectedRange);
@@ -47,17 +47,17 @@ const ProjectsSliderFilter = ({
     selectedRange = selectRange;
     handleRange('area', selectRange);
     handleUnit('unit', selectUnit);
-    console.log(selectedUnit,'selectedUnit');
-    console.log(selectedRange,'selectedRange');
+    console.log(selectedUnit, 'selectedUnit');
+    console.log(selectedRange, 'selectedRange');
   };
 
   const handleCancel = () => {
     setSelectUnit(selectedUnit);
     setSelectRange(selectedRange);
-    handleRange('area', ['0','5000']);
-    handleUnit('unit', units[0]);
-    console.log(selectedUnit,'selectedUnit');
-    console.log(selectedRange,'selectedRange');
+    handleRange('area', ['0', '5000']);
+    handleUnit('unit', units[0].value);
+    console.log(selectedUnit, 'selectedUnit');
+    console.log(selectedRange, 'selectedRange');
   };
 
   return (
@@ -81,20 +81,19 @@ const ProjectsSliderFilter = ({
           gap: '10px',
         }}
       >
-        
         <Typography variant={'h3'}>{title}</Typography>
-        <Box sx={{width:'100px'}}>
+        <Box sx={{ width: '100px' }}>
           <Select
-          id="units"
-          value={selectUnit }
-          onChange={handleUnitChange}
-          fullWidth
-        >
-          {units.map((unit, index) => (
-            <MenuItem key={index} value={unit.value}>
-              {unit.title}
-            </MenuItem>
-          ))}
+            id="units"
+            value={selectUnit}
+            onChange={handleUnitChange}
+            fullWidth
+          >
+            {units.map((unit, index) => (
+              <MenuItem key={index} value={unit.value}>
+                {unit.title}
+              </MenuItem>
+            ))}
           </Select>
         </Box>
       </Box>

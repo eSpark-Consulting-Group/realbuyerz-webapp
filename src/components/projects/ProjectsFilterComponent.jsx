@@ -21,9 +21,13 @@ const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
-  const [selectedAreaUnit, setSelectedAreaUnit] = useState('sqft');
+  const [selectedAreaUnit, setSelectedAreaUnit] = useState(
+    globalUnits?.AREA_UNITS[0].value
+  );
   const [selectedAreaRange, setSelectedAreaRange] = useState(['0', '5000']);
-  const [selectedPriceUnit, setSelectedPriceUnit] = useState('pkr');
+  const [selectedPriceUnit, setSelectedPriceUnit] = useState(
+    globalUnits?.CURRENCY_UNITS[0].value
+  );
   const [selectedPriceRange, setSelectedPriceRange] = useState(['0', '5000']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
@@ -82,7 +86,7 @@ const ProjectsFilterComponent = ({ data }) => {
   const handleCancel = () => {
     setSelectedAreaUnit(selectedAreaUnit);
     setSelectedAreaRange(selectedAreaRange);
-    handleRange('area', ['45', '67890']);
+    handleRange('area', ['0', '5000']);
     handleUnit('unit', 'pkr');
   };
 
@@ -182,6 +186,7 @@ const ProjectsFilterComponent = ({ data }) => {
                   handlePropertyTabChange={handlePropertyTabChange}
                   handlePropertyChange={handlePropertyChange}
                   setSelectedProperty={setSelectedProperty}
+                  setSelectedPropertyTab={setSelectedPropertyTab}
                 />
               </Box>
             </Popper>
@@ -190,7 +195,7 @@ const ProjectsFilterComponent = ({ data }) => {
             <TextField
               aria-describedby={id2}
               variant="outlined"
-              value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit.toUpperCase()}`}
+              value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit}`}
               onClick={handleClick2}
               fullWidth
             />
@@ -225,7 +230,7 @@ const ProjectsFilterComponent = ({ data }) => {
             <TextField
               aria-describedby={id3}
               variant="outlined"
-              value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit.toUpperCase()}`}
+              value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}`}
               onClick={handleClick3}
               fullWidth
             />
