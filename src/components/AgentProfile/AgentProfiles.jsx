@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { LETS_TALK } from '@/app/constants/AgentProfile';
-import AgentProfileDetail from './Profile/AgentProfileDetail';
-import AgentImage from './Profile/AgentImage';
-import LetsTalk from './Profile/LetsTalk';
 import { usePathname } from 'next/navigation';
+import AgentImage from './Profile/AgentImage';
+import AgentProfileDetail from './Profile/AgentProfileDetail';
+import LetsTalk from './Profile/LetsTalk';
+import { LETS_TALK } from '@/src/constants/AgentProfile';
 
 const AgentProfiles = ({ data, setFieldValue }) => {
   const path = usePathname();

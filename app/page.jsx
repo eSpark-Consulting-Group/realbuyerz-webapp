@@ -11,8 +11,8 @@ import {
   FEATURED_PROPERTIES,
   PARTNERS,
   POPULAR_LOCATIONS_DATA,
-} from '@/app/constants/Home';
-import { AGENT_PROFILE_DATA } from '@/app/constants/AgentProfile';
+} from '@/src/constants/Home';
+import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
 
 const Home = () => {
   return (

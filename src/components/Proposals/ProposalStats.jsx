@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-import { Proposals } from '@/app/constants/Proposals';
+import { Proposals } from '@/src/constants/Proposals';
 
 const ProposalStats = ({ proposal }) => {
   const renderLocationInfo = () => {

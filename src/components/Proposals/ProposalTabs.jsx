@@ -11,7 +11,7 @@ import {
   filterPropertiesByStatus,
 } from '@/utils/SearchFilter';
 import { getUniqueProposalStatus } from '@/utils/proposalFilter';
-import ProposalCard from '../Proposal/ProposalCard';
+import ProposalCard from '../dashboard/ProposalCard';
 
 const ProposalTabs = ({ filteredProposalsData }) => {
   const [value, setValue] = useState(0);
