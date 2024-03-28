@@ -1,27 +1,26 @@
 import React from 'react';
 import CustomNumberInput from './customInputNumber';
 import { getInitialCounterValue } from '@/src/utils/draftProperty';
+import { INCREMENT_DECREMENT } from '@/src/constants/Preview_Data';
 
 const Counter = ({ formik, name, limit }) => {
+  const {ZERO, ONE } = INCREMENT_DECREMENT
   const initialValue = getInitialCounterValue(formik, name);
 
   const handleIncrement = () => {
     const value = initialValue;
-    const one = 1;
 
     if (typeof value === 'number') {
       if (value < limit) {
-        const newIncrementValue = value + one;
+        const newIncrementValue = value + ONE;
         formik.setFieldValue(name, newIncrementValue.toString());
       }
     }
   };
 
   const handleDecrement = () => {
-    const zero = 0;
-    const one = 1;
-    if (initialValue > zero) {
-      const newDecrementValue = initialValue - one;
+    if (initialValue > ZERO) {
+      const newDecrementValue = initialValue - ONE;
       formik.setFieldValue(name, newDecrementValue.toString());
     }
   };

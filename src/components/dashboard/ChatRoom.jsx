@@ -621,7 +621,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   <Box
                     role={'none'}
                     className={'contentEditable'}
-                    // contentEditable
+                    contentEditable
                     onInput={handleInput}
                     onKeyDown={handleKeyPress}
                     aria-label="Type your message..."
@@ -629,6 +629,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
+                    suppressContentEditableWarning={true}
                   >
                     {message.trim() === '' &&
                       document?.activeElement !== messageFieldRef.current && (
