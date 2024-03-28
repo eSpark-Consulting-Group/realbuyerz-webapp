@@ -243,4 +243,7 @@ export const VIEWPROPOSAL = {
   viewMoreDetails: 'View more details',
 };
 
-// ('check');
+export const INCREMENT_DECREMENT = {
+  ZERO: 0,
+  ONE: 1,
+};

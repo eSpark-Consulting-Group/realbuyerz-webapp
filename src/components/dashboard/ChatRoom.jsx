@@ -629,6 +629,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     ref={messageFieldRef}
                     onBlur={handleBlur}
                     onFocus={() => messageFieldRef.current.focus()}
+                    suppressContentEditableWarning={true}
                   >
                     {message.trim() === '' &&
                       document?.activeElement !== messageFieldRef.current && (
