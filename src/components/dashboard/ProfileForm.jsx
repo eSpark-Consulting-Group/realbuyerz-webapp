@@ -147,9 +147,9 @@ export default function ProfileForm({ data, formValues }) {
                     }}
                   >
                     {field?.label}
-                    {field?.label === 'Mobile' ? (
-                      <Typography
-                        sx={{
+                    {field?.label === 'Mobile' && (
+                      <span
+                        style={{
                           color: `${
                             verifyText === 'verified' ? '#1DBE4F' : '#FD0D1B'
                           }`,
@@ -164,8 +164,8 @@ export default function ProfileForm({ data, formValues }) {
                           <HighlightOffIcon sx={{ mr: 0.5 }} />
                         )}
                         {verifyText}
-                      </Typography>
-                    ) : null}
+                      </span>
+                    )}
                   </Typography>
 
                   {field?.label == 'Whatsapp' ? (

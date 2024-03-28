@@ -2,10 +2,18 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { propertyNames } from '@/src/constants/Preview_Data';
 
-const renderDetail = (title, value, amenities, fontStyle, fontWeight) => {
+const renderDetail = (
+  title,
+  value,
+  amenities,
+  fontSize,
+  fontStyle,
+  fontWeight,
+  key
+) => {
   if (value > 0) {
     return (
-      <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
+      <Box key={key} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
         <Typography
           sx={{
             fontSize: fontStyle ? fontStyle : '14px',
@@ -55,14 +63,15 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {propertyNames?.map((propertyName) =>
+          {propertyNames?.map((propertyName, index) =>
             renderDetail(
               propertyName,
               specificPost?.[propertyName],
               amenities,
               fontSize,
               fontStyle,
-              fontWeight
+              fontWeight,
+              index
             )
           )}
         </Box>
