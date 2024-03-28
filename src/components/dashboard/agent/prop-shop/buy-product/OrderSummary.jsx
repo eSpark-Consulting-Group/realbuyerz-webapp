@@ -185,6 +185,7 @@ const OrderSummary = ({
                 src={'/images/success.gif'}
                 width={100}
                 height={40}
+                alt={'success'}
                 sx={{ mx: 'auto' }}
               />
             </Box>

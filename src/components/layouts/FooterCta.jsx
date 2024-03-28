@@ -107,7 +107,7 @@ const FooterCta = ({ data }) => {
                 >
                   <Image
                     src={appicon.icon}
-                    alt={appicon.title}
+                    alt={'app icons'}
                     width={145}
                     height={40}
                   />
