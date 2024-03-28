@@ -4,7 +4,7 @@ import { getInitialCounterValue } from '@/src/utils/draftProperty';
 import { INCREMENT_DECREMENT } from '@/src/constants/Preview_Data';
 
 const Counter = ({ formik, name, limit }) => {
-  const {ZERO, ONE } = INCREMENT_DECREMENT
+  const { ZERO, ONE } = INCREMENT_DECREMENT;
   const initialValue = getInitialCounterValue(formik, name);
 
   const handleIncrement = () => {
