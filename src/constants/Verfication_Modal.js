@@ -3,9 +3,11 @@ export const VERIFICATION_OTP = {
   verifiedNum: ' Your number has been verified',
   confirm: 'Confirm',
   verificationCode: 'Verification Code',
-  code: 'Please enter the code we have sent to the number 0********20',
-  attempts: '1 / 5 attempts - 125 seconds remaining',
-  codeOtp: 'Didn’t receive OTP code?',
+  code: 'Please enter the code we have sent to the number',
+  placeHolderNumber: '0********20',
+  attemptsFive: '1 / 5 attempts - ',
+  attemptsTwo: '  125 seconds remaining',
+  codeOtp: 'Didn’t receive OTP code? ',
   openModal: 'Open modal',
   resendCode: 'Resend Code',
   continue: 'Continue',
@@ -17,15 +19,19 @@ export const VERIFICATION_OTP = {
   otpCode: [
     {
       num: 'code_one',
+      placeHolderNumber: 5,
     },
     {
       num: 'code_two',
+      placeHolderNumber: 6,
     },
     {
       num: 'code_three',
+      placeHolderNumber: '-',
     },
     {
       num: 'code_four',
+      placeHolderNumber: '-',
     },
   ],
 };

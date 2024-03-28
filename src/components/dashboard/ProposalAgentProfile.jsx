@@ -15,7 +15,7 @@ const ProposalAgentProfile = ({
     <Box className="scrollable" sx={{ maxHeight: Height }}>
       <>
         {proposalData?.map((item, index) => (
-          <>
+          <Box key={index}>
             <Box
               key={index}
               sx={{
@@ -52,7 +52,7 @@ const ProposalAgentProfile = ({
               </Grid>
             </Box>
             {index == proposalData.length - 1 ? null : <Divider />}
-          </>
+          </Box>
         ))}
       </>
     </Box>

@@ -1,11 +1,8 @@
-'use client';
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
-
 import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/src/utils/codeValidation';
-
 import { saveVerificationCode } from '@/src/redux/slices/verification/verificationSlice';
 import { VERIFICATION_OTP } from '@/src/constants/Verfication_Modal';
 import { verificationState } from '@/src/utils/verification';
@@ -57,7 +54,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
           alignItems: 'center',
         }}
       >
-        {Object.values(receivedCode).map((_, index) => (
+        {receivedCode.map((code, index) => (
           <Box
             sx={{
               display: 'flex',
@@ -77,7 +74,6 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
               sx={{
                 color: '#126FAA',
                 textAlign: 'center',
-
                 fontSize: '20px',
               }}
             >
@@ -85,6 +81,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
                 value={inputValues[index]}
                 onChange={(e) => handleChange(index, e.target.value)}
                 type="number"
+                placeholder={code.placeHolderNumber}
                 sx={{
                   '& input[type=number]::-webkit-inner-spin-button': {
                     WebkitAppearance: 'none',
@@ -95,6 +92,10 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
                 InputProps={{
                   style: {
                     color: '#126FAA',
+                    fontSize: 18,
+                    fontWeight: 400,
+                    lineHeight: 24.2,
+                    textAlign: 'center',
                   },
                 }}
               />
