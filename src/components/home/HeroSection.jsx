@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Bounce } from 'react-awesome-reveal';
 
-import HeroSlider from '../sliders/HeroSlider';
+import HeroSlider from './HeroSlider';
 
 import {
   HERO_SECTION_CONTENT,

@@ -1,10 +1,10 @@
-import BrowseByCategory from '@/src/components/HomePage/BrowseByCategory';
-import FeaturedProperties from '@/src/components/HomePage/FeaturedProperties';
-import HeroSection from '@/src/components/HomePage/HeroSection';
-import NewlyListedProperties from '@/src/components/HomePage/NewlyListedProperties';
-import OurHomePartners from '@/src/components/HomePage/OurHomePartners';
-import PopularLocations from '@/src/components/HomePage/PopularLocations';
-import CreateAccount from '@/src/components/HomePage/CreateAccount';
+import BrowseByCategory from '@/src/components/home/BrowseByCategory';
+import FeaturedProperties from '@/src/components/home/FeaturedProperties';
+import HeroSection from '@/src/components/home/HeroSection';
+import NewlyListedProperties from '@/src/components/home/NewlyListedProperties';
+import OurHomePartners from '@/src/components/home/OurHomePartners';
+import PopularLocations from '@/src/components/home/PopularLocations';
+import CreateAccount from '@/src/components/home/CreateAccount';
 
 import {
   CATEGORIES,
