@@ -19,7 +19,7 @@ import {
   VIEW_BUTTON,
 } from '@/src/constants/agent/Live_Bidding';
 import { VIEW_PROPSALS } from '@/src/constants/user/Dashboard';
-import { checkProposal } from '@/utils/dashboardUtils';
+import { checkProposal } from '@/src/utils/dashboardUtils';
 
 const BiddingDetails = ({ height, ads }) => {
   const all_proposals = useSelector((state) => state?.proposals);

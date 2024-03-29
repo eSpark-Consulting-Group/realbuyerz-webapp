@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 
-const LetsTalk = ({ text }) => {
+const LetsTalk = ({ text, data }) => {
   return (
     text && (
       <Grid
@@ -17,18 +17,18 @@ const LetsTalk = ({ text }) => {
           justifyContent: 'center',
         }}
       >
-        <Paper
+        <Button
+          href={`/user/inbox/${data.id}`}
           sx={{
-            background: 'white',
-            borderRadius: '47px',
-            alignItems: 'center',
-            alignContent: 'center',
-            width: '91.93px',
-            height: '35px',
             boxShadow: 2,
             padding: 2,
-            marginLeft: { xs: 0, sm: 'auto' },
-            paddingBottom: '10px',
+            height: '35px',
+            backgroundColor: '#fff',
+            borderRadius: '50px',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#fff',
+            },
           }}
         >
           <Typography
@@ -36,13 +36,11 @@ const LetsTalk = ({ text }) => {
             sx={{
               fontWeight: 'bold',
               color: '#126FAA',
-              pb: '10px',
-              marginTop: '-8px',
             }}
           >
             {text}
           </Typography>
-        </Paper>
+        </Button>
       </Grid>
     )
   );

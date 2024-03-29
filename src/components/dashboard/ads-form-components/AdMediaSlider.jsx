@@ -51,7 +51,6 @@ const AdMediaSlider = ({ media, mediaType }) => {
         {mediaType == 'images' &&
           media?.map((image, i) => (
             <SwiperSlide key={i}>
-              {console.log(image, 'image')}
               <Box
                 component={'img'}
                 src={
