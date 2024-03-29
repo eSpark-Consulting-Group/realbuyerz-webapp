@@ -29,6 +29,7 @@ const ProfileSinglePage = () => {
         item?.status === 'submit'
     ).length;
   }
+
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
     return projects.filter(
       (item) =>
@@ -38,6 +39,7 @@ const ProfileSinglePage = () => {
         item?.status === 'submit'
     ).length;
   }
+
   const allProperties = projects.filter(
     (item) => item?.user_id === user?.id && item?.status === 'submit'
   ).length;
