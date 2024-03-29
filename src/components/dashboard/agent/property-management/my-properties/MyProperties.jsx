@@ -17,7 +17,7 @@ import {
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 
-import { ALL_POSTLISTING_FILTRATION } from '../../../../../constants/agent/My_Properties';
+import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
 import {
   a11yProps,
   findData,

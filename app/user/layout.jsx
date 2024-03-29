@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { TopNav } from '@/src/components/dashboard/layout/TopNav';
 import { SideNav } from '@/src/components/dashboard/layout/SideNav';
 
-import { SIDE_NAV_WIDTH } from '../../src/constants/sidebar';
+import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 import Loading from '@/src/components/Loading';
 
 const LayoutRoot = styled('div')(({ theme }) => ({
