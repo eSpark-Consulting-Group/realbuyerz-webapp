@@ -8,7 +8,11 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import { capitalizeFirstLetter, extractAgentIdTypeId, filterAgentsProjectsByType } from '@/src/utils/projects/projects';
+import {
+  capitalizeFirstLetter,
+  extractAgentIdTypeId,
+  filterAgentsProjectsByType,
+} from '@/src/utils/projects/projects';
 
 const AgentProjectsTypePage = () => {
   const pathname = usePathname();

@@ -9,7 +9,10 @@ import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import Heading from '@/src/components/Global/Heading';
-import { findSelectedAgent, findSelectedProject } from '@/src/utils/projects/projects';
+import {
+  findSelectedAgent,
+  findSelectedProject,
+} from '@/src/utils/projects/projects';
 // import { findSelectedProject, findSelectedAgent } from './utils';
 
 function ProjectsSinglePage() {

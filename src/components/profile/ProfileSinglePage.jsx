@@ -49,7 +49,9 @@ const ProfileSinglePage = () => {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'No agent found. Please make sure to provide a valid agent ID.'}
+        message={
+          'No agent found. Please make sure to provide a valid agent ID.'
+        }
       />
     );
   }
