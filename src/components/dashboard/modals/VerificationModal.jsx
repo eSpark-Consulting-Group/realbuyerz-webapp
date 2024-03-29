@@ -41,20 +41,32 @@ const VerificationModal = ({ open, onCloseModal }) => {
           >
             <Typography
               sx={{
-                fontWeight: '600px',
+                fontWeight: 600,
                 fontSize: '25px',
+                lineHeight: '30.26px',
               }}
             >
               {VERIFICATION_OTP.verificationCode}
             </Typography>
             <Typography
               sx={{
-                fontWeight: '400px',
+                fontWeight: 400,
                 fontSize: '20px',
                 color: '#666',
+                lineHeight: '24.2px',
               }}
             >
               {VERIFICATION_OTP.code}
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: '21px',
+                  color: '#666',
+                  lineHeight: '25.41px',
+                }}
+              >
+                {VERIFICATION_OTP.placeHolderNumber}
+              </Typography>
             </Typography>
             <VerificationCode
               receivedCode={VERIFICATION_OTP.otpCode}
@@ -63,19 +75,42 @@ const VerificationModal = ({ open, onCloseModal }) => {
             <Box sx={{ display: 'flex', alignSelf: 'flex-start' }}>
               <Typography
                 sx={{
-                  fontWeight: '500px',
-                  fontSize: '16px',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  lineHeight: '16.94px',
+                  textAlign: 'center',
+                  color: '#666666',
                 }}
               >
-                {VERIFICATION_OTP.attempts}
+                {VERIFICATION_OTP.attemptsFive}
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  lineHeight: '16.94px',
+                  textAlign: 'center',
+                  color: '#666666',
+                }}
+              >
+                {VERIFICATION_OTP.attemptsTwo}
               </Typography>
             </Box>
-            <hr style={{ width: '100%', background: '#979797' }} />
+            <hr
+              style={{
+                width: '100%',
+                background: '#979797',
+                border: '0.5px solid #979797',
+              }}
+            />
             <Box sx={{ display: 'flex', alignSelf: 'flex-start' }}>
               <Typography
                 sx={{
-                  fontWeight: '500px',
-                  fontSize: '16px',
+                  color: '#666666',
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  lineHeight: '16.94px',
+                  textAlign: 'center',
                 }}
               >
                 {VERIFICATION_OTP.codeOtp}
@@ -85,6 +120,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                     color: '#126FAA',
                     fontSize: '16px',
                     fontWeight: 500,
+                    lineHeight: '19.36px',
                   }}
                 >
                   {VERIFICATION_OTP.resendCode}

@@ -47,7 +47,7 @@ const PostListingCard = ({ height, ads }) => {
               filteredAds
                 ?.slice(0, showAllItems ? filteredAds?.length : 3)
                 ?.map((item, index) => (
-                  <Grid container xs={12} key={index}>
+                  <Grid item container xs={12} key={index}>
                     <Box
                       sx={{
                         width: '100%',
