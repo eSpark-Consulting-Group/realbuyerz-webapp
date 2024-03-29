@@ -50,7 +50,7 @@ const PostRequestCard = ({ height, ads }) => {
             {searching_ad
               ?.slice(0, showAllItems ? searching_ad?.length : 3)
               ?.map((item, index) => (
-                <Grid container xs={12} key={index}>
+                <Grid item container xs={12} key={index}>
                   <Box
                     sx={{
                       width: '100%',
