@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 
 import {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ResetPasswordPage from '@/src/components/auth/reset-password/ResetPasswordPage';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/reset-password';
 const filteredData =

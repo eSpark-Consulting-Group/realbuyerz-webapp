@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
 import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import ChiperBack from './ChiperBack';
 

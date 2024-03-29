@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Link from 'next/link';
-import NotFoundSection from './Global/NotFoundSection';
+import NotFoundSection from './global/NotFoundSection';
 
 const ProfilesPage = ({ agents }) => {
   const [page, setPage] = useState(1);

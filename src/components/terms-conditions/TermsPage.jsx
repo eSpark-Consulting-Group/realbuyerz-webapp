@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import TabSelector from './TabSelector';
 import TabContent from './TabContent';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const TermsPage = () => {
   const terms = useSelector((state) => state?.terms?.TERM_CONDITIONS);

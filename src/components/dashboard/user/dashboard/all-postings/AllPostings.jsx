@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import ProposalDetails from '@/src/components/dashboard/ProposalDetails';
 import DashboardTitle from '@/src/components/dashboard/user/dashboard/DashboardTitle';
 import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalAgentProfile from '@/src/components/dashboard/ProposalAgentProfile';
 import { PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 import { checkProposal, findSpecificPost } from '@/src/utils/dashboardUtils';

@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import NotFoundSection from '../../../../Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 
 import { ALL_POSTLISTING_FILTRATION } from '../../../../../constants/agent/My_Properties';

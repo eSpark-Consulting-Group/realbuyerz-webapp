@@ -7,7 +7,7 @@ import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '../../Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import {
   capitalizeFirstLetter,
   extractAgentIdTypeId,

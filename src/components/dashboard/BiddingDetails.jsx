@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { postListingAdCard } from '@/app/constants/postListing';
 import { searching } from '@/src/utils/search';
 
-import NotFoundSection from '../Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
 import {
   ESTIMATE_RANGE,

@@ -6,7 +6,7 @@ import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ChiperBack from './ChiperBack';
 import { usePathname } from 'next/navigation';
-import NotFoundSection from '../../Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 // Other imports...
 
 const ProjectAgentPage = () => {
