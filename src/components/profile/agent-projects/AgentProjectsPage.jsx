@@ -7,18 +7,14 @@ import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
 import ProjectsTypeSlider from '../../projects/ProjectsTypeSlider';
-import {
-  extractAgentId,
-  filterAgentsProjects,
-} from '@/src/utils/projects/projects';
 
 const AgentProjectPage = () => {
   const pathname = usePathname();
-  const agentId = extractAgentId(pathname);
+  const segments = pathname.split(`/`);
+  const agentId = segments[segments.length - 2];
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
-
   if (!agentId || !currentAgent || !Array.isArray(projects)) {
     return (
       <NotFoundSection
@@ -28,7 +24,9 @@ const AgentProjectPage = () => {
     );
   }
 
-  const filterData = filterAgentsProjects(projects, agentId);
+  const filterData = projects.filter(
+    (item) => item?.user_id === parseInt(agentId)
+  );
 
   if (filterData?.length === 0) {
     return (

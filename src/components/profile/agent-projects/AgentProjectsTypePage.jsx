@@ -1,4 +1,3 @@
-// AgentProjectsTypePage.js
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
@@ -8,21 +7,25 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import { usePathname } from 'next/navigation';
 import NotFoundSection from '../../Global/NotFoundSection';
-import { capitalizeFirstLetter, extractAgentIdTypeId, filterAgentsProjectsByType } from '@/src/utils/projects/projects';
 
 const AgentProjectsTypePage = () => {
   const pathname = usePathname();
-  const { agentId, adsType, capAdsType } = extractAgentIdTypeId(pathname);
-  console.log('====================================');
-  console.log(agentId, adsType, capAdsType);
-  console.log('====================================');
+  const segments = pathname.split(`/`);
+  const agentId = segments[segments.length - 3];
+  const adsType = segments[segments.length - 1];
+  const capAdsType = adsType.charAt(0).toUpperCase() + adsType.slice(1);
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.filter(
     (item) => item?.id === parseInt(agentId)
   )[0];
 
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const filterData = filterAgentsProjectsByType(projects, agentId, capAdsType);
+  const filterData = projects?.filter(
+    (item) => item?.user_id == agentId && item?.purpose === capAdsType
+  );
+  function capitalizeFirstLetter(text) {
+    return text.replace(/\b\w/g, (match) => match.toUpperCase());
+  }
 
   // Validate agentId
   if (!agentId || !currentAgent) {

@@ -1,27 +1,30 @@
 'use client';
 import React from 'react';
+
 import { Box, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
+
 import Sliders from '@/src/components/Properties/Slider/Slider';
 import PropertyDetails from '@/src/components/Global/PropertyDetail';
 import ProfileAgent from '@/src/components/Properties/Profile/ProfileAgent';
 import PropertySlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
 import Heading from '@/src/components/Global/Heading';
-import { findSelectedAgent, findSelectedProject } from '@/src/utils/projects/projects';
-// import { findSelectedProject, findSelectedAgent } from './utils';
 
 function ProjectsSinglePage() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
+  console.log(id, 'id');
   const properties = useSelector((state) => state.postListingAds.agentPostings);
+  const selectedProject = properties?.filter(
+    (property) => String(property?.property_id) === String(id)
+  )[0];
   const agents = useSelector((state) => state.agents);
-
-  const selectedProject = findSelectedProject(properties, id);
-  const selectedAgent = findSelectedAgent(agents, selectedProject);
-
+  const selectedAgent = agents?.filter(
+    (agent) => agent?.id === selectedProject?.user_id
+  )[0];
   if (isNaN(id) || id === undefined || id === null) {
     return (
       <NotFoundSection
