@@ -4,6 +4,7 @@ import { Grid, Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 
 import NotFoundSection from '@/src/components/Global/NotFoundSection';
@@ -120,7 +121,9 @@ const PostRequestCard = ({ height, ads }) => {
                           {item?.title}
                         </Typography>
                         <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                          {'Posted 39 minutes ago'}
+                          {formatDistanceToNow(new Date(item?.created_at), {
+                            addSuffix: true,
+                          })}
                         </Typography>
                       </Grid>
                       <Grid

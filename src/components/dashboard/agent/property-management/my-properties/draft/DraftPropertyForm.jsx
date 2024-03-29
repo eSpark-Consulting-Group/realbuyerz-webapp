@@ -104,7 +104,7 @@ const DraftPropertyForm = () => {
     readyPossession: `${updated?.readyPossession || ''}`,
     images: updated?.images || [],
     videos: updated?.videos || [],
-    created_at: new Date(),
+    created_at: new Date().toISOString(),
   };
 
   const formik = useFormik({

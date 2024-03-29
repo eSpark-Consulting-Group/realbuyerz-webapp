@@ -530,4 +530,5 @@ export const POST_REQUEST_VALUES = {
   propertyType: 'Sell',
   instalmentAvailable: false,
   readyPossession: false,
+  created_at: new Date().toISOString(),
 };
