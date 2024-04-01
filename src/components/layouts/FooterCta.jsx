@@ -14,15 +14,15 @@ const FooterCta = ({ data }) => {
         '@media (min-width: 270px) and (max-width: 500px)': {
           px: '12%',
         },
-        py: {
-          xs: '20px',
-          sm: '40px',
-          md: '40px',
-        },
+        // py: {
+        //   xs: '20px',
+        //   sm: '40px',
+        //   md: '40px',
+        // },
         margin: 'auto',
       }}
     >
-      <Grid container>
+      <Grid container sx={{alignItems: 'center',}}>
         <Grid
           item
           xs={12}
@@ -31,7 +31,8 @@ const FooterCta = ({ data }) => {
           sx={{
             justifyContent: 'right',
             alignSelf: 'right',
-            px: { lg: '170px' },
+            pl: { lg: '170px' },
+            pr: { lg: '120px' },
             py: {
               xs: '20px',
               sm: '40px',
@@ -107,7 +108,7 @@ const FooterCta = ({ data }) => {
                 >
                   <Image
                     src={appicon.icon}
-                    alt={'app icons'}
+                    alt={appicon.title}
                     width={145}
                     height={40}
                   />
@@ -185,8 +186,8 @@ const FooterCta = ({ data }) => {
               <Image
                 src={method?.icon}
                 alt={method?.alt}
-                width={35}
-                height={7}
+                width={37}
+                height={23}
               />
             </Box>
           ))}
