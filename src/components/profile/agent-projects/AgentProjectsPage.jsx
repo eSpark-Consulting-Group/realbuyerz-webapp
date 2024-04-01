@@ -10,7 +10,7 @@ import ProjectsTypeSlider from '../../projects/ProjectsTypeSlider';
 import {
   extractAgentId,
   filterAgentsProjects,
-} from '@/src/utils/projects/projects';
+} from '@/src/utils/projects/agentsProjects';
 
 const AgentProjectPage = () => {
   const pathname = usePathname();

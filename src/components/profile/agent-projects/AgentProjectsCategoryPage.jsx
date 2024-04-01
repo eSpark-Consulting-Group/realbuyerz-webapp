@@ -10,7 +10,7 @@ import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 import {
   extractAgentIdCategoryIdTypeId,
   filterAgentsProjectsByTypeCategory,
-} from '@/src/utils/projects/projects';
+} from '@/src/utils/projects/agentsProjects';
 
 const AgentProjectsCategoryPage = () => {
   const pathname = usePathname();

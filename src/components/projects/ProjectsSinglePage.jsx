@@ -12,7 +12,7 @@ import Heading from '@/src/components/global/Heading';
 import {
   findSelectedAgent,
   findSelectedProject,
-} from '@/src/utils/projects/projects';
+} from '@/src/utils/projects/agentsProjects';
 // import { findSelectedProject, findSelectedAgent } from './utils';
 
 function ProjectsSinglePage() {

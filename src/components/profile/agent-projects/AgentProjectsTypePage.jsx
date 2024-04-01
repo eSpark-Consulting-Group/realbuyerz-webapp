@@ -12,7 +12,7 @@ import {
   capitalizeFirstLetter,
   extractAgentIdTypeId,
   filterAgentsProjectsByType,
-} from '@/src/utils/projects/projects';
+} from '@/src/utils/projects/agentsProjects';
 
 const AgentProjectsTypePage = () => {
   const pathname = usePathname();
