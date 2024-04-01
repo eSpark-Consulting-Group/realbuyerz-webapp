@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
 
 const Typewriter = ({ text }) => {
@@ -28,7 +27,7 @@ const Typewriter = ({ text }) => {
         color: '#fff',
         mb: '30px',
         fontWeight: '600',
-        fontSize: { xs: '25px', sm: '25px', md: '30px', lg: '40px' },
+        fontSize: { xs: '15px', sm: '20px', md: '24px', lg: '26px' },
       }}
     >
       {displayedText}|
