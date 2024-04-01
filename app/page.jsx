@@ -1,6 +1,5 @@
-
-import React from 'react'
-import HomePage from '@/src/components/home/Homepage'
+import React from 'react';
+import HomePage from '@/src/components/home/Homepage';
 import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/';
@@ -53,9 +52,9 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <HomePage/>
+      <HomePage />
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
