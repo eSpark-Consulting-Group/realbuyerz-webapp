@@ -1,15 +1,10 @@
 'use client';
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { Bounce } from 'react-awesome-reveal';
-
-import HeroSlider from './HeroSlider';
-
-import {
-  HERO_SECTION_CONTENT,
-  HERO_SECTION_IMAGES,
-} from '@/src/constants/Constants';
 import Link from 'next/link';
+import { Bounce } from 'react-awesome-reveal';
+import HeroSlider from './HeroSlider';
+import { HERO_SECTION_CONTENT, HERO_SECTION_IMAGES } from '@/src/constants/Constants';
 
 const HeroSection = () => {
   const { heading, logo } = HERO_SECTION_CONTENT;
@@ -76,8 +71,8 @@ const HeroSection = () => {
               xs: '15px',
               sm: '20px',
               md: '28px',
-              lg: '30px',
-              xl: '36px',
+              lg: '35px',
+              xl: '40px',
             },
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
