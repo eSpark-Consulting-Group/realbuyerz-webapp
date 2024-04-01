@@ -112,6 +112,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                 <Box
                   component={'img'}
                   src={`${(data?.images?.length > 0 && URL?.createObjectURL(new Blob([data?.images[0]]))) || '/images/PropertyImg.png'}`}
+                  // src={`${(data?.images?.length > 0 && data?.images[0])}`}
                   sx={{
                     minWidth: { xs: '250px', sm: '300px' },
                     maxWidth: { xs: '250px', sm: '300px' },

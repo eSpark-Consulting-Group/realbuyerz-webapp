@@ -220,7 +220,7 @@ const SpacificProposal = () => {
                 }}
               >
                 <PropertyDetail
-                  title={PropertyDetails}
+                  title={''}
                   heading={PROPOSAL?.propertyDetails}
                   subTitle={find_proposal?.title}
                   description={find_proposal?.description}

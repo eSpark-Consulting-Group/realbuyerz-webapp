@@ -80,7 +80,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               popupIcon={<KeyboardArrowDownIcon sx={{ color: '#777777' }} />}
               value={formik?.values?.city}
               onBlur={formik?.handleBlur}
-              error={formik?.touched?.city && Boolean(formik?.errors?.city)}
+              error={formik?.touched?.city && formik?.errors?.city}
               disablePortal
               id="combo-box-demo"
               options={options}

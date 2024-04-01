@@ -19,11 +19,11 @@ export const VERIFICATION_OTP = {
   otpCode: [
     {
       num: 'code_one',
-      placeHolderNumber: 5,
+      placeHolderNumber: '5',
     },
     {
       num: 'code_two',
-      placeHolderNumber: 6,
+      placeHolderNumber: '6',
     },
     {
       num: 'code_three',

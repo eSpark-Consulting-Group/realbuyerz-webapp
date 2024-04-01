@@ -140,7 +140,7 @@ const OrderSummary = ({
             },
             fontSize: '16px',
           }}
-          variant={!paymentMedthod && 'primary'}
+          variant={paymentMedthod ? undefined : 'primary'}
           disabled={paymentMedthod && state}
         >
           {paymentMedthod ? confirmOrderLable : buttonText}

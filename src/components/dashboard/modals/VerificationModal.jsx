@@ -57,7 +57,8 @@ const VerificationModal = ({ open, onCloseModal }) => {
               }}
             >
               {VERIFICATION_OTP.code}
-              <Typography
+              <Box
+                component="span"
                 sx={{
                   fontWeight: 500,
                   fontSize: '21px',
@@ -65,8 +66,8 @@ const VerificationModal = ({ open, onCloseModal }) => {
                   lineHeight: '25.41px',
                 }}
               >
-                {VERIFICATION_OTP.placeHolderNumber}
-              </Typography>
+                {` ${VERIFICATION_OTP.placeHolderNumber}`}
+              </Box>
             </Typography>
             <VerificationCode
               receivedCode={VERIFICATION_OTP.otpCode}

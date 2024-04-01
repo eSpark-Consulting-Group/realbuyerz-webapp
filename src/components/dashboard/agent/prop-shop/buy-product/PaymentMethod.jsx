@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
@@ -133,14 +133,14 @@ const PaymentMethod = ({
         backgroundSize: { xs: '90%', sm: '70%', md: '70%', lg: '45%' },
       }}
     >
-      <Grid container xs={12}>
+      <Grid container item xs={12}>
         <Grid item xs={12}>
           <Title title={title} />
         </Grid>
         {paymentMedthodDetails?.map(
-          (card) =>
+          (card, index) =>
             card?.isCheckBox && (
-              <>
+              <React.Fragment key={index}>
                 {getCardType(card.card_number) === MASTER_CARD && (
                   <MasterCard
                     setCardTypeNumber={setCardTypeNumber}
@@ -189,7 +189,7 @@ const PaymentMethod = ({
                     setSelectedValue={setSelectedValue}
                   />
                 )}
-              </>
+              </React.Fragment>
             )
         )}
         <CreditCardType

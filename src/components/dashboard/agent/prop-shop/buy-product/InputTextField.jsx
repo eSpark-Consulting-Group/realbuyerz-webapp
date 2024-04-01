@@ -69,8 +69,8 @@ const InputTextField = ({ textField, formik }) => {
                     width: width,
                     gap: 1,
                     textAlign: 'left',
-                    '& input[type=number]::-webkit-inner-spin-button': {
-                      '-webkit-appearance': 'none',
+                    '& input[type=number]': {
+                      WebkitAppearance: 'none',
                       margin: 0,
                     },
                   }}

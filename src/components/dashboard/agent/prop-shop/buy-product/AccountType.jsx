@@ -30,7 +30,7 @@ const AccountType = ({
     <>
       <Box
         ref={gridRef}
-        container
+        container="true"
         onClick={handleClick}
         sx={{
           border: '1px solid #E9E9E9',

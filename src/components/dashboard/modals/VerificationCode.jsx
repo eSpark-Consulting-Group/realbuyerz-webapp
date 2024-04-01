@@ -45,6 +45,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
   const handleModalToggle = () => {
     setOpen(!open);
   };
+
   return (
     <>
       <Box
@@ -56,6 +57,7 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
       >
         {receivedCode.map((code, index) => (
           <Box
+            key={index}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -68,38 +70,27 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
               padding: '10px',
               marginRight: '10px',
             }}
-            key={index}
           >
-            <Typography
+            <TextField
+              value={inputValues[index]}
+              onChange={(e) => handleChange(index, e.target.value)}
+              type="number"
+              placeholder={code.placeHolderNumber}
               sx={{
-                color: '#126FAA',
-                textAlign: 'center',
-                fontSize: '20px',
+                '& input[type=number]::-webkit-inner-spin-button': {
+                  WebkitAppearance: 'none',
+                  margin: 0,
+                },
+                '& fieldset': { border: 'none' },
+                '& .MuiInputBase-root': {
+                  color: '#126FAA',
+                  fontSize: 18,
+                  fontWeight: 400,
+                  lineHeight: 24.2,
+                  textAlign: 'center',
+                },
               }}
-            >
-              <TextField
-                value={inputValues[index]}
-                onChange={(e) => handleChange(index, e.target.value)}
-                type="number"
-                placeholder={code.placeHolderNumber}
-                sx={{
-                  '& input[type=number]::-webkit-inner-spin-button': {
-                    WebkitAppearance: 'none',
-                    margin: 0,
-                  },
-                  '& fieldset': { border: 'none' },
-                }}
-                InputProps={{
-                  style: {
-                    color: '#126FAA',
-                    fontSize: 18,
-                    fontWeight: 400,
-                    lineHeight: 24.2,
-                    textAlign: 'center',
-                  },
-                }}
-              />
-            </Typography>
+            />
           </Box>
         ))}
       </Box>
