@@ -516,7 +516,7 @@ export const POST_LISTING_VALUES = {
   purpose: 'Sell',
   propertyCategory: 'House',
   propertyType: 'Sell',
-  created_at: '',
+  created_at: new Date().toISOString(),
   instalmentAvailable: false,
   readyPossession: false,
 };
