@@ -9,7 +9,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import UserProfileImage from '@/src/components/dashboard/UserProfileImage';
 import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
-import PropertyDetails from '@/src/components/Properties/PropertyDescription/PropertyDetail';
 import Location from '@/src/components/dashboard/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
 import NotFoundSection from '@/src/components/Global/NotFoundSection';

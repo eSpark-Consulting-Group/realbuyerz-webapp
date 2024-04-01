@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Button } from '@mui/material';
+import { Box, TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import CongratsModal from './CongratulationModal';
 import { handleVerificationChange } from '@/src/utils/codeValidation';
