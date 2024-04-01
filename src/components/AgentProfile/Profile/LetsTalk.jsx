@@ -30,7 +30,7 @@ const LetsTalk = ({ text, link }) => {
               boxShadow: 2,
               padding: 2,
               marginLeft: { xs: 0, sm: 'auto' },
-              paddingBottom: '10px',
+              paddingtop: '10px',
             }}
           >
             <Typography
@@ -38,8 +38,6 @@ const LetsTalk = ({ text, link }) => {
               sx={{
                 fontWeight: 'bold',
                 color: '#126FAA',
-                pb: '10px',
-                marginTop: '-8px',
               }}
             >
               {text}
