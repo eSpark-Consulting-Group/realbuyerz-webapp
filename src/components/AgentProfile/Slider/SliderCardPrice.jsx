@@ -17,7 +17,7 @@ const SliderCardPrice = ({ price }) => {
       >
         {STARTING_FROM}
       </Typography>
-      <Box display={'flex'}>
+      <Box display={'flex'} alignItems={'center'}>
         <Typography
           variant="body1"
           sx={{
