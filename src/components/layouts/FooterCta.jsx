@@ -22,7 +22,7 @@ const FooterCta = ({ data }) => {
         margin: 'auto',
       }}
     >
-      <Grid container sx={{alignItems: 'center',}}>
+      <Grid container sx={{ alignItems: 'center' }}>
         <Grid
           item
           xs={12}

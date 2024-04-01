@@ -4,7 +4,10 @@ import { Box, Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { Bounce } from 'react-awesome-reveal';
 import HeroSlider from './HeroSlider';
-import { HERO_SECTION_CONTENT, HERO_SECTION_IMAGES } from '@/src/constants/Constants';
+import {
+  HERO_SECTION_CONTENT,
+  HERO_SECTION_IMAGES,
+} from '@/src/constants/Constants';
 
 const HeroSection = () => {
   const { heading, logo } = HERO_SECTION_CONTENT;
