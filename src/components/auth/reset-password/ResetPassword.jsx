@@ -9,8 +9,8 @@ import {
   LOGIN_FORM_DATA,
   LOGIN_ROUTERS,
 } from '@/src/constants/Login';
-import Continue from '../ForgetPassword/Continue';
-import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
+import Continue from '../Continue';
+import PasswordAndConfirmFields from '../PasswordAndConfirmField';
 import { resetPassword } from '@/src/utils/apis/auth/resetPassword';
 
 const ResetPassword = () => {

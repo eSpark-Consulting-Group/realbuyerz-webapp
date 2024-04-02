@@ -12,8 +12,8 @@ import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 
-import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import LoginWithGoogle from './LoginWithGoogle';
+import ForgetPassword from '../forget-password/ForgetPassword';
+import LoginWithGoogle from '../LoginWithGoogle';
 import LoginForm from './LoginForm';
 import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';

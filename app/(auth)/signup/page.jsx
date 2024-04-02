@@ -1,6 +1,6 @@
 import React from 'react';
 import { GLOBAL_SEO } from '@/src/constants/global/seo';
-import SignupPage from '@/src/components/auth/signup/page';
+import SignupPage from '@/src/components/auth/signup/SignupPage';
 
 const pathname = '/signup';
 const filteredData =

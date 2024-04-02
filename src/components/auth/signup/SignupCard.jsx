@@ -13,8 +13,8 @@ import {
   LOGIN_ROUTERS,
   PASSWORD_ALERT,
 } from '@/src/constants/Login';
-import LoginWithGoogle from '../Login/LoginWithGoogle';
-import LoginForm from '../Login/LoginForm';
+import LoginWithGoogle from '../LoginWithGoogle';
+import LoginForm from '../signin/LoginForm';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 
