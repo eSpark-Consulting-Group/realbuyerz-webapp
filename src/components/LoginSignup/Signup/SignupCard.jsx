@@ -14,7 +14,7 @@ import {
   PASSWORD_ALERT,
 } from '@/src/constants/Login';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import FormContainer from '../Login/LoginForm';
+import LoginForm from '../Login/LoginForm';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 
@@ -148,7 +148,7 @@ const SignupCard = () => {
           >
             {LOGIN_FORM.loginCard.quickEasy}
           </Typography>
-          <FormContainer
+          <LoginForm
             isLoginForm={false}
             formData={formData}
             contactNumber={contactNumber}

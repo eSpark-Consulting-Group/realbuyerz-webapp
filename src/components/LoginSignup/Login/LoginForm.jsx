@@ -6,7 +6,7 @@ import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/src/constants/Login';
 import PasswordFields from './PasswordTextfield';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
 
-const FormContainer = ({
+const LoginForm = ({
   isLoginForm,
   handleInputContactNumber,
   handleInputChange,
@@ -137,4 +137,4 @@ const FormContainer = ({
     </>
   );
 };
-export default FormContainer;
+export default LoginForm;

@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
-import FormContainer from './LoginForm';
+import LoginForm from './LoginForm';
 import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
@@ -106,7 +106,7 @@ const LoginCard = ({ handleClose }) => {
             >
               {LOGIN_FORM.loginCard.welcome}
             </Typography>
-            <FormContainer
+            <LoginForm
               isLoginForm={true}
               formData={formData}
               handleInputChange={handleInputChange}

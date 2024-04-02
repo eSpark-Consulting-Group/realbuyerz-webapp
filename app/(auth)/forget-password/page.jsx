@@ -1,6 +1,6 @@
 import React from 'react';
-import { GLOBAL_SEO } from '@/src/constants/global/seo';
 import ForgetPasswordPage from '@/src/components/auth/forget-password/ForgetPasswordPage';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/forget-password';
 const filteredData =
