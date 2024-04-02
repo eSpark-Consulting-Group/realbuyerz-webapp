@@ -2,9 +2,9 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
 
-const SliderCardTitle = ({ title, link }) => {
+const SliderCardTitle = ({ link }) => {
   return (
-    <Link href={`/properties/${link?.id}`}>
+    <Link href={`/projects/${link?.property_id}`}>
       <Typography
         // variant="body1"
         sx={{
@@ -15,7 +15,7 @@ const SliderCardTitle = ({ title, link }) => {
           textAlign: 'left',
         }}
       >
-        {title}
+        {link?.title}
       </Typography>
     </Link>
   );

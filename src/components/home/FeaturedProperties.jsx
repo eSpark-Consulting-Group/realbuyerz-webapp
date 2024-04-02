@@ -12,21 +12,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styles from '@/src/components/home/slider.module.css';
 import Heading from './Heading';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { FEATURED_HEADINGS, FEATURED_PROPERTIES } from '@/src/constants/Home';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-const FeaturedProperties = ({ data }) => {
+const FeaturedProperties = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  // const [saved, setSaved] = useState(true);
-  // const handleToggleSave = () => {
-  //   setSaved((prevSaved) => !prevSaved);
-  // };
   const isSmallScreen = useMediaQuery((theme) =>
     theme.breakpoints.between('xs', 'md')
   );
+  const FeatureProjects = useSelector(
+    (state) => state.postListingAds.featuredPostings
+  );
+  const router = useRouter();
 
   const sliderSettings = {
     slidesPerView: 3,
-    // onSlideChange: (swiper) => handleChangePage(swiper.activeIndex + 1),
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
@@ -82,7 +84,7 @@ const FeaturedProperties = ({ data }) => {
               }}
               spacing={2}
             >
-              {data?.map((item, index) => (
+              {FeatureProjects?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <Grid
                     item
@@ -102,7 +104,8 @@ const FeaturedProperties = ({ data }) => {
                       },
                     }}
                   >
-                    <Box
+                    <Box 
+                      onClick={() => router.push(`/projects/${item?.property_id}`)}
                       sx={{
                         position: 'relative',
 
@@ -127,7 +130,7 @@ const FeaturedProperties = ({ data }) => {
                       onMouseOut={() => setHoveredIndex(null)}
                     >
                       <img
-                        src={item?.bgImage}
+                        src={item?.images[0]}
                         alt={'background'}
                         style={{
                           width: '100%',
@@ -149,7 +152,7 @@ const FeaturedProperties = ({ data }) => {
                           fontSize: 10,
                         }}
                       >
-                        {item?.location}
+                        {item?.city || 'city'}
                       </Box>
                       <Collapse
                         in={hoveredIndex === index}
@@ -159,7 +162,7 @@ const FeaturedProperties = ({ data }) => {
                           bottom: '60px',
                           width: '289px',
                         }}
-                      >
+                      ><Link href={`/projects/${item?.property_id}`}>
                         <Box p={2} className={styles.slideInBox}>
                           <Box
                             sx={{
@@ -184,7 +187,7 @@ const FeaturedProperties = ({ data }) => {
                                 pb: '15px',
                               }}
                             >
-                              {item?.propertyName}
+                              {item?.title}
                             </Typography>
                             <Typography
                               sx={{
@@ -200,7 +203,7 @@ const FeaturedProperties = ({ data }) => {
                               }}
                             >
                               <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                              {item?.location}
+                              {item?.city}
                             </Typography>
                             <Box
                               sx={{
@@ -232,7 +235,7 @@ const FeaturedProperties = ({ data }) => {
                                   fontWeight: 500,
                                 }}
                               >
-                                {item?.currency}
+                                {item?.amountCurrency}
                               </Typography>
                               <Typography
                                 variant="body1"
@@ -247,12 +250,12 @@ const FeaturedProperties = ({ data }) => {
                                   fontWeight: 600,
                                 }}
                               >
-                                {item?.price}
+                                {item?.amount}
                               </Typography>
                             </Box>
                           </Box>
                           <Grid container>
-                            {item?.amenities?.map((amenity, index) => (
+                            {FEATURED_PROPERTIES?.map((amenity, index) => (
                               <Grid
                                 key={index}
                                 item
@@ -273,7 +276,8 @@ const FeaturedProperties = ({ data }) => {
                               </Grid>
                             ))}
                           </Grid>
-                        </Box>
+                          </Box>
+                      </Link>
                       </Collapse>
                     </Box>
                   </Grid>
@@ -293,7 +297,7 @@ const FeaturedProperties = ({ data }) => {
             }}
             spacing={2}
           >
-            {data?.map((item, index) => (
+            {FeatureProjects?.map((item, index) => (
               <Grid
                 item
                 xs={12}
@@ -316,6 +320,7 @@ const FeaturedProperties = ({ data }) => {
                 }}
               >
                 <Box
+                  onClick={() => router.push(`/projects/${item?.property_id}`)}
                   sx={{
                     position: 'relative',
 
@@ -338,7 +343,7 @@ const FeaturedProperties = ({ data }) => {
                   onMouseOut={() => setHoveredIndex(null)}
                 >
                   <img
-                    src={item?.bgImage}
+                    src={item?.images[0]}
                     alt={'background'}
                     style={{
                       width: '100%',
@@ -360,7 +365,7 @@ const FeaturedProperties = ({ data }) => {
                       fontSize: 10,
                     }}
                   >
-                    {item?.location}
+                    {item?.city}
                   </Box>
                   <Collapse
                     in={hoveredIndex === index}
@@ -371,6 +376,7 @@ const FeaturedProperties = ({ data }) => {
                       width: '289px',
                     }}
                   >
+                    <Link href={`/projects/${item?.property_id}`}>
                     <Box p={2} className={styles.slideInBox}>
                       <Box
                         sx={{
@@ -381,18 +387,20 @@ const FeaturedProperties = ({ data }) => {
                           zIndex: 1,
                         }}
                       >
-                        <Typography
-                          sx={{
-                            color: '#fb631c',
-                            textAlign: 'left',
-                            fontWeight: 600,
-                            lineHeight: '21.78px',
-                            fontSize: { xs: '12px', md: '14px', lg: '18px' },
-                            pb: '15px',
-                          }}
-                        >
-                          {item?.propertyName}
-                        </Typography>
+                        <Link href={`/projects/${item?.property_id}`}>
+                          <Typography
+                            sx={{
+                              color: '#fb631c',
+                              textAlign: 'left',
+                              fontWeight: 600,
+                              lineHeight: '21.78px',
+                              fontSize: { xs: '12px', md: '14px', lg: '18px' },
+                              pb: '15px',
+                            }}
+                          >
+                            {item?.title}
+                          </Typography>
+                        </Link>
                         <Typography
                           sx={{
                             color: '#1176ad',
@@ -403,7 +411,7 @@ const FeaturedProperties = ({ data }) => {
                           }}
                         >
                           <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                          {item?.location}
+                          {item?.city}
                         </Typography>
                         <Box
                           sx={{
@@ -431,7 +439,7 @@ const FeaturedProperties = ({ data }) => {
                               fontWeight: 500,
                             }}
                           >
-                            {item?.currency}
+                            {item?.amountCurrency}
                           </Typography>
                           <Typography
                             variant="body1"
@@ -442,12 +450,12 @@ const FeaturedProperties = ({ data }) => {
                               fontWeight: 600,
                             }}
                           >
-                            {item?.price}
+                            {item?.amount}
                           </Typography>
                         </Box>
                       </Box>
                       <Grid container>
-                        {item?.amenities?.map((amenity, index) => (
+                        {FEATURED_PROPERTIES.map((amenity, index) => (
                           <Grid
                             key={index}
                             item
@@ -468,7 +476,8 @@ const FeaturedProperties = ({ data }) => {
                           </Grid>
                         ))}
                       </Grid>
-                    </Box>
+                      </Box>
+                    </Link>
                   </Collapse>
                 </Box>
               </Grid>

@@ -14,21 +14,10 @@ import Link from 'next/link';
 import SliderCardTitle from './Slider/SliderCardTitle';
 import SliderCardLocation from './Slider/SliderCardLocation';
 import SliderCardPrice from './Slider/SliderCardPrice';
-
 import SliderCardSeeDetails from './Slider/SliderCardSeeDetails';
 import SliderCardIcons from './Slider/SliderCardIcons';
 
-import { useSelector } from 'react-redux';
-
-const PropertySlider = ({ propertyData }) => {
-  const properties = useSelector((state) => state?.properties?.properties);
-
-  const filteredProperties = properties?.filter(
-    (property) =>
-      property?.propertyType === propertyData?.propertyType &&
-      property?.subPropertyType === propertyData?.subPropertyType
-  );
-
+const PropertySlider = ({ data }) => {
   var settings = {
     dots: false,
     infinite: true,
@@ -80,7 +69,7 @@ const PropertySlider = ({ propertyData }) => {
   return (
     <>
       <Slider {...settings}>
-        {filteredProperties.slice(0, 10).map((item, index) => {
+        {data?.slice(0, 10)?.map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>
               <Card
@@ -106,13 +95,13 @@ const PropertySlider = ({ propertyData }) => {
                     fontSize: 10,
                   }}
                 >
-                  {item?.propertyData?.propertyLocation?.city || 'test'}
+                  {item?.city || 'city'}
                 </Box>
-                <Link href={`/project/${item?.id}`}>
+                <Link href={`/projects/${item?.property_id}`}>
                   <CardMedia
                     component="img"
                     height="194"
-                    image={item?.coverImage}
+                    image={item?.images[0]}
                     alt={'Paella dish'}
                   />
                 </Link>
@@ -122,25 +111,21 @@ const PropertySlider = ({ propertyData }) => {
                   <Box>
                     <Grid container rowSpacing={1}>
                       <Grid item xs={12}>
-                        <SliderCardTitle
-                          title={item?.propertyTitle}
-                          link={item}
-                        />
+                        <SliderCardTitle link={item} />
                       </Grid>
                       <Grid item xs={12}>
-                        <SliderCardLocation
-                          location={item?.propertyData?.propertyLocation?.city}
-                        />
+                        <SliderCardLocation location={item?.city || 'city'} />
                       </Grid>
                       <Grid item xs={12}>
                         <SliderCardPrice
-                          price={item?.propertyOverview?.price}
+                          price={item?.amount}
+                          unit={item?.amountCurrency}
                         />
                       </Grid>
                     </Grid>
                   </Box>
                   <Grid container rowSpacing={2} sx={{ marginTop: 0 }}>
-                    <SliderCardIcons />
+                    <SliderCardIcons link={item} />
                   </Grid>
                 </CardContent>
                 <Grid container>

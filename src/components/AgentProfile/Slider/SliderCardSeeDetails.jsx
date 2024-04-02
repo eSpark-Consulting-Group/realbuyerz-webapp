@@ -19,7 +19,7 @@ const SliderCardSeeDetails = ({ link }) => {
         }}
       >
         <Link
-          href={`/project/${link.id}`}
+          href={`/projects/${link?.property_id}`}
           sx={{
             align: 'center',
             fontSize: '0.875rem',
