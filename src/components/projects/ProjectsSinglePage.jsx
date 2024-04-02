@@ -13,17 +13,20 @@ import {
   findSelectedAgent,
   findSelectedProject,
 } from '@/src/utils/projects/agentsProjects';
-// import { findSelectedProject, findSelectedAgent } from './utils';
 
 function ProjectsSinglePage() {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const properties = useSelector((state) => state.postListingAds.agentPostings);
+  const properties = useSelector((state) => state.postListingAds.newPostings);
   const agents = useSelector((state) => state.agents);
-
   const selectedProject = findSelectedProject(properties, id);
   const selectedAgent = findSelectedAgent(agents, selectedProject);
+  const selectedProjectinArea = properties.filter(
+    (project) =>
+      project?.location == selectedProject?.location &&
+      project?.property_id != selectedProject?.property_id
+  );
 
   if (isNaN(id) || id === undefined || id === null) {
     return (
@@ -66,14 +69,14 @@ function ProjectsSinglePage() {
         <Grid item xs={12} md={4}>
           <ProfileAgent data={selectedProject} agentData={selectedAgent} />
         </Grid>
-        <Grid item xs={12} sx={{ pb: '30px' }}>
+        <Grid Grid item xs={12} sx={{ pb: '30px' }}>
           <Box py={3}>
             <Heading
               heading={`Similar Properties around  ${selectedProject?.location}`}
               textAlign={'center'}
             />
           </Box>
-          <PropertySlider propertyData={properties} />
+          <PropertySlider data={selectedProjectinArea} />
         </Grid>
       </Grid>
     </>

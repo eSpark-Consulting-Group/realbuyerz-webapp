@@ -11,7 +11,6 @@ import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
-import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
 
 const ProfileSinglePage = () => {
   const pathname = usePathname();
@@ -20,6 +19,9 @@ const ProfileSinglePage = () => {
   const users = useSelector((state) => state?.agents);
   const user = users?.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const selectedProjectbyAgent = projects.filter(
+    (project) => project?.user_id == user?.id
+  );
 
   function filterProjects(projects, agentId, purpose) {
     return projects.filter(
@@ -116,7 +118,7 @@ const ProfileSinglePage = () => {
           />
           <AgentAbout data={user} />
           <RecentPropertyTitle data={user} />
-          <AgentSlider data={AGENT_PROFILE_DATA} />
+          <AgentSlider data={selectedProjectbyAgent} />
         </>
       </Box>
     </>
