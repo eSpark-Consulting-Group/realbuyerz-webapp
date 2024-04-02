@@ -104,8 +104,10 @@ const FeaturedProperties = () => {
                       },
                     }}
                   >
-                    <Box 
-                      onClick={() => router.push(`/projects/${item?.property_id}`)}
+                    <Box
+                      onClick={() =>
+                        router.push(`/projects/${item?.property_id}`)
+                      }
                       sx={{
                         position: 'relative',
 
@@ -162,122 +164,126 @@ const FeaturedProperties = () => {
                           bottom: '60px',
                           width: '289px',
                         }}
-                      ><Link href={`/projects/${item?.property_id}`}>
-                        <Box p={2} className={styles.slideInBox}>
-                          <Box
-                            sx={{
-                              justifyContent: 'flex-start',
-                              alignItems: 'flex-start',
-                              textAlign: 'left',
-                              px: '2%',
-                              zIndex: 1,
-                            }}
-                          >
-                            <Typography
-                              sx={{
-                                color: '#fb631c',
-                                textAlign: 'left',
-                                fontWeight: 600,
-                                lineHeight: '21.78px',
-                                fontSize: {
-                                  xs: '12px',
-                                  md: '14px',
-                                  lg: '18px',
-                                },
-                                pb: '15px',
-                              }}
-                            >
-                              {item?.title}
-                            </Typography>
-                            <Typography
-                              sx={{
-                                color: '#1176ad',
-                                textAlign: 'left',
-                                fontWeight: '700',
-                                fontSize: {
-                                  xs: '12px',
-                                  md: '14px',
-                                  lg: '15px',
-                                },
-                                pb: '15px',
-                              }}
-                            >
-                              <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                              {item?.city}
-                            </Typography>
+                      >
+                        <Link href={`/projects/${item?.property_id}`}>
+                          <Box p={2} className={styles.slideInBox}>
                             <Box
                               sx={{
-                                display: 'flex',
-                                gap: '4px',
-                                alignItems: 'center',
+                                justifyContent: 'flex-start',
+                                alignItems: 'flex-start',
+                                textAlign: 'left',
+                                px: '2%',
+                                zIndex: 1,
                               }}
                             >
                               <Typography
-                                variant="body1"
                                 sx={{
-                                  color: '#1176AD',
+                                  color: '#fb631c',
+                                  textAlign: 'left',
+                                  fontWeight: 600,
                                   lineHeight: '21.78px',
                                   fontSize: {
                                     xs: '12px',
                                     md: '14px',
-                                    lg: '16px',
+                                    lg: '18px',
                                   },
-                                  fontWeight: 600,
+                                  pb: '15px',
                                 }}
                               >
-                                {'Starting from:'}
+                                {item?.title}
                               </Typography>
                               <Typography
-                                variant="body2"
                                 sx={{
-                                  color: '#fb631c',
-                                  fontSize: { xs: '10px', md: '14px' },
-                                  fontWeight: 500,
-                                }}
-                              >
-                                {item?.amountCurrency}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                sx={{
+                                  color: '#1176ad',
                                   textAlign: 'left',
-                                  color: '#fb631c',
+                                  fontWeight: '700',
                                   fontSize: {
-                                    xs: '10px',
+                                    xs: '12px',
                                     md: '14px',
-                                    lg: '16px',
+                                    lg: '15px',
                                   },
-                                  fontWeight: 600,
+                                  pb: '15px',
                                 }}
                               >
-                                {item?.amount}
+                                <LocationOnIcon
+                                  color="#1176ad"
+                                  fontSize="12px"
+                                />{' '}
+                                {item?.city}
                               </Typography>
-                            </Box>
-                          </Box>
-                          <Grid container>
-                            {FEATURED_PROPERTIES?.map((amenity, index) => (
-                              <Grid
-                                key={index}
-                                item
-                                xs={4}
-                                style={{
+                              <Box
+                                sx={{
                                   display: 'flex',
-                                  justifyContent: 'center',
+                                  gap: '4px',
                                   alignItems: 'center',
-                                  paddingTop: '10px',
                                 }}
                               >
-                                <Image
-                                  width={20}
-                                  height={14.2}
-                                  src={amenity}
-                                  alt={`Amenity ${index}`}
-                                />
-                              </Grid>
-                            ))}
-                          </Grid>
+                                <Typography
+                                  variant="body1"
+                                  sx={{
+                                    color: '#1176AD',
+                                    lineHeight: '21.78px',
+                                    fontSize: {
+                                      xs: '12px',
+                                      md: '14px',
+                                      lg: '16px',
+                                    },
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  {'Starting from:'}
+                                </Typography>
+                                <Typography
+                                  variant="body2"
+                                  sx={{
+                                    color: '#fb631c',
+                                    fontSize: { xs: '10px', md: '14px' },
+                                    fontWeight: 500,
+                                  }}
+                                >
+                                  {item?.amountCurrency}
+                                </Typography>
+                                <Typography
+                                  variant="body1"
+                                  sx={{
+                                    textAlign: 'left',
+                                    color: '#fb631c',
+                                    fontSize: {
+                                      xs: '10px',
+                                      md: '14px',
+                                      lg: '16px',
+                                    },
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  {item?.amount}
+                                </Typography>
+                              </Box>
+                            </Box>
+                            <Grid container>
+                              {FEATURED_PROPERTIES?.map((amenity, index) => (
+                                <Grid
+                                  key={index}
+                                  item
+                                  xs={4}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingTop: '10px',
+                                  }}
+                                >
+                                  <Image
+                                    width={20}
+                                    height={14.2}
+                                    src={amenity}
+                                    alt={`Amenity ${index}`}
+                                  />
+                                </Grid>
+                              ))}
+                            </Grid>
                           </Box>
-                      </Link>
+                        </Link>
                       </Collapse>
                     </Box>
                   </Grid>
@@ -377,105 +383,117 @@ const FeaturedProperties = () => {
                     }}
                   >
                     <Link href={`/projects/${item?.property_id}`}>
-                    <Box p={2} className={styles.slideInBox}>
-                      <Box
-                        sx={{
-                          justifyContent: 'flex-start',
-                          alignItems: 'flex-start',
-                          textAlign: 'left',
-                          px: '2%',
-                          zIndex: 1,
-                        }}
-                      >
-                        <Link href={`/projects/${item?.property_id}`}>
+                      <Box p={2} className={styles.slideInBox}>
+                        <Box
+                          sx={{
+                            justifyContent: 'flex-start',
+                            alignItems: 'flex-start',
+                            textAlign: 'left',
+                            px: '2%',
+                            zIndex: 1,
+                          }}
+                        >
+                          <Link href={`/projects/${item?.property_id}`}>
+                            <Typography
+                              sx={{
+                                color: '#fb631c',
+                                textAlign: 'left',
+                                fontWeight: 600,
+                                lineHeight: '21.78px',
+                                fontSize: {
+                                  xs: '12px',
+                                  md: '14px',
+                                  lg: '18px',
+                                },
+                                pb: '15px',
+                              }}
+                            >
+                              {item?.title}
+                            </Typography>
+                          </Link>
                           <Typography
                             sx={{
-                              color: '#fb631c',
+                              color: '#1176ad',
                               textAlign: 'left',
-                              fontWeight: 600,
-                              lineHeight: '21.78px',
-                              fontSize: { xs: '12px', md: '14px', lg: '18px' },
+                              fontWeight: '700',
+                              fontSize: { xs: '12px', md: '14px', lg: '15px' },
                               pb: '15px',
                             }}
                           >
-                            {item?.title}
+                            <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
+                            {item?.city}
                           </Typography>
-                        </Link>
-                        <Typography
-                          sx={{
-                            color: '#1176ad',
-                            textAlign: 'left',
-                            fontWeight: '700',
-                            fontSize: { xs: '12px', md: '14px', lg: '15px' },
-                            pb: '15px',
-                          }}
-                        >
-                          <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                          {item?.city}
-                        </Typography>
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            gap: '4px',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <Typography
-                            variant="body1"
+                          <Box
                             sx={{
-                              color: '#1176AD',
-                              lineHeight: '21.78px',
-                              fontSize: { xs: '12px', md: '14px', lg: '16px' },
-                              fontWeight: 600,
-                            }}
-                          >
-                            {'Starting from:'}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              color: '#fb631c',
-                              fontSize: { xs: '10px', md: '14px' },
-                              fontWeight: 500,
-                            }}
-                          >
-                            {item?.amountCurrency}
-                          </Typography>
-                          <Typography
-                            variant="body1"
-                            sx={{
-                              textAlign: 'left',
-                              color: '#fb631c',
-                              fontSize: { xs: '10px', md: '14px', lg: '16px' },
-                              fontWeight: 600,
-                            }}
-                          >
-                            {item?.amount}
-                          </Typography>
-                        </Box>
-                      </Box>
-                      <Grid container>
-                        {FEATURED_PROPERTIES.map((amenity, index) => (
-                          <Grid
-                            key={index}
-                            item
-                            xs={4}
-                            style={{
                               display: 'flex',
-                              justifyContent: 'center',
+                              gap: '4px',
                               alignItems: 'center',
-                              paddingTop: '10px',
                             }}
                           >
-                            <Image
-                              width={20}
-                              height={14.2}
-                              src={amenity}
-                              alt={`Amenity ${index}`}
-                            />
-                          </Grid>
-                        ))}
-                      </Grid>
+                            <Typography
+                              variant="body1"
+                              sx={{
+                                color: '#1176AD',
+                                lineHeight: '21.78px',
+                                fontSize: {
+                                  xs: '12px',
+                                  md: '14px',
+                                  lg: '16px',
+                                },
+                                fontWeight: 600,
+                              }}
+                            >
+                              {'Starting from:'}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                color: '#fb631c',
+                                fontSize: { xs: '10px', md: '14px' },
+                                fontWeight: 500,
+                              }}
+                            >
+                              {item?.amountCurrency}
+                            </Typography>
+                            <Typography
+                              variant="body1"
+                              sx={{
+                                textAlign: 'left',
+                                color: '#fb631c',
+                                fontSize: {
+                                  xs: '10px',
+                                  md: '14px',
+                                  lg: '16px',
+                                },
+                                fontWeight: 600,
+                              }}
+                            >
+                              {item?.amount}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Grid container>
+                          {FEATURED_PROPERTIES.map((amenity, index) => (
+                            <Grid
+                              key={index}
+                              item
+                              xs={4}
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                paddingTop: '10px',
+                              }}
+                            >
+                              <Image
+                                width={20}
+                                height={14.2}
+                                src={amenity}
+                                alt={`Amenity ${index}`}
+                              />
+                            </Grid>
+                          ))}
+                        </Grid>
                       </Box>
                     </Link>
                   </Collapse>

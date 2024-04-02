@@ -7,7 +7,7 @@ import PropertySlider from '../AgentProfile/PropertySlider';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
 import { useSelector } from 'react-redux';
 
-const NewlyListedProperties = ({ data }) => {
+const NewlyListedProperties = () => {
   const NewProjects = useSelector((state) => state.postListingAds.newPostings);
   return (
     <>
