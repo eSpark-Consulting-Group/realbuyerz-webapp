@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { STARTING_FROM } from '@/src/constants/AgentProfile';
 
-const SliderCardPrice = ({ price }) => {
+const SliderCardPrice = ({ price, unit }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Typography
@@ -28,7 +28,7 @@ const SliderCardPrice = ({ price }) => {
             fontSize: { xs: '10px', sm: '12px', md: '14px' },
           }}
         >
-          {`PKR `}
+          {unit}
         </Typography>
         <Typography
           variant="body1"

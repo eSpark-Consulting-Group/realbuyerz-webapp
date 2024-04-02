@@ -660,58 +660,9 @@ export const POPULAR_LOCATIONS_DATA = [
 ];
 
 export const FEATURED_PROPERTIES = [
-  {
-    location: 'Islamabad',
-    propertyName: 'Index Industrial Park',
-    address: 'Hub River Road',
-    price: '3.0 Crore',
-    currency: 'PKR',
-    bgImage: './images/features/feature1.png',
-    amenities: [
-      '/images/amenities/amenitie1.svg',
-      '/images/amenities/amenitie2.svg',
-      '/images/amenities/amenitie3.svg',
-    ],
-  },
-  {
-    location: 'Islamabad',
-    propertyName: 'Index Industrial Park',
-    address: 'Hub River Road',
-    price: '3.0 Crore',
-    currency: 'PKR',
-    bgImage: './images/features/feature2.png',
-    amenities: [
-      '/images/amenities/amenitie1.svg',
-      '/images/amenities/amenitie2.svg',
-      '/images/amenities/amenitie3.svg',
-    ],
-  },
-  {
-    location: 'Islamabad',
-    propertyName: 'Index Industrial Park',
-    address: 'Hub River Road',
-    price: '3.0 Crore',
-    currency: 'PKR',
-    bgImage: './images/features/feature3.png',
-    amenities: [
-      '/images/amenities/amenitie1.svg',
-      '/images/amenities/amenitie2.svg',
-      '/images/amenities/amenitie3.svg',
-    ],
-  },
-  {
-    location: 'Islamabad',
-    propertyName: 'Index Industrial Park',
-    address: 'Hub River Road',
-    price: '3.0 Crore',
-    currency: 'PKR',
-    bgImage: './images/features/feature4.png',
-    amenities: [
-      '/images/amenities/amenitie1.svg',
-      '/images/amenities/amenitie2.svg',
-      '/images/amenities/amenitie3.svg',
-    ],
-  },
+  '/images/amenities/amenitie1.svg',
+  '/images/amenities/amenitie2.svg',
+  '/images/amenities/amenitie3.svg',
 ];
 
 export const PROPERTY_DATA_Old = {
