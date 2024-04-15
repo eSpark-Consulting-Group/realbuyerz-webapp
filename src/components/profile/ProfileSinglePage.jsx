@@ -19,12 +19,12 @@ const ProfileSinglePage = () => {
   const users = useSelector((state) => state?.agents);
   const user = users?.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const selectedProjectbyAgent = projects.filter(
+  const selectedProjectbyAgent = projects?.filter(
     (project) => project?.user_id == user?.id
   );
 
   function filterProjects(projects, agentId, purpose) {
-    return projects.filter(
+    return projects?.filter(
       (item) =>
         item?.user_id === agentId &&
         item?.purpose === purpose &&
@@ -33,7 +33,7 @@ const ProfileSinglePage = () => {
   }
 
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
-    return projects.filter(
+    return projects?.filter(
       (item) =>
         item?.user_id === agentId &&
         item?.purpose === purpose &&
@@ -42,7 +42,7 @@ const ProfileSinglePage = () => {
     ).length;
   }
 
-  const allProperties = projects.filter(
+  const allProperties = projects?.filter(
     (item) => item?.user_id === user?.id && item?.status === 'submit'
   ).length;
   const forSellCount = filterProjects(projects, user?.id, 'Sell');

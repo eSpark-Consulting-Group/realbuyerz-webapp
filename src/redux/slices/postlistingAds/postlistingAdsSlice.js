@@ -2028,18 +2028,6 @@ const postlistingAdSlice = createSlice({
         const active_trash = state?.active?.splice(activeIndex, 1)[0];
         state?.trash?.push(active_trash);
       }
-      // Connected proposals
-      // const connectedProposalIndex = state?.connectedProposals?.findIndex(
-      //   (ad) => ad?.property_id === property_id
-      // );
-      // if (connectedProposalIndex !== -1 && currentTab == 'ActiveProposal') {
-      //   const connectedProposal_trash = state?.connectedProposals?.splice(
-      //     connectedProposalIndex,
-      //     1
-      //   )[0];
-      //   state?.trash?.push(connectedProposal_trash);
-      // }
-      // draft
       const draftIndex = state?.draft?.findIndex(
         (ad) => ad?.property_id === property_id
       );

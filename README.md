@@ -92,4 +92,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Create a PR to merge the fully verified epic branch into the development branch.
 This ensures that the entire epic is successfully integrated into the project's main development codebase.
-By following this branching and merging process, you ensure a structured and organized approach to feature development, bug fixing, and the integration of epics into the development codebase. This methodology helps maintain code quality, collaboration, and the smooth progression of your project.
+By following this branching and merging process, you ensure a structured and organized approach to feature development, bug fixing, and the integration of epics into the development codebase. This methodology helps maintain code quality, collaboration, and the smooth progression of your project?.

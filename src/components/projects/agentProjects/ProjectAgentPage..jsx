@@ -26,7 +26,7 @@ const ProjectAgentPage = () => {
     );
   }
 
-  const filterData = projects.filter(
+  const filterData = projects?.filter(
     (item) => item?.agent_id === parseInt(agentId)
   );
 

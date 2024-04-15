@@ -5,7 +5,7 @@ export function findSelectedAgent(agents, selectedProject) {
 }
 
 export function filterAgentsProjects(projects, agentId) {
-  return projects.filter(
+  return projects?.filter(
     (item) => item?.user_id === parseInt(agentId) && item?.status === 'submit'
   );
 }
@@ -58,7 +58,7 @@ export function filterProjectsByPurposeCategory(
   purpose,
   propertyCategory
 ) {
-  return projects.filter(
+  return projects?.filter(
     (item) =>
       item?.user_id === agentId &&
       item?.purpose === purpose &&

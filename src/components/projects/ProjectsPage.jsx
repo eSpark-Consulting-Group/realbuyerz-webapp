@@ -11,7 +11,7 @@ const ProjectsPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   // Check if projects exist
-  if (!projects || projects.length === 0) {
+  if (!projects || projects?.length === 0) {
     return (
       <NotFoundSection heading={'Sorry!'} message={'No Properties Found.'} />
     );

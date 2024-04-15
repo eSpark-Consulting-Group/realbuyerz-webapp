@@ -9,7 +9,7 @@ export function findSelectedProject(properties, id) {
 }
 
 export function filterProjects(projects) {
-  return projects.filter((item) => item?.status === 'submit');
+  return projects?.filter((item) => item?.status === 'submit');
 }
 export function filterProjectsByType(projects, capAdsType) {
   return projects?.filter(
@@ -48,7 +48,7 @@ export function filterProjectsByPurposeCategory(
   purpose,
   propertyCategory
 ) {
-  return projects.filter(
+  return projects?.filter(
     (item) =>
       item?.purpose === purpose &&
       item?.propertyCategory === propertyCategory &&

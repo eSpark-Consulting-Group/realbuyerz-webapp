@@ -72,9 +72,10 @@ const ProjectsSlider = ({ data, category }) => {
               sx={{
                 backgroundColor: '#fff',
                 border: '1px solid #E4E4E4',
+                borderRadius: '5px',
               }}
             >
-              <Link href={`/projects/${project.property_id}`}>
+              <Link href={`/projects/${project?.property_id}`}>
                 {!project?.images?.length == 0 ? (
                   <img
                     src={
@@ -181,7 +182,7 @@ const ProjectsSlider = ({ data, category }) => {
                   }}
                 >
                   {project?.description?.length > 150
-                    ? `${project.description.slice(0, 147)}...`
+                    ? `${project?.description.slice(0, 147)}...`
                     : project?.description || (
                         <>
                           <Skeleton />
