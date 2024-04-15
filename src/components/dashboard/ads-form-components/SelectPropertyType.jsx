@@ -21,13 +21,13 @@ const SelectProperyType = ({
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
     setPropertyType(text);
-    formik.setFieldValue('propertyCategory', text);
+    formik?.setFieldValue('propertyCategory', text);
   };
 
   const handlePropetySubType = (text) => {
     setActivePropertySubType(text);
     setPropetySubType(text);
-    formik.setFieldValue('propertyType', text);
+    formik?.setFieldValue('propertyType', text);
   };
 
   return (

@@ -6,7 +6,7 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
   const [activePropertyStatus, setActivePropertyStatus] = useState('Sell');
 
   const handleChange = (val) => {
-    formik.setFieldValue('purpose', val);
+    formik?.setFieldValue('purpose', val);
     setActivePropertyStatus(val);
   };
   return (

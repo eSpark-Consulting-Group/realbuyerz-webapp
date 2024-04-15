@@ -142,7 +142,7 @@ export default function BuyProduct() {
               setIsModalOpen={setIsModalOpen}
               handleChange={handleChange}
               state={state}
-              resetForm={formik.resetForm}
+              resetForm={formik?.resetForm}
             />
           </Item>
         </Grid>

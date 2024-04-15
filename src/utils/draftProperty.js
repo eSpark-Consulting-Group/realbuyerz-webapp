@@ -48,9 +48,9 @@ export const generateInitialFormValues = (updatedData, currentUser) => {
 };
 
 export const getInitialCounterValue = (formik, name) => {
-  return formik.values[name] !== null &&
-    formik.values[name] !== undefined &&
-    formik.values[name] !== ''
-    ? parseInt(formik.values[name])
+  return formik?.values[name] !== null &&
+    formik?.values[name] !== undefined &&
+    formik?.values[name] !== ''
+    ? parseInt(formik?.values[name])
     : 0;
 };

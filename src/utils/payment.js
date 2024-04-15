@@ -43,10 +43,10 @@ export const useFormikForPayment = ({ selectedValue, checked }) => {
         isCheckBox: checked,
         id: generateId(),
       };
-      delete updatedValues.easypaisa_number;
-      delete updatedValues.jazzcash_number;
+      delete updatedValues?.easypaisa_number;
+      delete updatedValues?.jazzcash_number;
       const findCard = paymentMedthodDetails.find(
-        (item) => item.card_number === values.card_number
+        (item) => item?.card_number === values?.card_number
       );
       if (
         findCard &&
@@ -63,8 +63,8 @@ export const useFormikForPayment = ({ selectedValue, checked }) => {
         dispatch(
           addPaymentMethod(
             selectedValue === JAZZ_CASH
-              ? { jazzcash_number: values.jazzcash_number }
-              : { easypaisa_number: values.easypaisa_number }
+              ? { jazzcash_number: values?.jazzcash_number }
+              : { easypaisa_number: values?.easypaisa_number }
           )
         );
       } else {
@@ -82,22 +82,22 @@ export const calculateFormState = ({
 }) => {
   if (selectedValue === NAME_ON_CARD) {
     if (
-      formik.values.name_on_card.length >= 3 &&
-      formik.values.card_number.toString().length === 16 &&
-      formik.values.expiry_date.toString().length === 5 &&
-      formik.values.cvv_no.toString().length === 3
+      formik?.values?.name_on_card.length >= 3 &&
+      formik?.values?.card_number.toString().length === 16 &&
+      formik?.values?.expiry_date.toString().length === 5 &&
+      formik?.values?.cvv_no.toString().length === 3
     ) {
       return false;
     } else {
       return true;
     }
   } else if (selectedValue === JAZZ_CASH) {
-    return formik.values.jazzcash_number.toString().length !== 10;
+    return formik?.values?.jazzcash_number.toString().length !== 10;
   } else if (selectedValue === EASY_PAISA) {
-    return formik.values.easypaisa_number.toString().length !== 10;
+    return formik?.values?.easypaisa_number.toString().length !== 10;
   } else if (selectedValue === '') {
     const findIndex = paymentMedthodDetails.filter((item) => {
-      return item.card_number === typeCard;
+      return item?.card_number === typeCard;
     });
     return findIndex.length !== 1;
   }
@@ -129,10 +129,10 @@ export const handlePaymentChange = ({
   dispatch(ProceedPayment(OrderSummaryPayLoad));
   if (paymentMedthod && !state) {
     setIsModalOpen(true);
-    formik.handleSubmit();
+    formik?.handleSubmit();
     dispatch(isResetForm(true));
     setTimeout(() => {
-      formik.resetForm();
+      formik?.resetForm();
       setChecked(false);
     }, 1000);
   }
@@ -149,13 +149,13 @@ export const handleCheckBoxChange = ({
   const isChecked = event.target.checked;
   setChecked(isChecked);
   const findIndexOfCard = paymentMedthodDetails.findIndex((item) => {
-    return item.card_number === formik.values.card_number;
+    return item?.card_number === formik?.values?.card_number;
   });
   if (findIndexOfCard !== -1) {
     dispatch(
       updatePaymentMethodSelection({
         isSelected: false,
-        cardNumber: formik.values.card_number,
+        cardNumber: formik?.values?.card_number,
         isCheckBox: isChecked,
       })
     );

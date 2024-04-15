@@ -87,7 +87,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               sx={{
                 '& fieldset': {
                   borderRadius: '10px',
-                  border: `1px solid ${formik.errors.city ? 'red' : '1px solid #E7E7E7'}`,
+                  border: `1px solid ${formik?.errors.city ? 'red' : '1px solid #E7E7E7'}`,
                 },
                 '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
                   {

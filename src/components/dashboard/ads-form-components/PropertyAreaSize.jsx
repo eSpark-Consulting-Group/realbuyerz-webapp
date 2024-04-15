@@ -124,7 +124,7 @@ const PropertyAreaSize = ({
                       margin: 0,
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label]
+                      border: formik?.errors[item?.label]
                         ? 'solid 1px red'
                         : '1px solid #E7E7E7',
                       borderRadius: '10px',
@@ -156,7 +156,7 @@ const PropertyAreaSize = ({
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& fieldset': {
-                      border: formik.errors[item?.label]
+                      border: formik?.errors[item?.label]
                         ? 'solid 1px red'
                         : '1px solid #E7E7E7',
                       borderRadius: '10px',
@@ -189,7 +189,7 @@ const PropertyAreaSize = ({
                   }}
                 />
               </Box>
-              {(formik?.errors[item?.label] || formik.errors[item?.unit]) && (
+              {(formik?.errors[item?.label] || formik?.errors[item?.unit]) && (
                 <Typography
                   sx={{
                     position: 'absolute',

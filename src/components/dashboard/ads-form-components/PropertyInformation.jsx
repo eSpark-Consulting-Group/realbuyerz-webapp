@@ -95,7 +95,7 @@ const PropertyInformation = ({ postData, formik }) => {
                       minHeight: index === specialIndex ? '192px' : '0',
                     },
                     '& fieldset': {
-                      border: formik.errors[item?.label]
+                      border: formik?.errors[item?.label]
                         ? 'solid 1px red'
                         : '1px solid #E7E7E7',
                       borderRadius: '10px',
@@ -109,16 +109,16 @@ const PropertyInformation = ({ postData, formik }) => {
                     },
                   }}
                   name={item?.label}
-                  value={formik.values[item?.label]}
-                  onBlur={formik.handleBlur}
+                  value={formik?.values[item?.label]}
+                  onBlur={formik?.handleBlur}
                   error={
-                    formik.touched[item?.label] &&
-                    Boolean(formik.errors[item?.label])
+                    formik?.touched[item?.label] &&
+                    Boolean(formik?.errors[item?.label])
                   }
                   onChange={formik?.handleChange}
                   multiline
                 />
-                {formik.errors[item?.label] && (
+                {formik?.errors[item?.label] && (
                   <Typography
                     sx={{
                       position: 'absolute',
@@ -126,7 +126,7 @@ const PropertyInformation = ({ postData, formik }) => {
                       color: 'red',
                     }}
                   >
-                    {formik.errors[item?.label]}
+                    {formik?.errors[item?.label]}
                   </Typography>
                 )}
               </Box>

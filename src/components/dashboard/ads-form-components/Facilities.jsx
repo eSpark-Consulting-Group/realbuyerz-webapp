@@ -31,12 +31,12 @@ const Facilities = ({
       setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected.filter((item) => item.text !== text)
+        prevSelected.filter((item) => item?.text !== text)
       );
-      formik.setFieldValue(name, 0);
+      formik?.setFieldValue(name, 0);
     }
 
-    formik.setFieldValue('other_features', selectedAmenities);
+    formik?.setFieldValue('other_features', selectedAmenities);
   };
 
   const handleSaveButton = () => {
@@ -93,10 +93,10 @@ const Facilities = ({
               onChange={(e) => {
                 handleCheckboxChange(
                   e,
-                  item.id,
-                  item.image,
-                  item.title,
-                  item.name
+                  item?.id,
+                  item?.image,
+                  item?.title,
+                  item?.name
                 );
               }}
             />

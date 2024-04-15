@@ -77,14 +77,14 @@ const InputTextField = ({ textField, formik }) => {
                   rows={rows}
                   name={name}
                   multiline={multiline}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values[name]}
-                  error={formik.touched[name] && Boolean(formik.errors[name])}
+                  onChange={formik?.handleChange}
+                  onBlur={formik?.handleBlur}
+                  value={formik?.values[name]}
+                  error={formik?.touched[name] && Boolean(formik?.errors[name])}
                   type={type}
                   place={`${place}`}
                 />
-                {formik.touched[name] && formik.errors[name] && (
+                {formik?.touched[name] && formik?.errors[name] && (
                   <Typography
                     sx={{
                       color: 'red',
@@ -93,7 +93,7 @@ const InputTextField = ({ textField, formik }) => {
                       mt: 1,
                     }}
                   >
-                    {formik.errors[name]}
+                    {formik?.errors[name]}
                   </Typography>
                 )}
               </Box>
