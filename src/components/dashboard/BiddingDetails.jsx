@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
-import { postListingAdCard } from '@/app/constants/postListing';
+import { postListingAdCard } from '@/src/constants/postListing';
 import { searching } from '@/src/utils/search';
 
 import NotFoundSection from '@/src/components/global/NotFoundSection';
