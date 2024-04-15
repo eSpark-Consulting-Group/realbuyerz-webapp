@@ -8,32 +8,27 @@ export function findSelectedProject(properties, id) {
   );
 }
 
+export function filterProjects(projects) {
+  return projects.filter((item) => item?.status === 'submit');
+}
 export function filterProjectsByType(projects, capAdsType) {
-  return projects?.filter((item) => item?.purpose === capAdsType);
+  return projects?.filter(
+    (item) => item?.purpose === capAdsType && item?.status === 'submit'
+  );
 }
 export function filterProjectsByTypeCategory(projects, category, adsType) {
   const capCategory = capitalizeFirstLetter(category);
   const capAdsType = capitalizeFirstLetter(adsType);
   return projects?.filter(
     (item) =>
-      item?.propertyCategory === capCategory && item?.purpose === capAdsType
-  );
-}
-export function filterProjectsByTypeCategoryCity(
-  projects,
-  category,
-  adsType,
-  city
-) {
-  const capCategory = capitalizeFirstLetter(category);
-  const capAdsType = capitalizeFirstLetter(adsType);
-  const capCity = capitalizeFirstLetter(city);
-  return projects?.filter(
-    (item) =>
       item?.propertyCategory === capCategory &&
       item?.purpose === capAdsType &&
-      item?.city === capCity
+      item?.status === 'submit'
   );
+}
+export function extract(pathname) {
+  const segments = pathname.split(`/`);
+  return segments[segments.length - 2];
 }
 export function extractTypeId(pathname) {
   const segments = pathname.split(`/`);
@@ -47,13 +42,7 @@ export function extractCategoryIdTypeId(pathname) {
   const adsType = segments[segments.length - 2];
   return { category, adsType };
 }
-export function extractCategoryIdTypeIdCityId(pathname) {
-  const segments = pathname.split(`/`);
-  const city = segments[segments.length - 1];
-  const category = segments[segments.length - 2];
-  const adsType = segments[segments.length - 3];
-  return { city, category, adsType };
-}
+
 export function filterProjectsByPurposeCategory(
   projects,
   purpose,
@@ -63,20 +52,6 @@ export function filterProjectsByPurposeCategory(
     (item) =>
       item?.purpose === purpose &&
       item?.propertyCategory === propertyCategory &&
-      item?.status === 'submit'
-  ).length;
-}
-export function filterProjectsByPurposeCategoryCity(
-  projects,
-  purpose,
-  propertyCategory,
-  city
-) {
-  return projects.filter(
-    (item) =>
-      item?.purpose === purpose &&
-      item?.propertyCategory === propertyCategory &&
-      item?.city === city &&
       item?.status === 'submit'
   ).length;
 }

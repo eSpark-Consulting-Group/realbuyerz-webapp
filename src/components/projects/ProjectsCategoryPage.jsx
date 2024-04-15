@@ -22,7 +22,6 @@ const ProjectsCategoryPage = () => {
   );
   const filteredData = filterData?.length ? filterData : NoData;
 
-  // Validate id
   if (!id) {
     return (
       <NotFoundSection
@@ -31,7 +30,6 @@ const ProjectsCategoryPage = () => {
       />
     );
   }
-  // Check if filterData is empty
   if (!filteredData || filteredData.length === 0) {
     return (
       <NotFoundSection

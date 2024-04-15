@@ -1,23 +1,20 @@
-export function capitalizeFirstLetter(text) {
-  return text.replace(/\b\w/g, (match) => match.toUpperCase());
-}
-
-export function findSelectedProject(properties, id) {
-  return properties?.find(
-    (property) => String(property?.property_id) === String(id)
-  );
-}
+import { capitalizeFirstLetter } from './projects';
 
 export function findSelectedAgent(agents, selectedProject) {
   return agents?.find((agent) => agent?.id === selectedProject?.user_id);
 }
 
 export function filterAgentsProjects(projects, agentId) {
-  return projects.filter((item) => item?.user_id === parseInt(agentId));
+  return projects.filter(
+    (item) => item?.user_id === parseInt(agentId) && item?.status === 'submit'
+  );
 }
 export function filterAgentsProjectsByType(projects, agentId, capAdsType) {
   return projects?.filter(
-    (item) => item?.user_id == agentId && item?.purpose === capAdsType
+    (item) =>
+      item?.user_id == agentId &&
+      item?.purpose === capAdsType &&
+      item?.status === 'submit'
   );
 }
 export function filterAgentsProjectsByTypeCategory(
@@ -32,7 +29,8 @@ export function filterAgentsProjectsByTypeCategory(
     (item) =>
       item?.user_id == agentId &&
       item?.propertyCategory === capCategory &&
-      item?.purpose === capAdsType
+      item?.purpose === capAdsType &&
+      item?.status === 'submit'
   );
 }
 export function extractAgentId(pathname) {

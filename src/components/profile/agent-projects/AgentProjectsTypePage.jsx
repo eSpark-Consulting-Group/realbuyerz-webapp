@@ -3,23 +3,20 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
-import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
-import AgentProjectsChiperBack from './AgentProjectsChiperBack';
-import { usePathname } from 'next/navigation';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
 import {
-  capitalizeFirstLetter,
   extractAgentIdTypeId,
   filterAgentsProjectsByType,
 } from '@/src/utils/projects/agentsProjects';
+import { capitalizeFirstLetter } from '@/src/utils/projects/projects';
+import { usePathname } from 'next/navigation';
+import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
+import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
+import AgentProjectsChiperBack from './AgentProjectsChiperBack';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const AgentProjectsTypePage = () => {
   const pathname = usePathname();
   const { agentId, adsType, capAdsType } = extractAgentIdTypeId(pathname);
-  console.log('====================================');
-  console.log(agentId, adsType, capAdsType);
-  console.log('====================================');
   const agents = useSelector((state) => state.agents);
   const currentAgent = agents?.filter(
     (item) => item?.id === parseInt(agentId)
@@ -28,7 +25,6 @@ const AgentProjectsTypePage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const filterData = filterAgentsProjectsByType(projects, agentId, capAdsType);
 
-  // Validate agentId
   if (!agentId || !currentAgent) {
     return (
       <NotFoundSection
@@ -38,7 +34,6 @@ const AgentProjectsTypePage = () => {
     );
   }
 
-  // Check if filterData is empty
   if (!filterData || filterData.length === 0) {
     return (
       <NotFoundSection
