@@ -18,7 +18,7 @@ const ProjectsCategoryPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const filterData = projects?.filter(
-    (item) => item?.propertyCategory === capID
+    (item) => item?.propertyCategory === capID && item?.status === 'submit'
   );
   const filteredData = filterData?.length ? filterData : NoData;
 

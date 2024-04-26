@@ -45,7 +45,7 @@ export const useFormikForPayment = ({ selectedValue, checked }) => {
       };
       delete updatedValues?.easypaisa_number;
       delete updatedValues?.jazzcash_number;
-      const findCard = paymentMedthodDetails.find(
+      const findCard = paymentMedthodDetails?.find(
         (item) => item?.card_number === values?.card_number
       );
       if (
@@ -96,7 +96,7 @@ export const calculateFormState = ({
   } else if (selectedValue === EASY_PAISA) {
     return formik?.values?.easypaisa_number.toString().length !== 10;
   } else if (selectedValue === '') {
-    const findIndex = paymentMedthodDetails.filter((item) => {
+    const findIndex = paymentMedthodDetails?.filter((item) => {
       return item?.card_number === typeCard;
     });
     return findIndex.length !== 1;

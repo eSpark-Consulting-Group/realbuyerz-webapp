@@ -20,10 +20,11 @@ function ProjectsSinglePage() {
   const agents = useSelector((state) => state.agents);
   const selectedProject = findSelectedProject(properties, id);
   const selectedAgent = findSelectedAgent(agents, selectedProject);
-  const selectedProjectinArea = properties.filter(
+  const selectedProjectinArea = properties?.filter(
     (project) =>
       project?.location == selectedProject?.location &&
-      project?.property_id != selectedProject?.property_id
+      project?.property_id != selectedProject?.property_id &&
+      project?.status === 'submit'
   );
 
   if (isNaN(id) || id === undefined || id === null) {

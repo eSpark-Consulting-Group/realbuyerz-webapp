@@ -31,7 +31,7 @@ const Facilities = ({
       setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected.filter((item) => item?.text !== text)
+        prevSelected?.filter((item) => item?.text !== text)
       );
       formik?.setFieldValue(name, 0);
     }

@@ -138,7 +138,12 @@ const ProfilesPage = ({ agents }) => {
                     { label: 'Chat Now', href: `/chat/${agent?.id}` },
                   ].map(({ label, href }) => (
                     <Grid item xs={6} key={label}>
-                      <Button variant="contained" color="primary" fullWidth href={href}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        href={href}
+                      >
                         {label}
                       </Button>
                     </Grid>

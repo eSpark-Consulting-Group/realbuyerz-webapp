@@ -4,7 +4,9 @@ export function capitalizeFirstLetter(text) {
 
 export function findSelectedProject(properties, id) {
   return properties?.find(
-    (property) => String(property?.property_id) === String(id)
+    (property) =>
+      String(property?.property_id) === String(id) &&
+      property?.status === 'submit'
   );
 }
 

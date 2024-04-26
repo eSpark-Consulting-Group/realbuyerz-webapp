@@ -20,7 +20,7 @@ const ProfileSinglePage = () => {
   const user = users?.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const selectedProjectbyAgent = projects?.filter(
-    (project) => project?.user_id == user?.id
+    (project) => project?.user_id == user?.id && project?.status === 'submit'
   );
 
   function filterProjects(projects, agentId, purpose) {
