@@ -46,7 +46,7 @@ const ProfilesPage = ({ agents }) => {
           padding: 6,
         }}
       >
-        {'Top Performing Agents'}
+        {`Top Performing Agents`}
       </Typography>
       <Grid container spacing={6}>
         {agents?.slice(startIndex, endIndex).map((agent) => (
@@ -86,7 +86,7 @@ const ProfilesPage = ({ agents }) => {
                       component="div"
                       align="center"
                     >
-                      {agent?.first_name} {agent?.last_name}
+                      {`${agent?.first_name} ${agent?.last_name}`}
                     </Typography>
                   </Link>
                   <Link href={`/profile/${agent?.id}`}>
@@ -95,7 +95,7 @@ const ProfilesPage = ({ agents }) => {
                       color="text.secondary"
                       align="center"
                     >
-                      {agent?.business_name || `${agent?.first_name}'s Agency`}
+                      {`${agent?.business_name || `${agent?.first_name}'s Agency`}`}
                     </Typography>
                   </Link>
                   <Box display={'flex'} justifyContent={'space-between'}>
@@ -108,83 +108,41 @@ const ProfilesPage = ({ agents }) => {
                       <FavoriteIcon />
                     </IconButton>
                   </Box>
-                  {/* For Rent */}
-                  <Grid container display={'flex'}>
-                    <Grid item xs={6}>
-                      <Link href={`/profile/${agent?.id}/projects/rent`}>
+                  <Grid container display={'flex'} spacing={2}>
+                    {['rent', 'sell'].map((type) => (
+                      <Grid item xs={6} key={type}>
                         <Typography variant="h6" color="text.secondary">
-                          For Rent: {agent?.counts?.rentCount.total || 0}
+                          {`For ${type.charAt(0).toUpperCase() + type.slice(1)}: ${
+                            agent?.counts?.[`${type}Count`]?.total || 0
+                          }`}
                         </Typography>
-                      </Link>
-                      <Link href={`/profile/${agent?.id}/projects/rent/houses`}>
-                        <Typography variant="body2" color="text.secondary">
-                          Houses: {agent?.counts?.rentCount.Houses || 0}
-                        </Typography>
-                      </Link>
-                      <Link href={`/profile/${agent?.id}/projects/rent/plots`}>
-                        <Typography variant="body2" color="text.secondary">
-                          Plots: {agent?.counts?.rentCount.Plots || 0}
-                        </Typography>
-                      </Link>
-                      <Link
-                        href={`/profile/${agent?.id}/projects/rent/commercials`}
-                      >
-                        <Typography variant="body2" color="text.secondary">
-                          Commercials:{' '}
-                          {agent?.counts?.rentCount.Commercials || 0}
-                        </Typography>
-                      </Link>
-                    </Grid>
-                    {/* For Sell */}
-                    <Grid item xs={6}>
-                      <Link href={`/profile/${agent?.id}/projects/sell`}>
-                        <Typography variant="h6" color="text.secondary">
-                          For Sell: {agent?.counts?.sellCount.total || 0}
-                        </Typography>
-                      </Link>
-                      <Link href={`/profile/${agent?.id}/projects/sell/houses`}>
-                        <Typography variant="body2" color="text.secondary">
-                          Houses: {agent?.counts?.sellCount.Houses || 0}
-                        </Typography>
-                      </Link>
-                      <Link href={`/profile/${agent?.id}/projects/sell/plots`}>
-                        <Typography variant="body2" color="text.secondary">
-                          Plots: {agent?.counts?.sellCount.Plots || 0}
-                        </Typography>
-                      </Link>
-                      <Link
-                        href={`/profile/${agent?.id}/projects/sell/commercials`}
-                      >
-                        <Typography variant="body2" color="text.secondary">
-                          Commercials:{' '}
-                          {agent?.counts?.sellCount.Commercials || 0}
-                        </Typography>
-                      </Link>
-                    </Grid>
+                        {['Houses', 'Plots', 'Commercials'].map((category) => (
+                          <Link
+                            href={`/profile/${agent?.id}/projects/${type}/${category.toLowerCase()}`}
+                            key={`${type}-${category}`}
+                          >
+                            <Typography variant="body2" color="text.secondary">
+                              {`${category}: ${
+                                agent?.counts?.[`${type}Count`]?.[category] || 0
+                              }`}
+                            </Typography>
+                          </Link>
+                        ))}
+                      </Grid>
+                    ))}
                   </Grid>
                 </Box>
-                <Grid
-                  container
-                  justifyContent="space-between"
-                  display={'flex'}
-                  gap={'10px'}
-                >
-                  <Button
-                    variant="primary"
-                    color="primary"
-                    fullWidth
-                    href={`/profile/${agent?.id}`}
-                  >
-                    Profile Link
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    fullWidth
-                    href={`/chat/${agent?.id}`}
-                  >
-                    Chat Now
-                  </Button>
+                <Grid container justifyContent="space-between" spacing={1}>
+                  {[
+                    { label: 'Profile Link', href: `/profile/${agent?.id}` },
+                    { label: 'Chat Now', href: `/chat/${agent?.id}` },
+                  ].map(({ label, href }) => (
+                    <Grid item xs={6} key={label}>
+                      <Button variant="contained" color="primary" fullWidth href={href}>
+                        {label}
+                      </Button>
+                    </Grid>
+                  ))}
                 </Grid>
               </Box>
             </Card>

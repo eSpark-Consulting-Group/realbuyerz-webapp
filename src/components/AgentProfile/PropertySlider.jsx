@@ -30,7 +30,7 @@ const PropertySlider = ({ data }) => {
       {
         breakpoint: 1600,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           infinite: false,
           adaptiveHeight: true,
