@@ -23,10 +23,7 @@ import {
 } from '@/src/constants/Preview_Data';
 import { findSpecificPost } from '@/src/utils/dashboardUtils';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
-import {
-  getAgentInitialFormValues,
-  getInitialFormValues,
-} from '@/src/utils/draftFormikInitialState';
+import { getAgentInitialFormValues } from '@/src/utils/draftFormikInitialState';
 
 const DraftPropertyForm = () => {
   const pathname = usePathname();
