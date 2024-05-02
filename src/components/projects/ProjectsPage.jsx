@@ -8,7 +8,9 @@ import ProjectsFilterComponent from './ProjectsFilterComponent';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const ProjectsPage = () => {
-  const { agentPostings: projects } = useSelector((state) => state.postListingAds);
+  const { agentPostings: projects } = useSelector(
+    (state) => state.postListingAds
+  );
 
   // Check if projects exist
   if (!projects || projects.length === 0) {
