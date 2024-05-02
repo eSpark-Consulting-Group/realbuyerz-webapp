@@ -142,7 +142,7 @@ const PopularLocations = ({ data }) => {
                   >
                     {item?.locations?.map((location, index) => (
                       <Box key={index}>
-                        <Link href="/">
+                        <Link href={location?.link}>
                           <Typography
                             variant="body1"
                             sx={{
@@ -153,7 +153,7 @@ const PopularLocations = ({ data }) => {
                               color: '#666666',
                             }}
                           >
-                            {location}
+                            {location?.title}
                           </Typography>
                         </Link>
                       </Box>

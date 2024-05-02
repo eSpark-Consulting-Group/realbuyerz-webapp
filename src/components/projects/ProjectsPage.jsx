@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
-import NotFoundSection from '../Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const ProjectsPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   // Check if projects exist
-  if (!projects || projects.length === 0) {
+  if (!projects || projects?.length === 0) {
     return (
       <NotFoundSection heading={'Sorry!'} message={'No Properties Found.'} />
     );

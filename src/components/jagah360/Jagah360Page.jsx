@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '@/src/components/Global/ComingSoon';
+import ComingSoon from '@/src/components/global/ComingSoon';
 
 const Jagah360Page = () => {
   return (

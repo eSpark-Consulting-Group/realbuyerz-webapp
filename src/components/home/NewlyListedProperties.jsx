@@ -5,8 +5,10 @@ import { Box } from '@mui/material';
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { useSelector } from 'react-redux';
 
-const NewlyListedProperties = ({ data }) => {
+const NewlyListedProperties = () => {
+  const NewProjects = useSelector((state) => state.postListingAds.newPostings);
   return (
     <>
       <Box>
@@ -31,7 +33,7 @@ const NewlyListedProperties = ({ data }) => {
               px: '15%',
             }}
           >
-            <PropertySlider data={data} />
+            <PropertySlider data={NewProjects} />
           </Box>
         </Box>
       </Box>

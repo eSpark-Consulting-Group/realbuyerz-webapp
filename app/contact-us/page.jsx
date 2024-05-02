@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactUsPage from '@/src/components/contact-us/ContactUsPage';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/contact-us';
 const filteredData =

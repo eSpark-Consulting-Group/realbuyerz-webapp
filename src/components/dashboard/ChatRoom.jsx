@@ -100,7 +100,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
   };
 
   const handleRemoveFile = (id) => {
-    const tempFiles = fileInput.filter((el) => el.id !== id);
+    const tempFiles = fileInput?.filter((el) => el.id !== id);
     setFileInput(tempFiles);
   };
 

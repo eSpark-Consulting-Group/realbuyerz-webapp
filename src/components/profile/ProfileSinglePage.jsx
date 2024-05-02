@@ -10,8 +10,7 @@ import AgentProperties from '@/src/components/AgentProfile/AgentProperties';
 import AgentAbout from '@/src/components/AgentProfile/AgentProfileAbout';
 import AgentProfiles from '@/src/components/AgentProfile/AgentProfiles';
 import AgentSlider from '@/src/components/AgentProfile/PropertySlider';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { AGENT_PROFILE_DATA } from '@/src/constants/AgentProfile';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const ProfileSinglePage = () => {
   const pathname = usePathname();
@@ -20,17 +19,21 @@ const ProfileSinglePage = () => {
   const users = useSelector((state) => state?.agents);
   const user = users?.find((item) => parseInt(item?.id) === parseInt(id)) || {};
   const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const selectedProjectbyAgent = projects?.filter(
+    (project) => project?.user_id == user?.id && project?.status === 'submit'
+  );
 
   function filterProjects(projects, agentId, purpose) {
-    return projects.filter(
+    return projects?.filter(
       (item) =>
         item?.user_id === agentId &&
         item?.purpose === purpose &&
         item?.status === 'submit'
     ).length;
   }
+
   function filterProjectsWith(projects, agentId, purpose, propertyCategory) {
-    return projects.filter(
+    return projects?.filter(
       (item) =>
         item?.user_id === agentId &&
         item?.purpose === purpose &&
@@ -38,7 +41,8 @@ const ProfileSinglePage = () => {
         item?.status === 'submit'
     ).length;
   }
-  const allProperties = projects.filter(
+
+  const allProperties = projects?.filter(
     (item) => item?.user_id === user?.id && item?.status === 'submit'
   ).length;
   const forSellCount = filterProjects(projects, user?.id, 'Sell');
@@ -114,7 +118,7 @@ const ProfileSinglePage = () => {
           />
           <AgentAbout data={user} />
           <RecentPropertyTitle data={user} />
-          <AgentSlider data={AGENT_PROFILE_DATA} />
+          <AgentSlider data={selectedProjectbyAgent} />
         </>
       </Box>
     </>

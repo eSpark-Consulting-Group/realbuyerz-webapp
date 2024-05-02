@@ -1,11 +1,11 @@
 import React from 'react';
-import ComingSoon from '@/src/components/Global/ComingSoon';
-import { BLOGS_SEO } from '@/src/constants/seo';
+import ComingSoon from '@/src/components/global/ComingSoon';
+import { BLOGS_SEO } from '@/src/constants/global/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.blog;
   const filteredData =
-    BLOGS_SEO.find((item) => item?.path === slug) || BLOGS_SEO[0];
+    BLOGS_SEO?.find((item) => item?.path === slug) || BLOGS_SEO[0];
   const metadata = {
     metadataBase: new URL('https://www.realbuyerz.com/'),
     title: filteredData?.title,

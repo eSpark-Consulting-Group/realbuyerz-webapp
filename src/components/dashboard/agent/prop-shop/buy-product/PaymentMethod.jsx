@@ -68,8 +68,8 @@ const PaymentMethod = ({
   };
 
   useEffect(() => {
-    dispatch(setFormError(Object.values(formik.errors)));
-  }, [formik.errors]);
+    dispatch(setFormError(Object.values(formik?.errors)));
+  }, [formik?.errors]);
 
   useEffect(() => {
     if (selectedValue === '') {
@@ -84,7 +84,7 @@ const PaymentMethod = ({
       selectedValue === VISA
     ) {
       const findOrder = paymentMedthodDetails?.filter(
-        (item) => item.card_number === cardTypeNumber
+        (item) => item?.card_number === cardTypeNumber
       );
       if (findOrder.length === 1) {
         dispatch(
@@ -103,9 +103,9 @@ const PaymentMethod = ({
       paymentMedthodDetails?.forEach((item) => {
         dispatch(
           updatePaymentMethodSelection({
-            cardNumber: item.card_number,
+            cardNumber: item?.card_number,
             isSelected: false,
-            isCheckBox: item.isCheckBox,
+            isCheckBox: item?.isCheckBox,
           })
         );
         return false;

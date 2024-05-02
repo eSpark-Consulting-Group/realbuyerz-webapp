@@ -1,6 +1,9 @@
 import React from 'react';
-import { GLOBAL_SEO } from '@/src/constants/seo';
-import SignupPage from '@/src/components/auth/signup/SignupPage';
+import { Grid } from '@mui/material';
+
+import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/signup';
 const filteredData =
@@ -49,11 +52,16 @@ export const metadata = {
   },
 };
 
-const Page = () => {
+const Signup = () => {
   return (
     <>
-      <SignupPage />
+      <Grid container>
+        <RectangleBorderImage
+          showComponent={AUTH_COMPONENTS.signup}
+          height={LOGIN_FORM.rectangleHeight.signupFormHeight}
+        />
+      </Grid>
     </>
   );
 };
-export default Page;
+export default Signup;

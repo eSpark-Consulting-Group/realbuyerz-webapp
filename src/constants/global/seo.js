@@ -339,7 +339,7 @@ export const GLOBAL_SEO = [
     path: '/profile/[id]/projects/[slug]/[category]',
     title: 'Project Category Detail | Real Buyerz',
     description:
-      'Explore details of a project category on Real Buyerz. See related projects.',
+      'Explore details of a project category on Real Buyerz. See related projects?.',
     url: 'http://localhost:3000/profile/[id]/projects/[slug]/[category]',
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },

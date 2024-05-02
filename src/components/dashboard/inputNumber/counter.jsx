@@ -13,7 +13,7 @@ const Counter = ({ formik, name, limit }) => {
     if (typeof value === 'number') {
       if (value < limit) {
         const newIncrementValue = value + ONE;
-        formik.setFieldValue(name, newIncrementValue.toString());
+        formik?.setFieldValue(name, newIncrementValue.toString());
       }
     }
   };
@@ -21,7 +21,7 @@ const Counter = ({ formik, name, limit }) => {
   const handleDecrement = () => {
     if (initialValue > ZERO) {
       const newDecrementValue = initialValue - ONE;
-      formik.setFieldValue(name, newDecrementValue.toString());
+      formik?.setFieldValue(name, newDecrementValue.toString());
     }
   };
 

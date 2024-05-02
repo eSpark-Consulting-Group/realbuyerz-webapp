@@ -1,6 +1,6 @@
 import React from 'react';
-import ComingSoon from '@/src/components/Global/ComingSoon';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import ComingSoon from '@/src/components/global/ComingSoon';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/blogs';
 const filteredData =

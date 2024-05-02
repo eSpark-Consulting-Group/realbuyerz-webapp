@@ -13,7 +13,7 @@ import {
   VIEW_BUTTON,
 } from '@/src/constants/agent/Live_Bidding';
 
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 import { postListingAdCard } from '@/src/constants/user/Dashboard';
 import { checkProposal, searching } from '@/src/utils/dashboardUtils';

@@ -79,7 +79,7 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
                 border: '1px solid #E4E4E4',
               }}
             >
-              <Link href={`/projects/${project.property_id}`}>
+              <Link href={`/projects/${project?.property_id}`}>
                 {!project?.images?.length == 0 ? (
                   <img
                     src={
@@ -186,7 +186,7 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
                   }}
                 >
                   {project?.description?.length > 150
-                    ? `${project.description.slice(0, 147)}...`
+                    ? `${project?.description.slice(0, 150)}...`
                     : project?.description || (
                         <>
                           <Skeleton />

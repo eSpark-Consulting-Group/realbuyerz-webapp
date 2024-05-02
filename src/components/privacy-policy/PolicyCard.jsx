@@ -1,15 +1,6 @@
 import { Grid, Typography, Box } from '@mui/material';
 
-const PolicyCard = ({
-  data,
-  id,
-  xs,
-  md,
-  sm,
-  textAlign,
-  backgroundColor,
-  isFirst,
-}) => {
+const PolicyCard = ({ data, id, xs, md, sm, textAlign, backgroundColor }) => {
   return (
     <Grid
       item
@@ -28,7 +19,7 @@ const PolicyCard = ({
           variant="body1"
           sx={{
             color: '#333',
-            fontSize: isFirst ? '16px' : '20px',
+            fontSize: '20px',
             fontWeight: '600',
             pb: '30px',
             textAlign: { textAlign },

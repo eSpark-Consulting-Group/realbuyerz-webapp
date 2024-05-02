@@ -39,13 +39,13 @@ const LoginCard = ({ handleClose }) => {
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem('token', data?.token);
-      Cookie.set('token', data?.token);
-      Cookie.set('userType', data?.userType);
+      localStorage.setItem('token', data.token);
+      Cookie.set('token', data.token);
+      Cookie.set('userType', data.userType);
       dispatch(setLoggedIn(data));
-      if (data?.userType === 'user') {
+      if (data.userType === 'user') {
         router.push('/user/dashboard');
-      } else if (data?.userType === 'agent') {
+      } else if (data.userType === 'agent') {
         router.push('/agent/live-bidding');
       }
     },
@@ -101,7 +101,7 @@ const LoginCard = ({ handleClose }) => {
             <Typography
               sx={{
                 color: '#FF631C',
-                fontSize: { xs: '15px', md: '30px' },
+                fontSize: { xs: '15px', md: '20px' },
               }}
             >
               {LOGIN_FORM.loginCard.welcome}
@@ -143,7 +143,6 @@ const LoginCard = ({ handleClose }) => {
                   flexDirection: 'row-reverse',
                   color: '#777777',
                   fontSize: { xs: '5px', md: '10px' },
-                  marginRight: { xs: '0px', md: '-8px' },
                 }}
                 onChange={(e) =>
                   setFormData((prevData) => ({

@@ -1,6 +1,6 @@
 import React from 'react';
 import AgentProjectPage from '@/src/components/profile/agent-projects/AgentProjectsPage';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/profile';
 const filteredData =

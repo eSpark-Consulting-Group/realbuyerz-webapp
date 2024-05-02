@@ -2,10 +2,10 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { useSelector } from 'react-redux';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import FilterComponent from './FilterComponent';
 
 const CategoryPage = () => {
@@ -17,11 +17,10 @@ const CategoryPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const filterData = projects?.filter(
-    (item) => item?.propertyCategory === capID
+    (item) => item?.propertyCategory === capID && item?.status === 'submit'
   );
   const filteredData = filterData?.length ? filterData : NoData;
 
-  // Validate id
   if (!id) {
     return (
       <NotFoundSection
@@ -30,7 +29,6 @@ const CategoryPage = () => {
       />
     );
   }
-  // Check if filterData is empty
   if (!filteredData || filteredData.length === 0) {
     return (
       <NotFoundSection

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { LOADING_DATA } from '../constants/Loading_Data';
+import { LOADING_DATA } from '@/src/constants/Loading_Data';
 
 const Loading = () => {
   return (

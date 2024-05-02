@@ -1,5 +1,5 @@
 import React from 'react';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const NotFound = () => {
   return <NotFoundSection />;

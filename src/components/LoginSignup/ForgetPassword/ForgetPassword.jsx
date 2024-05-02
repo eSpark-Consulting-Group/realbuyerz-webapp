@@ -5,12 +5,10 @@ import { useMutation } from '@tanstack/react-query';
 import { Box, Typography, TextField } from '@mui/material';
 
 import CheckEmailModal from './EmailModal';
-
+import { validateEmail } from '@/src/utils/validationEmail';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
-
 import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
-import { validateEmail } from '@/src/utils/validationEmail';
 
 const ForgetPassword = ({ setshowForgetPassword }) => {
   const [email, setEmail] = useState('');
@@ -55,11 +53,13 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
 
   const handleContinue = () => {
     if (handleValidation()) {
+      console.log('email', email);
       getResetPasswordLink({ to: email });
     }
   };
 
   const resendEmail = () => {
+    console.log('resend email');
     getResetPasswordLink({ to: email });
   };
 
@@ -88,15 +88,12 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
     >
       <Box
         sx={{
-          width: { xs: '90%', md: '360px' },
+          width: { xs: '90%', md: '320px' },
           display: 'flex',
           flexDirection: 'column',
           height: 'auto',
           gap: { xs: '7px', md: '15px' },
           paddingTop: '10px',
-          '@media (min-width: 280px) and (max-width: 1290px)': {
-            padding: '20px',
-          },
         }}
       >
         <Typography

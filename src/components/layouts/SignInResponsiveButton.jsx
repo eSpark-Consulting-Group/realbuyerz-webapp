@@ -5,7 +5,7 @@ import { Button, Menu, MenuItem, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
-import ModalSignin from '../dashboard/modals/ModalSignin';
+import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/src/constants/Login';
 
 const SignInResponsiveButton = ({

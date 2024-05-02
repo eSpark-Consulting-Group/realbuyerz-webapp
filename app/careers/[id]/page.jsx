@@ -1,11 +1,11 @@
 import React from 'react';
 import CareersSinglePage from '@/src/components/careers/CareersSinglePage';
-import { CAREERS_SEO } from '@/src/constants/seo';
+import { CAREERS_SEO } from '@/src/constants/global/seo';
 
 export async function generateMetadata({ params }) {
   const slug = params?.id;
   const filteredData =
-    CAREERS_SEO.find((item) => item?.path === slug) || CAREERS_SEO[0];
+    CAREERS_SEO?.find((item) => item?.path === slug) || CAREERS_SEO[0];
   const metadata = {
     metadataBase: new URL('https://www.realbuyerz.com/'),
     title: filteredData?.title,

@@ -14,7 +14,7 @@ const AgentProfiles = ({ data, setFieldValue }) => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
 
   function filterProjects(projects, agentId, purpose) {
-    return projects.filter(
+    return projects?.filter(
       (item) =>
         item?.user_id === agentId &&
         item?.purpose === purpose &&

@@ -65,7 +65,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                 src="/images/signup_page/mailbox.svg"
                 width={50}
                 height={50}
-                alt={'mailbox'}
+                alt="mailbox"
               />
             </Box>
             <Box
@@ -142,7 +142,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                   src="/images/modal/lessthan.svg"
                   width={18}
                   height={18}
-                  alt={'lessthan'}
+                  alt="lessthan"
                 />
                 {LOGIN_FORM.loginCard.backSignin}
               </Button>

@@ -109,7 +109,8 @@ const ProjectsFilterComponent = ({ data }) => {
         projects?.amount <= selectedPriceRange[0] &&
         projects?.amount >= selectedPriceRange[1] &&
         projects?.amount <= selectedAreaRange[0] &&
-        projects?.amount >= selectedAreaRange[1]
+        projects?.amount >= selectedAreaRange[1] &&
+        projects?.status === 'submit'
       );
     });
     console.log(filteredData, 'filtered');

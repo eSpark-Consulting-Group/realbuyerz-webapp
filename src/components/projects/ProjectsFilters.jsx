@@ -54,7 +54,8 @@ const ProjectsFilters = ({ data }) => {
         (filterValues?.propertySize === '' ||
           item?.propertySize === filterValues?.propertySize) &&
         (filterValues?.searchInput === '' ||
-          item?.title?.includes(filterValues?.searchInput))
+          item?.title?.includes(filterValues?.searchInput)) &&
+        item?.status === 'submit'
       );
     });
     console.log(filteredData);

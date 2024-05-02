@@ -1,6 +1,9 @@
 import React from 'react';
-import { GLOBAL_SEO } from '@/src/constants/seo';
-import ForgetPasswordPage from '@/src/components/auth/forget-password/ForgetPasswordPage';
+import { Grid } from '@mui/material';
+
+import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/forget-password';
 const filteredData =
@@ -49,11 +52,17 @@ export const metadata = {
   },
 };
 
-const Page = () => {
+const ForgetPasswordForm = () => {
   return (
     <>
-      <ForgetPasswordPage />
+      <Grid container>
+        <RectangleBorderImage
+          showComponent={AUTH_COMPONENTS.forgetPassword}
+          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+          paddingTop={LOGIN_FORM.paddingTop}
+        />
+      </Grid>
     </>
   );
 };
-export default Page;
+export default ForgetPasswordForm;

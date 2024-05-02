@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Box, Divider, Tab, Tabs } from '@mui/material';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import PostListingCard from '../../live-bidding/PostListingCard';
 import {

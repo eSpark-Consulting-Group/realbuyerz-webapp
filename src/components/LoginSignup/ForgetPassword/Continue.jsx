@@ -19,7 +19,6 @@ const Continue = ({
           width: '100px',
           borderRadius: '5px',
           color: 'white',
-          marginTop: '30px',
           '&:hover': {
             background: '#FF631C',
           },
@@ -35,11 +34,11 @@ const Continue = ({
       <Button
         sx={{
           fontWeight: '400px',
-          fontSize: '14px',
+          fontSize: '12px',
           color: '#126FAA',
           padding: 0,
           textTransform: 'math-auto',
-          marginTop: '20px',
+          marginTop: '50px',
           textDecoration: 'underline',
           display: 'flex',
           alignSelf: 'baseline',
@@ -53,7 +52,7 @@ const Continue = ({
           src="/images/modal/lessthan.svg"
           width={18}
           height={18}
-          alt={'lessthan'}
+          alt="lessthan"
         />
         {LOGIN_FORM.loginCard.backSignin}
       </Button>

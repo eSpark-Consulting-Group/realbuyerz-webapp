@@ -71,13 +71,13 @@ const SignupCard = () => {
   const { mutate } = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      localStorage.setItem('token', data?.token);
-      Cookie.set('token', data?.token);
-      Cookie.set('userType', data?.userType);
+      localStorage.setItem('token', data.token);
+      Cookie.set('token', data.token);
+      Cookie.set('userType', data.userType);
       dispatch(setLoggedIn(data));
-      if (data?.userType === 'user') {
+      if (data.userType === 'user') {
         router.push('/user/dashboard');
-      } else if (data?.userType === 'agent') {
+      } else if (data.userType === 'agent') {
         router.push('/agent/live-bidding');
       }
     },
@@ -125,9 +125,6 @@ const SignupCard = () => {
             height: '562px',
             gap: { xs: '5px', md: '8px' },
             paddingTop: '40px',
-            '@media (min-width: 900px) and (max-width: 1290px)': {
-              padding: '20px',
-            },
           }}
         >
           <Typography
@@ -162,6 +159,7 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => {
+              console.log('signin');
               router.push(LOGIN_ROUTERS.signin);
             }}
             loginClick={signupClick}

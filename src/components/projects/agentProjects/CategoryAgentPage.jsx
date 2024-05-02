@@ -2,10 +2,11 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
+import { capitalizeFirstLetter } from '@/src/utils/projects/projects';
+import { useSelector } from 'react-redux';
 import CategoryLink from '@/src/components/projects/CategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
-import { useSelector } from 'react-redux';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ChiperBack from './ChiperBack';
 
 const CategoryAgentPage = () => {
@@ -28,13 +29,6 @@ const CategoryAgentPage = () => {
       item?.purpose === capAdsType
   );
 
-  function capitalizeFirstLetter(text) {
-    return text.replace(/\b\w/g, (match) => match.toUpperCase());
-  }
-
-  // const filterData = projects?.filter((item) => item?.agent_id === parseInt(agentId));
-
-  // Validate id
   if (!agentId) {
     return (
       <NotFoundSection
@@ -43,7 +37,6 @@ const CategoryAgentPage = () => {
       />
     );
   }
-  // Check if filterData is empty
   if (!filterData || filterData.length === 0) {
     return (
       <NotFoundSection

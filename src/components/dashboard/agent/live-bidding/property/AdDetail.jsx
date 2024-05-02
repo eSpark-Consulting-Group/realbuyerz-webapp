@@ -12,7 +12,7 @@ import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/Previ
 
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import Location from '@/src/components/dashboard/preview/Location';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 import { clientRequirment } from '@/src/constants/agent/Live_Bidding';

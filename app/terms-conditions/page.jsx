@@ -1,6 +1,6 @@
-import { GLOBAL_SEO } from '@/src/constants/seo';
-import dynamic from 'next/dynamic';
 import React from 'react';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
+import dynamic from 'next/dynamic';
 const TermsPage = dynamic(
   () => import('@/src/components/terms-conditions/TermsPage'),
   {

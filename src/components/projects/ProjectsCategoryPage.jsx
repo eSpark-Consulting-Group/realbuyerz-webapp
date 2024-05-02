@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
 import ProjectsCard from '@/src/components/projects/ProjectsCard';
-import NotFoundSection from '@/src/components/Global/NotFoundSection';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import AgentProjectsChiperBack from '../profile/agent-projects/AgentProjectsChiperBack';
@@ -18,11 +18,10 @@ const ProjectsCategoryPage = () => {
   const projects = useSelector((state) => state.postListingAds.agentPostings);
   const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const filterData = projects?.filter(
-    (item) => item?.propertyCategory === capID
+    (item) => item?.propertyCategory === capID && item?.status === 'submit'
   );
   const filteredData = filterData?.length ? filterData : NoData;
 
-  // Validate id
   if (!id) {
     return (
       <NotFoundSection
@@ -31,7 +30,6 @@ const ProjectsCategoryPage = () => {
       />
     );
   }
-  // Check if filterData is empty
   if (!filteredData || filteredData.length === 0) {
     return (
       <NotFoundSection

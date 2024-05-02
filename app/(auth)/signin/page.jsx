@@ -1,6 +1,9 @@
 import React from 'react';
-import { GLOBAL_SEO } from '@/src/constants/seo';
-import SigninPage from '@/src/components/auth/signin/SigninPage';
+import { Grid } from '@mui/material';
+
+import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/signin';
 const filteredData =
@@ -49,11 +52,16 @@ export const metadata = {
   },
 };
 
-const Page = () => {
+const Signin = () => {
   return (
     <>
-      <SigninPage />
+      <Grid container>
+        <RectangleBorderImage
+          showComponent={AUTH_COMPONENTS.signin}
+          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+        />
+      </Grid>
     </>
   );
 };
-export default Page;
+export default Signin;

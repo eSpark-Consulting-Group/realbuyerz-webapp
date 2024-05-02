@@ -1,6 +1,9 @@
 import React from 'react';
-import ResetPasswordPage from '@/src/components/auth/reset-password/ResetPasswordPage';
-import { GLOBAL_SEO } from '@/src/constants/seo';
+import { Grid } from '@mui/material';
+
+import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/reset-password';
 const filteredData =
@@ -49,11 +52,16 @@ export const metadata = {
   },
 };
 
-const Page = () => {
+const ResetPasswordForm = () => {
   return (
     <>
-      <ResetPasswordPage />
+      <Grid container>
+        <RectangleBorderImage
+          showComponent={AUTH_COMPONENTS.resetPassword}
+          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+        />
+      </Grid>
     </>
   );
 };
-export default Page;
+export default ResetPasswordForm;

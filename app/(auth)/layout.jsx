@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 
-import LoginSignupLayout from '@/src/components/auth/signin/LoginSignupLayout';
+import LoginSignupLayout from '@/src/components/LoginSignup/Login/LoginSignupLayout';
 
 const InnerPagesLayout = ({ children }) => {
   return (
     <>
-      <Grid container bgcolor={'#FAFAFA'}>
+      <Grid container>
         <Grid item xs={12} md={1} />
         <Grid
           item
