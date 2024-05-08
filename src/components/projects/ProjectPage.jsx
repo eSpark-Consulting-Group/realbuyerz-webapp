@@ -7,54 +7,39 @@ import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import FilterComponent from './FilterComponent';
 
 const ProjectPage = () => {
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
+  const { agentPostings: projects } = useSelector(
+    (state) => state.postListingAds
+  );
+
+  const renderCategory = (category, categoryName) => {
+    return (
+      <>
+        <CategoryLink
+          category={categoryName}
+          link={`/projects/category/${category}`}
+          linkText={'See All'}
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '15px',
+          }}
+        >
+          <ProjectsSlider data={projects} category={category} />
+        </Box>
+      </>
+    );
+  };
+
   return (
     <>
       <Box className="min-h-screen" sx={{ py: '80px' }}>
         <FilterComponent data={projects} />
-        <CategoryLink
-          category={`Houses`}
-          link={'/projects/category/houses'}
-          linkText={'See All'}
-        />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginLeft: '15px',
-          }}
-        >
-          <ProjectsSlider data={projects} category={'houses'} />
-        </Box>
 
-        <CategoryLink
-          category={`Plots`}
-          link={'/projects/category/plots'}
-          linkText={'See All'}
-        />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginLeft: '15px',
-          }}
-        >
-          <ProjectsSlider data={projects} category={'plots'} />
-        </Box>
-        <CategoryLink
-          category={`Commercials`}
-          link={'/projects/category/commercials'}
-          linkText={'See All'}
-        />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginLeft: '15px',
-          }}
-        >
-          <ProjectsSlider data={projects} category={'commercials'} />
-        </Box>
+        {renderCategory('houses', 'Houses')}
+        {renderCategory('plots', 'Plots')}
+        {renderCategory('commercials', 'Commercials')}
       </Box>
     </>
   );
