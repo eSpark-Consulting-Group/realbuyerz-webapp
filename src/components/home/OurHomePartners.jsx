@@ -73,15 +73,15 @@ const OurHomePartners = ({ data }) => {
                   alignItems: 'center',
                 }}
               >
-                <Link href={`/partners/${partner?.id}`}>
-                  <Image
-                    src={partner?.image}
-                    alt={partner?.name}
-                    title={partner?.name}
-                    width={400}
-                    height={100}
-                  />
-                </Link>
+                {/* <Link href={`/partners/${partner?.id}`}> */}
+                <Image
+                  src={partner?.image}
+                  alt={partner?.name}
+                  title={partner?.name}
+                  width={400}
+                  height={100}
+                />
+                {/* </Link> */}
               </Box>
             </Box>
           ))}
