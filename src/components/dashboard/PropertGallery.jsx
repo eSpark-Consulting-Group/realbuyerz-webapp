@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 
-
 import PostTitle from './ads-form-components/PostTitle';
 import InstructionsForUpload from './ads-form-components/InstructionsForUpload';
 import ImageUploader from './ads-form-components/ImageUploader';
