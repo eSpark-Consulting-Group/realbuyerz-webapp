@@ -133,7 +133,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     <Box
                       component={'img'}
                       onClick={handleOpenSearchMenu}
-                      src={SearchIcon}
+                      src={SEARCHICON}
                       alt={'icon'}
                       sx={{
                         width: { xs: '30px', sm: '41px' },
@@ -159,7 +159,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     }}
                   >
                     <Image
-                      src={GotoPageIcon}
+                      src={GOTOPAGEICON}
                       width={20}
                       height={20}
                       alt={'icon'}
@@ -239,7 +239,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={current_user?.profile_image || ProfileIcon}
+                  src={current_user?.profile_image || PROFILEICON}
                   alt={'icon'}
                 />
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -249,8 +249,8 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     profileMenu={profileMenu}
                     userName={current_user?.first_name || 'User Name'}
                     userImage={current_user?.profile_image || 'User Image'}
-                    userEmail={current_user?.email || ProfileIcon}
-                    profileIcon={ProfileIcon}
+                    userEmail={current_user?.email || PROFILEICON}
+                    profileIcon={PROFILEICON}
                     handleLogout={handleLogout}
                     signOut={SIGN_OUT}
                   />
