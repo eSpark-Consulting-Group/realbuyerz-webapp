@@ -11,9 +11,9 @@ import {
   LINK_NAME,
   SIGN_OUT,
   CUSTOM_COLOR,
-  GotoPageIcon,
-  ProfileIcon,
-  SearchIcon,
+  GOTOPAGEICON,
+  PROFILEICON,
+  SEARCHICON,
 } from '@/src/constants/Dashboard_Header';
 
 import Image from 'next/image';
@@ -23,7 +23,6 @@ import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopBu
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import NotificationPopover from './NotificationPopover';
 import SearchPopover from './searchPopover';
-// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function ResponsiveNavbar({ openSidebar }) {
   const router = useRouter();

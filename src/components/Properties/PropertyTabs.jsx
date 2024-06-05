@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
-// import AgentChip from './AgentChip';
 import PropertyListingCard from './PropertyListingCard';
 
 const CustomTabPanel = ({ data, value, index, propertyType }) => {
