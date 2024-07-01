@@ -228,11 +228,11 @@ export const checkProposal = (property_id, proposals, status) => {
 export const filteredAds = (searchValue, ads, proposals) => {
   return searchValue
     ? searching(ads, searchValue)?.filter(
-        (item) =>
-          checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
-      )
+      (item) =>
+        checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
+    )
     : ads?.filter(
-        (item) =>
-          checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
-      );
+      (item) =>
+        checkProposal(item?.property_id, proposals, 'Submited')?.length > 0
+    );
 };

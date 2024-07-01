@@ -1,6 +1,3 @@
-//renamed form LISTINGS_LISTING to LISTINGS_DATA and links Added
-//Reason: name is Not UNique and Promenent name
-// FEATURED_LISTINGS & NEWLY_LSITED_LISTINGS Merged Propeties
 export const LISTINGS_DATA = [
   {
     id: 1,

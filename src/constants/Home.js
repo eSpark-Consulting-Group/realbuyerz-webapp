@@ -703,6 +703,7 @@ export const FEATURED_HEADINGS = {
   browseProperty:
     'To browse & buy in your areas of interest. Look of properties by category',
 };
+
 export const FEATURE_BUTTONS = {
   forSale: 'For Sale',
   byRent: 'By Rent',

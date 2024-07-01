@@ -1,6 +1,3 @@
-//renamed form BIDDINGS_LISTING to BIDDINGS_DATA and links Added
-//Reason: name is Not UNique and Promenent name
-// FEATURED_BIDDINGS & NEWLY_LSITED_BIDDINGS Merged Propeties
 export const BIDDINGS_DATA = [
   {
     id: 1,

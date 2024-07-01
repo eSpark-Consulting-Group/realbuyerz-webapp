@@ -5,6 +5,7 @@ export const AREA_UNITS = [
   { value: 'marla', title: 'Marla' },
   { value: 'kanal', title: 'Kanal' },
 ];
+
 export const CURRENCY_UNITS = [
   { value: 'PKR', title: 'PKR' },
   { value: 'USD', title: 'USD' },
@@ -12,11 +13,13 @@ export const CURRENCY_UNITS = [
   { value: 'CAD', title: 'CAD' },
   { value: 'EUR', title: 'Euro' },
 ];
+
 export const PROPERTY_TYPES = [
   { value: ' ', title: 'Any' },
   { value: 'sell', title: 'Sell' },
   { value: 'rent', title: 'Rent' },
 ];
+
 export const PROPERTY_TABS_DATA = [
   {
     id: 1,
@@ -187,6 +190,7 @@ export const PROPERTY_TABS_DATA = [
     ],
   },
 ];
+
 export const CITIES_NAME = [
   { id: 1, value: 'karachi', title: 'Karachi' },
   { id: 2, value: 'lahore', title: 'Lahore' },

@@ -1,7 +1,11 @@
 export const BUY_BUTTON = 'BUY';
+
 export const CONNECTIONS = 'Connections';
+
 export const LISTING = 'Listing';
+
 export const PER_MONTH = 'Per Month';
+
 export const OPEN = 'OPEN';
 
 export const PLAN_PRICE = {

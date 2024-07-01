@@ -14,6 +14,7 @@ export const createInstallmentState = (
 
 import { styled } from '@mui/material/styles';
 import { Switch } from '@mui/material';
+
 export const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 43,
   height: 24,

@@ -1,4 +1,5 @@
 export const SIDE_NAV_WIDTH = 300;
+
 export const AGENT_ROUTES = [
   {
     icon: '/images/icons/agent-icons/live-bidding.svg',

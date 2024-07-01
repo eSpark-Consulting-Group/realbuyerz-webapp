@@ -3,10 +3,10 @@ export const filterData = (selectedData, purpose, city, location, type) => {
     (item) =>
       (purpose === '' ||
         item?.propertyData?.propertyLocation?.purpose?.toLowerCase() ===
-          purpose?.toLowerCase()) &&
+        purpose?.toLowerCase()) &&
       (city === '' ||
         item?.propertyData?.propertyLocation?.city?.toLowerCase() ===
-          city?.toLowerCase()) &&
+        city?.toLowerCase()) &&
       (location === '' ||
         item?.location?.toLowerCase() === location?.toLowerCase()) &&
       (type === '' ||
@@ -59,6 +59,6 @@ export function getFilteredCount(selectedData, proposalStatus) {
   return proposalStatus === 'All'
     ? selectedData?.length
     : selectedData?.filter(
-        (proposal) => proposal?.proposalStatus === proposalStatus
-      )?.length;
+      (proposal) => proposal?.proposalStatus === proposalStatus
+    )?.length;
 }

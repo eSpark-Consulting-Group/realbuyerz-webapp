@@ -8,16 +8,8 @@ export const HEADER_MENU = [
   },
 ];
 
-// export const MY_CATEGORIES = 'My Categories';
-// export const PROPOSALS = 'Proposals:';
-// export const ESTIMATE_RANGE = 'Est. Range:';
-// export const LOAD_MORE = 'Load More';
-// export const SHOW_LESS = 'Show Less';
-
-// export const MY_LISTING = 'My Listing';
-// export const POST_LISTING = 'Post Listing';
-// export const LOGIN_PERSON_NAME = 'Arman Espark';
 export const LINK_NAME = 'Go to Rb.com';
+
 export const SEARCH = 'Search';
 
 export const AGENT_MENU_ITEM = [
@@ -84,6 +76,7 @@ export const AGENT_MENU_ITEM = [
     ],
   },
 ];
+
 export const USER_MENU_ITEM = [
   {
     id: 1,
@@ -122,75 +115,3 @@ export const USER_MENU_ITEM = [
     ],
   },
 ];
-// export const LIVE_BIDDING_DATA = {
-//   liveBidding: [
-//     {
-//       id: 1,
-//       title: 'NEED 4 BEDROOM APARTMENT',
-//       description:
-//         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
-//       postedTime: 'Posted 39 minutes ago',
-//       estRange: '80M',
-//       list: [
-//         {
-//           Status: 'BUYING',
-//           City: 'KARACHI',
-//           Area: 'GULSHAN-E-IQBAL',
-//           Proposal: '5 to 10',
-//           Connects: 8,
-//         },
-//       ],
-//     },
-//     {
-//       id: 2,
-//       title: 'NEED 4 BEDROOM APARTMENT',
-//       description:
-//         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
-//       postedTime: 'Posted 39 minutes ago',
-//       estRange: '80M',
-//       list: [
-//         {
-//           Status: 'BUYING',
-//           City: 'KARACHI',
-//           Area: 'GULSHAN-E-IQBAL',
-//           Proposal: '5 to 10',
-//           Connects: 8,
-//         },
-//       ],
-//     },
-//     {
-//       id: 3,
-//       title: 'NEED 4 BEDROOM APARTMENT',
-//       description:
-//         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
-//       postedTime: 'Posted 39 minutes ago',
-//       estRange: '80M',
-//       list: [
-//         {
-//           Status: 'BUYING',
-//           City: 'KARACHI',
-//           Area: 'GULSHAN-E-IQBAL',
-//           Proposal: '5 to 10',
-//           Connects: 8,
-//         },
-//       ],
-//     },
-//     {
-//       id: 4,
-//       title: 'NEED 4 BEDROOM APARTMENT',
-//       description:
-//         "We are planning to buy a new home in the month of dec, if someone knows about it please let me know but make sure it's in the society with parking area and security like something.",
-//       postedTime: 'Posted 39 minutes ago',
-//       estRange: '80M',
-//       list: [
-//         {
-//           Status: 'BUYING',
-//           City: 'KARACHI',
-//           Area: 'GULSHAN-E-IQBAL',
-//           Proposal: '5 to 10',
-//           Connects: 8,
-//         },
-//       ],
-//     },
-//   ],
-// };
