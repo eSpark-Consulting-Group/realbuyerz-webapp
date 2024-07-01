@@ -52,7 +52,7 @@ const AudioRecorder = ({ handleCancelSendingAudio }) => {
 
   useEffect(() => {
     if (waveform) handleStartRecording();
-  }, [waveform]); // Removed the function call
+  }, [waveform]);
 
   const handleStartRecording = () => {
     setRecordingDuration(0);

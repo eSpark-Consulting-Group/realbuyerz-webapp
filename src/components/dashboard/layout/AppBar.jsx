@@ -11,9 +11,9 @@ import {
   LINK_NAME,
   SIGN_OUT,
   CUSTOM_COLOR,
-  GotoPageIcon,
-  ProfileIcon,
-  SearchIcon,
+  GOTOPAGEICON,
+  PROFILEICON,
+  SEARCHICON,
 } from '@/src/constants/Dashboard_Header';
 
 import Image from 'next/image';
@@ -23,7 +23,6 @@ import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopBu
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import NotificationPopover from './NotificationPopover';
 import SearchPopover from './searchPopover';
-// import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function ResponsiveNavbar({ openSidebar }) {
   const router = useRouter();
@@ -134,7 +133,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     <Box
                       component={'img'}
                       onClick={handleOpenSearchMenu}
-                      src={SearchIcon}
+                      src={SEARCHICON}
                       alt={'icon'}
                       sx={{
                         width: { xs: '30px', sm: '41px' },
@@ -160,7 +159,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     }}
                   >
                     <Image
-                      src={GotoPageIcon}
+                      src={GOTOPAGEICON}
                       width={20}
                       height={20}
                       alt={'icon'}
@@ -240,7 +239,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={current_user?.profile_image || ProfileIcon}
+                  src={current_user?.profile_image || PROFILEICON}
                   alt={'icon'}
                 />
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -250,8 +249,8 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     profileMenu={profileMenu}
                     userName={current_user?.first_name || 'User Name'}
                     userImage={current_user?.profile_image || 'User Image'}
-                    userEmail={current_user?.email || ProfileIcon}
-                    profileIcon={ProfileIcon}
+                    userEmail={current_user?.email || PROFILEICON}
+                    profileIcon={PROFILEICON}
                     handleLogout={handleLogout}
                     signOut={SIGN_OUT}
                   />

@@ -1,4 +1,3 @@
-// ImageUploader.js
 import { Box, Button, Typography } from '@mui/material';
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';

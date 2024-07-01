@@ -12,7 +12,6 @@ import SubmitButton from '@/src/components/dashboard/SubmitButton';
 import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
-// import Link from 'next/link';
 import PropertyGallery from '@/src/components/dashboard/PropertGallery';
 import {
   handlePostlistingAd,

@@ -1,6 +1,3 @@
-//renamed form PROPOSALS_LISTING to PROPOSALS_DATA and links Added
-//Reason: name is Not UNique and Promenent name
-// FEATURED_PROPOSALS & NEWLY_LSITED_PROPOSALS Merged Propeties
 export const PROPOSALS_DATA = [
   {
     id: 1,
