@@ -22,6 +22,7 @@ import { POST_REQUEST } from '@/src/constants/user/Dashboard';
 
 import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
 import { findSpecificPost } from '@/src/utils/dashboardUtils';
+import { getUserInitialFormValues } from '@/src/utils/draftFormikInitialState';
 
 const UserDraftForm = () => {
   const pathname = usePathname();
@@ -50,28 +51,7 @@ const UserDraftForm = () => {
     setOpen(false);
   };
 
-  const initialFormValues = {
-    property_id: updated?.property_id || '',
-    user_id: currentUser?.id || '',
-    status: `${updated?.status || ''}`,
-    title: `${updated?.title || ''}`,
-    location: `${updated?.location || ''}`,
-    description: `${updated?.description || ''}`,
-    area: `${updated?.area || ''}`,
-    amount: `${updated?.amount || ''}`,
-    areaUnit: `${updated?.areaUnit || ''}`,
-    amountCurrency: `${updated?.amountCurrency || ''}`,
-    city: `${updated?.city || ''}`,
-    bedrooms: `${updated?.bedrooms || ''}`,
-    connects: `${updated?.connects || ''}`,
-    bathrooms: `${updated?.bathrooms || ''}`,
-    parking: `${updated?.parking || ''}`,
-    purpose: `${updated?.purpose || ''}`,
-    propertyCategory: `${updated?.propertyCategory || ''}`,
-    propertyType: `${updated?.propertyType || ''}`,
-    instalmentAvailable: `${updated?.instalmentAvailable || ''}`,
-    readyPossession: `${updated?.readyPossession || ''}`,
-  };
+  const initialFormValues = getUserInitialFormValues(updated, currentUser);
 
   const formik = useFormik({
     initialValues: initialFormValues,
