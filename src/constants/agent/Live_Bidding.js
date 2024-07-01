@@ -24,7 +24,7 @@ export const ROUTERS = {
   dashboardLiveBidding: '/dashboard/live-bidding',
 };
 // client requirment
-export const clientRequirment = {
+export const CLIENT_REQUIRMENT = {
   title: 'Clients Requirement',
   send_Proposal: 'Send a proposal for :',
   available_Connects: 'Available Connects:',

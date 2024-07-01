@@ -34,7 +34,7 @@ export const BIDDINGS_DATA = [
   },
 ];
 
-export const ADD_biddibg = [
+export const ADD_BIDDING = [
   {
     id: 1, //id
     propertyId: 1,

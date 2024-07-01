@@ -1,4 +1,4 @@
-export const chatMessages = {
+export const CHAT_MESSAGES = {
   conversation: [
     {
       date: '2024-01-17',
@@ -317,7 +317,7 @@ export const chatMessages = {
   ],
 };
 
-export const chatRooms = [
+export const CHAT_ROOMS = [
   {
     title: 'John Doe',
     isRead: false,

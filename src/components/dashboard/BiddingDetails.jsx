@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
-import { postListingAdCard } from '@/src/constants/postListing';
+import { POST_LISTINGAD_CARD } from '@/src/constants/postListing';
 import { searching } from '@/src/utils/search';
 
 import NotFoundSection from '@/src/components/global/NotFoundSection';
@@ -272,7 +272,7 @@ const BiddingDetails = ({ height, ads }) => {
                                   'Submited'
                                 )}
                                 connects={item?.connects}
-                                cardKeys={postListingAdCard}
+                                cardKeys={POST_LISTINGAD_CARD}
                                 noConnects={true}
                               />
                               {path?.includes('/user') ? (
@@ -599,7 +599,7 @@ const BiddingDetails = ({ height, ads }) => {
                                 'Submited'
                               )}
                               connects={item?.connects}
-                              cardKeys={postListingAdCard}
+                              cardKeys={POST_LISTINGAD_CARD}
                               noConnects={true}
                             />
                             {path?.includes('/user') ? (

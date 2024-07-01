@@ -194,17 +194,17 @@ export const PROPERTY_BUYING_DETAIL = {
   },
 };
 
-export const reachBuyerData = {
+export const REACH_BUYER_DATA = {
   title: 'Reach Millions of Buyers on our Platforms',
   description: 'In a few simple steps!',
 };
 
-export const reachBuyerCoverLetter = {
+export const REACH_BUYER_COVERLETTER = {
   title: 'Fill out the form with the facilities you have!',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
 };
 
-export const propertyNames = [
+export const PROPERTY_NAMES = [
   'bedrooms',
   'bathrooms',
   'parking',

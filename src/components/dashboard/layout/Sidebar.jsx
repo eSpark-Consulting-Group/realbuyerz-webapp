@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import SidebarAccordion from './SidebarAccordion';
 import { usePathname } from 'next/navigation';
-import { Agent_Routes, User_Routes } from '@/src/constants/sidebar';
+import { AGENT_ROUTES, USER_ROUTES } from '@/src/constants/sidebar';
 
 const Sidebar = () => {
   const pathName = usePathname();
@@ -32,9 +32,9 @@ const Sidebar = () => {
     const user = pathName.includes('/user');
 
     if (agent) {
-      return Agent_Routes;
+      return AGENT_ROUTES;
     } else if (user) {
-      return User_Routes;
+      return USER_ROUTES;
     } else {
       null;
     }

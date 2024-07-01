@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { propertyNames } from '@/src/constants/Preview_Data';
+import { PROPERTY_NAMES } from '@/src/constants/Preview_Data';
 
 const renderDetail = (
   title,
@@ -43,7 +43,7 @@ const PreviewFeatureAndAmenities = ({
   fontWeight,
   specificPost,
 }) => {
-  console.log(propertyNames, 'propertyNames');
+  console.log(PROPERTY_NAMES, 'PROPERTY_NAMES');
   return (
     <>
       {amenities?.title && (
@@ -63,7 +63,7 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {propertyNames?.map((propertyName, index) =>
+          {PROPERTY_NAMES?.map((propertyName, index) =>
             renderDetail(
               propertyName,
               specificPost?.[propertyName],
