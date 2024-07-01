@@ -36,7 +36,8 @@ const ProjectsPage = () => {
               marginLeft: '15px',
             }}
           >
-            <ProjectsSlider data={projects} category={'houses'} />
+            {/* <ProjectsSlider data={projects} category={'houses'} /> */}
+            <>No data till now</>
           </Box>
         </Box>
         <Box>
@@ -52,7 +53,8 @@ const ProjectsPage = () => {
               marginLeft: '15px',
             }}
           >
-            <ProjectsSlider data={projects} category={'plots'} />
+            {/* <ProjectsSlider data={projects} category={'plots'} /> */}
+            <>No data till now</>
           </Box>
         </Box>
         <Box>
@@ -68,7 +70,8 @@ const ProjectsPage = () => {
               marginLeft: '15px',
             }}
           >
-            <ProjectsSlider data={projects} category={'commercials'} />
+            {/* <ProjectsSlider data={projects} category={'commercials'} /> */}
+            <>No data till now</>
           </Box>
         </Box>
       </Box>

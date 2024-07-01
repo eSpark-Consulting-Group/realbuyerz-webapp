@@ -40,7 +40,7 @@ const ProfileAgent = ({ data, agentData }) => {
         >
           <Price
             price={data?.amount}
-            link={`/inbox/${agentData?.id}`}
+            link={`user/inbox/${agentData?.id}`}
             pkr={data?.amountCurrency}
             reach={PROPERTY_ESTATE?.propertyDetails?.reach}
             message={PROPERTY_ESTATE?.propertyDetails?.message}
