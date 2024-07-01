@@ -55,7 +55,6 @@ export const PREVIEW_DATA = {
     type: 'videos',
   },
 };
-
 export const MODAL_GIF = '/images/modal/checkmark-sucess-animation.gif';
 
 export const PROPOSAL_SUBMIT_MODAL_DATA = {

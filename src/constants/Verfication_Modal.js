@@ -35,7 +35,6 @@ export const VERIFICATION_OTP = {
     },
   ],
 };
-
 export const VERIFICATION_CODE = {
   codeOTP: {
     code_one: '',

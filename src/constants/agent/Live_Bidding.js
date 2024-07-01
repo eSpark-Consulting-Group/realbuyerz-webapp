@@ -1,33 +1,22 @@
 // bidding title
-
 export const MAIN_TITLE = 'LIVE BIDDING IN PROPERTIES';
 
 // bidding detail
 
 export const ESTIMATE_RANGE = 'Est. Range:';
-
 export const LOAD_MORE = 'Load More';
-
 export const SHOW_LESS = 'Show Less';
-
 export const VIEW_BUTTON = { text: 'View', link: '/agent/live-bidding/' };
-
 export const BUY_NOW = {
   text: 'Buy now',
   link: '/agent/prop-shop/buy-product',
 };
-
 // bidding profile
-
 export const PROFILE_IMAGE_DEFAULT = '/images/Live-bidding-icons/Profile.png';
-
 export const PROFILE_COMPLETNESS = 'Profile Completeness:';
-
 export const AVAIALABLE_CONNECTS = 'Available Connects';
-
 export const PROFILE_COMPLETNESS_DESCRIPTION =
   ' Ways to stand out to clients right now...';
-
 export const ROUTERS = {
   buyProducts: '/agent/prop-shop/buy-product',
   postListing: '/agent/property-management/post-listing',

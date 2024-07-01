@@ -1,7 +1,6 @@
 import { isValidPhoneNumber } from 'react-phone-number-input';
 
 import * as Yup from 'yup';
-
 export const profileValidationSchema = Yup.object({
   first_name: Yup.string().min(2).max(25).required('Enter First Name'),
   last_name: Yup.string().min(2).max(25).required('Enter Last Name'),

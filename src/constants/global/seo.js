@@ -376,7 +376,6 @@ export const GLOBAL_SEO = [
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },
 ];
-
 export const BLOGS_SEO = [
   {
     path: '/blogs/1',
@@ -386,7 +385,6 @@ export const BLOGS_SEO = [
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },
 ];
-
 export const CAREERS_SEO = [
   {
     path: '',
@@ -396,7 +394,6 @@ export const CAREERS_SEO = [
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },
 ];
-
 export const AGENTS_SEO = [
   {
     path: '/profile/1',
@@ -406,7 +403,6 @@ export const AGENTS_SEO = [
     image: 'http://localhost:3000/images/RealBuyersLogo.svg',
   },
 ];
-
 export const PROJECTS_SEO = [
   {
     path: '/projects/1',

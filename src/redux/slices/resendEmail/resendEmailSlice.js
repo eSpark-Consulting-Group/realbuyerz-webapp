@@ -13,6 +13,5 @@ const resendEmailSlice = createSlice({
 });
 
 export const { updateReceivedEmail } = resendEmailSlice.actions;
-
 export const selectReceivedEmail = (state) => state.resendEmail.received.email;
 export default resendEmailSlice.reducer;

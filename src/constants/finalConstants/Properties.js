@@ -1401,7 +1401,6 @@ export const PROPERTIES_DATA = [
 ];
 //renamed form CATEGORIES to PROPERTIES_CATEGORIES and links Added
 //Reason: catgories is Not UNique and Promenent name
-
 export const PROPERTIES_CATEGORIES = [
   {
     id: 1,
@@ -1454,7 +1453,6 @@ export const PROPERTIES_CATEGORIES = [
 ];
 //renamed form AMENITIES to PROPERTIES_AMENITIES and links Added
 //Reason: AMENITIES is Not UNique and Promenent name
-
 export const PROPERTIES_AMENITIES = [
   {
     id: 1,
@@ -1641,7 +1639,6 @@ export const PROPERTIES_AMENITIES = [
 ];
 // reduce Data lenght for efficey prpouse
 //Reason: to much data (from 200 lines to 20)
-
 export const POPULAR_LOCATIONS_DATA = {
   title: 'Popular Locations',
   description:
@@ -1668,7 +1665,6 @@ export const POPULAR_LOCATIONS_DATA = {
     'Sargodha',
   ],
 };
-
 export const ADD_PROPERTY = [
   {
     id: 1, //id

@@ -637,7 +637,6 @@ export const PROPERTIES_LISTING = [
     ],
   },
 ];
-
 export const PROPERTY_PURPOSE = {
   propertyPurpose: {
     locationAndPurpose: 'Location & Purpose',
@@ -652,7 +651,6 @@ export const PROPERTY_PURPOSE = {
     commercial: 'Commercial',
   },
 };
-
 export const PROPERTY_ESTATE = {
   propertyAttributes: [
     { label: 'Type' },

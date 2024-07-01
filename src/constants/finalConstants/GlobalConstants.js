@@ -1,5 +1,4 @@
 // Merged Hero Slider Data & HERO_SECTION_CONTENT & HERO_SECTION_IMAGES
-
 export const HP_HERO_SLIDER = {
   heading:
     'Live buying, selling or rent vetted properties at the most trusted online real estate portal',
@@ -15,7 +14,6 @@ export const HP_HERO_SLIDER = {
   ],
 };
 // NO Changes
-
 export const FOOTER_DATA = {
   logo: '/images/RealBuyersLogo.svg',
   introText: {
@@ -64,7 +62,6 @@ export const FOOTER_DATA = {
   },
 };
 // NO Changes
-
 export const FOOTER_CTA_DATA = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', // Description text
@@ -107,7 +104,6 @@ export const FOOTER_CTA_DATA = {
 };
 // Renamed from PAGES to MENU_PAGES
 //Reason: PAGES is Not right and Promenent name
-
 export const MENU_PAGES = [
   {
     menu: 'Home',
@@ -142,7 +138,6 @@ export const MENU_PAGES = [
 ];
 //renamed form PARTNERS to FEATURED_PARTNERS and links Added (for redirecting Purpose)
 //Reason: PARTNERS is Not UNique and Promenent name
-
 export const FEATURED_PARTNERS = [
   {
     id: 1,

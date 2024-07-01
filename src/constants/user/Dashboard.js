@@ -1,23 +1,13 @@
 export const VIEW_PROPSALS = 'View Proposals';
-
 export const DASHBOARD = 'Dashboard';
-
 export const POST_A_REQUEST = 'Post a request';
-
 export const YOUR_POSTING = 'Your Postings';
-
 export const SEE_ALL_POSTING = 'See All Postings';
-
 export const FILTER_BUTTON = 'Filter';
-
 export const VIEW_BUTTON = 'View';
-
 export const ALL_PROPOSALS = 'All Proposals';
-
 export const ESTIMATE_RANGE = 'Est. Range:';
-
 export const PROPOSALS = 'Proposals';
-
 export const BACK_TO_DASHBOARD = 'Back to dashboard';
 
 export const USER_DASHBOARD_PAGE = {

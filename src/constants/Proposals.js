@@ -366,13 +366,8 @@ export const Proposals = {
     link: '',
   },
 };
-
 export const NO_RESULTS_FOUND = 'No results found';
-
 export const AMOUNT = 'Amount:';
-
 export const RESTORE_PROPERTY = 'Restore Property';
-
 export const ZERO = 0;
-
 export const ALL = 'All';
