@@ -575,3 +575,8 @@ body header {
 .test-slider {
   z-index: -1 !important;
 }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
