@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
+// import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 
@@ -32,7 +32,8 @@ const ProjectsPage = () => {
           marginLeft: '15px',
         }}
       >
-        <ProjectsSlider data={projects} category={link} />
+        {/* <ProjectsSlider data={projects} category={link} /> */}
+        <>No data till now</>
       </Box>
     </Box>
   );
