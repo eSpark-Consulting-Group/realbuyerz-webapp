@@ -33,7 +33,6 @@ const ProjectsPage = () => {
         }}
       >
         <ProjectsSlider data={projects} category={link} />
-        {/* <>No data till now</> */}
       </Box>
     </Box>
   );
