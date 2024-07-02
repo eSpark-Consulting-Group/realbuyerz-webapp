@@ -8,7 +8,7 @@ const AreaUnit = ({ measure, handleInputChange }) => {
   const currencyUnits = useSelector(
     (state) => state?.globalUnits.CURRENCY_UNITS
   );
-  const units = [currencyUnits,areaUnits ];
+  const units = [currencyUnits, areaUnits];
 
   return (
     <Box>
