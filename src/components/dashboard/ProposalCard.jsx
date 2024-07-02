@@ -406,6 +406,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
 
             <Button
               variant="contained"
+              disableRipple={true}
               sx={{
                 display: { xs: 'none', md: 'flex' },
                 position: { xs: 'absolute' },
@@ -415,6 +416,13 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                 right: { xs: 25, sm: 25, md: 25 },
                 top: { xs: 20, sm: 20, md: 20 },
                 left: { xs: 'auto', sm: 'auto', md: 'auto' },
+                boxShadow: 'none',
+                '&.MuiButton-contained': {
+                  '&:hover': {
+                    backgroundColor: '#fb631c',
+                    boxShadow: 'none',
+                  },
+                },
               }}
               onClick={() => handleTrash(data?.property_id, currentTab)}
             >
