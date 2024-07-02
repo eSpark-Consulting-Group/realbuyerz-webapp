@@ -1,4 +1,4 @@
-export const Buy_Product_Data = {
+export const BUY_PRODUCT_DATA = {
   title: 'Subscription',
   BuyProductColumns: {
     FirstHeaderName: 'Package',
@@ -38,9 +38,9 @@ export const Buy_Product_Data = {
   ],
 };
 
-export const Empty_Cart_data = { title: 'Added in cart', item: 'No items' };
+export const EMPTY_CART_DATA = { title: 'Added in cart', item: 'No items' };
 
-export const Order_Summary = {
+export const ORDER_SUMMARY = {
   titile: 'Order Summary',
   Total: 'Total:',
   buttonText: 'Proceed To Payment',
@@ -49,7 +49,7 @@ export const Order_Summary = {
   confirmOrderLable: 'Confirm your order',
 };
 
-export const Buy_Connects = {
+export const BUY_CONNECTS = {
   title: 'Buy Connects',
   description: '(Only applicable if you buy a subscription)',
   buttonText: 'Buy',

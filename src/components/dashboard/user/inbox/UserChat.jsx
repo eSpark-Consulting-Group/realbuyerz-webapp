@@ -3,7 +3,7 @@ import { Box, Grid, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
-import { chatRooms } from '@/src/constants/Chats';
+import { CHAT_ROOMS } from '@/src/constants/Chats';
 
 const UserChat = () => {
   const [value, setValue] = useState(0);
@@ -43,7 +43,7 @@ const UserChat = () => {
       return darkColors[randomIndex];
     }
 
-    const tempData = [...chatRooms]?.map((room) => ({
+    const tempData = [...CHAT_ROOMS]?.map((room) => ({
       ...room,
       background: !room?.avatar && paintBackground(),
     }));

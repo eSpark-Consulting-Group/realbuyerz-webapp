@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import OrderSummary from './OrderSummary';
 import EmptyCart from './EmptyCart';
 import {
-  Empty_Cart_data,
-  Order_Summary,
+  EMPTY_CART_DATA,
+  ORDER_SUMMARY,
 } from '@/src/constants/agent/Buy_Product';
 
 const ProductCart = ({
@@ -28,8 +28,8 @@ const ProductCart = ({
     successMessage,
     modalButtonText,
     confirmOrderLable,
-  } = Order_Summary;
-  const { title, item } = Empty_Cart_data;
+  } = ORDER_SUMMARY;
+  const { title, item } = EMPTY_CART_DATA;
 
   return (
     <Box

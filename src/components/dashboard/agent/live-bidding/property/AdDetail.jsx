@@ -15,7 +15,7 @@ import Location from '@/src/components/dashboard/preview/Location';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
-import { clientRequirment } from '@/src/constants/agent/Live_Bidding';
+import { CLIENT_REQUIRMENT } from '@/src/constants/agent/Live_Bidding';
 import { findSpecificPost } from '@/src/utils/dashboardUtils';
 
 const AdDetail = () => {
@@ -59,7 +59,7 @@ const AdDetail = () => {
                         textAlign: 'center',
                       }}
                     >
-                      {clientRequirment?.title}
+                      {CLIENT_REQUIRMENT?.title}
                     </Typography>
                     <PropertyDetail
                       subTitle={specificPost?.title}
@@ -105,7 +105,7 @@ const AdDetail = () => {
                       // proposals={sendProposals}
                       specificPost={specificPost}
                       postId={specificPost?.property_id}
-                      rightSectionKeys={clientRequirment}
+                      rightSectionKeys={CLIENT_REQUIRMENT}
                     />
                   </Box>
                 </Grid>

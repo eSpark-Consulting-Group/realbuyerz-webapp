@@ -2,6 +2,7 @@
 export const MAIN_TITLE = 'LIVE BIDDING IN PROPERTIES';
 
 // bidding detail
+
 export const ESTIMATE_RANGE = 'Est. Range:';
 export const LOAD_MORE = 'Load More';
 export const SHOW_LESS = 'Show Less';
@@ -10,7 +11,6 @@ export const BUY_NOW = {
   text: 'Buy now',
   link: '/agent/prop-shop/buy-product',
 };
-
 // bidding profile
 export const PROFILE_IMAGE_DEFAULT = '/images/Live-bidding-icons/Profile.png';
 export const PROFILE_COMPLETNESS = 'Profile Completeness:';
@@ -23,8 +23,9 @@ export const ROUTERS = {
   bidding: '/biddings',
   dashboardLiveBidding: '/dashboard/live-bidding',
 };
+
 // client requirment
-export const clientRequirment = {
+export const CLIENT_REQUIRMENT = {
   title: 'Clients Requirement',
   send_Proposal: 'Send a proposal for :',
   available_Connects: 'Available Connects:',

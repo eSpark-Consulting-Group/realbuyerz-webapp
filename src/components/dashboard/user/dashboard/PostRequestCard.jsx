@@ -17,7 +17,7 @@ import {
 } from '@/src/constants/agent/Live_Bidding';
 import {
   VIEW_PROPSALS,
-  postListingAdCard,
+  POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
 import { checkProposal, filteredAds } from '@/src/utils/dashboardUtils';
 
@@ -221,7 +221,7 @@ const PostRequestCard = ({ height, ads }) => {
                           'Submited'
                         )}
                         connects={item?.connects}
-                        cardKeys={postListingAdCard}
+                        cardKeys={POST_LISTINGAD_CARD}
                         noConnects={true}
                       />
                       <Grid item xs={12}>

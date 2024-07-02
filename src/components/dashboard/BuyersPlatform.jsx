@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 import ListingInfo from './ads-form-components/Listinginfo';
 import ReachBuyer from './ads-form-components/ReachBuyer';
 import {
-  reachBuyerCoverLetter,
-  reachBuyerData,
+  REACH_BUYER_COVERLETTER,
+  REACH_BUYER_DATA,
 } from '@/src/constants/Preview_Data';
 
 const BuyersPlatform = ({ propertyData, fontSize }) => {
@@ -41,13 +41,13 @@ const BuyersPlatform = ({ propertyData, fontSize }) => {
               fontSize={fontSize}
               title={
                 pathName?.includes(coverLetterPath)
-                  ? reachBuyerCoverLetter?.title
-                  : reachBuyerData?.title
+                  ? REACH_BUYER_COVERLETTER?.title
+                  : REACH_BUYER_DATA?.title
               }
               description={
                 pathName?.includes(coverLetterPath)
-                  ? reachBuyerCoverLetter?.description
-                  : reachBuyerData?.description
+                  ? REACH_BUYER_COVERLETTER?.description
+                  : REACH_BUYER_DATA?.description
               }
             />
             <ListingInfo propertyInfo={propertyData?.property} />
