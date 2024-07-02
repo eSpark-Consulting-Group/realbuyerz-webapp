@@ -123,7 +123,9 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
           onCloseModal={handleModalToggle}
         />
       )}
-      {verificationResult && <Box>{verificationResult}</Box>}
+      {verificationResult && <Typography sx={{
+        my:'-10px'
+      }}>{verificationResult}</Typography>}
     </>
   );
 };
