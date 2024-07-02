@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Heading from './Heading';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
-import Link from 'next/link';
 
 const OurHomePartners = ({ data }) => {
   const sliderSettings = {
@@ -73,7 +72,6 @@ const OurHomePartners = ({ data }) => {
                   alignItems: 'center',
                 }}
               >
-                {/* <Link href={`/partners/${partner?.id}`}> */}
                 <Image
                   src={partner?.image}
                   alt={partner?.name}
@@ -81,7 +79,6 @@ const OurHomePartners = ({ data }) => {
                   width={400}
                   height={100}
                 />
-                {/* </Link> */}
               </Box>
             </Box>
           ))}
