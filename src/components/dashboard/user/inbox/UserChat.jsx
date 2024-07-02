@@ -1,5 +1,12 @@
 'use client';
-import { Box, Grid, Tab, Tabs } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  IconButton,
+  Tab,
+  Tabs,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
@@ -8,6 +15,7 @@ import { chatRooms } from '@/src/constants/Chats';
 const UserChat = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
+  const [loading, setLoading] = useState(false);
   console.log(currentTab);
   const [chatRoomState, setChatRoomState] = useState([]);
   const [selectedChatRoom, setSelectedChatRoom] = useState({
@@ -70,7 +78,12 @@ const UserChat = () => {
       label: 'Archive',
     },
   ];
-
+  const handleRefresh = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
   return (
     <Box
       sx={{
@@ -89,16 +102,32 @@ const UserChat = () => {
         }}
       >
         <Box>
-          <Box
-            component="img"
-            src="/icons/RefreshIcon.svg"
-            alt={'Refresh'}
+          <IconButton
+            size="small"
             sx={{
-              width: '20px',
-              height: '18px',
-              marginRight: '20px',
+              '&:hover': {
+                backgroundColor: '#fff',
+              },
             }}
-          />
+            onClick={handleRefresh}
+            disabled={loading}
+          >
+            {loading ? (
+              <CircularProgress size={20} />
+            ) : (
+              <Box
+                component="img"
+                src="/icons/RefreshIcon.svg"
+                alt={'Refresh'}
+                sx={{
+                  width: '20px',
+                  height: '18px',
+                  marginRight: '20px',
+                  marginBottom: '10px',
+                }}
+              />
+            )}
+          </IconButton>
         </Box>
         <Tabs
           variant="scrollable"

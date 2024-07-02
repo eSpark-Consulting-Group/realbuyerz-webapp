@@ -134,9 +134,14 @@ const OrderSummary = ({
             borderRadius: '10px',
             color: '#fff',
             backgroundColor: `${paymentMedthod ? '#777' : '#fb631c'}`,
+            cursor: 'pointer',
             '&:hover': {
               backgroundColor: '#fb631c',
               color: '#EDF7FF',
+            },
+            '&.Mui-disabled': {
+              backgroundColor: '#777',
+              color: '#ccc',
             },
             fontSize: '16px',
           }}
