@@ -18,21 +18,27 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-const ProjectsFilterComponent = ({ data }) => {
-  const globalUnits = useSelector((state) => state.globalUnits);
-  const [searchText, setSearchText] = useState('');
-  const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
-  const [selectedAreaUnit, setSelectedAreaUnit] = useState(
-    globalUnits?.AREA_UNITS[0].value
-  );
-  const [selectedAreaRange, setSelectedAreaRange] = useState(['0', '5000']);
-  const [selectedPriceUnit, setSelectedPriceUnit] = useState(
-    globalUnits?.CURRENCY_UNITS[0].value
-  );
-  const [selectedPriceRange, setSelectedPriceRange] = useState(['0', '5000']);
-  const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
-  const [selectedProperty, setSelectedProperty] = useState('');
-
+const ProjectsFilterComponent = ({
+  searchText,
+  setSearchText,
+  selectedPropertyAdType,
+  setSelectedPropertyAdType,
+  selectedAreaUnit,
+  setSelectedAreaUnit,
+  selectedAreaRange,
+  setSelectedAreaRange,
+  selectedPriceUnit,
+  setSelectedPriceUnit,
+  selectedPriceRange,
+  setSelectedPriceRange,
+  selectedPropertyTab,
+  setSelectedPropertyTab,
+  selectedProperty,
+  setSelectedProperty,
+  handleClearFilter,
+  handleFilter,
+  globalUnits
+}) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
@@ -96,42 +102,11 @@ const ProjectsFilterComponent = ({ data }) => {
     setSelectedProperty(newValue);
   };
 
-  const handleFilter = () => {
-    const filteredData = data?.filter((projects) => {
-      return (
-        projects?.title === searchText &&
-        projects?.description === searchText &&
-        projects?.purpose === selectedPropertyAdType &&
-        projects?.propertyType === selectedProperty?.title &&
-        projects?.propertyCategory === selectedPropertyTab &&
-        projects?.areaUnit === selectedAreaUnit &&
-        projects?.amountCurrency === selectedPriceUnit &&
-        projects?.amount <= selectedPriceRange[0] &&
-        projects?.amount >= selectedPriceRange[1] &&
-        projects?.amount <= selectedAreaRange[0] &&
-        projects?.amount >= selectedAreaRange[1] &&
-        projects?.status === 'submit'
-      );
-    });
-    console.log(filteredData, 'filtered');
-  };
-
-  const handleClearFilter = () => {
-    setSelectedPropertyAdType('');
-    setSelectedPropertyTab(0);
-    setSelectedProperty('');
-    setSelectedPriceUnit('');
-    setSelectedPriceRange(['0', '5000']);
-    setSelectedAreaUnit('');
-    setSelectedAreaRange(['0', '5000']);
-    setSearchText('');
-  };
-
   useEffect(() => {
-    document.addEventListener('mouseleave', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     handleFilter();
     return () => {
-      document.removeEventListener('mouseleave', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, [
     searchText,
@@ -143,6 +118,7 @@ const ProjectsFilterComponent = ({ data }) => {
     selectedPropertyAdType,
     selectedPropertyTab,
   ]);
+
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
