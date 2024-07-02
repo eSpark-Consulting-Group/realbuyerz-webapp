@@ -9,7 +9,6 @@ const AreaUnit = ({ measure, handleInputChange }) => {
     (state) => state?.globalUnits.CURRENCY_UNITS
   );
   const units = [currencyUnits,areaUnits ];
-  console.log(units, 'unitss')
 
   return (
     <Box>
