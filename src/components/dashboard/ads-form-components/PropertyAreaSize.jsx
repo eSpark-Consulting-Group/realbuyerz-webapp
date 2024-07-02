@@ -106,7 +106,7 @@ const PropertyAreaSize = ({
               >
                 <TextField
                   placeholder={item?.placeholder}
-                  type="number"
+                  type="string"
                   sx={{
                     width: { xs: '100%', sm: `calc(100% - ${160}px)` },
                     fontSize: '18px',
