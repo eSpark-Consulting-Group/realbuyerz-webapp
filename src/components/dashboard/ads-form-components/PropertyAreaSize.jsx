@@ -169,6 +169,9 @@ const PropertyAreaSize = ({
                           color: '#777777',
                         },
                       },
+                      '& .MuiAutocomplete-clearIndicator': {
+                        display: 'none',
+                      },
                   }}
                   renderInput={(params) => (
                     <TextField

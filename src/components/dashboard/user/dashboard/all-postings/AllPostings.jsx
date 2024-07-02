@@ -168,6 +168,9 @@ const AllPostings = () => {
                             border: 'none',
                           },
                         },
+                        '& .MuiAutocomplete-clearIndicator': {
+                          display: 'none',
+                        },
                       }}
                       popupIcon={
                         <KeyboardArrowDownIcon sx={{ color: '#66666666' }} />
