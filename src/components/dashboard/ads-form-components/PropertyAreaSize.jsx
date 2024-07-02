@@ -184,7 +184,7 @@ const PropertyAreaSize = ({
                       label={item?.dropPlaceholder}
                       InputLabelProps={{
                         sx: {
-                          fontSize: { xs: '14px', md: '15px', lg: '17px' },
+                          fontSize: { xs: '14px', md: '15px', lg: '15px' },
                           fontWeight: 400,
                           color: '#969696',
                           mr: 10,
