@@ -101,12 +101,18 @@ const BrowseByCategory = ({ data }) => {
                     onMouseEnter={() => handleItemHover(index, true)}
                     onMouseLeave={() => handleItemHover(index, false)}
                   >
-                    <LinearProgressBar position="top" hovered={hovered[index]} />
+                    <LinearProgressBar
+                      position="top"
+                      hovered={hovered[index]}
+                    />
                     <LinearProgressBar
                       position="bottom"
                       hovered={hovered[index]}
                     />
-                    <LinearProgressBar position="left" hovered={hovered[index]} />
+                    <LinearProgressBar
+                      position="left"
+                      hovered={hovered[index]}
+                    />
                     <LinearProgressBar
                       position="right"
                       hovered={hovered[index]}
@@ -158,7 +164,11 @@ const BrowseByCategory = ({ data }) => {
             }}
           >
             {data?.map((category, index) => (
-              <Link href={`/category/${category?.id}`} passHref key={category?.id}>
+              <Link
+                href={`/category/${category?.id}`}
+                passHref
+                key={category?.id}
+              >
                 <Grid
                   item
                   sx={{
@@ -178,9 +188,15 @@ const BrowseByCategory = ({ data }) => {
                   onMouseLeave={() => handleItemHover(index, false)}
                 >
                   <LinearProgressBar position="top" hovered={hovered[index]} />
-                  <LinearProgressBar position="bottom" hovered={hovered[index]} />
+                  <LinearProgressBar
+                    position="bottom"
+                    hovered={hovered[index]}
+                  />
                   <LinearProgressBar position="left" hovered={hovered[index]} />
-                  <LinearProgressBar position="right" hovered={hovered[index]} />
+                  <LinearProgressBar
+                    position="right"
+                    hovered={hovered[index]}
+                  />
                   <Box
                     sx={{
                       background: '#fff',
