@@ -92,7 +92,6 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                 '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
                   {
                     color: '#777777',
-                    display: 'inline-flex',
                     display: 'none',
                     '&:hover': {
                       color: '#777777',
