@@ -235,7 +235,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         color: '#126FAA',
                       }}
                     >
-                      Proporty Type:
+                      Property Type:
                     </Typography>
                     <Typography
                       sx={{

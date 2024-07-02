@@ -10,7 +10,7 @@ const proposalsSlice = createSlice({
       proposal_id: 2,
       status: 'Submited',
       title: 'What is Lorem Ipsum?',
-      location: '',
+      location: 'Johar',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
       area: 120,
@@ -37,7 +37,7 @@ const proposalsSlice = createSlice({
       proposal_id: 5,
       status: 'Rejected',
       title: 'What is Lorem Ipsum?',
-      location: '',
+      location: 'Johar',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
       area: 120,
@@ -64,7 +64,7 @@ const proposalsSlice = createSlice({
       proposal_id: 9,
       status: 'Connected',
       title: 'What is Lorem Ipsum?',
-      location: '',
+      location: 'Johar',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy',
       area: 120,
@@ -91,7 +91,7 @@ const proposalsSlice = createSlice({
       proposal_id: 3,
       status: 'Submited',
       title: 'What is Lorem Ipsum?',
-      location: '',
+      location: 'Johar',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industryLorem Ipsum is simply dummy',
       area: 120,
