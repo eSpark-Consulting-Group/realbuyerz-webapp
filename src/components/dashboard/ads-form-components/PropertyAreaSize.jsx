@@ -162,15 +162,12 @@ const PropertyAreaSize = ({
                       borderRadius: '10px',
                     },
                     '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                      {
-                        color: '#777777',
-                        display: 'inline-flex',
-                        '&:hover': {
-                          color: '#777777',
-                        },
-                      },
-                    '& .MuiAutocomplete-clearIndicator': {
+                    {
+                      color: '#777777',
                       display: 'none',
+                      '&:hover': {
+                        color: '#777777',
+                      },
                     },
                   }}
                   renderInput={(params) => (
