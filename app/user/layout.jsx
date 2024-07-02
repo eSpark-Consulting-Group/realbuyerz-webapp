@@ -46,7 +46,12 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <>
+    <Box
+      sx={{
+        backgroundColor: '#F4F5F7',
+        height: '100vh',
+      }}
+    >
       <Suspense fallback={<Loading />}>
         {child && (
           <>
@@ -89,7 +94,7 @@ const Layout = ({ children }) => {
           </>
         )}
       </Suspense>
-    </>
+    </Box>
   );
 };
 
