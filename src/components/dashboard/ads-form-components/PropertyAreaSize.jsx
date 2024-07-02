@@ -169,7 +169,7 @@ const PropertyAreaSize = ({
                           color: '#777777',
                         },
                       },
-                    '& .css-117c8g3-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
+                      '& .css-117c8g3-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
                       {
                         backgroundColor: 'transparent',
                       },
@@ -177,6 +177,7 @@ const PropertyAreaSize = ({
                       {
                         backgroundColor: 'transparent',
                       },
+                     
                   }}
                   renderInput={(params) => (
                     <TextField
