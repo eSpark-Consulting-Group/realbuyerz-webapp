@@ -93,10 +93,18 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                   {
                     color: '#777777',
                     display: 'inline-flex',
-                    display:'none',
+                    display: 'none',
                     '&:hover': {
                       color: '#777777',
                     },
+                  },
+                '& .css-117c8g3-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
+                  {
+                    backgroundColor: 'transparent',
+                  },
+                '& .css-zomsxe-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
+                  {
+                    backgroundColor: 'transparent',
                   },
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}

@@ -162,13 +162,21 @@ const PropertyAreaSize = ({
                       borderRadius: '10px',
                     },
                     '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                    {
-                      color: '#777777',
-                      display: 'none',
-                      '&:hover': {
+                      {
                         color: '#777777',
+                        display: 'none',
+                        '&:hover': {
+                          color: '#777777',
+                        },
                       },
-                    },
+                    '& .css-117c8g3-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
+                      {
+                        backgroundColor: 'transparent',
+                      },
+                    '& .css-zomsxe-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
+                      {
+                        backgroundColor: 'transparent',
+                      },
                   }}
                   renderInput={(params) => (
                     <TextField
