@@ -186,7 +186,7 @@ export const POST_REQUEST = {
   postTitles: {
     adInfo: 'Ad information',
     locationandpurpose: 'Location & Purpose',
-    sizeprice: 'Property Size and Pricing',
+    sizeprice: 'Property Size and Budget',
     featureamenities: 'Features & Amenities',
     imagesvidoes: 'Property Images and Videos',
   },
