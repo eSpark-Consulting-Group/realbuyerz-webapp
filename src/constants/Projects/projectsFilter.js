@@ -1,4 +1,5 @@
 export const AREA_UNITS = [
+  { value: ' ', title: 'Any' },
   { value: 'sq.ft', title: 'Sq.ft' },
   { value: 'sq.m', title: 'Sq.M' },
   { value: 'sq.yd', title: 'Sq.Yd' },
@@ -6,7 +7,9 @@ export const AREA_UNITS = [
   { value: 'kanal', title: 'Kanal' },
 ];
 export const CURRENCY_UNITS = [
+  { value: ' ', title: 'Any' },
   { value: 'PKR', title: 'PKR' },
+  { value: 'SAR', title: 'SAR' },
   { value: 'USD', title: 'USD' },
   { value: 'GBP', title: 'GBP' },
   { value: 'CAD', title: 'CAD' },

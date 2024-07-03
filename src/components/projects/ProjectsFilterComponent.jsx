@@ -37,8 +37,8 @@ const ProjectsFilterComponent = ({
   setSelectedProperty,
   handleClearFilter,
   handleFilter,
-  globalUnits
-}) => {
+  globalUnits }) => {
+
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
@@ -103,10 +103,10 @@ const ProjectsFilterComponent = ({
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('mouseleave', handleClickOutside);
     handleFilter();
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('mouseleave', handleClickOutside);
     };
   }, [
     searchText,
@@ -118,7 +118,6 @@ const ProjectsFilterComponent = ({
     selectedPropertyAdType,
     selectedPropertyTab,
   ]);
-
   const isSmallScreen = useMediaQuery('(max-width:742px)');
   return (
     <>
@@ -128,7 +127,8 @@ const ProjectsFilterComponent = ({
             <FormControl fullWidth>
               <Select
                 fullWidth
-                value={selectedPropertyAdType ||
+                value={
+                  selectedPropertyAdType ||
                   globalUnits?.PROPERTY_TYPES[0]?.value
                 }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
@@ -145,7 +145,7 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id1}
               variant="outlined"
-              value={selectedProperty !== '' ? selectedProperty?.title : 'Any'}
+              value={selectedProperty?.title || 'Any'}
               onClick={handleClick1}
               fullWidth
             />
@@ -219,8 +219,8 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id3}
               variant="outlined"
-              value={selectedPriceRange[0] && selectedPriceRange[1] !== '' ? `${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}` : null}
               placeholder='0 - 5000 SQFT'
+              value={selectedPriceRange[0] !== '' && selectedPriceRange[1] !== '' ? `${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}` : null}
               onClick={handleClick3}
               fullWidth
             />

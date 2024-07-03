@@ -19,17 +19,6 @@ const ProjectsPage = () => {
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
-  console.log(selectedProjects, "selectedProjects");
-  console.log(searchText, "searchText");
-  console.log(selectedPropertyAdType, "selectedPropertyAdType");
-  console.log(selectedAreaUnit, "selectedAreaUnit");
-  console.log(selectedPriceUnit, "selectedPriceUnit");
-  console.log(selectedAreaRange, "selectedAreaRange");
-  console.log(selectedPriceRange, "selectedPriceRange");
-  console.log(selectedPropertyTab, "selectedProjects");
-  console.log(selectedProperty, "selectedProjects");
-
-
   const { agentPostings: projects } = useSelector(
     (state) => state.postListingAds
   );
@@ -50,9 +39,9 @@ const ProjectsPage = () => {
       (selectedPropertyTab === 0 ||
         project?.propertyCategory?.toString()?.toLowerCase() ===
         selectedPropertyTab.toString()?.toLowerCase()) &&
-      (selectedAreaUnit === '' ||
+      (selectedAreaUnit === '' || selectedAreaUnit === ' ' ||
         project?.areaUnit?.toLowerCase() === selectedAreaUnit?.toLowerCase()) &&
-      (selectedPriceUnit === '' ||
+      (selectedPriceUnit === '' || selectedPriceUnit === ' ' ||
         project?.amountCurrency?.toLowerCase() ===
         selectedPriceUnit?.toLowerCase()) &&
       (selectedPriceRange[0] === '' ||

@@ -52,7 +52,7 @@ const ProjectsSliderFilter = ({
   const handleCancel = () => {
     setSelectUnit(selectUnit);
     setSelectRange(selectedRange);
-    handleRange('area', ['0', '5000']);
+    handleRange('area', ['', '']);
     handleUnit('unit', units[0].value);
   };
 
@@ -81,7 +81,7 @@ const ProjectsSliderFilter = ({
         <Box sx={{ width: '100px' }}>
           <Select
             id="units"
-            value={selectUnit}
+            value={selectUnit || units[0].value}
             onChange={handleUnitChange}
             fullWidth
           >
@@ -106,6 +106,7 @@ const ProjectsSliderFilter = ({
           id="minArea"
           variant="outlined"
           value={selectRange[0]}
+          placeholder='Min Value'
           onChange={handleMinAreaChange}
         />
         <Typography variant={'h3'}>to</Typography>
@@ -113,6 +114,7 @@ const ProjectsSliderFilter = ({
           id="maxArea"
           variant="outlined"
           value={selectRange[1]}
+          placeholder='Max Value'
           onChange={handleMaxAreaChange}
         />
       </Box>
