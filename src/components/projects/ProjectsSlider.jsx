@@ -184,13 +184,13 @@ const ProjectsSlider = ({ data, category }) => {
                   {project?.description?.length > 150
                     ? `${project?.description.slice(0, 147)}...`
                     : project?.description || (
-                      <>
-                        <Skeleton />
-                        <Skeleton />
-                        <Skeleton />
-                        <Skeleton />
-                      </>
-                    )}
+                        <>
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                          <Skeleton />
+                        </>
+                      )}
                 </Typography>
               </Box>
             </Grid>

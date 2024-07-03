@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 import ProjectsSliderFilter from './ProjectsSliderFilter';
 import ProjectsTabsFilter from './ProjectsTabsFilter';
