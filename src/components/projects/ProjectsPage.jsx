@@ -16,7 +16,7 @@ const ProjectsPage = () => {
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
   const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
   const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
-  const [selectedPriceRange, setSelectedPriceRange] = useState(["", '']);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(['', '']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
@@ -27,27 +27,36 @@ const ProjectsPage = () => {
   const filteredData = projects?.filter((project) => {
     return (
       (searchText === '' ||
-        project?.title?.includes(searchText) ||
-        project?.description?.includes(searchText)) &&
+        project?.title?.toLowerCase().includes(searchText.toLowerCase()) ||
+        project?.description
+          ?.toLowerCase()
+          .includes(searchText.toLowerCase())) &&
       (selectedPropertyAdType === '' ||
-        project?.purpose === selectedPropertyAdType) &&
+        project?.purpose?.toLowerCase() ===
+          selectedPropertyAdType.toLowerCase()) &&
       (selectedProperty === '' ||
-        project?.propertyType === selectedProperty) &&
+        project?.propertyType?.toLowerCase() ===
+          selectedProperty.toLowerCase()) &&
       (selectedPropertyTab === 0 ||
-        project?.propertyCategory === selectedPropertyTab) &&
-      (selectedAreaUnit === '' || project?.areaUnit === selectedAreaUnit) &&
+        project?.propertyCategory?.toString().toLowerCase() ===
+          selectedPropertyTab.toString().toLowerCase()) &&
+      (selectedAreaUnit === '' ||
+        project?.areaUnit?.toLowerCase() === selectedAreaUnit.toLowerCase()) &&
       (selectedPriceUnit === '' ||
-        project?.amountCurrency === selectedPriceUnit) &&
-      (selectedPriceRange[0] === '' || project?.amount >= selectedPriceRange[0]) &&
-      (selectedPriceRange[1] === '' || project?.amount <= selectedPriceRange[1]) &&
+        project?.amountCurrency?.toLowerCase() ===
+          selectedPriceUnit.toLowerCase()) &&
+      (selectedPriceRange[0] === '' ||
+        project?.amount >= selectedPriceRange[0]) &&
+      (selectedPriceRange[1] === '' ||
+        project?.amount <= selectedPriceRange[1]) &&
       (selectedAreaRange[0] === '' || project?.area >= selectedAreaRange[0]) &&
       (selectedAreaRange[1] === '' || project?.area <= selectedAreaRange[1]) &&
-      project?.status === 'submit'
+      project?.status?.toLowerCase() === 'submit'
     );
   });
   console.log(filteredData, 'filtered');
   const handleFilter = () => {
-    setSelectedProjects(filteredData)
+    setSelectedProjects(filteredData);
   };
 
   const handleClearFilter = () => {
@@ -55,11 +64,11 @@ const ProjectsPage = () => {
     setSelectedPropertyTab(0);
     setSelectedProperty('');
     setSelectedPriceUnit('');
-    setSelectedPriceRange(["", ""]);
+    setSelectedPriceRange(['', '']);
     setSelectedAreaUnit('');
-    setSelectedAreaRange(["", ""]);
+    setSelectedAreaRange(['', '']);
     setSearchText('');
-    setSelectedProjects(projects)
+    setSelectedProjects(projects);
   };
 
   if (!projects || projects.length === 0) {

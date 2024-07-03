@@ -37,7 +37,7 @@ const ProjectsFilterComponent = ({
   setSelectedProperty,
   handleClearFilter,
   handleFilter,
-  globalUnits
+  globalUnits,
 }) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -128,9 +128,7 @@ const ProjectsFilterComponent = ({
             <FormControl fullWidth>
               <Select
                 fullWidth
-                value={
-                  globalUnits?.PROPERTY_TYPES[0]?.value
-                }
+                value={globalUnits?.PROPERTY_TYPES[0]?.value}
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
               >
                 {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
