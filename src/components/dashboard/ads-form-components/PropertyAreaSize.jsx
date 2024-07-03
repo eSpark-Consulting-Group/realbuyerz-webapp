@@ -149,10 +149,11 @@ const PropertyAreaSize = ({
                   value={formik?.values[item?.unit]}
                   disablePortal
                   id="combo-box-demo"
-                  options={item?.label == 'area' ? aeraSizes : currency}
+                  options={item?.label === 'area' ? aeraSizes : currency}
                   popupIcon={
                     <KeyboardArrowDownIcon sx={{ color: '#777777' }} />
                   }
+                  clearIcon={null}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
                     '& fieldset': {
@@ -161,22 +162,6 @@ const PropertyAreaSize = ({
                         : '1px solid #E7E7E7',
                       borderRadius: '10px',
                     },
-                    '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                      {
-                        color: '#777777',
-                        display: 'none',
-                        '&:hover': {
-                          color: '#777777',
-                        },
-                      },
-                    '& .css-117c8g3-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
-                      {
-                        backgroundColor: 'transparent',
-                      },
-                    '& .css-zomsxe-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator:hover':
-                      {
-                        backgroundColor: 'transparent',
-                      },
                   }}
                   renderInput={(params) => (
                     <TextField
