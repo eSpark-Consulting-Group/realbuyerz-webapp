@@ -37,8 +37,8 @@ const ProjectsFilterComponent = ({
   setSelectedProperty,
   handleClearFilter,
   handleFilter,
-  globalUnits }) => {
-
+  globalUnits,
+}) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
@@ -182,8 +182,12 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id2}
               variant="outlined"
-              placeholder='0 - 5000 PKR'
-              value={selectedPriceRange[0] && selectedPriceRange[1] !== '' ? `${selectedPriceRange[0]} - ${selectedPriceRange[1]}  ${selectedPriceUnit}` : null}
+              placeholder="0 - 5000 PKR"
+              value={
+                selectedPriceRange[0] && selectedPriceRange[1] !== ''
+                  ? `${selectedPriceRange[0]} - ${selectedPriceRange[1]}  ${selectedPriceUnit}`
+                  : null
+              }
               onClick={handleClick2}
               fullWidth
             />
@@ -219,8 +223,12 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id3}
               variant="outlined"
-              placeholder='0 - 5000 SQFT'
-              value={selectedPriceRange[0] !== '' && selectedPriceRange[1] !== '' ? `${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}` : null}
+              placeholder="0 - 5000 SQFT"
+              value={
+                selectedPriceRange[0] !== '' && selectedPriceRange[1] !== ''
+                  ? `${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}`
+                  : null
+              }
               onClick={handleClick3}
               fullWidth
             />

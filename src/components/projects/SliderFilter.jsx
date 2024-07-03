@@ -100,7 +100,7 @@ const SliderFilter = ({
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             min={0}
-            max={5000}
+            max={100000}
           />
         </FormControl>
       </Box>

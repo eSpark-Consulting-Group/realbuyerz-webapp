@@ -41,11 +41,11 @@ function ProjectsTabsFilter({
   };
 
   const handleSelectCancel = () => {
-    setSelectPropertyTab(0);
+    // setSelectPropertyTab(0);
     setSelectProperty('');
-    setSelectedProperty(0);
+    setSelectedProperty('');
     setSelectedPropertyTab('');
-    selectedPropertyTab = 0;
+    // selectedPropertyTab = 0;
     selectedProperty = selectProperty;
   };
 

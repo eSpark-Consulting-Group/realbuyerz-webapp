@@ -106,7 +106,7 @@ const ProjectsSliderFilter = ({
           id="minArea"
           variant="outlined"
           value={selectRange[0]}
-          placeholder='Min Value'
+          placeholder="Min Value"
           onChange={handleMinAreaChange}
         />
         <Typography variant={'h3'}>to</Typography>
@@ -114,7 +114,7 @@ const ProjectsSliderFilter = ({
           id="maxArea"
           variant="outlined"
           value={selectRange[1]}
-          placeholder='Max Value'
+          placeholder="Max Value"
           onChange={handleMaxAreaChange}
         />
       </Box>
@@ -126,7 +126,7 @@ const ProjectsSliderFilter = ({
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             min={0}
-            max={5000}
+            max={100000}
           />
         </FormControl>
       </Box>

@@ -10,14 +10,16 @@ import NotFoundSection from '@/src/components/global/NotFoundSection';
 const ProjectsPage = () => {
   const globalUnits = useSelector((state) => state.globalUnits);
   const [selectedProjects, setSelectedProjects] = useState([]);
+  console.log(selectedProjects, 'selectedProjects');
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
-  const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
-  const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
-  const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
-  const [selectedPriceRange, setSelectedPriceRange] = useState(['', '']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
+  console.log(selectedProperty, 'selectedProperty');
+  const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
+  const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
+  const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(['', '']);
 
   const { agentPostings: projects } = useSelector(
     (state) => state.postListingAds
@@ -30,20 +32,19 @@ const ProjectsPage = () => {
         project?.description
           ?.toLowerCase()
           .includes(searchText?.toLowerCase())) &&
-      (selectedPropertyAdType === '' || selectedPropertyAdType === ' ' ||
-        project?.purpose?.toLowerCase() ===
-        selectedPropertyAdType?.toLowerCase()) &&
+      (selectedPropertyAdType === '' ||
+        selectedPropertyAdType === 'any' ||
+        project?.purpose?.toLowerCase() === selectedPropertyAdType) &&
       (selectedProperty === '' ||
-        project?.propertyType?.toLowerCase() ===
-        selectedProperty?.toLowerCase()) &&
-      (selectedPropertyTab === 0 ||
-        project?.propertyCategory?.toString()?.toLowerCase() ===
-        selectedPropertyTab.toString()?.toLowerCase()) &&
-      (selectedAreaUnit === '' || selectedAreaUnit === ' ' ||
+        selectedProperty === ' ' ||
+        project?.propertyType?.toLowerCase() === selectedProperty?.value) &&
+      (selectedAreaUnit === '' ||
+        selectedAreaUnit === 'any' ||
         project?.areaUnit?.toLowerCase() === selectedAreaUnit?.toLowerCase()) &&
-      (selectedPriceUnit === '' || selectedPriceUnit === ' ' ||
+      (selectedPriceUnit === '' ||
+        selectedPriceUnit === 'any' ||
         project?.amountCurrency?.toLowerCase() ===
-        selectedPriceUnit?.toLowerCase()) &&
+          selectedPriceUnit?.toLowerCase()) &&
       (selectedPriceRange[0] === '' ||
         project?.amount >= selectedPriceRange[0]) &&
       (selectedPriceRange[1] === '' ||
@@ -119,9 +120,15 @@ const ProjectsPage = () => {
           globalUnits={globalUnits}
         />
       </Box>
-      {renderProjectCategory('Houses', 'houses', 'See All')}
-      {renderProjectCategory('Plots', 'plots', 'See All')}
-      {renderProjectCategory('Commercials', 'commercials', 'See All')}
+      {selectedProjects.length === 0 ? (
+        <NotFoundSection heading={'Sorry!'} message={'No Properties Found.'} />
+      ) : (
+        <>
+          {renderProjectCategory('Houses', 'houses', 'See All')}
+          {renderProjectCategory('Plots', 'plots', 'See All')}
+          {renderProjectCategory('Commercials', 'commercials', 'See All')}
+        </>
+      )}
     </Box>
   );
 };
