@@ -128,7 +128,8 @@ const SpacificProposal = () => {
                     <Typography>
                       <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
                       {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
-                      - {format(new Date(find_agent.created_at), 'h:mma')} local time
+                      - {format(new Date(find_agent.created_at), 'h:mma')} local
+                      time
                     </Typography>
                   </Box>
                 </Box>
