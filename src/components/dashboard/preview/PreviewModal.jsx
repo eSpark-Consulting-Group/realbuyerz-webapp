@@ -57,15 +57,24 @@ const PreviewModal = (props) => {
           <Box
             sx={{
               width: '100%',
-              height: { xs: '600px', md: '700px' },
+              height: { xs: '600px', md: '633px' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
               overflowY: 'auto',
-              scrollbarWidth: 'thin',
-              scrollbarColor: 'transparent transparent',
               '&::-webkit-scrollbar': {
-                display: 'none',
+                width: '8px',
               },
+              '&::-webkit-scrollbar-track': {
+                background: 'transparent',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: '#ccc',
+                borderRadius: '10px',
+                border: '2px solid transparent',
+                backgroundClip: 'content-box',
+              },
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#ccc transparent',
             }}
           >
             <Typography

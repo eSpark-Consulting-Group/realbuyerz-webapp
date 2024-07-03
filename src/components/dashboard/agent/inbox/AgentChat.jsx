@@ -1,6 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Box, Grid, Tab, Tabs } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  IconButton,
+  Tab,
+  Tabs,
+} from '@mui/material';
 
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
@@ -10,6 +17,7 @@ const AgentChat = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
   const [chatRoomState, setChatRoomState] = useState([]);
+  const [loading, setLoading] = useState(false);
   console.log(currentTab);
   const [selectedChatRoom, setSelectedChatRoom] = useState({
     title: 'John Doe',
@@ -68,7 +76,12 @@ const AgentChat = () => {
       label: 'Archive',
     },
   ];
-
+  const handleRefresh = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
   return (
     <Box
       sx={{
@@ -87,18 +100,34 @@ const AgentChat = () => {
         }}
       >
         <Box>
-          <Box
-            component="img"
-            src="/icons/RefreshIcon.svg"
-            alt={'Refresh'}
+          <IconButton
+            size="small"
             sx={{
-              width: '20px',
-              height: '18px',
-              marginRight: '20px',
-              marginBottom: '10px',
+              '&:hover': {
+                backgroundColor: '#fff',
+              },
             }}
-          />
+            onClick={handleRefresh}
+            disabled={loading}
+          >
+            {loading ? (
+              <CircularProgress size={20} />
+            ) : (
+              <Box
+                component="img"
+                src="/icons/RefreshIcon.svg"
+                alt={'Refresh'}
+                sx={{
+                  width: '20px',
+                  height: '18px',
+                  marginRight: '20px',
+                  marginBottom: '10px',
+                }}
+              />
+            )}
+          </IconButton>
         </Box>
+
         <Tabs
           variant="scrollable"
           value={value}
