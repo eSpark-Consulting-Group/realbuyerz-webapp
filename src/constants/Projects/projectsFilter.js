@@ -1,7 +1,7 @@
 export const AREA_UNITS = [
-  { value: 'sqft', title: 'Sq.ft' },
-  { value: 'sqm', title: 'Sq.M' },
-  { value: 'sqyd', title: 'Sq.Yd' },
+  { value: 'sq.ft', title: 'Sq.ft' },
+  { value: 'sq.m', title: 'Sq.M' },
+  { value: 'sq.yd', title: 'Sq.Yd' },
   { value: 'marla', title: 'Marla' },
   { value: 'kanal', title: 'Kanal' },
 ];

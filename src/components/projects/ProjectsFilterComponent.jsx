@@ -37,7 +37,7 @@ const ProjectsFilterComponent = ({
   setSelectedProperty,
   handleClearFilter,
   handleFilter,
-  globalUnits,
+  globalUnits
 }) => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -128,7 +128,9 @@ const ProjectsFilterComponent = ({
             <FormControl fullWidth>
               <Select
                 fullWidth
-                value={globalUnits?.PROPERTY_TYPES[0]?.value}
+                value={selectedPropertyAdType ||
+                  globalUnits?.PROPERTY_TYPES[0]?.value
+                }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}
               >
                 {globalUnits?.PROPERTY_TYPES?.map((unit, index) => (
@@ -143,7 +145,7 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id1}
               variant="outlined"
-              value={selectedProperty?.title || 'Any'}
+              value={selectedProperty !== '' ? selectedProperty?.title : 'Any'}
               onClick={handleClick1}
               fullWidth
             />
@@ -180,7 +182,8 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id2}
               variant="outlined"
-              value={`${selectedPriceRange[0]} -  ${selectedPriceRange[1]}  ${selectedPriceUnit}`}
+              placeholder='0 - 5000 PKR'
+              value={selectedPriceRange[0] && selectedPriceRange[1] !== '' ? `${selectedPriceRange[0]} - ${selectedPriceRange[1]}  ${selectedPriceUnit}` : null}
               onClick={handleClick2}
               fullWidth
             />
@@ -216,7 +219,8 @@ const ProjectsFilterComponent = ({
             <TextField
               aria-describedby={id3}
               variant="outlined"
-              value={`${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}`}
+              value={selectedPriceRange[0] && selectedPriceRange[1] !== '' ? `${selectedAreaRange[0]} - ${selectedAreaRange[1]} ${selectedAreaUnit}` : null}
+              placeholder='0 - 5000 SQFT'
               onClick={handleClick3}
               fullWidth
             />

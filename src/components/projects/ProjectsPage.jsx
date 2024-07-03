@@ -10,7 +10,6 @@ import NotFoundSection from '@/src/components/global/NotFoundSection';
 const ProjectsPage = () => {
   const globalUnits = useSelector((state) => state.globalUnits);
   const [selectedProjects, setSelectedProjects] = useState([]);
-  console.log(selectedProjects, 'selectedProjects');
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
   const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
@@ -20,6 +19,17 @@ const ProjectsPage = () => {
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
+  console.log(selectedProjects, "selectedProjects");
+  console.log(searchText, "searchText");
+  console.log(selectedPropertyAdType, "selectedPropertyAdType");
+  console.log(selectedAreaUnit, "selectedAreaUnit");
+  console.log(selectedPriceUnit, "selectedPriceUnit");
+  console.log(selectedAreaRange, "selectedAreaRange");
+  console.log(selectedPriceRange, "selectedPriceRange");
+  console.log(selectedPropertyTab, "selectedProjects");
+  console.log(selectedProperty, "selectedProjects");
+
+
   const { agentPostings: projects } = useSelector(
     (state) => state.postListingAds
   );
@@ -27,24 +37,24 @@ const ProjectsPage = () => {
   const filteredData = projects?.filter((project) => {
     return (
       (searchText === '' ||
-        project?.title?.toLowerCase().includes(searchText.toLowerCase()) ||
+        project?.title?.toLowerCase().includes(searchText?.toLowerCase()) ||
         project?.description
           ?.toLowerCase()
-          .includes(searchText.toLowerCase())) &&
-      (selectedPropertyAdType === '' ||
+          .includes(searchText?.toLowerCase())) &&
+      (selectedPropertyAdType === '' || selectedPropertyAdType === ' ' ||
         project?.purpose?.toLowerCase() ===
-          selectedPropertyAdType.toLowerCase()) &&
+        selectedPropertyAdType?.toLowerCase()) &&
       (selectedProperty === '' ||
         project?.propertyType?.toLowerCase() ===
-          selectedProperty.toLowerCase()) &&
+        selectedProperty?.toLowerCase()) &&
       (selectedPropertyTab === 0 ||
-        project?.propertyCategory?.toString().toLowerCase() ===
-          selectedPropertyTab.toString().toLowerCase()) &&
+        project?.propertyCategory?.toString()?.toLowerCase() ===
+        selectedPropertyTab.toString()?.toLowerCase()) &&
       (selectedAreaUnit === '' ||
-        project?.areaUnit?.toLowerCase() === selectedAreaUnit.toLowerCase()) &&
+        project?.areaUnit?.toLowerCase() === selectedAreaUnit?.toLowerCase()) &&
       (selectedPriceUnit === '' ||
         project?.amountCurrency?.toLowerCase() ===
-          selectedPriceUnit.toLowerCase()) &&
+        selectedPriceUnit?.toLowerCase()) &&
       (selectedPriceRange[0] === '' ||
         project?.amount >= selectedPriceRange[0]) &&
       (selectedPriceRange[1] === '' ||
@@ -54,7 +64,6 @@ const ProjectsPage = () => {
       project?.status?.toLowerCase() === 'submit'
     );
   });
-  console.log(filteredData, 'filtered');
   const handleFilter = () => {
     setSelectedProjects(filteredData);
   };
