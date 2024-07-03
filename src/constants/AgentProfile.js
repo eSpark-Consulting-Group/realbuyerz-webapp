@@ -13,7 +13,6 @@ export const LOCATION_ICON = '/images/agent-profile-icons/location.svg';
 export const FOR_SALE_ICON = '/images/agent-profile-icons/home.svg';
 export const FOR_RENT_ICON = '/images/agent-profile-icons/keys.svg';
 export const ALT = 'amenities';
-
 export const LETS_TALK = 'Lets talk';
 export const PROPERTIES = '/properties';
 export const USER_TYPE = {

@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
 import {
   ESTIMATE_RANGE,
-  postListingAdCard,
+  POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
 
 const ProposalDetails = ({
@@ -132,7 +132,7 @@ const ProposalDetails = ({
               status={status || ''}
               proposal={proposal || ''}
               location={location || ''}
-              cardKeys={postListingAdCard}
+              cardKeys={POST_LISTINGAD_CARD}
               noConnects={false}
             />
           </Grid>

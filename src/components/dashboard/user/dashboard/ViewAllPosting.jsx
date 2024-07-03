@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 
 import DashboardTitle from './DashboardTitle';
 import SeeAllPosting from './SeeAllPosting';
-import { UserDashboardPage } from '@/src/constants/user/Dashboard';
+import { USER_DASHBOARD_PAGE } from '@/src/constants/user/Dashboard';
 
 const ViewAllPosting = () => {
   return (
@@ -22,13 +22,13 @@ const ViewAllPosting = () => {
       }}
     >
       <Box>
-        <DashboardTitle title={UserDashboardPage?.sub_Title} />
+        <DashboardTitle title={USER_DASHBOARD_PAGE?.sub_Title} />
       </Box>
       <Box>
         <SeeAllPosting
-          title={UserDashboardPage?.see_All_Posting?.title}
-          link={UserDashboardPage?.see_All_Posting?.link}
-          subTitle={UserDashboardPage?.sub_Title}
+          title={USER_DASHBOARD_PAGE?.see_All_Posting?.title}
+          link={USER_DASHBOARD_PAGE?.see_All_Posting?.link}
+          subTitle={USER_DASHBOARD_PAGE?.sub_Title}
         />
       </Box>
     </Box>

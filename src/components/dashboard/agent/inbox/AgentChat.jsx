@@ -4,7 +4,7 @@ import { Box, Grid, Tab, Tabs } from '@mui/material';
 
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
-import { chatRooms } from '@/src/constants/Chats';
+import { CHAT_ROOMS } from '@/src/constants/Chats';
 
 const AgentChat = () => {
   const [value, setValue] = useState(0);
@@ -41,7 +41,7 @@ const AgentChat = () => {
     return darkColors[randomIndex];
   }
   useEffect(() => {
-    const tempData = [...chatRooms].map((room) => ({
+    const tempData = [...CHAT_ROOMS].map((room) => ({
       ...room,
       background: !room?.avatar && paintBackground(),
     }));

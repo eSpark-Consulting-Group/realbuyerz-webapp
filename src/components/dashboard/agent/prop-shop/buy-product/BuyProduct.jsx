@@ -11,8 +11,8 @@ import {
   updatePaymentMethodSelection,
 } from '@/src/redux/slices/settings/PakageCartSlice';
 import {
-  Buy_Connects,
-  Buy_Product_Data,
+  BUY_CONNECTS,
+  BUY_PRODUCT_DATA,
 } from '@/src/constants/agent/Buy_Product';
 import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 
@@ -48,7 +48,7 @@ export default function BuyProduct() {
     buttonText,
     textField,
     dropdown,
-  } = Buy_Connects;
+  } = BUY_CONNECTS;
   const { NAME_ON_CARD } = PAYMENT_METHODE_DATA.constantLabel;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,7 +108,7 @@ export default function BuyProduct() {
         {!paymentMedthod && (
           <Grid xs={12} sm={12} md={12} lg={8.5} item>
             <Item>
-              <Subscription title={Buy_Product_Data?.title} />
+              <Subscription title={BUY_PRODUCT_DATA?.title} />
             </Item>
           </Grid>
         )}

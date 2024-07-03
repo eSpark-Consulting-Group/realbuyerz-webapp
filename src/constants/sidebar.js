@@ -1,5 +1,5 @@
 export const SIDE_NAV_WIDTH = 300;
-export const Agent_Routes = [
+export const AGENT_ROUTES = [
   {
     icon: '/images/icons/agent-icons/live-bidding.svg',
     active: '/images/icons/agent-icons/live-bidding-active.svg',
@@ -65,7 +65,7 @@ export const Agent_Routes = [
   },
 ];
 
-export const User_Routes = [
+export const USER_ROUTES = [
   {
     icon: '/images/icons/user-icons/dashboard.svg',
     active: '/images/icons/user-icons/dashboard-active.svg',

@@ -10,7 +10,7 @@ export const ESTIMATE_RANGE = 'Est. Range:';
 export const PROPOSALS = 'Proposals';
 export const BACK_TO_DASHBOARD = 'Back to dashboard';
 
-export const UserDashboardPage = {
+export const USER_DASHBOARD_PAGE = {
   title: 'Dashboard',
   sub_Title: 'Your Postings',
   see_All_Posting: {
@@ -19,7 +19,7 @@ export const UserDashboardPage = {
   },
 };
 
-export const postListingAdCard = {
+export const POST_LISTINGAD_CARD = {
   status: 'Status :',
   city: 'City :',
   area: 'Area :',

@@ -75,37 +75,3 @@ export const USERS_DATA = {
     },
   },
 };
-
-export const ADD_USER_DATA = [
-  {
-    id: 1, //id
-    userName: 'muahhmadali', //string
-    firstName: 'Muhammad', //string
-    lastName: 'Ali', //string
-    email: 'ali@esparkconsultants.com', //email
-    address: 'Liaquatabad', //string
-    city: 'karachi', //string
-    country: 'pakistan', //string
-    landline: +424564879798, //tel
-    mobile: +424564879798, //tel
-    whatsapp: +914564879798, //tel
-    about: '45648797984564879798456487979845648797984564879798', //string
-  },
-];
-
-export const ADD_USER_AUTH = {
-  id: 1, //id
-  userName: 'armankhan', //string
-  confirmPassword: '456789', //string
-  newPassword: '456789', //string
-  oldPassword: '123456', //string
-};
-
-export const ADD_USER_IMAGE = {
-  id: 1, //id
-  userName: 'armankhan', //string
-  profilePicture: '456789', //string
-  coverImage: '456789', //string
-};
-
-export const USER_NOT_FOUND = 'User Not Found';

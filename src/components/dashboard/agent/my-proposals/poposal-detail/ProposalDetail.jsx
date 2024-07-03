@@ -24,7 +24,7 @@ import {
 import { PROPOSAL } from '@/src/constants/agent/Proposal';
 import {
   ESTIMATE_RANGE,
-  postListingAdCard,
+  POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
 import {
   findAgent,
@@ -210,7 +210,7 @@ const ProposalDetail = () => {
                             status={find_ad?.purpose}
                             location={find_ad?.location}
                             noConnects={false}
-                            cardKeys={postListingAdCard}
+                            cardKeys={POST_LISTINGAD_CARD}
                             justifyContent={'flex-start'}
                           />
                           <Box

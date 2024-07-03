@@ -1,5 +1,5 @@
 import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
-import { chatMessages } from '@/src/constants/Chats';
+import { CHAT_MESSAGES } from '@/src/constants/Chats';
 import { Box, Grid, Menu, MenuItem, Typography } from '@mui/material';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
@@ -38,8 +38,8 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const [conversation, setConversation] = useState([]);
 
   useEffect(() => {
-    setConversation([...chatMessages.conversation]);
-  }, [chatMessages]);
+    setConversation([...CHAT_MESSAGES.conversation]);
+  }, [CHAT_MESSAGES]);
 
   const uploadOptionsRef = useRef(null);
 

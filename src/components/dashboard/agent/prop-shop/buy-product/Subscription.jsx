@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-import { Buy_Product_Data } from '@/src/constants/agent/Buy_Product';
+import { BUY_PRODUCT_DATA } from '@/src/constants/agent/Buy_Product';
 import BuyProductTable from './BuyProductTable';
 import { useSelector } from 'react-redux';
 
 const Subscription = ({ title }) => {
   const packages = useSelector((state) => state.packages);
-  const { BuyProductColumns } = Buy_Product_Data;
+  const { BuyProductColumns } = BUY_PRODUCT_DATA;
   return (
     <Box
       sx={{

@@ -1,6 +1,3 @@
-//renamed form PROPERTIES_LISTING to PROPERTIES_DATA and links Added
-//Reason: name is Not UNique and Promenent name
-// FEATURED_PROPERTIES & NEWLY_LSITED_PROPERTIES Merged Propeties
 export const PROPERTIES_DATA = [
   {
     id: 1,
@@ -1668,7 +1665,6 @@ export const POPULAR_LOCATIONS_DATA = {
     'Sargodha',
   ],
 };
-
 export const ADD_PROPERTY = [
   {
     id: 1, //id

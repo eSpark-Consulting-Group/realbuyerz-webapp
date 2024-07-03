@@ -15,7 +15,7 @@ import {
 
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
-import { postListingAdCard } from '@/src/constants/user/Dashboard';
+import { POST_LISTINGAD_CARD } from '@/src/constants/user/Dashboard';
 import { checkProposal, searching } from '@/src/utils/dashboardUtils';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -262,7 +262,7 @@ const PostListingCard = ({ height, ads }) => {
                             'Submited'
                           )}
                           connects={item?.connects}
-                          cardKeys={postListingAdCard}
+                          cardKeys={POST_LISTINGAD_CARD}
                           noConnects={true}
                         />
                       </Grid>
