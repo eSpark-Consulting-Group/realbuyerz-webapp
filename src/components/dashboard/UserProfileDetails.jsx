@@ -149,6 +149,9 @@ const UserProfileDetails = ({
                 border: '1px solid #FB631C',
                 color: '#fff',
                 cursor: 'pointer',
+                '@media (max-width: 400px)': {
+                  mb: '15px',
+                },
               }}
             >
               {text || ''}
