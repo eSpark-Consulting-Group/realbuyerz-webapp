@@ -24,6 +24,8 @@ const ViewAgentProfile = ({ image, name, link }) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'flex-start',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: '10px', md: '0px' },
           p: 1,
         }}
       >
@@ -32,8 +34,11 @@ const ViewAgentProfile = ({ image, name, link }) => {
           variant="secondary"
           sx={{
             ml: 2,
-            fontSize: { xs: '15px', md: '25px' },
+            fontSize: { xs: '10px', md: '25px' },
             fontWeight: 600,
+            '@media (min-width:950px) and (max-width: 1050px)': {
+              fontSize: '16px',
+            },
           }}
         >
           {name}
