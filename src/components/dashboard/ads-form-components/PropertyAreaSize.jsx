@@ -156,6 +156,16 @@ const PropertyAreaSize = ({
                   clearIcon={null}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
+                    '& .MuiAutocomplete-inputRoot': {
+                      '&:hover': {
+                        backgroundColor: 'transparent',
+                      },
+                    },
+                    '& .MuiAutocomplete-popupIndicator': {
+                      '&:hover': {
+                        backgroundColor: 'transparent',
+                      },
+                    },
                     '& fieldset': {
                       border: formik?.errors[item?.label]
                         ? 'solid 1px red'
