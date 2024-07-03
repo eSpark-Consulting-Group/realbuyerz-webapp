@@ -129,7 +129,6 @@ const ProjectsFilterComponent = ({
               <Select
                 fullWidth
                 value={
-                  selectedPropertyAdType ||
                   globalUnits?.PROPERTY_TYPES[0]?.value
                 }
                 onChange={(e) => setSelectedPropertyAdType(e.target.value)}

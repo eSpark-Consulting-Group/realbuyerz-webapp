@@ -9,16 +9,14 @@ import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const ProjectsPage = () => {
   const globalUnits = useSelector((state) => state.globalUnits);
+  const [selectedProjects, setSelectedProjects] = useState([]);
+  console.log(selectedProjects, 'selectedProjects');
   const [searchText, setSearchText] = useState('');
   const [selectedPropertyAdType, setSelectedPropertyAdType] = useState('');
-  const [selectedAreaUnit, setSelectedAreaUnit] = useState(
-    globalUnits?.AREA_UNITS[0].value
-  );
-  const [selectedAreaRange, setSelectedAreaRange] = useState(['0', '5000']);
-  const [selectedPriceUnit, setSelectedPriceUnit] = useState(
-    globalUnits?.CURRENCY_UNITS[0].value
-  );
-  const [selectedPriceRange, setSelectedPriceRange] = useState(['0', '5000']);
+  const [selectedAreaUnit, setSelectedAreaUnit] = useState('');
+  const [selectedAreaRange, setSelectedAreaRange] = useState(['', '']);
+  const [selectedPriceUnit, setSelectedPriceUnit] = useState('');
+  const [selectedPriceRange, setSelectedPriceRange] = useState(["", '']);
   const [selectedPropertyTab, setSelectedPropertyTab] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState('');
 
@@ -26,40 +24,42 @@ const ProjectsPage = () => {
     (state) => state.postListingAds
   );
 
+  const filteredData = projects?.filter((project) => {
+    return (
+      (searchText === '' ||
+        project?.title?.includes(searchText) ||
+        project?.description?.includes(searchText)) &&
+      (selectedPropertyAdType === '' ||
+        project?.purpose === selectedPropertyAdType) &&
+      (selectedProperty === '' ||
+        project?.propertyType === selectedProperty) &&
+      (selectedPropertyTab === 0 ||
+        project?.propertyCategory === selectedPropertyTab) &&
+      (selectedAreaUnit === '' || project?.areaUnit === selectedAreaUnit) &&
+      (selectedPriceUnit === '' ||
+        project?.amountCurrency === selectedPriceUnit) &&
+      (selectedPriceRange[0] === '' || project?.amount >= selectedPriceRange[0]) &&
+      (selectedPriceRange[1] === '' || project?.amount <= selectedPriceRange[1]) &&
+      (selectedAreaRange[0] === '' || project?.area >= selectedAreaRange[0]) &&
+      (selectedAreaRange[1] === '' || project?.area <= selectedAreaRange[1]) &&
+      project?.status === 'submit'
+    );
+  });
+  console.log(filteredData, 'filtered');
   const handleFilter = () => {
-    const filteredData = projects?.filter((project) => {
-      return (
-        (searchText === '' ||
-          project?.title?.includes(searchText) ||
-          project?.description?.includes(searchText)) &&
-        (selectedPropertyAdType === '' ||
-          project?.purpose === selectedPropertyAdType) &&
-        (selectedProperty === '' ||
-          project?.propertyType === selectedProperty) &&
-        (selectedPropertyTab === 0 ||
-          project?.propertyCategory === selectedPropertyTab) &&
-        (selectedAreaUnit === '' || project?.areaUnit === selectedAreaUnit) &&
-        (selectedPriceUnit === '' ||
-          project?.amountCurrency === selectedPriceUnit) &&
-        project?.amount >= selectedPriceRange[0] &&
-        project?.amount <= selectedPriceRange[1] &&
-        project?.area >= selectedAreaRange[0] &&
-        project?.area <= selectedAreaRange[1] &&
-        project?.status === 'submit'
-      );
-    });
-    console.log(filteredData, 'filtered');
+    setSelectedProjects(filteredData)
   };
 
   const handleClearFilter = () => {
     setSelectedPropertyAdType('');
     setSelectedPropertyTab(0);
     setSelectedProperty('');
-    setSelectedPriceUnit(globalUnits?.CURRENCY_UNITS[0]?.value || '');
-    setSelectedPriceRange([0, 5000]);
-    setSelectedAreaUnit(globalUnits?.AREA_UNITS[0]?.value || '');
-    setSelectedAreaRange([0, 5000]);
+    setSelectedPriceUnit('');
+    setSelectedPriceRange(["", ""]);
+    setSelectedAreaUnit('');
+    setSelectedAreaRange(["", ""]);
     setSearchText('');
+    setSelectedProjects(projects)
   };
 
   if (!projects || projects.length === 0) {
@@ -82,7 +82,7 @@ const ProjectsPage = () => {
           marginLeft: '15px',
         }}
       >
-        <ProjectsSlider data={projects} category={link} />
+        <ProjectsSlider data={selectedProjects} category={link} />
       </Box>
     </Box>
   );
