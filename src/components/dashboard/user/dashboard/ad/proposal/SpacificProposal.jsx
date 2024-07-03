@@ -27,6 +27,7 @@ import {
   findAgent,
   findProposalWithOutStatus,
 } from '@/src/utils/dashboardUtils';
+import { format } from 'date-fns';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -127,7 +128,7 @@ const SpacificProposal = () => {
                     <Typography>
                       <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
                       {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
-                      - 3:16pm local time
+                      - {format(new Date(find_agent.created_at), 'h:mma')} local time
                     </Typography>
                   </Box>
                 </Box>
