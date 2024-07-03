@@ -125,9 +125,6 @@ const VerificationCode = ({ receivedCode, otpReceivedCode }) => {
       )}
       {verificationResult && (
         <Typography
-          sx={{
-            my: '-10px',
-          }}
         >
           {verificationResult}
         </Typography>

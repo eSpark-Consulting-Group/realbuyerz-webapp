@@ -35,7 +35,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
               flexDirection: 'column',
               alignItems: 'center',
               width: '100%',
-              gap: '15px',
+              gap: '13px',
               height: { xs: '500px', md: '358px' },
             }}
           >
