@@ -11,7 +11,7 @@ const userAdsSlice = createSlice({
         created_at: '2024-01-22T16:43:08.660Z',
         other_features: [],
         title: 'NEED 4 BEDROOM APARTMENT',
-        location: '',
+        location: 'gulshan',
         description:
           'We are planning to buy a new home in the month of dec, if someone knows about',
         area: 10,
