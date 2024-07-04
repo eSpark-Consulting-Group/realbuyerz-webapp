@@ -83,7 +83,7 @@ const BrowseByCategory = ({ data }) => {
         {isSmallScreen ? (
           <Swiper {...sliderSettings}>
             {data?.map((category, index) => (
-              <SwiperSlide key={index} className='browseSwiperSlider'>
+              <SwiperSlide key={index} className="browseSwiperSlider">
                 <Link href={`/category/${category?.id}`} passHref>
                   <Grid
                     container
