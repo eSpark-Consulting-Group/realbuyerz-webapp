@@ -70,7 +70,7 @@ const PropertyProposal = () => {
               amount={specificPost?.amount}
               status={specificPost?.purpose}
               proposal={specificPost?.proposals?.length}
-              postedTime={specificPost?.posted_Time}
+              postedTime={specificPost?.created_at}
               description={specificPost?.description}
             />
             <Divider />

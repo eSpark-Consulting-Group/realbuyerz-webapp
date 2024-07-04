@@ -101,7 +101,15 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
               renderInput={(params) => (
-                <TextField {...params} label="Select City" />
+                <TextField
+                  {...params}
+                  label="Select City"
+                  InputLabelProps={{
+                    sx: {
+                      color: '#969696',
+                    },
+                  }}
+                />
               )}
               onChange={(e, value) => {
                 formik?.handleChange('city')(value || '');

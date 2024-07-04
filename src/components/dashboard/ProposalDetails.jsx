@@ -6,6 +6,7 @@ import {
   ESTIMATE_RANGE,
   POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
+import { formatDistanceToNow } from 'date-fns';
 
 const ProposalDetails = ({
   city,
@@ -51,7 +52,9 @@ const ProposalDetails = ({
                 {title || ''}
               </Typography>
               <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                {postedTime || ''}
+                {formatDistanceToNow(new Date(postedTime), {
+                  addSuffix: true,
+                })}
               </Typography>
             </Grid>
             <Grid
