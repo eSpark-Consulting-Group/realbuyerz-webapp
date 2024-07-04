@@ -31,7 +31,6 @@ const AgentImage = ({ data, setFieldValue }) => {
           position: 'absolute',
           bottom: 0,
           right: 0,
-          backgroundColor: '#fff',
           borderRadius: '100%',
           p: 0.5,
         }}
