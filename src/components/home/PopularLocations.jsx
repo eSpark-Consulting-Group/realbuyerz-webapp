@@ -147,7 +147,7 @@ const PopularLocations = ({ data }) => {
                             variant="body1"
                             sx={{
                               fontSize: '14px',
-                              py: { xs: '5px', sm: '6px' },
+                              py: { xs: '5px', sm: '6px',lg:'5px' },
                               lineHeight: '16.94px',
                               fontWeight: 500,
                               color: '#666666',
