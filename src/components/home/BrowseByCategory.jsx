@@ -35,29 +35,32 @@ const BrowseByCategory = ({ data }) => {
       0: {
         slidesPerView: 1,
       },
-      425: {
+      320: {
         slidesPerView: 2,
       },
-      600: {
+      460: {
         slidesPerView: 3,
       },
-      768: {
+      620: {
         slidesPerView: 4,
+      },
+      768: {
+        slidesPerView: 5,
       },
       960: {
         slidesPerView: 6,
       },
-      1024: {
-        slidesPerView: 8,
+      1180: {
+        slidesPerView: 7,
       },
-      1280: {
+      1400: {
         slidesPerView: 8,
       },
     },
   };
 
   const isSmallScreen = useMediaQuery((theme) =>
-    theme.breakpoints.between('xs', 'md')
+    theme.breakpoints.between('xs', 'lg')
   );
 
   return (
@@ -80,7 +83,7 @@ const BrowseByCategory = ({ data }) => {
         {isSmallScreen ? (
           <Swiper {...sliderSettings}>
             {data?.map((category, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className='browseSwiperSlider'>
                 <Link href={`/category/${category?.id}`} passHref>
                   <Grid
                     container
