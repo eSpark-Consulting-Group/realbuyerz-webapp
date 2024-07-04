@@ -91,8 +91,8 @@ const HeroSection = () => {
         <Box
           sx={{
             width: {
-              xs: '40px',
-              sm: '60px',
+              xs: 'auto',
+              sm: 'auto',
               md: 'auto',
               lg: 'auto',
               xl: 'auto',
