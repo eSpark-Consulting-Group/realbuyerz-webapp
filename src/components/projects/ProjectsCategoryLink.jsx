@@ -1,15 +1,18 @@
-import { Container, Typography } from '@mui/material';
-import Link from 'next/link';
 import React from 'react';
+import { Container, Typography, useMediaQuery } from '@mui/material';
+import Link from 'next/link';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const ProjectsCategoryLink = ({ category, link, linkText }) => {
+  const isMobile = useMediaQuery('(max-width:600px)');
+
   return (
     <Container
       sx={{ display: 'flex', justifyContent: 'space-between', py: '15px' }}
     >
       <Typography
         sx={{
-          fontSize: '25px',
+          fontSize: { xs: '20px', md: '25px' },
           fontWeight: 500,
           lineHeight: '30px',
           textTransform: 'capitalize',
@@ -17,7 +20,11 @@ const ProjectsCategoryLink = ({ category, link, linkText }) => {
       >
         {category}
       </Typography>
-      {link && linkText ? (
+      {link && isMobile ? (
+        <Link href={link}>
+          <MoreHorizIcon />
+        </Link>
+      ) : link && linkText ? (
         <Link href={link}>
           <Typography
             sx={{
