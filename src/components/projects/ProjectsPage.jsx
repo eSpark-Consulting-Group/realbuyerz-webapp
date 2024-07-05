@@ -36,7 +36,6 @@ const ProjectsPage = () => {
         selectedPropertyAdType === 'any' ||
         project?.purpose?.toLowerCase() === selectedPropertyAdType) &&
       (selectedProperty === '' ||
-        selectedProperty === ' ' ||
         project?.propertyType?.toLowerCase() === selectedProperty?.value) &&
       (selectedAreaUnit === '' ||
         selectedAreaUnit === 'any' ||

@@ -183,7 +183,7 @@ const ProjectsFilterComponent = ({
               variant="outlined"
               placeholder="0 - 5000 PKR"
               value={
-                selectedPriceRange[0] && selectedPriceRange[1] !== ''
+                selectedPriceRange[0] !== '' && selectedPriceRange[1] !== ''
                   ? `${selectedPriceRange[0]} - ${selectedPriceRange[1]}  ${selectedPriceUnit}`
                   : null
               }
