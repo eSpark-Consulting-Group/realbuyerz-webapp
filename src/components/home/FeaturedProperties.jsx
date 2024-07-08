@@ -99,8 +99,9 @@ const FeaturedProperties = () => {
                       },
                       mb: {
                         lg: index % 2 !== 0 ? '40px' : '0',
-                        sm: '10px',
+                        sm: '35px',
                         md: '10px',
+                        xs:'35px'
                       },
                     }}
                   >
