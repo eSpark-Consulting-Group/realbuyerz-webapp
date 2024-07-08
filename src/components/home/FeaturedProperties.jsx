@@ -293,7 +293,7 @@ const FeaturedProperties = () => {
           </Box>
         </Swiper>
       ) : (
-        <Box className="full-container-width mx-auto">
+        <Box className="full-container-width mx-auto" sx={{ mx: 'auto' }}>
           <Grid
             container
             sx={{
