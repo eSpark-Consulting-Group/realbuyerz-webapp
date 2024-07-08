@@ -16,6 +16,7 @@ const ProductCart = ({
   handleChange,
   state,
   resetForm,
+  selectedValue,
 }) => {
   const { cart, totalPrice, connects, dollarRate, emptyCard } = useSelector(
     (state) => state.PakageCart
@@ -69,6 +70,7 @@ const ProductCart = ({
             handleChange={handleChange}
             state={state}
             resetForm={resetForm}
+            selectedValue={selectedValue}
           />
         )}
       </Grid>

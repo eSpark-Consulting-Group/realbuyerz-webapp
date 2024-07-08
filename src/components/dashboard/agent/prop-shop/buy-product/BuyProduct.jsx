@@ -102,6 +102,8 @@ export default function BuyProduct() {
     });
   };
 
+  console.log(state, 'state');
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container rowSpacing={1.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -138,6 +140,7 @@ export default function BuyProduct() {
         <Grid xs={12} sm={12} md={12} lg={3.5} item>
           <Item>
             <ProductCart
+              selectedValue={selectedValue}
               isModalOpen={isModalOpen}
               setIsModalOpen={setIsModalOpen}
               handleChange={handleChange}
