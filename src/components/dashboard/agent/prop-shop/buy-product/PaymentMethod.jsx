@@ -6,6 +6,7 @@ import { PAYMENT_METHODE_DATA } from '@/src/constants/agent/Payment_Method';
 import {
   updatePaymentMethodSelection,
   setFormError,
+  updateCVV,
 } from '@/src/redux/slices/settings/PakageCartSlice';
 
 import { getCardType } from '@/src/utils/getCardType';
@@ -56,7 +57,6 @@ const PaymentMethod = ({
   const [cardTypeNumber, setCardTypeNumber] = useState();
   const [saveCardTitle, setSaveCardTitle] = useState('');
   const [CVV, setCVV] = useState('');
-  console.log(CVV);
   const dispatch = useDispatch();
   const handleChangeRadioButton = (e) => {
     setSelectedValue(e.target.value);
@@ -115,11 +115,16 @@ const PaymentMethod = ({
     }
   }, [selectedValue]);
 
+  useEffect(() => {
+    if (CVV && selectedCard.length === 1) {
+      dispatch(updateCVV({ cardNumber: selectedCard[0].card_number, CVV }));
+    }
+  }, [CVV]);
+
   const selectedCard = paymentMedthodDetails?.filter(
     (card) => card?.card_number === typeCard
   );
-  console.log(selectedCard);
-  console.log(selectedValue, 'selectedValue');
+
   return (
     <Box
       sx={{

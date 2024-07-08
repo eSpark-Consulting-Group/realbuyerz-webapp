@@ -54,7 +54,12 @@ export const PakageCartSlice = createSlice({
           : { ...card, isSelected: false }
       );
     },
-
+    updateCVV: (state, action) => {
+      const { cardNumber, CVV } = action.payload;
+      state.paymentMedthodDetails = state.paymentMedthodDetails.map((card) =>
+        card.card_number === Number(cardNumber) ? { ...card, CVV } : card
+      );
+    },
     setFormError: (state, action) => {
       state.formError = action.payload;
     },
@@ -77,6 +82,7 @@ export const {
   updateOrderMethodSelection,
   isResetForm,
   removePaymentMethodSelection,
+  updateCVV,
 } = PakageCartSlice.actions;
 
 export default PakageCartSlice.reducer;
