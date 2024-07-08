@@ -106,7 +106,7 @@ const PropertyAreaSize = ({
               >
                 <TextField
                   placeholder={item?.placeholder}
-                  type="number"
+                  type="string"
                   sx={{
                     width: { xs: '100%', sm: `calc(100% - ${160}px)` },
                     fontSize: '18px',
@@ -149,26 +149,29 @@ const PropertyAreaSize = ({
                   value={formik?.values[item?.unit]}
                   disablePortal
                   id="combo-box-demo"
-                  options={item?.label == 'area' ? aeraSizes : currency}
+                  options={item?.label === 'area' ? aeraSizes : currency}
                   popupIcon={
                     <KeyboardArrowDownIcon sx={{ color: '#777777' }} />
                   }
+                  clearIcon={null}
                   sx={{
                     width: { xs: '100%', sm: '160px' },
+                    '& .MuiAutocomplete-inputRoot': {
+                      '&:hover': {
+                        backgroundColor: 'transparent',
+                      },
+                    },
+                    '& .MuiAutocomplete-popupIndicator': {
+                      '&:hover': {
+                        backgroundColor: 'transparent',
+                      },
+                    },
                     '& fieldset': {
                       border: formik?.errors[item?.label]
                         ? 'solid 1px red'
                         : '1px solid #E7E7E7',
                       borderRadius: '10px',
                     },
-                    '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                      {
-                        color: '#777777',
-                        display: 'inline-flex',
-                        '&:hover': {
-                          color: '#777777',
-                        },
-                      },
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -176,7 +179,7 @@ const PropertyAreaSize = ({
                       label={item?.dropPlaceholder}
                       InputLabelProps={{
                         sx: {
-                          fontSize: { xs: '14px', md: '15px', lg: '17px' },
+                          fontSize: { xs: '14px', md: '15px', lg: '15px' },
                           fontWeight: 400,
                           color: '#969696',
                           mr: 10,
