@@ -89,7 +89,7 @@ const MasterCard = ({
               fontWeight: 600,
             }}
           >
-            {cardName}
+            {`${cardName} - ${saveCardTitle || 'unknown'}`}
           </Typography>
           <Typography
             sx={{

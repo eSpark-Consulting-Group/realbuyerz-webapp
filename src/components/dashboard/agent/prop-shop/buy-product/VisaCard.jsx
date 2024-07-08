@@ -13,6 +13,7 @@ const VisaCard = ({
   setTypeCard,
   cardNo,
   typeCard,
+  saveCardTitle,
 }) => {
   const gridRef = useRef(null);
   const finalValue = cardName;
@@ -91,7 +92,7 @@ const VisaCard = ({
                 fontWeight: 600,
               }}
             >
-              {cardName}
+              {`${cardName} - ${saveCardTitle || 'unknown'}`}
             </Typography>
             <Typography
               sx={{

@@ -54,6 +54,7 @@ const PaymentMethod = ({
     GENERAL_CARD,
   } = PAYMENT_METHODE_DATA.constantLabel;
   const [cardTypeNumber, setCardTypeNumber] = useState();
+  const [saveCardTitle, setSaveCardTitle] = useState('');
 
   const dispatch = useDispatch();
   const handleChangeRadioButton = (e) => {
@@ -154,6 +155,7 @@ const PaymentMethod = ({
                     typeCard={typeCard}
                     paymentMedthodDetails={paymentMedthodDetails}
                     setSelectedValue={setSelectedValue}
+                    saveCardTitle={card?.card_title}
                   />
                 )}
                 {getCardType(card.card_number) === VISA && (
@@ -171,6 +173,7 @@ const PaymentMethod = ({
                     id={card.id}
                     setSelectCardId={selectCardId}
                     setSelectedValue={setSelectedValue}
+                    saveCardTitle={card?.card_title}
                   />
                 )}
                 {getCardType(card.card_number) === GENERAL_CARD && (
@@ -187,6 +190,7 @@ const PaymentMethod = ({
                     setSelectCardId={selectCardId}
                     paymentMedthodDetails={paymentMedthodDetails}
                     setSelectedValue={setSelectedValue}
+                    saveCardTitle={card?.card_title}
                   />
                 )}
               </>
@@ -209,6 +213,8 @@ const PaymentMethod = ({
           setChecked={setChecked}
           handleChangeCheckBox={handleChangeCheckBox}
           checkBoxLabel={checkBoxLabel}
+          saveCardTitle={saveCardTitle}
+          setSaveCardTitle={setSaveCardTitle}
         />
         <AccountType
           AccountName={ACCOUNT_NAME_EASYPAISA}
