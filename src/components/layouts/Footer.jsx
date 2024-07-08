@@ -52,7 +52,7 @@ const Footer = ({ data }) => {
           py: '50px',
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          '@media (min-width:280px) and (max-width:500px)': {
+          '@media (min-width:280px) and (max-width:959px)': { 
             paddingLeft: '40px',
           },
         }}
