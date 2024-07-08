@@ -127,6 +127,7 @@ const SubmitButton = ({
           <Button
             name="draft"
             value="draft"
+            variant='primary'
             type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
