@@ -98,6 +98,7 @@ const SubmitButton = ({
             <Button
               name="submit"
               value="submit"
+              variant="outlined"
               type="submit"
               sx={{
                 width: { xs: '40%', sm: '200px' },
@@ -106,15 +107,15 @@ const SubmitButton = ({
                 },
                 borderRadius: '5px',
                 border: '1px solid #FB631C',
-                background: '#FFF',
-                color: '#FB631C',
+                background: '#FFF !important',
+                color: '#FB631C !important',
                 height: '45px',
                 flexShrink: 0,
                 fontSize: { xs: '12px', sm: '15px' },
                 fontWeight: 400,
                 '&:hover': {
-                  color: '#fff',
-                  backgroundColor: '#FB631C',
+                  color: '#fff !important',
+                  backgroundColor: '#FB631C !important',
                 },
                 textTransform: 'capitalize',
               }}
@@ -127,7 +128,7 @@ const SubmitButton = ({
           <Button
             name="draft"
             value="draft"
-            variant='primary'
+            variant="primary"
             type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
@@ -136,7 +137,7 @@ const SubmitButton = ({
               },
               borderRadius: '5px',
               border: '1px solid #FB631C',
-              color: '#fff',
+              color: '#fff !important',
               background: '#FB631C',
               height: '45px',
               flexShrink: 0,
