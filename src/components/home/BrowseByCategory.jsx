@@ -148,7 +148,6 @@ const BrowseByCategory = ({ data }) => {
                           color: '#838383',
                           fontSize: '12px',
                           fontWeight: 400,
-                          px: '5px',
                         }}
                       >
                         {category?.name}
@@ -229,7 +228,6 @@ const BrowseByCategory = ({ data }) => {
                         color: '#838383',
                         fontSize: '12px',
                         fontWeight: 400,
-                        px: { lg: '20px' },
                       }}
                     >
                       {category?.name}
