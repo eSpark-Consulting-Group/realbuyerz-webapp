@@ -55,6 +55,7 @@ const PaymentMethod = ({
   } = PAYMENT_METHODE_DATA.constantLabel;
   const [cardTypeNumber, setCardTypeNumber] = useState();
   const [saveCardTitle, setSaveCardTitle] = useState('');
+  const [CVV, setCVV] = useState('');
 
   const dispatch = useDispatch();
   const handleChangeRadioButton = (e) => {
@@ -118,6 +119,7 @@ const PaymentMethod = ({
     (card) => card?.card_number === typeCard
   );
   console.log(selectedCard);
+  console.log(selectedValue, 'selectedValue');
   return (
     <Box
       sx={{
@@ -156,6 +158,7 @@ const PaymentMethod = ({
                     paymentMedthodDetails={paymentMedthodDetails}
                     setSelectedValue={setSelectedValue}
                     saveCardTitle={card?.card_title}
+                    setCVV={setCVV}
                   />
                 )}
                 {getCardType(card.card_number) === VISA && (
@@ -174,6 +177,7 @@ const PaymentMethod = ({
                     setSelectCardId={selectCardId}
                     setSelectedValue={setSelectedValue}
                     saveCardTitle={card?.card_title}
+                    setCVV={setCVV}
                   />
                 )}
                 {getCardType(card.card_number) === GENERAL_CARD && (
@@ -191,6 +195,7 @@ const PaymentMethod = ({
                     paymentMedthodDetails={paymentMedthodDetails}
                     setSelectedValue={setSelectedValue}
                     saveCardTitle={card?.card_title}
+                    setCVV={setCVV}
                   />
                 )}
               </>
@@ -208,14 +213,14 @@ const PaymentMethod = ({
           NAME_ON_CARD={NAME_ON_CARD}
           setTypeCard={setTypeCard}
         />
-        <CheckBoxDescription
+        {selectedValue == 'name_on_card' && <CheckBoxDescription
           checked={checked}
           setChecked={setChecked}
           handleChangeCheckBox={handleChangeCheckBox}
           checkBoxLabel={checkBoxLabel}
           saveCardTitle={saveCardTitle}
           setSaveCardTitle={setSaveCardTitle}
-        />
+        />}
         <AccountType
           AccountName={ACCOUNT_NAME_EASYPAISA}
           selectedValue={selectedValue}

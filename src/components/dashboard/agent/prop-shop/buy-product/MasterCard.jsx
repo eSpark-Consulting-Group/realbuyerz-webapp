@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Radio, Typography } from '@mui/material';
+import { Box, Radio, TextField, Typography } from '@mui/material';
 import { maskAccountNumber } from '@/src/utils/payment';
 
 const MasterCard = ({
@@ -13,7 +13,12 @@ const MasterCard = ({
   setTypeCard,
   cardNo,
   typeCard,
+  paymentMedthodDetails,
+  setCVV,
 }) => {
+  const handleCVVUpdate = (e) => {
+    setCVV(e.target.value);
+  };
   const gridRef = useRef(null);
   const finalValue = cardName;
 
@@ -26,85 +31,100 @@ const MasterCard = ({
     setTypeCard(cardNo);
   };
   return (
-    <Box
-      ref={gridRef}
-      onClick={handleClick}
-      sx={{
-        border: '1px solid #E9E9E9',
-        height: '70px',
-        width: '100%',
-        mx: { lg: '32px', xl: '40px' },
-        display: 'flex',
-        alignItems: 'center',
-        my: '10px',
-        cursor: 'pointer',
-        backgroundColor: cardNo === typeCard ? '#EDF7FF' : 'transparent',
-        position: 'relative',
-      }}
-    >
+    <>
       <Box
+        ref={gridRef}
+        onClick={handleClick}
         sx={{
-          position: 'absolute',
-          left: { xs: '0%', sm: '2%' },
-        }}
-      >
-        <Radio
-          checked={cardNo === typeCard}
-          onChange={handleChangeRadioButton}
-          onClick={viweDetails}
-          value={finalValue}
-          name="radio-buttons"
-          inputProps={{ 'aria-label': 'A' }}
-          sx={{
-            color: '#126FAA !important',
-          }}
-        />
-      </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          left: { xs: '70px', sm: '80px', md: '100px' },
-          '@media (min-width: 280px) and (max-width: 400px)': {
-            left: '50px',
-          },
+          border: '1px solid #E9E9E9',
+          height: '70px',
+          width: '100%',
+          mx: { lg: '32px', xl: '40px' },
           display: 'flex',
-          justifyContent: 'center',
+          alignItems: 'center',
+          my: '10px',
+          cursor: 'pointer',
+          backgroundColor: cardNo === typeCard ? '#EDF7FF' : 'transparent',
+          position: 'relative',
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mr: 2,
+            position: 'absolute',
+            left: { xs: '0%', sm: '2%' },
           }}
         >
-          <Image src={image} width={40} height={20} alt="card" />
+          <Radio
+            checked={cardNo === typeCard}
+            onChange={handleChangeRadioButton}
+            onClick={viweDetails}
+            value={finalValue}
+            name="radio-buttons"
+            inputProps={{ 'aria-label': 'A' }}
+            sx={{
+              color: '#126FAA !important',
+            }}
+          />
         </Box>
-        <Box>
-          <Typography
+        <Box
+          sx={{
+            position: 'absolute',
+            left: { xs: '70px', sm: '80px', md: '100px' },
+            '@media (min-width: 280px) and (max-width: 400px)': {
+              left: '50px',
+            },
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
             sx={{
-              color: '#333',
-              fontSize: { xs: '12.1px', sm: '20px' },
-              fontStyle: 'normal',
-              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              mr: 2,
             }}
           >
-            {`${cardName} - ${saveCardTitle || 'unknown'}`}
-          </Typography>
-          <Typography
-            sx={{
-              color: '#969696',
-              fontSize: { xs: '12.1px', sm: '18px' },
-              fontStyle: 'normal',
-              fontWeight: 400,
-              lineHeight: 'normal',
-            }}
-          >
-            {maskAccountNumber(accountNumber)}
-          </Typography>
+            <Image src={image} width={40} height={20} alt="card" />
+          </Box>
+          <Box>
+            <Typography
+              sx={{
+                color: '#333',
+                fontSize: { xs: '12.1px', sm: '20px' },
+                fontStyle: 'normal',
+                fontWeight: 600,
+              }}
+            >
+              {`${cardName} - ${saveCardTitle || 'unknown'}`}
+            </Typography>
+            <Typography
+              sx={{
+                color: '#969696',
+                fontSize: { xs: '12.1px', sm: '18px' },
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
+              }}
+            >
+              {maskAccountNumber(accountNumber)}
+            </Typography>
+          </Box>
         </Box>
       </Box>
-    </Box>
+      {cardNo === typeCard && (
+        <Box sx={{ px: 5, py: 1 }}>
+          <TextField
+            id="saveCardTitle"
+            name="saveCardTitle"
+            placeholder="Add CVV"
+            type="number"
+            variant="outlined"
+            value={paymentMedthodDetails?.cvv_no}
+            onChange={handleCVVUpdate}
+          />
+        </Box>
+      )}
+    </>
   );
 };
 

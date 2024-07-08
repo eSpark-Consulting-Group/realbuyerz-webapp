@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Radio, Typography } from '@mui/material';
+import { Box, Grid, Radio, TextField, Typography } from '@mui/material';
 import { maskAccountNumber } from '@/src/utils/payment';
 
 const VisaCard = ({
@@ -14,7 +14,12 @@ const VisaCard = ({
   cardNo,
   typeCard,
   saveCardTitle,
+  paymentMedthodDetails,
+  setCVV,
 }) => {
+  const handleCVVUpdate = (e) => {
+    setCVV(e.target.value);
+  };
   const gridRef = useRef(null);
   const finalValue = cardName;
 
@@ -108,6 +113,19 @@ const VisaCard = ({
           </Box>
         </Box>
       </Box>
+      {cardNo === typeCard && (
+        <Box sx={{ px: 5, py: 1 }}>
+          <TextField
+            id="saveCardTitle"
+            name="saveCardTitle"
+            placeholder="Add CVV"
+            type="number"
+            variant="outlined"
+            value={paymentMedthodDetails?.cvv_no}
+            onChange={handleCVVUpdate}
+          />
+        </Box>
+      )}
     </>
   );
 };
