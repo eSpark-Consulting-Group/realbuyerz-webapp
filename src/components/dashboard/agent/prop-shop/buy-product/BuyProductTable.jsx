@@ -1,5 +1,5 @@
 'use client';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -22,6 +22,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function BuyProductTable({ columns, rows }) {
   const { FirstHeaderName, SecondHeaderName } = columns;
+  const [activeId, setActiveId] = useState(null);
+
+  const handleSetActive = (id) => {
+    setActiveId(id);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={0}>
@@ -85,6 +90,8 @@ export default function BuyProductTable({ columns, rows }) {
                   buttonText={row?.buttonText}
                   id={row?.id}
                   data={rows}
+                  isActive={row.id === activeId}
+                  onSetActive={handleSetActive}
                 />
               </Box>
             </Item>

@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux';
 
 import { addToCart } from '@/src/redux/slices/settings/PakageCartSlice';
 
-const PriceBox = ({ price, buttonText, id, data }) => {
+const PriceBox = ({ price, buttonText, id, data, isActive, onSetActive }) => {
   const dispatch = useDispatch();
 
   const handleAdd = () => {
     dispatch(addToCart(data?.filter((x) => x.id === id)[0]));
+    onSetActive(id);
   };
 
   return (
@@ -34,8 +35,9 @@ const PriceBox = ({ price, buttonText, id, data }) => {
             borderRadius: { xs: '7px', sm: '10px' },
           }}
           onClick={handleAdd}
+          disabled={isActive}
         >
-          {buttonText}
+          {isActive ? 'Added to Cart' : buttonText}
         </Button>
       </Box>
     </Box>
