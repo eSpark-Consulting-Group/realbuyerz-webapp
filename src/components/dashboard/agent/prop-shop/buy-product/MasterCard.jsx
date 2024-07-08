@@ -14,6 +14,7 @@ const MasterCard = ({
   cardNo,
   typeCard,
   paymentMedthodDetails,
+  saveCardTitle,
   setCVV,
 }) => {
   const handleCVVUpdate = (e) => {

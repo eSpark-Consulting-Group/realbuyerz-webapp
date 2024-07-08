@@ -56,7 +56,7 @@ const PaymentMethod = ({
   const [cardTypeNumber, setCardTypeNumber] = useState();
   const [saveCardTitle, setSaveCardTitle] = useState('');
   const [CVV, setCVV] = useState('');
-
+  console.log(CVV);
   const dispatch = useDispatch();
   const handleChangeRadioButton = (e) => {
     setSelectedValue(e.target.value);
@@ -213,14 +213,16 @@ const PaymentMethod = ({
           NAME_ON_CARD={NAME_ON_CARD}
           setTypeCard={setTypeCard}
         />
-        {selectedValue == 'name_on_card' && <CheckBoxDescription
-          checked={checked}
-          setChecked={setChecked}
-          handleChangeCheckBox={handleChangeCheckBox}
-          checkBoxLabel={checkBoxLabel}
-          saveCardTitle={saveCardTitle}
-          setSaveCardTitle={setSaveCardTitle}
-        />}
+        {selectedValue == 'name_on_card' && (
+          <CheckBoxDescription
+            checked={checked}
+            setChecked={setChecked}
+            handleChangeCheckBox={handleChangeCheckBox}
+            checkBoxLabel={checkBoxLabel}
+            saveCardTitle={saveCardTitle}
+            setSaveCardTitle={setSaveCardTitle}
+          />
+        )}
         <AccountType
           AccountName={ACCOUNT_NAME_EASYPAISA}
           selectedValue={selectedValue}
