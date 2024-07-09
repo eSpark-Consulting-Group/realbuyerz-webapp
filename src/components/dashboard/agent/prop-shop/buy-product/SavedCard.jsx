@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Box, Radio, TextField, Typography } from '@mui/material';
 import { maskAccountNumber } from '@/src/utils/payment';
 
-const MasterCard = ({
+const SavedCard = ({
   image,
   cardName,
   setSelectedValue,
@@ -129,4 +129,4 @@ const MasterCard = ({
   );
 };
 
-export default MasterCard;
+export default SavedCard;

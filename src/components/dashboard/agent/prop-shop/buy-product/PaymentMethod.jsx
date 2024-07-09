@@ -11,9 +11,7 @@ import {
 
 import { getCardType } from '@/src/utils/getCardType';
 import Title from './Title';
-import MasterCard from './MasterCard';
-import VisaCard from './VisaCard';
-import GeneralCard from './GeneralCard';
+import SavedCard from './SavedCard';
 import CreditCardType from './CreditCardType';
 import CheckBoxDescription from './CheckBoxDescription';
 import AccountType from './AccountType';
@@ -150,7 +148,7 @@ const PaymentMethod = ({
             card?.isCheckBox && (
               <>
                 {getCardType(card.card_number) === MASTER_CARD && (
-                  <MasterCard
+                  <SavedCard
                     setCardTypeNumber={setCardTypeNumber}
                     image={data?.masterCard?.image}
                     cardName={data?.masterCard?.cardName}
@@ -167,7 +165,7 @@ const PaymentMethod = ({
                   />
                 )}
                 {getCardType(card.card_number) === VISA && (
-                  <VisaCard
+                  <SavedCard
                     setCardTypeNumber={setCardTypeNumber}
                     image={data?.visaCard?.image}
                     cardName={data?.visaCard?.cardName}
@@ -186,7 +184,7 @@ const PaymentMethod = ({
                   />
                 )}
                 {getCardType(card.card_number) === GENERAL_CARD && (
-                  <GeneralCard
+                  <SavedCard
                     setCardTypeNumber={setCardTypeNumber}
                     image={data?.generalCard?.image}
                     cardName={data?.generalCard?.cardName}
