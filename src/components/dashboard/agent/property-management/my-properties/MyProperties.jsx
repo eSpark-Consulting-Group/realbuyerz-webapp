@@ -146,7 +146,6 @@ const MyProperties = () => {
                         margin: '0 !important',
                         padding: '0 !important',
                         paddingLeft: '12px !important',
-                        
                       },
                       '& .MuiAutocomplete-popupIndicator': {
                         '&:hover': {
