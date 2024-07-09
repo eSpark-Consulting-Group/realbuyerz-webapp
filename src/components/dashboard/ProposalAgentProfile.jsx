@@ -34,7 +34,7 @@ const ProposalAgentProfile = ({
                     height: { xs: '550px', md: '180px' },
                     marginTop: '15px',
                     '@media (min-width: 960px) and (max-width: 1185px)': {
-                      mb:'15px'
+                      mb: '15px',
                     },
                   }}
                 >
