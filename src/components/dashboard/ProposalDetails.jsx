@@ -63,7 +63,7 @@ const ProposalDetails = ({
               sm={12}
               md={4}
               lg={5.5}
-              xl={2}
+              xl={5.5}
               sx={{
                 color: '#333',
                 fontSize: '15px',
