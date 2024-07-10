@@ -184,7 +184,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                 <Box>
                   <IconButton
                     onClick={handleOpenNotificationMenu}
-                    disableRipple={true} 
+                    disableRipple={true}
                     sx={{
                       p: 0,
                       mr: { xs: 0.5, sm: 1.5, md: 2.5 },

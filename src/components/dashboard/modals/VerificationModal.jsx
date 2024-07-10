@@ -131,7 +131,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
           <Box
             sx={{
               marginRight: '-10px',
-              cursor:'pointer'
+              cursor: 'pointer',
             }}
           >
             <Image
