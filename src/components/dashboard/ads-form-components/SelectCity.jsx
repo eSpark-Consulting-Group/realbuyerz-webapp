@@ -78,6 +78,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             <Autocomplete
               name={'city'}
               popupIcon={<KeyboardArrowDownIcon sx={{ color: '#777777' }} />}
+              clearIcon={null}
               value={formik?.values?.city}
               onBlur={formik?.handleBlur}
               error={formik?.touched?.city && Boolean(formik?.errors?.city)}
@@ -85,19 +86,21 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               id="combo-box-demo"
               options={options}
               sx={{
+                '& .MuiAutocomplete-inputRoot': {
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
+                },
+                '& .MuiAutocomplete-popupIndicator': {
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
+                },
                 '& fieldset': {
                   borderRadius: '10px',
                   border: `1px solid ${formik?.errors.city ? 'red' : '1px solid #E7E7E7'}`,
                 },
-                '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                  {
-                    color: '#777777',
-                    display: 'inline-flex',
-                    // visibility: 'visible',
-                    '&:hover': {
-                      color: '#777777',
-                    },
-                  },
+
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
               renderInput={(params) => (

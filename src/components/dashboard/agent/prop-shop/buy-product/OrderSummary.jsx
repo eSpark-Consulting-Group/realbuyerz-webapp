@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
@@ -11,19 +13,137 @@ const OrderSummary = ({
   totalPrice,
   connects,
   dollarRate,
-  modalButtonText,
+  // modalButtonText,
   successMessage,
   confirmOrderLable,
   setIsModalOpen,
   isModalOpen,
   handleChange,
   state,
+  selectedValue,
 }) => {
-  const { paymentMedthod } = useSelector((state) => state.PakageCart);
+  const { paymentMedthod, orderConfirmed } = useSelector(
+    (state) => state.PakageCart
+  );
 
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      checkApplicationStatus();
+    }
+  }, [isModalOpen]);
+
+  const checkApplicationStatus = () => {
+    setTimeout(() => {
+      if (!orderConfirmed) {
+        handleModalClose();
+      }
+    }, 30000);
+  };
+
+  const OrderConfirmModalContent = (
+    image,
+    message,
+    account,
+    modalButtonText
+  ) => {
+    return (
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          px: 2,
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            height: 'auto',
+            gap: 3,
+          }}
+        >
+          {image && (
+            <Image
+              src={image}
+              width={100}
+              height={40}
+              alt={'success'}
+              sx={{ mx: 'auto' }}
+            />
+          )}
+          <Box>
+            {account && (
+              <Typography
+                id="modal-modal-title"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  color: '#333',
+                  textAlign: 'center',
+                  fontSize: '30px',
+                  fontWeight: 500,
+                  fontStyle: 'normal',
+                  lineHeight: 'normal',
+                  mb: 1,
+                }}
+              >
+                {account === 'easypaisa'
+                  ? 'Easy paisa'
+                  : account === 'name_on_card'
+                    ? 'Card payment'
+                    : account}
+              </Typography>
+            )}
+            {message && (
+              <Typography
+                id="modal-modal-title"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  color: '#333',
+                  textAlign: 'center',
+                  fontSize: '25px',
+                  fontWeight: 500,
+                  fontStyle: 'normal',
+                  lineHeight: '35px',
+                }}
+              >
+                {message}
+              </Typography>
+            )}
+          </Box>
+          {modalButtonText && (
+            <Button
+              variant="primary"
+              onClick={handleModalClose}
+              sx={{
+                color: '#fff',
+                height: '40px',
+                textAlign: 'center',
+                fontSize: '16px',
+                fontWeight: 500,
+                fontStyle: 'normal',
+                lineHeight: 'normal',
+              }}
+            >
+              {modalButtonText}
+            </Button>
+          )}
+        </Box>
+      </Box>
+    );
+  };
+
   return (
     <Box
       sx={{
@@ -146,7 +266,7 @@ const OrderSummary = ({
             fontSize: '16px',
           }}
           variant={!paymentMedthod && 'primary'}
-          disabled={paymentMedthod && state}
+          disabled={state}
         >
           {paymentMedthod ? confirmOrderLable : buttonText}
         </Button>
@@ -176,57 +296,27 @@ const OrderSummary = ({
               '-4px -4px 11px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                mx: 'auto !important',
-                pb: { xs: '20px', sm: '50px' },
-              }}
-            >
-              <Image
-                src={'/images/success.gif'}
-                width={100}
-                height={40}
-                alt={'success'}
-                sx={{ mx: 'auto' }}
-              />
-            </Box>
-            <Typography
-              id="modal-modal-title"
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                color: '#333',
-                textAlign: 'center',
-                fontSize: '30px',
-                fontWeight: 500,
-                fontStyle: 'normal',
-                lineHeight: 'normal',
-              }}
-            >
-              {successMessage}
-            </Typography>
-            <Button
-              variant="primary"
-              onClick={handleModalClose}
-              sx={{
-                color: '#fff',
-                height: '40px',
-                textAlign: 'center',
-                fontSize: '16px',
-                fontWeight: 500,
-                fontStyle: 'normal',
-                lineHeight: 'normal',
-                my: 7,
-              }}
-            >
-              {' '}
-              {modalButtonText}{' '}
-            </Button>
-          </Box>
+          {orderConfirmed &&
+            OrderConfirmModalContent(
+              '/images/success.gif',
+              successMessage,
+              selectedValue,
+              buttonText
+            )}
+          {!orderConfirmed &&
+            OrderConfirmModalContent(
+              '/images/loading.gif',
+              'confirmed your order in your application',
+              selectedValue,
+              ''
+            )}
+          {orderConfirmed === 'cancel' &&
+            OrderConfirmModalContent(
+              '/images/cancel.png',
+              'Order not confirmed within time, canceling order...',
+              'Sorry',
+              ''
+            )}
         </Box>
       </Modal>
     </Box>

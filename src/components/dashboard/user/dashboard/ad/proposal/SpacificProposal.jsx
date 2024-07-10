@@ -114,6 +114,7 @@ const SpacificProposal = () => {
                   <Box
                     sx={{
                       textAlign: { xs: 'center', md: 'left' },
+                      pb: { xs: '10px', md: '0px' },
                     }}
                   >
                     <Typography

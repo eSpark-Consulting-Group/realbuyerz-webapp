@@ -12,6 +12,7 @@ const initialState = {
   formError: '',
   paymentMedthodDetails: [],
   resetCalled: false,
+  orderConfirmed: false,
 };
 
 export const PakageCartSlice = createSlice({

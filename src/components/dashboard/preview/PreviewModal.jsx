@@ -35,8 +35,9 @@ const PreviewModal = (props) => {
         <Box
           sx={{
             position: 'absolute',
-            transform: 'translate(-50%, 0%)',
+            transform: 'translate(-50%, -50%)',
             left: '50%',
+            top: '50%',
             width: { xs: '92%', sm: '800px', xxl: '1200px' },
             bgcolor: 'background.paper',
             height: { xs: 'auto', md: '840px' },
@@ -57,7 +58,7 @@ const PreviewModal = (props) => {
           <Box
             sx={{
               width: '100%',
-              height: { xs: '600px', md: '633px' },
+              height: { xs: '600px', md: '700px' },
               borderRadius: '10px',
               border: '1px solid #E4E4E4',
               overflowY: 'auto',
@@ -146,6 +147,7 @@ const PreviewModal = (props) => {
             sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}
           >
             <Button
+              variant="primary"
               onClick={onClose}
               sx={{
                 width: '100px',

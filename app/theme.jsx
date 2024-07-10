@@ -94,6 +94,34 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'contained' },
+          style: {
+            textTransform: 'capitalize',
+            backgroundColor: '#fb631c !important',
+            borderRadius: '5px',
+            color: '#fff',
+            position: 'relative',
+            '&:hover': {
+              backgroundColor: '#EDF7FF',
+              color: '#fff',
+            },
+          },
+        },
+        {
+          props: { variant: 'secondary' },
+          style: {
+            textTransform: 'capitalize',
+            backgroundColor: '#fb631c !important',
+            borderRadius: '5px',
+            color: '#fff',
+            position: 'relative',
+            '&:hover': {
+              backgroundColor: '#EDF7FF',
+              color: '#fff',
+            },
+          },
+        },
+        {
           props: { variant: 'outlined' },
           style: {
             textTransform: 'capitalize',
