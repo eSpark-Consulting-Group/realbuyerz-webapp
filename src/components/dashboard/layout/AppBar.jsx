@@ -184,11 +184,15 @@ export default function ResponsiveNavbar({ openSidebar }) {
                 <Box>
                   <IconButton
                     onClick={handleOpenNotificationMenu}
+                    disableRipple={true} 
                     sx={{
                       p: 0,
                       mr: { xs: 0.5, sm: 1.5, md: 2.5 },
                       color: '#FF631C',
                       position: 'relative',
+                      '&:hover': {
+                        backgroundColor: 'transparent',
+                      },
                     }}
                   >
                     <Badge
