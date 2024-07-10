@@ -665,33 +665,6 @@ export const FEATURED_PROPERTIES = [
   '/images/amenities/amenitie3.svg',
 ];
 
-export const PROPERTY_DATA_Old = {
-  listingTypes: [
-    { name: 'Houses', title: 'houses' },
-    { name: 'Flats', title: 'flats' },
-    { name: 'Plots', title: 'plots' },
-    { name: 'Farm Houses', title: 'farm-houses' },
-    { name: 'Shops', title: 'shops' },
-    { name: 'Offices', title: 'offices' },
-  ],
-  transactionTypes: [
-    { name: 'Sale', title: 'sale' },
-    { name: 'Rent', title: 'rent' },
-  ],
-  cities: [
-    { name: 'Karachi', title: 'karachi' },
-    { name: 'Lahore', title: 'lahore' },
-    { name: 'Islamabad', title: 'islamabad' },
-    { name: 'Rawalpindi', title: 'rawalpindi' },
-    { name: 'Faislabad', title: 'faislabad' },
-    { name: 'Abbottabad', title: 'abbottabad' },
-    { name: 'Multan', title: 'multan' },
-    { name: 'Hyderabad', title: 'Hyderabad' },
-    { name: 'Peshawar', title: 'peshawar' },
-    { name: 'Sargodha', title: 'sargodha' },
-  ],
-};
-
 export const FEATURED_HEADINGS = {
   latestProject: 'Find your dream projects from our latest projects',
   featureProperty: 'Featured Properties',

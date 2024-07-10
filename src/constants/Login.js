@@ -79,15 +79,10 @@ export const LOGIN_DATA = {
   password: '',
   rememberCheck: false,
 };
-export const RESET_PASSWORD = {
-  password: '',
-  confirmPassword: '',
-};
 export const SIGN_IN = 'Sign in';
 export const LOGOUT = 'Logout';
 export const SETTINGS = 'My Account';
 export const USER_NAME = 'Arman Espark';
-export const NOT_MATCH = 'Email or password does not match';
 export const PASSWORD_ALERT = 'Password and Confirm Password do not match';
 
 export const ALT = {

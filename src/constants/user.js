@@ -9,19 +9,7 @@ export const USERS_DATA = {
   landline: +424564879798,
   mobile: +424564879798,
   whatsapp: +914564879798,
-  userType: 'user', // user or agent
-  // phone: {
-  //   countryCode: '92',
-  //   number: '3162265948',
-  // },
-  // whatsapp: {
-  //   countryCode: '92',
-  //   number: '3162265948',
-  // },
-  // country: {
-  //   countryCode: '92',
-  //   number: '3162265948',
-  // },
+  userType: 'user',
   city: 'Karachi',
   area: 'Gulistn e Johar',
   address: '301/A, Blossom Trade Center  ',
@@ -34,21 +22,20 @@ export const USERS_DATA = {
   listings: [1, 2, 3, 4],
   proposals: [1, 2, 3, 4],
   biddings: [1, 2, 3, 4],
-  agencyName: 'eSpARK aGENCY', // basic, hot, Super
-  agencylogo: '/images/profile.png', //Open to contract,
-  subsPackage: 'basic', // basic, hot, Super
-  leadPreference: 'Open to contract', //Open to contract,
-  profileVisibility: 'public', // profile or Public
-  profileStatus: 'public', // public or Blocked or Reported or removed
+  agencyName: 'eSpARK aGENCY',
+  agencylogo: '/images/profile.png',
+  subsPackage: 'basic',
+  leadPreference: 'Open to contract',
+  profileVisibility: 'public',
+  profileStatus: 'public',
   profilePercentage: 50,
-  availableConnects: 50, // 0-100%
-  areaUnit: 'sq-ft', // 'sq-ft' or 'sq-m'
-  currencyUnit: 'pkr', // pkr or usd etx
-  autoReport: false, // true or false
-  verificationStatus: true, // true or false
-  emailNotification: false, // true or false
-  newsLetters: false, // true or false
-  onlineStatus: true,
+  availableConnects: 50,
+  areaUnit: 'sq-ft',
+  currencyUnit: 'pkr',
+  autoReport: false,
+  verificationStatus: true,
+  emailNotification: false,
+  newsLetters: false,
   counts: {
     totalCount: 150,
     rentCount: {
@@ -60,7 +47,6 @@ export const USERS_DATA = {
       Shops: 20,
       Sffices: 20,
       Commercials: 20,
-      // more Categories
     },
     sellCount: {
       total: 75,
@@ -71,7 +57,6 @@ export const USERS_DATA = {
       Shops: 20,
       Sffices: 20,
       Commercials: 20,
-      // more Categories
     },
   },
 };

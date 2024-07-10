@@ -96,11 +96,9 @@ export const PROPOSAL_PAGE = {
   },
   loadMore_Button: {
     text: 'Load More',
-    // link: '#',
   },
   showLess_Button: {
     text: 'Show Less',
-    // link: '#',
   },
 };
 

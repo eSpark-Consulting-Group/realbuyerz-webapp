@@ -19,7 +19,6 @@ export const CHAT_MESSAGES = {
             "Hello! I've been reviewing the details. Could you provide more information about the neighborhood?",
           contentType: 'text',
         },
-        // ... additional messages for the day
       ],
       read: true,
     },
@@ -66,7 +65,6 @@ export const CHAT_MESSAGES = {
             'Absolutely! The kitchen is fully equipped with modern appliances. The living room is spacious with large windows, offering a lot of natural light.',
           contentType: 'text',
         },
-        // ... additional messages for the day
       ],
       read: true,
     },
@@ -97,11 +95,9 @@ export const CHAT_MESSAGES = {
             "It's a 3-story house with a basement. The basement can be used as a recreational space. Additionally, there's a two-car garage.",
           contentType: 'text',
         },
-        // ... additional messages for the day
       ],
       read: true,
     },
-    // ... messages for the remaining days with similar details
     {
       date: '2024-01-26',
       messages: [
@@ -155,7 +151,6 @@ export const CHAT_MESSAGES = {
           timestamp: '2024-02-01T11:30:00',
           id: 'msg016',
           sender: 'John',
-          // content: ['/images/logo.png'],
           content: [
             '/images/logo.png',
             'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
@@ -176,7 +171,6 @@ export const CHAT_MESSAGES = {
           timestamp: '2024-02-01T11:30:00',
           id: 'msg017',
           sender: 'You',
-          // content: ['/images/logo.png'],
           content: [
             '/images/logo.png',
             'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww',
@@ -213,7 +207,6 @@ export const CHAT_MESSAGES = {
           content:
             "Hello! I've been reviewing the details. Could you provide more information about the neighborhood?",
         },
-        // ... additional messages for the day
       ],
       read: true,
     },
@@ -250,7 +243,6 @@ export const CHAT_MESSAGES = {
           content:
             'Absolutely! The kitchen is fully equipped with modern appliances. The living room is spacious with large windows, offering a lot of natural light.',
         },
-        // ... additional messages for the day
       ],
       read: true,
     },

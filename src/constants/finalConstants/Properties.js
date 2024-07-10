@@ -1399,8 +1399,6 @@ export const PROPERTIES_DATA = [
     },
   },
 ];
-//renamed form CATEGORIES to PROPERTIES_CATEGORIES and links Added
-//Reason: catgories is Not UNique and Promenent name
 export const PROPERTIES_CATEGORIES = [
   {
     id: 1,
@@ -1451,8 +1449,6 @@ export const PROPERTIES_CATEGORIES = [
     link: '/',
   },
 ];
-//renamed form AMENITIES to PROPERTIES_AMENITIES and links Added
-//Reason: AMENITIES is Not UNique and Promenent name
 export const PROPERTIES_AMENITIES = [
   {
     id: 1,
@@ -1635,76 +1631,5 @@ export const PROPERTIES_AMENITIES = [
     name: '24/7-security',
     icon: '/images/amenities/24/7-security.svg',
     link: '/',
-  },
-];
-// reduce Data lenght for efficey prpouse
-//Reason: to much data (from 200 lines to 20)
-export const POPULAR_LOCATIONS_DATA = {
-  title: 'Popular Locations',
-  description:
-    'To browse & buy in your areas of interest. Look of properties by category',
-  listingType: ['Sell', 'Rent'],
-  property_types: [
-    'Houses',
-    'Flats',
-    'Plots',
-    'Farm Houses',
-    'Shops',
-    'Offices',
-  ],
-  locations: [
-    'Karachi',
-    'Lahore',
-    'Islamabad',
-    'Rawalpindi',
-    'Faislabad',
-    'Abbottabad',
-    'Multan',
-    'Heydrabad',
-    'Peshawar',
-    'Sargodha',
-  ],
-};
-export const ADD_PROPERTY = [
-  {
-    id: 1, //id
-    propertyTitle: 'Plot For sale Zeenatabad Society Scheme 33 Sector 19a',
-    propertyDescription:
-      'Plot for sale in Zeenatabad Society, Scheme 33 Sector 19A, 120 Sqyd West open corner 24 Feet road (Leased). Corner Boundary Wall Society 150 Feet Road.',
-    userid: 1, // current user ID
-    agentid: null,
-    adStatus: 'published', // draft or published //text
-    locationPurpose: {
-      adPurpose: 'sell', // sell or rent //text
-      propertyType: 'House', // house, plots, commercial, //text
-      propetySubType: 'Flat', //text
-      // address:'401/B, Blossom Trade Center',
-      // location: 'Gulistan e Johar',
-      geolocation: '', //text
-    },
-    sizeBudgets: {
-      propertyArea: {
-        area: 121, //number
-        unit: 'sqft', //text
-      },
-      propertyAmount: {
-        area: 121, //number
-        unit: 'sqft', //text
-      },
-      instalmentAvailable: true, //bolean
-      readyPossession: true, //bolean
-    },
-    featureAmenities: [
-      // Array object
-      { id: 1, name: 'Bedrooms', count: 3 },
-      { id: 2, name: 'BathRooms', count: 3 },
-      { id: 3, name: 'Parking', count: 3 },
-      // ...
-    ],
-    media: {
-      //object Array
-      images: ['imagesrc1', 'imagesrc2', 'imagesrc3', 'imagesrc4', 'imagesrc5'], //array
-      videos: ['videosrc1', 'videosrc2', 'videosrc3', 'videosrc4', 'videosrc5'], //array
-    },
   },
 ];

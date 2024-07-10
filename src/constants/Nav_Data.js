@@ -8,9 +8,6 @@ export const HEADER_MENU = [
   },
 ];
 
-export const LINK_NAME = 'Go to Rb.com';
-export const SEARCH = 'Search';
-
 export const AGENT_MENU_ITEM = [
   {
     id: 1,

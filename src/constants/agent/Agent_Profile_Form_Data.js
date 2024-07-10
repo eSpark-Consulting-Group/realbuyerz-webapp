@@ -195,16 +195,3 @@ export const AGENT_PROFILE_FORM_DATA = {
     helperText: '',
   },
 };
-
-export const PROFILE_INFO = {
-  image: '/images/profile.png',
-  title: 'Arman Khan',
-  description: [
-    {
-      email: 'armanespark@gmail.com',
-      alt: 'amenities',
-      text: '',
-      icon: '',
-    },
-  ],
-};
