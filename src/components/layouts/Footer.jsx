@@ -42,7 +42,7 @@ const styles = {
 };
 const Footer = ({ data }) => {
   const theme = useTheme();
-  const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'xxl'));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <Box sx={styles?.container}>
       <Grid
@@ -52,7 +52,7 @@ const Footer = ({ data }) => {
           py: '50px',
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          '@media (min-width:280px) and (max-width:500px)': {
+          '@media (min-width:280px) and (max-width:959px)': {
             paddingLeft: '40px',
           },
         }}
