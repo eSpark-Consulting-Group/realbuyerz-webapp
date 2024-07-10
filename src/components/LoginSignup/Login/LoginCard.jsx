@@ -29,10 +29,10 @@ const LoginCard = ({ handleClose }) => {
 
   const handleClick = () => {
     setshowForgetPassword(true);
-    router.push(LOGIN_ROUTERS.forgetPassword);
+    router.push(LOGIN_ROUTERS?.forgetPassword);
   };
   const handleSignIn = () => {
-    router.push(LOGIN_ROUTERS.signup);
+    router.push(LOGIN_ROUTERS?.signup);
     dispatch(setOpenModal(false));
   };
 
@@ -104,7 +104,7 @@ const LoginCard = ({ handleClose }) => {
                 fontSize: { xs: '15px', md: '20px' },
               }}
             >
-              {LOGIN_FORM.loginCard.welcome}
+              {LOGIN_FORM?.loginCard.welcome}
             </Typography>
             <FormContainer
               isLoginForm={true}
@@ -133,10 +133,10 @@ const LoginCard = ({ handleClose }) => {
                 }}
                 onClick={handleClick}
               >
-                {LOGIN_FORM.loginCard.forgetPassword}
+                {LOGIN_FORM?.loginCard.forgetPassword}
               </Button>
               <FormControlLabel
-                label={LOGIN_FORM.loginCard.rememberMe}
+                label={LOGIN_FORM?.loginCard.rememberMe}
                 control={<Checkbox size="small" color="primary" />}
                 sx={{
                   display: 'flex',
@@ -153,10 +153,10 @@ const LoginCard = ({ handleClose }) => {
               />
             </Box>
             <LoginWithGoogle
-              buttonLabel={LOGIN_FORM.loginCard.login}
-              label={LOGIN_FORM.signupForm.signup}
-              accountCreationMessage={LOGIN_FORM.signupForm.label}
-              loginButton={LOGIN_FORM.loginCard.googleLogin}
+              buttonLabel={LOGIN_FORM?.loginCard.login}
+              label={LOGIN_FORM?.signupForm.signup}
+              accountCreationMessage={LOGIN_FORM?.signupForm.label}
+              loginButton={LOGIN_FORM?.loginCard.googleLogin}
               onSigninClick={handleSignIn}
               handleClose={handleClose}
               loginClick={loginClick}

@@ -2,7 +2,7 @@ import { ENDPOINTS } from '@/src/constants/apiConstants';
 import DynamicAPI from '../../dynamicAPI';
 
 export const signup = async (signupData) => {
-  const endpoint = ENDPOINTS.signup;
+  const endpoint = ENDPOINTS?.signup;
   const method = 'post';
 
   try {

@@ -66,7 +66,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
               },
             }}
           >
-            {AGENT_PROFILE_DATA.agentProfile}
+            {AGENT_PROFILE_DATA?.agentProfile}
           </Button>
         </Link>
       </Box>

@@ -8,7 +8,7 @@ const users = {
 const initialState = { users };
 
 const usersSlice = createSlice({
-  name: USERS_DATA.users,
+  name: USERS_DATA?.users,
   initialState,
   reducers: {
     savePreferenceData: (state, action) => {

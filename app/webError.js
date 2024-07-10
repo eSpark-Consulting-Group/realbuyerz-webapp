@@ -65,7 +65,7 @@ class WebError extends React.Component {
             >
               {this.props.statusCode
                 ? `An error ${this.props.statusCode} occurred on server`
-                : PAGES_INFO.errorMessage}
+                : PAGES_INFO?.errorMessage}
             </Typography>
           </Box>
           <Box
@@ -94,7 +94,7 @@ class WebError extends React.Component {
               }}
               onClick={this.refreshPage}
             >
-              {PAGES_INFO.reset}
+              {PAGES_INFO?.reset}
             </Button>
           </Box>
         </Box>

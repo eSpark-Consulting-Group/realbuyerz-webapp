@@ -57,7 +57,7 @@ const OurHomePartners = ({ data }) => {
           pb: '30px',
         }}
       >
-        <Heading heading={FEATURED_HEADINGS.homePartners} />
+        <Heading heading={FEATURED_HEADINGS?.homePartners} />
       </Box>
       <Box sx={{ padding: '20px', background: '#f5f6fb' }}>
         <Slider {...sliderSettings}>

@@ -32,10 +32,10 @@ const FormContainer = ({
             }}
           >
             <TextField
-              label={FORM_LABEL.emailUsername}
+              label={FORM_LABEL?.emailUsername}
               variant="outlined"
               fullWidth
-              name={LOGIN_FORM.email}
+              name={LOGIN_FORM?.email}
               onChange={handleInputChange}
               inputProps={{
                 style: {
@@ -72,8 +72,8 @@ const FormContainer = ({
               }}
             >
               <TextField
-                label={FORM_LABEL.firstName}
-                name={LOGIN_FORM.firstName}
+                label={FORM_LABEL?.firstName}
+                name={LOGIN_FORM?.firstName}
                 variant="outlined"
                 fullWidth
                 onChange={handleInputChange}
@@ -83,8 +83,8 @@ const FormContainer = ({
                 }}
               />
               <TextField
-                label={FORM_LABEL.lastName}
-                name={LOGIN_FORM.lastName}
+                label={FORM_LABEL?.lastName}
+                name={LOGIN_FORM?.lastName}
                 variant="outlined"
                 fullWidth
                 onChange={handleInputChange}
@@ -95,10 +95,10 @@ const FormContainer = ({
               />
             </Box>
             <TextField
-              label={FORM_LABEL.emailAddress}
+              label={FORM_LABEL?.emailAddress}
               variant="outlined"
               fullWidth
-              name={LOGIN_FORM.email}
+              name={LOGIN_FORM?.email}
               onChange={handleInputChange}
               InputProps={{ sx: { height: '40px' } }}
               InputLabelProps={{
@@ -106,11 +106,11 @@ const FormContainer = ({
               }}
             />
             <TextField
-              label={FORM_LABEL.contactNo}
+              label={FORM_LABEL?.contactNo}
               variant="outlined"
-              type={FORM_LABEL.number}
+              type={FORM_LABEL?.number}
               fullWidth
-              name={LOGIN_FORM.contactNo}
+              name={LOGIN_FORM?.contactNo}
               value={contactNumber}
               onChange={handleInputContactNumber}
               sx={{

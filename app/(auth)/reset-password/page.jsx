@@ -16,8 +16,8 @@ const ResetPasswordForm = () => {
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.resetPassword}
-          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+          showComponent={AUTH_COMPONENTS?.resetPassword}
+          height={LOGIN_FORM?.rectangleHeight.loginFormHeight}
         />
       </Grid>
     </>

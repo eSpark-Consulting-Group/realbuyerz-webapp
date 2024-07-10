@@ -16,7 +16,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   const [open, setOpen] = useState(false);
   const [isValidEmail, setisValidEmail] = useState(false);
   const handleBackToLogin = () => {
-    router.push(LOGIN_ROUTERS.signin);
+    router.push(LOGIN_ROUTERS?.signin);
   };
   const router = useRouter();
 
@@ -103,7 +103,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             fontWeight: 600,
           }}
         >
-          {LOGIN_FORM.loginCard.passwordForget}
+          {LOGIN_FORM?.loginCard.passwordForget}
         </Typography>
         <Typography
           sx={{
@@ -111,11 +111,11 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             fontWeight: 400,
           }}
         >
-          {LOGIN_FORM.loginCard.enterEmail}
+          {LOGIN_FORM?.loginCard.enterEmail}
         </Typography>
         <TextField
-          label={LOGIN_FORM.loginCard.email}
-          name={LOGIN_FORM.email}
+          label={LOGIN_FORM?.loginCard.email}
+          name={LOGIN_FORM?.email}
           variant="outlined"
           fullWidth
           value={email}

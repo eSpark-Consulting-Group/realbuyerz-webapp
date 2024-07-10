@@ -28,7 +28,7 @@ const SignupCard = () => {
   const handleInputContactNumber = (e) => {
     const newContactNumber = e.target.value;
 
-    if (newContactNumber.length <= LOGIN_FORM.signupForm.maxLength) {
+    if (newContactNumber.length <= LOGIN_FORM?.signupForm.maxLength) {
       setContactNumber(newContactNumber);
       setFormData({
         ...formData,
@@ -45,7 +45,7 @@ const SignupCard = () => {
     });
   };
   const handleAutoCompleteInputChange = (event, newValue) => {
-    const fieldName = LOGIN_FORM.signupForm.userType;
+    const fieldName = LOGIN_FORM?.signupForm.userType;
     setFormData({
       ...formData,
       [fieldName]: newValue ? [newValue.value] : [],
@@ -53,7 +53,7 @@ const SignupCard = () => {
   };
   const signupClick = () => {
     if (
-      formData[LOGIN_FORM.password] !== formData[LOGIN_FORM.confirmPassword]
+      formData[LOGIN_FORM?.password] !== formData[LOGIN_FORM?.confirmPassword]
     ) {
       alert(PASSWORD_ALERT);
     }
@@ -134,7 +134,7 @@ const SignupCard = () => {
               fontWeight: 600,
             }}
           >
-            {LOGIN_FORM.loginCard.createAccount}
+            {LOGIN_FORM?.loginCard.createAccount}
           </Typography>
           <Typography
             sx={{
@@ -143,7 +143,7 @@ const SignupCard = () => {
               fontWeight: 400,
             }}
           >
-            {LOGIN_FORM.loginCard.quickEasy}
+            {LOGIN_FORM?.loginCard.quickEasy}
           </Typography>
           <FormContainer
             isLoginForm={false}
@@ -154,13 +154,13 @@ const SignupCard = () => {
             handleAutoCompleteInputChange={handleAutoCompleteInputChange}
           />
           <LoginWithGoogle
-            buttonLabel={LOGIN_FORM.signupForm.signup}
-            label={LOGIN_FORM.signupForm.signin}
-            accountCreationMessage={LOGIN_FORM.loginCard.label}
-            loginButton={LOGIN_FORM.loginCard.googleLogin}
+            buttonLabel={LOGIN_FORM?.signupForm.signup}
+            label={LOGIN_FORM?.signupForm.signin}
+            accountCreationMessage={LOGIN_FORM?.loginCard.label}
+            loginButton={LOGIN_FORM?.loginCard.googleLogin}
             onSigninClick={() => {
               console.log('signin');
-              router.push(LOGIN_ROUTERS.signin);
+              router.push(LOGIN_ROUTERS?.signin);
             }}
             loginClick={signupClick}
             handleGoogleLogin={handleGoogleLogin}

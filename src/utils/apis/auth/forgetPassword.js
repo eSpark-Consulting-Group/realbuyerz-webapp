@@ -2,7 +2,7 @@ import { ENDPOINTS } from '@/src/constants/apiConstants';
 import DynamicAPI from '../../dynamicAPI';
 
 export const forgetPassword = async (forgetPasswordData) => {
-  const endpoint = ENDPOINTS.forgetPassword;
+  const endpoint = ENDPOINTS?.forgetPassword;
   const method = 'post';
 
   try {

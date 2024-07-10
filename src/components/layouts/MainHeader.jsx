@@ -127,7 +127,7 @@ const MainHeader = () => {
                 display: { xs: 'none', sm: 'none', md: 'flex' },
               }}
             >
-              {PAGES.map((page, i) => (
+              {PAGES?.map((page, i) => (
                 <Link key={i} href={page.path}>
                   <Typography
                     sx={{

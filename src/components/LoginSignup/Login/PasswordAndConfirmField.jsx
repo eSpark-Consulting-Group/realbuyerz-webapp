@@ -16,11 +16,11 @@ const PasswordAndConfirmFields = ({
   return (
     <>
       <TextField
-        label={FORM_LABEL.password}
+        label={FORM_LABEL?.password}
         variant="outlined"
-        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
+        type={formData?.showPassword ? LOGIN_FORM?.text : LOGIN_FORM?.password}
         fullWidth
-        name={LOGIN_FORM.password}
+        name={LOGIN_FORM?.password}
         onChange={handleInputChange}
         InputProps={{
           sx: {
@@ -46,13 +46,13 @@ const PasswordAndConfirmFields = ({
         }}
       />
       <TextField
-        label={FORM_LABEL.confirmPassword}
+        label={FORM_LABEL?.confirmPassword}
         variant="outlined"
         type={
-          formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password
+          formData?.showConfirmPassword ? TEXT_TYPE?.text : TEXT_TYPE?.password
         }
         fullWidth
-        name={LOGIN_FORM.confirmPassword}
+        name={LOGIN_FORM?.confirmPassword}
         onChange={handleInputChange}
         InputProps={{
           sx: {

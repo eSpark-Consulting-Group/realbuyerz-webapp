@@ -61,13 +61,13 @@ const PricePlan = () => {
             }}
           >
             <Grid item className="MobileScreenMarginTop">
-              <Basic BasicData={PLAN_PRICE.Basic} />
+              <Basic BasicData={PLAN_PRICE?.Basic} />
             </Grid>
             <Grid item>
-              <Premium PremiumData={PLAN_PRICE.Premium} />
+              <Premium PremiumData={PLAN_PRICE?.Premium} />
             </Grid>
             <Grid item>
-              <Super SuperData={PLAN_PRICE.Super} />
+              <Super SuperData={PLAN_PRICE?.Super} />
             </Grid>
           </Grid>
         </Box>

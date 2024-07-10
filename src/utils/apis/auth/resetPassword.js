@@ -2,7 +2,7 @@ import { ENDPOINTS } from '@/src/constants/apiConstants';
 import DynamicAPI from '../../dynamicAPI';
 
 export const resetPassword = async (resetPasswordData) => {
-  const endpoint = ENDPOINTS.resetPassword + resetPasswordData.token;
+  const endpoint = ENDPOINTS?.resetPassword + resetPasswordData.token;
   const method = 'put';
 
   try {

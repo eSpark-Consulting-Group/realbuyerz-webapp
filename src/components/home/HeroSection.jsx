@@ -130,7 +130,7 @@ const HeroSection = () => {
                 }}
                 variant="primary"
               >
-                {HERO_SECTION_CONTENT.buyer}
+                {HERO_SECTION_CONTENT?.buyer}
               </Button>
             </Link>
           </Bounce>
@@ -159,7 +159,7 @@ const HeroSection = () => {
                 }}
                 variant="primary"
               >
-                {HERO_SECTION_CONTENT.seller}
+                {HERO_SECTION_CONTENT?.seller}
               </Button>
             </Link>
           </Bounce>

@@ -71,8 +71,8 @@ const BrowseByCategory = ({ data }) => {
       }}
     >
       <Heading
-        heading={HERO_SECTION_CONTENT.browseCategory}
-        paragraph={HERO_SECTION_CONTENT.propertiesCategory}
+        heading={HERO_SECTION_CONTENT?.browseCategory}
+        paragraph={HERO_SECTION_CONTENT?.propertiesCategory}
       />
       <Box
         sx={{

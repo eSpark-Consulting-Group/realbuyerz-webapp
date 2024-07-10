@@ -18,11 +18,11 @@ const PasswordFields = ({ handleInputChange }) => {
   return (
     <>
       <TextField
-        label={FORM_LABEL.password}
+        label={FORM_LABEL?.password}
         variant="outlined"
-        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
+        type={formData?.showPassword ? LOGIN_FORM?.text : LOGIN_FORM?.password}
         fullWidth
-        name={LOGIN_FORM.password}
+        name={LOGIN_FORM?.password}
         onChange={handleInputChange}
         InputProps={{
           endAdornment: (

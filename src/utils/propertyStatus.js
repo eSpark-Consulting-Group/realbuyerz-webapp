@@ -8,7 +8,7 @@ export const createPropertyStatusState = ({
     return {};
   }
   const propertyStatusData = {
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    sellingData: PROPERTY_BUYING_DETAIL?.sellingDetails,
     purposeData: propertySell.map((item) => ({ ...item, value: '' })),
   };
   return { propertyStatusData };

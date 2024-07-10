@@ -28,7 +28,7 @@ const Continue = ({
           checkPasswordMatch();
         }}
       >
-        {LOGIN_FORM.loginCard.continue}
+        {LOGIN_FORM?.loginCard.continue}
       </Button>
 
       <Button
@@ -54,7 +54,7 @@ const Continue = ({
           height={18}
           alt="lessthan"
         />
-        {LOGIN_FORM.loginCard.backSignin}
+        {LOGIN_FORM?.loginCard.backSignin}
       </Button>
     </>
   );

@@ -9,7 +9,7 @@ const PropertyBuilding = () => {
       src="/images/signup_page/highbuilding.svg"
       width={488}
       height={288}
-      alt={ALT.BUILDING_IMAGE}
+      alt={ALT?.BUILDING_IMAGE}
     />
   );
 };

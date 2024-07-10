@@ -46,7 +46,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                 lineHeight: '30.26px',
               }}
             >
-              {VERIFICATION_OTP.verificationCode}
+              {VERIFICATION_OTP?.verificationCode}
             </Typography>
             <Typography
               sx={{
@@ -56,7 +56,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                 lineHeight: '24.2px',
               }}
             >
-              {VERIFICATION_OTP.code}
+              {VERIFICATION_OTP?.code}
               <Typography
                 sx={{
                   fontWeight: 500,
@@ -65,12 +65,12 @@ const VerificationModal = ({ open, onCloseModal }) => {
                   lineHeight: '25.41px',
                 }}
               >
-                {VERIFICATION_OTP.placeHolderNumber}
+                {VERIFICATION_OTP?.placeHolderNumber}
               </Typography>
             </Typography>
             <VerificationCode
-              receivedCode={VERIFICATION_OTP.otpCode}
-              otpReceivedCode={VERIFICATION_CODE.codeOTP}
+              receivedCode={VERIFICATION_OTP?.otpCode}
+              otpReceivedCode={VERIFICATION_CODE?.codeOTP}
             />
             <Box sx={{ display: 'flex', alignSelf: 'flex-start' }}>
               <Typography
@@ -82,7 +82,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                   color: '#666666',
                 }}
               >
-                {VERIFICATION_OTP.attemptsFive}
+                {VERIFICATION_OTP?.attemptsFive}
               </Typography>
               <Typography
                 sx={{
@@ -93,7 +93,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                   color: '#666666',
                 }}
               >
-                {VERIFICATION_OTP.attemptsTwo}
+                {VERIFICATION_OTP?.attemptsTwo}
               </Typography>
             </Box>
             <hr
@@ -113,7 +113,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                   textAlign: 'center',
                 }}
               >
-                {VERIFICATION_OTP.codeOtp}
+                {VERIFICATION_OTP?.codeOtp}
 
                 <span
                   style={{
@@ -123,7 +123,7 @@ const VerificationModal = ({ open, onCloseModal }) => {
                     lineHeight: '19.36px',
                   }}
                 >
-                  {VERIFICATION_OTP.resendCode}
+                  {VERIFICATION_OTP?.resendCode}
                 </span>
               </Typography>
             </Box>

@@ -172,7 +172,7 @@ const ProposalFilter = ({ data }) => {
               onChange={handleListingTypeChange}
               sx={{ background: '#fff' }}
             >
-              {LISTING_TYPE.map((item) => (
+              {LISTING_TYPE?.map((item) => (
                 <MenuItem key={item?.value} value={item?.value}>
                   {item?.label}
                 </MenuItem>

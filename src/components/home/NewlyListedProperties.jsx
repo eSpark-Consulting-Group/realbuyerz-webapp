@@ -23,8 +23,8 @@ const NewlyListedProperties = () => {
           }}
         >
           <Heading
-            heading={FEATURED_HEADINGS.listedProperty}
-            paragraph={FEATURED_HEADINGS.latestProject}
+            heading={FEATURED_HEADINGS?.listedProperty}
+            paragraph={FEATURED_HEADINGS?.latestProject}
           />
           <Box
             sx={{

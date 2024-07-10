@@ -37,21 +37,21 @@ const ResetPassword = () => {
 
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
-      alert(LOGIN_FORM.loginCard.passwordMatch);
-      router.push(LOGIN_ROUTERS.signin);
+      alert(LOGIN_FORM?.loginCard.passwordMatch);
+      router.push(LOGIN_ROUTERS?.signin);
     } else {
-      alert(LOGIN_FORM.loginCard.passwordDontMatch);
+      alert(LOGIN_FORM?.loginCard.passwordDontMatch);
     }
   };
 
   const backToSignin = () => {
-    router.push(LOGIN_ROUTERS.signin);
+    router.push(LOGIN_ROUTERS?.signin);
   };
 
   const { mutate } = useMutation({
     mutationFn: resetPassword,
     onSuccess: () => {
-      router.push(LOGIN_ROUTERS.signin);
+      router.push(LOGIN_ROUTERS?.signin);
     },
   });
 
@@ -98,7 +98,7 @@ const ResetPassword = () => {
             fontWeight: 600,
           }}
         >
-          {LOGIN_FORM.resetPasswordCard.resetPassword}
+          {LOGIN_FORM?.resetPasswordCard.resetPassword}
         </Typography>
         <Typography
           sx={{
@@ -106,7 +106,7 @@ const ResetPassword = () => {
             fontWeight: 400,
           }}
         >
-          {LOGIN_FORM.resetPasswordCard.createNewPassword}
+          {LOGIN_FORM?.resetPasswordCard.createNewPassword}
         </Typography>
         <PasswordAndConfirmFields
           handleFieldToggle={handleFieldToggle}

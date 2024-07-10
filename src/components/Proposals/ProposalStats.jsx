@@ -6,7 +6,7 @@ import { Proposals } from '@/src/constants/Proposals';
 
 const ProposalStats = ({ proposal }) => {
   const renderLocationInfo = () => {
-    return Object.keys(Proposals.stats)
+    return Object.keys(Proposals?.stats)
       .slice(1)
       .map((key) => (
         <Box key={key} sx={{ display: 'flex', gap: '5px' }}>
@@ -18,7 +18,7 @@ const ProposalStats = ({ proposal }) => {
             }}
             variant="body1"
           >
-            {Proposals.stats[key]}
+            {Proposals?.stats[key]}
           </Typography>
           <Typography
             key={key}

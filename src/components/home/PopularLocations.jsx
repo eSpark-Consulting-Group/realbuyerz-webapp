@@ -46,7 +46,7 @@ const PopularLocations = ({ data }) => {
       }}
     >
       <Container sx={{ px: '10%', maxWidth: '1213px !important' }}>
-        <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
+        <Heading heading={FEATURED_HEADINGS?.popularLocations} paragraph={''} />
         <Box
           sx={{
             pt: '14px',
@@ -77,7 +77,7 @@ const PopularLocations = ({ data }) => {
                   fontSize: '15px',
                 }}
               >
-                {FEATURE_BUTTONS.forSale}
+                {FEATURE_BUTTONS?.forSale}
               </Typography>
             </Button>
             <Button
@@ -100,7 +100,7 @@ const PopularLocations = ({ data }) => {
                 }}
               >
                 {' '}
-                {FEATURE_BUTTONS.byRent}
+                {FEATURE_BUTTONS?.byRent}
               </Typography>
             </Button>
           </Box>

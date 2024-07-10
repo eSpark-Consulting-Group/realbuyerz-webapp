@@ -11,16 +11,16 @@ import ResetPassword from '../ResetPassword/ResetPassword';
 const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
   let cardComponent;
   switch (showComponent) {
-    case AUTH_COMPONENTS.signup:
+    case AUTH_COMPONENTS?.signup:
       cardComponent = <SignupCard />;
       break;
-    case AUTH_COMPONENTS.signin:
+    case AUTH_COMPONENTS?.signin:
       cardComponent = <LoginCard />;
       break;
-    case AUTH_COMPONENTS.forgetPassword:
+    case AUTH_COMPONENTS?.forgetPassword:
       cardComponent = <ForgetPassword />;
       break;
-    case AUTH_COMPONENTS.resetPassword:
+    case AUTH_COMPONENTS?.resetPassword:
       cardComponent = <ResetPassword />;
       break;
     default:
@@ -37,7 +37,7 @@ const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
         paddingTop:
-          showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
+          showComponent === LOGIN_FORM?.forgetpassword ? paddingTop : '0px',
         '@media (max-width: 960px)': {
           background: 'none',
         },

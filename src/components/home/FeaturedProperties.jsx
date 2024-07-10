@@ -69,8 +69,8 @@ const FeaturedProperties = () => {
       }}
     >
       <Heading
-        heading={FEATURED_HEADINGS.featureProperty}
-        paragraph={FEATURED_HEADINGS.latestProject}
+        heading={FEATURED_HEADINGS?.featureProperty}
+        paragraph={FEATURED_HEADINGS?.latestProject}
       />
       {isSmallScreen ? (
         <Swiper {...sliderSettings}>
@@ -473,7 +473,7 @@ const FeaturedProperties = () => {
                           </Box>
                         </Box>
                         <Grid container>
-                          {FEATURED_PROPERTIES.map((amenity, index) => (
+                          {FEATURED_PROPERTIES?.map((amenity, index) => (
                             <Grid
                               key={index}
                               item

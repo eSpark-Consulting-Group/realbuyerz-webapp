@@ -69,7 +69,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
                 fontSize: '25px',
               }}
             >
-              {VERIFICATION_OTP.congrats}
+              {VERIFICATION_OTP?.congrats}
             </Typography>
             <Typography
               sx={{
@@ -77,7 +77,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
                 fontSize: '16px',
               }}
             >
-              {VERIFICATION_OTP.verifiedNum}
+              {VERIFICATION_OTP?.verifiedNum}
             </Typography>
             <Button
               style={{
@@ -90,7 +90,7 @@ const CongratsModal = ({ open, onCloseModal }) => {
               }}
               onClose={onCloseModal}
             >
-              {VERIFICATION_OTP.continue}
+              {VERIFICATION_OTP?.continue}
             </Button>
           </Box>
         </Box>

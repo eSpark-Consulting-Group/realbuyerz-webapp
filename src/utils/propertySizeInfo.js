@@ -13,7 +13,7 @@ export const createPropertySizeState = (
     sellingData: propertyBuyingDetails,
     propertySize: propertySizeInformation.map((item) => ({
       ...item,
-      value: PROPERTY_BUYING_DETAIL.sellingDetails[item?.label],
+      value: PROPERTY_BUYING_DETAIL?.sellingDetails[item?.label],
     })),
     selectCityOption: selectCity,
   };

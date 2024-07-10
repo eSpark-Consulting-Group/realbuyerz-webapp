@@ -34,7 +34,7 @@ const PolicyPage = () => {
         container
         sx={{ display: 'flex', gap: '30px', maxWidth: '1050px', mx: 'auto' }}
       >
-        {CARDS.map((card, index) => (
+        {CARDS?.map((card, index) => (
           <PolicyCard
             data={policies?.content}
             key={index}

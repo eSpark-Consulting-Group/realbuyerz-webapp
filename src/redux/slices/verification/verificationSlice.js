@@ -10,7 +10,7 @@ const initialState = {
   },
 };
 const verificationSlice = createSlice({
-  name: VERIFICATION_OTP.name,
+  name: VERIFICATION_OTP?.name,
   initialState,
   reducers: {
     saveVerificationCode: (state, action) => {

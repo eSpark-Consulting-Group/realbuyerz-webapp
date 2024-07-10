@@ -2,7 +2,7 @@ import DynamicAPI from './dynamicAPI';
 import { ENDPOINTS } from '@/src/constants/apiConstants';
 
 export const addProperties = async (profileData, jwtToken) => {
-  const endpoint = ENDPOINTS.addProperties;
+  const endpoint = ENDPOINTS?.addProperties;
   const method = 'post';
 
   try {
@@ -17,7 +17,7 @@ export const addProperties = async (profileData, jwtToken) => {
 };
 
 export const fetchProperties = async (jwtToken) => {
-  const endpoint = ENDPOINTS.properties;
+  const endpoint = ENDPOINTS?.properties;
   const method = 'get';
 
   try {

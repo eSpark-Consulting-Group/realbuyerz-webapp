@@ -4,5 +4,5 @@ export const incrementCounterState = (propertyBuyingDetails, identifier) => {
   if (!propertyBuyingDetails) {
     return {};
   }
-  return PROPERTY_BUYING_DETAIL.sellingDetails.incrementBtn[identifier];
+  return PROPERTY_BUYING_DETAIL?.sellingDetails.incrementBtn[identifier];
 };

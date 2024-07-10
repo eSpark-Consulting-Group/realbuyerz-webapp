@@ -16,8 +16,8 @@ const Signin = () => {
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.signin}
-          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
+          showComponent={AUTH_COMPONENTS?.signin}
+          height={LOGIN_FORM?.rectangleHeight.loginFormHeight}
         />
       </Grid>
     </>

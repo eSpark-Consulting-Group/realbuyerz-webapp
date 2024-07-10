@@ -12,7 +12,7 @@ export const createPropertyTypeState = (
   const mapArray = (array) =>
     Array.isArray(array) ? array.map((item) => ({ ...item, value: '' })) : [];
   const propertyTypeInfo = {
-    sellingData: PROPERTY_BUYING_DETAIL.sellingDetails,
+    sellingData: PROPERTY_BUYING_DETAIL?.sellingDetails,
     propertyTypeData: [
       ...mapArray(iconTitle),
       ...mapArray(commercialType),

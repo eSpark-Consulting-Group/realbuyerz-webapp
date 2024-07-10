@@ -148,7 +148,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
               variant="outlined"
               onClick={handleOpen}
             >
-              {BIDDINGS.ViewAllbutton.title}
+              {BIDDINGS?.ViewAllbutton.title}
             </Button>
           )}
         </Box>

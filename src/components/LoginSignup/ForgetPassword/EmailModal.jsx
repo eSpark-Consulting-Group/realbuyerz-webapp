@@ -9,7 +9,7 @@ import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
   const router = useRouter();
   const handleLogin = () => {
-    router.push(LOGIN_ROUTERS.signin);
+    router.push(LOGIN_ROUTERS?.signin);
   };
   const [isToastOpen, setIsToastOpen] = useState(false);
   const handleToast = () => {
@@ -83,7 +83,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                   fontSize: '24px',
                 }}
               >
-                {LOGIN_FORM.loginCard.checkEmail}{' '}
+                {LOGIN_FORM?.loginCard.checkEmail}{' '}
               </Typography>
               <Typography
                 sx={{
@@ -91,7 +91,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                   fontSize: '14px',
                 }}
               >
-                {LOGIN_FORM.loginCard.resetPassword}
+                {LOGIN_FORM?.loginCard.resetPassword}
               </Typography>
               <Typography
                 sx={{
@@ -117,11 +117,11 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                   handleToast();
                 }}
               >
-                {LOGIN_FORM.loginCard.resend}
+                {LOGIN_FORM?.loginCard.resend}
               </Button>
               {isToastOpen && (
                 <Alert variant="filled" severity="success">
-                  {LOGIN_FORM.loginCard.emailSent}
+                  {LOGIN_FORM?.loginCard.emailSent}
                 </Alert>
               )}
               <Button
@@ -144,7 +144,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
                   height={18}
                   alt="lessthan"
                 />
-                {LOGIN_FORM.loginCard.backSignin}
+                {LOGIN_FORM?.loginCard.backSignin}
               </Button>
             </Box>
           </Box>

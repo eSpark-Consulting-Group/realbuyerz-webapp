@@ -48,7 +48,7 @@ const CreateAccount = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
+      <Typewriter text={FEATURED_HEADINGS?.sliderHeading} />
       <Button
         sx={{
           mx: '15px',
@@ -60,7 +60,7 @@ const CreateAccount = () => {
         variant="primary"
       >
         <Typography sx={{ color: '#fff', fontSize: '12px' }}>
-          {FEATURED_HEADINGS.createAccount}
+          {FEATURED_HEADINGS?.createAccount}
         </Typography>
       </Button>
     </Box>

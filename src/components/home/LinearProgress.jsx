@@ -12,8 +12,8 @@ const LinearProgressBar = ({ position, hovered }) => {
         position: 'absolute',
         color: '#fb631c',
         opacity: hovered
-          ? FEATURE_STYLES.opacityTwo
-          : FEATURE_STYLES.opacityZero,
+          ? FEATURE_STYLES?.opacityTwo
+          : FEATURE_STYLES?.opacityZero,
         ...POSITIONS[position],
       }}
     />

@@ -125,7 +125,7 @@ const PropertyListingCard = ({ propertyData }) => {
               <Typography
                 sx={{ fontSize: '16px', fontWeight: '400', pt: '15px' }}
               >
-                {`${PROPERTY_DETAILS.posted} ${property?.dateWords}`}
+                {`${PROPERTY_DETAILS?.posted} ${property?.dateWords}`}
               </Typography>
             </div>
             <Box
@@ -136,19 +136,19 @@ const PropertyListingCard = ({ propertyData }) => {
               sx={{ display: 'flex' }}
             >
               <Box>
-                <Link href={`${PROPERTY_DETAILS.properties}${property?.id}`}>
+                <Link href={`${PROPERTY_DETAILS?.properties}${property?.id}`}>
                   <Button variant="primary">
                     <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
-                      {PROPERTY_DETAILS.viewMore}
+                      {PROPERTY_DETAILS?.viewMore}
                     </Typography>
                   </Button>
                 </Link>
               </Box>
               <Box>
-                <Link href={`${PROPERTY_DETAILS.agent}${property?.id}`}>
+                <Link href={`${PROPERTY_DETAILS?.agent}${property?.id}`}>
                   <Button variant="primary">
                     <Typography sx={{ fontSize: { xs: '14px', md: '16px' } }}>
-                      {PROPERTY_DETAILS.agentProfile}
+                      {PROPERTY_DETAILS?.agentProfile}
                     </Typography>
                   </Button>
                 </Link>

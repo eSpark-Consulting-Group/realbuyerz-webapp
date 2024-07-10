@@ -9,7 +9,7 @@ const initialState = {
   user: null,
 };
 const authSlice = createSlice({
-  name: LOGIN_FORM.auth,
+  name: LOGIN_FORM?.auth,
   initialState,
   reducers: {
     saveLoginData: (state, action) => {

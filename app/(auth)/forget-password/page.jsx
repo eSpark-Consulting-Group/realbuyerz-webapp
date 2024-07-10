@@ -16,9 +16,9 @@ const ForgetPasswordForm = () => {
     <>
       <Grid container>
         <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.forgetPassword}
-          height={LOGIN_FORM.rectangleHeight.loginFormHeight}
-          paddingTop={LOGIN_FORM.paddingTop}
+          showComponent={AUTH_COMPONENTS?.forgetPassword}
+          height={LOGIN_FORM?.rectangleHeight.loginFormHeight}
+          paddingTop={LOGIN_FORM?.paddingTop}
         />
       </Grid>
     </>
