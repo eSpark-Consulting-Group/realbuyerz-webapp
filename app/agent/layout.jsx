@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
     <Box
       sx={{
         backgroundColor: '#F4F5F7',
-        height: '100vh'
+        height: '100vh',
       }}
     >
       <Suspense fallback={<Loading />}>
