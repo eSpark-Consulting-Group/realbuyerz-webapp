@@ -115,17 +115,27 @@ const LoginWithGoogle = ({
           {accountCreationMessage}
         </Typography>
         <Typography
-          style={{
-            color: '#FB631C',
-            fontWeight: 400,
-            fontSize: { xs: '12px', md: '16px' },
-            cursor: 'pointer',
-          }}
-          onClick={() => {
-            onSigninClick();
-          }}
-        >
-          {label}
+      style={{
+        color: '#FB631C',
+        fontWeight: 400,
+        fontSize: '16px', 
+        cursor: 'pointer',
+        position: 'relative', 
+        textDecoration: 'none', 
+      }}
+      onClick={onSigninClick}
+    >
+      {label}
+      <span
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '1px',
+          backgroundColor: '#FB631C',
+        }}
+      />
         </Typography>
       </Box>
     </>
