@@ -145,7 +145,7 @@ export const JustifyForFindProposal = (
   length
 ) => {
   if (
-    (currentTab === 'Save Request' &&
+    (currentTab === 'Saved Request' &&
       getFilteredOutput(save)?.length <= length) ||
     (currentTab === 'Active' && getFilteredOutput(active)?.length <= length) ||
     (currentTab === 'Archive' &&
@@ -169,7 +169,7 @@ export const renderAdCardForProposal = (
   currentTab,
   data
 ) => {
-  if (currentTab === 'Save Request') {
+  if (currentTab === 'Saved Request') {
     return getFilteredOutput(save, data);
   } else if (currentTab === 'Active') {
     return getFilteredOutput(active, data);

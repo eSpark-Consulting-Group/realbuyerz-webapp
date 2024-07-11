@@ -45,7 +45,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
     }
   };
   const handleClickOpen = () => {
-    if (currentTab === 'Save Request' || currentTab === 'Trash') {
+    if (currentTab === 'Saved Request' || currentTab === 'Trash') {
       return null;
     } else if (currentTab === 'Active' && pathName?.includes(proposals)) {
       return null;

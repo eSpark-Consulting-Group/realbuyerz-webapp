@@ -22,7 +22,7 @@ const MyProposals = () => {
   const user_id = useSelector((state) => state?.currentUser?.user?.id);
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
   const [value, setValue] = useState(0);
-  const [currentTab, setCurrentTab] = useState('Save Request');
+  const [currentTab, setCurrentTab] = useState('Saved Request');
 
   const { save, proposalsTrash } = useSelector(
     (state) => state?.postListingAds
@@ -37,7 +37,7 @@ const MyProposals = () => {
 
   const tabs = [
     {
-      label: 'Save Request',
+      label: 'Saved Request',
       prop: a11yProps(0),
       items: find_save?.length || 0,
     },
@@ -174,7 +174,7 @@ const MyProposals = () => {
               />
             ) : (
               <>
-                {currentTab === 'Save Request' ? (
+                {currentTab === 'Saved Request' ? (
                   <PostListingCard ads={find_save} height={'1098px'} />
                 ) : (
                   <>
