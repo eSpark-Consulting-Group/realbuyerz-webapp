@@ -693,7 +693,7 @@ export const PROPERTY_DATA_Old = {
 };
 
 export const FEATURED_HEADINGS = {
-  latestProject: 'Find your dream projects from our latest projects',
+  latestProject: 'Find your dream property from our latest properties',
   featureProperty: 'Featured Properties',
   listedProperty: 'Newly Listed Properties',
   homePartners: 'Our Home Partners',
