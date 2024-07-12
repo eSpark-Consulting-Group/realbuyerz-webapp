@@ -49,7 +49,7 @@ const PopularLocations = ({ data }) => {
         <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
         <Box
           sx={{
-            pt: '14px',
+            pt: '5px',
             pb: '8px',
           }}
         >
