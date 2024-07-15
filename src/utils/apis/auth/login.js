@@ -1,12 +1,12 @@
-import { ENDPOINTS } from '@/src/constants/apiConstants';
-import DynamicAPI from '../../dynamicAPI';
+import { ENDPOINTS } from '@/src/services/apiService/apiEndPoints';
+import APIService from '@/src/services/apiService/apiService';
 
 export const login = async (loginData) => {
   const endpoint = ENDPOINTS.login;
   const method = 'post';
 
   try {
-    const response = await DynamicAPI(endpoint, method, loginData);
+    const response = await APIService(endpoint, method, loginData);
 
     return response;
   } catch (error) {

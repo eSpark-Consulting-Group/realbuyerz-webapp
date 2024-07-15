@@ -1,12 +1,12 @@
-import { ENDPOINTS } from '@/src/constants/apiConstants';
-import DynamicAPI from '../../dynamicAPI';
+import { ENDPOINTS } from '@/src/services/apiService/apiEndPoints';
+import APIService from '@/src/services/apiService/apiService';
 
 export const loginWithGoogle = async () => {
   const endpoint = ENDPOINTS.loginWithGoogle;
   const method = 'post';
 
   try {
-    const response = await DynamicAPI(endpoint, method);
+    const response = await APIService(endpoint, method);
 
     return response;
   } catch (error) {
