@@ -114,6 +114,9 @@ const MainHeader = () => {
                 sx={{
                   display: { xs: 'block', sm: 'block', md: 'none' },
                   color: '#000',
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
                 }}
               >
                 <MenuIcon />
