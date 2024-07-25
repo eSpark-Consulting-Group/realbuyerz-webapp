@@ -50,7 +50,7 @@ const Footer = ({ data }) => {
         justifyContent="center"
         sx={{
           py: '50px',
-          px:{xs:'10px', md:'0px'},
+          px: { xs: '10px', md: '0px' },
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           '@media (min-width:280px) and (max-width:500px)': {
