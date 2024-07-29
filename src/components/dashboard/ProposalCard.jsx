@@ -119,7 +119,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                     height: { xs: '220px', sm: '250px' },
                     borderRadius: '5px',
                     '@media (min-width:280px) and (max-width:319px)': {
-                      width: '230px',
+                      minWidth: '220px',
                       height: '210px',
                     },
                   }}
