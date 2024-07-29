@@ -2054,7 +2054,7 @@ const postlistingAdSlice = createSlice({
       const saveIndex = state?.save?.findIndex(
         (ad) => ad?.property_id === property_id
       );
-      if (saveIndex !== -1 && currentTab == 'Save Request') {
+      if (saveIndex !== -1 && currentTab == 'Saved Request') {
         const postings_trash = state?.save?.splice(saveIndex, 1)[0];
         state.proposalsTrash.push(postings_trash);
       }

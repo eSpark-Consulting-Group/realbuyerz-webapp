@@ -45,7 +45,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
     }
   };
   const handleClickOpen = () => {
-    if (currentTab === 'Save Request' || currentTab === 'Trash') {
+    if (currentTab === 'Saved Request' || currentTab === 'Trash') {
       return null;
     } else if (currentTab === 'Active' && pathName?.includes(proposals)) {
       return null;
@@ -388,8 +388,8 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                     zIndex: 10,
                     right: { xs: 60, sm: 60, md: 150 },
                     top: {
-                      xs: !pathName?.includes(user) ? 300 : 81,
-                      sm: !pathName?.includes(user) ? 362 : 112,
+                      xs: !pathName?.includes(user) ? 330 : 81,
+                      sm: !pathName?.includes(user) ? 382 : 112,
                       md: !pathName?.includes(user) ? 25 : 25,
                     },
                     bottom: {
@@ -397,6 +397,10 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                       sm: !pathName?.includes(user) ? 'auto' : 'auto',
                     },
                     left: { xs: 'auto', sm: 'auto', md: 'auto' },
+                    '@media (min-width:280px) and (max-width:319px)': {
+                      top: !pathName?.includes(user) && 320,
+                      right: !pathName?.includes(user) && 50,
+                    },
                   }}
                 >
                   <EditIcon />

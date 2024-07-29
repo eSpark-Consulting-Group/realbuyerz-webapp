@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import Link from 'next/link';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -49,20 +50,26 @@ const CreateAccount = () => {
       }}
     >
       <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
-      <Button
-        sx={{
-          mx: '15px',
-          fontWeight: 600,
-          width: '150px',
-          height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-          color: '#fff',
-        }}
-        variant="primary"
-      >
-        <Typography sx={{ color: '#fff', fontSize: '12px' }}>
+      <Link href={'/signin'}>
+        <Button
+          sx={{
+            mx: '15px',
+            fontWeight: 600,
+            width: '150px',
+            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff !important',
+              color: '#fb631c !important',
+              border: '1px solid #fb631c',
+            },
+            fontSize: '12px',
+          }}
+          variant="primary"
+        >
           {FEATURED_HEADINGS.createAccount}
-        </Typography>
-      </Button>
+        </Button>
+      </Link>
     </Box>
   );
 };

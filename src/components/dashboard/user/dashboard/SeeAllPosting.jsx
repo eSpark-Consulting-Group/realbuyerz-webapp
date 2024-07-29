@@ -13,7 +13,7 @@ const SeeAllPosting = ({ title, link }) => {
             lineHeight: '24.2px',
             color: '#126FAA',
             textDecoration: 'underline',
-            textUnderlineOffset: '4px',
+            textUnderlineOffset: '5px',
             background: 'none',
             '&:hover': {
               background: 'none',

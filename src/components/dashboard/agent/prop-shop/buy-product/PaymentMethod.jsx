@@ -124,7 +124,7 @@ const PaymentMethod = ({
         width: '100%',
         height: { xs: 'auto', lg: 'auto ' },
         pb: '60px',
-        border: '2px solid #E4E4E4',
+        border: '1px solid #E4E4E4',
         borderRadius: '10px',
         backgroundColor: '#fff',
         backgroundImage: `url('${image}')`,

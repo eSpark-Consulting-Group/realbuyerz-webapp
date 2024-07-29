@@ -47,7 +47,7 @@ const ProductCart = ({
           mx: { xs: 'auto', md: 0 },
           py: { xs: 4, md: 0 },
           minHeight: { xs: 'auto', lg: '340px' },
-          border: '2px solid #E4E4E4',
+          border: '1px solid #E4E4E4',
           borderRadius: '10px',
           backgroundColor: '#fff',
         }}

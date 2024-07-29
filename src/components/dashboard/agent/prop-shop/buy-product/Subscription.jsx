@@ -13,7 +13,7 @@ const Subscription = ({ title }) => {
       sx={{
         width: '100%',
         py: 2,
-        border: '2px solid #E4E4E4',
+        border: '1px solid #E4E4E4',
         borderRadius: '10px',
         backgroundColor: '#fff',
       }}
