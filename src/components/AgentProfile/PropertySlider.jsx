@@ -28,7 +28,7 @@ const PropertySlider = ({ data }) => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1920,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
@@ -38,7 +38,17 @@ const PropertySlider = ({ data }) => {
         },
       },
       {
-        breakpoint: 1040,
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: false,
+          adaptiveHeight: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -74,7 +84,6 @@ const PropertySlider = ({ data }) => {
             <Fade key={index} direction="right" duration={500}>
               <Card
                 sx={{
-                  maxWidth: 315,
                   '&:hover': {
                     boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.25)',
                   },
@@ -86,7 +95,7 @@ const PropertySlider = ({ data }) => {
                     width: 70,
                     height: 18,
                     top: '10px',
-                    right: '0px',
+                    right: 0,
                     position: 'absolute',
                     backgroundImage: `url('/images/amenities/location.svg')`,
                     backgroundSize: 'contain',

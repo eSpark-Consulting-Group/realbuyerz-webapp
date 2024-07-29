@@ -4,10 +4,23 @@ import React, { useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Heading from './Heading';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/src/constants/Home';
 
 const scrollToTop = () => {
@@ -32,6 +45,32 @@ const PopularLocations = ({ data }) => {
     } else {
       setFilteredProposalsData(data);
     }
+  };
+  const isSmallScreen = useMediaQuery((theme) =>
+    theme.breakpoints.between('xs', 'lg')
+  );
+  const sliderSettings = {
+    slidesPerView: 3,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    modules: [Pagination, Navigation],
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      425: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1130: {
+        slidesPerView: 3,
+      },
+    },
   };
   return (
     <Box
@@ -104,65 +143,136 @@ const PopularLocations = ({ data }) => {
               </Typography>
             </Button>
           </Box>
-          <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
-            {filteredProposalsData?.map((item, index) => (
-              <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                <Box
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: '5px',
-                    border: '1px solid #cbcbcb',
-                    maxWidth: '350px',
-                    maxHeight: { lg: '350px' },
-                    mx: 'auto',
-                    my: '15px',
-                    '&:hover': {
-                      boxShadow: '0px 0px 5px 0px rgba(18, 111, 170, 0.70)',
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      py: '10px',
-                      backgroundColor: '#f5f6fb',
-                      color: '#333',
-                      fontWeight: 600,
-                      fontSize: '16px',
-                    }}
-                  >
-                    {item?.title}
-                  </Box>
-                  <Box
-                    sx={{
-                      pt: '10px',
-                      pb: '16px',
-                      px: { xs: '10px', sm: '15px', md: '50px' },
-                      textAlign: 'left',
-                    }}
-                  >
-                    {item?.locations?.map((location, index) => (
-                      <Box key={index}>
-                        <Link href={location?.link}>
-                          <Typography
-                            variant="body1"
+          {isSmallScreen ? (
+            <Swiper {...sliderSettings}>
+              <Box className="full-container-width mx-auto">
+                <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
+                  {filteredProposalsData?.map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <Grid item xs={12} sm={6} md={6} lg={4}>
+                        <Box
+                          sx={{
+                            backgroundColor: '#fff',
+                            borderRadius: '5px',
+                            border: '1px solid #cbcbcb',
+                            maxWidth: '350px',
+                            maxHeight: { lg: '350px' },
+                            mx: 'auto',
+                            my: '15px',
+                            '&:hover': {
+                              boxShadow:
+                                '0px 0px 5px 0px rgba(18, 111, 170, 0.70)',
+                            },
+                          }}
+                        >
+                          <Box
                             sx={{
-                              fontSize: '14px',
-                              py: { xs: '5px', sm: '6px', lg: '5px' },
-                              lineHeight: '16.94px',
-                              fontWeight: 500,
-                              color: '#666666',
+                              py: '10px',
+                              backgroundColor: '#f5f6fb',
+                              color: '#333',
+                              fontWeight: 600,
+                              fontSize: '16px',
                             }}
                           >
-                            {location?.title}
-                          </Typography>
-                        </Link>
+                            {item?.title}
+                          </Box>
+                          <Box
+                            sx={{
+                              pt: '10px',
+                              pb: '16px',
+                              px: { xs: '10px', sm: '15px', md: '50px' },
+                              textAlign: 'left',
+                            }}
+                          >
+                            {item?.locations?.map((location, index) => (
+                              <Box key={index}>
+                                <Link href={location?.link}>
+                                  <Typography
+                                    variant="body1"
+                                    sx={{
+                                      fontSize: '14px',
+                                      py: { xs: '5px', sm: '6px', lg: '5px' },
+                                      lineHeight: '16.94px',
+                                      fontWeight: 500,
+                                      color: '#666666',
+                                    }}
+                                  >
+                                    {location?.title}
+                                  </Typography>
+                                </Link>
+                              </Box>
+                            ))}
+                          </Box>
+                        </Box>
+                      </Grid>
+                    </SwiperSlide>
+                  ))}
+                </Grid>
+              </Box>
+            </Swiper>
+          ) : (
+            <Box className="full-container-width mx-auto">
+              <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
+                {filteredProposalsData?.map((item, index) => (
+                  <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
+                    <Box
+                      sx={{
+                        backgroundColor: '#fff',
+                        borderRadius: '5px',
+                        border: '1px solid #cbcbcb',
+                        maxWidth: '350px',
+                        maxHeight: { lg: '350px' },
+                        mx: 'auto',
+                        my: '15px',
+                        '&:hover': {
+                          boxShadow: '0px 0px 5px 0px rgba(18, 111, 170, 0.70)',
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          py: '10px',
+                          backgroundColor: '#f5f6fb',
+                          color: '#333',
+                          fontWeight: 600,
+                          fontSize: '16px',
+                        }}
+                      >
+                        {item?.title}
                       </Box>
-                    ))}
-                  </Box>
-                </Box>
+                      <Box
+                        sx={{
+                          pt: '10px',
+                          pb: '16px',
+                          px: { xs: '10px', sm: '15px', md: '50px' },
+                          textAlign: 'left',
+                        }}
+                      >
+                        {item?.locations?.map((location, index) => (
+                          <Box key={index}>
+                            <Link href={location?.link}>
+                              <Typography
+                                variant="body1"
+                                sx={{
+                                  fontSize: '14px',
+                                  py: { xs: '5px', sm: '6px', lg: '5px' },
+                                  lineHeight: '16.94px',
+                                  fontWeight: 500,
+                                  color: '#666666',
+                                }}
+                              >
+                                {location?.title}
+                              </Typography>
+                            </Link>
+                          </Box>
+                        ))}
+                      </Box>
+                    </Box>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
+            </Box>
+          )}
         </Box>
         <Box
           sx={{
