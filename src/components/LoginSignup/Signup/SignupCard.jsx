@@ -58,11 +58,11 @@ const SignupCard = () => {
       alert(PASSWORD_ALERT);
     }
     mutate({
-      first_name: formData.firstName,
-      last_name: formData.lastName,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
       email: formData.email,
       password: formData.password,
-      mobile_number: formData.contactNumber,
+      mobileNumber: formData.contactNumber,
       role: 'user',
     });
     dispatch(saveSignupData(formData));
