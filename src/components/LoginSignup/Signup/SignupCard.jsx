@@ -68,7 +68,7 @@ const SignupCard = () => {
     dispatch(saveSignupData(formData));
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending} = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
@@ -164,6 +164,7 @@ const SignupCard = () => {
             }}
             loginClick={signupClick}
             handleGoogleLogin={handleGoogleLogin}
+            isPending={isPending}
           />
         </Box>
       </Box>
