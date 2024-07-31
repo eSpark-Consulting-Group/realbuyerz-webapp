@@ -23,7 +23,7 @@ const LoginWithGoogle = ({
       >
         <Button
           style={{
-            background: '#FB631C',
+            background: isPending ? '#e0e0e0' : '#FB631C',
             width: '100px',
             borderRadius: '5px',
             color: 'white',
