@@ -68,16 +68,16 @@ const SignupCard = () => {
     dispatch(saveSignupData(formData));
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      localStorage.setItem('token', data.token);
-      Cookie.set('token', data.token);
-      Cookie.set('userType', data.userType);
+      localStorage.setItem('token', data.response.data.token);
+      Cookie.set('token', data.response.data.token);
+      Cookie.set('userType', data.response.data.user.role);
       dispatch(setLoggedIn(data));
-      if (data.userType === 'user') {
+      if (data.response.data.user.role === 'user') {
         router.push('/user/dashboard');
-      } else if (data.userType === 'agent') {
+      } else if (data.response.data.user.role === 'agent') {
         router.push('/agent/live-bidding');
       }
     },
@@ -164,6 +164,7 @@ const SignupCard = () => {
             }}
             loginClick={signupClick}
             handleGoogleLogin={handleGoogleLogin}
+            isPending={isPending}
           />
         </Box>
       </Box>
