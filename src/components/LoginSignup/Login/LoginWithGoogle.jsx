@@ -10,7 +10,7 @@ const LoginWithGoogle = ({
   onSigninClick,
   loginClick,
   handleGoogleLogin,
-  isPending
+  isPending,
 }) => {
   return (
     <>

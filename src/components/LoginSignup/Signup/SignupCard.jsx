@@ -68,7 +68,7 @@ const SignupCard = () => {
     dispatch(saveSignupData(formData));
   };
 
-  const { mutate, isPending} = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
