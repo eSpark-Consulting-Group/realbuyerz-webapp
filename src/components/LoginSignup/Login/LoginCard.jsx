@@ -79,7 +79,6 @@ const LoginCard = ({ handleClose }) => {
     },
   });
 
-
   return (
     <form>
       {!showForgetPassword ? (
