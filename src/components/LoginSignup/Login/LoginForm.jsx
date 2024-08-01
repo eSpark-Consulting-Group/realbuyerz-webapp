@@ -9,11 +9,11 @@ import PasswordAndConfirmFields from './PasswordAndConfirmField';
 const FormContainer = ({
   isLoginForm,
   handleInputContactNumber,
-  handleInputChange,
   contactNumber,
   formik,
 }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
+
   const handleFieldToggle = (fieldName) => {
     setFormData({
       ...formData,
@@ -37,7 +37,7 @@ const FormContainer = ({
             fullWidth
             type="email"
             value={formik.values.email}
-            name={LOGIN_FORM.email}
+            name="email"
             onChange={formik.handleChange}
             inputProps={{
               style: {
@@ -61,9 +61,7 @@ const FormContainer = ({
           ) : null}
           <PasswordFields
             formik={formik}
-            handleInputChange={handleInputChange}
           />
-          ;
           {formik.touched.password && formik.errors.password ? (
             <Typography variant="body2" color="error" sx={{ fontSize: '12px' }}>
               {formik.errors.password}
@@ -71,7 +69,7 @@ const FormContainer = ({
           ) : null}
         </Box>
       ) : (
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <Box
             sx={{
               display: 'flex',
@@ -88,10 +86,13 @@ const FormContainer = ({
             >
               <TextField
                 label={FORM_LABEL.firstName}
-                name={LOGIN_FORM.firstName}
+                name="firstName"
                 variant="outlined"
                 fullWidth
-                onChange={handleInputChange}
+                value={formik.values.firstName}
+                onChange={formik.handleChange}
+                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                helperText={formik.touched.firstName && formik.errors.firstName}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
                   sx: { fontSize: '11px' },
@@ -99,10 +100,13 @@ const FormContainer = ({
               />
               <TextField
                 label={FORM_LABEL.lastName}
-                name={LOGIN_FORM.lastName}
+                name="lastName"
                 variant="outlined"
                 fullWidth
-                onChange={handleInputChange}
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                helperText={formik.touched.lastName && formik.errors.lastName}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
                   sx: { fontSize: '11px' },
@@ -113,8 +117,11 @@ const FormContainer = ({
               label={FORM_LABEL.emailAddress}
               variant="outlined"
               fullWidth
-              name={LOGIN_FORM.email}
-              onChange={handleInputChange}
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
               InputProps={{ sx: { height: '40px' } }}
               InputLabelProps={{
                 sx: { fontSize: '11px' },
@@ -123,11 +130,13 @@ const FormContainer = ({
             <TextField
               label={FORM_LABEL.contactNo}
               variant="outlined"
-              type={FORM_LABEL.number}
+              type="text"
               fullWidth
-              name={LOGIN_FORM.contactNo}
+              name="contactNumber"
               value={contactNumber}
               onChange={handleInputContactNumber}
+              error={formik.touched.contactNumber && Boolean(formik.errors.contactNumber)}
+              helperText={formik.touched.contactNumber && formik.errors.contactNumber}
               sx={{
                 '& input[type=number]::-webkit-inner-spin-button': {
                   '-webkit-appearance': 'none',
@@ -142,9 +151,9 @@ const FormContainer = ({
               }}
             />
             <PasswordAndConfirmFields
-              handleInputChange={handleInputChange}
               handleFieldToggle={handleFieldToggle}
               formData={formData}
+              formik={formik}
             />
           </Box>
         </form>
@@ -152,4 +161,5 @@ const FormContainer = ({
     </>
   );
 };
+
 export default FormContainer;
