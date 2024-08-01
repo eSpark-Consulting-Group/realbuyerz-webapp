@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, Button } from '@mui/material';
+import { Typography, Box, Button, CircularProgress } from '@mui/material';
 import Image from 'next/image';
 
 const LoginWithGoogle = ({
@@ -10,6 +10,7 @@ const LoginWithGoogle = ({
   onSigninClick,
   loginClick,
   handleGoogleLogin,
+  isPending,
 }) => {
   return (
     <>
@@ -22,7 +23,7 @@ const LoginWithGoogle = ({
       >
         <Button
           style={{
-            background: '#FB631C',
+            background: isPending ? '#e0e0e0' : '#FB631C',
             width: '100px',
             borderRadius: '5px',
             color: 'white',
@@ -31,8 +32,13 @@ const LoginWithGoogle = ({
             },
           }}
           onClick={loginClick}
+          disabled={isPending}
         >
-          {buttonLabel}
+          {isPending ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : (
+            buttonLabel
+          )}
         </Button>
       </Box>
       <Box

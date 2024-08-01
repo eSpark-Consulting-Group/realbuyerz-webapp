@@ -38,7 +38,7 @@ const LoginCard = ({ handleClose }) => {
     dispatch(setOpenModal(false));
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       localStorage.setItem('token', data.response.data.token);
@@ -177,6 +177,7 @@ const LoginCard = ({ handleClose }) => {
               onSigninClick={handleSignIn}
               handleClose={handleClose}
               loginClick={formik.handleSubmit}
+              isPending={isPending}
             />
           </Box>
         </Box>
