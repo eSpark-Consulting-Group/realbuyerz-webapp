@@ -53,11 +53,11 @@ const LoginCard = ({ handleClose }) => {
     },
   });
 
-  const loginClick = () => {
-    mutate({ email: formData.email, password: formData.password });
-    dispatch(saveLoginData(formData));
-    dispatch(setOpenModal(false));
-  };
+  // const loginClick = () => {
+  //   mutate({ email: formData.email, password: formData.password });
+  //   dispatch(saveLoginData(formData));
+  //   dispatch(setOpenModal(false));
+  // };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -78,7 +78,6 @@ const LoginCard = ({ handleClose }) => {
       dispatch(setOpenModal(false));
     },
   });
-
 
   return (
     <form>

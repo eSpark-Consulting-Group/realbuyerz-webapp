@@ -7,7 +7,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/src/constants/Login';
 
-const PasswordFields = ({ handleInputChange, formik }) => {
+const PasswordFields = ({ formik }) => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
   const handleTogglePasswordVisibility = () => {
     setFormData({
