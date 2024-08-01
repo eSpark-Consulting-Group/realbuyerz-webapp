@@ -19,6 +19,8 @@ import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { login } from '@/src/utils/apis/auth/login';
+import { useFormik } from 'formik';
+import { AuthSchema } from '../../Schemas/signInValidationSchema';
 
 const LoginCard = ({ handleClose }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -51,11 +53,11 @@ const LoginCard = ({ handleClose }) => {
     },
   });
 
-  const loginClick = () => {
-    mutate({ email: formData.email, password: formData.password });
-    dispatch(saveLoginData(formData));
-    dispatch(setOpenModal(false));
-  };
+  // const loginClick = () => {
+  //   mutate({ email: formData.email, password: formData.password });
+  //   dispatch(saveLoginData(formData));
+  //   dispatch(setOpenModal(false));
+  // };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -64,8 +66,21 @@ const LoginCard = ({ handleClose }) => {
     });
   };
 
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: AuthSchema,
+    onSubmit: (values) => {
+      mutate(values);
+      dispatch(saveLoginData(values));
+      dispatch(setOpenModal(false));
+    },
+  });
+
   return (
-    <>
+    <form>
       {!showForgetPassword ? (
         <Box
           sx={{
@@ -110,6 +125,7 @@ const LoginCard = ({ handleClose }) => {
               isLoginForm={true}
               formData={formData}
               handleInputChange={handleInputChange}
+              formik={formik}
             />
             <Box
               sx={{
@@ -159,7 +175,7 @@ const LoginCard = ({ handleClose }) => {
               loginButton={LOGIN_FORM.loginCard.googleLogin}
               onSigninClick={handleSignIn}
               handleClose={handleClose}
-              loginClick={loginClick}
+              loginClick={formik.handleSubmit}
               isPending={isPending}
             />
           </Box>
@@ -167,7 +183,7 @@ const LoginCard = ({ handleClose }) => {
       ) : (
         <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
       )}
-    </>
+    </form>
   );
 };
 export default LoginCard;
