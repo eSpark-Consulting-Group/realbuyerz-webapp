@@ -33,6 +33,8 @@ export default function ResponsiveNavbar({ openSidebar }) {
   const dispatch = useDispatch();
   const pathName = usePathname();
   const current_user = useSelector((state) => state?.currentUser?.user);
+  const { user } = useSelector((state) => state.auth);
+
   const postRequestAds = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
@@ -63,11 +65,16 @@ export default function ResponsiveNavbar({ openSidebar }) {
   };
 
   const handleLogout = () => {
+    localStorage?.removeItem('token');
+
     Cookie?.remove('token');
     Cookie?.remove('userType');
-    dispatch(setLoggedOut());
-    router?.push('/signin');
+
     handleCloseProfileMenu();
+
+    router?.push('/signin');
+
+    dispatch(setLoggedOut());
   };
 
   return (
@@ -252,9 +259,9 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     handleCloseProfileMenu={handleCloseProfileMenu}
                     handleOpenProfileMenu={handleOpenProfileMenu}
                     profileMenu={profileMenu}
-                    userName={current_user?.first_name || 'User Name'}
-                    userImage={current_user?.profile_image || 'User Image'}
-                    userEmail={current_user?.email || ProfileIcon}
+                    userName={user?.userName || 'User Name'}
+                    userImage={current_user?.image || 'User Image'}
+                    userEmail={user?.email || ProfileIcon}
                     profileIcon={ProfileIcon}
                     handleLogout={handleLogout}
                     signOut={SIGN_OUT}
