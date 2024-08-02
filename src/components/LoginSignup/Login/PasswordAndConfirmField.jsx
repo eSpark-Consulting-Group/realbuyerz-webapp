@@ -1,10 +1,6 @@
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {
-  IconButton,
-  InputAdornment,
-  TextField
-} from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 
 import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
 
