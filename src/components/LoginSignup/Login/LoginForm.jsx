@@ -1,10 +1,10 @@
 'use client';
-import React, { useState } from 'react';
 import { Box, TextField, Typography } from '@mui/material';
+import { useState } from 'react';
 
-import { FORM_LABEL, LOGIN_FORM, LOGIN_FORM_DATA } from '@/src/constants/Login';
-import PasswordFields from './PasswordTextfield';
+import { FORM_LABEL, LOGIN_FORM_DATA } from '@/src/constants/Login';
 import PasswordAndConfirmFields from './PasswordAndConfirmField';
+import PasswordFields from './PasswordTextfield';
 
 const FormContainer = ({
   isLoginForm,

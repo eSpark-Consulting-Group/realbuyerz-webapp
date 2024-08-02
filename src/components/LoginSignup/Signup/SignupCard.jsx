@@ -1,24 +1,22 @@
 'use client';
-import React, { useState } from 'react';
-import Cookie from 'js-cookie';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
-import { Typography, Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 import { useFormik } from 'formik';
+import Cookie from 'js-cookie';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import {
   LOGIN_FORM,
-  LOGIN_FORM_DATA,
-  LOGIN_ROUTERS,
-  PASSWORD_ALERT,
+  LOGIN_ROUTERS
 } from '@/src/constants/Login';
-import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { signup } from '@/src/utils/apis/auth/signup';
+import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
+import { signup } from '@/src/utils/apis/auth/signup';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';
+import LoginWithGoogle from '../Login/LoginWithGoogle';
 
 const SignupCard = () => {
   const [contactNumber, setContactNumber] = useState('');
