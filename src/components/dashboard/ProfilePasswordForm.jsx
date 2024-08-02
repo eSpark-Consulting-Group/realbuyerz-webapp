@@ -9,6 +9,8 @@ import { Button, Typography } from '@mui/material';
 import RBCheckbox from './RBCheckbox';
 import { passwordValidationSchema } from '../Schemas/passwordValidationSchema';
 import { useFormik } from 'formik';
+import { useMutation } from '@tanstack/react-query';
+import { resetPassword } from '@/src/utils/apis/auth/resetPassword';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -30,12 +32,22 @@ export default function ProfilePasswordForm({ data }) {
     newPassword: '',
     confirmPassword: '',
   };
-  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
-    initialValues: Password_Keys,
-    validationSchema: passwordValidationSchema,
-    onSubmit: (values, action) => {
-      action.resetForm();
-      setCheckValue(false);
+  const { values, errors, touched, handleChange, handleSubmit, resetForm } =
+    useFormik({
+      initialValues: Password_Keys,
+      validationSchema: passwordValidationSchema,
+      onSubmit: (values) => {
+        mutate({ password: values.newPassword });
+      },
+    });
+
+  const { mutate } = useMutation({
+    mutationFn: resetPassword,
+    onSuccess: (data) => {
+      if (data.message === 'Updated Successfully') {
+        setCheckValue(false);
+        resetForm();
+      }
     },
   });
 
@@ -136,7 +148,7 @@ export default function ProfilePasswordForm({ data }) {
           <RBCheckbox
             label={checkbox?.label}
             checked={checkValue}
-            setChecked={setCheckValue}
+            onChange={() => setCheckValue(!checkValue)}
             sx={{
               ml: { xs: 2, sm: 2, md: 4.2, lg: 7 },
               my: { xs: 1, md: 1 },

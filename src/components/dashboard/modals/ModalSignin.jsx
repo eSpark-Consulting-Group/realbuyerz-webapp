@@ -23,7 +23,7 @@ const ModalSignin = ({ handleClose }) => {
             margin: 'auto',
           }}
         >
-          <LoginCard handleClose={handleClose} />
+          <LoginCard handleClose={handleClose} fromModal={true} />
         </Box>
       </Modal>
     </>

@@ -19,7 +19,7 @@ const ProfileCroper = ({
   photoURL,
   setOpenCrop,
   setPhotoURL,
-  setFile,
+  selectedFile,
   setFieldValue,
   handleClose,
   currData,
@@ -38,13 +38,17 @@ const ProfileCroper = ({
       const { file, url } = await getCroppedImg(
         photoURL,
         croppedAreaPixels,
-        rotation
+        rotation,
+        { horizontal: false, vertical: false },
+        selectedFile?.name,
+        selectedFile.type
       );
-      const updatedData = { ...currData, profile_image: url };
+
+      const updatedData = { ...currData, image: url };
       dispatch(handleUserEdit(updatedData));
-      setFieldValue('profile_image', url);
+      setFieldValue('image', file);
+
       setPhotoURL(url);
-      setFile(file);
       setOpenCrop(false);
     } catch (error) {
       console.log(error);

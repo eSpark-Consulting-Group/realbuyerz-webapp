@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 
-import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import {
   LOGIN_FORM,
   LOGIN_FORM_DATA,
@@ -65,7 +65,6 @@ const SignupCard = () => {
       mobileNumber: formData.contactNumber,
       role: 'user',
     });
-    dispatch(saveSignupData(formData));
   };
 
   const { mutate, isPending } = useMutation({
@@ -74,7 +73,12 @@ const SignupCard = () => {
       localStorage.setItem('token', data.response.data.token);
       Cookie.set('token', data.response.data.token);
       Cookie.set('userType', data.response.data.user.role);
-      dispatch(setLoggedIn(data));
+      const savedUserInfo = {
+        email: data.response.data.user.email,
+        userName: data.response.data.user.userName,
+        userType: data.response.data.user.role,
+      };
+      dispatch(setLoggedIn(savedUserInfo));
       if (data.response.data.user.role === 'user') {
         router.push('/user/dashboard');
       } else if (data.response.data.user.role === 'agent') {
