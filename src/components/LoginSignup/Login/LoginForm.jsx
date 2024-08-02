@@ -63,7 +63,6 @@ const FormContainer = ({
             formik={formik}
             handleInputChange={handleInputChange}
           />
-          ;
           {formik.touched.password && formik.errors.password ? (
             <Typography variant="body2" color="error" sx={{ fontSize: '12px' }}>
               {formik.errors.password}

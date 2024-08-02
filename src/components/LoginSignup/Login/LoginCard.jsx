@@ -17,12 +17,12 @@ import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { login } from '@/src/utils/apis/auth/login';
 import { useFormik } from 'formik';
 import { AuthSchema } from '../../Schemas/signInValidationSchema';
 
-const LoginCard = ({ handleClose }) => {
+const LoginCard = ({ handleClose, fromModal }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
@@ -35,7 +35,6 @@ const LoginCard = ({ handleClose }) => {
   };
   const handleSignIn = () => {
     router.push(LOGIN_ROUTERS.signup);
-    dispatch(setOpenModal(false));
   };
 
   const { mutate, isPending } = useMutation({
@@ -44,7 +43,18 @@ const LoginCard = ({ handleClose }) => {
       localStorage.setItem('token', data.response.data.token);
       Cookie.set('token', data.response.data.token);
       Cookie.set('userType', data.response.data.user.role);
-      dispatch(setLoggedIn(data));
+      const savedUserInfo = {
+        email: data.response.data.user.email,
+        userName: data.response.data.user.userName,
+        userType: data.response.data.user.role,
+      };
+      dispatch(setLoggedIn(savedUserInfo));
+
+      if (fromModal) {
+        dispatch(setOpenModal(false));
+        return;
+      }
+
       if (data.response.data.user.role === 'user') {
         router.push('/user/dashboard');
       } else if (data.response.data.user.role === 'agent') {
@@ -74,8 +84,8 @@ const LoginCard = ({ handleClose }) => {
     validationSchema: AuthSchema,
     onSubmit: (values) => {
       mutate(values);
-      dispatch(saveLoginData(values));
-      dispatch(setOpenModal(false));
+      // dispatch(saveLoginData(values));
+      // dispatch(setOpenModal(false));
     },
   });
 
