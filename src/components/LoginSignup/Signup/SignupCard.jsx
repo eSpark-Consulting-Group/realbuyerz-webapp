@@ -7,10 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-  LOGIN_FORM,
-  LOGIN_ROUTERS
-} from '@/src/constants/Login';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
@@ -68,7 +65,6 @@ const SignupCard = () => {
       } else if (data.response.data.user.role === 'agent') {
         router.push('/agent/live-bidding');
       }
-      
     },
   });
 
@@ -85,72 +81,72 @@ const SignupCard = () => {
 
   return (
     <>
-    <Box
-      sx={{
-        width: { xs: '90%', md: '500px' },
-        height: { xs: '650px', md: '580px' },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
-        borderRadius: 2,
-        background: 'white',
-        marginTop: '38px',
-        zIndex: 2,
-        '@media (max-width: 1286px)': {
-          width: '400px',
-        },
-        '@media (max-width: 400px)': {
-          width: '90%',
-        },
-      }}
-    >
       <Box
         sx={{
+          width: { xs: '90%', md: '500px' },
+          height: { xs: '650px', md: '580px' },
           display: 'flex',
           flexDirection: 'column',
-          width: { xs: '70%', md: '386px' },
-          height: '562px',
-          gap: { xs: '5px', md: '8px' },
-          paddingTop: '40px',
+          alignItems: 'center',
+          boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
+          borderRadius: 2,
+          background: 'white',
+          marginTop: '38px',
+          zIndex: 2,
+          '@media (max-width: 1286px)': {
+            width: '400px',
+          },
+          '@media (max-width: 400px)': {
+            width: '90%',
+          },
         }}
       >
-        <Typography
+        <Box
           sx={{
-            color: '#FF631C',
-            fontSize: '20px',
-            fontWeight: 600,
+            display: 'flex',
+            flexDirection: 'column',
+            width: { xs: '70%', md: '386px' },
+            height: '562px',
+            gap: { xs: '5px', md: '8px' },
+            paddingTop: '40px',
           }}
         >
-          {LOGIN_FORM.loginCard.createAccount}
-        </Typography>
-        <Typography
-          sx={{
-            color: '#333333',
-            fontSize: '16px',
-            fontWeight: 400,
-          }}
-        >
-          {LOGIN_FORM.loginCard.quickEasy}
-        </Typography>
-        <FormContainer
-          isLoginForm={false}
-          handleInputContactNumber={handleInputContactNumber}
-          contactNumber={contactNumber}
-          formik={formik}
-        />
-        <LoginWithGoogle
-          buttonLabel={LOGIN_FORM.signupForm.signup}
-          label={LOGIN_FORM.signupForm.signin}
-          accountCreationMessage={LOGIN_FORM.loginCard.label}
-          loginButton={LOGIN_FORM.loginCard.googleLogin}
-          onSigninClick={() => router.push(LOGIN_ROUTERS.signin)}
-          loginClick={formik.handleSubmit}
-          handleGoogleLogin={handleGoogleLogin}
-          isPending={isPending}
-        />
+          <Typography
+            sx={{
+              color: '#FF631C',
+              fontSize: '20px',
+              fontWeight: 600,
+            }}
+          >
+            {LOGIN_FORM.loginCard.createAccount}
+          </Typography>
+          <Typography
+            sx={{
+              color: '#333333',
+              fontSize: '16px',
+              fontWeight: 400,
+            }}
+          >
+            {LOGIN_FORM.loginCard.quickEasy}
+          </Typography>
+          <FormContainer
+            isLoginForm={false}
+            handleInputContactNumber={handleInputContactNumber}
+            contactNumber={contactNumber}
+            formik={formik}
+          />
+          <LoginWithGoogle
+            buttonLabel={LOGIN_FORM.signupForm.signup}
+            label={LOGIN_FORM.signupForm.signin}
+            accountCreationMessage={LOGIN_FORM.loginCard.label}
+            loginButton={LOGIN_FORM.loginCard.googleLogin}
+            onSigninClick={() => router.push(LOGIN_ROUTERS.signin)}
+            loginClick={formik.handleSubmit}
+            handleGoogleLogin={handleGoogleLogin}
+            isPending={isPending}
+          />
+        </Box>
       </Box>
-    </Box>
     </>
   );
 };

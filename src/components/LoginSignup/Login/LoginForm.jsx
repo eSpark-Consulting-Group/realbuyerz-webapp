@@ -59,9 +59,7 @@ const FormContainer = ({
               {formik.errors.email}
             </Typography>
           ) : null}
-          <PasswordFields
-            formik={formik}
-          />
+          <PasswordFields formik={formik} />
           {formik.touched.password && formik.errors.password ? (
             <Typography variant="body2" color="error" sx={{ fontSize: '12px' }}>
               {formik.errors.password}
@@ -91,7 +89,9 @@ const FormContainer = ({
                 fullWidth
                 value={formik.values.firstName}
                 onChange={formik.handleChange}
-                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                error={
+                  formik.touched.firstName && Boolean(formik.errors.firstName)
+                }
                 helperText={formik.touched.firstName && formik.errors.firstName}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -105,7 +105,9 @@ const FormContainer = ({
                 fullWidth
                 value={formik.values.lastName}
                 onChange={formik.handleChange}
-                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                error={
+                  formik.touched.lastName && Boolean(formik.errors.lastName)
+                }
                 helperText={formik.touched.lastName && formik.errors.lastName}
                 InputProps={{ sx: { height: '40px' } }}
                 InputLabelProps={{
@@ -135,8 +137,13 @@ const FormContainer = ({
               name="contactNumber"
               value={contactNumber}
               onChange={handleInputContactNumber}
-              error={formik.touched.contactNumber && Boolean(formik.errors.contactNumber)}
-              helperText={formik.touched.contactNumber && formik.errors.contactNumber}
+              error={
+                formik.touched.contactNumber &&
+                Boolean(formik.errors.contactNumber)
+              }
+              helperText={
+                formik.touched.contactNumber && formik.errors.contactNumber
+              }
               sx={{
                 '& input[type=number]::-webkit-inner-spin-button': {
                   '-webkit-appearance': 'none',

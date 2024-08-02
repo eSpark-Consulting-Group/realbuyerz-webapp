@@ -1,5 +1,10 @@
 import React from 'react';
-import { TextField, IconButton, InputAdornment, Typography } from '@mui/material';
+import {
+  TextField,
+  IconButton,
+  InputAdornment,
+  Typography,
+} from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
@@ -36,18 +41,25 @@ const PasswordAndConfirmFields = ({ formik, formData, handleFieldToggle }) => {
         }}
         InputLabelProps={{ sx: { fontSize: '11px' } }}
       />
-     
+
       <TextField
         label={FORM_LABEL.confirmPassword}
         variant="outlined"
-        type={formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password}
+        type={
+          formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password
+        }
         fullWidth
         name="confirmPassword"
         value={formik.values.confirmPassword}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-        helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+        error={
+          formik.touched.confirmPassword &&
+          Boolean(formik.errors.confirmPassword)
+        }
+        helperText={
+          formik.touched.confirmPassword && formik.errors.confirmPassword
+        }
         InputProps={{
           sx: { height: '40px' },
           autoComplete: 'confirm-password',
@@ -58,14 +70,17 @@ const PasswordAndConfirmFields = ({ formik, formData, handleFieldToggle }) => {
                 onClick={() => handleFieldToggle('showConfirmPassword')}
                 edge="end"
               >
-                {formData?.showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                {formData?.showConfirmPassword ? (
+                  <Visibility />
+                ) : (
+                  <VisibilityOff />
+                )}
               </IconButton>
             </InputAdornment>
           ),
         }}
         InputLabelProps={{ sx: { fontSize: '11px' } }}
       />
-      
     </>
   );
 };
