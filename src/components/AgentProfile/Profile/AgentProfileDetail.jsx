@@ -51,7 +51,7 @@ const AgentProfileDetail = ({
             fontWeight: '600',
           }}
         >
-          {`${data?.first_name || 'user'} ${data?.last_name || 'name'}`}
+          {`${data?.firstName || 'user'} ${data?.lastName || 'name'}`}
         </Typography>
 
         {path?.includes(user) || path?.includes(agent) ? (

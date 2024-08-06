@@ -1,21 +1,41 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ProfileForm from '@/src/components/dashboard/ProfileForm';
 import ProfileFormMidText from '@/src/components/dashboard/ProfileFormMidText';
 import ProfilePasswordForm from '@/src/components/dashboard/ProfilePasswordForm';
 import { AGENT_PROFILE_FORM_DATA } from '@/src/constants/agent/Agent_Profile_Form_Data';
+import { useQuery } from '@tanstack/react-query';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
+import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
 
 // import { Agent_Profile_Form_Data } from '@/src/constants/AgentProfileForm';
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
   const user_profile = useSelector((state) => state?.currentUser?.user);
+
   const [userData, setUserData] = useState(user_profile || {});
 
+  const { data } = useQuery({
+    staleTime: 10000,
+    refetchOnWindowFocus: false,
+    queryKey: ['userProfile'],
+    queryFn: userProfile,
+  });
+
   useEffect(() => {
-    setUserData(user_profile || {});
+    if (data) {
+      dispatch(handleUserEdit(data?.response?.data));
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (user_profile) {
+      setUserData(user_profile || {});
+    }
   }, [user_profile]);
 
   return (

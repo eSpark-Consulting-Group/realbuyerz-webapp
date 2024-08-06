@@ -1,4 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import propertiesSlice from './slices/properties/propertiesSlice';
 import propertiesCategoriesSlice from './slices/properties/propertiesCategoriesSlice';
@@ -31,8 +33,15 @@ import currentUserSlice from './slices/currentUser/currentUserSlice';
 import searchSlice from './slices/search/searchSlice';
 import packagesSlice from './slices/Packages/packagesSlice';
 
-export const store = configureStore({
-  reducer: {
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['auth'], // specify which reducers you want to persist
+};
+
+const persistedReducer = persistReducer(
+  persistConfig,
+  combineReducers({
     properties: propertiesSlice,
     propertyCategories: propertiesCategoriesSlice,
     featuredProperties: featuredPropertiesSlice,
@@ -75,5 +84,13 @@ export const store = configureStore({
 
     // global units States
     globalUnits: globalUnitsSlice,
-  },
+  })
+);
+
+const store = configureStore({
+  reducer: persistedReducer,
 });
+
+const persistor = persistStore(store);
+
+export { store, persistor };

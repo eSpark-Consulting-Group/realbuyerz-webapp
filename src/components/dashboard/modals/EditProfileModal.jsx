@@ -14,8 +14,8 @@ export default function EditProfileModal({
   setFieldValue,
   currentUserImage,
   currData,
+  setFile,
 }) {
-  const [setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadImageOpen, setUploadImageOpen] = useState(false);
   const fileInputRef = useRef(null);
@@ -45,6 +45,7 @@ export default function EditProfileModal({
     } else {
       setUploadImageOpen(true);
       setSelectedFile(file);
+      setFile(file);
     }
   };
 
@@ -134,9 +135,9 @@ export default function EditProfileModal({
                 currentUserImage={currentUserImage}
                 setFieldValue={setFieldValue}
                 photoURL={URL?.createObjectURL(selectedFile) || ''}
+                selectedFile={selectedFile}
                 setOpenCrop={setUploadImageOpen}
                 setPhotoURL={setPhotoURL}
-                setFile={setFile}
                 currData={currData}
               />
             </Box>
