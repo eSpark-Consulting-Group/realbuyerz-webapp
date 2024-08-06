@@ -11,7 +11,7 @@ import {
 } from '@/src/constants/Login';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
-import { resetPassword } from '@/src/utils/apis/auth/resetPassword';
+import { resetPasswordToken } from '@/src/utils/apis/auth/resetPasswordToken';
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
@@ -38,7 +38,6 @@ const ResetPassword = () => {
   const checkPasswordMatch = () => {
     if (passwordsMatch) {
       alert(LOGIN_FORM.loginCard.passwordMatch);
-      router.push(LOGIN_ROUTERS.signin);
     } else {
       alert(LOGIN_FORM.loginCard.passwordDontMatch);
     }
@@ -49,7 +48,7 @@ const ResetPassword = () => {
   };
 
   const { mutate } = useMutation({
-    mutationFn: resetPassword,
+    mutationFn: resetPasswordToken,
     onSuccess: () => {
       router.push(LOGIN_ROUTERS.signin);
     },

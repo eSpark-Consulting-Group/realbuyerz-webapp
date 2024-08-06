@@ -40,6 +40,7 @@ const MobileResponsiveDashboardHeader = ({
   const handleLogout = () => {
     Cookie.remove('token');
     Cookie.remove('userType');
+    localStorage?.removeItem('token');
     dispatch(setLoggedOut());
     router.push('/signin');
     handleCloseMobileLoginMenu();

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint .",
@@ -49,6 +49,7 @@
     "react-slick": "^0.29.0",
     "react-toastify": "^10.0.5",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.0",
     "swiper": "^10.3.1",

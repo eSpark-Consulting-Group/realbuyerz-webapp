@@ -10,7 +10,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
-import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
@@ -63,7 +63,12 @@ const SignupCard = () => {
         localStorage.setItem('token', data.response.data.token);
         Cookie.set('token', data.response.data.token);
         Cookie.set('userType', data.response.data.user.role);
-        dispatch(setLoggedIn(data));
+        const savedUserInfo = {
+          email: data.response.data.user.email,
+          userName: data.response.data.user.userName,
+          userType: data.response.data.user.role,
+        };
+        dispatch(setLoggedIn(savedUserInfo));
 
         toast.success('Signup successful!', {
           onClose: () => {
