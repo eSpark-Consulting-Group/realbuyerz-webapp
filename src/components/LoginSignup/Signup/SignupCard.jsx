@@ -103,7 +103,7 @@ const SignupCard = () => {
       toast.success('Google login successful!');
     },
     onError: (error) => {
-      console.log('Error',error);
+      console.log('Error', error);
       toast.error('Google login failed. Please try again.');
     },
   });
