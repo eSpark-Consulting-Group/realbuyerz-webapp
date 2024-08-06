@@ -29,7 +29,7 @@ const NotificationPopover = ({
         TransitionProps={{ timeout: 600 }}
       >
         <Fade in={open} timeout={600}>
-          <Box sx={{ p: 1.5 }}>
+          <Box sx={{ p: 1.5, overflowX: 'auto' }}>
             <Box
               sx={{
                 display: 'flex',
