@@ -6,6 +6,8 @@ import Cookie from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { saveSignupData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
@@ -17,13 +19,11 @@ import LoginWithGoogle from '../Login/LoginWithGoogle';
 
 const SignupCard = () => {
   const [contactNumber, setContactNumber] = useState('');
-
   const dispatch = useDispatch();
   const router = useRouter();
 
   const handleInputContactNumber = (e) => {
     const newContactNumber = e.target.value;
-
     if (newContactNumber.length <= LOGIN_FORM.signupForm.maxLength) {
       setContactNumber(newContactNumber);
       formik.setFieldValue('contactNumber', newContactNumber);
@@ -56,15 +56,43 @@ const SignupCard = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      localStorage.setItem('token', data.response.data.token);
-      Cookie.set('token', data.response.data.token);
-      Cookie.set('userType', data.response.data.user.role);
-      dispatch(setLoggedIn(data));
-      if (data.response.data.user.role === 'user') {
-        router.push('/user/dashboard');
-      } else if (data.response.data.user.role === 'agent') {
-        router.push('/agent/live-bidding');
+      console.log('Signup response:', data);
+
+      if (data.success) {
+        // Success case
+        localStorage.setItem('token', data.response.data.token);
+        Cookie.set('token', data.response.data.token);
+        Cookie.set('userType', data.response.data.user.role);
+        dispatch(setLoggedIn(data));
+
+        toast.success('Signup successful!', {
+          onClose: () => {
+            if (data.response.data.user.role === 'user') {
+              router.push('/user/dashboard');
+            } else if (data.response.data.user.role === 'agent') {
+              router.push('/agent/live-bidding');
+            }
+          },
+        });
+      } else {
+        // Handle specific error messages
+        if (data.message) {
+          if (
+            data.message.includes('Email') ||
+            data.message.includes('Mobile Number')
+          ) {
+            toast.error(data.message);
+          } else {
+            toast.error('Signup failed. Please try again.');
+          }
+        } else {
+          toast.error('Signup failed. Please try again.');
+        }
       }
+    },
+    onError: (error) => {
+      console.error('Signup error:', error);
+      toast.error('An error occurred. Please try again.');
     },
   });
 
@@ -72,6 +100,10 @@ const SignupCard = () => {
     mutationFn: loginWithGoogle,
     onSuccess: (data) => {
       console.log('success', data);
+      toast.success('Google login successful!');
+    },
+    onError: (error) => {
+      toast.error('Google login failed. Please try again.');
     },
   });
 
@@ -81,6 +113,7 @@ const SignupCard = () => {
 
   return (
     <>
+      <ToastContainer />
       <Box
         sx={{
           width: { xs: '90%', md: '500px' },
