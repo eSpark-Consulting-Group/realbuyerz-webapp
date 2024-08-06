@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import ButtonBaseDemo from './EditImage';
 import EditProfileModal from '@/src/components/dashboard/modals/EditProfileModal';
+import { PROFILE_INFO } from '@/src/constants/agent/Agent_Profile_Form_Data';
 
-const AgentImage = ({ data, setFieldValue }) => {
+const AgentImage = ({ data, setFieldValue, setFile }) => {
   const [open, setOpen] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
@@ -21,7 +22,7 @@ const AgentImage = ({ data, setFieldValue }) => {
       }}
     >
       <ButtonBaseDemo
-        url={data?.profile_image}
+        url={data?.image || PROFILE_INFO.image}
         handleOpen={handleOpen}
         data={data}
       />
@@ -38,7 +39,7 @@ const AgentImage = ({ data, setFieldValue }) => {
         <EditProfileModal
           open={open}
           setOpen={setOpen}
-          currentUserImage={data?.profile_image}
+          currentUserImage={data?.image || PROFILE_INFO.image}
           currData={data}
           setFieldValue={setFieldValue}
           photoURL={photoURL}
@@ -50,6 +51,7 @@ const AgentImage = ({ data, setFieldValue }) => {
             color: '#fff',
             '&:hover': { backgroundColor: '#fb631c', color: '#fff' },
           }}
+          setFile={setFile}
         />
       </Box>
     </Grid>

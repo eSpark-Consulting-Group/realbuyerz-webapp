@@ -9,7 +9,9 @@ import './globals.css';
 import { redirect, usePathname } from 'next/navigation';
 
 import { Provider } from 'react-redux';
-import { store } from '@/src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { persistor, store } from '@/src/redux/store';
 import Footer from '@/src/components/layouts/Footer';
 import { FOOTER_CTA_DATA, FOOTER_DATA } from '@/src/constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
@@ -44,13 +46,15 @@ const RootLayout = ({ children }) => {
       <body cz-shortcut-listen="true">
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              {!isDashboard && <MainHeader />}
-              <Box>{children}</Box>
-              {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
-              {!isDashboard && <Footer data={FOOTER_DATA} />}
-            </ThemeProvider>
+            <PersistGate loading={null} persistor={persistor}>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                {!isDashboard && <MainHeader />}
+                <Box>{children}</Box>
+                {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
+                {!isDashboard && <Footer data={FOOTER_DATA} />}
+              </ThemeProvider>
+            </PersistGate>
           </Provider>
         </QueryClientProvider>
       </body>

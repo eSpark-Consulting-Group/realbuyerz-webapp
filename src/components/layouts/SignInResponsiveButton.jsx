@@ -2,11 +2,13 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Cookie from 'js-cookie';
 
-import { saveLoginData, setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
-import { LOGOUT, SETTINGS, SIGN_IN, USER_NAME } from '@/src/constants/Login';
+import { LOGOUT, SETTINGS, SIGN_IN } from '@/src/constants/Login';
+import { useRouter } from 'next/navigation';
 
 const SignInResponsiveButton = ({
   isUserLoggedIn,
@@ -18,13 +20,30 @@ const SignInResponsiveButton = ({
   handleOpen,
 }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const handleSetting = () => {};
+  const { user } = useSelector((state) => state.auth);
+  console.log(user);
+
+  const goToMyAccount = () => {
+    if (user?.userType === 'user') {
+      router.push('/user/dashboard');
+    } else if (user?.userType === 'agent') {
+      router.push('/agent/live-bidding');
+    }
+  };
+
   const handleLogout = () => {
-    dispatch(saveLoginData(''));
-    dispatch(setLoggedIn(true));
+    dispatch(setLoggedOut());
+
+    localStorage?.removeItem('token');
+
+    Cookie?.remove('token');
+    Cookie?.remove('userType');
+
     handleCloseUserMenu();
   };
+
   return (
     <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
       {isUserLoggedIn === true ? (
@@ -76,7 +95,7 @@ const SignInResponsiveButton = ({
                   mt: -2,
                 }}
               >
-                {USER_NAME}
+                {user?.userName}
               </Typography>
               <MenuItem
                 sx={{
@@ -93,7 +112,7 @@ const SignInResponsiveButton = ({
                   color: '#333333',
                   my: 2,
                 }}
-                onClick={handleSetting}
+                onClick={goToMyAccount}
               >
                 {SETTINGS}
               </MenuItem>

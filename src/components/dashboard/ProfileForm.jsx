@@ -17,6 +17,9 @@ import AgentProfiles from '../AgentProfile/AgentProfiles';
 import VerificationModal from './modals/VerificationModal';
 import { profileValidationSchema } from '../Schemas/profileValidationSchema';
 import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
+import { useMutation } from '@tanstack/react-query';
+import { sendOTP } from '@/src/utils/apis/auth/sendOTP';
+import { profileUpdate } from '@/src/utils/apis/auth/profileUpdate';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -38,29 +41,36 @@ export default function ProfileForm({ data, formValues }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
+  const [isVerified] = useState(formValues.isVerified);
+  const [file, setFile] = useState(null);
+
   const Profile_Keys = {
-    profile_image: `${formValues?.profile_image || ''}`,
-    about: `${formValues?.about || ''}`,
-    address: `${formValues?.address || ''}`,
-    city: `${formValues?.city || ''}`,
-    country: `${formValues?.country || ''}`,
+    firstName: `${formValues?.firstName || ''}`,
+    lastName: `${formValues?.lastName || ''}`,
     email: `${formValues?.email || ''}`,
-    first_name: `${formValues?.first_name || ''}`,
-    landline_number: `${formValues?.landline_number || ''}`,
-    last_name: `${formValues?.last_name || ''}`,
-    mobile_number: `${formValues?.mobile_number || ''}`,
+    landlineNumber: `${formValues?.landlineNumber || ''}`,
     whatsapp: `${formValues?.whatsapp || ''}`,
+    country: `${formValues?.country || ''}`,
+    address: `${formValues?.address || ''}`,
+    socialId: '',
+    isVerified: isVerified,
+    profileVisibility: formValues.profileVisibility,
+    profileImage: `${formValues?.profileImage || ''}`,
+    // bio: `${formValues?.bio || ''}`,
+    // city: `${formValues?.city || ''}`,
+    // phoneNumber: `${formValues?.phoneNumber || ''}`,
     // updated_at: '',
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
     useFormik({
-      initialValues: { ...Profile_Keys, ...formValues },
+      initialValues: { ...Profile_Keys },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
         // (values.updated_at = `${new Date().toISOString()}`),
-        dispatch(handleUserEdit(values));
+        updateProfile(values);
       },
+      enableReinitialize: true,
     });
 
   const handleModalToggle = () => {
@@ -69,8 +79,7 @@ export default function ProfileForm({ data, formValues }) {
 
   const handleVerify = (name) => {
     if (values[name] !== '') {
-      setVerifyText('verified');
-      setIsVerificationSuccessful(true);
+      verifyContact({ phoneNumber: values[name] });
     } else {
       setVerifyText('unverified');
     }
@@ -80,11 +89,42 @@ export default function ProfileForm({ data, formValues }) {
     if (key == 'Whatsapp') {
       return setFieldValue((values.whatsapp = event));
     } else if (key == 'Mobile') {
-      return setFieldValue((values.mobile_number = event));
+      return setFieldValue((values.phoneNumber = event));
     } else {
       null;
     }
   };
+
+  const { mutate: verifyContact } = useMutation({
+    mutationFn: sendOTP,
+    onSuccess: (data) => {
+      console.log(data);
+      setIsVerificationSuccessful(true);
+    },
+  });
+
+  const { mutate: updateProfile } = useMutation({
+    mutationFn: async (formVals) => {
+      const updateForProfile = {
+        ...formVals,
+        image: file,
+      };
+
+      delete updateForProfile.profileImage;
+
+      const formDataValues = new FormData();
+
+      for (const key in updateForProfile) {
+        formDataValues.append(key, updateForProfile[key]);
+      }
+
+      return profileUpdate(formDataValues);
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      dispatch(handleUserEdit(values));
+    },
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -106,7 +146,11 @@ export default function ProfileForm({ data, formValues }) {
             <Box
               sx={{ width: '100%', pl: { lg: 5, md: 5 }, pb: { sm: 2, md: 5 } }}
             >
-              <AgentProfiles data={formValues} setFieldValue={setFieldValue} />
+              <AgentProfiles
+                data={formValues}
+                setFieldValue={setFieldValue}
+                setFile={setFile}
+              />
             </Box>
           </Item>
         </Grid>
@@ -201,7 +245,7 @@ export default function ProfileForm({ data, formValues }) {
                         <PhoneInput
                           id="mobile"
                           placeholder="Enter phone number"
-                          value={values?.mobile_number}
+                          value={values?.phoneNumber}
                           defaultCountry={'PK'}
                           onChange={(e) => handlePhoneChange(e, field?.label)}
                         />
@@ -283,10 +327,10 @@ export default function ProfileForm({ data, formValues }) {
                           ? true
                           : false
                       }
-                      helperText={
-                        (touched[field?.name] && errors[field?.name]) ||
-                        field?.helperText
-                      }
+                      // helperText={
+                      //   (touched[field?.name] && errors[field?.name]) ||
+                      //   field?.helperText
+                      // }
                       id={
                         (errors[field?.name] && touched[field?.name]) ||
                         field?.id

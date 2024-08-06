@@ -2,7 +2,14 @@ import axios from 'axios';
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL; // base URL
 
-const APIService = async (endpoint, method, payload, jwtToken) => {
+const APIService = async (
+  endpoint,
+  method,
+  payload,
+  contentType = 'application/json'
+) => {
+  const jwtToken = localStorage.getItem('token');
+
   const url = `${apiUrl}/${endpoint}`;
 
   const headers = {
@@ -11,6 +18,7 @@ const APIService = async (endpoint, method, payload, jwtToken) => {
 
   if (jwtToken) {
     headers['Authorization'] = `Bearer ${jwtToken}`;
+    headers['Content-Type'] = contentType;
   }
 
   let response;
