@@ -49,7 +49,7 @@ const SignupCard = () => {
         mobileNumber: values.contactNumber,
         role: 'user',
       });
-      dispatch(saveSignupData(values));
+      // dispatch(saveSignupData(values));
     },
   });
 
