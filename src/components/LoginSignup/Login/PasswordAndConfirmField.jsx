@@ -1,17 +1,11 @@
-import React from 'react';
+import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
 
-const PasswordAndConfirmFields = ({
-  formData,
-  handleFieldToggle,
-  passwordsMatch,
-  formik,
-}) => {
+const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
   return (
     <>
       <TextField
@@ -41,6 +35,7 @@ const PasswordAndConfirmFields = ({
         }}
         InputLabelProps={{ sx: { fontSize: '11px' } }}
       />
+
       <TextField
         label={FORM_LABEL.confirmPassword}
         variant="outlined"
@@ -79,7 +74,6 @@ const PasswordAndConfirmFields = ({
         }}
         InputLabelProps={{ sx: { fontSize: '11px' } }}
       />
-      {passwordsMatch}
     </>
   );
 };
