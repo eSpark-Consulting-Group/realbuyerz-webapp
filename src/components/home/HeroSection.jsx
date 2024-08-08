@@ -1,13 +1,28 @@
 'use client';
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import Link from 'next/link';
-import { Bounce } from 'react-awesome-reveal';
-import HeroSlider from './HeroSlider';
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
 } from '@/src/constants/Constants';
+import { Box, Button, Typography } from '@mui/material';
+import { keyframes } from '@mui/system';
+import Link from 'next/link';
+import { Bounce } from 'react-awesome-reveal';
+import HeroSlider from './HeroSlider';
+
+const rapidBounce = keyframes`
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+`;
 
 const HeroSection = () => {
   const { heading, logo } = HERO_SECTION_CONTENT;
@@ -28,6 +43,7 @@ const HeroSection = () => {
             lg: '600px',
             xl: '678px',
           },
+          position: 'relative',
         }}
       >
         <Box
@@ -52,7 +68,7 @@ const HeroSection = () => {
           }}
           src={logo}
           component={'img'}
-        ></Box>
+        />
         <Typography
           sx={{
             px: { xs: '20px', sm: '0px' },
@@ -80,13 +96,17 @@ const HeroSection = () => {
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
+            textAlign: 'center',
+            animation: `${rapidBounce} 0.5s ease-in-out 3.5`,
           }}
           variant="h2"
           component={'h2'}
           color={'primary'}
           data-aos="fade-right"
         >
-          {heading}
+          <Bounce direction="left" triggerOnce>
+            {heading}
+          </Bounce>
         </Typography>
         <Box
           sx={{
@@ -107,7 +127,6 @@ const HeroSection = () => {
         >
           <Bounce direction="left" triggerOnce>
             <Link href="/signup/">
-              {' '}
               <Button
                 sx={{
                   width: {
@@ -136,7 +155,6 @@ const HeroSection = () => {
           </Bounce>
           <Bounce direction="right" triggerOnce>
             <Link href="/signup/">
-              {' '}
               <Button
                 sx={{
                   width: {

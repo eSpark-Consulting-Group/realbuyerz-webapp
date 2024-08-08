@@ -575,3 +575,74 @@ body header {
   display: flex;
   justify-content: center;
 }
+/* Animation for homepage categories */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.border {
+  position: absolute;
+  border-style: solid;
+  border-color: #227AAB; 
+  transition: all 0.5s ease; 
+  z-index: 1;
+}
+
+.top,
+.bottom {
+  width: 100%;
+  height: 2px;
+}
+
+.left,
+.right {
+  height: 100%;
+  width: 2px;
+}
+
+.top {
+  top: 0;
+  right: -100%; /* Start from the right */
+  border-width: 2px 0 0 0; 
+}
+
+.bottom {
+  bottom: 0;
+  left: -100%; /* Start from the left */
+  border-width: 0 0 2px 0; 
+}
+
+.left {
+  left: 0;
+  bottom: -100%; /* Start from the bottom */
+  border-width: 0 0 0 2px; 
+}
+
+.right {
+  right: 0;
+  top: -100%; /* Start from the top */
+  border-width: 0 2px 0 0; 
+}
+
+.container:hover .top {
+  right: 0; /* Move towards the left */
+  border-color: #FB631C; 
+}
+
+.container:hover .bottom {
+  left: 0; /* Move towards the right */
+  border-color: #FB631C; 
+}
+
+.container:hover .left {
+  bottom: 0; /* Move towards the top */
+  border-color: #FB631C;
+}
+
+.container:hover .right {
+  top: 0; /* Move towards the bottom */
+  border-color: #FB631C; 
+}

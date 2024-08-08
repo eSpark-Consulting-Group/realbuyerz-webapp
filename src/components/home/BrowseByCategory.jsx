@@ -1,19 +1,19 @@
 'use client';
-import React, { useState } from 'react';
-import { Box, Container, Grid, Typography, useMediaQuery } from '@mui/material';
 import { HERO_SECTION_CONTENT } from '@/src/constants/Constants';
-import Heading from './Heading';
-import LinearProgressBar from './LinearProgress';
+import { Box, Container, Grid, Typography, useMediaQuery } from '@mui/material';
 import Link from 'next/link';
-import { Pagination, Navigation } from 'swiper/modules';
+import { useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Heading from './Heading';
 
 const BrowseByCategory = ({ data }) => {
   const [hovered, setHovered] = useState(Array(data.length).fill(false));
+  console.log('Hovered state:', hovered);
 
   const handleItemHover = (index, isHovered) => {
     setHovered((prevHoveredItems) => {
@@ -92,6 +92,7 @@ const BrowseByCategory = ({ data }) => {
                   <Grid
                     container
                     justifyContent="center"
+                    className="container"
                     sx={{
                       width: '131px',
                       height: '130px',
@@ -108,22 +109,10 @@ const BrowseByCategory = ({ data }) => {
                     onMouseEnter={() => handleItemHover(index, true)}
                     onMouseLeave={() => handleItemHover(index, false)}
                   >
-                    <LinearProgressBar
-                      position="top"
-                      hovered={hovered[index]}
-                    />
-                    <LinearProgressBar
-                      position="bottom"
-                      hovered={hovered[index]}
-                    />
-                    <LinearProgressBar
-                      position="left"
-                      hovered={hovered[index]}
-                    />
-                    <LinearProgressBar
-                      position="right"
-                      hovered={hovered[index]}
-                    />
+                    <Box className="border top" />
+                    <Box className="border bottom" />
+                    <Box className="border left" />
+                    <Box className="border right" />
                     <Box
                       sx={{
                         background: '#fff',
@@ -179,13 +168,14 @@ const BrowseByCategory = ({ data }) => {
               >
                 <Grid
                   item
+                  className="container" // Apply the container class here
                   sx={{
                     width: '131px',
                     height: '130px',
                     maxWidth: '150px',
                     my: '15px',
                     background: '#FFF',
-                    border: '2px solid #fff',
+                    // border: '2px solid #fff',
                     position: 'relative',
                     display: 'flex',
                     '@media (min-width: 1340px) and (max-width: 1920px)': {
@@ -195,16 +185,10 @@ const BrowseByCategory = ({ data }) => {
                   onMouseEnter={() => handleItemHover(index, true)}
                   onMouseLeave={() => handleItemHover(index, false)}
                 >
-                  <LinearProgressBar position="top" hovered={hovered[index]} />
-                  <LinearProgressBar
-                    position="bottom"
-                    hovered={hovered[index]}
-                  />
-                  <LinearProgressBar position="left" hovered={hovered[index]} />
-                  <LinearProgressBar
-                    position="right"
-                    hovered={hovered[index]}
-                  />
+                  <Box className="border top" />
+                  <Box className="border bottom" />
+                  <Box className="border left" />
+                  <Box className="border right" />
                   <Box
                     sx={{
                       background: '#fff',
