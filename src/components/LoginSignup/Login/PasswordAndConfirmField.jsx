@@ -1,21 +1,21 @@
+import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
 
-import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
-
-const PasswordAndConfirmFields = ({ formik, formData, handleFieldToggle }) => {
+const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
   return (
     <>
       <TextField
         label={FORM_LABEL.password}
         variant="outlined"
-        type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
+        type={formData?.showPassword ? TEXT_TYPE.text : TEXT_TYPE.password}
         fullWidth
-        name="password"
+        name={LOGIN_FORM.password}
         value={formik.values.password}
         onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={formik.touched.password && formik.errors.password}
         InputProps={{
@@ -43,10 +43,9 @@ const PasswordAndConfirmFields = ({ formik, formData, handleFieldToggle }) => {
           formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password
         }
         fullWidth
-        name="confirmPassword"
+        name={LOGIN_FORM.confirmPassword}
         value={formik.values.confirmPassword}
         onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
         error={
           formik.touched.confirmPassword &&
           Boolean(formik.errors.confirmPassword)

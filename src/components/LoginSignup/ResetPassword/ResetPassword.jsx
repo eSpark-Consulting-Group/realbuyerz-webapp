@@ -1,47 +1,46 @@
 'use client';
-import React, { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { Box, Typography } from '@mui/material';
-
-import {
-  LOGIN_FORM,
-  LOGIN_FORM_DATA,
-  LOGIN_ROUTERS,
-} from '@/src/constants/Login';
+import { useMutation } from '@tanstack/react-query';
+import { useFormik } from 'formik';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+import { resetPasswordToken } from '@/src/utils/apis/auth/resetPasswordToken';
+import resetPasswordSchema from '../../Schemas/resetPasswordValidationSchema';
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
-import { resetPasswordToken } from '@/src/utils/apis/auth/resetPasswordToken';
 
 const ResetPassword = () => {
-  const [formData, setFormData] = useState(LOGIN_FORM_DATA?.passwordFields);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [formData, setFormData] = useState({
+    showPassword: false,
+    showConfirmPassword: false,
+    password: '',
+    confirmPassword: '',
+  });
 
   const handleFieldToggle = (fieldName) => {
-    setFormData({
-      ...formData,
-      [fieldName]: !formData[fieldName],
-    });
+    setFormData((prevState) => ({
+      ...prevState,
+      [fieldName]: !prevState[fieldName],
+    }));
   };
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const passwordsMatch = formData?.password === formData?.confirmPassword;
 
-  const checkPasswordMatch = () => {
-    if (passwordsMatch) {
-      alert(LOGIN_FORM.loginCard.passwordMatch);
-    } else {
-      alert(LOGIN_FORM.loginCard.passwordDontMatch);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      password: '',
+      confirmPassword: '',
+    },
+    validationSchema: resetPasswordSchema,
+    onSubmit: (values) => {
+      mutate({ password: values.password, token: searchParams.get('token') });
+    },
+  });
+
+  const passwordsMatch =
+    formik.values.password === formik.values.confirmPassword;
 
   const backToSignin = () => {
     router.push(LOGIN_ROUTERS.signin);
@@ -53,10 +52,6 @@ const ResetPassword = () => {
       router.push(LOGIN_ROUTERS.signin);
     },
   });
-
-  const handleRestPassword = () => {
-    mutate({ password: formData.password, token: searchParams.get('token') });
-  };
 
   return (
     <Box
@@ -108,19 +103,19 @@ const ResetPassword = () => {
           {LOGIN_FORM.resetPasswordCard.createNewPassword}
         </Typography>
         <PasswordAndConfirmFields
-          handleFieldToggle={handleFieldToggle}
+          formik={formik}
           formData={formData}
-          setFormData={setFormData}
-          handleInputChange={handleInputChange}
+          handleFieldToggle={handleFieldToggle}
           passwordsMatch={passwordsMatch}
         />
         <Continue
-          checkPasswordMatch={checkPasswordMatch}
+          checkPasswordMatch={formik.handleSubmit}
           handleBackToLogin={backToSignin}
-          handleContinue={handleRestPassword}
+          handleContinue={formik.handleSubmit}
         />
       </Box>
     </Box>
   );
 };
+
 export default ResetPassword;
