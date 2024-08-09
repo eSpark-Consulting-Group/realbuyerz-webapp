@@ -1,35 +1,51 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 
 import PropertyTypes from './PropertyPlot';
-import { PROPERTY_PURPOSE } from '@/src/constants/Properties';
+import { useMutation } from '@tanstack/react-query';
+import { fetchPropertyTypes } from '@/src/utils/properties';
 
 const SelectProperyType = ({
   image,
   label,
-  iconTitle,
+  // iconTitle,
   plotType,
-  commercialType,
+  // commercialType,
   formik,
 }) => {
-  const [activePropertyType, setActivePropertyType] = useState('House');
+  const [activePropertyType, setActivePropertyType] = useState('');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
-  const [propertyType, setPropertyType] = useState(activePropertyType);
-  const [propetySubType, setPropetySubType] = useState();
+  // const [propertyType, setPropertyType] = useState(activePropertyType);
+  // const [propetySubType, setPropetySubType] = useState();
+  const [propertyTp, setPropertyTp] = useState([]);
 
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
-    setPropertyType(text);
+    // setPropertyType(text);
     formik?.setFieldValue('propertyCategory', text);
   };
-
-  const handlePropetySubType = (text) => {
-    setActivePropertySubType(text);
-    setPropetySubType(text);
-    formik?.setFieldValue('propertyType', text);
+  console.log(plotType, 'plotType');
+  const handlePropetySubType = (propertySubTypeData) => {
+    setActivePropertySubType(propertySubTypeData.subTypeName);
+    // setPropetySubType(propertySubTypeData.subTypeName);
+    formik?.setFieldValue('propertySubTypeId', propertySubTypeData.id);
   };
 
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  const { mutate } = useMutation({
+    mutationFn: fetchPropertyTypes,
+    onSuccess: (data) => {
+      setPropertyTp(data.response.data);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
   return (
     <>
       <Box
@@ -105,154 +121,45 @@ const SelectProperyType = ({
                 gap: { xs: 1, sm: 2 },
               }}
             >
-              <Button
-                sx={{
-                  fontSize: { xs: '15px', sm: '20px' },
-                  fontWeight: 400,
-                  color: activePropertyType === 'House' ? '#FB631C' : '#666',
-                  position: 'relative',
-                  '&::after': {
-                    content: "''",
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    bottom: -8,
-                    borderBottom: `3px solid ${activePropertyType === 'House' ? '#FB631C' : 'transparent'}`,
-                  },
-                }}
-                onClick={() =>
-                  handlePropertyType(PROPERTY_PURPOSE?.propertyType?.house)
-                }
-              >
-                {PROPERTY_PURPOSE?.propertyType?.house}
-              </Button>
-              <Button
-                sx={{
-                  fontSize: { xs: '15px', sm: '20px' },
-                  fontWeight: 400,
-                  color: activePropertyType === 'Plots' ? '#FB631C' : '#666',
-                  position: 'relative',
-                  '&::after': {
-                    content: "''",
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    bottom: -8,
-                    borderBottom: `3px solid ${activePropertyType === 'Plots' ? '#FB631C' : 'transparent'}`,
-                  },
-                }}
-                onClick={() =>
-                  handlePropertyType(PROPERTY_PURPOSE?.propertyType?.plots)
-                }
-              >
-                {PROPERTY_PURPOSE?.propertyType?.plots}
-              </Button>
-              <Button
-                sx={{
-                  fontSize: { xs: '15px', sm: '20px' },
-                  fontWeight: 400,
-                  color:
-                    activePropertyType === 'Commercial' ? '#FB631C' : '#666',
-                  position: 'relative',
-                  '&::after': {
-                    content: "''",
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    bottom: -8,
-                    borderBottom: `3px solid ${activePropertyType === 'Commercial' ? '#FB631C' : 'transparent'}`,
-                  },
-                }}
-                onClick={() =>
-                  handlePropertyType(PROPERTY_PURPOSE?.propertyType?.commercial)
-                }
-              >
-                {PROPERTY_PURPOSE?.propertyType?.commercial}
-              </Button>
-            </Box>
-            <hr style={{ width: '100%' }}></hr>
-            {activePropertyType === 'House' && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: { xs: 'center', sm: 'start' },
-                  gap: 2,
-                  py: 2,
-                }}
-              >
-                {iconTitle?.map((item, index) => (
-                  <Box
+              {propertyTp.map((val, index) => {
+                return (
+                  <Button
+                    key={index}
                     sx={{
-                      borderRadius: '20px',
-                      border: `1px solid ${
-                        activePropertySubType === item?.title
-                          ? '#126FAA'
-                          : '#E7E7E7'
-                      }`,
+                      fontSize: { xs: '15px', sm: '20px' },
+                      fontWeight: 400,
                       color:
-                        activePropertySubType === item?.title
+                        activePropertyType === val.typeName
                           ? '#FB631C'
                           : '#666',
-                      backgroundColor:
-                        activePropertySubType === item?.title
-                          ? '#F4F5F7 !important'
-                          : '#fff',
-                      display: 'flex',
-                      flexDirection: { xs: 'row', md: 'row' },
-                      width: { xs: '80%', sm: '45%', md: '230px', lg: '250px' },
-                      '@media (min-width: 600px) and (max-width: 751px )': {
-                        width: '45%',
+                      position: 'relative',
+                      '&::after': {
+                        content: "''",
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: -8,
+                        borderBottom: `3px solid ${activePropertyType === val.typeName ? '#FB631C' : 'transparent'}`,
                       },
-                      justifyContent: 'center',
-                      height: { xs: '50px', md: '55px' },
-                      alignItems: 'center',
-                      gap: '12px',
                     }}
-                    key={index}
-                    onClick={() => {
-                      handlePropetySubType(item?.title);
-                    }}
+                    onClick={() => handlePropertyType(val.typeName)}
                   >
-                    <Box
-                      component={'img'}
-                      sx={{
-                        width: { xs: 25, sm: 33 },
-                        height: { xs: 25, sm: 33 },
-                      }}
-                      src={
-                        activePropertySubType === item?.title
-                          ? item?.activeImage
-                          : item?.image
-                      }
-                      alt={'property'}
-                    />
-                    <Typography
-                      sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}
-                    >
-                      {item?.title}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            )}
-            {activePropertyType === 'Plots' && (
-              <PropertyTypes
-                data={plotType}
-                propertyType={propertyType}
-                handlePropetySubType={handlePropetySubType}
-                activePropertySubType={activePropertySubType}
-              />
-            )}
-            {activePropertyType === 'Commercial' && (
-              <PropertyTypes
-                data={commercialType}
-                propertyType={propertyType}
-                activePropertySubType={activePropertySubType}
-                propetySubType={propetySubType}
-                handlePropetySubType={handlePropetySubType}
-              />
-            )}
+                    {val.typeName}
+                  </Button>
+                );
+              })}
+            </Box>
+            <hr style={{ width: '100%' }}></hr>
+            {propertyTp.map((val, index) => {
+              return (
+                <PropertyTypes
+                  key={index}
+                  data={val.subTypes}
+                  handlePropetySubType={handlePropetySubType}
+                  activePropertySubType={activePropertySubType}
+                />
+              );
+            })}
           </Box>
         </Box>
       </Box>

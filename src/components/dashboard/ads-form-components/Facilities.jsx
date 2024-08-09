@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Checkbox, Button } from '@mui/material';
 
 import { useDispatch } from 'react-redux';
@@ -7,9 +7,11 @@ import {
   handleAdaminities,
   toggleCheckAmenityClear,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+import { fetchAmenities } from '@/src/utils/properties';
+import { useMutation } from '@tanstack/react-query';
 
 const Facilities = ({
-  facilitiesData,
+  // facilitiesData,
   cancel,
   formik,
   setOpen,
@@ -17,14 +19,16 @@ const Facilities = ({
   propertyInformation,
   setSelectedAmenities,
 }) => {
+  const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
   const handleCheckboxChange = (e, id, image, text, name) => {
     const limit = 20;
     const amenityObject = {
-      text: text,
-      image: image,
-      limit: limit,
-      name: name,
+      text,
+      image,
+      limit,
+      name,
+      id,
     };
 
     if (e.target.checked) {
@@ -35,10 +39,35 @@ const Facilities = ({
       );
       formik?.setFieldValue(name, 0);
     }
-
-    formik?.setFieldValue('other_features', selectedAmenities);
   };
 
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  useEffect(() => {
+    const selectedAmenitiesId = selectedAmenities.map((val) => val.id);
+    formik?.setFieldValue('amenities', selectedAmenitiesId);
+  }, [selectedAmenities]);
+
+  const { mutate } = useMutation({
+    mutationFn: fetchAmenities,
+    onSuccess: (data) => {
+      const amenities = data.response.data.map((val) => {
+        return {
+          id: val.id,
+          image: '/images/add-amenities/roPlant.svg',
+          title: val.amenetiesName,
+          name: val.amenetiesName,
+        };
+      });
+      setFacilitiesData(amenities);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
   const handleSaveButton = () => {
     if (selectedAmenities.length === 0) {
       dispatch(toggleCheckAmenityClear());
