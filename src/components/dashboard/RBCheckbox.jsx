@@ -7,10 +7,9 @@ export default function RBCheckbox({
   defaultChecked,
   sx,
   checked,
-  setChecked,
   onChange,
+  labelStyle,
 }) {
-  console.warn(setChecked);
   return (
     <FormControlLabel
       control={
@@ -21,6 +20,7 @@ export default function RBCheckbox({
           onChange={onChange}
         />
       }
+      sx={labelStyle}
       label={label}
     />
   );
