@@ -1,9 +1,35 @@
 'use client';
 import React from 'react';
-import { Bounce } from 'react-awesome-reveal';
+import { Bounce } from 'react-awesome-reveal'; // Only Bounce is imported from react-awesome-reveal
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import { keyframes } from '@mui/system';
+
+// Define the wobble keyframes
+const wobble = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-25%) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(20%) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-15%) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
 
 const FooterCta = ({ data }) => {
   return (
@@ -14,11 +40,6 @@ const FooterCta = ({ data }) => {
         '@media (min-width: 270px) and (max-width: 500px)': {
           px: '12%',
         },
-        // py: {
-        //   xs: '20px',
-        //   sm: '40px',
-        //   md: '40px',
-        // },
         margin: 'auto',
       }}
     >
@@ -98,7 +119,14 @@ const FooterCta = ({ data }) => {
             ))}
           </Grid>
           <Bounce direction="left" triggerOnce duration={200}>
-            <Box sx={{ display: 'flex', pt: '20px', gap: '10px' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                pt: '20px',
+                gap: '10px',
+                animation: `${wobble} 2s ease-in-out forwards`,
+              }}
+            >
               {data?.appIcons?.map((appicon, index) => (
                 <Link
                   href={appicon.link}
@@ -134,7 +162,11 @@ const FooterCta = ({ data }) => {
           }}
         >
           <Bounce direction="right" triggerOnce duration={300}>
-            <Box>
+            <Box
+              sx={{
+                animation: `${wobble} 2s ease-in-out forwards`,
+              }}
+            >
               <Image
                 src={data?.appImage}
                 alt={'App'}

@@ -587,7 +587,7 @@ body header {
   position: absolute;
   border-style: solid;
   border-color: #227AAB; 
-  transition: all 0.5s ease; 
+  transition: all 1s ease; 
   z-index: 1;
 }
 

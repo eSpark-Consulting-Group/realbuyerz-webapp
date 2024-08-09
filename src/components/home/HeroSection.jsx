@@ -1,26 +1,33 @@
 'use client';
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import Link from 'next/link';
+import { Bounce } from 'react-awesome-reveal';
+import { keyframes } from '@mui/system';
+import HeroSlider from './HeroSlider';
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
 } from '@/src/constants/Constants';
-import { Box, Button, Typography } from '@mui/material';
-import { keyframes } from '@mui/system';
-import Link from 'next/link';
-import { Bounce } from 'react-awesome-reveal';
-import HeroSlider from './HeroSlider';
 
-const rapidBounce = keyframes`
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-10px);
+const enhancedSwingingIntoPlace = keyframes`
+  0% {
+    transform: translateX(-100%);
   }
   50% {
-    transform: translateX(10px);
+    transform: translateX(30%);
   }
-  75% {
-    transform: translateX(-10px);
+  70% {
+    transform: translateX(-20%);
+  }
+  85% {
+    transform: translateX(10%);
+  }
+  95% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0);
   }
 `;
 
@@ -97,16 +104,14 @@ const HeroSection = () => {
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
             textAlign: 'center',
-            animation: `${rapidBounce} 0.5s ease-in-out 3.5`,
+            animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
           }}
           variant="h2"
           component={'h2'}
           color={'primary'}
           data-aos="fade-right"
         >
-          <Bounce direction="left" triggerOnce>
-            {heading}
-          </Bounce>
+          {heading}
         </Typography>
         <Box
           sx={{
@@ -141,6 +146,7 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   textAlign: 'start',
+                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
@@ -169,6 +175,7 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   background: '#FB631C',
+                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
