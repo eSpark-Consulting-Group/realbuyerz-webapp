@@ -24,6 +24,8 @@ const PreviewModal = (props) => {
   const { onClose, open, ads, formik } = props;
   const pathName = usePathname();
   const userPath = '/user/post-request';
+  const imageArr = [ads.PropertyData[0]?.url];
+  const videoArr = [ads.PropertyData[1]?.url];
   return (
     <>
       <Modal
@@ -91,29 +93,29 @@ const PreviewModal = (props) => {
 
             <PropertyDetail
               title={propertyDetails}
-              subTitle={ads?.title}
-              description={ads?.description}
+              subTitle={ads?.propertyName}
+              description={ads?.propertyDescription}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
             />
             <Location
-              city={ads?.city}
+              city={ads?.propertyCity}
               locationKeys={location}
               purpose={ads?.purpose}
-              propertyType={ads?.propertyType}
-              propertyCategory={ads?.propertyCategory}
-              location={ads?.location}
+              propertyType={ads?.propertyType.subTypeName}
+              propertyCategory={ads?.propertyType.subTypeName}
+              location={ads?.propertyAddress}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
             />
             <PreviewAmountAndFeature
-              area={ads?.area}
-              amount={ads?.amount}
+              area={ads?.propertyArea}
+              amount={ads?.propertyPrice}
               areaUnit={ads?.areaUnit}
               areaAndAmount={areaAndAmount}
-              amountCurrency={ads?.amountCurrency}
+              amountCurrency={ads?.amountCurrency || 'PKR'}
               instalmentAvailable={ads?.instalmentAvailable}
               readyPossession={ads?.readyPossession}
               fontSize={'18px'}
@@ -132,12 +134,12 @@ const PreviewModal = (props) => {
               <>
                 <MediaComponent
                   title={images?.title}
-                  images={ads?.images}
+                  images={imageArr}
                   mediaType={images?.type}
                 />
                 <MediaComponent
                   title={videos?.title}
-                  videos={ads?.videos}
+                  videos={videoArr}
                   mediaType={videos?.type}
                 />
               </>
