@@ -1,18 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
-import { Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Heading from './Heading';
-import Image from 'next/image';
-import Link from 'next/link';
+import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/src/constants/Home';
 import {
   Box,
   Button,
@@ -21,7 +13,15 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/src/constants/Home';
+import Image from 'next/image';
+import Link from 'next/link';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Heading from './Heading';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -195,6 +195,9 @@ const PopularLocations = ({ data }) => {
                                       lineHeight: '16.94px',
                                       fontWeight: 500,
                                       color: '#666666',
+                                      '&:hover': {
+                                        textDecoration: 'underline',
+                                      },
                                     }}
                                   >
                                     {location?.title}
@@ -259,6 +262,9 @@ const PopularLocations = ({ data }) => {
                                   lineHeight: '16.94px',
                                   fontWeight: 500,
                                   color: '#666666',
+                                  '&:hover': {
+                                    textDecoration: 'underline',
+                                  },
                                 }}
                               >
                                 {location?.title}

@@ -1,17 +1,22 @@
 .slideInBox {
+  position: relative;
   display: block;
-  background: #fff !important;
-  width: '100%  ';
-  border-left: 10px #1176ad solid;
-  /* animation: slideInAnimation 0.3s ease-in-out; */
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
 }
 
-@keyframes slideInAnimation {
-  from {
-    transform: translateX(-100%);
-  }
+.box:hover .slideInBox::before {
+  height: 100%;
+}
 
-  to {
-    transform: translateX(0);
-  }
+.slideInBox::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-left: 10px #1176ad solid;
+  transition: height 1.2s ease-in-out;
 }

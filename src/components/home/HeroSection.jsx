@@ -3,11 +3,33 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { Bounce } from 'react-awesome-reveal';
+import { keyframes } from '@mui/system';
 import HeroSlider from './HeroSlider';
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
 } from '@/src/constants/Constants';
+
+const enhancedSwingingIntoPlace = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(30%);
+  }
+  70% {
+    transform: translateX(-20%);
+  }
+  85% {
+    transform: translateX(10%);
+  }
+  95% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
 
 const HeroSection = () => {
   const { heading, logo } = HERO_SECTION_CONTENT;
@@ -28,6 +50,7 @@ const HeroSection = () => {
             lg: '600px',
             xl: '678px',
           },
+          position: 'relative',
         }}
       >
         <Box
@@ -52,7 +75,7 @@ const HeroSection = () => {
           }}
           src={logo}
           component={'img'}
-        ></Box>
+        />
         <Typography
           sx={{
             px: { xs: '20px', sm: '0px' },
@@ -80,6 +103,8 @@ const HeroSection = () => {
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
             fontWeight: { xs: 900 },
+            textAlign: 'center',
+            animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
           }}
           variant="h2"
           component={'h2'}
@@ -107,7 +132,6 @@ const HeroSection = () => {
         >
           <Bounce direction="left" triggerOnce>
             <Link href="/signup/">
-              {' '}
               <Button
                 sx={{
                   width: {
@@ -122,6 +146,7 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   textAlign: 'start',
+                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
@@ -136,7 +161,6 @@ const HeroSection = () => {
           </Bounce>
           <Bounce direction="right" triggerOnce>
             <Link href="/signup/">
-              {' '}
               <Button
                 sx={{
                   width: {
@@ -151,6 +175,7 @@ const HeroSection = () => {
                   lineHeight: 'normal',
                   height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
                   background: '#FB631C',
+                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
                   '&:hover': {
                     background: '#fff !important',
                     border: '1px solid #FB631C',
