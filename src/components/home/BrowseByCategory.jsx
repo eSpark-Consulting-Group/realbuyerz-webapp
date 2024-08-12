@@ -167,7 +167,7 @@ const BrowseByCategory = ({ data }) => {
               >
                 <Grid
                   item
-                  className="container" 
+                  className="container"
                   sx={{
                     width: '131px',
                     height: '130px',
