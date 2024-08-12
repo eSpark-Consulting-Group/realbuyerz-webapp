@@ -111,7 +111,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
               >
                 <Box
                   component={'img'}
-                  src={data?.images[0] || '/images/PropertyImg.png'}
+                  src={data?.PropertyData[0]?.url || '/images/PropertyImg.png'}
                   sx={{
                     minWidth: { xs: '250px', sm: '300px' },
                     maxWidth: { xs: '250px', sm: '300px' },
@@ -162,7 +162,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {data?.title || ''}
+                  {data?.propertyName || ''}
                 </Typography>
               </Box>
               <Divider
@@ -248,7 +248,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.propertyCategory || ''}
+                      {data?.propertyType.subTypeName || ''}
                     </Typography>
                   </Box>
                   <Box
@@ -281,7 +281,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.city || ''}
+                      {data?.propertyCity || ''}
                     </Typography>
                   </Box>
                   <Box
@@ -314,7 +314,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.location || ''}
+                      {data?.propertyAddress || ''}
                     </Typography>
                   </Box>
                   <Typography
@@ -331,7 +331,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                       WebkitLineClamp: 4,
                     }}
                   >
-                    {data?.description || ''}
+                    {data?.propertyDescription || ''}
                   </Typography>
                 </Box>
                 <Typography
@@ -346,7 +346,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                     padding: { xs: '20px', sm: '17px', md: '25px 30px' },
                   }}
                 >
-                  {`Amount: ${data?.amount || ''}${data?.amountCurrency || ''}`}
+                  {`Amount: ${data?.propertyPrice || ''} ${data?.amountCurrency || 'PKR'}`}
                 </Typography>
               </Box>
             </Box>
@@ -371,13 +371,13 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                 },
                 left: { xs: 'auto', sm: 'auto' },
               }}
-              onClick={() => handleTrash(data?.property_id, currentTab)}
+              onClick={() => handleTrash(data?.id, currentTab)}
             >
               <DeleteIcon />
             </IconButton>
             {currentTab === 'Draft' && (
               <Link
-                href={`${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.property_id || ''}`}
+                href={`${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.id || ''}`}
               >
                 <Typography
                   color={'primary'}
@@ -428,7 +428,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                   },
                 },
               }}
-              onClick={() => handleTrash(data?.property_id, currentTab)}
+              onClick={() => handleTrash(data?.id, currentTab)}
             >
               Trash
             </Button>

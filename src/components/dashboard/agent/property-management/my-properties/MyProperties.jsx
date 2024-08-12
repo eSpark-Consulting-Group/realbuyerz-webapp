@@ -1,11 +1,12 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {
   Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   Tab,
@@ -22,12 +23,15 @@ import {
   a11yProps,
   findData,
   justifyContent,
-  renderAdCard,
+  // renderAdCard,
 } from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { fetchMyProperties } from '@/src/utils/properties';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
+  const [myPropertiesData, setMyPropertiesData] = useState([]);
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { agentPostings, active, draft, trash } = useSelector(
     (state) => state?.postListingAds
@@ -37,6 +41,21 @@ const MyProperties = () => {
   const find_active = findData(user_id, active);
   const find_draft = findData(user_id, draft);
   const find_trash = findData(user_id, trash);
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: fetchMyProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items;
+      setMyPropertiesData(items);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   const tabs = [
     {
@@ -333,27 +352,17 @@ const MyProperties = () => {
               gap: { xs: 1.5, sm: 2.5, md: 3.5 },
             }}
           >
-            {renderAdCard(
-              find_posting,
-              find_active,
-              find_draft,
-              find_trash,
-              currentTab,
-              filterObject
-            )?.length < 1 ? (
-              <NotFoundSection
-                heading={`No ${currentTab || ''} Data`}
-                message={''}
-              />
+            {myPropertiesData?.length < 1 ? (
+              isPending ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                <NotFoundSection
+                  heading={`No ${currentTab || ''} Data`}
+                  message={''}
+                />
+              )
             ) : (
-              renderAdCard(
-                find_posting,
-                find_active,
-                find_draft,
-                find_trash,
-                currentTab,
-                filterObject
-              )?.map((item, index) => (
+              myPropertiesData?.map((item, index) => (
                 <ProposalCard key={index} data={item} currentTab={currentTab} />
               ))
             )}

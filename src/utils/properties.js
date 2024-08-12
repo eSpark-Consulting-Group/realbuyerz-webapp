@@ -61,6 +61,21 @@ export const fetchPropertyTypes = async () => {
   }
 };
 
+export const fetchMyProperties = async () => {
+  const endpoint = ENDPOINTS.myPropertires;
+  const method = 'get';
+
+  try {
+    const response = await APIService(endpoint, method, null);
+
+    console.log('Agent chats retrieved successfully:', response);
+    return response;
+  } catch (error) {
+    console.error('Error fetching agent chats:', error);
+    throw error;
+  }
+};
+
 export const addPostListing = async (postListingdata) => {
   const endpoint = ENDPOINTS.addPostListing;
   const method = 'post';
