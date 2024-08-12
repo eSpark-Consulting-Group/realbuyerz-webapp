@@ -57,7 +57,7 @@ export default function ProfileForm({ data, formValues }) {
     profileVisibility: formValues.profileVisibility,
     profileImage: `${formValues?.profileImage || ''}`,
     // bio: `${formValues?.bio || ''}`,
-    // city: `${formValues?.city || ''}`,
+    city: `${formValues?.city || ''}`,
     // phoneNumber: `${formValues?.phoneNumber || ''}`,
     // updated_at: '',
   };
@@ -111,6 +111,7 @@ export default function ProfileForm({ data, formValues }) {
       };
 
       delete updateForProfile.profileImage;
+      delete updateForProfile.email;
 
       const formDataValues = new FormData();
 
@@ -125,7 +126,6 @@ export default function ProfileForm({ data, formValues }) {
       dispatch(handleUserEdit(values));
     },
   });
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -150,6 +150,8 @@ export default function ProfileForm({ data, formValues }) {
                 data={formValues}
                 setFieldValue={setFieldValue}
                 setFile={setFile}
+                file={file}
+                error={errors['profileImage']}
               />
             </Box>
           </Item>
@@ -327,10 +329,10 @@ export default function ProfileForm({ data, formValues }) {
                           ? true
                           : false
                       }
-                      // helperText={
-                      //   (touched[field?.name] && errors[field?.name]) ||
-                      //   field?.helperText
-                      // }
+                      helperText={
+                        (touched[field?.name] && errors[field?.name]) ||
+                        field?.helperText
+                      }
                       id={
                         (errors[field?.name] && touched[field?.name]) ||
                         field?.id

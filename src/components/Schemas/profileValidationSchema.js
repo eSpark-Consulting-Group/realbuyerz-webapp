@@ -8,9 +8,9 @@ export const profileValidationSchema = Yup.object({
   landlineNumber: Yup.number().min(4).required('Enter Landline'),
   profileImage: Yup.mixed().required('Image is required'),
   country: Yup.string().min(3).max(25).required('Enter Country'),
-  // city: Yup.string().min(3).max(25).required('Enter City'),
+  city: Yup.string().min(3).max(25).required('Enter City'),
   address: Yup.string().min(3).max(40).required('Enter Address'),
-  // bio: Yup.string().min(10).required('Enter Bio'),
+  bio: Yup.string().min(10).required('Enter Bio'),
   whatsapp: Yup.string()
     .test('phone', 'Invalid Phone Number', (value) =>
       value ? isValidPhoneNumber(value) : true

@@ -19,7 +19,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
 
   const handleMouseLeave = () => {
     if (imageRef.current) {
-      imageRef.current.style.opacity = 0.7;
+      imageRef.current.style.opacity = 1;
     }
   };
 

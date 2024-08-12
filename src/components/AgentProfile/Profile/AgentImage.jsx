@@ -4,7 +4,7 @@ import ButtonBaseDemo from './EditImage';
 import EditProfileModal from '@/src/components/dashboard/modals/EditProfileModal';
 import { PROFILE_INFO } from '@/src/constants/agent/Agent_Profile_Form_Data';
 
-const AgentImage = ({ data, setFieldValue, setFile }) => {
+const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
   const [open, setOpen] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
@@ -19,6 +19,7 @@ const AgentImage = ({ data, setFieldValue, setFile }) => {
         justifyContent: 'center',
         flexDirection: 'column',
         position: 'relative',
+        alignItems: 'center',
       }}
     >
       <ButtonBaseDemo
@@ -26,6 +27,19 @@ const AgentImage = ({ data, setFieldValue, setFile }) => {
         handleOpen={handleOpen}
         data={data}
       />
+      {file === null && error && (
+        <Box
+          sx={{
+            color: '#d32f2f',
+            mt: 0.5,
+            mb: 0.5,
+            fontSize: '12px',
+          }}
+        >
+          {'error'}
+        </Box>
+      )}
+
       <Box
         sx={{
           zIndex: '1',

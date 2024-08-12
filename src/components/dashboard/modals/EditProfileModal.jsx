@@ -53,7 +53,7 @@ export default function EditProfileModal({
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -139,6 +139,7 @@ export default function EditProfileModal({
                 setOpenCrop={setUploadImageOpen}
                 setPhotoURL={setPhotoURL}
                 currData={currData}
+                setFile={setFile}
               />
             </Box>
           )}

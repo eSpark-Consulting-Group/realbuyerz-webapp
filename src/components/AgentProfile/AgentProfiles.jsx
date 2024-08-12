@@ -7,7 +7,7 @@ import AgentProfileDetail from './Profile/AgentProfileDetail';
 import LetsTalk from './Profile/LetsTalk';
 import { LETS_TALK } from '@/src/constants/profile/agent-projects/AgentProfile';
 
-const AgentProfiles = ({ data, setFieldValue, setFile }) => {
+const AgentProfiles = ({ data, setFieldValue, setFile, file, error }) => {
   const path = usePathname();
   const user_profile = 'user-profile';
   const agent_profile = 'agent-profile';
@@ -47,6 +47,8 @@ const AgentProfiles = ({ data, setFieldValue, setFile }) => {
           data={data}
           setFieldValue={setFieldValue}
           setFile={setFile}
+          file={file}
+          error={error}
         />
         <Grid
           sx={{

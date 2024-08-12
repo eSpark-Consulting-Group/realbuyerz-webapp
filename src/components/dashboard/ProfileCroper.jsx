@@ -23,6 +23,7 @@ const ProfileCroper = ({
   setFieldValue,
   handleClose,
   currData,
+  setFile,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -134,7 +135,12 @@ const ProfileCroper = ({
           <Button
             variant="outlined"
             startIcon={<Cancel />}
-            onClick={() => setOpenCrop(false)}
+            onClick={() => {
+              handleClose(false);
+              setOpenCrop(false);
+              setFieldValue('image', null);
+              setFile(null);
+            }}
           >
             Cancel
           </Button>
