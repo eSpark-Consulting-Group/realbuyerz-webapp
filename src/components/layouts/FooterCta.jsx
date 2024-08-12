@@ -1,12 +1,11 @@
 'use client';
 import React from 'react';
-import { Bounce } from 'react-awesome-reveal'; // Only Bounce is imported from react-awesome-reveal
+import { Bounce } from 'react-awesome-reveal'; 
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import { keyframes } from '@mui/system';
 
-// Define the wobble keyframes
 const wobble = keyframes`
   0% {
     transform: translateX(0%);

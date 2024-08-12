@@ -12,8 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Heading from './Heading';
 
 const BrowseByCategory = ({ data }) => {
-  const [hovered, setHovered] = useState(Array(data.length).fill(false));
-  console.log('Hovered state:', hovered);
+  const [, setHovered] = useState(Array(data.length).fill(false));
 
   const handleItemHover = (index, isHovered) => {
     setHovered((prevHoveredItems) => {
@@ -168,14 +167,13 @@ const BrowseByCategory = ({ data }) => {
               >
                 <Grid
                   item
-                  className="container" // Apply the container class here
+                  className="container" 
                   sx={{
                     width: '131px',
                     height: '130px',
                     maxWidth: '150px',
                     my: '15px',
                     background: '#FFF',
-                    // border: '2px solid #fff',
                     position: 'relative',
                     display: 'flex',
                     '@media (min-width: 1340px) and (max-width: 1920px)': {

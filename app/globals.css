@@ -605,44 +605,44 @@ body header {
 
 .top {
   top: 0;
-  right: -100%; /* Start from the right */
+  right: -100%; 
   border-width: 2px 0 0 0; 
 }
 
 .bottom {
   bottom: 0;
-  left: -100%; /* Start from the left */
+  left: -100%;
   border-width: 0 0 2px 0; 
 }
 
 .left {
   left: 0;
-  bottom: -100%; /* Start from the bottom */
+  bottom: -100%;
   border-width: 0 0 0 2px; 
 }
 
 .right {
   right: 0;
-  top: -100%; /* Start from the top */
+  top: -100%; 
   border-width: 0 2px 0 0; 
 }
 
 .container:hover .top {
-  right: 0; /* Move towards the left */
+  right: 0; 
   border-color: #FB631C; 
 }
 
 .container:hover .bottom {
-  left: 0; /* Move towards the right */
+  left: 0; 
   border-color: #FB631C; 
 }
 
 .container:hover .left {
-  bottom: 0; /* Move towards the top */
+  bottom: 0; 
   border-color: #FB631C;
 }
 
 .container:hover .right {
-  top: 0; /* Move towards the bottom */
+  top: 0; 
   border-color: #FB631C; 
 }
