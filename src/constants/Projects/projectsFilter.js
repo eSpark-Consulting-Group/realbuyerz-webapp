@@ -13,8 +13,8 @@ export const CURRENCY_UNITS = [
   { value: 'EUR', title: 'Euro' },
 ];
 export const PROPERTY_TYPES = [
-  { value: ' ', title: 'Any' },
-  { value: 'sell', title: 'Sell' },
+  { value: ' ', title: 'Buy' },
+  // { value: 'sell', title: 'Sell' },
   { value: 'rent', title: 'Rent' },
 ];
 export const PROPERTY_TABS_DATA = [

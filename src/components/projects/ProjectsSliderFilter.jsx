@@ -58,14 +58,15 @@ const ProjectsSliderFilter = ({
 
   return (
     <Box
-      zIndex={999}
+      zIndex={1000}
       sx={{
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
         p: '20px',
-        borderRadius: '20px',
-        boxShadow: '0px 0px 10px 0px #00000040',
+        borderRadius: '5px',
+        boxShadow: ' 0px 0px 10px rgba(0, 0, 0, 0.25)',
+        width: '450px',
       }}
     >
       <Box
@@ -77,7 +78,9 @@ const ProjectsSliderFilter = ({
           gap: '10px',
         }}
       >
-        <Typography variant={'h3'}>{title}</Typography>
+        <Typography variant={'h4'} sx={{ color: '#2E2E2E' }}>
+          {title}
+        </Typography>
         <Box sx={{ width: '100px' }}>
           <Select
             id="units"
@@ -99,7 +102,7 @@ const ProjectsSliderFilter = ({
           flexDirection: 'row',
           justifyContent: 'flex-around',
           alignItems: 'center',
-          gap: '10px',
+          gap: '50px',
         }}
       >
         <TextField
@@ -107,24 +110,71 @@ const ProjectsSliderFilter = ({
           variant="outlined"
           value={selectRange[0]}
           onChange={handleMinAreaChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              height: '40px',
+              width: '150px',
+              '& fieldset': {
+                borderColor: '#E7E7E7',
+              },
+              '&:hover fieldset': {
+                borderColor: '#E7E7E7',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: '#E7E7E7',
+              },
+            },
+          }}
         />
-        <Typography variant={'h3'}>to</Typography>
+        <Typography variant={'h6'} sx={{ color: '#2E2E2E' }}>
+          To
+        </Typography>
         <TextField
           id="maxArea"
           variant="outlined"
           value={selectRange[1]}
           onChange={handleMaxAreaChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              height: '40px',
+              width: '150px',
+              '& fieldset': {
+                borderColor: '#E7E7E7',
+              },
+              '&:hover fieldset': {
+                borderColor: '#E7E7E7',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: '#E7E7E7',
+              },
+            },
+          }}
         />
       </Box>
 
       <Box>
-        <FormControl fullWidth>
+        <FormControl
+          sx={{ width: '316px', margin: '0 50px', padding: '10px 0' }}
+        >
           <Slider
             value={selectRange}
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             min={0}
             max={5000}
+            sx={{
+              color: '#47B2FF',
+              '& .MuiSlider-thumb': {
+                backgroundColor: '#C7D3EB',
+                border: '4px solid #47B2FF',
+                '&:hover, &:active, &:focus': {
+                  boxShadow: 'none',
+                },
+              },
+              '& .MuiSlider-thumb.Mui-active': {
+                backgroundColor: '#C7D3EB',
+              },
+            }}
           />
         </FormControl>
       </Box>
