@@ -156,7 +156,7 @@ const ProjectsFilterComponent = ({ data }) => {
 
   const CustomDropdownIcon = styled('img')(({ open }) => ({
     transition: 'transform 0.3s ease',
-    transform: open ? 'rotate(180deg)' : 'rotate(0deg)', 
+    transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
     right: '15px !important',
   }));
 
@@ -181,13 +181,13 @@ const ProjectsFilterComponent = ({ data }) => {
               sx={{
                 height: '40px',
                 '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#E7E7E7', 
+                  borderColor: '#E7E7E7',
                 },
                 '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#E7E7E7', 
+                  borderColor: '#E7E7E7',
                 },
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#E7E7E7', 
+                  borderColor: '#E7E7E7',
                 },
               }}
               onChange={(e) => setSelectedPropertyAdType(e.target.value)}
@@ -207,7 +207,7 @@ const ProjectsFilterComponent = ({ data }) => {
                       },
                     },
                     '& .Mui-selected': {
-                      backgroundColor: 'transparent !important', 
+                      backgroundColor: 'transparent !important',
                     },
                   },
                 },
@@ -493,10 +493,10 @@ const ProjectsFilterComponent = ({ data }) => {
                   borderColor: '#E7E7E7',
                 },
                 '&:hover fieldset': {
-                  borderColor: '#E7E7E7', 
+                  borderColor: '#E7E7E7',
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: '#E7E7E7', 
+                  borderColor: '#E7E7E7',
                 },
               },
             }}
