@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -32,9 +32,16 @@ import {
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { generateRandomNumber } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { addPostListing } from '@/src/utils/properties';
+import {
+  addPostListing,
+  fetchMyProperties,
+  updatePostListing,
+} from '@/src/utils/properties';
+import { usePathname } from 'next/navigation';
 
 const PostListing = () => {
+  const router = usePathname();
+  const property_Id = router.split('/')[4];
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
@@ -56,7 +63,11 @@ const PostListing = () => {
       dispatch(handleSubmitDraftForAgent(values));
       handleOpenSuccessModal();
     } else if (action === 'submit') {
-      mutate(formData);
+      if (property_Id) {
+        updatePostListingApi.mutate({ formData, property_Id });
+      } else {
+        mutate(formData);
+      }
       dispatch(handlePostlistingAd(values));
       handleOpenSuccessModal();
     }
@@ -80,6 +91,24 @@ const PostListing = () => {
     },
   });
 
+  useEffect(() => {
+    const params = {
+      page: 1,
+      pageSize: 10,
+      propertyId: property_Id,
+    };
+    if (property_Id) {
+      getSingleProperty.mutate(params);
+    }
+  }, []);
+
+  const updatePostListingApi = useMutation({
+    mutationFn: updatePostListing,
+    onSuccess: (data) => {
+      console.log(data, 'data');
+    },
+  });
+
   const formik = useFormik({
     initialValues: POST_LISTING_VALUES,
     validationSchema: postListingValidation,
@@ -93,6 +122,23 @@ const PostListing = () => {
     },
     validateOnChange: false,
     validateOnBlur: false,
+  });
+
+  // get single property for update
+  const getSingleProperty = useMutation({
+    mutationFn: fetchMyProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items[0];
+      formik.setFieldValue('title', items.propertyName);
+      formik.setFieldValue('description', items.propertyDescription);
+      formik.setFieldValue('amount', items.propertyPrice);
+      formik.setFieldValue('area', items.propertyArea);
+      formik.setFieldValue('city', items.propertyCity);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
   });
 
   const formData = new FormData();

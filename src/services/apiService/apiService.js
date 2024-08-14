@@ -6,11 +6,23 @@ const APIService = async (
   endpoint,
   method,
   payload,
-  contentType = 'application/json'
+  contentType = 'application/json',
+  params
 ) => {
   const jwtToken = localStorage.getItem('token');
 
-  const url = `${apiUrl}/${endpoint}`;
+  let url = `${apiUrl}/${endpoint}`;
+
+  const urlParam = new URL(url);
+
+  if (params) {
+    Object.keys(params).forEach((key) => {
+      if (params[key] !== undefined && params[key] !== null) {
+        urlParam.searchParams.append(key, params[key]);
+      }
+    });
+    url = urlParam;
+  }
 
   const headers = {
     'Content-Type': 'application/json',
