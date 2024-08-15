@@ -17,6 +17,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
         border: '1px solid #e0e0e0',
         marginTop: '40px',
         gap: '20px',
+        overflow: 'hidden',
       }}
     >
       <Box
@@ -49,7 +50,9 @@ const ViewAgentProfile = ({ image, name, link }) => {
           flexGrow: 1,
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           background: '#F5F6FB',
+          borderTop: '1px solid #E4E4E4',
         }}
       >
         <Link href={link}>
@@ -61,6 +64,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
               background: '#F5F6FB',
               fontWeight: 500,
               textTransform: 'capitalize',
+              color: '#515151',
               '&:hover': {
                 background: '#F5F6FB',
               },

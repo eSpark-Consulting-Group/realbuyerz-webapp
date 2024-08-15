@@ -6,7 +6,7 @@ const PropertyTitle = ({ title, heading }) => {
     <div>
       <Typography
         sx={{
-          padding: '5px',
+          padding: '20px 5px',
           fontSize: { xs: '15px', md: '30px' },
           fontWeight: 600,
         }}
@@ -15,7 +15,7 @@ const PropertyTitle = ({ title, heading }) => {
       </Typography>
       <Typography
         sx={{
-          padding: '5px',
+          padding: '20px 5px',
           fontSize: { xs: '14px', md: '16px' },
           fontWeight: 400,
         }}
