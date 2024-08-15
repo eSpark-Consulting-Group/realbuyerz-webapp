@@ -57,11 +57,18 @@ function ProjectsTabsFilter({
         flexDirection: 'column',
         gap: 2,
         p: '20px',
-        borderRadius: '20px',
+        borderRadius: '5px',
         boxShadow: '0px 0px 10px 0px #00000040',
       }}
     >
-      <Tabs value={selectPropertyTab} onChange={handleTabChange}>
+      <Tabs
+        value={selectPropertyTab}
+        onChange={handleTabChange}
+        sx={{
+          borderBottom: '1px solid #E4E4E4',
+          margin: '5px -20px 0 -20px',
+        }}
+      >
         {data?.map((tab, index) => (
           <Tab key={index} label={tab?.label} />
         ))}

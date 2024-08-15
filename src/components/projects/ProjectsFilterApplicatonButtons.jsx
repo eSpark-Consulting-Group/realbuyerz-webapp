@@ -16,11 +16,12 @@ const ProjectsFilterApplicatonButtons = ({ apply, cancel }) => {
         onClick={cancel}
         variant="outlined"
         sx={{
-          width: { xs: '40%', sm: '200px' },
+          width: { xs: '40%', sm: '150px' },
           '@media(min-width: 280px) and (max-width:400px)': {
             width: '100%',
           },
           height: '45px',
+          borderRadius: '10px',
           flexShrink: 0,
           fontSize: { xs: '12px', sm: '15px' },
           fontWeight: 400,
@@ -37,6 +38,7 @@ const ProjectsFilterApplicatonButtons = ({ apply, cancel }) => {
             width: '100%',
           },
           height: '45px',
+          borderRadius: '10px',
           flexShrink: 0,
           fontSize: { xs: '13px', sm: '15px' },
           fontWeight: 400,
