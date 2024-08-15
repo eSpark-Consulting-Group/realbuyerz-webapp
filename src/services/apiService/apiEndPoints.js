@@ -10,7 +10,17 @@ export const ENDPOINTS = {
   sendOtp: 'user/send-otp',
   forgetPassword: 'user/password-reset-email-link',
   verifyNumber: 'user/verify-otp',
-
+  // PROPERTY ENDPOINTS
+  properties: 'property',
+  // PROPERTY PROPOSAL ENDPOINTS
+  propertyProposal: 'userProperty',
+  // BIDINGS ENDPOINTS
+  biddingMultipleProperty: 'bidding/multipleProperty',
+  biddingSingleProperty: 'bidding/singleProperty',
+  biddingViewUserProposal: 'bidding/viewProposal/',
+  biddingViewAgentProposal: 'bidding/viewAgentProposal/',
+  biddingAcceptProposal: 'bidding/acceptProposal/',
+  biddingRejectProposal: 'bidding/rejectProposal/',
   addCoverLetter: '',
   addProfile: '',
   agentChats: '',
@@ -31,7 +41,6 @@ export const ENDPOINTS = {
   addPostListing: '',
   addProperties: '',
   privacyPolicies: '',
-  properties: '',
   propertiesAmenities: '',
   propertiesCategoris: '',
   addProposalListing: '',
@@ -42,12 +51,4 @@ export const ENDPOINTS = {
   userProperties: '',
   userRescentProperties: '',
   userSingleChats: '',
-
-  // BIDINGS
-  biddingMultipleProperty: '/bidding/multipleProperty',
-  biddingSingleProperty: '/bidding/singleProperty',
-  biddingViewUserProposal: '/bidding/viewProposal/',
-  biddingViewAgentProposal: '/bidding/viewAgentProposal/',
-  biddingAcceptProposal: '/bidding/acceptProposal/',
-  biddingRejectProposal: '/bidding/rejectProposal/',
 };
