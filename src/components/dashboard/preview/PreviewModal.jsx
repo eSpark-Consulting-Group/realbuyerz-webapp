@@ -24,8 +24,8 @@ const PreviewModal = (props) => {
   const { onClose, open, ads, formik } = props;
   const pathName = usePathname();
   const userPath = '/user/post-request';
-  const imageArr = [ads.PropertyData[0]?.url];
-  const videoArr = [ads.PropertyData[1]?.url];
+  const imageArr = ads.PropertyData ? [ads.PropertyData[0]?.url] : [];
+  const videoArr = ads.PropertyData ? [ads.PropertyData[1]?.url] : [];
   return (
     <>
       <Modal
