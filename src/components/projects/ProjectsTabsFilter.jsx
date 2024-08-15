@@ -59,6 +59,7 @@ function ProjectsTabsFilter({
         p: '20px',
         borderRadius: '5px',
         boxShadow: '0px 0px 10px 0px #00000040',
+        backgroundColor: '#fff',
       }}
     >
       <Tabs
