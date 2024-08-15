@@ -10,7 +10,6 @@ const SelectProperyType = ({
   image,
   label,
   // iconTitle,
-  plotType,
   // commercialType,
   formik,
 }) => {
@@ -25,7 +24,7 @@ const SelectProperyType = ({
     // setPropertyType(text);
     formik?.setFieldValue('propertyCategory', text);
   };
-  console.log(plotType, 'plotType');
+
   const handlePropetySubType = (propertySubTypeData) => {
     setActivePropertySubType(propertySubTypeData.subTypeName);
     // setPropetySubType(propertySubTypeData.subTypeName);
@@ -34,11 +33,15 @@ const SelectProperyType = ({
 
   useEffect(() => {
     mutate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { mutate } = useMutation({
     mutationFn: fetchPropertyTypes,
     onSuccess: (data) => {
+      handlePropertyType(data.response.data[0]?.typeName);
+      handlePropetySubType(data.response.data[0]?.subTypes[0]);
+
       setPropertyTp(data.response.data);
     },
     onError: (error) => {
@@ -46,6 +49,7 @@ const SelectProperyType = ({
       console.error(error);
     },
   });
+
   return (
     <>
       <Box

@@ -14,10 +14,7 @@ import SubmitButton from '@/src/components/dashboard/SubmitButton';
 import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
 import PropertyGallery from '@/src/components/dashboard/PropertGallery';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
 
-import { addProposal } from '@/src/redux/slices/proposals/proposalsSlice';
-import { currentProposal } from '@/src/redux/slices/currentUser/currentUserSlice';
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 import {
@@ -27,28 +24,20 @@ import {
 import { coverLetterValidation } from '@/src/components/Schemas/coverLetterValidation';
 import { PROPOSAL_SUBMIT_MODAL_DATA } from '@/src/constants/Preview_Data';
 import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
-import Link from 'next/link';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
-import {
-  checkIdValidity,
-  findSpecificPost,
-  generateRandomNumber,
-} from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { singleProperty } from '@/src/utils/apis/bidding/singleProperty';
 
 const CoverLetter = () => {
-  const [open, setOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
   const pathname = usePathname();
+
   const segments = pathname.split('/');
   const id = segments[segments.length - 2];
-  const userPostings = useSelector(
-    (state) => state?.postRequestAds?.userPostings
-  );
-  const specificPost = findSpecificPost(userPostings, id);
 
-  const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
@@ -60,18 +49,6 @@ const CoverLetter = () => {
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
-  const handleSubmit = (values) => {
-    dispatch(addProposal(values));
-    handleOpenSuccessModal();
-    dispatch(
-      currentProposal({
-        property_id: values?.property_id,
-        agent_id: values?.agent_id,
-      })
-    );
-    dispatch(toggleCheckAmenityClear());
-    setSelectedAmenities([]);
-  };
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -79,80 +56,100 @@ const CoverLetter = () => {
     setOpen(false);
   };
 
-  const randomNumber = generateRandomNumber();
+  const { mutate } = useMutation({
+    mutationFn: singleProperty,
+    onSuccess: () => {
+      handleOpenSuccessModal();
+      dispatch(toggleCheckAmenityClear());
+      setSelectedAmenities([]);
+
+      formik.resetForm();
+    },
+  });
 
   const formik = useFormik({
     initialValues: COVER_LETTER_VALUES,
     validationSchema: coverLetterValidation,
-    onSubmit: (values, action) => {
-      values.property_id = Number(id);
-      values.proposal_id = randomNumber;
-      values.agent_id = current_user_id;
-      values.status = 'Submited';
-      handleSubmit(values);
-      action.resetForm();
+    onSubmit: () => {
+      mutate(formData);
     },
     validateOnChange: false,
     validateOnBlur: false,
   });
 
+  const formData = new FormData();
+  formData.append('propertyName', formik?.values.title);
+  formData.append('userPropertyId', id);
+  formData.append('propertyType', formik?.values.propertyCategory);
+  formData.append('propertyDescription', formik?.values.description);
+  formData.append('image', formik?.values.images[0]);
+  formData.append('propertyPrice', formik?.values.amount);
+  formData.append('propertyArea', formik?.values.area);
+  formData.append('purpose', formik?.values.purpose);
+  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyCity', formik?.values.city);
+  formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
+  formData.append('amenities', formik?.values.amenities);
+  formData.append('longitude', '123.345');
+  formData.append('latitude', '989.000');
+  formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+
   return (
     <>
-      {checkIdValidity(id, specificPost) ? (
+      {/* {checkIdValidity(id, specificPost) ? (
         <>
           <NotFoundSection />
         </>
-      ) : (
-        <Grid container>
-          <Grid item xs={12}>
-            <Link href={'/user/dashboard'}>dashboard</Link>
-            <form onSubmit={formik?.handleSubmit}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
-                  justifyContent: 'center',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '40px',
-                  margin: { xs: 0, md: '0 auto', lg: 0 },
-                }}
-              >
-                <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
-                <AdInformation formik={formik} propertyData={COVER_LETTER} />
-                <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
-                <PropertySize formik={formik} propertyData={COVER_LETTER} />
-                <PropertyFeatures
-                  formik={formik}
-                  propertyData={COVER_LETTER}
-                  setSelectedAmenities={setSelectedAmenities}
-                  selectedAmenities={selectedAmenities}
-                  handleSeletedAmenites={handleSeletedAmenites}
-                />
-                <PropertyGallery formik={formik} propertyData={COVER_LETTER} />
-                <SubmitButton
-                  formik={formik}
-                  propertyData={COVER_LETTER}
-                  handleClickOpen={handleClickOpen}
-                />
-                <PreviewModal
-                  open={open}
-                  onClose={handleClose}
-                  ads={formik?.values}
-                  formik={formik}
-                />
-              </Box>
-            </form>
-            <SubmissionModal
-              buttonLabel={PROPOSAL_SUBMIT_MODAL_DATA?.buttonLabel}
-              description={PROPOSAL_SUBMIT_MODAL_DATA?.description}
-              title={PROPOSAL_SUBMIT_MODAL_DATA?.title}
-              open={isOpen}
-              onClose={handleCloseSuccessModal}
-            />
-          </Grid>
+      ) : ( */}
+      <Grid container>
+        <Grid item xs={12}>
+          <form onSubmit={formik?.handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '40px',
+                margin: { xs: 0, md: '0 auto', lg: 0 },
+              }}
+            >
+              <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
+              <AdInformation formik={formik} propertyData={COVER_LETTER} />
+              <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
+              <PropertySize formik={formik} propertyData={COVER_LETTER} />
+              <PropertyFeatures
+                formik={formik}
+                propertyData={COVER_LETTER}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+                handleSeletedAmenites={handleSeletedAmenites}
+              />
+              <PropertyGallery formik={formik} propertyData={COVER_LETTER} />
+              <SubmitButton
+                formik={formik}
+                propertyData={COVER_LETTER}
+                handleClickOpen={handleClickOpen}
+              />
+              <PreviewModal
+                open={open}
+                onClose={handleClose}
+                ads={formik?.values}
+                formik={formik}
+              />
+            </Box>
+          </form>
+          <SubmissionModal
+            buttonLabel={PROPOSAL_SUBMIT_MODAL_DATA?.buttonLabel}
+            description={PROPOSAL_SUBMIT_MODAL_DATA?.description}
+            title={PROPOSAL_SUBMIT_MODAL_DATA?.title}
+            open={isOpen}
+            onClose={handleCloseSuccessModal}
+          />
         </Grid>
-      )}
+      </Grid>
+      {/* )} */}
     </>
   );
 };

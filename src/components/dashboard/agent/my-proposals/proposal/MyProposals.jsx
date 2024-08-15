@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Box, Divider, Tab, Tabs } from '@mui/material';
@@ -16,6 +16,8 @@ import {
   JustifyForFindProposal,
   renderAdCardForProposal,
 } from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { getUserProposal } from '@/src/utils/apis/proposal/getUserProposal';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
@@ -73,6 +75,25 @@ const MyProposals = () => {
     setCurrentTab(tab);
     setValue(newValue);
   };
+
+  useEffect(() => {
+    mutate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const { mutate } = useMutation({
+    mutationFn: getUserProposal,
+    onSuccess: (data) => {
+      const items = data.response.data.items;
+
+      console.log('data', items);
+      // setMyPropertiesData(items);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   return (
     <>
