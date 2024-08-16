@@ -73,6 +73,10 @@ const ProjectsSlider = ({ data, category }) => {
                 backgroundColor: '#fff',
                 border: '1px solid #E4E4E4',
                 borderRadius: '5px',
+                '&:hover': {
+                  boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                  transition: 'box-shadow 0.3s ease-in-out',
+                },
               }}
             >
               <Link href={`/projects/${project?.property_id}`}>
