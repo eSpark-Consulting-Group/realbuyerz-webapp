@@ -11,10 +11,12 @@ const PropertyMapLocation = ({
 }) => {
   return (
     <Box sx={{ padding: '5px' }}>
-      <Typography sx={{ fontSize: '18px', fontWeight: 500 }}>
+      <Typography
+        sx={{ fontSize: '18px', fontWeight: 500, color: '#333333', p: '7px 0' }}
+      >
         Location & Purpose
       </Typography>
-      <Box display={'flex'} gap={'5px'}>
+      <Box display={'flex'} gap={'5px'} p={'7px 0'}>
         <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
           Purpose:
         </Typography>
@@ -22,7 +24,7 @@ const PropertyMapLocation = ({
           {locationpurpose}
         </Typography>
       </Box>
-      <Box display={'flex'} gap={'5px'}>
+      <Box display={'flex'} gap={'5px'} p={'7px 0'}>
         <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
           Property Type:
         </Typography>
@@ -30,7 +32,7 @@ const PropertyMapLocation = ({
           {propertyType}
         </Typography>
       </Box>
-      <Box display={'flex'} gap={'5px'}>
+      <Box display={'flex'} gap={'5px'} p={'7px 0'}>
         <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
           Location:
         </Typography>
@@ -38,7 +40,7 @@ const PropertyMapLocation = ({
           {location}
         </Typography>
       </Box>
-      <Box display={'flex'} gap={'5px'}>
+      <Box display={'flex'} gap={'5px'} p={'7px 0'}>
         <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
           City:
         </Typography>
