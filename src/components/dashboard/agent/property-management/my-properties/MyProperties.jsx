@@ -32,6 +32,12 @@ const MyProperties = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
   const [myPropertiesData, setMyPropertiesData] = useState([]);
+  const [filterObject, setFilterObject] = useState({
+    purpose: '',
+    propertyCity: '',
+    location: '',
+    propertyType: '',
+  });
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { agentPostings, active, draft, trash } = useSelector(
     (state) => state?.postListingAds
@@ -42,8 +48,14 @@ const MyProperties = () => {
   const find_draft = findData(user_id, draft);
   const find_trash = findData(user_id, trash);
   useEffect(() => {
-    mutate();
-  }, []);
+    const filters = {};
+    Object.keys(filterObject).forEach((val) => {
+      if (filterObject[val]) {
+        filters[val] = filterObject[val];
+      }
+    });
+    mutate(filters);
+  }, [filterObject]);
 
   const { mutate, isPending } = useMutation({
     mutationFn: fetchMyProperties,
@@ -80,13 +92,6 @@ const MyProperties = () => {
     },
   ];
 
-  const [filterObject, setfilterObject] = useState({
-    purpose: '',
-    city: '',
-    location: '',
-    property_Type: '',
-  });
-
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
     if (tab.length > 1) {
@@ -98,19 +103,19 @@ const MyProperties = () => {
     setValue(newValue);
   };
   const handleChangeSelect = (key, val) => {
-    setfilterObject({
+    setFilterObject({
       ...filterObject,
       [key]: val,
     });
   };
 
   const handleReset = () => {
-    setfilterObject({
+    setFilterObject({
       ...filterObject,
       purpose: '',
-      city: '',
+      propertyCity: '',
       location: '',
-      property_Type: '',
+      propertyType: '',
     });
   };
 
