@@ -26,7 +26,7 @@ import {
   // renderAdCard,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { deleteProperty, fetchMyProperties } from '@/src/utils/properties';
+import { fetchMyProperties } from '@/src/utils/properties';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);
