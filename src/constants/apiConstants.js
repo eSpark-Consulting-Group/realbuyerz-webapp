@@ -21,6 +21,7 @@ export const ENDPOINTS = {
   popularLocations: '',
   addPostListing: 'property',
   updatePostListing: 'property',
+  deleteProperty: 'property',
   addProperties: '',
   addBiddings: '',
   privacyPolicies: '',
