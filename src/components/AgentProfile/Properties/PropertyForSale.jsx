@@ -23,9 +23,9 @@ const PropertyForSale = ({ link, data }) => {
             }}
           >
             <Image
-              src="/images/agent-profile-icons/home.svg"
-              width={15}
-              height={15}
+              src="/images/agent-profile-icons/home.png"
+              width={19}
+              height={17}
               alt={ALT}
             />
             <Typography

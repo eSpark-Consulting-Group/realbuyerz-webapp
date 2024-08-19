@@ -1,7 +1,14 @@
 'use client';
 import { handleSubmitTrash } from '@/src/redux/slices/userAds/userAdsSlice';
 
-import { Box, Button, Divider, IconButton, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Divider,
+  IconButton,
+  Typography,
+} from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
@@ -13,8 +20,16 @@ import Link from 'next/link';
 import PreviewModal from './preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { deleteProperty } from '@/src/utils/properties';
+import { useMutation } from '@tanstack/react-query';
 
-const ProposalCard = ({ data, currentTab, link, customKey }) => {
+const ProposalCard = ({
+  data,
+  currentTab,
+  link,
+  customKey,
+  refetchProperties,
+}) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const pathName = usePathname();
@@ -29,6 +44,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
         handleSubmitTrash({ property_id: property_id, currentTab: currentTab })
       );
     } else if (pathName?.includes(properties)) {
+      deletePropertyHandler.mutate(property_id);
       dispatch(
         handleAgentTrash({
           property_id: property_id,
@@ -44,6 +60,17 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
       );
     }
   };
+  const deletePropertyHandler = useMutation({
+    mutationFn: deleteProperty,
+    onSuccess: (data) => {
+      console.log(data);
+      refetchProperties();
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
   const handleClickOpen = () => {
     if (currentTab === 'Saved Request' || currentTab === 'Trash') {
       return null;
@@ -440,7 +467,11 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
               }}
               onClick={() => handleTrash(data?.id, currentTab)}
             >
-              Trash
+              {deletePropertyHandler.isPending ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                'Trash'
+              )}
             </Button>
           </>
         )}

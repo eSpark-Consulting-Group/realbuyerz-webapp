@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 const PropertyCardRentBody = ({ rentData, link }) => {
   return (
@@ -19,6 +20,19 @@ const PropertyCardRentBody = ({ rentData, link }) => {
               boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
               borderColor: '#E5E7EB',
               borderWidth: 1,
+              position: 'relative',
+              '&:hover': {
+                backgroundColor: '#FFF9F6',
+                border: '1px solid #FB631C',
+              },
+              '&:hover .property-type-text': {
+                color: '#FB631C',
+                fontSize: '13px',
+              },
+              '&:hover .property-icon': {
+                opacity: 1,
+                marginLeft: '10px',
+              },
             }}
           >
             <Box>
@@ -36,19 +50,36 @@ const PropertyCardRentBody = ({ rentData, link }) => {
                   {rentData[index]}
                 </Typography>
               </Link>
-              <Link href={`${link}/${propertyType.toLowerCase()}`}>
-                <Typography
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginLeft: '-10px',
+                }}
+              >
+                <ArrowOutwardIcon
                   sx={{
-                    color: '#777',
-                    fontSize: '12px',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
-                    lineHeight: 'normal',
+                    fontSize: '16px',
+                    color: '#FB631C',
+                    opacity: 0,
+                    transition: 'opacity 0.3s ease-in-out',
                   }}
-                >
-                  {propertyType}
-                </Typography>
-              </Link>
+                  className="property-icon"
+                />
+                <Link href={`${link}/${propertyType.toLowerCase()}`}>
+                  <Typography
+                    sx={{
+                      color: '#777',
+                      fontSize: '12px',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    {propertyType}
+                  </Typography>
+                </Link>
+              </Box>
             </Box>
           </Box>
         </Grid>

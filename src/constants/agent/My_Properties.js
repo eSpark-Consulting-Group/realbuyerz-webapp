@@ -17,7 +17,7 @@ export const ALL_POSTLISTING_FILTRATION = {
     },
     {
       title: 'City',
-      key: 'city',
+      key: 'propertyCity',
       placeholder: 'Select City',
       options: [
         {
@@ -47,7 +47,7 @@ export const ALL_POSTLISTING_FILTRATION = {
     },
     {
       title: 'Property Type',
-      key: 'property_Type',
+      key: 'propertyType',
       placeholder: 'Select Type',
       options: [
         {

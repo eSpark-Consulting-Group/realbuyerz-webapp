@@ -27,7 +27,7 @@ const ProfileAgent = ({ data, agentData }) => {
             height: 550,
             background: 'white',
             borderRadius: 8,
-            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0px 0px 4px 0px #00000040',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',

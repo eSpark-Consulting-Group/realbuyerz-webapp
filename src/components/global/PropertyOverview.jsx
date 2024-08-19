@@ -22,7 +22,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
           display: 'flex',
           flexDirection: 'column',
           width: { xs: '100%', md: '100%' },
-          gap: '9px',
+          gap: '20px',
         }}
       >
         <Typography
@@ -65,7 +65,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
           >
             <Table>
               <TableHead>
-                <TableRow sx={{}}>
+                <TableRow>
                   {PROPERTY_ESTATE?.propertyAttributes?.map(
                     (propertytype, index) => (
                       <TableCell
@@ -93,6 +93,7 @@ const PropertyOverview = ({ propertyData, overview }) => {
           </TableContainer>
           <TableContainer
             component={Paper}
+            elevation={0}
             sx={{
               justifyContent: { xs: 'center', md: 'none' },
               overflow: 'auto',
@@ -124,10 +125,12 @@ const PropertyOverview = ({ propertyData, overview }) => {
                       key={index}
                       sx={{
                         background: '#F8F8F8',
-                        border: '1px solid #B8B8B8',
+                        // border: '1px solid #B8B8B8',
+                        borderBottom: 'none',
                         padding: '10px',
                         width: `${100 / 7}%`,
                         textAlign: 'center',
+                        height: '65px',
                       }}
                     >
                       {propertyData?.[key]}
