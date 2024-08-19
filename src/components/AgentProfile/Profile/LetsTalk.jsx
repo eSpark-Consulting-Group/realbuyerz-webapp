@@ -20,11 +20,11 @@ const LetsTalk = ({ text, data }) => {
         <Button
           href={`/user/inbox/${data.id}`}
           sx={{
-            boxShadow: 2,
             padding: 2,
             height: '35px',
             backgroundColor: '#fff',
-            borderRadius: '50px',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
+            borderRadius: '17px',
             '&:hover': {
               backgroundColor: '#fff',
               color: '#fff',
@@ -35,6 +35,7 @@ const LetsTalk = ({ text, data }) => {
             variant="body2"
             sx={{
               fontWeight: 'bold',
+              fontSize: '14px',
               color: '#126FAA',
             }}
           >
