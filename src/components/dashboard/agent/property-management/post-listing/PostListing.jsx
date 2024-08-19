@@ -45,6 +45,7 @@ const PostListing = () => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
+  const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
@@ -129,6 +130,8 @@ const PostListing = () => {
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
       const items = data.response.data.items[0];
+      setPropertyTypeDetails(items.propertyType);
+
       formik.setFieldValue('title', items.propertyName);
       formik.setFieldValue('description', items.propertyDescription);
       formik.setFieldValue('amount', items.propertyPrice);
@@ -173,7 +176,11 @@ const PostListing = () => {
           >
             <BuyersPlatform propertyData={POST_LISTING} />
             <AdInformation formik={formik} propertyData={POST_LISTING} />
-            <PropertyPurpose formik={formik} propertyData={POST_LISTING} />
+            <PropertyPurpose
+              formik={formik}
+              propertyData={POST_LISTING}
+              propertyTypeDetails={propertyTypeDetails}
+            />
             <PropertySize formik={formik} propertyData={POST_LISTING} />
             <PropertyFeatures
               formik={formik}

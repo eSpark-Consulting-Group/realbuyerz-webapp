@@ -103,8 +103,8 @@ const PreviewModal = (props) => {
               city={ads?.propertyCity}
               locationKeys={location}
               purpose={ads?.purpose}
-              propertyType={ads?.propertyType.subTypeName}
-              propertyCategory={ads?.propertyType.subTypeName}
+              propertyType={ads?.propertyType?.subTypeName}
+              propertyCategory={ads?.propertyType?.subTypeName}
               location={ads?.propertyAddress}
               fontSize={'18px'}
               fontStyle={'12px'}

@@ -2,22 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, CircularProgress, Divider, Tab, Tabs } from '@mui/material';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 
-import PostListingCard from '../../live-bidding/PostListingCard';
 import {
   a11yProps,
-  findData,
   findProposal,
   findSome,
   JustifyForFindProposal,
-  renderAdCardForProposal,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { getUserProposal } from '@/src/utils/apis/proposal/getUserProposal';
+import { fetchMyProperties } from '@/src/utils/properties';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
@@ -32,36 +29,42 @@ const MyProposals = () => {
 
   const find_save = findSome(save, userAds);
   const trashed_ad = findSome(save, proposalsTrash);
-  const find_trash = findData(user_id, trashed_ad);
   const find_proposals_active = findProposal(user_id, proposals, 'Connected');
   const find_proposals_archive = findProposal(user_id, proposals, 'Archived');
   const find_proposals_rejected = findProposal(user_id, proposals, 'Rejected');
+
+  const [myPropertiesData, setMyPropertiesData] = useState([]);
+  const params = {
+    page: 1,
+    pageSize: 50,
+    proposals: true,
+  };
 
   const tabs = [
     {
       label: 'Saved Request',
       prop: a11yProps(0),
-      items: find_save?.length || 0,
+      items: myPropertiesData?.length || 0,
     },
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: find_proposals_active?.length || 0,
+      items: myPropertiesData?.length || 0,
     },
     {
       label: 'Archive',
       prop: a11yProps(2),
-      items: find_proposals_archive?.length || 0,
+      items: myPropertiesData?.length || 0,
     },
     {
       label: 'Rejected',
       prop: a11yProps(3),
-      items: find_proposals_rejected?.length || 0,
+      items: myPropertiesData?.length || 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
-      items: find_trash?.length || 0,
+      items: myPropertiesData?.length || 0,
     },
   ];
 
@@ -77,17 +80,16 @@ const MyProposals = () => {
   };
 
   useEffect(() => {
-    mutate();
+    mutate(params);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { mutate } = useMutation({
-    mutationFn: getUserProposal,
+  const { mutate, isPending } = useMutation({
+    mutationFn: fetchMyProperties,
     onSuccess: (data) => {
       const items = data.response.data.items;
 
-      console.log('data', items);
-      // setMyPropertiesData(items);
+      setMyPropertiesData(items);
     },
     onError: (error) => {
       // Handle the error
@@ -180,47 +182,39 @@ const MyProposals = () => {
               gap: { xs: 1.5, sm: 2.5, md: 3.5 },
             }}
           >
-            {renderAdCardForProposal(
-              find_save,
-              find_proposals_active,
-              find_proposals_archive,
-              find_proposals_rejected,
-              trashed_ad,
-              currentTab
-            )?.length < 1 ? (
-              <NotFoundSection
-                heading={'Sorry!'}
-                message={`No ${currentTab || ''} Data`}
-                link={'/agent/live-bidding'}
-              />
+            {myPropertiesData?.length < 1 ? (
+              isPending ? (
+                <Box
+                  sx={{
+                    height: '300px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    display: 'flex',
+                  }}
+                >
+                  <CircularProgress size={32} color="inherit" />
+                </Box>
+              ) : (
+                <NotFoundSection
+                  heading={'Sorry!'}
+                  message={`No ${currentTab || ''} Data`}
+                  link={'/agent/live-bidding'}
+                />
+              )
             ) : (
-              <>
-                {currentTab === 'Saved Request' ? (
-                  <PostListingCard ads={find_save} height={'1098px'} />
-                ) : (
-                  <>
-                    {renderAdCardForProposal(
-                      find_save,
-                      find_proposals_active,
-                      find_proposals_archive,
-                      find_proposals_rejected,
-                      trashed_ad,
-                      currentTab
-                    )?.map((item, index) => (
-                      <ProposalCard
-                        key={index}
-                        data={item}
-                        currentTab={currentTab}
-                        link={
-                          currentTab === 'Active'
-                            ? `my-proposals/proposal/${item?.proposal_id || '#'}`
-                            : '#'
-                        }
-                      />
-                    ))}
-                  </>
-                )}
-              </>
+              myPropertiesData?.map((item, index) => (
+                <ProposalCard
+                  refetchProperties={() => mutate(params)}
+                  key={index}
+                  data={item}
+                  currentTab={currentTab}
+                  link={
+                    currentTab === 'Active'
+                      ? `my-proposals/proposal/${item?.id || '#'}`
+                      : '#'
+                  }
+                />
+              ))
             )}
           </Box>
         </Box>

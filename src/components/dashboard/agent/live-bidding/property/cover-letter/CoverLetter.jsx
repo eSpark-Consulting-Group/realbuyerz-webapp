@@ -1,9 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
 import AdInformation from '@/src/components/dashboard/AdInformation';
@@ -27,9 +27,13 @@ import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { useMutation } from '@tanstack/react-query';
 import { singleProperty } from '@/src/utils/apis/bidding/singleProperty';
+import { fetchMyProperties, updatePostListing } from '@/src/utils/properties';
 
 const CoverLetter = () => {
+  const proposals = 'my-proposals';
+
   const dispatch = useDispatch();
+  const router = useRouter();
   const pathname = usePathname();
 
   const segments = pathname.split('/');
@@ -38,6 +42,7 @@ const CoverLetter = () => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
 
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
@@ -56,6 +61,19 @@ const CoverLetter = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const params = {
+      page: 1,
+      pageSize: 10,
+      propertyId: id,
+      proposals: true,
+    };
+    if (id) {
+      getSingleProperty.mutate(params);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
   const { mutate } = useMutation({
     mutationFn: singleProperty,
     onSuccess: () => {
@@ -71,10 +89,40 @@ const CoverLetter = () => {
     initialValues: COVER_LETTER_VALUES,
     validationSchema: coverLetterValidation,
     onSubmit: () => {
-      mutate(formData);
+      if (pathname.includes(proposals)) {
+        updatePostListingApi.mutate({ formData, property_Id: id });
+      } else {
+        mutate(formData);
+      }
     },
     validateOnChange: false,
     validateOnBlur: false,
+  });
+
+  const updatePostListingApi = useMutation({
+    mutationFn: updatePostListing,
+    onSuccess: () => {
+      router.push('/agent/my-proposals');
+    },
+  });
+
+  // get single property for update
+  const getSingleProperty = useMutation({
+    mutationFn: fetchMyProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items[0];
+      setPropertyTypeDetails(items.propertyType);
+
+      formik.setFieldValue('title', items.propertyName);
+      formik.setFieldValue('description', items.propertyDescription);
+      formik.setFieldValue('amount', items.propertyPrice);
+      formik.setFieldValue('area', items.propertyArea);
+      formik.setFieldValue('city', items.propertyCity);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
   });
 
   const formData = new FormData();
@@ -89,7 +137,7 @@ const CoverLetter = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenities', formik?.values.amenities);
+  formData.append('amenities', formik?.values.amenities || '');
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
@@ -117,7 +165,11 @@ const CoverLetter = () => {
             >
               <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
               <AdInformation formik={formik} propertyData={COVER_LETTER} />
-              <PropertyPurpose formik={formik} propertyData={COVER_LETTER} />
+              <PropertyPurpose
+                formik={formik}
+                propertyData={COVER_LETTER}
+                propertyTypeDetails={propertyTypeDetails}
+              />
               <PropertySize formik={formik} propertyData={COVER_LETTER} />
               <PropertyFeatures
                 formik={formik}
