@@ -368,7 +368,12 @@ const MyProperties = () => {
               )
             ) : (
               myPropertiesData?.map((item, index) => (
-                <ProposalCard key={index} data={item} currentTab={currentTab} />
+                <ProposalCard
+                  refetchProperties={mutate}
+                  key={index}
+                  data={item}
+                  currentTab={currentTab}
+                />
               ))
             )}
           </Box>

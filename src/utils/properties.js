@@ -112,3 +112,21 @@ export const updatePostListing = async (postListingdata) => {
     throw error;
   }
 };
+
+export const deleteProperty = async (property_Id) => {
+  const endpoint = ENDPOINTS.deleteProperty;
+  const method = 'delete';
+  const contentType = 'multipart/form-data';
+  try {
+    const response = await APIService(
+      `${endpoint}/${property_Id}`,
+      method,
+      null,
+      contentType
+    );
+    return response;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
