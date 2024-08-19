@@ -58,7 +58,11 @@ const BidSlider = ({ media, mediaType }) => {
                 <Image
                   height={200}
                   width={250}
-                  src={URL?.createObjectURL(item)}
+                  src={
+                    item
+                      ? URL?.createObjectURL(item)
+                      : '/images/PropertyImg.png'
+                  }
                   alt={'Images'}
                   className="reponsiveimage"
                 />
@@ -72,7 +76,7 @@ const BidSlider = ({ media, mediaType }) => {
                     label="English"
                     default
                   />
-                  <source src={URL?.createObjectURL(item)} />
+                  <source src={item && URL?.createObjectURL(item)} />
                 </video>
               </Box>
             ) : null}

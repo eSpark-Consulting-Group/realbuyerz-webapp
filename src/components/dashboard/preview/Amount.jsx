@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const Amount = () => {
+const Amount = ({ amount }) => {
   return (
     <Box
       sx={{
@@ -21,7 +21,7 @@ const Amount = () => {
         <Typography
           sx={{ fontSize: { xs: '14px' }, fontWeight: 500, color: '#126FAA' }}
         >
-          10M
+          {amount}
         </Typography>
       </Box>
     </Box>
