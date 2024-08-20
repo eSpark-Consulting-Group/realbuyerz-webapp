@@ -52,6 +52,7 @@ const ProposalCard = ({
         })
       );
     } else if (pathName?.includes(proposals)) {
+      deletePropertyHandler.mutate(property_id);
       dispatch(
         handleTrashProposal({
           property_id: property_id,
@@ -90,6 +91,10 @@ const ProposalCard = ({
   }
   if (currentTab === 'All') {
     editIconLink = `/agent/property-management/update-property/${data?.id || ''}`;
+  }
+
+  if (currentTab === 'Active') {
+    editIconLink = `/agent/my-proposals/update-proposal/${data?.id}/cover-letter`;
   }
 
   return (
@@ -286,7 +291,7 @@ const ProposalCard = ({
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.propertyType.subTypeName || ''}
+                      {data?.propertyType?.subTypeName || ''}
                     </Typography>
                   </Box>
                   <Box
@@ -413,37 +418,38 @@ const ProposalCard = ({
             >
               <DeleteIcon />
             </IconButton>
-            {currentTab === 'Draft' ||
-              (currentTab === 'All' && (
-                <Link href={editIconLink}>
-                  <Typography
-                    color={'primary'}
-                    sx={{
-                      display: 'flex',
-                      cursor: 'pointer',
-                      position: { xs: 'absolute' },
-                      zIndex: 10,
-                      right: { xs: 60, sm: 60, md: 150 },
-                      top: {
-                        xs: !pathName?.includes(user) ? 330 : 81,
-                        sm: !pathName?.includes(user) ? 382 : 112,
-                        md: !pathName?.includes(user) ? 25 : 25,
-                      },
-                      bottom: {
-                        xs: !pathName?.includes(user) ? 'auto' : 'auto',
-                        sm: !pathName?.includes(user) ? 'auto' : 'auto',
-                      },
-                      left: { xs: 'auto', sm: 'auto', md: 'auto' },
-                      '@media (min-width:280px) and (max-width:319px)': {
-                        top: !pathName?.includes(user) && 320,
-                        right: !pathName?.includes(user) && 50,
-                      },
-                    }}
-                  >
-                    <EditIcon />
-                  </Typography>
-                </Link>
-              ))}
+            {(currentTab === 'Draft' ||
+              (currentTab === 'Active' && pathName.includes(proposals)) ||
+              currentTab === 'All') && (
+              <Link href={editIconLink}>
+                <Typography
+                  color={'primary'}
+                  sx={{
+                    display: 'flex',
+                    cursor: 'pointer',
+                    position: { xs: 'absolute' },
+                    zIndex: 10,
+                    right: { xs: 60, sm: 60, md: 150 },
+                    top: {
+                      xs: !pathName?.includes(user) ? 330 : 81,
+                      sm: !pathName?.includes(user) ? 382 : 112,
+                      md: !pathName?.includes(user) ? 25 : 25,
+                    },
+                    bottom: {
+                      xs: !pathName?.includes(user) ? 'auto' : 'auto',
+                      sm: !pathName?.includes(user) ? 'auto' : 'auto',
+                    },
+                    left: { xs: 'auto', sm: 'auto', md: 'auto' },
+                    '@media (min-width:280px) and (max-width:319px)': {
+                      top: !pathName?.includes(user) && 320,
+                      right: !pathName?.includes(user) && 50,
+                    },
+                  }}
+                >
+                  <EditIcon />
+                </Typography>
+              </Link>
+            )}
 
             <Button
               variant="contained"

@@ -10,12 +10,13 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
-import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
 const SignupCard = () => {
   const [contactNumber, setContactNumber] = useState('');
@@ -70,6 +71,8 @@ const SignupCard = () => {
         };
         dispatch(setLoggedIn(savedUserInfo));
 
+        setProfile();
+
         toast.success('Signup successful!', {
           onClose: () => {
             if (data.response.data.user.role === 'user') {
@@ -116,6 +119,13 @@ const SignupCard = () => {
   const handleGoogleLogin = () => {
     googleLogin();
   };
+
+  const { mutate: setProfile } = useMutation({
+    mutationFn: userProfile,
+    onSuccess: (data) => {
+      dispatch(setUserProfile(data?.response?.data));
+    },
+  });
 
   return (
     <>

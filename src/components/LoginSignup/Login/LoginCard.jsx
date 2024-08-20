@@ -17,10 +17,11 @@ import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
-import { setLoggedIn } from '@/src/redux/slices/auth/authSlice';
+import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { login } from '@/src/utils/apis/auth/login';
 import { useFormik } from 'formik';
 import { AuthSchema } from '../../Schemas/signInValidationSchema';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
 const LoginCard = ({ handleClose, fromModal }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
@@ -49,6 +50,8 @@ const LoginCard = ({ handleClose, fromModal }) => {
         userType: data.response.data.user.role,
       };
       dispatch(setLoggedIn(savedUserInfo));
+
+      setProfile();
 
       if (fromModal) {
         dispatch(setOpenModal(false));
@@ -86,6 +89,13 @@ const LoginCard = ({ handleClose, fromModal }) => {
       mutate(values);
       // dispatch(saveLoginData(values));
       // dispatch(setOpenModal(false));
+    },
+  });
+
+  const { mutate: setProfile } = useMutation({
+    mutationFn: userProfile,
+    onSuccess: (data) => {
+      dispatch(setUserProfile(data?.response?.data));
     },
   });
 

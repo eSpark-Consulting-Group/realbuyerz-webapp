@@ -1,16 +1,50 @@
 'use client';
-import React from 'react';
-import { Grid, Box } from '@mui/material';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Grid, Box, CircularProgress } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
 
 import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
 import LiveBiddingTitle from './LiveBiddingTitle';
 import PostListingCard from './PostListingCard';
 
 import { MAIN_TITLE } from '@/src/constants/agent/Live_Bidding';
+import { fetchProperties } from '@/src/utils/properties';
+import { transformApiObject } from '@/src/utils/objectsConversion';
+import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
 
 const LiveBidding = () => {
-  const user_ads = useSelector((state) => state?.postRequestAds?.userPostings);
+  const dispatch = useDispatch();
+  const userProfile = useSelector((state) => state?.auth?.userProfile);
+
+  const [liveBiddingData, setLiveBiddingData] = useState([]);
+
+  useEffect(() => {
+    if (userProfile?.id) {
+      mutate();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const transformApiArray = (apiArray) => {
+    return apiArray.map((apiObj) => transformApiObject(apiObj));
+  };
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: fetchProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items?.filter(
+        (item) => item.userId !== userProfile?.id
+      );
+
+      setLiveBiddingData(transformApiArray(items));
+      dispatch(setAllUserProperties(transformApiArray(items)));
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   return (
     <>
@@ -27,7 +61,20 @@ const LiveBidding = () => {
               }}
             >
               <LiveBiddingTitle title={MAIN_TITLE} />
-              <PostListingCard ads={user_ads} height={'1098px'} />
+              {!userProfile || isPending ? (
+                <Box
+                  sx={{
+                    height: '200px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <CircularProgress size={32} color="inherit" />
+                </Box>
+              ) : (
+                <PostListingCard ads={liveBiddingData} height={'1098px'} />
+              )}
             </Box>
           </Grid>
           <Grid item xs={12} md={12} lg={12} xl={2.64} xxl={2}>

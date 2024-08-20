@@ -152,7 +152,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
             </Button>
           )}
         </Box>
-        <BidSlider media={media} mediaType={mediaType} />
+        <BidSlider media={media ? media : [null]} mediaType={mediaType} />
       </Box>
     </>
   );

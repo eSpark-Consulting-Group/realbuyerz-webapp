@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
-import { Grid, Typography } from '@mui/material';
+import { CircularProgress, Grid, Typography } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RightSection from '@/src/components/dashboard/user/dashboard/RightSection';
 import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
@@ -12,11 +12,13 @@ import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/Previ
 
 import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import Location from '@/src/components/dashboard/preview/Location';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 import { CLIENT_REQUIRMENT } from '@/src/constants/agent/Live_Bidding';
-import { findSpecificPost } from '@/src/utils/dashboardUtils';
+import { transformApiObject } from '@/src/utils/objectsConversion';
+import { useMutation } from '@tanstack/react-query';
+import { fetchProperties } from '@/src/utils/properties';
+import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
 
 const AdDetail = () => {
   const { location, areaAndAmount, amenities } = PREVIEW_DATA;
@@ -24,72 +26,130 @@ const AdDetail = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const userPostings = useSelector(
-    (state) => state?.postRequestAds?.userPostings
+
+  const dispatch = useDispatch();
+  const userProperties = useSelector(
+    (state) => state?.properties?.userProperties
   );
-  const specificPost = findSpecificPost(userPostings, id);
+
+  const transformApiArray = (apiArray) => {
+    return apiArray.map((apiObj) => transformApiObject(apiObj));
+  };
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: fetchProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items;
+
+      dispatch(setAllUserProperties(transformApiArray(items)));
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
+  const [userPropertyData, setUserPropertyData] = useState({});
+
+  useEffect(() => {
+    if (!userProperties?.length) {
+      mutate();
+    }
+
+    if (userProperties.length) {
+      const item = userProperties.find((item) => item.property_id === id);
+
+      setUserPropertyData(item);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userProperties?.length]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
         <Grid item xs={12} md={12} lg={12} xl={9.34}>
-          {specificPost?.property_id !== undefined ? (
-            <Box
+          <Box
+            sx={{
+              background: '#fff',
+              borderRadius: '10px',
+              mt: '16px',
+              border: '1px solid #E4E4E4',
+              height: '100%',
+            }}
+          >
+            <Grid
+              container
               sx={{
-                background: '#fff',
-                borderRadius: '10px',
-                mt: '16px',
-                border: '1px solid #E4E4E4',
+                height: '100%',
               }}
             >
-              <Grid container>
-                <Grid item xs={12} md={8.5} xl={9.5}>
-                  <Box
+              <Grid item xs={12} md={8.5} xl={9.5}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    borderRight: userProperties.length
+                      ? '1px solid #E4E4E4'
+                      : 'none',
+                    pt: 2,
+                  }}
+                >
+                  <Typography
                     sx={{
-                      width: '100%',
-                      height: '100%',
-                      borderRight: '1px solid #E4E4E4',
-                      pt: 2,
+                      fontSize: '20px',
+                      fontWeight: 600,
+                      textAlign: 'center',
                     }}
                   >
-                    <Typography
+                    {CLIENT_REQUIRMENT?.title}
+                  </Typography>
+                  {isPending ? (
+                    <Box
                       sx={{
-                        fontSize: '20px',
-                        fontWeight: 600,
-                        textAlign: 'center',
+                        height: 'calc(100% - 50px)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                       }}
                     >
-                      {CLIENT_REQUIRMENT?.title}
-                    </Typography>
-                    <PropertyDetail
-                      subTitle={specificPost?.title}
-                      fontStyle={'16px'}
-                      description={specificPost?.description}
-                    />
-                    <Location
-                      city={specificPost?.city}
-                      locationKeys={location}
-                      purpose={specificPost?.purpose}
-                      propertyType={specificPost?.propertyType}
-                      propertyCategory={specificPost?.propertyCategory}
-                      location={specificPost?.location}
-                      width={'70%'}
-                    />
-                    <PreviewAmountAndFeature
-                      area={specificPost?.area}
-                      amount={specificPost?.amount}
-                      areaUnit={specificPost?.areaUnit}
-                      areaAndAmount={areaAndAmount}
-                      amountCurrency={specificPost?.amountCurrency}
-                      instalmentAvailable={specificPost?.instalmentAvailable}
-                      readyPossession={specificPost?.readyPossession}
-                    />
-                    <PreviewFeatureAndAmenities
-                      amenities={amenities}
-                      specificPost={specificPost}
-                    />
-                  </Box>
-                </Grid>
+                      <CircularProgress size={32} color="inherit" />
+                    </Box>
+                  ) : (
+                    <>
+                      <PropertyDetail
+                        subTitle={userPropertyData?.title}
+                        fontStyle={'16px'}
+                        description={userPropertyData?.description}
+                      />
+                      <Location
+                        city={userPropertyData?.city}
+                        locationKeys={location}
+                        purpose={userPropertyData?.purpose}
+                        propertyType={userPropertyData?.propertyType}
+                        propertyCategory={userPropertyData?.propertyCategory}
+                        location={userPropertyData?.location}
+                        width={'70%'}
+                      />
+                      <PreviewAmountAndFeature
+                        area={userPropertyData?.area}
+                        amount={userPropertyData?.amount}
+                        areaUnit={userPropertyData?.areaUnit}
+                        areaAndAmount={areaAndAmount}
+                        amountCurrency={userPropertyData?.amountCurrency}
+                        instalmentAvailable={
+                          userPropertyData?.instalmentAvailable
+                        }
+                        readyPossession={userPropertyData?.readyPossession}
+                      />
+                      <PreviewFeatureAndAmenities
+                        amenities={amenities}
+                        specificPost={userPropertyData}
+                      />
+                    </>
+                  )}
+                </Box>
+              </Grid>
+              {'property_id' in userPropertyData && (
                 <Grid item xs={12} md={3.5} xl={2.5}>
                   <Box
                     sx={{
@@ -103,20 +163,15 @@ const AdDetail = () => {
                   >
                     <RightSection
                       // proposals={sendProposals}
-                      specificPost={specificPost}
-                      postId={specificPost?.property_id}
+                      specificPost={userPropertyData}
+                      postId={userPropertyData?.property_id}
                       rightSectionKeys={CLIENT_REQUIRMENT}
                     />
                   </Box>
                 </Grid>
-              </Grid>
-            </Box>
-          ) : (
-            <NotFoundSection
-              heading={'Sorry!'}
-              message={'Property id invalid, Please add correct id.'}
-            />
-          )}
+              )}
+            </Grid>
+          </Box>
         </Grid>
         <Grid item xs={12} md={12} lg={12} xl={2.64}>
           <BiddingProfile />

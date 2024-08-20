@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const properties = PROPERTIES_DATA;
 
-const initialState = { properties };
+const initialState = { properties, userProperties: [] };
 
 function generateUniqueId(properties) {
   let newId = (properties?.length + 1).toString();
@@ -50,9 +50,17 @@ const propertiesSlice = createSlice({
       state.selectedProperty =
         state.properties?.find((property) => property?.id === id) || null;
     },
+    setAllUserProperties: (state, action) => {
+      state.userProperties = action.payload;
+    },
   },
 });
 
-export const { addProperty, updateProperty, deleteProperty, selectProperty } =
-  propertiesSlice.actions;
+export const {
+  addProperty,
+  updateProperty,
+  deleteProperty,
+  selectProperty,
+  setAllUserProperties,
+} = propertiesSlice.actions;
 export default propertiesSlice.reducer;

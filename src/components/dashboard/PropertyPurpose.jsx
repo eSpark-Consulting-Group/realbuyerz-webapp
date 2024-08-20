@@ -8,7 +8,7 @@ import SelectCityType from './ads-form-components/SelectCity';
 import SelectLocationType from './ads-form-components/SelectLocationType';
 import PropertyStatus from './ads-form-components/PropertyStatus';
 
-const PropertyPurpose = ({ propertyData, formik }) => {
+const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
   return (
     <Grid
       container
@@ -75,6 +75,7 @@ const PropertyPurpose = ({ propertyData, formik }) => {
                 plotType={propertyData?.propertyPlot}
                 commercialType={propertyData?.propertyCommercial}
                 formik={formik}
+                propertyTypeDetails={propertyTypeDetails}
               />
               <SelectCityType
                 image={propertyData?.city?.images}

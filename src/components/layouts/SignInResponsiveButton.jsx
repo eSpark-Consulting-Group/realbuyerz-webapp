@@ -23,7 +23,6 @@ const SignInResponsiveButton = ({
   const router = useRouter();
 
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
 
   const goToMyAccount = () => {
     if (user?.userType === 'user') {

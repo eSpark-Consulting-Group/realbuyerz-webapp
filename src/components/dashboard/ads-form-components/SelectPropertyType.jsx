@@ -5,15 +5,18 @@ import { Typography, Box, Button } from '@mui/material';
 import PropertyTypes from './PropertyPlot';
 import { useMutation } from '@tanstack/react-query';
 import { fetchPropertyTypes } from '@/src/utils/properties';
+import { usePathname } from 'next/navigation';
 
 const SelectProperyType = ({
   image,
   label,
   // iconTitle,
-  plotType,
   // commercialType,
   formik,
+  propertyTypeDetails,
 }) => {
+  const pathname = usePathname();
+
   const [activePropertyType, setActivePropertyType] = useState('');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
   // const [propertyType, setPropertyType] = useState(activePropertyType);
@@ -25,15 +28,16 @@ const SelectProperyType = ({
     // setPropertyType(text);
     formik?.setFieldValue('propertyCategory', text);
   };
-  console.log(plotType, 'plotType');
+
   const handlePropetySubType = (propertySubTypeData) => {
-    setActivePropertySubType(propertySubTypeData.subTypeName);
+    setActivePropertySubType(propertySubTypeData?.subTypeName);
     // setPropetySubType(propertySubTypeData.subTypeName);
-    formik?.setFieldValue('propertySubTypeId', propertySubTypeData.id);
+    formik?.setFieldValue('propertySubTypeId', propertySubTypeData?.id);
   };
 
   useEffect(() => {
     mutate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { mutate } = useMutation({
@@ -46,6 +50,20 @@ const SelectProperyType = ({
       console.error(error);
     },
   });
+
+  useEffect(() => {
+    if (pathname.includes('update')) {
+      if (propertyTypeDetails) {
+        handlePropertyType(propertyTypeDetails?.propertyType?.typeName);
+        handlePropetySubType(propertyTypeDetails);
+      }
+    } else if (propertyTp.length) {
+      handlePropertyType(propertyTp[0]?.typeName);
+      handlePropetySubType(propertyTp[0]?.subTypes[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, propertyTp, propertyTypeDetails?.propertyType]);
+
   return (
     <>
       <Box
