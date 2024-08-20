@@ -210,7 +210,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: '#000',
                       }}
                     >
                       Purpose:
@@ -222,7 +222,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: '#126FAA',
                         marginLeft: '5px',
                       }}
                     >
@@ -243,7 +243,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: '#000',
                       }}
                     >
                       Property Type:
@@ -255,7 +255,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: '#126FAA',
                         marginLeft: '5px',
                       }}
                     >
@@ -276,7 +276,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: '#000',
                       }}
                     >
                       City:
@@ -288,7 +288,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: '#126FAA',
                         marginLeft: '5px',
                       }}
                     >
@@ -309,7 +309,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#126FAA',
+                        color: '#000',
                       }}
                     >
                       Location:
@@ -321,7 +321,7 @@ const ProposalCard = ({ data, currentTab, link, customKey }) => {
                         lineHeight: '17px',
                         letterSpacing: '0em',
                         textAlign: 'left',
-                        color: '#333333',
+                        color: '#126FAA',
                         marginLeft: '5px',
                       }}
                     >
