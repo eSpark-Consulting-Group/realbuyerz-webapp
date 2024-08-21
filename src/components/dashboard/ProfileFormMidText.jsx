@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const ProfileFormMidText = ({ text }) => {
+const ProfileFormMidText = ({ heading }) => {
   return (
     <Box>
       <Grid item xs={12}>
@@ -29,7 +29,7 @@ const ProfileFormMidText = ({ text }) => {
           }}
         >
           <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>
-            {text}
+            {heading}
           </Typography>
         </Item>
       </Grid>
