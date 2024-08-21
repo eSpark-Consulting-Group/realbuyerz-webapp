@@ -6,6 +6,10 @@ export const ALL_POSTLISTING_FILTRATION = {
       placeholder: 'Select Purpose',
       options: [
         {
+          label: 'Buy',
+          value: 'But',
+        },
+        {
           label: 'Sell',
           value: 'Sell',
         },
