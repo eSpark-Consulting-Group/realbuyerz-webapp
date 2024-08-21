@@ -90,7 +90,7 @@ const PostRequest = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Link href="/agent/live-bidding">agent</Link>
+        {/* <Link href="/agent/live-bidding">agent</Link> */}
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{

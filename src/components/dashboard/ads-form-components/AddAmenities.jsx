@@ -27,7 +27,7 @@ const AddAmenities = ({
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        alignItems: { xs: 'center', sm: 'baseline' },
+        alignItems: { xs: 'center', sm: 'center' },
       }}
     >
       <Typography
