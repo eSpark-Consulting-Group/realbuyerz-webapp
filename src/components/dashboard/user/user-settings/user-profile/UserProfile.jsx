@@ -56,7 +56,7 @@ const UserProfile = () => {
       }}
     >
       <ProfileForm formValues={userData} data={AGENT_PROFILE_FORM_DATA} />
-      <ProfileFormMidText />
+      <ProfileFormMidText heading={'Change Password'} />
       <ProfilePasswordForm
         spacificAgent={userData}
         data={AGENT_PROFILE_FORM_DATA}

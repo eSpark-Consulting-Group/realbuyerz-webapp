@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-const itemsPerPage = 9;
+const itemsPerPage = 3;
 
 const ProjectsCard = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -175,17 +175,35 @@ const ProjectsCard = ({ data }) => {
             onChange={handleChangePage}
             color="primary"
             size="medium"
-            sx={{ '& .MuiPaginationItem-root': { borderRadius: '10px' } }}
+            sx={{
+              '& .MuiPaginationItem-root': {
+                borderRadius: '4px',
+                backgroundColor: '#fff',
+                border: '1px solid #DFE3E8',
+                color: '#000',
+                fontWeight: 'bold',
+              },
+              '& .MuiPaginationItem-root.Mui-disabled': {
+                backgroundColor: '#919EAB',
+                color: '#C4CDD5',
+              },
+            }}
             renderItem={(item) => (
               <PaginationItem
                 key={item?.page}
                 {...item}
                 sx={{
-                  borderRadius: '10px',
-                  color: 'primary.main',
+                  color: item?.type !== 'page' ? '#C4CDD5 !important' : '#000 ',
+                  '&:hover': {
+                    backgroundColor: '#fff',
+                  },
                   '&.Mui-selected': {
-                    backgroundColor: 'primary.main',
-                    color: 'white',
+                    backgroundColor: '#fff',
+                    color: '#4200FF',
+                    border: '1px solid #4200FF',
+                    '&:hover': {
+                      backgroundColor: '#fff',
+                    },
                   },
                 }}
               />

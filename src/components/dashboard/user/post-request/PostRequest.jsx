@@ -1,24 +1,25 @@
 'use client';
-import React, { useState } from 'react';
-import { Grid, Box } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { Box, Grid } from '@mui/material';
 import { useFormik } from 'formik';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
 import AdInformation from '@/src/components/dashboard/AdInformation';
-import PropertySize from '@/src/components/dashboard/Propertysize';
+import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
 import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
+import PropertySize from '@/src/components/dashboard/Propertysize';
 import SubmitButton from '@/src/components/dashboard/SubmitButton';
 
+import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
+import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
+import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
+import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import {
   handleSubmitDraft,
   handleSumitUserAds,
 } from '@/src/redux/slices/userAds/userAdsSlice';
-import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
-import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
-import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
+import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
 import {
   DRAFT_SUBMIT_MODAL_DATA,
   SUBMIT_MODAL_DATA,
@@ -27,11 +28,9 @@ import {
   POST_REQUEST,
   POST_REQUEST_VALUES,
 } from '@/src/constants/user/Dashboard';
-import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
 
-import Link from 'next/link';
-import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { generateRandomNumber } from '@/src/utils/dashboardUtils';
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const PostRequest = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,7 +89,7 @@ const PostRequest = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Link href="/agent/live-bidding">agent</Link>
+        {/* <Link href="/agent/live-bidding">agent</Link> */}
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{

@@ -336,12 +336,20 @@ const ChatRoom = ({ selectedChatRoom }) => {
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
               sx={{ marginTop: '20px' }}
             >
-              <MenuItem>Mark as unread</MenuItem>
-              <MenuItem>Delete</MenuItem>
+              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
+                Mark as unread
+              </MenuItem>
+              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
+                Delete
+              </MenuItem>
               <hr />
-              <MenuItem>Block</MenuItem>
+              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
+                Block
+              </MenuItem>
               <hr />
-              <MenuItem>Archive</MenuItem>
+              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
+                Archive
+              </MenuItem>
             </Menu>
           </Box>
         </Box>
