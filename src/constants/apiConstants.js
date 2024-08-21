@@ -20,6 +20,7 @@ export const ENDPOINTS = {
   partners: '',
   popularLocations: '',
   addPostListing: 'property',
+  addPostRequest: 'userProperty',
   updatePostListing: 'property',
   deleteProperty: 'property',
   addProperties: '',
