@@ -1,9 +1,7 @@
 'use client';
-import { Box, Typography } from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { useDispatch, useSelector } from 'react-redux';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import UserProfileImage from '@/src/components/dashboard/UserProfileImage';
@@ -14,58 +12,98 @@ import Location from '@/src/components/dashboard/preview/Location';
 import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 import BidMedia from '@/src/components/dashboard/BidMedia';
-import {
-  handleConnectProposal,
-  handleRejectedProposal,
-} from '@/src/redux/slices/proposals/proposalsSlice';
 
 import { PREVIEW_DATA, PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 
 import { PROPOSAL } from '@/src/constants/agent/Proposal';
-import {
-  checkData,
-  findAgent,
-  findProposalWithOutStatus,
-} from '@/src/utils/dashboardUtils';
+import { checkData } from '@/src/utils/dashboardUtils';
 import { format } from 'date-fns';
+import { useMutation } from '@tanstack/react-query';
+import { viewUserProposal } from '@/src/utils/apis/bidding/viewUserProposal';
+import { transformApiObject } from '@/src/utils/objectsConversion';
+import { acceptProposal } from '@/src/utils/apis/bidding/acceptProposal';
+import useViewportHeight from '@/src/utils/useViewportHeight';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
     PROPOSAL_PAGE;
   const { areaAndAmount, location, images, videos } = PREVIEW_DATA;
 
-  const dispatch = useDispatch();
   const pathname = usePathname();
+
   const segments = pathname?.split('/');
-  const getproposalId = segments[segments?.length - 1];
-  const proposals = useSelector((state) => state?.proposals);
-  const agents = useSelector((state) => state?.agents);
-  const find_proposal = findProposalWithOutStatus(getproposalId, proposals);
-  const find_agent = findAgent(find_proposal?.agent_id, agents);
-  console.log(find_proposal);
+  const proposalId = segments[segments?.length - 1];
+  const userPropertyId = segments[segments?.length - 3];
+
+  const viewportHeight = useViewportHeight();
+
+  const [agentProposal, setAgentProposal] = useState({});
+  // const [userProperty, setUserProperty] = useState({});
+
   const handleConnect = () => {
-    dispatch(
-      handleConnectProposal({
-        proposal_id: find_proposal?.proposal_id,
-        property_id: find_proposal?.property_id,
-      })
-    );
+    acceptRequestHandler.mutate(agentProposal.id);
   };
 
-  const handleReject = () => {
-    dispatch(
-      handleRejectedProposal({ proposal_id: find_proposal?.proposal_id })
-    );
-  };
+  const handleReject = () => {};
+
+  useEffect(() => {
+    mutate(userPropertyId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: viewUserProposal,
+    onSuccess: (data) => {
+      const item = data.response?.data;
+
+      const findProposal = item.items.find(
+        (it) => it.agentProperty.id === proposalId
+      );
+
+      setAgentProposal({
+        ...findProposal,
+        agentProperty: transformApiObject(findProposal.agentProperty),
+      });
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
+  const acceptRequestHandler = useMutation({
+    mutationFn: acceptProposal,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   return (
     <>
-      {checkData(
-        find_proposal,
-        find_proposal?.status,
-        'Connected',
-        'Rejected'
-      ) ? (
+      {isPending ? (
+        <Box
+          sx={{
+            height: {
+              xs: `calc(${viewportHeight}px - 146px)`,
+              sm: `calc(${viewportHeight}px - 166px)`,
+            },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress color="inherit" />
+        </Box>
+      ) : checkData(
+          agentProposal?.agentProperty,
+          agentProposal?.userStatus,
+          'Connected',
+          'Rejected'
+        ) ? (
         <>
           <Box sx={{ pb: 3 }}>
             <BackToDashboard
@@ -73,6 +111,7 @@ const SpacificProposal = () => {
               link={back_Button?.link}
             />
           </Box>
+
           <Box
             sx={{
               backgroundColor: '#fff',
@@ -108,8 +147,11 @@ const SpacificProposal = () => {
                     badgeHeigth={'7px'}
                     padding={0.3}
                     right={2}
-                    image={find_agent?.profile_image || image}
-                    isActive={find_agent?.status || false}
+                    // image={
+                    //   agentProposal?.agentProperty?.user?.imageKey || image
+                    // }
+                    image={image}
+                    isActive={false}
                   />
                   <Box
                     sx={{
@@ -124,16 +166,21 @@ const SpacificProposal = () => {
                         color: '#126FAA',
                       }}
                     >
-                      {`${find_agent?.first_name || ''} ${find_agent?.last_name || ''}`}
+                      {`${agentProposal.agentProperty.user?.firstName || ''} ${agentProposal.agentProperty.user?.lastName || ''}`}
                     </Typography>
                     <Typography>
                       <LocationOnIcon sx={{ fontSize: 28, color: '#757474' }} />
-                      {`${find_agent?.city || ''} ${find_agent?.country || ''}`}{' '}
-                      - {format(new Date(find_agent.created_at), 'h:mma')} local
-                      time
+                      {`${agentProposal?.agentProperty?.city || ''} ${agentProposal?.agentProperty?.country || ''}`}{' '}
+                      -{' '}
+                      {format(
+                        new Date(agentProposal?.agentProperty?.created_at),
+                        'h:mma'
+                      )}{' '}
+                      local time
                     </Typography>
                   </Box>
                 </Box>
+
                 <Box
                   sx={{
                     display: 'flex',
@@ -144,7 +191,7 @@ const SpacificProposal = () => {
                     },
                   }}
                 >
-                  <Link href={`/user/dashboard`}>
+                  <Button>
                     <Typography
                       sx={{
                         display: 'flex',
@@ -166,10 +213,11 @@ const SpacificProposal = () => {
                       }}
                       onClick={() => handleReject()}
                     >
-                      {'Reject'}
+                      Reject
                     </Typography>
-                  </Link>
-                  <Link href={`/user/inbox`}>
+                  </Button>
+
+                  <Button>
                     <Typography
                       sx={{
                         display: 'flex',
@@ -190,9 +238,19 @@ const SpacificProposal = () => {
                       }}
                       onClick={() => handleConnect()}
                     >
-                      {'Connect'}
+                      {acceptRequestHandler.isPending ? (
+                        <CircularProgress
+                          sx={{
+                            height: '30px  !important',
+                            width: '30px !important',
+                          }}
+                          color="inherit"
+                        />
+                      ) : (
+                        'Connect'
+                      )}
                     </Typography>
-                  </Link>
+                  </Button>
                 </Box>
               </Box>
             </Box>
@@ -214,7 +272,7 @@ const SpacificProposal = () => {
                 <Typography sx={{ fontSize: '12px', fontWeight: 600 }}>
                   {applicant_Titlt || ''}
                 </Typography>
-                <Typography>{`${find_agent?.first_name || ''} ${find_agent?.last_name || ''} ${applicant_Message || ''}`}</Typography>
+                <Typography>{`${agentProposal.agentProperty.user?.firstName || ''} ${agentProposal.agentProperty.user?.lastName || ''} ${applicant_Message || ''}`}</Typography>
               </Box>
               <Box
                 sx={{
@@ -225,8 +283,8 @@ const SpacificProposal = () => {
                 <PropertyDetail
                   title={PropertyDetails}
                   heading={PROPOSAL?.propertyDetails}
-                  subTitle={find_proposal?.title}
-                  description={find_proposal?.description}
+                  subTitle={agentProposal?.agentProperty?.title}
+                  description={agentProposal?.agentProperty?.description}
                   width={'100%'}
                   pb={'5px'}
                   pt={'0px'}
@@ -234,13 +292,16 @@ const SpacificProposal = () => {
                   paddingHeading={'10px'}
                   subPadding={'0px'}
                 />
+
                 <Location
-                  city={find_proposal?.city}
+                  city={agentProposal?.agentProperty?.city}
                   locationKeys={location}
-                  purpose={find_proposal?.purpose}
-                  propertyType={find_proposal?.propertyType}
-                  proportyCategory={find_proposal?.proportyCategory}
-                  location={find_proposal?.location}
+                  purpose={agentProposal?.agentProperty?.purpose}
+                  propertyType={agentProposal?.agentProperty?.propertyType}
+                  proportyCategory={
+                    agentProposal?.agentProperty?.proportyCategory
+                  }
+                  location={agentProposal?.agentProperty?.location}
                   width={'100%'}
                   widthBox={'100%'}
                   className={'locationWidth'}
@@ -248,20 +309,26 @@ const SpacificProposal = () => {
                   pt={'30px'}
                   px={'0px'}
                 />
+
                 <PreviewAmountAndFeature
-                  area={find_proposal?.area}
-                  amount={find_proposal?.amount}
-                  areaUnit={find_proposal?.areaUnit}
+                  area={agentProposal?.agentProperty?.area}
+                  amount={agentProposal?.agentProperty?.amount}
+                  areaUnit={agentProposal?.agentProperty?.areaUnit}
                   areaAndAmount={areaAndAmount}
-                  amountCurrency={find_proposal?.amountCurrency}
-                  instalmentAvailable={find_proposal?.instalmentAvailable}
-                  readyPossession={find_proposal?.readyPossession}
+                  amountCurrency={agentProposal?.agentProperty?.amountCurrency}
+                  instalmentAvailable={
+                    agentProposal?.agentProperty?.instalmentAvailable
+                  }
+                  readyPossession={
+                    agentProposal?.agentProperty?.readyPossession
+                  }
                   width={'100%'}
                   pb={'10px'}
                   pt={'30px'}
                   px={'0px'}
                   subPadding={'0px'}
                 />
+
                 {/* <PreviewFeatureAndAmenities
                   amenities={amenities}
                   bedrooms={find_proposal?.bedrooms}
@@ -271,15 +338,22 @@ const SpacificProposal = () => {
                 /> */}
                 <BidMedia
                   title={images?.title}
-                  media={find_proposal?.images}
+                  // media={agentProposal?.agentProperty?.PropertyData?.filter(
+                  //   (image) => image.type === 'image'
+                  // )}
+                  media={[null]}
                   mediaType={images?.type}
                   pb={'20px'}
                   pt={'30px'}
                   px={'0px'}
                 />
+
                 <BidMedia
                   title={videos?.title}
-                  media={find_proposal?.videos}
+                  // media={agentProposal?.agentProperty?.PropertyData?.filter(
+                  //   (image) => image.type === 'video'
+                  // )}
+                  media={[null]}
                   mediaType={videos?.type}
                   pb={'20px'}
                   pt={'30px'}
