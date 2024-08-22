@@ -14,7 +14,7 @@ const ProposalAgentProfile = ({
   return (
     <Box className="scrollable" sx={{ maxHeight: Height }}>
       <>
-        {proposalData?.map((item, index) => (
+        {proposalData?.map(({ agentProperty, userPropertyId }, index) => (
           <Box key={index}>
             <Box
               key={index}
@@ -39,17 +39,18 @@ const ProposalAgentProfile = ({
                   }}
                 >
                   <UserProfileDetails
-                    adId={item?.property_id}
+                    adId={agentProperty?.property_id}
                     text={ViewText}
                     link={ViewLink}
-                    Title={item?.title}
+                    Title={agentProperty?.title}
                     image={image}
-                    Amount={item?.amount}
-                    amountCurrency={item?.amountCurrency}
-                    Location={item?.location}
-                    Description={item?.description}
-                    proposalId={item?.proposal_id}
-                    agentId={item?.agent_id}
+                    Amount={agentProperty?.amount}
+                    amountCurrency={agentProperty?.amountCurrency}
+                    Location={agentProperty?.location}
+                    Description={agentProperty?.description}
+                    agentId={agentProperty?.agent_id}
+                    userPropertyId={userPropertyId}
+                    agent_profile={agentProperty?.user}
                   />
                 </Grid>
               </Grid>

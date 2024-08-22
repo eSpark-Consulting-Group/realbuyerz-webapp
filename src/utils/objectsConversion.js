@@ -27,6 +27,7 @@ const keyMapping = {
   propertyZip: 'zipCode',
   'propertyType.propertyType.typeName': 'propertyCategory',
   'propertyType.subTypeName': 'propertyType',
+  user: 'user',
 };
 
 export const transformApiObject = (apiObj) => {
