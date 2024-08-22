@@ -40,7 +40,7 @@ const AreaUnit = ({ measure, handleInputChange }) => {
               fullWidth
               sx={{
                 '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                  color: '#4A4A4A',
+                  color: '#E7E7E7',
                 },
               }}
             >
