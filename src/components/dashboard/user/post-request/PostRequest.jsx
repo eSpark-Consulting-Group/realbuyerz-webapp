@@ -30,6 +30,8 @@ import {
 } from '@/src/constants/user/Dashboard';
 
 import { generateRandomNumber } from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { addPostRequest } from '@/src/utils/userProperties';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 
 const PostRequest = () => {
@@ -80,11 +82,33 @@ const PostRequest = () => {
       values.user_id = currentUser?.id;
       values.status = Action;
       handleSubmit(values);
+      mutate(formData);
       action.resetForm();
     },
     validateOnChange: false,
     validateOnBlur: false,
   });
+
+  const { mutate } = useMutation({
+    mutationFn: addPostRequest,
+    onSuccess: (data) => {
+      console.log(data, 'data');
+    },
+  });
+
+  const formData = new FormData();
+  formData.append('propertyName', formik?.values.title);
+  formData.append('propertyType', formik?.values.propertyCategory);
+  formData.append('propertyDescription', formik?.values.description);
+  formData.append('propertyPrice', formik?.values.amount);
+  formData.append('propertyArea', formik?.values.area);
+  formData.append('purpose', formik?.values.purpose);
+  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyCity', formik?.values.city);
+  formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
+  formData.append('amenities', formik?.values.amenities);
+  formData.append('longitude', '123.345');
+  formData.append('latitude', '989.000');
 
   return (
     <Grid container>
