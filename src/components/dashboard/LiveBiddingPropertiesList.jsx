@@ -96,7 +96,7 @@ const LiveBiddingPropertiesList = ({
           </Typography>
         </Box>
       )}
-      {pathName?.includes(user) && proposal?.length > 0 ? (
+      {pathName?.includes(user) && proposal > 0 ? (
         <Box
           sx={{
             display: 'flex',
@@ -115,7 +115,7 @@ const LiveBiddingPropertiesList = ({
             variant="body1"
             sx={{ color: '#333333', fontWeight: 500 }}
           >
-            {proposal.length || ''}
+            {proposal || 0}
           </Typography>
         </Box>
       ) : null}

@@ -1,23 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { Box, Grid, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
 import UserProfileImage from './UserProfileImage';
 
 const UserProfileDetails = ({
   Amount,
   text,
   link,
-  adId,
   image,
-  agentId,
-  proposalId,
+  adId,
   Description,
   amountCurrency,
+  userPropertyId,
+  agent_profile,
 }) => {
-  const agents = useSelector((state) => state?.agents);
-  const find_agent = agents?.find((agent) => agent?.id == agentId);
-
   return (
     <Grid container>
       <Box
@@ -48,11 +44,11 @@ const UserProfileDetails = ({
             badgeWidth={'13px'}
             badgeHeigth={'13px'}
             right={20}
-            image={find_agent?.profile_image || image}
+            image={agent_profile?.imageKey || image}
             padding={0.5}
             width={165}
             height={156}
-            isActive={find_agent?.status}
+            isActive={false}
           />
         </Grid>
         <Box
@@ -79,7 +75,7 @@ const UserProfileDetails = ({
               py: 0.3,
             }}
           >
-            {`${find_agent?.first_name || ''} ${find_agent?.last_name || ''}`}
+            {`${agent_profile?.firstName || ''} ${agent_profile?.lastName || ''}`}
           </Typography>
           <Typography
             sx={{
@@ -90,7 +86,7 @@ const UserProfileDetails = ({
               lineHeight: 'normal',
             }}
           >
-            {find_agent?.country || ''}
+            {agent_profile?.country || ''}
           </Typography>
           <Typography
             sx={{
@@ -136,7 +132,7 @@ const UserProfileDetails = ({
             },
           }}
         >
-          <Link href={`${adId || ''}/${link || ''}/${proposalId || ''}`}>
+          <Link href={`${userPropertyId || ''}/${link || ''}/${adId || ''}`}>
             <Typography
               sx={{
                 display: 'flex',
