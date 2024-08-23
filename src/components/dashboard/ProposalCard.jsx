@@ -20,7 +20,6 @@ import Link from 'next/link';
 import PreviewModal from './preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { deleteProperty } from '@/src/utils/properties';
 import { useMutation } from '@tanstack/react-query';
 
 const ProposalCard = ({
@@ -29,6 +28,7 @@ const ProposalCard = ({
   link,
   customKey,
   refetchProperties,
+  deleteAPIHandler,
 }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const ProposalCard = ({
 
   const handleTrash = (property_id, currentTab) => {
     if (pathName?.includes(user)) {
+      deletePropertyHandler.mutate(property_id);
       dispatch(
         handleSubmitTrash({ property_id: property_id, currentTab: currentTab })
       );
@@ -62,7 +63,7 @@ const ProposalCard = ({
     }
   };
   const deletePropertyHandler = useMutation({
-    mutationFn: deleteProperty,
+    mutationFn: deleteAPIHandler,
     onSuccess: (data) => {
       console.log(data);
       refetchProperties();
