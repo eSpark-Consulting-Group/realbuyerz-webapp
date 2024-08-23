@@ -23,6 +23,7 @@ import { viewUserProposal } from '@/src/utils/apis/bidding/viewUserProposal';
 import { transformApiObject } from '@/src/utils/objectsConversion';
 import { acceptProposal } from '@/src/utils/apis/bidding/acceptProposal';
 import useViewportHeight from '@/src/utils/useViewportHeight';
+import { rejectProposal } from '@/src/utils/apis/bidding/rejectProposal';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -44,7 +45,9 @@ const SpacificProposal = () => {
     acceptRequestHandler.mutate(agentProposal.id);
   };
 
-  const handleReject = () => {};
+  const handleReject = () => {
+    rejectRequestHandler.mutate(agentProposal.id);
+  };
 
   useEffect(() => {
     mutate(userPropertyId);
@@ -73,6 +76,17 @@ const SpacificProposal = () => {
 
   const acceptRequestHandler = useMutation({
     mutationFn: acceptProposal,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
+  const rejectRequestHandler = useMutation({
+    mutationFn: rejectProposal,
     onSuccess: (data) => {
       console.log(data);
     },
@@ -213,7 +227,17 @@ const SpacificProposal = () => {
                       }}
                       onClick={() => handleReject()}
                     >
-                      Reject
+                      {rejectRequestHandler.isPending ? (
+                        <CircularProgress
+                          sx={{
+                            height: '30px  !important',
+                            width: '30px !important',
+                          }}
+                          color="inherit"
+                        />
+                      ) : (
+                        'Reject'
+                      )}
                     </Typography>
                   </Button>
 
