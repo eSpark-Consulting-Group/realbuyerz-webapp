@@ -18,3 +18,18 @@ export const addPostRequest = async (postRequestData) => {
     throw error;
   }
 };
+
+export const fetchUserProperties = async () => {
+  const endpoint = ENDPOINTS.userPropertires;
+  const method = 'get';
+
+  try {
+    const response = await APIService(endpoint, method, null);
+
+    console.log('Agent chats retrieved successfully:', response);
+    return response;
+  } catch (error) {
+    console.error('Error fetching agent chats:', error);
+    throw error;
+  }
+};
