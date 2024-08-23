@@ -19,12 +19,12 @@ export const addPostRequest = async (postRequestData) => {
   }
 };
 
-export const fetchUserProperties = async () => {
+export const fetchUserProperties = async (params) => {
   const endpoint = ENDPOINTS.userPropertires;
   const method = 'get';
 
   try {
-    const response = await APIService(endpoint, method, null);
+    const response = await APIService(endpoint, method, null, null, params);
 
     console.log('Agent chats retrieved successfully:', response);
     return response;
@@ -43,6 +43,25 @@ export const deleteUserProperty = async (property_Id) => {
       `${endpoint}/${property_Id}`,
       method,
       null,
+      contentType
+    );
+    return response;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+export const updateUserProperty = async (userPropertyData) => {
+  const endpoint = ENDPOINTS.updateUserProperty;
+  const property_Id = userPropertyData.property_Id;
+  const method = 'put';
+  const contentType = 'multipart/form-data';
+  try {
+    const response = await APIService(
+      `${endpoint}/${property_Id}`,
+      method,
+      userPropertyData.formData,
       contentType
     );
     return response;

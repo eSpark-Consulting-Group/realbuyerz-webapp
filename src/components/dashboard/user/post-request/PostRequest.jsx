@@ -1,7 +1,7 @@
 'use client';
 import { Box, Grid } from '@mui/material';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import AdInformation from '@/src/components/dashboard/AdInformation';
@@ -31,10 +31,18 @@ import {
 
 import { generateRandomNumber } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { addPostRequest } from '@/src/utils/userProperties';
+import {
+  addPostRequest,
+  fetchUserProperties,
+  updateUserProperty,
+} from '@/src/utils/userProperties';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import { usePathname } from 'next/navigation';
 
 const PostRequest = () => {
+  const router = usePathname();
+  const property_Id = router.split('/')[3];
+
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
@@ -58,6 +66,11 @@ const PostRequest = () => {
       dispatch(handleSubmitDraft(values));
       handleOpenSuccessModal();
     } else if (Action === 'submit') {
+      if (property_Id) {
+        updateUserPropertyApi.mutate({ formData, property_Id });
+      } else {
+        mutate(formData);
+      }
       dispatch(handleSumitUserAds(values));
       handleOpenSuccessModal();
     }
@@ -73,6 +86,22 @@ const PostRequest = () => {
   };
 
   const randomNumber = generateRandomNumber();
+
+  useEffect(() => {
+    const params = {
+      propertyId: property_Id,
+    };
+    if (property_Id) {
+      getSingleUserProperty.mutate(params);
+    }
+  }, []);
+
+  const updateUserPropertyApi = useMutation({
+    mutationFn: updateUserProperty,
+    onSuccess: (data) => {
+      console.log(data, 'data');
+    },
+  });
 
   const formik = useFormik({
     initialValues: POST_REQUEST_VALUES,
@@ -93,6 +122,23 @@ const PostRequest = () => {
     mutationFn: addPostRequest,
     onSuccess: (data) => {
       console.log(data, 'data');
+    },
+  });
+
+  // get single user property for update
+  const getSingleUserProperty = useMutation({
+    mutationFn: fetchUserProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items[0];
+      formik.setFieldValue('title', items.propertyName);
+      formik.setFieldValue('description', items.propertyDescription);
+      formik.setFieldValue('amount', items.propertyPrice);
+      formik.setFieldValue('area', items.propertyArea);
+      formik.setFieldValue('city', items.propertyCity);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
     },
   });
 

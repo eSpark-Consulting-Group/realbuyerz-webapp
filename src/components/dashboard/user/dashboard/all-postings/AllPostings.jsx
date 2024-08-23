@@ -375,6 +375,7 @@ const AllPostings = () => {
                   key={index}
                   data={item}
                   currentTab={currentTab}
+                  updatePath={'/user/update-request'}
                 />
               ))
             )}
