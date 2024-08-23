@@ -26,7 +26,7 @@ import {
   // renderAdCard,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { fetchMyProperties } from '@/src/utils/properties';
+import { deleteProperty, fetchMyProperties } from '@/src/utils/properties';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);
@@ -369,6 +369,7 @@ const MyProperties = () => {
             ) : (
               myPropertiesData?.map((item, index) => (
                 <ProposalCard
+                  deleteAPIHandler={deleteProperty}
                   refetchProperties={mutate}
                   key={index}
                   data={item}
