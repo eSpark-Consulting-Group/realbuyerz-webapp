@@ -8,6 +8,7 @@ export const ENDPOINTS = {
   agentPropShop: '',
   agentRescentProperties: '',
   myPropertires: 'property/agent',
+  userPropertires: 'userProperty/user',
   agentSingleChats: '',
   agentStats: '',
   biddings: '',

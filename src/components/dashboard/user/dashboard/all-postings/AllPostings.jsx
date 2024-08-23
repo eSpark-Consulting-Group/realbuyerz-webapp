@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Autocomplete,
@@ -23,12 +23,15 @@ import {
   a11yProps,
   findData,
   justifyContent,
-  renderAdCard,
+  // renderAdCard,
 } from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { fetchUserProperties } from '@/src/utils/userProperties';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
+  const [allPostingData, setAllPostingData] = useState([]);
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { userPostings, draft, trash, active } = useSelector(
     (state) => state?.postRequestAds
@@ -39,6 +42,22 @@ const AllPostings = () => {
   const find_draft = findData(user_id, draft);
   const find_active = findData(user_id, active);
   const find_trash = findData(user_id, trash);
+
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  const { mutate } = useMutation({
+    mutationFn: fetchUserProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items;
+      setAllPostingData(items);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   const tabs = [
     {
@@ -340,27 +359,13 @@ const AllPostings = () => {
               gap: { xs: 1.5, sm: 2.5, md: 3.5 },
             }}
           >
-            {renderAdCard(
-              find_posting,
-              find_active,
-              find_draft,
-              find_trash,
-              currentTab,
-              filterObject
-            )?.length < 1 ? (
+            {allPostingData?.length < 1 ? (
               <NotFoundSection
                 heading={`No ${currentTab || ''} Data`}
                 message={''}
               />
             ) : (
-              renderAdCard(
-                find_posting,
-                find_active,
-                find_draft,
-                find_trash,
-                currentTab,
-                filterObject
-              )?.map((item, index) => (
+              allPostingData?.map((item, index) => (
                 <ProposalCard key={index} data={item} currentTab={currentTab} />
               ))
             )}
