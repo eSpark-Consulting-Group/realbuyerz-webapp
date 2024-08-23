@@ -26,7 +26,10 @@ import {
   // renderAdCard,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { fetchUserProperties } from '@/src/utils/userProperties';
+import {
+  deleteUserProperty,
+  fetchUserProperties,
+} from '@/src/utils/userProperties';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);
@@ -366,7 +369,13 @@ const AllPostings = () => {
               />
             ) : (
               allPostingData?.map((item, index) => (
-                <ProposalCard key={index} data={item} currentTab={currentTab} />
+                <ProposalCard
+                  deleteAPIHandler={deleteUserProperty}
+                  refetchProperties={mutate}
+                  key={index}
+                  data={item}
+                  currentTab={currentTab}
+                />
               ))
             )}
           </Box>
