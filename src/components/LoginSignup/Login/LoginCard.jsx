@@ -35,6 +35,7 @@ const LoginCard = ({ handleClose, fromModal }) => {
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
   const handleSignIn = () => {
+    handleClose(); // Close the modal
     router.push(LOGIN_ROUTERS.signup);
   };
 
