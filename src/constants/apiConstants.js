@@ -23,6 +23,7 @@ export const ENDPOINTS = {
   addPostListing: 'property',
   addPostRequest: 'userProperty',
   updatePostListing: 'property',
+  updateUserProperty: 'userProperty',
   deleteProperty: 'property',
   deleteUserProperty: 'userProperty',
   addProperties: '',

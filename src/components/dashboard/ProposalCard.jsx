@@ -29,6 +29,7 @@ const ProposalCard = ({
   customKey,
   refetchProperties,
   deleteAPIHandler,
+  updatePath,
 }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -91,7 +92,9 @@ const ProposalCard = ({
     editIconLink = `${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.id || ''}`;
   }
   if (currentTab === 'All') {
-    editIconLink = `/agent/property-management/update-property/${data?.id || ''}`;
+    editIconLink = updatePath
+      ? `${updatePath}/${data?.id || ''}`
+      : `/agent/property-management/update-property/${data?.id || ''}`;
   }
 
   if (currentTab === 'Active') {
