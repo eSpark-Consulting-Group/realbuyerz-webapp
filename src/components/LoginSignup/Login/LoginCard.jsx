@@ -56,13 +56,17 @@ const LoginCard = ({ handleClose, fromModal }) => {
 
       if (fromModal) {
         dispatch(setOpenModal(false));
-        return;
-      }
-
-      if (data.response.data.user.role === 'user') {
-        router.push('/user/dashboard');
-      } else if (data.response.data.user.role === 'agent') {
-        router.push('/agent/live-bidding');
+        if (data.response.data.user.role === 'user') {
+          router.push('/user/dashboard');
+        } else if (data.response.data.user.role === 'agent') {
+          router.push('/agent/live-bidding');
+        }
+      } else {
+        if (data.response.data.user.role === 'user') {
+          router.push('/user/dashboard');
+        } else if (data.response.data.user.role === 'agent') {
+          router.push('/agent/live-bidding');
+        }
       }
     },
   });
