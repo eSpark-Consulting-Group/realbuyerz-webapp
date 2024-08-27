@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
@@ -19,13 +19,16 @@ import {
   VIEW_PROPSALS,
   POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
-import { checkProposal, filteredAds } from '@/src/utils/dashboardUtils';
+import { checkProposal } from '@/src/utils/dashboardUtils';
+import { useMutation } from '@tanstack/react-query';
+import { fetchUserProperties } from '@/src/utils/userProperties';
 
-const PostRequestCard = ({ height, ads }) => {
+const PostRequestCard = ({ height }) => {
   const all_proposals = useSelector((state) => state?.proposals);
   const searchValue = useSelector((state) => state?.search?.searchValue);
+  const [allPostingData, setAllPostingData] = useState([]);
   const [showAllItems, setShowAllItems] = useState(false);
-  const searching_ad = filteredAds(searchValue, ads, all_proposals);
+  // const searching_ad = filteredAds(searchValue, ads, all_proposals);
 
   const handleShowMoreClick = () => {
     setShowAllItems(true);
@@ -34,9 +37,25 @@ const PostRequestCard = ({ height, ads }) => {
     setShowAllItems(false);
   };
 
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  const { mutate } = useMutation({
+    mutationFn: fetchUserProperties,
+    onSuccess: (data) => {
+      const items = data.response.data.items;
+      setAllPostingData(items);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
   return (
     <>
-      {searching_ad?.length <= 0 ? (
+      {allPostingData?.length <= 0 ? (
         <NotFoundSection
           heading={'Sorry!'}
           message={
@@ -48,8 +67,8 @@ const PostRequestCard = ({ height, ads }) => {
       ) : (
         <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
-            {searching_ad
-              ?.slice(0, showAllItems ? searching_ad?.length : 3)
+            {allPostingData
+              ?.slice(0, showAllItems ? allPostingData?.length : 3)
               ?.map((item, index) => (
                 <Grid item container xs={12} key={index}>
                   <Box
@@ -118,10 +137,10 @@ const PostRequestCard = ({ height, ads }) => {
                             fontSize: { xs: '21px' },
                           }}
                         >
-                          {item?.title}
+                          {item?.propertyName}
                         </Typography>
                         <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                          {formatDistanceToNow(new Date(item?.created_at), {
+                          {formatDistanceToNow(new Date(item?.createdAt), {
                             addSuffix: true,
                           })}
                         </Typography>
@@ -177,7 +196,7 @@ const PostRequestCard = ({ height, ads }) => {
                             }}
                             component={'span'}
                           >
-                            {`${item?.amount}`}
+                            {`${item?.propertyPrice}`}
                           </Typography>
                         </Box>
                       </Grid>
@@ -208,15 +227,15 @@ const PostRequestCard = ({ height, ads }) => {
                             mb: 1,
                           }}
                         >
-                          {item?.description}
+                          {item?.propertyDescription}
                         </Typography>
                       </Box>
                       <LiveBiddingPropertiesList
-                        city={item?.city}
+                        city={item?.propertyCity}
                         status={item?.purpose}
-                        location={item?.location}
+                        location={item?.propertyAddress}
                         proposal={checkProposal(
-                          item?.property_id,
+                          item?.id,
                           all_proposals,
                           'Submited'
                         )}
@@ -240,7 +259,7 @@ const PostRequestCard = ({ height, ads }) => {
                             pt: { xs: 2, sm: 0 },
                           }}
                         >
-                          <Link href={`dashboard/ad/${item?.property_id}`}>
+                          <Link href={`dashboard/ad/${item?.id}`}>
                             <Typography
                               sx={{
                                 width: '200px',
@@ -290,7 +309,7 @@ const PostRequestCard = ({ height, ads }) => {
                   </Box>
                 </Grid>
               ))}
-            {searching_ad?.length > 3 ? (
+            {allPostingData?.length > 3 ? (
               <>
                 {!showAllItems ? (
                   <Box sx={{ textAlign: 'center', marginTop: 1 }}>
