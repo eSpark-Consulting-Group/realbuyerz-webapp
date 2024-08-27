@@ -77,9 +77,7 @@ const PropertyProposal = () => {
         >
           <CircularProgress color="inherit" />
         </Box>
-      ) : userPosts !== undefined &&
-        userPosts !== null &&
-        agentProposals?.length > 0 ? (
+      ) : userPosts !== undefined && userPosts !== null && agentProposals ? (
         <>
           <BackToDashboard
             buttonLabel={back_Button?.text}

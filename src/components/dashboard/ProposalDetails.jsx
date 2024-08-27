@@ -51,11 +51,13 @@ const ProposalDetails = ({
               >
                 {title || ''}
               </Typography>
-              <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
-                {formatDistanceToNow(new Date(postedTime), {
-                  addSuffix: true,
-                })}
-              </Typography>
+              {postedTime && (
+                <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
+                  {formatDistanceToNow(new Date(postedTime), {
+                    addSuffix: true,
+                  })}
+                </Typography>
+              )}
             </Grid>
             <Grid
               item
