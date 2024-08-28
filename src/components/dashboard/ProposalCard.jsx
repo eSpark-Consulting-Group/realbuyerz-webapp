@@ -21,6 +21,7 @@ import PreviewModal from './preview/PreviewModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useMutation } from '@tanstack/react-query';
+import { saveUserProposal } from '@/src/utils/apis/bidding/saveUserProposal';
 
 const ProposalCard = ({
   data,
@@ -30,6 +31,7 @@ const ProposalCard = ({
   refetchProperties,
   deleteAPIHandler,
   updatePath,
+  refetchSavedProposal,
 }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const ProposalCard = ({
   const proposals = 'my-proposals';
   const all_posting = 'all-postings';
   const user = 'user';
-
+  console.log(currentTab, 'asjhdkjasdhska');
   const handleTrash = (property_id, currentTab) => {
     if (pathName?.includes(user)) {
       deletePropertyHandler.mutate(property_id);
@@ -55,6 +57,9 @@ const ProposalCard = ({
       );
     } else if (pathName?.includes(proposals)) {
       deletePropertyHandler.mutate(property_id);
+      if (currentTab == 'Saved Request') {
+        mutate(property_id);
+      }
       dispatch(
         handleTrashProposal({
           property_id: property_id,
@@ -87,6 +92,18 @@ const ProposalCard = ({
     setOpen(!open);
   };
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: saveUserProposal,
+    onSuccess: (data) => {
+      console.log(data);
+      refetchSavedProposal();
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
   let editIconLink;
   if (currentTab === 'Draft') {
     editIconLink = `${pathName?.includes(all_posting) ? all_posting : properties}/draft/property/${data?.id || ''}`;
@@ -100,6 +117,8 @@ const ProposalCard = ({
   if (currentTab === 'Active') {
     editIconLink = `/agent/my-proposals/update-proposal/${data?.id}/cover-letter`;
   }
+
+  const isLoading = isPending || deletePropertyHandler.isPending;
 
   return (
     <Box
@@ -477,7 +496,7 @@ const ProposalCard = ({
               }}
               onClick={() => handleTrash(data?.id, currentTab)}
             >
-              {deletePropertyHandler.isPending ? (
+              {isLoading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
                 'Trash'

@@ -15,6 +15,7 @@ import {
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
 import { fetchMyProperties } from '@/src/utils/properties';
+import { myProposalSaved } from '@/src/utils/apis/bidding/saveUserProposal';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
@@ -49,24 +50,44 @@ const MyProposals = () => {
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: myPropertiesData?.length || 0,
+      items: 0,
     },
     {
       label: 'Archive',
       prop: a11yProps(2),
-      items: myPropertiesData?.length || 0,
+      items: 0,
     },
     {
       label: 'Rejected',
       prop: a11yProps(3),
-      items: myPropertiesData?.length || 0,
+      items: 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
-      items: myPropertiesData?.length || 0,
+      items: 0,
     },
   ];
+
+  useEffect(() => {
+    if (currentTab == 'Saved Request') {
+      savedProposals.mutate();
+    } else {
+      mutate(params);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const savedProposals = useMutation({
+    mutationFn: myProposalSaved,
+    onSuccess: (data) => {
+      setMyPropertiesData(data.response.data);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -78,11 +99,6 @@ const MyProposals = () => {
     setCurrentTab(tab);
     setValue(newValue);
   };
-
-  useEffect(() => {
-    mutate(params);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const { mutate, isPending } = useMutation({
     mutationFn: fetchMyProperties,
@@ -205,8 +221,9 @@ const MyProposals = () => {
               myPropertiesData?.map((item, index) => (
                 <ProposalCard
                   refetchProperties={() => mutate(params)}
+                  refetchSavedProposal={() => savedProposals.mutate()}
                   key={index}
-                  data={item}
+                  data={item.property}
                   currentTab={currentTab}
                   link={
                     currentTab === 'Active'
