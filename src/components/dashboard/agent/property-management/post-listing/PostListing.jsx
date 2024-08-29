@@ -37,11 +37,14 @@ import {
   fetchMyProperties,
   updatePostListing,
 } from '@/src/utils/properties';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PostListing = () => {
-  const router = usePathname();
-  const property_Id = router.split('/')[4];
+  const routerPath = usePathname();
+  const router = useRouter();
+  const property_Id = routerPath.split('/')[4];
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
@@ -57,12 +60,14 @@ const PostListing = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
-  const handleCloseSuccessModal = () => setIsOpen(false);
+  const handleCloseSuccessModal = () => {
+    setIsOpen(false);
+    router.push('/agent/property-management/my-properties');
+  };
 
   const handleSubmit = (values) => {
     if (action === 'draft') {
       dispatch(handleSubmitDraftForAgent(values));
-      handleOpenSuccessModal();
     } else if (action === 'submit') {
       if (property_Id) {
         updatePostListingApi.mutate({ formData, property_Id });
@@ -70,7 +75,6 @@ const PostListing = () => {
         mutate(formData);
       }
       dispatch(handlePostlistingAd(values));
-      handleOpenSuccessModal();
     }
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
@@ -85,10 +89,16 @@ const PostListing = () => {
 
   const randomNumber = generateRandomNumber();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: addPostListing,
     onSuccess: (data) => {
-      console.log(data, 'data');
+      if (!data.success) {
+        return toast.error(data.error);
+      }
+      handleOpenSuccessModal();
+    },
+    onError: (error) => {
+      toast.error(error.response.data.message);
     },
   });
 
@@ -106,7 +116,10 @@ const PostListing = () => {
   const updatePostListingApi = useMutation({
     mutationFn: updatePostListing,
     onSuccess: (data) => {
-      console.log(data, 'data');
+      if (!data.success) {
+        return toast.error(data.error);
+      }
+      handleOpenSuccessModal();
     },
   });
 
@@ -119,7 +132,9 @@ const PostListing = () => {
       values.status = 'submited';
       handleSubmit(values);
       console.log(values, 'values');
-      action.resetForm();
+      if (updatePostListingApi.data?.success) {
+        action.resetForm();
+      }
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -130,6 +145,7 @@ const PostListing = () => {
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
       const items = data.response.data.items[0];
+      const amenitiesArr = items.amenities.map((val) => val.id);
       setPropertyTypeDetails(items.propertyType);
 
       formik.setFieldValue('title', items.propertyName);
@@ -137,6 +153,7 @@ const PostListing = () => {
       formik.setFieldValue('amount', items.propertyPrice);
       formik.setFieldValue('area', items.propertyArea);
       formik.setFieldValue('city', items.propertyCity);
+      formik.setFieldValue('amenities', amenitiesArr);
     },
     onError: (error) => {
       // Handle the error
@@ -159,60 +176,65 @@ const PostListing = () => {
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+  const isLoading = updatePostListingApi.isPending || isPending;
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <form onSubmit={formik?.handleSubmit}>
-          <Box
-            sx={{
-              display: 'flex',
-              maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
-              justifyContent: 'center',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '40px',
-              margin: { xs: 0, md: '0 auto', lg: 0 },
-            }}
-          >
-            <BuyersPlatform propertyData={POST_LISTING} />
-            <AdInformation formik={formik} propertyData={POST_LISTING} />
-            <PropertyPurpose
-              formik={formik}
-              propertyData={POST_LISTING}
-              propertyTypeDetails={propertyTypeDetails}
-            />
-            <PropertySize formik={formik} propertyData={POST_LISTING} />
-            <PropertyFeatures
-              formik={formik}
-              propertyData={POST_LISTING}
-              setSelectedAmenities={setSelectedAmenities}
-              selectedAmenities={selectedAmenities}
-              handleSeletedAmenites={handleSeletedAmenites}
-            />
-            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
-            <SubmitButton
-              formik={formik}
-              propertyData={POST_LISTING}
-              setAction={setAction}
-              handleClickOpen={handleClickOpen}
-            />
-            <PreviewModal
-              open={open}
-              onClose={handleClose}
-              ads={formik?.values}
-              formik={formik}
-            />
-          </Box>
-        </form>
-        <ProposalModal
-          buttonLabel={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-          description={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-          title={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
-          open={isOpen}
-          onClose={handleCloseSuccessModal}
-        />
+    <>
+      <ToastContainer />
+      <Grid container>
+        <Grid item xs={12}>
+          <form onSubmit={formik?.handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '40px',
+                margin: { xs: 0, md: '0 auto', lg: 0 },
+              }}
+            >
+              <BuyersPlatform propertyData={POST_LISTING} />
+              <AdInformation formik={formik} propertyData={POST_LISTING} />
+              <PropertyPurpose
+                formik={formik}
+                propertyData={POST_LISTING}
+                propertyTypeDetails={propertyTypeDetails}
+              />
+              <PropertySize formik={formik} propertyData={POST_LISTING} />
+              <PropertyFeatures
+                formik={formik}
+                propertyData={POST_LISTING}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+                handleSeletedAmenites={handleSeletedAmenites}
+              />
+              <PropertyGallery formik={formik} propertyData={POST_LISTING} />
+              <SubmitButton
+                formik={formik}
+                propertyData={POST_LISTING}
+                setAction={setAction}
+                handleClickOpen={handleClickOpen}
+                isLoading={isLoading}
+              />
+              <PreviewModal
+                open={open}
+                onClose={handleClose}
+                ads={formik?.values}
+                formik={formik}
+              />
+            </Box>
+          </form>
+          <ProposalModal
+            buttonLabel={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
+            description={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
+            title={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+            open={isOpen}
+            onClose={handleCloseSuccessModal}
+          />
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 export default PostListing;
