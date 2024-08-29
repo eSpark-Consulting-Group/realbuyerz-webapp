@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, CircularProgress, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 
@@ -19,11 +19,13 @@ const SubmitButton = ({
   setAction,
   propertyData,
   handleOpenSuccessModal,
+  isLoading,
 }) => {
   const pathName = usePathname();
   const cover = '/cover-letter';
   const all_posting = '/all-postings';
   const my_properties = '/my-properties';
+  const property_management = '/property-management';
 
   const dispatch = useDispatch();
 
@@ -127,6 +129,7 @@ const SubmitButton = ({
 
           <Button
             name="draft"
+            disabled={pathName?.includes(property_management) && isLoading}
             value="draft"
             variant="primary"
             type="submit"
@@ -150,9 +153,17 @@ const SubmitButton = ({
             }}
             onClick={handleSubmitSubmit}
           >
-            {pathName?.includes(cover)
-              ? propertyData?.SubmitProposal
-              : propertyData?.submitAd}
+            {pathName?.includes(property_management) ? (
+              isLoading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                propertyData?.submitAd
+              )
+            ) : pathName?.includes(cover) ? (
+              propertyData?.SubmitProposal
+            ) : (
+              propertyData?.submitAd
+            )}
           </Button>
         </Box>
       </Grid>
