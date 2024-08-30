@@ -31,7 +31,31 @@ const SignupCard = () => {
       formik.setFieldValue('contactNumber', newContactNumber);
     }
   };
-
+  const handleSuccessfulLogin = (data) => {
+    if (data.success) {
+      localStorage.setItem('token', data.response.data.token);
+      Cookie.set('token', data.response.data.token);
+      Cookie.set('userType', data.response.data.user.role);
+      const savedUserInfo = {
+        email: data.response.data.user.email,
+        userName: data.response.data.user.userName,
+        userType: data.response.data.user.role,
+      };
+      dispatch(setLoggedIn(savedUserInfo));
+      setProfile();
+      toast.success('Signup successful!', {
+        onClose: () => {
+          if (data.response.data.user.role === 'user') {
+            router.push('/user/dashboard');
+          } else if (data.response.data.user.role === 'agent') {
+            router.push('/agent/live-bidding');
+          }
+        },
+      });
+    } else {
+      toast.error('Signup failed. Please try again.');
+    }
+  };
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -120,20 +144,18 @@ const SignupCard = () => {
   const handleGoogleLogin = async (response) => {
     try {
       const decoded = jwtDecode(response.credential);
-
-      // Create user object from Google response
+  
       const user = {
         firstName: decoded.given_name || '',
         lastName: decoded.family_name || '',
         email: decoded.email,
-        mobileNumber: 'defaultMobileNumber', // Adjust if you collect this
-        password: 'defaultPassword123', // Temporary placeholder
+        mobileNumber: 'Not Provided', // Indicating that no mobile number was provided
+        password: 'defaultPassword123', // Placeholder password
+        profileImage: decoded.picture || '', // If you have a profile image
         role: 'user',
         socialId: response.credential, // Use socialId as per your API
       };
-
-      console.log('User data being sent to API:', user);
-
+  
       // Attempt to sign up the user
       const signupResponse = await fetch('http://52.55.77.181/user/signup', {
         method: 'POST',
@@ -142,18 +164,15 @@ const SignupCard = () => {
         },
         body: JSON.stringify(user),
       });
-
-      const data = await signupResponse.json();
-      console.log('Signup response:', data);
-
-      if (data.success) {
-        handleSuccessfulSignup(data);
+  
+      const signupData = await signupResponse.json();
+  
+      if (signupData.success) {
+        // If signup is successful, handle the successful signup
+        handleSuccessfulSignup(signupData);
       } else {
-        console.log('Error during signup:', data.message);
-        if (data.message.includes('already in use')) {
-          console.log('Email already in use, attempting login...');
-
-          // Attempt to log in the user
+        // If signup fails and the error suggests the user already exists, try to log in
+        if (signupData.message.includes('already in use')) {
           const loginResponse = await fetch('http://52.55.77.181/user/login', {
             method: 'POST',
             headers: {
@@ -161,13 +180,12 @@ const SignupCard = () => {
             },
             body: JSON.stringify({
               email: user.email,
-              // No password needed if using social login; adjust as necessary
+              password: 'defaultPassword123', // Use the same placeholder password for login
             }),
           });
-
+  
           const loginData = await loginResponse.json();
-          console.log('Login response:', loginData);
-
+  
           if (loginData.success) {
             handleSuccessfulLogin(loginData);
           } else {
@@ -175,7 +193,9 @@ const SignupCard = () => {
             toast.error(loginData.message || 'Login failed. Please try again.');
           }
         } else {
-          toast.error(data.message || 'Signup failed. Please try again.');
+          // If signup failed for another reason, show an error
+          console.error('Signup failed:', signupData.message);
+          toast.error(signupData.message || 'Signup failed. Please try again.');
         }
       }
     } catch (error) {
@@ -183,6 +203,8 @@ const SignupCard = () => {
       toast.error('An error occurred. Please try again.');
     }
   };
+  
+
 
   const { mutate: setProfile } = useMutation({
     mutationFn: userProfile,
