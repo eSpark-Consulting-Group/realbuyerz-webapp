@@ -11,7 +11,7 @@ const LoginWithGoogle = ({
   onSigninClick,
   loginClick,
   isPending,
-  handleGoogleLogin, 
+  handleGoogleLogin,
 }) => {
   return (
     <GoogleOAuthProvider clientId="522940203862-u31jekta8qgudqdbf2sdlengvbp0425k.apps.googleusercontent.com">

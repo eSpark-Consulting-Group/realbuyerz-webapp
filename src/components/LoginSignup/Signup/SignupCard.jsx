@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
-import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
+// import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { jwtDecode } from 'jwt-decode';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
@@ -144,7 +144,7 @@ const SignupCard = () => {
   const handleGoogleLogin = async (response) => {
     try {
       const decoded = jwtDecode(response.credential);
-  
+
       const user = {
         firstName: decoded.given_name || '',
         lastName: decoded.family_name || '',
@@ -155,7 +155,7 @@ const SignupCard = () => {
         role: 'user',
         socialId: response.credential, // Use socialId as per your API
       };
-  
+
       // Attempt to sign up the user
       const signupResponse = await fetch('http://52.55.77.181/user/signup', {
         method: 'POST',
@@ -164,12 +164,12 @@ const SignupCard = () => {
         },
         body: JSON.stringify(user),
       });
-  
+
       const signupData = await signupResponse.json();
-  
+
       if (signupData.success) {
         // If signup is successful, handle the successful signup
-        handleSuccessfulSignup(signupData);
+        handleSuccessfulLogin(signupData);
       } else {
         // If signup fails and the error suggests the user already exists, try to log in
         if (signupData.message.includes('already in use')) {
@@ -183,9 +183,9 @@ const SignupCard = () => {
               password: 'defaultPassword123', // Use the same placeholder password for login
             }),
           });
-  
+
           const loginData = await loginResponse.json();
-  
+
           if (loginData.success) {
             handleSuccessfulLogin(loginData);
           } else {
@@ -203,8 +203,6 @@ const SignupCard = () => {
       toast.error('An error occurred. Please try again.');
     }
   };
-  
-
 
   const { mutate: setProfile } = useMutation({
     mutationFn: userProfile,
