@@ -11,12 +11,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
+import { jwtDecode } from 'jwt-decode';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
 const SignupCard = () => {
   const [contactNumber, setContactNumber] = useState('');
@@ -104,20 +105,83 @@ const SignupCard = () => {
     },
   });
 
-  const { mutate: googleLogin } = useMutation({
-    mutationFn: loginWithGoogle,
-    onSuccess: (data) => {
-      console.log('success', data);
-      toast.success('Google login successful!');
-    },
-    onError: (error) => {
-      console.log('Error', error);
-      toast.error('Google login failed. Please try again.');
-    },
-  });
+  // const { mutate: googleLogin } = useMutation({
+  //   mutationFn: loginWithGoogle,
+  //   onSuccess: (data) => {
+  //     console.log('success', data);
+  //     toast.success('Google login successful!');
+  //   },
+  //   onError: (error) => {
+  //     console.log('Error', error);
+  //     toast.error('Google login failed. Please try again.');
+  //   },
+  // });
 
-  const handleGoogleLogin = () => {
-    googleLogin();
+  const handleGoogleLogin = async (response) => {
+    try {
+      const decoded = jwtDecode(response.credential);
+
+      // Create user object from Google response
+      const user = {
+        firstName: decoded.given_name || '',
+        lastName: decoded.family_name || '',
+        email: decoded.email,
+        mobileNumber: 'defaultMobileNumber', // Adjust if you collect this
+        password: 'defaultPassword123', // Temporary placeholder
+        role: 'user',
+        socialId: response.credential, // Use socialId as per your API
+      };
+
+      console.log('User data being sent to API:', user);
+
+      // Attempt to sign up the user
+      const signupResponse = await fetch('http://52.55.77.181/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      const data = await signupResponse.json();
+      console.log('Signup response:', data);
+
+      if (data.success) {
+        handleSuccessfulSignup(data);
+      } else {
+        console.log('Error during signup:', data.message);
+        if (data.message.includes('already in use')) {
+          console.log('Email already in use, attempting login...');
+
+          // Attempt to log in the user
+          const loginResponse = await fetch('http://52.55.77.181/user/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: user.email,
+              // No password needed if using social login; adjust as necessary
+            }),
+          });
+
+          const loginData = await loginResponse.json();
+          console.log('Login response:', loginData);
+
+          if (loginData.success) {
+            handleSuccessfulLogin(loginData);
+          } else {
+            console.error('Login failed:', loginData.message);
+            toast.error(loginData.message || 'Login failed. Please try again.');
+          }
+        } else {
+          toast.error(data.message || 'Signup failed. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Error during Google login:', error);
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   const { mutate: setProfile } = useMutation({
@@ -191,7 +255,7 @@ const SignupCard = () => {
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push(LOGIN_ROUTERS.signin)}
             loginClick={formik.handleSubmit}
-            handleGoogleLogin={handleGoogleLogin}
+            handleGoogleLogin={handleGoogleLogin} // Pass the handleGoogleLogin
             isPending={isPending}
           />
         </Box>

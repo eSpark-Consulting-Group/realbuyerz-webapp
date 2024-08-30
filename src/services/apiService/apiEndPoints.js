@@ -2,7 +2,7 @@ export const ENDPOINTS = {
   // USER ENDPOINTS
   signup: 'user/signup',
   login: 'user/login',
-  loginWithGoogle: 'user/google-login',
+  loginWithGoogle: 'user/signup',
   userProfile: 'user/userProfile',
   profileUpdate: 'user/update',
   resetPassword: 'user/reset-password/',

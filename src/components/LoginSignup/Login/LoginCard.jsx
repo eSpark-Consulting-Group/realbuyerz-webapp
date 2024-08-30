@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import Cookie from 'js-cookie';
 import {
@@ -11,23 +10,21 @@ import {
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
 import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { login } from '@/src/utils/apis/auth/login';
+import { login, loginWithGoogle } from '@/src/utils/apis/auth/login';
 import { useFormik } from 'formik';
 import { AuthSchema } from '../../Schemas/signInValidationSchema';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
-const LoginCard = ({ handleClose, fromModal }) => {
+const LoginCard = ({ handleClose = () => {}, fromModal }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
-
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -35,47 +32,48 @@ const LoginCard = ({ handleClose, fromModal }) => {
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
   const handleSignIn = () => {
-    handleClose(); // Close the modal
+    handleClose();
     router.push(LOGIN_ROUTERS.signup);
   };
 
-  const { mutate, isPending } = useMutation({
+  const { mutate: loginMutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem('token', data.response.data.token);
-      Cookie.set('token', data.response.data.token);
-      Cookie.set('userType', data.response.data.user.role);
-      const savedUserInfo = {
-        email: data.response.data.user.email,
-        userName: data.response.data.user.userName,
-        userType: data.response.data.user.role,
-      };
-      dispatch(setLoggedIn(savedUserInfo));
-
-      setProfile();
-
-      if (fromModal) {
-        dispatch(setOpenModal(false));
-        if (data.response.data.user.role === 'user') {
-          router.push('/user/dashboard');
-        } else if (data.response.data.user.role === 'agent') {
-          router.push('/agent/live-bidding');
-        }
-      } else {
-        if (data.response.data.user.role === 'user') {
-          router.push('/user/dashboard');
-        } else if (data.response.data.user.role === 'agent') {
-          router.push('/agent/live-bidding');
-        }
-      }
+      handleLoginSuccess(data);
     },
   });
 
-  // const loginClick = () => {
-  //   mutate({ email: formData.email, password: formData.password });
-  //   dispatch(saveLoginData(formData));
-  //   dispatch(setOpenModal(false));
-  // };
+  const { mutate: googleLoginMutate } = useMutation({
+    mutationFn: loginWithGoogle,
+    onSuccess: (data) => {
+      handleLoginSuccess(data);
+    },
+  });
+
+  const handleLoginSuccess = (data) => {
+    localStorage.setItem('token', data.response.data.token);
+    Cookie.set('token', data.response.data.token);
+    Cookie.set('userType', data.response.data.user.role);
+    const savedUserInfo = {
+      email: data.response.data.user.email,
+      userName: data.response.data.user.userName,
+      userType: data.response.data.user.role,
+    };
+    dispatch(setLoggedIn(savedUserInfo));
+
+    setProfile();
+
+    if (fromModal) {
+      dispatch(setOpenModal(false));
+    }
+
+    if (data.response.data.user.role === 'user') {
+      router.push('/user/dashboard');
+    } else if (data.response.data.user.role === 'agent') {
+      router.push('/agent/live-bidding');
+    }
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -91,9 +89,7 @@ const LoginCard = ({ handleClose, fromModal }) => {
     },
     validationSchema: AuthSchema,
     onSubmit: (values) => {
-      mutate(values);
-      // dispatch(saveLoginData(values));
-      // dispatch(setOpenModal(false));
+      loginMutate(values);
     },
   });
 
@@ -103,6 +99,13 @@ const LoginCard = ({ handleClose, fromModal }) => {
       dispatch(setUserProfile(data?.response?.data));
     },
   });
+
+  const handleGoogleLoginSuccess = (googleData) => {
+    googleLoginMutate({
+      token: googleData.credential,
+      socialId: googleData.profileObj.googleId,
+    });
+  };
 
   return (
     <form>
@@ -200,7 +203,8 @@ const LoginCard = ({ handleClose, fromModal }) => {
               loginButton={LOGIN_FORM.loginCard.googleLogin}
               onSigninClick={handleSignIn}
               handleClose={handleClose}
-              loginClick={formik.handleSubmit}
+              onSuccess={handleGoogleLoginSuccess}
+              onFailure={(error) => console.log('Google login failed:', error)}
               isPending={isPending}
             />
           </Box>
@@ -211,4 +215,5 @@ const LoginCard = ({ handleClose, fromModal }) => {
     </form>
   );
 };
+
 export default LoginCard;
