@@ -479,6 +479,8 @@ const ProposalCard = ({
             >
               {deletePropertyHandler.isPending ? (
                 <CircularProgress size={24} color="inherit" />
+              ) : data.isDeleted ? (
+                'Trashed'
               ) : (
                 'Trash'
               )}

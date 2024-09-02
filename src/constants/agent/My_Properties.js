@@ -51,7 +51,7 @@ export const ALL_POSTLISTING_FILTRATION = {
     },
     {
       title: 'Property Type',
-      key: 'propertyType',
+      key: 'subType',
       placeholder: 'Select Type',
       options: [
         {
