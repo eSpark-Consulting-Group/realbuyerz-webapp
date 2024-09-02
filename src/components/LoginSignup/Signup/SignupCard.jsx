@@ -14,7 +14,6 @@ import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 // import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
-import { jwtDecode } from 'jwt-decode';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
@@ -31,31 +30,7 @@ const SignupCard = () => {
       formik.setFieldValue('contactNumber', newContactNumber);
     }
   };
-  const handleSuccessfulLogin = (data) => {
-    if (data.success) {
-      localStorage.setItem('token', data.response.data.token);
-      Cookie.set('token', data.response.data.token);
-      Cookie.set('userType', data.response.data.user.role);
-      const savedUserInfo = {
-        email: data.response.data.user.email,
-        userName: data.response.data.user.userName,
-        userType: data.response.data.user.role,
-      };
-      dispatch(setLoggedIn(savedUserInfo));
-      setProfile();
-      toast.success('Signup successful!', {
-        onClose: () => {
-          if (data.response.data.user.role === 'user') {
-            router.push('/user/dashboard');
-          } else if (data.response.data.user.role === 'agent') {
-            router.push('/agent/live-bidding');
-          }
-        },
-      });
-    } else {
-      toast.error('Signup failed. Please try again.');
-    }
-  };
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -129,81 +104,6 @@ const SignupCard = () => {
     },
   });
 
-  // const { mutate: googleLogin } = useMutation({
-  //   mutationFn: loginWithGoogle,
-  //   onSuccess: (data) => {
-  //     console.log('success', data);
-  //     toast.success('Google login successful!');
-  //   },
-  //   onError: (error) => {
-  //     console.log('Error', error);
-  //     toast.error('Google login failed. Please try again.');
-  //   },
-  // });
-
-  const handleGoogleLogin = async (response) => {
-    try {
-      const decoded = jwtDecode(response.credential);
-
-      const user = {
-        firstName: decoded.given_name || '',
-        lastName: decoded.family_name || '',
-        email: decoded.email,
-        mobileNumber: 'Not Provided', // Indicating that no mobile number was provided
-        password: 'defaultPassword123', // Placeholder password
-        profileImage: decoded.picture || '', // If you have a profile image
-        role: 'user',
-        socialId: response.credential, // Use socialId as per your API
-      };
-
-      // Attempt to sign up the user
-      const signupResponse = await fetch('http://52.55.77.181/user/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-
-      const signupData = await signupResponse.json();
-
-      if (signupData.success) {
-        // If signup is successful, handle the successful signup
-        handleSuccessfulLogin(signupData);
-      } else {
-        // If signup fails and the error suggests the user already exists, try to log in
-        if (signupData.message.includes('already in use')) {
-          const loginResponse = await fetch('http://52.55.77.181/user/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: user.email,
-              password: 'defaultPassword123', // Use the same placeholder password for login
-            }),
-          });
-
-          const loginData = await loginResponse.json();
-
-          if (loginData.success) {
-            handleSuccessfulLogin(loginData);
-          } else {
-            console.error('Login failed:', loginData.message);
-            toast.error(loginData.message || 'Login failed. Please try again.');
-          }
-        } else {
-          // If signup failed for another reason, show an error
-          console.error('Signup failed:', signupData.message);
-          toast.error(signupData.message || 'Signup failed. Please try again.');
-        }
-      }
-    } catch (error) {
-      console.error('Error during Google login:', error);
-      toast.error('An error occurred. Please try again.');
-    }
-  };
-
   const { mutate: setProfile } = useMutation({
     mutationFn: userProfile,
     onSuccess: (data) => {
@@ -274,9 +174,8 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push(LOGIN_ROUTERS.signin)}
-            loginClick={formik.handleSubmit}
-            handleGoogleLogin={handleGoogleLogin} // Pass the handleGoogleLogin
             isPending={isPending}
+            loginClick={formik.handleSubmit}
           />
         </Box>
       </Box>
