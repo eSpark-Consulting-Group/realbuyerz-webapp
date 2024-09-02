@@ -68,6 +68,8 @@ const PostListing = () => {
   const handleSubmit = (values) => {
     if (action === 'draft') {
       dispatch(handleSubmitDraftForAgent(values));
+      formData.append('propertyStatus', false);
+      mutate(formData);
     } else if (action === 'submit') {
       if (property_Id) {
         updatePostListingApi.mutate({ formData, property_Id });
@@ -214,8 +216,10 @@ const PostListing = () => {
                 formik={formik}
                 propertyData={POST_LISTING}
                 setAction={setAction}
+                action={action}
                 handleClickOpen={handleClickOpen}
                 isLoading={isLoading}
+                isUpdate={property_Id}
               />
               <PreviewModal
                 open={open}

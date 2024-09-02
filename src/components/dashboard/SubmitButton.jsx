@@ -20,6 +20,8 @@ const SubmitButton = ({
   propertyData,
   handleOpenSuccessModal,
   isLoading,
+  isUpdate,
+  action,
 }) => {
   const pathName = usePathname();
   const cover = '/cover-letter';
@@ -123,7 +125,11 @@ const SubmitButton = ({
               }}
               onClick={handleDraftSubmit}
             >
-              {propertyData?.saveDraft?.toLowerCase()}
+              {isLoading
+                ? action == 'draft' && (
+                    <CircularProgress size={24} color="inherit" />
+                  )
+                : propertyData?.saveDraft?.toLowerCase()}
             </Button>
           )}
 
@@ -153,17 +159,17 @@ const SubmitButton = ({
             }}
             onClick={handleSubmitSubmit}
           >
-            {pathName?.includes(property_management) ? (
-              isLoading ? (
-                <CircularProgress size={24} color="inherit" />
-              ) : (
-                propertyData?.submitAd
-              )
-            ) : pathName?.includes(cover) ? (
-              propertyData?.SubmitProposal
-            ) : (
-              propertyData?.submitAd
-            )}
+            {pathName?.includes(property_management)
+              ? isLoading
+                ? action == 'submit' && (
+                    <CircularProgress size={24} color="inherit" />
+                  )
+                : isUpdate
+                  ? 'Update Ad'
+                  : propertyData?.submitAd
+              : pathName?.includes(cover)
+                ? propertyData?.SubmitProposal
+                : propertyData?.submitAd}
           </Button>
         </Box>
       </Grid>

@@ -15,7 +15,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import NotFoundSection from '@/src/components/global/NotFoundSection';
+// import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 
 import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
@@ -26,17 +26,22 @@ import {
   // renderAdCard,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
-import { deleteProperty, fetchMyProperties } from '@/src/utils/properties';
+import {
+  deleteProperty,
+  fetchMyProperties,
+  fetchPropertyTypes,
+} from '@/src/utils/properties';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
   const [myPropertiesData, setMyPropertiesData] = useState([]);
+  const [subTypeData, setSubTypeData] = useState([]);
   const [filterObject, setFilterObject] = useState({
     purpose: '',
     propertyCity: '',
     location: '',
-    propertyType: '',
+    subType: '',
   });
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { agentPostings, active, draft, trash } = useSelector(
@@ -57,11 +62,11 @@ const MyProperties = () => {
     mutate(filters);
   }, [filterObject]);
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, data } = useMutation({
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items;
-      setMyPropertiesData(items);
+      const items = data.response.data;
+      setMyPropertiesData([...(items?.active || []), ...(items?.draft || [])]);
     },
     onError: (error) => {
       // Handle the error
@@ -69,26 +74,51 @@ const MyProperties = () => {
     },
   });
 
+  useEffect(() => {
+    propertyTypesData.mutate();
+  }, []);
+
+  const propertyTypesData = useMutation({
+    mutationFn: fetchPropertyTypes,
+    onSuccess: (data) => {
+      let subTypesArr = [];
+      data.response.data.forEach((val) => {
+        subTypesArr = [...subTypesArr, ...val.subTypes];
+      });
+      const subTypes = subTypesArr.map((val) => {
+        return { label: val.subTypeName, value: val.subTypeName };
+      });
+      setSubTypeData(subTypes);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
+  const items = data?.response?.data;
   const tabs = [
     {
       label: 'All',
       prop: a11yProps(0),
-      items: find_posting?.length || 0,
+      items: items
+        ? [...(items?.active || []), ...(items?.draft || [])].length
+        : 0,
     },
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: find_active?.length || 0,
+      items: items?.active.length || 0,
     },
     {
       label: 'Draft',
       prop: a11yProps(2),
-      items: find_draft?.length || 0,
+      items: items?.draft.length || 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
-      items: find_trash?.length || 0,
+      items: items?.trash.length || 0,
     },
   ];
 
@@ -101,6 +131,18 @@ const MyProperties = () => {
     }
     setCurrentTab(tab);
     setValue(newValue);
+    if (tab == 'All') {
+      setMyPropertiesData([...(items?.active || []), ...(items?.draft || [])]);
+    }
+    if (tab == 'Active') {
+      setMyPropertiesData(items?.active);
+    }
+    if (tab == 'Trash') {
+      setMyPropertiesData(items?.trash);
+    }
+    if (tab == 'Draft') {
+      setMyPropertiesData(items?.draft);
+    }
   };
   const handleChangeSelect = (key, val) => {
     setFilterObject({
@@ -115,7 +157,7 @@ const MyProperties = () => {
       purpose: '',
       propertyCity: '',
       location: '',
-      propertyType: '',
+      subType: '',
     });
   };
 
@@ -209,7 +251,10 @@ const MyProperties = () => {
                     onChange={(e) =>
                       handleChangeSelect(field?.key, e?.target?.innerText)
                     }
-                    options={field?.options?.map((opt) => opt)}
+                    options={(field?.key == 'subType'
+                      ? subTypeData
+                      : field?.options
+                    )?.map((opt) => opt)}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -361,10 +406,7 @@ const MyProperties = () => {
               isPending ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
-                <NotFoundSection
-                  heading={`No ${currentTab || ''} Data`}
-                  message={''}
-                />
+                <Typography>No Data Found</Typography>
               )
             ) : (
               myPropertiesData?.map((item, index) => (

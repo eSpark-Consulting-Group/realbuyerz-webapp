@@ -47,7 +47,7 @@ const ProfileCroper = ({
 
       const updatedData = { ...currData, image: url };
       dispatch(handleUserEdit(updatedData));
-      setFieldValue('image', file);
+      setFieldValue('profileImage', file);
 
       setPhotoURL(url);
       setOpenCrop(false);
