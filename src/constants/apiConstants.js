@@ -36,7 +36,7 @@ export const ENDPOINTS = {
   propertiesCategoris: '',
   addProposalListing: '',
   login: 'user/login',
-  loginWithGoogle: 'user/google-login',
+  loginWithGoogle: 'user/signup',
   resetPassword: 'user/password/',
   signup: 'user/signup',
   similarAreaProperties: '',

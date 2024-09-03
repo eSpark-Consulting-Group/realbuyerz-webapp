@@ -12,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
-// import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';

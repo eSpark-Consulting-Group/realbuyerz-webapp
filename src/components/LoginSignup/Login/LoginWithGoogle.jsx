@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
+import { ENDPOINTS } from '@/src/constants/apiConstants';
 
 const LoginWithGoogle = ({
   buttonLabel,
@@ -22,32 +23,36 @@ const LoginWithGoogle = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleSuccessfulLogin = (data) => {
-    if (data.success) {
-      const { token } = data.response.data;
-      localStorage.setItem('token', token.token);
-      Cookie.set('token', token.token);
-      Cookie.set('userType', token.user.role);
+    if (data?.success) {
+      const { token } = data?.response?.data || {};
 
-      const savedUserInfo = {
-        email: token.user.email,
-        userName: token.user.userName,
-        userType: token.user.role,
-      };
+      if (token) {
+        localStorage.setItem('token', token.token);
+        Cookie.set('token', token.token);
+        Cookie.set('userType', token.user?.role);
 
-      dispatch(setLoggedIn(savedUserInfo));
-      setProfile();
+        const savedUserInfo = {
+          email: token.user?.email,
+          userName: token.user?.userName,
+          userType: token.user?.role,
+        };
 
-      toast.success('Signup successful!', {
-        onClose: () => {
-          if (token.user.role === 'user') {
-            router.push('/user/dashboard');
-          } else if (token.user.role === 'agent') {
-            router.push('/agent/live-bidding');
-          }
-        },
-      });
+        dispatch(setLoggedIn(savedUserInfo));
+        setProfile();
+
+        toast.success('Signup successful!', {
+          onClose: () => {
+            if (token.user?.role === 'user') {
+              router.push('/user/dashboard');
+            } else if (token.user?.role === 'agent') {
+              router.push('/agent/live-bidding');
+            }
+          },
+        });
+      }
     } else {
       toast.error('Signup failed. Please try again.');
     }
@@ -55,24 +60,27 @@ const LoginWithGoogle = ({
 
   const handleGoogleLogin = async (response) => {
     try {
-      const decoded = jwtDecode(response.credential);
+      const decodedGoogleToken = jwtDecode(response.credential);
 
       const user = {
-        firstName: decoded.given_name || '',
-        lastName: decoded.family_name || '',
-        email: decoded.email,
-        profileImage: decoded.picture || '',
+        firstName: decodedGoogleToken.given_name || '',
+        lastName: decodedGoogleToken.family_name || '',
+        email: decodedGoogleToken.email,
+        profileImage: decodedGoogleToken.picture || '',
         role: 'user',
-        socialId: decoded.sub,
+        socialId: decodedGoogleToken.sub,
       };
 
-      const signupResponse = await fetch('http://52.55.77.181/user/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
+      const signupResponse = await fetch(
+        `${apiUrl}/${ENDPOINTS.loginWithGoogle}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        }
+      );
 
       const signupData = await signupResponse.json();
 
@@ -96,7 +104,7 @@ const LoginWithGoogle = ({
   });
 
   return (
-    <GoogleOAuthProvider clientId="522940203862-u31jekta8qgudqdbf2sdlengvbp0425k.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
       <Box
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
