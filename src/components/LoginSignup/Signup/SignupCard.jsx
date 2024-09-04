@@ -11,12 +11,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { loginWithGoogle } from '@/src/utils/apis/auth/loginWithGoogle';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { signup } from '@/src/utils/apis/auth/signup';
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
-import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
 const SignupCard = () => {
   const [contactNumber, setContactNumber] = useState('');
@@ -104,22 +103,6 @@ const SignupCard = () => {
     },
   });
 
-  const { mutate: googleLogin } = useMutation({
-    mutationFn: loginWithGoogle,
-    onSuccess: (data) => {
-      console.log('success', data);
-      toast.success('Google login successful!');
-    },
-    onError: (error) => {
-      console.log('Error', error);
-      toast.error('Google login failed. Please try again.');
-    },
-  });
-
-  const handleGoogleLogin = () => {
-    googleLogin();
-  };
-
   const { mutate: setProfile } = useMutation({
     mutationFn: userProfile,
     onSuccess: (data) => {
@@ -190,9 +173,8 @@ const SignupCard = () => {
             accountCreationMessage={LOGIN_FORM.loginCard.label}
             loginButton={LOGIN_FORM.loginCard.googleLogin}
             onSigninClick={() => router.push(LOGIN_ROUTERS.signin)}
-            loginClick={formik.handleSubmit}
-            handleGoogleLogin={handleGoogleLogin}
             isPending={isPending}
+            loginClick={formik.handleSubmit}
           />
         </Box>
       </Box>

@@ -23,7 +23,7 @@ import { useFormik } from 'formik';
 import { AuthSchema } from '../../Schemas/signInValidationSchema';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
-const LoginCard = ({ handleClose, fromModal }) => {
+const LoginCard = ({ handleClose = () => {}, fromModal }) => {
   const [showForgetPassword, setshowForgetPassword] = useState(false);
   const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
