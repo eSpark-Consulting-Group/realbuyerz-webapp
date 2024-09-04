@@ -133,6 +133,7 @@ const MyProposals = () => {
                 disableRipple={true}
                 sx={{
                   textTransform: 'math-auto',
+                  color: '#000 !important',
                 }}
               />
             ))}

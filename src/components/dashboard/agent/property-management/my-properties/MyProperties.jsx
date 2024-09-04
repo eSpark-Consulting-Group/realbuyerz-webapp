@@ -258,7 +258,7 @@ const MyProperties = () => {
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        placeholder="Select Type"
+                        placeholder={field?.placeholder || 'Select Type'}
                         InputLabelProps={{
                           sx: {
                             margin: 0,

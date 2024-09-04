@@ -27,7 +27,7 @@ const ImageUploader = ({ onUpload, maxImages }) => {
       {...getRootProps()}
       sx={{
         width: { xs: '100%', sm: '190px', md: '200px' },
-        height: '50px',
+        height: '56px',
         color: '#fff',
         background: '#FB631C',
         borderRadius: '10px',

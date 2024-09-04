@@ -105,11 +105,11 @@ const SubmitButton = ({
               variant="outlined"
               type="submit"
               sx={{
-                width: { xs: '40%', sm: '200px' },
+                width: { xs: '40%', sm: '150px' },
                 '@media(min-width: 280px) and (max-width:400px)': {
                   width: '100%',
                 },
-                borderRadius: '5px',
+                borderRadius: '10px',
                 border: '1px solid #FB631C',
                 background: '#FFF !important',
                 color: '#FB631C !important',
@@ -144,7 +144,7 @@ const SubmitButton = ({
               '@media(min-width: 280px) and (max-width:400px)': {
                 width: '100%',
               },
-              borderRadius: '5px',
+              borderRadius: '10px',
               border: '1px solid #FB631C',
               color: '#fff !important',
               background: '#FB631C',
