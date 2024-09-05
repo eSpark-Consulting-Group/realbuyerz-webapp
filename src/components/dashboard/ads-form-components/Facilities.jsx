@@ -136,7 +136,12 @@ const Facilities = ({
               key={index}
             >
               <Checkbox
-                sx={{ color: '#126FAA' }}
+                sx={{
+                  color: '#126FAA',
+                  '&.Mui-checked': {
+                    color: '#126FAA',
+                  },
+                }}
                 checked={selectedAmenities?.some(
                   (amenity) => amenity?.text === item?.title
                 )}
