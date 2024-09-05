@@ -174,7 +174,8 @@ const PropertyGallery = ({ formik, propertyData }) => {
                     <Box
                       sx={{
                         flexDirection: { xs: 'column', md: 'row' },
-                        border: '1px #FB631C dashed',
+                        backgroundImage:
+                          "url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%25%27 height=%27100%25%27%3e%3crect width=%27100%25%27 height=%27100%25%27 fill=%27none%27 stroke=%27%23FB631C%27 stroke-width=%272%27 stroke-dasharray=%276%2c14%27 stroke-linecap=%27square%27/%3e%3c/svg%3e')",
                         display: 'flex',
                         alignItems: { xs: 'start', md: 'center' },
                         py: 3,

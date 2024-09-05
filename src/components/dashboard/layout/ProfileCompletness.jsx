@@ -6,7 +6,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
 
-const ProfileCompletness = ({ title, description, percentage }) => {
+const ProfileCompletness = ({ title, description, percentage = 95 }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -57,9 +57,10 @@ const ProfileCompletness = ({ title, description, percentage }) => {
               alignItems: 'center',
             }}
           >
+            {/* Updated to use dynamic percentage */}
             <BorderLinearProgress
               variant="determinate"
-              value={90}
+              value={percentage} // Dynamically setting the progress bar value
               sx={{ width: '100%', flex: 1 }}
             />
             <Typography
@@ -69,7 +70,7 @@ const ProfileCompletness = ({ title, description, percentage }) => {
                 ml: 1,
               }}
             >
-              {percentage || ''}
+              {`${percentage}%`} {/* Displaying percentage beside the bar */}
             </Typography>
           </Box>
         </Box>
