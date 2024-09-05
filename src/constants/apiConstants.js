@@ -2,7 +2,7 @@ export const ENDPOINTS = {
   addCoverLetter: '',
   addProfile: '',
   agentChats: '',
-  preference: '',
+  preferences: 'user/preferences',
   agentProfile: '',
   agentProperties: '',
   agentPropShop: '',

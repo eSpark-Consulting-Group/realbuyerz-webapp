@@ -1,30 +1,39 @@
-import { USERS_DATA } from '@/src/constants/user';
 import { createSlice } from '@reduxjs/toolkit';
-const userdata = USERS_DATA;
-const users = {
-  userdata,
+import { USERS_DATA } from '@/src/constants/user'; 
+
+const initialState = {
+  userdata: USERS_DATA,
 };
 
-const initialState = { users };
-
 const usersSlice = createSlice({
-  name: USERS_DATA.users,
+  name: 'users',
   initialState,
   reducers: {
     savePreferenceData: (state, action) => {
       const { emailNotification, areaUnit, currencyUnit } = action.payload;
-      state.users.userdata.areaUnit = areaUnit;
-      state.users.userdata.currencyUnit = currencyUnit;
-      state.users.userdata.emailNotification = emailNotification;
+      state.userdata.emailNotification = emailNotification;
+      state.userdata.areaUnit = areaUnit;
+      state.userdata.currencyUnit = currencyUnit;
+    },
+    addUser: (state, action) => {
+      state.userdata.push(action.payload);
+    },
+    updateUser: (state, action) => {
+      const { id, data } = action.payload;
+      const index = state.userdata.findIndex((user) => user.id === id);
+      if (index !== -1) {
+        state.userdata[index] = { ...state.userdata[index], ...data };
+      }
+    },
+    deleteUser: (state, action) => {
+      state.userdata = state.userdata.filter(
+        (user) => user.id !== action.payload
+      );
     },
   },
 });
 
-export const {
-  adduser,
-  updateuser,
-  deleteuser,
-  selectuser,
-  savePreferenceData,
-} = usersSlice.actions;
+export const { savePreferenceData, addUser, updateUser, deleteUser } =
+  usersSlice.actions;
+
 export default usersSlice.reducer;
