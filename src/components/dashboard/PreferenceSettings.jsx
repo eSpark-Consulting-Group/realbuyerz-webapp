@@ -14,7 +14,7 @@ import { ENDPOINTS } from '@/src/constants/apiConstants';
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
   const dispatch = useDispatch();
-  const { token } = useAuth();
+  const token = localStorage.getItem('token');
   const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleInputChange = (event) => {
@@ -31,12 +31,12 @@ const PreferenceSettings = () => {
   const handleInputChangeToggle = (name, checked) => {
     setFormData((prevData) => {
       return {
-      ...prevData,
-      toggleData: prevData?.toggleData?.map((item) =>
-        item?.lable === name ? { ...item, value: checked } : item
-      ),
-      emailData: { ...prevData?.emailData, [name]: checked },
-    };
+        ...prevData,
+        toggleData: prevData?.toggleData?.map((item) =>
+          item?.lable === name ? { ...item, value: checked } : item
+        ),
+        emailData: { ...prevData?.emailData, [name]: checked },
+      };
     });
   };
 
@@ -47,7 +47,7 @@ const PreferenceSettings = () => {
       automatedReport,
       currency,
       areaUnit,
-    } = formData?.emailData;
+    } = formData.emailData;
 
     try {
       const response = await axios.post(
@@ -61,7 +61,7 @@ const PreferenceSettings = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
