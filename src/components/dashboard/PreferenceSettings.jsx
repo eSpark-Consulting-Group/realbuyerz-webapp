@@ -13,7 +13,6 @@ import { saveUserPreferences } from '@/src/utils/apis/userPreferences';
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
   const dispatch = useDispatch();
- 
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
