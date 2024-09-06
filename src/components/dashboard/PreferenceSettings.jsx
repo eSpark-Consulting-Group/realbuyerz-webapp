@@ -1,5 +1,4 @@
 'use client';
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -9,13 +8,12 @@ import SaveChanges from './SaveChangesBtn';
 import { createInitialState } from '@/src/utils/agentPreferenceState';
 import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
 import { AGENT_PREFERENCES } from '@/src/constants/Preference';
-import { ENDPOINTS } from '@/src/constants/apiConstants';
+import { saveUserPreferences } from '@/src/utils/apis/userPreferences';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
-  const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
+ 
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -41,37 +39,15 @@ const PreferenceSettings = () => {
   };
 
   const handleClick = async () => {
-    const {
-      emailNotification,
-      newsLetter,
-      automatedReport,
-      currency,
-      areaUnit,
-    } = formData.emailData;
-
     try {
-      const response = await axios.post(
-        `${apiUrl}/${ENDPOINTS.preferences}`,
-        {
-          emailNotification,
-          newsLetter,
-          automatedReport,
-          currency,
-          areaUnit,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await saveUserPreferences(formData);
 
       if (response.status === 200) {
         dispatch(
           savePreferenceData({
-            emailNotification,
-            areaUnit,
-            currencyUnit: currency,
+            emailNotification: formData.emailData.emailNotification,
+            areaUnit: formData.emailData.areaUnit,
+            currencyUnit: formData.emailData.currency,
           })
         );
         console.log('Preferences saved successfully');
@@ -83,7 +59,7 @@ const PreferenceSettings = () => {
         );
       }
     } catch (error) {
-      console.error('API error while saving preferences:', error);
+      console.error('Error saving preferences:', error);
     }
   };
 
