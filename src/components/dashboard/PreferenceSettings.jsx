@@ -1,62 +1,87 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import Notification from './Notification';
 import AreaUnit from './AreaUnit';
 import SaveChanges from './SaveChangesBtn';
 import { createInitialState } from '@/src/utils/agentPreferenceState';
-import { savePreferenceData } from '@/src/redux/slices/users/usersSlice';
 import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 import { saveUserPreferences } from '@/src/utils/apis/userPreferences';
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
-  const dispatch = useDispatch();
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  // Fetch user profile on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const profileResponse = await userProfile(); // Fetch user profile
+  
+        if (profileResponse && profileResponse.success) {
+          const userProfile = profileResponse.response.data;
+  
+          // Populate formData with the fetched preferences
+          setFormData((prev) => ({
+            ...prev,
+            emailData: {
+              emailNotification: userProfile.preferences.emailNotification,
+              newsLetter: userProfile.preferences.newsLetter,
+              automatedReport: userProfile.preferences.automatedReport,
+              currencyUnit: userProfile.preferences.currency,
+              areaUnit: userProfile.preferences.areaUnit,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+    };
+  
+    fetchProfile();
+  }, []); // Only runs once on mount
+  
+  // Handle input change for text fields
+  const handleInputChange = (event, name) => {
+    const { value } = event.target;
+
+    if (name) {
+      setFormData((prev) => ({
+        ...prev,
+        emailData: {
+          ...prev.emailData,
+          [name]: value,
+        },
+      }));
+    }
+  };
+
+  // Handle input change for toggle fields (checkboxes)
+  const handleInputChangeToggle = (name, checked) => {
+    if (!name) {
+      console.error('Toggle name is undefined');
+      return;
+    }
+
     setFormData((prevData) => ({
       ...prevData,
       emailData: {
-        ...prevData?.emailData,
-        [name]: value,
+        ...prevData.emailData,
+        [name]: checked,
       },
     }));
   };
 
-  const handleInputChangeToggle = (name, checked) => {
-    setFormData((prevData) => {
-      return {
-        ...prevData,
-        toggleData: prevData?.toggleData?.map((item) =>
-          item?.lable === name ? { ...item, value: checked } : item
-        ),
-        emailData: { ...prevData?.emailData, [name]: checked },
-      };
-    });
-  };
-
+  // Handle the click to save preferences
   const handleClick = async () => {
+    if (!formData.emailData.currencyUnit || !formData.emailData.areaUnit) {
+      console.error('Form data is incomplete!');
+      return;
+    }
+
     try {
       const response = await saveUserPreferences(formData);
-
-      if (response.status === 200) {
-        dispatch(
-          savePreferenceData({
-            emailNotification: formData.emailData.emailNotification,
-            areaUnit: formData.emailData.areaUnit,
-            currencyUnit: formData.emailData.currency,
-          })
-        );
-        console.log('Preferences saved successfully');
-      } else {
-        console.error(
-          'Failed to save preferences:',
-          response.status,
-          response.data
-        );
-      }
+      console.log('Preferences saved successfully', response);
     } catch (error) {
       console.error('Error saving preferences:', error);
     }
@@ -109,7 +134,7 @@ const PreferenceSettings = () => {
           </Typography>
           <Notification
             notificationData={AGENT_PREFERENCES?.updates}
-            handleInputChange={handleInputChangeToggle}
+            handleInputChangeToggle={handleInputChangeToggle}
             formData={formData?.emailData}
           />
           <AreaUnit
@@ -128,3 +153,4 @@ const PreferenceSettings = () => {
 };
 
 export default PreferenceSettings;
+

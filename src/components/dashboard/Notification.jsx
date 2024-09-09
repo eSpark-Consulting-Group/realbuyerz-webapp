@@ -3,7 +3,7 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import { AntSwitch } from '@/src/utils/propertyInstallment';
 
-const Notification = ({ notificationData, handleInputChange }) => {
+const Notification = ({ notificationData, handleInputChangeToggle }) => {
   return (
     <>
       {notificationData?.map((item, index) => {
@@ -43,10 +43,11 @@ const Notification = ({ notificationData, handleInputChange }) => {
                   sx={{
                     marginRight: { lg: '-12px' },
                   }}
-                  value={item?.value}
-                  onChange={(event) =>
-                    handleInputChange(item?.label, event.target.checked)
-                  }
+                  value={item?.value} // Should be a boolean (true/false)
+                  onChange={(e) => {
+                    console.log('Toggling emailNotification:', e.target.checked);
+                    handleInputChangeToggle('emailNotification', e.target.checked);
+                  }}
                   inputProps={{ 'aria-label': 'ant design' }}
                 />
               </Box>
