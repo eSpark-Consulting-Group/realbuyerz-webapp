@@ -12,16 +12,14 @@ import { userProfile } from '@/src/utils/apis/auth/getProfile';
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
 
-  // Fetch user profile on component mount
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const profileResponse = await userProfile(); // Fetch user profile
-  
+        const profileResponse = await userProfile();
+
         if (profileResponse && profileResponse.success) {
           const userProfile = profileResponse.response.data;
-  
-          // Populate formData with the fetched preferences
+
           setFormData((prev) => ({
             ...prev,
             emailData: {
@@ -37,11 +35,10 @@ const PreferenceSettings = () => {
         console.error('Error fetching user profile:', error);
       }
     };
-  
+
     fetchProfile();
-  }, []); // Only runs once on mount
-  
-  // Handle input change for text fields
+  }, []);
+
   const handleInputChange = (event, name) => {
     const { value } = event.target;
 
@@ -56,7 +53,6 @@ const PreferenceSettings = () => {
     }
   };
 
-  // Handle input change for toggle fields (checkboxes)
   const handleInputChangeToggle = (name, checked) => {
     if (!name) {
       console.error('Toggle name is undefined');
@@ -72,7 +68,6 @@ const PreferenceSettings = () => {
     }));
   };
 
-  // Handle the click to save preferences
   const handleClick = async () => {
     if (!formData.emailData.currencyUnit || !formData.emailData.areaUnit) {
       console.error('Form data is incomplete!');
@@ -80,8 +75,7 @@ const PreferenceSettings = () => {
     }
 
     try {
-      const response = await saveUserPreferences(formData);
-      console.log('Preferences saved successfully', response);
+      await saveUserPreferences(formData); // Removed the unused 'response' variable
     } catch (error) {
       console.error('Error saving preferences:', error);
     }
@@ -153,4 +147,3 @@ const PreferenceSettings = () => {
 };
 
 export default PreferenceSettings;
-

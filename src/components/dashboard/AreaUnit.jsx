@@ -4,36 +4,40 @@ import { useSelector } from 'react-redux';
 
 const AreaUnit = ({ measure, handleInputChange }) => {
   const areaUnits = useSelector((state) => state?.globalUnits.AREA_UNITS);
-  const currencyUnits = useSelector((state) => state?.globalUnits.CURRENCY_UNITS);
+  const currencyUnits = useSelector(
+    (state) => state?.globalUnits.CURRENCY_UNITS
+  );
 
-  // Local state for selected values
   const [selectedValues, setSelectedValues] = useState([]);
 
-  // Initialize selected values when measure changes
   useEffect(() => {
-    if (measure) {
+    const persistedValues =
+      JSON.parse(localStorage.getItem('selectedUnits')) || [];
+    if (measure && persistedValues.length === 0) {
       const initialValues = measure.map((item) => {
-        const isCurrency = item.label.toLowerCase().includes("currency");
+        const isCurrency = item.label.toLowerCase().includes('currency');
         return isCurrency ? currencyUnits[0]?.value : areaUnits[0]?.value;
       });
       setSelectedValues(initialValues);
+    } else {
+      setSelectedValues(persistedValues);
     }
   }, [measure, areaUnits, currencyUnits]);
 
-  // Handle dropdown change and update both local and parent state
   const handleSelectChange = (event, index, isCurrency) => {
     const updatedValues = [...selectedValues];
     updatedValues[index] = event.target.value;
     setSelectedValues(updatedValues);
 
-    // Call the parent handler for further actions (API, etc.)
+    localStorage.setItem('selectedUnits', JSON.stringify(updatedValues));
+
     handleInputChange(event, isCurrency ? 'currencyUnit' : 'areaUnit');
   };
 
   return (
     <Box>
       {measure?.map((item, index) => {
-        const isCurrency = item.label.toLowerCase().includes("currency");
+        const isCurrency = item.label.toLowerCase().includes('currency');
         const units = isCurrency ? currencyUnits : areaUnits;
 
         return (
@@ -58,7 +62,7 @@ const AreaUnit = ({ measure, handleInputChange }) => {
             <FormControl fullWidth>
               <Select
                 displayEmpty
-                value={selectedValues[index] || ""}
+                value={selectedValues[index] || ''}
                 onChange={(e) => handleSelectChange(e, index, isCurrency)}
                 variant="outlined"
                 sx={{
