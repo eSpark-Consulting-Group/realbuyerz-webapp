@@ -3,12 +3,12 @@ import { USERS_DATA } from '@/src/constants/user';
 
 export const createInitialState = () => ({
   emailData: {
-    emailNotification: USERS_DATA.emailNotification,
-    autoReport: USERS_DATA.autoReport,
-    newsLetters: USERS_DATA.newsLetters,
-    currencyUnit: USERS_DATA.currencyUnit,
-    areaUnit: USERS_DATA.areaUnit,
+    areaUnit: USERS_DATA.areaUnit || 'sq-ft',
+    currencyUnit: USERS_DATA.currencyUnit || 'pkr',
+    autoReport: USERS_DATA.autoReport ?? false,
+    verificationStatus: USERS_DATA.verificationStatus ?? true,
+    emailNotification: USERS_DATA.emailNotification ?? false,
+    newsLetters: USERS_DATA.newsLetters ?? false,
   },
-
   toggleData: AGENT_PREFERENCES.updates,
 });

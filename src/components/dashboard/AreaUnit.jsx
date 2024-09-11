@@ -1,6 +1,5 @@
-'use client';
-import React from 'react';
-import { Box, Typography, Select, MenuItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Typography, Select, MenuItem, FormControl } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const AreaUnit = ({ measure, handleInputChange }) => {
@@ -8,11 +7,39 @@ const AreaUnit = ({ measure, handleInputChange }) => {
   const currencyUnits = useSelector(
     (state) => state?.globalUnits.CURRENCY_UNITS
   );
-  const units = [currencyUnits, areaUnits];
+
+  const [selectedValues, setSelectedValues] = useState([]);
+
+  useEffect(() => {
+    const persistedValues =
+      JSON.parse(localStorage.getItem('selectedUnits')) || [];
+    if (measure && persistedValues.length === 0) {
+      const initialValues = measure.map((item) => {
+        const isCurrency = item.label.toLowerCase().includes('currency');
+        return isCurrency ? currencyUnits[0]?.value : areaUnits[0]?.value;
+      });
+      setSelectedValues(initialValues);
+    } else {
+      setSelectedValues(persistedValues);
+    }
+  }, [measure, areaUnits, currencyUnits]);
+
+  const handleSelectChange = (event, index, isCurrency) => {
+    const updatedValues = [...selectedValues];
+    updatedValues[index] = event.target.value;
+    setSelectedValues(updatedValues);
+
+    localStorage.setItem('selectedUnits', JSON.stringify(updatedValues));
+
+    handleInputChange(event, isCurrency ? 'currencyUnit' : 'areaUnit');
+  };
 
   return (
     <Box>
       {measure?.map((item, index) => {
+        const isCurrency = item.label.toLowerCase().includes('currency');
+        const units = isCurrency ? currencyUnits : areaUnits;
+
         return (
           <Box
             sx={{
@@ -32,28 +59,30 @@ const AreaUnit = ({ measure, handleInputChange }) => {
             >
               {item?.label}
             </Typography>
-            <Select
-              value={item?.value}
-              onChange={(e) => handleInputChange(e, item?.name)}
-              variant="outlined"
-              defaultValue={units[index][0].value}
-              fullWidth
-              sx={{
-                '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                  color: '#E7E7E7',
-                },
-              }}
-            >
-              {units[index]?.map((option, optionIndex) => (
-                <MenuItem key={optionIndex} value={option.value}>
-                  {option.title}
-                </MenuItem>
-              ))}
-            </Select>
+            <FormControl fullWidth>
+              <Select
+                displayEmpty
+                value={selectedValues[index] || ''}
+                onChange={(e) => handleSelectChange(e, index, isCurrency)}
+                variant="outlined"
+                sx={{
+                  '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                    color: '#E7E7E7',
+                  },
+                }}
+              >
+                {units?.map((option, optionIndex) => (
+                  <MenuItem key={optionIndex} value={option.value}>
+                    {option.title}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Box>
         );
       })}
     </Box>
   );
 };
+
 export default AreaUnit;
