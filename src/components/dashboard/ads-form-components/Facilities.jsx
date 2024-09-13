@@ -1,6 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Typography, Box, Checkbox, Button } from '@mui/material';
+import {
+  Typography,
+  Box,
+  Checkbox,
+  Button,
+  CircularProgress,
+} from '@mui/material';
 
 import { useDispatch } from 'react-redux';
 import {
@@ -50,7 +56,7 @@ const Facilities = ({
     formik?.setFieldValue('amenities', selectedAmenitiesId);
   }, [selectedAmenities]);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: fetchAmenities,
     onSuccess: (data) => {
       const amenities = data.response.data.map((val) => {
@@ -97,57 +103,78 @@ const Facilities = ({
           overflowY: 'auto',
         }}
       >
-        {facilitiesData?.map((item, index) => (
+        {isPending ? (
           <Box
             sx={{
-              mx: 'auto',
-              width: { xs: '98%', sm: '87%', md: '75%', lg: '80%' },
-              '@media (min-width: 1200px) and (max-width: 1439px)': {
-                width: '85%',
-              },
+              width: '100%',
               display: 'flex',
-              flexDirection: 'row',
               alignItems: 'center',
+              justifyContent: 'center',
               px: 3,
-              gap: 0.2,
               mb: { xs: 1.5, md: 2.5 },
             }}
-            key={index}
           >
-            <Checkbox
-              sx={{ color: '#126FAA' }}
-              checked={selectedAmenities?.some(
-                (amenity) => amenity?.text === item?.title
-              )}
-              onChange={(e) => {
-                handleCheckboxChange(
-                  e,
-                  item?.id,
-                  item?.image,
-                  item?.title,
-                  item?.name
-                );
-              }}
-            />
-
-            <Box
-              component={'img'}
-              src={item?.image}
-              sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
-              alt={'amenities'}
-            />
-            <Typography
-              sx={{
-                ml: 1.8,
-                fontSize: { xs: '15px', sm: '17px', lg: '20px' },
-                fontWeight: 400,
-                color: '#333',
-              }}
-            >
-              {item?.title}
-            </Typography>
+            {' '}
+            <CircularProgress color="inherit" />{' '}
           </Box>
-        ))}
+        ) : (
+          facilitiesData?.map((item, index) => (
+            <Box
+              sx={{
+                mx: 'auto',
+                width: { xs: '98%', sm: '87%', md: '75%', lg: '80%' },
+                '@media (min-width: 1200px) and (max-width: 1439px)': {
+                  width: '85%',
+                },
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                px: 3,
+                gap: 0.2,
+                mb: { xs: 1.5, md: 2.5 },
+              }}
+              key={index}
+            >
+              <Checkbox
+                sx={{
+                  color: '#126FAA',
+                  '&.Mui-checked': {
+                    color: '#126FAA',
+                  },
+                }}
+                checked={selectedAmenities?.some(
+                  (amenity) => amenity?.text === item?.title
+                )}
+                onChange={(e) => {
+                  handleCheckboxChange(
+                    e,
+                    item?.id,
+                    item?.image,
+                    item?.title,
+                    item?.name
+                  );
+                }}
+              />
+
+              <Box
+                component={'img'}
+                src={item?.image}
+                sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
+                alt={'amenities'}
+              />
+              <Typography
+                sx={{
+                  ml: 1.8,
+                  fontSize: { xs: '15px', sm: '17px', lg: '20px' },
+                  fontWeight: 400,
+                  color: '#333',
+                }}
+              >
+                {item?.title}
+              </Typography>
+            </Box>
+          ))
+        )}
       </Box>
       <Box
         sx={{

@@ -15,7 +15,7 @@ function HideUnhideButton({ handleClickOpen }) {
         },
         height: '45px',
         color: '#FB631C',
-        borderRadius: '5px',
+        borderRadius: '10px',
         border: '1px solid #FB631C',
         background: '#FFF',
         display: 'flex',

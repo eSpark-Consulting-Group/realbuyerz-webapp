@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Box } from '@mui/system';
 import { Fade, Popover, Typography } from '@mui/material';
@@ -17,6 +17,8 @@ const SearchAndNotificationDesktopButton = ({
 }) => {
   const open = Boolean(profileMenu);
   const id = open ? 'simple-popover' : undefined;
+
+  const [imageError, setImageError] = useState(false);
 
   return (
     <>
@@ -56,11 +58,12 @@ const SearchAndNotificationDesktopButton = ({
         </Box>
         <Box>
           <Image
-            src={userImage || profileIcon}
+            src={imageError ? profileIcon : userImage}
             width={41}
             height={41}
             alt={'icon'}
             style={{ borderRadius: '100%' }}
+            onError={() => setImageError(true)}
           />
         </Box>
       </Box>
@@ -108,11 +111,12 @@ const SearchAndNotificationDesktopButton = ({
                 }}
               >
                 <Image
-                  src={userImage || '/images/profileIcon.png'}
+                  src={imageError ? profileIcon : userImage}
                   style={{ borderRadius: '100%' }}
                   width={43}
                   height={43}
                   alt={'icon'}
+                  onError={() => setImageError(true)}
                 />
                 <Box
                   sx={{

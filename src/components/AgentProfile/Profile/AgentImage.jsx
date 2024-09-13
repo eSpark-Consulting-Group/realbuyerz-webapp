@@ -36,7 +36,7 @@ const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
             fontSize: '12px',
           }}
         >
-          {'error'}
+          {error}
         </Box>
       )}
 

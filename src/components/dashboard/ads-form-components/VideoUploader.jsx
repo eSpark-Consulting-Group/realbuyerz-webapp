@@ -27,7 +27,7 @@ const VideoUploader = ({ onUpload, maxVideos }) => {
       {...getRootProps()}
       sx={{
         width: { xs: '100%', sm: '190px', md: '200px' },
-        height: '50px',
+        height: '45px',
         color: '#FB631C',
         background: 'white',
         borderRadius: '10px',
@@ -41,7 +41,7 @@ const VideoUploader = ({ onUpload, maxVideos }) => {
       <Box component={'input'} {...getInputProps()} />
       <Typography
         sx={{
-          fontSize: { xs: '15px', sm: '17px', md: '20px' },
+          fontSize: '15px',
           textTransform: 'capitalize',
         }}
       >

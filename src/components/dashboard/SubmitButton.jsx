@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, CircularProgress, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 
@@ -19,11 +19,15 @@ const SubmitButton = ({
   setAction,
   propertyData,
   handleOpenSuccessModal,
+  isLoading,
+  isUpdate,
+  action,
 }) => {
   const pathName = usePathname();
   const cover = '/cover-letter';
   const all_posting = '/all-postings';
   const my_properties = '/my-properties';
+  const property_management = '/property-management';
 
   const dispatch = useDispatch();
 
@@ -101,11 +105,11 @@ const SubmitButton = ({
               variant="outlined"
               type="submit"
               sx={{
-                width: { xs: '40%', sm: '200px' },
+                width: { xs: '40%', sm: '150px' },
                 '@media(min-width: 280px) and (max-width:400px)': {
                   width: '100%',
                 },
-                borderRadius: '5px',
+                borderRadius: '10px',
                 border: '1px solid #FB631C',
                 background: '#FFF !important',
                 color: '#FB631C !important',
@@ -121,12 +125,17 @@ const SubmitButton = ({
               }}
               onClick={handleDraftSubmit}
             >
-              {propertyData?.saveDraft?.toLowerCase()}
+              {isLoading
+                ? action == 'draft' && (
+                    <CircularProgress size={24} color="inherit" />
+                  )
+                : propertyData?.saveDraft?.toLowerCase()}
             </Button>
           )}
 
           <Button
             name="draft"
+            disabled={pathName?.includes(property_management) && isLoading}
             value="draft"
             variant="primary"
             type="submit"
@@ -135,7 +144,7 @@ const SubmitButton = ({
               '@media(min-width: 280px) and (max-width:400px)': {
                 width: '100%',
               },
-              borderRadius: '5px',
+              borderRadius: '10px',
               border: '1px solid #FB631C',
               color: '#fff !important',
               background: '#FB631C',
@@ -150,9 +159,17 @@ const SubmitButton = ({
             }}
             onClick={handleSubmitSubmit}
           >
-            {pathName?.includes(cover)
-              ? propertyData?.SubmitProposal
-              : propertyData?.submitAd}
+            {pathName?.includes(property_management)
+              ? isLoading
+                ? action == 'submit' && (
+                    <CircularProgress size={24} color="inherit" />
+                  )
+                : isUpdate
+                  ? 'Update Ad'
+                  : propertyData?.submitAd
+              : pathName?.includes(cover)
+                ? propertyData?.SubmitProposal
+                : propertyData?.submitAd}
           </Button>
         </Box>
       </Grid>
