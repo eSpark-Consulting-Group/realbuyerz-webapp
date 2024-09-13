@@ -28,21 +28,21 @@ const LoginWithGoogle = ({
   const handleSuccessfulLogin = (data) => {
     if (data?.success) {
       const { token } = data?.response?.data || {};
-  
+
       if (token) {
         localStorage.setItem('token', token.token);
         Cookie.set('token', token.token);
         Cookie.set('userType', token.user?.role);
-  
+
         const savedUserInfo = {
           email: token.user?.email,
           userName: token.user?.userName,
           userType: token.user?.role,
         };
-  
+
         dispatch(setLoggedIn(savedUserInfo));
         setProfile();
-  
+
         if (token.user?.role === 'user') {
           router.push('/user/dashboard');
         } else if (token.user?.role === 'agent') {
@@ -55,20 +55,20 @@ const LoginWithGoogle = ({
       toast.error('Login failed. Please try again.');
     }
   };
-  
+
   const handleGoogleLogin = async (response) => {
     try {
       const decodedGoogleToken = jwtDecode(response.credential);
-  
+
       const user = {
         firstName: decodedGoogleToken.given_name || '',
         lastName: decodedGoogleToken.family_name || '',
         email: decodedGoogleToken.email,
         profileImage: decodedGoogleToken.picture || '',
-        role: 'user', 
+        role: 'user',
         socialId: decodedGoogleToken.sub,
       };
-  
+
       const signupResponse = await fetch(
         `${apiUrl}/${ENDPOINTS.loginWithGoogle}`,
         {
@@ -79,9 +79,9 @@ const LoginWithGoogle = ({
           body: JSON.stringify(user),
         }
       );
-  
+
       const signupData = await signupResponse.json();
-  
+
       if (signupData.success) {
         handleSuccessfulLogin(signupData);
       } else {
@@ -93,7 +93,6 @@ const LoginWithGoogle = ({
       toast.error('An error occurred. Please try again.');
     }
   };
-  
 
   const { mutate: setProfile } = useMutation({
     mutationFn: userProfile,
