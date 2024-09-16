@@ -111,13 +111,14 @@ const SearchAndNotificationDesktopButton = ({
                 }}
               >
                 <Image
-                  src={imageError ? profileIcon : userImage}
-                  style={{ borderRadius: '100%' }}
-                  width={43}
-                  height={43}
+                  src={imageError ? profileIcon : userImage} 
+                  width={41}
+                  height={41}
                   alt={'icon'}
+                  style={{ borderRadius: '100%' }}
                   onError={() => setImageError(true)}
                 />
+
                 <Box
                   sx={{
                     width: 'auto',
