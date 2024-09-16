@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux'; 
+import { useSelector } from 'react-redux';
 import { Box, Grid } from '@mui/material';
 import ButtonBaseDemo from './EditImage';
 import EditProfileModal from '@/src/components/dashboard/modals/EditProfileModal';
@@ -12,7 +12,8 @@ const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
 
   const userProfile = useSelector((state) => state.auth.userProfile);
 
-  const imageUrl = userProfile?.profileImage || data?.image || PROFILE_INFO.image;
+  const imageUrl =
+    userProfile?.profileImage || data?.image || PROFILE_INFO.image;
 
   return (
     <Grid
@@ -27,11 +28,7 @@ const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
         alignItems: 'center',
       }}
     >
-      <ButtonBaseDemo
-        url={imageUrl}  
-        handleOpen={handleOpen}
-        data={data}
-      />
+      <ButtonBaseDemo url={imageUrl} handleOpen={handleOpen} data={data} />
       {file === null && error && (
         <Box
           sx={{
@@ -58,7 +55,7 @@ const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
         <EditProfileModal
           open={open}
           setOpen={setOpen}
-          currentUserImage={imageUrl} 
+          currentUserImage={imageUrl}
           currData={data}
           setFieldValue={setFieldValue}
           photoURL={photoURL}

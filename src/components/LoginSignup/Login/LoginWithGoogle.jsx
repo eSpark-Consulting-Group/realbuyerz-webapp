@@ -38,7 +38,7 @@ const LoginWithGoogle = ({
           email: token.user?.email,
           userName: token.user?.userName,
           userType: token.user?.role,
-          profileImage: token.user?.profileImage, 
+          profileImage: token.user?.profileImage,
         };
 
         dispatch(setLoggedIn(savedUserInfo));

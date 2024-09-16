@@ -19,7 +19,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge, IconButton, Tooltip, Typography } from '@mui/material';
-import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
+import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import NotificationPopover from './NotificationPopover';
 import SearchPopover from './searchPopover';

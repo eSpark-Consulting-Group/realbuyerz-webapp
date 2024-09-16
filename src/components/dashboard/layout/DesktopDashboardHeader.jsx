@@ -24,7 +24,7 @@ import {
   SIGN_OUT,
   CUSTOM_COLOR,
 } from '@/src/constants/Dashboard_Header';
-import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
+import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 const DesktopDashboardHeader = ({

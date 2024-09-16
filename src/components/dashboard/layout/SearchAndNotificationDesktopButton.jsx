@@ -111,7 +111,7 @@ const SearchAndNotificationDesktopButton = ({
                 }}
               >
                 <Image
-                  src={imageError ? profileIcon : userImage} 
+                  src={imageError ? profileIcon : userImage}
                   width={41}
                   height={41}
                   alt={'icon'}
