@@ -43,18 +43,16 @@ const LoginWithGoogle = ({
         dispatch(setLoggedIn(savedUserInfo));
         setProfile();
 
-        toast.success('Signup successful!', {
-          onClose: () => {
-            if (token.user?.role === 'user') {
-              router.push('/user/dashboard');
-            } else if (token.user?.role === 'agent') {
-              router.push('/agent/live-bidding');
-            }
-          },
-        });
+        if (token.user?.role === 'user') {
+          router.push('/user/dashboard');
+        } else if (token.user?.role === 'agent') {
+          router.push('/agent/live-bidding');
+        }
+      } else {
+        toast.error('Token not found. Please try again.');
       }
     } else {
-      toast.error('Signup failed. Please try again.');
+      toast.error('Login failed. Please try again.');
     }
   };
 
