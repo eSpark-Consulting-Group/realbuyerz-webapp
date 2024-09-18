@@ -38,9 +38,13 @@ const LoginWithGoogle = ({
           email: token.user?.email,
           userName: token.user?.userName,
           userType: token.user?.role,
+          profileImage: token.user?.profileImage,
         };
 
         dispatch(setLoggedIn(savedUserInfo));
+
+        localStorage.setItem('profileImage', token.user?.profileImage);
+
         setProfile();
 
         if (token.user?.role === 'user') {
@@ -156,7 +160,6 @@ const LoginWithGoogle = ({
           onSuccess={handleGoogleLogin}
           onError={(error) => {
             console.error('Google Login Failure:', error);
-            // Display user-friendly error message
           }}
           render={({ onClick, disabled }) => (
             <Button

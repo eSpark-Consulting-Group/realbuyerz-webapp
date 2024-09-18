@@ -19,7 +19,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge, IconButton, Tooltip, Typography } from '@mui/material';
-import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton ';
+import SearchAndNotificationDesktopButton from './SearchAndNotificationDesktopButton';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import NotificationPopover from './NotificationPopover';
 import SearchPopover from './searchPopover';
@@ -38,6 +38,8 @@ export default function ResponsiveNavbar({ openSidebar }) {
   const postRequestAds = useSelector(
     (state) => state?.postRequestAds?.userPostings
   );
+  const userProfile = useSelector((state) => state.auth.userProfile);
+
   const postListingAds = useSelector(
     (state) => state?.postListingAds?.agentPostings
   );
@@ -260,7 +262,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     handleOpenProfileMenu={handleOpenProfileMenu}
                     profileMenu={profileMenu}
                     userName={user?.userName || 'User Name'}
-                    userImage={current_user?.image || 'User Image'}
+                    userImage={userProfile?.profileImage || current_user?.image}
                     userEmail={user?.email || ProfileIcon}
                     profileIcon={ProfileIcon}
                     handleLogout={handleLogout}
