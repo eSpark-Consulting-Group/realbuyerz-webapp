@@ -56,7 +56,7 @@ export default function ProfileForm({ data, formValues }) {
     isVerified: isVerified,
     profileVisibility: formValues.profileVisibility,
     profileImage: `${formValues?.profileImage || ''}`,
-    // bio: `${formValues?.bio || ''}`,
+    bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
     // phoneNumber: `${formValues?.phoneNumber || ''}`,
     // updated_at: '',
