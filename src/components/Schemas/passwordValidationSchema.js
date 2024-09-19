@@ -1,10 +1,13 @@
 import * as Yup from 'yup';
+
 export const passwordValidationSchema = Yup.object({
-  oldPassword: Yup.string().min(6).max(8).required('Enter Old Password'),
-  newPassword: Yup.string().min(6).max(8).required('Enter New Password'),
+  oldPassword: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Enter Old Password'),
+  newPassword: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Enter New Password'),
   confirmPassword: Yup.string()
-    .min(6)
-    .max(8)
-    .required('Enter New Password')
-    .oneOf([Yup.ref('newPassword'), null], 'Password must match'),
+    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
+    .required('Enter New Password'),
 });

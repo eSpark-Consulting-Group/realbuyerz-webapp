@@ -37,7 +37,10 @@ export default function ProfilePasswordForm({ data }) {
       initialValues: Password_Keys,
       validationSchema: passwordValidationSchema,
       onSubmit: (values) => {
-        mutate({ password: values.newPassword });
+        mutate({
+          password: values.newPassword,
+          oldPassword: values.oldPassword,
+        });
       },
     });
 
