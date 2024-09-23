@@ -87,7 +87,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
       toast.error(errorMessage);
     },
   });
-// const loginClick = () => {
+  // const loginClick = () => {
   //   mutate({ email: formData.email, password: formData.password });
   //   dispatch(saveLoginData(formData));
   //   dispatch(setOpenModal(false));
