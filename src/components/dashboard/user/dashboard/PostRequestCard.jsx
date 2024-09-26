@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 
-import NotFoundSection from '@/src/components/global/NotFoundSection';
+// import NotFoundSection from '@/src/components/global/NotFoundSection';
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 
 import {
@@ -25,7 +25,7 @@ import { fetchUserProperties } from '@/src/utils/userProperties';
 
 const PostRequestCard = ({ height }) => {
   const all_proposals = useSelector((state) => state?.proposals);
-  const searchValue = useSelector((state) => state?.search?.searchValue);
+  // const searchValue = useSelector((state) => state?.search?.searchValue);
   const [allPostingData, setAllPostingData] = useState([]);
   const [showAllItems, setShowAllItems] = useState(false);
   // const searching_ad = filteredAds(searchValue, ads, all_proposals);
@@ -44,8 +44,18 @@ const PostRequestCard = ({ height }) => {
   const { mutate } = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items;
-      setAllPostingData(items);
+      const items = data.response.data;
+      let dataArr = [];
+      Object.keys(items).forEach((val) => {
+        if (items[val].length > 0) {
+          dataArr = [...dataArr, ...items[val]];
+        }
+      });
+      const fileredArr = dataArr.filter(
+        (user, index, self) =>
+          index === self.findIndex((u) => u.id === user.id && !user.isDeleted)
+      );
+      setAllPostingData(fileredArr);
     },
     onError: (error) => {
       // Handle the error
@@ -53,21 +63,21 @@ const PostRequestCard = ({ height }) => {
     },
   });
 
+  const sortHandler = (properties) => {
+    const sorted = [...properties].sort(
+      (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+    );
+    return sorted;
+  };
+
   return (
     <>
       {allPostingData?.length <= 0 ? (
-        <NotFoundSection
-          heading={'Sorry!'}
-          message={
-            searchValue
-              ? `${searchValue} is not found`
-              : 'Property id invalid, Please add correct id.'
-          }
-        />
+        <Typography textAlign={'center'}>No Data Found</Typography>
       ) : (
         <Box className="scrollable" sx={{ maxHeight: height }}>
           <>
-            {allPostingData
+            {sortHandler(allPostingData)
               ?.slice(0, showAllItems ? allPostingData?.length : 3)
               ?.map((item, index) => (
                 <Grid item container xs={12} key={index}>

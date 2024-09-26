@@ -138,7 +138,7 @@ const SubmitButton = ({
             disabled={pathName?.includes(property_management) && isLoading}
             value="draft"
             variant="primary"
-            type="submit"
+            // type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
               '@media(min-width: 280px) and (max-width:400px)': {

@@ -64,15 +64,17 @@ const PostRequest = () => {
   const handleSubmit = (values) => {
     if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
-      handleOpenSuccessModal();
+      formData.append('propertyStatus', false);
+      mutate(formData);
     } else if (Action === 'submit') {
       if (property_Id) {
-        updateUserPropertyApi.mutate({ formData, property_Id });
+        const object = {};
+        formData.forEach((value, key) => (object[key] = value));
+        updateUserPropertyApi.mutate({ object, property_Id });
       } else {
         mutate(formData);
       }
       dispatch(handleSumitUserAds(values));
-      handleOpenSuccessModal();
     }
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
@@ -111,7 +113,7 @@ const PostRequest = () => {
       values.user_id = currentUser?.id;
       values.status = Action;
       handleSubmit(values);
-      mutate(formData);
+      // mutate(formData);
       action.resetForm();
     },
     validateOnChange: false,
@@ -122,6 +124,7 @@ const PostRequest = () => {
     mutationFn: addPostRequest,
     onSuccess: (data) => {
       console.log(data, 'data');
+      handleOpenSuccessModal();
     },
   });
 
@@ -129,12 +132,26 @@ const PostRequest = () => {
   const getSingleUserProperty = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items[0];
-      formik.setFieldValue('title', items.propertyName);
-      formik.setFieldValue('description', items.propertyDescription);
-      formik.setFieldValue('amount', items.propertyPrice);
-      formik.setFieldValue('area', items.propertyArea);
-      formik.setFieldValue('city', items.propertyCity);
+      const items = data.response.data;
+      let singleArr = [];
+      Object.keys(items).forEach((val) => {
+        if (items[val].length > 0) {
+          singleArr = items[val][0];
+        }
+      });
+      const amenitiesArr = singleArr.amenities?.map((val) => {
+        return {
+          ...val,
+          name: val.amenetiesName,
+          text: val.amenetiesName,
+        };
+      });
+      formik.setFieldValue('title', singleArr.propertyName);
+      formik.setFieldValue('description', singleArr.propertyDescription);
+      formik.setFieldValue('amount', singleArr.propertyPrice);
+      formik.setFieldValue('area', singleArr.propertyArea);
+      formik.setFieldValue('city', singleArr.propertyCity);
+      formik.setFieldValue('amenities', amenitiesArr);
     },
     onError: (error) => {
       // Handle the error
