@@ -12,7 +12,7 @@ import {
   SIGN_OUT,
   CUSTOM_COLOR,
   GotoPageIcon,
-  ProfileIcon,
+  // ProfileIcon,
   SearchIcon,
 } from '@/src/constants/Dashboard_Header';
 
@@ -253,7 +253,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={current_user?.profile_image || ProfileIcon}
+                  src={current_user?.profile_image || ''}
                   alt={'icon'}
                 />
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -263,8 +263,8 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     profileMenu={profileMenu}
                     userName={user?.userName || 'User Name'}
                     userImage={userProfile?.profileImage || current_user?.image}
-                    userEmail={user?.email || ProfileIcon}
-                    profileIcon={ProfileIcon}
+                    userEmail={user?.email || ''}
+                    profileIcon={''}
                     handleLogout={handleLogout}
                     signOut={SIGN_OUT}
                   />
