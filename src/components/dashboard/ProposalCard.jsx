@@ -498,7 +498,7 @@ const ProposalCard = ({
             >
               {isLoading ? (
                 <CircularProgress size={24} color="inherit" />
-              ) : data.isDeleted ? (
+              ) : data?.isDeleted ? (
                 'Trashed'
               ) : (
                 'Trash'

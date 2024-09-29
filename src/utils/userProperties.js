@@ -56,12 +56,12 @@ export const updateUserProperty = async (userPropertyData) => {
   const endpoint = ENDPOINTS.updateUserProperty;
   const property_Id = userPropertyData.property_Id;
   const method = 'put';
-  const contentType = 'multipart/form-data';
+  const contentType = 'application/json';
   try {
     const response = await APIService(
       `${endpoint}/${property_Id}`,
       method,
-      userPropertyData.formData,
+      userPropertyData.object,
       contentType
     );
     return response;

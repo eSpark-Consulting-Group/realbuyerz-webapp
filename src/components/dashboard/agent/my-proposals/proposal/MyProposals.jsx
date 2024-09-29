@@ -2,10 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Box, CircularProgress, Divider, Tab, Tabs } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Divider,
+  Tab,
+  Tabs,
+  Typography,
+} from '@mui/material';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
+// import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import {
   a11yProps,
@@ -40,43 +47,13 @@ const MyProposals = () => {
     pageSize: 50,
     proposals: true,
   };
-
-  const tabs = [
-    {
-      label: 'Saved Request',
-      prop: a11yProps(0),
-      items: myPropertiesData?.length || 0,
+  const { mutate, isPending, data } = useMutation({
+    mutationFn: fetchMyProperties,
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
     },
-    {
-      label: 'Active',
-      prop: a11yProps(1),
-      items: 0,
-    },
-    {
-      label: 'Archive',
-      prop: a11yProps(2),
-      items: 0,
-    },
-    {
-      label: 'Rejected',
-      prop: a11yProps(3),
-      items: 0,
-    },
-    {
-      label: 'Trash',
-      prop: a11yProps(3),
-      items: 0,
-    },
-  ];
-
-  useEffect(() => {
-    if (currentTab == 'Saved Request') {
-      savedProposals.mutate();
-    } else {
-      mutate(params);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   const savedProposals = useMutation({
     mutationFn: myProposalSaved,
@@ -89,6 +66,48 @@ const MyProposals = () => {
     },
   });
 
+  const items = data?.response?.data;
+  const tabs = [
+    {
+      label: 'Saved Request',
+      prop: a11yProps(0),
+      items: savedProposals.data?.response?.data.length || 0,
+    },
+    {
+      label: 'Active',
+      prop: a11yProps(1),
+      items: items?.activeProposals?.length || 0,
+    },
+    {
+      label: 'Archive',
+      prop: a11yProps(2),
+      items: items?.archivedProposals?.length || 0,
+    },
+    {
+      label: 'Accept',
+      prop: a11yProps(3),
+      items: items?.acceptedProposals?.length || 0,
+    },
+    {
+      label: 'Rejected',
+      prop: a11yProps(4),
+      items: items?.rejectedProposals?.length || 0,
+    },
+    {
+      label: 'Trash',
+      prop: a11yProps(5),
+      items: items?.trashProperties?.length || 0,
+    },
+  ];
+
+  useEffect(() => {
+    if (currentTab == 'Saved Request') {
+      savedProposals.mutate();
+    }
+    mutate(params);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
     if (tab.length > 1) {
@@ -98,21 +117,25 @@ const MyProposals = () => {
     }
     setCurrentTab(tab);
     setValue(newValue);
+    if (tab == 'Saved Request') {
+      setMyPropertiesData(savedProposals.data?.response?.data);
+    }
+    if (tab == 'Active') {
+      setMyPropertiesData(items?.activeProposals);
+    }
+    if (tab == 'Archive') {
+      setMyPropertiesData(items?.archivedProposals);
+    }
+    if (tab == 'Accept') {
+      setMyPropertiesData(items?.acceptedProposals);
+    }
+    if (tab == 'Rejected') {
+      setMyPropertiesData(items?.rejectedProposals);
+    }
+    if (tab == 'Trash') {
+      setMyPropertiesData(items?.trashProperties);
+    }
   };
-
-  const { mutate, isPending } = useMutation({
-    mutationFn: fetchMyProperties,
-    onSuccess: (data) => {
-      const items = data.response.data.items;
-
-      setMyPropertiesData(items);
-    },
-    onError: (error) => {
-      // Handle the error
-      console.error(error);
-    },
-  });
-
   return (
     <>
       <Box
@@ -212,11 +235,7 @@ const MyProposals = () => {
                   <CircularProgress size={32} color="inherit" />
                 </Box>
               ) : (
-                <NotFoundSection
-                  heading={'Sorry!'}
-                  message={`No ${currentTab || ''} Data`}
-                  link={'/agent/live-bidding'}
-                />
+                <Typography>No Data Found</Typography>
               )
             ) : (
               myPropertiesData?.map((item, index) => (
@@ -224,7 +243,7 @@ const MyProposals = () => {
                   refetchProperties={() => mutate(params)}
                   refetchSavedProposal={() => savedProposals.mutate()}
                   key={index}
-                  data={item.property}
+                  data={item.property || items}
                   currentTab={currentTab}
                   link={
                     currentTab === 'Active'

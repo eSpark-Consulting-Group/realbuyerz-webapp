@@ -5,6 +5,7 @@ import {
   Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   Popper,
@@ -15,7 +16,7 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import NotFoundSection from '@/src/components/global/NotFoundSection';
+// import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
@@ -30,11 +31,20 @@ import {
   deleteUserProperty,
   fetchUserProperties,
 } from '@/src/utils/userProperties';
+import { fetchPropertyTypes } from '@/src/utils/properties';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
   const [allPostingData, setAllPostingData] = useState([]);
+  const [subTypeData, setSubTypeData] = useState([]);
+  // const [trashedData, setTrashedData] = useState([]);
+  const [filterObject, setfilterObject] = useState({
+    purpose: '',
+    propertyCity: '',
+    location: '',
+    subType: '',
+  });
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
   const { userPostings, draft, trash, active } = useSelector(
     (state) => state?.postRequestAds
@@ -47,14 +57,27 @@ const AllPostings = () => {
   const find_trash = findData(user_id, trash);
 
   useEffect(() => {
-    mutate();
-  }, []);
+    const filters = {};
+    Object.keys(filterObject).forEach((val) => {
+      if (filterObject[val]) {
+        filters[val] = filterObject[val];
+      }
+    });
+    mutate(filters);
+  }, [filterObject]);
 
-  const { mutate } = useMutation({
+  const sortHandler = (properties) => {
+    const sorted = [...properties].sort(
+      (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+    );
+    return sorted;
+  };
+
+  const { mutate, isPending, data } = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items;
-      setAllPostingData(items);
+      const items = data.response.data;
+      setAllPostingData([...(items?.active || []), ...(items?.draft || [])]);
     },
     onError: (error) => {
       // Handle the error
@@ -62,34 +85,52 @@ const AllPostings = () => {
     },
   });
 
+  useEffect(() => {
+    propertyTypesData.mutate();
+  }, []);
+
+  const propertyTypesData = useMutation({
+    mutationFn: fetchPropertyTypes,
+    onSuccess: (data) => {
+      let subTypesArr = [];
+      data.response.data.forEach((val) => {
+        subTypesArr = [...subTypesArr, ...val.subTypes];
+      });
+      const subTypes = subTypesArr.map((val) => {
+        return { label: val.subTypeName, value: val.subTypeName };
+      });
+      setSubTypeData(subTypes);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+  const items = data?.response?.data;
   const tabs = [
     {
       label: 'All',
       prop: a11yProps(0),
-      items: find_posting?.length || 0,
+      items: items
+        ? [...(items?.active || []), ...(items?.draft || [])].length
+        : 0,
     },
     {
       label: 'Active',
       prop: a11yProps(1),
-      items: find_active?.length || 0,
+      items: items?.active.length || 0,
     },
     {
       label: 'Draft',
       prop: a11yProps(2),
-      items: find_draft?.length || 0,
+      items: items?.draft.length || 0,
     },
     {
       label: 'Trash',
       prop: a11yProps(3),
-      items: find_trash?.length || 0,
+      items: items?.trash.length || 0,
     },
   ];
-  const [filterObject, setfilterObject] = useState({
-    purpose: '',
-    city: '',
-    location: '',
-    property_Type: '',
-  });
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -100,6 +141,18 @@ const AllPostings = () => {
     }
     setCurrentTab(tab);
     setValue(newValue);
+    if (tab == 'All') {
+      setAllPostingData([...(items?.active || []), ...(items?.draft || [])]);
+    }
+    if (tab == 'Active') {
+      setAllPostingData(items?.active);
+    }
+    if (tab == 'Trash') {
+      setAllPostingData(items?.trash);
+    }
+    if (tab == 'Draft') {
+      setAllPostingData(items?.draft);
+    }
   };
   const handleChangeSelect = (key, val) => {
     setfilterObject({
@@ -112,9 +165,9 @@ const AllPostings = () => {
     setfilterObject({
       ...filterObject,
       purpose: '',
-      city: '',
+      propertyCity: '',
       location: '',
-      property_Type: '',
+      subType: '',
     });
   };
 
@@ -213,7 +266,10 @@ const AllPostings = () => {
                     onChange={(e) =>
                       handleChangeSelect(field?.key, e?.target?.innerText)
                     }
-                    options={field?.options?.map((opt) => opt)}
+                    options={(field?.key == 'subType'
+                      ? subTypeData
+                      : field?.options
+                    )?.map((opt) => opt)}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -362,22 +418,23 @@ const AllPostings = () => {
               gap: { xs: 1.5, sm: 2.5, md: 3.5 },
             }}
           >
-            {allPostingData?.length < 1 ? (
-              <NotFoundSection
-                heading={`No ${currentTab || ''} Data`}
-                message={''}
-              />
+            {!isPending ? (
+              allPostingData?.length < 1 ? (
+                <Typography>No Data Found</Typography>
+              ) : (
+                sortHandler(allPostingData)?.map((item, index) => (
+                  <ProposalCard
+                    deleteAPIHandler={deleteUserProperty}
+                    refetchProperties={mutate}
+                    key={index}
+                    data={item}
+                    currentTab={currentTab}
+                    updatePath={'/user/update-request'}
+                  />
+                ))
+              )
             ) : (
-              allPostingData?.map((item, index) => (
-                <ProposalCard
-                  deleteAPIHandler={deleteUserProperty}
-                  refetchProperties={mutate}
-                  key={index}
-                  data={item}
-                  currentTab={currentTab}
-                  updatePath={'/user/update-request'}
-                />
-              ))
+              <CircularProgress size={28} color="inherit" />
             )}
           </Box>
         </Box>

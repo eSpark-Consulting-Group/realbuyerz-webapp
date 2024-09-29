@@ -13,6 +13,7 @@ const UserProfileDetails = ({
   amountCurrency,
   userPropertyId,
   agent_profile,
+  userStatus,
 }) => {
   return (
     <Grid container>
@@ -113,6 +114,22 @@ const UserProfileDetails = ({
             {Description || ''}
           </Typography>
         </Box>
+        <Typography
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '200px',
+            height: '42px',
+            borderRadius: '50px',
+            color: 'gray',
+            '@media (max-width: 400px)': {
+              mb: '15px',
+            },
+          }}
+        >
+          {userStatus.toUpperCase()}
+        </Typography>
         <Grid
           item
           sm={8}
