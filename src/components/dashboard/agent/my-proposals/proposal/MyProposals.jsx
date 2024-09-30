@@ -243,7 +243,7 @@ const MyProposals = () => {
                   refetchProperties={() => mutate(params)}
                   refetchSavedProposal={() => savedProposals.mutate()}
                   key={index}
-                  data={item.property || items}
+                  data={item.property || item}
                   currentTab={currentTab}
                   link={
                     currentTab === 'Active'

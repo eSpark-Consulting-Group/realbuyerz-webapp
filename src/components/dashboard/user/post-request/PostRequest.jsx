@@ -46,6 +46,8 @@ const PostRequest = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [previousData, setPreviousData] = useState({});
+
   const [Action, setAction] = useState('');
 
   const dispatch = useDispatch();
@@ -152,6 +154,8 @@ const PostRequest = () => {
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
       formik.setFieldValue('amenities', amenitiesArr);
+
+      setPreviousData(formik.values);
     },
     onError: (error) => {
       // Handle the error
@@ -172,6 +176,9 @@ const PostRequest = () => {
   formData.append('amenities', formik?.values.amenities);
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
+
+  const isSubmitBtnDisable =
+    JSON.stringify(formik.values) == JSON.stringify(previousData);
 
   return (
     <Grid container>
@@ -208,6 +215,7 @@ const PostRequest = () => {
               formik={formik}
               setAction={setAction}
               propertyData={POST_REQUEST}
+              isSubmitBtnDisable={isSubmitBtnDisable}
               handleClickOpen={handleClickOpen}
               handleOpenSuccessModal={handleOpenSuccessModal}
             />

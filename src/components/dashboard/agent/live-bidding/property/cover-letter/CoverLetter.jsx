@@ -43,6 +43,7 @@ const CoverLetter = () => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
+  const [previousData, setPreviousData] = useState({});
 
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
@@ -110,14 +111,22 @@ const CoverLetter = () => {
   const getSingleProperty = useMutation({
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items[0];
-      setPropertyTypeDetails(items.propertyType);
+      const items = data.response.data;
+      let singleArr = [];
+      Object.keys(items).forEach((val) => {
+        if (items[val].length > 0) {
+          singleArr = items[val][0];
+        }
+      });
+      setPropertyTypeDetails(singleArr.propertyType);
 
-      formik.setFieldValue('title', items.propertyName);
-      formik.setFieldValue('description', items.propertyDescription);
-      formik.setFieldValue('amount', items.propertyPrice);
-      formik.setFieldValue('area', items.propertyArea);
-      formik.setFieldValue('city', items.propertyCity);
+      formik.setFieldValue('title', singleArr.propertyName);
+      formik.setFieldValue('description', singleArr.propertyDescription);
+      formik.setFieldValue('amount', singleArr.propertyPrice);
+      formik.setFieldValue('area', singleArr.propertyArea);
+      formik.setFieldValue('city', singleArr.propertyCity);
+
+      setPreviousData(formik.values);
     },
     onError: (error) => {
       // Handle the error
@@ -141,6 +150,9 @@ const CoverLetter = () => {
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+
+  const isSubmitBtnDisable =
+    JSON.stringify(formik.values) == JSON.stringify(previousData);
 
   return (
     <>
@@ -183,6 +195,7 @@ const CoverLetter = () => {
                 formik={formik}
                 propertyData={COVER_LETTER}
                 handleClickOpen={handleClickOpen}
+                isSubmitBtnDisable={isSubmitBtnDisable}
               />
               <PreviewModal
                 open={open}

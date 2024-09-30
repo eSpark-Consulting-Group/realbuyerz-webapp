@@ -22,6 +22,7 @@ const SubmitButton = ({
   isLoading,
   isUpdate,
   action,
+  isSubmitBtnDisable,
 }) => {
   const pathName = usePathname();
   const cover = '/cover-letter';
@@ -103,7 +104,7 @@ const SubmitButton = ({
               name="submit"
               value="submit"
               variant="outlined"
-              type="submit"
+              // type="submit"
               sx={{
                 width: { xs: '40%', sm: '150px' },
                 '@media(min-width: 280px) and (max-width:400px)': {
@@ -135,7 +136,10 @@ const SubmitButton = ({
 
           <Button
             name="draft"
-            disabled={pathName?.includes(property_management) && isLoading}
+            disabled={
+              (pathName?.includes(property_management) && isLoading) ||
+              isSubmitBtnDisable
+            }
             value="draft"
             variant="primary"
             // type="submit"

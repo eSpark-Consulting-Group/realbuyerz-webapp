@@ -50,6 +50,7 @@ const PostListing = () => {
   const [action, setAction] = useState('');
   const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [previousData, setPreviousData] = useState({});
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const getAmenities = useSelector(
@@ -146,16 +147,29 @@ const PostListing = () => {
   const getSingleProperty = useMutation({
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
-      const items = data.response.data.items[0];
-      const amenitiesArr = items.amenities.map((val) => val.id);
-      setPropertyTypeDetails(items.propertyType);
+      const items = data.response.data;
+      let singleArr = [];
+      Object.keys(items).forEach((val) => {
+        if (items[val].length > 0) {
+          singleArr = items[val][0];
+        }
+      });
+      const amenitiesArr = singleArr.amenities?.map((val) => {
+        return {
+          ...val,
+          name: val.amenetiesName,
+          text: val.amenetiesName,
+        };
+      });
+      setPropertyTypeDetails(singleArr.propertyType);
 
-      formik.setFieldValue('title', items.propertyName);
-      formik.setFieldValue('description', items.propertyDescription);
-      formik.setFieldValue('amount', items.propertyPrice);
-      formik.setFieldValue('area', items.propertyArea);
-      formik.setFieldValue('city', items.propertyCity);
+      formik.setFieldValue('title', singleArr.propertyName);
+      formik.setFieldValue('description', singleArr.propertyDescription);
+      formik.setFieldValue('amount', singleArr.propertyPrice);
+      formik.setFieldValue('area', singleArr.propertyArea);
+      formik.setFieldValue('city', singleArr.propertyCity);
       formik.setFieldValue('amenities', amenitiesArr);
+      setPreviousData(formik.values);
     },
     onError: (error) => {
       // Handle the error
@@ -178,7 +192,11 @@ const PostListing = () => {
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+
   const isLoading = updatePostListingApi.isPending || isPending;
+  const isSubmitBtnDisable =
+    JSON.stringify(formik.values) == JSON.stringify(previousData);
+
   return (
     <>
       <ToastContainer />
@@ -220,6 +238,7 @@ const PostListing = () => {
                 handleClickOpen={handleClickOpen}
                 isLoading={isLoading}
                 isUpdate={property_Id}
+                isSubmitBtnDisable={isSubmitBtnDisable}
               />
               <PreviewModal
                 open={open}
