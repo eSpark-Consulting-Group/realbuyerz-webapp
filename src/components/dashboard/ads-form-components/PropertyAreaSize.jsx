@@ -106,6 +106,7 @@ const PropertyAreaSize = ({
               >
                 <TextField
                   placeholder={item?.placeholder}
+                  helperText={`In ${item.text == "Amount " ? "PKR" : "sq.ft"}`}
                   type="string"
                   sx={{
                     width: { xs: '100%', sm: `calc(100% - ${160}px)` },
@@ -146,7 +147,8 @@ const PropertyAreaSize = ({
                 />
                 <Autocomplete
                   name={item?.unit}
-                  value={formik?.values[item?.unit]}
+                  disabled
+                  value={item.text == "Amount " ? "PKR" : "sq.ft"}
                   disablePortal
                   id="combo-box-demo"
                   options={item?.label === 'area' ? aeraSizes : currency}
