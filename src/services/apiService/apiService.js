@@ -11,6 +11,20 @@ const APIService = async (
 ) => {
   const jwtToken = localStorage.getItem('token');
 
+  const axiosInstance = axios.create();
+
+  axiosInstance.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error.response.status === 401) {
+        window.location.href = '/signin'; // Redirect to login page
+      }
+      return Promise.reject(error);
+    }
+  );
+
   let url = `${apiUrl}/${endpoint}`;
 
   const urlParam = new URL(url);
@@ -36,15 +50,15 @@ const APIService = async (
   let response;
 
   if (method?.toLowerCase() === 'get') {
-    response = await axios.get(url, { headers });
+    response = await axiosInstance.get(url, { headers });
   } else if (method?.toLowerCase() === 'post') {
-    response = await axios.post(url, payload, { headers });
+    response = await axiosInstance.post(url, payload, { headers });
   } else if (method?.toLowerCase() === 'put') {
-    response = await axios.put(url, payload, { headers });
+    response = await axiosInstance.put(url, payload, { headers });
   } else if (method?.toLowerCase() === 'patch') {
-    response = await axios.patch(url, { headers });
+    response = await axiosInstance.patch(url, { headers });
   } else if (method?.toLowerCase() === 'delete') {
-    response = await axios.delete(url, { headers });
+    response = await axiosInstance.delete(url, { headers });
   } else {
     throw new Error('Invalid HTTP method');
   }
