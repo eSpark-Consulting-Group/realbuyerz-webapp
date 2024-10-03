@@ -10,11 +10,11 @@ export const postRequestValidation = yup.object({
   propertyType: yup.string(''),
   city: yup.string('Enter city').required('City is required'),
   area: yup.string('Enter area').required('Area is required'),
-  areaUnit: yup.string('Enter area unit').required('Area unit is required'),
+  // areaUnit: yup.string('Enter area unit').required('Area unit is required'),
   amount: yup.string('Enter amount').required('Amount is required'),
-  amountCurrency: yup
-    .string('Enter amount currency')
-    .required('Amount currency is required'),
+  // amountCurrency: yup
+  //   .string('Enter amount currency')
+  //   .required('Amount currency is required'),
   installmentAvailable: yup.boolean(),
   readyPossession: yup.boolean(),
   featuresAndAmenities: yup.mixed(),
