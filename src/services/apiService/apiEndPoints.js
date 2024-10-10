@@ -21,6 +21,7 @@ export const ENDPOINTS = {
   biddingViewAgentProposal: 'bidding/viewAgentProposal/',
   biddingAcceptProposal: 'bidding/acceptProposal/',
   biddingRejectProposal: 'bidding/rejectProposal/',
+  biddingArchivedProposal: 'bidding/archiveProposal/',
   addCoverLetter: '',
   addProfile: '',
   agentChats: '',

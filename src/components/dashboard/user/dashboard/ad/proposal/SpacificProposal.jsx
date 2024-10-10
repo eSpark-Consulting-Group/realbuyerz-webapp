@@ -24,6 +24,7 @@ import { transformApiObject } from '@/src/utils/objectsConversion';
 import { acceptProposal } from '@/src/utils/apis/bidding/acceptProposal';
 import useViewportHeight from '@/src/utils/useViewportHeight';
 import { rejectProposal } from '@/src/utils/apis/bidding/rejectProposal';
+import { archivedProposal } from '@/src/utils/apis/bidding/archiveProposal';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -47,6 +48,10 @@ const SpacificProposal = () => {
 
   const handleReject = () => {
     rejectRequestHandler.mutate(agentProposal.id);
+  };
+
+  const handleArchived = () => {
+    archivedRequestHandler.mutate(agentProposal.id);
   };
 
   useEffect(() => {
@@ -87,6 +92,17 @@ const SpacificProposal = () => {
 
   const rejectRequestHandler = useMutation({
     mutationFn: rejectProposal,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      // Handle the error
+      console.error(error);
+    },
+  });
+
+  const archivedRequestHandler = useMutation({
+    mutationFn: archivedProposal,
     onSuccess: (data) => {
       console.log(data);
     },
@@ -205,6 +221,41 @@ const SpacificProposal = () => {
                     },
                   }}
                 >
+                  <Button>
+                    <Typography
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 1,
+                        width: { xs: '200px', lg: '200px' },
+                        height: '43.545px',
+                        backgroundColor: '#fff',
+                        border: '1px solid #FB631C',
+                        borderRadius: '50px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        color: '#FB631C',
+                        '&:hover': {
+                          backgroundColor: '#FB631C',
+                          color: 'white',
+                        },
+                      }}
+                      onClick={() => handleArchived()}
+                    >
+                      {archivedRequestHandler.isPending ? (
+                        <CircularProgress
+                          sx={{
+                            height: '30px  !important',
+                            width: '30px !important',
+                          }}
+                          color="inherit"
+                        />
+                      ) : (
+                        'Archive'
+                      )}
+                    </Typography>
+                  </Button>
                   <Button>
                     <Typography
                       sx={{

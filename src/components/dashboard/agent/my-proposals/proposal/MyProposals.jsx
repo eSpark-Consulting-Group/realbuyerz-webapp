@@ -84,9 +84,9 @@ const MyProposals = () => {
       items: items?.archivedProposals?.length || 0,
     },
     {
-      label: 'Accept',
+      label: 'Submitted',
       prop: a11yProps(3),
-      items: items?.acceptedProposals?.length || 0,
+      items: items?.submittedProposals?.length || 0,
     },
     {
       label: 'Rejected',
@@ -126,8 +126,8 @@ const MyProposals = () => {
     if (tab == 'Archive') {
       setMyPropertiesData(items?.archivedProposals);
     }
-    if (tab == 'Accept') {
-      setMyPropertiesData(items?.acceptedProposals);
+    if (tab == 'Submitted') {
+      setMyPropertiesData(items?.submittedProposals);
     }
     if (tab == 'Rejected') {
       setMyPropertiesData(items?.rejectedProposals);
