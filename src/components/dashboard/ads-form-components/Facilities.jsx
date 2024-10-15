@@ -54,7 +54,19 @@ const Facilities = ({
   useEffect(() => {
     const selectedAmenitiesId = selectedAmenities.map((val) => val.id);
     formik?.setFieldValue('amenities', selectedAmenitiesId);
+    formik?.setFieldValue('amenitiesArray', selectedAmenities);
   }, [selectedAmenities]);
+
+  const amenitiesIconHandler = (amenitiesName) => {
+    switch (amenitiesName) {
+      case 'Swimming Pool':
+        return 'swimmingPool.svg';
+      case 'Parking':
+        return 'parking.svg';
+      default:
+        return null;
+    }
+  };
 
   const { mutate, isPending } = useMutation({
     mutationFn: fetchAmenities,
@@ -62,7 +74,7 @@ const Facilities = ({
       const amenities = data.response.data.map((val) => {
         return {
           id: val.id,
-          image: '/images/add-amenities/roPlant.svg',
+          image: `/images/add-amenities/${amenitiesIconHandler(val.amenetiesName)}`,
           title: val.amenetiesName,
           name: val.amenetiesName,
         };

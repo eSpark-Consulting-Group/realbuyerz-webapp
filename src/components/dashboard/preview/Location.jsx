@@ -100,7 +100,8 @@ const Location = ({
               }}
               variant="body1"
             >
-              {propertyType.charAt(0).toUpperCase() + propertyType?.slice(1)}
+              {propertyType?.subTypeName?.charAt(0).toUpperCase() +
+                propertyType?.subTypeName?.slice(1)}
             </Typography>
           </Box>
         )}

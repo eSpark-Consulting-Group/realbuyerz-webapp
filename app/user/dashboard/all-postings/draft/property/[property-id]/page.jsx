@@ -1,10 +1,10 @@
 import React from 'react';
-import UserDraftForm from '@/src/components/dashboard/user/dashboard/all-postings/draft/UserDraftForm';
+import PostRequest from '@/src/components/dashboard/user/post-request/PostRequest';
 
 const page = () => {
   return (
     <>
-      <UserDraftForm />
+      <PostRequest />
     </>
   );
 };

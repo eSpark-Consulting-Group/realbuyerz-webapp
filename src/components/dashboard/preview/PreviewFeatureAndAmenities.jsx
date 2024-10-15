@@ -1,28 +1,19 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { PROPERTY_NAMES } from '@/src/constants/Preview_Data';
+// import { PROPERTY_NAMES } from '@/src/constants/Preview_Data';
 
-const renderDetail = (
-  title,
-  value,
-  amenities,
-  fontSize,
-  fontStyle,
-  fontWeight,
-  key
-) => {
-  if (value > 0) {
-    return (
-      <Box key={key} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-        <Typography
-          sx={{
-            fontSize: fontStyle ? fontStyle : '14px',
-            fontWeight: fontWeight ? fontWeight : 500,
-          }}
-        >
-          {amenities?.[title]}
-        </Typography>
-        <Typography
+const renderDetail = (title, fontStyle, fontWeight, key) => {
+  return (
+    <Box key={key} sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
+      <Typography
+        sx={{
+          fontSize: fontStyle ? fontStyle : '14px',
+          fontWeight: fontWeight ? fontWeight : 500,
+        }}
+      >
+        {title}
+      </Typography>
+      {/* <Typography
           sx={{
             fontSize: fontStyle ? fontStyle : '14px',
             fontWeight: 500,
@@ -30,11 +21,9 @@ const renderDetail = (
           }}
         >
           {value && value}
-        </Typography>
-      </Box>
-    );
-  }
-  return null;
+        </Typography> */}
+    </Box>
+  );
 };
 const PreviewFeatureAndAmenities = ({
   amenities,
@@ -43,7 +32,7 @@ const PreviewFeatureAndAmenities = ({
   fontWeight,
   specificPost,
 }) => {
-  console.log(PROPERTY_NAMES, 'PROPERTY_NAMES');
+  console.log(specificPost, 'PROPERTY_NAMES');
   return (
     <>
       {amenities?.title && (
@@ -63,12 +52,9 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title}
           </Typography>
-          {PROPERTY_NAMES?.map((propertyName, index) =>
+          {specificPost.amenitiesArray?.map((propertyName, index) =>
             renderDetail(
-              propertyName,
-              specificPost?.[propertyName],
-              amenities,
-              fontSize,
+              propertyName.name || propertyName.amenetiesName,
               fontStyle,
               fontWeight,
               index

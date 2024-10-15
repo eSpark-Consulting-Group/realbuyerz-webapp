@@ -305,12 +305,12 @@ export const POST_REQUEST = {
       name: 'bathrooms',
       limit: 20,
     },
-    {
-      image: '/images/listing-page/parking.svg',
-      title: 'Parking',
-      name: 'parking',
-      limit: 20,
-    },
+    // {
+    //   image: '/images/listing-page/parking.svg',
+    //   title: 'Parking',
+    //   name: 'parking',
+    //   limit: 20,
+    // },
   ],
   upload: {
     images: '/images/listing-page/select.svg',

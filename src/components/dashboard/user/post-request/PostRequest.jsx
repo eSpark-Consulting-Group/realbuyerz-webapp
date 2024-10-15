@@ -41,7 +41,8 @@ import { usePathname } from 'next/navigation';
 
 const PostRequest = () => {
   const router = usePathname();
-  const property_Id = router.split('/')[3];
+  const segments = router.split('/');
+  const property_Id = segments[segments.length - 1];
 
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
