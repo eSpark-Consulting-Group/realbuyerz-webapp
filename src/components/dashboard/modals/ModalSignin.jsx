@@ -1,16 +1,13 @@
 import React from 'react';
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
-
-import { useSelector } from 'react-redux';
 import LoginCard from '../../LoginSignup/Login/LoginCard';
 
-const ModalSignin = ({ handleClose }) => {
-  const isModalOpen = useSelector((state) => state.signin.open);
+const ModalSignin = ({ open, handleClose }) => {
   return (
     <>
       <Modal
-        open={isModalOpen}
+        open={open} // Controlled by props
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

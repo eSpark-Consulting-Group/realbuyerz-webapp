@@ -699,6 +699,7 @@ export const FEATURED_HEADINGS = {
   homePartners: 'Our Home Partners',
   sliderHeading: 'Live Properties Buying & Selling ',
   createAccount: 'Create Account',
+  myAccount: 'My Account',
   popularLocations: 'Popular Locations',
   browseProperty:
     'To browse & buy in your areas of interest. Look of properties by category',
