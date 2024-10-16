@@ -1,8 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import Cookie from 'js-cookie';
+import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
-import Link from 'next/link';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -16,8 +18,10 @@ const Typewriter = ({ text }) => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, 150);
     } else {
-      setCurrentIndex(0);
-      setDisplayedText('');
+      setTimeout(() => {
+        setDisplayedText('');
+        setCurrentIndex(0);
+      }, 2000);
     }
     return () => clearInterval(interval);
   }, [currentIndex, text]);
@@ -37,6 +41,42 @@ const Typewriter = ({ text }) => {
 };
 
 const CreateAccount = () => {
+  const [open, setOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = Cookie.get('token');
+    const userType = Cookie.get('userType');
+
+    if (token && userType) {
+      setIsLoggedIn(true);
+      setUserRole(userType);
+      console.log('User is logged in with role:', userType);
+    } else {
+      setIsLoggedIn(false);
+      console.log('User is not logged in');
+    }
+  }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+      if (userRole === 'user') {
+        router.push('/user/dashboard');
+      } else if (userRole === 'agent') {
+        router.push('/agent/live-bidding');
+      } else {
+        router.push('/404');
+      }
+    } else {
+      handleOpen();
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -50,26 +90,30 @@ const CreateAccount = () => {
       }}
     >
       <Typewriter text={FEATURED_HEADINGS.sliderHeading} />
-      <Link href={'/signin'}>
-        <Button
-          sx={{
-            mx: '15px',
-            fontWeight: 600,
-            width: '150px',
-            height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
-            color: '#fff',
-            '&:hover': {
-              backgroundColor: '#fff !important',
-              color: '#fb631c !important',
-              border: '1px solid #fb631c',
-            },
-            fontSize: '12px',
-          }}
-          variant="primary"
-        >
-          {FEATURED_HEADINGS.createAccount}
-        </Button>
-      </Link>
+
+      <Button
+        onClick={handleButtonClick}
+        sx={{
+          mx: '15px',
+          fontWeight: 600,
+          width: '150px',
+          height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+          color: '#fff',
+          '&:hover': {
+            backgroundColor: '#fff !important',
+            color: '#fb631c !important',
+            border: '1px solid #fb631c',
+          },
+          fontSize: '12px',
+        }}
+        variant="primary"
+      >
+        {isLoggedIn
+          ? FEATURED_HEADINGS.myAccount
+          : FEATURED_HEADINGS.createAccount}
+      </Button>
+
+      <ModalSignin open={open} handleClose={handleClose} />
     </Box>
   );
 };
