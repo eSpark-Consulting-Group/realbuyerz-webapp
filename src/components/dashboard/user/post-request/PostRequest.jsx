@@ -71,6 +71,7 @@ const PostRequest = () => {
       mutate(formData);
     } else if (Action === 'submit') {
       if (property_Id) {
+        formData.append('propertyStatus', true);
         const object = {};
         formData.forEach((value, key) => (object[key] = value));
         updateUserPropertyApi.mutate({ object, property_Id });
@@ -112,10 +113,13 @@ const PostRequest = () => {
     initialValues: POST_REQUEST_VALUES,
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
-      values.property_id = randomNumber;
-      values.user_id = currentUser?.id;
-      values.status = Action;
-      handleSubmit(values);
+      const newVal = {
+        ...values,
+        property_id: randomNumber,
+        user_id: currentUser?.id,
+        status: Action,
+      };
+      handleSubmit(newVal);
       // mutate(formData);
       action.resetForm();
     },
