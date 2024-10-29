@@ -4,12 +4,13 @@ import ButtonBase from '@mui/material/ButtonBase';
 import EditIcon from '@mui/icons-material/Edit';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+
 export default function ButtonBaseDemo({ url, handleOpen, data }) {
-  const image = {
-    url: url,
-  };
-  const pathname = usePathname();
   const imageRef = React.useRef(null);
+  const [imageSrc, setImageSrc] = React.useState(
+    url || data?.image || '/images/avatar.jpeg'
+  );
+  const pathname = usePathname();
 
   const handleMouseEnter = () => {
     if (imageRef.current) {
@@ -21,6 +22,11 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
     if (imageRef.current) {
       imageRef.current.style.opacity = 1;
     }
+  };
+
+  const handleImageError = () => {
+    // Set the fallback image if the primary one fails to load
+    setImageSrc('/images/avatar.svg');
   };
 
   return (
@@ -41,8 +47,8 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         borderRadius: { xs: '100%', sm: '0 100% 100% 0' },
       }}
     >
-      {pathname == '/user/user-settings/user-profile' ||
-      pathname == '/agent/agent-settings/agent-profile' ? (
+      {pathname === '/user/user-settings/user-profile' ||
+      pathname === '/agent/agent-settings/agent-profile' ? (
         <ButtonBase
           focusRipple
           onMouseEnter={handleMouseEnter}
@@ -62,18 +68,19 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
             },
           }}
         >
-          <Box
-            component={'img'}
+          <Image
             ref={imageRef}
-            src={image?.url}
-            alt={image?.title}
+            src={imageSrc} // Use the dynamically updated imageSrc
+            alt={data?.title || 'Default Image'}
+            
+            onError={handleImageError}
             sx={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
               transition: 'opacity 0.1s ease-in-out',
               borderRadius: '100%',
-            }}
+            }} // Set the fallback image on error
           />
           <EditIcon
             className="editIcon"
@@ -90,7 +97,20 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
           />
         </ButtonBase>
       ) : (
-        <Image src={data?.image} height={179} width={197} alt={data?.title} />
+        <Image
+          src={imageSrc}
+          height={179}
+          width={197}
+          alt={data?.title || 'Default Image'}
+          onError={handleImageError}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'opacity 0.1s ease-in-out',
+            borderRadius: '100%',
+          }}
+        />
       )}
     </Box>
   );
