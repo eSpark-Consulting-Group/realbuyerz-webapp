@@ -25,7 +25,6 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
   };
 
   const handleImageError = () => {
-    // Set the fallback image if the primary one fails to load
     setImageSrc('/images/avatar.svg');
   };
 
@@ -70,7 +69,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         >
           <Image
             ref={imageRef}
-            src={imageSrc} // Use the dynamically updated imageSrc
+            src={imageSrc} 
             alt={data?.title || 'Default Image'}
             
             onError={handleImageError}
@@ -80,7 +79,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
               objectFit: 'cover',
               transition: 'opacity 0.1s ease-in-out',
               borderRadius: '100%',
-            }} // Set the fallback image on error
+            }} 
           />
           <EditIcon
             className="editIcon"
