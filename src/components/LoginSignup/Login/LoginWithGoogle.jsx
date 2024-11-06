@@ -116,6 +116,7 @@ const LoginWithGoogle = ({
             width: '100px',
             borderRadius: '5px',
             color: 'white',
+            height: '29px',
             '&:hover': {
               background: '#FF631C',
             },
@@ -135,12 +136,13 @@ const LoginWithGoogle = ({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          gap: '20px',
         }}
       >
         <hr
           style={{
             display: { xs: 'none', md: 'flex' },
-            width: '135px',
+            width: '170px',
             border: '1px #A5A5A5 solid',
           }}
         />
@@ -148,7 +150,7 @@ const LoginWithGoogle = ({
         <hr
           style={{
             display: { xs: 'none', md: 'flex' },
-            width: '135px',
+            width: '170px',
             border: '1px #A5A5A5 solid',
           }}
         />

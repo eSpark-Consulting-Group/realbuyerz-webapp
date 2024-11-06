@@ -9,7 +9,7 @@ const InnerPagesLayout = ({ children }) => {
       <Grid
         container
         sx={{
-          backgroundColor: '#fff',
+          backgroundColor: '#FAFAFA',
         }}
       >
         <Grid item xs={12} md={1} />

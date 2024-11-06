@@ -19,7 +19,13 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={formik.touched.password && formik.errors.password}
         InputProps={{
-          sx: { height: '40px' },
+          sx: {
+            height: '40px',
+            margin: '2px 0px',
+            '& fieldset': {
+              borderColor: '#E4E4E4',
+            },
+          },
           autoComplete: 'new-password',
           endAdornment: (
             <InputAdornment position="end">
@@ -33,7 +39,7 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
             </InputAdornment>
           ),
         }}
-        InputLabelProps={{ sx: { fontSize: '11px' } }}
+        InputLabelProps={{ sx: { fontSize: '11px', color: '#000' } }}
       />
 
       <TextField
@@ -54,7 +60,13 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
           formik.touched.confirmPassword && formik.errors.confirmPassword
         }
         InputProps={{
-          sx: { height: '40px' },
+          sx: {
+            height: '40px',
+            margin: '2px 0px',
+            '& fieldset': {
+              borderColor: '#E4E4E4',
+            },
+          },
           autoComplete: 'confirm-password',
           endAdornment: (
             <InputAdornment position="end">
@@ -72,7 +84,7 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
             </InputAdornment>
           ),
         }}
-        InputLabelProps={{ sx: { fontSize: '11px' } }}
+        InputLabelProps={{ sx: { fontSize: '11px', color: '#000' } }}
       />
     </>
   );

@@ -120,10 +120,10 @@ const SignupCard = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
+          boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
           borderRadius: 2,
           background: 'white',
-          marginTop: '38px',
+          // marginTop: '38px',
           zIndex: 2,
           '@media (max-width: 1286px)': {
             width: '400px',
