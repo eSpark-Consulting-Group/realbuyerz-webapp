@@ -24,6 +24,7 @@ const PreviewModal = (props) => {
   const { onClose, open, ads, formik } = props;
   const pathName = usePathname();
   const userPath = '/user/dashboard/all-postings';
+  const postRequestPath = '/user/post-request';
   const imageArr = ads.PropertyData ? [ads.PropertyData[0]?.url] : [];
   const videoArr = ads.PropertyData ? [ads.PropertyData[1]?.url] : [];
   return (
@@ -130,7 +131,7 @@ const PreviewModal = (props) => {
               fontWeight={'700'}
               formik={formik}
             />
-            {pathName !== userPath ? (
+            {pathName !== userPath && pathName !== postRequestPath ? (
               <>
                 <MediaComponent
                   title={images?.title}
