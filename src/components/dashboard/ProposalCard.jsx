@@ -314,7 +314,7 @@ const ProposalCard = ({
                         marginLeft: '5px',
                       }}
                     >
-                      {data?.propertyType?.subTypeName || ''}
+                      {data?.propertyType?.typeName || ''}
                     </Typography>
                   </Box>
                   <Box
