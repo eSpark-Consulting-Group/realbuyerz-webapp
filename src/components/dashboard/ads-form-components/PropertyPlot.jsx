@@ -21,14 +21,12 @@ const PropertyTypes = ({
           sx={{
             borderRadius: '20px',
             border: `1px solid ${
-              activePropertySubType === item?.subTypeName
-                ? '#126FAA'
-                : '#E7E7E7'
+              activePropertySubType === item?.typeName ? '#126FAA' : '#E7E7E7'
             }`,
             color:
-              activePropertySubType === item?.subTypeName ? '#FB631C' : '#666',
+              activePropertySubType === item?.typeName ? '#FB631C' : '#666',
             backgroundColor:
-              activePropertySubType === item?.subTypeName
+              activePropertySubType === item?.typeName
                 ? '#F4F5F7 !important'
                 : '#fff',
             display: 'flex',
@@ -51,14 +49,14 @@ const PropertyTypes = ({
             component={'img'}
             sx={{ width: { xs: 25, sm: 33 }, height: { xs: 25, sm: 33 } }}
             src={
-              activePropertySubType == item?.subTypeName
+              activePropertySubType == item?.typeName
                 ? item?.activeImage
                 : item?.image
             }
             alt={'property'}
           />
           <Typography sx={{ fontSize: { xs: '15px', md: '18px', lg: '20px' } }}>
-            {item?.subTypeName}
+            {item?.typeName}
           </Typography>
         </Box>
       ))}

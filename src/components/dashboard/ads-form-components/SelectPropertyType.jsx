@@ -30,7 +30,7 @@ const SelectProperyType = ({
   };
 
   const handlePropetySubType = (propertySubTypeData) => {
-    setActivePropertySubType(propertySubTypeData?.subTypeName);
+    setActivePropertySubType(propertySubTypeData?.typeName);
     // setPropetySubType(propertySubTypeData.subTypeName);
     formik?.setFieldValue('propertySubTypeId', propertySubTypeData?.id);
   };
