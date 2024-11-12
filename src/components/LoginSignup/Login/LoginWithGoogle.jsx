@@ -206,29 +206,39 @@ const LoginWithGoogle = ({
         >
           {accountCreationMessage}
         </Typography>
-        <Typography
+        <Box
           sx={{
-            color: '#FB631C',
-            fontWeight: 400,
-            fontSize: '16px',
-            cursor: 'pointer',
-            position: 'relative',
-            textDecoration: 'none',
+            '@media (max-width: 960px)': {
+              display: 'flex',
+              justifyContent: 'center',
+            },
           }}
-          onClick={onSigninClick}
         >
-          {label}
-          <span
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              height: '1px',
-              backgroundColor: '#FB631C',
+          <Typography
+            sx={{
+              color: '#FB631C',
+              fontWeight: 400,
+              fontSize: '16px',
+              cursor: 'pointer',
+              position: 'relative',
+              textDecoration: 'none',
+              width: { xs: '20%', md: 'auto' },
             }}
-          />
-        </Typography>
+            onClick={onSigninClick}
+          >
+            {label}
+            <span
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '1px',
+                backgroundColor: '#FB631C',
+              }}
+            />
+          </Typography>
+        </Box>
       </Box>
     </GoogleOAuthProvider>
   );

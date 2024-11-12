@@ -73,8 +73,7 @@ const FormContainer = ({
               display: 'flex',
               flexDirection: 'column',
               gap: '7px',
-              marginBottom: '10px'
-
+              marginBottom: '10px',
             }}
           >
             <Box
@@ -98,7 +97,7 @@ const FormContainer = ({
                 InputProps={{
                   sx: {
                     height: '40px',
-                    width: '182px',
+                    // width: '182px',
                     margin: '2px 0px',
                     '& fieldset': {
                       borderColor: '#E4E4E4',
@@ -123,7 +122,7 @@ const FormContainer = ({
                 InputProps={{
                   sx: {
                     height: '40px',
-                    width: '182px',
+                    // width: '182px',
                     margin: '2px 0px',
                     '& fieldset': {
                       borderColor: '#E4E4E4',

@@ -115,7 +115,7 @@ const SignupCard = () => {
       <ToastContainer />
       <Box
         sx={{
-          width: { xs: '90%', md: '500px' },
+          width: { xs: '90%', md: '100%' },
           height: { xs: '650px', md: '580px' },
           display: 'flex',
           flexDirection: 'column',
@@ -131,13 +131,16 @@ const SignupCard = () => {
           '@media (max-width: 400px)': {
             width: '90%',
           },
+          '@media (max-width: 500px)': {
+            boxShadow: 'none', 
+          },
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            width: { xs: '70%', md: '386px' },
+            width: { xs: '70%', md: '70%' },
             height: '562px',
             gap: { xs: '5px', md: '8px' },
             paddingTop: '40px',
