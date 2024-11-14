@@ -58,7 +58,7 @@ const HeroSection = () => {
             position: 'absolute',
             zIndex: 2,
             width: {
-              xs: 'auto',
+              xs: '100px',
               sm: '150px',
               md: '200px',
               lg: '239px',
@@ -71,7 +71,7 @@ const HeroSection = () => {
               lg: '239px',
               xl: '239px',
             },
-            top: { xs: 80, sm: 110, md: 150, lg: 190, xl: 200 },
+            top: { xs: 60, sm: 100, md: 90, lg: 190, xl: 90 },
           }}
           src={logo}
           component={'img'}
@@ -86,13 +86,13 @@ const HeroSection = () => {
             zIndex: 2,
             position: 'absolute',
             width: {
-              xs: 'auto',
+              xs: '90%',
               sm: '440px',
               md: '610px',
               lg: '900px',
               xl: '890px',
             },
-            top: { xs: 165, sm: 250, md: 340, lg: 420, xl: 430 },
+            top: { xs: 130, sm: 210, md: 270, lg: 370, xl: 300 },
             fontSize: {
               xs: '15px',
               sm: '20px',
@@ -102,7 +102,7 @@ const HeroSection = () => {
             },
             WebkitTextStrokeWidth: '1px',
             WebkitTextStrokeColor: 'white',
-            fontWeight: { xs: 900 },
+            fontWeight: 900,
             textAlign: 'center',
             animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
           }}
@@ -115,19 +115,13 @@ const HeroSection = () => {
         </Typography>
         <Box
           sx={{
-            width: {
-              xs: 'auto',
-              sm: 'auto',
-              md: 'auto',
-              lg: 'auto',
-              xl: 'auto',
-            },
+            width: 'auto',
             zIndex: 2,
             justifyContent: 'space-around',
             display: 'flex',
             position: 'absolute',
             gap: 2,
-            top: { xs: 240, sm: 340, md: 460, lg: 530, xl: 560 },
+            top: { xs: 190, sm: 270, md: 395, lg: 460, xl: 460 },
           }}
         >
           <Bounce direction="left" triggerOnce>
