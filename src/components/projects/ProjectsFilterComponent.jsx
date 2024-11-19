@@ -179,6 +179,7 @@ const ProjectsFilterComponent = ({ data }) => {
                 selectedPropertyAdType || globalUnits?.PROPERTY_TYPES[0]?.value
               }
               sx={{
+                fontSize: '15px',
                 height: '40px',
                 '& .MuiOutlinedInput-notchedOutline': {
                   borderColor: '#E7E7E7',
@@ -231,6 +232,7 @@ const ProjectsFilterComponent = ({ data }) => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 height: '40px',
+                fontSize: '15px',
                 '& fieldset': {
                   borderColor: '#E7E7E7',
                 },
@@ -316,6 +318,7 @@ const ProjectsFilterComponent = ({ data }) => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 height: '40px',
+                fontSize: '15px',
                 '& fieldset': {
                   borderColor: '#E7E7E7',
                 },
@@ -401,6 +404,7 @@ const ProjectsFilterComponent = ({ data }) => {
             sx={{
               '& .MuiOutlinedInput-root': {
                 height: '40px',
+                fontSize: '15px',
                 '& fieldset': {
                   borderColor: '#E7E7E7',
                 },

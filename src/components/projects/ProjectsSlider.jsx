@@ -55,8 +55,8 @@ const ProjectsSlider = ({ data, category }) => {
   return (
     <Swiper {...sliderSettings}>
       {filteredData?.slice(0, totalItems).map((project, index) => (
-        <SwiperSlide key={`${project?.property_id}-${index}`}>
-          <Grid
+        <SwiperSlide key={`${project?.property_id}-${index}`} style={{ width: '300px !important' }}>
+        <Grid
             container
             sx={{
               display: 'flex',
