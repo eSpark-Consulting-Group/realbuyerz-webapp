@@ -172,6 +172,7 @@ const PopularLocations = ({ data }) => {
                               color: '#333',
                               fontWeight: 600,
                               fontSize: '16px',
+                              borderRadius: '5px'
                             }}
                           >
                             {item?.title}

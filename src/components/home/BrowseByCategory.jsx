@@ -102,7 +102,7 @@ const BrowseByCategory = ({ data }) => {
                       position: 'relative',
                       display: 'flex',
                       '@media (min-width: 1340px) and (max-width: 1920px)': {
-                        p: '15px',
+                        p: '5px',
                       },
                     }}
                     onMouseEnter={() => handleItemHover(index, true)}
@@ -169,15 +169,15 @@ const BrowseByCategory = ({ data }) => {
                   item
                   className="container"
                   sx={{
-                    width: '131px',
-                    height: '130px',
+                    width: '117px',
+                    height: '99px',
                     maxWidth: '150px',
                     my: '15px',
                     background: '#FFF',
                     position: 'relative',
                     display: 'flex',
                     '@media (min-width: 1340px) and (max-width: 1920px)': {
-                      p: '15px',
+                      p: '5px',
                     },
                   }}
                   onMouseEnter={() => handleItemHover(index, true)}
@@ -209,7 +209,7 @@ const BrowseByCategory = ({ data }) => {
                       variant="body1"
                       sx={{
                         color: '#838383',
-                        fontSize: '12px',
+                        fontSize: '10px',
                         fontWeight: 400,
                         px: { lg: '20px' },
                       }}

@@ -125,7 +125,6 @@ const FeaturedProperties = () => {
                             },
                         },
                         height: '431px',
-                        borderRadius: '5px',
                         border: '1px solid #cbcbcb',
                         overflow: 'hidden',
                       }}
@@ -342,7 +341,6 @@ const FeaturedProperties = () => {
                       },
                     },
                     height: '431px',
-                    borderRadius: '5px',
                     border: '1px solid #cbcbcb',
                     overflow: 'hidden',
                     zIndex: 1,

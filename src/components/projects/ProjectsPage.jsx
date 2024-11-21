@@ -42,7 +42,7 @@ const ProjectsPage = () => {
       <Box sx={{ pb: '100px' }}>
         <ProjectsFilterComponent data={projects} />
       </Box>
-      {renderProjectCategory('Houses', 'houses', 'See All')}
+      {renderProjectCategory('Houses', 'houses', 'See All >')}
       {renderProjectCategory('Plots', 'plots', 'See All')}
       {renderProjectCategory('Commercials', 'commercials', 'See All')}
     </Box>

@@ -32,7 +32,6 @@ const ProjectsCategoryLink = ({ category, link, linkText }) => {
               fontWeight: 500,
               lineHeight: '24px',
               color: '#1176AD',
-              textDecoration: 'underline',
             }}
           >
             {linkText}
