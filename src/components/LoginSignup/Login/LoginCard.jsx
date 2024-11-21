@@ -138,28 +138,29 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
         {!showForgetPassword ? (
           <Box
             sx={{
-              width: { xs: '80%', md: '500px' },
-              height: '600px',
+              width: '100%',
+              padding: '60px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
+              boxShadow:
+                '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
               borderRadius: 2,
               background: 'white',
-              marginTop: '30px',
+              marginTop: '-5px',
               zIndex: 2,
               '@media (max-width: 1286px)': {
                 width: '400px',
               },
-              '@media (max-width: 400px)': {
-                width: '90% ',
+              '@media (max-width: 500px)': {
+                boxShadow: 'none',
               },
             }}
           >
             <Box
               sx={{
-                width: { xs: '70%', md: '320px' },
+                width: { xs: '100%', md: '320px' },
                 display: 'flex',
                 flexDirection: 'column',
                 height: 'auto',
@@ -174,6 +175,9 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                 }}
               >
                 {LOGIN_FORM.loginCard.welcome}
+              </Typography>
+              <Typography sx={{ color: ' #333333', fontSize: '16px' }}>
+                {LOGIN_FORM.loginCard.loginMessage}
               </Typography>
               <FormContainer
                 isLoginForm={true}

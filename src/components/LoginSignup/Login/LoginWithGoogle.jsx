@@ -116,6 +116,7 @@ const LoginWithGoogle = ({
             width: '100px',
             borderRadius: '5px',
             color: 'white',
+            height: '29px',
             '&:hover': {
               background: '#FF631C',
             },
@@ -135,12 +136,13 @@ const LoginWithGoogle = ({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          gap: '20px',
         }}
       >
         <hr
           style={{
             display: { xs: 'none', md: 'flex' },
-            width: '135px',
+            width: '170px',
             border: '1px #A5A5A5 solid',
           }}
         />
@@ -148,7 +150,7 @@ const LoginWithGoogle = ({
         <hr
           style={{
             display: { xs: 'none', md: 'flex' },
-            width: '135px',
+            width: '170px',
             border: '1px #A5A5A5 solid',
           }}
         />
@@ -204,29 +206,39 @@ const LoginWithGoogle = ({
         >
           {accountCreationMessage}
         </Typography>
-        <Typography
+        <Box
           sx={{
-            color: '#FB631C',
-            fontWeight: 400,
-            fontSize: '16px',
-            cursor: 'pointer',
-            position: 'relative',
-            textDecoration: 'none',
+            '@media (max-width: 960px)': {
+              display: 'flex',
+              justifyContent: 'center',
+            },
           }}
-          onClick={onSigninClick}
         >
-          {label}
-          <span
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              height: '1px',
-              backgroundColor: '#FB631C',
+          <Typography
+            sx={{
+              color: '#FB631C',
+              fontWeight: 400,
+              fontSize: '16px',
+              cursor: 'pointer',
+              position: 'relative',
+              textDecoration: 'none',
+              width: { xs: '20%', md: 'auto' },
             }}
-          />
-        </Typography>
+            onClick={onSigninClick}
+          >
+            {label}
+            <span
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '1px',
+                backgroundColor: '#FB631C',
+              }}
+            />
+          </Typography>
+        </Box>
       </Box>
     </GoogleOAuthProvider>
   );

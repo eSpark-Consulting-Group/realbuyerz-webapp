@@ -73,13 +73,14 @@ const FormContainer = ({
               display: 'flex',
               flexDirection: 'column',
               gap: '7px',
+              marginBottom: '10px',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                gap: '4px',
+                gap: '20px',
               }}
             >
               <TextField
@@ -93,9 +94,18 @@ const FormContainer = ({
                   formik.touched.firstName && Boolean(formik.errors.firstName)
                 }
                 helperText={formik.touched.firstName && formik.errors.firstName}
-                InputProps={{ sx: { height: '40px' } }}
+                InputProps={{
+                  sx: {
+                    height: '40px',
+                    // width: '182px',
+                    margin: '2px 0px',
+                    '& fieldset': {
+                      borderColor: '#E4E4E4',
+                    },
+                  },
+                }}
                 InputLabelProps={{
-                  sx: { fontSize: '11px' },
+                  sx: { fontSize: '11px', color: '#000' },
                 }}
               />
               <TextField
@@ -109,9 +119,18 @@ const FormContainer = ({
                   formik.touched.lastName && Boolean(formik.errors.lastName)
                 }
                 helperText={formik.touched.lastName && formik.errors.lastName}
-                InputProps={{ sx: { height: '40px' } }}
+                InputProps={{
+                  sx: {
+                    height: '40px',
+                    // width: '182px',
+                    margin: '2px 0px',
+                    '& fieldset': {
+                      borderColor: '#E4E4E4',
+                    },
+                  },
+                }}
                 InputLabelProps={{
-                  sx: { fontSize: '11px' },
+                  sx: { fontSize: '11px', color: '#000' },
                 }}
               />
             </Box>
@@ -124,9 +143,17 @@ const FormContainer = ({
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
-              InputProps={{ sx: { height: '40px' } }}
+              InputProps={{
+                sx: {
+                  height: '40px',
+                  margin: '2px 0px',
+                  '& fieldset': {
+                    borderColor: '#E4E4E4',
+                  },
+                },
+              }}
               InputLabelProps={{
-                sx: { fontSize: '11px' },
+                sx: { fontSize: '11px', color: '#000' },
               }}
             />
             <TextField
@@ -151,10 +178,17 @@ const FormContainer = ({
                 },
               }}
               InputProps={{
-                sx: { height: '40px', background: 'none' },
+                sx: {
+                  height: '40px',
+                  background: 'none',
+                  margin: '2px 0px',
+                  '& fieldset': {
+                    borderColor: '#E4E4E4',
+                  },
+                },
               }}
               InputLabelProps={{
-                sx: { fontSize: '10.5px' },
+                sx: { fontSize: '10.5px', color: '#000' },
               }}
             />
             <PasswordAndConfirmFields

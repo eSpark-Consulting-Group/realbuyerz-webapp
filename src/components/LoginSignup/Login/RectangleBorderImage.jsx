@@ -36,8 +36,9 @@ const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
         height: height,
         backgroundImage: 'url("/images/signup_page/rectangle.svg")',
         backgroundRepeat: 'no-repeat',
-        paddingTop:
-          showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
+        padding: '37px',
+        // paddingTop:
+        //   showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
         '@media (max-width: 960px)': {
           background: 'none',
         },
