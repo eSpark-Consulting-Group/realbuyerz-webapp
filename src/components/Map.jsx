@@ -1,14 +1,9 @@
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import { useState, useCallback } from 'react';
 
-const containerStyle = {
-  width: '100%',
-  height: '103px',
-};
-
 const defaultLocation = { lat: 37.7749, lng: -122.4194 };
 
-export default function Map() {
+export default function Map({ containerStyle }) {
   const [map, setMap] = useState(defaultLocation);
   const [error, setError] = useState(null);
 
