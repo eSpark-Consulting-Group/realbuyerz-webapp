@@ -48,7 +48,6 @@ const PostRequest = () => {
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
-
   const [Action, setAction] = useState('');
 
   const dispatch = useDispatch();
@@ -58,13 +57,18 @@ const PostRequest = () => {
   );
 
   const handleSeletedAmenites = () => {
-    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+    const formattedAmenities = getAmenities.map((amenity) => amenity.id); 
+    formData.append('amenities', JSON.stringify(formattedAmenities));
+
+    setSelectedAmenities(formattedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
+    handleSeletedAmenites();
+
     if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
       formData.append('propertyStatus', false);
@@ -80,16 +84,13 @@ const PostRequest = () => {
       }
       dispatch(handleSumitUserAds(values));
     }
+
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const randomNumber = generateRandomNumber();
 
@@ -120,7 +121,6 @@ const PostRequest = () => {
         status: Action,
       };
       handleSubmit(newVal);
-      // mutate(formData);
       action.resetForm();
     },
     validateOnChange: false,
@@ -135,7 +135,6 @@ const PostRequest = () => {
     },
   });
 
-  // get single user property for update
   const getSingleUserProperty = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
@@ -146,13 +145,11 @@ const PostRequest = () => {
           singleArr = items[val][0];
         }
       });
-      const amenitiesArr = singleArr.amenities?.map((val) => {
-        return {
-          ...val,
-          name: val.amenetiesName,
-          text: val.amenetiesName,
-        };
-      });
+      const amenitiesArr = singleArr.amenities?.map((val) => ({
+        ...val,
+        name: val.amenetiesName,
+        text: val.amenetiesName,
+      }));
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
@@ -163,7 +160,6 @@ const PostRequest = () => {
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -178,9 +174,16 @@ const PostRequest = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenities', formik?.values.amenities);
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
+
+  // Add formatted amenities
+  const amenities = selectedAmenities.map((amenity) => ({
+    value: amenity.value,
+    count: amenity.count,
+    url: amenity.url,
+  }));
+  formData.append('amenity', JSON.stringify(amenities));
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
@@ -188,7 +191,6 @@ const PostRequest = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        {/* <Link href="/agent/live-bidding">agent</Link> */}
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{
@@ -233,9 +235,9 @@ const PostRequest = () => {
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-          description={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-          title={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+          buttonLabel={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
+          description={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
+          title={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />
@@ -243,4 +245,5 @@ const PostRequest = () => {
     </Grid>
   );
 };
+
 export default PostRequest;
