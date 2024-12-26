@@ -8,7 +8,7 @@ const MapFrame = ({ width, height }) => {
     <Box sx={{ padding: '5px' }}>
       <div>
         <MapProvider>
-          <Map />
+        <Map containerStyle={{ width: '100%', height: '103px' }} />
         </MapProvider>
       </div>
     </Box>
