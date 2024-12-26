@@ -1,6 +1,8 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import dynamic from 'next/dynamic';
+import { MapProvider } from '../MapProvider';
 
 const PropertyMapLocation = ({
   locationpurpose,
@@ -9,6 +11,8 @@ const PropertyMapLocation = ({
   geoLocation,
   location,
 }) => {
+  const Map = dynamic(() => import('../Map'), { ssr: false });
+
   return (
     <Box sx={{ padding: '5px' }}>
       <Typography
@@ -49,15 +53,9 @@ const PropertyMapLocation = ({
         </Typography>
       </Box>
       <br></br>
-      <iframe
-        title="Property Location"
-        src={geoLocation}
-        width="100%"
-        height="300"
-        frameBorder="0"
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <MapProvider>
+      <Map containerStyle={{ width: '100%', height: '200px' }} />
+      </MapProvider>
     </Box>
   );
 };
