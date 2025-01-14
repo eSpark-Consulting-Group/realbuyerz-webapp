@@ -48,6 +48,7 @@ const PostRequest = () => {
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
+
   const [Action, setAction] = useState('');
 
   const dispatch = useDispatch();
@@ -57,40 +58,38 @@ const PostRequest = () => {
   );
 
   const handleSeletedAmenites = () => {
-    const formattedAmenities = getAmenities.map((amenity) => amenity.id); 
-    formData.append('amenities', JSON.stringify(formattedAmenities));
-
-    setSelectedAmenities(formattedAmenities);
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    handleSeletedAmenites();
-
     if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
-      formData.append('propertyStatus', false);
-      mutate(formData);
+      obj.propertyStatus = false;
+      mutate(obj);
     } else if (Action === 'submit') {
-      if (property_Id) {
-        formData.append('propertyStatus', true);
+      if (segments.includes('update-request')) {
+        obj.propertyStatus = true;
         const object = {};
         formData.forEach((value, key) => (object[key] = value));
         updateUserPropertyApi.mutate({ object, property_Id });
       } else {
-        mutate(formData);
+        mutate(obj);
       }
       dispatch(handleSumitUserAds(values));
     }
-
     dispatch(toggleCheckAmenityClear());
     setSelectedAmenities([]);
   };
 
-  const handleClickOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const randomNumber = generateRandomNumber();
 
@@ -127,6 +126,22 @@ const PostRequest = () => {
     validateOnBlur: false,
   });
 
+  const obj = {
+    propertyName: formik.values.title,
+    propertyType: formik.values.propertyCategory,
+    propertyDescription: formik.values.description,
+    propertyPrice: formik.values.amount,
+    propertyArea: formik.values.area,
+    purpose: formik.values.purpose,
+    propertyAddress: 'abc abc',
+    propertyCity: formik.values.city,
+    propertySubTypeId: formik?.values?.propertySubTypeId,
+    amenities: formik.values.amenities,
+    longitude: '123.345',
+    latitude: '989.000',
+    amenity: formik.values.amenitiesArray,
+  };
+
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
     onSuccess: (data) => {
@@ -145,11 +160,13 @@ const PostRequest = () => {
           singleArr = items[val][0];
         }
       });
-      const amenitiesArr = singleArr.amenities?.map((val) => ({
-        ...val,
-        name: val.amenetiesName,
-        text: val.amenetiesName,
-      }));
+      const amenitiesArr = singleArr.amenities?.map((val) => {
+        return {
+          ...val,
+          name: val.amenetiesName,
+          text: val.amenetiesName,
+        };
+      });
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
@@ -174,16 +191,9 @@ const PostRequest = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
+  formData.append('amenities', formik?.values.amenities);
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
-
-  // Add formatted amenities
-  const amenities = selectedAmenities.map((amenity) => ({
-    value: amenity.value,
-    count: amenity.count,
-    url: amenity.url,
-  }));
-  formData.append('amenity', JSON.stringify(amenities));
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
@@ -191,6 +201,7 @@ const PostRequest = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
+        {/* <Link href="/agent/live-bidding">agent</Link> */}
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{
@@ -235,9 +246,9 @@ const PostRequest = () => {
           </Box>
         </form>
         <ProposalModal
-          buttonLabel={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-          description={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-          title={`${Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+          buttonLabel={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
+          description={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
+          title={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />
@@ -245,5 +256,4 @@ const PostRequest = () => {
     </Grid>
   );
 };
-
 export default PostRequest;

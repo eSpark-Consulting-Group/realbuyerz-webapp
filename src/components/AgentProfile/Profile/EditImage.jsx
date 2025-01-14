@@ -69,9 +69,10 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         >
           <Image
             ref={imageRef}
-            src={imageSrc} 
+            src={imageSrc}
             alt={data?.title || 'Default Image'}
-            
+            height={179}
+            width={197}
             onError={handleImageError}
             sx={{
               width: '100%',
@@ -79,7 +80,7 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
               objectFit: 'cover',
               transition: 'opacity 0.1s ease-in-out',
               borderRadius: '100%',
-            }} 
+            }}
           />
           <EditIcon
             className="editIcon"
