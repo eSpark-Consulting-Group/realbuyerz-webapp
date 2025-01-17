@@ -1,12 +1,12 @@
 'use client';
-import React from 'react';
 import { Box, Grid } from '@mui/material';
 
+// Existing imports
 import PostTitle from './ads-form-components/PostTitle';
-import SelectProperyType from './ads-form-components/SelectPropertyType';
+import PropertyStatus from './ads-form-components/PropertyStatus';
 import SelectCityType from './ads-form-components/SelectCity';
 import SelectLocationType from './ads-form-components/SelectLocationType';
-import PropertyStatus from './ads-form-components/PropertyStatus';
+import SelectProperyType from './ads-form-components/SelectPropertyType';
 
 const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
   return (
@@ -91,4 +91,5 @@ const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
     </Grid>
   );
 };
+
 export default PropertyPurpose;

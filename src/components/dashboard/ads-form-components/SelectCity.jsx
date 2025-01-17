@@ -130,6 +130,34 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               </Typography>
             )}
           </Box>
+
+          <TextField
+            label="Property Address"
+            variant="outlined"
+            fullWidth
+            value={formik.values.address}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            name="address"
+            error={formik.touched.address && Boolean(formik.errors.address)}
+            helperText={formik.touched.address && formik.errors.address}
+            InputProps={{
+              sx: {
+                borderRadius: '10px',
+              },
+            }}
+            InputLabelProps={{
+              sx: {
+                color: '#969696', 
+                '&.Mui-focused': {
+                  color: 'red', 
+                },
+              },
+            }}
+            sx={{
+              width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
+            }}
+          />
         </Box>
       </Box>
     </>

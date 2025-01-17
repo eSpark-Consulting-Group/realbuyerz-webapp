@@ -110,7 +110,10 @@ const PostRequest = () => {
   });
 
   const formik = useFormik({
-    initialValues: POST_REQUEST_VALUES,
+    initialValues: {
+      ...POST_REQUEST_VALUES,
+      address: '',
+    },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
       const newVal = {
@@ -133,7 +136,7 @@ const PostRequest = () => {
     propertyPrice: formik.values.amount,
     propertyArea: formik.values.area,
     purpose: formik.values.purpose,
-    propertyAddress: 'abc abc',
+    propertyAddress: formik?.values.address,
     propertyCity: formik.values.city,
     propertySubTypeId: formik?.values?.propertySubTypeId,
     amenities: formik.values.amenities,
@@ -188,7 +191,7 @@ const PostRequest = () => {
   formData.append('propertyPrice', formik?.values.amount);
   formData.append('propertyArea', formik?.values.area);
   formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
   formData.append('amenities', formik?.values.amenities);
