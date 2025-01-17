@@ -16,7 +16,7 @@ const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
         backgroundColor: '#fff',
         border: '1px #E4E4E4 solid',
         borderRadius: '10px',
-        height: { xs: 'auto', xl: '1010px' },
+        height: 'auto',
       }}
     >
       <Grid
