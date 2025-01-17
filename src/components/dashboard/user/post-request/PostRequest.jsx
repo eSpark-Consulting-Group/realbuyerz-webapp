@@ -67,16 +67,16 @@ const PostRequest = () => {
   const handleSubmit = (values) => {
     if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
-      formData.append('propertyStatus', false);
-      mutate(formData);
+      obj.propertyStatus = false;
+      mutate(obj);
     } else if (Action === 'submit') {
-      if (property_Id) {
-        formData.append('propertyStatus', true);
+      if (segments.includes('update-request')) {
+        obj.propertyStatus = true;
         const object = {};
         formData.forEach((value, key) => (object[key] = value));
         updateUserPropertyApi.mutate({ object, property_Id });
       } else {
-        mutate(formData);
+        mutate(obj);
       }
       dispatch(handleSumitUserAds(values));
     }
@@ -110,7 +110,10 @@ const PostRequest = () => {
   });
 
   const formik = useFormik({
-    initialValues: POST_REQUEST_VALUES,
+    initialValues: {
+      ...POST_REQUEST_VALUES,
+      address: '',
+    },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
       const newVal = {
@@ -120,12 +123,27 @@ const PostRequest = () => {
         status: Action,
       };
       handleSubmit(newVal);
-      // mutate(formData);
       action.resetForm();
     },
     validateOnChange: false,
     validateOnBlur: false,
   });
+
+  const obj = {
+    propertyName: formik.values.title,
+    propertyType: formik.values.propertyCategory,
+    propertyDescription: formik.values.description,
+    propertyPrice: formik.values.amount,
+    propertyArea: formik.values.area,
+    purpose: formik.values.purpose,
+    propertyAddress: formik?.values.address,
+    propertyCity: formik.values.city,
+    propertySubTypeId: formik?.values?.propertySubTypeId,
+    amenities: formik.values.amenities,
+    longitude: '123.345',
+    latitude: '989.000',
+    amenity: formik.values.amenitiesArray,
+  };
 
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
@@ -135,7 +153,6 @@ const PostRequest = () => {
     },
   });
 
-  // get single user property for update
   const getSingleUserProperty = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
@@ -163,7 +180,6 @@ const PostRequest = () => {
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -175,7 +191,7 @@ const PostRequest = () => {
   formData.append('propertyPrice', formik?.values.amount);
   formData.append('propertyArea', formik?.values.area);
   formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
   formData.append('amenities', formik?.values.amenities);

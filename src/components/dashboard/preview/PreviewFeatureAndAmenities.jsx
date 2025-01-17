@@ -32,7 +32,8 @@ const PreviewFeatureAndAmenities = ({
   fontWeight,
   specificPost,
 }) => {
-  console.log(specificPost, 'PROPERTY_NAMES');
+  console.log('Amenities from API:', specificPost?.amenity);
+
   return (
     <>
       {amenities?.title && (
@@ -45,25 +46,31 @@ const PreviewFeatureAndAmenities = ({
         >
           <Typography
             sx={{
-              fontSize: { xs: fontSize ? fontSize : '20px' },
+              fontSize: fontSize || '20px',
               fontWeight: 500,
               mb: 1,
             }}
           >
-            {amenities?.title}
+            {amenities?.title || 'Amenities'}
           </Typography>
-          {specificPost.amenitiesArray?.map((propertyName, index) =>
-            renderDetail(
-              propertyName.name || propertyName.amenetiesName,
-              fontStyle,
-              fontWeight,
-              index
+          {specificPost?.amenity?.length > 0 ? (
+            specificPost.amenity.map((property, index) =>
+              renderDetail(
+                property?.name || 'No Name',
+                fontStyle,
+                fontWeight,
+                index
+              )
             )
+          ) : (
+            <Typography>No Amenities Available</Typography>
           )}
         </Box>
       )}
     </>
   );
 };
+
+
 
 export default PreviewFeatureAndAmenities;

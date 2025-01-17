@@ -23,11 +23,11 @@ const PreferenceSettings = () => {
           setFormData((prev) => ({
             ...prev,
             emailData: {
-              emailNotification: userProfile.preferences.emailNotification,
-              newsLetter: userProfile.preferences.newsLetter,
-              automatedReport: userProfile.preferences.automatedReport,
-              currencyUnit: userProfile.preferences.currency,
-              areaUnit: userProfile.preferences.areaUnit,
+              // emailNotification: userProfile.preferences.emailNotification,
+              // newsLetter: userProfile.preferences.newsLetter,
+              // automatedReport: userProfile.preferences.automatedReport,
+              // currencyUnit: userProfile.preferences.currency,
+              // areaUnit: userProfile.preferences.areaUnit,
             },
           }));
         }
