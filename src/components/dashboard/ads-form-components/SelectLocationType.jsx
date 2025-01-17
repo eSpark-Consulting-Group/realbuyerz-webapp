@@ -3,7 +3,7 @@ import { Typography, Box } from '@mui/material';
 
 import MapFrame from './MapFrame';
 
-const SelectLocationType = ({ propertyInformation }) => {
+const SelectLocationType = ({ propertyInformation, formik }) => {
   return (
     <>
       <Box
@@ -72,7 +72,7 @@ const SelectLocationType = ({ propertyInformation }) => {
               {propertyInformation?.location?.text}
               <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
             </Typography>
-            <MapFrame width="100%" height="103px" />
+            <MapFrame width="100%" height="103px" formik={formik} />
           </Box>
         </Box>
       </Box>

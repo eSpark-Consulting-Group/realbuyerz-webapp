@@ -1,12 +1,16 @@
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 const defaultLocation = { lat: 37.7749, lng: -122.4194 };
 
-export default function Map({ containerStyle }) {
+export default function Map({ containerStyle, formik }) {
   const [map, setMap] = useState(defaultLocation);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    formik.setFieldValue('latitude', map.lat);
+    formik.setFieldValue('longitude', map.lng);
+  }, [map, formik]);
   const requestLocation = () => {
     if (!navigator.geolocation) {
       setError('Geolocation is not supported by your browser.');
@@ -57,6 +61,20 @@ export default function Map({ containerStyle }) {
     setMap(null);
   }, []);
 
+  const handleMarkerDragEnd = (event) => {
+    const newPosition = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    };
+    setMap(newPosition);
+  };
+  const handleMapClick = (event) => {
+    const newPosition = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    };
+    setMap(newPosition);
+  };
   return (
     <>
       {error && (
@@ -68,14 +86,24 @@ export default function Map({ containerStyle }) {
           </button>
         </div>
       )}
+      <div style={{ marginBottom: '10px' }}>
+        <strong>Current Location:</strong>
+        <p>Latitude: {map?.lat}</p>
+        <p>Longitude: {map?.lng}</p>
+      </div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={map}
         zoom={10}
+        onClick={handleMapClick} // Listen for map clicks
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        <MarkerF position={map} />
+        <MarkerF
+          position={map}
+          draggable={true} // Make the marker draggable
+          onDragEnd={handleMarkerDragEnd} // Handle drag end events
+        />
       </GoogleMap>
     </>
   );

@@ -83,7 +83,10 @@ const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
                 cityOptions={propertyData?.selectCityOptions}
                 formik={formik}
               />
-              <SelectLocationType propertyInformation={propertyData} />
+              <SelectLocationType
+                propertyInformation={propertyData}
+                formik={formik}
+              />
             </Box>
           </Box>
         </Box>
