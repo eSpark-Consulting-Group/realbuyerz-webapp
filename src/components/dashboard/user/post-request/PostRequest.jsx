@@ -140,8 +140,8 @@ const PostRequest = () => {
     propertyCity: formik.values.city,
     propertySubTypeId: formik?.values?.propertySubTypeId,
     amenities: formik.values.amenities,
-    longitude: '123.345',
-    latitude: '989.000',
+    longitude: formik.values.longitude,
+    latitude: formik.values.latitude,
     amenity: formik.values.amenitiesArray,
   };
 
@@ -195,8 +195,8 @@ const PostRequest = () => {
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
   formData.append('amenities', formik?.values.amenities);
-  formData.append('longitude', '123.345');
-  formData.append('latitude', '989.000');
+  formData.append('longitude',formik?.values.longitude );
+  formData.append('latitude', formik?.values.latitude);
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
