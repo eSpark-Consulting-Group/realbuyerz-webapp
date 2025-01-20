@@ -5,10 +5,10 @@ import { Box } from '@mui/system';
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
+import { AUTH_COMPONENTS } from '@/src/constants/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
 
-const RectangleBorderImage = ({ height, showComponent, paddingTop }) => {
+const RectangleBorderImage = ({ height, showComponent }) => {
   let cardComponent;
   switch (showComponent) {
     case AUTH_COMPONENTS.signup:

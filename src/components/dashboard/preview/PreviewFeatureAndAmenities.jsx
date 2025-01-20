@@ -71,6 +71,4 @@ const PreviewFeatureAndAmenities = ({
   );
 };
 
-
-
 export default PreviewFeatureAndAmenities;

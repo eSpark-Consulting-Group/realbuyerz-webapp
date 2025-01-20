@@ -18,7 +18,7 @@ const PreferenceSettings = () => {
         const profileResponse = await userProfile();
 
         if (profileResponse && profileResponse.success) {
-          const userProfile = profileResponse.response.data;
+          // const userProfile = profileResponse.response.data;
 
           setFormData((prev) => ({
             ...prev,
