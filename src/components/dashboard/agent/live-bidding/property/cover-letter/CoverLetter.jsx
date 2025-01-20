@@ -146,7 +146,7 @@ const CoverLetter = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenitity', formik?.values.amenitity || '');
+  formData.append('amenity', formik?.values.amenity || '');
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');

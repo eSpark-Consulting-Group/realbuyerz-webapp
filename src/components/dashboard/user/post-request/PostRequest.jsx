@@ -198,7 +198,7 @@ const PostRequest = () => {
   formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenitiy', formik?.values.amenity);
+  formData.append('amenity', formik?.values.amenity);
   formData.append('longitude', '123.345');
   formData.append('latitude', '989.000');
 
