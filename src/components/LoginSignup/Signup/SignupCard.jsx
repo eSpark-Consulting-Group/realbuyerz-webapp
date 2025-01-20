@@ -132,7 +132,7 @@ const SignupCard = () => {
             width: '90%',
           },
           '@media (max-width: 500px)': {
-            boxShadow: 'none', 
+            boxShadow: 'none',
           },
         }}
       >

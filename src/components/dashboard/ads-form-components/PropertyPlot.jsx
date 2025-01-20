@@ -32,9 +32,7 @@ const PropertyTypes = ({ data }) => {
               }`,
               color: activePropertyType === item?.typeName ? '#FB631C' : '#666',
               backgroundColor:
-                activePropertyType === item?.typeName
-                  ? '#F4F5F7'
-                  : '#fff',
+                activePropertyType === item?.typeName ? '#F4F5F7' : '#fff',
               display: 'flex',
               flexDirection: 'row',
               width: { xs: '80%', sm: '220px', md: '230px', lg: '250px' },

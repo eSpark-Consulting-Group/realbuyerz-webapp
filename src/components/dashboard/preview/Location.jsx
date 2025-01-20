@@ -12,7 +12,6 @@ const Location = ({
   locationKeys,
   width,
   widthBox,
-  className,
   p,
   pb,
   pt,

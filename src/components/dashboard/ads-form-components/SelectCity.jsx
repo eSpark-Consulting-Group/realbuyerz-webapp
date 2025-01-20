@@ -148,9 +148,9 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             }}
             InputLabelProps={{
               sx: {
-                color: '#969696', 
+                color: '#969696',
                 '&.Mui-focused': {
-                  color: 'red', 
+                  color: 'red',
                 },
               },
             }}

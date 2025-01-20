@@ -8,7 +8,6 @@ const PropertyMapLocation = ({
   locationpurpose,
   propertyType,
   city,
-  geoLocation,
   location,
 }) => {
   const Map = dynamic(() => import('../Map'), { ssr: false });
@@ -54,7 +53,7 @@ const PropertyMapLocation = ({
       </Box>
       <br></br>
       <MapProvider>
-      <Map containerStyle={{ width: '100%', height: '200px' }} />
+        <Map containerStyle={{ width: '100%', height: '200px' }} />
       </MapProvider>
     </Box>
   );
