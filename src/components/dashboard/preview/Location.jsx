@@ -20,7 +20,7 @@ const Location = ({
   fontStyle,
   fontWeight,
   longitude,
-  latitude
+  latitude,
 }) => {
   return (
     locationKeys?.title && (
@@ -178,8 +178,13 @@ const Location = ({
                 }}
               >
                 <MapProvider>
-                  <StaticMap containerStyle={{ width: '100%', height: '103px' }} 
-                  location={{ lat: parseFloat(latitude), lng: parseFloat(longitude) }} />
+                  <StaticMap
+                    containerStyle={{ width: '100%', height: '103px' }}
+                    location={{
+                      lat: parseFloat(latitude),
+                      lng: parseFloat(longitude),
+                    }}
+                  />
                 </MapProvider>
               </Box>
             )}

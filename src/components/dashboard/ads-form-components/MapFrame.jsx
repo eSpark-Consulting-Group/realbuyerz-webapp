@@ -2,8 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { MapProvider } from '../../MapProvider';
-import Map from '../../Map';
-  // const Map = dynamic(() => import('../../Map'), { ssr: false });
+const Map = dynamic(() => import('../../Map'), { ssr: false });
 const MapFrame = ({ formik }) => {
   return (
     <Box sx={{ padding: '5px' }}>

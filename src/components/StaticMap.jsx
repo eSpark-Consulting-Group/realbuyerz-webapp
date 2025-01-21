@@ -7,7 +7,9 @@ export default function StaticMap({ containerStyle, location }) {
 
   useEffect(() => {
     if (!location || !location.lat || !location.lng) {
-      setError('Invalid location data. Please provide valid latitude and longitude.');
+      setError(
+        'Invalid location data. Please provide valid latitude and longitude.'
+      );
     } else {
       setError(null); // Reset error if location is valid
       setMap(location); // Update map center

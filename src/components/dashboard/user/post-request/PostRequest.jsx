@@ -190,7 +190,7 @@ const PostRequest = () => {
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
   formData.append('amenity', JSON.stringify(amenities));
-  formData.append('longitude',formik?.values.longitude );
+  formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
 
   const isSubmitBtnDisable =
