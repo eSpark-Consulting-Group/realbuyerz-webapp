@@ -9,7 +9,6 @@ import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
 import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
 import PropertySize from '@/src/components/dashboard/Propertysize';
 import SubmitButton from '@/src/components/dashboard/SubmitButton';
-
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
@@ -56,6 +55,17 @@ const PostRequest = () => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
+
+  const amenities = getAmenities.map((amenity) => {
+    if (!amenity) return {};
+    const { id, text, image, limit, ...rest } = amenity;
+    console.log(id, text, image, limit);
+    return {
+      ...rest,
+      imageUrl: amenity.image,
+      count: amenity.count || 1,
+    };
+  });
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
@@ -163,19 +173,12 @@ const PostRequest = () => {
           singleArr = items[val][0];
         }
       });
-      const amenitiesArr = singleArr.amenities?.map((val) => {
-        return {
-          ...val,
-          name: val.amenetiesName,
-          text: val.amenetiesName,
-        };
-      });
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenities', amenitiesArr);
+      formik.setFieldValue('amenity', JSON.stringify(amenities));
 
       setPreviousData(formik.values);
     },
@@ -194,7 +197,7 @@ const PostRequest = () => {
   formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenities', formik?.values.amenities);
+  formData.append('amenity', JSON.stringify(amenities));
   formData.append('longitude',formik?.values.longitude );
   formData.append('latitude', formik?.values.latitude);
 

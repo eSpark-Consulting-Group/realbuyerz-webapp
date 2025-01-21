@@ -8,7 +8,6 @@ const PropertyMapLocation = ({
   locationpurpose,
   propertyType,
   city,
-  geoLocation,
   location,
 }) => {
   const Map = dynamic(() => import('../Map'), { ssr: false });

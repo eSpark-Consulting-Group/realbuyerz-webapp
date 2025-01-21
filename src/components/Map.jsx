@@ -8,8 +8,8 @@ export default function Map({ containerStyle, formik }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    formik.setFieldValue('latitude', map.lat);
-    formik.setFieldValue('longitude', map.lng);
+    formik?.setFieldValue('latitude', map.lat);
+    formik?.setFieldValue('longitude', map.lng);
   }, [map, formik]);
   const requestLocation = () => {
     if (!navigator.geolocation) {

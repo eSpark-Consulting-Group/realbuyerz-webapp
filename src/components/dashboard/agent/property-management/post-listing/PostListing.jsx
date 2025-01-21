@@ -56,6 +56,16 @@ const PostListing = () => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
+  const amenities = getAmenities.map((amenity) => {
+    if (!amenity) return {};
+    const { id, text, image, limit, ...rest } = amenity;
+    console.log(id, text, image, limit);
+    return {
+      ...rest,
+      imageUrl: amenity.image,
+      count: amenity.count || 1,
+    };
+  });
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
@@ -154,13 +164,7 @@ const PostListing = () => {
           singleArr = items[val][0];
         }
       });
-      const amenitiesArr = singleArr.amenities?.map((val) => {
-        return {
-          ...val,
-          name: val.amenetiesName,
-          text: val.amenetiesName,
-        };
-      });
+
       setPropertyTypeDetails(singleArr.propertyType);
 
       formik.setFieldValue('title', singleArr.propertyName);
@@ -168,7 +172,7 @@ const PostListing = () => {
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenities', amenitiesArr);
+      formik.setFieldValue('amenity', JSON.stringify(amenities));
       setPreviousData(formik.values);
     },
     onError: (error) => {
@@ -188,7 +192,7 @@ const PostListing = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenities', formik?.values.amenities);
+  formData.append('amenity', JSON.stringify(amenities));
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
   // formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');

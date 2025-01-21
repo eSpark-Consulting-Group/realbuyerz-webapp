@@ -3,8 +3,8 @@ import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { MapProvider } from '../../MapProvider';
 import Map from '../../Map';
-const MapFrame = ({ width, height, formik }) => {
   // const Map = dynamic(() => import('../../Map'), { ssr: false });
+const MapFrame = ({ formik }) => {
   return (
     <Box sx={{ padding: '5px' }}>
       <div>

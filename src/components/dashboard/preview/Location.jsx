@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { MapProvider } from '../../MapProvider';
-import Map from '../../Map';
+import StaticMap from '../../StaticMap';
 
 const Location = ({
   city,
@@ -12,7 +12,6 @@ const Location = ({
   locationKeys,
   width,
   widthBox,
-  className,
   p,
   pb,
   pt,
@@ -20,6 +19,8 @@ const Location = ({
   fontSize,
   fontStyle,
   fontWeight,
+  longitude,
+  latitude
 }) => {
   return (
     locationKeys?.title && (
@@ -177,7 +178,8 @@ const Location = ({
                 }}
               >
                 <MapProvider>
-                  <Map containerStyle={{ width: '100%', height: '103px' }} />
+                  <StaticMap containerStyle={{ width: '100%', height: '103px' }} 
+                  location={{ lat: parseFloat(latitude), lng: parseFloat(longitude) }} />
                 </MapProvider>
               </Box>
             )}
