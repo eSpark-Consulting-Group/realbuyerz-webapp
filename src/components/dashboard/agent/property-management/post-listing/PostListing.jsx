@@ -40,6 +40,7 @@ import {
 import { usePathname, useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
 const PostListing = () => {
   const routerPath = usePathname();
@@ -56,16 +57,7 @@ const PostListing = () => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
-  const amenities = getAmenities.map((amenity) => {
-    if (!amenity) return {};
-    const { id, text, image, limit, ...rest } = amenity;
-    console.log(id, text, image, limit);
-    return {
-      ...rest,
-      imageUrl: amenity.image,
-      count: amenity.count || 1,
-    };
-  });
+  const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);

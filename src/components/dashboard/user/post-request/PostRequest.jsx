@@ -37,6 +37,7 @@ import {
 } from '@/src/utils/userProperties';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { usePathname } from 'next/navigation';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
 const PostRequest = () => {
   const router = usePathname();
@@ -56,16 +57,7 @@ const PostRequest = () => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const amenities = getAmenities.map((amenity) => {
-    if (!amenity) return {};
-    const { id, text, image, limit, ...rest } = amenity;
-    console.log(id, text, image, limit);
-    return {
-      ...rest,
-      imageUrl: amenity.image,
-      count: amenity.count || 1,
-    };
-  });
+  const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
