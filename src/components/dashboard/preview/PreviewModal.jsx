@@ -27,7 +27,6 @@ const PreviewModal = (props) => {
   const postRequestPath = '/user/post-request';
   const imageArr = ads.PropertyData ? [ads.PropertyData[0]?.url] : [];
   const videoArr = ads.PropertyData ? [ads.PropertyData[1]?.url] : [];
-  console.log(ads, 'ads');
 
   return (
     <>

@@ -141,7 +141,6 @@ const PostRequest = () => {
     propertyAddress: formik?.values.address,
     propertyCity: formik.values.city,
     propertySubTypeId: formik?.values?.propertySubTypeId,
-    amenities: formik.values.amenities,
     longitude: formik.values.longitude,
     latitude: formik.values.latitude,
     amenity: formik.values.amenitiesArray,
