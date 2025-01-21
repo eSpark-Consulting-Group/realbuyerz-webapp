@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 
-const PropertyTypes = ({ data }) => {
-  const [activePropertyType, setActivePropertyType] = useState(null);
+const PropertyTypes = ({ data, handlePropetySubType }) => {
+  const [selectedType, setSelectedType] = useState(null);
 
   const handlePropertyType = (item) => {
-    // Set the clicked item's typeName as the active property type
-    setActivePropertyType((prev) =>
-      prev === item?.typeName ? null : item?.typeName
-    );
+    setSelectedType(item?.typeName); // Update selected type
+    handlePropetySubType(item);
   };
 
   return (
@@ -28,11 +26,11 @@ const PropertyTypes = ({ data }) => {
             sx={{
               borderRadius: '20px',
               border: `1px solid ${
-                activePropertyType === item?.typeName ? '#F4F5F7' : '#E7E7E7'
+                selectedType === item?.typeName ? '#FB631C' : '#E7E7E7'
               }`,
-              color: activePropertyType === item?.typeName ? '#FB631C' : '#666',
+              color: selectedType === item?.typeName ? '#FB631C' : '#666',
               backgroundColor:
-                activePropertyType === item?.typeName ? '#F4F5F7' : '#fff',
+                selectedType === item?.typeName ? '#F4F5F7' : '#fff',
               display: 'flex',
               flexDirection: 'row',
               width: { xs: '80%', sm: '220px', md: '230px', lg: '250px' },
@@ -52,7 +50,7 @@ const PropertyTypes = ({ data }) => {
                 height: { xs: 25, sm: 33 },
               }}
               src={
-                activePropertyType === item?.typeName
+                selectedType === item?.typeName
                   ? item?.activeImage || '/images/listing-page/housesell.svg'
                   : item?.image || '/images/listing-page/house.svg'
               }
@@ -62,8 +60,7 @@ const PropertyTypes = ({ data }) => {
               sx={{
                 fontSize: { xs: '15px', md: '18px', lg: '20px' },
                 color: 'inherit',
-                fontWeight:
-                  activePropertyType === item?.typeName ? 'normal' : 'normal',
+                fontWeight: selectedType === item?.typeName ? 'bold' : 'normal',
               }}
             >
               {item?.typeName || 'Unnamed'}

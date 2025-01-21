@@ -8,20 +8,22 @@ export default function Map({ containerStyle, formik }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    formik?.setFieldValue('latitude', map.lat);
-    formik?.setFieldValue('longitude', map.lng);
+    if (formik) {
+      formik?.setFieldValue('latitude', String(map?.lat));
+      formik?.setFieldValue('longitude', String(map?.lng));
+    }
   }, [map, formik]);
   const requestLocation = () => {
-    if (!navigator.geolocation) {
+    if (!navigator?.geolocation) {
       setError('Geolocation is not supported by your browser.');
       return;
     }
 
-    navigator.geolocation.getCurrentPosition(
+    navigator?.geolocation.getCurrentPosition(
       (position) => {
         const currentLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
+          lat: position?.coords?.latitude,
+          lng: position?.coords?.longitude,
         };
         setMap(currentLocation);
         setError(null);
@@ -29,15 +31,15 @@ export default function Map({ containerStyle, formik }) {
       (error) => {
         console.error('Geolocation error:', error);
         let message = '';
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
+        switch (error?.code) {
+          case error?.PERMISSION_DENIED:
             message =
               'You denied location access. Please allow it for accurate results.';
             break;
-          case error.POSITION_UNAVAILABLE:
+          case error?.POSITION_UNAVAILABLE:
             message = 'Location information is unavailable. Try again later.';
             break;
-          case error.TIMEOUT:
+          case error?.TIMEOUT:
             message = 'Location request timed out. Please try again.';
             break;
           default:
@@ -63,15 +65,15 @@ export default function Map({ containerStyle, formik }) {
 
   const handleMarkerDragEnd = (event) => {
     const newPosition = {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
+      lat: event?.latLng?.lat(),
+      lng: event?.latLng?.lng(),
     };
     setMap(newPosition);
   };
   const handleMapClick = (event) => {
     const newPosition = {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
+      lat: event?.latLng?.lat(),
+      lng: event?.latLng?.lng(),
     };
     setMap(newPosition);
   };

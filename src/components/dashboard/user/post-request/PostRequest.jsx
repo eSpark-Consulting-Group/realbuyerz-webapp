@@ -60,7 +60,7 @@ const PostRequest = () => {
   const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
-    updateSelectedAmenities(getAmenities, setSelectedAmenities);
+    updateSelectedAmenities(amenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -143,7 +143,7 @@ const PostRequest = () => {
     propertySubTypeId: formik?.values?.propertySubTypeId,
     longitude: formik.values.longitude,
     latitude: formik.values.latitude,
-    amenity: formik.values.amenitiesArray,
+    amenity: formik.values.amenity,
   };
 
   const { mutate } = useMutation({
@@ -169,7 +169,6 @@ const PostRequest = () => {
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenity', JSON.stringify(amenities));
 
       setPreviousData(formik.values);
     },
