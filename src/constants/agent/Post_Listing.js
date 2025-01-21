@@ -280,24 +280,24 @@ export const POST_LISTING = {
     },
   ],
   feature: [
-    {
-      image: '/images/listing-page/bed.svg',
-      title: 'Bedrooms',
-      name: 'bedrooms',
-      limit: 20,
-    },
-    {
-      image: '/images/listing-page/room.svg',
-      title: 'Bathrooms',
-      name: 'bathrooms',
-      limit: 20,
-    },
-    {
-      image: '/images/listing-page/parking.svg',
-      title: 'Parking',
-      name: 'parking',
-      limit: 20,
-    },
+    // {
+    //   image: '/images/listing-page/bed.svg',
+    //   title: 'Bedrooms',
+    //   name: 'bedrooms',
+    //   limit: 20,
+    // },
+    // {
+    //   image: '/images/listing-page/room.svg',
+    //   title: 'Bathrooms',
+    //   name: 'bathrooms',
+    //   limit: 20,
+    // },
+    // {
+    //   image: '/images/listing-page/parking.svg',
+    //   title: 'Parking',
+    //   name: 'parking',
+    //   limit: 20,
+    // },
   ],
   upload: {
     images: '/images/listing-page/select.svg',

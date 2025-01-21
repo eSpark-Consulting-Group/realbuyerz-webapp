@@ -11,6 +11,10 @@ const MapFrame = ({ formik }) => {
           <Map
             containerStyle={{ width: '100%', height: '103px' }}
             formik={formik}
+            location={{
+              lat: parseFloat(formik?.values?.latitude),
+              lng: parseFloat(formik?.values?.longitude),
+            }}
           />
         </MapProvider>
       </div>

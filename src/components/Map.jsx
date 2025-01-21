@@ -3,8 +3,8 @@ import { useState, useCallback, useEffect } from 'react';
 
 const defaultLocation = { lat: 37.7749, lng: -122.4194 };
 
-export default function Map({ containerStyle, formik }) {
-  const [map, setMap] = useState(defaultLocation);
+export default function Map({ containerStyle, formik, location }) {
+  const [map, setMap] = useState(location || defaultLocation);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function Map({ containerStyle, formik }) {
       formik?.setFieldValue('latitude', String(map?.lat));
       formik?.setFieldValue('longitude', String(map?.lng));
     }
-  }, [map, formik]);
+  }, [map]);
   const requestLocation = () => {
     if (!navigator?.geolocation) {
       setError('Geolocation is not supported by your browser.');
@@ -46,7 +46,7 @@ export default function Map({ containerStyle, formik }) {
             message = 'An unknown error occurred.';
         }
         setError(message);
-        setMap(defaultLocation);
+        setMap(location || defaultLocation);
       },
       {
         timeout: 10000,
@@ -57,7 +57,7 @@ export default function Map({ containerStyle, formik }) {
 
   const onLoad = useCallback(() => {
     requestLocation();
-  }, []);
+  }, [location]);
 
   const onUnmount = useCallback(() => {
     setMap(null);
@@ -68,14 +68,14 @@ export default function Map({ containerStyle, formik }) {
       lat: event?.latLng?.lat(),
       lng: event?.latLng?.lng(),
     };
-    setMap(newPosition);
+    setMap(location || newPosition);
   };
   const handleMapClick = (event) => {
     const newPosition = {
       lat: event?.latLng?.lat(),
       lng: event?.latLng?.lng(),
     };
-    setMap(newPosition);
+    setMap(location || newPosition);
   };
   return (
     <>
@@ -89,7 +89,7 @@ export default function Map({ containerStyle, formik }) {
         </div>
       )}
       <div style={{ marginBottom: '10px' }}>
-        <strong>Current Location:</strong>
+        <strong>Current location:</strong>
         <p>Latitude: {map?.lat}</p>
         <p>Longitude: {map?.lng}</p>
       </div>
@@ -97,14 +97,14 @@ export default function Map({ containerStyle, formik }) {
         mapContainerStyle={containerStyle}
         center={map}
         zoom={10}
-        onClick={handleMapClick} // Listen for map clicks
+        onClick={handleMapClick}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
         <MarkerF
           position={map}
-          draggable={true} // Make the marker draggable
-          onDragEnd={handleMarkerDragEnd} // Handle drag end events
+          draggable={true}
+          onDragEnd={handleMarkerDragEnd}
         />
       </GoogleMap>
     </>

@@ -293,18 +293,18 @@ export const POST_REQUEST = {
     },
   ],
   feature: [
-    {
-      image: '/images/listing-page/bed.svg',
-      title: 'Bedrooms',
-      name: 'bedrooms',
-      limit: 20,
-    },
-    {
-      image: '/images/listing-page/room.svg',
-      title: 'Bathrooms',
-      name: 'bathrooms',
-      limit: 20,
-    },
+    // {
+    //   image: '/images/listing-page/bed.svg',
+    //   title: 'Bedrooms',
+    //   name: 'bedrooms',
+    //   limit: 20,
+    // },
+    // {
+    //   image: '/images/listing-page/room.svg',
+    //   title: 'Bathrooms',
+    //   name: 'bathrooms',
+    //   limit: 20,
+    // },
     // {
     //   image: '/images/listing-page/parking.svg',
     //   title: 'Parking',
