@@ -94,11 +94,13 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
       lat: event?.latLng?.lat(),
       lng: event?.latLng?.lng(),
     };
-    setMap((prevMap) =>
-      isValidCoordinate(newPosition.lat) && isValidCoordinate(newPosition.lng)
-        ? newPosition
-        : prevMap
-    );
+
+    // Update both map and Formik state
+    if (isValidCoordinate(newPosition.lat) && isValidCoordinate(newPosition.lng)) {
+      setMap(newPosition);
+      formik?.setFieldValue('latitude', String(newPosition.lat));
+      formik?.setFieldValue('longitude', String(newPosition.lng));
+    }
   };
 
   const handleMapClick = (event) => {
@@ -106,11 +108,9 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
       lat: event?.latLng?.lat(),
       lng: event?.latLng?.lng(),
     };
-    setMap((prevMap) =>
-      isValidCoordinate(newPosition.lat) && isValidCoordinate(newPosition.lng)
-        ? newPosition
-        : prevMap
-    );
+    setMap(newPosition);
+    formik?.setFieldValue('latitude', String(newPosition.lat));
+    formik?.setFieldValue('longitude', String(newPosition.lng));
   };
 
   return (
@@ -124,11 +124,6 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
           </button>
         </div>
       )}
-      <div style={{ marginBottom: '10px' }}>
-        <strong>Current location:</strong>
-        <p>Latitude: {map?.lat}</p>
-        <p>Longitude: {map?.lng}</p>
-      </div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={map}
