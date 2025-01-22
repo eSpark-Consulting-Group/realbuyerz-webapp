@@ -90,7 +90,7 @@ const PostRequest = () => {
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
       propertyAddress: values.address,
-      amenity: values.amenities, 
+      amenity: values.amenities,
       longitude: '123.345',
       latitude: '989.000',
     };
@@ -98,11 +98,13 @@ const PostRequest = () => {
     console.log('Final payload to submit:', updatedData);
 
     if (Action === 'submit') {
-      if (segments.includes('update-request')) {
-        updatedData.propertyStatus = true;
+      if (property_Id) {
+        // Update the existing property
+        updatedData.propertyStatus = true; // Mark as active
         updateUserPropertyApi.mutate({ object: updatedData, property_Id });
       } else {
-        mutate(updatedData); 
+        // Create a new property
+        mutate(updatedData);
       }
     }
   };
@@ -140,7 +142,7 @@ const PostRequest = () => {
 
   const initialValues = {
     ...POST_REQUEST_VALUES,
-    amount: Number(POST_REQUEST_VALUES.amount) || 0, 
+    amount: Number(POST_REQUEST_VALUES.amount) || 0,
   };
 
   const formik = useFormik({
@@ -169,7 +171,7 @@ const PostRequest = () => {
     propertyName: formik.values.title,
     propertyType: formik.values.propertyCategory,
     propertyDescription: formik.values.description,
-    propertyPrice: parseFloat(formik.values.amount), 
+    propertyPrice: parseFloat(formik.values.amount),
     property_area: formik.values.area,
     purpose: formik.values.purpose,
     propertyAddress: formik?.values.address,
@@ -201,7 +203,7 @@ const PostRequest = () => {
       const amenitiesArr = singleArr.amenities?.map((val) => {
         return {
           ...val,
-          name: val.amenetiesName, 
+          name: val.amenetiesName,
           text: val.amenetiesName,
         };
       });
