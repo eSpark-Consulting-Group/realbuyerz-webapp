@@ -32,8 +32,6 @@ const PreviewFeatureAndAmenities = ({
   fontWeight,
   specificPost,
 }) => {
-  console.log('Amenities from API:', specificPost?.amenity);
-
   return (
     <>
       {amenities?.title && (
@@ -53,7 +51,9 @@ const PreviewFeatureAndAmenities = ({
           >
             {amenities?.title || 'Amenities'}
           </Typography>
-          {specificPost?.amenity?.length > 0 ? (
+          {specificPost &&
+          Array.isArray(specificPost?.amenity) &&
+          specificPost?.amenity?.length > 0 ? (
             specificPost.amenity.map((property, index) =>
               renderDetail(
                 property?.name || 'No Name',

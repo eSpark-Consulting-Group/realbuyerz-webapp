@@ -52,5 +52,5 @@ export const getInitialCounterValue = (formik, name) => {
     formik?.values[name] !== undefined &&
     formik?.values[name] !== ''
     ? parseInt(formik?.values[name])
-    : 0;
+    : 1;
 };

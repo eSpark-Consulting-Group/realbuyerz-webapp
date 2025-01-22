@@ -27,6 +27,7 @@ const PreviewModal = (props) => {
   const postRequestPath = '/user/post-request';
   const imageArr = ads.PropertyData ? [ads.PropertyData[0]?.url] : [];
   const videoArr = ads.PropertyData ? [ads.PropertyData[1]?.url] : [];
+
   return (
     <>
       <Modal
@@ -107,6 +108,8 @@ const PreviewModal = (props) => {
               propertyType={ads?.propertyType.subTypeName}
               propertyCategory={ads?.propertyCategory}
               location={ads?.propertyAddress}
+              longitude={ads?.longitude}
+              latitude={ads?.latitude}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}

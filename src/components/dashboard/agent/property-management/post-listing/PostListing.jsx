@@ -40,32 +40,23 @@ import {
 import { usePathname, useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
-const PostListing = () => {
-  const routerPath = usePathname();
-  const router = useRouter();
-  const property_Id = routerPath.split('/')[4];
+const PostListing = ({ property_Id }) => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
   const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
+  const [filteredUserProperty, setFilteredUserProperty] = useState(null);
+
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
-  const amenities = getAmenities.map((amenity) => {
-    if (!amenity) return {};
-    const { id, text, image, limit, ...rest } = amenity;
-    console.log(id, text, image, limit);
-    return {
-      ...rest,
-      imageUrl: amenity.image,
-      count: amenity.count || 1,
-    };
-  });
+  const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
@@ -158,6 +149,10 @@ const PostListing = () => {
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
       const items = data.response.data;
+      const { active, trash, draft } = data.response.data;
+      const allItems = [...active, ...trash, ...draft];
+      const property = allItems.find((item) => item.id === property_Id);
+      setFilteredUserProperty(property); // Update state
       let singleArr = [];
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
@@ -192,15 +187,14 @@ const PostListing = () => {
   formData.append('propertyAddress', 'abc abc');
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', formik?.values.amenity);
-  formData.append('longitude', '123.345');
-  formData.append('latitude', '989.000');
-  formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+  formData.append('amenity', JSON.stringify(amenities));
+  formData.append('longitude', formik?.values.longitude);
+  formData.append('latitude', formik?.values.latitude);
+  // formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
 
   const isLoading = updatePostListingApi.isPending || isPending;
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
-
   return (
     <>
       <ToastContainer />
@@ -224,6 +218,7 @@ const PostListing = () => {
                 formik={formik}
                 propertyData={POST_LISTING}
                 propertyTypeDetails={propertyTypeDetails}
+                filteredUserProperty={filteredUserProperty}
               />
               <PropertySize formik={formik} propertyData={POST_LISTING} />
               <PropertyFeatures

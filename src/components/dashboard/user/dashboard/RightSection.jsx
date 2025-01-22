@@ -24,7 +24,6 @@ const RightSection = ({
     connects,
   } = rightSectionKeys;
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
-  console.log(specificPost, 'save_Button');
   const [isHovered, setIsHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const dispatch = useDispatch();

@@ -15,6 +15,7 @@ import {
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import { fetchAmenities } from '@/src/utils/properties';
 import { useMutation } from '@tanstack/react-query';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
 const Facilities = ({
   // facilitiesData,
@@ -52,9 +53,11 @@ const Facilities = ({
   }, []);
 
   useEffect(() => {
-    const selectedAmenitiesId = selectedAmenities.map((val) => val.id);
+    const selectedAmenitiesId = selectedAmenities.map((val) => val?.id);
     formik?.setFieldValue('amenities', selectedAmenitiesId);
     formik?.setFieldValue('amenitiesArray', selectedAmenities);
+    const amenity = transformAmenities(selectedAmenities);
+    formik?.setFieldValue('amenity', amenity);
   }, [selectedAmenities]);
 
   const amenitiesIconHandler = (amenitiesName) => {
@@ -73,10 +76,10 @@ const Facilities = ({
     onSuccess: (data) => {
       const amenities = data.response.data.map((val) => {
         return {
-          id: val.id,
-          image: `/images/add-amenities/${amenitiesIconHandler(val.amenetiesName)}`,
-          title: val.amenetiesName,
-          name: val.amenetiesName,
+          id: val?.id,
+          image: `/images/add-amenities/${amenitiesIconHandler(val?.amenetiesName)}`,
+          title: val?.amenetiesName,
+          name: val?.amenetiesName,
         };
       });
       setFacilitiesData(amenities);
