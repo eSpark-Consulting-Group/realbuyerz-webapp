@@ -402,7 +402,6 @@ const MyProperties = () => {
               gap: { xs: 1.5, sm: 2.5, md: 3.5 },
             }}
           >
-            {console.log(myPropertiesData, 'myPropertiesData')}
             {myPropertiesData?.length < 1 ? (
               isPending ? (
                 <CircularProgress size={24} color="inherit" />

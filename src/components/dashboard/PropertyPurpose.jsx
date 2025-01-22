@@ -8,7 +8,12 @@ import SelectCityType from './ads-form-components/SelectCity';
 import SelectLocationType from './ads-form-components/SelectLocationType';
 import SelectProperyType from './ads-form-components/SelectPropertyType';
 
-const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
+const PropertyPurpose = ({
+  propertyData,
+  formik,
+  propertyTypeDetails,
+  filteredUserProperty,
+}) => {
   return (
     <Grid
       container
@@ -86,6 +91,7 @@ const PropertyPurpose = ({ propertyData, formik, propertyTypeDetails }) => {
               <SelectLocationType
                 propertyInformation={propertyData}
                 formik={formik}
+                filteredUserProperty={filteredUserProperty}
               />
             </Box>
           </Box>

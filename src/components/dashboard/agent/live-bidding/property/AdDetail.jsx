@@ -20,12 +20,8 @@ import { useMutation } from '@tanstack/react-query';
 import { fetchProperties } from '@/src/utils/properties';
 import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
 
-const AdDetail = () => {
+const AdDetail = ({ property_id }) => {
   const { location, areaAndAmount, amenities } = PREVIEW_DATA;
-
-  const pathname = usePathname();
-  const segments = pathname.split('/');
-  const id = segments[segments.length - 1];
 
   const dispatch = useDispatch();
   const userProperties = useSelector(
@@ -57,7 +53,9 @@ const AdDetail = () => {
     }
 
     if (userProperties.length) {
-      const item = userProperties.find((item) => item.property_id === id);
+      const item = userProperties.find(
+        (item) => item.property_id === property_id
+      );
 
       setUserPropertyData(item);
     }
@@ -129,6 +127,8 @@ const AdDetail = () => {
                         propertyCategory={userPropertyData?.propertyCategory}
                         location={userPropertyData?.location}
                         width={'70%'}
+                        longitude={userPropertyData?.longitude}
+                        latitude={userPropertyData?.latitude}
                       />
                       <PreviewAmountAndFeature
                         area={userPropertyData?.area}

@@ -36,18 +36,14 @@ import {
   updateUserProperty,
 } from '@/src/utils/userProperties';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
-import { usePathname } from 'next/navigation';
 import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
-const PostRequest = () => {
-  const router = usePathname();
-  const segments = router.split('/');
-  const property_Id = segments[segments.length - 1];
-
+const PostRequest = ({ property_Id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
+  const [filteredUserProperty, setFilteredUserProperty] = useState(null);
 
   const [Action, setAction] = useState('');
 
@@ -158,6 +154,10 @@ const PostRequest = () => {
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
       const items = data.response.data;
+      const { active, trash, draft } = data.response.data;
+      const allItems = [...active, ...trash, ...draft];
+      const property = allItems.find((item) => item.id === property_Id);
+      setFilteredUserProperty(property); // Update state
       let singleArr = [];
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
@@ -193,7 +193,6 @@ const PostRequest = () => {
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -216,6 +215,7 @@ const PostRequest = () => {
               formik={formik}
               propertyData={POST_REQUEST}
               buyData={POST_REQUEST?.buy}
+              filteredUserProperty={filteredUserProperty}
             />
             <PropertySize formik={formik} propertyData={POST_REQUEST} />
             <PropertyFeatures
