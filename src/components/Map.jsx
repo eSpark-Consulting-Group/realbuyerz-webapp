@@ -1,5 +1,6 @@
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import { useState, useCallback, useEffect } from 'react';
+import { getLocationErrorMessage } from '../utils/locationUtils';
 
 const defaultLocation = { lat: 37.7749, lng: -122.4194 };
 
@@ -59,21 +60,7 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
       setError(null);
     } catch (err) {
       console.error('Geolocation error:', err);
-      let message = '';
-      switch (err?.code) {
-        case err?.PERMISSION_DENIED:
-          message =
-            'You denied location access. Please allow it for accurate results.';
-          break;
-        case err?.POSITION_UNAVAILABLE:
-          message = 'Location information is unavailable. Try again later.';
-          break;
-        case err?.TIMEOUT:
-          message = 'Location request timed out. Please try again.';
-          break;
-        default:
-          message = 'An unknown error occurred.';
-      }
+      let message = getLocationErrorMessage(err);
       setError(message);
       if (!isLocationValid) {
         setMap(defaultLocation); // Fallback to default if both are invalid
@@ -96,7 +83,10 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
     };
 
     // Update both map and Formik state
-    if (isValidCoordinate(newPosition.lat) && isValidCoordinate(newPosition.lng)) {
+    if (
+      isValidCoordinate(newPosition.lat) &&
+      isValidCoordinate(newPosition.lng)
+    ) {
       setMap(newPosition);
       formik?.setFieldValue('latitude', String(newPosition.lat));
       formik?.setFieldValue('longitude', String(newPosition.lng));

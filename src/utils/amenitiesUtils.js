@@ -1,13 +1,24 @@
-// utils/amenitiesUtils.js
 export const transformAmenities = (amenities) => {
-  return amenities
-    .filter((amenity) => amenity && amenity.count !== 0) // Filter out items with count === 0
-    .map((amenity) => {
-      const { id, text, image, limit, ...rest } = amenity;
-      return {
-        ...rest,
-        imageUrl: image,
-        count: amenity?.count,
-      };
-    });
+  try {
+    if (!Array.isArray(amenities)) {
+      throw new Error("Invalid input: 'amenities' should be an array.");
+    }
+    // Process the amenities
+    return amenities
+      .filter(
+        (amenity) =>
+          amenity && typeof amenity?.count === 'number' && amenity?.count !== 0
+      ) // Filter valid items
+      .map((amenity) => {
+        const { id, text, image, limit, ...rest } = amenity;
+        return {
+          ...rest,
+          imageUrl: image || '', // Default to an empty string if image is undefined
+          count: amenity?.count,
+        };
+      });
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
 };
