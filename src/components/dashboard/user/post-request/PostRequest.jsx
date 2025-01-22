@@ -57,7 +57,6 @@ const PostRequest = () => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  // Update amenities to match the expected format
   const amenities = (getAmenities || []).map((amenity) => {
     if (!amenity) return {};
     const { id, text, image, limit, ...rest } = amenity;
@@ -76,7 +75,7 @@ const PostRequest = () => {
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    const propertyPrice = parseFloat(values.amount); // Explicitly parse as float
+    const propertyPrice = parseFloat(values.amount);
     if (isNaN(propertyPrice)) {
       console.error('Invalid property price:', values.amount);
       return;
@@ -84,14 +83,14 @@ const PostRequest = () => {
 
     const updatedData = {
       propertyName: values.title,
-      propertyPrice: parseFloat(values.amount).toString(),
+      propertyPrice: propertyPrice.toString(),
       propertyArea: values.area,
       propertyDescription: values.description,
       propertyCity: values.city,
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
-      amenity: values.amenities,
-      propertyAddress: values.address, // Map form address to API key
+      propertyAddress: values.address,
+      amenity: values.amenities, 
       longitude: '123.345',
       latitude: '989.000',
     };
@@ -103,12 +102,8 @@ const PostRequest = () => {
         updatedData.propertyStatus = true;
         updateUserPropertyApi.mutate({ object: updatedData, property_Id });
       } else {
-        mutate(updatedData); // Call the mutation to create a new property
+        mutate(updatedData); 
       }
-    } else if (Action === 'draft') {
-      dispatch(handleSubmitDraft(values));
-      updatedData.propertyStatus = false; // Ensure property status is set to false for drafts
-      mutate(updatedData); // Call the mutation to save as a draft
     }
   };
 
@@ -145,13 +140,13 @@ const PostRequest = () => {
 
   const initialValues = {
     ...POST_REQUEST_VALUES,
-    amount: Number(POST_REQUEST_VALUES.amount) || 0, // Convert to number
+    amount: Number(POST_REQUEST_VALUES.amount) || 0, 
   };
 
   const formik = useFormik({
     initialValues: {
       ...POST_REQUEST_VALUES,
-      address: POST_REQUEST_VALUES.address || '', // Ensure address is initialized
+      address: '',
     },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
@@ -174,10 +169,10 @@ const PostRequest = () => {
     propertyName: formik.values.title,
     propertyType: formik.values.propertyCategory,
     propertyDescription: formik.values.description,
-    propertyPrice: parseFloat(formik.values.amount), // Explicitly parse as number
+    propertyPrice: parseFloat(formik.values.amount), 
     property_area: formik.values.area,
     purpose: formik.values.purpose,
-    propertyAddress: formik.values.address,
+    propertyAddress: formik?.values.address,
     propertyCity: formik.values.city,
     propertySubTypeId: formik?.values?.propertySubTypeId,
     amenities: formik.values.amenities,
@@ -188,11 +183,8 @@ const PostRequest = () => {
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
     onSuccess: (data) => {
-      console.log('Success:', data);
+      console.log(data, 'data');
       handleOpenSuccessModal();
-    },
-    onError: (error) => {
-      console.error('Error:', error.response || error.message);
     },
   });
 
@@ -206,23 +198,21 @@ const PostRequest = () => {
           singleArr = items[val][0];
         }
       });
-
+      const amenitiesArr = singleArr.amenities?.map((val) => {
+        return {
+          ...val,
+          name: val.amenetiesName, 
+          text: val.amenetiesName,
+        };
+      });
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue(
-        'amenities',
-        singleArr.amenities?.map((val) => ({
-          ...val,
-          name: val.amenetiesName,
-          text: val.amenetiesName,
-        }))
-      );
-      formik.setFieldValue('propertyCategory', singleArr.propertyType);
-      formik.setFieldValue('purpose', singleArr.purpose);
-      formik.setFieldValue('address', singleArr.propertyAddress); // Set address here
+      formik.setFieldValue('amenities', amenitiesArr);
+
+      setPreviousData(formik.values);
     },
     onError: (error) => {
       console.error(error);
