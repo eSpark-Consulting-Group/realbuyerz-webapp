@@ -57,10 +57,10 @@ const PostRequest = () => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const amenities = getAmenities.map((amenity) => {
+  // Update amenities to match the expected format
+  const amenities = (getAmenities || []).map((amenity) => {
     if (!amenity) return {};
     const { id, text, image, limit, ...rest } = amenity;
-    console.log(id, text, image, limit);
     return {
       ...rest,
       imageUrl: amenity.image,
@@ -76,23 +76,40 @@ const PostRequest = () => {
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    if (Action === 'draft') {
-      dispatch(handleSubmitDraft(values));
-      obj.propertyStatus = false;
-      mutate(obj);
-    } else if (Action === 'submit') {
-      if (segments.includes('update-request')) {
-        obj.propertyStatus = true;
-        const object = {};
-        formData.forEach((value, key) => (object[key] = value));
-        updateUserPropertyApi.mutate({ object, property_Id });
-      } else {
-        mutate(obj);
-      }
-      dispatch(handleSumitUserAds(values));
+    const propertyPrice = parseFloat(values.amount); // Explicitly parse as float
+    if (isNaN(propertyPrice)) {
+      console.error('Invalid property price:', values.amount);
+      return;
     }
-    dispatch(toggleCheckAmenityClear());
-    setSelectedAmenities([]);
+
+    const updatedData = {
+      propertyName: values.title,
+      propertyPrice: parseFloat(values.amount).toString(),
+      propertyArea: values.area,
+      propertyDescription: values.description,
+      propertyCity: values.city,
+      propertySubTypeId: values.propertySubTypeId,
+      purpose: values.purpose,
+      amenity: values.amenities,
+      propertyAddress: values.address, // Map form address to API key
+      longitude: '123.345',
+      latitude: '989.000',
+    };
+
+    console.log('Final payload to submit:', updatedData);
+
+    if (Action === 'submit') {
+      if (segments.includes('update-request')) {
+        updatedData.propertyStatus = true;
+        updateUserPropertyApi.mutate({ object: updatedData, property_Id });
+      } else {
+        mutate(updatedData); // Call the mutation to create a new property
+      }
+    } else if (Action === 'draft') {
+      dispatch(handleSubmitDraft(values));
+      updatedData.propertyStatus = false; // Ensure property status is set to false for drafts
+      mutate(updatedData); // Call the mutation to save as a draft
+    }
   };
 
   const handleClickOpen = () => {
@@ -116,14 +133,25 @@ const PostRequest = () => {
   const updateUserPropertyApi = useMutation({
     mutationFn: updateUserProperty,
     onSuccess: (data) => {
-      console.log(data, 'data');
+      console.log('Property updated successfully:', data);
+    },
+    onError: (error) => {
+      console.error(
+        'Error updating property:',
+        error.response || error.message
+      );
     },
   });
+
+  const initialValues = {
+    ...POST_REQUEST_VALUES,
+    amount: Number(POST_REQUEST_VALUES.amount) || 0, // Convert to number
+  };
 
   const formik = useFormik({
     initialValues: {
       ...POST_REQUEST_VALUES,
-      address: '',
+      address: POST_REQUEST_VALUES.address || '', // Ensure address is initialized
     },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
@@ -140,27 +168,31 @@ const PostRequest = () => {
     validateOnBlur: false,
   });
 
+  console.log('Property Price:', formik.values.amount);
+
   const obj = {
     propertyName: formik.values.title,
     propertyType: formik.values.propertyCategory,
     propertyDescription: formik.values.description,
-    propertyPrice: formik.values.amount,
-    propertyArea: formik.values.area,
+    propertyPrice: parseFloat(formik.values.amount), // Explicitly parse as number
+    property_area: formik.values.area,
     purpose: formik.values.purpose,
-    propertyAddress: formik?.values.address,
+    propertyAddress: formik.values.address,
     propertyCity: formik.values.city,
     propertySubTypeId: formik?.values?.propertySubTypeId,
     amenities: formik.values.amenities,
     longitude: '123.345',
     latitude: '989.000',
-    amenity: formik.values.amenitiesArray,
   };
 
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
     onSuccess: (data) => {
-      console.log(data, 'data');
+      console.log('Success:', data);
       handleOpenSuccessModal();
+    },
+    onError: (error) => {
+      console.error('Error:', error.response || error.message);
     },
   });
 
@@ -174,14 +206,23 @@ const PostRequest = () => {
           singleArr = items[val][0];
         }
       });
+
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenity', JSON.stringify(amenities));
-
-      setPreviousData(formik.values);
+      formik.setFieldValue(
+        'amenities',
+        singleArr.amenities?.map((val) => ({
+          ...val,
+          name: val.amenetiesName,
+          text: val.amenetiesName,
+        }))
+      );
+      formik.setFieldValue('propertyCategory', singleArr.propertyType);
+      formik.setFieldValue('purpose', singleArr.purpose);
+      formik.setFieldValue('address', singleArr.propertyAddress); // Set address here
     },
     onError: (error) => {
       console.error(error);
