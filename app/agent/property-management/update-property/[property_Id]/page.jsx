@@ -2,12 +2,13 @@
 import PostListing from '@/src/components/dashboard/agent/property-management/post-listing/PostListing';
 import React from 'react';
 
-const page = () => {
+const Page = ({ params }) => {
+  const { property_Id } = params;
   return (
     <>
-      <PostListing />
+      <PostListing property_Id={property_Id} />
     </>
   );
 };
 
-export default page;
+export default Page;

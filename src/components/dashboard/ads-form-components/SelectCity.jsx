@@ -79,7 +79,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               name={'city'}
               popupIcon={<KeyboardArrowDownIcon sx={{ color: '#777777' }} />}
               clearIcon={null}
-              value={formik?.values?.city}
+              value={formik?.values?.city || null}
               onBlur={formik?.handleBlur}
               error={formik?.touched?.city && Boolean(formik?.errors?.city)}
               disablePortal
@@ -98,7 +98,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                 },
                 '& fieldset': {
                   borderRadius: '10px',
-                  border: `1px solid ${formik?.errors.city ? 'red' : '1px solid #E7E7E7'}`,
+                  border: `1px solid ${formik?.errors?.city ? 'red' : '1px solid #E7E7E7'}`,
                 },
 
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
@@ -135,12 +135,12 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             label="Property Address"
             variant="outlined"
             fullWidth
-            value={formik.values.address}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            value={formik?.values.address}
+            onChange={formik?.handleChange}
+            onBlur={formik?.handleBlur}
             name="address"
-            error={formik.touched.address && Boolean(formik.errors.address)}
-            helperText={formik.touched.address && formik.errors.address}
+            error={formik?.touched.address && Boolean(formik?.errors?.address)}
+            helperText={formik?.touched.address && formik?.errors?.address}
             InputProps={{
               sx: {
                 borderRadius: '10px',

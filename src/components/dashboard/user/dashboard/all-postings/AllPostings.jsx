@@ -262,7 +262,7 @@ const AllPostings = () => {
                     }
                     disablePortal
                     id={`combo-box-${index}`}
-                    value={filterObject?.[field?.key]}
+                    value={filterObject?.[field?.key] || null}
                     onChange={(e) =>
                       handleChangeSelect(field?.key, e?.target?.innerText)
                     }

@@ -40,7 +40,6 @@ const ProposalCard = ({
   const proposals = 'my-proposals';
   const all_posting = 'all-postings';
   const user = 'user';
-  console.log(currentTab, 'asjhdkjasdhska');
   const handleTrash = (property_id, currentTab) => {
     if (pathName?.includes(user)) {
       deletePropertyHandler.mutate(property_id);

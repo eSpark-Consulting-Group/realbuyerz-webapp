@@ -7,31 +7,20 @@ import { useMutation } from '@tanstack/react-query';
 import { fetchPropertyTypes } from '@/src/utils/properties';
 import { usePathname } from 'next/navigation';
 
-const SelectProperyType = ({
-  image,
-  label,
-  // iconTitle,
-  // commercialType,
-  formik,
-  propertyTypeDetails,
-}) => {
+const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
   const pathname = usePathname();
 
   const [activePropertyType, setActivePropertyType] = useState('');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
-  // const [propertyType, setPropertyType] = useState(activePropertyType);
-  // const [propetySubType, setPropetySubType] = useState();
   const [propertyTp, setPropertyTp] = useState([]);
 
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
-    // setPropertyType(text);
     formik?.setFieldValue('propertyCategory', text);
   };
 
   const handlePropetySubType = (propertySubTypeData) => {
     setActivePropertySubType(propertySubTypeData?.subTypeName);
-    // setPropetySubType(propertySubTypeData.subTypeName);
     formik?.setFieldValue('propertySubTypeId', propertySubTypeData?.id);
   };
 
@@ -147,7 +136,7 @@ const SelectProperyType = ({
                       fontSize: { xs: '15px', sm: '20px' },
                       fontWeight: 400,
                       color:
-                        activePropertyType === val.typeName
+                        activePropertyType === val?.typeName
                           ? '#FB631C'
                           : '#666',
                       position: 'relative',
@@ -157,27 +146,27 @@ const SelectProperyType = ({
                         left: 0,
                         right: 0,
                         bottom: -8,
-                        borderBottom: `3px solid ${activePropertyType === val.typeName ? '#FB631C' : 'transparent'}`,
+                        borderBottom: `3px solid ${activePropertyType === val?.typeName ? '#FB631C' : 'transparent'}`,
                       },
                     }}
-                    onClick={() => handlePropertyType(val.typeName)}
+                    onClick={() => handlePropertyType(val?.typeName)}
                   >
-                    {val.typeName}
+                    {val?.typeName}
                   </Button>
                 );
               })}
             </Box>
             <hr style={{ width: '100%' }}></hr>
-            {propertyTp.map((val, index) => {
-              return (
+            {propertyTp
+              .filter((val) => val?.typeName === activePropertyType)
+              .map((val, index) => (
                 <PropertyTypes
                   key={index}
-                  data={val.subTypes}
+                  data={val?.subTypes}
                   handlePropetySubType={handlePropetySubType}
                   activePropertySubType={activePropertySubType}
                 />
-              );
-            })}
+              ))}
           </Box>
         </Box>
       </Box>
