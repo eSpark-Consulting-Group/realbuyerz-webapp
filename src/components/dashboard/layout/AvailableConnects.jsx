@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 
-const AvailableConnects = ({ profileInfo, connectsText, buyNow }) => {
+const AvailableConnects = ({ connectsText, buyNow }) => {
   return (
     <>
       <Grid
@@ -27,7 +27,7 @@ const AvailableConnects = ({ profileInfo, connectsText, buyNow }) => {
             lineHeight: 'normal',
           }}
         >
-          {`${profileInfo?.available_connects || 0} ${connectsText || ''}`}
+          {`0 ${connectsText || ''}`}
         </Typography>
         <Link href={`${buyNow?.link || '#'}`}>
           <Typography

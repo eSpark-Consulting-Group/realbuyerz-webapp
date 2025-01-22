@@ -78,7 +78,7 @@ const LiveBidding = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={12} lg={12} xl={2.64} xxl={2}>
-            <BiddingProfile />
+            <BiddingProfile  userProfile={userProfile}/>
           </Grid>
         </Grid>
       </Box>

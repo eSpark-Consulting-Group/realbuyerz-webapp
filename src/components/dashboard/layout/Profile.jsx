@@ -2,8 +2,10 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Avatar } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
-const Profile = ({ profileInfo, defaultImage }) => {
+const Profile = ({ defaultImage, userProfile }) => {
+  // const baseUrl = userProfile?.profileImage.split('?')[0];
   return (
     <>
       <Grid
@@ -18,7 +20,7 @@ const Profile = ({ profileInfo, defaultImage }) => {
       >
         <Grid item xs={12}>
           <Avatar
-            src={profileInfo?.profile_image || defaultImage}
+            src={userProfile?.profileImage || defaultImage}
             sx={{
               width: '52px',
               height: '52px',
@@ -30,28 +32,33 @@ const Profile = ({ profileInfo, defaultImage }) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            sx={{
-              fontSize: '16px',
-              fontWeight: 500,
-              textDecoration: 'underline',
-              textUnderlineOffset: '5px',
-              color: '#444444',
-            }}
-          >
-            {profileInfo?.first_name || ''}
-          </Typography>
+          <Link href={`/agent/agent-settings/agent-profile`}>
+            <Typography
+              sx={{
+                fontSize: '16px',
+                fontWeight: 500,
+                textDecoration: 'underline',
+                textUnderlineOffset: '5px',
+                color: '#444444',
+              }}
+            >
+              {`${userProfile?.firstName} ${userProfile?.lastName} `}
+            </Typography>
+          </Link>
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            sx={{
-              fontSize: '16px',
-              fontWeight: 700,
-              marginTop: '-9px',
-            }}
-          >
-            {profileInfo?.agency_name || ''}
-          </Typography>
+
+          <Link href={`/agent/agent-settings/agent-profile`}>
+            <Typography
+              sx={{
+                fontSize: '16px',
+                fontWeight: 700,
+                marginTop: '-9px',
+              }}
+            >
+              {userProfile.estateName || ''}
+            </Typography>
+          </Link>
         </Grid>
       </Grid>
     </>

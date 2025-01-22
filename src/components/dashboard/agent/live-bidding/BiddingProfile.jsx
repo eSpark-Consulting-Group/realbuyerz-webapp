@@ -13,9 +13,12 @@ import {
   PROFILE_COMPLETNESS_DESCRIPTION,
   PROFILE_IMAGE_DEFAULT,
 } from '@/src/constants/agent/Live_Bidding';
+import { calculateCompletionPercentage } from '@/src/utils/calculateCompletionPercentage';
 
-const BiddingProfile = () => {
-  const current_user = useSelector((state) => state?.currentUser?.user);
+const BiddingProfile = ({userProfile}) => {
+  console.log(userProfile,"userProfile");
+  
+ const percentage=calculateCompletionPercentage(userProfile)
 
   return (
     <Box sx={{ marginTop: '15px' }}>
@@ -33,15 +36,15 @@ const BiddingProfile = () => {
           }}
         >
           <Profile
-            profileInfo={current_user}
+            userProfile={userProfile}
             defaultImage={PROFILE_IMAGE_DEFAULT}
           />
           <ProfileCompletness
             title={PROFILE_COMPLETNESS}
-            description={PROFILE_COMPLETNESS_DESCRIPTION}
+            percentage={percentage}
+            description={userProfile.bio}
           />
           <AvailableConnects
-            profileInfo={current_user}
             connectsText={AVAIALABLE_CONNECTS}
             buyNow={BUY_NOW}
           />

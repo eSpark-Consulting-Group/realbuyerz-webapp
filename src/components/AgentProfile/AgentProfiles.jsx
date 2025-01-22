@@ -21,8 +21,8 @@ const AgentProfiles = ({ data, setFieldValue, setFile, file, error }) => {
         item?.status === 'submit'
     ).length;
   }
-  const forSellCount = filterProjects(projects, data.id, 'Sell');
-  const forRentCount = filterProjects(projects, data.id, 'Rent');
+  const forSellCount = filterProjects(projects, data?.id, 'Sell');
+  const forRentCount = filterProjects(projects, data?.id, 'Rent');
 
   return (
     <Box

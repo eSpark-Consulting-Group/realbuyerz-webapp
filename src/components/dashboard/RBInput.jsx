@@ -16,6 +16,7 @@ const RBInput = ({
   multiline,
   inputProps,
   onChange,
+  autoComplete,
   ...props
 }) => {
   return (
@@ -37,6 +38,7 @@ const RBInput = ({
         rows={rows}
         onChange={onChange}
         {...props}
+        autoComplete={autoComplete}
       />
     </>
   );

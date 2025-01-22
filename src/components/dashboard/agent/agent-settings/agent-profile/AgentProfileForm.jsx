@@ -16,8 +16,7 @@ import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice'
 const AgentProfileForm = () => {
   const dispatch = useDispatch();
   const user_profile = useSelector((state) => state?.currentUser?.user);
-
-  const [agentData, setAgentData] = useState(user_profile || {});
+  const [agentData, setAgentData] = useState({});
 
   const { data } = useQuery({
     staleTime: 10000,
@@ -29,13 +28,9 @@ const AgentProfileForm = () => {
   useEffect(() => {
     if (data) {
       dispatch(handleUserEdit(data?.response?.data));
+      setAgentData(data?.response?.data);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-
-  useEffect(() => {
-    setAgentData(user_profile || {});
-  }, [user_profile]);
 
   return (
     <Box
@@ -54,7 +49,10 @@ const AgentProfileForm = () => {
         },
       }}
     >
-      <ProfileForm formValues={agentData} data={AGENT_PROFILE_FORM_DATA} />
+      <ProfileForm 
+      formValues={agentData} 
+      data={AGENT_PROFILE_FORM_DATA}
+       />
       <ProfileFormMidText text={MID_TEXT} />
       <ProfilePasswordForm
         data={AGENT_PROFILE_FORM_DATA}

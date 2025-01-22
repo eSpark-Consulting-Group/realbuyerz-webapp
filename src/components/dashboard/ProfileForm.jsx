@@ -20,6 +20,7 @@ import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice'
 import { useMutation } from '@tanstack/react-query';
 import { sendOTP } from '@/src/utils/apis/auth/sendOTP';
 import { profileUpdate } from '@/src/utils/apis/auth/profileUpdate';
+import { setUserProfile } from '@/src/redux/slices/auth/authSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -41,7 +42,7 @@ export default function ProfileForm({ data, formValues }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const [isVerified] = useState(formValues.isVerified);
+  const [isVerified] = useState(formValues?.isVerified);
   const [file, setFile] = useState(null);
 
   const Profile_Keys = {
@@ -52,14 +53,13 @@ export default function ProfileForm({ data, formValues }) {
     whatsapp: `${formValues?.whatsapp || ''}`,
     country: `${formValues?.country || ''}`,
     address: `${formValues?.address || ''}`,
-    socialId: '',
-    isVerified: isVerified,
-    profileVisibility: formValues.profileVisibility,
+    socialId: `${formValues?.socialId || ''}`,
+    isVerified: isVerified || false,
+    profileVisibility: formValues?.profileVisibility ,
     profileImage: `${formValues?.profileImage || ''}`,
     bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
-    // phoneNumber: `${formValues?.phoneNumber || ''}`,
-    // updated_at: '',
+    // mobileNumber: `${formValues?.mobileNumber || ''}`,
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
@@ -79,7 +79,7 @@ export default function ProfileForm({ data, formValues }) {
 
   const handleVerify = (name) => {
     if (values[name] !== '') {
-      verifyContact({ phoneNumber: values[name] });
+      verifyContact({ mobileNumber: values[name] });
     } else {
       setVerifyText('unverified');
     }
@@ -88,9 +88,7 @@ export default function ProfileForm({ data, formValues }) {
   const handlePhoneChange = (event, key) => {
     if (key == 'Whatsapp') {
       return setFieldValue((values.whatsapp = event));
-    } else if (key == 'Mobile') {
-      return setFieldValue((values.phoneNumber = event));
-    } else {
+    }  else {
       null;
     }
   };
@@ -124,6 +122,7 @@ export default function ProfileForm({ data, formValues }) {
     onSuccess: (data) => {
       console.log(data);
       dispatch(handleUserEdit(values));
+      dispatch(setUserProfile());
     },
   });
   return (
@@ -221,6 +220,7 @@ export default function ProfileForm({ data, formValues }) {
                         value={values?.whatsapp}
                         defaultCountry={'PK'}
                         onChange={(e) => handlePhoneChange(e, field?.label)}
+                        autoComplete={field?.autoComplete}
                       />
                       <Typography
                         sx={{
@@ -234,7 +234,7 @@ export default function ProfileForm({ data, formValues }) {
                       </Typography>
                     </Box>
                   ) : null}
-                  {field?.label == 'Mobile' ? (
+                  {/* {field?.label == 'Mobile' ? (
                     <Box sx={{ width: '100%' }}>
                       <Box
                         sx={{
@@ -247,9 +247,11 @@ export default function ProfileForm({ data, formValues }) {
                         <PhoneInput
                           id="mobile"
                           placeholder="Enter phone number"
-                          value={values?.phoneNumber}
+                          value={values?.mobileNumber}
                           defaultCountry={'PK'}
                           onChange={(e) => handlePhoneChange(e, field?.label)}
+                          autoComplete={field?.autoComplete}
+                          disabled
                         />
                         <Button
                           variant="primary"
@@ -293,7 +295,7 @@ export default function ProfileForm({ data, formValues }) {
                         </Typography>
                       </Box>
                     </Box>
-                  ) : null}
+                  ) : null} */}
                   {field?.label == 'Mobile' ||
                   field?.label == 'Whatsapp' ? null : (
                     <RBInput
@@ -323,6 +325,7 @@ export default function ProfileForm({ data, formValues }) {
                       name={field?.name}
                       multiline={field?.multiline}
                       value={values[field?.name]}
+                      autoComplete={values[field?.autoComplete]}
                       onChange={handleChange}
                       error={
                         errors[field?.name] && touched[field?.name]
