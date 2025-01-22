@@ -279,26 +279,7 @@ export const COVER_LETTER = {
       label: 'readyPossession',
     },
   ],
-  feature: [
-    // {
-    //   image: '/images/listing-page/bed.svg',
-    //   title: 'Bedrooms',
-    //   name: 'bedrooms',
-    //   limit: 20,
-    // },
-    // {
-    //   image: '/images/listing-page/room.svg',
-    //   title: 'Bathrooms',
-    //   name: 'bathrooms',
-    //   limit: 20,
-    // },
-    // {
-    //   image: '/images/listing-page/parking.svg',
-    //   title: 'Parking',
-    //   name: 'parking',
-    //   limit: 20,
-    // },
-  ],
+  feature: [],
   upload: {
     images: '/images/listing-page/select.svg',
     text: 'Upload Images and video of your Property',

@@ -50,7 +50,7 @@ const PostListing = ({ property_Id }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
   const [filteredUserProperty, setFilteredUserProperty] = useState(null);
-  
+
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const getAmenities = useSelector(
