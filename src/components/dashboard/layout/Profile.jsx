@@ -54,7 +54,7 @@ const Profile = ({ defaultImage, userProfile }) => {
                 marginTop: '-9px',
               }}
             >
-              {userProfile.estateName || ''}
+              {userProfile?.estateName || ''}
             </Typography>
           </Link>
         </Grid>

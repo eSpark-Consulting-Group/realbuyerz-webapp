@@ -39,7 +39,7 @@ const BiddingProfile = ({ userProfile }) => {
           <ProfileCompletness
             title={PROFILE_COMPLETNESS}
             percentage={percentage}
-            description={userProfile.bio}
+            description={userProfile?.bio}
           />
           <AvailableConnects
             connectsText={AVAIALABLE_CONNECTS}

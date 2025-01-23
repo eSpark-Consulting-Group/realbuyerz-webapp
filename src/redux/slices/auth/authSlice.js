@@ -19,7 +19,10 @@ const authSlice = createSlice({
       state.user = null;
     },
     setUserProfile: (state, { payload }) => {
-      state.userProfile = payload;
+      state.userProfile = {
+        ...state.userProfile,
+        ...payload,
+      };
     },
   },
 });

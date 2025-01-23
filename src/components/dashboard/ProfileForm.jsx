@@ -123,6 +123,7 @@ export default function ProfileForm({ data, formValues }) {
     onSuccess: (data) => {
       console.log(data);
       dispatch(handleUserEdit(values));
+      dispatch(setUserProfile(values));
     },
   });
   return (

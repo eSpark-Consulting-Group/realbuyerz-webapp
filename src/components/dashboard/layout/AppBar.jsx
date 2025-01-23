@@ -33,7 +33,6 @@ export default function ResponsiveNavbar({ openSidebar }) {
   const dispatch = useDispatch();
   const pathName = usePathname();
   const current_user = useSelector((state) => state?.currentUser?.user);
-  const { user } = useSelector((state) => state.auth);
 
   const postRequestAds = useSelector(
     (state) => state?.postRequestAds?.userPostings
@@ -261,9 +260,11 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     handleCloseProfileMenu={handleCloseProfileMenu}
                     handleOpenProfileMenu={handleOpenProfileMenu}
                     profileMenu={profileMenu}
-                    userName={user?.userName || 'User Name'}
-                    userImage={userProfile?.profileImage || current_user?.image}
-                    userEmail={user?.email || ''}
+                    userName={`${userProfile?.firstName} ${userProfile?.lastName}`}
+                    userImage={
+                      userProfile?.profileImage || '/Images/Profile.png'
+                    }
+                    userEmail={userProfile?.email}
                     profileIcon={''}
                     handleLogout={handleLogout}
                     signOut={SIGN_OUT}

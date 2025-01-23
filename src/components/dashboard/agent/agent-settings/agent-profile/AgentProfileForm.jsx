@@ -12,6 +12,7 @@ import { MID_TEXT } from '@/src/constants/Mid_Text';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { useQuery } from '@tanstack/react-query';
 import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
+import { setUserProfile } from '@/src/redux/slices/auth/authSlice';
 
 const AgentProfileForm = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const AgentProfileForm = () => {
   useEffect(() => {
     if (data) {
       dispatch(handleUserEdit(data?.response?.data));
+      dispatch(setUserProfile(data?.response?.data));
       setAgentData(data?.response?.data);
     }
   }, [data]);
