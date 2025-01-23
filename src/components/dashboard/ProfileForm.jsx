@@ -70,6 +70,7 @@ export default function ProfileForm({ data, formValues }) {
         const { mobileNumber, ...restValues } = values;
         // (values.updated_at = `${new Date().toISOString()}`),
         updateProfile(restValues);
+        console.log(mobileNumber);
       },
       enableReinitialize: true,
     });

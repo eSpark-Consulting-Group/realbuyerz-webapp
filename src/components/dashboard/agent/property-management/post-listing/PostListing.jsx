@@ -37,10 +37,10 @@ import {
   fetchMyProperties,
   updatePostListing,
 } from '@/src/utils/properties';
-import { usePathname, useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { transformAmenities } from '@/src/utils/amenitiesUtils';
+import { useRouter } from 'next/router';
 
 const PostListing = ({ property_Id }) => {
   const [open, setOpen] = useState(false);
@@ -50,7 +50,7 @@ const PostListing = ({ property_Id }) => {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
   const [filteredUserProperty, setFilteredUserProperty] = useState(null);
-
+  const router = useRouter();
   const dispatch = useDispatch();
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const getAmenities = useSelector(

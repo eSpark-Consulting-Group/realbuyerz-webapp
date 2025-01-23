@@ -5,12 +5,10 @@ import { Grid } from '@mui/material';
 import ProfileCompletness from '@/src/components/dashboard/layout/ProfileCompletness';
 import AvailableConnects from '@/src/components/dashboard/layout/AvailableConnects';
 import Profile from '@/src/components/dashboard/layout/Profile';
-import { useSelector } from 'react-redux';
 import {
   AVAIALABLE_CONNECTS,
   BUY_NOW,
   PROFILE_COMPLETNESS,
-  PROFILE_COMPLETNESS_DESCRIPTION,
   PROFILE_IMAGE_DEFAULT,
 } from '@/src/constants/agent/Live_Bidding';
 import { calculateCompletionPercentage } from '@/src/utils/calculateCompletionPercentage';

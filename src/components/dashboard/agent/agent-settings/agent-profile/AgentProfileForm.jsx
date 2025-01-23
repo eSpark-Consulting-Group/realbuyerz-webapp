@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import ProfileForm from '@/src/components/dashboard/ProfileForm';
 import ProfileFormMidText from '@/src/components/dashboard/ProfileFormMidText';

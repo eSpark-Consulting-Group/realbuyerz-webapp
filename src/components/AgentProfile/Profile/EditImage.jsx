@@ -8,7 +8,6 @@ import Image from 'next/image';
 export default function ButtonBaseDemo({ url, handleOpen, data }) {
   const imageRef = React.useRef(null);
   const [imageSrc, setImageSrc] = React.useState(url || data?.image);
-    
   const pathname = usePathname();
 
   const handleMouseEnter = () => {
