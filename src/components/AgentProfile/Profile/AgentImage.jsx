@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Box, Grid } from '@mui/material';
 import ButtonBaseDemo from './EditImage';
 import EditProfileModal from '@/src/components/dashboard/modals/EditProfileModal';
-import { PROFILE_INFO } from '@/src/constants/agent/Agent_Profile_Form_Data';
 
 const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
   const [open, setOpen] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
-
-  const imageUrl = data?.profileImage || data?.image || PROFILE_INFO.image;
-
+  const imageUrl = data?.profileImage || data?.image;
   return (
     <Grid
       sx={{
