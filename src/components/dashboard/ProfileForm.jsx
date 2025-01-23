@@ -21,6 +21,7 @@ import { useMutation } from '@tanstack/react-query';
 import { sendOTP } from '@/src/utils/apis/auth/sendOTP';
 import { profileUpdate } from '@/src/utils/apis/auth/profileUpdate';
 import { setUserProfile } from '@/src/redux/slices/auth/authSlice';
+import { color } from '@mui/system';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -246,6 +247,7 @@ export default function ProfileForm({ data, formValues }) {
                           alignItems: { xs: 'start', lg: 'center' },
                         }}
                       >
+
                         <PhoneInput
                           id="mobile"
                           placeholder="Enter phone number"
@@ -253,7 +255,10 @@ export default function ProfileForm({ data, formValues }) {
                           defaultCountry={'PK'}
                           onChange={(e) => handlePhoneChange(e, field?.label)}
                           autoComplete={field?.autoComplete}
-                          disabled
+                          disabled={field?.disabled}
+                          style={{
+                            color:"rgb(100, 100, 100)",
+                          }}
                         />
                         <Button
                           variant="primary"
@@ -346,6 +351,7 @@ export default function ProfileForm({ data, formValues }) {
                       }
                       type={field?.type}
                       place={field?.place}
+                      disabled={field?.disabled}
                     />
                   )}
                 </Box>

@@ -17,6 +17,7 @@ const RBInput = ({
   inputProps,
   onChange,
   autoComplete,
+  disabled,
   ...props
 }) => {
   return (
@@ -39,6 +40,7 @@ const RBInput = ({
         onChange={onChange}
         {...props}
         autoComplete={autoComplete}
+        disabled={disabled}
       />
     </>
   );

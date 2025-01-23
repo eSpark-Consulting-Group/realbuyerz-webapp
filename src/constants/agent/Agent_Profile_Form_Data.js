@@ -13,6 +13,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'given-name',
     },
     {
@@ -25,6 +26,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       pt: { xs: 0, lg: '25px' },
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93.6%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5.3 },
+      disabled: false,
       autoComplete: 'family-name',
     },
     {
@@ -36,6 +38,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: true,
       autoComplete: 'email',
     },
     {
@@ -47,6 +50,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'tel',
     },
     {
@@ -81,6 +85,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       ],
 
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'tel',
     },
     {
@@ -115,6 +120,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       ],
       buttonText: 'Verify',
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 6 },
+      disabled: true,
       autoComplete: 'tel',
     },
     {
@@ -126,6 +132,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'country-name',
     },
     {
@@ -137,6 +144,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'address-level2',
     },
     {
@@ -148,6 +156,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xl: '100%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
+      disabled: false,
       autoComplete: 'street-address',
     },
     {
@@ -162,6 +171,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       multiline: true,
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
+      disabled: false,
       autoComplete: 'off',
     },
   ],
@@ -175,6 +185,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'current-password',
     },
     {
@@ -186,6 +197,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'new-password',
     },
     {
@@ -197,6 +209,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
+      disabled: false,
       autoComplete: 'new-password',
     },
   ],
