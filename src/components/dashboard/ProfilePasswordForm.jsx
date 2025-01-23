@@ -169,14 +169,11 @@ export default function ProfilePasswordForm({ data }) {
             fontSize: '15px',
             width: { xs: '90%', sm: 'auto', md: '160px' },
             height: { xs: '45px', md: '45px' },
-            backgroundColor: !checkValue
-              ? '#eee !important'
-              : '#fb631c !important',
+            backgroundColor: '#fb631c !important',
             '&:hover': { color: '#fff' },
           }}
           variant="primary"
-          onClick={checkValue ? handleSubmit : null}
-          disabled={!checkValue}
+          onClick={handleSubmit}
         >
           {buttonText}
         </Button>

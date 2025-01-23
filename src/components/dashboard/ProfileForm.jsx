@@ -55,11 +55,11 @@ export default function ProfileForm({ data, formValues }) {
     address: `${formValues?.address || ''}`,
     socialId: `${formValues?.socialId || ''}`,
     isVerified: isVerified || false,
-    profileVisibility: formValues?.profileVisibility ,
+    profileVisibility: formValues?.profileVisibility,
     profileImage: `${formValues?.profileImage || ''}`,
     bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
-    // mobileNumber: `${formValues?.mobileNumber || ''}`,
+    mobileNumber: `${formValues?.mobileNumber || ''}`,
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
@@ -67,8 +67,9 @@ export default function ProfileForm({ data, formValues }) {
       initialValues: { ...Profile_Keys },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
+        const { mobileNumber, ...restValues } = values;
         // (values.updated_at = `${new Date().toISOString()}`),
-        updateProfile(values);
+        updateProfile(restValues);
       },
       enableReinitialize: true,
     });
@@ -88,7 +89,7 @@ export default function ProfileForm({ data, formValues }) {
   const handlePhoneChange = (event, key) => {
     if (key == 'Whatsapp') {
       return setFieldValue((values.whatsapp = event));
-    }  else {
+    } else {
       null;
     }
   };
@@ -122,7 +123,6 @@ export default function ProfileForm({ data, formValues }) {
     onSuccess: (data) => {
       console.log(data);
       dispatch(handleUserEdit(values));
-      dispatch(setUserProfile());
     },
   });
   return (
@@ -234,7 +234,7 @@ export default function ProfileForm({ data, formValues }) {
                       </Typography>
                     </Box>
                   ) : null}
-                  {/* {field?.label == 'Mobile' ? (
+                  {field?.label == 'Mobile' ? (
                     <Box sx={{ width: '100%' }}>
                       <Box
                         sx={{
@@ -295,7 +295,7 @@ export default function ProfileForm({ data, formValues }) {
                         </Typography>
                       </Box>
                     </Box>
-                  ) : null} */}
+                  ) : null}
                   {field?.label == 'Mobile' ||
                   field?.label == 'Whatsapp' ? null : (
                     <RBInput

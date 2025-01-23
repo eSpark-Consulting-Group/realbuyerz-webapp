@@ -7,13 +7,13 @@ export const AGENT_PROFILE_FORM_DATA = {
     {
       label: 'Name',
       name: 'firstName',
-      value: 'ok',
+      value: '',
       place: 'Enter First Name',
       type: 'text',
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "given-name"
+      autoComplete: 'given-name',
     },
     {
       label: '',
@@ -25,7 +25,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       pt: { xs: 0, lg: '25px' },
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93.6%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5.3 },
-      autoComplete: "family-name"
+      autoComplete: 'family-name',
     },
     {
       label: 'Email',
@@ -36,7 +36,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '93%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "email"
+      autoComplete: 'email',
     },
     {
       label: 'Landline',
@@ -47,7 +47,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "tel"
+      autoComplete: 'tel',
     },
     {
       label: 'Whatsapp',
@@ -81,7 +81,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       ],
 
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "tel"
+      autoComplete: 'tel',
     },
     {
       label: 'Mobile',
@@ -115,7 +115,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       ],
       buttonText: 'Verify',
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 6 },
-      autoComplete: "tel"
+      autoComplete: 'tel',
     },
     {
       label: 'Country',
@@ -126,7 +126,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "country-name"
+      autoComplete: 'country-name',
     },
     {
       label: 'City',
@@ -137,7 +137,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "address-level2"
+      autoComplete: 'address-level2',
     },
     {
       label: 'Address',
@@ -148,7 +148,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xl: '100%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
-      autoComplete: "street-address"
+      autoComplete: 'street-address',
     },
     {
       id: 'outlined-multiline-static',
@@ -162,7 +162,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       multiline: true,
       width: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 10 },
-      autoComplete: "off"
+      autoComplete: 'off',
     },
   ],
   passwordfields: [
@@ -175,7 +175,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "current-password"
+      autoComplete: 'current-password',
     },
     {
       label: 'Enter New Password',
@@ -186,7 +186,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "new-password"
+      autoComplete: 'new-password',
     },
     {
       label: 'Confirm Password',
@@ -197,7 +197,7 @@ export const AGENT_PROFILE_FORM_DATA = {
       helperText: '',
       width: { xs: '100%', sm: '100%', md: '100%', lg: '69%' },
       sizes: { xs: 12, sm: 12, md: 11.2, lg: 5 },
-      autoComplete: "new-password"
+      autoComplete: 'new-password',
     },
   ],
   checkbox: {

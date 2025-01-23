@@ -11,8 +11,7 @@ export const profileValidationSchema = Yup.object({
   city: Yup.string().min(3).max(25),
   address: Yup.string().min(3).max(46),
   bio: Yup.string().min(10),
-  whatsapp: Yup.string()
-    .test('phone', 'Invalid Phone Number', (value) =>
-      value ? isValidPhoneNumber(value) : true
-    ),
+  whatsapp: Yup.string().test('phone', 'Invalid Phone Number', (value) =>
+    value ? isValidPhoneNumber(value) : true
+  ),
 });

@@ -10,10 +10,7 @@ const AgentImage = ({ data, setFieldValue, setFile, file, error }) => {
   const [photoURL, setPhotoURL] = useState(null);
   const handleOpen = () => setOpen(true);
 
-  const userProfile = useSelector((state) => state.auth.userProfile);
-
-  const imageUrl =
-    userProfile?.profileImage || data?.image || PROFILE_INFO.image;
+  const imageUrl = data?.profileImage || data?.image || PROFILE_INFO.image;
 
   return (
     <Grid

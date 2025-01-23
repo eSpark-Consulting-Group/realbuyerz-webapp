@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 const Profile = ({ defaultImage, userProfile }) => {
-  // const baseUrl = userProfile?.profileImage.split('?')[0];
   return (
     <>
       <Grid
@@ -47,7 +46,6 @@ const Profile = ({ defaultImage, userProfile }) => {
           </Link>
         </Grid>
         <Grid item xs={12}>
-
           <Link href={`/agent/agent-settings/agent-profile`}>
             <Typography
               sx={{

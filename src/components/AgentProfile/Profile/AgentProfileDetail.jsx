@@ -53,7 +53,7 @@ const AgentProfileDetail = ({
         >
           {data?.firstName && data?.lastName
             ? `${data.firstName} ${data.lastName}`
-            : 'Muhammad Ali Mukhtar'}
+            : ''}
         </Typography>
 
         {path?.includes(user) || path?.includes(agent) ? (

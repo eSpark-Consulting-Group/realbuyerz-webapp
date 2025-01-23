@@ -15,11 +15,8 @@ import {
 } from '@/src/constants/agent/Live_Bidding';
 import { calculateCompletionPercentage } from '@/src/utils/calculateCompletionPercentage';
 
-const BiddingProfile = ({userProfile}) => {
-  console.log(userProfile,"userProfile");
-  
- const percentage=calculateCompletionPercentage(userProfile)
-
+const BiddingProfile = ({ userProfile }) => {
+  const percentage = calculateCompletionPercentage(userProfile);
   return (
     <Box sx={{ marginTop: '15px' }}>
       <Grid container>

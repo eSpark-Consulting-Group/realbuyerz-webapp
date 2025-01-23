@@ -6,7 +6,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
 
-const ProfileCompletness = ({ title, description, percentage  }) => {
+const ProfileCompletness = ({ title, description, percentage }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,

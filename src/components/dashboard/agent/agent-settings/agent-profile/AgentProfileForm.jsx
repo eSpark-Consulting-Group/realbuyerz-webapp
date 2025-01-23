@@ -15,7 +15,6 @@ import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice'
 
 const AgentProfileForm = () => {
   const dispatch = useDispatch();
-  const user_profile = useSelector((state) => state?.currentUser?.user);
   const [agentData, setAgentData] = useState({});
 
   const { data } = useQuery({
@@ -49,10 +48,7 @@ const AgentProfileForm = () => {
         },
       }}
     >
-      <ProfileForm 
-      formValues={agentData} 
-      data={AGENT_PROFILE_FORM_DATA}
-       />
+      <ProfileForm formValues={agentData} data={AGENT_PROFILE_FORM_DATA} />
       <ProfileFormMidText text={MID_TEXT} />
       <ProfilePasswordForm
         data={AGENT_PROFILE_FORM_DATA}
