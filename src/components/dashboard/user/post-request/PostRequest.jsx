@@ -53,15 +53,7 @@ const PostRequest = ({ property_Id }) => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const amenities = (getAmenities || []).map((amenity) => {
-    if (!amenity) return {};
-    const { id, text, image, limit, ...rest } = amenity;
-    return {
-      ...rest,
-      imageUrl: amenity.image,
-      count: amenity.count || 1,
-    };
-  });
+  const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(amenities, setSelectedAmenities);
@@ -87,21 +79,21 @@ const PostRequest = ({ property_Id }) => {
       purpose: values.purpose,
       propertyAddress: values.address,
       amenity: values.amenities,
-      longitude: '123.345',
-      latitude: '989.000',
+      longitude: values.longitude,
+      latitude: values.latitude,
     };
-
-    console.log('Final payload to submit:', updatedData);
 
     if (Action === 'submit') {
       if (property_Id) {
-        // Update the existing property
-        updatedData.propertyStatus = true; // Mark as active
+        updatedData.propertyStatus = true;
         updateUserPropertyApi.mutate({ object: updatedData, property_Id });
       } else {
-        // Create a new property
         mutate(updatedData);
       }
+    } else if (Action === 'draft') {
+      dispatch(handleSubmitDraft(values));
+      updatedData.propertyStatus = false; 
+      mutate(updatedData); 
     }
   };
 
@@ -125,9 +117,7 @@ const PostRequest = ({ property_Id }) => {
 
   const updateUserPropertyApi = useMutation({
     mutationFn: updateUserProperty,
-    onSuccess: (data) => {
-      console.log('Property updated successfully:', data);
-    },
+    onSuccess: (data) => {},
     onError: (error) => {
       console.error(
         'Error updating property:',
@@ -161,8 +151,6 @@ const PostRequest = ({ property_Id }) => {
     validateOnBlur: false,
   });
 
-  console.log('Property Price:', formik.values.amount);
-
   const obj = {
     propertyName: formik.values.title,
     propertyType: formik.values.propertyCategory,
@@ -181,7 +169,6 @@ const PostRequest = ({ property_Id }) => {
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
     onSuccess: (data) => {
-      console.log(data, 'data');
       handleOpenSuccessModal();
     },
   });
@@ -193,20 +180,15 @@ const PostRequest = ({ property_Id }) => {
       const { active, trash, draft } = data.response.data;
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
-      setFilteredUserProperty(property); // Update state
+      setFilteredUserProperty(property);
       let singleArr = [];
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
           singleArr = items[val][0];
         }
       });
-      const amenitiesArr = singleArr.amenities?.map((val) => {
-        return {
-          ...val,
-          name: val.amenetiesName,
-          text: val.amenetiesName,
-        };
-      });
+
+      const amenitiesArr = transformAmenities(singleArr.amenities);
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
