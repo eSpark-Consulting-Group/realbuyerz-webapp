@@ -90,7 +90,7 @@ export default function ProfileForm({ data, formValues }) {
 
   const handlePhoneChange = (event, key) => {
     if (key == 'Whatsapp') {
-      return setFieldValue((values?.whatsapp = event));
+      return setFieldValue((values.whatsapp = event));
     } else {
       null;
     }
