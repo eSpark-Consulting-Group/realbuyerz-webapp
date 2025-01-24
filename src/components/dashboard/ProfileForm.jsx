@@ -21,7 +21,7 @@ import { useMutation } from '@tanstack/react-query';
 import { sendOTP } from '@/src/utils/apis/auth/sendOTP';
 import { profileUpdate } from '@/src/utils/apis/auth/profileUpdate';
 import { setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { color } from '@mui/system';
+import { filterAndAddUpdatedAt } from '@/src/utils/profileForm';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
@@ -59,16 +59,27 @@ export default function ProfileForm({ data, formValues }) {
     city: `${formValues?.city || ''}`,
     mobileNumber: `${formValues?.mobileNumber || ''}`,
   };
-
+  const allowedKeys = [
+    'profileImage',
+    'firstName',
+    'lastName',
+    'email',
+    'landlineNumber',
+    'whatsapp',
+    'address',
+    'city',
+    'country',
+    'bio',
+  ];
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
     useFormik({
       initialValues: { ...Profile_Keys },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
-        const { mobileNumber, ...restValues } = values;
-        // (values.updated_at = `${new Date().toISOString()}`),
-        updateProfile(restValues);
-        console.log(mobileNumber);
+        // Filter the allowed keys
+        const filteredValues = filterAndAddUpdatedAt(values, allowedKeys);
+        // Pass the updated values to the updateProfile function
+        updateProfile(filteredValues);
       },
       enableReinitialize: true,
     });
