@@ -21,17 +21,18 @@ import { useMutation } from '@tanstack/react-query';
 import { sendOTP } from '@/src/utils/apis/auth/sendOTP';
 import { profileUpdate } from '@/src/utils/apis/auth/profileUpdate';
 import { setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { filterAndAddUpdatedAt } from '@/src/utils/profileForm';
+import { filterFormValues } from '@/src/utils/profileForm';
+import { ALLOWED_KEYS } from '@/src/constants/profile/agent-projects/AgentProfile';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+  backgroundColor: theme?.palette?.mode === 'dark' ? '#1A2027' : 'transparent',
+  ...theme?.typography?.body2,
+  padding: theme?.spacing(1),
   alignItems: 'center',
   display: 'flex',
   border: 'none',
   boxShadow: 'none',
-  color: theme.palette.text.secondary,
+  color: theme?.palette?.text?.secondary,
 }));
 
 export default function ProfileForm({ data, formValues }) {
@@ -46,7 +47,7 @@ export default function ProfileForm({ data, formValues }) {
   const [isVerified] = useState(formValues?.isVerified);
   const [file, setFile] = useState(null);
 
-  const Profile_Keys = {
+  const profileKeys = {
     firstName: `${formValues?.firstName || ''}`,
     lastName: `${formValues?.lastName || ''}`,
     email: `${formValues?.email || ''}`,
@@ -54,30 +55,21 @@ export default function ProfileForm({ data, formValues }) {
     whatsapp: `${formValues?.whatsapp || ''}`,
     country: `${formValues?.country || ''}`,
     address: `${formValues?.address || ''}`,
+    socialId: `${formValues?.socialId || ''}`,
+    isVerified: isVerified || false,
+    profileVisibility: formValues?.profileVisibility,
     profileImage: `${formValues?.profileImage || ''}`,
     bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
     mobileNumber: `${formValues?.mobileNumber || ''}`,
   };
-  const allowedKeys = [
-    'profileImage',
-    'firstName',
-    'lastName',
-    'email',
-    'landlineNumber',
-    'whatsapp',
-    'address',
-    'city',
-    'country',
-    'bio',
-  ];
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
     useFormik({
-      initialValues: { ...Profile_Keys },
+      initialValues: { ...profileKeys },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
         // Filter the allowed keys
-        const filteredValues = filterAndAddUpdatedAt(values, allowedKeys);
+        const filteredValues = filterFormValues(values, ALLOWED_KEYS);
         // Pass the updated values to the updateProfile function
         updateProfile(filteredValues);
       },
@@ -98,7 +90,7 @@ export default function ProfileForm({ data, formValues }) {
 
   const handlePhoneChange = (event, key) => {
     if (key == 'Whatsapp') {
-      return setFieldValue((values.whatsapp = event));
+      return setFieldValue((values?.whatsapp = event));
     } else {
       null;
     }
@@ -119,13 +111,13 @@ export default function ProfileForm({ data, formValues }) {
         image: file,
       };
 
-      delete updateForProfile.profileImage;
-      delete updateForProfile.email;
+      delete updateForProfile?.profileImage;
+      delete updateForProfile?.email;
 
       const formDataValues = new FormData();
 
       for (const key in updateForProfile) {
-        formDataValues.append(key, updateForProfile[key]);
+        formDataValues?.append(key, updateForProfile[key]);
       }
 
       return profileUpdate(formDataValues);

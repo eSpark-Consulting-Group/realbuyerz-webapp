@@ -1,4 +1,4 @@
-export const filterAndAddUpdatedAt = (values, allowedKeys) => {
+export const filterFormValues = (values, allowedKeys) => {
   try {
     if (typeof values !== 'object' || values === null) {
       throw new TypeError('The "values" parameter must be a non-null object.');

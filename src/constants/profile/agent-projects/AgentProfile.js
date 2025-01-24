@@ -118,3 +118,15 @@ export const AGENT_PROFILE_DATA = {
     ],
   },
 };
+export const ALLOWED_KEYS = [
+    'profileImage',
+    'firstName',
+    'lastName',
+    'email',
+    'landlineNumber',
+    'whatsapp',
+    'address',
+    'city',
+    'country',
+    'bio',
+  ];
