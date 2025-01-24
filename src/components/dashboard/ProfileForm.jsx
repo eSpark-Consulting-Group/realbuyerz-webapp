@@ -54,9 +54,6 @@ export default function ProfileForm({ data, formValues }) {
     whatsapp: `${formValues?.whatsapp || ''}`,
     country: `${formValues?.country || ''}`,
     address: `${formValues?.address || ''}`,
-    socialId: `${formValues?.socialId || ''}`,
-    isVerified: isVerified || false,
-    profileVisibility: formValues?.profileVisibility,
     profileImage: `${formValues?.profileImage || ''}`,
     bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
@@ -247,7 +244,6 @@ export default function ProfileForm({ data, formValues }) {
                           alignItems: { xs: 'start', lg: 'center' },
                         }}
                       >
-
                         <PhoneInput
                           id="mobile"
                           placeholder="Enter phone number"
@@ -257,7 +253,7 @@ export default function ProfileForm({ data, formValues }) {
                           autoComplete={field?.autoComplete}
                           disabled={field?.disabled}
                           style={{
-                            color:"rgb(100, 100, 100)",
+                            color: 'rgb(100, 100, 100)',
                           }}
                         />
                         <Button
