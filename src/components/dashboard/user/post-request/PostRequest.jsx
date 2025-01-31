@@ -63,23 +63,38 @@ const PostRequest = ({ property_Id }) => {
   const handleCloseSuccessModal = () => setIsOpen(false);
 
   const handleSubmit = (values) => {
-    if (Action === 'draft') {
-      dispatch(handleSubmitDraft(values));
-      obj.propertyStatus = false;
-      mutate(obj);
-    } else if (Action === 'submit') {
-      if (segments.includes('update-request')) {
-        obj.propertyStatus = true;
-        const object = {};
-        formData.forEach((value, key) => (object[key] = value));
-        updateUserPropertyApi.mutate({ object, property_Id });
-      } else {
-        mutate(obj);
-      }
-      dispatch(handleSumitUserAds(values));
+    const propertyPrice = parseFloat(values.amount);
+    if (isNaN(propertyPrice)) {
+      console.error('Invalid property price:', values.amount);
+      return;
     }
-    dispatch(toggleCheckAmenityClear());
-    setSelectedAmenities([]);
+
+    const updatedData = {
+      propertyName: values.title,
+      propertyPrice: propertyPrice.toString(),
+      propertyArea: values.area,
+      propertyDescription: values.description,
+      propertyCity: values.city,
+      propertySubTypeId: values.propertySubTypeId,
+      purpose: values.purpose,
+      propertyAddress: values.address,
+      amenity: values.amenities,
+      longitude: values.longitude,
+      latitude: values.latitude,
+    };
+
+    if (Action === 'submit') {
+      if (property_Id) {
+        updatedData.propertyStatus = true;
+        updateUserPropertyApi.mutate({ object: updatedData, property_Id });
+      } else {
+        mutate(updatedData);
+      }
+    } else if (Action === 'draft') {
+      dispatch(handleSubmitDraft(values));
+      updatedData.propertyStatus = false; 
+      mutate(updatedData); 
+    }
   };
 
   const handleClickOpen = () => {
@@ -102,10 +117,19 @@ const PostRequest = ({ property_Id }) => {
 
   const updateUserPropertyApi = useMutation({
     mutationFn: updateUserProperty,
-    onSuccess: (data) => {
-      console.log(data, 'data');
+    onSuccess: (data) => {},
+    onError: (error) => {
+      console.error(
+        'Error updating property:',
+        error.response || error.message
+      );
     },
   });
+
+  const initialValues = {
+    ...POST_REQUEST_VALUES,
+    amount: Number(POST_REQUEST_VALUES.amount) || 0,
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -131,8 +155,8 @@ const PostRequest = ({ property_Id }) => {
     propertyName: formik.values.title,
     propertyType: formik.values.propertyCategory,
     propertyDescription: formik.values.description,
-    propertyPrice: formik.values.amount,
-    propertyArea: formik.values.area,
+    propertyPrice: parseFloat(formik.values.amount),
+    property_area: formik.values.area,
     purpose: formik.values.purpose,
     propertyAddress: formik?.values.address,
     propertyCity: formik.values.city,
@@ -145,7 +169,6 @@ const PostRequest = ({ property_Id }) => {
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
     onSuccess: (data) => {
-      console.log(data, 'data');
       handleOpenSuccessModal();
     },
   });
@@ -157,18 +180,21 @@ const PostRequest = ({ property_Id }) => {
       const { active, trash, draft } = data.response.data;
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
-      setFilteredUserProperty(property); // Update state
+      setFilteredUserProperty(property);
       let singleArr = [];
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
           singleArr = items[val][0];
         }
       });
+
+      const amenitiesArr = transformAmenities(singleArr.amenities);
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
+      formik.setFieldValue('amenities', amenitiesArr);
 
       setPreviousData(formik.values);
     },

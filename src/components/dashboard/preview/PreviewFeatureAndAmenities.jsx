@@ -26,48 +26,38 @@ const renderDetail = (title, fontStyle, fontWeight, key) => {
   );
 };
 const PreviewFeatureAndAmenities = ({
-  amenities,
+  amenitiesArray = [], 
   fontSize,
   fontStyle,
   fontWeight,
-  specificPost,
 }) => {
+
   return (
-    <>
-      {amenities?.title && (
-        <Box
-          sx={{
-            p: 5,
-            borderBottom: '1px solid #E4E4E4',
-            '@media(min-width:280px) and (max-width:400px)': { px: 3 },
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: fontSize || '20px',
-              fontWeight: 500,
-              mb: 1,
-            }}
-          >
-            {amenities?.title || 'Amenities'}
-          </Typography>
-          {specificPost &&
-          Array.isArray(specificPost?.amenity) &&
-          specificPost?.amenity?.length > 0 ? (
-            specificPost.amenity.map((property, index) =>
-              renderDetail(
-                property?.name || 'No Name',
-                fontStyle,
-                fontWeight,
-                index
-              )
-            )
-          ) : (
-            <Typography>No Amenities Available</Typography>
-          )}
-        </Box>
+    <Box
+      sx={{
+        p: 5,
+        borderBottom: '1px solid #E4E4E4',
+        '@media(min-width:280px) and (max-width:400px)': { px: 3 },
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: fontSize || '20px',
+          fontWeight: 500,
+          mb: 1,
+        }}
+      >
+        Amenities
+      </Typography>
+
+      {amenitiesArray.length > 0 ? (
+        amenitiesArray.map((amenity, index) =>
+          renderDetail(amenity?.text || 'No Name', fontStyle, fontWeight, index)
+        )
+      ) : (
+        <Typography>No Amenities Available</Typography>
       )}
-    </>
+    </Box>
   );
 };
 

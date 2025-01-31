@@ -25,9 +25,11 @@ const PreviewModal = (props) => {
   const pathName = usePathname();
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
-  const imageArr = ads.PropertyData ? [ads.PropertyData[0]?.url] : [];
-  const videoArr = ads.PropertyData ? [ads.PropertyData[1]?.url] : [];
-
+  const imageArr = Array.isArray(ads.images)
+    ? ads.images.map((img) => img.path)
+    : [];
+  const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
+  
   return (
     <>
       <Modal
@@ -95,28 +97,29 @@ const PreviewModal = (props) => {
 
             <PropertyDetail
               title={propertyDetails}
-              subTitle={ads?.propertyName}
-              description={ads?.propertyDescription}
+              subTitle={ads?.title}
+              description={ads?.description} 
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
             />
+
             <Location
-              city={ads?.propertyCity}
+              city={ads?.city}
               locationKeys={location}
               purpose={ads?.purpose}
-              propertyType={ads?.propertyType.subTypeName}
-              propertyCategory={ads?.propertyCategory}
-              location={ads?.propertyAddress}
+              propertyType={ads?.propertyCategory}
+              location={ads?.address} 
               longitude={ads?.longitude}
               latitude={ads?.latitude}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
             />
+
             <PreviewAmountAndFeature
-              area={ads?.propertyArea}
-              amount={ads?.propertyPrice}
+              area={ads?.area} 
+              amount={ads?.amount} 
               areaUnit={'Sq-ft'}
               areaAndAmount={areaAndAmount}
               amountCurrency={'PKR'}
@@ -126,21 +129,24 @@ const PreviewModal = (props) => {
               fontStyle={'12px'}
               fontWeight={'700'}
             />
+
             <PreviewFeatureAndAmenities
-              amenities={amenities}
-              specificPost={{ ...ads, amenitiesArray: ads.amenities }}
+              amenitiesArray={ads?.amenitiesArray}
+              specificPost={{ ...ads, amenitiesArray: ads?.amenitiesArray }} 
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
               formik={formik}
             />
+
             {pathName !== userPath && pathName !== postRequestPath ? (
               <>
                 <MediaComponent
                   title={images?.title}
-                  images={imageArr}
+                  images={imageArr} 
                   mediaType={images?.type}
                 />
+
                 <MediaComponent
                   title={videos?.title}
                   videos={videoArr}

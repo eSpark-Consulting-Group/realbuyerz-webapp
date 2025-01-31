@@ -2,25 +2,29 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import AdMediaSlider from '../ads-form-components/AdMediaSlider';
 
-const MediaComponent = ({ title, images, videos, mediaType }) => {
+const MediaComponent = ({ title, images = [], videos = [], mediaType }) => {
+  
+
   return (
-    <>
-      <Box
+    <Box
+      sx={{
+        p: 5,
+        borderBottom: '1px solid #E4E4E4',
+        '@media(min-width:280px) and (max-width:450px)': { px: 0.3 },
+      }}
+    >
+      <Typography
         sx={{
-          p: 5,
-          borderBottom: '1px solid #E4E4E4',
-          '@media(min-width:280px) and (max-width:450px)': { px: 0.3 },
+          fontSize: { xs: '20px' },
+          fontWeight: 500,
+          '@media(min-width:280px) and (max-width:450px)': { pl: 3, mb: 1 },
         }}
       >
-        <Typography
-          sx={{
-            fontSize: { xs: '20px' },
-            fontWeight: 500,
-            '@media(min-width:280px) and (max-width:450px)': { pl: 3, mb: 1 },
-          }}
-        >
-          {title}
-        </Typography>
+        {title}
+      </Typography>
+
+      {/* Conditional Rendering to prevent empty renders */}
+      {images?.length > 0 || videos?.length > 0 ? (
         <Box
           sx={{
             pt: 2,
@@ -33,18 +37,14 @@ const MediaComponent = ({ title, images, videos, mediaType }) => {
           }}
         >
           <AdMediaSlider
-            media={
-              mediaType == 'images'
-                ? images
-                : '' || mediaType == 'videos'
-                  ? videos
-                  : ''
-            }
+            media={images.length > 0 ? images : videos}
             mediaType={mediaType}
           />
         </Box>
-      </Box>
-    </>
+      ) : (
+        <Typography>No media available</Typography>
+      )}
+    </Box>
   );
 };
 
