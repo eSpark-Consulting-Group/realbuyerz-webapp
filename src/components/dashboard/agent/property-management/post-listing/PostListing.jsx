@@ -62,6 +62,8 @@ const PostListing = ({ property_Id }) => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
+  const router = useRouter();
+
   const handleCloseSuccessModal = () => {
     setIsOpen(false);
     router.push('/agent/property-management/my-properties');
@@ -152,29 +154,47 @@ const PostListing = ({ property_Id }) => {
       const { active, trash, draft } = data.response.data;
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
-      setFilteredUserProperty(property); // Update state
-      let singleArr = [];
+  
+      setFilteredUserProperty(property);
+  
+      let singleArr = {};
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
           singleArr = items[val][0];
         }
       });
-
-      setPropertyTypeDetails(singleArr.propertyType);
-
+  
+  
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
+      formik.setFieldValue('propertyCategory', singleArr.propertyType);
       formik.setFieldValue('amenity', JSON.stringify(amenities));
+      formik.setFieldValue('address', singleArr.propertyAddress);
+
+      
+  
+      const propertyImages = singleArr.PropertyData?.[0]?.url || "";
+  
+      formik.setFieldValue('images', propertyImages ? [propertyImages] : []);
+  
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
+  
+  useEffect(() => {
+    if (filteredUserProperty) {
+      const amenities = transformAmenities(getAmenities);
+      setSelectedAmenities(amenities);
+      formik.setFieldValue('amenity', JSON.stringify(amenities));  
+    }
+  }, [filteredUserProperty, getAmenities, formik]);
+  
 
   const formData = new FormData();
   formData.append('propertyName', formik?.values.title);
@@ -184,7 +204,7 @@ const PostListing = ({ property_Id }) => {
   formData.append('propertyPrice', formik?.values.amount);
   formData.append('propertyArea', formik?.values.area);
   formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
   formData.append('amenity', JSON.stringify(amenities));
@@ -220,6 +240,7 @@ const PostListing = ({ property_Id }) => {
                 propertyTypeDetails={propertyTypeDetails}
                 filteredUserProperty={filteredUserProperty}
               />
+
               <PropertySize formik={formik} propertyData={POST_LISTING} />
               <PropertyFeatures
                 formik={formik}
