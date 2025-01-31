@@ -9,7 +9,6 @@ yarn-error.log
 out
 
 # Ignore local environment variables
-.env
 .env.local
 .env.development
 .env.production
