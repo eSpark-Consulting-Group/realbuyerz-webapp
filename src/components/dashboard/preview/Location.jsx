@@ -22,7 +22,6 @@ const Location = ({
   longitude,
   latitude,
 }) => {
-
   return (
     locationKeys?.title && (
       <Box

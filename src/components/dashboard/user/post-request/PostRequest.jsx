@@ -12,10 +12,10 @@ import SubmitButton from '@/src/components/dashboard/SubmitButton';
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
 import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
-import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+// import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 import {
   handleSubmitDraft,
-  handleSumitUserAds,
+  // handleSumitUserAds,
 } from '@/src/redux/slices/userAds/userAdsSlice';
 
 import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
@@ -92,8 +92,8 @@ const PostRequest = ({ property_Id }) => {
       }
     } else if (Action === 'draft') {
       dispatch(handleSubmitDraft(values));
-      updatedData.propertyStatus = false; 
-      mutate(updatedData); 
+      updatedData.propertyStatus = false;
+      mutate(updatedData);
     }
   };
 
@@ -117,7 +117,7 @@ const PostRequest = ({ property_Id }) => {
 
   const updateUserPropertyApi = useMutation({
     mutationFn: updateUserProperty,
-    onSuccess: (data) => {},
+    onSuccess: () => {},
     onError: (error) => {
       console.error(
         'Error updating property:',
@@ -126,10 +126,10 @@ const PostRequest = ({ property_Id }) => {
     },
   });
 
-  const initialValues = {
-    ...POST_REQUEST_VALUES,
-    amount: Number(POST_REQUEST_VALUES.amount) || 0,
-  };
+  // const initialValues = { // Todo Faria pls check why this code is defined here if not used
+  //   ...POST_REQUEST_VALUES,
+  //   amount: Number(POST_REQUEST_VALUES.amount) || 0,
+  // };
 
   const formik = useFormik({
     initialValues: {
@@ -151,24 +151,9 @@ const PostRequest = ({ property_Id }) => {
     validateOnBlur: false,
   });
 
-  const obj = {
-    propertyName: formik.values.title,
-    propertyType: formik.values.propertyCategory,
-    propertyDescription: formik.values.description,
-    propertyPrice: parseFloat(formik.values.amount),
-    property_area: formik.values.area,
-    purpose: formik.values.purpose,
-    propertyAddress: formik?.values.address,
-    propertyCity: formik.values.city,
-    propertySubTypeId: formik?.values?.propertySubTypeId,
-    longitude: formik.values.longitude,
-    latitude: formik.values.latitude,
-    amenity: formik.values.amenity,
-  };
-
   const { mutate } = useMutation({
     mutationFn: addPostRequest,
-    onSuccess: (data) => {
+    onSuccess: () => {
       handleOpenSuccessModal();
     },
   });

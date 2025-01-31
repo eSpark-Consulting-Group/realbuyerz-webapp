@@ -14,12 +14,12 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
 
   const handlePropertyType = (text) => {
     setActivePropertyType(text);
-    formik?.setFieldValue('propertyCategory', text);  
+    formik?.setFieldValue('propertyCategory', text);
   };
 
   const handlePropetySubType = (propertySubTypeData) => {
     setActivePropertySubType(propertySubTypeData?.subTypeName);
-    formik?.setFieldValue('propertySubTypeId', propertySubTypeData?.id); 
+    formik?.setFieldValue('propertySubTypeId', propertySubTypeData?.id);
   };
 
   useEffect(() => {
@@ -65,27 +65,73 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
       }}
     >
       <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
-        <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'start', gap: 1.5 }}>
-          <Box component={'img'} sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }} src={image} alt={'properttype'} />
-          <Typography sx={{ fontSize: { xs: '17px', sm: '20px' }, fontWeight: 400, color: '#333333', display: { xs: 'flex', sm: 'none' } }}>
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'start',
+            gap: 1.5,
+          }}
+        >
+          <Box
+            component={'img'}
+            sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
+            src={image}
+            alt={'properttype'}
+          />
+          <Typography
+            sx={{
+              fontSize: { xs: '17px', sm: '20px' },
+              fontWeight: 400,
+              color: '#333333',
+              display: { xs: 'flex', sm: 'none' },
+            }}
+          >
             {label}
           </Typography>
         </Box>
       </Box>
 
       <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
-        <Box sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', gap: 1, mt: 0.8, mb: { xs: 3, xl: 0 } }}>
-          <Typography sx={{ fontSize: { xs: '17px', sm: '20px' }, fontWeight: 400, color: '#333333', mb: 2, display: { xs: 'none', sm: 'flex' } }}>
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1,
+            mt: 0.8,
+            mb: { xs: 3, xl: 0 },
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '17px', sm: '20px' },
+              fontWeight: 400,
+              color: '#333333',
+              mb: 2,
+              display: { xs: 'none', sm: 'flex' },
+            }}
+          >
             {label}
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'space-evenly', sm: 'start' }, gap: { xs: 1, sm: 2 } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: { xs: 'space-evenly', sm: 'start' },
+              gap: { xs: 1, sm: 2 },
+            }}
+          >
             {propertyTp.map((val, index) => (
               <Button
                 key={index}
                 sx={{
                   fontSize: { xs: '15px', sm: '20px' },
                   fontWeight: 400,
-                  color: activePropertyType === val?.typeName ? '#FB631C' : '#666',
+                  color:
+                    activePropertyType === val?.typeName ? '#FB631C' : '#666',
                   position: 'relative',
                   '&::after': {
                     content: "''",
@@ -106,7 +152,12 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
           {propertyTp
             .filter((val) => val?.typeName === activePropertyType)
             .map((val, index) => (
-              <PropertyTypes key={index} data={val?.subTypes} handlePropetySubType={handlePropetySubType} activePropertySubType={activePropertySubType} />
+              <PropertyTypes
+                key={index}
+                data={val?.subTypes}
+                handlePropetySubType={handlePropetySubType}
+                activePropertySubType={activePropertySubType}
+              />
             ))}
         </Box>
       </Box>

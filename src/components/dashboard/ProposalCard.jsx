@@ -118,7 +118,6 @@ const ProposalCard = ({
   }
 
   const isLoading = isPending || deletePropertyHandler.isPending;
-  
 
   return (
     <Box
@@ -174,7 +173,7 @@ const ProposalCard = ({
               >
                 <Box
                   component={'img'}
-                  src={data?.PropertyData[0]?.url || '/images/PropertyImg.png'} 
+                  src={data?.PropertyData[0]?.url || '/images/PropertyImg.png'}
                   alt="Property Image"
                   sx={{
                     minWidth: { xs: '250px', sm: '300px' },

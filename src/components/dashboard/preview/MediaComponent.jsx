@@ -3,8 +3,6 @@ import React from 'react';
 import AdMediaSlider from '../ads-form-components/AdMediaSlider';
 
 const MediaComponent = ({ title, images = [], videos = [], mediaType }) => {
-  
-
   return (
     <Box
       sx={{

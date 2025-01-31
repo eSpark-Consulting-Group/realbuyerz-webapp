@@ -37,7 +37,7 @@ import {
   fetchMyProperties,
   updatePostListing,
 } from '@/src/utils/properties';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { transformAmenities } from '@/src/utils/amenitiesUtils';
@@ -46,7 +46,7 @@ const PostListing = ({ property_Id }) => {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
-  const [propertyTypeDetails, setPropertyTypeDetails] = useState({});
+  const [propertyTypeDetails] = useState({});
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [previousData, setPreviousData] = useState({});
   const [filteredUserProperty, setFilteredUserProperty] = useState(null);
@@ -154,17 +154,16 @@ const PostListing = ({ property_Id }) => {
       const { active, trash, draft } = data.response.data;
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
-  
+
       setFilteredUserProperty(property);
-  
+
       let singleArr = {};
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
           singleArr = items[val][0];
         }
       });
-  
-  
+
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
@@ -174,27 +173,24 @@ const PostListing = ({ property_Id }) => {
       formik.setFieldValue('amenity', JSON.stringify(amenities));
       formik.setFieldValue('address', singleArr.propertyAddress);
 
-      
-  
-      const propertyImages = singleArr.PropertyData?.[0]?.url || "";
-  
+      const propertyImages = singleArr.PropertyData?.[0]?.url || '';
+
       formik.setFieldValue('images', propertyImages ? [propertyImages] : []);
-  
+
       setPreviousData(formik.values);
     },
     onError: (error) => {
       console.error(error);
     },
   });
-  
+
   useEffect(() => {
     if (filteredUserProperty) {
       const amenities = transformAmenities(getAmenities);
       setSelectedAmenities(amenities);
-      formik.setFieldValue('amenity', JSON.stringify(amenities));  
+      formik.setFieldValue('amenity', JSON.stringify(amenities));
     }
   }, [filteredUserProperty, getAmenities, formik]);
-  
 
   const formData = new FormData();
   formData.append('propertyName', formik?.values.title);

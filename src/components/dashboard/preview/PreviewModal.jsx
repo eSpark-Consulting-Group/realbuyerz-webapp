@@ -17,7 +17,6 @@ const PreviewModal = (props) => {
     propertyDetails,
     areaAndAmount,
     location,
-    amenities,
     images,
     videos,
   } = PREVIEW_DATA;
@@ -29,7 +28,7 @@ const PreviewModal = (props) => {
     ? ads.images.map((img) => img.path)
     : [];
   const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
-  
+
   return (
     <>
       <Modal
@@ -98,7 +97,7 @@ const PreviewModal = (props) => {
             <PropertyDetail
               title={propertyDetails}
               subTitle={ads?.title}
-              description={ads?.description} 
+              description={ads?.description}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
@@ -109,7 +108,7 @@ const PreviewModal = (props) => {
               locationKeys={location}
               purpose={ads?.purpose}
               propertyType={ads?.propertyCategory}
-              location={ads?.address} 
+              location={ads?.address}
               longitude={ads?.longitude}
               latitude={ads?.latitude}
               fontSize={'18px'}
@@ -118,8 +117,8 @@ const PreviewModal = (props) => {
             />
 
             <PreviewAmountAndFeature
-              area={ads?.area} 
-              amount={ads?.amount} 
+              area={ads?.area}
+              amount={ads?.amount}
               areaUnit={'Sq-ft'}
               areaAndAmount={areaAndAmount}
               amountCurrency={'PKR'}
@@ -132,7 +131,7 @@ const PreviewModal = (props) => {
 
             <PreviewFeatureAndAmenities
               amenitiesArray={ads?.amenitiesArray}
-              specificPost={{ ...ads, amenitiesArray: ads?.amenitiesArray }} 
+              specificPost={{ ...ads, amenitiesArray: ads?.amenitiesArray }}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}
@@ -143,7 +142,7 @@ const PreviewModal = (props) => {
               <>
                 <MediaComponent
                   title={images?.title}
-                  images={imageArr} 
+                  images={imageArr}
                   mediaType={images?.type}
                 />
 

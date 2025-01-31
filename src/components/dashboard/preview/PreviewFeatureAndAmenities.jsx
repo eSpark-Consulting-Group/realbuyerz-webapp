@@ -26,12 +26,11 @@ const renderDetail = (title, fontStyle, fontWeight, key) => {
   );
 };
 const PreviewFeatureAndAmenities = ({
-  amenitiesArray = [], 
+  amenitiesArray = [],
   fontSize,
   fontStyle,
   fontWeight,
 }) => {
-
   return (
     <Box
       sx={{
