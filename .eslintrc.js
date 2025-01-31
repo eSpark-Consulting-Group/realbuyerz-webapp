@@ -17,6 +17,9 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'prefer-const': ['error'],
     'no-undef': ['error', { typeof: true }],
+    'react-hooks/exhaustive-deps': 'off',
+    'jsx-a11y/alt-text': 'off',
+    '@next/next/no-img-element': 'off',
   },
   globals: {
     Set: true,

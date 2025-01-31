@@ -1,13 +1,7 @@
 import React from 'react';
 import { GLOBAL_SEO } from '@/src/constants/global/seo';
 import { getMetadata } from '@/src/components/seo';
-import dynamic from 'next/dynamic';
-const TermsPage = dynamic(
-  () => import('@/src/components/terms-conditions/TermsPage'),
-  {
-    ssr: false,
-  }
-);
+import TermsPage from '@/src/components/terms-conditions/TermsPage';
 
 const pathname = '/faqs';
 const filteredData =

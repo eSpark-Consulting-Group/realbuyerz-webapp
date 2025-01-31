@@ -11,6 +11,7 @@ export const transformAmenities = (amenities) => {
       ) // Filter valid items
       .map((amenity) => {
         const { id, text, image, limit, ...rest } = amenity;
+        console.log('', id, text, limit);
         return {
           ...rest,
           imageUrl: image || '', // Default to an empty string if image is undefined

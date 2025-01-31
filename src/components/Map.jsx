@@ -60,7 +60,7 @@ export default function Map({ containerStyle, formik, filteredUserProperty }) {
       setError(null);
     } catch (err) {
       console.error('Geolocation error:', err);
-      let message = getLocationErrorMessage(err);
+      const message = getLocationErrorMessage(err);
       setError(message);
       if (!isLocationValid) {
         setMap(defaultLocation); // Fallback to default if both are invalid

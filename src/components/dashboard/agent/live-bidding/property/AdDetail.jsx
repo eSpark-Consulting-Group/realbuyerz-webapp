@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import { CircularProgress, Grid, Typography } from '@mui/material';
-import { usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RightSection from '@/src/components/dashboard/user/dashboard/RightSection';
