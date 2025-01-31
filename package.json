@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint .",
@@ -47,7 +47,6 @@
     "react-modern-drawer": "^1.2.2",
     "react-phone-number-input": "^3.3.9",
     "react-redux": "^8.1.3",
-    "react-router-dom": "^6.17.0",
     "react-shimmer-effects": "^1.0.3",
     "react-slick": "^0.29.0",
     "react-toastify": "^10.0.5",
