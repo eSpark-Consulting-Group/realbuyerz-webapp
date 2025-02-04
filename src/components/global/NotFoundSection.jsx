@@ -1,93 +1,74 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
-import { Box, Grid, Typography, Button } from '@mui/material';
-import Image from 'next/image';
+import { Box, Typography, Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { NOT_FOUND } from '@/src/constants/Global';
 
-const NotFoundSection = ({ heading, message, link, goBackTo }) => {
-  const currentPath = usePathname();
-  const path =
-    currentPath?.includes('/agent/') || currentPath?.includes('/user/');
-
+const NotFoundSection = ({ message, link, goBackTo }) => {
+  const router = useRouter();
   return (
     <Box
       sx={{
         width: '100%',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        my: '16px',
       }}
     >
-      <Grid
-        container
+      <Box
         sx={{
+          width: '100%',
+          height: '100%',
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center',
           alignItems: 'center',
-          borderRadius: '20px',
-          background: '#FFF',
-          border: `1px solid ${path ? '#E4E4E4' : 'none'}`,
+          px: 2,
+          gap: 1,
         }}
       >
-        <Grid item xs={12}>
-          <Box sx={{ px: '50px', py: '30px', textAlign: 'center' }}>
-            <Box py={'20px'}>
-              <Image
-                src={'/images/404/4042.gif'}
-                height={500}
-                width={500}
-                alt={'Images'}
-              />
-            </Box>
-            <Box pt={'20px'}>
-              <Typography
-                variant="h1"
-                sx={{
-                  color: '#333',
-                  fontWeight: '500',
-                }}
-              >
-                {heading || NOT_FOUND?.pageTitle}
-              </Typography>
-            </Box>
-            <Box pb={'20px'}>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: '#333',
-                  fontWeight: '400',
-                }}
-              >
-                {message || NOT_FOUND?.errorDescription}
-              </Typography>
-            </Box>
-            <Box>
-              <Link href={link || NOT_FOUND?.backButtonLink}>
-                <Button
-                  variant="primary"
-                  type="button"
-                  sx={{
-                    width: 'auto',
-                    height: { xs: '35px', sm: '45px' },
-                    textTransform: 'uppercase',
-                    fontSize: { xs: '10.7px', sm: '16px' },
-                    borderRadius: '5px',
-                    '&:hover': { color: '#fff' },
-                  }}
-                >
-                  <ArrowBackIosIcon />
-                  {goBackTo || NOT_FOUND?.backButtonLabel}
-                </Button>
-              </Link>
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
+        <Box
+          component={'img'}
+          src={'/images/404/not-found.jpg'}
+          alt={'Images'}
+          sx={{
+            width: '65%',
+            maxWidth: { xs: '180px', sm: '200px', md: '230px' },
+            height: 'auto',
+            objectFit: 'contain',
+            mt: -2,
+          }}
+        />
+        <Typography
+          sx={{
+            mt: -2,
+            fontSize: { xs: '15px' },
+            textAlign: 'center',
+          }}
+        >
+          {message || NOT_FOUND?.pageTitle}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: '17px', sm: '22px' },
+            textAlign: 'center',
+            fontWeight: 700,
+          }}
+        >
+          {message || NOT_FOUND?.errorDescription}
+        </Typography>
+        <Button
+          variant="primary"
+          sx={{ mt: 2 }}
+          onClick={() => router?.push(`${link || NOT_FOUND?.backButtonLink}`)}
+          startIcon={<ArrowBackIosIcon />}
+        >
+          {goBackTo || NOT_FOUND?.backButtonLabel}
+        </Button>
+      </Box>
     </Box>
   );
 };

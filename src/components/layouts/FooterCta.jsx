@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
 import { Bounce } from 'react-awesome-reveal';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
-import Image from 'next/image';
 import { keyframes } from '@mui/system';
 
 const wobble = keyframes`
@@ -34,130 +33,125 @@ const FooterCta = ({ data }) => {
   return (
     <Box
       sx={{
+        width: '100%',
         background: '#F5F6FB',
-        px: { xs: '3%', md: '5%', lg: '13%', xl: '15%' },
-        '@media (min-width: 270px) and (max-width: 500px)': {
-          px: '12%',
-        },
-        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      <Grid container sx={{ alignItems: 'center' }}>
-        <Grid
-          item
-          xs={12}
-          md={8}
-          lg={9}
+      <Box
+        sx={{
+          display: 'flex',
+          width: '100%',
+          maxWidth: '1200px',
+          flexDirection: { xs: 'column', sm: 'row' },
+          px: 2,
+        }}
+      >
+        <Box
           sx={{
-            justifyContent: 'right',
-            alignSelf: 'right',
-            pl: { lg: '170px' },
-            pr: { lg: '120px' },
-            py: {
-              xs: '20px',
-              sm: '40px',
-              md: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            p: 2,
+            maxWidth: {
+              xs: '100%',
+              sm: `calc(100% - 253px)`,
+              md: `calc(100% - 353px)`,
             },
           }}
         >
-          <Typography
-            sx={{
-              color: '#666',
-              fontSize: '16px',
-              fontWeight: 400,
-              lineHeight: '28px',
-              pr: {
-                xs: '0',
-                md: '0px',
-              },
-            }}
-          >
-            {data?.description}
-          </Typography>
-          <Grid
-            container
-            sx={{
-              display: 'flex',
-              gap: { xs: '10px', sm: '20px', md: '25px', lg: '30px' },
-            }}
-          >
-            {data?.features?.map((feature, index) => (
-              <Grid
-                key={index}
-                item
-                xs={12}
-                sm={6}
-                lg={3}
-                md={4}
+          <Box sx={{ width: '100%' }}>
+            <Box>
+              <Typography
                 sx={{
-                  display: 'flex',
-                  gap: '10px',
-                  py: { xs: '7px', md: '10px' },
-                  justifyContent: { lg: 'flex-end' },
+                  color: '#666',
+                  fontSize: { xs: '11px', sm: '14px', md: '16px' },
+                  fontWeight: 400,
+                  lineHeight: { xs: '20px', sm: '23px', md: '28px' },
                 }}
               >
-                <Image
-                  src={feature.icon}
-                  height={30}
-                  width={30}
-                  alt={'Images'}
-                />
-                <Box>
-                  <Typography
+                {data?.description}
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, py: 2, flexWrap: 'wrap' }}>
+                {data?.features?.map((feature, index) => (
+                  <Box
+                    key={index}
                     sx={{
-                      color: '#1176ad',
-                      textAlign: 'left',
-                      fontSize: '16px',
-                      fontWeight: '400',
+                      width: '100%',
+                      maxWidth: '180px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
                     }}
                   >
-                    {feature.title}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-          <Bounce direction="left" triggerOnce duration={200}>
-            <Box
-              sx={{
-                display: 'flex',
-                pt: '20px',
-                gap: '10px',
-                animation: `${wobble} 2s ease-in-out forwards`,
-              }}
-            >
-              {data?.appIcons?.map((appicon, index) => (
-                <Link
-                  href={appicon.link}
-                  key={index}
-                  xs={3}
-                  sx={{ display: 'flex', gap: '20px' }}
-                >
-                  <Image
-                    src={appicon.icon}
-                    alt={appicon.title}
-                    width={145}
-                    height={40}
-                  />
-                </Link>
-              ))}
+                    <Box
+                      component={'img'}
+                      src={feature?.icon}
+                      alt={'Images'}
+                      sx={{
+                        width: { xs: '15px', sm: '20px', md: '30px' },
+                        height: 'auto',
+                      }}
+                    />
+                    <Box>
+                      <Typography
+                        sx={{
+                          color: '#1176ad',
+                          textAlign: 'left',
+                          fontSize: { xs: '10px', sm: '13px', md: '16px' },
+                          fontWeight: '400',
+                        }}
+                      >
+                        {feature?.title}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
             </Box>
-          </Bounce>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
+            <Bounce direction="left" triggerOnce duration={200}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  pt: '20px',
+                  gap: '10px',
+                  animation: `${wobble} 2s ease-in-out forwards`,
+                }}
+              >
+                {data?.appIcons?.map((appicon, index) => (
+                  <Link
+                    href={appicon?.link || '#'}
+                    key={index}
+                    xs={3}
+                    sx={{ display: 'flex', gap: '20px' }}
+                  >
+                    <Box
+                      component={'img'}
+                      src={appicon?.icon || '/'}
+                      alt={appicon?.title || ''}
+                      sx={{
+                        width: { xs: '110px', sm: '125px', md: '145px' },
+                        height: 'auto',
+                      }}
+                    />
+                  </Link>
+                ))}
+              </Box>
+            </Bounce>
+          </Box>
+        </Box>
+        <Box
           sx={{
-            py: {
-              xs: '20px',
-              sm: '40px',
-              md: '0px',
-            },
+            width: `100%`,
+            height: '100%',
             display: 'flex',
-            justifyContent: { md: 'flex-end' },
+            alignSelf: 'flex-end',
+            maxWidth: { xs: '220px', sm: '253px', md: '353px' },
+            mx: 'auto',
           }}
         >
           <Bounce direction="right" triggerOnce duration={300}>
@@ -166,46 +160,49 @@ const FooterCta = ({ data }) => {
                 animation: `${wobble} 2s ease-in-out forwards`,
               }}
             >
-              <Image
+              <Box
+                component={'img'}
                 src={data?.appImage}
                 alt={'App'}
-                width={350}
-                height={400}
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  mb: -0.5,
+                  objectFit: 'contain',
+                }}
               />
             </Box>
           </Bounce>
-        </Grid>
-      </Grid>
-      <Grid container sx={{ py: '28px' }}>
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={8.5}
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: '1200px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          py: 2.5,
+          pl: 4,
+          pr: { xs: 4, sm: 10, md: 21 },
+          gap: 2,
+        }}
+      >
+        <Typography
           sx={{
-            px: { lg: '170px' },
+            fontSize: { xs: '11px', sm: '13px', md: '14px' },
+            fontWeight: 400,
+            color: '#666666',
           }}
         >
-          <Typography
-            sx={{
-              fontSize: '14px',
-              lineHeight: '28px',
-              fontWeight: 400,
-              color: '#666666',
-            }}
-          >
-            {data?.paymentMethodsDescription}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={4}
-          md={3.5}
+          {data?.paymentMethodsDescription}
+        </Typography>
+        <Box
           sx={{
             display: 'flex',
             justifyContent: { md: 'center' },
-            gap: '20px',
+            gap: { xs: '10px', sm: '18px', md: '20px' },
             py: {
               xs: '10px',
               md: '0px',
@@ -214,16 +211,19 @@ const FooterCta = ({ data }) => {
         >
           {data?.paymentMethods?.map((method, index) => (
             <Box key={index}>
-              <Image
+              <Box
+                component={'img'}
                 src={method?.icon}
                 alt={method?.alt}
-                width={37}
-                height={23}
+                sx={{
+                  width: { xs: '28px', sm: '30px', md: '37px' },
+                  height: 'auto',
+                }}
               />
             </Box>
           ))}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 };
