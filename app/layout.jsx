@@ -8,6 +8,9 @@ import theme from './theme';
 import './globals.css';
 import { redirect, usePathname } from 'next/navigation';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '@/src/redux/store';
@@ -16,6 +19,7 @@ import { FOOTER_CTA_DATA, FOOTER_DATA } from '@/src/constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/layouts/FooterCta';
 import Loader from './Loader'; // One single Loader component
+import NotificationListener from '@/src/components/layouts/NotificationListener';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -58,6 +62,9 @@ const RootLayout = ({ children }) => {
                 </Box>
                 {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
                 {!isDashboard && <Footer data={FOOTER_DATA} />}
+
+                <ToastContainer position="top-right" autoClose={3000} />
+                <NotificationListener />
               </ThemeProvider>
             </PersistGate>
           </Provider>

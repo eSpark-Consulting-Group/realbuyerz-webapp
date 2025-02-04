@@ -9,6 +9,7 @@ import { SideNav } from '@/src/components/dashboard/layout/SideNav';
 
 import { SIDE_NAV_WIDTH } from '@/src/constants/sidebar';
 import Loading from '@/src/components/Loading';
+import NotificationListener from '@/src/components/layouts/NotificationListener';
 
 const LayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

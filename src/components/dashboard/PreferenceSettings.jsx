@@ -126,6 +126,8 @@ const PreferenceSettings = () => {
           >
             {AGENT_PREFERENCES?.heading}
           </Typography>
+
+          <button onClick={userProfile}>Fetch User</button>
           <Notification
             notificationData={AGENT_PREFERENCES?.updates}
             handleInputChangeToggle={handleInputChangeToggle}
