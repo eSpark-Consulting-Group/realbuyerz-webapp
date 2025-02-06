@@ -7,6 +7,7 @@ import Link from 'next/link';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import UsefulLink from './FooterResponsivness';
+import { color } from '@mui/system';
 
 const styles = {
   container: {
@@ -89,7 +90,9 @@ const Footer = ({ data }) => {
               <PhoneIcon style={styles.icon} sx={{ color: '#fb631c' }} />
               <Link href={`tel:${data?.phone}`}>
                 {' '}
-                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+                <Typography
+                  sx={{ fontSize: '16px', fontWeight: 400, color: '#fff' }}
+                >
                   {data?.phone}
                 </Typography>
               </Link>
@@ -123,6 +126,7 @@ const Footer = ({ data }) => {
                     pt: '4px',
                     fontSize: '14px',
                     fontWeight: 400,
+                    color: '#fff',
                   }}
                 >
                   {link?.title}
