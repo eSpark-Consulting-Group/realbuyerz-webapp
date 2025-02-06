@@ -185,7 +185,7 @@ const FooterCta = ({ data }) => {
           justifyContent: 'space-between',
           py: 2.5,
           pl: 4,
-          pr: { xs: 4, sm: 10, md: 21 },
+          pr: { xs: 4, sm: 13, md: 21 },
           gap: 2,
         }}
       >

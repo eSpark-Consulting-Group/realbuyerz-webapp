@@ -1,64 +1,44 @@
 'use client';
 import React from 'react';
-import { Box, Typography, Grid, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import UsefulLink from './FooterResponsivness';
 
-const styles = {
-  container: {
-    backgroundColor: '#F5F5F5',
-    color: '#fff',
-    background:
-      'linear-gradient(180deg, rgba(0, 15, 34, 1.00) 0%, rgba(14, 30, 46, 0.97) 60.69004535675049%, rgba(0, 21, 44, 1.00) 100%)',
-  },
-  logo: {
-    width: '150px',
-    height: 'auto',
-  },
-  address: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '10px',
-  },
-  contactInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '10px',
-  },
-  icon: {
-    marginRight: '5px',
-  },
-  socialIcons: {
-    display: 'flex',
-    marginTop: '10px',
-  },
-  socialIcon: {
-    marginRight: '10px',
-  },
-};
 const Footer = ({ data }) => {
-  const theme = useTheme();
-  const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
   return (
-    <Box sx={styles?.container}>
-      <Grid
-        container
-        justifyContent="center"
+    <Box
+      sx={{
+        width: '100%',
+        height: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background:
+          'linear-gradient(180deg, rgba(0, 15, 34, 1.00) 0%, rgba(14, 30, 46, 0.97) 60.69004535675049%, rgba(0, 21, 44, 1.00) 100%)',
+      }}
+    >
+      <Box
         sx={{
-          py: '50px',
-          px: { xs: '10px', md: '0px' },
+          width: '100%',
+          maxWidth: '1300px',
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          '@media (min-width:280px) and (max-width:959px)': {
-            paddingLeft: '40px',
-          },
+          flexWrap: 'wrap',
+          py: { xs: 2.5, sm: 4.5, md: 6.5 },
+          px: 2,
         }}
       >
-        <Grid item xs={12} md={4.5}>
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: { sm: `calc(100% - 430px)`, md: `calc(100% - 510px)` },
+            '@media(min-width: 600px) and (max-width: 767px)': {
+              maxWidth: `calc(100%)`,
+            },
+          }}
+        >
           <Box sx={{ pr: '10.4%' }}>
             <Link href={data?.link}>
               <Image src={data?.logo} alt={'Logo'} width={155} height={37} />
@@ -67,40 +47,74 @@ const Footer = ({ data }) => {
               sx={{
                 pt: '10px',
                 pb: '20px',
-                fontSize: '16px',
+                fontSize: { xs: '11px', sm: '13px', md: '16px' },
                 lineHeight: '22px',
                 fontWeight: 400,
+                color: '#FFFFFF',
               }}
             >
               {data?.introText?.paragraph1}
             </Typography>
-            <Typography sx={{ pb: '20px', fontSize: '16px', fontWeight: 400 }}>
+            <Typography
+              sx={{
+                pb: '20px',
+                fontSize: { xs: '11px', sm: '13px', md: '16px' },
+                fontWeight: 400,
+                color: '#FFFFFF',
+              }}
+            >
               {data?.introText?.paragraph2}
             </Typography>
             <Box sx={{ display: 'flex' }}>
-              <LocationOnIcon style={styles.icon} sx={{ color: '#fb631c' }} />
+              <LocationOnIcon
+                style={{
+                  marginRight: '5px',
+                }}
+                sx={{ color: '#fb631c' }}
+              />
               <Typography
-                sx={{ pb: '13px', fontSize: '16px', fontWeight: 400 }}
+                sx={{
+                  pb: '13px',
+                  fontSize: { xs: '11px', sm: '13px', md: '16px' },
+                  fontWeight: 400,
+                  color: '#FFFFFF',
+                }}
               >
                 {data?.address?.line1}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex' }}>
-              <PhoneIcon style={styles.icon} sx={{ color: '#fb631c' }} />
+              <PhoneIcon
+                style={{
+                  marginRight: '5px',
+                }}
+                sx={{ color: '#fb631c' }}
+              />
               <Link href={`tel:${data?.phone}`}>
                 {' '}
-                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+                <Typography
+                  sx={{
+                    fontSize: { xs: '11px', sm: '13px', md: '16px' },
+                    fontWeight: 400,
+                    color: '#FFFFFF',
+                  }}
+                >
                   {data?.phone}
                 </Typography>
               </Link>
             </Box>
           </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={2}
-          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        </Box>
+
+        <Box
+          sx={{
+            p: 1,
+            width: '100%',
+            maxWidth: { xs: '50%', sm: 'calc(180px)', md: `calc(230px)` },
+            '@media(min-width: 425px) and (max-width: 767px)': {
+              maxWidth: `calc(180px)`,
+            },
+          }}
         >
           <Box>
             <Typography
@@ -108,8 +122,7 @@ const Footer = ({ data }) => {
               color={'primary'}
               sx={{
                 fontSize: { xs: '15px', md: '18px', lg: '20px' },
-                pb: { xs: '10px', md: '20px' },
-                pt: { xs: '20px', md: '0px' },
+                mb: 1.5,
               }}
             >
               {data?.usefulLink}
@@ -121,7 +134,7 @@ const Footer = ({ data }) => {
                   sx={{
                     pb: '13px',
                     pt: '4px',
-                    fontSize: '14px',
+                    fontSize: { xs: '10px', sm: '12px', md: '14px' },
                     fontWeight: 400,
                   }}
                 >
@@ -130,12 +143,17 @@ const Footer = ({ data }) => {
               </Link>
             ))}
           </Box>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={2}
-          sx={{ display: isMediumScreen ? 'block' : 'none' }}
+        </Box>
+
+        <Box
+          sx={{
+            p: 1,
+            width: '100%',
+            maxWidth: { xs: '50%', sm: `calc(250px)`, md: `calc(280px)` },
+            '@media(min-width: 425px) and (max-width: 767px)': {
+              maxWidth: `calc(213px)`,
+            },
+          }}
         >
           <Box>
             <Box>
@@ -144,19 +162,19 @@ const Footer = ({ data }) => {
                   variant="h6"
                   color={'primary'}
                   sx={{
+                    mb: 1.5,
                     fontSize: { xs: '15px', md: '18px', lg: '20px' },
-                    pb: { xs: '10px', md: '20px' },
-                    pt: { xs: '20px', md: '0px' },
                   }}
                 >
                   {data?.downloadApp}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: '14px',
+                    fontSize: { xs: '10px', sm: '12px', md: '14px' },
                     lineHeight: '16.94px',
                     fontWeight: 400,
                     mt: '3px',
+                    color: '#FFFFFF',
                   }}
                 >
                   {data?.appDownload?.description}
@@ -167,12 +185,17 @@ const Footer = ({ data }) => {
                   <Grid key={index} item xs={6}>
                     <Box sx={{ pt: '20px' }}>
                       <Link href={option?.link}>
-                        <Image
+                        <Box
+                          component={'img'}
                           src={option?.logo}
                           alt={option?.title}
-                          width={145}
-                          height={39}
-                          style={styles.icon}
+                          sx={{
+                            width: { xs: '110px', sm: '130px', md: '145px' },
+                            height: 'auto',
+                          }}
+                          style={{
+                            marginRight: '5px',
+                          }}
                         />
                       </Link>
                     </Box>
@@ -182,25 +205,20 @@ const Footer = ({ data }) => {
               <Box sx={{ display: 'flex', gap: '8px', px: '5px', pt: '5px' }}>
                 {data?.socialMediaIcons?.map((socialIcon, index) => (
                   <Link key={index} href={socialIcon?.link}>
-                    <Image
+                    <Box
+                      component={'img'}
                       key={index}
                       src={socialIcon?.logo}
                       alt={socialIcon?.title}
-                      width={24}
-                      height={25}
+                      sx={{ width: { xs: '20px', sm: '24px' } }}
                     />
                   </Link>
                 ))}
               </Box>
             </Box>
           </Box>
-        </Grid>
-        <UsefulLink
-          data={data}
-          isMediumScreen={isMediumScreen}
-          styles={styles}
-        />
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 };
