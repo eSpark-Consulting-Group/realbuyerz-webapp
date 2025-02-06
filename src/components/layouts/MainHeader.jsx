@@ -62,7 +62,10 @@ const MainHeader = () => {
         justifyContent: 'center',
       }}
     >
-      <Container maxWidth="xxl" sx={{ backgroundColor: '', p: 1 }}>
+      <Container
+        maxWidth="xxl"
+        sx={{ backgroundColor: '', p: { xs: 2.5, md: 4 } }}
+      >
         <Toolbar disableGutters>
           <Box
             sx={{
@@ -75,9 +78,46 @@ const MainHeader = () => {
             <Box
               sx={{
                 display: { xs: 'flex' },
-                alignItems: 'flex-start',
+                alignItems: 'center',
+                gap: { xs: 1.5, md: 0 },
               }}
             >
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  flexGrow: { xs: 2, md: 0 },
+                }}
+              >
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  disableRipple
+                  sx={{
+                    p: 0,
+                    height: 'auto',
+                    display: { xs: 'block', sm: 'block', md: 'none' },
+                    color: '#000',
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                    },
+                  }}
+                >
+                  <Box
+                    component={'img'}
+                    src={'/images/drawer.svg'}
+                    alt={'dashboardIcon'}
+                    sx={{
+                      width: { xs: '20px', sm: '20px' },
+                      height: 'auto',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </IconButton>
+              </Box>
               <Typography
                 variant="h6"
                 noWrap
@@ -97,30 +137,6 @@ const MainHeader = () => {
                   width={155}
                 />
               </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                flexGrow: { xs: 2, md: 0 },
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                sx={{
-                  display: { xs: 'block', sm: 'block', md: 'none' },
-                  color: '#000',
-                  '&:hover': {
-                    backgroundColor: 'transparent',
-                  },
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
             </Box>
             <Box
               sx={{
@@ -174,6 +190,7 @@ const MainHeader = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
+                mt: 3,
                 display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
                 color: '#000',
               }}
@@ -214,19 +231,6 @@ const MainHeader = () => {
                   </>
                 </MenuItem>
               ))}
-              <MenuItem
-                sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }}
-              >
-                <SignInResponsiveButton
-                  isUserLoggedIn={isUserLoggedIn}
-                  handleOpenUserMenu={handleOpenUserMenu}
-                  anchorElUser={anchorElUser}
-                  handleCloseUserMenu={handleCloseUserMenu}
-                  handleClose={toggleOpen}
-                  open={open}
-                  handleOpen={toggleOpen}
-                />
-              </MenuItem>
             </Menu>
           </Box>
           <SignInButton

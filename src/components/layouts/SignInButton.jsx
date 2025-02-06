@@ -7,7 +7,12 @@ import Cookie from 'js-cookie';
 
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
-import { LOGOUT, SETTINGS, SIGN_IN } from '@/src/constants/Login';
+import {
+  LOGOUT,
+  SETTINGS,
+  SIGN_IN,
+  USER_PROFILE_MENU,
+} from '@/src/constants/Login';
 import { useRouter } from 'next/navigation';
 
 const SignInButton = ({
@@ -50,27 +55,35 @@ const SignInButton = ({
           <Button
             sx={{
               display: {
-                xs: 'none',
-                sm: 'block',
-                lg: 'block',
-                xl: 'block',
+                xs: 'flex',
               },
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+              p: 0,
+              justifyContent: 'right',
+              alignItems: 'center',
             }}
+            disableRipple
             onClick={handleOpenUserMenu}
           >
-            <Image
-              src={'/images/login.png'}
-              width={80}
-              height={40}
+            <Box
+              component={'img'}
+              src={'/images/user_loged_in.png'}
               alt={'dashboardIcon'}
+              sx={{
+                width: { xs: '36px', sm: '38px', md: '40px', lg: 'auto' },
+                height: 'auto',
+                objectFit: 'contain',
+              }}
             />
           </Button>
           <Menu
-            sx={{ mt: '45px' }}
+            sx={{ mt: 4 }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{
-              vertical: 'top',
+              vertical: 'bottom',
               horizontal: 'right',
             }}
             keepMounted
@@ -78,12 +91,74 @@ const SignInButton = ({
               vertical: 'top',
               horizontal: 'right',
             }}
+            PaperProps={{
+              sx: {
+                width: '160px',
+              },
+            }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
           >
-            <Box
+            <MenuItem
+              onClick={handleClose}
+              disableRipple
               sx={{
-                padding: 2,
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 1.5,
+                }}
+              >
+                <Typography
+                  sx={{
+                    textAlign: 'center',
+                    fontWeight: 500,
+                    color: '#000',
+                    fontSize: '15px',
+                  }}
+                >
+                  {user?.userName}
+                </Typography>
+                {USER_PROFILE_MENU?.map(({ text }, index) => (
+                  <Button
+                    key={index}
+                    disableRipple
+                    sx={{
+                      width: '100%',
+                      borderRadius: '5px',
+                      backgroundColor: '#F5F5F5',
+                      border: '1px solid #D6D6D6',
+                      height: '30px',
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      color: '#333333',
+                      mb: 0.5,
+                      '&:hover': {
+                        border: '1px solid #D6D6D6',
+                      },
+                    }}
+                    onClick={
+                      text === 'My Account' ? goToMyAccount : handleLogout
+                    }
+                  >
+                    {text}
+                  </Button>
+                ))}
+              </Box>
+            </MenuItem>
+
+            {/* <Box
+              sx={{
+                p: 1,
+                width: '100%',
               }}
             >
               <Typography
@@ -91,25 +166,24 @@ const SignInButton = ({
                   textAlign: 'center',
                   fontWeight: 600,
                   color: '#000',
-                  mt: -2,
                 }}
               >
                 {user?.userName}
               </Typography>
               <MenuItem
                 sx={{
-                  width: '120px',
-                  padding: 0.7,
+                  width: '100%',
+                  // padding: 0.7,
                   display: 'flex',
                   justifyContent: 'center',
                   alignContent: 'center',
                   textAlign: 'center',
                   border: '1px solid #D6D6D6',
-                  marginBottom: '5px',
+                  // marginBottom: '5px',
                   backgroundColor: '#F5F5F5',
                   borderRadius: '5px',
                   color: '#333333',
-                  my: 2,
+                  // my: 2,
                 }}
                 onClick={goToMyAccount}
               >
@@ -118,8 +192,8 @@ const SignInButton = ({
               <MenuItem
                 onClick={handleLogout}
                 sx={{
-                  width: '120px',
-                  padding: 0.7,
+                  width: '100%',
+                  // padding: 0.7,
                   display: 'flex',
                   justifyContent: 'center',
                   alignContent: 'center',
@@ -133,7 +207,7 @@ const SignInButton = ({
               >
                 {LOGOUT}
               </MenuItem>
-            </Box>
+            </Box> */}
           </Menu>
         </>
       ) : (
