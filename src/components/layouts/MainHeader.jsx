@@ -95,6 +95,7 @@ const MainHeader = () => {
                   alt={'Images'}
                   height={37}
                   width={155}
+                  priority
                 />
               </Typography>
             </Box>

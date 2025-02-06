@@ -223,6 +223,7 @@ const ProposalCard = ({
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
                     whiteSpace: 'nowrap',
+                    color: '#333',
                   }}
                 >
                   {data?.propertyName || ''}
@@ -392,6 +393,7 @@ const ProposalCard = ({
                       overflow: 'hidden',
                       WebkitBoxOrient: 'vertical',
                       WebkitLineClamp: 4,
+                      color: '#333',
                     }}
                   >
                     {data?.propertyDescription || ''}
@@ -407,6 +409,7 @@ const ProposalCard = ({
                     textAlign: 'left',
                     right: '20px',
                     padding: { xs: '20px', sm: '17px', md: '25px 30px' },
+                    color: '#333',
                   }}
                 >
                   {`Amount: ${data?.propertyPrice || ''} ${data?.amountCurrency || 'PKR'}`}

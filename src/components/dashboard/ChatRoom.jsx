@@ -627,7 +627,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   />
                 ) : (
                   <Box
-                    role={'none'}
+                    role="textbox" // Changed from role="none" to role="textbox"
                     className={'contentEditable'}
                     contentEditable
                     onInput={handleInput}

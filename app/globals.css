@@ -734,9 +734,9 @@ body header {
   opacity: 0.3;
 }
 
-a{
+a {
   text-decoration: none;
-  color: white !important
+  /* color: white !important; */
 }
 
 input {
@@ -750,5 +750,3 @@ button:hover {
   border: none;
   box-shadow: none;
 }
-
-

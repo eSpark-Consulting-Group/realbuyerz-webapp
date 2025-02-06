@@ -36,10 +36,11 @@ const HeroSlider = ({
         {SlidesData?.map((slide, index) => (
           <SwiperSlide key={index}>
             <Image
-              layout="fill"
-              objectFit="cover"
               src={slide.image}
-              alt={'Slider Image'}
+              fill
+              style={{ objectFit: 'cover' }}
+              alt="Slider Image"
+              priority
             />
           </SwiperSlide>
         ))}
