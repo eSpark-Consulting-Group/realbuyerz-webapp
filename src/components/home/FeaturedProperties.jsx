@@ -278,6 +278,7 @@ const FeaturedProperties = () => {
                                     height={14.2}
                                     src={amenity}
                                     alt={`Amenity ${index}`}
+                                    style={{ height: 'auto', width: 'auto' }}
                                   />
                                 </Grid>
                               ))}
@@ -495,6 +496,7 @@ const FeaturedProperties = () => {
                                 height={14.2}
                                 src={amenity}
                                 alt={`Amenity ${index}`}
+                                style={{ height: 'auto', width: 'auto' }}
                               />
                             </Grid>
                           ))}

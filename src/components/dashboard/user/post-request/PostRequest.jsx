@@ -42,7 +42,7 @@ const PostRequest = ({ property_Id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [previousData, setPreviousData] = useState({});
+  const [previousData] = useState({});
   const [filteredUserProperty, setFilteredUserProperty] = useState(null);
 
   const [Action, setAction] = useState('');
@@ -78,7 +78,7 @@ const PostRequest = ({ property_Id }) => {
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
       propertyAddress: values.address,
-      amenity: values.amenities,
+      amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
     };
@@ -95,6 +95,7 @@ const PostRequest = ({ property_Id }) => {
       updatedData.propertyStatus = false;
       mutate(updatedData);
     }
+    console.log('Updated Data:', updatedData);
   };
 
   const handleClickOpen = () => {
@@ -132,8 +133,10 @@ const PostRequest = ({ property_Id }) => {
   // };
 
   const formik = useFormik({
+    enableReinitialize: true, // ✅ This ensures reinitialization on new data
     initialValues: {
       ...POST_REQUEST_VALUES,
+      amenities: filteredUserProperty?.amenities || [],
       address: '',
     },
     validationSchema: postRequestValidation,
@@ -166,6 +169,7 @@ const PostRequest = ({ property_Id }) => {
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
       setFilteredUserProperty(property);
+
       let singleArr = [];
       Object.keys(items).forEach((val) => {
         if (items[val].length > 0) {
@@ -174,14 +178,16 @@ const PostRequest = ({ property_Id }) => {
       });
 
       const amenitiesArr = transformAmenities(singleArr.amenities);
+      formik.setFieldValue('amenities', amenitiesArr);
+      setSelectedAmenities(amenitiesArr);
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenities', amenitiesArr);
 
-      setPreviousData(formik.values);
+      // Update selectedAmenities state
+      setSelectedAmenities(amenitiesArr);
     },
     onError: (error) => {
       console.error(error);

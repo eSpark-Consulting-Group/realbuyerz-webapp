@@ -171,6 +171,7 @@ const FooterCta = ({ data }) => {
                 alt={'App'}
                 width={350}
                 height={400}
+                priority
               />
             </Box>
           </Bounce>
