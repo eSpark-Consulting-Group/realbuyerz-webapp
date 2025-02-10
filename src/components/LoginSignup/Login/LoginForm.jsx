@@ -173,7 +173,7 @@ const FormContainer = ({
               }
               sx={{
                 '& input[type=number]::-webkit-inner-spin-button': {
-                  '-webkit-appearance': 'none',
+                  webkitAppearance: 'none',
                   margin: 0,
                 },
               }}

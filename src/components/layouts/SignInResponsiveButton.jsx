@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookie from 'js-cookie';

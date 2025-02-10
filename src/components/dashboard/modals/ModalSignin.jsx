@@ -7,17 +7,21 @@ const ModalSignin = ({ open, handleClose }) => {
   return (
     <>
       <Modal
-        open={open} // Controlled by props
+        open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        style={{
-          display: 'flex',
-        }}
       >
         <Box
           sx={{
-            margin: 'auto',
+            width: '90%',
+            height: '95%',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            bgcolor: 'background.paper',
+            boxShadow: 24,
           }}
         >
           <LoginCard handleClose={handleClose} fromModal={true} />

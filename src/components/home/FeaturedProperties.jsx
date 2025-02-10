@@ -208,7 +208,7 @@ const FeaturedProperties = () => {
                                 <LocationOnIcon
                                   color="#1176ad"
                                   fontSize="12px"
-                                />{' '}
+                                />
                                 {item?.city}
                               </Typography>
                               <Box
@@ -398,24 +398,24 @@ const FeaturedProperties = () => {
                             zIndex: 1,
                           }}
                         >
-                          <Link href={`/projects/${item?.property_id}`}>
-                            <Typography
-                              sx={{
-                                color: '#fb631c',
-                                textAlign: 'left',
-                                fontWeight: 600,
-                                lineHeight: '21.78px',
-                                fontSize: {
-                                  xs: '12px',
-                                  md: '14px',
-                                  lg: '18px',
-                                },
-                                pb: '15px',
-                              }}
-                            >
-                              {item?.title}
-                            </Typography>
-                          </Link>
+                          {/* <Link href={`/projects/${item?.property_id}`}> */}
+                          <Typography
+                            sx={{
+                              color: '#fb631c',
+                              textAlign: 'left',
+                              fontWeight: 600,
+                              lineHeight: '21.78px',
+                              fontSize: {
+                                xs: '12px',
+                                md: '14px',
+                                lg: '18px',
+                              },
+                              pb: '15px',
+                            }}
+                          >
+                            {item?.title}
+                          </Typography>
+                          {/* </Link> */}
                           <Typography
                             sx={{
                               color: '#1176ad',

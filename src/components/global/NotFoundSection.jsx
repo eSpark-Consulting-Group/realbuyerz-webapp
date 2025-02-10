@@ -12,7 +12,8 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
     <Box
       sx={{
         width: '100%',
-        height: '100vh',
+        height: '100%',
+        minHeight: `calc(100vh - 64px)`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -27,6 +28,7 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
           justifyContent: 'center',
           alignItems: 'center',
           px: 2,
+          pb: 3,
           gap: 1,
         }}
       >

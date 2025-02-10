@@ -121,7 +121,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
   });
 
   return (
-    <>
+    <Box sx={{ width: '100%', height: '100%' }}>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -139,7 +139,10 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
           <Box
             sx={{
               width: '100%',
-              padding: '60px',
+              height: '100%',
+              maxWidth: '500px',
+              maxHeight: '600px',
+              // padding: '60px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -148,14 +151,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                 '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
               borderRadius: 2,
               background: 'white',
-              marginTop: '-5px',
-              zIndex: 2,
-              '@media (max-width: 1286px)': {
-                width: '400px',
-              },
-              '@media (max-width: 500px)': {
-                boxShadow: 'none',
-              },
             }}
           >
             <Box
@@ -242,7 +237,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
           <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
         )}
       </form>
-    </>
+    </Box>
   );
 };
 
