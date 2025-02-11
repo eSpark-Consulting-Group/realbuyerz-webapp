@@ -45,18 +45,18 @@ const RectangleBorderImage = ({ showComponent }) => {
           width: '100%',
           maxWidth: { md: '400px', lg: '427px' },
           height: '100%',
+          // minHeight: '656px',
           borderRadius: '15px',
           border: '5px solid #1176AD',
           py: { xs: 2, sm: 3, md: 3 },
-          // ml: { xs: -'6%', sm: -'11%', md: -'15%', lg: '-30%' },
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
         }}
       >
         <Box
           sx={{
             width: '100%',
-            height: '100%',
-            borderRadius: 2,
-            background: 'white',
             ml: { xs: '6%', sm: '11%', md: '25%', lg: '42%' },
             display: 'flex',
             flexDirection: 'column',
@@ -64,17 +64,7 @@ const RectangleBorderImage = ({ showComponent }) => {
             alignItems: 'center',
           }}
         >
-          <Box
-            sx={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            {cardComponent}
-          </Box>
+          {cardComponent}
         </Box>
       </Box>
     </Box>

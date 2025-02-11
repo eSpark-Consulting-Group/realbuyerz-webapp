@@ -10,7 +10,7 @@ import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
 import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
 
-const ForgetPassword = ({ setshowForgetPassword }) => {
+const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
@@ -67,39 +67,39 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
   return (
     <Box
       sx={{
-        width: { xs: '90%', md: '500px' },
-        height: '400px',
+        width: '100%',
+        maxWidth: '500px',
+        minWidth: { sm: 'auto', md: '100%', lg: '500px' },
+        height: '100%',
+        minHeight: '400px',
+        maxHeight: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
-        borderRadius: '10px',
+        justifyContent: 'center',
+        boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+        borderRadius: 2,
         background: '#fff',
-        marginTop: '127px',
-        zIndex: 2,
-        '@media (max-width: 1286px)': {
-          width: '400px',
-        },
-        '@media (max-width: 400px)': {
-          width: '100% ',
-        },
       }}
     >
       <Box
         sx={{
-          width: { xs: '90%', md: '320px' },
+          mx: 'auto',
+          width: '100%',
+          maxWidth: { xs: '90%', sm: '85%', lg: '85%' },
           display: 'flex',
           flexDirection: 'column',
           height: 'auto',
-          gap: { xs: '7px', md: '15px' },
-          paddingTop: '10px',
+          padding: '5px',
+          gap: { xs: '10px', md: '10px' },
+          px: 2,
+          py: 3,
         }}
       >
         <Typography
           sx={{
             color: '#FF631C',
-            fontSize: { xs: '18px', md: '30px' },
+            fontSize: { xs: '19px', sm: '21px', md: '25px', lg: '30px' },
             fontWeight: 600,
           }}
         >
@@ -107,26 +107,64 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
         </Typography>
         <Typography
           sx={{
-            fontSize: { xs: '12px', md: '16px' },
+            fontSize: { xs: '13px', sm: '14px', md: '16px' },
             fontWeight: 400,
+            color: '#333333',
           }}
         >
           {LOGIN_FORM.loginCard.enterEmail}
         </Typography>
         <TextField
-          label={LOGIN_FORM.loginCard.email}
-          name={LOGIN_FORM.email}
           variant="outlined"
           fullWidth
+          name={LOGIN_FORM.email}
           value={email}
+          type="email"
           onChange={handleEmailChange}
+          placeholder={LOGIN_FORM.loginCard.email}
+          inputProps={{
+            style: {
+              height: `10px`,
+              borderRadius: '5px',
+              border: '1px solid #E4E4E4',
+              background: '#fff',
+              fontSize: '15px',
+              fontWeight: 400,
+            },
+          }}
+          sx={{
+            '& fieldset': { border: 'none' },
+            gap: 1,
+            textAlign: 'left',
+            '& input::placeholder': {
+              color: '#000',
+              opacity: 1,
+            },
+            '& input[type=number]::-webkit-inner-spin-button': {
+              WebkitAppearance: 'none',
+              margin: 0,
+            },
+            '.MuiFormHelperText-contained': {
+              marginLeft: 0.5,
+            },
+            '& input:-webkit-autofill': {
+              WebkitBoxShadow: '0 0 0 1000px white inset !important',
+              WebkitTextFillColor: '#000 !important',
+              transition: 'background-color 5000s ease-in-out 0s !important',
+            },
+            '& .MuiOutlinedInput-root': {
+              height: '40px',
+              borderRadius: '10px',
+            },
+          }}
         />
+
         {error && (
           <Typography
             sx={{
-              fontSize: { xs: '10px', md: '14px' },
+              fontSize: { xs: '12px' },
               fontWeight: 400,
-              color: '#FF631C',
+              color: '#d32f2f',
             }}
           >
             {error}
@@ -143,7 +181,6 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             open={open}
             onCloseModal={handleModalToggle}
             email={email}
-            setshowForgetPassword={setshowForgetPassword}
             handleClick={resendEmail}
             handleBackToLogin={handleBackToLogin}
           />
