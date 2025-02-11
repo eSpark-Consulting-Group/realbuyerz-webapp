@@ -121,7 +121,126 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
   });
 
   return (
-    <Box sx={{ width: '100%', height: '100%' }}>
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: '500px',
+        minWidth: { sm: 'auto', md: '100%', lg: '500px' },
+        height: '100%',
+        minHeight: '600px',
+        maxHeight: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+        borderRadius: 2,
+        background: '#fff',
+      }}
+    >
+      <form>
+        {!showForgetPassword ? (
+          <Box
+            sx={{
+              mx: 'auto',
+              width: '100%',
+              maxWidth: { xs: '90%', sm: '85%', lg: '100%' },
+              display: 'flex',
+              flexDirection: 'column',
+              height: 'auto',
+              padding: '5px',
+              gap: { xs: '10px', md: '10px' },
+              px: 2,
+            }}
+          >
+            <Typography
+              sx={{
+                color: '#FF631C',
+                fontWeight: 600,
+                fontSize: { xs: '19px', sm: '21px', md: '25px', lg: '30px' },
+              }}
+            >
+              {LOGIN_FORM.loginCard.welcome}
+            </Typography>
+            <Typography
+              sx={{
+                color: ' #333333',
+                fontSize: { xs: '13px', sm: '14px', md: '16px' },
+              }}
+            >
+              {LOGIN_FORM.loginCard.loginMessage}
+            </Typography>
+            <FormContainer
+              isLoginForm={true}
+              formData={formData}
+              handleInputChange={handleInputChange}
+              formik={formik}
+            />
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row', md: 'row' },
+                alignItems: 'baseline',
+                justifyContent: {
+                  xs: 'center',
+                  sm: 'space-between',
+                },
+              }}
+            >
+              <Button
+                disableRipple
+                sx={{
+                  textAlign: 'center',
+                  color: '#FF631C',
+                  fontSize: { xs: '12px' },
+                  '&:hover, &:focus, &:active': {
+                    backgroundColor: 'transparent',
+                    outline: 'none',
+                  },
+                }}
+                onClick={handleClick}
+              >
+                {LOGIN_FORM.loginCard.forgetPassword}
+              </Button>
+              <FormControlLabel
+                label={LOGIN_FORM.loginCard.rememberMe}
+                control={<Checkbox size="small" color="primary" />}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row-reverse',
+                  color: '#777777',
+                  fontSize: { xs: '12px' },
+                  mr: '-10px',
+                  pl: { xs: '10px', sm: 0 },
+                  '&:hover, &:focus, &:active': {
+                    backgroundColor: 'transparent',
+                    outline: 'none',
+                  },
+                }}
+                onChange={(e) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    rememberCheck: e.target.checked,
+                  }))
+                }
+              />
+            </Box>
+            <LoginWithGoogle
+              buttonLabel={LOGIN_FORM.loginCard.login}
+              label={LOGIN_FORM.signupForm.signup}
+              accountCreationMessage={LOGIN_FORM.signupForm.label}
+              loginButton={LOGIN_FORM.loginCard.googleLogin}
+              onSigninClick={handleSignIn}
+              handleClose={handleClose}
+              loginClick={formik.handleSubmit}
+              isPending={isPending}
+            />
+          </Box>
+        ) : (
+          <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
+        )}
+      </form>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -133,110 +252,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
         draggable
         pauseOnHover
       />
-
-      <form>
-        {!showForgetPassword ? (
-          <Box
-            sx={{
-              width: '100%',
-              height: '100%',
-              maxWidth: '500px',
-              maxHeight: '600px',
-              // padding: '60px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow:
-                '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
-              borderRadius: 2,
-              background: 'white',
-            }}
-          >
-            <Box
-              sx={{
-                width: { xs: '100%', md: '320px' },
-                display: 'flex',
-                flexDirection: 'column',
-                height: 'auto',
-                padding: '5px',
-                gap: { xs: '7px', md: '15px' },
-              }}
-            >
-              <Typography
-                sx={{
-                  color: '#FF631C',
-                  fontSize: { xs: '15px', md: '20px' },
-                }}
-              >
-                {LOGIN_FORM.loginCard.welcome}
-              </Typography>
-              <Typography sx={{ color: ' #333333', fontSize: '16px' }}>
-                {LOGIN_FORM.loginCard.loginMessage}
-              </Typography>
-              <FormContainer
-                isLoginForm={true}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                formik={formik}
-              />
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row', md: 'row' },
-                  alignItems: 'baseline',
-                  justifyContent: {
-                    xs: 'center',
-                    sm: 'space-between',
-                    md: 'space-between',
-                  },
-                }}
-              >
-                <Button
-                  sx={{
-                    textAlign: 'center',
-                    color: '#FF631C',
-                    fontSize: { xs: '10px', sm: '12px', md: '12px' },
-                    textDecoration: 'underline',
-                    marginTop: 2,
-                  }}
-                  onClick={handleClick}
-                >
-                  {LOGIN_FORM.loginCard.forgetPassword}
-                </Button>
-                <FormControlLabel
-                  label={LOGIN_FORM.loginCard.rememberMe}
-                  control={<Checkbox size="small" color="primary" />}
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'row-reverse',
-                    color: '#777777',
-                    fontSize: { xs: '5px', md: '10px' },
-                  }}
-                  onChange={(e) =>
-                    setFormData((prevData) => ({
-                      ...prevData,
-                      rememberCheck: e.target.checked,
-                    }))
-                  }
-                />
-              </Box>
-              <LoginWithGoogle
-                buttonLabel={LOGIN_FORM.loginCard.login}
-                label={LOGIN_FORM.signupForm.signup}
-                accountCreationMessage={LOGIN_FORM.signupForm.label}
-                loginButton={LOGIN_FORM.loginCard.googleLogin}
-                onSigninClick={handleSignIn}
-                handleClose={handleClose}
-                loginClick={formik.handleSubmit}
-                isPending={isPending}
-              />
-            </Box>
-          </Box>
-        ) : (
-          <ForgetPassword setshowForgetPassword={setshowForgetPassword} />
-        )}
-      </form>
     </Box>
   );
 };

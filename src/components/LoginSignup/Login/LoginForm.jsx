@@ -32,25 +32,42 @@ const FormContainer = ({
           }}
         >
           <TextField
-            label={FORM_LABEL.emailUsername}
             variant="outlined"
             fullWidth
             type="email"
             value={formik.values.email}
             name="email"
             onChange={formik.handleChange}
+            placeholder={FORM_LABEL?.emailUsername}
             inputProps={{
               style: {
+                height: `10px`,
+                borderRadius: '10px',
+                border: '1px solid #E4E4E4',
                 background: '#fff',
+                fontSize: '15px',
+                fontWeight: 400,
               },
             }}
-            InputProps={{
-              sx: {
-                '&:-webkit-autofill': {
-                  transition: 'background-color 5000s ease-in-out 0s',
-                  webkitTextFillColor: '#000',
-                  background: '#fff !important',
-                },
+            sx={{
+              '& fieldset': { border: 'none' },
+              gap: 1,
+              textAlign: 'left',
+              '& input::placeholder': {
+                color: '#000',
+                opacity: 1,
+              },
+              '& input[type=number]::-webkit-inner-spin-button': {
+                WebkitAppearance: 'none',
+                margin: 0,
+              },
+              '.MuiFormHelperText-contained': {
+                marginLeft: 0.5,
+              },
+              '&:-webkit-autofill': {
+                transition: 'background-color 5000s ease-in-out 0s',
+                webkitTextFillColor: '#000',
+                background: '#fff !important',
               },
             }}
           />
@@ -84,7 +101,7 @@ const FormContainer = ({
               }}
             >
               <TextField
-                label={FORM_LABEL.firstName}
+                placeholder={FORM_LABEL?.firstName}
                 name="firstName"
                 variant="outlined"
                 fullWidth
@@ -97,11 +114,34 @@ const FormContainer = ({
                 InputProps={{
                   sx: {
                     height: '40px',
-                    // width: '182px',
                     margin: '2px 0px',
-                    '& fieldset': {
-                      borderColor: '#E4E4E4',
+                    '& fieldset': { border: 'none' },
+                    gap: 1,
+                    textAlign: 'left',
+                    '& input::placeholder': {
+                      color: '#000',
+                      opacity: 1,
                     },
+                    '& input[type=number]::-webkit-inner-spin-button': {
+                      WebkitAppearance: 'none',
+                      margin: 0,
+                    },
+                    '.MuiFormHelperText-contained': {
+                      marginLeft: 0.5,
+                    },
+                    '&:-webkit-autofill': {
+                      height: '40px',
+                      transition: 'background-color 5000s ease-in-out 0s',
+                      webkitTextFillColor: '#000',
+                      background: '#fff !important',
+                    },
+                  },
+                  style: {
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '14px',
+                    fontWeight: 400,
                   },
                 }}
                 InputLabelProps={{
@@ -109,7 +149,7 @@ const FormContainer = ({
                 }}
               />
               <TextField
-                label={FORM_LABEL.lastName}
+                placeholder={FORM_LABEL.lastName}
                 name="lastName"
                 variant="outlined"
                 fullWidth
@@ -122,11 +162,34 @@ const FormContainer = ({
                 InputProps={{
                   sx: {
                     height: '40px',
-                    // width: '182px',
                     margin: '2px 0px',
-                    '& fieldset': {
-                      borderColor: '#E4E4E4',
+                    '& fieldset': { border: 'none' },
+                    gap: 1,
+                    textAlign: 'left',
+                    '& input::placeholder': {
+                      color: '#000',
+                      opacity: 1,
                     },
+                    '& input[type=number]::-webkit-inner-spin-button': {
+                      WebkitAppearance: 'none',
+                      margin: 0,
+                    },
+                    '.MuiFormHelperText-contained': {
+                      marginLeft: 0.5,
+                    },
+                    '&:-webkit-autofill': {
+                      height: '40px',
+                      transition: 'background-color 5000s ease-in-out 0s',
+                      webkitTextFillColor: '#000',
+                      background: '#fff !important',
+                    },
+                  },
+                  style: {
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '14px',
+                    fontWeight: 400,
                   },
                 }}
                 InputLabelProps={{
@@ -135,7 +198,7 @@ const FormContainer = ({
               />
             </Box>
             <TextField
-              label={FORM_LABEL.emailAddress}
+              placeholder={FORM_LABEL?.emailAddress}
               variant="outlined"
               fullWidth
               name="email"
@@ -147,9 +210,33 @@ const FormContainer = ({
                 sx: {
                   height: '40px',
                   margin: '2px 0px',
-                  '& fieldset': {
-                    borderColor: '#E4E4E4',
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
                   },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '&:-webkit-autofill': {
+                    height: '40px',
+                    transition: 'background-color 5000s ease-in-out 0s',
+                    webkitTextFillColor: '#000',
+                    background: '#fff !important',
+                  },
+                },
+                style: {
+                  borderRadius: '5px',
+                  border: '1px solid #E4E4E4',
+                  background: '#fff',
+                  fontSize: '14px',
+                  fontWeight: 400,
                 },
               }}
               InputLabelProps={{
@@ -157,7 +244,7 @@ const FormContainer = ({
               }}
             />
             <TextField
-              label={FORM_LABEL.contactNo}
+              placeholder={FORM_LABEL.contactNo}
               variant="outlined"
               type="text"
               fullWidth
@@ -180,11 +267,34 @@ const FormContainer = ({
               InputProps={{
                 sx: {
                   height: '40px',
-                  background: 'none',
                   margin: '2px 0px',
-                  '& fieldset': {
-                    borderColor: '#E4E4E4',
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
                   },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '&:-webkit-autofill': {
+                    height: '40px',
+                    transition: 'background-color 5000s ease-in-out 0s',
+                    webkitTextFillColor: '#000',
+                    background: '#fff !important',
+                  },
+                },
+                style: {
+                  borderRadius: '5px',
+                  border: '1px solid #E4E4E4',
+                  background: '#fff',
+                  fontSize: '14px',
+                  fontWeight: 400,
                 },
               }}
               InputLabelProps={{

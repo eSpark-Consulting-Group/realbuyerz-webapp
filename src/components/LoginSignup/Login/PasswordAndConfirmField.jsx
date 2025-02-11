@@ -9,7 +9,7 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
   return (
     <>
       <TextField
-        label={FORM_LABEL.password}
+        placeholder={FORM_LABEL?.password}
         variant="outlined"
         type={formData?.showPassword ? TEXT_TYPE.text : TEXT_TYPE.password}
         fullWidth
@@ -22,9 +22,33 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
           sx: {
             height: '40px',
             margin: '2px 0px',
-            '& fieldset': {
-              borderColor: '#E4E4E4',
+            '& fieldset': { border: 'none' },
+            gap: 1,
+            textAlign: 'left',
+            '& input::placeholder': {
+              color: '#000',
+              opacity: 1,
             },
+            '& input[type=number]::-webkit-inner-spin-button': {
+              WebkitAppearance: 'none',
+              margin: 0,
+            },
+            '.MuiFormHelperText-contained': {
+              marginLeft: 0.5,
+            },
+            '&:-webkit-autofill': {
+              height: '40px',
+              transition: 'background-color 5000s ease-in-out 0s',
+              webkitTextFillColor: '#000',
+              background: '#fff !important',
+            },
+          },
+          style: {
+            borderRadius: '5px',
+            border: '1px solid #E4E4E4',
+            background: '#fff',
+            fontSize: '14px',
+            fontWeight: 400,
           },
           autoComplete: 'new-password',
           endAdornment: (
@@ -43,7 +67,7 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
       />
 
       <TextField
-        label={FORM_LABEL.confirmPassword}
+        placeholder={FORM_LABEL?.confirmPassword}
         variant="outlined"
         type={
           formData?.showConfirmPassword ? TEXT_TYPE.text : TEXT_TYPE.password
@@ -63,9 +87,33 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
           sx: {
             height: '40px',
             margin: '2px 0px',
-            '& fieldset': {
-              borderColor: '#E4E4E4',
+            '& fieldset': { border: 'none' },
+            gap: 1,
+            textAlign: 'left',
+            '& input::placeholder': {
+              color: '#000',
+              opacity: 1,
             },
+            '& input[type=number]::-webkit-inner-spin-button': {
+              WebkitAppearance: 'none',
+              margin: 0,
+            },
+            '.MuiFormHelperText-contained': {
+              marginLeft: 0.5,
+            },
+            '&:-webkit-autofill': {
+              height: '40px',
+              transition: 'background-color 5000s ease-in-out 0s',
+              webkitTextFillColor: '#000',
+              background: '#fff !important',
+            },
+          },
+          style: {
+            borderRadius: '5px',
+            border: '1px solid #E4E4E4',
+            background: '#fff',
+            fontSize: '14px',
+            fontWeight: 400,
           },
           autoComplete: 'confirm-password',
           endAdornment: (

@@ -33,7 +33,7 @@ const LoginSidePage = () => {
           alt={ALT?.BUILDING_IMAGE || ''}
           src={'/images/signup_page/boximage.svg'}
           sx={{
-            width: '85%',
+            width: '80%',
             height: 'auto',
             maxWidth: '632px',
             objectFit: 'contain',
@@ -52,7 +52,13 @@ const LoginSidePage = () => {
           <Typography
             sx={{
               color: '#126FAA',
-              fontSize: { xs: '25px', sm: '22px', md: '25px', lg: '35px' },
+              fontSize: {
+                xs: '25px',
+                sm: '21px',
+                md: '22px',
+                lg: '30px',
+                xl: '35px',
+              },
               fontWeight: 500,
               textAlign: 'center',
             }}
@@ -62,7 +68,13 @@ const LoginSidePage = () => {
           <Typography
             sx={{
               color: '#FF631C',
-              fontSize: { xs: '12px', sm: '14px', md: '16px', lg: '18px' },
+              fontSize: {
+                xs: '12px',
+                sm: '11px',
+                md: '13px',
+                lg: '15px',
+                xl: '18px',
+              },
 
               fontWeight: 400,
               textAlign: 'center',
@@ -75,7 +87,7 @@ const LoginSidePage = () => {
           component={'img'}
           src="/images/signup_page/highbuilding.svg"
           sx={{
-            width: '90%',
+            width: '80%',
             height: 'auto',
             maxWidth: '488px',
             objectFit: 'contain',

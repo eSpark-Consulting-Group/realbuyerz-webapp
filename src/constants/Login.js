@@ -12,7 +12,7 @@ export const LOGIN_FORM = {
   loginCard: {
     createAccount: 'Create Account',
     quickEasy: 'It’s Quick & Easy',
-    rememberMe: 'Remember me',
+    rememberMe: 'Remember me :',
     forgetPassword: 'Forget Password?',
     welcome: 'Hey! Welcome',
     loginMessage: 'Login to reach out hundreds of verified buyers daily',

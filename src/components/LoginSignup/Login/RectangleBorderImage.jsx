@@ -27,13 +27,11 @@ const RectangleBorderImage = ({ showComponent }) => {
       cardComponent = null;
   }
 
-  console.log(cardComponent);
-
   return (
     <Box
       sx={{
         width: '91%',
-        height: 'auto',
+        height: '100%',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
@@ -45,21 +43,21 @@ const RectangleBorderImage = ({ showComponent }) => {
       <Box
         sx={{
           width: '100%',
-          maxWidth: '427px',
+          maxWidth: { md: '400px', lg: '427px' },
           height: '100%',
           borderRadius: '15px',
           border: '5px solid #1176AD',
-          py: { xs: 2, sm: 3, md: 5 },
+          py: { xs: 2, sm: 3, md: 3 },
+          // ml: { xs: -'6%', sm: -'11%', md: -'15%', lg: '-30%' },
         }}
       >
         <Box
           sx={{
             width: '100%',
-            backgroundColor: '#fff',
-            boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+            height: '100%',
             borderRadius: 2,
             background: 'white',
-            ml: { xs: '6%', sm: '11%', md: '15%', lg: '30%' },
+            ml: { xs: '6%', sm: '11%', md: '25%', lg: '42%' },
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -68,17 +66,15 @@ const RectangleBorderImage = ({ showComponent }) => {
         >
           <Box
             sx={{
-              width: '98%',
-              maxWidth: '500px',
-              height: '650px',
+              width: '100%',
+              height: '100%',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
             }}
           >
-            Children
+            {cardComponent}
           </Box>
-          {/* {cardComponent} */}
         </Box>
       </Box>
     </Box>
