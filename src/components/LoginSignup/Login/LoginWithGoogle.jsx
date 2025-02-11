@@ -149,7 +149,6 @@ const LoginWithGoogle = ({
             display: { xs: 'none', md: 'flex' },
             width: '100%',
             maxWidth: '170px',
-            border: '1px #A5A5A5 solid',
           }}
         />
         <Typography sx={{ color: '#909394' }}>Or</Typography>
@@ -158,13 +157,17 @@ const LoginWithGoogle = ({
             display: { xs: 'none', md: 'flex' },
             width: '100%',
             maxWidth: '170px',
-            border: '1px #A5A5A5 solid',
           }}
         />
       </Box>
 
       <Box
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 1.2,
+        }}
       >
         <GoogleLogin
           onSuccess={handleGoogleLogin}
