@@ -56,47 +56,46 @@ const ResetPassword = () => {
   return (
     <Box
       sx={{
-        width: { xs: '90%', md: '500px' },
-        height: { xs: '400px', md: '600px' },
+        width: '100%',
+        maxWidth: '500px',
+        minWidth: { sm: 'auto', md: '100%', lg: '500px' },
+        height: '100%',
+        minHeight: '600px',
+        maxHeight: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        boxShadow: '-4px -4px 11px rgba(0, 0, 0, 0.15)',
-        borderRadius: '10px',
+        justifyContent: 'center',
+        boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+        borderRadius: 2,
         background: '#fff',
-        margin: 'auto',
-        zIndex: 2,
-        '@media (max-width: 1286px)': {
-          width: '400px',
-        },
-        '@media (max-width: 400px)': {
-          width: '90% ',
-        },
       }}
     >
       <Box
         sx={{
-          width: { xs: '70%', md: '320px' },
+          mx: 'auto',
+          width: '100%',
+          maxWidth: { xs: '90%', sm: '85%', lg: '86%' },
           display: 'flex',
           flexDirection: 'column',
           height: 'auto',
-          gap: { xs: '7px', md: '15px' },
-          paddingTop: { xs: '0px', md: '40px' },
+          padding: '5px',
+          gap: { xs: '10px', md: '10px' },
+          px: 2,
         }}
       >
         <Typography
           sx={{
             color: '#FF631C',
-            fontSize: { xs: '18px', md: '30px' },
             fontWeight: 600,
+            fontSize: { xs: '19px', sm: '21px', md: '25px', lg: '30px' },
           }}
         >
           {LOGIN_FORM.resetPasswordCard.resetPassword}
         </Typography>
         <Typography
           sx={{
-            fontSize: { xs: '12px', md: '16px' },
+            fontSize: { xs: '13px', sm: '14px', md: '16px' },
             fontWeight: 400,
           }}
         >

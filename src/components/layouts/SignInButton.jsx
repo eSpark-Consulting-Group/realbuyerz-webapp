@@ -7,7 +7,7 @@ import Cookie from 'js-cookie';
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import { SIGN_IN, USER_PROFILE_MENU } from '@/src/constants/Login';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import BasicModal from '../global/BasicModal';
 
 const SignInButton = ({
@@ -20,7 +20,6 @@ const SignInButton = ({
   handleOpen,
 }) => {
   const router = useRouter();
-  const currentPath = usePathname();
   const [isOpenLogoutModal, setIsOpenLogoutModal] = React.useState(false);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -161,9 +160,7 @@ const SignInButton = ({
               </MenuItem>
             </Menu>
           </>
-        ) : currentPath === '/signin' ||
-          currentPath === '/signup' ||
-          currentPath === '/forget-password' ? null : (
+        ) : (
           <Button
             variant="primary"
             sx={{

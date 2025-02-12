@@ -60,32 +60,10 @@ const MainHeader = () => {
       }}
     >
       <Container
-        maxWidth="xl"
+        maxWidth="lg"
         sx={{
           backgroundColor: '',
           p: { xs: 1.5, sm: 2, md: 4 },
-          ml:
-            currentPath === '/signin' ||
-            currentPath === '/signup' ||
-            currentPath === '/forget-password'
-              ? 0
-              : 'none',
-          mr:
-            currentPath === '/signin' ||
-            currentPath === '/signup' ||
-            currentPath === '/forget-password'
-              ? 'auto'
-              : 'none',
-          width:
-            currentPath === '/signin' ||
-            currentPath === '/signup' ||
-            currentPath === '/forget-password'
-              ? {
-                  xs: 'calc(100% - 80px)',
-                  sm: 'calc(100% - 110px)',
-                  md: 'calc(100% - 120px)',
-                }
-              : '100%',
         }}
       >
         <Toolbar disableGutters>

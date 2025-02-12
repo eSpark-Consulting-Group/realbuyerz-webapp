@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Modal, Button, Box, Typography, Alert } from '@mui/material';
 import Image from 'next/image';
-
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 
 const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
@@ -22,85 +21,88 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
 
   return (
     <>
-      <Modal
-        open={open}
-        onClose={onClose}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
+      <Modal open={open} onClose={onClose}>
         <Box
           sx={{
-            width: { xs: '100%', sm: '50%', md: '500px' },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            boxShadow: 24,
+            width: '90%',
+            maxWidth: { xs: '380px', md: '400px', lg: '500px' },
+            maxHeight: { xs: '300px', lg: '400px' },
             margin: 'auto',
-            height: ' 400px',
+            height: ' 90%',
             background: '#fff',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '10px',
+            overflow: 'auto',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'transparent transparent',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
           }}
         >
           <Box
             sx={{
-              width: { xs: '100%', sm: '50%', md: '500px' },
               margin: 'auto',
-              height: ' 400px',
               background: '#fff',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              borderRadius: '10px',
+              p: 2.5,
+              gap: { xs: 2, sm: 3, md: 4, lg: 5 },
             }}
           >
             <Box
+              component={'img'}
+              src="/images/signup_page/mailbox.svg"
+              alt="mailbox"
               sx={{
-                display: 'flex',
-                width: { xs: '80px', md: '70px' },
-                marginBottom: '116px',
+                width: '50px',
+                height: 'auto',
+                mt: -11,
               }}
-            >
-              <Image
-                src="/images/signup_page/mailbox.svg"
-                width={50}
-                height={50}
-                alt="mailbox"
-              />
-            </Box>
+            />
+
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                width: '270px',
                 gap: '10px',
               }}
             >
               <Typography
                 sx={{
                   fontWeight: '400px',
-                  fontSize: '24px',
+                  fontSize: { xs: '20px', sm: '22px', md: '24px' },
                 }}
               >
                 {LOGIN_FORM.loginCard.checkEmail}{' '}
               </Typography>
-              <Typography
-                sx={{
-                  fontWeight: '400px',
-                  fontSize: '14px',
-                }}
-              >
-                {LOGIN_FORM.loginCard.resetPassword}
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: '400px',
-                  fontSize: '12px',
-                }}
-              >
-                {email}
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography
+                  sx={{
+                    fontWeight: '400px',
+                    fontSize: { xs: '13px', md: '14px' },
+                  }}
+                >
+                  {LOGIN_FORM.loginCard.resetPassword} {email}
+                </Typography>
+                {/* <Typography
+                  sx={{
+                    fontWeight: '400px',
+                    fontSize: '12px',
+                  }}
+                >
+                  {email}
+                </Typography> */}
+              </Box>
               <Button
                 style={{
                   background: '#FF631C',
@@ -127,7 +129,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
               <Button
                 sx={{
                   fontWeight: '400px',
-                  fontSize: '12px',
+                  fontSize: '14px',
                   color: '#126FAA',
                   padding: 0,
                   textTransform: 'math-auto',
@@ -140,8 +142,8 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
               >
                 <Image
                   src="/images/modal/lessthan.svg"
-                  width={18}
-                  height={18}
+                  width={20}
+                  height={20}
                   alt="lessthan"
                 />
                 {LOGIN_FORM.loginCard.backSignin}

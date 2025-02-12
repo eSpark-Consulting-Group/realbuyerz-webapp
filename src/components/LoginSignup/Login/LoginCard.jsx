@@ -25,7 +25,7 @@ import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const LoginCard = ({ handleClose = () => {}, fromModal }) => {
+const LoginCard = ({ handleClose = () => {}, fromModal = false }) => {
   const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -131,7 +131,9 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+        boxShadow: fromModal
+          ? 'none'
+          : '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
         borderRadius: 2,
         background: '#fff',
       }}
@@ -191,6 +193,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                 textAlign: 'center',
                 color: '#FF631C',
                 fontSize: { xs: '12px' },
+                p: 0,
                 '&:hover, &:focus, &:active': {
                   backgroundColor: 'transparent',
                   outline: 'none',
@@ -209,7 +212,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                 color: '#777777',
                 fontSize: { xs: '12px' },
                 mr: '-10px',
-                pl: { xs: '10px', sm: 0 },
                 '&:hover, &:focus, &:active': {
                   backgroundColor: 'transparent',
                   outline: 'none',

@@ -28,7 +28,8 @@ const RootLayout = ({ children }) => {
   const isAuthPages =
     currentPath.includes('/signin') ||
     currentPath.includes('/signup') ||
-    currentPath.includes('/forget-password');
+    currentPath.includes('/forget-password') ||
+    currentPath.includes('/reset-password');
 
   useEffect(() => {
     if (

@@ -12,7 +12,7 @@ const InnerPagesLayout = ({ children }) => {
           width: '100%',
           maxWidth: '1500px',
           height: '100%',
-          minHeight: 'calc(100vh - 64px)',
+          minHeight: 'calc(100vh - 70px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
