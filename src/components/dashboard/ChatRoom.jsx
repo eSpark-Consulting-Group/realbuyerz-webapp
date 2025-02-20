@@ -7,11 +7,15 @@ import RenderFileUploads from './RenderFileUploads';
 import RenderMessage from './RenderMessage';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 const AudioRecorder = dynamic(() => import('./AudioRecorder'), {
   ssrc: false,
 });
 const ChatRoom = ({ selectedChatRoom }) => {
+  const { messages } = useSelector((state) => state.chats);
+  const { user } = useSelector((state) => state.auth);
+
   const [clickedMessageForReactionId, setClickedMessageForReactionId] =
     useState('');
   const [isReplying, setIsReplying] = useState(false);
@@ -36,10 +40,38 @@ const ChatRoom = ({ selectedChatRoom }) => {
   };
 
   const [conversation, setConversation] = useState([]);
+  const formatData = (apiData) => {
+    return apiData.reduce((acc, message) => {
+      const date = message.createdAt.split('T')[0];
+
+      if (!acc[date]) {
+        acc[date] = { date, messages: [], read: true };
+      }
+
+      acc[date].messages.push({
+        timestamp: message.createdAt,
+        id: message._id,
+        sender: message.sender.name === user?.userName ? "You" : message.sender.name,
+        content: message.content,
+        contentType: 'text',
+        chatId: message.chat,
+      });
+
+      return acc;
+    }, {});
+  };
 
   useEffect(() => {
-    setConversation([...CHAT_MESSAGES.conversation]);
-  }, [CHAT_MESSAGES]);
+    if (messages?.length) {
+      const filterWRTChatRoom = messages?.filter(
+        (msg) => msg.chat === selectedChatRoom?.chatId
+      );
+      const result = Object.values(formatData(filterWRTChatRoom));
+      setConversation(result);
+    } else {
+      setConversation([]);
+    }
+  }, [messages]);
 
   const uploadOptionsRef = useRef(null);
 
@@ -303,7 +335,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
               justifyContent: 'space-between',
             }}
           >
-            <Avatar data={selectedChatRoom} minWidth={'50px'} height={'50px'} />
+            <Avatar data={selectedChatRoom} minWidth={'50px'} height={'50px'} chat />
             <Typography
               sx={{
                 marginLeft: '5px',

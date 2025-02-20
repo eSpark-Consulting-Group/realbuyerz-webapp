@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 import moment from 'moment';
 
-const ChatRooms = ({ chatRoomState, setSelectedChatRoom }) => {
+const ChatRooms = ({ chatRoomState, setSelectedChatRoom, selectedChatRoom }) => {
   const handleSelectChatRoom = (room) => setSelectedChatRoom(room);
   return (
     <Grid
@@ -23,13 +23,13 @@ const ChatRooms = ({ chatRoomState, setSelectedChatRoom }) => {
           alignItems={'flex-start'}
           key={roomIndex}
           sx={{
-            backgroundColor: !room?.isRead && '#EDF7FF',
+            backgroundColor: selectedChatRoom?.chatId === room?.chatId  && '#EDF7FF',
             marginBottom: '10px',
             cursor: 'pointer',
           }}
           onClick={() => handleSelectChatRoom(room)}
         >
-          <Avatar data={room} />
+          <Avatar data={room} chat />
           <Box marginLeft={'10px'} display={'flex'}>
             <Box>
               <Typography
@@ -72,7 +72,7 @@ const ChatRooms = ({ chatRoomState, setSelectedChatRoom }) => {
               >
                 {moment(room?.lastMessageTimestamp).format('hh:mm:A')}
               </Typography>
-              {!room?.isRead && (
+              {!room?.isRead && room?.unReadMessages > 0 && (
                 <Box
                   sx={{
                     display: 'flex',

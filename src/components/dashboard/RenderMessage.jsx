@@ -263,6 +263,7 @@ const RenderMessage = ({
             minWidth={40}
             height={40}
             mobile={'none'}
+            chat
           />
         )}
         <Box

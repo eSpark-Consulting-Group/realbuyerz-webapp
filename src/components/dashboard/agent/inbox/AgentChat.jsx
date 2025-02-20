@@ -12,21 +12,51 @@ import {
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
 import { CHAT_ROOMS } from '@/src/constants/Chats';
+import { useDispatch, useSelector } from 'react-redux';
+import { useQuery } from '@tanstack/react-query';
+import { getMessages } from '@/src/utils/apis/chat/gettAllMessage';
+import { getAllMessages, getMessageWRTChatBox } from '@/src/redux/slices/chat/chatsSlice';
 
 const AgentChat = () => {
+  const dispatch = useDispatch();
+
+  const { chats } = useSelector((state) => state.chats);
+
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
   const [chatRoomState, setChatRoomState] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(currentTab);
-  const [selectedChatRoom, setSelectedChatRoom] = useState({
-    title: 'John Doe',
-    isRead: false,
-    lastMessage: 'Lorem ipsum dolor sit amet. Bibendum feugiat sapien....',
-    avatar: 'avatar',
-    lastMessageTimestamp: '2024-01-17T22:14:05',
-    unReadMessages: 2,
+  const [selectedChatRoom, setSelectedChatRoom] = useState();
+
+  const chatIds = chats?.map((chat) => chat._id) || [];
+  const page = 1;
+
+  const { data, isLoading, isError, isSuccess } = useQuery({
+    queryKey: ['chatMessages', chatIds, page],
+    queryFn: async () => getMessages(chatIds, page),
+    enabled: !!chats?.length,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
+
+    useEffect(() => {
+      if (isSuccess && data?.length) {
+        const filterOutMessage = data?.map((msg) => msg?.data?.messages)?.flat();
+        const filterItemsPage = data?.map((msg) => {
+          return {
+            currentPage: msg?.data?.currentPage,
+            itemsOnPage: msg?.data?.itemsOnPage,
+            totalItems: msg?.data?.totalItems,
+            totalPages: msg?.data?.totalPages,
+            chatId: msg?.data?.messages[0]?.chat
+          };
+        });
+  
+        dispatch(getAllMessages(filterOutMessage));
+        dispatch(getMessageWRTChatBox(filterItemsPage));
+      }
+    }, [data, isSuccess]);
+
   function paintBackground() {
     // List of random dark color hex codes
     const darkColors = [
@@ -49,13 +79,28 @@ const AgentChat = () => {
     return darkColors[randomIndex];
   }
   useEffect(() => {
-    const tempData = [...CHAT_ROOMS].map((room) => ({
-      ...room,
-      background: !room?.avatar && paintBackground(),
-    }));
-    setSelectedChatRoom(tempData[0]);
-    setChatRoomState(tempData);
-  }, []);
+    if (chats && chats.length) {
+      const updateChats = chats?.map((chat) => {
+        return {
+          title: chat?.members?.name,
+          isRead: false,
+          lastMessage: chat?.lastMessage?.content,
+          avatar: chat?.members?.avatar?.url,
+          lastMessageTimestamp: chat?.lastMessage?.createdAt,
+          unReadMessages: 0,
+          chatId: chat._id,
+        };
+      });
+
+      const tempData = updateChats?.map((room) => ({
+        ...room,
+        background: !room?.avatar && paintBackground(),
+      }));
+
+      setSelectedChatRoom(tempData[0]);
+      setChatRoomState(tempData);
+    }
+  }, [currentTab, chats]);
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -156,11 +201,15 @@ const AgentChat = () => {
           minHeight: '450px',
         }}
       >
-        <ChatRooms
-          chatRoomState={chatRoomState}
-          setSelectedChatRoom={setSelectedChatRoom}
-        />
-        <ChatRoom selectedChatRoom={selectedChatRoom} />
+        {chatRoomState?.length && (
+          <ChatRooms
+            chatRoomState={chatRoomState}
+            setSelectedChatRoom={setSelectedChatRoom}
+            selectedChatRoom={selectedChatRoom}
+          />
+        )}
+
+        {selectedChatRoom && <ChatRoom selectedChatRoom={selectedChatRoom} />}
       </Grid>
     </Box>
   );

@@ -1,4 +1,7 @@
 'use client';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Box,
   CircularProgress,
@@ -7,25 +10,52 @@ import {
   Tab,
   Tabs,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
-import { CHAT_ROOMS } from '@/src/constants/Chats';
+import { getMessages } from '@/src/utils/apis/chat/gettAllMessage';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { getAllMessages, getMessageWRTChatBox } from '@/src/redux/slices/chat/chatsSlice';
 
 const UserChat = () => {
+  const dispatch = useDispatch();
+
+  const { chats } = useSelector((state) => state.chats);
+
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
   const [loading, setLoading] = useState(false);
-  console.log(currentTab);
   const [chatRoomState, setChatRoomState] = useState([]);
-  const [selectedChatRoom, setSelectedChatRoom] = useState({
-    title: 'John Doe',
-    isRead: false,
-    lastMessage: 'Lorem ipsum dolor sit amet. Bibendum feugiat sapien....',
-    avatar: 'avatar',
-    lastMessageTimestamp: '2024-01-17T22:14:05',
-    unReadMessages: 2,
+  const [selectedChatRoom, setSelectedChatRoom] = useState();
+
+  const chatIds = chats?.map((chat) => chat._id) || [];
+  const page = 1;
+
+  const { data, isLoading, isError, isSuccess } = useQuery({
+    queryKey: ['chatMessages', chatIds, page],
+    queryFn: async () => getMessages(chatIds, page),
+    enabled: !!chats?.length,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
+
+  useEffect(() => {
+    if (isSuccess && data?.length) {
+      const filterOutMessage = data?.map((msg) => msg?.data?.messages)?.flat();
+      const filterItemsPage = data?.map((msg) => {
+        return {
+          currentPage: msg?.data?.currentPage,
+          itemsOnPage: msg?.data?.itemsOnPage,
+          totalItems: msg?.data?.totalItems,
+          totalPages: msg?.data?.totalPages,
+          chatId: msg?.data?.messages[0]?.chat
+        };
+      });
+
+      dispatch(getAllMessages(filterOutMessage));
+      dispatch(getMessageWRTChatBox(filterItemsPage));
+    }
+  }, [data, isSuccess]);
 
   useEffect(() => {
     function paintBackground() {
@@ -41,8 +71,6 @@ const UserChat = () => {
         '#7C9E0B',
         '#03A69E',
         '#3091DB',
-        // "#363636", "#434343", "#1C1C1C", "#2B2B2B", "#333333",
-        // "#222222", "#1A1A1A", "#282828", "#191919", "#1B1B1B"
       ];
 
       // Generate a random index to select a color from the array
@@ -51,13 +79,28 @@ const UserChat = () => {
       return darkColors[randomIndex];
     }
 
-    const tempData = [...CHAT_ROOMS]?.map((room) => ({
-      ...room,
-      background: !room?.avatar && paintBackground(),
-    }));
-    setSelectedChatRoom(tempData[0]);
-    setChatRoomState(tempData);
-  }, [currentTab]);
+    if (chats && chats.length) {
+      const updateChats = chats?.map((chat) => {
+        return {
+          title: chat?.members?.name,
+          isRead: false,
+          lastMessage: chat?.lastMessage?.content,
+          avatar: chat?.members?.avatar?.url,
+          lastMessageTimestamp: chat?.lastMessage?.createdAt,
+          unReadMessages: 0,
+          chatId: chat._id
+        };
+      });
+
+      const tempData = updateChats?.map((room) => ({
+        ...room,
+        background: !room?.avatar && paintBackground(),
+      }));
+
+      setSelectedChatRoom(tempData[0]);
+      setChatRoomState(tempData);
+    }
+  }, [currentTab, chats]);
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -156,11 +199,15 @@ const UserChat = () => {
           minHeight: '450px',
         }}
       >
-        <ChatRooms
-          chatRoomState={chatRoomState}
-          setSelectedChatRoom={setSelectedChatRoom}
-        />
-        <ChatRoom selectedChatRoom={selectedChatRoom} />
+        {chatRoomState?.length && (
+          <ChatRooms
+            chatRoomState={chatRoomState}
+            setSelectedChatRoom={setSelectedChatRoom}
+            selectedChatRoom={selectedChatRoom}
+          />
+        )}
+
+        {selectedChatRoom && <ChatRoom selectedChatRoom={selectedChatRoom} />}
       </Grid>
     </Box>
   );
