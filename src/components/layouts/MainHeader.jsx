@@ -6,7 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -49,6 +48,7 @@ const MainHeader = () => {
   return (
     <AppBar
       sx={{
+        width: '100%',
         position: 'sticky',
         backgroundColor: 'white',
         boxShadow: 'none',
@@ -59,9 +59,9 @@ const MainHeader = () => {
         justifyContent: 'center',
       }}
     >
-      <Container
-        maxWidth="lg"
+      <Box
         sx={{
+          width: '100%',
           backgroundColor: '',
           p: { xs: 1.5, sm: 2, md: 4 },
         }}
@@ -245,7 +245,7 @@ const MainHeader = () => {
             handleOpen={toggleOpen}
           />
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 };
