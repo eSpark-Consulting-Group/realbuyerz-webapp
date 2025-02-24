@@ -52,10 +52,7 @@ const RootLayout = ({ children }) => {
       <body cz-shortcut-listen="true">
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <PersistGate
-              loading={<Loader />} // Use the same Loader here for Redux persistence
-              persistor={persistor}
-            >
+            <PersistGate loading={<Loader />} persistor={persistor}>
               <ThemeProvider theme={theme}>
                 <CssBaseline />
                 {!isDashboard && <MainHeader />}

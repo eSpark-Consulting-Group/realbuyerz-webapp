@@ -1,5 +1,4 @@
 'use client';
-
 import BrowseByCategory from '@/src/components/home/BrowseByCategory';
 import HeroSection from '@/src/components/home/HeroSection';
 import NewlyListedProperties from '@/src/components/home/NewlyListedProperties';
