@@ -76,7 +76,7 @@ const PropertySlider = ({ data }) => {
   };
   return (
     <>
-      <Slider {...settings}>
+      <Slider {...settings} style={{ paddingLeft: '20px' }}>
         {data?.slice(0, 10)?.map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>

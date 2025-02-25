@@ -13,7 +13,6 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -50,41 +49,28 @@ const PopularLocations = ({ data }) => {
     theme.breakpoints.between('xs', 'lg')
   );
   const sliderSettings = {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
+    spaceBetween: 20,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
     },
-    loop: true,
+    loop: false,
     modules: [Pagination, Navigation],
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      425: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1130: {
-        slidesPerView: 3,
-      },
-    },
   };
   return (
     <Box
       sx={{
-        pt: { xs: '0px', lg: '60px' },
+        pt: { xs: '20px', lg: '40px' },
         pb: '30px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/popular-location.svg')`,
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
     >
-      <Container sx={{ px: '10%', maxWidth: '1213px !important' }}>
+      <Container sx={{ px: '10%', maxWidth: '1213px' }}>
         <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
         <Box
           sx={{
@@ -94,13 +80,16 @@ const PopularLocations = ({ data }) => {
         >
           <Box
             sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
               pt: '14px',
               pb: { xs: '0px', sm: '30px', md: '30px', lg: '58px' },
             }}
           >
             <Button
               sx={{
-                mx: '15px',
+                mx: '10px',
                 fontWeight: 600,
                 width: '116px',
                 height: '40px',
@@ -121,7 +110,7 @@ const PopularLocations = ({ data }) => {
             </Button>
             <Button
               sx={{
-                mx: '15px',
+                mx: '10px',
                 fontWeight: 600,
                 width: '116px',
                 height: '40px',
@@ -148,15 +137,24 @@ const PopularLocations = ({ data }) => {
               <Box className="full-container-width mx-auto">
                 <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
                   {filteredProposalsData?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <Grid item xs={12} sm={6} md={6} lg={4}>
+                    <SwiperSlide
+                      key={index}
+                      style={{
+                        width: '90%',
+                        height: '100%',
+                        maxWidth: '350px',
+                      }}
+                    >
+                      <Grid item xs={10} sm={6} md={6} lg={6}>
                         <Box
                           sx={{
                             backgroundColor: '#fff',
                             borderRadius: '5px',
                             border: '1px solid #cbcbcb',
-                            maxWidth: '350px',
-                            maxHeight: { lg: '350px' },
+                            // width: '90%',
+                            maxWidth: { xs: '350px', sm: '350px' },
+                            height: '100%',
+                            maxHeight: { xs: '340px' },
                             mx: 'auto',
                             my: '15px',
                             '&:hover': {
@@ -182,16 +180,36 @@ const PopularLocations = ({ data }) => {
                               pt: '10px',
                               pb: '16px',
                               px: { xs: '10px', sm: '15px', md: '50px' },
-                              textAlign: 'left',
+                              textAlign: 'center',
+                              overflowY: 'auto',
+                              maxHeight: '255px',
+                              my: 2,
+                              '&::-webkit-scrollbar': {
+                                width: '8px',
+                              },
+                              '&::-webkit-scrollbar-track': {
+                                backgroundColor: 'transparent',
+                              },
+                              '&::-webkit-scrollbar-thumb': {
+                                backgroundColor: '#ececef',
+                                borderRadius: '4px',
+                              },
+                              '&::-webkit-scrollbar-thumb:hover': {
+                                backgroundColor: '#ececef',
+                              },
                             }}
                           >
                             {item?.locations?.map((location, index) => (
                               <Box key={index}>
-                                <Link href={location?.link}>
+                                <Link href={location?.link || '#'}>
                                   <Typography
                                     variant="body1"
                                     sx={{
-                                      fontSize: '14px',
+                                      fontSize: {
+                                        xs: '12px',
+                                        sm: '13px',
+                                        md: '14px',
+                                      },
                                       py: { xs: '5px', sm: '6px', lg: '5px' },
                                       lineHeight: '16.94px',
                                       fontWeight: 500,
@@ -216,15 +234,24 @@ const PopularLocations = ({ data }) => {
             </Swiper>
           ) : (
             <Box className="full-container-width mx-auto">
-              <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
+              <Grid
+                container
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                columnSpacing={2}
+              >
                 {filteredProposalsData?.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
+                  <Grid item xs={12} sm={6} md={6} lg={3.2} key={index}>
                     <Box
                       sx={{
                         backgroundColor: '#fff',
                         borderRadius: '5px',
                         border: '1px solid #cbcbcb',
                         maxWidth: '350px',
+                        // height: '350px',
                         maxHeight: { lg: '350px' },
                         mx: 'auto',
                         my: '15px',
@@ -250,6 +277,21 @@ const PopularLocations = ({ data }) => {
                           pb: '16px',
                           px: { xs: '10px', sm: '15px', md: '50px' },
                           textAlign: 'left',
+                          overflowY: 'auto',
+                          maxHeight: 'calc(100% - 45px)',
+                          '&::-webkit-scrollbar': {
+                            width: '8px',
+                          },
+                          '&::-webkit-scrollbar-track': {
+                            backgroundColor: 'transparent',
+                          },
+                          '&::-webkit-scrollbar-thumb': {
+                            backgroundColor: '#ececef',
+                            borderRadius: '4px',
+                          },
+                          '&::-webkit-scrollbar-thumb:hover': {
+                            backgroundColor: '#ececef',
+                          },
                         }}
                       >
                         {item?.locations?.map((location, index) => (
@@ -290,10 +332,13 @@ const PopularLocations = ({ data }) => {
           }}
         >
           <Button onClick={scrollToTop}>
-            <Image
+            <Box
+              component={'img'}
               src="/images/bgs/GototheTop.svg"
-              width={80}
-              height={80}
+              sx={{
+                width: { xs: '60px', sm: '70px', md: '80px' },
+                height: 'auto',
+              }}
               alt={'Images'}
             />
           </Button>

@@ -15,7 +15,7 @@ const NewlyListedProperties = () => {
         pt: '14px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
@@ -28,7 +28,7 @@ const NewlyListedProperties = () => {
       </Box>
       <Box
         sx={{
-          pt: { xs: '50px', md: '67px' },
+          pt: { xs: '35px', md: '67px' },
           pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
           mx: 'auto',
           width: { xs: '82%', sm: '80%' },

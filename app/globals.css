@@ -93,18 +93,9 @@ body header {
   width: 15px;
   height: 15px;
 }
-.slick-slider{
-  padding-left: 20px;
-}
+
 .slick-prev:before {
   content: url('/images/agent-profile-icons/Left.svg') !important;
-
-  /* margin-left: -10px; */
-  /* margin-left: 10px;
-  @media (min-width: 280px) and (max-width: 400px) {
-    width: 10px;
-    height: 20px;
-  } */
 }
 
 .slick-next:before {
@@ -753,6 +744,10 @@ button:hover {
 /* listed properties */
 
 @media (max-width: 767px) {
+  .slick-slider{
+    padding-left: 0px !important;
+  }
+
   .slick-prev:before {
     display: none;
     margin-right: 0px; 
