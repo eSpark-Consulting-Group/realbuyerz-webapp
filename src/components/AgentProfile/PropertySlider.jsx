@@ -58,20 +58,18 @@ const PropertySlider = ({ data }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 767,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 2,
-          dots: false,
+          dots: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
+          // slidesToScroll: 1,
+          dots: true,
         },
       },
     ],
@@ -84,11 +82,19 @@ const PropertySlider = ({ data }) => {
             <Fade key={index} direction="right" duration={500}>
               <Card
                 sx={{
+                  position: 'relative',
+                  mx: 'auto',
+                  width: '95%',
+                  maxWidth: { xs: '278px', sm: '95%', lg: '278px' },
                   boxShadow: 'none',
                   border: '1px solid #E7E7E7',
                   '&:hover': {
                     boxShadow:
                       '0px 4px 8px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08)',
+                  },
+                  '@media(max-width: 767px)': {
+                    maxWidth: '278px',
+                    mx: 'auto',
                   },
                 }}
                 key={item}

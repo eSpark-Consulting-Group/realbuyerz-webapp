@@ -10,34 +10,34 @@ import { useSelector } from 'react-redux';
 const NewlyListedProperties = () => {
   const NewProjects = useSelector((state) => state.postListingAds.newPostings);
   return (
-    <>
-      <Box>
-        <Box
-          sx={{
-            pt: '14px',
-            textAlign: 'center',
-            backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }}
-        >
-          <Heading
-            heading={FEATURED_HEADINGS.listedProperty}
-            paragraph={FEATURED_HEADINGS.latestProject}
-          />
-          <Box
-            sx={{
-              pt: { xs: '50px', md: '67px' },
-              pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
-              px: '15%',
-            }}
-          >
-            <PropertySlider data={NewProjects} />
-          </Box>
-        </Box>
+    <Box
+      sx={{
+        pt: '14px',
+        textAlign: 'center',
+        backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    >
+      <Box sx={{ width: '100%', px: 2 }}>
+        <Heading
+          heading={FEATURED_HEADINGS.listedProperty}
+          paragraph={FEATURED_HEADINGS.latestProject}
+        />
       </Box>
-    </>
+      <Box
+        sx={{
+          pt: { xs: '50px', md: '67px' },
+          pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
+          mx: 'auto',
+          width: { xs: '82%', sm: '80%' },
+          maxWidth: '1320px',
+        }}
+      >
+        <PropertySlider data={NewProjects} />
+      </Box>
+    </Box>
   );
 };
 

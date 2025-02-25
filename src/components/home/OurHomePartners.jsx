@@ -82,8 +82,6 @@ const OurHomePartners = ({ data }) => {
       <Box
         sx={{
           padding: { xs: '10px', md: '20px' },
-          paddingLeft: '0px',
-          paddingRight: { xs: '25px', md: '20px' },
           background: '#f5f6fb',
         }}
       >
