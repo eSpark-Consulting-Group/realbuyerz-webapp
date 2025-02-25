@@ -40,7 +40,7 @@ const FeaturedProperties = () => {
   return (
     <Box
       sx={{
-        mt: '60px',
+        mt: '50px',
         pt: '5px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
@@ -49,10 +49,12 @@ const FeaturedProperties = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Heading
-        heading={FEATURED_HEADINGS.featureProperty}
-        paragraph={FEATURED_HEADINGS.latestProject}
-      />
+      <Box sx={{ px: 1.5 }}>
+        <Heading
+          heading={FEATURED_HEADINGS.featureProperty}
+          paragraph={FEATURED_HEADINGS.latestProject}
+        />
+      </Box>
       {isSmallScreen ? (
         <Swiper {...sliderSettings} style={{ padding: '22px' }}>
           {FeatureProjects.map((item, index) => (
