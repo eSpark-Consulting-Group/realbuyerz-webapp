@@ -11,7 +11,8 @@ const ViewAgentProfile = ({ image, name, link }) => {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        height: 195,
+        height: '100%',
+        // height: 195,
         background: 'white',
         borderRadius: 2,
         border: '1px solid #e0e0e0',
@@ -27,19 +28,20 @@ const ViewAgentProfile = ({ image, name, link }) => {
           justifyContent: 'flex-start',
           flexDirection: { xs: 'column', md: 'row' },
           gap: { xs: '10px', md: '0px' },
-          p: 1,
+          pt: 1.5,
+          px: 1.5,
         }}
       >
-        <Avatar src={image} sx={{ width: 100, height: 100 }} />
+        <Avatar
+          src={image}
+          sx={{ width: { xs: 80, lg: 100 }, height: 'auto' }}
+        />
         <Typography
           variant="secondary"
           sx={{
             ml: 2,
-            fontSize: { xs: '10px', md: '25px' },
+            fontSize: { xs: '15px', md: '20px', lg: '25px' },
             fontWeight: 600,
-            '@media (min-width:950px) and (max-width: 1050px)': {
-              fontSize: '16px',
-            },
           }}
         >
           {name}
@@ -47,7 +49,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
       </Box>
       <Box
         sx={{
-          flexGrow: 1,
+          // flexGrow: 1,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -60,7 +62,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
             variant="dimSecondary"
             sx={{
               width: '100%',
-              fontSize: { xs: '15px', md: '20px' },
+              fontSize: { xs: '13px', sm: '15px', md: '17px', lg: '20px' },
               background: '#F5F6FB',
               fontWeight: 500,
               textTransform: 'capitalize',

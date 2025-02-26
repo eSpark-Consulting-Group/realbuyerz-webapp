@@ -1,6 +1,5 @@
 import React from 'react';
-import { Typography, Button } from '@mui/material';
-import Image from 'next/image';
+import { Typography, Button, Box } from '@mui/material';
 import Link from 'next/link';
 
 const Price = ({ price, link, pkr, message, reach }) => {
@@ -9,7 +8,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
       <Typography
         color="primaryy"
         sx={{
-          fontSize: { xs: '20px', md: '25px' },
+          fontSize: { xs: '20px', md: '22px', lg: '25px' },
           fontWeight: 700,
           wordBreak: 'break-word',
           paddingBottom: '10px',
@@ -20,7 +19,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
       <Typography
         color="primaryy"
         sx={{
-          fontSize: { xs: '12px', md: '16px' },
+          fontSize: { xs: '12px', md: '14px', lg: '16px' },
           fontWeight: 400,
         }}
       >
@@ -34,7 +33,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
             alignItems: 'center',
             background: '#FB631C',
             width: '100%',
-            height: '60px',
+            height: { xs: '30px', sm: '40px', md: '50px', lg: '60px' },
             fontSize: '24px',
             fontWeight: 500,
             color: 'white',
@@ -42,15 +41,18 @@ const Price = ({ price, link, pkr, message, reach }) => {
             borderRadius: 10,
           }}
         >
-          <Image
+          <Box
+            component={'img'}
             src="/images/agent-profile/msgicon.svg"
-            width={30}
-            height={26}
             alt={'Images'}
+            sx={{
+              width: { xs: '20px', sm: '20px', md: '25px', lg: '28px' },
+              height: 'auto',
+            }}
           />
           <Typography
             sx={{
-              fontSize: { xs: '15px', md: '25px' },
+              fontSize: { xs: '15px', sm: '18px', md: '20px', lg: '25px' },
             }}
           >
             {message}

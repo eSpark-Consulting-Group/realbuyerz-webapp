@@ -11,6 +11,7 @@ const AgentDescription = ({ description }) => {
         fontWeight: 400,
         textAlign: 'start',
         paddingBottom: '12px',
+        mt: 1,
       }}
     >
       {`${description.trim().slice(0, 150)}...`}
