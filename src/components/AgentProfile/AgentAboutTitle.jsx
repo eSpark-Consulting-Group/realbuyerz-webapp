@@ -9,7 +9,7 @@ const AgentAboutTitle = ({ title }) => {
       variant="h4"
       sx={{
         color: '#000',
-        fontSize: { lg: '25px', md: '20px', sm: '18px', xs: '16px' },
+        fontSize: { xs: '18px', sm: '20px', md: '22px', lg: '25px' },
         fontStyle: 'normal',
         fontWeight: 500,
         lineHeight: 'normal',

@@ -757,5 +757,9 @@ button:hover {
     display: none;
     margin-right: 0px; 
   }
+  .slick-dots{
+    position: absolute;
+    top: 390px;
+  }
 }
 

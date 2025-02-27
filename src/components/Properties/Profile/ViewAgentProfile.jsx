@@ -57,7 +57,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
           py: 1.2,
         }}
       >
-        <Link href={link}>
+        <Link href={link || '#'}>
           <Typography
             variant="dimSecondary"
             sx={{
@@ -72,7 +72,7 @@ const ViewAgentProfile = ({ image, name, link }) => {
               },
             }}
           >
-            {AGENT_PROFILE_DATA.agentProfile}
+            {AGENT_PROFILE_DATA?.agentProfile}
           </Typography>
         </Link>
       </Box>

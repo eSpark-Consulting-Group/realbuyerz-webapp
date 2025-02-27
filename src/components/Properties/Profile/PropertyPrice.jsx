@@ -34,6 +34,7 @@ const Price = ({ price, link, pkr, message, reach }) => {
         {reach}
       </Typography>
       <Button
+        variant="primary"
         onClick={(e) => handleGotoInbox(e, link)}
         sx={{
           display: 'flex',
