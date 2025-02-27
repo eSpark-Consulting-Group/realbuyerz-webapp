@@ -1,20 +1,51 @@
-'use client';
-import React from 'react';
-import {
-  Box,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-  Typography,
-  Paper,
-  TableContainer,
-  TableHead,
-} from '@mui/material';
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
 import { PROPERTY_ESTATE } from '@/src/constants/Properties';
+import { Box, Typography } from '@mui/material';
+import TooltipText from './TooltipText';
 
-const PropertyOverview = ({ propertyData, overview }) => {
+function createData(type, location, price, purpose, bedroom, bath, parking) {
+  return { type, location, price, purpose, bedroom, bath, parking };
+}
+
+const rows = [createData('Houses', 'gulshan', '1.5 Crore', 'Sell', 2, 2, 1)];
+
+const StyledTableHeadRow = styled(TableRow)({
+  backgroundColor: 'black',
+  color: 'white',
+  borderRadius: '28px',
+  '& th': {
+    textAlign: 'center',
+    color: 'white',
+  },
+});
+
+const StyledTableRow = styled(TableRow)({
+  backgroundColor: '#F8F8F8',
+  '& td': {
+    textAlign: 'center',
+    padding: '16x 16px',
+
+    borderRight: '1px solid #e0e0e0',
+    borderBottom: '0px',
+    '&:first-of-type': {
+      borderLeft: 'none',
+    },
+    '&:last-child': {
+      borderRight: 'none',
+    },
+  },
+});
+
+const PropertyOverview = ({ overview }) => {
   return (
     <>
       <Box
@@ -27,122 +58,95 @@ const PropertyOverview = ({ propertyData, overview }) => {
       >
         <Typography
           sx={{
-            fontSize: { xs: '15px', md: '30px' },
+            fontSize: { xs: '18px', sm: '20px', md: '25px', lg: '30px' },
             fontWeight: 600,
             marginLeft: '10px',
           }}
         >
           {overview}
         </Typography>
-        <Box
-          sx={{
-            border: '2px solid #F8F8F8',
-            borderTop: 'none',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '15px',
-            height: '170px',
-          }}
-        >
-          <TableContainer
-            component={Paper}
-            sx={{
-              justifyContent: { xs: 'center', md: 'none' },
-              maxHeight: '300px',
-              borderSpacing: '10px',
-              borderRadius: '50px',
-              px: '60px',
-              backgroundColor: '#000',
-              marginBottom: '10px',
-              overflowX: { xs: 'auto', md: 'hidden' },
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-              '@media (min-width: 900px) and (max-width: 1400px)': {
-                overflowX: 'auto',
-              },
-            }}
-          >
-            <Table>
-              <TableHead>
-                <TableRow>
-                  {PROPERTY_ESTATE?.propertyAttributes?.map(
-                    (propertytype, index) => (
-                      <TableCell
-                        key={index}
-                        sx={{
-                          borderCollapse: 'collapse',
-                          color: 'white',
-                          backgroundColor: 'black',
-                          // overflow: 'scroll',
-                          border: 'none',
-                          width: `${100 / 7}%`,
-                          textAlign: 'center',
-                          fontSize: '15px',
-                          padding: '15px',
-                          px: '26px',
-                        }}
-                      >
-                        {propertytype?.label}
-                      </TableCell>
-                    )
-                  )}
-                </TableRow>
-              </TableHead>
-            </Table>
-          </TableContainer>
-          <TableContainer
-            component={Paper}
-            elevation={0}
-            sx={{
-              justifyContent: { xs: 'center', md: 'none' },
-              overflow: 'auto',
-              // maxHeight: '300px',
-              borderSpacing: '10px',
-              width: '95%',
-              mx: 'auto',
-              // marginLeft: { xs: '10px', md: '28px' },
-              marginBottom: '20px',
-            }}
-          >
-            <Table
-              sx={{
-                borderRadius: '20px',
-              }}
-            >
-              <TableBody>
-                <TableRow sx={{ margin: '20px' }}>
-                  {[
-                    'propertyType',
-                    'location',
-                    'amount',
-                    'purpose',
-                    'bedrooms',
-                    'bathrooms',
-                    'parking',
-                  ].map((key, index) => (
-                    <TableCell
-                      key={index}
-                      sx={{
-                        background: '#F8F8F8',
-                        // border: '1px solid #B8B8B8',
-                        borderBottom: 'none',
-                        padding: '10px',
-                        width: `${100 / 7}%`,
-                        textAlign: 'center',
-                        height: '65px',
-                      }}
-                    >
-                      {propertyData?.[key]}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
       </Box>
+      <TableContainer
+        component={Paper}
+        sx={{
+          boxShadow: 'none',
+        }}
+      >
+        <Table
+          sx={{
+            minWidth: 900,
+            borderCollapse: 'separate',
+            borderSpacing: '0px 15px',
+          }}
+          aria-label="custom table"
+        >
+          <TableHead>
+            <StyledTableHeadRow>
+              {PROPERTY_ESTATE?.propertyAttributes?.map(
+                (propertytype, index) => (
+                  <TableCell
+                    key={index}
+                    sx={{
+                      borderCollapse: 'collapse',
+                      color: 'white',
+                      backgroundColor: 'black',
+                      border: 'none',
+                      width: `${100 / PROPERTY_ESTATE?.propertyAttributes?.length}%`,
+                      textAlign: 'center',
+                      fontSize: '15px',
+                      padding: '15px',
+                      px: '26px',
+                      borderTopLeftRadius: index === 0 ? '28px' : '0',
+                      borderBottomLeftRadius: index === 0 ? '28px' : '0',
+                      borderTopRightRadius:
+                        index ===
+                        PROPERTY_ESTATE?.propertyAttributes?.length - 1
+                          ? '28px'
+                          : '0',
+                      borderBottomRightRadius:
+                        index ===
+                        PROPERTY_ESTATE?.propertyAttributes?.length - 1
+                          ? '28px'
+                          : '0',
+                    }}
+                  >
+                    {propertytype?.label}
+                  </TableCell>
+                )
+              )}
+            </StyledTableHeadRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row, index) => (
+              <StyledTableRow key={index}>
+                <TableCell>
+                  <TooltipText text={row?.type} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.location} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.price} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.purpose} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.bedroom} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.bath} maxLength={8} />
+                </TableCell>
+                <TableCell>
+                  <TooltipText text={row?.parking} maxLength={8} />
+                </TableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 };
+
 export default PropertyOverview;

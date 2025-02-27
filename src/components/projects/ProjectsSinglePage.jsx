@@ -87,6 +87,7 @@ function ProjectsSinglePage() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              mt: { lg: 8 },
             }}
           >
             <ProfileAgent data={selectedProject} agentData={selectedAgent} />
@@ -95,9 +96,11 @@ function ProjectsSinglePage() {
         <Box
           sx={{
             width: '100%',
-            maxWidth: { xs: '100%', lg: 'calc(100% - 420px)' },
+            maxWidth: { xs: '100%', md: '95%', lg: 'calc(100% - 410px)' },
             mr: { xs: 'auto', lg: 'auto' },
             ml: { xs: 'auto', lg: '0px' },
+            pl: { lg: 3 },
+            pt: 3,
           }}
         >
           <PropertyDetails propertyDetailsData={selectedProject} />
@@ -110,7 +113,7 @@ function ProjectsSinglePage() {
       <Box
         sx={{
           pt: { xs: '35px', md: '67px' },
-          pb: { xs: '45px', sm: '50px', md: '60px', lg: '75px' },
+          pb: { xs: '55px', sm: '55px', md: '60px', lg: '75px' },
           mx: 'auto',
           width: { xs: '82%', sm: '80%' },
           maxWidth: '1320px',

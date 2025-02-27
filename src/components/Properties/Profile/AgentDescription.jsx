@@ -1,21 +1,21 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import TooltipText from '../../global/TooltipText';
 
 const AgentDescription = ({ description }) => {
   return (
-    <Typography
+    <TooltipText
+      text={description}
+      maxLength={100}
       variant="primary"
-      sx={{
-        width: '100%',
-        fontSize: { xs: '12px', md: '16px' },
+      typographyStyle={{
+        width: 'auto',
+        fontSize: { xs: '14px', md: '16px' },
         fontWeight: 400,
         textAlign: 'start',
         paddingBottom: '12px',
         mt: 1,
       }}
-    >
-      {`${description.trim().slice(0, 150)}...`}
-    </Typography>
+    />
   );
 };
 export default AgentDescription;

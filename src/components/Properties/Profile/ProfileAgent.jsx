@@ -18,7 +18,7 @@ const ProfileAgent = ({ data, agentData }) => {
         maxHeight: 'auto',
         minHeight: { xs: 'auto', md: '450px', lg: '550px' },
         background: 'white',
-        borderRadius: { xs: 2, md: 8 },
+        borderRadius: { xs: '10px', md: '15px', lg: '20px' },
         boxShadow: '0px 0px 4px 0px #00000040',
         display: 'flex',
         flexDirection: 'column',

@@ -7,7 +7,7 @@ const PropertyDescription = ({ description, heading }) => {
       <Typography
         sx={{
           padding: '5px',
-          fontSize: { xs: '15px', md: '30px' },
+          fontSize: { xs: '18px', sm: '20px', md: '25px', lg: '30px' },
           fontWeight: 600,
         }}
       >
