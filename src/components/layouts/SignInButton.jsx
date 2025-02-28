@@ -9,9 +9,9 @@ import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import { SIGN_IN, USER_PROFILE_MENU } from '@/src/constants/Login';
 import { useRouter } from 'next/navigation';
 import BasicModal from '../global/BasicModal';
+import Cookies from 'js-cookie';
 
 const SignInButton = ({
-  isUserLoggedIn,
   handleOpenUserMenu,
   anchorElUser,
   handleCloseUserMenu,
@@ -48,12 +48,14 @@ const SignInButton = ({
     setIsOpenLogoutModal(false);
   };
 
+  const isToken = Cookies?.get('token');
+
   return (
     <>
       <Box
         sx={{ flexGrow: 0, display: 'flex', gap: 2, justifyContent: 'center' }}
       >
-        {isUserLoggedIn === true ? (
+        {isToken ? (
           <>
             <Button
               sx={{

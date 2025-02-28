@@ -377,3 +377,71 @@ export const AMENITIES_NAME = [
     title: '24/7 security',
   },
 ];
+
+export const PROJECTS_FILTER_FIELDS = {
+  fields: [
+    {
+      id: 1,
+      freeSolo: false,
+      key: 'purpose',
+      placeholder: 'Purpose',
+      grid: {
+        lg: 1.6,
+      },
+      options: [
+        {
+          label: 'Buy',
+          value: 'Buy',
+        },
+        {
+          label: 'Sell',
+          value: 'Sell',
+        },
+      ],
+    },
+    {
+      id: 2,
+      freeSolo: false,
+      key: 'all',
+      type: 'menu',
+      placeholder: 'all',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 3,
+      freeSolo: false,
+      key: 'price',
+      type: 'menu',
+      placeholder: 'price',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 4,
+      freeSolo: false,
+      key: 'size',
+      type: 'menu',
+      placeholder: 'all',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 5,
+      key: 'search',
+      placeholder: 'Search...',
+      type: 'text',
+      freeSolo: true,
+      options: [],
+      grid: {
+        lg: 4.6,
+      },
+    },
+  ],
+};
