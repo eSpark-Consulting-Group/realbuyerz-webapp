@@ -21,6 +21,8 @@ import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/layouts/FooterCta';
 import Loader from './Loader'; // One single Loader component
 import NotificationListener from '@/src/components/layouts/NotificationListener';
+import NewMessageListener from '@/src/components/SocketEvents/NewMessageListener';
+import { SocketProvider } from '@/src/context/SocketContext';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -55,18 +57,21 @@ const RootLayout = ({ children }) => {
               loading={<Loader />} // Use the same Loader here for Redux persistence
               persistor={persistor}
             >
-              <ThemeProvider theme={theme}>
-                <CssBaseline />
-                {!isDashboard && <MainHeader />}
-                <Box>
-                  <PageContent>{children}</PageContent>
-                </Box>
-                {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
-                {!isDashboard && <Footer data={FOOTER_DATA} />}
+              <SocketProvider>
+                <ThemeProvider theme={theme}>
+                  <CssBaseline />
+                  {!isDashboard && <MainHeader />}
+                  <Box>
+                    <PageContent>{children}</PageContent>
+                  </Box>
+                  {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
+                  {!isDashboard && <Footer data={FOOTER_DATA} />}
 
-                <ToastContainer position="top-right" autoClose={3000} />
-                <NotificationListener />
-              </ThemeProvider>
+                  <ToastContainer position="top-right" autoClose={3000} />
+                  <NotificationListener />
+                  <NewMessageListener />
+                </ThemeProvider>
+              </SocketProvider>
             </PersistGate>
           </Provider>
         </QueryClientProvider>
