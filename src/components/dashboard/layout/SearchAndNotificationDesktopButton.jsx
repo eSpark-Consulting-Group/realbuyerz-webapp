@@ -202,6 +202,9 @@ const SearchAndNotificationDesktopButton = ({
                     fontStyle: 'normal',
                     fontWeight: 400,
                     lineHeight: 'normal',
+                    "& a":{
+                      color: '#F00 !important',
+                    }
                   }}
                 >
                   <Link href={'/'}>{signOut}</Link>

@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const chats = [];
 const messages = [];
 const messageWRTChatBox = []
+const hasChat = ""
 
-const initialState = { chats, messages, messageWRTChatBox };
+const initialState = { chats, messages, messageWRTChatBox, hasChat };
 
 // function generateUniqueId(chats) {
 //   let newId = (chats.length + 1).toString();
@@ -27,8 +28,11 @@ const chatsSlice = createSlice({
     getMessageWRTChatBox: (state, action) => {
       state.messageWRTChatBox = action.payload;
     },
+    mutateHasChat: (state, action) => {
+      state.hasChat = action.payload;
+    },
   },
 });
 
-export const { getAllUserChats, getAllMessages, getMessageWRTChatBox } = chatsSlice.actions;
+export const { getAllUserChats, getAllMessages, getMessageWRTChatBox, mutateHasChat } = chatsSlice.actions;
 export default chatsSlice.reducer;
