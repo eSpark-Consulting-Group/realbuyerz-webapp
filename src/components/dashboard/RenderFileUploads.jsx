@@ -2,6 +2,8 @@ import { Box } from '@mui/material';
 import React from 'react';
 
 const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
+  const fileTypes = ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
+
   return (
     <Box
       sx={{
@@ -10,7 +12,6 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
         maxHeight: '200px',
         overflow: 'auto',
         flexWrap: 'wrap',
-        // alignItems: 'center',
       }}
     >
       {fileInput.length > 0 &&
@@ -44,6 +45,16 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                     height: { xs: '40px', sm: '100px' },
                   }}
                 />
+              ) : fileTypes.includes(file?.data?.type) ? (
+                <Box
+                  component={'p'}
+                  sx={{
+                    margin: 0,
+                    textAlign: "center",
+                  }}
+                >
+                  {file?.data?.name}
+                </Box>
               ) : (
                 <Box
                   alt={'Selected'}
@@ -75,7 +86,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
           );
         })}
       {fileInput.length > 0 && (
-        <label htmlFor="file-input">
+        <label htmlFor="all-file-input">
           <Box
             sx={{
               display: 'flex',
