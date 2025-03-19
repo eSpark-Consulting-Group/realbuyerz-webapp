@@ -25,6 +25,7 @@ export const ENDPOINTS = {
   // CHAT ENDPOINT
   getAllUserChat:"chat/my",
   getChatMessages:"chat/message/",
+  uploadAttachment:"chat/upload/",
   addCoverLetter: '',
   addProfile: '',
   agentChats: '',

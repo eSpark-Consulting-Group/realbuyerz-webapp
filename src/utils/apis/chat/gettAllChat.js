@@ -1,18 +1,17 @@
-import { ENDPOINTS } from '@/src/services/apiService/apiEndPoints';
-import APIService from '@/src/services/apiService/apiService';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+
+import { ENDPOINTS } from '@/src/services/apiService/apiEndPoints';
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_EXPRESS_URL;
 
 export const getMyChat = async () => {
   const token = Cookies.get('token');
 
-  const endpoint = 'chat/my';
-  const method = 'get';
+  const endpoint = ENDPOINTS.getAllUserChat;
 
   try {
-    const response = await axios.get(`${apiUrl}/${ENDPOINTS.getAllUserChat}`, {
+    const response = await axios.get(`${apiUrl}/${endpoint}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -21,7 +20,6 @@ export const getMyChat = async () => {
 
     return response;
   } catch (error) {
-    console.error('Error: Unable to get user proposal:', error);
     throw error;
   }
 };
