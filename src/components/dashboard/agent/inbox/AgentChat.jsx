@@ -20,6 +20,7 @@ import {
 } from '@/src/redux/slices/chat/chatsSlice';
 import Cookies from 'js-cookie';
 import { useSocket } from '@/src/context/SocketContext';
+import SmsFailedOutlinedIcon from '@mui/icons-material/SmsFailedOutlined';
 
 const unreadChats = JSON.parse(Cookies.get('unreadChatIds') || '[]');
 
@@ -354,7 +355,17 @@ const AgentChat = () => {
                   paddingTop: '10px',
                 }}
               >
-                <Box>No chat</Box>
+                <Box
+                  sx={{
+                    fontSize: '20px',
+                    lineHeight: '24px',
+                    color: '#969696',
+                    textAlign: 'center',
+                    paddingTop: '10px',
+                  }}
+                >
+                  No chat
+                </Box>
               </Grid>
             )}
 
@@ -374,9 +385,26 @@ const AgentChat = () => {
                 md={9}
                 sx={{
                   padding: '10px 14px',
+                  width: '100%',
+                  minHeight: '100%',
                 }}
               >
-                <Box>No chat</Box>
+                <Box
+                  sx={{
+                    fontSize: '20px',
+                    lineHeight: '24px',
+                    color: '#969696',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <SmsFailedOutlinedIcon sx={{ fontSize: '10rem' }} />
+                  <Box>No chat</Box>
+                </Box>
               </Grid>
             )}
           </>

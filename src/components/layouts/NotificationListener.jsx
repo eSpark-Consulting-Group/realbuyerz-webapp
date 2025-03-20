@@ -2,7 +2,7 @@
 
 
 import { useSocket } from '@/src/context/SocketContext';
-import { getAllUserChats } from '@/src/redux/slices/chat/chatsSlice';
+import { getAllUserChats, mutateHasChat } from '@/src/redux/slices/chat/chatsSlice';
 import { getMyChat } from '@/src/utils/apis/chat/gettAllChat';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
@@ -25,8 +25,14 @@ export default function NotificationListener() {
   });
 
   useEffect(() => {
-    if (isSuccess && data?.data?.Chats) {
-      dispatch(getAllUserChats(data?.data?.Chats));
+    if (isSuccess && data) {
+      if (data?.data?.Chats?.length === 0) {
+        dispatch(getAllUserChats(data?.data?.Chats));
+        dispatch(mutateHasChat('No Chat'));
+      } else {
+        dispatch(getAllUserChats(data?.data?.Chats));
+        dispatch(mutateHasChat(''));
+      }
     }
   }, [data, isSuccess, dispatch]);
 
