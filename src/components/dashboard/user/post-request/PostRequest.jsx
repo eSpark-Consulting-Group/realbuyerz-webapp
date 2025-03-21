@@ -79,6 +79,7 @@ const PostRequest = ({ property_Id }) => {
       purpose: values.purpose,
       propertyAddress: values.address,
       amenity: selectedAmenities,
+      amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
     };
@@ -95,6 +96,7 @@ const PostRequest = ({ property_Id }) => {
       updatedData.propertyStatus = false;
       mutate(updatedData);
     }
+    console.log('Updated Data:', updatedData);
     console.log('Updated Data:', updatedData);
   };
 
@@ -126,11 +128,6 @@ const PostRequest = ({ property_Id }) => {
       );
     },
   });
-
-  // const initialValues = { // Todo Faria pls check why this code is defined here if not used
-  //   ...POST_REQUEST_VALUES,
-  //   amount: Number(POST_REQUEST_VALUES.amount) || 0,
-  // };
 
   const formik = useFormik({
     enableReinitialize: true,
