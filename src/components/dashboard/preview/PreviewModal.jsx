@@ -24,9 +24,7 @@ const PreviewModal = (props) => {
   const pathName = usePathname();
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
-  const imageArr = Array.isArray(ads.images)
-    ? ads.images.map((img) => img.path)
-    : [];
+  const imageArr = Array.isArray(ads.images) ? ads.images : [];
   const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
 
   return (
