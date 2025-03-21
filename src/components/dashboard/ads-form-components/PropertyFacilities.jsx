@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Counter from '../inputNumber/counter';
 import { useSelector } from 'react-redux';
 
-const PropertyFacilities = ({ propertyInformation, formik }) => {
+const PropertyFacilities = ({ propertyInformation, formik, getAmenities }) => {
   const selectedAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
@@ -64,12 +64,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
                   </Typography>
                 </Box>
                 <Box sx={{ width: 'auto' }}>
-                  <Counter
-                    formik={formik}
-                    name={item?.name}
-                    title={item?.title}
-                    limit={item?.limit}
-                  />
+                  <Counter formik={formik} item={item} index={index} />
                 </Box>
               </Box>
             </Box>
@@ -133,12 +128,7 @@ const PropertyFacilities = ({ propertyInformation, formik }) => {
                   </Typography>
                 </Box>
                 <Box sx={{ width: 'auto' }}>
-                  <Counter
-                    formik={formik}
-                    name={item?.name}
-                    title={item?.text}
-                    limit={item?.limit}
-                  />
+                  <Counter formik={formik} item={item} getAmenities={getAmenities} index={index} />
                 </Box>
               </Box>
             </Box>

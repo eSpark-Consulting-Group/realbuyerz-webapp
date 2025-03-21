@@ -11,6 +11,7 @@ const PropertyFeatures = ({
   selectedAmenities,
   handleSeletedAmenites,
   propertyData,
+  getAmenities,
 }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -65,6 +66,7 @@ const PropertyFeatures = ({
               <PropertyFacilities
                 propertyInformation={propertyData?.feature}
                 formik={formik}
+                getAmenities={getAmenities}
               />
               <AddAmenities
                 formik={formik}
@@ -74,6 +76,7 @@ const PropertyFeatures = ({
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}
+                getAmenities={getAmenities}
               />
             </Box>
           </Box>

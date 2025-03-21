@@ -56,9 +56,14 @@ const PostListing = ({ property_Id }) => {
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
-  const amenities = transformAmenities(getAmenities);
 
   const handleSeletedAmenites = () => {
+    if(getAmenities?.length === 0){
+      formik?.setFieldValue('amenity', []);
+    } else {
+      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+    }
+    
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -137,7 +142,6 @@ const PostListing = ({ property_Id }) => {
       values.user_id = current_user_id;
       values.status = 'submited';
       handleSubmit(values);
-      console.log(values, 'values');
       if (updatePostListingApi.data?.success) {
         action.resetForm();
       }
@@ -196,17 +200,17 @@ const PostListing = ({ property_Id }) => {
   formData.append('propertyName', formik?.values.title);
   formData.append('propertyType', formik?.values.propertyCategory);
   formData.append('propertyDescription', formik?.values.description);
-  formData.append('image', formik?.values.images[0]);
   formData.append('propertyPrice', formik?.values.amount);
   formData.append('propertyArea', formik?.values.area);
   formData.append('purpose', formik?.values.purpose);
   formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', JSON.stringify(amenities));
+  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
-  // formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+  formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+  formik?.values.images?.length && formik?.values.images?.forEach(file => formData.append('image', file))
 
   const isLoading = updatePostListingApi.isPending || isPending;
   const isSubmitBtnDisable =
@@ -244,6 +248,7 @@ const PostListing = ({ property_Id }) => {
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}
+                getAmenities={getAmenities}
               />
               <PropertyGallery formik={formik} propertyData={POST_LISTING} />
               <SubmitButton

@@ -15,6 +15,7 @@ const AmenitiesModal = (props) => {
     setSelectedAmenities,
     selectedAmenities,
     handleSeletedAmenites,
+    getAmenities
   } = props;
 
   const handleClose = () => {
@@ -60,6 +61,7 @@ const AmenitiesModal = (props) => {
               setOpen={setOpen}
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
+              getAmenities={getAmenities}
             />
           </Box>
         </Box>
