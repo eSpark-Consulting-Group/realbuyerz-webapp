@@ -7,7 +7,7 @@ const ImageUploader = ({ onUpload, maxImages }) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
       if (acceptedFiles.length <= maxImages) {
-        onUpload(acceptedFiles[0].type, acceptedFiles[0]);
+        onUpload(acceptedFiles[0].type, acceptedFiles);
       } else {
         console.error('Maximum limit of images reached');
       }

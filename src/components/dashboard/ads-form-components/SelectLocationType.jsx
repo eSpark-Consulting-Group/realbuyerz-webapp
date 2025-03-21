@@ -82,6 +82,15 @@ const SelectLocationType = ({
               formik={formik}
               filteredUserProperty={filteredUserProperty}
             />
+            {(formik?.errors['longitude'] || formik?.errors['latitude']) && (
+              <Typography
+                sx={{
+                  color: 'red',
+                }}
+              >
+                {formik?.errors['longitude']}
+              </Typography>
+            )}
           </Box>
         </Box>
       </Box>
