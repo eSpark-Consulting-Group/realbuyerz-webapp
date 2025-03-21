@@ -47,10 +47,10 @@ export const generateInitialFormValues = (updatedData, currentUser) => {
   };
 };
 
-export const getInitialCounterValue = (formik, name) => {
-  return formik?.values[name] !== null &&
-    formik?.values[name] !== undefined &&
-    formik?.values[name] !== ''
-    ? parseInt(formik?.values[name])
+export const getInitialCounterValue = (getAmenities) => {
+  return getAmenities !== null &&
+    getAmenities !== undefined &&
+    getAmenities !== ''
+    ? parseInt(getAmenities.count)
     : 1;
 };
