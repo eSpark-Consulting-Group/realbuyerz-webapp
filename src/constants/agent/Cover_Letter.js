@@ -500,6 +500,7 @@ export const COVER_LETTER_VALUES = {
   propertyType: 'Sell',
   images: [],
   image: [],
+  amenity: [],
   videos: [],
   created_at: '',
   instalmentAvailable: false,
