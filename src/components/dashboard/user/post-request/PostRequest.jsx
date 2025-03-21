@@ -79,6 +79,7 @@ const PostRequest = ({ property_Id }) => {
       purpose: values.purpose,
       propertyAddress: values.address,
       amenity: selectedAmenities,
+      amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
     };
@@ -95,6 +96,7 @@ const PostRequest = ({ property_Id }) => {
       updatedData.propertyStatus = false;
       mutate(updatedData);
     }
+    console.log('Updated Data:', updatedData);
     console.log('Updated Data:', updatedData);
   };
 
@@ -127,17 +129,13 @@ const PostRequest = ({ property_Id }) => {
     },
   });
 
-  // const initialValues = { // Todo Faria pls check why this code is defined here if not used
-  //   ...POST_REQUEST_VALUES,
-  //   amount: Number(POST_REQUEST_VALUES.amount) || 0,
-  // };
-
   const formik = useFormik({
-    enableReinitialize: true, // ✅ This ensures reinitialization on new data
+    enableReinitialize: true,
     initialValues: {
       ...POST_REQUEST_VALUES,
-      amenities: filteredUserProperty?.amenities || [],
+      amenities: [],
       address: '',
+      propertyCategory: '',
     },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
@@ -170,24 +168,21 @@ const PostRequest = ({ property_Id }) => {
       const property = allItems.find((item) => item.id === property_Id);
       setFilteredUserProperty(property);
 
-      let singleArr = [];
-      Object.keys(items).forEach((val) => {
-        if (items[val].length > 0) {
-          singleArr = items[val][0];
-        }
-      });
-
-      const amenitiesArr = transformAmenities(singleArr.amenities);
-      formik.setFieldValue('amenities', amenitiesArr);
-      setSelectedAmenities(amenitiesArr);
-      formik.setFieldValue('title', singleArr.propertyName);
-      formik.setFieldValue('description', singleArr.propertyDescription);
-      formik.setFieldValue('amount', singleArr.propertyPrice);
-      formik.setFieldValue('area', singleArr.propertyArea);
-      formik.setFieldValue('city', singleArr.propertyCity);
-
-      // Update selectedAmenities state
-      setSelectedAmenities(amenitiesArr);
+      if (property) {
+        const amenitiesArr = transformAmenities(property.amenity); // Use `amenity` instead of `amenities`
+        formik.setValues({
+          ...formik.values,
+          amenities: amenitiesArr,
+          address: property.propertyAddress,
+          propertyCategory: property.propertyType.typeName, // Access `typeName` inside `propertyType`
+          title: property.propertyName,
+          description: property.propertyDescription,
+          amount: property.propertyPrice,
+          area: property.propertyArea,
+          city: property.propertyCity,
+        });
+        setSelectedAmenities(amenitiesArr);
+      }
     },
     onError: (error) => {
       console.error(error);

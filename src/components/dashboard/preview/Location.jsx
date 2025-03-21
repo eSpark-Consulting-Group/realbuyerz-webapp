@@ -22,6 +22,8 @@ const Location = ({
   longitude,
   latitude,
 }) => {
+  console.log('Rendering propertyType:', propertyType);
+
   return (
     locationKeys?.title && (
       <Box
@@ -103,9 +105,8 @@ const Location = ({
               }}
               variant="body1"
             >
-              {propertyType?.typeName
-                ? propertyType.typeName.charAt(0).toUpperCase() +
-                  propertyType.typeName.slice(1)
+              {propertyType
+                ? propertyType.charAt(0).toUpperCase() + propertyType.slice(1)
                 : ''}
             </Typography>
           </Box>
