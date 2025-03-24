@@ -29,24 +29,25 @@ const Facilities = ({
   const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
   const handleCheckboxChange = (e, id, image, text, name) => {
-    const limit = 20;
     const amenityObject = {
-      text,
-      image,
-      limit,
-      name,
       id,
+      image: image || '/images/default-amenity.svg',
+      text: text || name,
+      name,
+      label: text || name,
+      count: 1 // Default count
     };
-
+  
     if (e.target.checked) {
       setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
     } else {
       setSelectedAmenities((prevSelected) =>
-        prevSelected?.filter((item) => item?.text !== text)
+        prevSelected.filter(item => item.id !== id)
       );
-      formik?.setFieldValue(name, 0);
     }
   };
+
+  
 
   useEffect(() => {
     mutate();

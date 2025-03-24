@@ -167,14 +167,14 @@ const PostRequest = ({ property_Id }) => {
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
       setFilteredUserProperty(property);
-
+  
       if (property) {
-        const amenitiesArr = transformAmenities(property.amenity); // Use `amenity` instead of `amenities`
+        const amenitiesArr = transformAmenities(property.amenity);
         formik.setValues({
           ...formik.values,
-          amenities: amenitiesArr,
+          amenities: amenitiesArr.map(a => a.id), // Just store IDs in formik
           address: property.propertyAddress,
-          propertyCategory: property.propertyType.typeName, // Access `typeName` inside `propertyType`
+          propertyCategory: property.propertyType.typeName,
           title: property.propertyName,
           description: property.propertyDescription,
           amount: property.propertyPrice,

@@ -12,10 +12,12 @@ const PropertyFeatures = ({
   handleSeletedAmenites,
   propertyData,
 }) => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState(selectedAmenities || []);
 
   const handleSelectedItems = (items) => {
-    setSelectedItems(items);
+    const transformed = transformAmenities(items);
+    setSelectedItems(transformed);
+    setSelectedAmenities(transformed);
   };
 
   return (
