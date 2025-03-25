@@ -53,10 +53,14 @@ const PostRequest = ({ property_Id }) => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const amenities = transformAmenities(getAmenities);
-
   const handleSeletedAmenites = () => {
-    updateSelectedAmenities(amenities, setSelectedAmenities);
+    if(getAmenities?.length === 0){
+      formik?.setFieldValue('amenity', []);
+    } else {
+      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+    }
+
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -78,6 +82,7 @@ const PostRequest = ({ property_Id }) => {
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
       propertyAddress: values.address,
+      amenity: selectedAmenities,
       amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
@@ -199,7 +204,7 @@ const PostRequest = ({ property_Id }) => {
   formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', JSON.stringify(amenities));
+  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
 
@@ -236,6 +241,7 @@ const PostRequest = ({ property_Id }) => {
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
+              getAmenities={getAmenities}
             />
             <SubmitButton
               formik={formik}

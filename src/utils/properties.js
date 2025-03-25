@@ -38,7 +38,7 @@ export const fetchAmenities = async () => {
   try {
     const response = await APIService(endpoint, method, null);
 
-    console.log('Agent chats retrieved successfully:', response);
+    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
     console.error('Error fetching agent chats:', error);
@@ -53,7 +53,7 @@ export const fetchPropertyTypes = async () => {
   try {
     const response = await APIService(endpoint, method, null);
 
-    console.log('Agent chats retrieved successfully:', response);
+    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
     console.error('Error fetching agent chats:', error);
@@ -68,7 +68,7 @@ export const fetchMyProperties = async (params) => {
   try {
     const response = await APIService(endpoint, method, null, null, params);
 
-    console.log('Agent chats retrieved successfully:', response);
+    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
     console.error('Error fetching agent chats:', error);

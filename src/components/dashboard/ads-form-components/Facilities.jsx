@@ -25,6 +25,7 @@ const Facilities = ({
   selectedAmenities,
   propertyInformation,
   setSelectedAmenities,
+  getAmenities
 }) => {
   const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ const Facilities = ({
     const selectedAmenitiesId = selectedAmenities.map((val) => val?.id);
     formik?.setFieldValue('amenities', selectedAmenitiesId);
     formik?.setFieldValue('amenitiesArray', selectedAmenities);
+
     const amenity = transformAmenities(selectedAmenities);
     formik?.setFieldValue('amenity', amenity);
   }, [selectedAmenities]);
@@ -85,6 +87,7 @@ const Facilities = ({
           image: `/images/add-amenities/${amenitiesIconHandler(val?.amenetiesName)}`,
           title: val?.amenetiesName,
           name: val?.amenetiesName,
+          count: 1,
         };
       });
       setFacilitiesData(amenities);
@@ -98,7 +101,23 @@ const Facilities = ({
     if (selectedAmenities.length === 0) {
       dispatch(toggleCheckAmenityClear());
     } else {
-      dispatch(handleAdaminities(selectedAmenities));
+      if(getAmenities?.some(am => selectedAmenities.find(selAm => selAm.id !== am.id))) {
+        const includedIds = getAmenities?.map(am => am?.id)
+        const findNew = selectedAmenities.filter(sm => !includedIds.includes(sm.id))
+
+        const removeItems = getAmenities.filter((am) => 
+          !selectedAmenities.some((sm) => sm.id === am.id)
+        );
+        const updateState = [...getAmenities.filter(am => !removeItems.includes(am)), ...findNew]
+
+        formik?.setFieldValue('amenity', updateState.map(am => {
+          return { count: am.count, image: am.image, name: am.name };
+        }));
+  
+        dispatch(handleAdaminities(updateState));
+      } else {
+        dispatch(handleAdaminities(selectedAmenities));
+      }
     }
     setOpen(false);
   };
@@ -110,13 +129,13 @@ const Facilities = ({
           display: 'grid',
           py: 3,
           gridTemplateColumns: {
-            xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            md: 'repeat(2, 1fr)',
-            lg: 'repeat(3, 1fr)',
+            xs: !isPending && 'repeat(1, 1fr)',
+            sm: !isPending && 'repeat(2, 1fr)',
+            md: !isPending && 'repeat(2, 1fr)',
+            lg: !isPending && 'repeat(3, 1fr)',
           },
           '@media (min-width: 1200px) and (max-width: 1439px)': {
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: !isPending &&'repeat(3, 1fr)',
           },
           width: '100%',
           height: '550px',
@@ -171,7 +190,8 @@ const Facilities = ({
                     item?.id,
                     item?.image,
                     item?.title,
-                    item?.name
+                    item?.name,
+                    item?.count
                   );
                 }}
               />

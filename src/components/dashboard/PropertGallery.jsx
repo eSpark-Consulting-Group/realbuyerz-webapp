@@ -13,11 +13,22 @@ const PropertyGallery = ({ formik, propertyData }) => {
   const maxImages = 5;
   const maxVideos = 5;
 
-  const handleImageUpload = (type, file) => {
+  const handleImageUpload = (type, files) => {
     const currentImages = formik?.values?.images || [];
-    if (currentImages?.length < maxImages && type?.includes('image')) {
-      const updatedImages = [...currentImages, file];
-      formik?.setFieldValue('images', updatedImages);
+  
+    // Ensure the uploaded files are images and the limit is not exceeded
+    if (files?.length + currentImages?.length <= maxImages && type?.includes('image')) {
+      
+      // Filter out any duplicates (based on the image file name or a unique identifier)
+      const newFiles = Array.from(files).filter(file => 
+        !currentImages.some(existingImage => existingImage.name === file.name)
+      );
+  
+      // If there are new unique files, update the form state
+      if (newFiles.length > 0) {
+        const updatedImages = [...currentImages, ...newFiles];
+        formik?.setFieldValue('images', updatedImages);
+      }
     } else {
       console.error('Maximum limit of images reached');
     }

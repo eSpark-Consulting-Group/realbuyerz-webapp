@@ -5,7 +5,19 @@ import { MapProvider } from '../../MapProvider';
 const Map = dynamic(() => import('../../Map'), { ssr: false });
 const MapFrame = ({ formik, filteredUserProperty }) => {
   return (
-    <Box sx={{ padding: '5px' }}>
+    <Box
+      sx={{
+        padding: '5px',
+        border:
+          formik?.errors['longitude'] || formik?.errors['latitude']
+            ? '1px solid red'
+            : 'none',
+        borderRadius:
+          formik?.errors['longitude'] || formik?.errors['latitude']
+            ? '8px'
+            : '0px',
+      }}
+    >
       <div>
         <MapProvider>
           <Map

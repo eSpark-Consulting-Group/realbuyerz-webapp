@@ -1,11 +1,17 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { Box } from '@mui/material';
+import { getFileExtension } from '@/src/utils/getFileExtension';
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 const RenderMessageContent = ({ data }) => {
+  const filesExt = ["pdf", "docx", "xlsx"]
   const images = data?.content?.slice(0, 4);
+
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
+        const ext = getFileExtension(img?.url)
         return (
           <Box
             key={imgIndex}
@@ -19,54 +25,47 @@ const RenderMessageContent = ({ data }) => {
               marginRight: imgIndex !== data?.content.length - 1 && '10px',
             }}
           >
-            <Box
-              sx={{
-                width: '100%',
-                height: '100%',
-                backgroundImage: `url(${typeof img === 'string' ? img : URL.createObjectURL(img?.data)})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              // src={typeof img === 'string' ? img : URL.createObjectURL(img?.data)}
-              alt={'Image'}
-            />
-            {imgIndex === 3 && data?.content.length > 4 && (
+            {filesExt.includes(ext) ? (
               <Box
                 sx={{
-                  minWidth: '100px',
-                  height: '100px',
-                  background: 'rgba(0,0,0,0.5)',
-                  zIndex: 1,
-                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
                   display: 'flex',
-                  justifyContent: 'center',
+                  flexDirection: 'column',
                   alignItems: 'center',
+                  justifyContent: 'center',
+                  color:"inherit !important",
                 }}
+                component={'a'}
+                target="_blank"
+                href={img?.url}
               >
-                {
-                  <Box
-                    sx={{
-                      background: 'rgba(255,255,255,0.6)',
-                      padding: '5px 0',
-                      minWidth: '70%',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: '50px',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: '20px',
-                        fontWeight: 500,
-                      }}
-                    >
-                      + {data?.content.length - 4}
-                    </Typography>
+                {ext === 'pdf' ? (
+                  <PictureAsPdfIcon fontSize="large" />
+                ) : ext === 'docx' ? (
+                  <DescriptionIcon fontSize="large" />
+                ) : (
+                  <Box sx={{ width: '24px', height: '24px' }}>
+                    <img
+                      src="/icons/xlsx.svg"
+                      alt="xlsx"
+                      style={{ width: '100%', height: '100%' }}
+                    />
                   </Box>
-                }
+                )}
+                {img.public_id.slice(0, 10) + '...'}
               </Box>
+            ) : (
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url(${img.url})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+                alt={'Image'}
+              />
             )}
           </Box>
         );

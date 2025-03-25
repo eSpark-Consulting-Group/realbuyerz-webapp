@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookie from 'js-cookie';
 
 const apiUrl = process.env.NEXT_PUBLIC_BASE_URL; // base URL
 
@@ -19,6 +20,11 @@ const APIService = async (
     },
     (error) => {
       if (error.response.status === 401) {
+        localStorage?.removeItem('token');
+
+        Cookie?.remove('token');
+        Cookie?.remove('userType');
+
         window.location.href = '/signin'; // Redirect to login page
       }
       return Promise.reject(error);

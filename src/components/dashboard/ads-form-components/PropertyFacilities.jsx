@@ -66,12 +66,7 @@ const PropertyFacilities = ({ propertyInformation, formik, selectedAmenities }) 
                   </Typography>
                 </Box>
                 <Box sx={{ width: 'auto' }}>
-                  <Counter
-                    formik={formik}
-                    name={item?.name}
-                    title={item?.title}
-                    limit={item?.limit}
-                  />
+                  <Counter formik={formik} item={item} index={index} />
                 </Box>
               </Box>
             </Box>

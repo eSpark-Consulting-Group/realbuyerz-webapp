@@ -472,6 +472,7 @@ export const POST_REQUEST_VALUES = {
   user_id: '',
   status: '',
   other_features: [],
+  amenity: [],
   title: '',
   location: '',
   description: '',

@@ -1,4 +1,7 @@
 'use client';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Box,
   CircularProgress,
@@ -7,25 +10,95 @@ import {
   Tab,
   Tabs,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+
 import ChatRooms from '@/src/components/dashboard/ChatRooms';
 import ChatRoom from '@/src/components/dashboard/ChatRoom';
-import { CHAT_ROOMS } from '@/src/constants/Chats';
+import { getMessages } from '@/src/utils/apis/chat/gettAllMessage';
+import { useQuery } from '@tanstack/react-query';
+import {
+  getAllMessages,
+  getMessageWRTChatBox,
+} from '@/src/redux/slices/chat/chatsSlice';
+import Cookies from 'js-cookie';
+import { useSocket } from '@/src/context/SocketContext';
+import SmsFailedOutlinedIcon from '@mui/icons-material/SmsFailedOutlined';
+
+const unreadChats = JSON.parse(Cookies.get('unreadChatIds') || '[]');
 
 const UserChat = () => {
+  const { socket2 } = useSocket();
+
+  const dispatch = useDispatch();
+
+  const { chats, messages, messageWRTChatBox, hasChat } = useSelector(
+    (state) => state.chats
+  );
+  const { userProfile } = useSelector((state) => state.auth);
+
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('Inbox');
   const [loading, setLoading] = useState(false);
-  console.log(currentTab);
   const [chatRoomState, setChatRoomState] = useState([]);
-  const [selectedChatRoom, setSelectedChatRoom] = useState({
-    title: 'John Doe',
-    isRead: false,
-    lastMessage: 'Lorem ipsum dolor sit amet. Bibendum feugiat sapien....',
-    avatar: 'avatar',
-    lastMessageTimestamp: '2024-01-17T22:14:05',
-    unReadMessages: 2,
+  const [selectedChatRoom, setSelectedChatRoom] = useState();
+  const [isNewIdsForAllMessages, setIsNewIdsForAllMessages] = useState([]);
+  const [isTypingUser, setIsTypingUser] = useState(null);
+  const [page, setPage] = useState(1);
+
+  const chatIds = chats?.map((chat) => chat._id) || [];
+
+  const filterNewIds = (allIds, existingIds) =>
+    allIds?.filter((id) => !existingIds?.includes(id));
+
+  useEffect(() => {
+    const existingMessagesIds = messages?.map((item) => item?.chat);
+    setIsNewIdsForAllMessages(filterNewIds(chatIds, existingMessagesIds));
+  }, [chats, messages]);
+
+  const { data, isLoading, isError, isSuccess, refetch } = useQuery({
+    queryKey: ['chatMessages', isNewIdsForAllMessages, page],
+    queryFn: async () => getMessages(isNewIdsForAllMessages, page),
+    enabled: !!chats?.length,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
+
+  useEffect(() => {
+    if (isSuccess && data?.length) {
+      const filterOutMessage = data?.map((msg) => msg?.data?.messages)?.flat();
+      const filterItemsPage = data?.map((msg) => {
+        return {
+          currentPage: parseInt(msg?.data?.currentPage),
+          itemsOnPage: msg?.data?.itemsOnPage,
+          totalItems: msg?.data?.totalItems,
+          totalPages: msg?.data?.totalPages,
+          chatId: msg?.data?.messages[0]?.chat,
+          hasMore: msg?.data?.totalPages > 1 ? true : false,
+        };
+      });
+
+      // Get existing message IDs from the current state
+      const existingMessageIds = messages?.map((message) => message?.chat);
+      const existingPageIds = messageWRTChatBox?.map(
+        (message) => message?.chatId
+      );
+      // Filter new messages that are not already in the current state
+      const newMessages = filterOutMessage?.filter(
+        (message) => !existingMessageIds?.includes(message?.chat)
+      );
+      const newTotalPage = filterItemsPage?.filter(
+        (message) => !existingPageIds?.includes(message?.chat)
+      );
+
+      // Dispatch only new messages to add them to the state
+      if (newMessages?.length > 0) {
+        dispatch(getAllMessages([...messages, ...newMessages]));
+        dispatch(getMessageWRTChatBox([...messageWRTChatBox, ...newTotalPage]));
+      } else {
+        dispatch(getAllMessages(filterOutMessage));
+        dispatch(getMessageWRTChatBox(filterItemsPage));
+      }
+    }
+  }, [data, isSuccess]);
 
   useEffect(() => {
     function paintBackground() {
@@ -41,8 +114,6 @@ const UserChat = () => {
         '#7C9E0B',
         '#03A69E',
         '#3091DB',
-        // "#363636", "#434343", "#1C1C1C", "#2B2B2B", "#333333",
-        // "#222222", "#1A1A1A", "#282828", "#191919", "#1B1B1B"
       ];
 
       // Generate a random index to select a color from the array
@@ -51,13 +122,109 @@ const UserChat = () => {
       return darkColors[randomIndex];
     }
 
-    const tempData = [...CHAT_ROOMS]?.map((room) => ({
-      ...room,
-      background: !room?.avatar && paintBackground(),
-    }));
-    setSelectedChatRoom(tempData[0]);
-    setChatRoomState(tempData);
-  }, [currentTab]);
+    if (chats && chats.length) {
+      const updateChats = chats?.map((chat) => {
+        return {
+          title: chat?.members?.name,
+          isRead: false,
+          lastMessage: chat?.lastMessage?.content,
+          avatar: chat?.members?.avatar?.url,
+          lastMessageTimestamp: chat?.lastMessage?.createdAt,
+          unReadMessages: 0,
+          chatId: chat._id,
+          otherUserId: chat?.members?._id,
+        };
+      });
+
+      const tempData = updateChats?.map((room) => ({
+        ...room,
+        background: !room?.avatar && paintBackground(),
+      }));
+
+      setSelectedChatRoom(tempData[0]);
+      setChatRoomState(tempData);
+      removeReadChat(tempData[0]?.chatId);
+    }
+  }, [currentTab, chats]);
+
+  useEffect(() => {
+    if (selectedChatRoom && socket2) {
+      const handleNewMessageAlert = (data) => {
+        if (data.chatId !== selectedChatRoom.chatId) {
+          const checkIds = Cookies.get('unreadChatIds');
+          const unreadChats = checkIds ? JSON.parse(checkIds) : null;
+
+          if (!unreadChats) {
+            // Initialize with the chatId and a count of 1 if no unreadChats are found.
+            Cookies.set(
+              'unreadChatIds',
+              JSON.stringify([{ chatId: data.chatId, count: 1 }])
+            );
+            return;
+          }
+
+          // Check if the chatId already exists in the unreadChats array.
+          const chatIndex = unreadChats.findIndex(
+            (chat) => chat.chatId === data.chatId
+          );
+
+          if (chatIndex === -1) {
+            // If chatId does not exist, add a new object with count 1.
+            unreadChats.push({ chatId: data.chatId, count: 1 });
+          } else {
+            // If chatId exists, increment the count.
+            unreadChats[chatIndex].count += 1;
+          }
+
+          // Update the cookies with the new unreadChats array.
+          Cookies.set('unreadChatIds', JSON.stringify(unreadChats));
+        }
+      };
+      socket2.on('NEW_MESSAGE_ALERT', handleNewMessageAlert);
+
+      return () => {
+        if (socket2) {
+          socket2.off('NEW_MESSAGE_ALERT');
+        }
+      };
+    }
+  }, [socket2, selectedChatRoom]);
+
+  useEffect(() => {
+    if (selectedChatRoom) {
+      if (unreadChats?.length) {
+        removeReadChat(selectedChatRoom?.chatId);
+      }
+    }
+  }, [selectedChatRoom, unreadChats, messages]);
+
+  const removeReadChat = (id) => {
+    const filterChat = unreadChats?.filter((chat) => chat.chatId !== id);
+
+    if (filterChat?.length) {
+      Cookies.set('unreadChatIds', JSON.stringify(filterChat));
+    } else {
+      Cookies.remove('unreadChatIds');
+    }
+  };
+
+  useEffect(() => {
+    if (socket2 && userProfile) {
+      const handleTypingStatus = (event, isTyping) => {
+        setIsTypingUser(
+          isTyping ? { chatId: event.chatId, userId: userProfile.id } : null
+        );
+      };
+
+      socket2.on('START_TYPING', (data) => handleTypingStatus(data, true));
+      socket2.on('STOP_TYPING', () => handleTypingStatus(null, false));
+
+      return () => {
+        socket2.off('START_TYPING');
+        socket2.off('STOP_TYPING');
+      };
+    }
+  }, [socket2, userProfile]);
 
   const handleChangeTab = (event, newValue) => {
     let tab = event?.target?.innerText.split(' ');
@@ -84,6 +251,7 @@ const UserChat = () => {
       setLoading(false);
     }, 1000);
   };
+
   return (
     <Box
       sx={{
@@ -156,11 +324,91 @@ const UserChat = () => {
           minHeight: '450px',
         }}
       >
-        <ChatRooms
-          chatRoomState={chatRoomState}
-          setSelectedChatRoom={setSelectedChatRoom}
-        />
-        <ChatRoom selectedChatRoom={selectedChatRoom} />
+        {isLoading || loading ? (
+          <Box
+            sx={{
+              minHeight: '100%',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <CircularProgress size={32} />
+          </Box>
+        ) : (
+          <>
+            {chatRoomState?.length && hasChat.length === 0 ? (
+              <ChatRooms
+                chatRoomState={chatRoomState}
+                setSelectedChatRoom={setSelectedChatRoom}
+                selectedChatRoom={selectedChatRoom}
+              />
+            ) : (
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                md={3}
+                sx={{
+                  borderRight: 'solid 1px #E4E4E4',
+                  paddingTop: '10px',
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: '20px',
+                    lineHeight: '24px',
+                    color: '#969696',
+                    textAlign: 'center',
+                    paddingTop: '10px',
+                  }}
+                >
+                  No chat
+                </Box>
+              </Grid>
+            )}
+
+            {selectedChatRoom && hasChat.length === 0 ? (
+              <ChatRoom
+                selectedChatRoom={selectedChatRoom}
+                isTypingUser={isTypingUser}
+                totalPageOfMessage={messageWRTChatBox?.find(
+                  (p) => p?.chatId === selectedChatRoom?.chatId
+                )}
+              />
+            ) : (
+              <Grid
+                item
+                xs={12}
+                sm={8}
+                md={9}
+                sx={{
+                  padding: '10px 14px',
+                  width: '100%',
+                  minHeight: '100%',
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: '20px',
+                    lineHeight: '24px',
+                    color: '#969696',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <SmsFailedOutlinedIcon sx={{ fontSize: '10rem' }} />
+                  <Box>No chat</Box>
+                </Box>
+              </Grid>
+            )}
+          </>
+        )}
       </Grid>
     </Box>
   );
