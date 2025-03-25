@@ -69,7 +69,6 @@ const PostRequest = ({ property_Id }) => {
   const handleSubmit = (values) => {
     const propertyPrice = parseFloat(values.amount);
     if (isNaN(propertyPrice)) {
-      console.error('Invalid property price:', values.amount);
       return;
     }
 
@@ -100,8 +99,6 @@ const PostRequest = ({ property_Id }) => {
       updatedData.propertyStatus = false;
       mutate(updatedData);
     }
-    console.log('Updated Data:', updatedData);
-    console.log('Updated Data:', updatedData);
   };
 
   const handleClickOpen = () => {
@@ -212,7 +209,6 @@ const PostRequest = ({ property_Id }) => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        {/* <Link href="/agent/live-bidding">agent</Link> */}
         <form onSubmit={formik?.handleSubmit}>
           <Box
             sx={{

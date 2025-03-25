@@ -79,7 +79,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
       }
     },
     onError: (error) => {
-      console.log('Error Response:', error);
 
       const errorMessage =
         error?.response?.data?.message || 'Login failed. Please try again.';
@@ -87,11 +86,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
       toast.error(errorMessage);
     },
   });
-  // const loginClick = () => {
-  //   mutate({ email: formData.email, password: formData.password });
-  //   dispatch(saveLoginData(formData));
-  //   dispatch(setOpenModal(false));
-  // };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -108,8 +103,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
     validationSchema: AuthSchema,
     onSubmit: (values) => {
       mutate(values);
-      // dispatch(saveLoginData(values));
-      // dispatch(setOpenModal(false));
     },
   });
 

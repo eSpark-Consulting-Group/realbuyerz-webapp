@@ -28,6 +28,7 @@ import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { useMutation } from '@tanstack/react-query';
 import { singleProperty } from '@/src/utils/apis/bidding/singleProperty';
 import { fetchMyProperties, updatePostListing } from '@/src/utils/properties';
+import { toast } from 'react-toastify';
 
 const CoverLetter = () => {
   const proposals = 'my-proposals';
@@ -136,7 +137,7 @@ const CoverLetter = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
@@ -162,11 +163,6 @@ const CoverLetter = () => {
 
   return (
     <>
-      {/* {checkIdValidity(id, specificPost) ? (
-        <>
-          <NotFoundSection />
-        </>
-      ) : ( */}
       <Grid container>
         <Grid item xs={12}>
           <form onSubmit={formik?.handleSubmit}>
@@ -221,7 +217,6 @@ const CoverLetter = () => {
           />
         </Grid>
       </Grid>
-      {/* )} */}
     </>
   );
 };

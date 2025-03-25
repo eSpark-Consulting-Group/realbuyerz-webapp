@@ -47,19 +47,15 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
     }
   };
 
-  // const handleClick = () => {
-  //   dispatch(updateReceivedEmail(email));
-  // };
-
   const handleContinue = () => {
     if (handleValidation()) {
-      console.log('email', email);
+
       getResetPasswordLink({ to: email });
     }
   };
 
   const resendEmail = () => {
-    console.log('resend email');
+
     getResetPasswordLink({ to: email });
   };
 

@@ -27,7 +27,6 @@ const AdMediaSlider = ({ media, mediaType }) => {
     breakpoints: {
       1920: {
         slidesPerView: 2,
-        // spaceBetween: 1,
       },
       960: {
         slidesPerView: 2,

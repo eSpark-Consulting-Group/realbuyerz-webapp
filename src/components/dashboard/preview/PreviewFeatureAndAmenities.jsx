@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-// import { PROPERTY_NAMES } from '@/src/constants/Preview_Data';
 
 const renderDetail = (title, fontStyle, fontWeight, key) => {
   return (
@@ -13,15 +12,6 @@ const renderDetail = (title, fontStyle, fontWeight, key) => {
       >
         {title}
       </Typography>
-      {/* <Typography
-          sx={{
-            fontSize: fontStyle ? fontStyle : '14px',
-            fontWeight: 500,
-            color: '#126FAA',
-          }}
-        >
-          {value && value}
-        </Typography> */}
     </Box>
   );
 };

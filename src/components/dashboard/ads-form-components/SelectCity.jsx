@@ -121,8 +121,6 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             {formik?.errors['city'] && (
               <Typography
                 sx={{
-                  // position: 'absolute',
-                  // bottom: '-25px',
                   color: 'red',
                   mb: 1,
                 }}
@@ -141,7 +139,6 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
             onBlur={formik?.handleBlur}
             name="address"
             error={formik?.touched.address && Boolean(formik?.errors?.address)}
-            // helperText={formik?.touched.address && formik?.errors?.address}
             InputProps={{
               sx: {
                 borderRadius: '10px',

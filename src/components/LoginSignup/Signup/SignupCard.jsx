@@ -49,7 +49,6 @@ const SignupCard = () => {
         mobileNumber: values.contactNumber,
         role: 'user',
       });
-      // dispatch(saveSignupData(values));
     },
   });
 
@@ -98,7 +97,6 @@ const SignupCard = () => {
       }
     },
     onError: (error) => {
-      console.error('Signup error:', error);
       toast.error('An error occurred. Please try again.');
     },
   });
@@ -123,7 +121,6 @@ const SignupCard = () => {
           boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
           borderRadius: 2,
           background: 'white',
-          // marginTop: '38px',
           zIndex: 2,
           '@media (max-width: 1286px)': {
             width: '400px',

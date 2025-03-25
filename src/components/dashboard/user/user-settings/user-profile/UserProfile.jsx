@@ -11,7 +11,6 @@ import { useQuery } from '@tanstack/react-query';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { handleUserEdit } from '@/src/redux/slices/currentUser/currentUserSlice';
 
-// import { Agent_Profile_Form_Data } from '@/src/constants/AgentProfileForm';
 
 const UserProfile = () => {
   const dispatch = useDispatch();

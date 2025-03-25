@@ -537,7 +537,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
         >
           <Box
             sx={{
-              //   flex: 10,
               display: 'flex',
               flexDirection: 'column',
               width: { xs: '90%', sm: '100%' },
@@ -622,11 +621,8 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                     <Box
                       sx={{
                         width: '100px',
-                        // border: '1px solid #ccc',
                         position: 'absolute',
-                        // backgroundColor: '#fff',
                         bottom: '35px',
-                        // borderRadius: '5px',
                       }}
                       className={
                         displayUploadOptions && !isClosing
@@ -657,7 +653,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                             component={'img'}
                             src={'/icons/select-image.svg'}
                           />
-                          {/* <Typography>Image</Typography> */}
                         </Box>
                       </label>
                       <label htmlFor="file-input">
@@ -684,7 +679,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                             component={'img'}
                             src={'/icons/select-file.svg'}
                           />
-                          {/* <Typography>File</Typography> */}
                         </Box>
                       </label>
                       <Box
@@ -693,7 +687,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                           setIsSendingVoiceNote(true);
                         }}
                         sx={{
-                          // display: 'flex',
                           display: { xs: 'none', md: 'none' },
                           alignItems: 'center',
                           marginBottom: '10px',

@@ -62,7 +62,6 @@ const ProposalDetail = () => {
       setUserPropertyDetail(transformApiObject(item.userProperty));
       setAgentPropertyDetail(transformApiObject(item.agentProperty));
 
-      // console.log(item);
     },
     onError: (error) => {
       // Handle the error
