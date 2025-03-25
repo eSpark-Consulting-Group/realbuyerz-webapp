@@ -70,7 +70,6 @@ const ProposalCard = ({
   const deletePropertyHandler = useMutation({
     mutationFn: deleteAPIHandler,
     onSuccess: (data) => {
-      console.log(data);
       refetchProperties();
     },
     onError: (error) => {
@@ -94,7 +93,6 @@ const ProposalCard = ({
   const { mutate, isPending } = useMutation({
     mutationFn: saveUserProposal,
     onSuccess: (data) => {
-      console.log(data);
       refetchSavedProposal();
     },
     onError: (error) => {

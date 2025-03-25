@@ -10,7 +10,6 @@ export const acceptProposal = async (propertyId) => {
 
     return response;
   } catch (error) {
-    console.error('Error: Unable to get user proposal:', error);
     throw error;
   }
 };

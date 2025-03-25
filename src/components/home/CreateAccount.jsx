@@ -56,7 +56,7 @@ const CreateAccount = () => {
     if (token && userType) {
       setIsLoggedIn(true);
       setUserRole(userType);
-      console.log('User is logged in with role:', userType);
+
     } else {
       setIsLoggedIn(false);
       localStorage?.removeItem('token');
@@ -64,7 +64,7 @@ const CreateAccount = () => {
       Cookie?.remove('token');
       Cookie?.remove('userType');
       dispatch(setLoggedOut());
-      console.log('User is not logged in');
+
     }
   }, []);
 

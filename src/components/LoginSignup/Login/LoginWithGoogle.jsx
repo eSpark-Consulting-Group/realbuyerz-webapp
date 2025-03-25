@@ -89,11 +89,9 @@ const LoginWithGoogle = ({
       if (signupData.success) {
         handleSuccessfulLogin(signupData);
       } else {
-        console.error('Signup failed:', signupData.message);
         toast.error(signupData.message || 'Signup failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error during Google login:', error);
       toast.error('An error occurred. Please try again.');
     }
   };
