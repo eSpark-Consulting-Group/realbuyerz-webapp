@@ -171,8 +171,8 @@ const PostRequest = ({ property_Id }) => {
         const amenitiesArr = transformAmenities(property.amenity);
         formik.setValues({
           ...formik.values,
-          amenities: amenitiesArr.map(a => a.id), // Just store IDs in formik
-          amenitiesArray: amenitiesArr, // Add this line
+          amenities: amenitiesArr.map(a => a.id), 
+          amenitiesArray: amenitiesArr, 
           address: property.propertyAddress,
           propertyCategory: property.propertyType.typeName,
           title: property.propertyName,
