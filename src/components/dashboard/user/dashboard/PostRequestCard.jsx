@@ -25,10 +25,10 @@ import { fetchUserProperties } from '@/src/utils/userProperties';
 
 const PostRequestCard = ({ height }) => {
   const all_proposals = useSelector((state) => state?.proposals);
-  // const searchValue = useSelector((state) => state?.search?.searchValue);
+
   const [allPostingData, setAllPostingData] = useState([]);
   const [showAllItems, setShowAllItems] = useState(false);
-  // const searching_ad = filteredAds(searchValue, ads, all_proposals);
+
 
   const handleShowMoreClick = () => {
     setShowAllItems(true);

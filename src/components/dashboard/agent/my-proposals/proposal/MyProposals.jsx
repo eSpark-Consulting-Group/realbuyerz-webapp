@@ -23,6 +23,7 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { fetchMyProperties } from '@/src/utils/properties';
 import { myProposalSaved } from '@/src/utils/apis/bidding/saveUserProposal';
+import { toast } from 'react-toastify';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
@@ -51,7 +52,7 @@ const MyProposals = () => {
     mutationFn: fetchMyProperties,
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
@@ -62,7 +63,7 @@ const MyProposals = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

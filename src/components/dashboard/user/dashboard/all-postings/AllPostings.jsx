@@ -32,6 +32,7 @@ import {
   fetchUserProperties,
 } from '@/src/utils/userProperties';
 import { fetchPropertyTypes } from '@/src/utils/properties';
+import { toast } from 'react-toastify';
 
 const AllPostings = () => {
   const [value, setValue] = useState(0);
@@ -103,7 +104,7 @@ const AllPostings = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
   const items = data?.response?.data;

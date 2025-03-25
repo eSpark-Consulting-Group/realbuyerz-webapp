@@ -12,7 +12,6 @@ import { A11y, Navigation } from 'swiper/modules';
 
 const BidSlider = ({ media, mediaType }) => {
   const swiperSettings = {
-    // spaceBetween: 20,
     slidesPerView: 3,
     loop: true,
     navigation: {

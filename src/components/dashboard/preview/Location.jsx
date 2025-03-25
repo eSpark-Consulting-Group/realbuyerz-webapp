@@ -22,7 +22,6 @@ const Location = ({
   longitude,
   latitude,
 }) => {
-  console.log('Rendering propertyType:', propertyType);
 
   return (
     locationKeys?.title && (

@@ -8,6 +8,7 @@ import { createInitialState } from '@/src/utils/agentPreferenceState';
 import { AGENT_PREFERENCES } from '@/src/constants/Preference';
 import { saveUserPreferences } from '@/src/utils/apis/userPreferences';
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
+import { toast } from 'react-toastify';
 
 const PreferenceSettings = () => {
   const [formData, setFormData] = useState(createInitialState);
@@ -55,7 +56,7 @@ const PreferenceSettings = () => {
 
   const handleInputChangeToggle = (name, checked) => {
     if (!name) {
-      console.error('Toggle name is undefined');
+      toast.error('Toggle name is undefined');
       return;
     }
 
@@ -70,7 +71,7 @@ const PreferenceSettings = () => {
 
   const handleClick = async () => {
     if (!formData.emailData.currencyUnit || !formData.emailData.areaUnit) {
-      console.error('Form data is incomplete!');
+      toast.error('Form data is incomplete!');
       return;
     }
 

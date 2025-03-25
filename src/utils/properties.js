@@ -23,10 +23,8 @@ export const fetchProperties = async () => {
   try {
     const response = await APIService(endpoint, method, null);
 
-    console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
-    console.error('Error fetching agent chats:', error);
     throw error;
   }
 };
@@ -38,10 +36,8 @@ export const fetchAmenities = async () => {
   try {
     const response = await APIService(endpoint, method, null);
 
-    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
-    console.error('Error fetching agent chats:', error);
     throw error;
   }
 };
@@ -53,10 +49,8 @@ export const fetchPropertyTypes = async () => {
   try {
     const response = await APIService(endpoint, method, null);
 
-    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
-    console.error('Error fetching agent chats:', error);
     throw error;
   }
 };
@@ -68,10 +62,8 @@ export const fetchMyProperties = async (params) => {
   try {
     const response = await APIService(endpoint, method, null, null, params);
 
-    // console.log('Agent chats retrieved successfully:', response);
     return response;
   } catch (error) {
-    console.error('Error fetching agent chats:', error);
     throw error;
   }
 };
@@ -89,7 +81,6 @@ export const addPostListing = async (postListingdata) => {
     );
     return response;
   } catch (error) {
-    console.error('Error:', error);
     throw error;
   }
 };
@@ -108,7 +99,6 @@ export const updatePostListing = async (postListingdata) => {
     );
     return response;
   } catch (error) {
-    console.error('Error:', error);
     throw error;
   }
 };

@@ -59,7 +59,6 @@ export default function ProfileForm({ data, formValues }) {
     bio: `${formValues?.bio || ''}`,
     city: `${formValues?.city || ''}`,
     // phoneNumber: `${formValues?.phoneNumber || ''}`,
-    // updated_at: '',
   };
 
   const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
@@ -67,7 +66,6 @@ export default function ProfileForm({ data, formValues }) {
       initialValues: { ...Profile_Keys },
       validationSchema: profileValidationSchema,
       onSubmit: (values) => {
-        // (values.updated_at = `${new Date().toISOString()}`),
         updateProfile(values);
       },
       enableReinitialize: true,
@@ -98,7 +96,6 @@ export default function ProfileForm({ data, formValues }) {
   const { mutate: verifyContact } = useMutation({
     mutationFn: sendOTP,
     onSuccess: (data) => {
-      console.log(data);
       setIsVerificationSuccessful(true);
     },
   });
@@ -122,7 +119,6 @@ export default function ProfileForm({ data, formValues }) {
       return profileUpdate(formDataValues);
     },
     onSuccess: (data) => {
-      console.log(data);
       dispatch(handleUserEdit(values));
     },
   });

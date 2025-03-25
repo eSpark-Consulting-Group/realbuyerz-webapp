@@ -104,7 +104,6 @@ const SubmitButton = ({
               name="submit"
               value="submit"
               variant="outlined"
-              // type="submit"
               sx={{
                 width: { xs: '40%', sm: '150px' },
                 '@media(min-width: 280px) and (max-width:400px)': {
@@ -142,7 +141,6 @@ const SubmitButton = ({
             }
             value="draft"
             variant="primary"
-            // type="submit"
             sx={{
               width: { xs: '40%', sm: '200px' },
               '@media(min-width: 280px) and (max-width:400px)': {

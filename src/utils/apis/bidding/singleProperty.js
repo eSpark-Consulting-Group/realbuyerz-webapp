@@ -15,7 +15,6 @@ export const singleProperty = async (propertyData) => {
 
     return response;
   } catch (error) {
-    console.error('Error: Unable to create property proposal:', error);
     throw error;
   }
 };

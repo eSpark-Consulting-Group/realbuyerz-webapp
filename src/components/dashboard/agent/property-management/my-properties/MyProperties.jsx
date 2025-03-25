@@ -15,7 +15,6 @@ import {
   Typography,
 } from '@mui/material';
 
-// import NotFoundSection from '@/src/components/global/NotFoundSection';
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
 
 import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
@@ -23,7 +22,6 @@ import {
   a11yProps,
   findData,
   justifyContent,
-  // renderAdCard,
 } from '@/src/utils/dashboardUtils';
 import { useMutation } from '@tanstack/react-query';
 import {
@@ -31,6 +29,7 @@ import {
   fetchMyProperties,
   fetchPropertyTypes,
 } from '@/src/utils/properties';
+import { toast } from 'react-toastify';
 
 const MyProperties = () => {
   const [value, setValue] = useState(0);
@@ -70,7 +69,7 @@ const MyProperties = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
@@ -92,7 +91,7 @@ const MyProperties = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

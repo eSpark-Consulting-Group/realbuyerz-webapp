@@ -21,7 +21,6 @@ const RenderMessage = ({ data, isSameSenderAsPrevious, selectedChatRoom }) => {
       >
         <Box
           sx={{
-            // maxWidth: { xs: '100%', sm: '70%' },
             display: 'flex',
             alignItems: 'flex-start',
             position: 'relative',

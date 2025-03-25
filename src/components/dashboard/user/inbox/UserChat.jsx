@@ -42,7 +42,7 @@ const UserChat = () => {
   const [selectedChatRoom, setSelectedChatRoom] = useState();
   const [isNewIdsForAllMessages, setIsNewIdsForAllMessages] = useState([]);
   const [isTypingUser, setIsTypingUser] = useState(null);
-  const [page, setPage] = useState(1);
+  const page = 1;
 
   const chatIds = chats?.map((chat) => chat._id) || [];
 

@@ -46,7 +46,6 @@ const RightSection = ({
   const { mutate, isPending } = useMutation({
     mutationFn: saveUserProposal,
     onSuccess: (data) => {
-      console.log(data);
       setIsSaved(!isSaved);
     },
     onError: (error) => {
