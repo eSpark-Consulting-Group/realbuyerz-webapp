@@ -25,6 +25,7 @@ import { acceptProposal } from '@/src/utils/apis/bidding/acceptProposal';
 import useViewportHeight from '@/src/utils/useViewportHeight';
 import { rejectProposal } from '@/src/utils/apis/bidding/rejectProposal';
 import { archivedProposal } from '@/src/utils/apis/bidding/archiveProposal';
+import { toast } from 'react-toastify';
 
 const SpacificProposal = () => {
   const { image, back_Button, applicant_Titlt, applicant_Message } =
@@ -75,40 +76,34 @@ const SpacificProposal = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
   const acceptRequestHandler = useMutation({
     mutationFn: acceptProposal,
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: () => {},
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
   const rejectRequestHandler = useMutation({
     mutationFn: rejectProposal,
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: () => {},
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 
   const archivedRequestHandler = useMutation({
     mutationFn: archivedProposal,
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: () => { },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

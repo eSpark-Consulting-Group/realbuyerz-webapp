@@ -5,6 +5,7 @@ import PropertyTypes from './PropertyPlot';
 import { useMutation } from '@tanstack/react-query';
 import { fetchPropertyTypes } from '@/src/utils/properties';
 import { usePathname } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
   const pathname = usePathname();
@@ -34,7 +35,7 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

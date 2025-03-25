@@ -41,7 +41,7 @@ const AgentChat = () => {
   const [selectedChatRoom, setSelectedChatRoom] = useState();
   const [isNewIdsForAllMessages, setIsNewIdsForAllMessages] = useState([]);
   const [isTypingUser, setIsTypingUser] = useState(null);
-  const [page, setPage] = useState(1);
+  const page = 1
 
   const chatIds = chats?.map((chat) => chat._id) || [];
 
@@ -53,7 +53,7 @@ const AgentChat = () => {
     setIsNewIdsForAllMessages(filterNewIds(chatIds, existingMessagesIds));
   }, [chats, messages]);
 
-  const { data, isLoading, isError, isSuccess, refetch } = useQuery({
+  const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['chatMessages', isNewIdsForAllMessages, page],
     queryFn: async () => getMessages(isNewIdsForAllMessages, page),
     enabled: !!chats?.length,

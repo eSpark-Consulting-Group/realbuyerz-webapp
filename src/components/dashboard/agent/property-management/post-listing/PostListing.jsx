@@ -184,7 +184,7 @@ const PostListing = ({ property_Id }) => {
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

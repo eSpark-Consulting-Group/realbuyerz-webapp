@@ -12,6 +12,7 @@ import { MAIN_TITLE } from '@/src/constants/agent/Live_Bidding';
 import { fetchProperties } from '@/src/utils/properties';
 import { transformApiObject } from '@/src/utils/objectsConversion';
 import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
+import { toast } from 'react-toastify';
 
 const LiveBidding = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const LiveBidding = () => {
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
 

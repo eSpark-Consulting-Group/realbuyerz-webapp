@@ -16,9 +16,9 @@ import {
 import { fetchAmenities } from '@/src/utils/properties';
 import { useMutation } from '@tanstack/react-query';
 import { transformAmenities } from '@/src/utils/amenitiesUtils';
+import { toast } from 'react-toastify';
 
 const Facilities = ({
-  // facilitiesData,
   cancel,
   formik,
   setOpen,
@@ -90,7 +90,7 @@ const Facilities = ({
     },
     onError: (error) => {
       // Handle the error
-      console.error(error);
+      toast.error(error.response.data.messag)
     },
   });
   const handleSaveButton = () => {
