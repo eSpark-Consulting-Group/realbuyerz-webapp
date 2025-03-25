@@ -23,6 +23,7 @@ const AddAmenities = ({
     onSelected(selectedAmenities);
   };
 
+  
   return (
     <Box
       sx={{
