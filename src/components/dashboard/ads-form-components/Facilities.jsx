@@ -29,25 +29,29 @@ const Facilities = ({
   const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
   const handleCheckboxChange = (e, id, image, text, name) => {
-    const amenityObject = {
-      id,
-      image: image || '/images/default-amenity.svg',
-      text: text || name,
-      name,
-      label: text || name,
-      count: 1 // Default count
-    };
-  
-    if (e.target.checked) {
-      setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
+    const isChecked = e.target.checked;
+    const existingIndex = selectedAmenities.findIndex((item) => item.id === id);
+
+    if (isChecked) {
+      // Only add if not already selected
+      if (existingIndex === -1) {
+        setSelectedAmenities((prev) => [
+          ...prev,
+          {
+            id,
+            image: image || '/images/default-amenity.svg',
+            text: text || name,
+            name,
+            label: text || name,
+            count: 1,
+          },
+        ]);
+      }
     } else {
-      setSelectedAmenities((prevSelected) =>
-        prevSelected.filter(item => item.id !== id)
-      );
+      // Remove if unchecked
+      setSelectedAmenities((prev) => prev.filter((item) => item.id !== id));
     }
   };
-
-  
 
   useEffect(() => {
     mutate();
@@ -158,8 +162,8 @@ const Facilities = ({
                     color: '#126FAA',
                   },
                 }}
-                checked={selectedAmenities?.some(
-                  (amenity) => amenity?.text === item?.title
+                checked={selectedAmenities.some(
+                  (amenity) => amenity.id === item.id
                 )}
                 onChange={(e) => {
                   handleCheckboxChange(

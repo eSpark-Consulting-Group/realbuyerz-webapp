@@ -79,7 +79,6 @@ const PostRequest = ({ property_Id }) => {
       purpose: values.purpose,
       propertyAddress: values.address,
       amenity: selectedAmenities,
-      amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
     };
@@ -173,6 +172,7 @@ const PostRequest = ({ property_Id }) => {
         formik.setValues({
           ...formik.values,
           amenities: amenitiesArr.map(a => a.id), // Just store IDs in formik
+          amenitiesArray: amenitiesArr, // Add this line
           address: property.propertyAddress,
           propertyCategory: property.propertyType.typeName,
           title: property.propertyName,
