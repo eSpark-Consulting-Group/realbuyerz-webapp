@@ -28,29 +28,50 @@ const FormContainer = ({
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '10px',
+            gap: '13px',
           }}
         >
           <TextField
-            label={FORM_LABEL.emailUsername}
             variant="outlined"
             fullWidth
             type="email"
             value={formik.values.email}
             name="email"
             onChange={formik.handleChange}
+            placeholder={FORM_LABEL?.emailUsername}
             inputProps={{
               style: {
+                height: `10px`,
+                borderRadius: '10px',
+                border: '1px solid #E4E4E4',
                 background: '#fff',
+                fontSize: '15px',
+                fontWeight: 400,
               },
             }}
-            InputProps={{
-              sx: {
-                '&:-webkit-autofill': {
-                  transition: 'background-color 5000s ease-in-out 0s',
-                  webkitTextFillColor: '#000',
-                  background: '#fff !important',
-                },
+            sx={{
+              '& fieldset': { border: 'none' },
+              gap: 1,
+              textAlign: 'left',
+              '& input::placeholder': {
+                color: '#000',
+                opacity: 1,
+              },
+              '& input[type=number]::-webkit-inner-spin-button': {
+                WebkitAppearance: 'none',
+                margin: 0,
+              },
+              '.MuiFormHelperText-contained': {
+                marginLeft: 0.5,
+              },
+              '& input:-webkit-autofill': {
+                WebkitBoxShadow: '0 0 0 1000px white inset !important', // Background color fix
+                WebkitTextFillColor: '#000 !important', // Text color fix
+                transition: 'background-color 5000s ease-in-out 0s !important',
+              },
+              '& .MuiOutlinedInput-root': {
+                height: '40px', // Adjust karein input ki height
+                borderRadius: '10px',
               },
             }}
           />
@@ -72,19 +93,20 @@ const FormContainer = ({
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '7px',
+              gap: '10px',
               marginBottom: '10px',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
                 justifyContent: 'space-between',
-                gap: '20px',
+                gap: { xs: '10px', sm: '10px' },
               }}
             >
               <TextField
-                label={FORM_LABEL.firstName}
+                placeholder={FORM_LABEL?.firstName}
                 name="firstName"
                 variant="outlined"
                 fullWidth
@@ -94,22 +116,45 @@ const FormContainer = ({
                   formik.touched.firstName && Boolean(formik.errors.firstName)
                 }
                 helperText={formik.touched.firstName && formik.errors.firstName}
-                InputProps={{
-                  sx: {
-                    height: '40px',
-                    // width: '182px',
-                    margin: '2px 0px',
-                    '& fieldset': {
-                      borderColor: '#E4E4E4',
-                    },
+                inputProps={{
+                  style: {
+                    height: `10px`,
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '15px',
+                    fontWeight: 400,
                   },
                 }}
-                InputLabelProps={{
-                  sx: { fontSize: '11px', color: '#000' },
+                sx={{
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
+                  },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '& input:-webkit-autofill': {
+                    WebkitBoxShadow: '0 0 0 1000px white inset !important', // Background color fix
+                    WebkitTextFillColor: '#000 !important', // Text color fix
+                    transition:
+                      'background-color 5000s ease-in-out 0s !important',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    // height: '40px', // Adjust karein input ki height
+                    borderRadius: '10px',
+                  },
                 }}
               />
               <TextField
-                label={FORM_LABEL.lastName}
+                placeholder={FORM_LABEL.lastName}
                 name="lastName"
                 variant="outlined"
                 fullWidth
@@ -119,78 +164,149 @@ const FormContainer = ({
                   formik.touched.lastName && Boolean(formik.errors.lastName)
                 }
                 helperText={formik.touched.lastName && formik.errors.lastName}
-                InputProps={{
-                  sx: {
-                    height: '40px',
-                    // width: '182px',
-                    margin: '2px 0px',
-                    '& fieldset': {
-                      borderColor: '#E4E4E4',
-                    },
+                inputProps={{
+                  style: {
+                    height: `10px`,
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '14px',
+                    fontWeight: 400,
                   },
                 }}
-                InputLabelProps={{
-                  sx: { fontSize: '11px', color: '#000' },
+                sx={{
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
+                  },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '& input:-webkit-autofill': {
+                    WebkitBoxShadow: '0 0 0 1000px white inset !important', // Background color fix
+                    WebkitTextFillColor: '#000 !important', // Text color fix
+                    transition:
+                      'background-color 5000s ease-in-out 0s !important',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    // height: '40px', // Adjust karein input ki height
+                    borderRadius: '10px',
+                  },
                 }}
               />
             </Box>
-            <TextField
-              label={FORM_LABEL.emailAddress}
-              variant="outlined"
-              fullWidth
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-              InputProps={{
-                sx: {
-                  height: '40px',
-                  margin: '2px 0px',
-                  '& fieldset': {
-                    borderColor: '#E4E4E4',
-                  },
-                },
-              }}
-              InputLabelProps={{
-                sx: { fontSize: '11px', color: '#000' },
-              }}
-            />
-            <TextField
-              label={FORM_LABEL.contactNo}
-              variant="outlined"
-              type="text"
-              fullWidth
-              name="contactNumber"
-              value={contactNumber}
-              onChange={handleInputContactNumber}
-              error={
-                formik.touched.contactNumber &&
-                Boolean(formik.errors.contactNumber)
-              }
-              helperText={
-                formik.touched.contactNumber && formik.errors.contactNumber
-              }
+            <Box
               sx={{
-                '& input[type=number]::-webkit-inner-spin-button': {
-                  '-webkit-appearance': 'none',
-                  margin: 0,
-                },
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                justifyContent: 'space-between',
+                gap: { xs: '10px', sm: '10px' },
               }}
-              InputProps={{
-                sx: {
-                  height: '40px',
-                  background: 'none',
-                  margin: '2px 0px',
-                  '& fieldset': {
-                    borderColor: '#E4E4E4',
+            >
+              <TextField
+                placeholder={FORM_LABEL?.emailAddress}
+                variant="outlined"
+                fullWidth
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                inputProps={{
+                  style: {
+                    height: `10px`,
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '14px',
+                    fontWeight: 400,
                   },
-                },
-              }}
-              InputLabelProps={{
-                sx: { fontSize: '10.5px', color: '#000' },
-              }}
-            />
+                }}
+                sx={{
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
+                  },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '& input:-webkit-autofill': {
+                    WebkitBoxShadow: '0 0 0 1000px white inset !important', // Background color fix
+                    WebkitTextFillColor: '#000 !important', // Text color fix
+                    transition:
+                      'background-color 5000s ease-in-out 0s !important',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '10px',
+                  },
+                }}
+              />
+              <TextField
+                placeholder={FORM_LABEL.contactNo}
+                variant="outlined"
+                type="number"
+                fullWidth
+                name="contactNumber"
+                value={contactNumber}
+                onChange={handleInputContactNumber}
+                error={
+                  formik.touched.contactNumber &&
+                  Boolean(formik.errors.contactNumber)
+                }
+                helperText={
+                  formik.touched.contactNumber && formik.errors.contactNumber
+                }
+                inputProps={{
+                  style: {
+                    height: `10px`,
+                    borderRadius: '5px',
+                    border: '1px solid #E4E4E4',
+                    background: '#fff',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                  },
+                }}
+                sx={{
+                  '& fieldset': { border: 'none' },
+                  gap: 1,
+                  textAlign: 'left',
+                  '& input::placeholder': {
+                    color: '#000',
+                    opacity: 1,
+                  },
+                  '& input[type=number]::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '.MuiFormHelperText-contained': {
+                    marginLeft: 0.5,
+                  },
+                  '& input:-webkit-autofill': {
+                    WebkitBoxShadow: '0 0 0 1000px white inset !important', // Background color fix
+                    WebkitTextFillColor: '#000 !important', // Text color fix
+                    transition:
+                      'background-color 5000s ease-in-out 0s !important',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '10px',
+                  },
+                }}
+              />
+            </Box>
             <PasswordAndConfirmFields
               handleFieldToggle={handleFieldToggle}
               formData={formData}

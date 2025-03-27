@@ -35,8 +35,8 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '220px',
-        height: '220px',
+        width: { xs: '200px', sm: '220px' },
+        height: { xs: '200px', sm: '220px' },
         '@media (min-width: 280px) and (max-width: 319px)': {
           width: '200px',
           height: '200px',
@@ -97,15 +97,16 @@ export default function ButtonBaseDemo({ url, handleOpen, data }) {
           />
         </ButtonBase>
       ) : (
-        <Image
+        <Box
+          component={'img'}
           src={imageSrc}
-          height={179}
-          width={197}
+          // height={179}
+          // width={150}
           alt={data?.title || 'Default Image'}
           onError={handleImageError}
-          style={{
-            width: '100%',
-            height: '100%',
+          sx={{
+            width: { xs: '95%', sm: '88%', lg: '93%' },
+            height: { xs: 'auto' },
             objectFit: 'cover',
             transition: 'opacity 0.1s ease-in-out',
             borderRadius: '100%',

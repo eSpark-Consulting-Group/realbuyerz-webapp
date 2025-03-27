@@ -8,7 +8,7 @@ import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import { AUTH_COMPONENTS } from '@/src/constants/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
 
-const RectangleBorderImage = ({ height, showComponent }) => {
+const RectangleBorderImage = ({ showComponent }) => {
   let cardComponent;
   switch (showComponent) {
     case AUTH_COMPONENTS.signup:
@@ -26,44 +26,46 @@ const RectangleBorderImage = ({ height, showComponent }) => {
     default:
       cardComponent = null;
   }
+
   return (
     <Box
-      component="div"
       sx={{
+        width: '91%',
+        height: '100%',
+        position: 'relative',
         display: 'flex',
-        justifyContent: { xs: 'center', md: 'flex-end' },
-        width: { xs: '100%', md: '427px' },
-        height: height,
-        backgroundImage: 'url("/images/signup_page/rectangle.svg")',
-        backgroundRepeat: 'no-repeat',
-        padding: '37px',
-        // paddingTop:
-        //   showComponent === LOGIN_FORM.forgetpassword ? paddingTop : '0px',
-        '@media (max-width: 960px)': {
-          background: 'none',
+        alignItems: 'center',
+        '@media(max-width: 767px)': {
+          justifyContent: 'center',
         },
       }}
     >
       <Box
         sx={{
+          width: '100%',
+          maxWidth: { md: '400px', lg: '427px' },
+          height: '100%',
+          // minHeight: '656px',
+          borderRadius: '15px',
+          border: '5px solid #1176AD',
+          py: { xs: 2, sm: 3, md: 3 },
           display: 'flex',
-          marginRight: '-210px',
-          '@media (max-width: 1286px)': {
-            marginRight: '-110px',
-          },
-          '@media (max-width: 1103px)': {
-            marginRight: '-88px',
-          },
-          '@media (max-width: 1048px)': {
-            marginRight: '-53px',
-          },
-          '@media (max-width: 600px)': {
-            marginRight: '0px',
-            justifyContent: 'center',
-          },
+          flexDirection: 'column',
+          justifyContent: 'center',
         }}
       >
-        {cardComponent}
+        <Box
+          sx={{
+            width: '100%',
+            ml: { xs: '6%', sm: '11%', md: '25%', lg: '42%' },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {cardComponent}
+        </Box>
       </Box>
     </Box>
   );

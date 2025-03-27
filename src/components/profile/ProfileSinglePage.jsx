@@ -90,38 +90,44 @@ const ProfileSinglePage = () => {
   }
 
   return (
-    <>
-      <Box
-        sx={{
-          mx: 'auto',
-          mb: 16,
-          mt: 4,
-          width: '70vw',
-        }}
-      >
-        <>
-          <AgentProfiles
-            data={user}
-            forRentCount={forRentCount}
-            forSellCount={forSellCount}
-          />
-          <AgentProperties
-            data={user}
-            allLink={`/profile/${id}/projects`}
-            sellLink={`/profile/${id}/projects/sell`}
-            rentLink={`/profile/${id}/projects/rent`}
-            allProperties={allProperties}
-            forRentCount={forRentCount}
-            forSellCount={forSellCount}
-            sellData={sellData}
-            rentData={rentData}
-          />
-          <AgentAbout data={user} />
-          <RecentPropertyTitle data={user} />
+    <Box
+      sx={{
+        width: '90%',
+        mx: 'auto',
+        pt: { xs: 4, md: 6, lg: 8 },
+      }}
+    >
+      <>
+        <AgentProfiles
+          data={user}
+          forRentCount={forRentCount}
+          forSellCount={forSellCount}
+        />
+        <AgentProperties
+          data={user}
+          allLink={`/profile/${id}/projects`}
+          sellLink={`/profile/${id}/projects/sell`}
+          rentLink={`/profile/${id}/projects/rent`}
+          allProperties={allProperties}
+          forRentCount={forRentCount}
+          forSellCount={forSellCount}
+          sellData={sellData}
+          rentData={rentData}
+        />
+        <AgentAbout data={user} />
+        <RecentPropertyTitle data={user} />
+        <Box
+          sx={{
+            pb: { xs: '100px', sm: '70px', md: '60px', lg: '75px' },
+            mx: 'auto',
+            width: { xs: '82%', sm: '80%' },
+            maxWidth: '1320px',
+          }}
+        >
           <AgentSlider data={selectedProjectbyAgent} />
-        </>
-      </Box>
-    </>
+        </Box>
+      </>
+    </Box>
   );
 };
 

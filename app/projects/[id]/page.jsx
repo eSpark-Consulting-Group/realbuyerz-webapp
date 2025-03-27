@@ -11,11 +11,7 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = () => {
-  return (
-    <>
-      <ProjectsSinglePage />
-    </>
-  );
+  return <ProjectsSinglePage />;
 };
 
 export default Page;

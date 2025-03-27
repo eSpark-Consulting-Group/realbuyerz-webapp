@@ -1,5 +1,4 @@
 'use client';
-
 import BrowseByCategory from '@/src/components/home/BrowseByCategory';
 import HeroSection from '@/src/components/home/HeroSection';
 import NewlyListedProperties from '@/src/components/home/NewlyListedProperties';
@@ -23,15 +22,13 @@ const FeaturedProperties = dynamic(
 const HomePage = () => {
   return (
     <>
-      <div className="min-h-screen">
-        <HeroSection />
-        <BrowseByCategory data={CATEGORIES} />
-        <FeaturedProperties />
-        <CreateAccount />
-        <OurHomePartners data={PARTNERS} />
-        <NewlyListedProperties data={AGENT_PROFILE_DATA} />
-        <PopularLocations data={POPULAR_LOCATIONS_DATA} />
-      </div>
+      <HeroSection />
+      <BrowseByCategory data={CATEGORIES} />
+      <FeaturedProperties />
+      <CreateAccount />
+      <OurHomePartners data={PARTNERS} />
+      <NewlyListedProperties data={AGENT_PROFILE_DATA} />
+      <PopularLocations data={POPULAR_LOCATIONS_DATA} />
     </>
   );
 };
