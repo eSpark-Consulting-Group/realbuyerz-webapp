@@ -460,6 +460,7 @@ export const POST_LISTING_VALUES = {
   status: '',
   images: [],
   videos: [],
+  amenity: [],
   title: '',
   location: '',
   description: '',

@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-const Avatar = ({ data, minWidth = '40px', height = '40px', mobile }) => {
+const Avatar = ({ data, minWidth = '40px', height = '40px', mobile, chat }) => {
   function renderAvatarName(name) {
     // Split the name into individual components
     const nameComponents = name.split(' ');
@@ -31,7 +31,7 @@ const Avatar = ({ data, minWidth = '40px', height = '40px', mobile }) => {
       return (
         <Box
           component="img"
-          src={`/images/${data?.avatar}.svg`}
+          src={chat ? data?.avatar :`/images/${data?.avatar}.svg`}
           sx={{
             width: minWidth,
             height,

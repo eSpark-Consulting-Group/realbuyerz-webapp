@@ -10,6 +10,9 @@ export const coverLetterValidation = yup.object({
   propertyType: yup.string(''),
   city: yup.string('Enter city').required('City is required'),
   area: yup.string('Enter area').required('Area is required'),
+  address: yup.string('Enter address').required('Address is required'),
+  longitude: yup.string('Enter longitude').required('Location is required'),
+  latitude: yup.string('Enter latitude').required('Location is required'),
   // areaUnit: yup.string('Enter area unit').required('Area unit is required'),
   amount: yup.string('Enter amount').required('Amount is required'),
   // amountCurrency: yup
@@ -18,6 +21,7 @@ export const coverLetterValidation = yup.object({
   installmentAvailable: yup.boolean(),
   readyPossession: yup.boolean(),
   featuresAndAmenities: yup.mixed(),
+  amenity: yup.array().min(1, 'Amenity is required'),
   images: yup.array().min(1, 'Image is required'),
-  videos: yup.array().min(1, 'Video is required'),
+  // videos: yup.array().min(1, 'Video is required'),
 });

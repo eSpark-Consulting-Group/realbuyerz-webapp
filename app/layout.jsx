@@ -8,6 +8,9 @@ import theme from './theme';
 import './globals.css';
 import { redirect, usePathname } from 'next/navigation';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '@/src/redux/store';
@@ -16,6 +19,9 @@ import { FOOTER_CTA_DATA, FOOTER_DATA } from '@/src/constants/Constants';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/layouts/FooterCta';
 import Loader from './Loader'; // One single Loader component
+import NotificationListener from '@/src/components/layouts/NotificationListener';
+import NewMessageListener from '@/src/components/SocketEvents/NewMessageListener';
+import { SocketProvider } from '@/src/context/SocketContext';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -52,18 +58,29 @@ const RootLayout = ({ children }) => {
       <body cz-shortcut-listen="true">
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <PersistGate loading={<Loader />} persistor={persistor}>
-              <ThemeProvider theme={theme}>
-                <CssBaseline />
-                {!isDashboard && <MainHeader />}
-                <Box>
-                  <PageContent>{children}</PageContent>
-                </Box>
-                {!isDashboard && !isAuthPages && (
-                  <FooterCta data={FOOTER_CTA_DATA} />
-                )}
-                {!isDashboard && !isAuthPages && <Footer data={FOOTER_DATA} />}
-              </ThemeProvider>
+            <PersistGate
+              loading={<Loader />} // Use the same Loader here for Redux persistence
+              persistor={persistor}
+            >
+              <SocketProvider>
+                <ThemeProvider theme={theme}>
+                  <CssBaseline />
+                  {!isDashboard && <MainHeader />}
+                  <Box>
+                    <PageContent>{children}</PageContent>
+                  </Box>
+                  {!isDashboard && !isAuthPages && (
+                    <FooterCta data={FOOTER_CTA_DATA} />
+                  )}
+                  {!isDashboard && !isAuthPages && (
+                    <Footer data={FOOTER_DATA} />
+                  )}
+
+                  <ToastContainer position="top-right" autoClose={3000} />
+                  <NotificationListener />
+                  <NewMessageListener />
+                </ThemeProvider>
+              </SocketProvider>
             </PersistGate>
           </Provider>
         </QueryClientProvider>

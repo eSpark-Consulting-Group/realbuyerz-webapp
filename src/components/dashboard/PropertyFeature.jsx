@@ -11,12 +11,13 @@ const PropertyFeatures = ({
   selectedAmenities,
   handleSeletedAmenites,
   propertyData,
+  getAmenities,
 }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectedItems = (items) => {
     setSelectedItems(items);
-  };
+  }
 
   return (
     <Grid container>
@@ -65,6 +66,7 @@ const PropertyFeatures = ({
               <PropertyFacilities
                 propertyInformation={propertyData?.feature}
                 formik={formik}
+                selectedAmenities={selectedAmenities}
               />
               <AddAmenities
                 formik={formik}
@@ -74,6 +76,7 @@ const PropertyFeatures = ({
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}
+                getAmenities={getAmenities}
               />
             </Box>
           </Box>

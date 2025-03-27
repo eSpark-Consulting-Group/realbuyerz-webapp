@@ -136,6 +136,7 @@ const Footer = ({ data }) => {
                     pt: '4px',
                     fontSize: { xs: '10px', sm: '12px', md: '14px' },
                     fontWeight: 400,
+                    color: '#fff',
                   }}
                 >
                   {link?.title}

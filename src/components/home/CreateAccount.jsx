@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Cookie from 'js-cookie';
 import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -45,6 +47,7 @@ const CreateAccount = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState('');
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = Cookie.get('token');
@@ -56,6 +59,11 @@ const CreateAccount = () => {
       console.log('User is logged in with role:', userType);
     } else {
       setIsLoggedIn(false);
+      localStorage?.removeItem('token');
+  
+      Cookie?.remove('token');
+      Cookie?.remove('userType');
+      dispatch(setLoggedOut());
       console.log('User is not logged in');
     }
   }, []);

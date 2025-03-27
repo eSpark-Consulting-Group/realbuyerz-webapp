@@ -42,7 +42,7 @@ const PostRequest = ({ property_Id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [previousData, setPreviousData] = useState({});
+  const [previousData] = useState({});
   const [filteredUserProperty, setFilteredUserProperty] = useState(null);
 
   const [Action, setAction] = useState('');
@@ -53,10 +53,14 @@ const PostRequest = ({ property_Id }) => {
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const amenities = transformAmenities(getAmenities);
-
   const handleSeletedAmenites = () => {
-    updateSelectedAmenities(amenities, setSelectedAmenities);
+    if(getAmenities?.length === 0){
+      formik?.setFieldValue('amenity', []);
+    } else {
+      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+    }
+
+    updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -78,7 +82,8 @@ const PostRequest = ({ property_Id }) => {
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
       propertyAddress: values.address,
-      amenity: values.amenities,
+      amenity: selectedAmenities,
+      amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
     };
@@ -95,6 +100,8 @@ const PostRequest = ({ property_Id }) => {
       updatedData.propertyStatus = false;
       mutate(updatedData);
     }
+    console.log('Updated Data:', updatedData);
+    console.log('Updated Data:', updatedData);
   };
 
   const handleClickOpen = () => {
@@ -126,15 +133,13 @@ const PostRequest = ({ property_Id }) => {
     },
   });
 
-  // const initialValues = { // Todo Faria pls check why this code is defined here if not used
-  //   ...POST_REQUEST_VALUES,
-  //   amount: Number(POST_REQUEST_VALUES.amount) || 0,
-  // };
-
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       ...POST_REQUEST_VALUES,
+      amenities: [],
       address: '',
+      propertyCategory: '',
     },
     validationSchema: postRequestValidation,
     onSubmit: (values, action) => {
@@ -166,22 +171,23 @@ const PostRequest = ({ property_Id }) => {
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
       setFilteredUserProperty(property);
-      let singleArr = [];
-      Object.keys(items).forEach((val) => {
-        if (items[val].length > 0) {
-          singleArr = items[val][0];
-        }
-      });
-
-      const amenitiesArr = transformAmenities(singleArr.amenities);
-      formik.setFieldValue('title', singleArr.propertyName);
-      formik.setFieldValue('description', singleArr.propertyDescription);
-      formik.setFieldValue('amount', singleArr.propertyPrice);
-      formik.setFieldValue('area', singleArr.propertyArea);
-      formik.setFieldValue('city', singleArr.propertyCity);
-      formik.setFieldValue('amenities', amenitiesArr);
-
-      setPreviousData(formik.values);
+  
+      if (property) {
+        const amenitiesArr = transformAmenities(property.amenity);
+        formik.setValues({
+          ...formik.values,
+          amenities: amenitiesArr.map(a => a.id), 
+          amenitiesArray: amenitiesArr, 
+          address: property.propertyAddress,
+          propertyCategory: property.propertyType.typeName,
+          title: property.propertyName,
+          description: property.propertyDescription,
+          amount: property.propertyPrice,
+          area: property.propertyArea,
+          city: property.propertyCity,
+        });
+        setSelectedAmenities(amenitiesArr);
+      }
     },
     onError: (error) => {
       console.error(error);
@@ -198,7 +204,7 @@ const PostRequest = ({ property_Id }) => {
   formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', JSON.stringify(amenities));
+  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
 
@@ -235,6 +241,7 @@ const PostRequest = ({ property_Id }) => {
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
+              getAmenities={getAmenities}
             />
             <SubmitButton
               formik={formik}

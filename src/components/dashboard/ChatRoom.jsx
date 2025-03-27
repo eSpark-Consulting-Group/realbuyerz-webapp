@@ -1,27 +1,137 @@
 import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
-import { CHAT_MESSAGES } from '@/src/constants/Chats';
-import { Box, Grid, Menu, MenuItem, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, Menu, MenuItem, Typography } from '@mui/material';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import RenderFileUploads from './RenderFileUploads';
 import RenderMessage from './RenderMessage';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { formatData } from '@/src/utils/formatMessageData';
+import { useSocket } from '@/src/context/SocketContext';
+import { getSingleRoomMessage } from '@/src/utils/apis/chat/getSingleRoomMessage';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { getAllMessages, getMessageWRTChatBox } from '@/src/redux/slices/chat/chatsSlice';
+import { sendAttachment } from '@/src/utils/apis/chat/sendAttachment';
+import { useInView } from "react-intersection-observer";
 
 const AudioRecorder = dynamic(() => import('./AudioRecorder'), {
   ssrc: false,
 });
-const ChatRoom = ({ selectedChatRoom }) => {
-  const [clickedMessageForReactionId, setClickedMessageForReactionId] =
-    useState('');
-  const [isReplying, setIsReplying] = useState(false);
-  const [displayUploadOptions, setDisplayUploadOptions] = useState(false);
+const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
+  const { socket2 } = useSocket();
+
+  const { messages, messageWRTChatBox } = useSelector((state) => state.chats);
+  const { user, userProfile } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch()
+
+  const [displayUploadOptions, setDisplayUploadOptions] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
-  const [replyingMessage, setReplyingMessage] = useState({});
   const [isSendingVoiceNote, setIsSendingVoiceNote] = useState(false);
   const messageFieldRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [inViewLoader, setInViewLoader] = useState(false);
+  const [page, setPage] = useState(1)
+  const [conversation, setConversation] = useState([]);
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+
+  const { ref, inView } = useInView({ threshold: 0 });
+
+  const {
+    data: messageD,
+    isLoading,
+    isSuccess,
+    isFetching,
+  } = useQuery({
+    queryKey: ['chatMessage', selectedChatRoom, totalPageOfMessage],
+    queryFn: async () =>
+      getSingleRoomMessage(selectedChatRoom?.chatId, totalPageOfMessage?.currentPage),
+    enabled: !!selectedChatRoom?.chatId && totalPageOfMessage?.currentPage > 1,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+
+  useEffect(() => {
+    if (
+      isSuccess &&
+      messageD &&
+      totalPageOfMessage?.hasMore &&
+      totalPageOfMessage?.currentPage > 1
+    ) {
+      if (messageD?.data?.messages?.length) {
+        if (
+          messages?.some((m) =>
+            messageD?.data?.messages?.find((msg) => msg._id === m._id)
+          )
+        ) {
+          return;
+        }
+
+        if (
+          messages?.some(
+            (m) => !messageD?.data?.messages?.find((msg) => msg._id === m._id)
+          )
+        ) {
+          const update = messageWRTChatBox?.map((p) => {
+            if (p.chatId === selectedChatRoom?.chatId) {
+              return {
+                ...p,
+                hasMore: totalPageOfMessage?.currentPage < messageD?.data?.totalPages,
+              };
+            }
+            return { ...p };
+          });
+
+          dispatch(getMessageWRTChatBox(update));
+          dispatch(getAllMessages([...messageD?.data?.messages, ...messages]));
+          setInViewLoader(false);
+        }
+      }
+    }
+  }, [messageD, isSuccess, isLoading, isFetching, selectedChatRoom, messages]);
+
+  useEffect(() => {
+    if (
+      page === totalPageOfMessage?.totalPages ||
+      !totalPageOfMessage?.hasMore ||
+      isFetching ||
+      totalPageOfMessage?.currentPage === totalPageOfMessage?.totalPages ||
+      inViewLoader
+    ) {
+      return;
+    }
+
+    if (
+      inView &&
+      !isLoading &&
+      !isFetching &&
+      page !== totalPageOfMessage?.totalPages
+    ) {
+      setInViewLoader(true);
+      const update = messageWRTChatBox.map((p) => {
+        if (p.chatId === totalPageOfMessage?.chatId) {
+          return {
+            ...p,
+            currentPage: totalPageOfMessage?.currentPage + 1,
+          };
+        }
+        return { ...p };
+      });
+
+      dispatch(getMessageWRTChatBox(update));
+      setPage((prev) => prev + 1);
+    }
+  }, [
+    inView,
+    isLoading,
+    isFetching,
+    selectedChatRoom,
+    messageWRTChatBox?.length,
+  ]);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     event.stopPropagation();
@@ -30,16 +140,26 @@ const ChatRoom = ({ selectedChatRoom }) => {
     event.stopPropagation();
     setAnchorEl(null);
   };
-  const handleCancelReply = () => {
-    setIsReplying(false);
-    setReplyingMessage({});
-  };
-
-  const [conversation, setConversation] = useState([]);
 
   useEffect(() => {
-    setConversation([...CHAT_MESSAGES.conversation]);
-  }, [CHAT_MESSAGES]);
+    if (messages?.length) {
+      const filterWRTChatRoom = messages?.filter(
+        (msg) => msg.chat === selectedChatRoom?.chatId
+      );
+      const result = Object.values(formatData(filterWRTChatRoom, user));
+      setConversation(result);
+    } else {
+      setConversation([]);
+    }
+  }, [messages, selectedChatRoom]);
+
+  useEffect(() => {
+    if(conversation.length){
+      setTimeout(() => {
+        setHasLoadedOnce(true);
+      }, 300)
+    }
+  }, [conversation])
 
   const uploadOptionsRef = useRef(null);
 
@@ -90,6 +210,17 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const [isSendingFiles, setIsSendingFiles] = useState(false);
   const handleFileInput = (event) => {
     const files = event.target.files;
+    
+    if (files.length + fileInput.length > 5) {
+      toast.error('You can only upload 5 files at a time');
+      return;
+    }
+
+    if (files.length > 5) {
+      toast.error('You can only upload 5 files at a time');
+      return;
+    }
+
     const fileArray = Array.from(files).map((data) => ({
       data,
       id: generateString(),
@@ -102,6 +233,10 @@ const ChatRoom = ({ selectedChatRoom }) => {
   const handleRemoveFile = (id) => {
     const tempFiles = fileInput?.filter((el) => el.id !== id);
     setFileInput(tempFiles);
+
+    if(tempFiles.length === 0){
+      setIsSendingFiles(false)
+    }
   };
 
   const handleCancelSendingAudio = () => setIsSendingVoiceNote(false);
@@ -130,9 +265,29 @@ const ChatRoom = ({ selectedChatRoom }) => {
   };
 
   const [message, setMessage] = useState('');
+  const [dataToSend, setDataToSend] = useState();
+
+  useEffect(() => {
+    if (selectedChatRoom) {
+      setDataToSend({
+        members: [selectedChatRoom?.otherUserId],
+        chatId: selectedChatRoom.chatId,
+      });
+    }
+  }, [selectedChatRoom]);
+
   const handleInput = () => {
-    setMessage(messageFieldRef.current.innerHTML);
+    const content = messageFieldRef.current.innerHTML;
+
+    setMessage(content);
+
+    if (content.trim().length > 0 || content !== '<br>') {
+      socket2.emit('START_TYPING', dataToSend);
+    } else {
+      socket2.emit('STOP_TYPING', dataToSend);
+    }
   };
+
   const handleBlur = () => {
     setMessage(messageFieldRef.current.innerHTML);
   };
@@ -155,92 +310,57 @@ const ChatRoom = ({ selectedChatRoom }) => {
     }
   };
 
-  function generate15CharsDigitUniqueid() {
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const sections = [4, 6, 3]; // Define the number of characters in each section
-
-    const generateSection = (length) => {
-      let section = '';
-      for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        section += characters[randomIndex];
-      }
-      return section;
-    };
-
-    const uniqueId = sections.map(generateSection).join('-');
-    return uniqueId;
-  }
+  const { mutate, isPending: uploadLoading } = useMutation({
+    mutationFn: sendAttachment,
+    onSuccess: () => {
+      setFileInput([]);
+      setIsSendingFiles(false)
+    },
+    onError: (err) => {
+      console.log(err);
+    }
+  });
 
   const sendMessage = () => {
-    const tempConversation = [...conversation];
-    const lastMessageDate = tempConversation[tempConversation.length - 1];
     if (isSendingFiles) {
       if (!fileInput.length) {
         return;
-      } else if (
-        lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')
-      ) {
-        lastMessageDate?.messages?.push({
-          timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
-          id: generate15CharsDigitUniqueid(),
-          sender: 'You',
-          content: fileInput,
-          read: false,
-          contentType: 'image',
-        });
-        setFileInput([]);
-      } else {
-        tempConversation.push({
-          date: moment(new Date()).format('yyyy-MM-DD'),
-          messages: [
-            {
-              timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
-              id: generate15CharsDigitUniqueid(),
-              sender: 'You',
-              content: fileInput,
-              read: false,
-              contentType: 'image',
-            },
-          ],
-          read: false,
-        });
-        setFileInput([]);
       }
+      const filesObject = fileInput.map(file => file.data)
+      const body = {
+        files: filesObject,
+        chatId: selectedChatRoom.chatId
+      }
+      mutate(body)
     } else {
       messageFieldRef.current.innerText = '';
-      if (message.trim() === '') return;
-      if (lastMessageDate?.date === moment(new Date()).format('yyyy-MM-DD')) {
-        lastMessageDate?.messages.push({
-          timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
-          id: generate15CharsDigitUniqueid(),
-          sender: 'You',
-          content: message.trim(),
-          read: false,
-          contentType: 'text',
-        });
-      } else {
-        tempConversation.push({
-          date: moment(new Date()).format('yyyy-MM-DD'),
-          messages: [
-            {
-              timestamp: moment(new Date()).format('yyyy-MM-DDThh:mm:ss'),
-              id: generate15CharsDigitUniqueid(),
-              sender: 'You',
-              content: message.trim(),
-              read: false,
-              contentType: 'text',
-            },
-          ],
-          read: false,
-        });
+      if (message.trim() === '') {
+        toast?.error('Message can not be empty.');
+        return;
       }
-      setConversation(tempConversation);
+
+      const finalMessage = {
+        chatId: selectedChatRoom.chatId,
+        members: [selectedChatRoom?.otherUserId, userProfile?.chatId],
+        messages: message,
+      };
+
+      if (!finalMessage?.chatId) {
+        toast.error('Chat id is required');
+        return;
+      }
+
+      if (finalMessage.members.includes(null)) {
+        toast.error('Member id is required');
+        return;
+      }
+      socket2.emit('NEW_MESSAGE', finalMessage);
+
       // Clear the input after sending the message
       setMessage('');
       setFileInput([]);
       setIsSendingFiles(false);
+      socket2.emit('STOP_TYPING', dataToSend);
     }
   };
 
@@ -248,7 +368,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
 
   const conversationRef = useRef(null);
   const scrollToBottom = () => {
-    if (conversationRef.current) {
+    if (conversationRef.current && page === 1) {
       const lastComponent = conversationRef.current;
       const additionalOffset = 20; // Additional 20px to account for margin-bottom
 
@@ -268,7 +388,7 @@ const ChatRoom = ({ selectedChatRoom }) => {
   };
   useEffect(() => {
     scrollToBottom();
-  }, [conversation]);
+  }, [conversation, isTypingUser]);
 
   return (
     <Grid
@@ -303,7 +423,12 @@ const ChatRoom = ({ selectedChatRoom }) => {
               justifyContent: 'space-between',
             }}
           >
-            <Avatar data={selectedChatRoom} minWidth={'50px'} height={'50px'} />
+            <Avatar
+              data={selectedChatRoom}
+              minWidth={'50px'}
+              height={'50px'}
+              chat
+            />
             <Typography
               sx={{
                 marginLeft: '5px',
@@ -357,11 +482,21 @@ const ChatRoom = ({ selectedChatRoom }) => {
           sx={{
             padding: '12px 11px 8px 19px',
             maxHeight: '400px',
-            overflowY: 'auto',
             borderBottom: 'solid 1px #E4E4E4',
           }}
+          className="scrollable"
         >
           <Box ref={conversationRef}>
+            {conversation?.length > 0 &&
+              totalPageOfMessage?.hasMore &&
+              hasLoadedOnce && (
+                <div
+                  ref={ref}
+                  style={{ minHeight: '10px', textAlign: 'center' }}
+                >
+                  {inViewLoader && <CircularProgress size={20} />}
+                </div>
+              )}
             {conversation?.map((days, daysIndex) => {
               return (
                 <Box key={daysIndex}>
@@ -372,21 +507,12 @@ const ChatRoom = ({ selectedChatRoom }) => {
                     const isSameSenderAsPrevious =
                       prevSender === message.sender;
                     prevSender = message.sender;
-                    //   return renderMessage(message, isSameSenderAsPrevious);
                     return (
                       <RenderMessage
                         key={msgIndex}
                         data={message}
                         selectedChatRoom={selectedChatRoom}
                         isSameSenderAsPrevious={isSameSenderAsPrevious}
-                        clickedMessageForReactionId={
-                          clickedMessageForReactionId
-                        }
-                        setClickedMessageForReactionId={
-                          setClickedMessageForReactionId
-                        }
-                        setIsReplying={setIsReplying}
-                        setReplyingMessage={setReplyingMessage}
                       />
                     );
                   })}
@@ -394,15 +520,20 @@ const ChatRoom = ({ selectedChatRoom }) => {
               );
             })}
           </Box>
+
+          {isTypingUser?.userId === userProfile?.id &&
+            selectedChatRoom?.chatId === isTypingUser?.chatId && (
+              <div className="typing-indicator">
+                <div className="dots">...</div>
+              </div>
+            )}
         </Box>
         <Box
           sx={{
             padding: { xs: '5px', sm: '12px 11px 8px 19px' },
           }}
           display={'flex'}
-          alignItems={
-            isReplying || fileInput.length !== 0 ? 'flex-end' : 'center'
-          }
+          alignItems={fileInput.length !== 0 ? 'flex-end' : 'center'}
         >
           <Box
             sx={{
@@ -415,67 +546,6 @@ const ChatRoom = ({ selectedChatRoom }) => {
               padding: { xs: '7px', sm: '14px' },
             }}
           >
-            {isReplying && (
-              <Box
-                className="reply-content-inbox"
-                sx={{
-                  //   backgroundColor: '#eee',
-                  backgroundColor:
-                    replyingMessage?.sender === 'You' ? '#FFEEE7' : '#eee',
-                  padding: '10px',
-                  marginBottom: '10px',
-                }}
-              >
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Box
-                    component={'img'}
-                    src="/icons/ReplyIcon.svg"
-                    sx={{ width: '30px', height: '20px' }}
-                    alt={'Reply'}
-                  />
-                  <Box
-                    component={'img'}
-                    src="/icons/CloseIcon.svg"
-                    sx={{
-                      width: '20px',
-                      height: '20px',
-                      borderRadius: '50%',
-                      cursor: 'pointer',
-                    }}
-                    alt={'Reply'}
-                    onClick={handleCancelReply}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    padding: '0 10px',
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      overflow: 'hidden', // Hide any overflowing content
-                      textOverflow: 'ellipsis', // Show an ellipsis (...) if text overflows
-                      whiteSpace: 'nowrap',
-                      fontSize: '13px',
-                    }}
-                  >
-                    {replyingMessage?.content}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: '11px', md: '14px', color: '#979797' },
-                    }}
-                  >{`${replyingMessage?.sender}, ${moment(replyingMessage?.timestamp).format('ddd, D MMM YYYY, hh:mm:a')}`}</Typography>
-                </Box>
-              </Box>
-            )}
-
             <RenderFileUploads
               fileInput={fileInput}
               handleRemoveFile={handleRemoveFile}
@@ -488,7 +558,31 @@ const ChatRoom = ({ selectedChatRoom }) => {
               display={'flex'}
               alignItems={'center'}
             >
-              {!isSendingVoiceNote && (
+              <input
+                type={'file'}
+                style={{ display: 'none' }}
+                id="image-input"
+                onChange={handleFileInput}
+                multiple
+                accept=".png, .jpg, .jpeg"
+              />
+              <input
+                type={'file'}
+                style={{ display: 'none' }}
+                id="file-input"
+                onChange={handleFileInput}
+                multiple
+                accept=".pdf, .docx, .xlsx"
+              />
+              <input
+                type={'file'}
+                style={{ display: 'none' }}
+                id="all-file-input"
+                onChange={handleFileInput}
+                multiple
+                accept=".png, .jpg, .jpeg, .pdf, .docx, .xlsx"
+              />
+              {!isSendingVoiceNote && !isSendingFiles && (
                 <Box ref={uploadOptionsRef}>
                   <Box
                     sx={{
@@ -508,7 +602,11 @@ const ChatRoom = ({ selectedChatRoom }) => {
                         ? 'anition-upload-files-icon'
                         : 'remove-anition-upload-files-icon',
                     ].join(' ')}
-                    onClick={() => setDisplayUploadOptions(true)}
+                    onClick={() =>
+                      displayUploadOptions
+                        ? toggleVisibility()
+                        : setDisplayUploadOptions(true)
+                    }
                   >
                     <Box
                       component={'img'}
@@ -519,23 +617,16 @@ const ChatRoom = ({ selectedChatRoom }) => {
                       }}
                       alt={'Send File'}
                     />
-                    <input
-                      type={'file'}
-                      style={{ display: 'none' }}
-                      id="file-input"
-                      onChange={handleFileInput}
-                      multiple
-                    />
                   </Box>
                   {displayUploadOptions && (
                     <Box
                       sx={{
                         width: '100px',
-                        border: '1px solid #ccc',
+                        // border: '1px solid #ccc',
                         position: 'absolute',
-                        backgroundColor: '#fff',
+                        // backgroundColor: '#fff',
                         bottom: '35px',
-                        borderRadius: '5px',
+                        // borderRadius: '5px',
                       }}
                       className={
                         displayUploadOptions && !isClosing
@@ -543,51 +634,57 @@ const ChatRoom = ({ selectedChatRoom }) => {
                           : 'draw-out-animation'
                       }
                     >
-                      <label htmlFor="file-input">
+                      <label htmlFor="image-input">
                         <Box
                           sx={{
+                            width: { xs: '20px', sm: '32px' },
+                            minWidth: { xs: '20px', sm: '32px' },
+                            height: { xs: '20px', sm: '32px' },
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: '50%',
                             display: 'flex',
                             alignItems: 'center',
-                            marginBottom: '10px',
-                            marginTop: '10px',
-                            paddingX: '10px',
+                            justifyContent: 'center',
                             cursor: 'pointer',
                           }}
                         >
                           <Box
                             sx={{
-                              width: '20px',
-                              height: '20px',
-                              marginRight: '5px',
+                              width: '18px',
+                              height: '18px',
                             }}
                             alt={'Image'}
                             component={'img'}
-                            src={'/icons/ImageIcon.svg'}
+                            src={'/icons/select-image.svg'}
                           />
-                          <Typography>Image</Typography>
+                          {/* <Typography>Image</Typography> */}
                         </Box>
                       </label>
                       <label htmlFor="file-input">
                         <Box
                           sx={{
+                            width: { xs: '20px', sm: '32px' },
+                            minWidth: { xs: '20px', sm: '32px' },
+                            height: { xs: '20px', sm: '32px' },
+                            backgroundColor: '#9B9B9B',
+                            borderRadius: '50%',
                             display: 'flex',
                             alignItems: 'center',
-                            marginBottom: '10px',
-                            paddingX: '10px',
+                            justifyContent: 'center',
                             cursor: 'pointer',
+                            marginTop: '4px',
                           }}
                         >
                           <Box
                             sx={{
-                              width: '20px',
-                              height: '20px',
-                              marginRight: '5px',
+                              width: '18px',
+                              height: '18px',
                             }}
                             alt={'File'}
                             component={'img'}
-                            src={'/icons/FileIcon.svg'}
+                            src={'/icons/select-file.svg'}
                           />
-                          <Typography>File</Typography>
+                          {/* <Typography>File</Typography> */}
                         </Box>
                       </label>
                       <Box
@@ -620,32 +717,34 @@ const ChatRoom = ({ selectedChatRoom }) => {
                   )}
                 </Box>
               )}
-              <Box sx={{ padding: '0 10px', width: '100%' }}>
-                {isSendingVoiceNote ? (
-                  <AudioRecorder
-                    handleCancelSendingAudio={handleCancelSendingAudio}
-                  />
-                ) : (
-                  <Box
-                    role={'none'}
-                    className={'contentEditable'}
-                    contentEditable
-                    onInput={handleInput}
-                    onKeyDown={handleKeyPress}
-                    aria-label="Type your message..."
-                    aria-placeholder="Type your message..."
-                    ref={messageFieldRef}
-                    onBlur={handleBlur}
-                    onFocus={() => messageFieldRef.current.focus()}
-                    suppressContentEditableWarning={true}
-                  >
-                    {message.trim() === '' &&
-                      document?.activeElement !== messageFieldRef.current && (
-                        <div className={'placeholder'}>Write message</div>
-                      )}
-                  </Box>
-                )}
-              </Box>
+              {!isSendingFiles && (
+                <Box sx={{ padding: '0 10px', width: '100%' }}>
+                  {isSendingVoiceNote ? (
+                    <AudioRecorder
+                      handleCancelSendingAudio={handleCancelSendingAudio}
+                    />
+                  ) : (
+                    <Box
+                      role={'none'}
+                      className={'contentEditable'}
+                      contentEditable
+                      onInput={handleInput}
+                      onKeyDown={handleKeyPress}
+                      aria-label="Type your message..."
+                      aria-placeholder="Type your message..."
+                      ref={messageFieldRef}
+                      onBlur={handleBlur}
+                      onFocus={() => messageFieldRef.current.focus()}
+                      suppressContentEditableWarning={true}
+                    >
+                      {message.trim() === '' &&
+                        document?.activeElement !== messageFieldRef.current && (
+                          <div className={'placeholder'}>Write message</div>
+                        )}
+                    </Box>
+                  )}
+                </Box>
+              )}
               <Box
                 src="/icons/SendMessageIcon.svg"
                 component={'img'}
@@ -664,21 +763,36 @@ const ChatRoom = ({ selectedChatRoom }) => {
               />
             </Box>
           </Box>
-          <Box
-            src="/icons/SendMessageIcon.svg"
-            component={'img'}
-            alt={'Send Message'}
-            sx={{
-              marginLeft: { xs: '5px', sm: '10px' },
-              marginRight: { xs: '5px', sm: '10px' },
-              width: { xs: '20px', sm: '36px' },
-              height: { xs: '20px', sm: '36px' },
-              '@media (min-width: 280px) and (max-width: 1526px)': {
-                display: 'none',
-              },
-            }}
-            onClick={sendMessage}
-          />
+          {uploadLoading ? (
+            <Box
+              component={'span'}
+              sx={{
+                marginLeft: { xs: '5px', sm: '10px' },
+                marginRight: { xs: '5px', sm: '10px' },
+                '@media (min-width: 280px) and (max-width: 1526px)': {
+                  display: 'none',
+                },
+              }}
+            >
+              <CircularProgress size={20} />
+            </Box>
+          ) : (
+            <Box
+              src="/icons/SendMessageIcon.svg"
+              component={'img'}
+              alt={'Send Message'}
+              sx={{
+                marginLeft: { xs: '5px', sm: '10px' },
+                marginRight: { xs: '5px', sm: '10px' },
+                width: { xs: '20px', sm: '36px' },
+                height: { xs: '20px', sm: '36px' },
+                '@media (min-width: 280px) and (max-width: 1526px)': {
+                  display: 'none',
+                },
+              }}
+              onClick={sendMessage}
+            />
+          )}
         </Box>
       </Box>
     </Grid>

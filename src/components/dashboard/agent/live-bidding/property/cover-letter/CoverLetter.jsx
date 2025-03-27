@@ -50,6 +50,12 @@ const CoverLetter = () => {
   );
 
   const handleSeletedAmenites = () => {
+    if(getAmenities?.length === 0){
+      formik?.setFieldValue('amenity', []);
+    } else {
+      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+    }
+    
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -139,17 +145,17 @@ const CoverLetter = () => {
   formData.append('userPropertyId', id);
   formData.append('propertyType', formik?.values.propertyCategory);
   formData.append('propertyDescription', formik?.values.description);
-  formData.append('image', formik?.values.images[0]);
   formData.append('propertyPrice', formik?.values.amount);
   formData.append('propertyArea', formik?.values.area);
   formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', 'abc abc');
+  formData.append('propertyAddress', formik?.values.address);
   formData.append('propertyCity', formik?.values.city);
   formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', formik?.values.amenity || '');
+  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
+  formik?.values.images?.length && formik?.values.images?.forEach(file => formData.append('image', file))
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
@@ -189,6 +195,7 @@ const CoverLetter = () => {
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}
+                getAmenities={getAmenities}
               />
               <PropertyGallery formik={formik} propertyData={COVER_LETTER} />
               <SubmitButton

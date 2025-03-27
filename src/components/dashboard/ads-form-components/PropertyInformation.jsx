@@ -71,7 +71,7 @@ const PropertyInformation = ({ postData, formik }) => {
                   position: 'relative',
                   gap: 1,
                   mt: 0.8,
-                  mb: 1,
+                  // mb: 1,
                 }}
               >
                 <Typography
@@ -121,8 +121,8 @@ const PropertyInformation = ({ postData, formik }) => {
                 {formik?.errors[item?.label] && (
                   <Typography
                     sx={{
-                      position: 'absolute',
-                      bottom: '-10px',
+                      // position: 'absolute',
+                      // bottom: '-10px',
                       color: 'red',
                     }}
                   >

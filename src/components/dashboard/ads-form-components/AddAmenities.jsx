@@ -11,6 +11,7 @@ const AddAmenities = ({
   selectedAmenities,
   propertyInformation,
   handleSeletedAmenites,
+  getAmenities
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -22,6 +23,7 @@ const AddAmenities = ({
     onSelected(selectedAmenities);
   };
 
+  
   return (
     <Box
       sx={{
@@ -55,6 +57,15 @@ const AddAmenities = ({
       >
         {propertyInformation?.addAmentiesLabel}
       </Button>
+      {formik?.errors['amenity'] && (
+        <Typography
+          sx={{
+            color: 'red',
+          }}
+        >
+          {formik?.errors['amenity']}
+        </Typography>
+      )}
       <AmenitiesModal
         open={open}
         setOpen={setOpen}
@@ -66,6 +77,7 @@ const AddAmenities = ({
         setSelectedAmenities={setSelectedAmenities}
         selectedAmenities={selectedAmenities}
         handleSeletedAmenites={handleSeletedAmenites}
+        getAmenities={getAmenities}
       />
     </Box>
   );

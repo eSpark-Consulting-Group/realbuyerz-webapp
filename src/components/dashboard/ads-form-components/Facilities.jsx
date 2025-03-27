@@ -25,26 +25,32 @@ const Facilities = ({
   selectedAmenities,
   propertyInformation,
   setSelectedAmenities,
+  getAmenities
 }) => {
   const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
   const handleCheckboxChange = (e, id, image, text, name) => {
-    const limit = 20;
-    const amenityObject = {
-      text,
-      image,
-      limit,
-      name,
-      id,
-    };
+    const isChecked = e.target.checked;
+    const existingIndex = selectedAmenities.findIndex((item) => item.id === id);
 
-    if (e.target.checked) {
-      setSelectedAmenities((prevSelected) => [...prevSelected, amenityObject]);
+    if (isChecked) {
+      // Only add if not already selected
+      if (existingIndex === -1) {
+        setSelectedAmenities((prev) => [
+          ...prev,
+          {
+            id,
+            image: image || '/images/default-amenity.svg',
+            text: text || name,
+            name,
+            label: text || name,
+            count: 1,
+          },
+        ]);
+      }
     } else {
-      setSelectedAmenities((prevSelected) =>
-        prevSelected?.filter((item) => item?.text !== text)
-      );
-      formik?.setFieldValue(name, 0);
+      // Remove if unchecked
+      setSelectedAmenities((prev) => prev.filter((item) => item.id !== id));
     }
   };
 
@@ -56,6 +62,7 @@ const Facilities = ({
     const selectedAmenitiesId = selectedAmenities.map((val) => val?.id);
     formik?.setFieldValue('amenities', selectedAmenitiesId);
     formik?.setFieldValue('amenitiesArray', selectedAmenities);
+
     const amenity = transformAmenities(selectedAmenities);
     formik?.setFieldValue('amenity', amenity);
   }, [selectedAmenities]);
@@ -80,6 +87,7 @@ const Facilities = ({
           image: `/images/add-amenities/${amenitiesIconHandler(val?.amenetiesName)}`,
           title: val?.amenetiesName,
           name: val?.amenetiesName,
+          count: 1,
         };
       });
       setFacilitiesData(amenities);
@@ -93,7 +101,23 @@ const Facilities = ({
     if (selectedAmenities.length === 0) {
       dispatch(toggleCheckAmenityClear());
     } else {
-      dispatch(handleAdaminities(selectedAmenities));
+      if(getAmenities?.some(am => selectedAmenities.find(selAm => selAm.id !== am.id))) {
+        const includedIds = getAmenities?.map(am => am?.id)
+        const findNew = selectedAmenities.filter(sm => !includedIds.includes(sm.id))
+
+        const removeItems = getAmenities.filter((am) => 
+          !selectedAmenities.some((sm) => sm.id === am.id)
+        );
+        const updateState = [...getAmenities.filter(am => !removeItems.includes(am)), ...findNew]
+
+        formik?.setFieldValue('amenity', updateState.map(am => {
+          return { count: am.count, image: am.image, name: am.name };
+        }));
+  
+        dispatch(handleAdaminities(updateState));
+      } else {
+        dispatch(handleAdaminities(selectedAmenities));
+      }
     }
     setOpen(false);
   };
@@ -105,13 +129,13 @@ const Facilities = ({
           display: 'grid',
           py: 3,
           gridTemplateColumns: {
-            xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            md: 'repeat(2, 1fr)',
-            lg: 'repeat(3, 1fr)',
+            xs: !isPending && 'repeat(1, 1fr)',
+            sm: !isPending && 'repeat(2, 1fr)',
+            md: !isPending && 'repeat(2, 1fr)',
+            lg: !isPending && 'repeat(3, 1fr)',
           },
           '@media (min-width: 1200px) and (max-width: 1439px)': {
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: !isPending &&'repeat(3, 1fr)',
           },
           width: '100%',
           height: '550px',
@@ -157,8 +181,8 @@ const Facilities = ({
                     color: '#126FAA',
                   },
                 }}
-                checked={selectedAmenities?.some(
-                  (amenity) => amenity?.text === item?.title
+                checked={selectedAmenities.some(
+                  (amenity) => amenity.id === item.id
                 )}
                 onChange={(e) => {
                   handleCheckboxChange(
@@ -166,7 +190,8 @@ const Facilities = ({
                     item?.id,
                     item?.image,
                     item?.title,
-                    item?.name
+                    item?.name,
+                    item?.count
                   );
                 }}
               />
