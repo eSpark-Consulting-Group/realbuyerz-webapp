@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { findSelectedAgent } from '@/src/utils/projects/agentsProjects';
@@ -45,40 +45,83 @@ function ProjectsSinglePage() {
   }
 
   return (
-    <>
-      <Grid
-        container
-        sx={{ paddingTop: '40px', display: 'flex', justifyContent: 'center' }}
+    <Box>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        <Grid
-          item
-          xs={12}
-          md={8}
+        <Box
           sx={{
+            width: '100%',
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            gap: { xs: 6, lg: 7 },
+            flexDirection: { xs: 'column', md: 'row' },
+            py: 5,
             justifyContent: 'center',
-            gap: '50px',
+            alignItems: 'center',
           }}
         >
-          <Sliders propertySlider={selectedProject} />
-          <PropertyDetails propertyDetailsData={selectedProject} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <ProfileAgent data={selectedProject} agentData={selectedAgent} />
-        </Grid>
-        <Grid Grid item xs={12} sx={{ pb: '30px' }}>
-          <Box py={3}>
-            <Heading
-              heading={`Similar Properties around  ${selectedProject?.location}`}
-              textAlign={'center'}
-            />
+          <Box
+            sx={{
+              width: '100%',
+              height: '90%',
+              maxWidth: { md: 'calc(100% - 450px)', lg: 'calc(100% - 470px)' },
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Sliders propertySlider={selectedProject} />
           </Box>
-          <PropertySlider data={selectedProjectinArea} />
-        </Grid>
-      </Grid>
-    </>
+          <Box
+            sx={{
+              width: '100%',
+              height: '100%',
+              maxWidth: { md: '450px', lg: '460px' },
+              maxHeight: '450px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              mt: { lg: 8 },
+            }}
+          >
+            <ProfileAgent data={selectedProject} agentData={selectedAgent} />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: { xs: '100%', md: '95%', lg: 'calc(100% - 410px)' },
+            mr: { xs: 'auto', lg: 'auto' },
+            ml: { xs: 'auto', lg: '0px' },
+            pl: { lg: 3 },
+            pt: 3,
+          }}
+        >
+          <PropertyDetails propertyDetailsData={selectedProject} />
+        </Box>
+      </Box>
+      <Heading
+        heading={`Similar Properties around  ${selectedProject?.location}`}
+        textAlign={'center'}
+      />
+      <Box
+        sx={{
+          pt: { xs: '35px', md: '67px' },
+          pb: { xs: '55px', sm: '55px', md: '60px', lg: '75px' },
+          mx: 'auto',
+          width: { xs: '82%', sm: '80%' },
+          maxWidth: '1320px',
+        }}
+      >
+        <PropertySlider data={selectedProjectinArea} />
+      </Box>
+    </Box>
   );
 }
 

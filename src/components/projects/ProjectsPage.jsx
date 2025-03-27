@@ -6,11 +6,13 @@ import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
+import { PROJECTS_FILTER_FIELDS } from '@/src/constants/Projects/projectsFilter';
 
 const ProjectsPage = () => {
   const { agentPostings: projects } = useSelector(
     (state) => state.postListingAds
   );
+  const { fields } = PROJECTS_FILTER_FIELDS;
 
   if (!projects || projects.length === 0) {
     return (
@@ -40,7 +42,7 @@ const ProjectsPage = () => {
   return (
     <Box className="min-h-screen" sx={{ py: '80px' }}>
       <Box sx={{ pb: '100px' }}>
-        <ProjectsFilterComponent data={projects} />
+        <ProjectsFilterComponent data={projects} fields={fields || []} />
       </Box>
       {renderProjectCategory('Houses', 'houses', 'See All >')}
       {renderProjectCategory('Plots', 'plots', 'See All')}

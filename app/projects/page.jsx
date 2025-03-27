@@ -9,11 +9,7 @@ const filteredData =
 export const metadata = getMetadata(filteredData);
 
 const Page = () => {
-  return (
-    <>
-      <ProjectsPage />
-    </>
-  );
+  return <ProjectsPage />;
 };
 
 export default Page;

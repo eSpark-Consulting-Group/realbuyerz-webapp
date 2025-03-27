@@ -5,7 +5,7 @@ const PropertyAmenities = ({ propertyData, heading }) => {
   return (
     <>
       <Typography
-        sx={{ fontSize: { xs: '14px', md: '18px' }, fontWeight: 600 }}
+        sx={{ fontSize: { xs: '16px', md: '18px' }, fontWeight: 500 }}
       >
         {heading}
       </Typography>
@@ -14,7 +14,7 @@ const PropertyAmenities = ({ propertyData, heading }) => {
           sx={{
             padding: '3px',
             fontSize: { xs: '14px', md: '16px' },
-            fontWeight: 500,
+            fontWeight: 400,
           }}
           key={index}
         >

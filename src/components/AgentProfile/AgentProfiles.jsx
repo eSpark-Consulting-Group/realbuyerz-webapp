@@ -38,9 +38,6 @@ const AgentProfiles = ({ data, setFieldValue, setFile, file, error }) => {
           display: { xs: 'block', sm: 'flex' },
           position: 'relative',
           padding: { xs: 2, sm: 0 },
-          '@media (min-width: 280px) and (max-width: 319px)': {
-            padding: 0,
-          },
         }}
       >
         <AgentImage
@@ -52,7 +49,7 @@ const AgentProfiles = ({ data, setFieldValue, setFile, file, error }) => {
         />
         <Grid
           sx={{
-            padding: 2,
+            padding: { xs: 1, sm: 2 },
             width: '100%',
             display: 'flex',
             alignItems: 'center',

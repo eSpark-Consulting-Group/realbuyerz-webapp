@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookie from 'js-cookie';
@@ -50,23 +49,31 @@ const SignInResponsiveButton = ({
           <Button
             sx={{
               display: {
-                xs: 'block',
-                sm: 'block',
-                lg: 'block',
-                xl: 'block',
+                xs: 'flex',
               },
+              '&:hover, &:active, &:focus': {
+                backgroundColor: 'transparent',
+              },
+              p: 0,
+              justifyContent: 'left',
+              alignItems: 'center',
             }}
+            disableRipple
             onClick={handleOpenUserMenu}
           >
-            <Image
-              src={'/images/login.png'}
-              width={80}
-              height={40}
+            <Box
+              component={'img'}
+              src={'/images/user_loged_in.png'}
               alt={'dashboardIcon'}
+              sx={{
+                width: { xs: '33px' },
+                height: 'auto',
+                objectFit: 'contain',
+              }}
             />
           </Button>
           <Menu
-            sx={{ mt: '45px' }}
+            sx={{ mt: 3 }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{

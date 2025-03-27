@@ -13,7 +13,7 @@ import { PROPERTY_ESTATE } from '@/src/constants/Properties';
 const PropertyDetails = ({ propertyDetailsData }) => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={11} sx={{ padding: '5px' }}>
+      <Grid item xs={12} md={12} sx={{ padding: '5px' }}>
         <PropertyOverview
           propertyData={propertyDetailsData}
           overview={PROPERTY_ESTATE?.propertyDetails?.overview}
