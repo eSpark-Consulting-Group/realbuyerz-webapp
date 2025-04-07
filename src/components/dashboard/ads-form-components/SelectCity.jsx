@@ -102,6 +102,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                 },
 
                 width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
+                mb: 2,
               }}
               renderInput={(params) => (
                 <TextField

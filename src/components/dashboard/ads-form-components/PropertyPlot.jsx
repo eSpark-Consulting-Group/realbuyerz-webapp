@@ -26,7 +26,7 @@ const PropertyTypes = ({ data, handlePropetySubType }) => {
             sx={{
               borderRadius: '20px',
               border: `1px solid ${
-                selectedType === item?.typeName ? '#FB631C' : '#E7E7E7'
+                selectedType === item?.typeName ? 'white' : '#E7E7E7'
               }`,
               color: selectedType === item?.typeName ? '#FB631C' : '#666',
               backgroundColor:
