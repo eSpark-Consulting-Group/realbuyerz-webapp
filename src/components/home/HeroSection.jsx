@@ -1,10 +1,14 @@
 'use client';
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
 import Link from 'next/link';
+
 import { Bounce } from 'react-awesome-reveal';
+
+import { Box, Typography, Button } from '@mui/material';
 import { keyframes } from '@mui/system';
+
 import HeroSlider from './HeroSlider';
+
 import {
   HERO_SECTION_CONTENT,
   HERO_SECTION_IMAGES,
@@ -31,8 +35,15 @@ const enhancedSwingingIntoPlace = keyframes`
   }
 `;
 
+const logoSize = {
+  xs: '100px',
+  sm: '150px',
+  md: '200px',
+  lg: '239px',
+}
+
 const HeroSection = () => {
-  const { heading, logo } = HERO_SECTION_CONTENT;
+  const { heading, logo, buyer, seller } = HERO_SECTION_CONTENT;
 
   return (
     <>
@@ -57,20 +68,8 @@ const HeroSection = () => {
           sx={{
             position: 'absolute',
             zIndex: 2,
-            width: {
-              xs: '100px',
-              sm: '150px',
-              md: '200px',
-              lg: '239px',
-              xl: '239px',
-            },
-            height: {
-              xs: '100px',
-              sm: '150px',
-              md: '200px',
-              lg: '239px',
-              xl: '239px',
-            },
+            width: logoSize,
+            height: logoSize,
             top: { xs: 60, sm: 100, md: 90, lg: 190, xl: 90 },
           }}
           src={logo}
@@ -124,64 +123,34 @@ const HeroSection = () => {
             top: { xs: 190, sm: 270, md: 395, lg: 460, xl: 460 },
           }}
         >
-          <Bounce direction="left" triggerOnce>
-            <Link href="/signup/">
-              <Button
-                sx={{
-                  width: {
-                    xs: '100px',
-                    sm: '120px',
-                    md: '120px',
-                    lg: '120px',
-                    xl: '120px',
-                  },
-                  fontStyle: 'normal',
-                  fontWeight: 600,
-                  lineHeight: 'normal',
-                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
-                  textAlign: 'start',
-                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
-                  '&:hover': {
-                    background: '#fff !important',
-                    border: '1px solid #FB631C',
-                    color: '#FB631C ',
-                  },
-                }}
-                variant="primary"
-              >
-                {HERO_SECTION_CONTENT.buyer}
-              </Button>
-            </Link>
-          </Bounce>
-          <Bounce direction="right" triggerOnce>
-            <Link href="/signup/">
-              <Button
-                sx={{
-                  width: {
-                    xs: '100px',
-                    sm: '120px',
-                    md: '120px',
-                    lg: '120px',
-                    xl: '120px',
-                  },
-                  fontStyle: 'normal',
-                  fontWeight: 600,
-                  lineHeight: 'normal',
-                  height: { xs: '31px', sm: '35px', lg: '40px', xl: '40px' },
-                  background: '#FB631C',
-                  animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
-                  '&:hover': {
-                    background: '#fff !important',
-                    border: '1px solid #FB631C',
-                    color: '#FB631C ',
-                  },
-                }}
-                variant="primary"
-              >
-                {HERO_SECTION_CONTENT.seller}
-              </Button>
-            </Link>
-          </Bounce>
+          {[buyer, seller].map((txt, i) => (
+            <Bounce direction={i === 0 ? 'left' : 'right'} triggerOnce>
+              <Link href="/signup/">
+                <Button
+                  sx={{
+                    width: {
+                      xs: '100px',
+                      sm: '120px',
+                    },
+                    fontStyle: 'normal',
+                    fontWeight: 600,
+                    lineHeight: 'normal',
+                    height: { xs: '31px', sm: '35px', lg: '40px' },
+                    textAlign: 'start',
+                    animation: `${enhancedSwingingIntoPlace} 1s ease-out forwards`,
+                    '&:hover': {
+                      background: '#fff !important',
+                      border: '1px solid #FB631C',
+                      color: '#FB631C ',
+                    },
+                  }}
+                  variant="primary"
+                >
+                  {txt}
+                </Button>
+              </Link>
+            </Bounce>
+          ))}
         </Box>
         <HeroSlider
           effect={'fade'}
