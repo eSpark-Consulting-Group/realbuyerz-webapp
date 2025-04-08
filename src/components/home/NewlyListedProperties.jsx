@@ -1,11 +1,12 @@
 'use client';
-import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { Box } from '@mui/material';
 
 import Heading from './Heading';
 import PropertySlider from '../AgentProfile/PropertySlider';
+
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
-import { useSelector } from 'react-redux';
 
 const NewlyListedProperties = () => {
   const NewProjects = useSelector((state) => state.postListingAds.newPostings);
