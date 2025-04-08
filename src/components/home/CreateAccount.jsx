@@ -1,46 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import Cookie from 'js-cookie';
-import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
-import { FEATURED_HEADINGS } from '@/src/constants/Home';
-import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
+
 import { useDispatch } from 'react-redux';
+import Cookie from 'js-cookie';
 
-const Typewriter = ({ text }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+import { Box, Button } from '@mui/material';
 
-  useEffect(() => {
-    let interval;
-    if (currentIndex < text.length) {
-      interval = setInterval(() => {
-        setDisplayedText((prevText) => prevText + text[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 150);
-    } else {
-      setTimeout(() => {
-        setDisplayedText('');
-        setCurrentIndex(0);
-      }, 2000);
-    }
-    return () => clearInterval(interval);
-  }, [currentIndex, text]);
+import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
+import Typewriter from './Typewriter';
 
-  return (
-    <Typography
-      sx={{
-        color: '#fff',
-        mb: '30px',
-        fontWeight: '600',
-        fontSize: { xs: '15px', sm: '20px', md: '24px', lg: '26px' },
-      }}
-    >
-      {displayedText}|
-    </Typography>
-  );
-};
+import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
+
+import { FEATURED_HEADINGS } from '@/src/constants/Home';
+
 
 const CreateAccount = () => {
   const [open, setOpen] = useState(false);

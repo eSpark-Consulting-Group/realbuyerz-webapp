@@ -1,12 +1,11 @@
-import React from 'react';
-import { Typography } from '@mui/material';
 import Link from 'next/link';
+
+import { Typography } from '@mui/material';
 
 const SliderCardTitle = ({ link }) => {
   return (
     <Link href={`/projects/${link?.property_id}`}>
       <Typography
-        // variant="body1"
         sx={{
           color: '#FB631C',
           fontWeight: '600',

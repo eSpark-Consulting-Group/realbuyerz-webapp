@@ -1,15 +1,13 @@
 'use client';
-import React from 'react';
+import Link from 'next/link';
+
 import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Fade } from 'react-awesome-reveal';
 
-import { Box, Grid } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Link from 'next/link';
+import { Fade } from 'react-awesome-reveal';
+import { Box, Grid, Card, CardContent, CardMedia } from '@mui/material';
 
 import SliderCardTitle from './Slider/SliderCardTitle';
 import SliderCardLocation from './Slider/SliderCardLocation';
@@ -17,68 +15,12 @@ import SliderCardPrice from './Slider/SliderCardPrice';
 import SliderCardSeeDetails from './Slider/SliderCardSeeDetails';
 import SliderCardIcons from './Slider/SliderCardIcons';
 
+import { propertySliderSetting } from '@/src/utils/sliderSettings';
+
 const PropertySlider = ({ data }) => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    adaptiveHeight: true,
-    speed: 200,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1920,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: false,
-          adaptiveHeight: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: false,
-          adaptiveHeight: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          adaptiveHeight: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 2,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-        },
-      },
-    ],
-  };
   return (
     <>
-      <Slider {...settings}>
+      <Slider {...propertySliderSetting}>
         {data?.slice(0, 10)?.map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>

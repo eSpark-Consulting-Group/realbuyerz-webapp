@@ -1,15 +1,23 @@
 'use client';
-import { HERO_SECTION_CONTENT } from '@/src/constants/Constants';
-import { Box, Container, Grid, Typography, useMediaQuery } from '@mui/material';
-import Link from 'next/link';
 import { useState } from 'react';
+
+import Link from 'next/link';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Box, Container, Grid, useMediaQuery } from '@mui/material';
+
 import Heading from './Heading';
+import CategoryBox from './CategoryBox';
+
+import { browseByCategorySliderSetting } from '@/src/utils/sliderSettings';
+
+import { HERO_SECTION_CONTENT } from '@/src/constants/Constants';
 
 const BrowseByCategory = ({ data }) => {
   const [, setHovered] = useState(Array(data.length).fill(false));
@@ -20,42 +28,6 @@ const BrowseByCategory = ({ data }) => {
       updatedHoveredItems[index] = isHovered;
       return updatedHoveredItems;
     });
-  };
-
-  const sliderSettings = {
-    slidesPerView: 3,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    modules: [Pagination, Navigation],
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      320: {
-        slidesPerView: 2,
-      },
-      460: {
-        slidesPerView: 3,
-      },
-      620: {
-        slidesPerView: 4,
-      },
-      768: {
-        slidesPerView: 5,
-      },
-      960: {
-        slidesPerView: 6,
-      },
-      1180: {
-        slidesPerView: 7,
-      },
-      1400: {
-        slidesPerView: 8,
-      },
-    },
   };
 
   const isSmallScreen = useMediaQuery((theme) =>
@@ -80,7 +52,7 @@ const BrowseByCategory = ({ data }) => {
         }}
       >
         {isSmallScreen ? (
-          <Swiper {...sliderSettings}>
+          <Swiper {...browseByCategorySliderSetting}>
             {data?.map((category, index) => (
               <SwiperSlide key={index}>
                 <Link
@@ -108,40 +80,11 @@ const BrowseByCategory = ({ data }) => {
                     onMouseEnter={() => handleItemHover(index, true)}
                     onMouseLeave={() => handleItemHover(index, false)}
                   >
-                    <Box className="border top" />
-                    <Box className="border bottom" />
-                    <Box className="border left" />
-                    <Box className="border right" />
-                    <Box
-                      sx={{
-                        background: '#fff',
-                        textAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        maxWidth: '150px',
-                        margin: 'auto',
-                        gap: '10px',
-                      }}
-                    >
-                      <img
-                        src={category?.image}
-                        alt={category?.name}
-                        height={30}
-                        width={30}
-                      />
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: '#838383',
-                          fontSize: '12px',
-                          fontWeight: 400,
-                          px: '5px',
-                        }}
-                      >
-                        {category?.name}
-                      </Typography>
-                    </Box>
+                    <CategoryBox
+                      category={category}
+                      px={'5px'}
+                      fontSize={'12px'}
+                    />
                   </Grid>
                 </Link>
               </SwiperSlide>
@@ -183,40 +126,11 @@ const BrowseByCategory = ({ data }) => {
                   onMouseEnter={() => handleItemHover(index, true)}
                   onMouseLeave={() => handleItemHover(index, false)}
                 >
-                  <Box className="border top" />
-                  <Box className="border bottom" />
-                  <Box className="border left" />
-                  <Box className="border right" />
-                  <Box
-                    sx={{
-                      background: '#fff',
-                      textAlign: 'center',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      maxWidth: '150px',
-                      margin: 'auto',
-                      gap: '10px',
-                    }}
-                  >
-                    <img
-                      src={category?.image}
-                      alt={category?.name}
-                      height={30}
-                      width={30}
-                    />
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#838383',
-                        fontSize: '10px',
-                        fontWeight: 400,
-                        px: { lg: '20px' },
-                      }}
-                    >
-                      {category?.name}
-                    </Typography>
-                  </Box>
+                  <CategoryBox
+                    category={category}
+                    px={{ lg: '20px' }}
+                    fontSize={'10px'}
+                  />
                 </Grid>
               </Link>
             ))}

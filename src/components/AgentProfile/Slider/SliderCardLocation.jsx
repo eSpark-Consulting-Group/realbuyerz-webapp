@@ -1,6 +1,6 @@
-import React from 'react';
-import { Grid, Typography } from '@mui/material';
 import Image from 'next/image';
+
+import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 const SliderCardLocation = ({ location }) => {

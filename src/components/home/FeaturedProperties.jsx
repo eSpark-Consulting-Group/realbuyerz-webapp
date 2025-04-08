@@ -1,21 +1,24 @@
 'use client';
-import { Box, Collapse, Grid, Typography, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
 import { useState } from 'react';
-
-import styles from '@/src/components/home/slider.module.css';
-import { FEATURED_HEADINGS, FEATURED_PROPERTIES } from '@/src/constants/Home';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
 import { useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Box, Grid, useMediaQuery } from '@mui/material';
+
 import Heading from './Heading';
+import FeatureProjectsBox from './FeatureProjectsBox';
+
+import { FEATURED_HEADINGS } from '@/src/constants/Home';
+
+import styles from '@/src/components/home/slider.module.css';
 
 const FeaturedProperties = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -105,188 +108,18 @@ const FeaturedProperties = () => {
                       },
                     }}
                   >
-                    <Box
-                      onClick={() =>
-                        router.push(`/projects/${item?.property_id}`)
-                      }
-                      sx={{
-                        position: 'relative',
-
-                        mx: { xs: '5%', lg: 'auto' },
-                        width: {
-                          lg: '390px',
-                          '@media (min-width: 1440px) and (max-width: 1568px)':
-                            {
-                              width: '340px',
-                            },
-                          '@media (min-width: 1569px) and (max-width: 1800px)':
-                            {
-                              width: '360px',
-                            },
-                        },
-                        height: '431px',
-                        border: '1px solid #cbcbcb',
-                        overflow: 'hidden',
-                      }}
-                      onMouseOver={() => setHoveredIndex(index)}
-                      onMouseOut={() => setHoveredIndex(null)}
-                    >
-                      <img
-                        src={item?.images[0]}
-                        alt={'background'}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          zIndex: -1,
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          width: 70,
-                          height: 18,
-                          top: '10px',
-                          right: '0px',
-                          position: 'absolute',
-                          backgroundImage: `url('/images/amenities/location.svg')`,
-                          backgroundSize: 'contain',
-                          textAlign: 'center',
-                          color: 'white',
-                          fontSize: 10,
-                        }}
-                      >
-                        {item?.city || 'city'}
-                      </Box>
-                      <Collapse
-                        in={hoveredIndex === index}
-                        sx={{
-                          zIndex: 1,
-                          position: 'absolute',
-                          bottom: '60px',
-                          width: '289px',
-                        }}
-                      >
-                        <Link href={`/projects/${item?.property_id}`}>
-                          <Box p={2} className={styles.slideInBox}>
-                            <Box
-                              sx={{
-                                justifyContent: 'flex-start',
-                                alignItems: 'flex-start',
-                                textAlign: 'left',
-                                px: '2%',
-                                zIndex: 1,
-                              }}
-                            >
-                              <Typography
-                                sx={{
-                                  color: '#fb631c',
-                                  textAlign: 'left',
-                                  fontWeight: 600,
-                                  lineHeight: '21.78px',
-                                  fontSize: {
-                                    xs: '12px',
-                                    md: '14px',
-                                    lg: '18px',
-                                  },
-                                  pb: '15px',
-                                }}
-                              >
-                                {item?.title}
-                              </Typography>
-                              <Typography
-                                sx={{
-                                  color: '#1176ad',
-                                  textAlign: 'left',
-                                  fontWeight: '700',
-                                  fontSize: {
-                                    xs: '12px',
-                                    md: '14px',
-                                    lg: '15px',
-                                  },
-                                  pb: '15px',
-                                }}
-                              >
-                                <LocationOnIcon
-                                  color="#1176ad"
-                                  fontSize="12px"
-                                />{' '}
-                                {item?.city}
-                              </Typography>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  gap: '4px',
-                                  alignItems: 'center',
-                                }}
-                              >
-                                <Typography
-                                  variant="body1"
-                                  sx={{
-                                    color: '#1176AD',
-                                    lineHeight: '21.78px',
-                                    fontSize: {
-                                      xs: '12px',
-                                      md: '14px',
-                                      lg: '16px',
-                                    },
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  {'Starting from:'}
-                                </Typography>
-                                <Typography
-                                  variant="body2"
-                                  sx={{
-                                    color: '#fb631c',
-                                    fontSize: { xs: '10px', md: '14px' },
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  {item?.amountCurrency}
-                                </Typography>
-                                <Typography
-                                  variant="body1"
-                                  sx={{
-                                    textAlign: 'left',
-                                    color: '#fb631c',
-                                    fontSize: {
-                                      xs: '10px',
-                                      md: '14px',
-                                      lg: '16px',
-                                    },
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  {item?.amount}
-                                </Typography>
-                              </Box>
-                            </Box>
-                            <Grid container>
-                              {FEATURED_PROPERTIES?.map((amenity, index) => (
-                                <Grid
-                                  key={index}
-                                  item
-                                  xs={4}
-                                  style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    paddingTop: '10px',
-                                  }}
-                                >
-                                  <Image
-                                    width={20}
-                                    height={14.2}
-                                    src={amenity}
-                                    alt={`Amenity ${index}`}
-                                    style={{ height: 'auto', width: 'auto' }}
-                                  />
-                                </Grid>
-                              ))}
-                            </Grid>
-                          </Box>
-                        </Link>
-                      </Collapse>
-                    </Box>
+                    <FeatureProjectsBox
+                      router={router}
+                      item={item}
+                      styles={styles}
+                      zIndex={''}
+                      setHoveredIndex={setHoveredIndex}
+                      index={index}
+                      hoveredIndex={hoveredIndex}
+                      transform={''}
+                      transition={''}
+                      isDesktop={false}
+                    />
                   </Grid>
                 </SwiperSlide>
               ))}
@@ -326,185 +159,22 @@ const FeaturedProperties = () => {
                   },
                 }}
               >
-                <Box
-                  onClick={() => router.push(`/projects/${item?.property_id}`)}
-                  className={styles.box}
-                  sx={{
-                    position: 'relative',
-                    mx: { xs: '5%', lg: 'auto' },
-                    width: {
-                      lg: '390px',
-                      '@media (min-width: 1440px) and (max-width: 1568px)': {
-                        width: '340px',
-                      },
-                      '@media (min-width: 1569px) and (max-width: 1800px)': {
-                        width: '360px',
-                      },
-                    },
-                    height: '431px',
-                    border: '1px solid #cbcbcb',
-                    overflow: 'hidden',
-                    zIndex: 1,
-                  }}
-                  onMouseOver={() => setHoveredIndex(index)}
-                  onMouseOut={() => setHoveredIndex(null)}
-                >
-                  <img
-                    src={item?.images[0]}
-                    alt={'background'}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      zIndex: -1,
-                    }}
-                  />
-                  <Box
-                    sx={{
-                      width: 70,
-                      height: 18,
-                      top: '10px',
-                      right: '0px',
-                      position: 'absolute',
-                      backgroundImage: `url('/images/amenities/location.svg')`,
-                      backgroundSize: 'contain',
-                      textAlign: 'center',
-                      color: 'white',
-                      fontSize: 10,
-                    }}
-                  >
-                    {item?.city}
-                  </Box>
-                  <Collapse
-                    in={hoveredIndex === index}
-                    sx={{
-                      zIndex: 1,
-                      position: 'absolute',
-                      bottom: '60px',
-                      width: '289px',
-                      transform:
-                        hoveredIndex === index
-                          ? 'translateX(0)'
-                          : 'translateX(-100%)',
-                      transition: 'transform 0.3s ease-in-out',
-                    }}
-                  >
-                    <Link href={`/projects/${item?.property_id}`}>
-                      <Box p={2} className={styles.slideInBox}>
-                        <Box
-                          sx={{
-                            justifyContent: 'flex-start',
-                            alignItems: 'flex-start',
-                            textAlign: 'left',
-                            px: '2%',
-                            zIndex: 1,
-                          }}
-                        >
-                          <Link href={`/projects/${item?.property_id}`}>
-                            <Typography
-                              sx={{
-                                color: '#fb631c',
-                                textAlign: 'left',
-                                fontWeight: 600,
-                                lineHeight: '21.78px',
-                                fontSize: {
-                                  xs: '12px',
-                                  md: '14px',
-                                  lg: '18px',
-                                },
-                                pb: '15px',
-                              }}
-                            >
-                              {item?.title}
-                            </Typography>
-                          </Link>
-                          <Typography
-                            sx={{
-                              color: '#1176ad',
-                              textAlign: 'left',
-                              fontWeight: '700',
-                              fontSize: { xs: '12px', md: '14px', lg: '15px' },
-                              pb: '15px',
-                            }}
-                          >
-                            <LocationOnIcon color="#1176ad" fontSize="12px" />{' '}
-                            {item?.city}
-                          </Typography>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              gap: '4px',
-                              alignItems: 'center',
-                            }}
-                          >
-                            <Typography
-                              variant="body1"
-                              sx={{
-                                color: '#1176AD',
-                                lineHeight: '21.78px',
-                                fontSize: {
-                                  xs: '12px',
-                                  md: '14px',
-                                  lg: '16px',
-                                },
-                                fontWeight: 600,
-                              }}
-                            >
-                              {'Starting from:'}
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                color: '#fb631c',
-                                fontSize: { xs: '10px', md: '14px' },
-                                fontWeight: 500,
-                              }}
-                            >
-                              {item?.amountCurrency}
-                            </Typography>
-                            <Typography
-                              variant="body1"
-                              sx={{
-                                textAlign: 'left',
-                                color: '#fb631c',
-                                fontSize: {
-                                  xs: '10px',
-                                  md: '14px',
-                                  lg: '16px',
-                                },
-                                fontWeight: 600,
-                              }}
-                            >
-                              {item?.amount}
-                            </Typography>
-                          </Box>
-                        </Box>
-                        <Grid container>
-                          {FEATURED_PROPERTIES.map((amenity, index) => (
-                            <Grid
-                              key={index}
-                              item
-                              xs={4}
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                paddingTop: '10px',
-                              }}
-                            >
-                              <Image
-                                width={20}
-                                height={14.2}
-                                src={amenity}
-                                alt={`Amenity ${index}`}
-                                style={{ height: 'auto', width: 'auto' }}
-                              />
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </Link>
-                  </Collapse>
-                </Box>
+                <FeatureProjectsBox
+                  router={router}
+                  item={item}
+                  styles={styles}
+                  zIndex={1}
+                  setHoveredIndex={setHoveredIndex}
+                  index={index}
+                  hoveredIndex={hoveredIndex}
+                  transform={
+                    hoveredIndex === index
+                      ? 'translateX(0)'
+                      : 'translateX(-100%)'
+                  }
+                  transition={'transform 0.3s ease-in-out'}
+                  isDesktop={true}
+                />
               </Grid>
             ))}
           </Grid>

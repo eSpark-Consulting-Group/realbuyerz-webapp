@@ -1,6 +1,6 @@
-import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+
 import { STARTING_FROM } from '@/src/constants/AgentProfile';
 
 const SliderCardPrice = ({ price, unit }) => {

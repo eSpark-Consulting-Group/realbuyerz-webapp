@@ -1,7 +1,7 @@
-import React from 'react';
 import HomePage from '@/src/components/home/Homepage';
-import { GLOBAL_SEO } from '@/src/constants/global/seo';
 import { getMetadata } from '@/src/components/seo';
+
+import { GLOBAL_SEO } from '@/src/constants/global/seo';
 
 const pathname = '/';
 const filteredData =
@@ -9,11 +9,7 @@ const filteredData =
 export const metadata = getMetadata(filteredData);
 
 const Page = () => {
-  return (
-    <>
-      <HomePage />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default Page;
