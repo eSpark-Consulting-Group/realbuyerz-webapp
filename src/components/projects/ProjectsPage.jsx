@@ -40,13 +40,16 @@ const ProjectsPage = () => {
   );
 
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
+    <Box
+      className="min-h-screen"
+      sx={{ py: { xs: 2, sm: 5, lg: 8 }, px: { xs: 2, sm: 2, md: 3, lg: 0 } }}
+    >
       <Box sx={{ pb: '100px' }}>
-        <ProjectsFilterComponent data={projects} fields={fields || []} />
+        <ProjectsFilterComponent fields={fields || []} />
       </Box>
-      {renderProjectCategory('Houses', 'houses', 'See All >')}
-      {renderProjectCategory('Plots', 'plots', 'See All')}
-      {renderProjectCategory('Commercials', 'commercials', 'See All')}
+      {/* {renderProjectCategory('Houses', 'houses', 'See All >')} */}
+      {/* {renderProjectCategory('Plots', 'plots', 'See All')} */}
+      {/* {renderProjectCategory('Commercials', 'commercials', 'See All')} */}
     </Box>
   );
 };

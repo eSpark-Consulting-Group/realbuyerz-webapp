@@ -558,39 +558,59 @@ import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 import ProjectMenu from './ProjectMenu';
 
 const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
+  const [activeMenuOption, setActiveMenuOption] = useState('All');
   const [filterObject, setfilterObject] = useState({
-    purpose: '',
-    all: '',
-    location: '',
-    subType: '',
+    purpose: 'Buy',
+    all: { label: 'House', category: 'All' },
+    price: { minimum: '', maximum: '' },
+    size: '',
     search: '',
   });
 
   const handleChangeSelect = (key, val) => {
-    console.log({ [key]: val }, 'test');
-    setfilterObject({
-      ...filterObject,
-      [key]: val,
-    });
+    if (key === 'all') {
+      setfilterObject({
+        ...filterObject,
+        all: { label: 'House', category: val },
+      });
+    } else if (key === 'price') {
+      setfilterObject({
+        ...filterObject,
+        price: { minimum: 20, maximum: 80 },
+      });
+    } else {
+      setfilterObject({
+        ...filterObject,
+        [key]: val,
+      });
+    }
   };
 
   const handleReset = () => {
-    console.log(filterObject, 'click');
+    setActiveMenuOption('All');
     setfilterObject({
-      // ...filterObject,
-      purpose: '',
-      all: '',
-      location: '',
-      subType: '',
+      purpose: 'Buy',
+      all: { label: 'House', category: 'All' },
+      price: { minimum: '', maximum: '' },
+      size: '',
       search: '',
     });
   };
+
+  console.log(filterObject, 'filterObject');
 
   return (
     <Grid container spacing={4} justifyContent={{ lg: 'center' }} ref={ref}>
       {fields &&
         fields?.map((field, index) => (
-          <Grid item xs={12} sm={5.5} md={3.8} lg={field?.grid?.lg} key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={field?.grid?.lg}
+            key={`${field?.key}-${index}`}
+          >
             <Typography>{field?.title || ''}</Typography>
             {field?.type === 'menu' ? (
               <Box
@@ -601,12 +621,17 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                   alignItems: 'center',
                 }}
               >
-                <ProjectMenu field={field} />
+                <ProjectMenu
+                  field={field}
+                  filterObject={filterObject}
+                  setfilterObject={setfilterObject}
+                  activeMenuOption={activeMenuOption}
+                  setActiveMenuOption={setActiveMenuOption}
+                />
               </Box>
             ) : (
               <Autocomplete
                 freeSolo={field?.freeSolo}
-                defaultValue={'Buy'}
                 PopperComponent={(props) => (
                   <Popper
                     {...props}
@@ -675,16 +700,10 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                 disablePortal
                 id={`combo-box-${index}`}
                 value={filterObject?.[field?.key] || ''}
-                onInputChange={(e) =>
-                  handleChangeSelect(field?.key, e?.target?.value)
+                onChange={(e, newValue) =>
+                  handleChangeSelect(field?.key, newValue?.value)
                 }
-                onChange={(e) =>
-                  handleChangeSelect(field?.key, e?.target?.innerText)
-                }
-                options={(field?.key == 'subType'
-                  ? field?.options
-                  : field?.options
-                )?.map((opt) => opt)}
+                options={field?.options}
                 renderInput={(params) => (
                   <Box
                     sx={{
@@ -696,6 +715,9 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                     <TextField
                       {...params}
                       type={field?.type}
+                      onChange={(e) =>
+                        handleChangeSelect(field?.key, e?.target?.value)
+                      }
                       placeholder={field?.placeholder || 'Select Type'}
                       InputLabelProps={{
                         sx: {
@@ -708,11 +730,10 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                         },
                       }}
                     />
-
                     {field?.key === 'search' && (
                       <>
                         <Typography
-                          onClick={() => handleReset()}
+                          onClick={handleReset}
                           sx={{
                             display: { xs: 'none', lg: 'flex' },
                             fontSize: '16px',
@@ -721,7 +742,7 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                             textDecoration: 'underline',
                             textWrap: 'nowrap',
                             cursor: 'pointer',
-                            p: 0,
+                            pl: 3,
                           }}
                         >
                           Clear filter
@@ -741,28 +762,32 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                     )}
                   </Box>
                 )}
-                renderOption={(props, option, { index }) => (
-                  <Box
-                    {...props}
-                    sx={{
-                      my: 0,
-                      py: 0,
-                      borderTop: `${index !== 0 ? '1px solid #E7E7E7' : null}`,
-                    }}
-                  >
-                    <Typography
+                renderOption={(props, option, { index }) => {
+                  const { key, ...rest } = props;
+                  return (
+                    <Box
+                      key={index}
+                      {...rest}
                       sx={{
-                        letterSpacing: '0em',
-                        maxWidth: { xs: '200px' },
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
+                        my: 0,
+                        py: 0,
+                        borderTop: `${index !== 0 ? '1px solid #E7E7E7' : null}`,
                       }}
                     >
-                      {option?.label || ''}
-                    </Typography>
-                  </Box>
-                )}
+                      <Typography
+                        sx={{
+                          letterSpacing: '0em',
+                          maxWidth: { xs: '200px' },
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {option?.label || ''}
+                      </Typography>
+                    </Box>
+                  );
+                }}
               />
             )}
           </Grid>
@@ -770,6 +795,7 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
     </Grid>
   );
 });
+
 ProjectsFilterComponent.displayName = 'ProjectsFilterComponent';
 
 export default ProjectsFilterComponent;

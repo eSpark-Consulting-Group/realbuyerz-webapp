@@ -440,7 +440,7 @@ export const PROJECTS_FILTER_FIELDS = {
       freeSolo: true,
       options: [],
       grid: {
-        lg: 4.6,
+        lg: 5.2,
       },
     },
   ],
