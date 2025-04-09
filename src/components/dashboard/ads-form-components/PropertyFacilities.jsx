@@ -5,15 +5,12 @@ import Image from 'next/image';
 import Counter from '../inputNumber/counter';
 import { useSelector } from 'react-redux';
 
-const PropertyFacilities = ({
-  propertyInformation,
-  formik,
-  selectedAmenities,
-}) => {
+const PropertyFacilities = ({ propertyInformation, formik, selectedAmenities }) => {
   // const selectedAmenities = useSelector(
   //   (state) => state?.postListingAds?.addAmenities
   // );
 
+  
   return (
     <>
       <Box
@@ -168,13 +165,11 @@ const PropertyFacilities = ({
                   backgroundColor: '#f0f0f0',
                 }}
               >
-                <Image
+                <img
                   src={amenity.image}
                   alt={amenity.label}
-                  width={24}
-                  height={24}
-                  style={{ objectFit: 'contain' }}
-                />
+                  style={{ width: 24, height: 24 }}
+                />{' '}
               </Box>
               <Typography
                 sx={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}

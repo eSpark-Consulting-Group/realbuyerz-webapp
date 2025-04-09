@@ -73,14 +73,14 @@ const FeaturedProperties = () => {
                   cursor: 'pointer',
                 }}
               >
-                <Image
+                <img
                   src={item?.images[0]}
-                  alt="background"
-                  width={260}
-                  height={200}
+                  alt={'background'}
                   style={{
-                    objectFit: 'contain',
+                    width: '260px',
+                    height: 'auto',
                     zIndex: -1,
+                    objectFit: 'contain',
                   }}
                 />
                 <Box
@@ -285,13 +285,14 @@ const FeaturedProperties = () => {
                   onMouseOver={() => setHoveredIndex(index)}
                   onMouseOut={() => setHoveredIndex(null)}
                 >
-                  <Image
+                  <img
                     src={item?.images[0]}
-                    alt="background"
-                    fill
+                    alt={'background'}
                     style={{
-                      objectFit: 'contain',
+                      width: '100%',
+                      height: 'auto',
                       zIndex: -1,
+                      objectFit: 'contain',
                     }}
                   />
                   <Box

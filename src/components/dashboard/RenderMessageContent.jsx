@@ -1,18 +1,17 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { getFileExtension } from '@/src/utils/getFileExtension';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import DescriptionIcon from '@mui/icons-material/Description';
-import Image from 'next/image';
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 const RenderMessageContent = ({ data }) => {
-  const filesExt = ['pdf', 'docx', 'xlsx'];
+  const filesExt = ["pdf", "docx", "xlsx"]
   const images = data?.content?.slice(0, 4);
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
-        const ext = getFileExtension(img?.url);
+        const ext = getFileExtension(img?.url)
         return (
           <Box
             key={imgIndex}
@@ -35,7 +34,7 @@ const RenderMessageContent = ({ data }) => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'inherit !important',
+                  color:"inherit !important",
                 }}
                 component={'a'}
                 target="_blank"
@@ -47,11 +46,10 @@ const RenderMessageContent = ({ data }) => {
                   <DescriptionIcon fontSize="large" />
                 ) : (
                   <Box sx={{ width: '24px', height: '24px' }}>
-                    <Image
+                    <img
                       src="/icons/xlsx.svg"
                       alt="xlsx"
-                      fill
-                      style={{ objectFit: 'contain' }}
+                      style={{ width: '100%', height: '100%' }}
                     />
                   </Box>
                 )}

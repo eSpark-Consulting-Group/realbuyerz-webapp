@@ -4,59 +4,54 @@ import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 import moment from 'moment';
 import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import DescriptionIcon from '@mui/icons-material/Description';
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import DescriptionIcon from "@mui/icons-material/Description";
 import InsertPhotoSharpIcon from '@mui/icons-material/InsertPhotoSharp';
 import { getFileExtension } from '@/src/utils/getFileExtension';
-import Image from 'next/image';
 
-const ChatRooms = ({
-  chatRoomState,
-  setSelectedChatRoom,
-  selectedChatRoom,
-}) => {
+const ChatRooms = ({ chatRoomState, setSelectedChatRoom, selectedChatRoom }) => {
   const unreadChats = JSON.parse(Cookies.get('unreadChatIds') || '[]');
 
-  const filesExt = ['pdf', 'docx', 'xlsx'];
-  const imagesExt = ['png', 'jpg', 'jpeg'];
+  const filesExt = ["pdf", "docx", "xlsx"]
+  const imagesExt = ["png", "jpg", "jpeg"]
 
   const { messages } = useSelector((state) => state.chats);
 
   const lastText = (id) => {
-    const filterChatLastText = messages?.filter((msg) => msg.chat === id);
+    const filterChatLastText = messages?.filter(msg => msg.chat === id)
 
-    return filterChatLastText[filterChatLastText.length - 1];
-  };
+    return filterChatLastText[filterChatLastText.length - 1]
+  }
 
   const findUnreadChat = (id) => {
-    const unreadChat = unreadChats?.find((chat) => chat.chatId === id);
-    return unreadChat;
-  };
+    const unreadChat = unreadChats?.find((chat) => chat.chatId === id)
+    return unreadChat
+  }
 
   const handleSelectChatRoom = (room) => {
-    setSelectedChatRoom(room);
-    removeReadChat(room.chatId);
-  };
+    setSelectedChatRoom(room)
+    removeReadChat(room.chatId)
+  }
 
   const removeReadChat = (id) => {
-    const filterChat = unreadChats?.filter((chat) => chat.chatId !== id);
+    const filterChat = unreadChats?.filter(chat => chat.chatId !== id);
 
-    if (filterChat?.length) {
-      Cookies.set('unreadChatIds', JSON.stringify(filterChat));
+    if(filterChat?.length){
+      Cookies.set('unreadChatIds', JSON.stringify(filterChat))
     } else {
-      Cookies.remove('unreadChatIds');
+      Cookies.remove('unreadChatIds')
     }
-  };
+  }
 
   const getAttachmentsOrText = (id) => {
-    const lastOne = lastText(id);
+    const lastOne = lastText(id)
 
-    if (lastOne?.attachments?.length > 0) {
-      return checkType(lastOne?.attachments[0]);
+    if(lastOne?.attachments?.length > 0){
+      return checkType(lastOne?.attachments[0])
     } else {
-      return lastOne?.content;
+      return lastOne?.content
     }
-  };
+  }
 
   const checkType = (attachment) => {
     const attachmentType = getFileExtension(attachment?.url);
@@ -68,12 +63,12 @@ const ChatRooms = ({
         <DescriptionIcon />
       ) : (
         <Box sx={{ width: '22px', height: '22px' }}>
-          <Image
+          <img
             src="/icons/xlsx.svg"
             alt="xlsx"
-            fill
             style={{
-              objectFit: 'contain',
+              width: '100%',
+              height: '100%',
               filter:
                 'invert(50%) sepia(10%) saturate(200%) hue-rotate(180deg)',
             }}
