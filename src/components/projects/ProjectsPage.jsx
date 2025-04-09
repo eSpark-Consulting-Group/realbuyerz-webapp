@@ -2,8 +2,8 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector } from 'react-redux';
-import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
+// import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
+// import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { PROJECTS_FILTER_FIELDS } from '@/src/constants/Projects/projectsFilter';
@@ -20,24 +20,24 @@ const ProjectsPage = () => {
     );
   }
 
-  const renderProjectCategory = (category, link, linkText) => (
-    <Box>
-      <ProjectsCategoryLink
-        category={category}
-        link={`/projects/category/${link}`}
-        linkText={linkText}
-      />
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginLeft: '15px',
-        }}
-      >
-        <ProjectsSlider data={projects} category={link} />
-      </Box>
-    </Box>
-  );
+  // const renderProjectCategory = (category, link, linkText) => (
+  //   <Box>
+  //     <ProjectsCategoryLink
+  //       category={category}
+  //       link={`/projects/category/${link}`}
+  //       linkText={linkText}
+  //     />
+  //     <Box
+  //       sx={{
+  //         display: 'flex',
+  //         justifyContent: 'center',
+  //         marginLeft: '15px',
+  //       }}
+  //     >
+  //       <ProjectsSlider data={projects} category={link} />
+  //     </Box>
+  //   </Box>
+  // );
 
   return (
     <Box
@@ -47,9 +47,9 @@ const ProjectsPage = () => {
       <Box sx={{ pb: '100px' }}>
         <ProjectsFilterComponent fields={fields || []} />
       </Box>
-      {/* {renderProjectCategory('Houses', 'houses', 'See All >')} */}
-      {/* {renderProjectCategory('Plots', 'plots', 'See All')} */}
-      {/* {renderProjectCategory('Commercials', 'commercials', 'See All')} */}
+      {/* {renderProjectCategory('Houses', 'houses', 'See All >')}
+      {renderProjectCategory('Plots', 'plots', 'See All')}
+      {renderProjectCategory('Commercials', 'commercials', 'See All')} */}
     </Box>
   );
 };

@@ -445,3 +445,125 @@ export const PROJECTS_FILTER_FIELDS = {
     },
   ],
 };
+
+
+  const houseCategories = [
+    {
+      label: 'All',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'House',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Flat',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Upper Portion',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Lower Portion',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Farm House',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Room',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Penthouse',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+  ];
+
+  const plotsCategories = [
+    {
+      label: 'All',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Residential Plots',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Commercial Plots',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Agricultural Land',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Industrial Land',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Plot File',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Plot Form',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+  ];
+
+  const commercialCategories = [
+    {
+      label: 'All',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Office',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Shop',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Ware house',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    {
+      label: 'Building',
+      icon: '/images/listing-page/house.svg',
+      activeIcon: '/images/listing-page/housesell.svg',
+    },
+    // {
+    //   label: 'Other...',
+    //   icon: '/images/listing-page/house.svg',
+    //   activeIcon: '/images/listing-page/housesell.svg',
+    // },
+  ];
+
+  export const tabs = [
+    { label: 'House', categories: houseCategories },
+    { label: 'Plots', categories: plotsCategories },
+    { label: 'Commercial', categories: commercialCategories },
+  ];
+
