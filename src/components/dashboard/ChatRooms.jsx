@@ -68,16 +68,6 @@ const ChatRooms = ({
         <DescriptionIcon />
       ) : (
         <Box sx={{ width: '22px', height: '22px' }}>
-          {/* <img
-            src="/icons/xlsx.svg"
-            alt="xlsx"
-            style={{
-              width: '100%',
-              height: '100%',
-              filter:
-                'invert(50%) sepia(10%) saturate(200%) hue-rotate(180deg)',
-            }}
-          /> */}
           <Image
             src="/icons/xlsx.svg"
             alt="xlsx"
