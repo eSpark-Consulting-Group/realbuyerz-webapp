@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Typography, Box, Grid, Skeleton } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const itemsToShow = 10;
 const ProjectsTypeSlider = ({ data, category, type }) => {

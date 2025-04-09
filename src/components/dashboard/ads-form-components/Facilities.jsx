@@ -25,7 +25,7 @@ const Facilities = ({
   selectedAmenities,
   propertyInformation,
   setSelectedAmenities,
-  getAmenities
+  getAmenities,
 }) => {
   const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
@@ -101,19 +101,31 @@ const Facilities = ({
     if (selectedAmenities.length === 0) {
       dispatch(toggleCheckAmenityClear());
     } else {
-      if(getAmenities?.some(am => selectedAmenities.find(selAm => selAm.id !== am.id))) {
-        const includedIds = getAmenities?.map(am => am?.id)
-        const findNew = selectedAmenities.filter(sm => !includedIds.includes(sm.id))
-
-        const removeItems = getAmenities.filter((am) => 
-          !selectedAmenities.some((sm) => sm.id === am.id)
+      if (
+        getAmenities?.some((am) =>
+          selectedAmenities.find((selAm) => selAm.id !== am.id)
+        )
+      ) {
+        const includedIds = getAmenities?.map((am) => am?.id);
+        const findNew = selectedAmenities.filter(
+          (sm) => !includedIds.includes(sm.id)
         );
-        const updateState = [...getAmenities.filter(am => !removeItems.includes(am)), ...findNew]
 
-        formik?.setFieldValue('amenity', updateState.map(am => {
-          return { count: am.count, image: am.image, name: am.name };
-        }));
-  
+        const removeItems = getAmenities.filter(
+          (am) => !selectedAmenities.some((sm) => sm.id === am.id)
+        );
+        const updateState = [
+          ...getAmenities.filter((am) => !removeItems.includes(am)),
+          ...findNew,
+        ];
+
+        formik?.setFieldValue(
+          'amenity',
+          updateState.map((am) => {
+            return { count: am.count, image: am.image, name: am.name };
+          })
+        );
+
         dispatch(handleAdaminities(updateState));
       } else {
         dispatch(handleAdaminities(selectedAmenities));
@@ -135,7 +147,7 @@ const Facilities = ({
             lg: !isPending && 'repeat(3, 1fr)',
           },
           '@media (min-width: 1200px) and (max-width: 1439px)': {
-            gridTemplateColumns: !isPending &&'repeat(3, 1fr)',
+            gridTemplateColumns: !isPending && 'repeat(3, 1fr)',
           },
           width: '100%',
           height: '550px',

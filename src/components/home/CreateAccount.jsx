@@ -60,7 +60,7 @@ const CreateAccount = () => {
     } else {
       setIsLoggedIn(false);
       localStorage?.removeItem('token');
-  
+
       Cookie?.remove('token');
       Cookie?.remove('userType');
       dispatch(setLoggedOut());

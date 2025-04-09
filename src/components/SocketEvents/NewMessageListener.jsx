@@ -62,14 +62,15 @@ export default function NewMessageListener() {
 
     socket2.on('NEW_MESSAGE', onNewMessage);
     socket2.on('NEW_ATTACHMENT', onNewMessage);
-    !pathname.includes("inbox") && socket2.on('NEW_MESSAGE_ALERT', handleNewMessageAlert);
+    !pathname.includes('inbox') &&
+      socket2.on('NEW_MESSAGE_ALERT', handleNewMessageAlert);
 
     // Cleanup listeners when socket changes or component unmounts
     return () => {
       if (socket2) {
         socket2.off('NEW_MESSAGE');
         socket2.off('NEW_ATTACHMENT');
-        !pathname.includes("inbox") && socket2.off('NEW_MESSAGE_ALERT');
+        !pathname.includes('inbox') && socket2.off('NEW_MESSAGE_ALERT');
       }
     };
   }, [socket2, messages, pathname]);
