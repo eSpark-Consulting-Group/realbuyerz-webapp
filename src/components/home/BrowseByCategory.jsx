@@ -126,11 +126,12 @@ const BrowseByCategory = ({ data }) => {
                         gap: '10px',
                       }}
                     >
-                      <img
+                      <Image
                         src={category?.image}
                         alt={category?.name}
-                        height={30}
                         width={30}
+                        height={30}
+                        style={{ objectFit: 'contain' }}
                       />
                       <Typography
                         variant="body1"
@@ -200,11 +201,11 @@ const BrowseByCategory = ({ data }) => {
                       gap: '10px',
                     }}
                   >
-                    <img
+                    <Image
                       src={category?.image}
                       alt={category?.name}
-                      height={30}
                       width={30}
+                      height={30}
                     />
                     <Typography
                       variant="body1"
