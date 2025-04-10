@@ -8,25 +8,27 @@ import NotFoundSection from '@/src/components/global/NotFoundSection';
 import { useSelector } from 'react-redux';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import AgentProjectsChiperBack from '../profile/agent-projects/AgentProjectsChiperBack';
+import {
+  dummay_data,
+  PROJECTS_FILTER_FIELDS,
+} from '@/src/constants/Projects/projectsFilter';
+import ProjectsSlider from './ProjectsSlider';
 
 const ProjectsCategoryPage = () => {
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
-  const capID = id.charAt(0).toUpperCase() + id.slice(1);
-
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const filterData = projects?.filter(
-    (item) => item?.propertyCategory === capID && item?.status === 'submit'
-  );
-  const filteredData = filterData?.length ? filterData : NoData;
+  const category = id.charAt(0).toUpperCase() + id.slice(1);
+  const { fields } = PROJECTS_FILTER_FIELDS;
+  console.log(category, 'category');
+  const filteredData = [];
 
   if (!id) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
         message={'Proposal category invalid, Please add correct id.'}
+        link="/projects"
       />
     );
   }
@@ -35,18 +37,42 @@ const ProjectsCategoryPage = () => {
       <NotFoundSection
         heading={'Sorry!'}
         message={'Proposal category invalid, Please add correct id.'}
+        link="/projects"
       />
     );
   }
 
+  const renderProjectCategory = (category, link, linkText) => (
+    <Box sx={{ py: 1.5 }}>
+      <ProjectsCategoryLink
+        category={category}
+        link={`/projects/category/${link}`}
+        linkText={linkText}
+      />
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: '1350px',
+          mx: 'auto',
+          display: 'flex',
+          justifyContent: 'center',
+          py: 0.5,
+        }}
+      >
+        <ProjectsSlider data={dummay_data} category={link} />
+      </Box>
+    </Box>
+  );
+
   return (
     <Box className="min-h-screen" sx={{ py: '20px' }}>
-      <Box sx={{ pb: '80px' }}>
+      <Box>
         <AgentProjectsChiperBack backText={'Back'} backLink={`/projects/`} />
-        <ProjectsFilterComponent data={filteredData} />
+        <ProjectsFilterComponent fields={fields || []} />
       </Box>
-      <ProjectsCategoryLink category={id} />
-      <ProjectsCard data={filteredData} />
+      <Box sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
+        {renderProjectCategory('Houses', 'houses', 'See All >')}
+      </Box>
     </Box>
   );
 };
