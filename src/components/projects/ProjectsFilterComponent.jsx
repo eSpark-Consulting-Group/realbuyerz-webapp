@@ -20,6 +20,7 @@ import {
   IconButton,
 } from '@mui/material';
 import { styled } from '@mui/system';
+import Image from 'next/image';
 
 const ProjectsFilterComponent = ({ data }) => {
   const globalUnits = useSelector((state) => state.globalUnits);
@@ -259,9 +260,11 @@ const ProjectsFilterComponent = ({ data }) => {
                       },
                     }}
                   >
-                    <img
+                    <Image
                       src="/images/Dropdown.png"
                       alt="Dropdown"
+                      width={20} // or whatever fits your design
+                      height={20}
                       style={{
                         transition: 'transform 0.3s ease',
                         transform:
@@ -345,9 +348,10 @@ const ProjectsFilterComponent = ({ data }) => {
                       },
                     }}
                   >
-                    <img
+                    <Image
                       src="/images/Dropdown.png"
                       alt="Dropdown"
+                      fill
                       style={{
                         transition: 'transform 0.3s ease',
                         transform:
@@ -431,9 +435,10 @@ const ProjectsFilterComponent = ({ data }) => {
                       },
                     }}
                   >
-                    <img
+                    <Image
                       src="/images/Dropdown.png"
                       alt="Dropdown"
+                      fill
                       style={{
                         transition: 'transform 0.3s ease',
                         transform:
@@ -485,7 +490,7 @@ const ProjectsFilterComponent = ({ data }) => {
               startAdornment: (
                 <InputAdornment position="start">
                   <IconButton edge="start" sx={{ paddingLeft: '20px' }}>
-                    <img src="/images/Search.png" alt="Search" />
+                    <Image src="/images/Search.png" alt="Search" />
                   </IconButton>
                 </InputAdornment>
               ),

@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { getFileExtension } from '@/src/utils/getFileExtension';
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import DescriptionIcon from "@mui/icons-material/Description";
+import Image from 'next/image';
 
 const RenderMessageContent = ({ data }) => {
   const filesExt = ["pdf", "docx", "xlsx"]
@@ -46,10 +47,11 @@ const RenderMessageContent = ({ data }) => {
                   <DescriptionIcon fontSize="large" />
                 ) : (
                   <Box sx={{ width: '24px', height: '24px' }}>
-                    <img
+                    <Image
                       src="/icons/xlsx.svg"
                       alt="xlsx"
-                      style={{ width: '100%', height: '100%' }}
+                      fill
+                      style={{ objectFit: 'contain' }}
                     />
                   </Box>
                 )}

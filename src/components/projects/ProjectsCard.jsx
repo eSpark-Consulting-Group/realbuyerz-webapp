@@ -8,6 +8,7 @@ import {
   PaginationItem,
   Skeleton,
 } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -50,7 +51,7 @@ const ProjectsCard = ({ data }) => {
           >
             <Link href={`/projects/${project?.property_id}`}>
               {!project?.images?.length == 0 ? (
-                <img
+                <Image
                   src={
                     project?.images[0] ||
                     `/images/default/default_project_image.jpg`
@@ -58,6 +59,10 @@ const ProjectsCard = ({ data }) => {
                   height={'auto'}
                   width={'100%'}
                   alt={`Project ${project?.id}`}
+                  fill
+                  style={{
+                    objectFit: 'cover',
+                  }}
                 />
               ) : (
                 <Skeleton variant="rectangular" width={`100%`} height={300} />

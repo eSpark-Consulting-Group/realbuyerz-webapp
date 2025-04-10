@@ -1234,7 +1234,7 @@ const postlistingAdSlice = createSlice({
           '24 Hours Water Supply',
         ],
         images: [
-          './images/features/feature1.png',
+          '/images/features/feature1.png',
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -1296,7 +1296,7 @@ const postlistingAdSlice = createSlice({
           '24 Hours Water Supply',
         ],
         images: [
-          './images/features/feature2.png',
+          '/images/features/feature2.png',
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -1358,7 +1358,7 @@ const postlistingAdSlice = createSlice({
           '24 Hours Water Supply',
         ],
         images: [
-          './images/features/feature3.png',
+          '/images/features/feature3.png',
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
@@ -1420,7 +1420,7 @@ const postlistingAdSlice = createSlice({
           '24 Hours Water Supply',
         ],
         images: [
-          './images/features/feature4.png',
+          '/images/features/feature4.png',
           '/images/slider/apartments.svg',
           '/images/slider/houses.svg',
           '/images/slider/commercial.svg',
