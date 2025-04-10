@@ -81,7 +81,7 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
             >
               <Link href={`/projects/${project?.property_id}`}>
                 {!project?.images?.length == 0 ? (
-                  <img
+                  <Image
                     src={
                       project?.images[0] ||
                       `/images/default/default_project_image.jpg`
@@ -89,6 +89,10 @@ const ProjectsTypeSlider = ({ data, category, type }) => {
                     height={'auto'}
                     width={'100%'}
                     alt={`Project ${project?.property_id}`}
+                    fill
+                    style={{
+                      objectFit: 'cover',
+                    }}
                   />
                 ) : (
                   <Skeleton variant="rectangular" width={`100%`} height={300} />

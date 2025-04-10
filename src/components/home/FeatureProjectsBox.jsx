@@ -45,14 +45,11 @@ const FeatureProjectsBox = ({
       onMouseOver={() => setHoveredIndex(index)}
       onMouseOut={() => setHoveredIndex(null)}
     >
-      <img
+      <Image
         src={item?.images[0]}
         alt={'background'}
-        style={{
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-        }}
+        fill
+        style={{ zIndex: -1 }}
       />
       <LocationSVGBox city={item?.city} />
       <Collapse
