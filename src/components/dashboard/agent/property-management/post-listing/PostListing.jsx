@@ -58,12 +58,17 @@ const PostListing = ({ property_Id }) => {
   );
 
   const handleSeletedAmenites = () => {
-    if(getAmenities?.length === 0){
+    if (getAmenities?.length === 0) {
       formik?.setFieldValue('amenity', []);
     } else {
-      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+      formik?.setFieldValue(
+        'amenity',
+        getAmenities.map((am) => {
+          return { count: am.count, image: am.image, name: am.name };
+        })
+      );
     }
-    
+
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -168,17 +173,18 @@ const PostListing = ({ property_Id }) => {
         }
       });
 
+      const propertyAmenities = singleArr.amenity || [];
+
       formik.setFieldValue('title', singleArr.propertyName);
       formik.setFieldValue('description', singleArr.propertyDescription);
       formik.setFieldValue('amount', singleArr.propertyPrice);
       formik.setFieldValue('area', singleArr.propertyArea);
       formik.setFieldValue('city', singleArr.propertyCity);
       formik.setFieldValue('propertyCategory', singleArr.propertyType);
-      formik.setFieldValue('amenity', JSON.stringify(amenities));
+      formik.setFieldValue('amenity', JSON.stringify(propertyAmenities));
       formik.setFieldValue('address', singleArr.propertyAddress);
 
       const propertyImages = singleArr.PropertyData?.[0]?.url || '';
-
       formik.setFieldValue('images', propertyImages ? [propertyImages] : []);
 
       setPreviousData(formik.values);
@@ -210,7 +216,8 @@ const PostListing = ({ property_Id }) => {
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
-  formik?.values.images?.length && formik?.values.images?.forEach(file => formData.append('image', file))
+  formik?.values.images?.length &&
+    formik?.values.images?.forEach((file) => formData.append('image', file));
 
   const isLoading = updatePostListingApi.isPending || isPending;
   const isSubmitBtnDisable =

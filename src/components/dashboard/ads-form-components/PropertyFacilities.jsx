@@ -3,12 +3,12 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import Counter from '../inputNumber/counter';
-import { useSelector } from 'react-redux';
 
 const PropertyFacilities = ({
   propertyInformation,
   formik,
   selectedAmenities,
+  setSelectedAmenities,
 }) => {
   // const selectedAmenities = useSelector(
   //   (state) => state?.postListingAds?.addAmenities

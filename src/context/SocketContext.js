@@ -5,7 +5,8 @@ import Cookies from 'js-cookie';
 const SocketContext = createContext();
 
 const SOCKET_URL_1 = 'https://dev-nest-realbuyerz.esparkconsultants.com/socket';
-const SOCKET_URL_2 = 'https://dev-express-realbuyerz.esparkconsultants.com/socket';
+const SOCKET_URL_2 =
+  'https://dev-express-realbuyerz.esparkconsultants.com/socket';
 
 export const SocketProvider = ({ children }) => {
   const [socket1, setSocket1] = useState(null);

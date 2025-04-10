@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Heading from './Heading';
+import Image from 'next/image';
 
 const BrowseByCategory = ({ data }) => {
   const [, setHovered] = useState(Array(data.length).fill(false));

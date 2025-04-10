@@ -17,7 +17,7 @@ const PropertyFeatures = ({
 
   const handleSelectedItems = (items) => {
     setSelectedItems(items);
-  }
+  };
 
   return (
     <Grid container>

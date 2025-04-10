@@ -15,15 +15,20 @@ const PropertyGallery = ({ formik, propertyData }) => {
 
   const handleImageUpload = (type, files) => {
     const currentImages = formik?.values?.images || [];
-  
+
     // Ensure the uploaded files are images and the limit is not exceeded
-    if (files?.length + currentImages?.length <= maxImages && type?.includes('image')) {
-      
+    if (
+      files?.length + currentImages?.length <= maxImages &&
+      type?.includes('image')
+    ) {
       // Filter out any duplicates (based on the image file name or a unique identifier)
-      const newFiles = Array.from(files).filter(file => 
-        !currentImages.some(existingImage => existingImage.name === file.name)
+      const newFiles = Array.from(files).filter(
+        (file) =>
+          !currentImages.some(
+            (existingImage) => existingImage.name === file.name
+          )
       );
-  
+
       // If there are new unique files, update the form state
       if (newFiles.length > 0) {
         const updatedImages = [...currentImages, ...newFiles];

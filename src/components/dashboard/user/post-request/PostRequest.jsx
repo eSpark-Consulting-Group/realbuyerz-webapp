@@ -54,10 +54,15 @@ const PostRequest = ({ property_Id }) => {
   );
 
   const handleSeletedAmenites = () => {
-    if(getAmenities?.length === 0){
+    if (getAmenities?.length === 0) {
       formik?.setFieldValue('amenity', []);
     } else {
-      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+      formik?.setFieldValue(
+        'amenity',
+        getAmenities.map((am) => {
+          return { count: am.count, image: am.image, name: am.name };
+        })
+      );
     }
 
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
@@ -82,7 +87,6 @@ const PostRequest = ({ property_Id }) => {
       propertySubTypeId: values.propertySubTypeId,
       purpose: values.purpose,
       propertyAddress: values.address,
-      amenity: selectedAmenities,
       amenity: selectedAmenities,
       longitude: values.longitude,
       latitude: values.latitude,
@@ -166,18 +170,18 @@ const PostRequest = ({ property_Id }) => {
   const getSingleUserProperty = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
-      const items = data.response.data;
+      // const items = data.response.data;
       const { active, trash, draft } = data.response.data;
       const allItems = [...active, ...trash, ...draft];
       const property = allItems.find((item) => item.id === property_Id);
       setFilteredUserProperty(property);
-  
+
       if (property) {
         const amenitiesArr = transformAmenities(property.amenity);
         formik.setValues({
           ...formik.values,
-          amenities: amenitiesArr.map(a => a.id), 
-          amenitiesArray: amenitiesArr, 
+          amenities: amenitiesArr.map((a) => a.id),
+          amenitiesArray: amenitiesArr,
           address: property.propertyAddress,
           propertyCategory: property.propertyType.typeName,
           title: property.propertyName,
