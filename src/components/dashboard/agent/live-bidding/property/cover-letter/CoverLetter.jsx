@@ -50,12 +50,17 @@ const CoverLetter = () => {
   );
 
   const handleSeletedAmenites = () => {
-    if(getAmenities?.length === 0){
+    if (getAmenities?.length === 0) {
       formik?.setFieldValue('amenity', []);
     } else {
-      formik?.setFieldValue('amenity', getAmenities.map(am => { return { count: am.count, image: am.image, name: am.name } }));
+      formik?.setFieldValue(
+        'amenity',
+        getAmenities.map((am) => {
+          return { count: am.count, image: am.image, name: am.name };
+        })
+      );
     }
-    
+
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
   const handleOpenSuccessModal = () => setIsOpen(true);
@@ -155,7 +160,8 @@ const CoverLetter = () => {
   formData.append('longitude', formik?.values.longitude);
   formData.append('latitude', formik?.values.latitude);
   formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
-  formik?.values.images?.length && formik?.values.images?.forEach(file => formData.append('image', file))
+  formik?.values.images?.length &&
+    formik?.values.images?.forEach((file) => formData.append('image', file));
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);

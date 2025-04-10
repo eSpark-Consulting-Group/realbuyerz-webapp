@@ -3,9 +3,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
-import { useSelector } from 'react-redux';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import AgentProjectsChiperBack from '../profile/agent-projects/AgentProjectsChiperBack';
 import {

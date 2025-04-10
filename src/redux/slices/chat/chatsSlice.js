@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const chats = [];
 const messages = [];
-const messageWRTChatBox = []
-const hasChat = ""
+const messageWRTChatBox = [];
+const hasChat = '';
 
 const initialState = { chats, messages, messageWRTChatBox, hasChat };
 
@@ -34,5 +34,10 @@ const chatsSlice = createSlice({
   },
 });
 
-export const { getAllUserChats, getAllMessages, getMessageWRTChatBox, mutateHasChat } = chatsSlice.actions;
+export const {
+  getAllUserChats,
+  getAllMessages,
+  getMessageWRTChatBox,
+  mutateHasChat,
+} = chatsSlice.actions;
 export default chatsSlice.reducer;

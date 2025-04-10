@@ -218,7 +218,7 @@ const ProjectsFilterComponent = forwardRef(({ fields }, ref) => {
                   </Box>
                 )}
                 renderOption={(props, option, { index }) => {
-                  const { key, ...rest } = props;
+                  const { ...rest } = props;
                   return (
                     <Box
                       key={index}

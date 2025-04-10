@@ -1,8 +1,10 @@
 'use client';
 
-
 import { useSocket } from '@/src/context/SocketContext';
-import { getAllUserChats, mutateHasChat } from '@/src/redux/slices/chat/chatsSlice';
+import {
+  getAllUserChats,
+  mutateHasChat,
+} from '@/src/redux/slices/chat/chatsSlice';
 import { getMyChat } from '@/src/utils/apis/chat/gettAllChat';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
@@ -15,7 +17,7 @@ export default function NotificationListener() {
 
   const { socket1 } = useSocket();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { data, isSuccess, refetch } = useQuery({
     refetchOnWindowFocus: false,
@@ -46,7 +48,7 @@ export default function NotificationListener() {
       toast.info(data.content);
     });
 
-    socket1.on('REFETCH_CHATS', (data) => {
+    socket1.on('REFETCH_CHATS', () => {
       refetch();
     });
 

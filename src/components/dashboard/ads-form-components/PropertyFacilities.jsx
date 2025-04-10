@@ -3,14 +3,17 @@ import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 
 import Counter from '../inputNumber/counter';
-import { useSelector } from 'react-redux';
 
-const PropertyFacilities = ({ propertyInformation, formik, selectedAmenities }) => {
+const PropertyFacilities = ({
+  propertyInformation,
+  formik,
+  selectedAmenities,
+  setSelectedAmenities,
+}) => {
   // const selectedAmenities = useSelector(
   //   (state) => state?.postListingAds?.addAmenities
   // );
 
-  
   return (
     <>
       <Box
@@ -165,11 +168,13 @@ const PropertyFacilities = ({ propertyInformation, formik, selectedAmenities }) 
                   backgroundColor: '#f0f0f0',
                 }}
               >
-                <img
+                <Image
                   src={amenity.image}
                   alt={amenity.label}
-                  style={{ width: 24, height: 24 }}
-                />{' '}
+                  width={24}
+                  height={24}
+                  style={{ objectFit: 'contain' }}
+                />
               </Box>
               <Typography
                 sx={{ fontSize: '16px', fontWeight: 500, color: '#333333' }}

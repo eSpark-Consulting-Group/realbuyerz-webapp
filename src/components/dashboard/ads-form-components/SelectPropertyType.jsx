@@ -122,6 +122,7 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
               alignItems: 'center',
               justifyContent: { xs: 'space-evenly', sm: 'start' },
               gap: { xs: 1, sm: 2 },
+              marginBottom: '-8px',
             }}
           >
             {propertyTp.map((val, index) => (
@@ -148,7 +149,7 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
               </Button>
             ))}
           </Box>
-          <hr style={{ width: '100%' }} />
+          <hr style={{ width: '100%', border: '1px solid #E7E7E7' }} />
           {propertyTp
             .filter((val) => val?.typeName === activePropertyType)
             .map((val, index) => (

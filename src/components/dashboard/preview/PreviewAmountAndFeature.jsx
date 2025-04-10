@@ -17,113 +17,117 @@ const PreviewAmountAndFeature = ({
   fontWeight,
 }) => {
   return (
-    <>
-      {areaAndAmount && amount > 0 && (
-        <Box
+    <Box
+      sx={{
+        p: 5,
+        px: px || 'none',
+        pt: pt || 'none',
+        pb: pb || 'none',
+        borderBottom: '1px solid #E4E4E4',
+        width: width || '100%',
+        '@media(min-width:280px) and (max-width:400px)': {
+          px: subPadding || 3,
+        },
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: fontSize || '20px',
+          fontWeight: fontWeight || 500,
+          mb: 2,
+        }}
+      >
+        {areaAndAmount?.title || 'Price & Features'}
+      </Typography>
+
+      {/* Area Size */}
+      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
+        <Typography
           sx={{
-            p: 5,
-            px: px ? px : 'none',
-            pt: pt ? pt : 'none',
-            pb: pb ? pb : 'none',
-            borderBottom: '1px solid #E4E4E4',
-            width: width ? width : '100%',
-            '@media(min-width:280px) and (max-width:400px)': {
-              px: subPadding ? subPadding : 3,
-            },
+            fontSize: fontStyle || '14px',
+            fontWeight: fontWeight || 500,
+            minWidth: '120px',
           }}
         >
-          <Typography
-            sx={{
-              fontSize: { xs: fontSize ? fontSize : '20px' },
-              fontWeight: 500,
-              mb: 1,
-            }}
-          >
-            {areaAndAmount?.title}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-            <Typography
-              sx={{
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: fontWeight ? fontWeight : 500,
-              }}
-            >
-              {areaAndAmount?.areaSize}
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: 500,
-                color: '#126FAA',
-              }}
-            >
-              {area && area}
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-            <Typography
-              sx={{
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: fontWeight ? fontWeight : 500,
-              }}
-            >
-              {areaAndAmount?.range}
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: 500,
-                color: '#126FAA',
-              }}
-            >
-              {amount && amount}
-            </Typography>
-          </Box>
-          {instalmentAvailable === true && (
-            <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {areaAndAmount?.installment}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {instalmentAvailable == true ? 'Available' : null}
-              </Typography>
-            </Box>
-          )}
-          {readyPossession === true && (
-            <Box sx={{ display: 'flex', gap: { xs: 0.3, md: 0.5 }, pb: 0.4 }}>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : { xs: '14px', md: '14px' },
-                  fontWeight: fontWeight ? fontWeight : 500,
-                }}
-              >
-                {areaAndAmount?.readyfor}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: fontStyle ? fontStyle : { xs: '14px', md: '14px' },
-                  fontWeight: 500,
-                  color: '#126FAA',
-                }}
-              >
-                {readyPossession == true ? 'Possession' : null}
-              </Typography>
-            </Box>
-          )}
-        </Box>
-      )}
-    </>
+          Area Size:
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: 500,
+            color: '#126FAA',
+          }}
+        >
+          {area ? `${area} Sq-ft` : 'Not specified'}
+        </Typography>
+      </Box>
+
+      {/* Price */}
+      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: fontWeight || 500,
+            minWidth: '120px',
+          }}
+        >
+          Price:
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: 500,
+            color: '#126FAA',
+          }}
+        >
+          {amount ? `PKR ${amount.toLocaleString()}` : 'Not specified'}
+        </Typography>
+      </Box>
+
+      {/* Installment Available */}
+      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: fontWeight || 500,
+            minWidth: '120px',
+          }}
+        >
+          Installment:
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: 500,
+            color: instalmentAvailable ? '#126FAA' : '#666',
+          }}
+        >
+          {instalmentAvailable ? 'Available' : 'Not available'}
+        </Typography>
+      </Box>
+
+      {/* Ready for Possession */}
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: fontWeight || 500,
+            minWidth: '120px',
+          }}
+        >
+          Possession:
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: fontStyle || '14px',
+            fontWeight: 500,
+            color: readyPossession ? '#126FAA' : '#666',
+          }}
+        >
+          {readyPossession ? 'Ready' : 'Not ready'}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

@@ -86,11 +86,18 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
               id="combo-box-demo"
               options={options}
               sx={{
-                '& .MuiAutocomplete-inputRoot': {
-                  '&:hover': {
-                    backgroundColor: 'transparent',
+                width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
+                mb: 2,
+                borderColor: '#E7E7E7',
+                '& .MuiOutlinedInput-root': {
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: formik?.errors?.city ? 'red' : '#E7E7E7',
                   },
                 },
+                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                  {
+                    borderColor: formik?.errors?.city ? 'red' : '#E7E7E7',
+                  },
                 '& .MuiAutocomplete-popupIndicator': {
                   '&:hover': {
                     backgroundColor: 'transparent',
@@ -98,10 +105,7 @@ const SelectCityType = ({ image, label, cityOptions, formik }) => {
                 },
                 '& fieldset': {
                   borderRadius: '10px',
-                  border: `1px solid ${formik?.errors?.city ? 'red' : '1px solid #E7E7E7'}`,
                 },
-
-                width: { xs: '100%', sm: '94%', md: '100%', lg: '400px' },
               }}
               renderInput={(params) => (
                 <TextField

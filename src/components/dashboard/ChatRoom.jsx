@@ -1,5 +1,12 @@
 import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
-import { Box, CircularProgress, Grid, Menu, MenuItem, Typography } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  Menu,
+  MenuItem,
+  Typography,
+} from '@mui/material';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import RenderFileUploads from './RenderFileUploads';
@@ -12,9 +19,12 @@ import { formatData } from '@/src/utils/formatMessageData';
 import { useSocket } from '@/src/context/SocketContext';
 import { getSingleRoomMessage } from '@/src/utils/apis/chat/getSingleRoomMessage';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { getAllMessages, getMessageWRTChatBox } from '@/src/redux/slices/chat/chatsSlice';
+import {
+  getAllMessages,
+  getMessageWRTChatBox,
+} from '@/src/redux/slices/chat/chatsSlice';
 import { sendAttachment } from '@/src/utils/apis/chat/sendAttachment';
-import { useInView } from "react-intersection-observer";
+import { useInView } from 'react-intersection-observer';
 
 const AudioRecorder = dynamic(() => import('./AudioRecorder'), {
   ssrc: false,
@@ -25,7 +35,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   const { messages, messageWRTChatBox } = useSelector((state) => state.chats);
   const { user, userProfile } = useSelector((state) => state.auth);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [displayUploadOptions, setDisplayUploadOptions] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
@@ -34,7 +44,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [inViewLoader, setInViewLoader] = useState(false);
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const [conversation, setConversation] = useState([]);
   const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
 
@@ -46,10 +56,18 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
     isSuccess,
     isFetching,
   } = useQuery({
-    queryKey: ['chatMessage', selectedChatRoom, totalPageOfMessage],
+    queryKey: [
+      'chatMessage',
+      selectedChatRoom?.chatId,
+      totalPageOfMessage?.currentPage,
+    ],
     queryFn: async () =>
-      getSingleRoomMessage(selectedChatRoom?.chatId, totalPageOfMessage?.currentPage),
-    enabled: !!selectedChatRoom?.chatId && totalPageOfMessage?.currentPage > 1,
+      getSingleRoomMessage(
+        selectedChatRoom?.chatId,
+        totalPageOfMessage?.currentPage
+      ),
+    enabled:
+      !!selectedChatRoom?.chatId && (totalPageOfMessage?.currentPage ?? 0) > 1,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -79,14 +97,18 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
             if (p.chatId === selectedChatRoom?.chatId) {
               return {
                 ...p,
-                hasMore: totalPageOfMessage?.currentPage < messageD?.data?.totalPages,
+                hasMore:
+                  (totalPageOfMessage?.currentPage || 0) <
+                  (messageD?.data?.totalPages || 0),
               };
             }
             return { ...p };
           });
 
           dispatch(getMessageWRTChatBox(update));
-          dispatch(getAllMessages([...messageD?.data?.messages, ...messages]));
+          dispatch(
+            getAllMessages([...(messageD?.data?.messages || []), ...messages])
+          );
           setInViewLoader(false);
         }
       }
@@ -154,12 +176,12 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   }, [messages, selectedChatRoom]);
 
   useEffect(() => {
-    if(conversation.length){
+    if (conversation.length) {
       setTimeout(() => {
         setHasLoadedOnce(true);
-      }, 300)
+      }, 300);
     }
-  }, [conversation])
+  }, [conversation]);
 
   const uploadOptionsRef = useRef(null);
 
@@ -210,7 +232,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   const [isSendingFiles, setIsSendingFiles] = useState(false);
   const handleFileInput = (event) => {
     const files = event.target.files;
-    
+
     if (files.length + fileInput.length > 5) {
       toast.error('You can only upload 5 files at a time');
       return;
@@ -234,8 +256,8 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
     const tempFiles = fileInput?.filter((el) => el.id !== id);
     setFileInput(tempFiles);
 
-    if(tempFiles.length === 0){
-      setIsSendingFiles(false)
+    if (tempFiles.length === 0) {
+      setIsSendingFiles(false);
     }
   };
 
@@ -314,11 +336,11 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
     mutationFn: sendAttachment,
     onSuccess: () => {
       setFileInput([]);
-      setIsSendingFiles(false)
+      setIsSendingFiles(false);
     },
     onError: (err) => {
       console.log(err);
-    }
+    },
   });
 
   const sendMessage = () => {
@@ -326,12 +348,12 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
       if (!fileInput.length) {
         return;
       }
-      const filesObject = fileInput.map(file => file.data)
+      const filesObject = fileInput.map((file) => file.data);
       const body = {
         files: filesObject,
-        chatId: selectedChatRoom.chatId
-      }
-      mutate(body)
+        chatId: selectedChatRoom.chatId,
+      };
+      mutate(body);
     } else {
       messageFieldRef.current.innerText = '';
       if (message.trim() === '') {
@@ -725,7 +747,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                     />
                   ) : (
                     <Box
-                      role={'none'}
                       className={'contentEditable'}
                       contentEditable
                       onInput={handleInput}

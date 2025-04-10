@@ -11,7 +11,7 @@ const AddAmenities = ({
   selectedAmenities,
   propertyInformation,
   handleSeletedAmenites,
-  getAmenities
+  getAmenities,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -23,7 +23,6 @@ const AddAmenities = ({
     onSelected(selectedAmenities);
   };
 
-  
   return (
     <Box
       sx={{

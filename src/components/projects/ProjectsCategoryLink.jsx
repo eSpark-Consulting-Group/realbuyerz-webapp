@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import Link from 'next/link';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
