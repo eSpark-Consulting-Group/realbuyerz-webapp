@@ -80,6 +80,7 @@ const AllMenu = ({
         >
           {tabs?.map((tab, tabKey) => (
             <Tab
+              disableRipple
               label={tab?.label}
               key={tabKey}
               sx={{ fontSize: { xs: '14px', lg: '18px' }, fontWeight: 400 }}

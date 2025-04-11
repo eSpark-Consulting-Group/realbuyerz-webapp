@@ -32,7 +32,7 @@ const ProjectsSlider = ({ data }) => {
               padding: 2,
             }}
           >
-            <Link href={`${item?.id || '#'}`}>
+            <Link href={`/projects/${item?.propertyId}`}>
               <PropertyCard item={item} />
             </Link>
           </SwiperSlide>

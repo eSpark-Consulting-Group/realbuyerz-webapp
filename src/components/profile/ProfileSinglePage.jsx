@@ -106,8 +106,8 @@ const ProfileSinglePage = () => {
         <AgentProperties
           data={user}
           allLink={`/profile/${id}/projects`}
-          sellLink={`/profile/${id}/projects/sell`}
-          rentLink={`/profile/${id}/projects/rent`}
+          sellLink={`/profile/${id}/projects-sale`}
+          rentLink={`/profile/${id}/projects-rent`}
           allProperties={allProperties}
           forRentCount={forRentCount}
           forSellCount={forSellCount}

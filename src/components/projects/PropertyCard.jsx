@@ -24,11 +24,15 @@ const PropertyCard = ({ item }) => {
     <Card
       variant="outlined"
       sx={{
-        maxWidth: 400,
+        minWidth: { xs: 240, sm: 340, md: 400 },
+        maxWidth: { xs: 400 },
         width: '98%',
         borderRadius: 0.8,
         border: '1px solid #E4E4E4',
         cursor: 'pointer',
+        '&:hover': {
+          boxShadow: loading ? 'none' : '0px 0px 4px rgba(251, 99, 28, 0.4)',
+        },
       }}
     >
       <Box sx={{ position: 'relative', height: 250 }}>

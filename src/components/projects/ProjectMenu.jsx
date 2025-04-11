@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Menu, Box, Typography } from '@mui/material';
+import { Menu, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PriceMenu from './PriceMenu';
 import SizeMenu from './SizeMenu';
 import AllMenu from './AllMenu';
+import TooltipText from '../global/TooltipText';
 
 const ProjectMenu = ({
   field,
@@ -98,17 +99,22 @@ const ProjectMenu = ({
           border: '1px solid #E7E7E7',
           borderRadius: '5px',
           cursor: 'pointer',
+          '&:hover': {
+            border: '1px solid #000',
+          },
         }}
       >
-        <Typography
-          sx={{
+        <TooltipText
+          text={key === 'all' ? filterObject?.all?.category : key}
+          maxLength={10}
+          variant="secondary"
+          typographyStyle={{
             fontSize: '15px',
             fontWeight: 400,
             textTransform: 'capitalize',
+            textWrap: 'nowrap',
           }}
-        >
-          {key === 'all' ? filterObject?.all?.category : key}
-        </Typography>
+        />
         {open ? (
           <KeyboardArrowUpIcon
             sx={{
