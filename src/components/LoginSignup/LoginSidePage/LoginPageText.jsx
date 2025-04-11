@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { Typography, Box } from '@mui/material';
 
 import { LOGIN_FORM } from '@/src/constants/Login';
@@ -19,7 +18,6 @@ const LoginPageText = () => {
         sx={{
           color: '#126FAA',
           fontSize: { xs: '25px', md: '35px' },
-
           fontWeight: 500,
           textAlign: 'center',
         }}
@@ -30,7 +28,6 @@ const LoginPageText = () => {
         sx={{
           color: '#FF631C',
           fontSize: { xs: '15px', md: '20px' },
-
           fontWeight: 400,
           textAlign: 'center',
         }}

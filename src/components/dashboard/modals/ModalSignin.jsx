@@ -1,13 +1,13 @@
-import React from 'react';
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
+
 import LoginCard from '../../LoginSignup/Login/LoginCard';
 
 const ModalSignin = ({ open, handleClose }) => {
   return (
     <>
       <Modal
-        open={open} // Controlled by props
+        open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

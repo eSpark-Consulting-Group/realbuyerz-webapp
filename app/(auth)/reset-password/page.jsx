@@ -1,10 +1,10 @@
-import React from 'react';
 import { Grid } from '@mui/material';
 
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
+import { getMetadata } from '@/src/components/seo';
+
 import { AUTH_COMPONENTS, LOGIN_FORM } from '@/src/constants/Login';
 import { GLOBAL_SEO } from '@/src/constants/global/seo';
-import { getMetadata } from '@/src/components/seo';
 
 const pathname = '/reset-password';
 const filteredData =

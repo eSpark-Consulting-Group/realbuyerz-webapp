@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid } from '@mui/material';
 
 import LoginSignupLayout from '@/src/components/LoginSignup/Login/LoginSignupLayout';
