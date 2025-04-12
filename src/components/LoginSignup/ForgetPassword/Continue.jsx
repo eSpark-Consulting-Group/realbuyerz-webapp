@@ -1,6 +1,6 @@
-import React from 'react';
 import { Button } from '@mui/material';
-import Image from 'next/image';
+
+import BackToSignin from '../Common/BackToSignin';
 
 import { LOGIN_FORM } from '@/src/constants/Login';
 
@@ -30,32 +30,10 @@ const Continue = ({
       >
         {LOGIN_FORM.loginCard.continue}
       </Button>
-
-      <Button
-        sx={{
-          fontWeight: '400px',
-          fontSize: '12px',
-          color: '#126FAA',
-          padding: 0,
-          textTransform: 'math-auto',
-          marginTop: '50px',
-          textDecoration: 'underline',
-          display: 'flex',
-          alignSelf: 'baseline',
-          alignItems: 'center',
-        }}
-        onClick={() => {
-          handleBackToLogin();
-        }}
-      >
-        <Image
-          src="/images/modal/lessthan.svg"
-          width={18}
-          height={18}
-          alt="lessthan"
-        />
-        {LOGIN_FORM.loginCard.backSignin}
-      </Button>
+      <BackToSignin
+        text={LOGIN_FORM.loginCard.backSignin}
+        handleBackToLogin={handleBackToLogin}
+      />
     </>
   );
 };

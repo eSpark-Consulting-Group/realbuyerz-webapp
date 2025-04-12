@@ -1,20 +1,20 @@
-
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { redirect, usePathname } from 'next/navigation';
 
+import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { ToastContainer } from 'react-toastify';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import 'react-toastify/dist/ReactToastify.css';
+
 import { ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import theme from './theme';
-import Loader from './Loader'; // One single Loader component
+import Loader from './Loader';
 import Footer from '@/src/components/layouts/Footer';
 import MainHeader from '@/src/components/layouts/MainHeader';
 import FooterCta from '@/src/components/layouts/FooterCta';
@@ -38,17 +38,9 @@ const RootLayout = ({ children }) => {
     currentPath.includes('/agent/') || currentPath.includes('/user/');
 
   useEffect(() => {
-    if (
-      currentPath === '/agent' ||
-      currentPath === '/dashboard/agent' ||
-      currentPath === '/dashboard/agent'
-    ) {
+    if (currentPath === '/agent' || currentPath === '/dashboard/agent') {
       redirect('/agent/live-bidding');
-    } else if (
-      currentPath === '/user' ||
-      currentPath === '/dashboard/user' ||
-      currentPath === '/dashboard/user'
-    ) {
+    } else if (currentPath === '/user' || currentPath === '/dashboard/user') {
       redirect('/user/dashboard');
     }
   }, [currentPath]);
@@ -58,10 +50,7 @@ const RootLayout = ({ children }) => {
       <body cz-shortcut-listen="true">
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <PersistGate
-              loading={<Loader />} // Use the same Loader here for Redux persistence
-              persistor={persistor}
-            >
+            <PersistGate loading={<Loader />} persistor={persistor}>
               <SocketProvider>
                 <ThemeProvider theme={theme}>
                   <CssBaseline />
@@ -85,30 +74,58 @@ const RootLayout = ({ children }) => {
   );
 };
 
-// Manual loading state based on query usage
 const PageContent = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  const timeoutIdRef = useRef(null); // Use useRef to track the timeout ID
+  const [loading, setLoading] = useState(false);
+  const timeoutIdRef = useRef(null); 
+
+  const { isLoading } = useMockQuery();
 
   useEffect(() => {
-    if (timeoutIdRef.current) {
-      clearTimeout(timeoutIdRef.current);
-    }
-    // Hide loader after a minimum time if not loading
-    const hideLoader = setTimeout(() => {
-      setLoading(false);
-    }, 300); // adjust this duration as needed
+    if (isLoading) {
+      setLoading(true);
 
-    return () => {
-      clearTimeout(hideLoader); // Cleanup hideLoader timeout
-    };
-  }, []); 
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+
+      timeoutIdRef.current = setTimeout(() => {
+        setLoading(true);
+      }, 300);
+    } else {
+
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+
+      const hideLoader = setTimeout(() => {
+        setLoading(false);
+      }, 300); 
+
+      return () => {
+        clearTimeout(hideLoader);
+      };
+    }
+  }, [isLoading]); 
 
   if (loading) {
-    return <Loader />; // Use the same Loader here for query loading
+    return <Loader />;
   }
 
   return <>{children}</>;
+};
+
+const useMockQuery = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData({ message: 'Query Result' });
+      setLoading(false);
+    }, 2000); 
+  }, []);
+
+  return { data, isLoading: loading };
 };
 
 export default RootLayout;

@@ -1,24 +1,33 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 import { useMutation } from '@tanstack/react-query';
+
 import { Box, Typography, TextField } from '@mui/material';
 
 import CheckEmailModal from './EmailModal';
-import { validateEmail } from '@/src/utils/validationEmail';
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 import Continue from '@/src/components/LoginSignup/ForgetPassword/Continue';
+import SemiBoldTypography from '../Common/SemiBoldTypography';
+import NormalTypography from '../Common/NormalTypography';
+import HeadingBox from '../Common/HeadingBox';
+
+import { validateEmail } from '@/src/utils/validationEmail';
 import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
 
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+
 const ForgetPassword = ({ setshowForgetPassword }) => {
+  const router = useRouter();
+  
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const [isValidEmail, setisValidEmail] = useState(false);
+
   const handleBackToLogin = () => {
     router.push(LOGIN_ROUTERS.signin);
   };
-  const router = useRouter();
 
   const { mutate: getResetPasswordLink } = useMutation({
     mutationFn: forgetPassword,
@@ -49,17 +58,16 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
 
   const handleContinue = () => {
     if (handleValidation()) {
-
       getResetPasswordLink({ to: email });
     }
   };
 
   const resendEmail = () => {
-
     getResetPasswordLink({ to: email });
   };
 
   const checkPasswordMatch = () => {};
+
   return (
     <Box
       sx={{
@@ -78,37 +86,13 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
           width: '400px',
         },
         '@media (max-width: 400px)': {
-          width: '100% ',
+          width: '100%',
         },
       }}
     >
-      <Box
-        sx={{
-          width: { xs: '90%', md: '320px' },
-          display: 'flex',
-          flexDirection: 'column',
-          height: 'auto',
-          gap: { xs: '7px', md: '15px' },
-          paddingTop: '10px',
-        }}
-      >
-        <Typography
-          sx={{
-            color: '#FF631C',
-            fontSize: { xs: '18px', md: '30px' },
-            fontWeight: 600,
-          }}
-        >
-          {LOGIN_FORM.loginCard.passwordForget}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: '12px', md: '16px' },
-            fontWeight: 400,
-          }}
-        >
-          {LOGIN_FORM.loginCard.enterEmail}
-        </Typography>
+      <HeadingBox>
+        <SemiBoldTypography text={LOGIN_FORM.loginCard.passwordForget} />
+        <NormalTypography text={LOGIN_FORM.loginCard.enterEmail} />
         <TextField
           label={LOGIN_FORM.loginCard.email}
           name={LOGIN_FORM.email}
@@ -144,7 +128,7 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             handleBackToLogin={handleBackToLogin}
           />
         )}
-      </Box>
+      </HeadingBox>
     </Box>
   );
 };

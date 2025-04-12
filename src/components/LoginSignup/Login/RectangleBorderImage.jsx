@@ -1,31 +1,22 @@
 'use client';
-import React from 'react';
 import { Box } from '@mui/system';
 
 import LoginCard from './LoginCard';
 import SignupCard from '../Signup/SignupCard';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
-import { AUTH_COMPONENTS } from '@/src/constants/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
 
+import { AUTH_COMPONENTS } from '@/src/constants/Login';
+
+const componentMap = {
+  [AUTH_COMPONENTS.signup]: <SignupCard />,
+  [AUTH_COMPONENTS.signin]: <LoginCard />,
+  [AUTH_COMPONENTS.forgetPassword]: <ForgetPassword />,
+  [AUTH_COMPONENTS.resetPassword]: <ResetPassword />,
+};
 const RectangleBorderImage = ({ height, showComponent }) => {
-  let cardComponent;
-  switch (showComponent) {
-    case AUTH_COMPONENTS.signup:
-      cardComponent = <SignupCard />;
-      break;
-    case AUTH_COMPONENTS.signin:
-      cardComponent = <LoginCard />;
-      break;
-    case AUTH_COMPONENTS.forgetPassword:
-      cardComponent = <ForgetPassword />;
-      break;
-    case AUTH_COMPONENTS.resetPassword:
-      cardComponent = <ResetPassword />;
-      break;
-    default:
-      cardComponent = null;
-  }
+  const cardComponent = componentMap[showComponent] || null;
+
   return (
     <Box
       component="div"
