@@ -1,52 +1,76 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
 import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
-import { PROJECTS_FILTER_FIELDS } from '@/src/constants/Projects/projectsFilter';
+import {
+  dummay_data,
+  PROJECTS_FILTER_FIELDS,
+} from '@/src/constants/Projects/projectsFilter';
 
 const ProjectsPage = () => {
-  const { agentPostings: projects } = useSelector(
-    (state) => state.postListingAds
-  );
   const { fields } = PROJECTS_FILTER_FIELDS;
+  const filteredData = dummay_data?.filter((item) => item);
+  const [filterObject, setfilterObject] = useState({
+    purpose: 'Buy',
+    all: { label: 'House', category: 'All' },
+    price: { minimum: '', maximum: '' },
+    size: '',
+    search: '',
+  });
 
-  if (!projects || projects.length === 0) {
+  if (!filteredData || filteredData?.length === 0) {
     return (
-      <NotFoundSection heading={'Sorry!'} message={'No Properties Found.'} />
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'No Properties Found.'}
+        link={'/'}
+      />
     );
   }
 
   const renderProjectCategory = (category, link, linkText) => (
-    <Box>
+    <Box sx={{ py: 1.5 }}>
       <ProjectsCategoryLink
         category={category}
         link={`/projects/category/${link}`}
         linkText={linkText}
       />
+
       <Box
         sx={{
+          width: '100%',
+          maxWidth: '1350px',
+          mx: 'auto',
           display: 'flex',
           justifyContent: 'center',
-          marginLeft: '15px',
+          py: 0.5,
         }}
       >
-        <ProjectsSlider data={projects} category={link} />
+        <ProjectsSlider data={dummay_data} category={link} />
       </Box>
     </Box>
   );
 
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <Box sx={{ pb: '100px' }}>
-        <ProjectsFilterComponent data={projects} fields={fields || []} />
+    <Box
+      className="min-h-screen"
+      sx={{ py: { xs: 2, sm: 5, lg: 8 }, px: { xs: 2, sm: 2, md: 3, lg: 0 } }}
+    >
+      <Box>
+        <ProjectsFilterComponent
+          fields={fields || []}
+          filterObject={filterObject}
+          setfilterObject={setfilterObject}
+        />
       </Box>
-      {renderProjectCategory('Houses', 'houses', 'See All >')}
-      {renderProjectCategory('Plots', 'plots', 'See All')}
-      {renderProjectCategory('Commercials', 'commercials', 'See All')}
+      <Box sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
+        {renderProjectCategory('Houses', 'houses', 'See All >')}
+        {renderProjectCategory('Plots', 'plots', 'See All >')}
+        {renderProjectCategory('Commercials', 'commercials', 'See All >')}
+      </Box>
     </Box>
   );
 };

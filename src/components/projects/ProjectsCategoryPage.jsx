@@ -1,52 +1,81 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/system';
-import { usePathname } from 'next/navigation';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import ProjectsCard from '@/src/components/projects/ProjectsCard';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
-import { useSelector } from 'react-redux';
 import ProjectsFilterComponent from './ProjectsFilterComponent';
 import AgentProjectsChiperBack from '../profile/agent-projects/AgentProjectsChiperBack';
+import {
+  dummay_data,
+  PROJECTS_FILTER_FIELDS,
+} from '@/src/constants/Projects/projectsFilter';
+import SeeAllCard from './SeeAllCard';
 
-const ProjectsCategoryPage = () => {
-  const pathname = usePathname();
-  const segments = pathname.split('/');
-  const id = segments[segments.length - 1];
-  const capID = id.charAt(0).toUpperCase() + id.slice(1);
+const ProjectsCategoryPage = ({ params }) => {
+  const { slug } = params || {};
+  const { fields } = PROJECTS_FILTER_FIELDS;
+  const [filterObject, setfilterObject] = useState({
+    purpose: 'Buy',
+    all: { label: 'House', category: 'All' },
+    price: { minimum: '', maximum: '' },
+    size: '',
+    search: '',
+  });
 
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const NoData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const filterData = projects?.filter(
-    (item) => item?.propertyCategory === capID && item?.status === 'submit'
+  const filteredData = dummay_data?.filter((item) => item);
+
+  if (!slug) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'Property category invalid, Please add correct category.'}
+        link="/projects"
+        goBackTo={'Go to projects'}
+      />
+    );
+  }
+
+  if (!filteredData || filteredData?.length === 0) {
+    return (
+      <NotFoundSection
+        heading={'Sorry!'}
+        message={'Property Not Found'}
+        link="/projects"
+        goBackTo={'Go back'}
+      />
+    );
+  }
+
+  const renderProjectCategory = () => (
+    <Box sx={{ py: 1.5 }}>
+      <ProjectsCategoryLink category={slug} />
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: '1350px',
+          mx: 'auto',
+          display: 'flex',
+          py: 0.5,
+        }}
+      >
+        <SeeAllCard data={filteredData} />
+      </Box>
+    </Box>
   );
-  const filteredData = filterData?.length ? filterData : NoData;
-
-  if (!id) {
-    return (
-      <NotFoundSection
-        heading={'Sorry!'}
-        message={'Proposal category invalid, Please add correct id.'}
-      />
-    );
-  }
-  if (!filteredData || filteredData.length === 0) {
-    return (
-      <NotFoundSection
-        heading={'Sorry!'}
-        message={'Proposal category invalid, Please add correct id.'}
-      />
-    );
-  }
 
   return (
     <Box className="min-h-screen" sx={{ py: '20px' }}>
-      <Box sx={{ pb: '80px' }}>
+      <Box>
         <AgentProjectsChiperBack backText={'Back'} backLink={`/projects/`} />
-        <ProjectsFilterComponent data={filteredData} />
+        <ProjectsFilterComponent
+          fields={fields || []}
+          filterObject={filterObject}
+          setfilterObject={setfilterObject}
+        />
       </Box>
-      <ProjectsCategoryLink category={id} />
-      <ProjectsCard data={filteredData} />
+      <Box sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
+        {renderProjectCategory('Houses', 'houses', 'See All >')}
+      </Box>
     </Box>
   );
 };

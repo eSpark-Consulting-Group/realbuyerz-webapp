@@ -64,7 +64,7 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
         </Typography>
         <Button
           variant="primary"
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, textTransform: 'lowercase' }}
           onClick={() => router?.push(`${link || NOT_FOUND?.backButtonLink}`)}
           startIcon={<ArrowBackIosIcon />}
         >

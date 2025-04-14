@@ -1,117 +1,89 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  Menu,
-  Tabs,
-  Tab,
-  Box,
-  Typography,
-  Grid,
-  Paper,
-} from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
+import { Menu, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import PriceMenu from './PriceMenu';
+import SizeMenu from './SizeMenu';
+import AllMenu from './AllMenu';
+import TooltipText from '../global/TooltipText';
 
-const ProjectMenu = ({ field }) => {
+const ProjectMenu = ({
+  field,
+  filterObject,
+  setfilterObject,
+  activeMenuOption,
+  setActiveMenuOption,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
   const { key } = field || {};
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event?.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
-
-  console.log(key, 'field');
-
-  const categories = [
-    { label: 'All', icon: <HomeIcon /> },
-    { label: 'House', icon: <HomeIcon /> },
-    { label: 'Flat', icon: <HomeIcon /> },
-    { label: 'Upper Portion', icon: <HomeIcon /> },
-    { label: 'Lower Portion', icon: <HomeIcon /> },
-    { label: 'Farm House', icon: <HomeIcon /> },
-    { label: 'Room', icon: <HomeIcon /> },
-    { label: 'Penthouse', icon: <HomeIcon /> },
-  ];
 
   const renderMenu = (key) => {
     if (key === 'all') {
-      return <AllMenu />;
+      return (
+        <AllMenu
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          filterObject={filterObject}
+          setfilterObject={setfilterObject}
+          activeMenuOption={activeMenuOption}
+          setActiveMenuOption={setActiveMenuOption}
+          setAnchorEl={setAnchorEl}
+        />
+      );
     } else if (key === 'price') {
-      return <PriceMenu />;
+      return (
+        <PriceMenu
+          filterObject={filterObject}
+          setfilterObject={setfilterObject}
+          handleClose={handleClose}
+          setAnchorEl={setAnchorEl}
+        />
+      );
     } else if (key === 'size') {
-      return <SizeMenu />;
+      return (
+        <SizeMenu
+          filterObject={filterObject}
+          setfilterObject={setfilterObject}
+          handleClose={handleClose}
+          setAnchorEl={setAnchorEl}
+        />
+      );
     } else {
       return null;
     }
   };
 
-  const AllMenu = () => (
-    <Box sx={{ width: 400, p: 2 }}>
-      <Tabs
-        value={activeTab}
-        onChange={handleTabChange}
-        textColor="primary"
-        indicatorColor="primary"
-        variant="fullWidth"
-      >
-        <Tab label="House" />
-        <Tab label="Plots" />
-        <Tab label="Commercial" />
-      </Tabs>
+  const handleClose = () => {
+    setAnchorEl(null);
+    if (filterObject?.all?.label === 'House') {
+      setActiveTab(0);
+    } else if (filterObject?.all?.label === 'Plots') {
+      setActiveTab(1);
+    } else if (filterObject?.all?.label === 'Commercial') {
+      setActiveTab(2);
+    }
+    setActiveMenuOption(filterObject?.all?.category);
+  };
 
-      <Box sx={{ mt: 2 }}>
-        <Grid container spacing={2}>
-          {categories.map((category, index) => (
-            <Grid item xs={4} key={index}>
-              <Paper
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  p: 1,
-                  cursor: 'pointer',
-                  transition: '0.3s',
-                  '&:hover': {
-                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                  },
-                }}
-                elevation={3}
-              >
-                {category.icon}
-                <Typography variant="body2" align="center">
-                  {category.label}
-                </Typography>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+  React.useEffect(() => {
+    const handleScrollOrResize = () => {
+      handleClose();
+    };
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 2 }}>
-        <Button variant="outlined" color="warning" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button variant="contained" color="warning">
-          Apply
-        </Button>
-      </Box>
-    </Box>
-  );
-  const PriceMenu = () => (
-    <Typography sx={{ py: 1, px: 2 }}>PriceMenu</Typography>
-  );
-  const SizeMenu = () => (
-    <Typography sx={{ py: 1, px: 2 }}>SizeMenu</Typography>
-  );
+    window.addEventListener('scroll', handleScrollOrResize);
+    window.addEventListener('resize', handleScrollOrResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('resize', handleScrollOrResize);
+    };
+  }, [filterObject]);
 
   return (
     <>
@@ -127,17 +99,22 @@ const ProjectMenu = ({ field }) => {
           border: '1px solid #E7E7E7',
           borderRadius: '5px',
           cursor: 'pointer',
+          '&:hover': {
+            border: '1px solid #000',
+          },
         }}
       >
-        <Typography
-          sx={{
+        <TooltipText
+          text={key === 'all' ? filterObject?.all?.category : key}
+          maxLength={10}
+          variant="secondary"
+          typographyStyle={{
             fontSize: '15px',
             fontWeight: 400,
             textTransform: 'capitalize',
+            textWrap: 'nowrap',
           }}
-        >
-          {key}
-        </Typography>
+        />
         {open ? (
           <KeyboardArrowUpIcon
             sx={{
@@ -158,14 +135,10 @@ const ProjectMenu = ({ field }) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
+        MenuListProps={{
+          sx: { p: 0 },
         }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
+        sx={{ mt: 1, width: '100%' }}
       >
         {renderMenu(key)}
       </Menu>

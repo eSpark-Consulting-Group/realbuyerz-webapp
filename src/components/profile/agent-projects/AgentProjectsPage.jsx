@@ -1,75 +1,65 @@
 'use client';
 import React from 'react';
 import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
 import ProjectsCategoryLink from '@/src/components/projects/ProjectsCategoryLink';
-import AgentProjectsChiperBack from './AgentProjectsChiperBack';
-import { usePathname } from 'next/navigation';
+import ProjectsSlider from '@/src/components/projects/ProjectsSlider';
 import NotFoundSection from '@/src/components/global/NotFoundSection';
-import ProjectsTypeSlider from '../../projects/ProjectsTypeSlider';
-import {
-  extractAgentId,
-  filterAgentsProjects,
-} from '@/src/utils/projects/agentsProjects';
+import { dummay_data } from '@/src/constants/Projects/projectsFilter';
+import AgentProjectsChiperBack from './AgentProjectsChiperBack';
 
-const AgentProjectPage = () => {
-  const pathname = usePathname();
-  const agentId = extractAgentId(pathname);
-  const projects = useSelector((state) => state.postListingAds.agentPostings);
-  const agents = useSelector((state) => state.agents);
-  const currentAgent = agents?.find(({ id }) => `${id}` === agentId);
+const ProjectsPage = ({ params }) => {
+  const { id, projects } = params || {};
+  const purpose = projects?.split('-')[1];
+  const filteredData = dummay_data?.filter((item) => item);
 
-  if (!agentId || !currentAgent || !Array.isArray(projects)) {
+  if (!filteredData || filteredData?.length === 0) {
     return (
       <NotFoundSection
         heading={'Sorry!'}
-        message={'Invalid agent ID or no projects found.'}
+        message={'No Properties Found.'}
+        link={'/'}
       />
     );
   }
 
-  const filterData = filterAgentsProjects(projects, agentId);
-
-  if (filterData?.length === 0) {
-    return (
-      <NotFoundSection
-        heading={'Sorry!'}
-        message={'No projects found for this agent?.'}
-      />
-    );
-  }
-
-  const renderProjects = (category, type) => (
-    <>
+  const renderProjectCategory = (category, link, linkText) => (
+    <Box sx={{ py: 1.5 }}>
       <ProjectsCategoryLink
-        category={`${category} for ${type}`}
-        link={`/profile/${agentId}/projects/${type}/${category?.toLowerCase()}`}
-        linkText={'See All'}
+        category={category}
+        link={`${projects}/${link}`}
+        linkText={linkText}
       />
-      <ProjectsTypeSlider
-        data={filterData}
-        category={category?.toLowerCase()}
-        type={type?.toLowerCase()}
-      />
-    </>
+
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: '1350px',
+          mx: 'auto',
+          display: 'flex',
+          justifyContent: 'center',
+          py: 0.5,
+        }}
+      >
+        <ProjectsSlider data={dummay_data} category={purpose} />
+      </Box>
+    </Box>
   );
 
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
-      <AgentProjectsChiperBack
-        backText={'Back'}
-        backLink={`/profile/${currentAgent?.id}`}
-        chipperText={`${currentAgent?.first_name} ${currentAgent?.last_name}'s Properties`}
-        chipperLink={`/projects`}
-      />
-      {renderProjects('Houses', 'Sale')}
-      {renderProjects('Plots', 'Sale')}
-      {renderProjects('Commercials', 'Sale')}
-      {renderProjects('Houses', 'Rent')}
-      {renderProjects('Plots', 'Rent')}
-      {renderProjects('Commercials', 'Rent')}
+    <Box className="min-h-screen" sx={{ py: '20px' }}>
+      <Box>
+        <AgentProjectsChiperBack
+          backText={'Back'}
+          backLink={`/profile/${id}`}
+        />
+      </Box>
+      <Box sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
+        {renderProjectCategory('Houses', 'houses', 'See All >')}
+        {renderProjectCategory('Plots', 'plots', 'See All >')}
+        {renderProjectCategory('Commercials', 'commercials', 'See All >')}
+      </Box>
     </Box>
   );
 };
 
-export default AgentProjectPage;
+export default ProjectsPage;
