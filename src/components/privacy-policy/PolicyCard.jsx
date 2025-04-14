@@ -14,12 +14,12 @@ const PolicyCard = ({ data, id, xs, md, sm, textAlign, backgroundColor }) => {
         boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.25)',
       }}
     >
-      <Box sx={{ px: '50px', py: '30px' }}>
+      <Box sx={{ px: { xs: '20px', sm: '30px', md: '50px' }, py: '30px' }}>
         <Typography
           variant="body1"
           sx={{
             color: '#333',
-            fontSize: '20px',
+            fontSize: { xs: '18px', md: '20px' },
             fontWeight: '600',
             pb: '30px',
             textAlign: { textAlign },

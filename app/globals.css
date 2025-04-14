@@ -759,7 +759,7 @@ button:hover {
   }
   .slick-dots{
     position: absolute;
-    top: 390px;
+    /* top: 390px; */
   }
 }
 

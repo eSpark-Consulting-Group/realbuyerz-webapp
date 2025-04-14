@@ -12,8 +12,8 @@ const PolicyPage = () => {
       sx={{
         background: '#FFFFFF',
         border: '2px solid #E4E4E4',
-        px: '40px',
-        py: '60px',
+        px: { xs: '25px', sm: '30px', md: '40px' },
+        py: { xs: '40px', md: '60px' },
         my: '40px',
         borderRadius: '20px',
       }}
@@ -22,10 +22,10 @@ const PolicyPage = () => {
         variant="h1"
         sx={{
           color: ' #FB631C',
-          fontSize: '30px',
+          fontSize: { xs: '25px', md: '30px' },
           fontWeight: '600',
           textAlign: 'center',
-          pb: '60px',
+          pb: { xs: '40px', md: '60px' },
         }}
       >
         {policies?.title}
