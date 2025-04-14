@@ -56,7 +56,7 @@ const SearchAndNotificationDesktopButton = ({
             {userName || ''}
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Image
             src={imageError ? profileIcon : userImage}
             width={41}
@@ -126,7 +126,6 @@ const SearchAndNotificationDesktopButton = ({
                     flexDirection: 'column',
                     justifyContent: 'center',
                     textWrap: 'wrap',
-                    gap: 0.6,
                   }}
                 >
                   <Typography
@@ -186,8 +185,8 @@ const SearchAndNotificationDesktopButton = ({
               >
                 <Image
                   src={'/images/Signout.png'}
-                  width={15}
-                  height={5}
+                  width={16}
+                  height={20}
                   alt="Signout"
                 />
 

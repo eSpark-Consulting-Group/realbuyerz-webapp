@@ -60,7 +60,7 @@ const PropertyTypes = ({ data, handlePropetySubType }) => {
               sx={{
                 fontSize: { xs: '15px', md: '18px', lg: '20px' },
                 color: 'inherit',
-                fontWeight: selectedType === item?.typeName ? 'bold' : 'normal',
+                fontWeight: 'normal',
               }}
             >
               {item?.typeName || 'Unnamed'}

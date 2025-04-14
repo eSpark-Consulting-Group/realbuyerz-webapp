@@ -24,6 +24,7 @@ const LayoutContainer = styled('div')({
   flex: '1 1 auto',
   flexDirection: 'column',
   width: '100%',
+  backgroundColor: '#F4F5F7',
 });
 
 const Layout = ({ children }) => {
@@ -58,8 +59,9 @@ const Layout = ({ children }) => {
                   <Box
                     sx={{
                       top: 0,
-                      height: 'auto',
                       position: 'relative',
+                      height: '100%',
+                      minHeight: '100vh',
                       backgroundColor: '#F4F5F7',
                       '@media (max-width: 400px)': {
                         px: '12px',

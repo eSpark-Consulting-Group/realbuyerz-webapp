@@ -43,7 +43,8 @@ const PreviewModal = (props) => {
             top: '50%',
             width: { xs: '92%', sm: '800px', xxl: '1200px' },
             bgcolor: 'background.paper',
-            height: { xs: 'auto', md: '840px' },
+            height: '92%',
+            maxHeight: '840px',
             '@media (min-width: 280px) and (max-width:833px)': {
               width: '92%',
             },

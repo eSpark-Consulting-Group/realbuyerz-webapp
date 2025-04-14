@@ -133,6 +133,8 @@ const PropertyStatus = ({ propertyInformation, propertyData, formik }) => {
                     onClick={() => handleChange(item?.text)}
                     type="button"
                     sx={{
+                      color:
+                        activePropertyStatus == item?.text ? '#FB631C' : '',
                       fontSize: { xs: '15px', md: '18px', lg: '20px' },
                       fontWeight: 400,
                     }}

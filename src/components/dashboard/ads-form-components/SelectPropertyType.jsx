@@ -127,6 +127,7 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
           >
             {propertyTp.map((val, index) => (
               <Button
+                disableRipple
                 key={index}
                 sx={{
                   fontSize: { xs: '15px', sm: '20px' },
