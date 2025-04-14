@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { TextField } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
+import { useState } from 'react';
+
+import { TextField, IconButton, InputAdornment } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
@@ -15,6 +14,7 @@ const PasswordFields = ({ formik }) => {
       showPassword: !formData.showPassword,
     });
   };
+  
   return (
     <>
       <TextField
@@ -29,7 +29,7 @@ const PasswordFields = ({ formik }) => {
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
-                style={{ color: '#444444' }}
+                sx={{ color: '#444444' }}
                 onClick={handleTogglePasswordVisibility}
                 edge="end"
               >

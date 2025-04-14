@@ -1,26 +1,34 @@
 'use client';
-import { Box, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { toast, ToastContainer } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import { useMutation } from '@tanstack/react-query';
 import { useFormik } from 'formik';
-import Cookie from 'js-cookie';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
-import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { userProfile } from '@/src/utils/apis/auth/getProfile';
-import { signup } from '@/src/utils/apis/auth/signup';
-import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
+import { Box, Typography } from '@mui/material';
+
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
+import Subheading from '../Common/Subheading';
 
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
+import { signup } from '@/src/utils/apis/auth/signup';
+import { navigateTo, saveUserInformation } from '@/src/utils/authUtils';
+
+import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
+
+import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 const SignupCard = () => {
-  const [contactNumber, setContactNumber] = useState('');
-  const dispatch = useDispatch();
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const [contactNumber, setContactNumber] = useState('');
+  const [error, _] = useState('Signup failed. Please try again.');
 
   const handleInputContactNumber = (e) => {
     const newContactNumber = e.target.value;
@@ -55,33 +63,16 @@ const SignupCard = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      console.log('Signup response:', data);
-
       if (data.success) {
-        // Success case
-        localStorage.setItem('token', data.response.data.token);
-        Cookie.set('token', data.response.data.token);
-        Cookie.set('userType', data.response.data.user.role);
-        const savedUserInfo = {
-          email: data.response.data.user.email,
-          userName: data.response.data.user.userName,
-          userType: data.response.data.user.role,
-        };
-        dispatch(setLoggedIn(savedUserInfo));
-
+        dispatch(setLoggedIn(saveUserInformation(data?.response?.data)));
         setProfile();
 
-        toast.success('Signup successful!', {
-          onClose: () => {
-            if (data.response.data.user.role === 'user') {
-              router.push('/user/dashboard');
-            } else if (data.response.data.user.role === 'agent') {
-              router.push('/agent/live-bidding');
-            }
-          },
-        });
+        toast.success('Signup successful!');
+
+        setTimeout(() => {
+          navigateTo(data?.response?.data?.user?.role, router);
+        }, 500);
       } else {
-        // Handle specific error messages
         if (data.message) {
           if (
             data.message.includes('Email') ||
@@ -89,14 +80,14 @@ const SignupCard = () => {
           ) {
             toast.error(data.message);
           } else {
-            toast.error('Signup failed. Please try again.');
+            toast.error(error);
           }
         } else {
-          toast.error('Signup failed. Please try again.');
+          toast.error(error);
         }
       }
     },
-    onError: (error) => {
+    onError: () => {
       toast.error('An error occurred. Please try again.');
     },
   });
@@ -137,7 +128,7 @@ const SignupCard = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            width: { xs: '70%', md: '70%' },
+            width: { xs: '70%' },
             height: '562px',
             gap: { xs: '5px', md: '8px' },
             paddingTop: '40px',
@@ -152,15 +143,7 @@ const SignupCard = () => {
           >
             {LOGIN_FORM.loginCard.createAccount}
           </Typography>
-          <Typography
-            sx={{
-              color: '#333333',
-              fontSize: '16px',
-              fontWeight: 400,
-            }}
-          >
-            {LOGIN_FORM.loginCard.quickEasy}
-          </Typography>
+          <Subheading text={LOGIN_FORM.loginCard.quickEasy} />
           <FormContainer
             isLoginForm={false}
             handleInputContactNumber={handleInputContactNumber}

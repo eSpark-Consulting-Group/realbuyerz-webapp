@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useDispatch } from 'react-redux';
@@ -10,17 +10,21 @@ import { Box, Button } from '@mui/material';
 import ModalSignin from '@/src/components/dashboard/modals/ModalSignin';
 import Typewriter from './Typewriter';
 
+import { navigateTo } from '@/src/utils/authUtils';
+import { removeFromStorage } from '@/src/utils/globalUtils';
+
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
 
 
 const CreateAccount = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState('');
-  const router = useRouter();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = Cookie.get('token');
@@ -29,33 +33,17 @@ const CreateAccount = () => {
     if (token && userType) {
       setIsLoggedIn(true);
       setUserRole(userType);
-
     } else {
       setIsLoggedIn(false);
-      localStorage?.removeItem('token');
-  
-      Cookie?.remove('token');
-      Cookie?.remove('userType');
+      removeFromStorage()
       dispatch(setLoggedOut());
-
     }
   }, []);
 
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleButtonClick = () => {
-    if (isLoggedIn) {
-      if (userRole === 'user') {
-        router.push('/user/dashboard');
-      } else if (userRole === 'agent') {
-        router.push('/agent/live-bidding');
-      } else {
-        router.push('/404');
-      }
-    } else {
-      handleOpen();
-    }
+    isLoggedIn ? navigateTo(userRole, router) : setOpen(true);
   };
 
   return (
@@ -78,7 +66,7 @@ const CreateAccount = () => {
           mx: '15px',
           fontWeight: 600,
           width: '150px',
-          height: { xs: 'auto', sm: 'auto', lg: '40px', xl: '40px' },
+          height: { xs: 'auto', lg: '40px' },
           color: '#fff',
           '&:hover': {
             backgroundColor: '#fff !important',

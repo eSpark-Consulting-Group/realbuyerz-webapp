@@ -1,6 +1,14 @@
 'use client';
-import React, { useState } from 'react';
-import Cookie from 'js-cookie';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+import { useFormik } from 'formik';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   Typography,
   Box,
@@ -8,36 +16,37 @@ import {
   Checkbox,
   Button,
 } from '@mui/material';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
 
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import LoginWithGoogle from './LoginWithGoogle';
 import FormContainer from './LoginForm';
-import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+import Subheading from '../Common/Subheading';
+import HeadingBox from '../Common/HeadingBox';
+
+import { userProfile } from '@/src/utils/apis/auth/getProfile';
+import { login } from '@/src/utils/apis/auth/login';
+import { navigateTo, saveUserInformation } from '@/src/utils/authUtils';
+
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
-import { login } from '@/src/utils/apis/auth/login';
-import { useFormik } from 'formik';
-import { AuthSchema } from '../../Schemas/signInValidationSchema';
-import { userProfile } from '@/src/utils/apis/auth/getProfile';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { AuthSchema } from '../../Schemas/signInValidationSchema';
+import { LOGIN_DATA, LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 
 const LoginCard = ({ handleClose = () => {}, fromModal }) => {
-  const [showForgetPassword, setshowForgetPassword] = useState(false);
-  const [formData, setFormData] = useState(LOGIN_DATA);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const [showForgetPassword, setshowForgetPassword] = useState(false);
+  const [formData, setFormData] = useState(LOGIN_DATA);
+  const [error, _] = useState('Login failed. Please try again.');
 
   const handleClick = () => {
     setshowForgetPassword(true);
     router.push(LOGIN_ROUTERS.forgetPassword);
   };
   const handleSignIn = () => {
-    handleClose(); // Close the modal
+    handleClose();
     router.push(LOGIN_ROUTERS.signup);
   };
 
@@ -45,44 +54,25 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
     mutationFn: login,
     onSuccess: (data) => {
       if (data?.success && data.response?.data?.token) {
-        localStorage.setItem('token', data.response.data.token);
-        Cookie.set('token', data.response.data.token);
-        Cookie.set('userType', data.response.data.user.role);
-
-        const savedUserInfo = {
-          email: data.response.data.user.email,
-          userName: data.response.data.user.userName,
-          userType: data.response.data.user.role,
-        };
-
-        dispatch(setLoggedIn(savedUserInfo));
+        handleClose();
+        dispatch(setLoggedIn(saveUserInformation(data.response?.data)));
         setProfile();
 
         toast.success('Login successful!');
 
         if (fromModal) {
           dispatch(setOpenModal(false));
-          if (data.response.data.user.role === 'user') {
-            router.push('/user/dashboard');
-          } else if (data.response.data.user.role === 'agent') {
-            router.push('/agent/live-bidding');
-          }
-        } else {
-          if (data.response.data.user.role === 'user') {
-            router.push('/user/dashboard');
-          } else if (data.response.data.user.role === 'agent') {
-            router.push('/agent/live-bidding');
-          }
         }
+
+        setTimeout(() => {
+          navigateTo(data?.response?.data?.user?.role, router);
+        }, 500);
       } else {
-        toast.error(data?.message || 'Login failed. Please try again.');
+        toast.error(data?.message || error);
       }
     },
     onError: (error) => {
-
-      const errorMessage =
-        error?.response?.data?.message || 'Login failed. Please try again.';
-
+      const errorMessage = error?.response?.data?.message || error;
       toast.error(errorMessage);
     },
   });
@@ -151,16 +141,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
               },
             }}
           >
-            <Box
-              sx={{
-                width: { xs: '100%', md: '320px' },
-                display: 'flex',
-                flexDirection: 'column',
-                height: 'auto',
-                padding: '5px',
-                gap: { xs: '7px', md: '15px' },
-              }}
-            >
+            <HeadingBox login>
               <Typography
                 sx={{
                   color: '#FF631C',
@@ -169,9 +150,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
               >
                 {LOGIN_FORM.loginCard.welcome}
               </Typography>
-              <Typography sx={{ color: ' #333333', fontSize: '16px' }}>
-                {LOGIN_FORM.loginCard.loginMessage}
-              </Typography>
+              <Subheading text={LOGIN_FORM.loginCard.loginMessage} />
               <FormContainer
                 isLoginForm={true}
                 formData={formData}
@@ -181,12 +160,11 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
               <Box
                 sx={{
                   display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row', md: 'row' },
+                  flexDirection: { xs: 'column', sm: 'row' },
                   alignItems: 'baseline',
                   justifyContent: {
                     xs: 'center',
                     sm: 'space-between',
-                    md: 'space-between',
                   },
                 }}
               >
@@ -194,7 +172,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                   sx={{
                     textAlign: 'center',
                     color: '#FF631C',
-                    fontSize: { xs: '10px', sm: '12px', md: '12px' },
+                    fontSize: { xs: '10px', sm: '12px' },
                     textDecoration: 'underline',
                     marginTop: 2,
                   }}
@@ -229,7 +207,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal }) => {
                 loginClick={formik.handleSubmit}
                 isPending={isPending}
               />
-            </Box>
+            </HeadingBox>
           </Box>
         ) : (
           <ForgetPassword setshowForgetPassword={setshowForgetPassword} />

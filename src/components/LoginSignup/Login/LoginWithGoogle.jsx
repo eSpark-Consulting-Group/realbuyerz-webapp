@@ -1,16 +1,29 @@
-import React from 'react';
-import { Typography, Box, Button, CircularProgress } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import { useMutation } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useMutation } from '@tanstack/react-query';
 import { jwtDecode } from 'jwt-decode';
 import Cookie from 'js-cookie';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
-import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
+
+import { Typography, Box, Button, CircularProgress } from '@mui/material';
+
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
+
+import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
+
 import { ENDPOINTS } from '@/src/constants/apiConstants';
+import { navigateTo } from '@/src/utils/authUtils';
+
+const hrStyles = {
+  display: { xs: 'none', md: 'flex' },
+  width: '170px',
+  border: '1px #A5A5A5 solid',
+};
+
+const flexContainer = { display: 'flex', justifyContent: 'center', alignItems: 'center' }
 
 const LoginWithGoogle = ({
   buttonLabel,
@@ -42,16 +55,10 @@ const LoginWithGoogle = ({
         };
 
         dispatch(setLoggedIn(savedUserInfo));
-
         localStorage.setItem('profileImage', token.user?.profileImage);
 
         setProfile();
-
-        if (token.user?.role === 'user') {
-          router.push('/user/dashboard');
-        } else if (token.user?.role === 'agent') {
-          router.push('/agent/live-bidding');
-        }
+        navigateTo(token?.user?.role, router);
       } else {
         toast.error('Token not found. Please try again.');
       }
@@ -105,9 +112,7 @@ const LoginWithGoogle = ({
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-      <Box
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
+      <Box sx={{ ...flexContainer }}>
         <Button
           sx={{
             background: isPending ? '#e0e0e0' : '#FB631C',
@@ -137,25 +142,11 @@ const LoginWithGoogle = ({
           gap: '20px',
         }}
       >
-        <hr
-          style={{
-            display: { xs: 'none', md: 'flex' },
-            width: '170px',
-            border: '1px #A5A5A5 solid',
-          }}
-        />
+        <hr style={{ ...hrStyles }} />
         <Typography sx={{ color: '#909394' }}>Or</Typography>
-        <hr
-          style={{
-            display: { xs: 'none', md: 'flex' },
-            width: '170px',
-            border: '1px #A5A5A5 solid',
-          }}
-        />
+        <hr style={{ ...hrStyles }} />
       </Box>
-      <Box
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
+      <Box sx={{ ...flexContainer }}>
         <GoogleLogin
           onSuccess={handleGoogleLogin}
           onError={(error) => {

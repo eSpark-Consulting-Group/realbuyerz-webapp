@@ -1,14 +1,21 @@
 'use client';
-import { Box, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import { useMutation } from '@tanstack/react-query';
 import { useFormik } from 'formik';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
-import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
-import { resetPasswordToken } from '@/src/utils/apis/auth/resetPasswordToken';
-import resetPasswordSchema from '../../Schemas/resetPasswordValidationSchema';
+
+import { Box } from '@mui/material';
+
 import Continue from '../ForgetPassword/Continue';
 import PasswordAndConfirmFields from '../Login/PasswordAndConfirmField';
+import SemiBoldTypography from '../Common/SemiBoldTypography';
+import NormalTypography from '../Common/NormalTypography';
+
+import { resetPasswordToken } from '@/src/utils/apis/auth/resetPasswordToken';
+
+import resetPasswordSchema from '../../Schemas/resetPasswordValidationSchema';
+import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +78,7 @@ const ResetPassword = () => {
           width: '400px',
         },
         '@media (max-width: 400px)': {
-          width: '90% ',
+          width: '90%',
         },
       }}
     >
@@ -85,23 +92,10 @@ const ResetPassword = () => {
           paddingTop: { xs: '0px', md: '40px' },
         }}
       >
-        <Typography
-          sx={{
-            color: '#FF631C',
-            fontSize: { xs: '18px', md: '30px' },
-            fontWeight: 600,
-          }}
-        >
-          {LOGIN_FORM.resetPasswordCard.resetPassword}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: '12px', md: '16px' },
-            fontWeight: 400,
-          }}
-        >
-          {LOGIN_FORM.resetPasswordCard.createNewPassword}
-        </Typography>
+        <SemiBoldTypography text={LOGIN_FORM.resetPasswordCard.resetPassword} />
+        <NormalTypography
+          text={LOGIN_FORM.resetPasswordCard.createNewPassword}
+        />
         <PasswordAndConfirmFields
           formik={formik}
           formData={formData}
