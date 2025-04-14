@@ -1,4 +1,4 @@
-/ @type {import('next').NextConfig} /;
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -12,9 +12,17 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn.pixabay.com', // ✅ Added Pixabay
+        hostname: 'cdn.pixabay.com',
       },
     ],
+  },
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      bufferutil: false,
+      'utf-8-validate': false,
+    };
+    return config;
   },
 };
 
