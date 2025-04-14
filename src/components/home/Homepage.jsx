@@ -25,15 +25,13 @@ const FeaturedProperties = dynamic(
 const HomePage = () => {
   return (
     <>
-      <div className="min-h-screen">
-        <HeroSection />
-        <BrowseByCategory data={CATEGORIES} />
-        <FeaturedProperties />
-        <CreateAccount />
-        <OurHomePartners data={PARTNERS} />
-        <NewlyListedProperties data={AGENT_PROFILE_DATA} />
-        <PopularLocations data={POPULAR_LOCATIONS_DATA} />
-      </div>
+      <HeroSection />
+      <BrowseByCategory data={CATEGORIES} />
+      <FeaturedProperties />
+      <CreateAccount />
+      <OurHomePartners data={PARTNERS} />
+      <NewlyListedProperties data={AGENT_PROFILE_DATA} />
+      <PopularLocations data={POPULAR_LOCATIONS_DATA} />
     </>
   );
 };

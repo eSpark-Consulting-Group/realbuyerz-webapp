@@ -1,39 +1,65 @@
-import { Grid } from '@mui/material';
+import { Box } from '@mui/material';
 
-import LoginSignupLayout from '@/src/components/LoginSignup/Login/LoginSignupLayout';
+import LoginSidePage from '@/src/components/LoginSignup/LoginSidePage/LoginSidePage';
 
 const InnerPagesLayout = ({ children }) => {
   return (
-    <>
-      <Grid
-        container
+    <Box sx={{ backgroundColor: '#FAFAFA' }}>
+      <Box
         sx={{
-          backgroundColor: '#FAFAFA',
+          mx: 'auto',
+          width: '100%',
+          maxWidth: '1500px',
+          height: '100%',
+          minHeight: 'calc(100vh - 70px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          py: 4,
+          '@media(max-width: 767px)': {
+            flexDirection: 'column',
+          },
         }}
       >
-        <Grid item xs={12} md={1} />
-        <Grid
-          item
-          xs={12}
-          md={10}
+        <Box
           sx={{
+            width: {
+              sm: 'calc(100% - 430px)',
+              md: 'calc(100% - 580px)',
+              lg: 'calc(100% - 750px)',
+            },
+            height: '100%',
             display: 'flex',
-            justifyContent: 'center',
-            flexDirection: { xs: 'column', md: 'row' },
-            paddingTop: '50px',
-            paddingBottom: '50px',
+            borderRadius: '1rem 0 0 1rem',
+            overflow: 'hidden',
+            alignItems: 'center',
+            pt: 3,
+            '@media(max-width: 767px)': {
+              display: 'none',
+            },
           }}
         >
-          <Grid item xs={12} md={6}>
-            <LoginSignupLayout />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            {children}
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={1} />
-      </Grid>
-    </>
+          <LoginSidePage />
+        </Box>
+        <Box
+          sx={{
+            mx: 'auto',
+            width: { sm: '400px', md: '510px', lg: '650px' },
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            position: 'relative',
+            '@media(max-width: 767px)': {
+              width: '95%',
+              maxWidth: '400px',
+              justifyContent: 'center',
+            },
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

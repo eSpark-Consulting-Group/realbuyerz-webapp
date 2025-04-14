@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Button } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,13 +12,18 @@ import {
 const PropertyForRent = ({ data, link }) => {
   return (
     <>
-      <Grid container justifyContent="space-between">
+      <Grid
+        container
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        pb={{ xs: 1.5, sm: 0 }}
+      >
         <Grid item>
           <Box
             sx={{
               display: 'flex',
-              verticalAlign: 'baseline',
-              marginBottom: 1,
+              alignItems: 'center',
+              pb: 2,
             }}
           >
             <Image
@@ -48,10 +53,11 @@ const PropertyForRent = ({ data, link }) => {
           <Box
             sx={{
               display: 'flex',
+              verticalAlign: 'baseline',
             }}
           >
             <Link href={link}>
-              <Button
+              <Typography
                 variant="body2"
                 sx={{
                   color: '#FB631C',
@@ -64,11 +70,11 @@ const PropertyForRent = ({ data, link }) => {
                 {VIEW_BUTTON} &nbsp;
                 <Image
                   src="/images/agent-profile-icons/arrow.svg"
-                  width={9}
-                  height={9}
+                  width={8}
+                  height={8}
                   alt={ALT}
                 />
-              </Button>
+              </Typography>
             </Link>
           </Box>
         </Grid>

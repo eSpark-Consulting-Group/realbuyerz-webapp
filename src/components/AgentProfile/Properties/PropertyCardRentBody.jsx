@@ -27,11 +27,11 @@ const PropertyCardRentBody = ({ rentData, link }) => {
               },
               '&:hover .property-type-text': {
                 color: '#FB631C',
-                fontSize: '13px',
+                fontSize: '12px',
               },
               '&:hover .property-icon': {
                 opacity: 1,
-                marginLeft: '10px',
+                marginLeft: '5px',
               },
             }}
           >
@@ -45,6 +45,7 @@ const PropertyCardRentBody = ({ rentData, link }) => {
                     fontWeight: 700,
                     lineHeight: 'normal',
                     textAlign: 'center',
+                    mb: 0.8,
                   }}
                 >
                   {rentData[index]}
@@ -54,7 +55,6 @@ const PropertyCardRentBody = ({ rentData, link }) => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginLeft: '-10px',
                 }}
               >
                 <ArrowOutwardIcon
@@ -74,6 +74,7 @@ const PropertyCardRentBody = ({ rentData, link }) => {
                       fontStyle: 'normal',
                       fontWeight: 400,
                       lineHeight: 'normal',
+                      marginRight: '10px',
                     }}
                   >
                     {propertyType}

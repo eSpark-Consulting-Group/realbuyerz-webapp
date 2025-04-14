@@ -31,38 +31,19 @@ const FeaturedProperties = () => {
   const router = useRouter();
 
   const sliderSettings = {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
+    spaceBetween: 15,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
     },
-    loop: true,
+    loop: false,
     modules: [Pagination, Navigation],
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      425: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      960: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-      1280: {
-        slidesPerView: 4,
-      },
-    },
   };
   return (
     <Box
       sx={{
-        mt: '60px',
+        mt: '50px',
         pt: '5px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/featured-properties-background.png')`,
@@ -71,10 +52,12 @@ const FeaturedProperties = () => {
         backgroundPosition: 'center',
       }}
     >
-      <Heading
-        heading={FEATURED_HEADINGS.featureProperty}
-        paragraph={FEATURED_HEADINGS.latestProject}
-      />
+      <Box sx={{ px: 1.5 }}>
+        <Heading
+          heading={FEATURED_HEADINGS.featureProperty}
+          paragraph={FEATURED_HEADINGS.latestProject}
+        />
+      </Box>
       {isSmallScreen ? (
         <Swiper {...sliderSettings}>
           <Box className="full-container-width mx-auto">
@@ -134,6 +117,7 @@ const FeaturedProperties = () => {
               display: 'flex',
               pt: { xs: '19px', sm: '30px', md: '55px' },
               pb: { xs: '50px', sm: '60px', lg: '68px' },
+              justifyContent: 'center',
             }}
             spacing={2}
           >
@@ -141,8 +125,8 @@ const FeaturedProperties = () => {
               <Grid
                 item
                 xs={12}
-                sm={6}
-                md={6}
+                sm={3}
+                md={4.2}
                 lg={3}
                 key={index}
                 sx={{

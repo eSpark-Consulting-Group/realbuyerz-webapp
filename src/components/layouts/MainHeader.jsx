@@ -6,18 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenModal } from '@/src/redux/slices/signin/signinSlice';
 import { PAGES } from '@/src/constants/Constants';
 import SignInButton from './SignInButton';
-import SignInResponsiveButton from './SignInResponsiveButton';
 
 const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -52,6 +48,7 @@ const MainHeader = () => {
   return (
     <AppBar
       sx={{
+        width: '100%',
         position: 'sticky',
         backgroundColor: 'white',
         boxShadow: 'none',
@@ -62,7 +59,13 @@ const MainHeader = () => {
         justifyContent: 'center',
       }}
     >
-      <Container maxWidth="xxl" sx={{ backgroundColor: '', p: 1 }}>
+      <Box
+        sx={{
+          width: '100%',
+          backgroundColor: '',
+          p: { xs: 1.5, sm: 2, md: 4 },
+        }}
+      >
         <Toolbar disableGutters>
           <Box
             sx={{
@@ -75,9 +78,46 @@ const MainHeader = () => {
             <Box
               sx={{
                 display: { xs: 'flex' },
-                alignItems: 'flex-start',
+                alignItems: 'center',
+                gap: { xs: 1.5, md: 0 },
               }}
             >
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  flexGrow: { xs: 2, md: 0 },
+                }}
+              >
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  disableRipple
+                  sx={{
+                    p: 0,
+                    height: 'auto',
+                    display: { xs: 'block', sm: 'block', md: 'none' },
+                    color: '#000',
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                    },
+                  }}
+                >
+                  <Box
+                    component={'img'}
+                    src={'/images/drawer.svg'}
+                    alt={'dashboardIcon'}
+                    sx={{
+                      width: { xs: '20px', sm: '20px' },
+                      height: 'auto',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </IconButton>
+              </Box>
               <Typography
                 variant="h6"
                 noWrap
@@ -90,38 +130,15 @@ const MainHeader = () => {
                   textDecoration: 'none',
                 }}
               >
-                <Image
+                <Box
+                  component={'img'}
                   src="/images/RealBuyersLogo.svg"
                   alt={'Images'}
+                  sx={{ width: { xs: '125px', sm: '135px', md: '155px' } }}
                   height={37}
-                  width={155}
-                  priority
+                  width={125}
                 />
               </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                flexGrow: { xs: 2, md: 0 },
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                sx={{
-                  display: { xs: 'block', sm: 'block', md: 'none' },
-                  color: '#000',
-                  '&:hover': {
-                    backgroundColor: 'transparent',
-                  },
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
             </Box>
             <Box
               sx={{
@@ -131,12 +148,12 @@ const MainHeader = () => {
                 display: { xs: 'none', sm: 'none', md: 'flex' },
               }}
             >
-              {PAGES.map((page, i) => (
-                <Link key={i} href={page.path}>
+              {PAGES?.map((page, i) => (
+                <Link key={i} href={page?.path}>
                   <Typography
                     sx={{
-                      color: currentPath === page.path ? '#FB631C' : '#000',
-                      fontSize: '15px',
+                      color: currentPath === page?.path ? '#FB631C' : '#000',
+                      fontSize: { xs: 'auto', md: '13px', lg: '15px' },
                       fontStyle: 'normal',
                       fontWeight: 600,
                       lineHeight: 'normal',
@@ -150,12 +167,12 @@ const MainHeader = () => {
                         left: 0,
                         right: 0,
                         bottom: -26,
-                        borderBottom: `4px solid ${currentPath === page.path ? '#FB631C' : 'transparent'}`,
+                        borderBottom: `4px solid ${currentPath === page?.path ? '#FB631C' : 'transparent'}`,
                         borderRadius: '5px',
                       },
                     }}
                   >
-                    {page.menu}
+                    {page?.menu}
                   </Typography>
                 </Link>
               ))}
@@ -175,6 +192,7 @@ const MainHeader = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
+                mt: 3,
                 display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
                 color: '#000',
               }}
@@ -215,19 +233,6 @@ const MainHeader = () => {
                   </>
                 </MenuItem>
               ))}
-              <MenuItem
-                sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }}
-              >
-                <SignInResponsiveButton
-                  isUserLoggedIn={isUserLoggedIn}
-                  handleOpenUserMenu={handleOpenUserMenu}
-                  anchorElUser={anchorElUser}
-                  handleCloseUserMenu={handleCloseUserMenu}
-                  handleClose={toggleOpen}
-                  open={open}
-                  handleOpen={toggleOpen}
-                />
-              </MenuItem>
             </Menu>
           </Box>
           <SignInButton
@@ -240,7 +245,7 @@ const MainHeader = () => {
             handleOpen={toggleOpen}
           />
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 };

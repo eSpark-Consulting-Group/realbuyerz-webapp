@@ -31,7 +31,7 @@ const Avatar = ({ data, minWidth = '40px', height = '40px', mobile, chat }) => {
       return (
         <Box
           component="img"
-          src={chat ? data?.avatar :`/images/${data?.avatar}.svg`}
+          src={chat ? data?.avatar : `/images/${data?.avatar}.svg`}
           sx={{
             width: minWidth,
             height,

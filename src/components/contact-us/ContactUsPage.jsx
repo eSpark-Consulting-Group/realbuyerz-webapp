@@ -1,10 +1,10 @@
-import ComingSoon from '@/src/components/global/ComingSoon';
 import React from 'react';
+import NotFoundSection from '../global/NotFoundSection';
 
 const ContactUsPage = () => {
   return (
     <>
-      <ComingSoon />
+      <NotFoundSection />
     </>
   );
 };

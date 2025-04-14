@@ -9,10 +9,11 @@ import { COMING_SOON } from '@/src/constants/Global';
 const ComingSoon = () => (
   <Box
     sx={{
-      height: '90vh',
+      height: '100vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: 'red',
     }}
   >
     <Grid

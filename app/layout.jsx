@@ -37,6 +37,12 @@ const RootLayout = ({ children }) => {
   const isDashboard =
     currentPath.includes('/agent/') || currentPath.includes('/user/');
 
+  const isAuthPages =
+    currentPath.includes('/signin') ||
+    currentPath.includes('/signup') ||
+    currentPath.includes('/forget-password') ||
+    currentPath.includes('/reset-password');
+
   useEffect(() => {
     if (currentPath === '/agent' || currentPath === '/dashboard/agent') {
       redirect('/agent/live-bidding');
@@ -58,8 +64,12 @@ const RootLayout = ({ children }) => {
                   <Box>
                     <PageContent>{children}</PageContent>
                   </Box>
-                  {!isDashboard && <FooterCta data={FOOTER_CTA_DATA} />}
-                  {!isDashboard && <Footer data={FOOTER_DATA} />}
+                  {!isDashboard && !isAuthPages && (
+                    <FooterCta data={FOOTER_CTA_DATA} />
+                  )}
+                  {!isDashboard && !isAuthPages && (
+                    <Footer data={FOOTER_DATA} />
+                  )}
 
                   <ToastContainer position="top-right" autoClose={3000} />
                   <NotificationListener />

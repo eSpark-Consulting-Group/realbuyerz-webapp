@@ -104,11 +104,16 @@ const SignupCard = () => {
       <ToastContainer />
       <Box
         sx={{
-          width: { xs: '90%', md: '100%' },
-          height: { xs: '650px', md: '580px' },
+          width: '100%',
+          maxWidth: '500px',
+          minWidth: { sm: 'auto', md: '100%', lg: '500px' },
+          height: '100%',
+          minHeight: '650px',
+          maxHeight: 'auto',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
           boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
           borderRadius: 2,
           background: 'white',
@@ -126,6 +131,9 @@ const SignupCard = () => {
       >
         <Box
           sx={{
+            mx: 'auto',
+            width: '100%',
+            maxWidth: { xs: '90%', sm: '85%', lg: '85%' },
             display: 'flex',
             flexDirection: 'column',
             width: { xs: '70%' },
@@ -137,7 +145,7 @@ const SignupCard = () => {
           <Typography
             sx={{
               color: '#FF631C',
-              fontSize: '20px',
+              fontSize: { xs: '19px', sm: '21px', md: '25px', lg: '30px' },
               fontWeight: 600,
             }}
           >

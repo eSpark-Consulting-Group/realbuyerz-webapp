@@ -28,24 +28,30 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
 
   return (
     <>
-      <Modal
-        open={open}
-        onClose={onClose}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
+      <Modal open={open} onClose={onClose}>
         <Box
           sx={{
-            width: { xs: '100%', sm: '50%', md: '500px' },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            boxShadow: 24,
+            width: '90%',
+            maxWidth: { xs: '380px', md: '400px', lg: '500px' },
+            maxHeight: { xs: '300px', lg: '400px' },
             margin: 'auto',
-            height: ' 400px',
+            height: ' 90%',
             background: '#fff',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '10px',
+            overflow: 'auto',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'transparent transparent',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
           }}
         >
           <Box

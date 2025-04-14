@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import TooltipText from '../../global/TooltipText';
 
 const ProfileInfo = ({ title, icon, alt }) => {
   return (
@@ -17,9 +17,11 @@ const ProfileInfo = ({ title, icon, alt }) => {
           <Image src={icon} width={15} height={15} alt={alt} />
         </Box>
       )}
-      <Typography
+      <TooltipText
+        text={title}
         variant="body1"
-        sx={{
+        maxLength={20}
+        typographyStyle={{
           color: '#777777',
           fontWeight: 'medium',
           marginTop: 1,
@@ -27,9 +29,7 @@ const ProfileInfo = ({ title, icon, alt }) => {
           display: 'flex',
           flexWrap: { xs: 'wrap', md: 'nowrap' },
         }}
-      >
-        {title}
-      </Typography>
+      />
     </Box>
   );
 };

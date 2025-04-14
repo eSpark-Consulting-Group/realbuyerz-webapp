@@ -7,7 +7,7 @@ import { handleAdaminities } from '@/src/redux/slices/postlistingAds/postlisting
 
 const Counter = ({ formik, item, getAmenities, index }) => {
   const { name, limit } = item;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { ZERO, ONE } = INCREMENT_DECREMENT;
   const initialValue = getInitialCounterValue(getAmenities[index], name);
 
@@ -28,7 +28,7 @@ const Counter = ({ formik, item, getAmenities, index }) => {
           if (val.name === itemName) {
             return { ...val, count: newIncrementValue };
           }
-  
+
           return { ...val };
         });
 

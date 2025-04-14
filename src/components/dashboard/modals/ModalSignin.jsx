@@ -5,25 +5,62 @@ import LoginCard from '../../LoginSignup/Login/LoginCard';
 
 const ModalSignin = ({ open, handleClose }) => {
   return (
-    <>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        style={{
-          display: 'flex',
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box
+        sx={{
+          width: '95%',
+          height: '95%',
+          maxWidth: { xs: '380px', md: '400px', lg: '500px' },
+          maxHeight: '650px',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          bgcolor: 'background.paper',
+          overflow: 'hidden',
+          boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
+          borderRadius: 2,
         }}
       >
         <Box
           sx={{
-            margin: 'auto',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            p: 2,
+          }}
+        >
+          <Box
+            component={'img'}
+            src="/images/close_icon.svg"
+            onClick={handleClose}
+            sx={{
+              width: { xs: '13px', sm: '14px', md: '15px' },
+              height: { xs: '13px', sm: '14px', md: '15px' },
+              cursor: 'pointer',
+            }}
+          />
+        </Box>
+        <Box
+          sx={{
+            maxHeight: '80vh',
+            overflow: 'auto',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'transparent transparent',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
           }}
         >
           <LoginCard handleClose={handleClose} fromModal={true} />
         </Box>
-      </Modal>
-    </>
+      </Box>
+    </Modal>
   );
 };
 

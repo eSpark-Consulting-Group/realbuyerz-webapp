@@ -1,5 +1,3 @@
-import { Grid } from '@mui/material';
-
 import RectangleBorderImage from '@/src/components/LoginSignup/Login/RectangleBorderImage';
 import { getMetadata } from '@/src/components/seo';
 
@@ -13,14 +11,10 @@ export const metadata = getMetadata(filteredData);
 
 const Signup = () => {
   return (
-    <>
-      <Grid container>
-        <RectangleBorderImage
-          showComponent={AUTH_COMPONENTS.signup}
-          height={LOGIN_FORM.rectangleHeight.signupFormHeight}
-        />
-      </Grid>
-    </>
+    <RectangleBorderImage
+      showComponent={AUTH_COMPONENTS.signup}
+      height={LOGIN_FORM.rectangleHeight.signupFormHeight}
+    />
   );
 };
 
