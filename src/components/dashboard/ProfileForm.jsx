@@ -189,7 +189,7 @@ export default function ProfileForm({ data, formValues }) {
                       alignItems: 'center',
                       gap: 1,
                       fontSize: '18px',
-                      fontWeight: 600,
+                      fontWeight: 400,
                     }}
                   >
                     {field?.label}

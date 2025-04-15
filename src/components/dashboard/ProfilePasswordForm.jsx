@@ -101,7 +101,7 @@ export default function ProfilePasswordForm({ data }) {
                     sx={{
                       textAlign: 'left !important',
                       fontSize: '18px',
-                      fontWeight: 500,
+                      fontWeight: 400,
                     }}
                   >
                     {field?.label}

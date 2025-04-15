@@ -26,6 +26,7 @@ const ProfileFormMidText = ({ heading }) => {
             backgroundColor: '#F0F6FA',
             height: '71px',
             paddingLeft: { lg: 7, md: 7, xs: 2 },
+            borderRadius: '0',
           }}
         >
           <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>
