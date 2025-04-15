@@ -15,6 +15,7 @@ const Heading = ({ heading, paragraph, textAlign }) => {
       >
         {heading ? heading : ''}
       </Typography>
+      
       <Typography
         variant="primary"
         sx={{

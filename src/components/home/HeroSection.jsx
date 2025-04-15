@@ -1,6 +1,4 @@
 'use client';
-import React from 'react';
-
 import { keyframes } from '@mui/system';
 
 import HeroSlider from './HeroSlider';

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -35,15 +37,13 @@ const ModalSignin = ({ open, handleClose }) => {
             p: 2,
           }}
         >
-          <Box
-            component={'img'}
+          <Image
+            alt="Close Icon"
             src="/images/close_icon.svg"
             onClick={handleClose}
-            sx={{
-              width: { xs: '13px', sm: '14px', md: '15px' },
-              height: { xs: '13px', sm: '14px', md: '15px' },
-              cursor: 'pointer',
-            }}
+            width={15}
+            height={15}
+            className="modal-closeicon"
           />
         </Box>
         <Box

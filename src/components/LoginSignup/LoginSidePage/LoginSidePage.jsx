@@ -1,9 +1,9 @@
 'use client';
-import { Grid } from '@mui/material';
+import Image from 'next/image';
 
-import LoginPageText from './LoginPageText';
-import RealEstateImage from './RealEstateImage';
-import PropertyBuilding from './BuildingImage';
+import { Box, Grid, Typography } from '@mui/material';
+
+import { ALT, LOGIN_FORM } from '@/src/constants/Login';
 
 const LoginSidePage = () => {
   return (
@@ -28,17 +28,19 @@ const LoginSidePage = () => {
           maxWidth: '700px',
         }}
       >
-        <Box
-          component={'img'}
+        <Image
           alt={ALT?.BUILDING_IMAGE || ''}
           src={'/images/signup_page/boximage.svg'}
-          sx={{
+          width={80}
+          height={100}
+          style={{
             width: '80%',
             height: 'auto',
             maxWidth: '632px',
             objectFit: 'contain',
           }}
         />
+
         <Box
           sx={{
             display: 'flex',
@@ -65,6 +67,7 @@ const LoginSidePage = () => {
           >
             {LOGIN_FORM?.loginCard?.connect}
           </Typography>
+
           <Typography
             sx={{
               color: '#FF631C',
@@ -83,10 +86,12 @@ const LoginSidePage = () => {
             {LOGIN_FORM?.loginCard?.propertyDealer}
           </Typography>
         </Box>
-        <Box
-          component={'img'}
+
+        <Image
           src="/images/signup_page/highbuilding.svg"
-          sx={{
+          width={80}
+          height={100}
+          style={{
             width: '80%',
             height: 'auto',
             maxWidth: '488px',

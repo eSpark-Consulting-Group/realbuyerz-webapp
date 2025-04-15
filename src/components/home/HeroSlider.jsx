@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -79,22 +80,21 @@ const HeroSlider = ({
                   zIndex: 1,
                 }}
               />
-              <Box
-                sx={{
-                  zIndex: 2,
-                  width: 'auto',
-                  mx: 'auto',
-                  maxWidth: {
-                    xs: '110px',
-                    sm: '160px',
-                    md: '200px',
-                    lg: '239px',
-                  },
-                  height: 'auto',
-                }}
+
+              <Image
                 src={logo}
-                component={'img'}
+                alt="Logo"
+                width={100}
+                height={100}
+                style={{
+                  zIndex: 2,
+                  width: '100%',
+                  height: '100%',
+                  mx: 'auto',
+                }}
+                className="heroslider-logo"
               />
+
               <Typography
                 sx={{
                   pt: '10px',
@@ -134,6 +134,7 @@ const HeroSlider = ({
               >
                 {heading}
               </Typography>
+
               <Box
                 sx={{
                   width: 'auto',

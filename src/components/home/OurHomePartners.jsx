@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 import Slider from 'react-slick';
 
@@ -30,6 +31,7 @@ const OurHomePartners = ({ data }) => {
       <Box sx={{ pb: '30px' }}>
         <Heading heading={FEATURED_HEADINGS.homePartners} />
       </Box>
+
       <Box
         sx={{
           padding: { xs: '10px', md: '20px' },
@@ -49,18 +51,13 @@ const OurHomePartners = ({ data }) => {
                 mx: 'auto',
               }}
             >
-              <Box
-                component={'img'}
+              <Image
                 src={partner?.image}
                 alt={partner?.name}
                 title={partner?.name}
-                sx={{
-                  objectFit: 'contain',
-                  width: '90%',
-                  height: { xs: 'auto', md: '100px' },
-                  maxWidth: { xs: '150px', md: '200px' },
-                  mx: 'auto',
-                }}
+                width={400}
+                height={100}
+                className="homepartenrs-image"
               />
             </Box>
           ))}

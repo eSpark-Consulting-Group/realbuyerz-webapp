@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -104,6 +103,7 @@ const PopularLocations = ({ data }) => {
                 {FEATURE_BUTTONS.forSale}
               </Typography>
             </Button>
+
             <Button
               sx={{
                 mx: '10px',
@@ -123,22 +123,26 @@ const PopularLocations = ({ data }) => {
                   fontSize: '15px',
                 }}
               >
-                {' '}
                 {FEATURE_BUTTONS.byRent}
               </Typography>
             </Button>
           </Box>
+
           {isSmallScreen ? (
             <Swiper {...popularLocationSliderSetting}>
               <Box className="full-container-width mx-auto">
                 <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
                   {filteredProposalsData?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <Grid item xs={12} sm={6} md={6} lg={4}>
-                        <FilteredProposalsDataBox
-                          borderRadius={'5px'}
-                          item={item}
-                        />
+                    <SwiperSlide
+                      key={index}
+                      style={{
+                        width: '90%',
+                        height: '100%',
+                        maxWidth: '350px',
+                      }}
+                    >
+                      <Grid item xs={10} sm={6} md={6} lg={6}>
+                        <FilteredProposalsDataBox item={item} small />
                       </Grid>
                     </SwiperSlide>
                   ))}
@@ -157,8 +161,8 @@ const PopularLocations = ({ data }) => {
                 columnSpacing={2}
               >
                 {filteredProposalsData?.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                    <FilteredProposalsDataBox borderRadius={''} item={item} />
+                  <Grid item xs={12} sm={6} md={6} lg={3.2} key={index}>
+                    <FilteredProposalsDataBox item={item} />
                   </Grid>
                 ))}
               </Grid>

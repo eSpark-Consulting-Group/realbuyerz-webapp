@@ -17,7 +17,7 @@ import { forgetPassword } from '@/src/utils/apis/auth/forgetPassword';
 
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
 
-const ForgetPassword = ({ setshowForgetPassword }) => {
+const ForgetPassword = () => {
   const router = useRouter();
   
   const [email, setEmail] = useState('');
@@ -84,19 +84,13 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
         boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
         borderRadius: 2,
         background: '#fff',
-        marginTop: '127px',
-        zIndex: 2,
-        '@media (max-width: 1286px)': {
-          width: '400px',
-        },
-        '@media (max-width: 400px)': {
-          width: '100%',
-        },
       }}
     >
       <HeadingBox>
         <SemiBoldTypography text={LOGIN_FORM.loginCard.passwordForget} />
+
         <NormalTypography text={LOGIN_FORM.loginCard.enterEmail} />
+
         <TextField
           variant="outlined"
           fullWidth
@@ -153,11 +147,13 @@ const ForgetPassword = ({ setshowForgetPassword }) => {
             {error}
           </Typography>
         )}
+
         <Continue
           handleBackToLogin={handleBackToLogin}
           handleContinue={handleContinue}
           checkPasswordMatch={checkPasswordMatch}
         />
+        
         {isValidEmail && (
           <CheckEmailModal
             onClose={() => setisValidEmail(false)}

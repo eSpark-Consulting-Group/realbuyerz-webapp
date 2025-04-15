@@ -6,7 +6,7 @@ import { FORM_LABEL, LOGIN_FORM, TEXT_TYPE } from '@/src/constants/Login';
 
 const getPasswordFieldProps = ({
   name,
-  label,
+  placeholder,
   value,
   showPassword,
   onToggle,
@@ -14,7 +14,7 @@ const getPasswordFieldProps = ({
   error,
   autoComplete,
 }) => ({
-  label,
+  placeholder,
   name,
   fullWidth: true,
   variant: 'outlined',
@@ -27,9 +27,33 @@ const getPasswordFieldProps = ({
     sx: {
       height: '40px',
       margin: '2px 0px',
-      '& fieldset': {
-        borderColor: '#E4E4E4',
+      '& fieldset': { border: 'none' },
+      gap: 1,
+      textAlign: 'left',
+      '& input::placeholder': {
+        color: '#000',
+        opacity: 1,
       },
+      '& input[type=number]::-webkit-inner-spin-button': {
+        WebkitAppearance: 'none',
+        margin: 0,
+      },
+      '.MuiFormHelperText-contained': {
+        marginLeft: 0.5,
+      },
+      '&:-webkit-autofill': {
+        height: '40px',
+        transition: 'background-color 5000s ease-in-out 0s',
+        webkitTextFillColor: '#000',
+        background: '#fff !important',
+      },
+    },
+    style: {
+      borderRadius: '5px',
+      border: '1px solid #E4E4E4',
+      background: '#fff',
+      fontSize: '14px',
+      fontWeight: 400,
     },
     autoComplete,
     endAdornment: (
@@ -44,19 +68,20 @@ const getPasswordFieldProps = ({
       </InputAdornment>
     ),
   },
+  
 });
 
 const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
   const fields = [
     {
       name: LOGIN_FORM.password,
-      label: FORM_LABEL.password,
+      placeholder: FORM_LABEL.password,
       showKey: 'showPassword',
       autoComplete: 'new-password',
     },
     {
       name: LOGIN_FORM.confirmPassword,
-      label: FORM_LABEL.confirmPassword,
+      placeholder: FORM_LABEL.confirmPassword,
       showKey: 'showConfirmPassword',
       autoComplete: 'confirm-password',
     },
@@ -64,12 +89,12 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
 
   return (
     <>
-      {fields.map(({ name, label, showKey, autoComplete }) => (
+      {fields.map(({ name, placeholder, showKey, autoComplete }) => (
         <TextField
           key={name}
           {...getPasswordFieldProps({
             name,
-            label,
+            placeholder,
             value: formik.values[name],
             showPassword: formData?.[showKey],
             onToggle: {
@@ -79,11 +104,8 @@ const PasswordAndConfirmFields = ({ formData, handleFieldToggle, formik }) => {
             touched: formik.touched[name],
             error: formik.errors[name],
             autoComplete,
-            InputLabelProps: {
-              sx: { fontSize: '11px', color: '#000' },
-            },
-            
           })}
+          InputLabelProps={{ sx: { fontSize: '11px', color: '#000' } }}
         />
       ))}
     </>

@@ -19,11 +19,15 @@ import { navigateTo } from '@/src/utils/authUtils';
 
 const hrStyles = {
   display: { xs: 'none', md: 'flex' },
-  width: '170px',
-  border: '1px #A5A5A5 solid',
+  width: '100%',
+  maxWidth: '170px',
 };
 
-const flexContainer = { display: 'flex', justifyContent: 'center', alignItems: 'center' }
+const flexContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 const LoginWithGoogle = ({
   buttonLabel,
@@ -112,7 +116,7 @@ const LoginWithGoogle = ({
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-      <Box sx={{ ...flexContainer }}>
+      <Box sx={{ ...flexContainer, mt: 1 }}>
         <Button
           sx={{
             background: isPending ? '#e0e0e0' : '#FB631C',
@@ -134,6 +138,7 @@ const LoginWithGoogle = ({
           )}
         </Button>
       </Box>
+
       <Box
         sx={{
           display: 'flex',
@@ -143,10 +148,13 @@ const LoginWithGoogle = ({
         }}
       >
         <hr style={{ ...hrStyles }} />
+
         <Typography sx={{ color: '#909394' }}>Or</Typography>
+
         <hr style={{ ...hrStyles }} />
       </Box>
-      <Box sx={{ ...flexContainer }}>
+
+      <Box sx={{ ...flexContainer, mt: 1.2 }}>
         <GoogleLogin
           onSuccess={handleGoogleLogin}
           onError={(error) => {
@@ -201,6 +209,7 @@ const LoginWithGoogle = ({
         >
           {accountCreationMessage}
         </Typography>
+
         <Box>
           <Typography
             sx={{

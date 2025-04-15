@@ -14,6 +14,7 @@ import { Box, Typography } from '@mui/material';
 import FormContainer from '../Login/LoginForm';
 import LoginWithGoogle from '../Login/LoginWithGoogle';
 import Subheading from '../Common/Subheading';
+import HeadingBox from '../Common/HeadingBox';
 
 import { userProfile } from '@/src/utils/apis/auth/getProfile';
 import { signup } from '@/src/utils/apis/auth/signup';
@@ -23,6 +24,7 @@ import { setLoggedIn, setUserProfile } from '@/src/redux/slices/auth/authSlice';
 
 import { signupValidationSchema } from '../../Schemas/signUpValidationSchema';
 import { LOGIN_FORM, LOGIN_ROUTERS } from '@/src/constants/Login';
+
 const SignupCard = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -116,32 +118,10 @@ const SignupCard = () => {
           justifyContent: 'center',
           boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
           borderRadius: 2,
-          background: 'white',
-          zIndex: 2,
-          '@media (max-width: 1286px)': {
-            width: '400px',
-          },
-          '@media (max-width: 400px)': {
-            width: '90%',
-          },
-          '@media (max-width: 500px)': {
-            boxShadow: 'none',
-          },
+          background: '#fff',
         }}
       >
-        <Box
-          sx={{
-            mx: 'auto',
-            width: '100%',
-            maxWidth: { xs: '90%', sm: '85%', lg: '85%' },
-            display: 'flex',
-            flexDirection: 'column',
-            width: { xs: '70%' },
-            height: '562px',
-            gap: { xs: '5px', md: '8px' },
-            paddingTop: '40px',
-          }}
-        >
+        <HeadingBox>
           <Typography
             sx={{
               color: '#FF631C',
@@ -151,13 +131,16 @@ const SignupCard = () => {
           >
             {LOGIN_FORM.loginCard.createAccount}
           </Typography>
+
           <Subheading text={LOGIN_FORM.loginCard.quickEasy} />
+
           <FormContainer
             isLoginForm={false}
             handleInputContactNumber={handleInputContactNumber}
             contactNumber={contactNumber}
             formik={formik}
           />
+
           <LoginWithGoogle
             buttonLabel={LOGIN_FORM.signupForm.signup}
             label={LOGIN_FORM.signupForm.signin}
@@ -167,7 +150,7 @@ const SignupCard = () => {
             isPending={isPending}
             loginClick={formik.handleSubmit}
           />
-        </Box>
+        </HeadingBox>
       </Box>
     </>
   );

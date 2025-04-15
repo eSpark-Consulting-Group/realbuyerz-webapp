@@ -76,14 +76,6 @@ const ResetPassword = () => {
         boxShadow: '-4px -4px 11px 0px #00000026,0px 4px 4px 0px #00000040',
         borderRadius: 2,
         background: '#fff',
-        margin: 'auto',
-        zIndex: 2,
-        '@media (max-width: 1286px)': {
-          width: '400px',
-        },
-        '@media (max-width: 400px)': {
-          width: '90%',
-        },
       }}
     >
       <Box
@@ -95,20 +87,24 @@ const ResetPassword = () => {
           flexDirection: 'column',
           height: 'auto',
           padding: '5px',
-          gap: { xs: '10px', md: '10px' },
+          gap: '10px',
           px: 2,
         }}
       >
         <SemiBoldTypography text={LOGIN_FORM.resetPasswordCard.resetPassword} />
+
         <NormalTypography
           text={LOGIN_FORM.resetPasswordCard.createNewPassword}
+          reset
         />
+
         <PasswordAndConfirmFields
           formik={formik}
           formData={formData}
           handleFieldToggle={handleFieldToggle}
           passwordsMatch={passwordsMatch}
         />
+
         <Continue
           checkPasswordMatch={formik.handleSubmit}
           handleBackToLogin={backToSignin}

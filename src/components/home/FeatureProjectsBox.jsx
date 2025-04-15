@@ -13,7 +13,6 @@ const FeatureProjectsBox = ({
   router,
   item,
   styles,
-  zIndex,
   setHoveredIndex,
   index,
   hoveredIndex,
@@ -21,46 +20,88 @@ const FeatureProjectsBox = ({
   transition,
   isDesktop = false,
 }) => {
+  const desktopStyles = {
+    position: 'relative',
+    mx: { xs: '5%', lg: 'auto' },
+    width: {
+      lg: '390px',
+      '@media (min-width: 1440px) and (max-width: 1568px)': {
+        width: '340px',
+      },
+      '@media (min-width: 1569px) and (max-width: 1800px)': {
+        width: '360px',
+      },
+    },
+    height: '431px',
+    border: '1px solid #cbcbcb',
+    overflow: 'hidden',
+    zIndex: 1,
+  };
+
+  const smallScreenStyles = {
+    width: '260px',
+    height: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+  };
+
+  const collapseDesktopScreenStyle = {
+    width: '289px',
+    transform: hoveredIndex === index ? 'translateX(0)' : 'translateX(-100%)',
+    transition: 'transform 0.3s ease-in-out',
+  };
+
+  const collapseSmallScreenStyle = {
+    width: '220px',
+    left: 0,
+  };
+
+  const embedBoxStyles = isDesktop ? desktopStyles : smallScreenStyles;
+  const embedCollapseStyles = isDesktop
+    ? collapseDesktopScreenStyle
+    : collapseSmallScreenStyle;
+
+  const backgroundImage = isDesktop ? (
+    <Image
+      src={item?.images[0]}
+      alt={'background'}
+      fill
+      style={{ zIndex: -1 }}
+    />
+  ) : (
+    <Image
+      src={item?.images[0]}
+      alt="background"
+      width={260}
+      height={200}
+      style={{
+        objectFit: 'contain',
+        zIndex: -1,
+      }}
+    />
+  );
+
   return (
     <Box
       onClick={() => router.push(`/projects/${item?.property_id}`)}
       className={styles.box}
-      sx={{
-        position: 'relative',
-        mx: { xs: '5%', lg: 'auto' },
-        width: {
-          lg: '390px',
-          '@media (min-width: 1440px) and (max-width: 1568px)': {
-            width: '340px',
-          },
-          '@media (min-width: 1569px) and (max-width: 1800px)': {
-            width: '360px',
-          },
-        },
-        height: '431px',
-        border: '1px solid #cbcbcb',
-        overflow: 'hidden',
-        zIndex: zIndex,
-      }}
+      sx={{ ...embedBoxStyles }}
       onMouseOver={() => setHoveredIndex(index)}
       onMouseOut={() => setHoveredIndex(null)}
     >
-      <Image
-        src={item?.images[0]}
-        alt={'background'}
-        fill
-        style={{ zIndex: -1 }}
-      />
+      {backgroundImage}
+
       <LocationSVGBox city={item?.city} />
+
       <Collapse
         in={hoveredIndex === index}
         sx={{
           zIndex: 1,
           position: 'absolute',
           bottom: '60px',
-          width: '289px',
-          transform: transform,
-          transition: transition,
+          ...embedCollapseStyles,
         }}
       >
         <Link href={`/projects/${item?.property_id}`}>
@@ -81,6 +122,7 @@ const FeatureProjectsBox = ({
               ) : (
                 <TitleTypography title={item?.title} />
               )}
+
               <Typography
                 sx={{
                   color: '#1176ad',
@@ -92,6 +134,7 @@ const FeatureProjectsBox = ({
               >
                 <LocationOnIcon color="#1176ad" fontSize="12px" /> {item?.city}
               </Typography>
+
               <Box
                 sx={{
                   display: 'flex',
@@ -114,6 +157,7 @@ const FeatureProjectsBox = ({
                 >
                   {'Starting from:'}
                 </Typography>
+
                 <Typography
                   variant="body2"
                   sx={{
@@ -124,6 +168,7 @@ const FeatureProjectsBox = ({
                 >
                   {item?.amountCurrency}
                 </Typography>
+
                 <Typography
                   variant="body1"
                   sx={{
@@ -141,6 +186,7 @@ const FeatureProjectsBox = ({
                 </Typography>
               </Box>
             </Box>
+
             <Grid container>
               {FEATURED_PROPERTIES.map((amenity, index) => (
                 <Grid
@@ -159,7 +205,10 @@ const FeatureProjectsBox = ({
                     height={14.2}
                     src={amenity}
                     alt={`Amenity ${index}`}
-                    style={{ height: 'auto', width: 'auto' }}
+                    style={{
+                      height: isDesktop && 'auto',
+                      width: isDesktop && 'auto',
+                    }}
                   />
                 </Grid>
               ))}

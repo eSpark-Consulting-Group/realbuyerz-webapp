@@ -14,7 +14,7 @@ const componentMap = {
   [AUTH_COMPONENTS.forgetPassword]: <ForgetPassword />,
   [AUTH_COMPONENTS.resetPassword]: <ResetPassword />,
 };
-const RectangleBorderImage = ({ height, showComponent }) => {
+const RectangleBorderImage = ({ showComponent }) => {
   const cardComponent = componentMap[showComponent] || null;
 
   return (
@@ -24,14 +24,9 @@ const RectangleBorderImage = ({ height, showComponent }) => {
         height: '100%',
         position: 'relative',
         display: 'flex',
-        justifyContent: { xs: 'center', md: 'flex-end' },
-        width: { xs: '100%', md: '427px' },
-        height: height,
-        backgroundImage: 'url("/images/signup_page/rectangle.svg")',
-        backgroundRepeat: 'no-repeat',
-        padding: '37px',
-        '@media (max-width: 960px)': {
-          background: 'none',
+        alignItems: 'center',
+        '@media(max-width: 767px)': {
+          justifyContent: 'center',
         },
       }}
     >

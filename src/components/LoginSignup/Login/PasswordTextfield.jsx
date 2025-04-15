@@ -37,8 +37,8 @@ const PasswordFields = ({ formik }) => {
               </IconButton>
             </InputAdornment>
           ),
-          style: {
-            height: `45px`,
+          sx: {
+            height: '45px',
             borderRadius: '10px',
             border: '1px solid #E4E4E4',
             background: '#fff',
