@@ -490,7 +490,12 @@ const ProjectsFilterComponent = ({ data }) => {
               startAdornment: (
                 <InputAdornment position="start">
                   <IconButton edge="start" sx={{ paddingLeft: '20px' }}>
-                    <Image src="/images/Search.png" alt="Search" />
+                    <Image
+                      src="/images/Search.png"
+                      alt="Search"
+                      fill
+                      style={{ objectFit: 'cover' }} // Optional styling
+                    />
                   </IconButton>
                 </InputAdornment>
               ),
