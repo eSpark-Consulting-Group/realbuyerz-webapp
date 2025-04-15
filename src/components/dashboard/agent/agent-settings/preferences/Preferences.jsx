@@ -15,7 +15,7 @@ const Preferences = () => {
             width: '100%',
           },
           '@media (min-width: 960px) and (max-width: 1439px)': {
-            width: '90%',
+            width: '100%',
           },
         }}
       >

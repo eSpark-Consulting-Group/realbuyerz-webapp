@@ -164,6 +164,7 @@ body header {
 .PhoneInputCountryIcon {
   display: flex;
   align-items: center;
+  box-shadow: none !important;
 }
 
 .PhoneInputCountryIcon img {
@@ -407,6 +408,7 @@ body header {
 .swiper-horizontal {
   overflow-x: scroll !important;
 }
+
 .swiper-horizontal::-webkit-scrollbar {
   display: none;
 }
@@ -574,6 +576,7 @@ body header {
   display: flex;
   justify-content: center;
 }
+
 /* Animation for homepage categories */
 .container {
   position: relative;
@@ -672,6 +675,7 @@ body header {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -744,20 +748,21 @@ button:hover {
 /* listed properties */
 
 @media (max-width: 767px) {
-  .slick-slider{
+  .slick-slider {
     padding-left: 0px !important;
   }
 
   .slick-prev:before {
     display: none;
-    margin-right: 0px; 
-   }
-  
+    margin-right: 0px;
+  }
+
   .slick-next:before {
     display: none;
-    margin-right: 0px; 
+    margin-right: 0px;
   }
-  .slick-dots{
+
+  .slick-dots {
     position: absolute;
     /* top: 390px; */
   }
@@ -786,12 +791,15 @@ button:hover {
   0% {
     content: '.';
   }
+
   20% {
     content: '..';
   }
+
   40% {
     content: '...';
   }
+
   100% {
     content: '.';
   }
@@ -801,15 +809,19 @@ button:hover {
   0% {
     opacity: 0;
   }
+
   25% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   75% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }

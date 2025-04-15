@@ -8,12 +8,12 @@ const Profile = ({ profileInfo, defaultImage }) => {
     <>
       <Grid
         container
-        spacing={2}
+        rowSpacing={2}
         sx={{
           width: '100%',
           height: '100%',
           textAlign: 'center',
-          py: 1,
+          py: 1.5,
         }}
       >
         <Grid item xs={12}>

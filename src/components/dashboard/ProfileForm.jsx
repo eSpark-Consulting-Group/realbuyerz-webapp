@@ -179,16 +179,17 @@ export default function ProfileForm({ data, formValues }) {
                   sx={{
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'center',
                     rowGap: '18px',
                   }}
                 >
                   <Typography
                     sx={{
-                      display: 'flex',
+                      display: 'inline-flex',
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: 1,
-                      fontSize: '18px',
+                      fontSize: { xs: '16px', md: '18px' },
                       fontWeight: 600,
                     }}
                   >
@@ -202,6 +203,7 @@ export default function ProfileForm({ data, formValues }) {
                           fontStyle: 'normal',
                           fontWeight: 400,
                           lineHeight: 'normal',
+                          display: 'inline-flex',
                         }}
                       >
                         {verifyText === 'verified' ? (
@@ -317,6 +319,16 @@ export default function ProfileForm({ data, formValues }) {
                         },
                         '.MuiFormHelperText-contained': {
                           marginLeft: 0.5,
+                        },
+                        '& input:-webkit-autofill': {
+                          WebkitBoxShadow: '0 0 0 0 white inset !important', // Background color fix
+                          WebkitTextFillColor: '#000 !important', // Text color fix
+                          transition:
+                            'background-color 5000s ease-in-out 0s !important',
+                        },
+                        '& .MuiOutlinedInput-root': {
+                          height: '40px',
+                          borderRadius: '10px',
                         },
                       }}
                       rows={field?.rows}

@@ -21,6 +21,7 @@ const SaveChanges = ({ handleClickButton, saveChangeButton }) => {
 
           fontWeight: 400,
         }}
+        disableRipple
         onClick={handleClickButton}
       >
         {saveChangeButton}

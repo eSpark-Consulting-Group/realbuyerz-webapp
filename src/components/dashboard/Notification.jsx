@@ -45,14 +45,17 @@ const Notification = ({
               <Typography
                 sx={{
                   color: 'black',
-                  fontSize: { sm: '16px', md: '18px', lg: '20px' },
+                  fontSize: { xs: '16px', md: '18px', lg: '20px' },
                   fontWeight: 400,
                 }}
               >
                 {item?.title}
               </Typography>
               <AntSwitch
-                sx={{ marginRight: { lg: '-12px' } }}
+                sx={{
+                  display: { xs: 'none', sm: 'flex' },
+                  marginRight: { lg: '-12px' },
+                }}
                 checked={isToggled}
                 onChange={handleToggleChange}
                 inputProps={{ 'aria-label': 'ant design' }}
@@ -69,6 +72,15 @@ const Notification = ({
                 {item?.description}
               </Typography>
             </Box>
+            <AntSwitch
+              sx={{
+                display: { xs: 'flex', sm: 'none' },
+                marginRight: { lg: '-12px' },
+              }}
+              checked={isToggled}
+              onChange={handleToggleChange}
+              inputProps={{ 'aria-label': 'ant design' }}
+            />
           </Box>
         </Box>
       ))}

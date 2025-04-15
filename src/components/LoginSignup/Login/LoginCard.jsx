@@ -167,7 +167,7 @@ const LoginCard = ({ handleClose = () => {}, fromModal = false }) => {
               fontSize: { xs: '13px', sm: '14px', md: '16px' },
             }}
           >
-            {LOGIN_FORM.loginCard.loginMessage}
+            {LOGIN_FORM?.loginCard?.loginMessage}
           </Typography>
           <FormContainer
             isLoginForm={true}

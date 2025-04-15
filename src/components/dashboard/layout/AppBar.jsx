@@ -125,13 +125,20 @@ export default function ResponsiveNavbar({ openSidebar }) {
                 />
               </Box>
 
-              <Box sx={{ width: { xs: 'auto', sm: '100%' } }}>
+              <Box
+                sx={{
+                  width: { xs: '90%', sm: '155px' },
+                  maxWidth: '155px',
+                  position: 'relative',
+                  height: 37,
+                }}
+              >
                 <Link href={'/'}>
                   <Image
-                    src={'/images/logo.png'}
-                    width={155}
-                    height={37}
-                    alt={'icon'}
+                    src="/images/logo.png"
+                    alt="icon"
+                    fill
+                    style={{ objectFit: 'contain' }}
                   />
                 </Link>
               </Box>
@@ -253,7 +260,7 @@ export default function ResponsiveNavbar({ openSidebar }) {
                     display: { xs: 'flex', md: 'none' },
                     alignSelf: 'end',
                   }}
-                  src={current_user?.profile_image || ''}
+                  src={current_user?.image || ''}
                   alt={'icon'}
                 />
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

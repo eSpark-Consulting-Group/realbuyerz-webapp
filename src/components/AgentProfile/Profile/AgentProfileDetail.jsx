@@ -54,6 +54,7 @@ const AgentProfileDetail = ({
             color: '#1176AD',
             fontSize: { xs: '17px', sm: '20px', md: '25px', lg: '30px' },
             fontWeight: '600',
+            textWrap: 'noWrap',
           }}
           maxLength={13}
         />

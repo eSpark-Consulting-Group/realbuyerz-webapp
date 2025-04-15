@@ -111,15 +111,15 @@ const PreferenceSettings = () => {
             display: 'flex',
             flexDirection: 'column',
             marginBottom: { xs: '170px', md: '180px' },
-            width: { xs: '100%', md: '70%' },
-            padding: '40px',
+            width: { xs: '100%', lg: '70%' },
+            padding: { xs: '25px', md: '40px' },
             gap: '40px',
           }}
         >
           <Typography
             sx={{
               color: 'black',
-              fontSize: { sm: '20px', lg: '25px' },
+              fontSize: { xs: '20px', lg: '25px' },
               fontWeight: 500,
               padding: '8px',
             }}
