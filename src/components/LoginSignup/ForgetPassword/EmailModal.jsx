@@ -116,7 +116,7 @@ const CheckEmailModal = ({ open, onClose, email, handleClick }) => {
               sx={{
                 background: '#FF631C',
                 color: 'white',
-                fontWeight: '500px',
+                fontWeight: 500,
                 fontSize: '14px',
                 width: '98px',
                 height: '29px',
