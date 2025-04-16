@@ -49,6 +49,8 @@ const BrowseByCategory = ({ data }) => {
         sx={{
           background: '#F5F6FB',
           my: '20px',
+          maxWidth: '1185px',
+          mx: 'auto',
         }}
       >
         {isSmallScreen ? (
@@ -65,9 +67,9 @@ const BrowseByCategory = ({ data }) => {
                     justifyContent="center"
                     className="container"
                     sx={{
-                      width: '131px',
+                      width: '90%',
                       height: '130px',
-                      maxWidth: '150px',
+                      maxWidth: { xs: 'auto', md: '150px' },
                       my: '15px',
                       background: '#FFF',
                       border: '2px solid #fff',
@@ -93,12 +95,11 @@ const BrowseByCategory = ({ data }) => {
         ) : (
           <Grid
             container
-            gap={1}
             sx={{
               display: 'flex',
               justifyContent: 'space-around',
               flexWrap: 'wrap',
-              px: '40px',
+              px: '25px',
               py: '7px',
             }}
           >
@@ -114,7 +115,7 @@ const BrowseByCategory = ({ data }) => {
                   sx={{
                     width: '117px',
                     height: '99px',
-                    maxWidth: '150px',
+                    maxWidth: '117px',
                     my: '15px',
                     background: '#FFF',
                     position: 'relative',

@@ -49,7 +49,7 @@ const AgentProjectsCategoryPage = () => {
   }
 
   return (
-    <Box className="min-h-screen" sx={{ py: '80px' }}>
+    <Box className="min-h-screen" sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
       <AgentProjectsChiperBack
         backText={'Back'}
         backLink={`/profile/${currentAgent?.id}/projects/${adsType}`}

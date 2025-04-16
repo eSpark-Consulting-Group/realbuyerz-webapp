@@ -1,24 +1,24 @@
 import React from 'react';
-import { Typography } from '@mui/material';
 
 import { PROPERTIES_BY } from '@/src/constants/AgentProfile';
 import Link from 'next/link';
+import TooltipText from '../global/TooltipText';
 
 const AgentTitle = ({ count, title, link }) => {
   return (
-    <Link href={link}>
-      <Typography
+    <Link href={link} style={{ display: 'inline-block' }}>
+      <TooltipText
+        maxLength={40}
         variant="h4"
-        sx={{
+        text={`${count} ${PROPERTIES_BY} ${title}`}
+        typographyStyle={{
           color: '#000',
-          fontSize: { lg: '25px', md: '20px', sm: '18px', xs: '16px' },
+          fontSize: { xs: '18px', sm: '20px', md: '22px', lg: '25px' },
           fontStyle: 'normal',
           fontWeight: 500,
           lineHeight: 'normal',
         }}
-      >
-        {`${count} ${PROPERTIES_BY} ${title}`}
-      </Typography>
+      />
     </Link>
   );
 };

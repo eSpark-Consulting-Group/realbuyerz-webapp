@@ -84,7 +84,7 @@ body header {
   width: 15px;
   height: 15px;
   opacity: 1;
-  bottom: 25px;
+  bottom: 15px;
   position: relative;
 }
 
@@ -96,29 +96,19 @@ body header {
 
 .slick-prev:before {
   content: url('/images/agent-profile-icons/Left.svg') !important;
-
-  /* margin-left: 10px; */
-  @media (min-width: 280px) and (max-width: 400px) {
-    width: 10px;
-    height: 20px;
-  }
 }
 
 .slick-next:before {
   content: url('/images/agent-profile-icons/Right.svg') !important;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 
-  @media (min-width: 280px) and (max-width: 400px) {
+  /* @media (min-width: 280px) and (max-width: 400px) {
     width: 10px !important;
-  }
+  } */
 }
 
 .slick-slide {
   padding: 0 10px;
-}
-
-.slick-list {
-  margin-left: 20px !important;
 }
 
 /* ---------------------------- */
@@ -254,7 +244,7 @@ body header {
   }
 }
 
-@media (max-width: 1860px) {
+/* @media (max-width: 1860px) {
   .slick-list {
     margin-left: 24px !important;
   }
@@ -313,7 +303,7 @@ body header {
   .slick-list {
     margin-left: 19px !important;
   }
-}
+} */
 
 @media (min-width: 0px) and (max-width: 375px) {
   .MobileScreenMarginTop {
@@ -751,11 +741,26 @@ button:hover {
   box-shadow: none;
 }
 
-/* Typing indicator styles */
-.typing-indicator {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+/* listed properties */
+
+@media (max-width: 767px) {
+  .slick-slider{
+    padding-left: 0px !important;
+  }
+
+  .slick-prev:before {
+    display: none;
+    margin-right: 0px; 
+   }
+  
+  .slick-next:before {
+    display: none;
+    margin-right: 0px; 
+  }
+  .slick-dots{
+    position: absolute;
+    /* top: 390px; */
+  }
 }
 
 .dots {

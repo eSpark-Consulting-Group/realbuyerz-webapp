@@ -23,9 +23,9 @@ export const ENDPOINTS = {
   biddingRejectProposal: 'bidding/rejectProposal/',
   biddingArchivedProposal: 'bidding/archiveProposal/',
   // CHAT ENDPOINT
-  getAllUserChat:"chat/my",
-  getChatMessages:"chat/message/",
-  uploadAttachment:"chat/upload/",
+  getAllUserChat: 'chat/my',
+  getChatMessages: 'chat/message/',
+  uploadAttachment: 'chat/upload/',
   addCoverLetter: '',
   addProfile: '',
   agentChats: '',

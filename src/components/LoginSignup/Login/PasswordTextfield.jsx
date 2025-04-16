@@ -18,7 +18,7 @@ const PasswordFields = ({ formik }) => {
   return (
     <>
       <TextField
-        label={FORM_LABEL.password}
+        placeholder={FORM_LABEL?.password}
         variant="outlined"
         type={formData?.showPassword ? LOGIN_FORM.text : LOGIN_FORM.password}
         fullWidth
@@ -37,6 +37,35 @@ const PasswordFields = ({ formik }) => {
               </IconButton>
             </InputAdornment>
           ),
+          style: {
+            height: `45px`,
+            borderRadius: '10px',
+            border: '1px solid #E4E4E4',
+            background: '#fff',
+            fontSize: '15px',
+            fontWeight: 400,
+          },
+        }}
+        sx={{
+          '& fieldset': { border: 'none' },
+          gap: 1,
+          textAlign: 'left',
+          '& input::placeholder': {
+            color: '#000',
+            opacity: 1,
+          },
+          '& input[type=number]::-webkit-inner-spin-button': {
+            WebkitAppearance: 'none',
+            margin: 0,
+          },
+          '.MuiFormHelperText-contained': {
+            marginLeft: 0.5,
+          },
+          '&:-webkit-autofill': {
+            transition: 'background-color 5000s ease-in-out 0s',
+            webkitTextFillColor: '#000',
+            background: '#fff !important',
+          },
         }}
       />
     </>

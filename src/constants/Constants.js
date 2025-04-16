@@ -43,6 +43,11 @@ export const HERO_SECTION_IMAGES = [
   { image: '/images/hero_section/img3.png' },
 ];
 
+export const HERO_SECTION_BUTTONS = [
+  { title: 'Buyer', direction: 'left', link: '/signup/' },
+  { title: 'Seller', direction: 'right', link: '/signup/' },
+];
+
 export const FOOTER_CTA_DATA = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', // Description text

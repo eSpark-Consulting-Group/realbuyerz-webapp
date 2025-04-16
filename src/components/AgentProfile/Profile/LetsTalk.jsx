@@ -1,19 +1,17 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 const LetsTalk = ({ text, data }) => {
   return (
     text && (
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={4}
-        lg={4}
+      <Box
         sx={{
+          width: { xs: '100%', sm: 'auto' },
+          position: { xs: 'relative', md: 'absolute' },
+          right: { md: 25 },
+          left: { xs: 'auto', sm: 12, md: 'auto' },
+          bottom: { xs: 'auto', md: 25 },
           display: 'flex',
-          alignItems: 'flex-end',
-          paddingRight: '10px',
           justifyContent: 'center',
         }}
       >
@@ -42,7 +40,7 @@ const LetsTalk = ({ text, data }) => {
             {text}
           </Typography>
         </Button>
-      </Grid>
+      </Box>
     )
   );
 };

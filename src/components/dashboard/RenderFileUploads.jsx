@@ -2,7 +2,11 @@ import { Box } from '@mui/material';
 import React from 'react';
 
 const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
-  const fileTypes = ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
+  const fileTypes = [
+    'application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  ];
 
   return (
     <Box
@@ -50,7 +54,7 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                   component={'p'}
                   sx={{
                     margin: 0,
-                    textAlign: "center",
+                    textAlign: 'center',
                   }}
                 >
                   {file?.data?.name}

@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import BackToSignin from '../Common/BackToSignin';
 
@@ -11,25 +11,34 @@ const Continue = ({
 }) => {
   return (
     <>
-      <Button
-        style={{
+      <Box
+        sx={{
           display: 'flex',
-          alignSelf: 'center',
-          background: '#FB631C',
-          width: '100px',
-          borderRadius: '5px',
-          color: 'white',
-          '&:hover': {
-            background: '#FF631C',
-          },
-        }}
-        onClick={() => {
-          handleContinue();
-          checkPasswordMatch();
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 3,
         }}
       >
-        {LOGIN_FORM.loginCard.continue}
-      </Button>
+        <Button
+          sx={{
+            background: '#FB631C',
+            width: '100px',
+            borderRadius: '5px',
+            color: 'white',
+            height: '29px',
+            '&:hover': {
+              background: '#FF631C',
+            },
+          }}
+          onClick={() => {
+            handleContinue();
+            checkPasswordMatch();
+          }}
+        >
+          {LOGIN_FORM.loginCard.continue}
+        </Button>
+      </Box>
+
       <BackToSignin
         text={LOGIN_FORM.loginCard.backSignin}
         handleBackToLogin={handleBackToLogin}

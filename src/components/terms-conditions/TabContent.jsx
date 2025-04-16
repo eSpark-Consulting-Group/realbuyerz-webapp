@@ -8,7 +8,7 @@ const TabContent = ({ selectedTab }) => {
         borderRadius: '20px',
         border: '1px solid #E4E4E4',
         background: '#FFF',
-        px: '50px',
+        px: { xs: '20px', md: '50px' },
         py: '30px',
       }}
     >
@@ -19,7 +19,7 @@ const TabContent = ({ selectedTab }) => {
           fontSize: '14px',
           fontWeight: '600',
           textTransform: 'uppercase',
-          pb: '40px',
+          pb: { xs: '25px', md: '40px' },
         }}
       >
         {selectedTab?.title}

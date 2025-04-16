@@ -15,39 +15,60 @@ const PropertyMapLocation = ({
   return (
     <Box sx={{ padding: '5px' }}>
       <Typography
-        sx={{ fontSize: '18px', fontWeight: 500, color: '#333333', p: '7px 0' }}
+        sx={{
+          fontSize: { xs: '16px', md: '18px' },
+          fontWeight: 500,
+          color: '#333333',
+          p: '7px 0',
+        }}
       >
         Location & Purpose
       </Typography>
       <Box display={'flex'} gap={'5px'} p={'7px 0'}>
-        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 400 }}
+        >
           Purpose:
         </Typography>
-        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 500 }}
+        >
           {locationpurpose}
         </Typography>
       </Box>
       <Box display={'flex'} gap={'5px'} p={'7px 0'}>
-        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 400 }}
+        >
           Property Type:
         </Typography>
-        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 500 }}
+        >
           {propertyType}
         </Typography>
       </Box>
       <Box display={'flex'} gap={'5px'} p={'7px 0'}>
-        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 400 }}
+        >
           Location:
         </Typography>
-        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 500 }}
+        >
           {location}
         </Typography>
       </Box>
       <Box display={'flex'} gap={'5px'} p={'7px 0'}>
-        <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 400 }}
+        >
           City:
         </Typography>
-        <Typography sx={{ fontSize: '16px', fontWeight: 500 }}>
+        <Typography
+          sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 500 }}
+        >
           {city}
         </Typography>
       </Box>
