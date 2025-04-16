@@ -1,7 +1,7 @@
 import React from 'react';
-import ComingSoon from '@/src/components/global/ComingSoon';
 import { BLOGS_SEO } from '@/src/constants/global/seo';
 import { getBlogsMetadata } from '@/src/components/seo';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 export async function generateMetadata({ params }) {
   const slug = params?.id;
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = () => {
-  return <ComingSoon />;
+  return <NotFoundSection />;
 };
 
 export default Page;

@@ -19,11 +19,15 @@ import { navigateTo } from '@/src/utils/authUtils';
 
 const hrStyles = {
   display: { xs: 'none', md: 'flex' },
-  width: '170px',
-  border: '1px #A5A5A5 solid',
+  width: '100%',
+  maxWidth: '170px',
 };
 
-const flexContainer = { display: 'flex', justifyContent: 'center', alignItems: 'center' }
+const flexContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 const LoginWithGoogle = ({
   buttonLabel,
@@ -112,7 +116,7 @@ const LoginWithGoogle = ({
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-      <Box sx={{ ...flexContainer }}>
+      <Box sx={{ ...flexContainer, mt: 1 }}>
         <Button
           sx={{
             background: isPending ? '#e0e0e0' : '#FB631C',
@@ -134,6 +138,7 @@ const LoginWithGoogle = ({
           )}
         </Button>
       </Box>
+
       <Box
         sx={{
           display: 'flex',
@@ -143,10 +148,13 @@ const LoginWithGoogle = ({
         }}
       >
         <hr style={{ ...hrStyles }} />
+
         <Typography sx={{ color: '#909394' }}>Or</Typography>
+
         <hr style={{ ...hrStyles }} />
       </Box>
-      <Box sx={{ ...flexContainer }}>
+
+      <Box sx={{ ...flexContainer, mt: 1.2 }}>
         <GoogleLogin
           onSuccess={handleGoogleLogin}
           onError={(error) => {
@@ -156,7 +164,8 @@ const LoginWithGoogle = ({
             <Button
               sx={{
                 boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
-                width: { xs: '200px', md: '250px' },
+                width: '100%',
+                maxWidth: { xs: '200px', md: '250px' },
                 padding: { xs: '8px', md: '10px' },
                 fontSize: { xs: '12px', sm: '15px', md: '14px' },
                 fontWeight: 500,
@@ -179,53 +188,43 @@ const LoginWithGoogle = ({
           )}
         />
       </Box>
+
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           flexDirection: { xs: 'column', md: 'row' },
-          textAlign: 'center',
           fontSize: '16px',
           fontWeight: 400,
           gap: '5px',
+          mt: 3,
         }}
       >
         <Typography
-          sx={{ color: '#333333', fontSize: { xs: '13px', md: '16px' } }}
+          sx={{
+            color: '#333333',
+            fontSize: { xs: '12px', md: '14px', lg: '16px' },
+          }}
         >
           {accountCreationMessage}
         </Typography>
-        <Box
-          sx={{
-            '@media (max-width: 960px)': {
-              display: 'flex',
-              justifyContent: 'center',
-            },
-          }}
-        >
+
+        <Box>
           <Typography
             sx={{
               color: '#FB631C',
               fontWeight: 400,
-              fontSize: '16px',
+              fontSize: { xs: '12px', md: '14px', lg: '16px' },
               cursor: 'pointer',
               position: 'relative',
-              textDecoration: 'none',
+              textDecoration: 'underLine',
               width: { xs: '20%', md: 'auto' },
+              textWrap: 'nowrap',
             }}
             onClick={onSigninClick}
           >
             {label}
-            <span
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                width: '100%',
-                height: '1px',
-                backgroundColor: '#FB631C',
-              }}
-            />
           </Typography>
         </Box>
       </Box>

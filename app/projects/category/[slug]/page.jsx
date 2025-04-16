@@ -10,12 +10,8 @@ export async function generateMetadata({ params }) {
   return getBlogsMetadata(filteredData);
 }
 
-const Page = () => {
-  return (
-    <>
-      <ProjectsCategoryPage />
-    </>
-  );
+const Page = ({ params }) => {
+  return <ProjectsCategoryPage params={params} />;
 };
 
 export default Page;

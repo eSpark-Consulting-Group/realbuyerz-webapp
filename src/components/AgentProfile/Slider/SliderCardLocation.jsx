@@ -10,6 +10,7 @@ const SliderCardLocation = ({ location }) => {
         <Box
           sx={{
             display: 'flex',
+            alignItems: 'center',
           }}
         >
           <Image

@@ -12,8 +12,8 @@ const TabSelector = ({ terms, selectedTab, handleTabClick }) => {
     >
       <Box
         sx={{
-          px: '30px',
-          py: '60px',
+          px: { xs: '20px', md: '30px' },
+          py: { xs: '40px', md: '60px' },
           display: 'flex',
           flexDirection: 'column',
         }}
@@ -45,7 +45,7 @@ const TabSelector = ({ terms, selectedTab, handleTabClick }) => {
               variant="body1"
               sx={{
                 color: '#333',
-                fontSize: { xs: '12px', md: '16px' },
+                fontSize: { xs: '12px', md: '14px', lg: '16px' },
                 fontWeight: '600',
               }}
             >

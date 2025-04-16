@@ -15,7 +15,7 @@ const AmenitiesModal = (props) => {
     setSelectedAmenities,
     selectedAmenities,
     handleSeletedAmenites,
-    getAmenities
+    getAmenities,
   } = props;
 
   const handleClose = () => {

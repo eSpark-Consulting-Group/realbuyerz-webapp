@@ -18,7 +18,7 @@ const TermsPage = () => {
   };
 
   // Check if terms data is empty or undefined
-  if (!terms || !terms.content || terms.content.length === 0) {
+  if (!terms || !terms?.content || terms?.content?.length === 0) {
     return (
       <NotFoundSection heading={'Sorry!'} message={'No Terms Data Found.'} />
     );
@@ -29,8 +29,8 @@ const TermsPage = () => {
       sx={{
         background: '#FFF',
         border: '2px solid #E4E4E4',
-        px: '40px',
-        py: '60px',
+        px: { xs: '20px', md: '40px' },
+        py: { xs: '40px', md: '60px' },
         my: '40px',
         borderRadius: '20px',
       }}
@@ -39,10 +39,10 @@ const TermsPage = () => {
         variant="h1"
         sx={{
           color: ' #FB631C',
-          fontSize: '30px',
+          fontSize: { xs: '20px', md: '30px' },
           fontWeight: '600',
           textAlign: 'center',
-          pb: '60px',
+          pb: { xs: '40px', md: '60px' },
         }}
       >
         {terms?.title}

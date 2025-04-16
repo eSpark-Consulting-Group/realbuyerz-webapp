@@ -377,3 +377,284 @@ export const AMENITIES_NAME = [
     title: '24/7 security',
   },
 ];
+
+export const PROJECTS_FILTER_FIELDS = {
+  fields: [
+    {
+      id: 1,
+      freeSolo: false,
+      key: 'purpose',
+      placeholder: 'Purpose',
+      grid: {
+        lg: 1.6,
+      },
+      options: [
+        {
+          label: 'Buy',
+          value: 'Buy',
+        },
+        {
+          label: 'Sell',
+          value: 'Sell',
+        },
+      ],
+    },
+    {
+      id: 2,
+      freeSolo: false,
+      key: 'all',
+      type: 'menu',
+      placeholder: 'all',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 3,
+      freeSolo: false,
+      key: 'price',
+      type: 'menu',
+      placeholder: 'price',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 4,
+      freeSolo: false,
+      key: 'size',
+      type: 'menu',
+      placeholder: 'all',
+      grid: {
+        lg: 1.6,
+      },
+      options: [],
+    },
+    {
+      id: 5,
+      key: 'search',
+      placeholder: 'Search...',
+      type: 'text',
+      freeSolo: true,
+      options: [],
+      grid: {
+        lg: 5.2,
+      },
+    },
+  ],
+};
+
+const houseCategories = [
+  {
+    label: 'All',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'House',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Flat',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Upper Portion',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Lower Portion',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Farm House',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Room',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Penthouse',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+];
+
+const plotsCategories = [
+  {
+    label: 'All',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Residential Plots',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Commercial Plots',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Agricultural Land',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Industrial Land',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Plot File',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Plot Form',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+];
+
+const commercialCategories = [
+  {
+    label: 'All',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Office',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Shop',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Ware house',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  {
+    label: 'Building',
+    icon: '/images/listing-page/house.svg',
+    activeIcon: '/images/listing-page/housesell.svg',
+  },
+  // {
+  //   label: 'Other...',
+  //   icon: '/images/listing-page/house.svg',
+  //   activeIcon: '/images/listing-page/housesell.svg',
+  // },
+];
+
+export const tabs = [
+  { label: 'House', categories: houseCategories },
+  { label: 'Plots', categories: plotsCategories },
+  { label: 'Commercial', categories: commercialCategories },
+];
+
+export const dummay_data = [
+  {
+    propertyId: 1,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+  {
+    propertyId: 2,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+  {
+    propertyId: 3,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+  {
+    propertyId: 4,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+  {
+    propertyId: 5,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+  {
+    propertyId: 6,
+    propertyName: 'Beautiful House',
+    purpose: 'buy',
+    propertyType: 'House',
+    price: '1.1 Crore',
+    location: ' Sector 31 - Punjabi Saudagar City Phase 2, Scheme 33, Karachi',
+    subType: 'Farm house',
+    propertyCity: 'Karachi',
+    propertyStatus: false,
+    area: '1080 sqft',
+    direction: 'East Open',
+    description:
+      'House for sale Ps City Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+  },
+];

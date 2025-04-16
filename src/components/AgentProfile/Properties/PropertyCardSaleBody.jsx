@@ -27,11 +27,11 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
               },
               '&:hover .property-type-text': {
                 color: '#FB631C',
-                fontSize: '13px',
+                fontSize: '12px',
               },
               '&:hover .property-icon': {
                 opacity: 1,
-                marginLeft: '10px',
+                marginLeft: '5px',
               },
             }}
           >
@@ -45,6 +45,7 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
                     fontWeight: 700,
                     lineHeight: 'normal',
                     textAlign: 'center',
+                    mb: 0.8,
                   }}
                 >
                   {sellData[index]}
@@ -54,12 +55,11 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginLeft: '-10px',
                 }}
               >
                 <ArrowOutwardIcon
                   sx={{
-                    fontSize: '16px',
+                    fontSize: '13px',
                     color: '#FB631C',
                     opacity: 0,
                     transition: 'opacity 0.3s ease-in-out',
@@ -74,7 +74,7 @@ const PropertyCardSaleBody = ({ sellData, link }) => {
                       fontStyle: 'normal',
                       fontWeight: 400,
                       lineHeight: 'normal',
-                      marginRight: '8px',
+                      marginRight: '10px',
                     }}
                     className="property-type-text"
                   >

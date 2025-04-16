@@ -5,7 +5,7 @@ const PropertyDemand = ({ demand, demandUnits, heading }) => {
   return (
     <div>
       <Typography
-        sx={{ fontSize: { xs: '14px', md: '18px' }, fontWeight: 600 }}
+        sx={{ fontSize: { xs: '16px', md: '18px' }, fontWeight: 500 }}
       >
         {heading}
       </Typography>

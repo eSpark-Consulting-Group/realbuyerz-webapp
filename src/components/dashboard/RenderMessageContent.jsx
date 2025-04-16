@@ -6,13 +6,13 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import Image from 'next/image';
 
 const RenderMessageContent = ({ data }) => {
-  const filesExt = ["pdf", "docx", "xlsx"]
+  const filesExt = ['pdf', 'docx', 'xlsx'];
   const images = data?.content?.slice(0, 4);
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
-        const ext = getFileExtension(img?.url)
+        const ext = getFileExtension(img?.url);
         return (
           <Box
             key={imgIndex}
@@ -35,7 +35,7 @@ const RenderMessageContent = ({ data }) => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color:"inherit !important",
+                  color: 'inherit !important',
                 }}
                 component={'a'}
                 target="_blank"

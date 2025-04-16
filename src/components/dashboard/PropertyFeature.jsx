@@ -66,7 +66,7 @@ const PropertyFeatures = ({
               <PropertyFacilities
                 propertyInformation={propertyData?.feature}
                 formik={formik}
-                getAmenities={getAmenities}
+                selectedAmenities={selectedAmenities}
               />
               <AddAmenities
                 formik={formik}

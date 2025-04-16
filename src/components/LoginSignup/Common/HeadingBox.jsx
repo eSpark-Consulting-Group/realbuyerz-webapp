@@ -1,15 +1,30 @@
 import { Box } from '@mui/material';
 
 const HeadingBox = ({ login = false, children }) => {
+  const notLogStyles = {
+    maxWidth: { xs: '90%', sm: '85%' },
+    px: 2,
+    py: 3,
+  };
+
+  const logStyles = {
+    px: 2,
+    maxWidth: { xs: '90%', sm: '85%', lg: '100%' },
+  };
+
+  const embedStyles = login ? logStyles : notLogStyles;
+
   return (
     <Box
       sx={{
-        width: { xs: login ? '100%' : '90%', md: '320px' },
+        mx: 'auto',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         height: 'auto',
-        padding: login ? '5px' : '10px',
-        gap: { xs: '7px', md: '15px' },
+        gap: '10px',
+        padding: '5px',
+        ...embedStyles,
       }}
     >
       {children}
@@ -17,4 +32,4 @@ const HeadingBox = ({ login = false, children }) => {
   );
 };
 
-export default HeadingBox
+export default HeadingBox;

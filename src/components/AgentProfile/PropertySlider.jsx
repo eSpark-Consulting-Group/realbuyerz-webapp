@@ -20,17 +20,25 @@ import { propertySliderSetting } from '@/src/utils/sliderSettings';
 const PropertySlider = ({ data }) => {
   return (
     <>
-      <Slider {...propertySliderSetting}>
+      <Slider {...propertySliderSetting} style={{ paddingLeft: '20px' }}>
         {data?.slice(0, 10)?.map((item, index) => {
           return (
             <Fade key={index} direction="right" duration={500}>
               <Card
                 sx={{
+                  position: 'relative',
+                  mx: 'auto',
+                  width: '95%',
+                  maxWidth: { xs: '278px', sm: '95%', lg: '278px' },
                   boxShadow: 'none',
                   border: '1px solid #E7E7E7',
                   '&:hover': {
                     boxShadow:
                       '0px 4px 8px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08)',
+                  },
+                  '@media(max-width: 767px)': {
+                    maxWidth: '278px',
+                    mx: 'auto',
                   },
                 }}
                 key={item}

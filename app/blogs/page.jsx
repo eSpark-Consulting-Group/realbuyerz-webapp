@@ -1,7 +1,7 @@
 import React from 'react';
-import ComingSoon from '@/src/components/global/ComingSoon';
 import { GLOBAL_SEO } from '@/src/constants/global/seo';
 import { getMetadata } from '@/src/components/seo';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 const pathname = '/blogs';
 const filteredData =
@@ -9,7 +9,7 @@ const filteredData =
 export const metadata = getMetadata(filteredData);
 
 const Page = () => {
-  return <ComingSoon />;
+  return <NotFoundSection />;
 };
 
 export default Page;

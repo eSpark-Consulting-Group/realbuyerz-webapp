@@ -11,8 +11,9 @@ const SliderCardPrice = ({ price, unit }) => {
         sx={{
           color: '#909394',
           fontWeight: 600,
-          fontSize: { xs: '10px', sm: '12px', md: '16px' },
+          fontSize: { xs: '10px', sm: '12px', md: '15px' },
           fontStyle: 'normal',
+          textWrap: 'nowrap',
         }}
       >
         {STARTING_FROM}

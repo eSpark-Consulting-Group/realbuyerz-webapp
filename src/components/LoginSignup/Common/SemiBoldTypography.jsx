@@ -5,7 +5,7 @@ const SemiBoldTypography = ({ text }) => {
     <Typography
       sx={{
         color: '#FF631C',
-        fontSize: { xs: '18px', md: '30px' },
+        fontSize: { xs: '19px', sm: '21px', md: '25px', lg: '30px' },
         fontWeight: 600,
       }}
     >

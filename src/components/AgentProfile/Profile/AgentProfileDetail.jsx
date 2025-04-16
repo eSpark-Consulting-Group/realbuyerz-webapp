@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 
 import ProfileInfo from './ProfileInfo';
@@ -11,6 +11,7 @@ import {
   FOR_SALE_ICON,
   LOCATION_ICON,
 } from '@/src/constants/AgentProfile';
+import TooltipText from '../../global/TooltipText';
 
 const AgentProfileDetail = ({
   data,
@@ -43,19 +44,19 @@ const AgentProfileDetail = ({
           alignItems: { xs: 'center', sm: 'start' },
         }}
       >
-        <Typography
-          variant="h4"
-          sx={{
+        <TooltipText
+          text={
+            data?.firstName && data?.lastName
+              ? `${data?.firstName} ${data?.lastName}`
+              : 'Muhammad Ali Mukhtar'
+          }
+          typographyStyle={{
             color: '#1176AD',
-            fontSize: { xs: '18px', sm: '20px', md: '25px', lg: '30px' },
+            fontSize: { xs: '17px', sm: '20px', md: '25px', lg: '30px' },
             fontWeight: '600',
           }}
-        >
-          {data?.firstName && data?.lastName
-            ? `${data.firstName} ${data.lastName}`
-            : 'Muhammad Ali Mukhtar'}
-        </Typography>
-
+          maxLength={13}
+        />
         {path?.includes(user) || path?.includes(agent) ? (
           <ProfileInfo title={data?.email || ''} />
         ) : (

@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,7 +18,6 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-
 import Heading from './Heading';
 import FilteredProposalsDataBox from './FilteredProposalsDataBox';
 
@@ -58,16 +56,16 @@ const PopularLocations = ({ data }) => {
   return (
     <Box
       sx={{
-        pt: { xs: '0px', lg: '60px' },
+        pt: { xs: '20px', lg: '40px' },
         pb: '30px',
         textAlign: 'center',
         backgroundImage: `url('/images/bgs/popular-location.svg')`,
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
     >
-      <Container sx={{ px: '10%', maxWidth: '1213px !important' }}>
+      <Container sx={{ px: '10%', maxWidth: '1213px' }}>
         <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
         <Box
           sx={{
@@ -77,13 +75,16 @@ const PopularLocations = ({ data }) => {
         >
           <Box
             sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
               pt: '14px',
               pb: { xs: '0px', sm: '30px', md: '30px', lg: '58px' },
             }}
           >
             <Button
               sx={{
-                mx: '15px',
+                mx: '10px',
                 fontWeight: 600,
                 width: '116px',
                 height: '40px',
@@ -102,9 +103,10 @@ const PopularLocations = ({ data }) => {
                 {FEATURE_BUTTONS.forSale}
               </Typography>
             </Button>
+
             <Button
               sx={{
-                mx: '15px',
+                mx: '10px',
                 fontWeight: 600,
                 width: '116px',
                 height: '40px',
@@ -121,22 +123,26 @@ const PopularLocations = ({ data }) => {
                   fontSize: '15px',
                 }}
               >
-                {' '}
                 {FEATURE_BUTTONS.byRent}
               </Typography>
             </Button>
           </Box>
+
           {isSmallScreen ? (
             <Swiper {...popularLocationSliderSetting}>
               <Box className="full-container-width mx-auto">
                 <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
                   {filteredProposalsData?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <Grid item xs={12} sm={6} md={6} lg={4}>
-                        <FilteredProposalsDataBox
-                          borderRadius={'5px'}
-                          item={item}
-                        />
+                    <SwiperSlide
+                      key={index}
+                      style={{
+                        width: '90%',
+                        height: '100%',
+                        maxWidth: '350px',
+                      }}
+                    >
+                      <Grid item xs={10} sm={6} md={6} lg={6}>
+                        <FilteredProposalsDataBox item={item} small />
                       </Grid>
                     </SwiperSlide>
                   ))}
@@ -145,10 +151,18 @@ const PopularLocations = ({ data }) => {
             </Swiper>
           ) : (
             <Box className="full-container-width mx-auto">
-              <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
+              <Grid
+                container
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                columnSpacing={2}
+              >
                 {filteredProposalsData?.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                    <FilteredProposalsDataBox borderRadius={''} item={item} />
+                  <Grid item xs={12} sm={6} md={6} lg={3.2} key={index}>
+                    <FilteredProposalsDataBox item={item} />
                   </Grid>
                 ))}
               </Grid>
@@ -164,10 +178,13 @@ const PopularLocations = ({ data }) => {
           }}
         >
           <Button onClick={scrollToTop}>
-            <Image
+            <Box
+              component={'img'}
               src="/images/bgs/GototheTop.svg"
-              width={80}
-              height={80}
+              sx={{
+                width: { xs: '60px', sm: '70px', md: '80px' },
+                height: 'auto',
+              }}
               alt={'Images'}
             />
           </Button>

@@ -54,10 +54,8 @@ const ProjectsCard = ({ data }) => {
                 <Image
                   src={
                     project?.images[0] ||
-                    `/images/default/default_project_image.jpg`
+                    '/images/default/default_project_image.jpg'
                   }
-                  height={'auto'}
-                  width={'100%'}
                   alt={`Project ${project?.id}`}
                   fill
                   style={{

@@ -1,10 +1,10 @@
 import React from 'react';
-import ComingSoon from '@/src/components/global/ComingSoon';
+import NotFoundSection from '../global/NotFoundSection';
 
 const Jagah360Page = () => {
   return (
     <>
-      <ComingSoon />
+      <NotFoundSection />
     </>
   );
 };

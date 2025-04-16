@@ -1,65 +1,75 @@
 import { Navigation, Pagination } from 'swiper/modules';
 
-export const carouselSetting = {
-  slidesPerView: 3,
+export const featuredPropertiesSliderSetting = {
+  slidesPerView: 'auto',
+  spaceBetween: 15,
   autoplay: {
     delay: 3000,
     disableOnInteraction: false,
   },
-  loop: true,
+  loop: false,
   modules: [Pagination, Navigation],
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    600: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-    1920: {
-      slidesPerView: 3,
-    },
-  },
 };
 
-export const homePartnersSliderSetting = {
-  dots: false,
-  infinite: true,
-  speed: 2000,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 0,
-  arrows: false,
-  cssEase: 'linear',
-  pauseOnHover: false,
-  animationDelay: '2s',
-  rtl: true,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 6,
-      },
+export const homePartnersSliderSetting = (
+  isReversed,
+  setIsReversed,
+  lastIndex
+) => {
+  return {
+    dots: false,
+    infinite: true,
+    speed: 2000,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    rtl: isReversed,
+    afterChange: (current) => {
+      if (current === lastIndex) {
+        setIsReversed(true);
+      }
+
+      if (current === 0) {
+        setIsReversed(false);
+      }
     },
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 4,
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 6,
+        },
       },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 5,
+        },
       },
-    },
-  ],
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
+  };
 };
 
 export const propertySliderSetting = {
@@ -102,47 +112,32 @@ export const propertySliderSetting = {
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 767,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 2,
-        dots: false,
+        dots: true,
       },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: false,
+        // slidesToScroll: 1,
+        dots: true,
       },
     },
   ],
 };
 
 export const popularLocationSliderSetting = {
-  slidesPerView: 3,
+  slidesPerView: 'auto',
+  spaceBetween: 20,
   autoplay: {
     delay: 3000,
     disableOnInteraction: false,
   },
-  loop: true,
+  loop: false,
   modules: [Pagination, Navigation],
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    425: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1130: {
-      slidesPerView: 3,
-    },
-  },
 };
 
 export const browseByCategorySliderSetting = {
