@@ -1,14 +1,24 @@
-import React from 'react';
-import { Box, Grid, Typography } from '@mui/material';
-import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
-import moment from 'moment';
-import Cookies from 'js-cookie';
+import Image from 'next/image';
+
 import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
+import moment from 'moment';
+
+import { Box, Grid, Typography } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import DescriptionIcon from '@mui/icons-material/Description';
 import InsertPhotoSharpIcon from '@mui/icons-material/InsertPhotoSharp';
-import { getFileExtension } from '@/src/utils/getFileExtension';
-import Image from 'next/image';
+
+import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
+
+import {
+  getAttachmentsOrText,
+  getFileExtension,
+  lastText,
+  removeReadChat,
+} from '@/src/utils/chat/chatUtils';
+
+import { FILES_EXTENSION, IMAGES_EXTENSION } from '@/src/constants/Chats';
 
 const ChatRooms = ({
   chatRoomState,
@@ -17,16 +27,7 @@ const ChatRooms = ({
 }) => {
   const unreadChats = JSON.parse(Cookies.get('unreadChatIds') || '[]');
 
-  const filesExt = ['pdf', 'docx', 'xlsx'];
-  const imagesExt = ['png', 'jpg', 'jpeg'];
-
   const { messages } = useSelector((state) => state.chats);
-
-  const lastText = (id) => {
-    const filterChatLastText = messages?.filter((msg) => msg.chat === id);
-
-    return filterChatLastText[filterChatLastText.length - 1];
-  };
 
   const findUnreadChat = (id) => {
     const unreadChat = unreadChats?.find((chat) => chat.chatId === id);
@@ -35,33 +36,13 @@ const ChatRooms = ({
 
   const handleSelectChatRoom = (room) => {
     setSelectedChatRoom(room);
-    removeReadChat(room.chatId);
-  };
-
-  const removeReadChat = (id) => {
-    const filterChat = unreadChats?.filter((chat) => chat.chatId !== id);
-
-    if (filterChat?.length) {
-      Cookies.set('unreadChatIds', JSON.stringify(filterChat));
-    } else {
-      Cookies.remove('unreadChatIds');
-    }
-  };
-
-  const getAttachmentsOrText = (id) => {
-    const lastOne = lastText(id);
-
-    if (lastOne?.attachments?.length > 0) {
-      return checkType(lastOne?.attachments[0]);
-    } else {
-      return lastOne?.content;
-    }
+    removeReadChat(room.chatId, unreadChats);
   };
 
   const checkType = (attachment) => {
     const attachmentType = getFileExtension(attachment?.url);
 
-    if (filesExt.includes(attachmentType)) {
+    if (FILES_EXTENSION.includes(attachmentType)) {
       return attachmentType === 'pdf' ? (
         <PictureAsPdfIcon />
       ) : attachmentType === 'docx' ? (
@@ -80,7 +61,7 @@ const ChatRooms = ({
           />
         </Box>
       );
-    } else if (imagesExt.includes(attachmentType)) {
+    } else if (IMAGES_EXTENSION.includes(attachmentType)) {
       return <InsertPhotoSharpIcon />;
     } else {
       return null;
@@ -113,6 +94,7 @@ const ChatRooms = ({
           onClick={() => handleSelectChatRoom(room)}
         >
           <Avatar data={room} chat />
+
           <Box
             marginLeft={'10px'}
             display={'flex'}
@@ -131,6 +113,7 @@ const ChatRooms = ({
               >
                 {room.title}
               </Typography>
+
               <Typography
                 sx={{
                   fontSize: '12px',
@@ -141,9 +124,10 @@ const ChatRooms = ({
                   color: '#909394',
                 }}
               >
-                {getAttachmentsOrText(room?.chatId)}
+                {getAttachmentsOrText(room?.chatId, checkType, messages)}
               </Typography>
             </Box>
+
             <Box
               display={'flex'}
               flexDirection={'column'}
@@ -158,8 +142,11 @@ const ChatRooms = ({
                   marginBottom: '5px',
                 }}
               >
-                {moment(lastText(room?.chatId)?.createdAt).format('hh:mm:A')}
+                {moment(lastText(room?.chatId, messages)?.createdAt).format(
+                  'hh:mm:A'
+                )}
               </Typography>
+
               {unreadChats?.length > 0 && findUnreadChat(room.chatId) && (
                 <Box
                   sx={{

@@ -788,6 +788,22 @@ button:hover {
   .heroslider-logo {
     max-width: 110px;
   }
+
+  .sendmessage-icon {
+    margin: 0 5px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .sendfile-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .selected-file {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media (min-width: 600px) {
@@ -798,6 +814,22 @@ button:hover {
 
   .heroslider-logo {
     max-width: 160px;
+  }
+
+  .sendmessage-icon {
+    margin: 0 10px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .sendfile-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .selected-file{
+    width: 100px;
+    height: 100px;
   }
 }
 

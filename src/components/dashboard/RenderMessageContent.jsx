@@ -1,18 +1,21 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import { getFileExtension } from '@/src/utils/getFileExtension';
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import DescriptionIcon from "@mui/icons-material/Description";
 import Image from 'next/image';
 
+import { Box } from '@mui/material';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import DescriptionIcon from '@mui/icons-material/Description';
+
+import { getFileExtension } from '@/src/utils/chat/chatUtils';
+
+import { FILES_EXTENSION } from '@/src/constants/Chats';
+
 const RenderMessageContent = ({ data }) => {
-  const filesExt = ['pdf', 'docx', 'xlsx'];
   const images = data?.content?.slice(0, 4);
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       {images?.map((img, imgIndex) => {
         const ext = getFileExtension(img?.url);
+
         return (
           <Box
             key={imgIndex}
@@ -26,7 +29,7 @@ const RenderMessageContent = ({ data }) => {
               marginRight: imgIndex !== data?.content.length - 1 && '10px',
             }}
           >
-            {filesExt.includes(ext) ? (
+            {FILES_EXTENSION.includes(ext) ? (
               <Box
                 sx={{
                   width: '100%',
