@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -16,65 +16,61 @@ const ProjectMenu = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
-  const { key } = field || {};
+  const key = field?.key;
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event?.currentTarget);
   };
 
-  const renderMenu = (key) => {
-    if (key === 'all') {
-      return (
-        <AllMenu
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          filterObject={filterObject}
-          setfilterObject={setfilterObject}
-          activeMenuOption={activeMenuOption}
-          setActiveMenuOption={setActiveMenuOption}
-          setAnchorEl={setAnchorEl}
-        />
-      );
-    } else if (key === 'price') {
-      return (
-        <PriceMenu
-          filterObject={filterObject}
-          setfilterObject={setfilterObject}
-          handleClose={handleClose}
-          setAnchorEl={setAnchorEl}
-        />
-      );
-    } else if (key === 'size') {
-      return (
-        <SizeMenu
-          filterObject={filterObject}
-          setfilterObject={setfilterObject}
-          handleClose={handleClose}
-          setAnchorEl={setAnchorEl}
-        />
-      );
-    } else {
-      return null;
-    }
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
-    if (filterObject?.all?.label === 'House') {
-      setActiveTab(0);
-    } else if (filterObject?.all?.label === 'Plots') {
-      setActiveTab(1);
-    } else if (filterObject?.all?.label === 'Commercial') {
-      setActiveTab(2);
+
+    const label = filterObject?.all?.label;
+    const category = filterObject?.all?.category;
+
+    const tabMap = {
+      House: 0,
+      Plots: 1,
+      Commercial: 2,
+    };
+
+    if (label in tabMap) {
+      setActiveTab(tabMap[label]);
     }
-    setActiveMenuOption(filterObject?.all?.category);
+
+    setActiveMenuOption(category);
   };
 
-  React.useEffect(() => {
-    const handleScrollOrResize = () => {
-      handleClose();
+  const renderMenu = () => {
+    const commonProps = {
+      filterObject,
+      setfilterObject,
+      setAnchorEl,
     };
+
+    switch (key) {
+      case 'all':
+        return (
+          <AllMenu
+            {...commonProps}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            activeMenuOption={activeMenuOption}
+            setActiveMenuOption={setActiveMenuOption}
+          />
+        );
+      case 'price':
+        return <PriceMenu {...commonProps} handleClose={handleClose} />;
+      case 'size':
+        return <SizeMenu {...commonProps} handleClose={handleClose} />;
+      default:
+        return null;
+    }
+  };
+
+  useEffect(() => {
+    const handleScrollOrResize = () => handleClose();
 
     window.addEventListener('scroll', handleScrollOrResize);
     window.addEventListener('resize', handleScrollOrResize);
@@ -117,30 +113,23 @@ const ProjectMenu = ({
         />
         {open ? (
           <KeyboardArrowUpIcon
-            sx={{
-              color: '#666666',
-              transition: 'transform 0.3s',
-            }}
+            sx={{ color: '#666666', transition: 'transform 0.3s' }}
           />
         ) : (
           <KeyboardArrowDownIcon
-            sx={{
-              color: '#666666',
-              transition: 'transform 0.3s',
-            }}
+            sx={{ color: '#666666', transition: 'transform 0.3s' }}
           />
         )}
       </Box>
+
       <Menu
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          sx: { p: 0 },
-        }}
+        MenuListProps={{ sx: { p: 0 } }}
         sx={{ mt: 1, width: '100%' }}
       >
-        {renderMenu(key)}
+        {renderMenu()}
       </Menu>
     </>
   );
