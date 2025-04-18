@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@tanstack/react-query';
 import { useFormik } from 'formik';
@@ -55,7 +55,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal = false }) => {
         handleClose();
         dispatch(setLoggedIn(saveUserInformation(data.response?.data)));
         setProfile();
-
         toast.success('Login successful!');
 
         if (fromModal) {
@@ -206,18 +205,6 @@ const LoginCard = ({ handleClose = () => {}, fromModal = false }) => {
           />
         </HeadingBox>
       </form>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </Box>
   );
 };

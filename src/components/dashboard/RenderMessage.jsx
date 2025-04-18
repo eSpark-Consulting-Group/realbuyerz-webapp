@@ -1,11 +1,15 @@
-import React, { useRef, useState } from 'react';
-import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
+
 import { Box, Typography } from '@mui/material';
+
 import RenderMessageContent from './RenderMessageContent';
+import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
 
 const RenderMessage = ({ data, isSameSenderAsPrevious, selectedChatRoom }) => {
-  const [selectedEmoji, setSelectedEmoji] = useState('');
   const componentRef = useRef(null);
+
+  const [selectedEmoji, setSelectedEmoji] = useState('');
 
   const handleComponentRef = (node) => {
     componentRef.current = node;
@@ -58,11 +62,12 @@ const RenderMessage = ({ data, isSameSenderAsPrevious, selectedChatRoom }) => {
                   boxShadow: '0px 0px 5px 2px #ccc',
                 }}
               >
-                <Box
-                  component={'img'}
+                <Image
                   src={`/icons/${selectedEmoji}.svg`}
                   alt={'Reaction'}
-                  sx={{ width: '15px', height: '15px', cursor: 'pointer' }}
+                  width={15}
+                  height={15}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => setSelectedEmoji('')}
                 />
               </Box>
@@ -72,6 +77,7 @@ const RenderMessage = ({ data, isSameSenderAsPrevious, selectedChatRoom }) => {
       </Box>
     );
   }
+
   return (
     <Box display={'flex'} alignItems={'center'} marginBottom={'20px'}>
       <Box
@@ -93,6 +99,7 @@ const RenderMessage = ({ data, isSameSenderAsPrevious, selectedChatRoom }) => {
             chat
           />
         )}
+
         <Box
           ref={handleComponentRef}
           sx={{

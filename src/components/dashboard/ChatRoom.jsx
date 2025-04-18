@@ -1,52 +1,71 @@
-import Avatar from '@/src/components/dashboard/ui-elements/Avatar';
-import {
-  Box,
-  CircularProgress,
-  Grid,
-  Menu,
-  MenuItem,
-  Typography,
-} from '@mui/material';
-import moment from 'moment';
-import React, { useEffect, useRef, useState } from 'react';
-import RenderFileUploads from './RenderFileUploads';
-import RenderMessage from './RenderMessage';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { formatData } from '@/src/utils/formatMessageData';
-import { useSocket } from '@/src/context/SocketContext';
-import { getSingleRoomMessage } from '@/src/utils/apis/chat/getSingleRoomMessage';
+import { useEffect, useRef, useState } from 'react';
+
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { useInView } from 'react-intersection-observer';
+import { toast } from 'react-toastify';
+
+import { Box, CircularProgress, Grid } from '@mui/material';
+
+import RenderFileUploads from './RenderFileUploads';
+import SendMessageButton from './SendMessageButton';
+import ChatHeader from './ChatHeader';
+import MessageList from './MessageList';
+import ChatInputArea from './ChatInputArea';
+import ChatInputTypingArea from './ChatInputTypingArea';
+
+import { useSocket } from '@/src/context/SocketContext';
+
+import { formatData } from '@/src/utils/formatMessageData';
+import { getSingleRoomMessage } from '@/src/utils/apis/chat/getSingleRoomMessage';
+import { sendAttachment } from '@/src/utils/apis/chat/sendAttachment';
+import { generateString, scrollToBottom } from '@/src/utils/chat/chatUtils';
+import { useClickOutside } from '@/src/utils/chat/useClickOutside';
+
 import {
   getAllMessages,
   getMessageWRTChatBox,
 } from '@/src/redux/slices/chat/chatsSlice';
-import { sendAttachment } from '@/src/utils/apis/chat/sendAttachment';
-import { useInView } from 'react-intersection-observer';
 
-const AudioRecorder = dynamic(() => import('./AudioRecorder'), {
-  ssrc: false,
-});
+import { FILES_ARRAY } from '@/src/constants/Chats';
+
+const commonInputBoxStyles = {
+  width: { xs: '20px', sm: '32px' },
+  minWidth: { xs: '20px', sm: '32px' },
+  height: { xs: '20px', sm: '32px' },
+  backgroundColor: '#9B9B9B',
+  borderRadius: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+};
+
 const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   const { socket2 } = useSocket();
 
+  const dispatch = useDispatch();
   const { messages, messageWRTChatBox } = useSelector((state) => state.chats);
   const { user, userProfile } = useSelector((state) => state.auth);
 
-  const dispatch = useDispatch();
-
-  const [displayUploadOptions, setDisplayUploadOptions] = useState(true);
+  const [displayUploadOptions, setDisplayUploadOptions] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isSendingVoiceNote, setIsSendingVoiceNote] = useState(false);
-  const messageFieldRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
   const [inViewLoader, setInViewLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [conversation, setConversation] = useState([]);
   const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+  const [fileInput, setFileInput] = useState([]);
+  const [isSendingFiles, setIsSendingFiles] = useState(false);
+  const [message, setMessage] = useState('');
+  const [dataToSend, setDataToSend] = useState();
+
+  const messageFieldRef = useRef(null);
+  const conversationRef = useRef(null);
+  const uploadOptionsRef = useRef(null);
+
+  const open = Boolean(anchorEl);
 
   const { ref, inView } = useInView({ threshold: 0 });
 
@@ -109,6 +128,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
           dispatch(
             getAllMessages([...(messageD?.data?.messages || []), ...messages])
           );
+
           setInViewLoader(false);
         }
       }
@@ -133,13 +153,12 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
       page !== totalPageOfMessage?.totalPages
     ) {
       setInViewLoader(true);
+
       const update = messageWRTChatBox.map((p) => {
         if (p.chatId === totalPageOfMessage?.chatId) {
-          return {
-            ...p,
-            currentPage: totalPageOfMessage?.currentPage + 1,
-          };
+          return { ...p, currentPage: totalPageOfMessage?.currentPage + 1 };
         }
+
         return { ...p };
       });
 
@@ -155,9 +174,10 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
   ]);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
     event.stopPropagation();
+    setAnchorEl(event.currentTarget);
   };
+
   const handleClose = (event) => {
     event.stopPropagation();
     setAnchorEl(null);
@@ -169,6 +189,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
         (msg) => msg.chat === selectedChatRoom?.chatId
       );
       const result = Object.values(formatData(filterWRTChatRoom, user));
+
       setConversation(result);
     } else {
       setConversation([]);
@@ -183,53 +204,17 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
     }
   }, [conversation]);
 
-  const uploadOptionsRef = useRef(null);
-
   const toggleVisibility = () => {
     setIsClosing(true);
+
     setTimeout(() => {
       setDisplayUploadOptions(false);
       setIsClosing(false);
     }, 300);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        uploadOptionsRef.current &&
-        !uploadOptionsRef.current.contains(event.target)
-      ) {
-        toggleVisibility();
-      }
-    };
+  useClickOutside(uploadOptionsRef, toggleVisibility);
 
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  function generateRandomString(length) {
-    const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const charactersLength = characters.length;
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
-
-  function generateString() {
-    const part1 = generateRandomString(5);
-    const part2 = generateRandomString(7);
-    const part3 = generateRandomString(1);
-
-    return `${part1}-${part2}-${part3}`;
-  }
-
-  const [fileInput, setFileInput] = useState([]);
-  const [isSendingFiles, setIsSendingFiles] = useState(false);
   const handleFileInput = (event) => {
     const files = event.target.files;
 
@@ -247,6 +232,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
       data,
       id: generateString(),
     }));
+
     setFileInput((ps) => [...ps, ...fileArray]);
     setDisplayUploadOptions(false);
     setIsSendingFiles(true);
@@ -263,32 +249,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
 
   const handleCancelSendingAudio = () => setIsSendingVoiceNote(false);
 
-  const DashedLineText = ({ text }) => {
-    return (
-      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-        <Box sx={{ flex: 1, height: '1px', background: '#ccc' }} />
-        <Typography
-          variant="body1"
-          style={{
-            padding: '10px',
-            fontSize: '14px',
-            fontWeight: 400,
-            lineHeight: '17px',
-            letterSpacing: '0em',
-            textAlign: 'left',
-            color: '#979797',
-          }}
-        >
-          {text}
-        </Typography>
-        <Box sx={{ flex: 1, height: '1px', background: '#ccc' }} />
-      </Box>
-    );
-  };
-
-  const [message, setMessage] = useState('');
-  const [dataToSend, setDataToSend] = useState();
-
   useEffect(() => {
     if (selectedChatRoom) {
       setDataToSend({
@@ -297,40 +257,6 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
       });
     }
   }, [selectedChatRoom]);
-
-  const handleInput = () => {
-    const content = messageFieldRef.current.innerHTML;
-
-    setMessage(content);
-
-    if (content.trim().length > 0 || content !== '<br>') {
-      socket2.emit('START_TYPING', dataToSend);
-    } else {
-      socket2.emit('STOP_TYPING', dataToSend);
-    }
-  };
-
-  const handleBlur = () => {
-    setMessage(messageFieldRef.current.innerHTML);
-  };
-
-  const handleKeyPress = (e) => {
-    if (
-      e.key === 'ArrowUp' ||
-      e.key === 'ArrowDown' ||
-      e.key === 'ArrowRight' ||
-      e.key === 'ArrowLeft'
-    ) {
-      if (message.trim() === '') {
-        e.preventDefault();
-      }
-    } else if (e.key === 'Enter' && e.shiftKey) {
-      setMessage((prevMessage) => prevMessage + '\n');
-    } else if (e.key === 'Enter') {
-      sendMessage();
-      e.preventDefault();
-    }
-  };
 
   const { mutate, isPending: uploadLoading } = useMutation({
     mutationFn: sendAttachment,
@@ -348,14 +274,18 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
       if (!fileInput.length) {
         return;
       }
+
       const filesObject = fileInput.map((file) => file.data);
+
       const body = {
         files: filesObject,
         chatId: selectedChatRoom.chatId,
       };
+
       mutate(body);
     } else {
       messageFieldRef.current.innerText = '';
+
       if (message.trim() === '') {
         toast?.error('Message can not be empty.');
         return;
@@ -376,40 +306,19 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
         toast.error('Member id is required');
         return;
       }
+
       socket2.emit('NEW_MESSAGE', finalMessage);
 
-      // Clear the input after sending the message
       setMessage('');
       setFileInput([]);
       setIsSendingFiles(false);
+
       socket2.emit('STOP_TYPING', dataToSend);
     }
   };
 
-  let prevSender = null;
-
-  const conversationRef = useRef(null);
-  const scrollToBottom = () => {
-    if (conversationRef.current && page === 1) {
-      const lastComponent = conversationRef.current;
-      const additionalOffset = 20; // Additional 20px to account for margin-bottom
-
-      // Calculate total height including the additional offset
-      const totalHeight =
-        lastComponent.getBoundingClientRect().height + additionalOffset;
-
-      // Scroll smoothly to the bottom of the last component
-      lastComponent.parentElement.scrollTo({
-        top:
-          lastComponent.offsetTop +
-          totalHeight -
-          lastComponent.parentElement.clientHeight,
-        behavior: 'smooth',
-      });
-    }
-  };
   useEffect(() => {
-    scrollToBottom();
+    scrollToBottom(conversationRef, page);
   }, [conversation, isTypingUser]);
 
   return (
@@ -429,77 +338,14 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
           minHeight: '100%',
         }}
       >
-        <Box
-          sx={{
-            padding: '12px 19px 8px',
-            borderBottom: '1px solid #E4E4E4',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Avatar
-              data={selectedChatRoom}
-              minWidth={'50px'}
-              height={'50px'}
-              chat
-            />
-            <Typography
-              sx={{
-                marginLeft: '5px',
-                fontSize: '18px',
-                fontWeight: '400',
-                lineHeight: '22px',
-                letterSpacing: '0em',
-                textAlign: 'left',
-              }}
-            >
-              {selectedChatRoom?.title}
-            </Typography>
-          </Box>
-          <Box sx={{ marginRight: '10px' }}>
-            <Image
-              width={3}
-              height={15}
-              src={'/icons/OptionsIcon.svg'}
-              style={{ cursor: 'pointer' }}
-              onClick={handleClick}
-              alt={'dots'}
-            />
-            <Menu
-              id="demo-positioned-menu"
-              aria-labelledby="demo-positioned-button"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-              sx={{ marginTop: '20px' }}
-            >
-              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
-                Mark as unread
-              </MenuItem>
-              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
-                Delete
-              </MenuItem>
-              <hr />
-              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
-                Block
-              </MenuItem>
-              <hr />
-              <MenuItem sx={{ borderBottom: '1px solid #E7E7E7' }}>
-                Archive
-              </MenuItem>
-            </Menu>
-          </Box>
-        </Box>
+        <ChatHeader
+          selectedChatRoom={selectedChatRoom}
+          handleClick={handleClick}
+          anchorEl={anchorEl}
+          open={open}
+          handleClose={handleClose}
+        />
+
         <Box
           sx={{
             padding: '12px 11px 8px 19px',
@@ -519,37 +365,21 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
                   {inViewLoader && <CircularProgress size={20} />}
                 </div>
               )}
-            {conversation?.map((days, daysIndex) => {
-              return (
-                <Box key={daysIndex}>
-                  <DashedLineText
-                    text={moment(days?.date).format('dddd, D MMMM YYYY')}
-                  />
-                  {days?.messages?.map((message, msgIndex) => {
-                    const isSameSenderAsPrevious =
-                      prevSender === message.sender;
-                    prevSender = message.sender;
-                    return (
-                      <RenderMessage
-                        key={msgIndex}
-                        data={message}
-                        selectedChatRoom={selectedChatRoom}
-                        isSameSenderAsPrevious={isSameSenderAsPrevious}
-                      />
-                    );
-                  })}
-                </Box>
-              );
-            })}
-          </Box>
 
-          {isTypingUser?.userId === userProfile?.id &&
-            selectedChatRoom?.chatId === isTypingUser?.chatId && (
-              <div className="typing-indicator">
-                <div className="dots">...</div>
-              </div>
-            )}
+            <MessageList
+              conversation={conversation}
+              selectedChatRoom={selectedChatRoom}
+            />
+
+            {isTypingUser?.userId === userProfile?.id &&
+              selectedChatRoom?.chatId === isTypingUser?.chatId && (
+                <div className="typing-indicator">
+                  <div className="dots">...</div>
+                </div>
+              )}
+          </Box>
         </Box>
+
         <Box
           sx={{
             padding: { xs: '5px', sm: '12px 11px 8px 19px' },
@@ -571,6 +401,7 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
               fileInput={fileInput}
               handleRemoveFile={handleRemoveFile}
             />
+
             <Box
               sx={{
                 marginRight: { xs: '0px', sm: '16px' },
@@ -579,204 +410,56 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
               display={'flex'}
               alignItems={'center'}
             >
-              <input
-                type={'file'}
-                style={{ display: 'none' }}
-                id="image-input"
-                onChange={handleFileInput}
-                multiple
-                accept=".png, .jpg, .jpeg"
-              />
-              <input
-                type={'file'}
-                style={{ display: 'none' }}
-                id="file-input"
-                onChange={handleFileInput}
-                multiple
-                accept=".pdf, .docx, .xlsx"
-              />
-              <input
-                type={'file'}
-                style={{ display: 'none' }}
-                id="all-file-input"
-                onChange={handleFileInput}
-                multiple
-                accept=".png, .jpg, .jpeg, .pdf, .docx, .xlsx"
-              />
+              {FILES_ARRAY?.map((fileInp, index) => (
+                <input
+                  key={index}
+                  type={'file'}
+                  style={{ display: 'none' }}
+                  id={fileInp.id}
+                  onChange={handleFileInput}
+                  multiple
+                  accept={fileInp.accept}
+                />
+              ))}
+
               {!isSendingVoiceNote && !isSendingFiles && (
-                <Box ref={uploadOptionsRef}>
-                  <Box
-                    sx={{
-                      width: { xs: '20px', sm: '32px' },
-                      minWidth: { xs: '20px', sm: '32px' },
-                      height: { xs: '20px', sm: '32px' },
-                      backgroundColor: '#9B9B9B',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                    }}
-                    className={[
-                      'upload-files-icons',
-                      displayUploadOptions
-                        ? 'anition-upload-files-icon'
-                        : 'remove-anition-upload-files-icon',
-                    ].join(' ')}
-                    onClick={() =>
-                      displayUploadOptions
-                        ? toggleVisibility()
-                        : setDisplayUploadOptions(true)
-                    }
-                  >
-                    <Box
-                      component={'img'}
-                      src="/icons/SendFileChatIcon.svg"
-                      sx={{
-                        width: { xs: '12px', sm: '18px' },
-                        height: { xs: '12px', sm: '18px' },
-                      }}
-                      alt={'Send File'}
-                    />
-                  </Box>
-                  {displayUploadOptions && (
-                    <Box
-                      sx={{
-                        width: '100px',
-                        position: 'absolute',
-                        bottom: '35px',
-                      }}
-                      className={
-                        displayUploadOptions && !isClosing
-                          ? 'draw-in-animation'
-                          : 'draw-out-animation'
-                      }
-                    >
-                      <label htmlFor="image-input">
-                        <Box
-                          sx={{
-                            width: { xs: '20px', sm: '32px' },
-                            minWidth: { xs: '20px', sm: '32px' },
-                            height: { xs: '20px', sm: '32px' },
-                            backgroundColor: '#9B9B9B',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              width: '18px',
-                              height: '18px',
-                            }}
-                            alt={'Image'}
-                            component={'img'}
-                            src={'/icons/select-image.svg'}
-                          />
-                        </Box>
-                      </label>
-                      <label htmlFor="file-input">
-                        <Box
-                          sx={{
-                            width: { xs: '20px', sm: '32px' },
-                            minWidth: { xs: '20px', sm: '32px' },
-                            height: { xs: '20px', sm: '32px' },
-                            backgroundColor: '#9B9B9B',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                            marginTop: '4px',
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              width: '18px',
-                              height: '18px',
-                            }}
-                            alt={'File'}
-                            component={'img'}
-                            src={'/icons/select-file.svg'}
-                          />
-                        </Box>
-                      </label>
-                      <Box
-                        onClick={() => {
-                          setDisplayUploadOptions(false);
-                          setIsSendingVoiceNote(true);
-                        }}
-                        sx={{
-                          display: { xs: 'none', md: 'none' },
-                          alignItems: 'center',
-                          marginBottom: '10px',
-                          paddingX: '10px',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            width: '20px',
-                            height: '20px',
-                            marginRight: '5px',
-                          }}
-                          alt={'Mic'}
-                          component={'img'}
-                          src={'/icons/MicIcon.svg'}
-                        />
-                        <Typography>Voice</Typography>
-                      </Box>
-                    </Box>
-                  )}
-                </Box>
+                <ChatInputArea
+                  uploadOptionsRef={uploadOptionsRef}
+                  commonInputBoxStyles={commonInputBoxStyles}
+                  displayUploadOptions={displayUploadOptions}
+                  toggleVisibility={toggleVisibility}
+                  setDisplayUploadOptions={setDisplayUploadOptions}
+                  isClosing={isClosing}
+                  setIsSendingVoiceNote={setIsSendingVoiceNote}
+                />
               )}
+
               {!isSendingFiles && (
-                <Box sx={{ padding: '0 10px', width: '100%' }}>
-                  {isSendingVoiceNote ? (
-                    <AudioRecorder
-                      handleCancelSendingAudio={handleCancelSendingAudio}
-                    />
-                  ) : (
-                    <Box
-                      className={'contentEditable'}
-                      contentEditable
-                      onInput={handleInput}
-                      onKeyDown={handleKeyPress}
-                      aria-label="Type your message..."
-                      aria-placeholder="Type your message..."
-                      ref={messageFieldRef}
-                      onBlur={handleBlur}
-                      onFocus={() => messageFieldRef.current.focus()}
-                      suppressContentEditableWarning={true}
-                    >
-                      {message.trim() === '' &&
-                        document?.activeElement !== messageFieldRef.current && (
-                          <div className={'placeholder'}>Write message</div>
-                        )}
-                    </Box>
-                  )}
-                </Box>
+                <ChatInputTypingArea
+                  isSendingVoiceNote={isSendingVoiceNote}
+                  handleCancelSendingAudio={handleCancelSendingAudio}
+                  sendMessage={sendMessage}
+                  setMessage={setMessage}
+                  message={message}
+                  messageFieldRef={messageFieldRef}
+                  socket2={socket2}
+                />
               )}
+
               <Box
-                src="/icons/SendMessageIcon.svg"
-                component={'img'}
-                alt={'Send Message'}
+                component={'span'}
                 sx={{
-                  marginLeft: { xs: '5px', sm: '10px' },
-                  marginRight: { xs: '5px', sm: '10px' },
-                  width: { xs: '20px', sm: '36px' },
-                  height: { xs: '20px', sm: '36px' },
                   display: 'none',
                   '@media (min-width: 280px) and (max-width: 1526px)': {
                     display: 'flex',
                   },
                 }}
-                onClick={sendMessage}
-              />
+              >
+                <SendMessageButton sendMessage={sendMessage} />
+              </Box>
             </Box>
           </Box>
+
           {uploadLoading ? (
             <Box
               component={'span'}
@@ -792,20 +475,15 @@ const ChatRoom = ({ selectedChatRoom, isTypingUser, totalPageOfMessage }) => {
             </Box>
           ) : (
             <Box
-              src="/icons/SendMessageIcon.svg"
-              component={'img'}
-              alt={'Send Message'}
+              component={'span'}
               sx={{
-                marginLeft: { xs: '5px', sm: '10px' },
-                marginRight: { xs: '5px', sm: '10px' },
-                width: { xs: '20px', sm: '36px' },
-                height: { xs: '20px', sm: '36px' },
                 '@media (min-width: 280px) and (max-width: 1526px)': {
                   display: 'none',
                 },
               }}
-              onClick={sendMessage}
-            />
+            >
+              <SendMessageButton sendMessage={sendMessage} />
+            </Box>
           )}
         </Box>
       </Box>

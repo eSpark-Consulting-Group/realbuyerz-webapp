@@ -38,7 +38,7 @@ import {
   updatePostListing,
 } from '@/src/utils/properties';
 import { useRouter } from 'next/navigation';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { transformAmenities } from '@/src/utils/amenitiesUtils';
 
@@ -223,69 +223,66 @@ const PostListing = ({ property_Id }) => {
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
   return (
-    <>
-      <ToastContainer />
-      <Grid container>
-        <Grid item xs={12}>
-          <form onSubmit={formik?.handleSubmit}>
-            <Box
-              sx={{
-                display: 'flex',
-                maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '40px',
-                margin: { xs: 0, md: '0 auto', lg: 0 },
-              }}
-            >
-              <BuyersPlatform propertyData={POST_LISTING} />
-              <AdInformation formik={formik} propertyData={POST_LISTING} />
-              <PropertyPurpose
-                formik={formik}
-                propertyData={POST_LISTING}
-                propertyTypeDetails={propertyTypeDetails}
-                filteredUserProperty={filteredUserProperty}
-              />
+    <Grid container>
+      <Grid item xs={12}>
+        <form onSubmit={formik?.handleSubmit}>
+          <Box
+            sx={{
+              display: 'flex',
+              maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
+              justifyContent: 'center',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '40px',
+              margin: { xs: 0, md: '0 auto', lg: 0 },
+            }}
+          >
+            <BuyersPlatform propertyData={POST_LISTING} />
+            <AdInformation formik={formik} propertyData={POST_LISTING} />
+            <PropertyPurpose
+              formik={formik}
+              propertyData={POST_LISTING}
+              propertyTypeDetails={propertyTypeDetails}
+              filteredUserProperty={filteredUserProperty}
+            />
 
-              <PropertySize formik={formik} propertyData={POST_LISTING} />
-              <PropertyFeatures
-                formik={formik}
-                propertyData={POST_LISTING}
-                setSelectedAmenities={setSelectedAmenities}
-                selectedAmenities={selectedAmenities}
-                handleSeletedAmenites={handleSeletedAmenites}
-                getAmenities={getAmenities}
-              />
-              <PropertyGallery formik={formik} propertyData={POST_LISTING} />
-              <SubmitButton
-                formik={formik}
-                propertyData={POST_LISTING}
-                setAction={setAction}
-                action={action}
-                handleClickOpen={handleClickOpen}
-                isLoading={isLoading}
-                isUpdate={property_Id}
-                isSubmitBtnDisable={isSubmitBtnDisable}
-              />
-              <PreviewModal
-                open={open}
-                onClose={handleClose}
-                ads={formik?.values}
-                formik={formik}
-              />
-            </Box>
-          </form>
-          <ProposalModal
-            buttonLabel={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-            description={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-            title={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
-            open={isOpen}
-            onClose={handleCloseSuccessModal}
-          />
-        </Grid>
+            <PropertySize formik={formik} propertyData={POST_LISTING} />
+            <PropertyFeatures
+              formik={formik}
+              propertyData={POST_LISTING}
+              setSelectedAmenities={setSelectedAmenities}
+              selectedAmenities={selectedAmenities}
+              handleSeletedAmenites={handleSeletedAmenites}
+              getAmenities={getAmenities}
+            />
+            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
+            <SubmitButton
+              formik={formik}
+              propertyData={POST_LISTING}
+              setAction={setAction}
+              action={action}
+              handleClickOpen={handleClickOpen}
+              isLoading={isLoading}
+              isUpdate={property_Id}
+              isSubmitBtnDisable={isSubmitBtnDisable}
+            />
+            <PreviewModal
+              open={open}
+              onClose={handleClose}
+              ads={formik?.values}
+              formik={formik}
+            />
+          </Box>
+        </form>
+        <ProposalModal
+          buttonLabel={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
+          description={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
+          title={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+          open={isOpen}
+          onClose={handleCloseSuccessModal}
+        />
       </Grid>
-    </>
+    </Grid>
   );
 };
 export default PostListing;

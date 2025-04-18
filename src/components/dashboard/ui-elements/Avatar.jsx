@@ -1,27 +1,27 @@
-import { Box, Typography } from '@mui/material';
-import React from 'react';
+import Image from 'next/image';
 
-const Avatar = ({ data, minWidth = '40px', height = '40px', mobile, chat }) => {
+import { Box, Typography } from '@mui/material';
+
+const Avatar = ({ data, minWidth = 40, height = 40, mobile, chat }) => {
   function renderAvatarName(name) {
-    // Split the name into individual components
     const nameComponents = name.split(' ');
 
     if (nameComponents.length === 3) {
-      // First, middle, and last name
+      //
       const firstName = nameComponents[0];
       const lastName = nameComponents[2];
       return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
     } else if (nameComponents.length === 2) {
-      // First and last name
+      //
       const firstName = nameComponents[0];
       const lastName = nameComponents[1];
       return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
     } else if (nameComponents.length === 1) {
-      // First name only
+      //
       const firstName = nameComponents[0];
       return `${firstName[0].toUpperCase()}`;
     } else {
-      // Invalid input
+      //
       return 'Invalid Name';
     }
   }
@@ -29,16 +29,15 @@ const Avatar = ({ data, minWidth = '40px', height = '40px', mobile, chat }) => {
   const renderAvatar = (data) => {
     if (data?.avatar) {
       return (
-        <Box
-          component="img"
-          src={chat ? data?.avatar : `/images/${data?.avatar}.svg`}
-          sx={{
-            width: minWidth,
-            height,
-            borderRadius: '50%',
-            display: { xs: mobile || 'flex', sm: 'flex' },
-          }}
+        <Image
           alt={'Avatar'}
+          src={chat ? data?.avatar : `/images/${data?.avatar}.svg`}
+          width={minWidth}
+          height={height}
+          style={{
+            borderRadius: '50%',
+            display: mobile || 'flex',
+          }}
         />
       );
     } else {

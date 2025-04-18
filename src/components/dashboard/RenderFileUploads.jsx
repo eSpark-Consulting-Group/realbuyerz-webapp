@@ -1,13 +1,10 @@
+import Image from 'next/image';
+
 import { Box } from '@mui/material';
-import React from 'react';
+
+import { FILE_TYPES } from '@/src/constants/Chats';
 
 const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
-  const fileTypes = [
-    'application/pdf',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  ];
-
   return (
     <Box
       sx={{
@@ -40,16 +37,14 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
               }}
             >
               {file?.data?.type === 'image/jpeg' ? (
-                <Box
-                  component={'img'}
+                <Image
                   src={'/icons/JPEGFileIcon.svg'}
                   alt={'Selected'}
-                  sx={{
-                    width: { xs: '40px', sm: '100px' },
-                    height: { xs: '40px', sm: '100px' },
-                  }}
+                  width={100}
+                  height={100}
+                  className="selected-file"
                 />
-              ) : fileTypes.includes(file?.data?.type) ? (
+              ) : FILE_TYPES.includes(file?.data?.type) ? (
                 <Box
                   component={'p'}
                   sx={{
@@ -71,24 +66,25 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
                   }}
                 />
               )}
-              <Box
-                component={'img'}
+
+              <Image
                 src="/icons/CloseIcon.svg"
-                sx={{
-                  width: '20px',
-                  height: '20px',
+                alt={'Reply'}
+                width={20}
+                height={20}
+                style={{
                   borderRadius: '50%',
                   cursor: 'pointer',
                   position: 'absolute',
                   right: '5px',
                   top: '5px',
                 }}
-                alt={'Reply'}
                 onClick={() => handleRemoveFile(file?.id)}
               />
             </Box>
           );
         })}
+
       {fileInput.length > 0 && (
         <label htmlFor="all-file-input">
           <Box
@@ -97,21 +93,17 @@ const RenderFileUploads = ({ fileInput, handleRemoveFile }) => {
               justifyContent: 'center',
               alignItems: 'center',
               backgroundColor: 'rgba(000,000,000,0.4)',
-              // height: {xs:'80px',sm:'120px'},
               height: 'calc(100% - 10px)',
               width: '50px',
               borderRadius: '5px',
               cursor: 'pointer',
             }}
           >
-            <Box
-              component={'img'}
+            <Image
               src={'/icons/PlusIconWhite.svg'}
-              sx={{
-                width: '20px',
-                height: '20px',
-              }}
               alt={'Upload More'}
+              width={20}
+              height={20}
             />
           </Box>
         </label>
