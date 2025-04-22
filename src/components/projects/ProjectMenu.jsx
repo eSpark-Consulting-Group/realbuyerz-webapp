@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 import PriceMenu from './PriceMenu';
 import SizeMenu from './SizeMenu';
 import AllMenu from './AllMenu';
 import TooltipText from '../global/TooltipText';
+
+const tabMap = {
+  House: 0,
+  Plots: 1,
+  Commercial: 2,
+};
 
 const ProjectMenu = ({
   field,
@@ -16,44 +23,38 @@ const ProjectMenu = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
-  const key = field?.key;
   const open = Boolean(anchorEl);
+  const key = field?.key;
 
-  const handleClick = (event) => {
+  const handleClick = useCallback((event) => {
     setAnchorEl(event?.currentTarget);
-  };
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
 
     const label = filterObject?.all?.label;
     const category = filterObject?.all?.category;
-
-    const tabMap = {
-      House: 0,
-      Plots: 1,
-      Commercial: 2,
-    };
 
     if (label in tabMap) {
       setActiveTab(tabMap[label]);
     }
 
     setActiveMenuOption(category);
+  }, [filterObject, setActiveMenuOption]);
+
+  const commonMenuProps = {
+    filterObject,
+    setfilterObject,
+    setAnchorEl,
   };
 
   const renderMenu = () => {
-    const commonProps = {
-      filterObject,
-      setfilterObject,
-      setAnchorEl,
-    };
-
     switch (key) {
       case 'all':
         return (
           <AllMenu
-            {...commonProps}
+            {...commonMenuProps}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             activeMenuOption={activeMenuOption}
@@ -61,9 +62,9 @@ const ProjectMenu = ({
           />
         );
       case 'price':
-        return <PriceMenu {...commonProps} handleClose={handleClose} />;
+        return <PriceMenu {...commonMenuProps} handleClose={handleClose} />;
       case 'size':
-        return <SizeMenu {...commonProps} handleClose={handleClose} />;
+        return <SizeMenu {...commonMenuProps} handleClose={handleClose} />;
       default:
         return null;
     }
@@ -79,7 +80,7 @@ const ProjectMenu = ({
       window.removeEventListener('scroll', handleScrollOrResize);
       window.removeEventListener('resize', handleScrollOrResize);
     };
-  }, [filterObject]);
+  }, [handleClose]);
 
   return (
     <>
@@ -96,7 +97,7 @@ const ProjectMenu = ({
           borderRadius: '5px',
           cursor: 'pointer',
           '&:hover': {
-            border: '1px solid #000',
+            borderColor: '#000',
           },
         }}
       >
@@ -113,11 +114,11 @@ const ProjectMenu = ({
         />
         {open ? (
           <KeyboardArrowUpIcon
-            sx={{ color: '#666666', transition: 'transform 0.3s' }}
+            sx={{ color: '#666', transition: 'transform 0.3s' }}
           />
         ) : (
           <KeyboardArrowDownIcon
-            sx={{ color: '#666666', transition: 'transform 0.3s' }}
+            sx={{ color: '#666', transition: 'transform 0.3s' }}
           />
         )}
       </Box>
