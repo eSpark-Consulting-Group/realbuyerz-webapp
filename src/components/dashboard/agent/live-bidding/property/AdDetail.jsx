@@ -1,23 +1,25 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
-import { CircularProgress, Grid, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+
+import { CircularProgress, Grid, Typography, Box } from '@mui/material';
+
+import Location from '@/src/components/dashboard/preview/Location';
+import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
 import RightSection from '@/src/components/dashboard/user/dashboard/RightSection';
 import BiddingProfile from '@/src/components/dashboard/agent/live-bidding/BiddingProfile';
 import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
 import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/PreviewFeatureAndAmenities';
 
-import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
-import Location from '@/src/components/dashboard/preview/Location';
+import { transformApiObject } from '@/src/utils/objectsConversion';
+import { fetchProperties } from '@/src/utils/properties';
+
+import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 import { CLIENT_REQUIRMENT } from '@/src/constants/agent/Live_Bidding';
-import { transformApiObject } from '@/src/utils/objectsConversion';
-import { useMutation } from '@tanstack/react-query';
-import { fetchProperties } from '@/src/utils/properties';
-import { setAllUserProperties } from '@/src/redux/slices/properties/propertiesSlice';
 
 const AdDetail = ({ property_id }) => {
   const { location, areaAndAmount, amenities } = PREVIEW_DATA;
@@ -26,6 +28,8 @@ const AdDetail = ({ property_id }) => {
   const userProperties = useSelector(
     (state) => state?.properties?.userProperties
   );
+
+  const [userPropertyData, setUserPropertyData] = useState({});
 
   const transformApiArray = (apiArray) => {
     return apiArray.map((apiObj) => transformApiObject(apiObj));
@@ -43,8 +47,6 @@ const AdDetail = ({ property_id }) => {
       console.error(error);
     },
   });
-
-  const [userPropertyData, setUserPropertyData] = useState({});
 
   useEffect(() => {
     if (!userProperties?.length) {
@@ -100,6 +102,7 @@ const AdDetail = ({ property_id }) => {
                   >
                     {CLIENT_REQUIRMENT?.title}
                   </Typography>
+
                   {isPending ? (
                     <Box
                       sx={{
@@ -118,6 +121,7 @@ const AdDetail = ({ property_id }) => {
                         fontStyle={'16px'}
                         description={userPropertyData?.description}
                       />
+                      
                       <Location
                         city={userPropertyData?.city}
                         locationKeys={location}
@@ -129,6 +133,7 @@ const AdDetail = ({ property_id }) => {
                         longitude={userPropertyData?.longitude}
                         latitude={userPropertyData?.latitude}
                       />
+
                       <PreviewAmountAndFeature
                         area={userPropertyData?.area}
                         amount={userPropertyData?.amount}
@@ -140,6 +145,7 @@ const AdDetail = ({ property_id }) => {
                         }
                         readyPossession={userPropertyData?.readyPossession}
                       />
+
                       <PreviewFeatureAndAmenities
                         amenities={amenities}
                         specificPost={userPropertyData}
@@ -148,6 +154,7 @@ const AdDetail = ({ property_id }) => {
                   )}
                 </Box>
               </Grid>
+
               {'property_id' in userPropertyData && (
                 <Grid item xs={12} md={3.5} xl={2.5}>
                   <Box
@@ -161,7 +168,6 @@ const AdDetail = ({ property_id }) => {
                     }}
                   >
                     <RightSection
-                      // proposals={sendProposals}
                       specificPost={userPropertyData}
                       postId={userPropertyData?.property_id}
                       rightSectionKeys={CLIENT_REQUIRMENT}
@@ -172,6 +178,7 @@ const AdDetail = ({ property_id }) => {
             </Grid>
           </Box>
         </Grid>
+        
         <Grid item xs={12} md={12} lg={12} xl={2.64}>
           <BiddingProfile />
         </Grid>

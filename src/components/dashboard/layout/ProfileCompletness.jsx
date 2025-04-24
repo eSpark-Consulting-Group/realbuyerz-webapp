@@ -1,10 +1,13 @@
-import React from 'react';
-import { Box } from '@mui/system';
+import { Grid, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Grid, Typography } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
+
+const typographyStyle = {
+  fontSize: { xs: '14px', lg: '16px' },
+  fontWeight: 500,
+};
 
 const ProfileCompletness = ({ title, description, percentage = 95 }) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -43,13 +46,13 @@ const ProfileCompletness = ({ title, description, percentage = 95 }) => {
         >
           <Typography
             sx={{
-              fontSize: { xs: '14px', lg: '16px' },
-              fontWeight: 500,
+              ...typographyStyle,
               color: '#000000',
             }}
           >
             {title || ''}
           </Typography>
+
           <Box
             sx={{
               width: '100%',
@@ -57,23 +60,23 @@ const ProfileCompletness = ({ title, description, percentage = 95 }) => {
               alignItems: 'center',
             }}
           >
-            {/* Updated to use dynamic percentage */}
             <BorderLinearProgress
               variant="determinate"
-              value={percentage} // Dynamically setting the progress bar value
+              value={percentage}
               sx={{ width: '100%', flex: 1 }}
             />
+
             <Typography
               sx={{
-                fontSize: { xs: '14px', lg: '16px' },
-                fontWeight: 500,
+                ...typographyStyle,
                 ml: 1,
               }}
             >
-              {`${percentage}%`} {/* Displaying percentage beside the bar */}
+              {`${percentage}%`}
             </Typography>
           </Box>
         </Box>
+
         <Box sx={{ width: '100%', pl: 4, pr: 7, pt: 1.5, pb: 5 }}>
           <Typography
             variant="body2"

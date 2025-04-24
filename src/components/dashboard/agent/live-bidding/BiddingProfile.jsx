@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box } from '@mui/system';
-import { Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
+
+import { Grid, Box } from '@mui/material';
 
 import ProfileCompletness from '@/src/components/dashboard/layout/ProfileCompletness';
 import AvailableConnects from '@/src/components/dashboard/layout/AvailableConnects';
 import Profile from '@/src/components/dashboard/layout/Profile';
-import { useSelector } from 'react-redux';
+
 import {
   AVAIALABLE_CONNECTS,
   BUY_NOW,
@@ -36,10 +36,12 @@ const BiddingProfile = () => {
             profileInfo={current_user}
             defaultImage={PROFILE_IMAGE_DEFAULT}
           />
+
           <ProfileCompletness
             title={PROFILE_COMPLETNESS}
             description={PROFILE_COMPLETNESS_DESCRIPTION}
           />
+          
           <AvailableConnects
             profileInfo={current_user}
             connectsText={AVAIALABLE_CONNECTS}

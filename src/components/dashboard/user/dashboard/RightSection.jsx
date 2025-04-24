@@ -1,13 +1,28 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+
 import { Box, CircularProgress, Typography } from '@mui/material';
 import FlagIcon from '@mui/icons-material/Flag';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+
 import { saveUserProposal } from '@/src/utils/apis/bidding/saveUserProposal';
-import { useMutation } from '@tanstack/react-query';
+
+import { handleSaveRequest } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+
+const style = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: { xs: '100%', lg: '100%' },
+  height: '43.545px',
+  borderRadius: '50px',
+  fontSize: '14px',
+  fontWeight: 500,
+};
 
 const RightSection = ({
   postId,
@@ -23,10 +38,13 @@ const RightSection = ({
     available_Connects,
     connects,
   } = rightSectionKeys;
+
+  const dispatch = useDispatch();
+
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
+
   const [isHovered, setIsHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -45,11 +63,10 @@ const RightSection = ({
 
   const { mutate, isPending } = useMutation({
     mutationFn: saveUserProposal,
-    onSuccess: (data) => {
+    onSuccess: () => {
       setIsSaved(!isSaved);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -67,39 +84,26 @@ const RightSection = ({
         <Link href={`${postId}${apply_Button?.link}`}>
           <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: { xs: '100%', lg: '100%' },
-              height: '43.545px',
+              ...style,
               backgroundColor: '#FB631C',
-              borderRadius: '50px',
-              fontSize: '14px',
-              fontWeight: 500,
               color: '#FFF',
             }}
           >
             {apply_Button?.title}
           </Typography>
         </Link>
+
         <Typography
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={handleSave}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 1,
-            width: { xs: '100%', lg: '100%' },
-            height: '43.545px',
+            ...style,
             backgroundColor: '#fff',
-            border: '1px solid #FB631C',
-            borderRadius: '50px',
-            fontSize: '14px',
-            fontWeight: 500,
-            cursor: 'pointer',
             color: '#FB631C',
+            gap: 1,
+            border: '1px solid #FB631C',
+            cursor: 'pointer',
             '&:hover': { backgroundColor: '#FB631C', color: 'white' },
           }}
         >
@@ -124,6 +128,7 @@ const RightSection = ({
           )}
         </Typography>
       </Box>
+
       <Box sx={{ pt: 2, pb: 1 }}>
         <Typography
           variant="body1"
@@ -137,59 +142,39 @@ const RightSection = ({
           <FlagIcon fontSize={'12px'} /> {flag_Inappropiate}
         </Typography>
       </Box>
+
       <Box sx={{ display: 'flex', gap: '5px', pb: 1 }}>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#333',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {send_Proposal}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {`${proposals ? proposals : '6'} ${connects}`}
-        </Typography>
+        <CommonTypography color={'#333'} text={send_Proposal} />
+
+        <CommonTypography
+          color={'#126FAA'}
+          text={`${proposals ? proposals : '6'} ${connects}`}
+        />
       </Box>
+
       <Box sx={{ display: 'flex', gap: '5px', pb: 1 }}>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#333',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          {available_Connects}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#126FAA',
-            fontSize: '12px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            textWrap: 'wrap',
-          }}
-        >
-          0
-        </Typography>
+        <CommonTypography color={'#333'} text={available_Connects} />
+
+        <CommonTypography color={'#126FAA'} text={0} />
       </Box>
     </Box>
+  );
+};
+
+const CommonTypography = ({ color, text }) => {
+  return (
+    <Typography
+      variant="body1"
+      sx={{
+        color: color,
+        fontSize: '12px',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        textWrap: 'wrap',
+      }}
+    >
+      {text}
+    </Typography>
   );
 };
 

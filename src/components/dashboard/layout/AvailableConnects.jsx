@@ -1,6 +1,6 @@
-import React from 'react';
-import { Grid, Typography } from '@mui/material';
 import Link from 'next/link';
+
+import { Grid, Typography } from '@mui/material';
 
 const AvailableConnects = ({ profileInfo, connectsText, buyNow }) => {
   return (
@@ -29,6 +29,7 @@ const AvailableConnects = ({ profileInfo, connectsText, buyNow }) => {
         >
           {`${profileInfo?.available_connects || 0} ${connectsText || ''}`}
         </Typography>
+
         <Link href={`${buyNow?.link || '#'}`}>
           <Typography
             sx={{
