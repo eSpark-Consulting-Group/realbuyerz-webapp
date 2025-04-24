@@ -473,6 +473,7 @@ export const POST_REQUEST_VALUES = {
   status: '',
   other_features: [],
   amenity: [],
+  propertySubTypeId: '',
   title: '',
   location: '',
   description: '',

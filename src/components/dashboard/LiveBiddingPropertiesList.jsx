@@ -1,7 +1,6 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import { usePathname } from 'next/navigation';
+
+import { Typography, Box } from '@mui/material';
 
 const LiveBiddingPropertiesList = ({
   city,
@@ -17,6 +16,7 @@ const LiveBiddingPropertiesList = ({
   const pathName = usePathname();
   const agent = '/agent';
   const user = '/user';
+
   return (
     <Box
       sx={{
@@ -28,125 +28,70 @@ const LiveBiddingPropertiesList = ({
       }}
     >
       {status && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.status || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {status || ''}
-          </Typography>
-        </Box>
+        <CommonTypographyBox
+          text={cardKeys?.status}
+          textSecond={status}
+          justifyContent={justifyContent}
+        />
       )}
+
       {city && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.city || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {city || ''}
-          </Typography>
-        </Box>
+        <CommonTypographyBox
+          text={cardKeys?.city}
+          textSecond={city}
+          justifyContent={justifyContent}
+        />
       )}
+
       {location && (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: justifyContent ? justifyContent : 'center',
-            },
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.area || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {location || ''}
-          </Typography>
-        </Box>
+        <CommonTypographyBox
+          text={cardKeys?.area}
+          textSecond={location}
+          justifyContent={justifyContent}
+        />
       )}
+
       {pathName?.includes(user) && proposal > 0 ? (
-        <Box
-          sx={{
-            display: 'flex',
-            '@media(min-width: 280px) and (max-width: 445px)': {
-              justifyContent: 'center',
-            },
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-          >
-            {cardKeys?.proposal || ''}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: '#333333', fontWeight: 500 }}
-          >
-            {proposal || 0}
-          </Typography>
-        </Box>
+        <CommonTypographyBox
+          text={cardKeys?.proposal}
+          textSecond={proposal || 0}
+        />
       ) : null}
 
       {pathName.includes(agent) && connects ? (
         <>
           {noConnects && (
-            <Box
-              sx={{
-                display: 'flex',
-                '@media(min-width: 280px) and (max-width: 445px)': {
-                  justifyContent: 'center',
-                },
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
-              >
-                {cardKeys?.connects}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ color: '#333333', fontWeight: 500 }}
-              >
-                {connects}
-              </Typography>
-            </Box>
+            <CommonTypographyBox
+              text={cardKeys?.connects}
+              textSecond={connects}
+            />
           )}
         </>
       ) : null}
+    </Box>
+  );
+};
+
+const CommonTypographyBox = ({ text, textSecond, justifyContent }) => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        '@media(min-width: 280px) and (max-width: 445px)': {
+          justifyContent: justifyContent ? justifyContent : 'center',
+        },
+      }}
+    >
+      <Typography
+        variant="body1"
+        sx={{ fontWeight: 'bold', mx: 0.5, color: '#333333' }}
+      >
+        {text || ''}
+      </Typography>
+
+      <Typography variant="body1" sx={{ color: '#333333', fontWeight: 500 }}>
+        {textSecond || ''}
+      </Typography>
     </Box>
   );
 };

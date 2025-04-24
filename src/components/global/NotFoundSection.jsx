@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+
 import { Box, Typography, Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useRouter } from 'next/navigation';
 
 import { NOT_FOUND } from '@/src/constants/Global';
 
@@ -44,6 +44,7 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
             mt: -2,
           }}
         />
+
         <Typography
           sx={{
             mt: -2,
@@ -53,6 +54,7 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
         >
           {message || NOT_FOUND?.pageTitle}
         </Typography>
+
         <Typography
           sx={{
             fontSize: { xs: '17px', sm: '22px' },
@@ -62,6 +64,7 @@ const NotFoundSection = ({ message, link, goBackTo }) => {
         >
           {message || NOT_FOUND?.errorDescription}
         </Typography>
+        
         <Button
           variant="primary"
           sx={{ mt: 2, textTransform: 'lowercase' }}
