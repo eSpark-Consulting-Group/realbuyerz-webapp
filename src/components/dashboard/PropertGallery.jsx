@@ -1,51 +1,52 @@
-import React from 'react';
+import Image from 'next/image';
+
+import { toast } from 'react-toastify';
+
 import { Typography, Box, Grid } from '@mui/material';
 
-// import { propertyData } from '@/src/constants/postListing';
-
-import PostTitle from './ads-form-components/PostTitle';
 import InstructionsForUpload from './ads-form-components/InstructionsForUpload';
 import ImageUploader from './ads-form-components/ImageUploader';
 import VideoUploader from './ads-form-components/VideoUploader';
+import PostTitle from './ads-form-components/PostTitle';
+
+import { boxStyles } from './ads-form-components/styles';
+
+const maxVideos = 5;
+const maxImages = 5;
+const backgroundImage =
+  "url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%25%27 height=%27100%25%27%3e%3crect width=%27100%25%27 height=%27100%25%27 fill=%27none%27 stroke=%27%23FB631C%27 stroke-width=%272%27 stroke-dasharray=%276%2c14%27 stroke-linecap=%27square%27/%3e%3c/svg%3e')";
 
 const PropertyGallery = ({ formik, propertyData }) => {
-  const { errors } = formik;
-  const maxImages = 5;
-  const maxVideos = 5;
+  const { errors, values, setFieldValue } = formik;
 
   const handleImageUpload = (type, files) => {
-    const currentImages = formik?.values?.images || [];
+    const existingImages = values?.images || [];
 
-    // Ensure the uploaded files are images and the limit is not exceeded
     if (
-      files?.length + currentImages?.length <= maxImages &&
+      files?.length + existingImages?.length <= maxImages &&
       type?.includes('image')
     ) {
-      // Filter out any duplicates (based on the image file name or a unique identifier)
       const newFiles = Array.from(files).filter(
-        (file) =>
-          !currentImages.some(
-            (existingImage) => existingImage.name === file.name
-          )
+        (file) => !existingImages.some((img) => img.name === file.name)
       );
 
-      // If there are new unique files, update the form state
       if (newFiles.length > 0) {
-        const updatedImages = [...currentImages, ...newFiles];
-        formik?.setFieldValue('images', updatedImages);
+        const updatedImages = [...existingImages, ...newFiles];
+        setFieldValue('images', updatedImages);
       }
     } else {
-      console.error('Maximum limit of images reached');
+      toast.error('Maximum limit of images reached');
     }
   };
 
   const handleVideoUpload = (type, file) => {
-    const currentVideos = formik?.values?.videos || [];
+    const currentVideos = values?.videos || [];
+
     if (currentVideos?.length < maxVideos && type?.includes('video')) {
       const updatedVideos = [...currentVideos, file];
-      formik?.setFieldValue('videos', updatedVideos);
+      setFieldValue('videos', updatedVideos);
     } else {
-      console.error('Maximum limit of videos reached');
+      toast.error('Maximum limit of videos reached');
     }
   };
 
@@ -86,6 +87,7 @@ const PropertyGallery = ({ formik, propertyData }) => {
           }}
         >
           <PostTitle text={propertyData?.postTitles?.imagesvidoes} />
+
           <Box
             sx={{
               width: '100%',
@@ -107,14 +109,7 @@ const PropertyGallery = ({ formik, propertyData }) => {
             >
               <Box
                 sx={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  alignItems: { xs: 'center', sm: 'start' },
-                  justifyContent: { xs: 'center', md: 'center' },
-                  gap: 2,
-                  pb: { xs: 2, sm: 2 },
+                  ...boxStyles('100%'),
                 }}
               >
                 <Box
@@ -132,33 +127,21 @@ const PropertyGallery = ({ formik, propertyData }) => {
                       gap: 1.5,
                     }}
                   >
-                    <Box
-                      component={'img'}
+                    <Image
                       src={propertyData?.upload?.images}
-                      sx={{
-                        width: { xs: 37, sm: 47 },
-                        height: { xs: 35, sm: 45 },
-                      }}
                       alt={'areasize'}
+                      width={47}
+                      height={45}
+                      className="label-display-box"
                     />
-                    <Typography
-                      sx={{
-                        fontSize: { xs: '16px', sm: '20px' },
-                        textWrap: 'wrap',
-                        fontWeight: 400,
-                        color: '#333333',
-                        display: { xs: 'flex', sm: 'none' },
-                      }}
-                    >
-                      <span>
-                        {propertyData?.upload?.text}
-                        <span style={{ marginLeft: '5px', color: '#FF0000' }}>
-                          *
-                        </span>
-                      </span>
-                    </Typography>
+
+                    <RequiredText
+                      text={propertyData?.upload?.text}
+                      display={{ xs: 'flex', sm: 'none' }}
+                    />
                   </Box>
                 </Box>
+
                 <Box
                   sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}
                 >
@@ -173,25 +156,16 @@ const PropertyGallery = ({ formik, propertyData }) => {
                       mb: 3,
                     }}
                   >
-                    <Typography
-                      sx={{
-                        fontSize: { xs: '17px', sm: '20px' },
-                        fontWeight: 400,
-                        color: '#333333',
-                        mb: 0.5,
-                        display: { xs: 'none', sm: 'flex' },
-                      }}
-                    >
-                      {propertyData?.upload?.text}
-                      <span style={{ marginLeft: '5px', color: '#FF0000' }}>
-                        *
-                      </span>
-                    </Typography>
+                    <RequiredText
+                      text={propertyData?.upload?.text}
+                      display={{ xs: 'none', sm: 'flex' }}
+                      mb={0.5}
+                    />
+
                     <Box
                       sx={{
                         flexDirection: { xs: 'column', md: 'row' },
-                        backgroundImage:
-                          "url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%25%27 height=%27100%25%27%3e%3crect width=%27100%25%27 height=%27100%25%27 fill=%27none%27 stroke=%27%23FB631C%27 stroke-width=%272%27 stroke-dasharray=%276%2c14%27 stroke-linecap=%27square%27/%3e%3c/svg%3e')",
+                        backgroundImage,
                         display: 'flex',
                         alignItems: { xs: 'start', md: 'center' },
                         py: 3,
@@ -216,22 +190,24 @@ const PropertyGallery = ({ formik, propertyData }) => {
                           onUpload={handleImageUpload}
                           maxImages={maxImages}
                         />
+
                         {errors?.images && (
                           <Typography color="red">{errors?.images}</Typography>
                         )}
+
                         <VideoUploader
                           onUpload={handleVideoUpload}
                           maxVideos={maxVideos}
                         />
+
                         {errors?.videos && (
                           <Typography color="red">{errors?.videos}</Typography>
                         )}
                       </Box>
-                      <Box>
-                        <InstructionsForUpload
-                          propertyInformation={propertyData?.uploadInstruction}
-                        />
-                      </Box>
+
+                      <InstructionsForUpload
+                        propertyInformation={propertyData?.uploadInstruction}
+                      />
                     </Box>
                   </Box>
                 </Box>
@@ -243,4 +219,23 @@ const PropertyGallery = ({ formik, propertyData }) => {
     </Grid>
   );
 };
+
+const RequiredText = ({ text, display, mb = 0 }) => {
+  return (
+    <Typography
+      sx={{
+        fontSize: { xs: '17px', sm: '20px' },
+        textWrap: 'wrap',
+        fontWeight: 400,
+        color: '#333333',
+        display: display,
+        mb: mb,
+      }}
+    >
+      {text}
+      <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
+    </Typography>
+  );
+};
+
 export default PropertyGallery;

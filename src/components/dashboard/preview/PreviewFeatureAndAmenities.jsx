@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const renderDetail = (title, fontStyle, fontWeight, key) => {

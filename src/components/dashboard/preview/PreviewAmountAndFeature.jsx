@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const PreviewAmountAndFeature = ({
@@ -41,92 +40,76 @@ const PreviewAmountAndFeature = ({
       </Typography>
 
       {/* Area Size */}
-      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: fontWeight || 500,
-            minWidth: '120px',
-          }}
-        >
-          Area Size:
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: 500,
-            color: '#126FAA',
-          }}
-        >
-          {area ? `${area} Sq-ft` : 'Not specified'}
-        </Typography>
-      </Box>
+      <CommonBox
+        extra={{ mb: 1.5 }}
+        fontSize={fontStyle || '14px'}
+        fontWeight={fontWeight || 500}
+        heading={'Area Size:'}
+        color={'#126FAA'}
+        text={area ? `${area} Sq-ft` : 'Not specified'}
+      />
 
       {/* Price */}
-      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: fontWeight || 500,
-            minWidth: '120px',
-          }}
-        >
-          Price:
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: 500,
-            color: '#126FAA',
-          }}
-        >
-          {amount ? `PKR ${amount.toLocaleString()}` : 'Not specified'}
-        </Typography>
-      </Box>
+      <CommonBox
+        extra={{ mb: 1.5 }}
+        fontSize={fontStyle || '14px'}
+        fontWeight={fontWeight || 500}
+        heading={'Price:'}
+        color={'#126FAA'}
+        text={amount ? `PKR ${amount.toLocaleString()}` : 'Not specified'}
+      />
 
       {/* Installment Available */}
-      <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: fontWeight || 500,
-            minWidth: '120px',
-          }}
-        >
-          Installment:
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: 500,
-            color: instalmentAvailable ? '#126FAA' : '#666',
-          }}
-        >
-          {instalmentAvailable ? 'Available' : 'Not available'}
-        </Typography>
-      </Box>
+      <CommonBox
+        extra={{ mb: 1.5 }}
+        fontSize={fontStyle || '14px'}
+        fontWeight={fontWeight || 500}
+        heading={'Installment:'}
+        color={instalmentAvailable ? '#126FAA' : '#666'}
+        text={instalmentAvailable ? 'Available' : 'Not available'}
+      />
 
       {/* Ready for Possession */}
-      <Box sx={{ display: 'flex', gap: 1 }}>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: fontWeight || 500,
-            minWidth: '120px',
-          }}
-        >
-          Possession:
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: fontStyle || '14px',
-            fontWeight: 500,
-            color: readyPossession ? '#126FAA' : '#666',
-          }}
-        >
-          {readyPossession ? 'Ready' : 'Not ready'}
-        </Typography>
-      </Box>
+      <CommonBox
+        fontSize={fontStyle || '14px'}
+        fontWeight={fontWeight || 500}
+        heading={'Possession:'}
+        color={readyPossession ? '#126FAA' : '#666'}
+        text={readyPossession ? 'Ready' : 'Not ready'}
+      />
+    </Box>
+  );
+};
+
+const CommonBox = ({
+  extra = {},
+  fontSize,
+  fontWeight,
+  heading,
+  color,
+  text,
+}) => {
+  return (
+    <Box sx={{ display: 'flex', gap: 1, ...extra }}>
+      <Typography
+        sx={{
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          minWidth: '120px',
+        }}
+      >
+        {heading}
+      </Typography>
+
+      <Typography
+        sx={{
+          fontSize: fontSize,
+          fontWeight: 500,
+          color: color,
+        }}
+      >
+        {text}
+      </Typography>
     </Box>
   );
 };

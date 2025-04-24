@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, Box } from '@mui/material';
 
 import Facilities from './Facilities';
@@ -27,6 +26,7 @@ const AmenitiesModal = (props) => {
     handleSeletedAmenites();
     onClose();
   };
+  
   return (
     <>
       <Modal

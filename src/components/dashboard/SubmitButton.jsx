@@ -1,9 +1,11 @@
-import React from 'react';
-import { Box, Button, CircularProgress, Grid } from '@mui/material';
 import { usePathname } from 'next/navigation';
+
 import { useDispatch } from 'react-redux';
 
+import { Box, Button, CircularProgress, Grid } from '@mui/material';
+
 import HideUnhideButton from './ads-form-components/HideButton';
+
 import {
   handleSubmitDraft,
   handleSumitUserAds,
@@ -12,6 +14,18 @@ import {
   handlePostlistingAd,
   handleSubmitDraftForAgent,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
+
+const style = {
+  borderRadius: '10px',
+  border: '1px solid #FB631C',
+  height: '45px',
+  flexShrink: 0,
+  fontWeight: 400,
+  fontSize: { xs: '13px', sm: '15px' },
+  '@media(min-width: 280px) and (max-width:400px)': {
+    width: '100%',
+  },
+};
 
 const SubmitButton = ({
   handleClickOpen,
@@ -25,54 +39,44 @@ const SubmitButton = ({
   isSubmitBtnDisable,
 }) => {
   const pathName = usePathname();
+
+  const dispatch = useDispatch();
+
   const cover = '/cover-letter';
   const all_posting = '/all-postings';
   const my_properties = '/my-properties';
   const property_management = '/property-management';
 
-  const dispatch = useDispatch();
-
-  const handleDraftSubmit = () => {
+  const handleAdAction = (actionType) => {
     if (!pathName?.includes(cover)) {
-      setAction('draft');
+      setAction(actionType);
     }
+
+    const values = formik?.values;
+
     if (pathName?.includes(all_posting)) {
-      const values = formik?.values;
-      dispatch(handleSubmitDraft(values));
+      if (actionType === 'draft') {
+        dispatch(handleSubmitDraft(values));
+      } else if (actionType === 'submit') {
+        dispatch(handleSumitUserAds(values));
+      }
       handleOpenSuccessModal();
-    } else {
-      null;
     }
+
     if (pathName?.includes(my_properties)) {
-      const values = formik?.values;
-      dispatch(handleSubmitDraftForAgent(values));
+      if (actionType === 'draft') {
+        dispatch(handleSubmitDraftForAgent(values));
+      } else if (actionType === 'submit') {
+        dispatch(handlePostlistingAd(values));
+      }
       handleOpenSuccessModal();
-    } else {
-      null;
     }
+
     formik?.handleSubmit();
   };
 
-  const handleSubmitSubmit = () => {
-    if (!pathName?.includes(cover)) {
-      setAction('submit');
-    }
-    if (pathName?.includes(all_posting)) {
-      const values = formik?.values;
-      dispatch(handleSumitUserAds(values));
-      handleOpenSuccessModal();
-    } else {
-      null;
-    }
-    if (pathName?.includes(my_properties)) {
-      const values = formik?.values;
-      dispatch(handlePostlistingAd(values));
-      handleOpenSuccessModal();
-    } else {
-      null;
-    }
-    formik?.handleSubmit();
-  };
+  const handleDraftSubmit = () => handleAdAction('draft');
+  const handleSubmitSubmit = () => handleAdAction('submit');
 
   return (
     <Grid container>
@@ -99,24 +103,18 @@ const SubmitButton = ({
           }}
         >
           <HideUnhideButton handleClickOpen={handleClickOpen} />
+
           {pathName?.includes(cover) ? null : (
             <Button
               name="submit"
               value="submit"
               variant="outlined"
               sx={{
+                ...style,
+                fontSize: { xs: '13px', sm: '15px' },
                 width: { xs: '40%', sm: '150px' },
-                '@media(min-width: 280px) and (max-width:400px)': {
-                  width: '100%',
-                },
-                borderRadius: '10px',
-                border: '1px solid #FB631C',
                 background: '#FFF !important',
                 color: '#FB631C !important',
-                height: '45px',
-                flexShrink: 0,
-                fontSize: { xs: '12px', sm: '15px' },
-                fontWeight: 400,
                 '&:hover': {
                   color: '#fff !important',
                   backgroundColor: '#FB631C !important',
@@ -142,18 +140,10 @@ const SubmitButton = ({
             value="draft"
             variant="primary"
             sx={{
+              ...style,
               width: { xs: '40%', sm: '200px' },
-              '@media(min-width: 280px) and (max-width:400px)': {
-                width: '100%',
-              },
-              borderRadius: '10px',
-              border: '1px solid #FB631C',
               color: '#fff !important',
               background: '#FB631C',
-              height: '45px',
-              flexShrink: 0,
-              fontSize: { xs: '13px', sm: '15px' },
-              fontWeight: 400,
               '&:hover': {
                 color: '#FB631C',
                 backgroundColor: '#fff',

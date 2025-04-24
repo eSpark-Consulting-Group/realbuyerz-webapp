@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { Box, Typography } from '@mui/material';
 
 const PropertyTypes = ({ data, handlePropetySubType }) => {
   const [selectedType, setSelectedType] = useState(null);
 
   const handlePropertyType = (item) => {
-    setSelectedType(item?.typeName); // Update selected type
+    setSelectedType(item?.typeName);
     handlePropetySubType(item);
   };
 
@@ -56,6 +57,7 @@ const PropertyTypes = ({ data, handlePropetySubType }) => {
               }
               alt={item?.typeName || 'property'}
             />
+
             <Typography
               sx={{
                 fontSize: { xs: '15px', md: '18px', lg: '20px' },

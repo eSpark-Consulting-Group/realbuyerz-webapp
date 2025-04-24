@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, Box, Typography, Button } from '@mui/material';
 import { usePathname } from 'next/navigation';
+
+import { Modal, Box, Typography, Button } from '@mui/material';
 
 import Location from './Location';
 import PreviewAmountAndFeature from './PreviewAmountAndFeature';
@@ -10,7 +10,7 @@ import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 
-const PreviewModal = (props) => {
+const PreviewModal = ({ onClose, open, ads, formik }) => {
   const {
     title,
     buttonText,
@@ -20,10 +20,11 @@ const PreviewModal = (props) => {
     images,
     videos,
   } = PREVIEW_DATA;
-  const { onClose, open, ads, formik } = props;
   const pathName = usePathname();
+
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
+
   const imageArr = Array.isArray(ads.images) ? ads.images : [];
   const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
 

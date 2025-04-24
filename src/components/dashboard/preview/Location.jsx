@@ -1,6 +1,5 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Typography, Box } from '@mui/material';
+
 import { MapProvider } from '../../MapProvider';
 import StaticMap from '../../StaticMap';
 
@@ -22,7 +21,6 @@ const Location = ({
   longitude,
   latitude,
 }) => {
-
   return (
     locationKeys?.title && (
       <Box
@@ -45,133 +43,44 @@ const Location = ({
         >
           {locationKeys?.title}
         </Typography>
+
         {purpose && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: fontWeight ? fontWeight : 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.purpose.charAt(0).toUpperCase() +
-                locationKeys?.purpose.slice(1)}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {purpose.charAt(0).toUpperCase() + purpose?.slice(1)}
-            </Typography>
-          </Box>
+          <CommonBox
+            fontStyle={fontStyle ? fontStyle : '14px'}
+            fontWeight={fontWeight ? fontWeight : 600}
+            text1={locationKeys?.purpose}
+            text2={purpose}
+          />
         )}
+
         {propertyType && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: fontWeight ? fontWeight : 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.propertyType.charAt(0).toUpperCase() +
-                locationKeys?.propertyType.slice(1)}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: fontStyle ? fontStyle : { xs: '12px', md: '14px' },
-                mt: { xs: '4px', md: '0px' },
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {propertyType
-                ? propertyType.charAt(0).toUpperCase() + propertyType.slice(1)
-                : ''}
-            </Typography>
-          </Box>
+          <CommonBox
+            fontStyle={fontStyle ? fontStyle : { xs: '12px', md: '14px' }}
+            fontWeight={fontWeight ? fontWeight : 600}
+            text1={locationKeys?.propertyType}
+            text2={propertyType}
+            extra={{ mt: { xs: '4px', md: '0px' } }}
+          />
         )}
+
         {city && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 0.8,
-              pb: 0.4,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#333',
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: fontWeight ? fontWeight : 600,
-              }}
-              variant="body1"
-            >
-              {locationKeys?.city.charAt(0).toUpperCase() +
-                locationKeys?.city?.slice(1)}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#126FAA',
-                fontSize: fontStyle ? fontStyle : '14px',
-                fontWeight: 500,
-              }}
-              variant="body1"
-            >
-              {city.charAt(0).toUpperCase() + city?.slice(1)}
-            </Typography>
-          </Box>
+          <CommonBox
+            fontStyle={fontStyle ? fontStyle : '14px'}
+            fontWeight={fontWeight ? fontWeight : 600}
+            text1={locationKeys?.city}
+            text2={city}
+          />
         )}
+
         {locationKeys && (
           <>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 0.8,
-                pb: 0.4,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: '#333',
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: fontWeight ? fontWeight : 600,
-                }}
-                variant="body1"
-              >
-                {locationKeys?.location?.charAt(0).toUpperCase() +
-                  locationKeys?.location.slice(1)}
-              </Typography>
-              <Typography
-                sx={{
-                  color: '#126FAA',
-                  fontSize: fontStyle ? fontStyle : '14px',
-                  fontWeight: 500,
-                }}
-                variant="body1"
-              >
-                {location}
-              </Typography>
-            </Box>
+            <CommonBox
+              fontStyle={fontStyle ? fontStyle : '14px'}
+              fontWeight={fontWeight ? fontWeight : 600}
+              text1={locationKeys?.location}
+              text2={location}
+            />
+
             {locationKeys && (
               <Box
                 sx={{
@@ -194,6 +103,41 @@ const Location = ({
         )}
       </Box>
     )
+  );
+};
+
+const CommonBox = ({ fontStyle, fontWeight, text1, text2, extra = {} }) => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 0.8,
+        pb: 0.4,
+      }}
+    >
+      <Typography
+        sx={{
+          color: '#333',
+          fontSize: fontStyle,
+          fontWeight: fontWeight,
+        }}
+        variant="body1"
+      >
+        {text1.charAt(0).toUpperCase() + text1.slice(1)}
+      </Typography>
+
+      <Typography
+        sx={{
+          color: '#126FAA',
+          fontSize: fontStyle,
+          fontWeight: 500,
+          ...extra,
+        }}
+        variant="body1"
+      >
+        {text2 ? text2?.charAt(0).toUpperCase() + text2?.slice(1) : ''}
+      </Typography>
+    </Box>
   );
 };
 

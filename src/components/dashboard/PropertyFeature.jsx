@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 
 import PostTitle from './ads-form-components/PostTitle';
@@ -43,6 +43,7 @@ const PropertyFeatures = ({
           }}
         >
           <PostTitle text={propertyData?.postTitles?.featureamenities} />
+
           <Box
             sx={{
               display: 'flex',
@@ -67,7 +68,10 @@ const PropertyFeatures = ({
                 propertyInformation={propertyData?.feature}
                 formik={formik}
                 selectedAmenities={selectedAmenities}
+                setSelectedAmenities={setSelectedAmenities}
+                getAmenities={getAmenities}
               />
+              
               <AddAmenities
                 formik={formik}
                 onSelected={handleSelectedItems}

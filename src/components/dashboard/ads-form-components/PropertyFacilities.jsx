@@ -1,6 +1,6 @@
-import React from 'react';
-import { Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
+
+import { Typography, Box } from '@mui/material';
 
 import Counter from '../inputNumber/counter';
 
@@ -9,11 +9,8 @@ const PropertyFacilities = ({
   formik,
   selectedAmenities,
   setSelectedAmenities,
+  getAmenities,
 }) => {
-  // const selectedAmenities = useSelector(
-  //   (state) => state?.postListingAds?.addAmenities
-  // );
-
   return (
     <>
       <Box
@@ -40,9 +37,9 @@ const PropertyFacilities = ({
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
-                justifyContent: { xs: 'center', sm: 'left', md: 'left' },
+                justifyContent: { xs: 'center', sm: 'left' },
                 alignItems: 'center',
-                width: { xs: 'auto', md: 'auto' },
+                width: 'auto',
                 py: 2,
                 gap: 2,
               }}
@@ -53,6 +50,7 @@ const PropertyFacilities = ({
                 height={50}
                 alt={'facility'}
               />
+
               <Box
                 sx={{
                   display: 'flex',
@@ -68,6 +66,7 @@ const PropertyFacilities = ({
                     {item?.title}
                   </Typography>
                 </Box>
+
                 <Box sx={{ width: 'auto' }}>
                   <Counter formik={formik} item={item} index={index} />
                 </Box>
@@ -75,74 +74,7 @@ const PropertyFacilities = ({
             </Box>
           </Box>
         ))}
-        {/* {selectedAmenities?.map((amenity, index) => (
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: { xs: 'center', sm: 'left', md: 'space-between' },
-              alignItems: 'center',
-              fontSize: { xs: '18px', md: '20px' },
-              fontWeight: 400,
-              gap: { xs: '0px', md: '8px' },
-              py: { xs: 3, sm: 2 },
-            }}
-            key={index}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                alignItems: 'center',
 
-                gap: 2,
-                width: { xs: 'auto', md: 'auto' },
-              }}
-            >
-              <Box
-                sx={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  backgroundColor: '#F4F5F7',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  p: '5px',
-                }}
-              >
-                <img
-                  src={amenity.image}
-                  alt={amenity.label}
-                  style={{ width: 24, height: 24 }}
-                />{' '}
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  width: 'auto',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  alignItems: 'center',
-                  textAlign: { xs: 'center', sm: 'start' },
-                  gap: 1,
-                }}
-              >
-                <Box sx={{ width: '130px' }}>
-                  <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>
-                    {amenity?.text}
-                  </Typography>
-                </Box>
-                <Box sx={{ width: 'auto' }}>
-                  <Counter
-                    formik={formik}
-                    name={amenity?.name}
-                    title={amenity?.text}
-                    limit={amenity?.limit}
-                  />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        ))} */}
         {selectedAmenities.map((amenity, index) => (
           <Box
             key={index}
@@ -183,7 +115,6 @@ const PropertyFacilities = ({
               </Typography>
             </Box>
 
-            {/* Right Side - Counter */}
             <Box
               sx={{
                 display: 'flex',
@@ -194,48 +125,14 @@ const PropertyFacilities = ({
                 backgroundColor: '#EFEEEF',
               }}
             >
-              <Button
-                sx={{
-                  minWidth: '21px',
-                  height: '22px',
-                  padding: 0,
-                  backgroundColor: '#F8F6F8',
-                  borderRadius: '2px',
-                  boxShadow: ' 0px 0px 2px rgba(0, 0, 0, 0.25)',
-                }}
-                onClick={() => {
-                  const updatedAmenities = [...selectedAmenities];
-                  updatedAmenities[index].count =
-                    (updatedAmenities[index].count || 1) + 1;
-                  setSelectedAmenities(updatedAmenities);
-                }}
-              >
-                <span style={{ color: '#4F4F4F' }}> +</span>
-              </Button>
-              <Typography sx={{ fontSize: '14px', fontWeight: 'bold' }}>
-                {amenity.count || 1}
-              </Typography>
-              <Button
-                sx={{
-                  minWidth: '21px',
-                  height: '22px',
-                  padding: 0,
-                  backgroundColor: '#F8F6F8',
-                  borderRadius: '2px',
-                  boxShadow: ' 0px 0px 2px rgba(0, 0, 0, 0.25)',
-                }}
-                onClick={() => {
-                  const updatedAmenities = [...selectedAmenities];
-                  if (updatedAmenities[index].count > 1) {
-                    updatedAmenities[index].count -= 1;
-                  } else {
-                    updatedAmenities.splice(index, 1);
-                  }
-                  setSelectedAmenities(updatedAmenities);
-                }}
-              >
-                <span style={{ color: '#4F4F4F' }}> - </span>
-              </Button>
+              <Counter
+                formik={formik}
+                item={amenity}
+                getAmenities={getAmenities}
+                index={index}
+                setSelectedAmenities={setSelectedAmenities}
+                selectedAmenities={selectedAmenities}
+              />
             </Box>
           </Box>
         ))}

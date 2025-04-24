@@ -1,7 +1,9 @@
-// ImageUploader.js
-import { Box, Button, Typography } from '@mui/material';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { useDropzone } from 'react-dropzone';
+import { toast } from 'react-toastify';
+
+import { Box, Button, Typography } from '@mui/material';
 
 const ImageUploader = ({ onUpload, maxImages }) => {
   const onDrop = useCallback(
@@ -9,7 +11,7 @@ const ImageUploader = ({ onUpload, maxImages }) => {
       if (acceptedFiles.length <= maxImages) {
         onUpload(acceptedFiles[0].type, acceptedFiles);
       } else {
-        console.error('Maximum limit of images reached');
+        toast.error('Maximum limit of images reached');
       }
     },
     [onUpload, maxImages]
@@ -39,6 +41,7 @@ const ImageUploader = ({ onUpload, maxImages }) => {
       }}
     >
       <Box component={'input'} {...getInputProps()} />
+
       <Typography
         sx={{
           fontSize: { xs: '15px', sm: '17px', md: '20px' },

@@ -1,7 +1,9 @@
-import React from 'react';
-import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
+
+import { Box } from '@mui/material';
+
 import { MapProvider } from '../../MapProvider';
+
 const Map = dynamic(() => import('../../Map'), { ssr: false });
 const MapFrame = ({ formik, filteredUserProperty }) => {
   return (

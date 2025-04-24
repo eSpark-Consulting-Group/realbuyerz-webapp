@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
+
 import { Typography, Box, Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import AmenitiesModal from './AmenitiesModal';
+import DisplayError from './DisplayError';
 
 const AddAmenities = ({
   onSelected,
@@ -15,9 +17,8 @@ const AddAmenities = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const handleClickOpen = () => setOpen(true);
+
   const handleClose = () => {
     setOpen(false);
     onSelected(selectedAmenities);
@@ -43,6 +44,7 @@ const AddAmenities = ({
       >
         {propertyInformation?.addiotionalFeature}
       </Typography>
+
       <Button
         sx={{
           width: '165px',
@@ -56,15 +58,9 @@ const AddAmenities = ({
       >
         {propertyInformation?.addAmentiesLabel}
       </Button>
-      {formik?.errors['amenity'] && (
-        <Typography
-          sx={{
-            color: 'red',
-          }}
-        >
-          {formik?.errors['amenity']}
-        </Typography>
-      )}
+
+      <DisplayError errorLabel={{ first: 'amenity' }} formik={formik}  />
+
       <AmenitiesModal
         open={open}
         setOpen={setOpen}
