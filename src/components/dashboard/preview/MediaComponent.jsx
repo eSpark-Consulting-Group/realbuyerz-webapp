@@ -2,7 +2,8 @@ import { Box, Typography } from '@mui/material';
 
 import AdMediaSlider from '../ads-form-components/AdMediaSlider';
 
-const MediaComponent = ({ title, images = [], videos = [], mediaType }) => {
+const MediaComponent = ({ title, images = [], videos = [], mediaType, form }) => {
+
   return (
     <Box
       sx={{
@@ -37,6 +38,7 @@ const MediaComponent = ({ title, images = [], videos = [], mediaType }) => {
           <AdMediaSlider
             media={images.length > 0 ? images : videos}
             mediaType={mediaType}
+            form={form}
           />
         </Box>
       ) : (

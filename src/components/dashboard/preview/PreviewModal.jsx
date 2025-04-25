@@ -10,7 +10,7 @@ import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 
-const PreviewModal = ({ onClose, open, ads, formik }) => {
+const PreviewModal = ({ onClose, open, ads, formik, form = false }) => {
   const {
     title,
     buttonText,
@@ -25,7 +25,8 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
 
-  const imageArr = ads?.PropertyData?.filter((pd) => pd.type === 'image') || [];
+  const imageArr =
+    ads?.PropertyData?.filter((pd) => pd.type === 'image') || ads?.images;
   const videoArr = ads?.PropertyData?.filter((pd) => pd.type === 'video') || [];
 
   return (
@@ -95,19 +96,19 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
 
             <PropertyDetail
               title={propertyDetails}
-              subTitle={ads?.propertyName}
-              description={ads?.propertyDescription}
+              subTitle={ads?.propertyName || ads?.title}
+              description={ads?.propertyDescription || ads?.description}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
             />
 
             <Location
-              city={ads?.propertyCity}
+              city={ads?.propertyCity || ads?.city}
               locationKeys={location}
               purpose={ads?.purpose}
               propertyType={ads?.propertyCategory}
-              location={ads?.propertyAddress}
+              location={ads?.propertyAddress || ads?.address}
               longitude={ads?.longitude}
               latitude={ads?.latitude}
               fontSize={'18px'}
@@ -116,8 +117,8 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
             />
 
             <PreviewAmountAndFeature
-              area={ads?.propertyArea}
-              amount={ads?.propertyPrice}
+              area={ads?.propertyArea || ads?.area}
+              amount={ads?.propertyPrice || ads?.amount}
               areaUnit={'Sq-ft'}
               areaAndAmount={areaAndAmount}
               amountCurrency={'PKR'}
@@ -143,6 +144,7 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
                   title={images?.title}
                   images={imageArr}
                   mediaType={images?.type}
+                  form={form}
                 />
 
                 <MediaComponent

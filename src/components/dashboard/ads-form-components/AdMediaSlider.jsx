@@ -11,7 +11,8 @@ import 'swiper/css/autoplay';
 import { convertToEmbedUrl } from '@/src/utils/property/propertyUtils';
 import { adMediaSliderSetting } from '@/src/utils/sliderSettings';
 
-const AdMediaSlider = ({ media, mediaType }) => {
+const AdMediaSlider = ({ media, mediaType, form }) => {
+
   return (
     <>
       <Swiper {...adMediaSliderSetting}>
@@ -20,7 +21,13 @@ const AdMediaSlider = ({ media, mediaType }) => {
             <SwiperSlide key={i}>
               <Box
                 component={'img'}
-                src={image ? image?.url : '/images/PropertyImg.png'}
+                src={
+                  form
+                    ? URL?.createObjectURL(item)
+                    : image
+                      ? image?.url
+                      : '/images/PropertyImg.png'
+                }
                 alt={`Uploaded ${i}`}
                 quality={'100'}
                 sx={{

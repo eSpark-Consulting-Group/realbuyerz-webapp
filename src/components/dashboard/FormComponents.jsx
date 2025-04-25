@@ -23,6 +23,7 @@ const FormComponents = ({
   propertyPurposeProps = {},
   buttonProps={}
 }) => {
+
   return (
     <>
       <BuyersPlatform propertyData={propertyData} {...buyersProps} />
@@ -63,6 +64,7 @@ const FormComponents = ({
         onClose={handleClose}
         ads={formik?.values}
         formik={formik}
+        form={true}
       />
     </>
   );
