@@ -21,6 +21,7 @@ const Location = ({
   longitude,
   latitude,
 }) => {
+ 
   return (
     locationKeys?.title && (
       <Box
@@ -72,7 +73,7 @@ const Location = ({
           />
         )}
 
-        {locationKeys && (
+        {locationKeys && latitude && longitude && (
           <>
             <CommonBox
               fontStyle={fontStyle ? fontStyle : '14px'}

@@ -1,37 +1,20 @@
-import React from 'react';
-import { Box } from '@mui/system';
 import Image from 'next/image';
+
+import { Box } from '@mui/system';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Pagination, Navigation } from 'swiper/modules';
+
+import SwiperArrow from './SwiperArrow';
+
+import { mediaSliderSetting } from '@/src/utils/sliderSettings';
 
 const VideoSlider = ({ videosSlider, modalWidth }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
-      <Swiper
-        effect={'fade'}
-        grabCursor={true}
-        centeredSlides={true}
-        loop={true}
-        slidesPerView={1}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        className="mySwiper"
-        pagination={{ el: '.swiper-pagination', clickable: true }}
-        navigation={{
-          nextEl: '.custom-swiper-button-next',
-          prevEl: '.custom-swiper-button-prev',
-          clickable: true,
-        }}
-        modules={[EffectFade, Pagination, Navigation]}
-      >
+      <Swiper {...mediaSliderSetting} className="mySwiper">
         {videosSlider?.map((video, index) => (
           <Box key={index}>
             <SwiperSlide
@@ -46,55 +29,46 @@ const VideoSlider = ({ videosSlider, modalWidth }) => {
                   borderRadius: '30px',
                 }}
               >
-                <video style={{ width: '100%', height: '100%' }} controls>
-                  <track
-                    src="captions.vtt"
-                    kind="captions"
-                    label="English"
-                    default
+                {video?.url ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={convertToEmbedUrl(video?.url)}
+                    title="YouTube video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                   />
-                  <source src={URL?.createObjectURL(video)} />
-                </video>
+                ) : (
+                  <video style={{ width: '100%', height: '100%' }} controls>
+                    <track
+                      src="captions.vtt"
+                      kind="captions"
+                      label="English"
+                      default
+                    />
+                  </video>
+                )}
               </Box>
             </SwiperSlide>
           </Box>
         ))}
-        <Box
-          className=" custom-swiper-button-next"
-          sx={{
-            position: 'absolute',
-            right: 45,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 1,
-            cursor: 'pointer',
-          }}
-        >
-          <Image
-            src={'/images/modalNextArrow.svg'}
-            width={40}
-            height={60}
-            alt={'icon'}
-          />
-        </Box>
-        <Box
-          className=" custom-swiper-button-prev"
-          sx={{
-            position: 'absolute',
-            left: 45,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 1,
-            cursor: 'pointer',
-          }}
-        >
-          <Image
-            src={'/images/modalPrevArrow.svg'}
-            width={40}
-            height={60}
-            alt={'icon'}
-          />
-        </Box>
+
+        <SwiperArrow
+          className="custom-swiper-button-next"
+          direction="next"
+          right={45}
+          src="/images/modalNextArrow.svg"
+          height={60}
+        />
+
+        <SwiperArrow
+          className="custom-swiper-button-prev"
+          direction="prev"
+          left={45}
+          src="/images/modalPrevArrow.svg"
+          height={60}
+        />
       </Swiper>
     </Box>
   );

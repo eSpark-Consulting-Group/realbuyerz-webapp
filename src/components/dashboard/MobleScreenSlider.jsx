@@ -1,38 +1,20 @@
-import React from 'react';
-import { Box } from '@mui/system';
-import { Button } from '@mui/material';
 import Image from 'next/image';
+
+import { Button, Box } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Pagination, Navigation } from 'swiper/modules';
+
+import SwiperArrow from './SwiperArrow';
+
+import { mediaSliderSetting } from '@/src/utils/sliderSettings';
 
 const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
   return (
     <Box id="slider" sx={{ position: 'relative' }}>
-      <Swiper
-        effect={'fade'}
-        grabCursor={true}
-        centeredSlides={true}
-        loop={true}
-        slidesPerView={1}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        className="mySwiper"
-        pagination={{ el: '.swiper-pagination', clickable: true }}
-        navigation={{
-          nextEl: '.custom-swiper-button-next',
-          prevEl: '.custom-swiper-button-prev',
-          clickable: true,
-        }}
-        modules={[EffectFade, Pagination, Navigation]}
-      >
+      <Swiper {...mediaSliderSetting} className="mySwiper">
         {imageSlider?.map((image, index) => (
           <Box key={index}>
             <SwiperSlide
@@ -48,7 +30,7 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
                 }}
               >
                 <Image
-                  src={URL?.createObjectURL(image)}
+                  src={image?.url}
                   width={1000}
                   height={1000}
                   alt={'slide_image'}
@@ -58,42 +40,25 @@ const MobleScreenSlider = ({ imageSlider, modalWidth, handleClose }) => {
             </SwiperSlide>
           </Box>
         ))}
-        <Box
-          className=" custom-swiper-button-next"
-          sx={{
-            position: 'absolute',
-            right: { xs: 5, sm: '10%' },
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 1,
-            cursor: 'pointer',
-          }}
-        >
-          <Image
-            src={'/images/modalNextArrow.svg'}
-            width={30}
-            height={30}
-            alt={'nextArrow'}
-          />
-        </Box>
-        <Box
-          className=" custom-swiper-button-prev prvBtn"
-          sx={{
-            position: 'absolute',
-            left: { xs: 5, sm: '10%' },
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 1,
-            cursor: 'pointer',
-          }}
-        >
-          <Image
-            src={'/images/modalPrevArrow.svg'}
-            width={30}
-            height={30}
-            alt={'PrevArrow'}
-          />
-        </Box>
+
+        <SwiperArrow
+          className="custom-swiper-button-next"
+          direction="next"
+          right={{ xs: 5, sm: '10%' }}
+          src="/images/modalNextArrow.svg"
+          height={30}
+          width={30}
+        />
+
+        <SwiperArrow
+          className="custom-swiper-button-prev"
+          direction="prev"
+          left={{ xs: 5, sm: '10%' }}
+          src="/images/modalPrevArrow.svg"
+          width={30}
+          height={30}
+        />
+
         <Box
           sx={{
             position: 'absolute',

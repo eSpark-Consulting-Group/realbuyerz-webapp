@@ -1,7 +1,6 @@
-import { Badge } from '@mui/material';
-import { Box } from '@mui/system';
 import Image from 'next/image';
-import React from 'react';
+
+import { Badge, Box } from '@mui/material';
 
 const UserProfileImage = ({
   image,
@@ -23,6 +22,7 @@ const UserProfileImage = ({
         }}
       >
         <Image src={image} width={width} height={height} alt={'profile'} />
+
         <Box
           sx={{
             width: 'auto',

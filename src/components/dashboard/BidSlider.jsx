@@ -1,55 +1,22 @@
 'use client';
-import React from 'react';
+import Image from 'next/image';
+
+import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Box, Pagination } from '@mui/material';
-import Image from 'next/image';
-import { A11y, Navigation } from 'swiper/modules';
+
+import { bidSliderSetting } from '@/src/utils/sliderSettings';
+import { convertToEmbedUrl } from '@/src/utils/property/propertyUtils';
 
 const BidSlider = ({ media, mediaType }) => {
-  const swiperSettings = {
-    slidesPerView: 3,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-    module: [Navigation, Pagination, A11y],
-    breakpoints: {
-      1440: {
-        slidesPerView: 3,
-      },
-      1280: {
-        slidesPerView: 3,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-      600: {
-        slidesPerView: 2,
-      },
-      480: {
-        slidesPerView: 1,
-      },
-      280: {
-        slidesPerView: 1,
-      },
-    },
-  };
   return (
     <>
-      <Swiper {...swiperSettings}>
+      <Swiper {...bidSliderSetting}>
         {media?.map((item, index) => (
           <SwiperSlide key={index}>
             {mediaType === 'images' ? (
@@ -57,26 +24,33 @@ const BidSlider = ({ media, mediaType }) => {
                 <Image
                   height={200}
                   width={250}
-                  src={
-                    item
-                      ? URL?.createObjectURL(item)
-                      : '/images/PropertyImg.png'
-                  }
+                  src={item ? item?.url : '/images/PropertyImg.png'}
                   alt={'Images'}
                   className="reponsiveimage"
                 />
               </Box>
             ) : mediaType === 'videos' ? (
               <Box sx={{ px: '10px' }}>
-                <video style={{ width: '100%', height: '100%' }} controls>
-                  <track
-                    src="captions.vtt"
-                    kind="captions"
-                    label="English"
-                    default
+                {item?.url ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={convertToEmbedUrl(item?.url)}
+                    title="YouTube video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                   />
-                  <source src={item && URL?.createObjectURL(item)} />
-                </video>
+                ) : (
+                  <video style={{ width: '100%', height: '100%' }} controls>
+                    <track
+                      src="captions.vtt"
+                      kind="captions"
+                      label="English"
+                      default
+                    />
+                  </video>
+                )}
               </Box>
             ) : null}
           </SwiperSlide>
