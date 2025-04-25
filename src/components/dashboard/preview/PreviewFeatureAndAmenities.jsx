@@ -40,7 +40,7 @@ const PreviewFeatureAndAmenities = ({
 
       {amenitiesArray.length > 0 ? (
         amenitiesArray.map((amenity, index) =>
-          renderDetail(amenity?.text || 'No Name', fontStyle, fontWeight, index)
+          renderDetail(amenity?.name || 'No Name', fontStyle, fontWeight, index)
         )
       ) : (
         <Typography>No Amenities Available</Typography>

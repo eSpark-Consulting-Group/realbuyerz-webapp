@@ -95,19 +95,19 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
 
             <PropertyDetail
               title={propertyDetails}
-              subTitle={ads?.title}
-              description={ads?.description}
+              subTitle={ads?.propertyName}
+              description={ads?.propertyDescription}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
             />
 
             <Location
-              city={ads?.city}
+              city={ads?.propertyCity}
               locationKeys={location}
               purpose={ads?.purpose}
               propertyType={ads?.propertyCategory}
-              location={ads?.address}
+              location={ads?.propertyAddress}
               longitude={ads?.longitude}
               latitude={ads?.latitude}
               fontSize={'18px'}
@@ -116,8 +116,8 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
             />
 
             <PreviewAmountAndFeature
-              area={ads?.area}
-              amount={ads?.amount}
+              area={ads?.propertyArea}
+              amount={ads?.propertyPrice}
               areaUnit={'Sq-ft'}
               areaAndAmount={areaAndAmount}
               amountCurrency={'PKR'}
@@ -129,8 +129,8 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
             />
 
             <PreviewFeatureAndAmenities
-              amenitiesArray={ads?.amenitiesArray}
-              specificPost={{ ...ads, amenitiesArray: ads?.amenitiesArray }}
+              amenitiesArray={ads?.amenity}
+              specificPost={{ ...ads, amenitiesArray: ads?.amenity }}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontWeight={'700'}

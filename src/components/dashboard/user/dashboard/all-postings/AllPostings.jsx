@@ -1,45 +1,48 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useMutation } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import {
-  Autocomplete,
   Box,
   Button,
   CircularProgress,
   Divider,
   Grid,
-  Popper,
   Tab,
   Tabs,
-  TextField,
   Typography,
 } from '@mui/material';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-// import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
-import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
+import ProposalCardContainer from '../../../ProposalCardContainer';
+import FilterControls from './FilterControls';
+
 import {
   a11yProps,
   findData,
   justifyContent,
-  // renderAdCard,
 } from '@/src/utils/dashboardUtils';
-import { useMutation } from '@tanstack/react-query';
 import {
   deleteUserProperty,
   fetchUserProperties,
 } from '@/src/utils/userProperties';
 import { fetchPropertyTypes } from '@/src/utils/properties';
-import { toast } from 'react-toastify';
+
+import { ALL_POSTLISTING_FILTRATION } from '@/src/constants/agent/My_Properties';
 
 const AllPostings = () => {
+  const { userPostings, draft, trash, active } = useSelector(
+    (state) => state?.postRequestAds
+  );
+  const user_id = useSelector((state) => state?.currentUser?.user?.id);
+
   const [value, setValue] = useState(0);
   const [currentTab, setCurrentTab] = useState('All');
   const [allPostingData, setAllPostingData] = useState([]);
   const [subTypeData, setSubTypeData] = useState([]);
-  // const [trashedData, setTrashedData] = useState([]);
   const [filterObject, setfilterObject] = useState({
     purpose: '',
     propertyCity: '',
@@ -47,11 +50,7 @@ const AllPostings = () => {
     subType: '',
   });
   const { fields, reset_button } = ALL_POSTLISTING_FILTRATION;
-  const { userPostings, draft, trash, active } = useSelector(
-    (state) => state?.postRequestAds
-  );
 
-  const user_id = useSelector((state) => state?.currentUser?.user?.id);
   const find_posting = findData(user_id, userPostings);
   const find_draft = findData(user_id, draft);
   const find_active = findData(user_id, active);
@@ -81,7 +80,6 @@ const AllPostings = () => {
       setAllPostingData([...(items?.active || []), ...(items?.draft || [])]);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -97,64 +95,42 @@ const AllPostings = () => {
       data.response.data.forEach((val) => {
         subTypesArr = [...subTypesArr, ...val.subTypes];
       });
+
       const subTypes = subTypesArr.map((val) => {
         return { label: val.subTypeName, value: val.subTypeName };
       });
+
       setSubTypeData(subTypes);
     },
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
+
   const items = data?.response?.data;
   const tabs = [
     {
       label: 'All',
-      prop: a11yProps(0),
-      items: items
-        ? [...(items?.active || []), ...(items?.draft || [])].length
-        : 0,
+      items: [...(items?.active || []), ...(items?.draft || [])],
     },
-    {
-      label: 'Active',
-      prop: a11yProps(1),
-      items: items?.active.length || 0,
-    },
-    {
-      label: 'Draft',
-      prop: a11yProps(2),
-      items: items?.draft.length || 0,
-    },
-    {
-      label: 'Trash',
-      prop: a11yProps(3),
-      items: items?.trash.length || 0,
-    },
+    { label: 'Active', items: items?.active },
+    { label: 'Draft', items: items?.draft },
+    { label: 'Trash', items: items?.trash },
   ];
 
   const handleChangeTab = (event, newValue) => {
-    let tab = event?.target?.innerText.split(' ');
-    if (tab.length > 1) {
-      tab = tab.slice(0, -1).join(' ');
-    } else {
-      tab = tab.join(' ');
-    }
-    setCurrentTab(tab);
+    const fullLabel = event?.target?.innerText;
+    const tabLabel = fullLabel.split(' (')[0];
+
+    setCurrentTab(tabLabel);
     setValue(newValue);
-    if (tab == 'All') {
-      setAllPostingData([...(items?.active || []), ...(items?.draft || [])]);
-    }
-    if (tab == 'Active') {
-      setAllPostingData(items?.active);
-    }
-    if (tab == 'Trash') {
-      setAllPostingData(items?.trash);
-    }
-    if (tab == 'Draft') {
-      setAllPostingData(items?.draft);
+
+    const selectedTab = tabs.find((tab) => tab.label === tabLabel);
+    if (selectedTab?.items) {
+      setAllPostingData(selectedTab.items);
     }
   };
+
   const handleChangeSelect = (key, val) => {
     setfilterObject({
       ...filterObject,
@@ -170,6 +146,18 @@ const AllPostings = () => {
       location: '',
       subType: '',
     });
+  };
+
+  const justify = (no) => {
+    return justifyContent(
+      find_posting,
+      find_active,
+      find_draft,
+      find_trash,
+      currentTab,
+      filterObject,
+      no
+    );
   };
 
   return (
@@ -190,130 +178,16 @@ const AllPostings = () => {
         >
           {fields &&
             fields.map((field, index) => (
-              <Grid item xs={12} sm={5.5} md={3.8} lg={2.3} key={index}>
-                <Box sx={{ width: '100%' }}>
-                  <Typography>{field?.title || ''}</Typography>
-                  <Autocomplete
-                    PopperComponent={(props) => (
-                      <Popper
-                        {...props}
-                        sx={{ boxShadow: ' 0px 0px 10px 0px #00000040;' }}
-                      />
-                    )}
-                    sx={{
-                      marginTop: '12px',
-                      background: '#fff',
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        border: 'none',
-                      },
-                      '&:hover fieldset': {
-                        border: 'none',
-                      },
-                      '& .css-1v0wyq6-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator':
-                        {
-                          color: '#66666666',
-                          display: 'inline-flex',
-                          '&:hover': {
-                            color: '#66666666',
-                          },
-                        },
-                      '& .MuiOutlinedInput-root': {
-                        borderRadius: '5px',
-                        height: '40px',
-                        '& fieldset': {
-                          border: '1px solid #E7E7E7',
-                        },
-                      },
-                      '& .MuiAutocomplete-inputRoot': {
-                        margin: '0 !important',
-                        padding: '0 !important',
-                        paddingLeft: '12px !important',
-                      },
-                      '& .MuiInputLabel-root': {
-                        fontSize: '14px',
-                        marginTop: -0.9,
-                        marginLeft: -0.5,
-                        '@media (min-width: 280px) and (max-width: 375px)': {
-                          fontSize: '10px',
-                        },
-                      },
-                      '& .MuiAutocomplete-root': {
-                        margin: '0 !important',
-                        padding: '0 !important',
-                      },
-                      '& .MuiAutocomplete-option': {
-                        borderBottom: '1px solid #E7E7E7',
-                      },
-                      '&:hover': {
-                        '& .MuiOutlinedInput-notchedOutline': {
-                          border: 'none',
-                        },
-                      },
-                      '& .MuiAutocomplete-clearIndicator': {
-                        display: 'none',
-                      },
-                      '& .MuiAutocomplete-popupIndicator': {
-                        '&:hover': {
-                          backgroundColor: 'transparent',
-                        },
-                      },
-                    }}
-                    popupIcon={
-                      <KeyboardArrowDownIcon sx={{ color: '#66666666' }} />
-                    }
-                    disablePortal
-                    id={`combo-box-${index}`}
-                    value={filterObject?.[field?.key] || null}
-                    onChange={(e) =>
-                      handleChangeSelect(field?.key, e?.target?.innerText)
-                    }
-                    options={(field?.key == 'subType'
-                      ? subTypeData
-                      : field?.options
-                    )?.map((opt) => opt)}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        placeholder={field?.placeholder || 'Select Type'}
-                        InputLabelProps={{
-                          sx: {
-                            margin: 0,
-                            padding: 0,
-                            fontSize: '14px',
-                            '@media (min-width: 280px) and (max-width: 375px)':
-                              {
-                                fontSize: '10px',
-                              },
-                          },
-                        }}
-                      />
-                    )}
-                    renderOption={(props, option, { index }) => (
-                      <Box
-                        {...props}
-                        sx={{
-                          my: 0,
-                          py: 0,
-                          borderTop: `${index !== 0 ? '1px solid #E7E7E7' : null}`,
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            letterSpacing: '0em',
-                            maxWidth: { xs: '200px' },
-                            textOverflow: 'ellipsis',
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {option?.label || ''}
-                        </Typography>
-                      </Box>
-                    )}
-                  />
-                </Box>
-              </Grid>
+              <FilterControls
+                index={index}
+                field={field}
+                filterObject={filterObject}
+                subTypeData={subTypeData}
+                handleChangeSelect={handleChangeSelect}
+                key={index}
+              />
             ))}
+
           <Grid item xs={12} md={1}>
             <Button
               onClick={() => handleReset()}
@@ -333,6 +207,7 @@ const AllPostings = () => {
           </Grid>
         </Grid>
       </Box>
+
       <Box
         sx={{
           background: '#fff',
@@ -360,11 +235,11 @@ const AllPostings = () => {
             onChange={handleChangeTab}
             aria-label="basic tabs example"
           >
-            {tabs?.map(({ label, prop, items }, i) => (
+            {tabs?.map((tab, i) => (
               <Tab
                 key={i}
-                label={`${label} (${items})`}
-                {...prop}
+                label={`${tab.label} (${tab.items?.length || 0})`}
+                {...a11yProps(i)}
                 disableRipple={true}
                 sx={{
                   textTransform: 'math-auto',
@@ -375,70 +250,29 @@ const AllPostings = () => {
             ))}
           </Tabs>
         </Box>
+
         <Divider />
-        <Box
-          className="scrollbar-container"
-          sx={{
-            mr: { xs: 0.8, sm: 2, md: 'auto' },
-            ml: { xs: 0.8, sm: 2, md: 'auto' },
-            pt: { xs: 2.5, sm: 3, md: 5 },
-            pb: { xs: 2, sm: 2, md: 3 },
-            px: { xs: 0, sm: 0, md: 3 },
-            maxHeight: '950px',
-            width: 'auto',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              mx: 'auto',
-              '@media (max-width: 755px)': {
-                justifyContent: justifyContent(
-                  find_posting,
-                  find_active,
-                  find_draft,
-                  find_trash,
-                  currentTab,
-                  filterObject,
-                  1
-                ),
-              },
-              justifyContent: {
-                sm: justifyContent(
-                  find_posting,
-                  find_active,
-                  find_draft,
-                  find_trash,
-                  currentTab,
-                  filterObject,
-                  2
-                ),
-              },
-              alignItems: 'center',
-              flexDirection: { sm: 'row', md: 'column' },
-              gap: { xs: 1.5, sm: 2.5, md: 3.5 },
-            }}
-          >
-            {!isPending ? (
-              allPostingData?.length < 1 ? (
-                <Typography>No Data Found</Typography>
-              ) : (
-                sortHandler(allPostingData)?.map((item, index) => (
-                  <ProposalCard
-                    deleteAPIHandler={deleteUserProperty}
-                    refetchProperties={mutate}
-                    key={index}
-                    data={item}
-                    currentTab={currentTab}
-                    updatePath={'/user/update-request'}
-                  />
-                ))
-              )
+
+        <ProposalCardContainer justify={justify}>
+          {!isPending ? (
+            allPostingData?.length < 1 ? (
+              <Typography>No Data Found</Typography>
             ) : (
-              <CircularProgress size={28} color="inherit" />
-            )}
-          </Box>
-        </Box>
+              sortHandler(allPostingData)?.map((item, index) => (
+                <ProposalCard
+                  deleteAPIHandler={deleteUserProperty}
+                  refetchProperties={mutate}
+                  key={index}
+                  data={item}
+                  currentTab={currentTab}
+                  updatePath={'/user/update-request'}
+                />
+              ))
+            )
+          ) : (
+            <CircularProgress size={28} color="inherit" />
+          )}
+        </ProposalCardContainer>
       </Box>
     </>
   );
