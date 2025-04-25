@@ -1,62 +1,26 @@
 'use client';
-import React from 'react';
+import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Box, Pagination } from '@mui/material';
-import { A11y, Navigation } from 'swiper/modules';
+
+import { convertToEmbedUrl } from '@/src/utils/property/propertyUtils';
+import { adMediaSliderSetting } from '@/src/utils/sliderSettings';
 
 const AdMediaSlider = ({ media, mediaType }) => {
-  const swiperSettings = {
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-    module: [Navigation, Pagination, A11y],
-    breakpoints: {
-      1920: {
-        slidesPerView: 2,
-      },
-      960: {
-        slidesPerView: 2,
-        spaceBetween: 0,
-      },
-      700: {
-        slidesPerView: 2,
-      },
-      500: {
-        slidesPerView: 2,
-      },
-      280: {
-        slidesPerView: 1,
-      },
-    },
-  };
-
   return (
     <>
-      <Swiper {...swiperSettings}>
+      <Swiper {...adMediaSliderSetting}>
         {mediaType == 'images' &&
           media?.map((image, i) => (
             <SwiperSlide key={i}>
               <Box
                 component={'img'}
-                src={
-                  image
-                    ? URL?.createObjectURL(new Blob([image]))
-                    : '/images/PropertyImg.png'
-                }
+                src={image ? image?.url : '/images/PropertyImg.png'}
                 alt={`Uploaded ${i}`}
                 quality={'100'}
                 sx={{
@@ -80,6 +44,7 @@ const AdMediaSlider = ({ media, mediaType }) => {
               />
             </SwiperSlide>
           ))}
+
         {mediaType == 'videos' &&
           media?.map((video, i) => (
             <SwiperSlide key={i}>
@@ -95,21 +60,27 @@ const AdMediaSlider = ({ media, mediaType }) => {
                   },
                 }}
               >
-                <video
-                  style={{ width: '100%', height: '100%' }}
-                  key={i}
-                  controls
-                >
-                  <track
-                    src="captions.vtt"
-                    kind="captions"
-                    label="English"
-                    default
+                {video?.url ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={convertToEmbedUrl(video?.url)}
+                    title="YouTube video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                   />
-                  <source
-                    src={video && URL?.createObjectURL(new Blob([video]))}
-                  />
-                </video>
+                ) : (
+                  <video style={{ width: '100%', height: '100%' }} controls>
+                    <track
+                      src="captions.vtt"
+                      kind="captions"
+                      label="English"
+                      default
+                    />
+                    <source src={video && video?.url} />
+                  </video>
+                )}
               </Box>
             </SwiperSlide>
           ))}

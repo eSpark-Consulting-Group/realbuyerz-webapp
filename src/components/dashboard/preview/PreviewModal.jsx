@@ -25,8 +25,8 @@ const PreviewModal = ({ onClose, open, ads, formik }) => {
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
 
-  const imageArr = Array.isArray(ads.images) ? ads.images : [];
-  const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
+  const imageArr = ads?.PropertyData?.filter((pd) => pd.type === 'image') || [];
+  const videoArr = ads?.PropertyData?.filter((pd) => pd.type === 'video') || [];
 
   return (
     <>
