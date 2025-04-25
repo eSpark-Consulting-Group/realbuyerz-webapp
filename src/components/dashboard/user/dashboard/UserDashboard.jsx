@@ -1,13 +1,12 @@
 'use client';
-import React from 'react';
-import { Box } from '@mui/system';
-import { Divider } from '@mui/material';
 import { useSelector } from 'react-redux';
+
+import { Divider, Box } from '@mui/material';
 
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-
 import PostRequestCard from './PostRequestCard';
+
 import { findData } from '@/src/utils/dashboardUtils';
 
 const UserDashboard = () => {
@@ -18,6 +17,7 @@ const UserDashboard = () => {
   return (
     <>
       <PostRequestButton />
+
       <Box
         sx={{
           background: '#fff',
@@ -30,7 +30,9 @@ const UserDashboard = () => {
         }}
       >
         <ViewAllPosting />
+
         <Divider />
+
         <Box
           sx={{
             p: { xs: 2, sm: 6 },

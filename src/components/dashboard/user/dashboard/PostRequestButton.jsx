@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box } from '@mui/system';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
+
 import { DASHBOARD } from '@/src/constants/user/Dashboard';
 
 const PostRequestButton = () => {
