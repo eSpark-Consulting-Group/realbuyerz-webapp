@@ -22,7 +22,7 @@ import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 import { CLIENT_REQUIRMENT } from '@/src/constants/agent/Live_Bidding';
 
 const AdDetail = ({ property_id }) => {
-  const { location, areaAndAmount, amenities } = PREVIEW_DATA;
+  const { location, areaAndAmount, amenities, propertyDetails } = PREVIEW_DATA;
 
   const dispatch = useDispatch();
   const userProperties = useSelector(
@@ -43,7 +43,6 @@ const AdDetail = ({ property_id }) => {
       dispatch(setAllUserProperties(transformApiArray(items)));
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -117,11 +116,12 @@ const AdDetail = ({ property_id }) => {
                   ) : (
                     <>
                       <PropertyDetail
+                        title={propertyDetails}
                         subTitle={userPropertyData?.title}
                         fontStyle={'16px'}
                         description={userPropertyData?.description}
                       />
-                      
+
                       <Location
                         city={userPropertyData?.city}
                         locationKeys={location}
@@ -178,7 +178,7 @@ const AdDetail = ({ property_id }) => {
             </Grid>
           </Box>
         </Grid>
-        
+
         <Grid item xs={12} md={12} lg={12} xl={2.64}>
           <BiddingProfile />
         </Grid>
