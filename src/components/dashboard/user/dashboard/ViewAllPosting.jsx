@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 
 import DashboardTitle from './DashboardTitle';
 import SeeAllPosting from './SeeAllPosting';
+
 import { USER_DASHBOARD_PAGE } from '@/src/constants/user/Dashboard';
 
-const ViewAllPosting = () => {
+const ViewAllPosting = ({ isFetched }) => {
   return (
     <Box
       sx={{
@@ -24,11 +24,13 @@ const ViewAllPosting = () => {
       <Box>
         <DashboardTitle title={USER_DASHBOARD_PAGE?.sub_Title} />
       </Box>
+
       <Box>
         <SeeAllPosting
           title={USER_DASHBOARD_PAGE?.see_All_Posting?.title}
           link={USER_DASHBOARD_PAGE?.see_All_Posting?.link}
           subTitle={USER_DASHBOARD_PAGE?.sub_Title}
+          isFetched={isFetched}
         />
       </Box>
     </Box>

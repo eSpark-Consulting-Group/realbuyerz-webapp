@@ -8,8 +8,8 @@ import { useFormik } from 'formik';
 
 import { Box, Grid } from '@mui/material';
 
-import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import { postRequestValidation } from '@/src/components/Schemas/postRequestValidation';
+import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import FormComponents from '../../FormComponents';
 
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';

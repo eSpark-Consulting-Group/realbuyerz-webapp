@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
 
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, CircularProgress } from '@mui/material';
 
 import LiveBiddingPropertiesList from '../../LiveBiddingPropertiesList';
 import PostCard from '../../PostCard';
@@ -15,7 +15,7 @@ import { fetchUserProperties } from '@/src/utils/userProperties';
 import { LOAD_MORE, SHOW_LESS } from '@/src/constants/agent/Live_Bidding';
 import { POST_LISTINGAD_CARD } from '@/src/constants/user/Dashboard';
 
-const PostRequestCard = ({ height }) => {
+const PostRequestCard = ({ height, setIsFetched }) => {
   const all_proposals = useSelector((state) => state?.proposals);
 
   const [allPostingData, setAllPostingData] = useState([]);
@@ -32,7 +32,7 @@ const PostRequestCard = ({ height }) => {
     mutate();
   }, []);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: fetchUserProperties,
     onSuccess: (data) => {
       const items = data.response.data;
@@ -49,10 +49,13 @@ const PostRequestCard = ({ height }) => {
       setAllPostingData(fileredArr);
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
+
+  useEffect(() => {
+    setIsFetched(isPending);
+  },[isPending])
 
   const sortHandler = (properties) => {
     const sorted = [...properties].sort(
@@ -63,7 +66,19 @@ const PostRequestCard = ({ height }) => {
 
   return (
     <>
-      {allPostingData?.length <= 0 ? (
+      {isPending ? (
+        <Box
+          sx={{
+            minHeight: '100%',
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={32} />
+        </Box>
+      ) : allPostingData?.length <= 0 ? (
         <Typography textAlign={'center'}>No Data Found</Typography>
       ) : (
         <Box className="scrollable" sx={{ maxHeight: height }}>

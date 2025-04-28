@@ -1,30 +1,27 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-const SeeAllPosting = ({ title, link }) => {
+import { Button } from '@mui/material';
+
+const SeeAllPosting = ({ title, link, isFetched }) => {
+  const router = useRouter();
   return (
-    <>
-      <Link href={`${link}`}>
-        <Typography
-          sx={{
-            Weight: 500,
-            fontSize: { xs: '17px', sm: '20px' },
-            lineHeight: '24.2px',
-            color: '#126FAA',
-            textDecoration: 'underline',
-            textUnderlineOffset: '5px',
-            background: 'none',
-            '&:hover': {
-              background: 'none',
-              textDecoration: 'underline',
-            },
-          }}
-        >
-          {title}
-        </Typography>
-      </Link>
-    </>
+    <Button
+      sx={{
+        backgroundColor: 'transparent !important',
+        padding: 0,
+        Weight: 500,
+        fontSize: { xs: '17px', sm: '20px' },
+        lineHeight: '24.2px',
+        color: '#126FAA',
+        textDecoration: 'underline !important',
+        textUnderlineOffset: '5px',
+        backgroundColor: 'transparent !important',
+      }}
+      disabled={isFetched}
+      onClick={() => router.push(link)}
+    >
+      {title}
+    </Button>
   );
 };
 
