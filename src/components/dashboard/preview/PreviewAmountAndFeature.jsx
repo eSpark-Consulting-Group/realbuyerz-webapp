@@ -32,7 +32,7 @@ const PreviewAmountAndFeature = ({
       <Typography
         sx={{
           fontSize: fontSize || '20px',
-          fontWeight: fontWeight || 500,
+          fontWeight: 500,
           mb: 2,
         }}
       >
@@ -43,7 +43,7 @@ const PreviewAmountAndFeature = ({
       <CommonBox
         extra={{ mb: 1.5 }}
         fontSize={fontStyle || '14px'}
-        fontWeight={fontWeight || 500}
+        fontWeight={fontWeight || 600}
         heading={'Area Size:'}
         color={'#126FAA'}
         text={area ? `${area} Sq-ft` : 'Not specified'}
@@ -53,7 +53,7 @@ const PreviewAmountAndFeature = ({
       <CommonBox
         extra={{ mb: 1.5 }}
         fontSize={fontStyle || '14px'}
-        fontWeight={fontWeight || 500}
+        fontWeight={fontWeight || 600}
         heading={'Price:'}
         color={'#126FAA'}
         text={amount ? `PKR ${amount.toLocaleString()}` : 'Not specified'}
@@ -63,7 +63,7 @@ const PreviewAmountAndFeature = ({
       <CommonBox
         extra={{ mb: 1.5 }}
         fontSize={fontStyle || '14px'}
-        fontWeight={fontWeight || 500}
+        fontWeight={fontWeight || 600}
         heading={'Installment:'}
         color={instalmentAvailable ? '#126FAA' : '#666'}
         text={instalmentAvailable ? 'Available' : 'Not available'}
@@ -72,7 +72,7 @@ const PreviewAmountAndFeature = ({
       {/* Ready for Possession */}
       <CommonBox
         fontSize={fontStyle || '14px'}
-        fontWeight={fontWeight || 500}
+        fontWeight={fontWeight || 600}
         heading={'Possession:'}
         color={readyPossession ? '#126FAA' : '#666'}
         text={readyPossession ? 'Ready' : 'Not ready'}
@@ -95,7 +95,7 @@ const CommonBox = ({
         sx={{
           fontSize: fontSize,
           fontWeight: fontWeight,
-          minWidth: '120px',
+          color: '#333',
         }}
       >
         {heading}

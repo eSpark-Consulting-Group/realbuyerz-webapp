@@ -16,6 +16,7 @@ const PropertyDetail = ({
   fontStyle = '15px',
   fontSizeDescription = '12px',
 }) => {
+  
   return (
     <Box
       sx={{
@@ -29,30 +30,34 @@ const PropertyDetail = ({
         },
       }}
     >
-      <Typography
-        variant="h2"
-        sx={{
-          pb: paddingHeading,
-          color: '#000',
-          fontSize: '20px',
-          fontWeight: 500,
-          mb,
-        }}
-      >
-        {heading}
-      </Typography>
+      {heading && (
+        <Typography
+          variant="h2"
+          sx={{
+            pb: paddingHeading,
+            color: '#000',
+            fontSize: '20px',
+            fontWeight: 500,
+            mb,
+          }}
+        >
+          {heading}
+        </Typography>
+      )}
 
-      <Typography
-        variant="h2"
-        sx={{
-          pb: '20px',
-          color: '#000',
-          fontSize,
-          fontWeight: 500,
-        }}
-      >
-        {title}
-      </Typography>
+      {title && (
+        <Typography
+          variant="h2"
+          sx={{
+            pb: '20px',
+            color: '#000',
+            fontSize,
+            fontWeight: 500,
+          }}
+        >
+          {title}
+        </Typography>
+      )}
 
       {subTitle && (
         <Typography

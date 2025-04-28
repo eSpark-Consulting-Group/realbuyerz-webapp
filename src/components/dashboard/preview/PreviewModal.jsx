@@ -113,7 +113,7 @@ const PreviewModal = ({ onClose, open, ads, formik, form = false }) => {
               latitude={ads?.latitude}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
             />
 
             <PreviewAmountAndFeature
@@ -126,7 +126,7 @@ const PreviewModal = ({ onClose, open, ads, formik, form = false }) => {
               readyPossession={ads?.readyPossession}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
             />
 
             <PreviewFeatureAndAmenities
@@ -134,7 +134,7 @@ const PreviewModal = ({ onClose, open, ads, formik, form = false }) => {
               specificPost={{ ...ads, amenitiesArray: ads?.amenity }}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
               formik={formik}
             />
 

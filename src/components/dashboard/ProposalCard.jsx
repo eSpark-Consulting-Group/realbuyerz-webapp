@@ -39,10 +39,8 @@ const ProposalCard = ({
 
   const properties = 'my-properties';
   const proposals = 'my-proposals';
-  const all_posting = 'all-postings';
   const user = 'user';
   const propertyId = data?.id || '';
-  const isAllPosting = pathName?.includes(all_posting);
 
   const [open, setOpen] = useState(false);
 
@@ -92,10 +90,7 @@ const ProposalCard = ({
   });
 
   let editIconLink;
-  if (currentTab === 'Draft') {
-    editIconLink = `${isAllPosting ? all_posting : properties}/draft/property/${propertyId || ''}`;
-  }
-  if (currentTab === 'All') {
+  if (currentTab === 'All' || currentTab === 'Draft') {
     editIconLink = updatePath
       ? `${updatePath}/${propertyId || ''}`
       : `/agent/property-management/update-property/${propertyId || ''}`;

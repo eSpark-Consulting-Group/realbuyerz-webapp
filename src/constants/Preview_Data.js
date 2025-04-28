@@ -79,7 +79,7 @@ export const PROPOSAL_PAGE = {
   title: 'Proposals',
   range: 'Est. Range',
   image: '/Images/Profile.png',
-  applicant_Titlt: 'Applicant',
+  applicant_Title: 'Applicant',
   applicant_Message:
     'has applied to or been invited to your or your company’s job need experience custom template designers for custom posts archive creation',
   back_Button: {

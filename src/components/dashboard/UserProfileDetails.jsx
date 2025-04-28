@@ -1,6 +1,7 @@
-import React from 'react';
 import Link from 'next/link';
+
 import { Box, Grid, Typography } from '@mui/material';
+
 import UserProfileImage from './UserProfileImage';
 
 const UserProfileDetails = ({
@@ -45,13 +46,14 @@ const UserProfileDetails = ({
             badgeWidth={'13px'}
             badgeHeigth={'13px'}
             right={20}
-            image={image || agent_profile?.profileImage}
+            image={agent_profile?.profileImage || image}
             padding={0.5}
             width={165}
             height={156}
             isActive={false}
           />
         </Grid>
+
         <Box
           sx={{
             paddingLeft: { xs: '0px', md: '30px' },
@@ -78,6 +80,7 @@ const UserProfileDetails = ({
           >
             {`${agent_profile?.firstName || ''} ${agent_profile?.lastName || ''}`}
           </Typography>
+
           <Typography
             sx={{
               color: '#757474',
@@ -89,6 +92,7 @@ const UserProfileDetails = ({
           >
             {agent_profile?.country || ''}
           </Typography>
+
           <Typography
             sx={{
               color: '#000',
@@ -101,7 +105,9 @@ const UserProfileDetails = ({
           >
             {`${Amount || ''} ${amountCurrency || ''}`}
           </Typography>
+
           <br />
+
           <Typography
             sx={{
               width: { xs: '100%', md: '140%' },
@@ -114,6 +120,7 @@ const UserProfileDetails = ({
             {Description || ''}
           </Typography>
         </Box>
+
         <Typography
           sx={{
             display: 'flex',
@@ -130,6 +137,7 @@ const UserProfileDetails = ({
         >
           {userStatus.toUpperCase()}
         </Typography>
+
         <Grid
           item
           sm={8}

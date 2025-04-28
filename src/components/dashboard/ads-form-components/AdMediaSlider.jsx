@@ -23,7 +23,7 @@ const AdMediaSlider = ({ media, mediaType, form }) => {
                 component={'img'}
                 src={
                   form
-                    ? URL?.createObjectURL(item)
+                    ? URL?.createObjectURL(image)
                     : image
                       ? image?.url
                       : '/images/PropertyImg.png'
