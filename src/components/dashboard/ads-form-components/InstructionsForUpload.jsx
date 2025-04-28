@@ -1,9 +1,10 @@
-import React from 'react';
+import Image from 'next/image';
+
 import { Typography, Box } from '@mui/material';
 
 const InstructionsForUpload = ({ propertyInformation }) => {
   return (
-    <>
+    <Box>
       {propertyInformation?.map((item, index) => (
         <Box sx={{ padding: '11px' }} key={index}>
           <ul>
@@ -21,16 +22,17 @@ const InstructionsForUpload = ({ propertyInformation }) => {
                   listStyle: 'none',
                 }}
               >
-                <Box
-                  component={'img'}
+                <Image
                   src={item?.image}
-                  sx={{
-                    width: { xs: 15, sm: 17 },
-                    height: { xs: 12, sm: 13 },
+                  alt={'tick'}
+                  width={17}
+                  height={13}
+                  style={{
                     mt: 1,
                   }}
-                  alt={'tick'}
+                  className="tick-icon"
                 />
+
                 <Typography
                   sx={{
                     fontSize: { xs: '14px ', sm: '16px' },
@@ -38,14 +40,15 @@ const InstructionsForUpload = ({ propertyInformation }) => {
                     color: '#969696',
                   }}
                 >
-                  {item?.text}{' '}
+                  {item?.text}
                 </Typography>
               </Box>
             </li>
           </ul>
         </Box>
       ))}
-    </>
+    </Box>
   );
 };
+
 export default InstructionsForUpload;

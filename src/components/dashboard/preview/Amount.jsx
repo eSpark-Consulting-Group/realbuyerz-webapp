@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const Amount = ({ amount }) => {
@@ -14,10 +13,12 @@ const Amount = ({ amount }) => {
       <Typography sx={{ fontSize: { xs: '20px' }, fontWeight: 500, mb: 1 }}>
         Amount
       </Typography>
+
       <Box sx={{ display: 'flex', gap: 0.5, pb: 0.4 }}>
         <Typography sx={{ fontSize: { xs: '14px' }, fontWeight: 500 }}>
           Range:
         </Typography>
+
         <Typography
           sx={{ fontSize: { xs: '14px' }, fontWeight: 500, color: '#126FAA' }}
         >
@@ -27,4 +28,5 @@ const Amount = ({ amount }) => {
     </Box>
   );
 };
+
 export default Amount;

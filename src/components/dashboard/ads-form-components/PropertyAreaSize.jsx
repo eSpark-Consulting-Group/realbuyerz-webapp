@@ -1,8 +1,15 @@
 'use client';
-import React, { useState } from 'react';
-import { Typography, Box, TextField, Autocomplete } from '@mui/material';
+import { useState } from 'react';
+
+import { Box, TextField, Autocomplete } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import LabelDisplay from './LabelDisplay';
+import DisplayError from './DisplayError';
+
 import { createPropertySizeState } from '@/src/utils/propertySizeInfo';
+
+import { boxStyles } from './styles';
 
 const PropertyAreaSize = ({
   propertySizeInformation,
@@ -26,50 +33,16 @@ const PropertyAreaSize = ({
         <Box
           key={index}
           sx={{
-            width: '100%',
-            height: 'auto',
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            alignItems: { xs: 'center', sm: 'start' },
-            justifyContent: { xs: 'center', md: 'center' },
-            gap: 2,
-            pb: { xs: 2, sm: 2 },
+            ...boxStyles('auto', 2),
           }}
         >
-          <Box
-            sx={{
-              width: { xs: '90%', sm: '45px' },
-              pl: '0 !important',
-            }}
-          >
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'start',
-                alignItems: 'center',
-                gap: 1.5,
-              }}
-            >
-              <Box
-                component={'img'}
-                src={item?.image}
-                sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-                alt={'areasize'}
-              />
-              <Typography
-                sx={{
-                  fontSize: { xs: '17px', sm: '20px' },
-                  fontWeight: 400,
-                  color: '#333333',
-                  display: { xs: 'flex', sm: 'none' },
-                }}
-              >
-                {item?.text}
-                <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
-              </Typography>
-            </Box>
-          </Box>
+          <LabelDisplay
+            text={item?.text}
+            image={item?.image}
+            alt={'areasize'}
+            span
+            isMobile
+          />
 
           <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
             <Box
@@ -84,17 +57,8 @@ const PropertyAreaSize = ({
                 mb: 3,
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: { xs: '17px', sm: '20px' },
-                  fontWeight: 400,
-                  color: '#333333',
-                  display: { xs: 'none', sm: 'flex' },
-                }}
-              >
-                {item?.text}
-                <span style={{ marginLeft: '5px', color: '#FF0000' }}>*</span>
-              </Typography>
+              <LabelDisplay text={item?.text} span />
+
               <Box
                 sx={{
                   width: '100%',
@@ -145,6 +109,7 @@ const PropertyAreaSize = ({
                     Boolean(formik?.errors[item?.label])
                   }
                 />
+
                 <Autocomplete
                   name={item?.unit}
                   disabled
@@ -194,17 +159,14 @@ const PropertyAreaSize = ({
                   }}
                 />
               </Box>
-              {(formik?.errors[item?.label] || formik?.errors[item?.unit]) && (
-                <Typography
-                  sx={{
-                    position: 'absolute',
-                    bottom: '-25px',
-                    color: 'red',
-                  }}
-                >
-                  {'Please enter and select values'}
-                </Typography>
-              )}
+
+              <DisplayError
+                doubleCheck
+                formik={formik}
+                errorLabel={{ first: item?.label, second: item?.unit }}
+                extra={{ position: 'absolute', bottom: '-25px' }}
+                errorText="Please enter and select values"
+              />
             </Box>
           </Box>
         </Box>

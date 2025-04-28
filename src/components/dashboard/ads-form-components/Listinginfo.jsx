@@ -1,6 +1,4 @@
-import React from 'react';
-import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 const ListingInfo = ({ propertyInfo }) => {
   return (
@@ -30,6 +28,7 @@ const ListingInfo = ({ propertyInfo }) => {
             sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
             alt={'propertyimages'}
           />
+
           <Typography
             sx={{
               fontSize: { xs: '15px', md: '18px', lg: '20px' },

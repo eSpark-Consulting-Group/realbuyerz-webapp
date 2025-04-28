@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, Box, Typography, Button } from '@mui/material';
 import { usePathname } from 'next/navigation';
+
+import { Modal, Box, Typography, Button } from '@mui/material';
 
 import Location from './Location';
 import PreviewAmountAndFeature from './PreviewAmountAndFeature';
@@ -10,7 +10,7 @@ import PreviewFeatureAndAmenities from './PreviewFeatureAndAmenities';
 
 import { PREVIEW_DATA } from '@/src/constants/Preview_Data';
 
-const PreviewModal = (props) => {
+const PreviewModal = ({ onClose, open, ads, formik, form = false }) => {
   const {
     title,
     buttonText,
@@ -20,12 +20,14 @@ const PreviewModal = (props) => {
     images,
     videos,
   } = PREVIEW_DATA;
-  const { onClose, open, ads, formik } = props;
   const pathName = usePathname();
+
   const userPath = '/user/dashboard/all-postings';
   const postRequestPath = '/user/post-request';
-  const imageArr = Array.isArray(ads.images) ? ads.images : [];
-  const videoArr = ads.videos ? ads.videos.map((vid) => vid.path) : [];
+
+  const imageArr =
+    ads?.PropertyData?.filter((pd) => pd.type === 'image') || ads?.images;
+  const videoArr = ads?.PropertyData?.filter((pd) => pd.type === 'video') || [];
 
   return (
     <>
@@ -94,29 +96,29 @@ const PreviewModal = (props) => {
 
             <PropertyDetail
               title={propertyDetails}
-              subTitle={ads?.title}
-              description={ads?.description}
+              subTitle={ads?.propertyName || ads?.title}
+              description={ads?.propertyDescription || ads?.description}
               fontSize={'18px'}
               fontStyle={'12px'}
               fontSizeDescription={'10px'}
             />
 
             <Location
-              city={ads?.city}
+              city={ads?.propertyCity || ads?.city}
               locationKeys={location}
               purpose={ads?.purpose}
               propertyType={ads?.propertyCategory}
-              location={ads?.address}
+              location={ads?.propertyAddress || ads?.address}
               longitude={ads?.longitude}
               latitude={ads?.latitude}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
             />
 
             <PreviewAmountAndFeature
-              area={ads?.area}
-              amount={ads?.amount}
+              area={ads?.propertyArea || ads?.area}
+              amount={ads?.propertyPrice || ads?.amount}
               areaUnit={'Sq-ft'}
               areaAndAmount={areaAndAmount}
               amountCurrency={'PKR'}
@@ -124,15 +126,15 @@ const PreviewModal = (props) => {
               readyPossession={ads?.readyPossession}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
             />
 
             <PreviewFeatureAndAmenities
-              amenitiesArray={ads?.amenitiesArray}
-              specificPost={{ ...ads, amenitiesArray: ads?.amenitiesArray }}
+              amenitiesArray={ads?.amenity}
+              specificPost={{ ...ads, amenitiesArray: ads?.amenity }}
               fontSize={'18px'}
               fontStyle={'12px'}
-              fontWeight={'700'}
+              fontWeight={600}
               formik={formik}
             />
 
@@ -142,6 +144,7 @@ const PreviewModal = (props) => {
                   title={images?.title}
                   images={imageArr}
                   mediaType={images?.type}
+                  form={form}
                 />
 
                 <MediaComponent

@@ -1,5 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+
+import { useMutation } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import {
   Typography,
   Box,
@@ -8,15 +14,27 @@ import {
   CircularProgress,
 } from '@mui/material';
 
-import { useDispatch } from 'react-redux';
+import { fetchAmenities } from '@/src/utils/properties';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
+
 import {
   handleAdaminities,
   toggleCheckAmenityClear,
 } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
-import { fetchAmenities } from '@/src/utils/properties';
-import { useMutation } from '@tanstack/react-query';
-import { transformAmenities } from '@/src/utils/amenitiesUtils';
-import { toast } from 'react-toastify';
+
+const buttonStyle = {
+  width: '100px',
+  height: '39px',
+  borderRadius: '5px',
+};
+
+const iconMap = {
+  'Swimming Pool': 'swimmingPool.svg',
+  Parking: 'parking.svg',
+};
+
+const getAmenityIcon = (name) =>
+  `/images/add-amenities/${iconMap[name] || 'default-amenity.svg'}`;
 
 const Facilities = ({
   cancel,
@@ -27,32 +45,9 @@ const Facilities = ({
   setSelectedAmenities,
   getAmenities,
 }) => {
-  const [facilitiesData, setFacilitiesData] = useState();
   const dispatch = useDispatch();
-  const handleCheckboxChange = (e, id, image, text, name) => {
-    const isChecked = e.target.checked;
-    const existingIndex = selectedAmenities.findIndex((item) => item.id === id);
 
-    if (isChecked) {
-      // Only add if not already selected
-      if (existingIndex === -1) {
-        setSelectedAmenities((prev) => [
-          ...prev,
-          {
-            id,
-            image: image || '/images/default-amenity.svg',
-            text: text || name,
-            name,
-            label: text || name,
-            count: 1,
-          },
-        ]);
-      }
-    } else {
-      // Remove if unchecked
-      setSelectedAmenities((prev) => prev.filter((item) => item.id !== id));
-    }
-  };
+  const [facilitiesData, setFacilitiesData] = useState();
 
   useEffect(() => {
     mutate();
@@ -60,23 +55,11 @@ const Facilities = ({
 
   useEffect(() => {
     const selectedAmenitiesId = selectedAmenities.map((val) => val?.id);
+
     formik?.setFieldValue('amenities', selectedAmenitiesId);
     formik?.setFieldValue('amenitiesArray', selectedAmenities);
-
-    const amenity = transformAmenities(selectedAmenities);
-    formik?.setFieldValue('amenity', amenity);
+    formik?.setFieldValue('amenity', transformAmenities(selectedAmenities));
   }, [selectedAmenities]);
-
-  const amenitiesIconHandler = (amenitiesName) => {
-    switch (amenitiesName) {
-      case 'Swimming Pool':
-        return 'swimmingPool.svg';
-      case 'Parking':
-        return 'parking.svg';
-      default:
-        return null;
-    }
-  };
 
   const { mutate, isPending } = useMutation({
     mutationFn: fetchAmenities,
@@ -84,7 +67,7 @@ const Facilities = ({
       const amenities = data.response.data.map((val) => {
         return {
           id: val?.id,
-          image: `/images/add-amenities/${amenitiesIconHandler(val?.amenetiesName)}`,
+          image: getAmenityIcon(val?.amenetiesName),
           title: val?.amenetiesName,
           name: val?.amenetiesName,
           count: 1,
@@ -93,40 +76,47 @@ const Facilities = ({
       setFacilitiesData(amenities);
     },
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
+
+  const handleCheckboxChange = (e, item) => {
+    const isChecked = e.target.checked;
+    setSelectedAmenities((prev) =>
+      isChecked
+        ? [...prev, { ...item, label: item.title, text: item.title }]
+        : prev.filter((amenity) => amenity.id !== item.id)
+    );
+  };
+
   const handleSaveButton = () => {
     if (selectedAmenities.length === 0) {
       dispatch(toggleCheckAmenityClear());
     } else {
-      if (
-        getAmenities?.some((am) =>
-          selectedAmenities.find((selAm) => selAm.id !== am.id)
-        )
-      ) {
-        const includedIds = getAmenities?.map((am) => am?.id);
-        const findNew = selectedAmenities.filter(
-          (sm) => !includedIds.includes(sm.id)
-        );
+      const hasDifference = getAmenities?.some(
+        (existing) =>
+          !selectedAmenities.some((selected) => selected.id === existing.id)
+      );
 
-        const removeItems = getAmenities.filter(
-          (am) => !selectedAmenities.some((sm) => sm.id === am.id)
+      if (hasDifference) {
+        const includedIds = getAmenities.map((am) => am.id);
+        const newItems = selectedAmenities.filter(
+          (am) => !includedIds.includes(am.id)
         );
-        const updateState = [
-          ...getAmenities.filter((am) => !removeItems.includes(am)),
-          ...findNew,
-        ];
+        const keptItems = getAmenities.filter((am) =>
+          selectedAmenities.some((sel) => sel.id === am.id)
+        );
+        const updatedAmenities = [...keptItems, ...newItems];
 
         formik?.setFieldValue(
           'amenity',
-          updateState.map((am) => {
-            return { count: am.count, image: am.image, name: am.name };
-          })
+          updatedAmenities.map(({ count, image, name }) => ({
+            count,
+            image,
+            name,
+          }))
         );
-
-        dispatch(handleAdaminities(updateState));
+        dispatch(handleAdaminities(updatedAmenities));
       } else {
         dispatch(handleAdaminities(selectedAmenities));
       }
@@ -165,8 +155,7 @@ const Facilities = ({
               mb: { xs: 1.5, md: 2.5 },
             }}
           >
-            {' '}
-            <CircularProgress color="inherit" />{' '}
+            <CircularProgress color="inherit" />
           </Box>
         ) : (
           facilitiesData?.map((item, index) => (
@@ -174,15 +163,15 @@ const Facilities = ({
               sx={{
                 mx: 'auto',
                 width: { xs: '98%', sm: '87%', md: '75%', lg: '80%' },
-                '@media (min-width: 1200px) and (max-width: 1439px)': {
-                  width: '85%',
-                },
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
                 px: 3,
                 gap: 0.2,
                 mb: { xs: 1.5, md: 2.5 },
+                '@media (min-width: 1200px) and (max-width: 1439px)': {
+                  width: '85%',
+                },
               }}
               key={index}
             >
@@ -196,24 +185,17 @@ const Facilities = ({
                 checked={selectedAmenities.some(
                   (amenity) => amenity.id === item.id
                 )}
-                onChange={(e) => {
-                  handleCheckboxChange(
-                    e,
-                    item?.id,
-                    item?.image,
-                    item?.title,
-                    item?.name,
-                    item?.count
-                  );
-                }}
+                onChange={(e) => handleCheckboxChange(e, item)}
               />
 
-              <Box
-                component={'img'}
+              <Image
                 src={item?.image}
-                sx={{ width: { xs: 25, md: 30 }, height: { xs: 25, md: 30 } }}
                 alt={'amenities'}
+                width={30}
+                height={30}
+                className="amenities-icon"
               />
+
               <Typography
                 sx={{
                   ml: 1.8,
@@ -228,6 +210,7 @@ const Facilities = ({
           ))
         )}
       </Box>
+
       <Box
         sx={{
           width: '100%',
@@ -242,25 +225,21 @@ const Facilities = ({
       >
         <Button
           style={{
-            width: '100px',
-            height: '39px',
+            ...buttonStyle,
             background: 'white',
-            borderRadius: '5px',
             color: '#FB631C',
             border: ' 1px #FB631C solid',
           }}
           onClick={cancel}
         >
-          {' '}
           {propertyInformation?.cancel}
         </Button>
+
         <Button
           style={{
-            width: '100px',
-            height: '39px',
-            background: '#FB631C',
-            borderRadius: '5px',
+            ...buttonStyle,
             color: 'white',
+            background: '#FB631C',
           }}
           onClick={handleSaveButton}
         >
@@ -270,4 +249,5 @@ const Facilities = ({
     </>
   );
 };
+
 export default Facilities;

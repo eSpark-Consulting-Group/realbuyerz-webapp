@@ -1,10 +1,10 @@
 'use client';
-import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import PostTitle from './ads-form-components/PostTitle';
 import PropertyAreaSize from './ads-form-components/PropertyAreaSize';
 import PropertyInstallment from './ads-form-components/PropertyInstallment';
+
 import { PROPERTY_BUYING_DETAIL } from '@/src/constants/Preview_Data';
 
 const PropertySize = ({ formik, propertyData }) => {
@@ -40,6 +40,7 @@ const PropertySize = ({ formik, propertyData }) => {
           }}
         >
           <PostTitle text={propertyData?.postTitles?.sizeprice} />
+
           <Box
             sx={{
               width: '100%',
@@ -67,6 +68,7 @@ const PropertySize = ({ formik, propertyData }) => {
                 currency={propertyData?.currency}
                 formik={formik}
               />
+
               <PropertyInstallment
                 propertyInstallmentInfo={propertyData?.installment}
                 propertyBuyingDetails={PROPERTY_BUYING_DETAIL?.sellingDetails}

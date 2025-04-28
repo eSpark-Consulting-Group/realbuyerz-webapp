@@ -1,14 +1,22 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Typography, Box, Button } from '@mui/material';
-import PropertyTypes from './PropertyPlot';
-import { useMutation } from '@tanstack/react-query';
-import { fetchPropertyTypes } from '@/src/utils/properties';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+
+import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+
+import { Box, Button } from '@mui/material';
+
+import PropertyTypes from './PropertyPlot';
+import LabelDisplay from './LabelDisplay';
+
+import { fetchPropertyTypes } from '@/src/utils/properties';
+
+import { boxStyles } from './styles';
 
 const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
   const pathname = usePathname();
+
   const [activePropertyType, setActivePropertyType] = useState('');
   const [activePropertySubType, setActivePropertySubType] = useState(null);
   const [propertyTp, setPropertyTp] = useState([]);
@@ -34,8 +42,7 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
       setPropertyTp(data.response.data);
     },
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
 
@@ -54,45 +61,12 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
   return (
     <Box
       sx={{
-        width: '100%',
-        height: 'auto',
-        display: 'flex',
-        flexDirection: { xs: 'column', sm: 'row' },
-        alignItems: { xs: 'center', sm: 'start' },
-        justifyContent: { xs: 'center', md: 'center' },
-        gap: 2,
+        ...boxStyles('auto'),
         pb: { xs: 2, sm: 2, xl: 0 },
         cursor: 'pointer',
       }}
     >
-      <Box sx={{ width: { xs: '90%', sm: '45px' }, pl: '0 !important' }}>
-        <Box
-          sx={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'start',
-            gap: 1.5,
-          }}
-        >
-          <Box
-            component={'img'}
-            sx={{ width: { xs: 37, sm: 47 }, height: { xs: 35, sm: 45 } }}
-            src={image}
-            alt={'properttype'}
-          />
-          <Typography
-            sx={{
-              fontSize: { xs: '17px', sm: '20px' },
-              fontWeight: 400,
-              color: '#333333',
-              display: { xs: 'flex', sm: 'none' },
-            }}
-          >
-            {label}
-          </Typography>
-        </Box>
-      </Box>
+      <LabelDisplay text={label} image={image} alt={'properttype'} isMobile />
 
       <Box sx={{ width: { xs: '90%', sm: '80%', md: '80%', lg: '70%' } }}>
         <Box
@@ -106,17 +80,8 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
             mb: { xs: 3, xl: 0 },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: { xs: '17px', sm: '20px' },
-              fontWeight: 400,
-              color: '#333333',
-              mb: 2,
-              display: { xs: 'none', sm: 'flex' },
-            }}
-          >
-            {label}
-          </Typography>
+          <LabelDisplay text={label} mb={2} />
+
           <Box
             sx={{
               display: 'flex',
@@ -150,7 +115,9 @@ const SelectProperyType = ({ image, label, formik, propertyTypeDetails }) => {
               </Button>
             ))}
           </Box>
+
           <hr style={{ width: '100%', border: '1px solid #E7E7E7' }} />
+
           {propertyTp
             .filter((val) => val?.typeName === activePropertyType)
             .map((val, index) => (

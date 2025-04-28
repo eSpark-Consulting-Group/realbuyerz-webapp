@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography, Box } from '@mui/material';
 
 const ReachBuyer = ({ title, description, fontSize }) => {
@@ -17,6 +16,7 @@ const ReachBuyer = ({ title, description, fontSize }) => {
       >
         {title}
       </Typography>
+
       <Typography
         sx={{
           textAlign: 'center',

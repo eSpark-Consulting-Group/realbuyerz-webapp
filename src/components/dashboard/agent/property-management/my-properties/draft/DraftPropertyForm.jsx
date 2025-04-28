@@ -1,64 +1,111 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Grid, Box } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { useFormik } from 'formik';
 
-import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
-import AdInformation from '@/src/components/dashboard/AdInformation';
-import PropertySize from '@/src/components/dashboard/Propertysize';
-import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
-import SubmitButton from '@/src/components/dashboard/SubmitButton';
-import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
-import PropertyGallery from '@/src/components/dashboard/PropertGallery';
+import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
+
+import { Grid, Box } from '@mui/material';
+
+import FormComponents from '@/src/components/dashboard/FormComponents';
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
 import { postListingValidation } from '@/src/components/Schemas/postListingValidation';
 
-import { POST_LISTING } from '@/src/constants/agent/Post_Listing';
-import {
-  DRAFT_SUBMIT_MODAL_DATA,
-  SUBMIT_MODAL_DATA,
-} from '@/src/constants/Preview_Data';
 import { findSpecificPost } from '@/src/utils/dashboardUtils';
 import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
 import { getAgentInitialFormValues } from '@/src/utils/draftFormikInitialState';
 
-const DraftPropertyForm = () => {
+import {
+  DRAFT_SUBMIT_MODAL_DATA,
+  SUBMIT_MODAL_DATA,
+} from '@/src/constants/Preview_Data';
+import { POST_LISTING } from '@/src/constants/agent/Post_Listing';
+import { fetchMyProperties } from '@/src/utils/properties';
+import { useMutation } from '@tanstack/react-query';
+
+const DraftPropertyForm = ({ property_Id }) => {
+
   const pathname = usePathname();
   const segments = pathname.split('/');
   const id = segments[segments.length - 1];
+
+  const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
+  const currentUser = useSelector((state) => state?.currentUser?.user);
+  const getAmenities = useSelector(
+    (state) => state?.postListingAds?.addAmenities
+  );
+
+  const find_ad = findSpecificPost(agentDrafts, id);
+
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [Action, setAction] = useState('');
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const agentDrafts = useSelector((state) => state?.postListingAds?.draft);
-  const find_ad = findSpecificPost(agentDrafts, id);
+  const [updated, setUpdated] = useState(null);
+  const [filteredUserProperty, setFilteredUserProperty] = useState(null);
 
-  const [updated, serUpdated] = useState(find_ad || {});
+  const getModalData = () =>
+    Action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA : SUBMIT_MODAL_DATA;
 
   useEffect(() => {
-    serUpdated(find_ad || {});
+    setUpdated(find_ad || {});
   }, [find_ad]);
 
-  const getAmenities = useSelector(
-    (state) => state?.postListingAds?.addAmenities
-  );
+  useEffect(() => {
+    const params = {
+      page: 1,
+      pageSize: 10,
+      propertyId: property_Id,
+    };
+    if (property_Id) {
+      getSingleProperty.mutate(params);
+    }
+  }, []);
+
+    // get single property for update
+    const getSingleProperty = useMutation({
+      mutationFn: fetchMyProperties,
+      onSuccess: (data) => {
+        const items = data.response.data;
+        const allItems = [...items.active, ...items.trash, ...items.draft];
+        const property = allItems.find((item) => item.id === property_Id);
+  
+        setFilteredUserProperty(property);
+  
+        let singleArr = {};
+        Object.keys(items).forEach((val) => {
+          if (items[val].length > 0) singleArr = items[val][0];
+        });
+        const propertyAmenities = singleArr.amenity || [];
+  
+        formik.setFieldValue('title', singleArr.propertyName);
+        formik.setFieldValue('description', singleArr.propertyDescription);
+        formik.setFieldValue('amount', singleArr.propertyPrice);
+        formik.setFieldValue('area', singleArr.propertyArea);
+        formik.setFieldValue('city', singleArr.propertyCity);
+        formik.setFieldValue('propertyCategory', singleArr.propertyType);
+        formik.setFieldValue('amenity', JSON.stringify(propertyAmenities));
+        formik.setFieldValue('address', singleArr.propertyAddress);
+  
+        const propertyImages = singleArr.PropertyData?.[0]?.url || '';
+        formik.setFieldValue('images', propertyImages ? [propertyImages] : []);
+  
+        setPreviousData(formik.values);
+      },
+      onError: (error) => {
+        toast.error(error.response.data.messag);
+      },
+    });
+
   const handleSeletedAmenites = () => {
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
 
-  const currentUser = useSelector((state) => state?.currentUser?.user);
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const initialFormValues = getAgentInitialFormValues(updated, currentUser);
 
@@ -87,42 +134,35 @@ const DraftPropertyForm = () => {
               margin: { xs: 0, md: '0 auto', lg: 0 },
             }}
           >
-            <BuyersPlatform propertyData={POST_LISTING} />
-            <AdInformation formik={formik} propertyData={POST_LISTING} />
-            <PropertyPurpose
-              formik={formik}
+            <FormComponents
               propertyData={POST_LISTING}
-              buyData={POST_LISTING?.buy}
-            />
-            <PropertySize formik={formik} propertyData={POST_LISTING} />
-            <PropertyFeatures
               formik={formik}
-              propertyData={POST_LISTING}
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
-            />
-            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
-            <SubmitButton
-              formik={formik}
-              Action={Action}
-              updated={updated}
-              propertyData={POST_LISTING}
-              setAction={setAction}
+              getAmenities={getAmenities}
               handleClickOpen={handleClickOpen}
-              handleOpenSuccessModal={handleOpenSuccessModal}
-            />
-            <PreviewModal
               open={open}
-              onClose={handleClose}
-              ads={formik?.values}
+              handleClose={handleClose}
+              gallery={true}
+              propertyPurposeProps={{
+                buyData: POST_LISTING?.buy,
+                filteredUserProperty
+              }}
+              buttonProps={{
+                action: Action,
+                isUpdate: updated,
+                setAction,
+                handleOpenSuccessModal,
+              }}
             />
           </Box>
         </form>
+
         <ProposalModal
-          buttonLabel={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-          description={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-          title={`${Action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+          buttonLabel={getModalData()?.buttonLabel}
+          description={getModalData()?.description}
+          title={getModalData()?.title}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />

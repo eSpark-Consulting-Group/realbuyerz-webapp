@@ -1,7 +1,9 @@
-// VideoUploader.js
-import React, { useCallback } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { useCallback } from 'react';
+
 import { useDropzone } from 'react-dropzone';
+import { toast } from 'react-toastify';
+
+import { Box, Button, Typography } from '@mui/material';
 
 const VideoUploader = ({ onUpload, maxVideos }) => {
   const onDrop = useCallback(
@@ -9,7 +11,7 @@ const VideoUploader = ({ onUpload, maxVideos }) => {
       if (acceptedFiles.length <= maxVideos) {
         onUpload(acceptedFiles[0].type, acceptedFiles[0]);
       } else {
-        console.error('Maximum limit of videos reached');
+        toast.error('Maximum limit of videos reached');
       }
     },
     [onUpload, maxVideos]
@@ -39,6 +41,7 @@ const VideoUploader = ({ onUpload, maxVideos }) => {
       }}
     >
       <Box component={'input'} {...getInputProps()} />
+
       <Typography
         sx={{
           fontSize: '15px',

@@ -1,6 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useMutation } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import {
   Box,
@@ -12,7 +15,7 @@ import {
 } from '@mui/material';
 
 import ProposalCard from '@/src/components/dashboard/ProposalCard';
-// import NotFoundSection from '@/src/components/global/NotFoundSection';
+import ProposalCardContainer from '../../../ProposalCardContainer';
 
 import {
   a11yProps,
@@ -20,21 +23,20 @@ import {
   findSome,
   JustifyForFindProposal,
 } from '@/src/utils/dashboardUtils';
-import { useMutation } from '@tanstack/react-query';
 import { fetchMyProperties } from '@/src/utils/properties';
 import { myProposalSaved } from '@/src/utils/apis/bidding/saveUserProposal';
-import { toast } from 'react-toastify';
 
 const MyProposals = () => {
   const proposals = useSelector((state) => state?.proposals);
   const user_id = useSelector((state) => state?.currentUser?.user?.id);
   const userAds = useSelector((state) => state?.postRequestAds?.userPostings);
-  const [value, setValue] = useState(0);
-  const [currentTab, setCurrentTab] = useState('Saved Request');
-
   const { save, proposalsTrash } = useSelector(
     (state) => state?.postListingAds
   );
+
+  const [value, setValue] = useState(0);
+  const [currentTab, setCurrentTab] = useState('Saved Request');
+  const [myPropertiesData, setMyPropertiesData] = useState([]);
 
   const find_save = findSome(save, userAds);
   const trashed_ad = findSome(save, proposalsTrash);
@@ -42,17 +44,16 @@ const MyProposals = () => {
   const find_proposals_archive = findProposal(user_id, proposals, 'Archived');
   const find_proposals_rejected = findProposal(user_id, proposals, 'Rejected');
 
-  const [myPropertiesData, setMyPropertiesData] = useState([]);
   const params = {
     page: 1,
     pageSize: 50,
     proposals: true,
   };
+
   const { mutate, isPending, data } = useMutation({
     mutationFn: fetchMyProperties,
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
 
@@ -62,43 +63,34 @@ const MyProposals = () => {
       setMyPropertiesData(data.response.data);
     },
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
 
   const items = data?.response?.data;
-  const tabs = [
+  const tabsConfig = [
     {
       label: 'Saved Request',
-      prop: a11yProps(0),
-      items: savedProposals.data?.response?.data.length || 0,
+      key: 'saved',
+      data: savedProposals.data?.response?.data,
     },
-    {
-      label: 'Active',
-      prop: a11yProps(1),
-      items: items?.activeProposals?.length || 0,
-    },
+    { label: 'Active', key: 'activeProposals', data: items?.activeProposals },
     {
       label: 'Archive',
-      prop: a11yProps(2),
-      items: items?.archivedProposals?.length || 0,
+      key: 'archivedProposals',
+      data: items?.archivedProposals,
     },
     {
       label: 'Submitted',
-      prop: a11yProps(3),
-      items: items?.submittedProposals?.length || 0,
+      key: 'submittedProposals',
+      data: items?.submittedProposals,
     },
     {
       label: 'Rejected',
-      prop: a11yProps(4),
-      items: items?.rejectedProposals?.length || 0,
+      key: 'rejectedProposals',
+      data: items?.rejectedProposals,
     },
-    {
-      label: 'Trash',
-      prop: a11yProps(5),
-      items: items?.trashProperties?.length || 0,
-    },
+    { label: 'Trash', key: 'trashProperties', data: items?.trashProperties },
   ];
 
   useEffect(() => {
@@ -110,33 +102,30 @@ const MyProposals = () => {
   }, []);
 
   const handleChangeTab = (event, newValue) => {
-    let tab = event?.target?.innerText.split(' ');
-    if (tab.length > 1) {
-      tab = tab.slice(0, -1).join(' ');
-    } else {
-      tab = tab.join(' ');
-    }
-    setCurrentTab(tab);
+    const fullLabel = event?.target?.innerText;
+    const tabLabel = fullLabel.split(' (')[0];
+
+    setCurrentTab(tabLabel);
     setValue(newValue);
-    if (tab == 'Saved Request') {
-      setMyPropertiesData(savedProposals.data?.response?.data);
-    }
-    if (tab == 'Active') {
-      setMyPropertiesData(items?.activeProposals);
-    }
-    if (tab == 'Archive') {
-      setMyPropertiesData(items?.archivedProposals);
-    }
-    if (tab == 'Submitted') {
-      setMyPropertiesData(items?.submittedProposals);
-    }
-    if (tab == 'Rejected') {
-      setMyPropertiesData(items?.rejectedProposals);
-    }
-    if (tab == 'Trash') {
-      setMyPropertiesData(items?.trashProperties);
+
+    const selectedTab = tabsConfig.find((tab) => tab.label === tabLabel);
+    if (selectedTab?.data) {
+      setMyPropertiesData(selectedTab.data);
     }
   };
+
+  const justify = (no) => {
+    return JustifyForFindProposal(
+      find_save,
+      find_proposals_active,
+      find_proposals_archive,
+      find_proposals_rejected,
+      trashed_ad,
+      currentTab,
+      no
+    );
+  }
+
   return (
     <>
       <Box
@@ -165,97 +154,53 @@ const MyProposals = () => {
             onChange={handleChangeTab}
             aria-label="basic tabs example"
           >
-            {tabs?.map(({ label, prop, items }, i) => (
+            {tabsConfig.map((tab, i) => (
               <Tab
                 key={i}
-                label={`${label} (${items})`}
-                {...prop}
-                disableRipple={true}
-                sx={{
-                  textTransform: 'math-auto',
-                  color: '#000 !important',
-                }}
+                label={`${tab.label} (${tab.data?.length || 0})`}
+                {...a11yProps(i)}
+                disableRipple
+                sx={{ textTransform: 'none', color: '#000 !important' }}
               />
             ))}
           </Tabs>
         </Box>
+
         <Divider />
-        <Box
-          className="scrollbar-container"
-          sx={{
-            mr: { xs: 0.8, sm: 2, md: 'auto' },
-            ml: { xs: 0.8, sm: 2, md: 'auto' },
-            pt: { xs: 2.5, sm: 3, md: 5 },
-            pb: { xs: 2, sm: 2, md: 3 },
-            px: { xs: 0, sm: 0, md: 3 },
-            maxHeight: '950px',
-            width: 'auto',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              mx: 'auto',
-              '@media (max-width: 755px)': {
-                justifyContent: JustifyForFindProposal(
-                  find_save,
-                  find_proposals_active,
-                  find_proposals_archive,
-                  find_proposals_rejected,
-                  trashed_ad,
-                  currentTab,
-                  1
-                ),
-              },
-              justifyContent: {
-                sm: JustifyForFindProposal(
-                  find_save,
-                  find_proposals_active,
-                  find_proposals_archive,
-                  find_proposals_rejected,
-                  trashed_ad,
-                  currentTab,
-                  2
-                ),
-              },
-              alignItems: 'center',
-              flexDirection: { sm: 'row', md: 'column' },
-              gap: { xs: 1.5, sm: 2.5, md: 3.5 },
-            }}
-          >
-            {myPropertiesData?.length < 1 ? (
-              isPending ? (
-                <Box
-                  sx={{
-                    height: '300px',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
-                  <CircularProgress size={32} color="inherit" />
-                </Box>
-              ) : (
-                <Typography>No Data Found</Typography>
-              )
+
+        <ProposalCardContainer justify={justify}>
+          {myPropertiesData?.length < 1 ? (
+            isPending ? (
+              <Box
+                sx={{
+                  height: '300px',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  display: 'flex',
+                }}
+              >
+                <CircularProgress size={32} color="inherit" />
+              </Box>
             ) : (
-              myPropertiesData?.map((item, index) => (
-                <ProposalCard
-                  refetchProperties={() => mutate(params)}
-                  refetchSavedProposal={() => savedProposals.mutate()}
-                  key={index}
-                  data={item.property || item}
-                  currentTab={currentTab}
-                  link={
-                    currentTab === 'Active'
-                      ? `my-proposals/proposal/${item?.id || '#'}`
-                      : '#'
-                  }
-                />
-              ))
-            )}
-          </Box>
-        </Box>
+              <Typography>No Data Found</Typography>
+            )
+          ) : (
+            myPropertiesData?.map((item, index) => (
+              <ProposalCard
+                refetchProperties={() => mutate(params)}
+                refetchSavedProposal={() => savedProposals.mutate()}
+                key={index}
+                data={item.property || item}
+                currentTab={currentTab}
+                link={
+                  currentTab === 'Active'
+                    ? `my-proposals/proposal/${item?.id || '#'}`
+                    : '#'
+                }
+              />
+            ))
+          )}
+        </ProposalCardContainer>
       </Box>
     </>
   );

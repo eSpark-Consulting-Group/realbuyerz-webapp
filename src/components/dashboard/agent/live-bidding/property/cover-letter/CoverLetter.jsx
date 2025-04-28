@@ -1,41 +1,39 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Grid, Box } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { useFormik } from 'formik';
+import { useEffect, useState } from 'react';
+
 import { usePathname, useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
 
-import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
-import AdInformation from '@/src/components/dashboard/AdInformation';
-import PropertySize from '@/src/components/dashboard/Propertysize';
-import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
+import { Grid, Box } from '@mui/material';
 
-import SubmitButton from '@/src/components/dashboard/SubmitButton';
-import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
-import PropertyGallery from '@/src/components/dashboard/PropertGallery';
+import { coverLetterValidation } from '@/src/components/Schemas/coverLetterValidation';
+import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
+import FormComponents from '@/src/components/dashboard/FormComponents';
+
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import { fetchMyProperties, updatePostListing } from '@/src/utils/properties';
+import { mapAndCreateFormData } from '@/src/utils/property/propertyUtils';
+import { singleProperty } from '@/src/utils/apis/bidding/singleProperty';
 
 import { toggleCheckAmenityClear } from '@/src/redux/slices/postlistingAds/postlistingAdsSlice';
 
 import {
   COVER_LETTER,
   COVER_LETTER_VALUES,
+  keyMapping,
 } from '@/src/constants/agent/Cover_Letter';
-import { coverLetterValidation } from '@/src/components/Schemas/coverLetterValidation';
 import { PROPOSAL_SUBMIT_MODAL_DATA } from '@/src/constants/Preview_Data';
-import SubmissionModal from '@/src/components/dashboard/modals/ProposalModal';
-import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
-import { useMutation } from '@tanstack/react-query';
-import { singleProperty } from '@/src/utils/apis/bidding/singleProperty';
-import { fetchMyProperties, updatePostListing } from '@/src/utils/properties';
-import { toast } from 'react-toastify';
 
 const CoverLetter = () => {
   const proposals = 'my-proposals';
 
-  const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
+
+  const dispatch = useDispatch();
 
   const segments = pathname.split('/');
   const id = segments[segments.length - 2];
@@ -51,28 +49,15 @@ const CoverLetter = () => {
   );
 
   const handleSeletedAmenites = () => {
-    if (getAmenities?.length === 0) {
-      formik?.setFieldValue('amenity', []);
-    } else {
-      formik?.setFieldValue(
-        'amenity',
-        getAmenities.map((am) => {
-          return { count: am.count, image: am.image, name: am.name };
-        })
-      );
-    }
-
+    formik.setFieldValue('amenity', getAmenities?.length ? getAmenities : []);
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
+  
   const handleOpenSuccessModal = () => setIsOpen(true);
   const handleCloseSuccessModal = () => setIsOpen(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const params = {
@@ -141,28 +126,19 @@ const CoverLetter = () => {
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      // Handle the error
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
 
-  const formData = new FormData();
-  formData.append('propertyName', formik?.values.title);
-  formData.append('userPropertyId', id);
-  formData.append('propertyType', formik?.values.propertyCategory);
-  formData.append('propertyDescription', formik?.values.description);
-  formData.append('propertyPrice', formik?.values.amount);
-  formData.append('propertyArea', formik?.values.area);
-  formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', formik?.values.address);
-  formData.append('propertyCity', formik?.values.city);
-  formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
-  formData.append('longitude', formik?.values.longitude);
-  formData.append('latitude', formik?.values.latitude);
-  formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
-  formik?.values.images?.length &&
-    formik?.values.images?.forEach((file) => formData.append('image', file));
+  const formData = mapAndCreateFormData(
+    keyMapping,
+    formik.values,
+    selectedAmenities,
+    {
+      userPropertyId: id,
+      video: 'https://www.youtube.com/watch?v=EPhMeAWXWCU',
+    }
+  );
 
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
@@ -183,37 +159,28 @@ const CoverLetter = () => {
                 margin: { xs: 0, md: '0 auto', lg: 0 },
               }}
             >
-              <BuyersPlatform propertyData={COVER_LETTER} fontSize={'20px'} />
-              <AdInformation formik={formik} propertyData={COVER_LETTER} />
-              <PropertyPurpose
-                formik={formik}
+              <FormComponents
                 propertyData={COVER_LETTER}
-                propertyTypeDetails={propertyTypeDetails}
-              />
-              <PropertySize formik={formik} propertyData={COVER_LETTER} />
-              <PropertyFeatures
                 formik={formik}
-                propertyData={COVER_LETTER}
                 setSelectedAmenities={setSelectedAmenities}
                 selectedAmenities={selectedAmenities}
                 handleSeletedAmenites={handleSeletedAmenites}
                 getAmenities={getAmenities}
-              />
-              <PropertyGallery formik={formik} propertyData={COVER_LETTER} />
-              <SubmitButton
-                formik={formik}
-                propertyData={COVER_LETTER}
                 handleClickOpen={handleClickOpen}
                 isSubmitBtnDisable={isSubmitBtnDisable}
-              />
-              <PreviewModal
                 open={open}
-                onClose={handleClose}
-                ads={formik?.values}
-                formik={formik}
+                handleClose={handleClose}
+                gallery={true}
+                buyersProps={{
+                  fontSize: '20px',
+                }}
+                propertyPurposeProps={{
+                  propertyTypeDetails,
+                }}
               />
             </Box>
           </form>
+
           <SubmissionModal
             buttonLabel={PROPOSAL_SUBMIT_MODAL_DATA?.buttonLabel}
             description={PROPOSAL_SUBMIT_MODAL_DATA?.description}

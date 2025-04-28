@@ -804,6 +804,21 @@ button:hover {
     width: 40px;
     height: 40px;
   }
+
+  .label-display-box {
+    width: 37px;
+    height: 35px;
+  }
+  
+  .amenities-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .tick-icon{
+    width: 15px;
+    height: 12px;
+  }
 }
 
 @media (min-width: 600px) {
@@ -831,9 +846,19 @@ button:hover {
     width: 100px;
     height: 100px;
   }
+
+  .label-display-box {
+    width: 47px;
+    height: 45px;
+  }
+
+  .tick-icon{
+    width: 17px;
+    height: 13px;
+  }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .homepartenrs-image {
     height: 100px;
     max-width: 200px;
@@ -847,9 +872,14 @@ button:hover {
   .heroslider-logo {
     max-width: 200px;
   }
+
+  .amenities-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
   .heroslider-logo {
     max-width: 239px;
   }

@@ -1,35 +1,26 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Box, Typography, Grid, Button, CircularProgress } from '@mui/material';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
-import PropertyDetail from '@/src/components/dashboard/preview/PropertyDetail';
-import Location from '@/src/components/dashboard/preview/Location';
-import PreviewAmountAndFeature from '@/src/components/dashboard/preview/PreviewAmountAndFeature';
-import PreviewFeatureAndAmenities from '@/src/components/dashboard/preview/PreviewFeatureAndAmenities';
+import { useMutation } from '@tanstack/react-query';
+
+import { Box, Typography, Grid, Button, CircularProgress } from '@mui/material';
+
 import UserProfileImage from '@/src/components/dashboard/UserProfileImage';
-import BidMedia from '@/src/components/dashboard/BidMedia';
-import Amount from '@/src/components/dashboard/preview/Amount';
-import LiveBiddingPropertiesList from '@/src/components/dashboard/LiveBiddingPropertiesList';
+import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
+import AgentPropertyDetails from './AgentPropertyDetails';
+import UserPropertyDetails from './UserPropertyDetails';
+import UserPropertyContent from './UserPropertyContent';
+import Content from './Content';
+
+import { viewAgentProposal } from '@/src/utils/apis/bidding/viewAgentProposal';
+import { transformApiObject } from '@/src/utils/objectsConversion';
 
 import {
   PREVIEW_DATA,
   PROPOSAL_PAGE,
   VIEWPROPOSAL,
 } from '@/src/constants/Preview_Data';
-
-import { PROPOSAL } from '@/src/constants/agent/Proposal';
-import {
-  ESTIMATE_RANGE,
-  POST_LISTINGAD_CARD,
-} from '@/src/constants/user/Dashboard';
-
-import { viewAgentProposal } from '@/src/utils/apis/bidding/viewAgentProposal';
-import { useMutation } from '@tanstack/react-query';
-import { transformApiObject } from '@/src/utils/objectsConversion';
-import { formatDistanceToNow } from 'date-fns';
 
 const ProposalDetail = () => {
   const { image, back_Proposal_Button } = PROPOSAL_PAGE;
@@ -61,10 +52,8 @@ const ProposalDetail = () => {
 
       setUserPropertyDetail(transformApiObject(item.userProperty));
       setAgentPropertyDetail(transformApiObject(item.agentProperty));
-
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -72,13 +61,14 @@ const ProposalDetail = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2.5}>
-        <Grid item xs={12} md={12} lg={9.2} xl={9.2}>
+        <Grid item xs={12} lg={9.2}>
           <Box sx={{ pb: 3 }}>
             <BackToDashboard
               buttonLabel={back_Proposal_Button?.text}
               link={back_Proposal_Button?.link}
             />
           </Box>
+
           <Box
             sx={{
               background: '#fff',
@@ -105,7 +95,7 @@ const ProposalDetail = () => {
                     sx={{
                       display: 'flex',
                       gap: 2,
-                      flexDirection: { xs: 'column', md: 'column' },
+                      flexDirection: 'column',
                       p: 4,
                       pb: 5,
                       borderBottom: '1px solid #E4E4E4',
@@ -120,6 +110,7 @@ const ProposalDetail = () => {
                     >
                       {VIEWPROPOSAL?.userRequest || ''}
                     </Typography>
+
                     <Typography
                       sx={{
                         fontSize: { xs: '15px', md: '20px' },
@@ -135,6 +126,7 @@ const ProposalDetail = () => {
                     >
                       {userPropertyDetail?.title || ''}
                     </Typography>
+
                     <Box
                       sx={{
                         display: 'flex',
@@ -161,134 +153,21 @@ const ProposalDetail = () => {
                           isActive={userPropertyDetail?.status || false}
                           notActive={false}
                         />
-                        <Box
-                          sx={{
-                            marginLeft: '10px',
-                          }}
-                        >
-                          <Typography
-                            sx={{
-                              fontSize: '15px',
-                              fontWeight: 500,
-                              color: '#126FAA',
-                              ml: 0.5,
-                            }}
-                          >
-                            {`${userPropertyDetail?.first_name || ''} ${userPropertyDetail?.last_name || ''}`}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: '#757474',
-                              fontSize: '15px',
-                              fontWeight: 500,
-                            }}
-                          >
-                            <LocationOnIcon
-                              sx={{ fontSize: 28, color: '#757474' }}
-                            />
-                            {`${userPropertyDetail?.city || ''} ${userPropertyDetail?.country || ''}`}
-                          </Typography>
-                          <Typography
-                            variant="body1"
-                            sx={{ ml: { xs: 0, md: 0.5 } }}
-                          >
-                            {userPropertyDetail?.created_at &&
-                              formatDistanceToNow(
-                                new Date(userPropertyDetail?.created_at),
-                                {
-                                  addSuffix: true,
-                                }
-                              )}
-                          </Typography>
-                        </Box>
+
+                        {userPropertyDetail && (
+                          <UserPropertyContent
+                            userPropertyDetail={userPropertyDetail}
+                          />
+                        )}
                       </Box>
                     </Box>
+
                     {userPropertyDetail && (
-                      <Grid container>
-                        <Grid container spacing={2}>
-                          <Box
-                            sx={{
-                              color: '#333',
-                              px: { xs: '20px', md: '20px' },
-                              paddingTop: '40px',
-                              paddingBottom: '20px',
-                              '@media(min-width: 280px) and (max-width: 445px)':
-                                {
-                                  pr: '10px',
-                                },
-                            }}
-                          >
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                fontWeight: '500',
-                                fontSize: '13.8px',
-                                lineHeight: '20.52px',
-                                mb: 1,
-                              }}
-                            >
-                              {userPropertyDetail?.description}
-                            </Typography>
-                          </Box>
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              width: '100%',
-                              '@media (min-width: 280px) and (max-width: 500px)':
-                                {
-                                  flexDirection: 'column',
-                                },
-                            }}
-                          >
-                            <LiveBiddingPropertiesList
-                              city={userPropertyDetail?.city}
-                              status={userPropertyDetail?.purpose}
-                              location={userPropertyDetail?.location}
-                              noConnects={false}
-                              cardKeys={POST_LISTINGAD_CARD}
-                              justifyContent={'flex-start'}
-                            />
-                            <Box
-                              sx={{
-                                display: 'flex',
-                                width: '20%',
-                                '@media (min-width: 280px) and (max-width: 760px)':
-                                  {
-                                    width: '80%',
-                                  },
-                                '@media (min-width: 280px) and (max-width: 500px)':
-                                  {
-                                    pl: '20px',
-                                  },
-                              }}
-                            >
-                              <Typography
-                                variant="body1"
-                                sx={{
-                                  fontSize: '14px',
-                                  fontWeight: 600,
-                                  mt: '3px',
-                                }}
-                              >
-                                {ESTIMATE_RANGE}
-                              </Typography>
-                              <Typography
-                                sx={{
-                                  ml: 1,
-                                  fontWeight: 700,
-                                  color: '#333333',
-                                  fontSize: '20px',
-                                }}
-                                component={'span'}
-                              >
-                                {`${userPropertyDetail?.amount}`}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </Grid>
-                      </Grid>
+                      <UserPropertyDetails
+                        userPropertyDetail={userPropertyDetail}
+                      />
                     )}
+
                     <Box>
                       <Button
                         sx={{
@@ -305,81 +184,23 @@ const ProposalDetail = () => {
                       </Button>
                     </Box>
                   </Box>
+
                   {showMoreContent && (
-                    <>
-                      <Location
-                        city={userPropertyDetail?.city}
-                        locationKeys={location}
-                        purpose={userPropertyDetail?.purpose}
-                        propertyType={userPropertyDetail?.propertyType}
-                        propertyCategory={userPropertyDetail?.propertyCategory}
-                        location={userPropertyDetail?.location}
-                        width={'70%'}
-                      />
-                      <Amount amount={userPropertyDetail?.amount} />
-                      <PreviewFeatureAndAmenities
-                        amenities={amenities}
-                        specificPost={userPropertyDetail}
-                      />
-                    </>
+                    <Content
+                      userPropertyDetail={userPropertyDetail}
+                      location={location}
+                      amenities={amenities}
+                    />
                   )}
                 </Box>
-                <Box
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    borderRight: '1px solid #E4E4E4',
-                    pt: 2,
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontSize: '30px',
-                      fontWeight: 600,
-                      textAlign: 'center',
-                      mt: 4,
-                    }}
-                  >
-                    {VIEWPROPOSAL?.proposalDetails}
-                  </Typography>
-                  <PropertyDetail
-                    heading={PROPOSAL?.propertyDetails}
-                    subTitle={agentPropertyDetail?.title}
-                    description={agentPropertyDetail?.description}
-                    mb={'-15px'}
-                  />
-                  <Location
-                    city={agentPropertyDetail?.city}
-                    locationKeys={location}
-                    purpose={agentPropertyDetail?.purpose}
-                    propertyType={agentPropertyDetail?.propertyType}
-                    propertyCategory={agentPropertyDetail?.propertyCategory}
-                    location={agentPropertyDetail?.location}
-                    width={'70%'}
-                  />
-                  <PreviewAmountAndFeature
-                    area={agentPropertyDetail?.area}
-                    amount={agentPropertyDetail?.amount}
-                    areaUnit={agentPropertyDetail?.areaUnit}
-                    areaAndAmount={areaAndAmount}
-                    amountCurrency={agentPropertyDetail?.amountCurrency}
-                    instalmentAvailable={
-                      agentPropertyDetail?.instalmentAvailable
-                    }
-                    readyPossession={agentPropertyDetail?.readyPossession}
-                  />
 
-                  <BidMedia
-                    title={images?.title}
-                    media={agentPropertyDetail?.images}
-                    mediaType={images?.type}
-                  />
-                  <BidMedia
-                    title={videos?.title}
-                    media={agentPropertyDetail?.videos}
-                    mediaType={videos?.type}
-                  />
-                </Box>
+                <AgentPropertyDetails
+                  agentPropertyDetail={agentPropertyDetail}
+                  location={location}
+                  areaAndAmount={areaAndAmount}
+                  images={images}
+                  videos={videos}
+                />
               </Grid>
             )}
           </Box>

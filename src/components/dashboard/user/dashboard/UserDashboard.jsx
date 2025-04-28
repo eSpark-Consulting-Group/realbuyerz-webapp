@@ -1,13 +1,14 @@
 'use client';
-import React from 'react';
-import { Box } from '@mui/system';
-import { Divider } from '@mui/material';
+import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
+
+import { Divider, Box } from '@mui/material';
 
 import ViewAllPosting from './ViewAllPosting';
 import PostRequestButton from './PostRequestButton';
-
 import PostRequestCard from './PostRequestCard';
+
 import { findData } from '@/src/utils/dashboardUtils';
 
 const UserDashboard = () => {
@@ -15,9 +16,12 @@ const UserDashboard = () => {
   const userId = useSelector((state) => state?.currentUser?.user?.id);
   const find_user = findData(userId, userAds);
 
+  const [isFetched, setIsFetched] = useState(false);
+
   return (
     <>
       <PostRequestButton />
+
       <Box
         sx={{
           background: '#fff',
@@ -29,14 +33,20 @@ const UserDashboard = () => {
           maxWidth: { lg: '1200px', xl: '1200px', xxl: '1500px' },
         }}
       >
-        <ViewAllPosting />
+        <ViewAllPosting isFetched={isFetched} />
+
         <Divider />
+
         <Box
           sx={{
             p: { xs: 2, sm: 6 },
           }}
         >
-          <PostRequestCard ads={find_user} height={'1098px'} />
+          <PostRequestCard
+            ads={find_user}
+            height={'1098px'}
+            setIsFetched={setIsFetched}
+          />
         </Box>
       </Box>
     </>

@@ -1,4 +1,4 @@
-import { Navigation, Pagination } from 'swiper/modules';
+import { A11y, EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 export const featuredPropertiesSliderSetting = {
   slidesPerView: 'auto',
@@ -172,6 +172,101 @@ export const browseByCategorySliderSetting = {
     },
     1400: {
       slidesPerView: 8,
+    },
+  },
+};
+
+export const bidSliderSetting = {
+  slidesPerView: 3,
+  loop: true,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+  module: [Navigation, Pagination, A11y],
+  breakpoints: {
+    1440: {
+      slidesPerView: 3,
+    },
+    1280: {
+      slidesPerView: 3,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+    600: {
+      slidesPerView: 2,
+    },
+    480: {
+      slidesPerView: 1,
+    },
+    280: {
+      slidesPerView: 1,
+    },
+  },
+};
+
+export const medeaSliderSetting = {
+  effect: 'fade',
+  grabCursor: true,
+  centeredSlides: true,
+  loop: true,
+  slidesPerView: 1,
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2.5,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.custom-swiper-button-next',
+    prevEl: '.custom-swiper-button-prev',
+    clickable: true,
+  },
+  modules: [EffectFade, Pagination, Navigation],
+};
+
+export const adMediaSliderSetting = {
+  loop: true,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+  module: [Navigation, Pagination, A11y],
+  breakpoints: {
+    1920: {
+      slidesPerView: 2,
+    },
+    960: {
+      slidesPerView: 2,
+      spaceBetween: 0,
+    },
+    700: {
+      slidesPerView: 2,
+    },
+    500: {
+      slidesPerView: 2,
+    },
+    280: {
+      slidesPerView: 1,
     },
   },
 };

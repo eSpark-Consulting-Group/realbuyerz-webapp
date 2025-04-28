@@ -506,3 +506,19 @@ export const COVER_LETTER_VALUES = {
   instalmentAvailable: false,
   readyPossession: false,
 };
+
+export const keyMapping = {
+  title: 'propertyName',
+  propertyCategory: 'propertyType',
+  description: 'propertyDescription',
+  amount: 'propertyPrice',
+  area: 'propertyArea',
+  purpose: 'purpose',
+  address: 'propertyAddress',
+  city: 'propertyCity',
+  propertySubTypeId: 'propertySubTypeId',
+  amenity: 'amenity',
+  longitude: 'longitude',
+  latitude: 'latitude',
+  images: 'image',
+};

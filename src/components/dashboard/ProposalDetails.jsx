@@ -1,12 +1,13 @@
-import React from 'react';
+import { formatDistanceToNow } from 'date-fns';
+
 import { Box, Grid, Typography } from '@mui/material';
 
 import LiveBiddingPropertiesList from './LiveBiddingPropertiesList';
+
 import {
   ESTIMATE_RANGE,
   POST_LISTINGAD_CARD,
 } from '@/src/constants/user/Dashboard';
-import { formatDistanceToNow } from 'date-fns';
 
 const ProposalDetails = ({
   city,
@@ -45,12 +46,14 @@ const ProposalDetails = ({
                 color: '#333',
               }}
             >
+
               <Typography
                 variant="h4"
                 sx={{ ml: 0.4, fontSize: { xs: '21px' } }}
               >
                 {title || ''}
               </Typography>
+
               {postedTime && (
                 <Typography variant="body1" sx={{ ml: 0.5, mt: 1 }}>
                   {formatDistanceToNow(new Date(postedTime), {
@@ -58,7 +61,9 @@ const ProposalDetails = ({
                   })}
                 </Typography>
               )}
+
             </Grid>
+            
             <Grid
               item
               xs={12}
@@ -94,6 +99,7 @@ const ProposalDetails = ({
                 >
                   {ESTIMATE_RANGE}
                 </Typography>
+
                 <Typography
                   sx={{
                     ml: 1,
@@ -107,6 +113,7 @@ const ProposalDetails = ({
                 </Typography>
               </Box>
             </Grid>
+
             <Box
               sx={{
                 color: '#333',
@@ -131,6 +138,7 @@ const ProposalDetails = ({
                 {description || ''}
               </Typography>
             </Box>
+            
             <LiveBiddingPropertiesList
               area={area || ''}
               city={city || ''}

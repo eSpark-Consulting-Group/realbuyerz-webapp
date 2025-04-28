@@ -1,7 +1,6 @@
 'use client';
 import { Box, Grid } from '@mui/material';
 
-// Existing imports
 import PostTitle from './ads-form-components/PostTitle';
 import PropertyStatus from './ads-form-components/PropertyStatus';
 import SelectCityType from './ads-form-components/SelectCity';
@@ -47,6 +46,7 @@ const PropertyPurpose = ({
           }}
         >
           <PostTitle text={propertyData?.postTitles?.locationandpurpose} />
+
           <Box
             sx={{
               width: '100%',
@@ -73,6 +73,7 @@ const PropertyPurpose = ({
                 propertyData={propertyData}
                 formik={formik}
               />
+
               <SelectProperyType
                 image={propertyData?.propertyType?.images}
                 label={propertyData?.propertyType?.text}
@@ -82,12 +83,14 @@ const PropertyPurpose = ({
                 formik={formik}
                 propertyTypeDetails={propertyTypeDetails}
               />
+
               <SelectCityType
                 image={propertyData?.city?.images}
                 label={propertyData?.city?.text}
                 cityOptions={propertyData?.selectCityOptions}
                 formik={formik}
               />
+
               <SelectLocationType
                 propertyInformation={propertyData}
                 formik={formik}

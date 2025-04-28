@@ -464,6 +464,7 @@ export const POST_LISTING_VALUES = {
   title: '',
   location: '',
   description: '',
+  propertySubTypeId: '',
   area: '',
   amount: '',
   areaUnit: '',

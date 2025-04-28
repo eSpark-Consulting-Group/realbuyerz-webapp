@@ -1,17 +1,19 @@
 'use client';
-import React, { useState } from 'react';
-import { Typography, Button, Modal, Box } from '@mui/material';
+import { useState } from 'react';
 import Image from 'next/image';
 
-import BidSlider from './BidSlider';
+import { Typography, Button, Modal, Box } from '@mui/material';
 
+import DesktopScreenSlider from './DesktopScreenSlider';
 import MobleScreenSlider from './MobleScreenSlider';
 import VideoSlider from './VideoSlider';
-import DesktopScreenSlider from './DesktopScreenSlider';
+import BidSlider from './BidSlider';
+
 import { BIDDINGS } from '@/src/constants/Preview_Data';
 
 const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
   const [open, setOpen] = useState(false);
+  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -48,6 +50,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
                 />
               </Box>
             </Box>
+
             <Box
               className="MobileScreen"
               sx={{
@@ -88,6 +91,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
                 alt={'close'}
               />
             </Button>
+
             <Box
               sx={{
                 borderRadius: '30px',
@@ -102,6 +106,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
           </Box>
         )}
       </Modal>
+
       <Box
         sx={{
           px: px ? px : 4,
@@ -152,6 +157,7 @@ const BidMedia = ({ title, media, mediaType, px, pt, pb }) => {
             </Button>
           )}
         </Box>
+
         <BidSlider media={media ? media : [null]} mediaType={mediaType} />
       </Box>
     </>

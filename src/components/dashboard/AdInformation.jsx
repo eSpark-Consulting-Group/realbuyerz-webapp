@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
 import { Box, Grid } from '@mui/material';
+
 import PostTitle from './ads-form-components/PostTitle';
 import PropertyInformation from './ads-form-components/PropertyInformation';
 
@@ -38,6 +38,7 @@ const AdInformation = ({ propertyData, formik }) => {
           }}
         >
           <PostTitle text={propertyData?.postTitles?.adInfo} />
+
           <Box
             sx={{
               width: '100%',

@@ -1,6 +1,4 @@
-import React from 'react';
-import { Box } from '@mui/system';
-import { Divider, Grid } from '@mui/material';
+import { Divider, Grid, Box } from '@mui/material';
 
 import UserProfileDetails from './UserProfileDetails';
 
@@ -57,6 +55,7 @@ const ProposalAgentProfile = ({
                   </Grid>
                 </Grid>
               </Box>
+
               {index == proposalData.length - 1 ? null : <Divider />}
             </Box>
           )

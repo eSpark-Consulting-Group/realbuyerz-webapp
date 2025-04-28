@@ -1,22 +1,23 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Box, CircularProgress, Divider } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { useMutation } from '@tanstack/react-query';
 
-import ProposalDetails from '@/src/components/dashboard/ProposalDetails';
-import DashboardTitle from '@/src/components/dashboard/user/dashboard/DashboardTitle';
-import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
-import NotFoundSection from '@/src/components/global/NotFoundSection';
-import ProposalAgentProfile from '@/src/components/dashboard/ProposalAgentProfile';
+import { Box, CircularProgress, Divider } from '@mui/material';
 
-import { PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
+import DashboardTitle from '@/src/components/dashboard/user/dashboard/DashboardTitle';
+import ProposalAgentProfile from '@/src/components/dashboard/ProposalAgentProfile';
+import BackToDashboard from '@/src/components/dashboard/BackToDashboard';
+import ProposalDetails from '@/src/components/dashboard/ProposalDetails';
+import NotFoundSection from '@/src/components/global/NotFoundSection';
 
 import { viewUserProposal } from '@/src/utils/apis/bidding/viewUserProposal';
 import { transformApiObject } from '@/src/utils/objectsConversion';
 import useViewportHeight from '@/src/utils/useViewportHeight';
+
+import { PROPOSAL_PAGE } from '@/src/constants/Preview_Data';
 
 const PropertyProposal = () => {
   const { image, back_Button, view_Button, title } = PROPOSAL_PAGE;
@@ -56,7 +57,6 @@ const PropertyProposal = () => {
       setAgentProposals(transformApiArray(item.items, item.userProperty.id));
     },
     onError: (error) => {
-      // Handle the error
       console.error(error);
     },
   });
@@ -83,6 +83,7 @@ const PropertyProposal = () => {
             buttonLabel={back_Button?.text}
             link={back_Button?.link}
           />
+
           <DashboardTitle
             title={title}
             mt={'20px'}
@@ -90,6 +91,7 @@ const PropertyProposal = () => {
             ml={'57px'}
             marginProposal={'10px'}
           />
+
           <Box
             sx={{
               background: '#fff',
@@ -118,7 +120,9 @@ const PropertyProposal = () => {
               postedTime={userPosts?.created_at}
               description={userPosts?.description}
             />
+
             <Divider />
+
             <ProposalAgentProfile
               proposalData={agentProposals || ''}
               image={image}

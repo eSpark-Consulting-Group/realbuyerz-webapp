@@ -1,19 +1,27 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { Grid, Box } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 
-import BuyersPlatform from '@/src/components/dashboard/BuyersPlatform';
-import AdInformation from '@/src/components/dashboard/AdInformation';
-import PropertySize from '@/src/components/dashboard/Propertysize';
-import PropertyPurpose from '@/src/components/dashboard/PropertyPurpose';
-import SubmitButton from '@/src/components/dashboard/SubmitButton';
-import PreviewModal from '@/src/components/dashboard/preview/PreviewModal';
-import PropertyFeatures from '@/src/components/dashboard/PropertyFeature';
+import { Grid, Box } from '@mui/material';
+
 import ProposalModal from '@/src/components/dashboard/modals/ProposalModal';
-// import Link from 'next/link';
-import PropertyGallery from '@/src/components/dashboard/PropertGallery';
+import FormComponents from '../../../FormComponents';
+
+import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
+import { mapAndCreateFormData } from '@/src/utils/property/propertyUtils';
+import { generateRandomNumber } from '@/src/utils/dashboardUtils';
+import { transformAmenities } from '@/src/utils/amenitiesUtils';
+import {
+  addPostListing,
+  fetchMyProperties,
+  updatePostListing,
+} from '@/src/utils/properties';
+
 import {
   handlePostlistingAd,
   toggleCheckAmenityClear,
@@ -29,50 +37,37 @@ import {
   DRAFT_SUBMIT_MODAL_DATA,
   SUBMIT_MODAL_DATA,
 } from '@/src/constants/Preview_Data';
-import { updateSelectedAmenities } from '@/src/utils/updateSelectedAmenities';
-import { generateRandomNumber } from '@/src/utils/dashboardUtils';
-import { useMutation } from '@tanstack/react-query';
-import {
-  addPostListing,
-  fetchMyProperties,
-  updatePostListing,
-} from '@/src/utils/properties';
-import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { transformAmenities } from '@/src/utils/amenitiesUtils';
+import { keyMapping } from '@/src/constants/agent/Cover_Letter';
 
 const PostListing = ({ property_Id }) => {
-  const [open, setOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [action, setAction] = useState('');
-  const [propertyTypeDetails] = useState({});
-  const [selectedAmenities, setSelectedAmenities] = useState([]);
-  const [previousData, setPreviousData] = useState({});
-  const [filteredUserProperty, setFilteredUserProperty] = useState(null);
+  const router = useRouter();
 
   const dispatch = useDispatch();
+
   const current_user_id = useSelector((state) => state?.currentUser?.user?.id);
   const getAmenities = useSelector(
     (state) => state?.postListingAds?.addAmenities
   );
 
-  const handleSeletedAmenites = () => {
-    if (getAmenities?.length === 0) {
-      formik?.setFieldValue('amenity', []);
-    } else {
-      formik?.setFieldValue(
-        'amenity',
-        getAmenities.map((am) => {
-          return { count: am.count, image: am.image, name: am.name };
-        })
-      );
-    }
+  const randomNumber = generateRandomNumber();
 
+  const [open, setOpen] = useState(false);
+  const [action, setAction] = useState('');
+  const [propertyTypeDetails] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [previousData, setPreviousData] = useState({});
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [filteredUserProperty, setFilteredUserProperty] = useState(null);
+
+    const getModalData = () =>
+      action === 'draft' ? DRAFT_SUBMIT_MODAL_DATA : SUBMIT_MODAL_DATA;
+
+  const handleSeletedAmenites = () => {
+    formik.setFieldValue('amenity', getAmenities?.length ? getAmenities : []);
     updateSelectedAmenities(getAmenities, setSelectedAmenities);
   };
+
   const handleOpenSuccessModal = () => setIsOpen(true);
-  const router = useRouter();
 
   const handleCloseSuccessModal = () => {
     setIsOpen(false);
@@ -84,7 +79,7 @@ const PostListing = ({ property_Id }) => {
       dispatch(handleSubmitDraftForAgent(values));
       formData.append('propertyStatus', false);
       mutate(formData);
-    } else if (action === 'submit') {
+    } else {
       if (property_Id) {
         updatePostListingApi.mutate({ formData, property_Id });
       } else {
@@ -96,14 +91,8 @@ const PostListing = ({ property_Id }) => {
     setSelectedAmenities([]);
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const randomNumber = generateRandomNumber();
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const { mutate, isPending } = useMutation({
     mutationFn: addPostListing,
@@ -160,17 +149,14 @@ const PostListing = ({ property_Id }) => {
     mutationFn: fetchMyProperties,
     onSuccess: (data) => {
       const items = data.response.data;
-      const { active, trash, draft } = data.response.data;
-      const allItems = [...active, ...trash, ...draft];
+      const allItems = [...items.active, ...items.trash, ...items.draft];
       const property = allItems.find((item) => item.id === property_Id);
 
       setFilteredUserProperty(property);
 
       let singleArr = {};
       Object.keys(items).forEach((val) => {
-        if (items[val].length > 0) {
-          singleArr = items[val][0];
-        }
+        if (items[val].length > 0) singleArr = items[val][0];
       });
 
       const propertyAmenities = singleArr.amenity || [];
@@ -190,38 +176,30 @@ const PostListing = ({ property_Id }) => {
       setPreviousData(formik.values);
     },
     onError: (error) => {
-      toast.error(error.response.data.messag)
+      toast.error(error.response.data.messag);
     },
   });
 
   useEffect(() => {
     if (filteredUserProperty) {
-      const amenities = transformAmenities(getAmenities);
-      setSelectedAmenities(amenities);
-      formik.setFieldValue('amenity', JSON.stringify(amenities));
+      setSelectedAmenities(transformAmenities(getAmenities));
+      formik.setFieldValue('amenity', JSON.stringify(transformAmenities(getAmenities)));
     }
-  }, [filteredUserProperty, getAmenities, formik]);
+  }, [filteredUserProperty, getAmenities]);
 
-  const formData = new FormData();
-  formData.append('propertyName', formik?.values.title);
-  formData.append('propertyType', formik?.values.propertyCategory);
-  formData.append('propertyDescription', formik?.values.description);
-  formData.append('propertyPrice', formik?.values.amount);
-  formData.append('propertyArea', formik?.values.area);
-  formData.append('purpose', formik?.values.purpose);
-  formData.append('propertyAddress', formik?.values.address);
-  formData.append('propertyCity', formik?.values.city);
-  formData.append('propertySubTypeId', formik?.values.propertySubTypeId);
-  formData.append('amenity', JSON.stringify(formik?.values?.amenity));
-  formData.append('longitude', formik?.values.longitude);
-  formData.append('latitude', formik?.values.latitude);
-  formData.append('video', 'https://www.youtube.com/watch?v=EPhMeAWXWCU');
-  formik?.values.images?.length &&
-    formik?.values.images?.forEach((file) => formData.append('image', file));
+  const formData = mapAndCreateFormData(
+    keyMapping,
+    formik.values,
+    selectedAmenities,
+    {
+      video: 'https://www.youtube.com/watch?v=EPhMeAWXWCU',
+    }
+  );
 
   const isLoading = updatePostListingApi.isPending || isPending;
   const isSubmitBtnDisable =
     JSON.stringify(formik.values) == JSON.stringify(previousData);
+
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -237,47 +215,37 @@ const PostListing = ({ property_Id }) => {
               margin: { xs: 0, md: '0 auto', lg: 0 },
             }}
           >
-            <BuyersPlatform propertyData={POST_LISTING} />
-            <AdInformation formik={formik} propertyData={POST_LISTING} />
-            <PropertyPurpose
-              formik={formik}
+            <FormComponents
               propertyData={POST_LISTING}
-              propertyTypeDetails={propertyTypeDetails}
-              filteredUserProperty={filteredUserProperty}
-            />
-
-            <PropertySize formik={formik} propertyData={POST_LISTING} />
-            <PropertyFeatures
               formik={formik}
-              propertyData={POST_LISTING}
               setSelectedAmenities={setSelectedAmenities}
               selectedAmenities={selectedAmenities}
               handleSeletedAmenites={handleSeletedAmenites}
               getAmenities={getAmenities}
-            />
-            <PropertyGallery formik={formik} propertyData={POST_LISTING} />
-            <SubmitButton
-              formik={formik}
-              propertyData={POST_LISTING}
-              setAction={setAction}
-              action={action}
               handleClickOpen={handleClickOpen}
-              isLoading={isLoading}
-              isUpdate={property_Id}
-              isSubmitBtnDisable={isSubmitBtnDisable}
-            />
-            <PreviewModal
               open={open}
-              onClose={handleClose}
-              ads={formik?.values}
-              formik={formik}
+              handleClose={handleClose}
+              gallery={true}
+              propertyPurposeProps={{
+                propertyTypeDetails,
+                filteredUserProperty,
+              }}
+              buttonProps={{
+                action,
+                setAction,
+                handleOpenSuccessModal,
+                isLoading,
+                isUpdate: property_Id,
+                isSubmitBtnDisable,
+              }}
             />
           </Box>
         </form>
+
         <ProposalModal
-          buttonLabel={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.buttonLabel : SUBMIT_MODAL_DATA?.buttonLabel}`}
-          description={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.description : SUBMIT_MODAL_DATA?.description}`}
-          title={`${action == 'draft' ? DRAFT_SUBMIT_MODAL_DATA?.title : SUBMIT_MODAL_DATA?.title}`}
+          buttonLabel={getModalData()?.buttonLabel}
+          description={getModalData()?.description}
+          title={getModalData()?.title}
           open={isOpen}
           onClose={handleCloseSuccessModal}
         />
@@ -285,4 +253,5 @@ const PostListing = ({ property_Id }) => {
     </Grid>
   );
 };
+
 export default PostListing;
