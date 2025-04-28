@@ -10,66 +10,72 @@ import {
   PROJECTS_FILTER_FIELDS,
 } from '@/src/constants/Projects/projectsFilter';
 
+const initialFilter = {
+  purpose: 'Buy',
+  all: { label: 'House', category: 'All' },
+  price: { minimum: '', maximum: '' },
+  size: '',
+  search: '',
+};
+
+const CATEGORIES = [
+  { label: 'Houses', link: 'houses' },
+  { label: 'Plots', link: 'plots' },
+  { label: 'Commercials', link: 'commercials' },
+];
+
+const ProjectCategorySection = ({ category, link }) => (
+  <Box sx={{ py: 1.5 }}>
+    <ProjectsCategoryLink
+      category={category}
+      link={`/projects/category/${link}`}
+      linkText="See All >"
+    />
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: '1350px',
+        mx: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        py: 0.5,
+      }}
+    >
+      <ProjectsSlider data={dummay_data} category={link} />
+    </Box>
+  </Box>
+);
+
 const ProjectsPage = () => {
   const { fields } = PROJECTS_FILTER_FIELDS;
-  const filteredData = dummay_data?.filter((item) => item);
-  const [filterObject, setfilterObject] = useState({
-    purpose: 'Buy',
-    all: { label: 'House', category: 'All' },
-    price: { minimum: '', maximum: '' },
-    size: '',
-    search: '',
-  });
+  const [filterObject, setFilterObject] = useState(initialFilter);
 
-  if (!filteredData || filteredData?.length === 0) {
+  const hasData = dummay_data && dummay_data.length > 0;
+
+  if (!hasData) {
     return (
       <NotFoundSection
-        heading={'Sorry!'}
-        message={'No Properties Found.'}
-        link={'/'}
+        heading="Sorry!"
+        message="No Properties Found."
+        link="/"
       />
     );
   }
-
-  const renderProjectCategory = (category, link, linkText) => (
-    <Box sx={{ py: 1.5 }}>
-      <ProjectsCategoryLink
-        category={category}
-        link={`/projects/category/${link}`}
-        linkText={linkText}
-      />
-
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: '1350px',
-          mx: 'auto',
-          display: 'flex',
-          justifyContent: 'center',
-          py: 0.5,
-        }}
-      >
-        <ProjectsSlider data={dummay_data} category={link} />
-      </Box>
-    </Box>
-  );
 
   return (
     <Box
       className="min-h-screen"
       sx={{ py: { xs: 2, sm: 5, lg: 8 }, px: { xs: 2, sm: 2, md: 3, lg: 0 } }}
     >
-      <Box>
-        <ProjectsFilterComponent
-          fields={fields || []}
-          filterObject={filterObject}
-          setfilterObject={setfilterObject}
-        />
-      </Box>
+      <ProjectsFilterComponent
+        fields={fields || []}
+        filterObject={filterObject}
+        setfilterObject={setFilterObject}
+      />
       <Box sx={{ py: { xs: 1, sm: 3, md: 5 } }}>
-        {renderProjectCategory('Houses', 'houses', 'See All >')}
-        {renderProjectCategory('Plots', 'plots', 'See All >')}
-        {renderProjectCategory('Commercials', 'commercials', 'See All >')}
+        {CATEGORIES.map(({ label, link }) => (
+          <ProjectCategorySection key={link} category={label} link={link} />
+        ))}
       </Box>
     </Box>
   );
