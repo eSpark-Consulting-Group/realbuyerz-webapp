@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import Cookie from 'js-cookie';
 
@@ -12,11 +12,9 @@ import Typewriter from './Typewriter';
 
 import { navigateTo } from '@/src/utils/authUtils';
 import { removeFromStorage } from '@/src/utils/globalUtils';
-
 import { setLoggedOut } from '@/src/redux/slices/auth/authSlice';
 
 import { FEATURED_HEADINGS } from '@/src/constants/Home';
-
 
 const CreateAccount = () => {
   const router = useRouter();
@@ -35,16 +33,21 @@ const CreateAccount = () => {
       setUserRole(userType);
     } else {
       setIsLoggedIn(false);
-      removeFromStorage()
+      setUserRole('');
+      removeFromStorage();
       dispatch(setLoggedOut());
     }
-  }, []);
+  }, [dispatch]);
+
+  const handleButtonClick = useCallback(() => {
+    if (isLoggedIn) {
+      navigateTo(userRole, router);
+    } else {
+      setOpen(true);
+    }
+  }, [isLoggedIn, userRole, router]);
 
   const handleClose = () => setOpen(false);
-
-  const handleButtonClick = () => {
-    isLoggedIn ? navigateTo(userRole, router) : setOpen(true);
-  };
 
   return (
     <Box
@@ -62,20 +65,20 @@ const CreateAccount = () => {
 
       <Button
         onClick={handleButtonClick}
+        variant="primary"
         sx={{
-          mx: '15px',
+          mx: 2,
           fontWeight: 600,
           width: '150px',
           height: { xs: 'auto', lg: '40px' },
+          fontSize: '12px',
           color: '#fff',
           '&:hover': {
             backgroundColor: '#fff !important',
             color: '#fb631c !important',
             border: '1px solid #fb631c',
           },
-          fontSize: '12px',
         }}
-        variant="primary"
       >
         {isLoggedIn
           ? FEATURED_HEADINGS.myAccount

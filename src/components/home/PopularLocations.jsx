@@ -1,15 +1,6 @@
 'use client';
 import { useState } from 'react';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-
 import {
   Box,
   Button,
@@ -20,39 +11,88 @@ import {
 } from '@mui/material';
 import Heading from './Heading';
 import FilteredProposalsDataBox from './FilteredProposalsDataBox';
-
 import { popularLocationSliderSetting } from '@/src/utils/sliderSettings';
-
 import { FEATURED_HEADINGS, FEATURE_BUTTONS } from '@/src/constants/Home';
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-};
-
 const PopularLocations = ({ data }) => {
-  const [filteredProposalsData, setFilteredProposalsData] = useState(
-    data?.filter((item) => item?.type === 'sale')
-  );
-
   const [filterType, setFilterType] = useState('sale');
-
-  const handleFilter = (type) => {
-    setFilterType(type);
-    if (type === 'sale') {
-      setFilteredProposalsData(data?.filter((item) => item?.type === 'sale'));
-    } else if (type === 'rent') {
-      setFilteredProposalsData(data?.filter((item) => item?.type === 'rent'));
-    } else {
-      setFilteredProposalsData(data);
-    }
-  };
-
   const isSmallScreen = useMediaQuery((theme) =>
     theme.breakpoints.between('xs', 'lg')
   );
+
+  const filteredProposalsData = data?.filter((item) =>
+    filterType === 'all' ? true : item?.type === filterType
+  );
+
+  const handleFilter = (type) => {
+    setFilterType(type);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const FilterButton = ({ type, label }) => (
+    <Button
+      sx={{
+        mx: '10px',
+        fontWeight: 600,
+        width: '116px',
+        height: '40px',
+        color: filterType === type ? '#fff' : 'primary',
+        mb: { xs: '10px' },
+      }}
+      variant={filterType === type ? 'contained' : 'outlined'}
+      onClick={() => handleFilter(type)}
+    >
+      <Typography
+        sx={{
+          color: filterType === type ? '#fff' : 'primary',
+          fontSize: '15px',
+        }}
+      >
+        {label}
+      </Typography>
+    </Button>
+  );
+
+  const ProposalGrid = ({ small }) => (
+    <Grid
+      container
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+      columnSpacing={2}
+    >
+      {filteredProposalsData?.map((item, index) => (
+        <Grid item xs={12} sm={6} md={6} lg={3.2} key={`proposal-${index}`}>
+          <FilteredProposalsDataBox item={item} small={small} />
+        </Grid>
+      ))}
+    </Grid>
+  );
+
+  const ProposalSlider = () => (
+    <Swiper {...popularLocationSliderSetting}>
+      <Box className="full-container-width mx-auto">
+        <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
+          {filteredProposalsData?.map((item, index) => (
+            <SwiperSlide
+              key={`slide-${index}`}
+              style={{ width: '90%', height: '100%', maxWidth: '350px' }}
+            >
+              <Grid item xs={10} sm={6} md={6} lg={6}>
+                <FilteredProposalsDataBox item={item} small />
+              </Grid>
+            </SwiperSlide>
+          ))}
+        </Grid>
+      </Box>
+    </Swiper>
+  );
+
   return (
     <Box
       sx={{
@@ -67,12 +107,8 @@ const PopularLocations = ({ data }) => {
     >
       <Container sx={{ px: '10%', maxWidth: '1213px' }}>
         <Heading heading={FEATURED_HEADINGS.popularLocations} paragraph={''} />
-        <Box
-          sx={{
-            pt: '5px',
-            pb: '8px',
-          }}
-        >
+
+        <Box sx={{ pt: '5px', pb: '8px' }}>
           <Box
             sx={{
               display: 'flex',
@@ -82,93 +118,13 @@ const PopularLocations = ({ data }) => {
               pb: { xs: '0px', sm: '30px', md: '30px', lg: '58px' },
             }}
           >
-            <Button
-              sx={{
-                mx: '10px',
-                fontWeight: 600,
-                width: '116px',
-                height: '40px',
-                color: filterType === 'sale' ? '#fff' : 'primary',
-                mb: { xs: '10px' },
-              }}
-              variant={filterType === 'sale' ? 'primary' : 'outlined'}
-              onClick={() => handleFilter('sale')}
-            >
-              <Typography
-                sx={{
-                  color: filterType === 'sale' ? '#fff' : 'primary',
-                  fontSize: '15px',
-                }}
-              >
-                {FEATURE_BUTTONS.forSale}
-              </Typography>
-            </Button>
-
-            <Button
-              sx={{
-                mx: '10px',
-                fontWeight: 600,
-                width: '116px',
-                height: '40px',
-                textAlign: 'start',
-                color: filterType === 'rent' ? '#fff' : 'primary',
-                mb: { xs: '10px' },
-              }}
-              variant={filterType === 'rent' ? 'primary' : 'outlined'}
-              onClick={() => handleFilter('rent')}
-            >
-              <Typography
-                sx={{
-                  color: filterType === 'rent' ? '#fff' : 'primary',
-                  fontSize: '15px',
-                }}
-              >
-                {FEATURE_BUTTONS.byRent}
-              </Typography>
-            </Button>
+            <FilterButton type="sale" label={FEATURE_BUTTONS.forSale} />
+            <FilterButton type="rent" label={FEATURE_BUTTONS.byRent} />
           </Box>
 
-          {isSmallScreen ? (
-            <Swiper {...popularLocationSliderSetting}>
-              <Box className="full-container-width mx-auto">
-                <Grid container sx={{ display: 'flex' }} columnSpacing={2}>
-                  {filteredProposalsData?.map((item, index) => (
-                    <SwiperSlide
-                      key={index}
-                      style={{
-                        width: '90%',
-                        height: '100%',
-                        maxWidth: '350px',
-                      }}
-                    >
-                      <Grid item xs={10} sm={6} md={6} lg={6}>
-                        <FilteredProposalsDataBox item={item} small />
-                      </Grid>
-                    </SwiperSlide>
-                  ))}
-                </Grid>
-              </Box>
-            </Swiper>
-          ) : (
-            <Box className="full-container-width mx-auto">
-              <Grid
-                container
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                columnSpacing={2}
-              >
-                {filteredProposalsData?.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={6} lg={3.2} key={index}>
-                    <FilteredProposalsDataBox item={item} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-          )}
+          {isSmallScreen ? <ProposalSlider /> : <ProposalGrid small={false} />}
         </Box>
+
         <Box
           sx={{
             pb: '26px',
@@ -179,13 +135,13 @@ const PopularLocations = ({ data }) => {
         >
           <Button onClick={scrollToTop}>
             <Box
-              component={'img'}
+              component="img"
               src="/images/bgs/GototheTop.svg"
               sx={{
                 width: { xs: '60px', sm: '70px', md: '80px' },
                 height: 'auto',
               }}
-              alt={'Images'}
+              alt="Go to top"
             />
           </Button>
         </Box>
